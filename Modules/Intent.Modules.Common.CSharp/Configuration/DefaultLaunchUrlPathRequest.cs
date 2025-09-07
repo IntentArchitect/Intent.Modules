@@ -10,7 +10,7 @@ public class DefaultLaunchUrlPathRequest : IForProjectWithRoleRequest
     /// Creates a new instance of <see cref="DefaultLaunchUrlPathRequest"/>.
     /// </summary>
     /// <remarks>
-    /// Use <see cref="DefaultLaunchUrlPathRequestExtensions.PublishDefaultLaunchUrlRequest"/>
+    /// Use <see cref="DefaultLaunchUrlPathRequestExtensions.PublishDefaultLaunchUrlPathRequest"/>
     /// to perform publishing of this event.
     /// </remarks>
     internal DefaultLaunchUrlPathRequest(string urlPath, string forProjectWithRole)

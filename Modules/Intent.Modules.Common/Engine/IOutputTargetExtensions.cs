@@ -1,4 +1,7 @@
-﻿using System;
+﻿#nullable enable
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+#pragma warning disable IDE0130
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
@@ -18,45 +21,100 @@ namespace Intent.Modules.Common
             return outputTarget.Application.Name;
         }
 
-        public static TTemplate FindTemplateInstance<TTemplate>(this IOutputTarget project, string templateId, IMetadataModel model) where TTemplate : class
+        public static TTemplate? FindTemplateInstance<TTemplate>(this IOutputTarget outputTarget, string templateId, IMetadataModel model) where TTemplate : class
         {
-            return project.FindTemplateInstance(templateId, model) as TTemplate;
+            return FindTemplateInstance<TTemplate>(outputTarget, templateId, model, accessibleTo: outputTarget);
         }
 
-        public static ITemplate FindTemplateInstance(this IOutputTarget project, string templateId, IMetadataModel model)
+        public static TTemplate? FindTemplateInstance<TTemplate>(this IOutputTarget outputTarget, string templateId, IMetadataModel model, IOutputTarget? accessibleTo) where TTemplate : class
         {
-            return project.ExecutionContext.FindTemplateInstance(templateId, model.Id);
+            return outputTarget.FindTemplateInstance(templateId, model, accessibleTo) as TTemplate;
         }
 
-        public static ITemplate FindTemplateInstance(this IOutputTarget project, string templateId)
+        public static ITemplate? FindTemplateInstance(this IOutputTarget outputTarget, string templateId, IMetadataModel model)
         {
-            return project.ExecutionContext.FindTemplateInstance(templateId);
+            return FindTemplateInstance(outputTarget, templateId, model, accessibleTo: outputTarget);
         }
 
-        public static TTemplate FindTemplateInstance<TTemplate>(this IOutputTarget project, string templateId) where TTemplate : class
+        public static ITemplate? FindTemplateInstance(this IOutputTarget outputTarget, string templateId, IMetadataModel model, IOutputTarget? accessibleTo)
         {
-            return project.ExecutionContext.FindTemplateInstance(templateId) as TTemplate;
+            return outputTarget.ExecutionContext.FindTemplateInstance(templateId, model.Id, accessibleTo);
         }
 
-        public static ITemplate FindTemplateInstance(this IOutputTarget project, ITemplateDependency templateDependency)
+        public static ITemplate? FindTemplateInstance(this IOutputTarget outputTarget, string templateId)
         {
-            return project.ExecutionContext.FindTemplateInstance(templateDependency.TemplateId, templateDependency.IsMatch);
+            return FindTemplateInstance(outputTarget, templateId, accessibleTo: outputTarget);
         }
 
-        public static TTemplate FindTemplateInstance<TTemplate>(this IOutputTarget project, ITemplateDependency templateDependency) where TTemplate : class
+        public static ITemplate? FindTemplateInstance(this IOutputTarget outputTarget, string templateId, IOutputTarget? accessibleTo)
         {
-            return project.ExecutionContext.FindTemplateInstance(templateDependency.TemplateId, templateDependency.IsMatch) as TTemplate;
+            return outputTarget.ExecutionContext.FindTemplateInstance(templateId, accessibleTo);
         }
 
-        public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this IOutputTarget project, ITemplateDependency templateDependency) where TTemplate : class
+        public static TTemplate? FindTemplateInstance<TTemplate>(this IOutputTarget outputTarget, string templateId) where TTemplate : class
         {
-            return project.ExecutionContext.FindTemplateInstances(templateDependency.TemplateId, templateDependency.IsMatch).Cast<TTemplate>();
+            return FindTemplateInstance<TTemplate>(outputTarget, templateId, accessibleTo: outputTarget);
         }
 
-        public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this IOutputTarget project, string templateIdOrRole) where TTemplate : class
+        public static TTemplate? FindTemplateInstance<TTemplate>(this IOutputTarget outputTarget, string templateId, IOutputTarget? accessibleTo) where TTemplate : class
         {
-            // TODO: Use overload without predicate with SDK 3.5.0
-            return project.ExecutionContext.FindTemplateInstances(templateIdOrRole, () => true).Cast<TTemplate>();
+            return outputTarget.ExecutionContext.FindTemplateInstance(templateId, accessibleTo) as TTemplate;
+        }
+
+
+        public static ITemplate? FindTemplateInstance(this IOutputTarget outputTarget, ITemplateDependency templateDependency)
+        {
+            return FindTemplateInstance(outputTarget, templateDependency, accessibleTo: outputTarget);
+        }
+
+        public static ITemplate? FindTemplateInstance(this IOutputTarget outputTarget, ITemplateDependency templateDependency, IOutputTarget? accessibleTo)
+        {
+            if (templateDependency.TryGetWithAccessibleTo(accessibleTo, out var withAccessibleTo))
+            {
+                templateDependency = withAccessibleTo;
+            }
+
+            return outputTarget.ExecutionContext.FindTemplateInstance(templateDependency.TemplateId, templateDependency.IsMatch);
+        }
+
+        public static TTemplate? FindTemplateInstance<TTemplate>(this IOutputTarget outputTarget, ITemplateDependency templateDependency) where TTemplate : class
+        {
+            return FindTemplateInstance<TTemplate>(outputTarget, templateDependency, outputTarget) as TTemplate;
+        }
+
+        public static TTemplate? FindTemplateInstance<TTemplate>(this IOutputTarget outputTarget, ITemplateDependency templateDependency, IOutputTarget? accessibleTo) where TTemplate : class
+        {
+            if (templateDependency.TryGetWithAccessibleTo(accessibleTo, out var withAccessibleTo))
+            {
+                templateDependency = withAccessibleTo;
+            }
+
+            return outputTarget.ExecutionContext.FindTemplateInstance(templateDependency.TemplateId, templateDependency.IsMatch) as TTemplate;
+        }
+
+        public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this IOutputTarget outputTarget, ITemplateDependency templateDependency) where TTemplate : class
+        {
+            return FindTemplateInstances<TTemplate>(outputTarget, templateDependency, accessibleTo: outputTarget);
+        }
+
+        public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this IOutputTarget outputTarget, ITemplateDependency templateDependency, IOutputTarget? accessibleTo) where TTemplate : class
+        {
+            if (templateDependency.TryGetWithAccessibleTo(accessibleTo, out var withAccessibleTo))
+            {
+                templateDependency = withAccessibleTo;
+            }
+
+            return outputTarget.ExecutionContext.FindTemplateInstances(templateDependency.TemplateId, templateDependency.IsMatch).Cast<TTemplate>();
+        }
+
+        public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this IOutputTarget outputTarget, string templateIdOrRole) where TTemplate : class
+        {
+            return FindTemplateInstances<TTemplate>(outputTarget, templateIdOrRole, accessibleTo: outputTarget);
+        }
+
+        public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this IOutputTarget outputTarget, string templateIdOrRole, IOutputTarget? accessibleTo) where TTemplate : class
+        {
+            return outputTarget.ExecutionContext.FindTemplateInstances(templateIdOrRole, accessibleTo).Cast<TTemplate>();
         }
 
         /// <summary>
