@@ -41,8 +41,25 @@
         <implements>
           <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
         </implements>
-        <displayFunction>const returnType = typeReference.getType()?.typeReference?.display ?? "void";
-return `[call] ${getName()}: ${`${typeReference.getType()?.getName()}(...): ${returnType}` ?? "&lt;not set&gt;"}`</displayFunction>
+        <displayFunction>const result = [
+    {
+        text: "[call] ",
+        cssClass: 'keyword'
+    },
+]
+.concat(getName()?.length &gt; 0 ? [
+    {
+        text: getName() + " = ",
+    }
+] : [])
+.concat([
+    {
+        text: `${typeReference.getType()?.getName() ?? "&lt;not set&gt;"}(...): `,
+        cssClass: 'function'
+    }
+])
+.concat(typeReference.getType()?.typeReference.getDisplayTextComponents() ?? []);
+return result;</displayFunction>
         <nameAccessibilityMode>optional</nameAccessibilityMode>
         <defaultNameFunction>return typeReference.getType()?.typeReference.getTypeId() != null ? "result" : null;</defaultNameFunction>
         <nameMustBeUnique>true</nameMustBeUnique>
@@ -102,6 +119,11 @@ return getMappings()[0] ? null : "gray";</lineColor>
         </targetEnd>
       </visualSettings>
       <macros>
+        <macro trigger="on-created">
+          <script>const invocationMappingId = "7ca5c18a-bdbe-434b-a68a-421899a077e7";
+const mapping = association.createAdvancedMapping(association.getOtherEnd().typeReference.typeId, association.typeReference.typeId, "a4c4c5cc-76df-48ed-9d4e-c35caf44b567");
+mapping.addMappedEnd(invocationMappingId, [association.getOtherEnd().typeReference.typeId], [association.typeReference.typeId]);</script>
+        </macro>
         <macro trigger="on-type-changed">
           <script>if (association.isTargetEnd() &amp;&amp; association.typeReference.getType()?.typeReference != null) {
     association.typeReference.setIsCollection(association.typeReference.getType().typeReference.getIsCollection());
@@ -239,6 +261,16 @@ return getMappings()[0] ? null : "gray";</lineColor>
               <represents>data</represents>
             </childSetting>
           </childSettings>
+        </mappableElement>
+        <mappableElement id="d70e0dac-3464-426c-bb01-5c6b1140390e" name="Service Invocation" type="Perform Invocation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c" version="2.0.0">
+          <filterFunction>return typeof(isBeforeHost) == "function" ? isBeforeHost(element) : !isHost(element);</filterFunction>
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return element.typeReference.isTypeFound();</isMappableFunction>
+          <isTraversable>true</isTraversable>
+          <traversableTypes />
+          <overrideTypeReferenceFunction>return element.typeReference.getType().typeReference.toModel();</overrideTypeReferenceFunction>
+          <canBeModified>false</canBeModified>
+          <represents>data</represents>
         </mappableElement>
         <mappableElement id="8a986f57-e0bd-4b81-ac39-cbe0e5b44ac7" name="Service Operation" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" version="2.0.0">
           <allowMultipleMappings>true</allowMultipleMappings>

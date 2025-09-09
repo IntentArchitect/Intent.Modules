@@ -1,3 +1,7 @@
+### Version 6.0.4
+
+- Fixed : Commands and Queries not indicating as required mappings in the `Perform Invocation` interactions.
+
 ### Version 6.0.3
 
 - Improvement: Referenced `Command` and `Query` visuals will have a slight teal colored to signify that they are referenced.

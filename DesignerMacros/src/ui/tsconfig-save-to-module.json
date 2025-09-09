@@ -1,0 +1,16 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "outFile": "../../../Modules/Intent.Modules.Modelers.UI/resources/ui-common-api.js",
+    "removeComments": false,
+    "sourceMap": false,
+    "target": "ES2019",
+    "types": []
+  },
+  "include": [
+    "**/*"
+  ],
+  "exclude": []
+}

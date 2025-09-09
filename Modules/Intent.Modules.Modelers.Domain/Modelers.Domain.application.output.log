@@ -121,6 +121,14 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>5313bf46-dda7-4531-860a-3ce63561db80</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#e042bb67-a1df-480c-9935-b26210f78591</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/OperationModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>OperationModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#dcc3e76d-d7c3-4674-8fe6-1e774e577908</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -134,6 +142,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/GeneralizationModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>GeneralizationModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiTraitModel#39a4c065-f9c5-46dc-b035-2eb025698330</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/IStaticConstructorModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>IStaticConstructorModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

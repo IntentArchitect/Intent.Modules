@@ -1159,7 +1159,10 @@ return display;
       </visualSettings>
       <macros>
         <macro trigger="on-created">
-          <script>association.createAdvancedMapping();</script>
+          <script>association.createAdvancedMapping();
+if (!association.getName()){
+    association.setName(toTitleCase(association.getOtherEnd().typeReference.getType().getName()));
+}</script>
         </macro>
       </macros>
     </associationSetting>

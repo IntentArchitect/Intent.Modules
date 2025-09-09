@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>3.8.0</Version>
+    <Version>3.9.0</Version>
     <Authors>Intent Architect</Authors>
     <Product>Intent - Modules Common</Product>
     <Description>Base classes and helpers for building your own modules for Intent Architect.</Description>
@@ -18,6 +18,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Intent.Packager" Version="3.5.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.1.7" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.10.0-pre.2" />
+    <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="3.1.32" />
+    <PackageReference Include="System.Reflection.Emit" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <InternalsVisibleTo Include="Intent.Modules.Common.Tests"></InternalsVisibleTo>
   </ItemGroup>
 
@@ -29,17 +40,6 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Intent.Packager" Version="3.5.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.1.7" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.5.0" />
-    <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="3.1.32" />
-    <PackageReference Include="System.Reflection.Emit" Version="4.7.0" />
   </ItemGroup>
 
 </Project>

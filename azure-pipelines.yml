@@ -207,6 +207,7 @@ steps:
     script: |
       $toolPath = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
       $nightly = '$(Build.SourceBranch)' -like 'refs/heads/development-*' ? '.nightly' : ''
+      $nightly = '.nightly'
 
       if (Test-Path $toolPath)
       {

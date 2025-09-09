@@ -279,6 +279,11 @@ class CrudHelper {
         let domainElement = mappedElement;
         let attributesWithMapPaths = CrudHelper.getAttributesWithMapPath(domainElement);
         let isCreateMode = dto.getMetadata("originalVerb")?.toLowerCase()?.startsWith("create") == true;
+    
+        if (autoAddPrimaryKey && !isCreateMode) {
+            CrudHelper.addPrimaryKeys(dto, domainElement, true);
+        }
+
         for (var keyName of Object.keys(attributesWithMapPaths)) {
             let entry = attributesWithMapPaths[keyName];
             if (isCreateMode && CrudHelper.isOwnerForeignKey(entry.name, domainElement)) {
@@ -300,10 +305,6 @@ class CrudHelper {
             field.typeReference.setIsCollection(entry.isCollection);
             dtoUpdated = true;
         }
-    
-        if (autoAddPrimaryKey && !isCreateMode) {
-            CrudHelper.addPrimaryKeys(dto, domainElement, true);
-        }    
     
         if (dtoUpdated) {
             dto.collapse();
@@ -396,8 +397,10 @@ class CrudHelper {
             name: attr.getName(),
             typeId: attr.typeReference.typeId,
             mapPath: [attr.id],
-            isNullable: false,
-            isCollection: false
+            // GCB - if you're seeing this change in your script, where these used to be false, you need to check.
+            // I had to "fix" this so that basic mapping DTO projections worked properly (e.g. adding OrderLines to an Order DTO via basic mapping)
+            isNullable: attr.typeReference.isNullable,
+            isCollection: attr.typeReference.isCollection
         });
     
         traverseInheritanceHierarchyForAttributes(attrDict, entity, []);

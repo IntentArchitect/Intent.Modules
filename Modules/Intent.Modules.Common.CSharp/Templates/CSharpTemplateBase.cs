@@ -755,7 +755,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                 throw new Exception($"Could not find project with role {roleName}");
             }
 
-            OutputTarget.GetProject().AddDependency(project.GetProject());
+            OutputTarget.GetProject().AddDependency(project.GetProject(), $"Template with id {Id}");
         }
 
         private readonly ICollection<string> _frameworkDependency = new HashSet<string>();

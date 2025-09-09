@@ -15,6 +15,7 @@
     <mappableElementPackageExtension id="8f006833-cb24-4190-85bd-0cd83a08340f" name="Command Target Mappables" extendPackageId="1b6bf8a4-7812-4f3c-8378-ef411edb59cf" extendPackage="Invocation Target Mappables">
       <mappableElementSettings>
         <mappableElement id="7f5d49dd-fd48-4f29-8126-b1b0c881a99c" name="Command" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" version="2.0.0">
+          <isRequiredFunction>return true;</isRequiredFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -24,6 +25,7 @@
           <represents>invokable</represents>
         </mappableElement>
         <mappableElement id="6db4fab8-7cdf-4749-b19f-15a9f7c815f2" name="Query" type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" version="2.0.0">
+          <isRequiredFunction>return true;</isRequiredFunction>
           <allowMultipleMappings>true</allowMultipleMappings>
           <isMappableFunction>return true;</isMappableFunction>
           <isTraversable>false</isTraversable>
@@ -53,15 +55,6 @@
           <canBeModified>true</canBeModified>
           <useChildSettingsFrom>16a7127a-946d-41a3-9dd9-4f2c5429c5e9</useChildSettingsFrom>
           <represents>invokable</represents>
-        </mappableElement>
-        <mappableElement id="d70e0dac-3464-426c-bb01-5c6b1140390e" name="Service Invocation" type="Perform Invocation Target End" typeId="093e5909-ffe4-4510-b3ea-532f30212f3c" version="2.0.0">
-          <allowMultipleMappings>true</allowMultipleMappings>
-          <isMappableFunction>return true;</isMappableFunction>
-          <isTraversable>true</isTraversable>
-          <traversableTypes />
-          <overrideTypeReferenceFunction>return element.typeReference.getType().typeReference.toModel();</overrideTypeReferenceFunction>
-          <canBeModified>false</canBeModified>
-          <represents>data</represents>
         </mappableElement>
       </mappableElementSettings>
     </mappableElementPackageExtension>

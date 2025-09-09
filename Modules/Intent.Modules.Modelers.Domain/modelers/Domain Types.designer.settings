@@ -468,7 +468,14 @@ padding: 0px 8px;`</style>
                 <position x="${x + 20}" y="${y}" />
               </drawText>
               <drawSvgResource>
+                <condition>return !element.getIsStatic();</condition>
                 <path>operation.svg</path>
+                <size width="14" height="14" />
+                <position x="${x+3}" y="${y+3}" />
+              </drawSvgResource>
+              <drawSvgResource>
+                <condition>return element.getIsStatic();</condition>
+                <path>operation-static.svg</path>
                 <size width="14" height="14" />
                 <position x="${x+3}" y="${y+3}" />
               </drawSvgResource>
@@ -633,7 +640,7 @@ if (namingConvention == "pascal-case") {
     }
 }
 const result = [{ text: `${ getParent().getName() }${ genericTypes }(` }];
-result.push(...children("Parameter")
+result.push(...getChildren("Parameter")
     .map(x =&gt; [
         { text: `${ x.name }`, cssClass: "muted", targetId: x.id },
         { text: ': ' },
@@ -771,7 +778,7 @@ return result;</displayFunction>
 }
 const result = [{ text: `${ getName() }${ genericTypes }`, cssClass: 'function' }];
 result.push({ text: '(' });
-result.push(...children("Parameter")
+result.push(...getChildren("Parameter")
     .map(x =&gt; [
         { text: `${ x.name }`, cssClass: "muted", targetId: x.id },
         { text: ': ' },
@@ -952,6 +959,16 @@ validateOperation(element);
             </mappingSetting>
           </mappingSettings>
           <macros>
+            <macro trigger="on-changed">
+              <script>const staticConstructorStereotype = "39a4c065-f9c5-46dc-b035-2eb025698330";
+if (element.getIsStatic() 
+    &amp;&amp; element.typeReference.getTypeId() == element.getParent()?.id 
+    &amp;&amp; !element.hasStereotype(staticConstructorStereotype)) {
+    element.addStereotype(staticConstructorStereotype);
+} else if (element.hasStereotype(staticConstructorStereotype)) {
+    element.removeStereotype(staticConstructorStereotype);
+}</script>
+            </macro>
             <macro trigger="on-name-changed">
               <script>var namingConvention = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")?.getField("128d9880-cbf7-469f-a5af-915bc3d71874")?.value;
 

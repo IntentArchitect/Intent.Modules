@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using Intent.Metadata.Models;
+﻿using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
+using Intent.Templates;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata;
 
 namespace Intent.Modules.Common.CSharp.Mapping;
 
@@ -31,41 +32,42 @@ public class MethodInvocationMapping : CSharpMappingBase
 
     public override CSharpStatement GetSourceStatement(bool? withNullConditionalOperators = default)
     {
-		var invocation = new CSharpInvocationStatement(GetTargetPathExpression());
-		// Determine if this model is a method on the class:
-		if (TryGetMethodDeclaration(_template, out var method))
+        // Determine if this model is a method on the class:
+        if (TryGetMethodDeclaration(_template, out var method))
         {
-			foreach (var parameter in method.Parameters)
-			{
-				bool optional = parameter.DefaultValue != null;
-				var mappedChild = Children.FirstOrDefault(c => c.Model.Name.Equals(parameter.Name, StringComparison.InvariantCultureIgnoreCase));
-				if (mappedChild != null)
-				{
-					invocation.AddArgument(mappedChild.GetSourceStatement());
-				}
-				else if (!optional)
-				{
-					invocation.AddArgument("default");
-				}
-			}
-			if (method.Parameters.Count() > 3)
-			{
-				invocation.WithArgumentsOnNewLines();
-			}
-		}
-		else
+            var invocation = new CSharpInvocationStatement(GetTargetPathExpression(), method);
+            foreach (var parameter in method.Parameters)
+            {
+                bool optional = parameter.DefaultValue != null;
+                var mappedChild = Children.FirstOrDefault(c => c.Model.Name.Equals(parameter.Name, StringComparison.InvariantCultureIgnoreCase));
+                if (mappedChild != null)
+                {
+                    invocation.AddArgument(mappedChild.GetSourceStatement());
+                }
+                else if (!optional)
+                {
+                    invocation.AddArgument("default");
+                }
+            }
+            if (method.Parameters.Count() > 3)
+            {
+                invocation.WithArgumentsOnNewLines();
+            }
+            return invocation;
+        }
+        else
         {
-			foreach (var child in Children.OrderBy(x => ((IElement)x.Model).Order))
-			{
-				invocation.AddArgument(child.GetSourceStatement());
-			}
-			if (Children.Count > 3)
-			{
-				invocation.WithArgumentsOnNewLines();
-			}
-
-		}
-		return invocation;
+            var invocation = new CSharpInvocationStatement(GetTargetPathExpression());
+            foreach (var child in Children.OrderBy(x => ((IElement)x.Model).Order))
+            {
+                invocation.AddArgument(child.GetSourceStatement());
+            }
+            if (Children.Count > 3)
+            {
+                invocation.WithArgumentsOnNewLines();
+            }
+            return invocation;
+        }
     }
 
     //public override CSharpStatement GetTargetStatement()
@@ -78,8 +80,8 @@ public class MethodInvocationMapping : CSharpMappingBase
         yield return GetSourceStatement(false);
     }
 
-	private bool TryGetMethodDeclaration(ICSharpTemplate typeTemplate, out ICSharpMethodDeclaration method)
-	{
+    private bool TryGetMethodDeclaration(ICSharpTemplate typeTemplate, out ICSharpMethodDeclaration method)
+    {
         var foundTemplates = _template.GetAllTypeInfo(((IElement)Model).ParentElement.AsTypeReference())
             .Select(x => x.Template).OfType<ICSharpTemplate>().ToList();
         foreach (var foundTemplate in foundTemplates)
@@ -92,7 +94,7 @@ public class MethodInvocationMapping : CSharpMappingBase
         }
 
         // For backward compatibility and safety reasons (otherwise the above should be sufficient)
-		// TODO: Test taking this and running it against all the tests:
+        // TODO: Test taking this and running it against all the tests:
         if (typeTemplate is ICSharpFileBuilderTemplate fileBuilderTemplate)
         {
             if (fileBuilderTemplate?.CSharpFile.TypeDeclarations.FirstOrDefault()?.TryGetReferenceForModel(Model.Id, out var reference) == true && reference is ICSharpMethodDeclaration classMethod)
@@ -108,7 +110,7 @@ public class MethodInvocationMapping : CSharpMappingBase
         }
 
         method = null;
-		return false;
-	}
+        return false;
+    }
 
 }

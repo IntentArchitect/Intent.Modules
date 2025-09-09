@@ -60,8 +60,7 @@ public class ConstructorMapping : CSharpMappingBase
             ? new CSharpInvocationStatement($"new {_template.GetTypeName((IElement)Model.TypeReference.Element)}").WithoutSemicolon()
             : new CSharpInvocationStatement($"new {_template.GetTypeName((IElement)Model)}").WithoutSemicolon();
 
-		//foreach (var child in GetAllChildren().Where(c => c is not MapChildrenMapping))
-		foreach (var child in Children.OrderBy(x => ((IElement)x.Model).Order))
+        foreach (var child in Children.OrderBy(x => ((IElement)x.Model).Order))
         {
             init.AddArgument(new CSharpArgument(child.GetSourceStatement()), arg =>
             {
@@ -120,12 +119,12 @@ public class ConstructorMapping : CSharpMappingBase
         yield return new CSharpAssignmentStatement(GetTargetStatement(), GetNullableAwareInstantiation(Model, Children, GetSourceStatement()));
     }
 
-	private bool TryFindModelConstructor(out CSharpConstructor constructor)
-	{
-		//for Elements mapped to a metadata constructor, use the constructors meta data class to find its template and get the CSharp constructor
-		constructor = null;
-		// Model assumes to be the Constructor element and it needs to access the owner of this Constructor to fetch the Template
-		var foundTemplates = _template.GetAllTypeInfo(((IElement)Model).ParentElement.AsTypeReference())
+    private bool TryFindModelConstructor(out CSharpConstructor constructor)
+    {
+        //for Elements mapped to a metadata constructor, use the constructors meta data class to find its template and get the CSharp constructor
+        constructor = null;
+        // Model assumes to be the Constructor element and it needs to access the owner of this Constructor to fetch the Template
+        var foundTemplates = _template.GetAllTypeInfo(((IElement)Model).ParentElement.AsTypeReference())
             .Select(x => x.Template).OfType<ICSharpFileBuilderTemplate>().ToList();
         foreach (var foundTemplate in foundTemplates)
         {
@@ -135,33 +134,47 @@ public class ConstructorMapping : CSharpMappingBase
                 _template.AddUsing(foundTemplate.Namespace);
                 constructor = ctor;
                 return true;
-
             }
         }
 
+        //This is for implicit constructors.. use the model to find the template and find it's public constructor with the most arguments 
+        if (!((IElement)Model).ChildElements.Any() && Model.TypeReference != null)
+        {
+            var modelTemplate = _template.GetTypeInfo(((IElement)Model).TypeReference.Element?.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
+            var mainType = modelTemplate?.CSharpFile.TypeDeclarations.FirstOrDefault(t => t.Constructors.Count > 0);
+            if (mainType == null)
+                return false;
+            constructor = mainType.Constructors
+                    .Where(c => c.AccessModifier == "public ")
+                    .OrderByDescending(c => c.Parameters.Count)
+                    .FirstOrDefault();
+            if (constructor != null)
+            {
+                _template.AddUsing(modelTemplate.Namespace);
+            }
+            return constructor != null;
+        }
 
-		//This is for implicit constructors.. use the model to find the template and find it's public constructor with the most arguments 
-		if (!((IElement)Model).ChildElements.Any() && Model.TypeReference != null)
-		{
-			var modelTemplate = _template.GetTypeInfo(((IElement)Model).TypeReference.Element?.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
-			var mainType = modelTemplate?.CSharpFile.TypeDeclarations.FirstOrDefault(t => t.Constructors.Count > 0);
-			if (mainType == null) 
-				return false;
-			constructor = mainType.Constructors
-					.Where(c => c.AccessModifier == "public ")
-					.OrderByDescending(c => c.Parameters.Count)
-					.FirstOrDefault();
-			if (constructor != null)
-			{
-				_template.AddUsing(modelTemplate.Namespace);
-			}
-			return constructor != null;
-		}
+        // Alternate implicit constructor option, for example for domain operation domain event publishing mapping:
+        var implicitConstructor = _template.GetAllTypeInfo(Model.AsTypeReference())
+            .Select(x => x.Template)
+            .OfType<ICSharpFileBuilderTemplate>()
+            .SelectMany(x => x.CSharpFile.TypeDeclarations.SelectMany(y => y.Constructors), (x, y) => new
+            {
+                Template = x,
+                Constructor = y
+            })
+            .DefaultIfEmpty()
+            .MaxBy(x => x?.Constructor.Parameters.Count);
+        if (implicitConstructor != null)
+        {
+            _template.AddUsing(implicitConstructor.Template.Namespace);
+            constructor = implicitConstructor.Constructor;
+            return true;
+        }
 
-		return false;
-	}
-
-
+        return false;
+    }
 }
 
 public class ConstructorMappingOptions

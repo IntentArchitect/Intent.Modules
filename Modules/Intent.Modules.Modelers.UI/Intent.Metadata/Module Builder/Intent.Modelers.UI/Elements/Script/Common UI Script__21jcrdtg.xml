@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="5bd2a61d-7aaa-4785-90fa-376796ccb6c8" type="Script" typeId="101fd5b6-3159-4810-9490-a103ef323e9c">
+  <name>Common UI Script</name>
+  <display>Common UI Script</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>444f582b-b875-4c72-9671-697b47fa367c</parentFolderId>
+  <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+  <packageName>Intent.Modelers.UI</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="da7d632f-b07f-4c83-ab01-bc6175006aa5" name="Script Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="4708b6ef-0671-4ea1-a920-ccec2c9eb3ea" display="Type" value="File Resource" isActive="true" />
+        <property name="3256efdd-5d71-46f3-bd51-ef08a8d95526" display="Script" isActive="false" />
+        <property name="41cc0d56-3141-40fe-ae97-c024866d441e" display="File Path" value="ui-common-api.js" isActive="true" />
+        <property name="540780ad-f54e-4bd5-95f3-20a58fd59105" display="Dependencies" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>

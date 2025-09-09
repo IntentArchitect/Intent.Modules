@@ -3832,9 +3832,6 @@ if (!element.hasStereotype(parameterSettingsStereotypeId)) {
       <typeOrder />
       <mappingSettings />
     </elementExtension>
-    <elementExtension type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
-      <mappingSettings />
-    </elementExtension>
     <elementExtension type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
       <validateFunctionOverride>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function validateRestRoutes(element) {
@@ -7577,7 +7574,7 @@ function exposeAsHttpEndPoint(request) {
         let defaultRoutePrefix = getDefaultRoutePrefix(false);
         let startIndex = route.indexOf(defaultRoutePrefix);
         if (startIndex == 0) {
-            route = `${defaultRoutePrefix}/{version}/${(route.substring(defaultRoutePrefix.length+1))}`;
+            route = `${defaultRoutePrefix}/{version}/${(route.substring(defaultRoutePrefix.length + 1))}`;
         } else {
             route = `{version}/${(route)}`;
         }
@@ -7616,8 +7613,8 @@ function updateRouteParameters(element) {
     // UPDATE RENAMED ROUTE PARAMETERS:
     let changedRouteParams = element.getChildren(["DTO-Field", "Parameter"])
         .filter(x =&gt; x.getPreviousName &amp;&amp; x.getName() != x.getPreviousName())
-        .filter(x =&gt; route.indexOf(`{${toCamelCase(x.getPreviousName())}}` != -1 
-                  || route.indexOf(`{${toCamelCase(x.getPreviousName())}:` != -1 )))
+        .filter(x =&gt; route.indexOf(`{${toCamelCase(x.getPreviousName())}}` != -1
+            || route.indexOf(`{${toCamelCase(x.getPreviousName())}:` != -1)))
         // handle the case where you ctrl + enter / copy + paste a new element and takes over the route paramenter in the route:
         .filter(x =&gt; !element.getChildren(["DTO-Field", "Parameter"]).some(c =&gt; c.id != x.id &amp;&amp; c.getName() == x.getPreviousName()));
 
@@ -7629,8 +7626,8 @@ function updateRouteParameters(element) {
     // ADD MISSING ROUTE PARAMETERS:
     const missingFromRoute = element.getChildren(["DTO-Field", "Parameter"])
         .filter(x =&gt; x.getStereotype(parameterSettingsStereotypeId)?.getProperty("Source")?.getValue() == "From Route")
-        .filter(x =&gt; route.indexOf(`{${toCamelCase(x.getName())}}`) == -1 
-                  &amp;&amp; route.indexOf(`{${toCamelCase(x.getName())}:`) == -1)
+        .filter(x =&gt; route.indexOf(`{${toCamelCase(x.getName())}}`) == -1
+            &amp;&amp; route.indexOf(`{${toCamelCase(x.getName())}:`) == -1)
 
     missingFromRoute.forEach(x =&gt; {
         route = removeSuffix(route, "/") + `/{${toCamelCase(x.getName())}}`
@@ -7639,8 +7636,14 @@ function updateRouteParameters(element) {
     // REMOVE UNBINDABLE ROUTE PARAMETERS;
     const parametersInRoute = route.split("{").filter(x =&gt; x.indexOf("}") != -1).map(x =&gt; x.split("}")[0]);
     parametersInRoute.forEach(param =&gt; {
-        const mustRemove = element.getChildren(["DTO-Field", "Parameter"]).every(x =&gt; toCamelCase(x.getName()) != param.split(":")[0]
-            || (x.hasStereotype(parameterSettingsStereotypeId) &amp;&amp; ["From Route", "Default"].every(s =&gt; x.getStereotype(parameterSettingsStereotypeId).getProperty("Source").getValue() != s)))
+        const mustRemove = element.getChildren(["DTO-Field", "Parameter"])
+            .every(x =&gt;
+                toCamelCase(x.getName()) != param.split(":")[0] ||
+                (
+                    x.hasStereotype(parameterSettingsStereotypeId) &amp;&amp;
+                    ["From Route", "Default"].every(s =&gt; x.getStereotype(parameterSettingsStereotypeId).getProperty("Source").getValue() != s)
+                )
+            ) &amp;&amp; param != "version"
         if (mustRemove) {
             route = route.replace(`/{${param}}`, ``);
         }

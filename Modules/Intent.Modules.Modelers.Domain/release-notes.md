@@ -1,4 +1,10 @@
-﻿### Version 3.12.6
+﻿### Version 3.12.7
+
+- Improvement: Added `[Static Constructor]` trait, which automatically applies itself to static `Operations` that return the `Class` type.
+- Improvement: Show static operation icon in the diagrams.
+- Fixed: Syntax highlighting now appearing when domain `Operations` and `Constructors` are referenced from other packages (e.g. from Services designer).
+
+### Version 3.12.6
 
 - Improvement: Subscriptions and Publishes are now colored with a yellow line to indicate that they are pushing the messages externally.
 

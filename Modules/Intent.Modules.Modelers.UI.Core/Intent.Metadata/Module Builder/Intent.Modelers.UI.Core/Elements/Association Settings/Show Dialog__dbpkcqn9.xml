@@ -198,7 +198,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="association.createAdvancedMapping();" isActive="true" />
+                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="association.createAdvancedMapping();&#xD;&#xA;if (!association.getName()){&#xD;&#xA;    association.setName(toTitleCase(association.getOtherEnd().typeReference.getType().getName()));&#xD;&#xA;}" isActive="true" />
                 <property name="7d1114d8-e27d-4cb8-b5d5-3fd75bf7dea1" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>

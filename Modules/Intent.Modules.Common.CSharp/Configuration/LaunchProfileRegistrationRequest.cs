@@ -20,6 +20,11 @@ namespace Intent.Modules.Common.CSharp.Configuration
         /// The value to populate in the <c>commandName</c> field.
         /// </summary>
         public string CommandName { get; set; }
+        
+        /// <summary>
+        /// The value to populate in the <c>commandLineArgs</c> field.
+        /// </summary>
+        public string CommandLineArgs { get; set; }
 
         /// <summary>
         /// The value to populate in the <c>launchBrowser</c> field.
@@ -60,6 +65,16 @@ namespace Intent.Modules.Common.CSharp.Configuration
         /// Key/value pairs of environment variables to be added to profile.
         /// </summary>
         public Dictionary<string, string> EnvironmentVariables { get; set; }
+        
+        /// <summary>
+        /// The value to populate in the <c>executablePath</c> field.
+        /// </summary>
+        public string ExecutablePath { get; set; }
+        
+        /// <summary>
+        /// The value to populate in the <c>workingDirectory</c> field.
+        /// </summary>
+        public string WorkingDirectory { get; set; }
 
         /// <summary>
         /// Optional. Name of the output target 'Role' which must be present in the project within

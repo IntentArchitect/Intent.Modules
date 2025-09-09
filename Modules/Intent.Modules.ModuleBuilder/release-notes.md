@@ -1,3 +1,15 @@
+﻿### Version 3.17.0
+
+- Improvement: Added support for `Accepted Child Types` on `Association Destination End Settings`. This is necessary, for example, to allow for using the Trait system for reordering child types.
+- Fixed: `Mappable Element Settings` use the `Mapping Element Api` option, available in Intent Architect 4.5.15 and later.
+
+> ⚠️ NOTE
+>
+> This version no longer adds the `<creationOptions>` and other legacy context menu option data, which was required before Intent Architect 4.4.x.
+> You can therefore expect a lot of configuration data to be removed. This is not a problem as it is was redundantly added for backward compatibility with old version of Intent Architect.
+> Your module should update its minimum client version to `4.4.0-a`
+>
+
 ### Version 3.16.3
 
 - Improvement: Documented the `Mappable Element Settings` stereotype.

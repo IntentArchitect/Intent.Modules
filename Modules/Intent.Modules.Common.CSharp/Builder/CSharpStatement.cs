@@ -75,6 +75,12 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICSharpState
         return this;
     }
 
+    public virtual CSharpStatement WithoutSemicolon()
+    {
+        TrailingCharacter = null;
+        return this;
+    }
+
     public CSharpStatement InsertAbove(CSharpStatement statement, Action<CSharpStatement> configure = null)
     {
         if (Parent == null)

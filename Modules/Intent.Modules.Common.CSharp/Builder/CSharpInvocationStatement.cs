@@ -1,28 +1,35 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 {
-    private bool _withSemicolon = true;
     private CSharpCodeSeparatorType _defaultArgumentSeparator = CSharpCodeSeparatorType.None;
     private bool _onNewLine;
 
     public CSharpInvocationStatement(string invokable) : base(invokable)
     {
         Expression = new CSharpStatement(invokable);
+        TrailingCharacter = ';';
     }
 
     public CSharpInvocationStatement(CSharpStatement expression, string member) : base($"{expression.ToString().TrimEnd()}.{member}")
     {
         Expression = new CSharpAccessMemberStatement(expression, member);
+        TrailingCharacter = ';';
     }
 
-    public CSharpInvocationStatement(ICSharpExpression expression) : base($"{expression.ToString().TrimEnd()}")
+    public CSharpInvocationStatement(ICSharpExpression expression, ICSharpReferenceable? reference) : base($"{expression.ToString().TrimEnd()}", reference)
     {
         Expression = expression;
+        TrailingCharacter = ';';
+    }
+
+    public CSharpInvocationStatement(ICSharpExpression expression) : this(expression, null)
+    {
     }
 
     public ICSharpExpression Expression { get; }
@@ -111,13 +118,13 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 
     public override CSharpStatement WithSemicolon()
     {
-        _withSemicolon = true;
+        base.WithSemicolon();
         return this;
     }
 
-    public CSharpInvocationStatement WithoutSemicolon()
+    public override CSharpInvocationStatement WithoutSemicolon()
     {
-        _withSemicolon = false;
+        base.WithoutSemicolon();
         return this;
     }
 
@@ -128,7 +135,7 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 
     public override string GetText(string indentation)
     {
-        return $"{Expression.GetText(indentation)}({GetArgumentsText(indentation)}){(_withSemicolon ? ";" : string.Empty)}";
+        return $"{Expression.GetText(indentation)}({GetArgumentsText(indentation)}){(TrailingCharacter != null ? TrailingCharacter.Value : "")}";
     }
 
     private string GetArgumentsText(string indentation)

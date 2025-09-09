@@ -90,9 +90,9 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="892437b5-7ebc-467d-b635-64d2c06d19a3" type="Accepted Stereotypes" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
+        <childElement id="892437b5-7ebc-467d-b635-64d2c06d19a3" type="Accepted Traits" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
           <name>[type with stereotype]</name>
-          <display>[type with stereotype]: [Processing Action]</display>
+          <display>[type with trait]: [Processing Action]</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>

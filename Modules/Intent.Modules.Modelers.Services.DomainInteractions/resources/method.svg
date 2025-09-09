@@ -1,17 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-  <defs>
-    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.cls-1{opacity:0.75;}</style>
-  </defs>
-  <title>Method</title>
-  <g id="canvas">
-    <path class="canvas" d="M16,16H0V0H16Z" />
-  </g>
-  <g id="level-1">
-    <g class="cls-1">
-      <path class="light-purple-10" d="M13.5,5.045v7L8,14.545l-5.5-2.5v-7l5.5-3Z" />
-      <path class="light-purple" d="M14,5.045v7l-.293.455L8.207,15H7.793l-5.5-2.5L2,12.045v-7l.261-.439.032.894L3,5.821v5.9l4.5,2.045,0-5.9.3.135h.414l.288-.131,0,5.9L13,11.723v-5.9l.707-.321.032-.894Z" />
-    </g>
-    <path class="light-purple-10" d="M13.5,5.045,8,7.545l-5.5-2.5,5.5-3Z" />
-    <path class="light-purple" d="M8.239,1.606H7.761l-5.5,3,.032.894L7.793,8h.414l5.5-2.5.032-.894ZM8,7,3.619,5,8,2.614,12.381,5Z" />
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 28.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Method" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+<g id="level-1" display="none">
+	<g display="inline" opacity="0.75">
+		<path opacity="0.1" fill="#6936AA" enable-background="new    " d="M43.9,13.8v24L25,46.4L6.1,37.8v-24L25,3.5L43.9,13.8z"/>
+		<path fill="#6936AA" d="M45.6,13.8v24l-1,1.6L25.7,48h-1.4L5.4,39.4l-1-1.6v-24l0.9-1.5l0.1,3.1l2.4,1.1v20.3l15.5,7V23.5l1,0.5
+			h1.4l1-0.4v20.3l15.4-7V16.5l2.4-1.1l0.1-3.1L45.6,13.8z"/>
+	</g>
+	<path display="inline" opacity="0.1" fill="#6936AA" enable-background="new    " d="M43.9,13.8L25,22.4L6.1,13.8L25,3.5L43.9,13.8
+		z"/>
+	<path display="inline" fill="#6936AA" d="M25.8,2h-1.6L5.3,12.3l0.1,3.1L24.3,24h1.4l18.9-8.6l0.1-3.1L25.8,2z M25,20.5l-15-6.9
+		l15-8.2l15,8.2L25,20.5z"/>
+</g>
+<linearGradient id="SVGID_1_895623jk45" gradientUnits="userSpaceOnUse" x1="25" y1="43.7076" x2="25" y2="4.3076" gradientTransform="matrix(1 0 0 -1 0 49)">
+	<stop  offset="0" style="stop-color:#946BC7"/>
+	<stop  offset="0.1302" style="stop-color:#946BC7"/>
+	<stop  offset="0.6686" style="stop-color:#713FB0"/>
+	<stop  offset="1" style="stop-color:#6936AA"/>
+</linearGradient>
+<path opacity="0.8" fill="url(#SVGID_1_895623jk45)" enable-background="new    " d="M44.1,11.9L25.5,2.8c-0.3-0.1-0.6-0.1-0.9,0L5.9,11.9
+	c-0.4,0.2-0.6,0.5-0.6,0.9v24.3c0,0.4,0.2,0.7,0.6,0.9l18.6,9.2c0.1,0.1,0.3,0.1,0.5,0.1s0.3,0,0.5-0.1L44.1,38
+	c0.4-0.2,0.6-0.5,0.6-0.9V12.9C44.7,12.5,44.5,12.1,44.1,11.9z M25,5.9l14,6.9l-14,6.9l-14-6.9L25,5.9z M8.4,35.9V15l15.1,7.4v20.9
+	L11,37.1L8.4,35.9z M26.5,43.3V22.4L41.6,15v20.9L39,37.1L26.5,43.3z"/>
 </svg>

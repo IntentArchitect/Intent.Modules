@@ -919,6 +919,9 @@ getCurrentDiagram().layoutVisuals(result.elementIds, getCurrentDiagram().mousePo
             <text>New Page</text>
             <shortcut>ctrl + shift + p</shortcut>
             <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IkNCMUMxOThGLTdCNzUtNDA5RC1BOEY4LUJEQzkzRjg4N0U0NyIgeDE9IjI0LjkiIHkxPSI0Ni40IiB4Mj0iMjUuMSIgeTI9IjcuMyIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIDUyKSBzY2FsZSgxIC0xKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNkZTRkNTIiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYmQyMDI1Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMjguNy4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMS4yLjAgQnVpbGQgMTQyKSAgLS0+CiAgPGc+CiAgICA8ZyBpZD0iTGF5ZXJfMSI+CiAgICAgIDxnIGlkPSJMYXllcl8xLTIiIGRhdGEtbmFtZT0iTGF5ZXJfMSI+CiAgICAgICAgPHBhdGggZD0iTTQ0LjksNS44SDUuMWMtMS40LDAtMi42LDEuNC0yLjYsM3YzMi41YzAsMS42LDEuMiwzLDIuNiwzaDM5LjhjMS40LDAsMi42LTEuNCwyLjYtM1Y4LjhjMC0xLjYtMS4yLTMtMi42LTNaTTE5LDhjLjksMCwxLjcuOCwxLjcsMS43cy0uOCwxLjctMS43LDEuNy0xLjctLjgtMS43LTEuNy44LTEuNywxLjctMS43Wk0xNC4yLDhjLjksMCwxLjcuOCwxLjcsMS43cy0uOCwxLjctMS43LDEuNy0xLjctLjgtMS43LTEuNy44LTEuNywxLjctMS43Wk05LjUsOGMuOSwwLDEuNy44LDEuNywxLjdzLS44LDEuNy0xLjcsMS43LTEuNy0uOC0xLjctMS43LjgtMS43LDEuNy0xLjdaTTQ0LDM4LjJjMCwxLjEtMSwyLjEtMi4yLDIuMUg4LjFjLTEuMiwwLTIuMi0xLTIuMi0yLjFWMTUuMWMwLTEuMSwxLTIuMSwyLjItMi4xaDMzLjdjMS4yLDAsMi4yLDEsMi4yLDIuMSwwLDAsMCwyMy4xLDAsMjMuMVpNMzkuOCwxOXY4LjJjMCwxLjItLjgsMi4yLTEuOSwyLjJoLTYuNmMtMSwwLTEuOS0xLTEuOS0yLjJ2LTguMmMwLTEuMi44LTIuMiwxLjktMi4yaDYuNmMxLDAsMS45LDEsMS45LDIuMlpNMjYsMTkuM2MwLC42LS4yLDEuMS0uNiwxLjVzLS45LjYtMS41LjZoLTEzLjFjLTEuMiwwLTIuMi0xLTIuMi0yLjJzLjItMS4xLjYtMS41Yy40LS40LjktLjYsMS41LS42aDEzLjFjMS4yLDAsMi4yLDEsMi4yLDIuMlpNMjYsMjdjMCwuNi0uMiwxLjEtLjYsMS41cy0uOS42LTEuNS42aC0xMy4xYy0xLjIsMC0yLjItMS0yLjItMi4ycy4yLTEuMS42LTEuNWMuNC0uNC45LS42LDEuNS0uNmgxMy4xYzEuMiwwLDIuMiwxLDIuMiwyLjJaTTM5LjgsMzQuN2MwLC42LS4yLDEuMS0uNiwxLjUtLjQuNC0uOS42LTEuNS42SDEwLjdjLTEuMiwwLTIuMi0xLTIuMi0yLjJzLjItMS4xLjYtMS41Yy40LS40LjktLjYsMS41LS42aDI2LjljMS4yLDAsMi4zLDEsMi4zLDIuMmgwWiIgZmlsbD0idXJsKCNDQjFDMTk4Ri03Qjc1LTQwOUQtQThGOC1CREM5M0Y4ODdFNDcpIi8+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==" />
+            <dependencies>
+              <dependency name="New Page Default Route Script" id="3c0034be-44cc-40b1-a390-b5e88574ee46" />
+            </dependencies>
             <script>const pageId = "ea4adc09-8978-4ede-ba5f-265debb2b60c";
 const routeId = "9dff9df1-a993-4bf6-9aa7-c16811142228";
 
@@ -928,8 +931,8 @@ page.refresh();
 getCurrentDiagram()?.selectVisualsForElements(page.id, false);
 await page.enableEditing();
 
-const folders = page.getParents("Folder");
-stereotype.getProperty(routeId).setValue("/" + folders.filter(x =&gt; x.getName() != "Pages" &amp;&amp; x.getName() != "Components").map(x =&gt; toKebabCase(x.getName()) + "/") + toKebabCase(removeSuffix(page.getName(), "Page", "Component", "View")))
+setDefaultRoute(page, stereotype);
+
 </script>
           </runScript>
           <createElement type="element">
@@ -996,6 +999,9 @@ getCurrentDiagram().layoutVisuals(result.elementIds, getCurrentDiagram().mousePo
             <text>New Page</text>
             <shortcut>ctrl + shift + p</shortcut>
             <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IkNCMUMxOThGLTdCNzUtNDA5RC1BOEY4LUJEQzkzRjg4N0U0NyIgeDE9IjI0LjkiIHkxPSI0Ni40IiB4Mj0iMjUuMSIgeTI9IjcuMyIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIDUyKSBzY2FsZSgxIC0xKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNkZTRkNTIiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYmQyMDI1Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMjguNy4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMS4yLjAgQnVpbGQgMTQyKSAgLS0+CiAgPGc+CiAgICA8ZyBpZD0iTGF5ZXJfMSI+CiAgICAgIDxnIGlkPSJMYXllcl8xLTIiIGRhdGEtbmFtZT0iTGF5ZXJfMSI+CiAgICAgICAgPHBhdGggZD0iTTQ0LjksNS44SDUuMWMtMS40LDAtMi42LDEuNC0yLjYsM3YzMi41YzAsMS42LDEuMiwzLDIuNiwzaDM5LjhjMS40LDAsMi42LTEuNCwyLjYtM1Y4LjhjMC0xLjYtMS4yLTMtMi42LTNaTTE5LDhjLjksMCwxLjcuOCwxLjcsMS43cy0uOCwxLjctMS43LDEuNy0xLjctLjgtMS43LTEuNy44LTEuNywxLjctMS43Wk0xNC4yLDhjLjksMCwxLjcuOCwxLjcsMS43cy0uOCwxLjctMS43LDEuNy0xLjctLjgtMS43LTEuNy44LTEuNywxLjctMS43Wk05LjUsOGMuOSwwLDEuNy44LDEuNywxLjdzLS44LDEuNy0xLjcsMS43LTEuNy0uOC0xLjctMS43LjgtMS43LDEuNy0xLjdaTTQ0LDM4LjJjMCwxLjEtMSwyLjEtMi4yLDIuMUg4LjFjLTEuMiwwLTIuMi0xLTIuMi0yLjFWMTUuMWMwLTEuMSwxLTIuMSwyLjItMi4xaDMzLjdjMS4yLDAsMi4yLDEsMi4yLDIuMSwwLDAsMCwyMy4xLDAsMjMuMVpNMzkuOCwxOXY4LjJjMCwxLjItLjgsMi4yLTEuOSwyLjJoLTYuNmMtMSwwLTEuOS0xLTEuOS0yLjJ2LTguMmMwLTEuMi44LTIuMiwxLjktMi4yaDYuNmMxLDAsMS45LDEsMS45LDIuMlpNMjYsMTkuM2MwLC42LS4yLDEuMS0uNiwxLjVzLS45LjYtMS41LjZoLTEzLjFjLTEuMiwwLTIuMi0xLTIuMi0yLjJzLjItMS4xLjYtMS41Yy40LS40LjktLjYsMS41LS42aDEzLjFjMS4yLDAsMi4yLDEsMi4yLDIuMlpNMjYsMjdjMCwuNi0uMiwxLjEtLjYsMS41cy0uOS42LTEuNS42aC0xMy4xYy0xLjIsMC0yLjItMS0yLjItMi4ycy4yLTEuMS42LTEuNWMuNC0uNC45LS42LDEuNS0uNmgxMy4xYzEuMiwwLDIuMiwxLDIuMiwyLjJaTTM5LjgsMzQuN2MwLC42LS4yLDEuMS0uNiwxLjUtLjQuNC0uOS42LTEuNS42SDEwLjdjLTEuMiwwLTIuMi0xLTIuMi0yLjJzLjItMS4xLjYtMS41Yy40LS40LjktLjYsMS41LS42aDI2LjljMS4yLDAsMi4zLDEsMi4zLDIuMmgwWiIgZmlsbD0idXJsKCNDQjFDMTk4Ri03Qjc1LTQwOUQtQThGOC1CREM5M0Y4ODdFNDcpIi8+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==" />
+            <dependencies>
+              <dependency name="New Page Default Route Script" id="3c0034be-44cc-40b1-a390-b5e88574ee46" />
+            </dependencies>
             <script>const pageId = "ea4adc09-8978-4ede-ba5f-265debb2b60c";
 const routeId = "9dff9df1-a993-4bf6-9aa7-c16811142228";
 
@@ -1005,8 +1011,8 @@ page.refresh();
 getCurrentDiagram()?.selectVisualsForElements(page.id, false);
 await page.enableEditing();
 
-const folders = page.getParents("Folder");
-stereotype.getProperty(routeId).setValue("/" + folders.filter(x =&gt; x.getName() != "Pages" &amp;&amp; x.getName() != "Components").map(x =&gt; toKebabCase(x.getName()) + "/") + toKebabCase(removeSuffix(page.getName(), "Page", "Component", "View")))
+setDefaultRoute(page, stereotype);
+
 </script>
           </option>
         </scriptOptions>
@@ -1021,6 +1027,7 @@ font-family: Helvetica;
 font-weight: bold; 
 text-align: center; 
 white-space: inherit;
+color: ${(element.isReference() ? theme.isDark ? "#9AD6D9" : "#007D80" : "inherit")};
 vertical-align: center`</style>
                 <size width="${w}" height="16" />
                 <position x="${x}" y="${y + 40}" />
@@ -1044,14 +1051,13 @@ vertical-align: center`</style>
             <position x="${x}" y="${y}" />
             <display>
               <drawText>
-                <text>return getName();</text>
                 <style>
 return `font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
 text-align: center; 
 white-space: inherit;
-color: ${(element.isReference() ? theme.isDark ? "#aaddaa" : "#224422" : "inherit")};
+color: ${(element.isReference() ? theme.isDark ? "#9AD6D9" : "#007D80" : "inherit")};
 vertical-align: center`</style>
                 <size width="${w}" height="16" />
                 <position x="${x}" y="${y + 40}" />
@@ -1074,7 +1080,6 @@ vertical-align: center`</style>
                 <position x="`${parent.x}`" y="`${parent.y + ($index * 20) + 66}`" />
                 <display>
                   <drawText>
-                    <text>return label;</text>
                     <size width="${w - 26}" height="${h}" />
                     <position x="${x + 24}" y="${y}" />
                   </drawText>
@@ -1104,6 +1109,7 @@ font-family: Helvetica;
 font-weight: bold; 
 text-align: center; 
 white-space: inherit;
+color: ${(element.isReference() ? theme.isDark ? "#9AD6D9" : "#007D80" : "inherit")};
 vertical-align: center`</style>
                 <size width="${w}" height="16" />
                 <position x="${x}" y="${y + 40}" />
@@ -1632,6 +1638,9 @@ vertical-align: center`</style>
           <text>New Page</text>
           <shortcut>ctrl + shift + p</shortcut>
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IkNCMUMxOThGLTdCNzUtNDA5RC1BOEY4LUJEQzkzRjg4N0U0NyIgeDE9IjI0LjkiIHkxPSI0Ni40IiB4Mj0iMjUuMSIgeTI9IjcuMyIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIDUyKSBzY2FsZSgxIC0xKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNkZTRkNTIiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYmQyMDI1Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMjguNy4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMS4yLjAgQnVpbGQgMTQyKSAgLS0+CiAgPGc+CiAgICA8ZyBpZD0iTGF5ZXJfMSI+CiAgICAgIDxnIGlkPSJMYXllcl8xLTIiIGRhdGEtbmFtZT0iTGF5ZXJfMSI+CiAgICAgICAgPHBhdGggZD0iTTQ0LjksNS44SDUuMWMtMS40LDAtMi42LDEuNC0yLjYsM3YzMi41YzAsMS42LDEuMiwzLDIuNiwzaDM5LjhjMS40LDAsMi42LTEuNCwyLjYtM1Y4LjhjMC0xLjYtMS4yLTMtMi42LTNaTTE5LDhjLjksMCwxLjcuOCwxLjcsMS43cy0uOCwxLjctMS43LDEuNy0xLjctLjgtMS43LTEuNy44LTEuNywxLjctMS43Wk0xNC4yLDhjLjksMCwxLjcuOCwxLjcsMS43cy0uOCwxLjctMS43LDEuNy0xLjctLjgtMS43LTEuNy44LTEuNywxLjctMS43Wk05LjUsOGMuOSwwLDEuNy44LDEuNywxLjdzLS44LDEuNy0xLjcsMS43LTEuNy0uOC0xLjctMS43LjgtMS43LDEuNy0xLjdaTTQ0LDM4LjJjMCwxLjEtMSwyLjEtMi4yLDIuMUg4LjFjLTEuMiwwLTIuMi0xLTIuMi0yLjFWMTUuMWMwLTEuMSwxLTIuMSwyLjItMi4xaDMzLjdjMS4yLDAsMi4yLDEsMi4yLDIuMSwwLDAsMCwyMy4xLDAsMjMuMVpNMzkuOCwxOXY4LjJjMCwxLjItLjgsMi4yLTEuOSwyLjJoLTYuNmMtMSwwLTEuOS0xLTEuOS0yLjJ2LTguMmMwLTEuMi44LTIuMiwxLjktMi4yaDYuNmMxLDAsMS45LDEsMS45LDIuMlpNMjYsMTkuM2MwLC42LS4yLDEuMS0uNiwxLjVzLS45LjYtMS41LjZoLTEzLjFjLTEuMiwwLTIuMi0xLTIuMi0yLjJzLjItMS4xLjYtMS41Yy40LS40LjktLjYsMS41LS42aDEzLjFjMS4yLDAsMi4yLDEsMi4yLDIuMlpNMjYsMjdjMCwuNi0uMiwxLjEtLjYsMS41cy0uOS42LTEuNS42aC0xMy4xYy0xLjIsMC0yLjItMS0yLjItMi4ycy4yLTEuMS42LTEuNWMuNC0uNC45LS42LDEuNS0uNmgxMy4xYzEuMiwwLDIuMiwxLDIuMiwyLjJaTTM5LjgsMzQuN2MwLC42LS4yLDEuMS0uNiwxLjUtLjQuNC0uOS42LTEuNS42SDEwLjdjLTEuMiwwLTIuMi0xLTIuMi0yLjJzLjItMS4xLjYtMS41Yy40LS40LjktLjYsMS41LS42aDI2LjljMS4yLDAsMi4zLDEsMi4zLDIuMmgwWiIgZmlsbD0idXJsKCNDQjFDMTk4Ri03Qjc1LTQwOUQtQThGOC1CREM5M0Y4ODdFNDcpIi8+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==" />
+          <dependencies>
+            <dependency name="New Page Default Route Script" id="3c0034be-44cc-40b1-a390-b5e88574ee46" />
+          </dependencies>
           <script>const pageId = "ea4adc09-8978-4ede-ba5f-265debb2b60c";
 const routeId = "9dff9df1-a993-4bf6-9aa7-c16811142228";
 
@@ -1641,9 +1650,7 @@ page.refresh();
 getCurrentDiagram()?.selectVisualsForElements(page.id);
 await page.enableEditing();
 
-const folders = page.getParents("Folder");
-stereotype.getProperty(routeId).setValue("/" + folders.filter(x =&gt; x.getName() != "Pages" &amp;&amp; x.getName() != "Components").map(x =&gt; toKebabCase(x.getName()) + "/") + toKebabCase(removeSuffix(page.getName(), "Page", "Component", "View")))
-</script>
+setDefaultRoute(page, stereotype);</script>
         </runScript>
         <createElement type="element">
           <text>New Component</text>
@@ -1741,6 +1748,9 @@ stereotype.getProperty(routeId).setValue("/" + folders.filter(x =&gt; x.getName(
           <text>New Page</text>
           <shortcut>ctrl + shift + p</shortcut>
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IkNCMUMxOThGLTdCNzUtNDA5RC1BOEY4LUJEQzkzRjg4N0U0NyIgeDE9IjI0LjkiIHkxPSI0Ni40IiB4Mj0iMjUuMSIgeTI9IjcuMyIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIDUyKSBzY2FsZSgxIC0xKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNkZTRkNTIiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYmQyMDI1Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMjguNy4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMS4yLjAgQnVpbGQgMTQyKSAgLS0+CiAgPGc+CiAgICA8ZyBpZD0iTGF5ZXJfMSI+CiAgICAgIDxnIGlkPSJMYXllcl8xLTIiIGRhdGEtbmFtZT0iTGF5ZXJfMSI+CiAgICAgICAgPHBhdGggZD0iTTQ0LjksNS44SDUuMWMtMS40LDAtMi42LDEuNC0yLjYsM3YzMi41YzAsMS42LDEuMiwzLDIuNiwzaDM5LjhjMS40LDAsMi42LTEuNCwyLjYtM1Y4LjhjMC0xLjYtMS4yLTMtMi42LTNaTTE5LDhjLjksMCwxLjcuOCwxLjcsMS43cy0uOCwxLjctMS43LDEuNy0xLjctLjgtMS43LTEuNy44LTEuNywxLjctMS43Wk0xNC4yLDhjLjksMCwxLjcuOCwxLjcsMS43cy0uOCwxLjctMS43LDEuNy0xLjctLjgtMS43LTEuNy44LTEuNywxLjctMS43Wk05LjUsOGMuOSwwLDEuNy44LDEuNywxLjdzLS44LDEuNy0xLjcsMS43LTEuNy0uOC0xLjctMS43LjgtMS43LDEuNy0xLjdaTTQ0LDM4LjJjMCwxLjEtMSwyLjEtMi4yLDIuMUg4LjFjLTEuMiwwLTIuMi0xLTIuMi0yLjFWMTUuMWMwLTEuMSwxLTIuMSwyLjItMi4xaDMzLjdjMS4yLDAsMi4yLDEsMi4yLDIuMSwwLDAsMCwyMy4xLDAsMjMuMVpNMzkuOCwxOXY4LjJjMCwxLjItLjgsMi4yLTEuOSwyLjJoLTYuNmMtMSwwLTEuOS0xLTEuOS0yLjJ2LTguMmMwLTEuMi44LTIuMiwxLjktMi4yaDYuNmMxLDAsMS45LDEsMS45LDIuMlpNMjYsMTkuM2MwLC42LS4yLDEuMS0uNiwxLjVzLS45LjYtMS41LjZoLTEzLjFjLTEuMiwwLTIuMi0xLTIuMi0yLjJzLjItMS4xLjYtMS41Yy40LS40LjktLjYsMS41LS42aDEzLjFjMS4yLDAsMi4yLDEsMi4yLDIuMlpNMjYsMjdjMCwuNi0uMiwxLjEtLjYsMS41cy0uOS42LTEuNS42aC0xMy4xYy0xLjIsMC0yLjItMS0yLjItMi4ycy4yLTEuMS42LTEuNWMuNC0uNC45LS42LDEuNS0uNmgxMy4xYzEuMiwwLDIuMiwxLDIuMiwyLjJaTTM5LjgsMzQuN2MwLC42LS4yLDEuMS0uNiwxLjUtLjQuNC0uOS42LTEuNS42SDEwLjdjLTEuMiwwLTIuMi0xLTIuMi0yLjJzLjItMS4xLjYtMS41Yy40LS40LjktLjYsMS41LS42aDI2LjljMS4yLDAsMi4zLDEsMi4zLDIuMmgwWiIgZmlsbD0idXJsKCNDQjFDMTk4Ri03Qjc1LTQwOUQtQThGOC1CREM5M0Y4ODdFNDcpIi8+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==" />
+          <dependencies>
+            <dependency name="New Page Default Route Script" id="3c0034be-44cc-40b1-a390-b5e88574ee46" />
+          </dependencies>
           <script>const pageId = "ea4adc09-8978-4ede-ba5f-265debb2b60c";
 const routeId = "9dff9df1-a993-4bf6-9aa7-c16811142228";
 
@@ -1750,9 +1760,7 @@ page.refresh();
 getCurrentDiagram()?.selectVisualsForElements(page.id);
 await page.enableEditing();
 
-const folders = page.getParents("Folder");
-stereotype.getProperty(routeId).setValue("/" + folders.filter(x =&gt; x.getName() != "Pages" &amp;&amp; x.getName() != "Components").map(x =&gt; toKebabCase(x.getName()) + "/") + toKebabCase(removeSuffix(page.getName(), "Page", "Component", "View")))
-</script>
+setDefaultRoute(page, stereotype);</script>
         </option>
       </scriptOptions>
       <mappingOptions />
@@ -3501,9 +3509,57 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), propert
   </mappableElementPackages>
   <mappableElementPackageExtensions />
   <suggestionSettings>
+    <suggestionSetting type="Call Service Operation Action Target End" typeId="475f0810-2b4a-40da-8eb8-697cb62f7dbe" locations="diagram, model">
+      <name>Re-map Service Call</name>
+      <filterFunction>return typeof(element.hasErrors) == "function" &amp;&amp; (element.hasErrors() || element.hasWarnings());</filterFunction>
+      <dependencies>
+        <dependency name="Common UI Script" id="5bd2a61d-7aaa-4785-90fa-376796ccb6c8" />
+      </dependencies>
+      <script>BackendServiceHelperApi.remapServiceCall(element);
+</script>
+    </suggestionSetting>
+    <suggestionSetting type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" locations="diagram, model">
+      <name>Add to Sider Menu</name>
+      <filterFunction>const associationIds = [
+  "2b191288-ecae-4743-b069-cbdd927ef349",// Navigation Specialization Type
+];
+const layoutSpecializationTypeId = "776a9393-6b23-4a8c-8937-fd7e833fa0ef";
+
+if (lookupTypesOf(layoutSpecializationTypeId).length &gt; 0){
+
+return element.hasStereotype("ea4adc09-8978-4ede-ba5f-265debb2b60c")// Page
+  &amp;&amp; !lookupTypesOf(associationIds).some(a =&gt; 
+    a.typeReference.getType().id == element.id &amp;&amp; 
+    a.getOtherEnd().typeReference.getType().specializationId == layoutSpecializationTypeId);//Layout
+}
+
+//If there are no modeled Layouts dont show suggestion
+return false;</filterFunction>
+      <dependencies />
+      <script>const layoutSpecializationTypeId = "5c8a19cf-410b-4ded-930e-446c3fc9bc26";
+const navigationMenuTypeId = "d7282bf2-1626-4b8b-9446-1d530527db06";
+const siderTypeId = "c505f35f-7148-46a3-a812-d9f53a174490";
+
+let menus = lookupTypesOf(navigationMenuTypeId);
+let siderMenu = menus.find(x =&gt; x.getParent(siderTypeId));
+let layout = siderMenu.getParent().getParent();
+
+let button = createElement("Menu Item", toTitleCase(element.getName()), siderMenu.id);
+let navAssociation = createAssociation("Navigation", layout.id, button.id);
+navAssociation.typeReference.setType(element.id);
+
+let mapping = layout.getAdvancedMapping("c33f86ad-423a-4a6f-a80c-a3206eafe5cd");// View Bindings
+let targetPath = [layout.id, siderMenu.getParent().id, siderMenu.id, button.id, "a4073b81-6ddd-44cb-909f-f2c97d965112"];//LinkTo
+mapping.addMappedEnd("Event Mapping"
+, [layout.id, navAssociation.id ]
+, targetPath);
+mapping.addMappingExpression(targetPath, "{" + navAssociation.getName() + "}");</script>
+    </suggestionSetting>
     <suggestionSetting type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" locations="diagram, model">
       <name>Call Backend Service</name>
-      <dependencies />
+      <dependencies>
+        <dependency name="Common UI Script" id="5bd2a61d-7aaa-4785-90fa-376796ccb6c8" />
+      </dependencies>
       <script>const result = await dialogService.openForm({
     title: "Add to Diagram",
     fields: [
@@ -3530,6 +3586,7 @@ if (result.selectedElementId.length == 0) {
     return;
 }
 
+
 const component = element;
 const diagram = getCurrentDiagram();
 const componentVisual = diagram.getVisual(element.id);
@@ -3540,6 +3597,8 @@ if (!serviceRequest) {
     return;
 }
 
+BackendServiceHelperApi.setupCallServiceFromComponent(component, serviceRequest);
+return;
 
 if (serviceRequest.specialization == "Query") {
     const query = serviceRequest;
@@ -3579,22 +3638,7 @@ if (serviceRequest.specialization == "Query") {
     const mapping = callService.createAdvancedMapping(operation.id, command.id, "e4a4111b-cf13-4efe-8a5d-fea9457ac8ad");
     mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc", [operation.id, callService.id], [command.id]);
 
-    if (!component.getChildren("Property").some(x =&gt; x.typeReference.getType().specialization == "Model Definition")) {
-        const newModel = component.addChild("Model Definition", removePrefix(removeSuffix(command.getName(), "Command", "Create", "Update")) + "Model")
-        const newProperty = component.addChild("Property", "Model");
-        newProperty.typeReference.setType(newModel.id);
-        if (command.getName().startsWith("Create")) {
-            newProperty.setValue("new()");
-        } else {
-            newProperty.typeReference.setIsNullable(true);
-        }
-
-        command.getChildren("DTO-Field").forEach(field =&gt; {
-            const modelProperty = newModel.addChild("Property", field.getName());
-            modelProperty.typeReference.setType(field.typeReference.toModel());
-            mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", [newProperty.id, modelProperty.id], [command.id, field.id]);
-        })
-    }
+    addViewModel(command, component, mapping, "Command", "Create", "Update");
 
     // if (command.typeReference.isTypeFound())  {
     //     const property = component.addChild("Property", "Model");
@@ -3624,7 +3668,8 @@ if (serviceRequest.specialization == "Query") {
     });
     
     if (serviceOp.getStereotype("Http Settings")?.getProperty("Verb").getValue() == "GET") {
-        if (serviceOp.typeReference.getType() != null &amp;&amp; serviceOp.typeReference.getType().specialization != "Type-Definition") {
+        if (serviceOp.typeReference.getType() != null 
+            &amp;&amp; (serviceOp.typeReference.getType().specialization != "Type-Definition" || (serviceOp.typeReference.getType().specialization == "Type-Definition") &amp;&amp; serviceOp.typeReference.toModel().genericTypeParameters.length &gt; 0) ) {
             const property = component.addChild("Property", "Model");
             property.typeReference.setType(serviceOp.typeReference.toModel());
             property.typeReference.setIsNullable(true);
@@ -3635,24 +3680,50 @@ if (serviceRequest.specialization == "Query") {
     } else {
         const dtoParam = serviceOp.getChild(x =&gt; x.specialization == "Parameter" &amp;&amp; x.typeReference.getType().specialization == "DTO")
         const dto = dtoParam?.typeReference.getType();
-        if (dto &amp;&amp; !component.getChildren("Property").some(x =&gt; x.typeReference.getType().specialization == "Model Definition")) {
-            const newModel = component.addChild("Model Definition", removePrefix(removeSuffix(dto.getName(), "DTO", "Dto")) + "Model")
-            const newProperty = component.addChild("Property", "Model");
-            newProperty.typeReference.setType(newModel.id);
-            if (dto.getName().startsWith("Create")) {
-                newProperty.setValue("new()");
-            } else {
-                newProperty.typeReference.setIsNullable(true);
-            }
-
-            dto.getChildren("DTO-Field").forEach(field =&gt; {
-                const modelProperty = newModel.addChild("Property", field.getName());
-                modelProperty.typeReference.setType(field.typeReference.toModel());
-                mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", [newProperty.id, modelProperty.id], [dtoParam.id, field.id]);
-            })
-        }
+        addViewModel(dto, component, mapping, "DTO", "Dto");
         mapping.launchDialog();
     }
+}
+
+function addViewModel(contract, component, mapping, ...suffixesToRemove){
+
+    if (!contract) return;
+
+    if (!component.getChildren("Property").some(x =&gt; x.typeReference.getType().specialization == "Model Definition" &amp;&amp; x.getName() == "Model")) {
+        const newModel = component.addChild("Model Definition", removePrefix(removeSuffix(contract.getName(), ...suffixesToRemove)) + "Model")
+        const newProperty = component.addChild("Property", "Model");
+        newProperty.typeReference.setType(newModel.id);
+        if (contract.getName().startsWith("Create")) {
+            newProperty.setValue("new()");
+        } else {
+            newProperty.typeReference.setIsNullable(true);
+        }
+
+        addChildElementsRecursivly(newModel, contract, component, mapping,[newProperty.id], [contract.id]);
+    }
+}
+
+function addChildElementsRecursivly(model, contract, component, mapping, srcPath, dstPath){
+    contract.getChildren("DTO-Field").forEach(field =&gt; {
+
+        const modelProperty = model.addChild("Property", field.getName());
+        const nextSrcPath = srcPath.concat(modelProperty.id);
+        const nextDstPath = dstPath.concat(field.id);                
+
+        if (field.typeReference?.getType()?.specialization == "DTO"){
+            const complexChildType = component.addChild("Model Definition", removePrefix(removeSuffix(field.typeReference.getType().getName(), "DTO", "Dto"))  + "Model")
+            modelProperty.typeReference.setType(complexChildType.id);
+            modelProperty.typeReference.setIsNullable(field.typeReference.isNullable)
+            modelProperty.typeReference.setIsCollection(field.typeReference.isCollection)
+            if (field.typeReference.isCollection){
+                mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", nextSrcPath, nextDstPath);
+            }
+            addChildElementsRecursivly(complexChildType, field.typeReference.getType(), component, mapping, nextSrcPath, nextDstPath);
+        } else {                   
+            modelProperty.typeReference.setType(field.typeReference.toModel());
+            mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", nextSrcPath, nextDstPath);
+        }
+    })
 }</script>
     </suggestionSetting>
   </suggestionSettings>
@@ -3713,6 +3784,45 @@ if (serviceRequest.specialization == "Query") {
         <dependency name="Add Component Function" id="1832aefa-e28b-4e8f-b65d-8555a1e3b31e" />
       </dependencies>
       <filePath>addComponentScript.js</filePath>
+    </script>
+    <script name="Common UI Script" id="5bd2a61d-7aaa-4785-90fa-376796ccb6c8">
+      <filePath>ui-common-api.js</filePath>
+    </script>
+    <script name="New Page Default Route Script" id="3c0034be-44cc-40b1-a390-b5e88574ee46">
+      <script>function setDefaultRoute(page, stereotype ){
+    // Ensure exactly one leading "/" and no trailing slash (except for "/")
+    const normalizeRoute = (route) =&gt; {
+    let r = route.replace(/\/{2,}/g, "/");
+    if (r.length &gt; 1 &amp;&amp; r.endsWith("/")) r = r.slice(0, -1);
+    return r.startsWith("/") ? r : `/${r}`;
+    };
+
+    const pageName = page.getName();
+    let rawRoute = "";
+    const routeFolders = page.getParents("Folder").filter(x =&gt; x.getName() != "Pages" &amp;&amp; x.getName() != "Components");
+    if (routeFolders.length == 0){
+        rawRoute = toKebabCase(removeSuffix(pageName, "Page", "Component")).trim();
+    }else{
+
+        const baseRoutePath = routeFolders.map(f =&gt; toKebabCase(f.getName())).join("/");
+        const parentFolder = routeFolders[routeFolders.length - 1];
+        const pageRoutePart = toKebabCase(removeOccurrences(removeSuffix(pageName, "Page", "Component"), parentFolder.getName(), singularize(parentFolder.getName()))).trim();
+
+        rawRoute = pageRoutePart &amp;&amp; pageRoutePart.length &gt; 0
+        ? (baseRoutePath ? `${baseRoutePath}/${pageRoutePart}` : pageRoutePart)
+        : baseRoutePath;
+    }
+    stereotype.getProperty(routeId).setValue(normalizeRoute(rawRoute));    
+}
+
+function removeOccurrences(str, ...patterns) {
+  let result = str;
+  for (const p of patterns) {
+    const regex = new RegExp(p, "gi"); // global + case-insensitive
+    result = result.replace(regex, "");
+  }
+  return result;
+}</script>
     </script>
   </scripts>
 </settings>

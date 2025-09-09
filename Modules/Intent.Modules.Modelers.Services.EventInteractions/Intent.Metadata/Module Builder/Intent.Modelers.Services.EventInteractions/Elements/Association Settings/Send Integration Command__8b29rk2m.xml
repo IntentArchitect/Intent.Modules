@@ -75,7 +75,7 @@
             <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;7f01ca8e-0e3c-4735-ae23-a45169f71625&quot;]" isActive="true" />
             <property name="fde5c705-2274-4536-9d47-62029793629d" display="Target Traits" isActive="true" />
             <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="PublishedIntegrationCommands" isActive="true" />
-            <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="return `[send] ${typeReference.display}`" isActive="true" />
+            <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="return [&#xD;&#xA;    {&#xD;&#xA;        text: &quot;[send] &quot;,&#xD;&#xA;        cssClass: &quot;keyword&quot;&#xD;&#xA;    },&#xD;&#xA;].concat(typeReference.getDisplayTextComponents())" isActive="true" />
             <property name="f2b3038c-188e-4777-833b-15969e3923d7" display="Validate Function" value="" isActive="true" />
             <property name="6bf94b78-382a-4002-ac88-a569b59e16e6" display="Name Accessibility" value="Hidden" isActive="true" />
             <property name="5e68cf49-e0f7-461a-8f5a-436a5ec91060" display="Default Name Function" value="" isActive="true" />

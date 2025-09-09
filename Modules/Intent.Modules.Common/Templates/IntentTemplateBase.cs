@@ -1,10 +1,13 @@
-﻿using System;
+﻿#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+#nullable enable
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using Intent.Engine;
+using Intent.Eventing;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
 using Intent.SdkEvolutionHelpers;
@@ -19,7 +22,7 @@ namespace Intent.Modules.Common.Templates
         IHasDecorators<TDecorator>
         where TDecorator : ITemplateDecorator
     {
-        private readonly ICollection<TDecorator> _decorators = new List<TDecorator>();
+        private readonly List<TDecorator> _decorators = [];
 
         /// <summary>
         /// Constructor for <see cref="IntentTemplateBase{TModel,TDecorator}"/>.
@@ -73,10 +76,10 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public TModel Model { get; }
 
-        object ITemplateWithModel.Model => Model;
+        object? ITemplateWithModel.Model => Model;
 
         /// <inheritdoc />
-        public override string GetCorrelationId()
+        public override string? GetCorrelationId()
         {
             if (Model is IMetadataModel model)
             {
@@ -85,7 +88,7 @@ namespace Intent.Modules.Common.Templates
 
             if (Model == null || Model is IEnumerable)
             {
-                return Id;
+                return base.GetCorrelationId();
             }
 
             return null;
@@ -101,15 +104,13 @@ namespace Intent.Modules.Common.Templates
     /// <summary>
     /// Base class for templates.
     /// </summary>
-    public abstract class IntentTemplateBase : T4TemplateBase, IIntentTemplate, ITemplate, IConfigurableTemplate,
+    public abstract class IntentTemplateBase : T4TemplateBase, IIntentTemplate, IConfigurableTemplate,
         IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook,
         IAfterTemplateRegistrationExecutionHook,
         ITemplateBeforeExecutionHook
     {
-        private readonly Lazy<(bool Result, string Path)> _tryGetExistingFilePathCache;
-        private readonly Lazy<(bool Result, string Content)> _tryGetExistingFileContentCache;
-        private bool _canRun = true;
-        private bool _isDiscoverable = true;
+        private readonly Lazy<(bool Result, string? Path)> _tryGetExistingFilePathCache;
+        private readonly Lazy<(bool Result, string? Content)> _tryGetExistingFileContentCache;
 
         /// <summary>
         /// Returns the known template dependencies added for this template.
@@ -126,8 +127,9 @@ namespace Intent.Modules.Common.Templates
             OutputTarget = outputTarget;
             Id = templateId;
             BindingContext = new TemplateBindingContext(this);
-            _tryGetExistingFilePathCache = new Lazy<(bool, string)>(TryGetExistingFilePathInternal);
-            _tryGetExistingFileContentCache = new Lazy<(bool, string)>(TryGetExistingFileContentInternal);
+            FileMetadata = null!;
+            _tryGetExistingFilePathCache = new Lazy<(bool, string?)>(TryGetExistingFilePathInternal);
+            _tryGetExistingFileContentCache = new Lazy<(bool, string?)>(TryGetExistingFileContentInternal);
         }
 
         /// <summary>
@@ -136,23 +138,19 @@ namespace Intent.Modules.Common.Templates
         public string Id { get; }
 
         /// <summary>
-        /// Indicated whether or not a template should Generate Output
+        /// Indicated whether a template should Generate Output
         /// This is the default behaviour for the CanRunTemplate method which ultimately determines this state
         /// </summary>
-        public bool CanRun
-        {
-            get { return _canRun; }
-            set { _canRun = value; }
-        }
+        public bool CanRun { get; set; } = true;
 
         /// <summary>
-        /// Indicated whether or not a template can be "Discovered" by other templates
+        /// Indicated whether a template can be "Discovered" by other templates
         /// This is the default behaviour for the CanDiscoverTemplate method which ultimately determines this state
         /// </summary>
         public bool IsDiscoverable
         {
-            get { return _canRun; }
-            set { _canRun = value; }
+            get => CanRun;
+            set => CanRun = value;
         }
 
         /// <summary>
@@ -195,7 +193,7 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Returns the file path of the existing file for this template, if it exists. If it doesn't exist, or can't be found, will return null.
         /// </summary>
-        public virtual string GetExistingFilePath() => _tryGetExistingFilePathCache.Value.Path;
+        public virtual string? GetExistingFilePath() => _tryGetExistingFilePathCache.Value.Path;
 
         /// <summary>
         /// Override this method to control whether the template runs and the creates the output file.
@@ -227,9 +225,11 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Used to identify template outputs between software factory executions.
         /// </summary>
-        public virtual string GetCorrelationId()
+        public virtual string? GetCorrelationId()
         {
-            return Id;
+            return OutputTarget.TryGetTemplateOutputId(Id, out var templateOutputId)
+                ? $"{Id}#{templateOutputId}"
+                : Id;
         }
 
         /// <inheritdoc />
@@ -242,7 +242,7 @@ namespace Intent.Modules.Common.Templates
 
         private void AddTemplateDependency(ITemplate template)
         {
-            DetectedDependencies.Add(TemplateDependency.OnTemplate(template));
+            AddTemplateDependency(TemplateDependency.OnTemplate(template, accessibleTo: OutputTarget));
         }
 
         /// <summary>
@@ -250,9 +250,11 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public void AddTemplateDependency(ITemplateDependency templateDependency)
         {
-            // Can't use this because this method is often called from constructors, and the FindTemplateInstance has the chance of not
-            // finding the template and then throwing an error. If no bugs found in Intent.Common 3.1.12 then this code can be removed.
-            //AddTemplateDependency(ExecutionContext.FindTemplateInstance(templateDependency));
+            if (templateDependency.TryGetWithAccessibleTo(OutputTarget, out var updated))
+            {
+                templateDependency = updated;
+            }
+
             DetectedDependencies.Add(templateDependency);
         }
 
@@ -261,10 +263,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public void AddTemplateDependency(string templateId)
         {
-            // Can't use this because this method is often called from constructors, and the FindTemplateInstance has the chance of not
-            // finding the template and then throwing an error. If no bugs found in Intent.Common 3.1.12 then this code can be removed.
-            //AddTemplateDependency(ExecutionContext.FindTemplateInstance(templateId));
-            DetectedDependencies.Add(TemplateDependency.OnTemplate(templateId));
+            AddTemplateDependency(TemplateDependency.OnTemplate(templateId, accessibleTo: OutputTarget));
         }
 
         /// <summary>
@@ -274,10 +273,7 @@ namespace Intent.Modules.Common.Templates
         /// <param name="model">The metadata module instance that the Template must be bound to.</param>
         public void AddTemplateDependency(string templateId, IMetadataModel model)
         {
-            // Can't use this because this method is often called from constructors, and the FindTemplateInstance has the chance of not
-            // finding the template and then throwing an error. If no bugs found in Intent.Common 3.1.12 then this code can be removed.
-            //AddTemplateDependency(ExecutionContext.FindTemplateInstance(templateId, model.Id));
-            DetectedDependencies.Add(TemplateDependency.OnModel(templateId, model));
+            AddTemplateDependency(TemplateDependency.OnModel(templateId, model, accessibleTo: OutputTarget));
         }
 
         #endregion
@@ -384,7 +380,7 @@ namespace Intent.Modules.Common.Templates
         /// <param name="templateId">The identifier of the template instances to be searched when calling <see cref="GetTypeName(ITypeReference)"/></param>
         /// <param name="collectionFormat">Sets the collection format to be applied if a type is found.</param>
         [FixFor_Version4("Make \"collectionFormat\" have a default value of null and delete conflicting overload")]
-        public virtual ClassTypeSource AddTypeSource(string templateId, string collectionFormat)
+        public virtual ClassTypeSource AddTypeSource(string templateId, string? collectionFormat)
         {
             var typeSource = ClassTypeSource.Create(ExecutionContext, templateId, CreateCollectionFormatter)
                 .WithNullableFormatter(Types.DefaultNullableFormatter);
@@ -505,7 +501,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="hasTypeReference">The <see cref="IHasTypeReference"/> for which to get the <see cref="IResolvedTypeInfo"/>.</param>
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true.</param>
-        protected virtual IResolvedTypeInfo GetTypeInfo(IHasTypeReference hasTypeReference, string collectionFormat = null)
+        protected virtual IResolvedTypeInfo GetTypeInfo(IHasTypeReference hasTypeReference, string? collectionFormat = null)
         {
             return GetTypeInfo(hasTypeReference.TypeReference, collectionFormat);
         }
@@ -522,7 +518,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="template">The <see cref="ITemplate"/> for which to get the <see cref="IResolvedTypeInfo"/>.</param>
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
-        protected virtual IResolvedTypeInfo GetTypeInfo(ITemplate template, TemplateDiscoveryOptions options = null)
+        protected virtual IResolvedTypeInfo? GetTypeInfo(ITemplate template, TemplateDiscoveryOptions? options = null)
         {
             var classProvider = GetTemplate<IClassProvider>(template, options);
             if (classProvider == null)
@@ -545,8 +541,8 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="templateDependency">The <see cref="ITemplateDependency"/> for which to get the <see cref="IResolvedTypeInfo"/>.</param>
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
-        protected virtual IResolvedTypeInfo GetTypeInfo(ITemplateDependency templateDependency,
-            TemplateDiscoveryOptions options = null)
+        protected virtual IResolvedTypeInfo? GetTypeInfo(ITemplateDependency templateDependency,
+            TemplateDiscoveryOptions? options = null)
         {
             var classProvider = GetTemplate<IClassProvider>(templateDependency, options);
             if (classProvider == null)
@@ -597,7 +593,7 @@ namespace Intent.Modules.Common.Templates
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true.</param>
         [FixFor_Version4("Remove the GetTypeInfo(ITypeReference typeReference) overload and then remove the ReSharper disable once MethodOverloadWithOptionalParameter below.")]
         // ReSharper disable once MethodOverloadWithOptionalParameter
-        public virtual IResolvedTypeInfo GetTypeInfo(ITypeReference typeReference, string collectionFormat = null)
+        public virtual IResolvedTypeInfo GetTypeInfo(ITypeReference typeReference, string? collectionFormat = null)
         {
             return Types.Get(typeReference, collectionFormat);
         }
@@ -623,8 +619,8 @@ namespace Intent.Modules.Common.Templates
         /// <param name="templateId">The unique Template identifier.</param>
         /// <param name="model">The model instance that the Template must be bound to.</param>
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
-        protected virtual IResolvedTypeInfo GetTypeInfo(string templateId, IMetadataModel model,
-            TemplateDiscoveryOptions options = null)
+        protected virtual IResolvedTypeInfo? GetTypeInfo(string templateId, IMetadataModel model,
+            TemplateDiscoveryOptions? options = null)
         {
             return GetTypeInfo(templateId, model.Id, options);
         }
@@ -645,8 +641,8 @@ namespace Intent.Modules.Common.Templates
         /// <param name="templateId">The unique Template identifier.</param>
         /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
-        protected virtual IResolvedTypeInfo GetTypeInfo(string templateId, string modelId,
-            TemplateDiscoveryOptions options = null)
+        protected virtual IResolvedTypeInfo? GetTypeInfo(string templateId, string modelId,
+            TemplateDiscoveryOptions? options = null)
         {
             var registryInstance = TemplateInstanceRegistry.GetTypeInfo(templateId, modelId, this, options?.TrackDependency != false);
             if (registryInstance != null)
@@ -678,7 +674,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="templateId">The unique Template identifier.</param>
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
-        protected virtual IResolvedTypeInfo GetTypeInfo(string templateId, TemplateDiscoveryOptions options = null)
+        protected virtual IResolvedTypeInfo? GetTypeInfo(string templateId, TemplateDiscoveryOptions? options = null)
         {
             var registryInstance = TemplateInstanceRegistry.GetTypeInfo(templateId, null, this, options?.TrackDependency != false);
             if (registryInstance != null)
@@ -792,7 +788,7 @@ namespace Intent.Modules.Common.Templates
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true.</param>
         [FixFor_Version4("Remove the GetTypeName(IHasTypeReference hasTypeReference) overload and then remove the ReSharper disable once MethodOverloadWithOptionalParameter below.")]
         // ReSharper disable once MethodOverloadWithOptionalParameter
-        public virtual string GetTypeName(IHasTypeReference hasTypeReference, string collectionFormat = null)
+        public virtual string GetTypeName(IHasTypeReference hasTypeReference, string? collectionFormat = null)
         {
             var resolvedTypeInfo = GetTypeInfo(hasTypeReference.TypeReference, collectionFormat);
 
@@ -811,7 +807,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="template">The <see cref="ITemplate"/> for which to get the type name.</param>
         /// <param name="options"><see cref="TemplateDiscoveryOptions"/> to use.</param>
-        public string GetTypeName(ITemplate template, TemplateDiscoveryOptions options = null)
+        public string? GetTypeName(ITemplate template, TemplateDiscoveryOptions? options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(template, options);
             if (resolvedTypeInfo == null)
@@ -834,8 +830,8 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="templateDependency">The <see cref="ITemplateDependency"/> for which to get the type name.</param>
         /// <param name="options"><see cref="TemplateDiscoveryOptions"/> to use.</param>
-        public virtual string GetTypeName(ITemplateDependency templateDependency,
-            TemplateDiscoveryOptions options = null)
+        public virtual string? GetTypeName(ITemplateDependency templateDependency,
+            TemplateDiscoveryOptions? options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(templateDependency, options);
             if (resolvedTypeInfo == null)
@@ -884,7 +880,7 @@ namespace Intent.Modules.Common.Templates
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
         [FixFor_Version4("Remove the GetTypeName(ITypeReference typeReference) overload and then remove the ReSharper disable once MethodOverloadWithOptionalParameter below.")]
         // ReSharper disable once MethodOverloadWithOptionalParameter
-        public virtual string GetTypeName(ITypeReference typeReference, string collectionFormat = null)
+        public virtual string GetTypeName(ITypeReference typeReference, string? collectionFormat = null)
         {
             var resolvedTypeInfo = GetTypeInfo(typeReference, collectionFormat);
 
@@ -907,7 +903,7 @@ namespace Intent.Modules.Common.Templates
         /// <param name="templateId">The unique Template identifier.</param>
         /// <param name="model">The model instance that the Template must be bound to.</param>
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
-        public string GetTypeName(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null)
+        public string? GetTypeName(string templateId, IMetadataModel model, TemplateDiscoveryOptions? options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(templateId, model, options);
             if (resolvedTypeInfo == null)
@@ -934,7 +930,7 @@ namespace Intent.Modules.Common.Templates
         /// <param name="templateId">The unique Template identifier.</param>
         /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
-        public string GetTypeName(string templateId, string modelId, TemplateDiscoveryOptions options = null)
+        public string? GetTypeName(string templateId, string modelId, TemplateDiscoveryOptions? options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(templateId, modelId, options);
             if (resolvedTypeInfo == null)
@@ -960,7 +956,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="templateId">The unique Template identifier.</param>
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
-        public string GetTypeName(string templateId, TemplateDiscoveryOptions options = null)
+        public string? GetTypeName(string templateId, TemplateDiscoveryOptions? options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(templateId, options);
             if (resolvedTypeInfo == null)
@@ -974,7 +970,7 @@ namespace Intent.Modules.Common.Templates
         #endregion
 
         /// <inheritdoc />
-        public bool TryGetExistingFileContent(out string content)
+        public bool TryGetExistingFileContent([NotNullWhen(true)] out string? content)
         {
             (var result, content) = _tryGetExistingFileContentCache.Value;
 
@@ -985,11 +981,11 @@ namespace Intent.Modules.Common.Templates
         /// Not to be called directly, this is a delegate for the <see cref="Lazy{T}"/> instance
         /// for <see cref="_tryGetExistingFileContentCache"/>.
         /// </summary>
-        private (bool result, string content) TryGetExistingFileContentInternal()
+        private (bool result, string? content) TryGetExistingFileContentInternal()
         {
             return TryGetExistingFilePath(out var path)
                 ? (true, File.ReadAllText(path))
-                : (false, default);
+                : (false, null);
         }
 
         /// <summary>
@@ -1012,7 +1008,7 @@ namespace Intent.Modules.Common.Templates
         /// - Run the software factory.
         /// </para>
         /// </remarks>
-        private (bool Result, string Path) TryGetExistingFilePathInternal()
+        private (bool Result, string? Path) TryGetExistingFilePathInternal()
         {
             var outputPath = FileMetadata.GetFilePath();
             if (File.Exists(outputPath))
@@ -1027,12 +1023,12 @@ namespace Intent.Modules.Common.Templates
                 return (true, previousOutputPath);
             }
 
-            return (false, default);
+            return (false, null);
         }
 
 
         /// <inheritdoc />
-        public bool TryGetExistingFilePath(out string path)
+        public bool TryGetExistingFilePath([NotNullWhen(true)] out string? path)
         {
             (var result, path) = _tryGetExistingFilePathCache.Value;
 
@@ -1045,7 +1041,7 @@ namespace Intent.Modules.Common.Templates
         /// Obsolete. Use <see cref="TryGetTypeName(string,out string)"/> instead.
         /// </summary>
         [Obsolete(WillBeRemovedIn.Version4)]
-        public string TryGetTypeName(string templateId)
+        public string? TryGetTypeName(string templateId)
         {
             return TryGetTypeName(templateId, out var typeName)
                 ? typeName
@@ -1063,7 +1059,7 @@ namespace Intent.Modules.Common.Templates
         /// </para>
         /// </summary>
         /// <returns><see langword="true"/> if the type name could be resolved.</returns>
-        public bool TryGetTypeName(string templateId, out string typeName)
+        public bool TryGetTypeName(string templateId, [NotNullWhen(true)] out string? typeName)
         {
             var classProvider = GetTemplate<IClassProvider>(templateId, TemplateDiscoveryOptions.DoNotThrow);
             if (classProvider == null)
@@ -1080,7 +1076,7 @@ namespace Intent.Modules.Common.Templates
         /// Obsolete. Use <see cref="TryGetTypeName(string,IMetadataModel,out string)"/> instead.
         /// </summary>
         [Obsolete(WillBeRemovedIn.Version4)]
-        public string TryGetTypeName(string templateId, IMetadataModel model)
+        public string? TryGetTypeName(string templateId, IMetadataModel model)
         {
             return TryGetTypeName(templateId, model, out var typeName)
                 ? typeName
@@ -1102,7 +1098,7 @@ namespace Intent.Modules.Common.Templates
         /// <param name="model">The model instance that the Template must be bound to.</param>
         /// <param name="typeName">The resolved type name.</param>
         /// <returns><see langword="true"/> if the type name could be resolved.</returns>
-        public bool TryGetTypeName(string templateId, IMetadataModel model, out string typeName)
+        public bool TryGetTypeName(string templateId, IMetadataModel model, [NotNullWhen(true)] out string? typeName)
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
@@ -1121,7 +1117,7 @@ namespace Intent.Modules.Common.Templates
         /// Obsolete. Use <see cref="TryGetTypeName(string,string,out string)"/> instead.
         /// </summary>
         [Obsolete(WillBeRemovedIn.Version4)]
-        public string TryGetTypeName(string templateId, string modelId)
+        public string? TryGetTypeName(string templateId, string modelId)
         {
             return TryGetTypeName(templateId, modelId, out var typeName)
                 ? typeName
@@ -1143,7 +1139,7 @@ namespace Intent.Modules.Common.Templates
         /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
         /// <param name="typeName">The resolved type name.</param>
         /// <returns><see langword="true"/> if the type name could be resolved.</returns>
-        public bool TryGetTypeName(string templateId, string modelId, out string typeName)
+        public bool TryGetTypeName(string templateId, string modelId, [NotNullWhen(true)] out string? typeName)
         {
             var classProvider = GetTemplate<IClassProvider>(templateId, modelId, TemplateDiscoveryOptions.DoNotThrow);
             if (classProvider == null)
@@ -1159,7 +1155,7 @@ namespace Intent.Modules.Common.Templates
 
         /// <summary>
         /// Resolves and applies <see cref="UseType"/> to the type name for the provided
-        /// <paramref name="templateId"/> parameter.
+        /// <paramref name="templateIds"/> parameter.
         /// This overload assumes that the Template can have many instances and identifies the target instance
         /// based on which has the <paramref name="modelId"/>.
         /// <para>
@@ -1172,12 +1168,14 @@ namespace Intent.Modules.Common.Templates
         /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
         /// <param name="typeName">The resolved type name.</param>
         /// <returns><see langword="true"/> if the type name could be resolved.</returns>
-        public bool TryGetTypeName(IEnumerable<string> templateIds, string modelId, out string typeName)
+        public bool TryGetTypeName(IEnumerable<string> templateIds, string modelId, [NotNullWhen(true)] out string? typeName)
         {
-            if (templateIds == null || !templateIds.Any()) throw new ArgumentNullException(nameof(templateIds));
+            var enumeratedTemplateIds = templateIds as string[] ?? templateIds.ToArray();
 
-            IClassProvider classProvider = null;
-            foreach (var templateId in templateIds)
+            if (templateIds == null || !enumeratedTemplateIds.Any()) throw new ArgumentNullException(nameof(templateIds));
+
+            IClassProvider? classProvider = null;
+            foreach (var templateId in enumeratedTemplateIds)
             {
                 classProvider = GetTemplate<IClassProvider>(templateId, modelId, TemplateDiscoveryOptions.DoNotThrow);
                 if (classProvider != null)
@@ -1209,13 +1207,15 @@ namespace Intent.Modules.Common.Templates
         /// <param name="model">The model instance that the Template must be bound to.</param>
         /// <param name="typeName">The resolved type name.</param>
         /// <returns><see langword="true"/> if the type name could be resolved.</returns>
-        public bool TryGetTypeName(IEnumerable<string> templateIds, IMetadataModel model, out string typeName)
+        public bool TryGetTypeName(IEnumerable<string> templateIds, IMetadataModel model, [NotNullWhen(true)] out string? typeName)
         {
-            if (templateIds == null || !templateIds.Any()) throw new ArgumentNullException(nameof(templateIds));
+            var enumeratedTemplateIds = templateIds as string[] ?? templateIds.ToArray();
+
+            if (templateIds == null || !enumeratedTemplateIds.Any()) throw new ArgumentNullException(nameof(templateIds));
             if (model == null) throw new ArgumentNullException(nameof(model));
 
-            IClassProvider classProvider = null;
-            foreach (var templateId in templateIds)
+            IClassProvider? classProvider = null;
+            foreach (var templateId in enumeratedTemplateIds)
             {
                 classProvider = GetTemplate<IClassProvider>(templateId, model, TemplateDiscoveryOptions.DoNotThrow);
                 if (classProvider != null)
@@ -1254,7 +1254,7 @@ namespace Intent.Modules.Common.Templates
         private TTemplate GetTemplate<TTemplate>(
             Func<TTemplate> getTemplate,
             Func<string> getDependencyDescriptionForException,
-            TemplateDiscoveryOptions options = null)
+            TemplateDiscoveryOptions? options = null)
         {
             options ??= new TemplateDiscoveryOptions();
 
@@ -1273,7 +1273,7 @@ namespace Intent.Modules.Common.Templates
             return template;
         }
 
-        private TTemplate GetTemplate<TTemplate>(ITemplate template, TemplateDiscoveryOptions options = null)
+        private TTemplate? GetTemplate<TTemplate>(ITemplate template, TemplateDiscoveryOptions? options = null)
             where TTemplate : class
         {
             return GetTemplate(
@@ -1283,18 +1283,18 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
-        public TTemplate GetTemplate<TTemplate>(ITemplateDependency dependency, TemplateDiscoveryOptions options = null)
+        public TTemplate? GetTemplate<TTemplate>(ITemplateDependency dependency, TemplateDiscoveryOptions? options = null)
             where TTemplate : class
         {
             return GetTemplate(
-                getTemplate: () => (TTemplate)ExecutionContext.FindTemplateInstance<ITemplate>(dependency),
-                getDependencyDescriptionForException: dependency.ToString,
+                getTemplate: () => (TTemplate?)ExecutionContext.FindTemplateInstance<ITemplate>(dependency),
+                getDependencyDescriptionForException: dependency.ToString!,
                 options: options);
         }
 
         /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
-        public TTemplate GetTemplate<TTemplate>(string templateId, IMetadataModel model,
-            TemplateDiscoveryOptions options = null)
+        public TTemplate? GetTemplate<TTemplate>(string templateId, IMetadataModel model,
+            TemplateDiscoveryOptions? options = null)
             where TTemplate : class
         {
             return GetTemplate(
@@ -1305,8 +1305,8 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
-        public TTemplate GetTemplate<TTemplate>(string templateId, string modelId,
-            TemplateDiscoveryOptions options = null)
+        public TTemplate? GetTemplate<TTemplate>(string templateId, string modelId,
+            TemplateDiscoveryOptions? options = null)
             where TTemplate : class
         {
             return GetTemplate(
@@ -1320,11 +1320,23 @@ namespace Intent.Modules.Common.Templates
         /// Retrieve an instance of an <see cref="ITemplate"/>. By default, an exception will be thrown if the template is not found.
         /// This can be changed in the <see cref="TemplateDiscoveryOptions"/>.
         /// </summary>
-        public TTemplate GetTemplate<TTemplate>(string templateId, TemplateDiscoveryOptions options = null)
+        public TTemplate? GetTemplate<TTemplate>(string templateId, TemplateDiscoveryOptions? options = null)
             where TTemplate : class
         {
             return GetTemplate(
-                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId),
+                getTemplate: () =>
+                {
+                    if (options?.IsAccessible != false)
+                    {
+                        var result = (TTemplate?)ExecutionContext.FindTemplateInstance(templateId, accessibleTo: OutputTarget);
+                        if (result != null)
+                        {
+                            return result;
+                        }
+                    }
+
+                    return ExecutionContext.FindTemplateInstance<TTemplate>(templateId);
+                },
                 getDependencyDescriptionForException: () => $"TemplateId / Role = {templateId}",
                 options: options);
         }
@@ -1332,7 +1344,7 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Try to retrieve an instance of <see cref="ITemplate"/>. Returns true if the template is found.
         /// </summary>
-        public bool TryGetTemplate<TTemplate>(string templateId, out TTemplate template)
+        public bool TryGetTemplate<TTemplate>(string templateId, [NotNullWhen(true)] out TTemplate? template)
             where TTemplate : class
         {
             template = GetTemplate<TTemplate>(templateId: templateId, options: TemplateDiscoveryOptions.DoNotThrow);
@@ -1340,7 +1352,7 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <inheritdoc cref="TryGetTemplate{TTemplate}(string, out TTemplate)"/>
-        public bool TryGetTemplate<TTemplate>(string templateId, IMetadataModel model, out TTemplate template)
+        public bool TryGetTemplate<TTemplate>(string templateId, IMetadataModel model, [NotNullWhen(true)] out TTemplate? template)
             where TTemplate : class
         {
             template = GetTemplate<TTemplate>(templateId: templateId, model: model,
@@ -1349,7 +1361,7 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <inheritdoc cref="TryGetTemplate{TTemplate}(string, out TTemplate)"/>
-        public bool TryGetTemplate<TTemplate>(string templateId, string modelId, out TTemplate template)
+        public bool TryGetTemplate<TTemplate>(string templateId, string modelId, [NotNullWhen(true)] out TTemplate? template)
             where TTemplate : class
         {
             template = GetTemplate<TTemplate>(templateId: templateId, modelId: modelId,
@@ -1358,34 +1370,38 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <inheritdoc cref="TryGetTemplate{TTemplate}(string, out TTemplate)"/>
-        public bool TryGetTemplate<TTemplate>(IEnumerable<string> templateIds, string modelId, out TTemplate template)
+        public bool TryGetTemplate<TTemplate>(IEnumerable<string> templateIds, string modelId, [NotNullWhen(true)] out TTemplate? template)
              where TTemplate : class
         {
-            if (templateIds == null || !templateIds.Any()) throw new ArgumentNullException(nameof(templateIds));
+            var enumeratedTemplateIds = templateIds as string[] ?? templateIds.ToArray();
 
-            foreach (var templateId in templateIds)
+            if (templateIds == null || !enumeratedTemplateIds.Any()) throw new ArgumentNullException(nameof(templateIds));
+
+            foreach (var templateId in enumeratedTemplateIds)
             {
                 template = GetTemplate<TTemplate>(templateId: templateId, modelId: modelId,
                     options: TemplateDiscoveryOptions.DoNotThrow);
                 if (template != null)
-                    return true; 
+                    return true;
             }
             template = null;
             return false;
         }
 
         /// <inheritdoc cref="TryGetTemplate{TTemplate}(string, out TTemplate)"/>
-        public bool TryGetTemplate<TTemplate>(IEnumerable<string> templateIds, IMetadataModel model, out TTemplate template)
+        public bool TryGetTemplate<TTemplate>(IEnumerable<string> templateIds, IMetadataModel model, [NotNullWhen(true)] out TTemplate? template)
             where TTemplate : class
         {
-            if (templateIds == null || !templateIds.Any()) throw new ArgumentNullException(nameof(templateIds));
+            var enumeratedTemplateIds = templateIds as string[] ?? templateIds.ToArray();
 
-            foreach (var templateId in templateIds)
+            if (templateIds == null || !enumeratedTemplateIds.Any()) throw new ArgumentNullException(nameof(templateIds));
+
+            foreach (var templateId in enumeratedTemplateIds)
             {
                 template = GetTemplate<TTemplate>(templateId: templateId, model: model,
                     options: TemplateDiscoveryOptions.DoNotThrow);
                 if (template != null)
-                    return true; 
+                    return true;
             }
             template = null;
             return false;
@@ -1407,13 +1423,63 @@ namespace Intent.Modules.Common.Templates
                 AddTemplateDependency(templateDependency);
             }
 
-            return resolvedTypeInfo.ToString();
+            return resolvedTypeInfo.ToString()!;
+        }
+
+        /// <summary>
+        /// This is for compatibility of events which will first try to be handled by
+        /// <see cref="IOutputTarget.On"/> through <see cref="OnEmitOrPublished"/> or will otherwise
+        /// fall back to legacy <see cref="IApplicationEventDispatcher.Subscribe{TEvent}(string,System.Action{TEvent})"/>
+        /// handlers.
+        /// <para>
+        /// IMPORTANT: Subscribers must use <see cref="OnEmitOrPublished{T}"/> to receive these events.
+        /// </para>
+        /// </summary>
+        public void EmitOrPublish<T>(T @event)
+        {
+            var envelope = new EmitOrPublishEnvelope<T>(@event);
+            OutputTarget.Emit(envelope);
+
+            if (envelope.IsHandled)
+            {
+                return;
+            }
+
+            ExecutionContext.EventDispatcher.Publish(@event);
+        }
+
+        /// <summary>
+        /// Subscribe to events published through <see cref="EmitOrPublish{T}"/>.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="handler"></param>
+        /// <param name="stopPropagation">Whether <see cref="IOutputTargetEvent{TEventData}.StopPropagation"/> should be called.</param>
+        public void OnEmitOrPublished<T>(Action<T> handler, bool stopPropagation = true)
+        {
+            OutputTarget.On<EmitOrPublishEnvelope<T>>(@event =>
+            {
+                @event.Data.IsHandled = true;
+                handler(@event.Data.Event);
+
+                if (stopPropagation)
+                {
+                    @event.StopPropagation();
+                }
+            });
+
+            ExecutionContext.EventDispatcher.Subscribe(handler);
         }
 
         /// <inheritdoc />
         public override string ToString()
         {
             return $"{Id}";
+        }
+
+        private class EmitOrPublishEnvelope<T>(T @event)
+        {
+            public T Event { get; } = @event;
+            public bool IsHandled { get; set; }
         }
     }
 }

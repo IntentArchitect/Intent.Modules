@@ -150,15 +150,19 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("creationOptions")]
         [XmlArrayItem("option")]
-        public List<ElementCreationOptionOld> CreationOptions { get; set; } = new();
+        public List<ElementCreationOptionOld> CreationOptions { get; set; } = [];
+        public bool ShouldSerializeCreationOptions() => CreationOptions.Any();
+
 
         [XmlArray("scriptOptions")]
         [XmlArrayItem("option")]
-        public List<RunScriptOption> ScriptOptions { get; set; } = new();
+        public List<RunScriptOption> ScriptOptions { get; set; } = [];
+        public bool ShouldSerializeScriptOptions() => ScriptOptions.Any();
 
         [XmlArray("mappingOptions")]
         [XmlArrayItem("option")]
-        public List<MappingOption> MappingOptions { get; set; } = new();
+        public List<MappingOption> MappingOptions { get; set; } = [];
+        public bool ShouldSerializeMappingOptions() => MappingOptions.Any();
 
         [XmlArray("mappingSettings")]
         [XmlArrayItem("mappingSetting")]

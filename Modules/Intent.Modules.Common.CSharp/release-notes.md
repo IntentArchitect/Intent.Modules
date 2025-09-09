@@ -1,4 +1,9 @@
-﻿### Version 3.9.4
+﻿### Version 3.9.5
+
+- Improvement: Added `StaticMethodInvocationMapping` and support for "Static Constructors" in the `ObjectInitializationMapping`.
+- Improvement: Add properties for command line arguments, executable path, and working directory in LaunchProfileRegistrationRequest.
+
+### Version 3.9.4
 
 - Improvement: Allow for `INugetPackages` to be resolved with `IApplicationSettingsProvider` instances being injected as dependencies.
 - Improvement: When a .NET project is set to use .NET 10 projects will now use C# language version `14.0` by default.

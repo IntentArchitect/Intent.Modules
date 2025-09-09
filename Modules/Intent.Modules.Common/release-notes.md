@@ -1,3 +1,13 @@
+### Version 3.9.1
+
+-Improvement: Created `ExecutionLifeCycle` static for statically registering actions to be executed during Software Factory runs. Currently used to clear static cache between "hot SF" runs.
+
+### Version 3.9.0
+
+- Feature: Added support for filtering template instances for registrations.
+- Improvement: `UpdateTemplateFileConfig` virtual method added to `StaticContentTemplateRegistration` to allow updates or replacement of the `ITemplateFileConfig` to be used by the templates.
+- Improvement: `RegisterTemplate` virtual method added to `StaticContentTemplateRegistration` to allow customization of template registration.
+
 ### Version 3.8.0
 
 - Improvement: Added `[Invokable]` stereotype (trait) to this module.

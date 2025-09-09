@@ -1,4 +1,5 @@
 using System;
+using Intent.Engine;
 using Intent.Eventing;
 using Intent.Modules.Common.Templates;
 using Intent.Utils;
@@ -40,13 +41,49 @@ public static class DefaultLaunchUrlPathRequestExtensions
     {
         var request = new DefaultLaunchUrlPathRequest(urlPath, forProjectWithRole);
         template.ExecutionContext.EventDispatcher.Publish(request);
-        
+
         if (!request.WasHandled)
         {
             Logging.Log.Warning($"{nameof(PublishDefaultLaunchUrlPathRequest)} for {nameof(urlPath)}='{urlPath}',{nameof(forProjectWithRole)}='{forProjectWithRole}' " +
                                 $"was not handled. Ensure in the Visual Studio designer that you have:{Environment.NewLine}" +
                                 $" - at least one ASP.NET project{Environment.NewLine}" +
                                 (!string.IsNullOrWhiteSpace(forProjectWithRole) ? $" - a matching 'Role' element under the project{Environment.NewLine}" : string.Empty).TrimEnd());
+        }
+    }
+
+    /// <summary>
+    /// Sets the default launch url path in the <c>launchsettings.json</c> file to the provided
+    /// <paramref name="urlPath"/>.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This needs to be called within the <see cref="IntentTemplateBase.BeforeTemplateExecution"/> method.
+    /// </para>
+    ///
+    /// <para>
+    /// This event can only be published once, publishing it a second time will raise an exception.
+    /// </para>
+    ///
+    /// <para>
+    /// If the <c>launchsettings.json</c> file already exists, it will not be updated.
+    /// </para>
+    ///
+    /// <para>
+    /// Compared to <see cref="PublishDefaultLaunchUrlPathRequest"/>, this uses <see cref="IOutputTarget.Emit{TEventData}"/>
+    /// and will be automatically scoped to projects which have references to the publisher.
+    /// </para>
+    /// </remarks>
+    public static void EmitDefaultLaunchUrlPathRequest(this IOutputTarget outputTarget, string urlPath)
+    {
+        var request = new DefaultLaunchUrlPathRequest(urlPath, null);
+        outputTarget.Emit(request);
+
+        if (!request.WasHandled)
+        {
+            Logging.Log.Warning(
+                $"{nameof(PublishDefaultLaunchUrlPathRequest)} for {nameof(urlPath)}='{urlPath}' " +
+                $"was not handled. Ensure in the Visual Studio designer that there is at least one" +
+                $"ASP.NET project which can access the publisher by reference to {outputTarget} [{outputTarget.Id}].");
         }
     }
 }
