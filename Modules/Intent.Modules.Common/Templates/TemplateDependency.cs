@@ -1,12 +1,16 @@
 ﻿#nullable enable
+using Intent.Engine;
+using Intent.Metadata.Models;
+using Intent.Modules.Common.FactoryExtensions;
+using Intent.Modules.Common.Plugins;
+using Intent.Plugins;
+using Intent.Plugins.FactoryExtensions;
+using Intent.SdkEvolutionHelpers;
+using Intent.Templates;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Intent.Engine;
-using Intent.Metadata.Models;
-using Intent.SdkEvolutionHelpers;
-using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
@@ -396,6 +400,14 @@ namespace Intent.Modules.Common.Templates
         private abstract class FastLookupTemplateDependency<TInstanceCacheKey, TTemplateDependency> : IFastLookupTemplateDependency
             where TTemplateDependency : ITemplateDependency where TInstanceCacheKey : notnull
         {
+            static FastLookupTemplateDependency()
+            {
+                ExecutionLifeCycle.OnStart(() =>
+                {
+                    InstanceCache.Clear();
+                });
+            }
+
             protected FastLookupTemplateDependency(IOutputTarget? accessibleTo)
             {
                 AccessibleTo = accessibleTo;
@@ -442,6 +454,18 @@ namespace Intent.Modules.Common.Templates
             public abstract bool IsMatch(ITemplate template);
 
             public IOutputTarget? AccessibleTo { get; }
+            public void ClearCache()
+            {
+                InstanceCache.Clear();
+            }
+
+            public void OnStep(IApplication application, string step)
+            {
+                if (step == ExecutionLifeCycleSteps.Start)
+                {
+                    ClearCache();
+                }
+            }
         }
     }
 }
