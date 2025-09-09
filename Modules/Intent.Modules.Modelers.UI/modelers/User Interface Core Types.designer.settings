@@ -1027,6 +1027,7 @@ font-family: Helvetica;
 font-weight: bold; 
 text-align: center; 
 white-space: inherit;
+color: ${(element.isReference() ? theme.isDark ? "#9AD6D9" : "#007D80" : "inherit")};
 vertical-align: center`</style>
                 <size width="${w}" height="16" />
                 <position x="${x}" y="${y + 40}" />
@@ -1050,14 +1051,13 @@ vertical-align: center`</style>
             <position x="${x}" y="${y}" />
             <display>
               <drawText>
-                <text>return getName();</text>
                 <style>
 return `font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
 text-align: center; 
 white-space: inherit;
-color: ${(element.isReference() ? theme.isDark ? "#aaddaa" : "#224422" : "inherit")};
+color: ${(element.isReference() ? theme.isDark ? "#9AD6D9" : "#007D80" : "inherit")};
 vertical-align: center`</style>
                 <size width="${w}" height="16" />
                 <position x="${x}" y="${y + 40}" />
@@ -1080,7 +1080,6 @@ vertical-align: center`</style>
                 <position x="`${parent.x}`" y="`${parent.y + ($index * 20) + 66}`" />
                 <display>
                   <drawText>
-                    <text>return label;</text>
                     <size width="${w - 26}" height="${h}" />
                     <position x="${x + 24}" y="${y}" />
                   </drawText>
@@ -1110,6 +1109,7 @@ font-family: Helvetica;
 font-weight: bold; 
 text-align: center; 
 white-space: inherit;
+color: ${(element.isReference() ? theme.isDark ? "#9AD6D9" : "#007D80" : "inherit")};
 vertical-align: center`</style>
                 <size width="${w}" height="16" />
                 <position x="${x}" y="${y + 40}" />
@@ -3509,6 +3509,15 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), propert
   </mappableElementPackages>
   <mappableElementPackageExtensions />
   <suggestionSettings>
+    <suggestionSetting type="Call Service Operation Action Target End" typeId="475f0810-2b4a-40da-8eb8-697cb62f7dbe" locations="diagram, model">
+      <name>Re-map Service Call</name>
+      <filterFunction>return typeof(element.hasErrors) == "function" &amp;&amp; (element.hasErrors() || element.hasWarnings());</filterFunction>
+      <dependencies>
+        <dependency name="Common UI Script" id="5bd2a61d-7aaa-4785-90fa-376796ccb6c8" />
+      </dependencies>
+      <script>BackendServiceHelperApi.remapServiceCall(element);
+</script>
+    </suggestionSetting>
     <suggestionSetting type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" locations="diagram, model">
       <name>Add to Sider Menu</name>
       <filterFunction>const associationIds = [
@@ -3548,7 +3557,9 @@ mapping.addMappingExpression(targetPath, "{" + navAssociation.getName() + "}");<
     </suggestionSetting>
     <suggestionSetting type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" locations="diagram, model">
       <name>Call Backend Service</name>
-      <dependencies />
+      <dependencies>
+        <dependency name="Common UI Script" id="5bd2a61d-7aaa-4785-90fa-376796ccb6c8" />
+      </dependencies>
       <script>const result = await dialogService.openForm({
     title: "Add to Diagram",
     fields: [
@@ -3575,6 +3586,7 @@ if (result.selectedElementId.length == 0) {
     return;
 }
 
+
 const component = element;
 const diagram = getCurrentDiagram();
 const componentVisual = diagram.getVisual(element.id);
@@ -3585,6 +3597,8 @@ if (!serviceRequest) {
     return;
 }
 
+BackendServiceHelperApi.setupCallServiceFromComponent(component, serviceRequest);
+return;
 
 if (serviceRequest.specialization == "Query") {
     const query = serviceRequest;
@@ -3770,6 +3784,9 @@ function addChildElementsRecursivly(model, contract, component, mapping, srcPath
         <dependency name="Add Component Function" id="1832aefa-e28b-4e8f-b65d-8555a1e3b31e" />
       </dependencies>
       <filePath>addComponentScript.js</filePath>
+    </script>
+    <script name="Common UI Script" id="5bd2a61d-7aaa-4785-90fa-376796ccb6c8">
+      <filePath>ui-common-api.js</filePath>
     </script>
     <script name="New Page Default Route Script" id="3c0034be-44cc-40b1-a390-b5e88574ee46">
       <script>function setDefaultRoute(page, stereotype ){

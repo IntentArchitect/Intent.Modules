@@ -1,3 +1,7 @@
+### Version 1.0.1
+
+- Improvement: Created common TypeScript structure for calling backend services.
+
 ### Version 1.0.0
 
 - Initial release.
