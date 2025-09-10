@@ -25,12 +25,40 @@ Within the **User Settings**, is an **AI Settings** section:
 ### Available Settings
 
 - **Provider**: The AI provider to use. Supported options:
-  - OpenAI
-  - Azure OpenAI
-  - Ollama
+  - [OpenAI](#openai-details)
+  - [Azure OpenAI](#azure-openai-details)
+  - [Anthropic](#anthropic-details)
+  - [Ollama](#ollama-details)
 
 - **Model**: The LLM model to use, specific to the selected provider.
 - **API Key**: The API key used to authenticate with the provider. You can store a separate key for each provider if needed.
-- **Max Tokens**: Specifies the maximum number of tokens (input + output) the AI can process in a single prompt.
 - **API URL**: The endpoint URL used to connect to the AI provider’s API.
-- **Deployment Name**: The name of the deployed model to use when calling the AI provider.
+- **Max Tokens**: Specifies the maximum number of tokens (input + output) the AI can process in a single prompt.
+- **Deployment Name**: The name of the deployed model to use when calling Azure OpenAI.
+
+### Provider Details
+
+#### OpenAI Details
+
+- **Sign up for API access**: [OpenAI Platform](https://platform.openai.com/signup)
+- **Available models**: [OpenAI Models](https://platform.openai.com/docs/models/compare)
+- **Pricing**: [OpenAI Pricing](https://platform.openai.com/docs/pricing)
+
+#### Azure OpenAI Details
+
+- **Sign up for Azure account**: [Azure Free Account](https://azure.microsoft.com/en-us/free/ai/)
+- **Available models**: [Azure OpenAI Models](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models)
+- **Pricing**: [Azure OpenAI Pricing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/)
+
+#### Anthropic Details
+
+- **Sign up for API access**: [Anthropic Console](https://console.anthropic.com/)
+- **Available models**: [Anthropic Models](https://docs.anthropic.com/claude/docs/models-overview)
+- **Pricing**: [Anthropic Pricing](https://docs.anthropic.com/en/docs/about-claude/pricing)
+
+#### Ollama Details
+
+- **Download and install**: [Ollama Download](https://ollama.ai/)
+- **Available models**: [Ollama Model Library](https://ollama.ai/library)
+- **Pricing**: Models are free but will require powerful hardware to run locally
+
