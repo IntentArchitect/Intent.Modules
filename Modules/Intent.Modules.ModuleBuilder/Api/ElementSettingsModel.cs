@@ -99,7 +99,7 @@ namespace Intent.ModuleBuilder.Api
                 ContextMenuOptions = this.MenuOptions?.ToPersistable(),
                 //CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
                 //ScriptOptions = MenuOptions?.RunScriptOptions.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
-                //MappingOptions = MenuOptions?.MappingOptions.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
+                MappingOptions = MenuOptions?.MappingOptions.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList() ?? [],
                 TypeOrder = GetTypeOrder(),
                 VisualSettings = this.VisualSettings?.ToPersistable(),
                 Macros = EventSettings?.ToPersistable(),

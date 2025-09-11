@@ -142,7 +142,6 @@ namespace Intent.ModuleBuilder.Api
             .ToList();
 
         [IntentManaged(Mode.Fully, Signature = Mode.Merge)]
-        [Obsolete("Replaced with ToPersistable() which returns List<ContextMenuOption>")]
         public IList<MappingOptionModel> MappingOptions => _element.ChildElements
             .GetElementsOfType(MappingOptionModel.SpecializationTypeId)
             .Select(x => new MappingOptionModel(x))

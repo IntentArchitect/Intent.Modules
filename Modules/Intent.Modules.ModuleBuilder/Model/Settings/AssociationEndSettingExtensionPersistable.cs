@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace Intent.IArchitect.Agent.Persistence.Model.Common
@@ -30,7 +31,8 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("mappingOptions")]
         [XmlArrayItem("option")]
-        public List<MappingOption> MappingOptions { get; set; }
+        public required List<MappingOption> MappingOptions { get; set; }
+        public bool ShouldSerializeMappingOptions() => MappingOptions.Any();
 
         [XmlElement("typeReferenceExtension")]
         public TypeReferenceExtensionSettingPersistable TypeReferenceExtension { get; set; }
