@@ -1,3 +1,7 @@
+### Version 4.4.4
+
+- Fixed: Critical issue with missing configuration of Mapping Options causing loss of metadata on save.
+
 ### Version 4.4.3
 
 - Improvement: Updated Properties icon and added syntax highlighting to visuals.
