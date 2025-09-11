@@ -462,6 +462,18 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
         return this;
     }
 
+    public CSharpClass AddNestedRecord(string name, Action<ICSharpClass>? configure = null)
+    {
+        var @class = new CSharpRecord(
+            name: name,
+            file: File,
+            parent: this);
+
+        configure?.Invoke(@class);
+        NestedClasses.Add(@class);
+        return this;
+    }
+
     public CSharpClass AddNestedInterface(string name, Action<CSharpInterface>? configure = null)
     {
         var @interface = new CSharpInterface(
@@ -886,6 +898,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     ICSharpClass ICSharpClass.AddNestedClass(string name, Action<ICSharpClass>? configure)
     {
         return _wrapper.AddNestedClass(name, configure);
+    }
+    
+    ICSharpClass ICSharpClass.AddNestedRecord(string name, Action<ICSharpClass>? configure)
+    {
+        return _wrapper.AddNestedRecord(name, configure);
     }
 
     ICSharpClass ICSharpClass.AddNestedInterface(string name, Action<ICSharpInterface>? configure)

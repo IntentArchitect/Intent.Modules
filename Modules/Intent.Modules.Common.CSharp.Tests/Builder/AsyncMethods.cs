@@ -107,7 +107,7 @@ public class AsyncMethods
     public async Task InterfaceMethodAsync_TaskToValueTask()
     {
         var fileBuilder = new CSharpFile("Namespace", "File")
-            .AddInterface("Inteface", c =>
+            .AddInterface("Interface", c =>
             {
                 c.AddMethod("string", "GetNameAsync", m =>
                 {

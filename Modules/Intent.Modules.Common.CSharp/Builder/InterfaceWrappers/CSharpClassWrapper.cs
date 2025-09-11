@@ -122,6 +122,8 @@ internal class CSharpClassWrapper(CSharpClass wrapped) :
     ICSharpClass ICSharpClass.AddGenericTypeConstraint(string genericParameterName, Action<ICSharpGenericTypeConstraint> configure) => wrapped.AddGenericTypeConstraint(genericParameterName, configure);
 
     ICSharpClass ICSharpClass.AddNestedClass(string name, Action<ICSharpClass>? configure) => wrapped.AddNestedClass(name, configure);
+    
+    ICSharpClass ICSharpClass.AddNestedRecord(string name, Action<ICSharpClass>? configure) => wrapped.AddNestedRecord(name, configure);
 
     ICSharpClass ICSharpClass.AddNestedInterface(string name, Action<ICSharpInterface>? configure) => wrapped.AddNestedInterface(name, configure);
 

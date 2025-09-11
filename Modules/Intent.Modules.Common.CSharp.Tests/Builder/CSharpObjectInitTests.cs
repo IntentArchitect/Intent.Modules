@@ -107,5 +107,43 @@ public class CSharpObjectInitTests
         Assert.Equal("var y", (fileBuilder.Classes.First().Methods.First().Statements.First() as CSharpObjectInitStatement)!.LeftHandSide);
         Assert.Equal("789;", (fileBuilder.Classes.First().Methods.First().Statements.First() as CSharpObjectInitStatement)!.RightHandSide.ToString());
     }
+    
+    [Fact]
+    public async Task ObjectInitializersTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddObjectInitializerBlock("var obj = new SomeObject", c => c
+                        .AddInitStatement("LambdaProp", new CSharpLambdaBlock("x")
+                            .AddStatement("return x + 1;"))
+                        .AddInitStatement("StringProp", "\"My string\"")
+                        .AddInitStatement("IntProp", "5")
+                        .WithSemicolon());
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task DictionaryInitializersTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddObjectInitializerBlock("var dict = new Dictionary<string, string>", c => c
+                        .AddKeyAndValue(@"""key1""", @"""value 1""")
+                        .AddKeyAndValue(@"""key2""", @"""value 2""")
+                        .WithSemicolon());
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 
 }
