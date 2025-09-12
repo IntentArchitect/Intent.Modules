@@ -1,4 +1,8 @@
-﻿### Version 3.6.0
+﻿### Version 3.6.1
+
+- Feature: A context menu option has been added to packages to update versions from the content of a modules.config file.
+
+### Version 3.6.0
 
 - Improvement: Supports adding `Images` to Application Templates. These are supported and displayed in Intent Architect 4.5.0 and later.
 - Improvement: Priority of application template ordering now shows on the display text of the package.

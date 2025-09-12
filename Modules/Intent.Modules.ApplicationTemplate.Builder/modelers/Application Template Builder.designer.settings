@@ -35,6 +35,75 @@
           <defaultName>Installation settings</defaultName>
           <allowMultiple>true</allowMultiple>
         </createElement>
+        <runScript type="run-script">
+          <text>Update versions from modules.config</text>
+          <icon type="FontAwesome" source="code" />
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+
+function parseToMap(xmlString) {
+  const regex = /moduleId="([A-Za-z0-9.\-]+)"\s+version="([0-9A-Za-z.\-]+)"/g;
+  const modulesMap = new Map();
+  let match;
+
+  while ((match = regex.exec(xmlString)) !== null) {
+    modulesMap.set(match[1], match[2]);
+  }
+
+  return modulesMap;
+}
+
+const result = await dialogService.openForm({
+  title: "modules.config importer",
+  fields: [
+    {
+      fieldType: "textarea",
+      id: "xml",
+      label: "XML"
+    }
+  ]
+});
+
+const parsedVersionsById = parseToMap(result.xml);
+
+const minVersions = lookupTypesOf("Module");
+for (let i = 0; i &lt; minVersions.length; i++) {
+  const item = minVersions[i];
+  const name = item.getName();
+
+  if (!parsedVersionsById.has(name)) {
+    continue;
+  }
+
+  const value = parsedVersionsById.get(name);
+  const oldValue = item.getValue();
+
+  item.setValue(value);
+
+  console.log(`Updated minimum version module ${name} from ${oldValue} to ${value}`);
+}
+
+const componentModules = lookupTypesOf("Component Module");
+for (let i = 0; i &lt; componentModules.length; i++) {
+  const item = componentModules[i];
+  const name = item.getName();
+
+  if (!parsedVersionsById.has(name)) {
+    continue;
+  }
+
+  const stereotype = item.getStereotype("Module Settings");
+  const property = stereotype.getProperty("Version");
+  const value = parsedVersionsById.get(name);
+  const oldValue = property.getValue();
+
+  property.setValue(value);
+
+  console.log(`Updated component module ${name} from ${oldValue} to ${value}`);
+}
+
+await dialogService.info("Complete.");
+</script>
+        </runScript>
       </contextMenuOptions>
       <creationOptions>
         <option type="element">
@@ -64,7 +133,77 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
-      <scriptOptions />
+      <scriptOptions>
+        <option type="run-script">
+          <text>Update versions from modules.config</text>
+          <icon type="FontAwesome" source="code" />
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+
+function parseToMap(xmlString) {
+  const regex = /moduleId="([A-Za-z0-9.\-]+)"\s+version="([0-9A-Za-z.\-]+)"/g;
+  const modulesMap = new Map();
+  let match;
+
+  while ((match = regex.exec(xmlString)) !== null) {
+    modulesMap.set(match[1], match[2]);
+  }
+
+  return modulesMap;
+}
+
+const result = await dialogService.openForm({
+  title: "modules.config importer",
+  fields: [
+    {
+      fieldType: "textarea",
+      id: "xml",
+      label: "XML"
+    }
+  ]
+});
+
+const parsedVersionsById = parseToMap(result.xml);
+
+const minVersions = lookupTypesOf("Module");
+for (let i = 0; i &lt; minVersions.length; i++) {
+  const item = minVersions[i];
+  const name = item.getName();
+
+  if (!parsedVersionsById.has(name)) {
+    continue;
+  }
+
+  const value = parsedVersionsById.get(name);
+  const oldValue = item.getValue();
+
+  item.setValue(value);
+
+  console.log(`Updated minimum version module ${name} from ${oldValue} to ${value}`);
+}
+
+const componentModules = lookupTypesOf("Component Module");
+for (let i = 0; i &lt; componentModules.length; i++) {
+  const item = componentModules[i];
+  const name = item.getName();
+
+  if (!parsedVersionsById.has(name)) {
+    continue;
+  }
+
+  const stereotype = item.getStereotype("Module Settings");
+  const property = stereotype.getProperty("Version");
+  const value = parsedVersionsById.get(name);
+  const oldValue = property.getValue();
+
+  property.setValue(value);
+
+  console.log(`Updated component module ${name} from ${oldValue} to ${value}`);
+}
+
+await dialogService.info("Complete.");
+</script>
+        </option>
+      </scriptOptions>
       <typeOrder>
         <type order="0" type="Minimum Dependency Versions" typeId="63605213-ab56-4042-b801-907bb5a79c08" />
         <type order="1" type="Component Group" typeId="027f8bb9-9b28-4c1d-a516-8c3daa70e46d" />
