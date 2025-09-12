@@ -1,6 +1,9 @@
 ### Version 1.0.1
 
 - Improvement: Created common TypeScript structure for calling backend services.
+- Improvement: Added support for adding multiple services.
+- Improvement: Made non-nullable Model Definition types nullable for UI concerns.
+- Fixed: Traditional service mapping are now working correctly for writes.
 
 ### Version 1.0.0
 

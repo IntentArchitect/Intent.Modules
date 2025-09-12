@@ -3564,12 +3564,12 @@ mapping.addMappingExpression(targetPath, "{" + navAssociation.getName() + "}");<
     title: "Add to Diagram",
     fields: [
         {
-            id: "selectedElementId",
+            id: "selectedElementIds",
             label: "Select Elements",
             fieldType: "tree-view",
             treeViewOptions: { 
                 rootId: getCurrentDiagram().getOwner().getPackage().id,
-                isMultiSelect: false,
+                isMultiSelect: true,
                 submitFormTriggers: ["double-click", "enter"],
                 hasFilter: true,
                 selectableTypes: [
@@ -3582,7 +3582,7 @@ mapping.addMappingExpression(targetPath, "{" + navAssociation.getName() + "}");<
     ]
 })
 
-if (result.selectedElementId.length == 0) {
+if (result.selectedElementIds.length == 0) {
     return;
 }
 
@@ -3591,13 +3591,17 @@ const component = element;
 const diagram = getCurrentDiagram();
 const componentVisual = diagram.getVisual(element.id);
 const space = diagram.findEmptySpace({ x: componentVisual.getDimensions().right + 250, y: componentVisual.getDimensions().getCenter().y}, { width: 200, height: 100 });
-const serviceRequest = lookup(result.selectedElementId);
 
-if (!serviceRequest) {
-    return;
-}
+result.selectedElementIds.forEach(selectedElementId =&gt; {
 
-BackendServiceHelperApi.setupCallServiceFromComponent(component, serviceRequest);
+    const serviceRequest = lookup(selectedElementId);
+
+    if (!serviceRequest) {
+        return;
+    }
+    BackendServiceHelperApi.setupCallServiceFromComponent(component, serviceRequest, result.selectedElementIds.length == 1);
+
+});
 return;
 
 if (serviceRequest.specialization == "Query") {
