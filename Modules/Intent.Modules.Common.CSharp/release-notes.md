@@ -1,6 +1,7 @@
 ﻿### Version 3.9.6
 
 - Improvement: Added `AddNestedRecord` to `CSharpClass`.
+- Improvement: Clears InteractionStrategy cache between "Hot" Software Factory restarts.
 
 ### Version 3.9.5
 
