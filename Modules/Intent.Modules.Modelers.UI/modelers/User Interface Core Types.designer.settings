@@ -3730,6 +3730,31 @@ function addChildElementsRecursivly(model, contract, component, mapping, srcPath
     })
 }</script>
     </suggestionSetting>
+    <suggestionSetting type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" locations="diagram, model">
+      <name>Make Route Parameter</name>
+      <filterFunction>if (!element.hasStereotype("f324c4ea-bac2-450d-b1b1-cc7f09ca3472") // Route Parameter
+    &amp;&amp; idIdentityType(element) 
+    &amp;&amp; element.getName().toLowerCase().endsWith("id")){
+    return true;
+}
+
+return false;
+
+function idIdentityType(element){    
+    const primitiveTypeIds = new Set([
+        "6b649125-18ea-48fd-a6ba-0bfff0d8f488", // guid
+        "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74", // int
+        "33013006-E404-48C2-AC46-24EF5A5774FD", // long
+        "d384db9c-a279-45e1-801e-e4e8099625f2" // string
+    ]);
+    if (element.typeReference){
+        return primitiveTypeIds.has(element.typeReference.typeId);
+    }
+    return false;
+}</filterFunction>
+      <dependencies />
+      <script>element.addStereotype("f324c4ea-bac2-450d-b1b1-cc7f09ca3472");</script>
+    </suggestionSetting>
   </suggestionSettings>
   <scripts>
     <script name="Add Component Function" id="1832aefa-e28b-4e8f-b65d-8555a1e3b31e">

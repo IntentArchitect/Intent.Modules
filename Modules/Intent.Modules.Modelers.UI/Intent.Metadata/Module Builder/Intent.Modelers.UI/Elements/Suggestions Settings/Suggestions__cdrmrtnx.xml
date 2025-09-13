@@ -86,6 +86,43 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="2a751403-563c-4842-b2c0-bb6096bc3866" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
+      <name>Make Route Parameter</name>
+      <display>Make Route Parameter: Property</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="1f40ed3a-155f-4fd0-b224-5f4989d20585">
+        <typeId>356fbe17-bc63-4e16-b915-feefbc063cbe</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modelers.UI</typePackageName>
+        <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>3e111ea5-474c-4e27-bfa0-6f4701329027</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="daf7d9b3-9c10-4286-b30e-7edb2e62f10e" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="if (!element.hasStereotype(&quot;f324c4ea-bac2-450d-b1b1-cc7f09ca3472&quot;) // Route Parameter&#xD;&#xA;    &amp;&amp; idIdentityType(element) &#xD;&#xA;    &amp;&amp; element.getName().toLowerCase().endsWith(&quot;id&quot;)){&#xD;&#xA;    return true;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;return false;&#xD;&#xA;&#xD;&#xA;function idIdentityType(element){    &#xD;&#xA;    const primitiveTypeIds = new Set([&#xD;&#xA;        &quot;6b649125-18ea-48fd-a6ba-0bfff0d8f488&quot;, // guid&#xD;&#xA;        &quot;fb0a362d-e9e2-40de-b6ff-5ce8167cbe74&quot;, // int&#xD;&#xA;        &quot;33013006-E404-48C2-AC46-24EF5A5774FD&quot;, // long&#xD;&#xA;        &quot;d384db9c-a279-45e1-801e-e4e8099625f2&quot; // string&#xD;&#xA;    ]);&#xD;&#xA;    if (element.typeReference){&#xD;&#xA;        return primitiveTypeIds.has(element.typeReference.typeId);&#xD;&#xA;    }&#xD;&#xA;    return false;&#xD;&#xA;}" isActive="true" />
+            <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
+            <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="element.addStereotype(&quot;f324c4ea-bac2-450d-b1b1-cc7f09ca3472&quot;);" isActive="true" />
+            <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
     <childElement id="2555eb9a-da0c-463b-9dec-07cc753bb4d0" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
       <name>Re-map Service Call</name>
       <display>Re-map Service Call: Call Service Operation Action Target End</display>
