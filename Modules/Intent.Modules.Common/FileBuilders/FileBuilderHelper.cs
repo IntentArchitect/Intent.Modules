@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Intent.Engine;
 using Intent.Exceptions;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.Common.FileBuilders;
 
@@ -28,25 +29,20 @@ public class FileBuilderHelper
             .OfType<IFileBuilderTemplate>()
             .ToArray();
 
-        var sortedSet = new SortedSet<Comparable>();
-        var initial = templates
+        var initialItems = templates
             .SelectMany(
                 collectionSelector: template => !isForAfterBuild
                     ? template.File.GetConfigurationDelegates()
                     : template.File.GetConfigurationAfterDelegates(),
-                resultSelector: (template, configuration) => new Comparable(template, configuration))
-            .ToArray();
+                resultSelector: (template, action) => new Item(template, action));
 
-        sortedSet.UnionWith(initial);
-        Debug.Assert(initial.Length == sortedSet.Count);
+        var queue = new PriorityQueue<Item, Item>(initialItems.Select(x => (x, x)));
 
-        while (sortedSet.Count != 0)
+        while (queue.TryDequeue(out var item, out _))
         {
-            var action = sortedSet.First();
-
             try
             {
-                action.Invoke();
+                item.Action();
             }
             catch (ElementException)
             {
@@ -54,7 +50,7 @@ public class FileBuilderHelper
             }
             catch (Exception e)
             {
-                var template = action.Template;
+                var template = item.Template;
                 var path = template.GetMetadata().GetRelativeFilePath();
                 if (Path.DirectorySeparatorChar is '\\')
                 {
@@ -65,15 +61,10 @@ public class FileBuilderHelper
 
                 if (template.TryGetModel<IElementWrapper>(out var model))
                 {
-
                     throw new ElementException(model.InternalElement, message, e);
                 }
 
                 throw new Exception(message, e);
-            }
-            finally
-            {
-                sortedSet.Remove(action);
             }
 
             var toAdd = templates
@@ -81,12 +72,13 @@ public class FileBuilderHelper
                     collectionSelector: template => !isForAfterBuild
                         ? template.File.GetConfigurationDelegates()
                         : template.File.GetConfigurationAfterDelegates(),
-                    resultSelector: (template, configuration) => new Comparable(template, configuration))
+                    resultSelector: (template, configuration) => new Item(template, configuration))
                 .ToArray();
 
-            var sortedSetBeforeCount = sortedSet.Count;
-            sortedSet.UnionWith(toAdd);
-            Debug.Assert(sortedSet.Count == sortedSetBeforeCount + toAdd.Length);
+            foreach (var comparable in toAdd)
+            {
+                queue.Enqueue(comparable, comparable);
+            }
         }
 
         foreach (var template in templates)
@@ -102,44 +94,59 @@ public class FileBuilderHelper
         }
     }
 
-    private record Comparable : IComparable<Comparable>
+    private record Item : IComparable<Item>
     {
         private static ulong _counter;
 
         private readonly int _order;
-        private readonly ulong _insertionOrder;
+        private readonly ulong _creationOrder;
         private readonly string _templateType;
+        private readonly string _modelId;
 
-        public Comparable(IFileBuilderTemplate template, (Action Invoke, int Order) configuration)
+        public Item(IFileBuilderTemplate template, (Action Invoke, int Order) configuration)
         {
             _order = configuration.Order;
-            _insertionOrder = _counter++;
+            _creationOrder = _counter++;
             _templateType = template.GetType().FullName;
+            _modelId = ((template as ITemplateWithModel)?.Model as IMetadataModel)?.Id;
             Template = template;
-            Invoke = configuration.Invoke;
+            Action = configuration.Invoke;
         }
 
         public IFileBuilderTemplate Template { get; }
-        public Action Invoke { get; }
+        public Action Action { get; }
 
-        public int CompareTo(Comparable other)
+        public int CompareTo(Item other)
         {
             if (ReferenceEquals(this, other)) return 0;
-            if (ReferenceEquals(null, other)) return 1;
+            if (other is null) return 1;
 
             var orderComparison = _order.CompareTo(other._order);
             if (orderComparison != 0) return orderComparison;
 
-            var insertionOrderComparison = _insertionOrder.CompareTo(other._insertionOrder);
-            if (insertionOrderComparison != 0) return insertionOrderComparison;
-
             var templateTypeComparison = string.Compare(_templateType, other._templateType, StringComparison.Ordinal);
             if (templateTypeComparison != 0) return templateTypeComparison;
 
-            var templateComparison = ReferenceEquals(Template, other.Template) ? 0 : 1;
-            if (templateComparison != 0) return templateComparison;
+            var templateIdComparison = string.Compare(Template.Id, other.Template.Id, StringComparison.Ordinal);
+            if (templateIdComparison != 0) return templateIdComparison;
 
-            return ReferenceEquals(Invoke, other.Invoke) ? 0 : 1;
+            var modelIdComparison = string.Compare(_modelId, other._modelId, StringComparison.Ordinal);
+            if (modelIdComparison != 0) return modelIdComparison;
+
+            var creationOrderComparison = _creationOrder.CompareTo(other._creationOrder);
+            if (creationOrderComparison != 0) return creationOrderComparison;
+
+            return ReferenceEquals(Action, other.Action) ? 0 : 1;
         }
+
+        //public override int GetHashCode()
+        //{
+        //    return Invoke.GetHashCode();
+        //}
+
+        //public override bool Equals(object obj)
+        //{
+        //    return ReferenceEquals(this, obj);
+        //}
     }
 }

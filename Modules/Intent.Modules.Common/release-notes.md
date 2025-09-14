@@ -1,6 +1,7 @@
 ### Version 3.9.1
 
--Improvement: Created `ExecutionLifeCycle` static for statically registering actions to be executed during Software Factory runs. Currently used to clear static cache between "hot SF" runs.
+- Improvement: Created `ExecutionLifeCycle` static for statically registering actions to be executed during Software Factory runs. Currently used to clear static cache between "hot SF" runs.
+- Fixed: Execution order of file builder `OnBuild(...)` and `OnAfterBuild(...)` methods were not deterministic between different operating systems resulting in different generated output under certain circumstances.
 
 ### Version 3.9.0
 
