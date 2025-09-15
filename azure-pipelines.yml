@@ -40,6 +40,8 @@ variables:
   value: '##vso[task.logissue type=warning;]{@m} {@x}\n'
 - name: 'error-logging-command'
   value: '##vso[task.logissue type=error;]{@m} {@x}\n'
+- name: 'buildStamp'
+  value: $[ format('{0:yyyyMMddHHmmss}', pipeline.startTime) ]
 
 pool:
   name: $(BuildPool.AzureManaged)
@@ -54,6 +56,7 @@ steps:
       git config --global core.longpaths true
 
 - checkout: 'self'
+  clean: true
   persistCredentials: 'true'
   fetchDepth: '1'
   submodules: 'recursive'
@@ -114,17 +117,17 @@ steps:
       -vstsFeedUrl $(vstsFeedUrl)
 
 # Push the NuGet packages to the DevOps artifact feed so that they're available to this build and other pipelines
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
   displayName: 'Push Intent Nuget Packages to DevOps Artifacts'
   condition: and(succeeded(), in('True', variables.isMaster, variables.isHotfix, variables.isDevelopment))
   inputs:
-      command: 'push'
-      feedsToUse: 'select'
-      includeNuGetOrg: false
-      publishVstsFeed: $(vstsFeed)
-      allowPackageConflicts: true
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-      nuGetFeedType: 'internal'
+    command: 'custom'
+    custom: 'nuget'
+    arguments: >
+      push $(Build.ArtifactStagingDirectory)/*.nupkg
+      -s $(vstsFeedUrl)
+      -k none
+      --skip-duplicate
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
@@ -166,10 +169,33 @@ steps:
     DOTNET_NOLOGO: 1
   inputs:
     command: 'test'
+    publishTestResults: false
     projects: $(targetsToBuild)
     arguments: >
+      --results-directory $(Agent.TempDirectory)/TestResults
+      --diag:$(Agent.TempDirectory)/TestResults/diag.log
+      --logger trx
+      --blame-crash
+      --blame-hang
+      --blame-hang-timeout:10m
       --no-build
       --filter Requirement!=CosmosDB
+
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish test results as pipeline artifact (on failure)'
+  condition: failed()
+  inputs:
+    targetPath: '$(Agent.TempDirectory)/TestResults'
+    artifact: 'test-results-$(buildStamp)'
+    publishLocation: 'pipeline'
+
+- task: PublishTestResults@2
+  displayName: 'Publish test results'
+  condition: always()
+  inputs:
+    testResultsFormat: 'VSTest'
+    testResultsFiles: '**/*.trx'
+    searchFolder: '$(Agent.TempDirectory)/TestResults'
 
 - task: PowerShell@2
   displayName: 'Add repositories (modules)'
@@ -207,7 +233,7 @@ steps:
     script: |
       $toolPath = "$(System.DefaultWorkingDirectory)/intent-cli-tool"
       $nightly = '$(Build.SourceBranch)' -like 'refs/heads/development-*' ? '.nightly' : ''
-      # $nightly = '.nightly'
+      $nightly = '.nightly'
 
       if (Test-Path $toolPath)
       {
