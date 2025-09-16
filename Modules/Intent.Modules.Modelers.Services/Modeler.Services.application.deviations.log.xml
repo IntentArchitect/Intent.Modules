@@ -22,6 +22,16 @@
       <fileHash>9BDB975EAA399E4ED918A13D77882F8CC4AFF4398FC4547745CC5D17A71B1D16</fileHash>
     </file>
     <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#3e69085c-fa2f-44bd-93eb-41075fd472f8</correlationId>
+      <path>Intent.Modules.Modelers.Services/Api/Extensions/PerformInvocationModelAssociationExtensions.cs</path>
+      <count>1</count>
+      <updatedByAccountName>jp.seini@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>JP Seini</updatedByDisplayName>
+      <updatedAt>2025-09-15T12:12:37.5588657Z</updatedAt>
+      <deviationsHash>95AB2835E13F632CAA2E426C797ABB59F62D265E38246CAF7B13296304CDABAE</deviationsHash>
+      <fileHash>B72ED45A0AD014EB386CF64B14DC2F633963194A7B408F66B136E53D47A17238</fileHash>
+    </file>
+    <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#9b6f281b-71be-4e61-bb4c-b474c3be6d04</correlationId>
       <path>Intent.Modules.Modelers.Services/Api/FolderExtensionModel.cs</path>
       <count>2</count>
@@ -70,6 +80,26 @@
       <updatedAt>2024-03-20T12:49:10.6114264Z</updatedAt>
       <deviationsHash>6A934498820CE372C0095CFF552A61503206A60AAFC45030114B89D39516E56B</deviationsHash>
       <fileHash>F555AF501B270575D3F27B67C98DF63621286781E97AEE95CA1B884D2BC96548</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration#bda031ec-5d4e-4e51-b54e-18c3c2215b64</correlationId>
+      <path>Intent.Modules.Modelers.Services/Migrations/Migration_03_09_03_Pre_00.cs</path>
+      <count>3</count>
+      <updatedByAccountName>jp.seini@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>JP Seini</updatedByDisplayName>
+      <updatedAt>2025-09-15T12:12:37.5589151Z</updatedAt>
+      <deviationsHash>54E4B3AEBB300F7446AF5537EE1E90D1113745835820608BADEC7C78BDC226E7</deviationsHash>
+      <fileHash>61BAE0AADE7228885085E7BD6C2B4C878BDFE1861FA67221F6F7C8E72C6EE493</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Migrations.OnInstallMigration#7b5830cb-54dd-4691-b317-258ea5165c82</correlationId>
+      <path>Intent.Modules.Modelers.Services/Migrations/OnInstallMigration.cs</path>
+      <count>2</count>
+      <updatedByAccountName>jp.seini@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>JP Seini</updatedByDisplayName>
+      <updatedAt>2025-09-15T12:12:37.5588908Z</updatedAt>
+      <deviationsHash>AD2559B54F6EDAF6B54CABC8EEA839F2977DE91D831A551DCFF3B654A55F9B31</deviationsHash>
+      <fileHash>091D8A3184ACBE5D9094116A6FDAB73BBD930B341E6F3973ABBC8236C1CE9FCF</fileHash>
     </file>
   </files>
 </deviationsLog>

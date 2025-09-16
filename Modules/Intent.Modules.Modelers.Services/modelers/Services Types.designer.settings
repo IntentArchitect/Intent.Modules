@@ -496,6 +496,45 @@ if (association != null) {
 
 return result;
 </displayFunction>
+      <validateFunction>let propertySettingAccesModifier = application.getSettings("aac8a446-047c-468b-809b-ca28989b558b")?.getField("1b43bdbc-c11b-4e81-8285-6ca5c0876158")?.value
+if(application.getSettings("aac8a446-047c-468b-809b-ca28989b558b")?.getField("c2df571f-f917-41a2-933e-cfef7999c597")?.value == "false" &amp;&amp; 
+    (propertySettingAccesModifier == "public" || propertySettingAccesModifier == "init")) {
+    return "";
+}
+
+if(element.getChildren().length === 0)
+{
+    return "";
+}
+
+let defaultValueDetected = false;
+let lastField = "";
+
+element.getChildren("DTO-Field").every(child =&gt;
+{
+    if((child.getValue() == null || child.getValue() == '') &amp;&amp; defaultValueDetected === true)
+    {
+        lastField = child.getName();
+        return false;
+    }
+
+    if(child.getValue() != null &amp;&amp; child.getValue() != '' &amp;&amp; lastField === "")
+    {
+        defaultValueDetected = true;
+    }
+
+    return true;
+});
+
+if(lastField === "")
+{
+    return "";
+}
+
+return {
+    text : "Property [" + lastField + "] without a default value must precede properties with default values",
+    type : "warning"
+};</validateFunction>
       <allowRename>true</allowRename>
       <nameMustBeUnique>true</nameMustBeUnique>
       <allowAbstract>true</allowAbstract>

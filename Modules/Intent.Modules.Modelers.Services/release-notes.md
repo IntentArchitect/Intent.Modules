@@ -1,3 +1,7 @@
+### Version 4.0.5
+
+- Improvement: DTOs will now warn if default values have been set on properties which are proceeded by properties without default values
+
 ### Version 4.0.4
 
 - Improvement: `Perform Invocation` interactions will automatically add the Invocation mapping on creation.
