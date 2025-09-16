@@ -37,7 +37,7 @@ public class CSharpClassTests
     [Fact]
     public async Task ConcreteClassTest()
     {
-        var settings = new TestStyleSettings("same-line", "depends-on-length");
+        var settings = new TestStyleSettings("same-line", "depends-on-length", "default");
 
         var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation", settings)
             .AddUsing("System")

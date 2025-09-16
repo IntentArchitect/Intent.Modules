@@ -26,7 +26,7 @@ public class CSharpMethodTests
     public async Task MethodStaticModifierSet()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("same-line", "same-line");
+        var settings = new TestStyleSettings("same-line", "same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -49,7 +49,7 @@ public class CSharpMethodTests
     public async Task MethodStaticModifierNotSet()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("same-line", "same-line");
+        var settings = new TestStyleSettings("same-line", "same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -74,7 +74,7 @@ public class CSharpMethodTests
     public async Task MethodAbstractModifierSet()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("same-line", "same-line");
+        var settings = new TestStyleSettings("same-line", "same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -98,7 +98,7 @@ public class CSharpMethodTests
     public async Task MethodAbstractModifierNotSet()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("same-line", "same-line");
+        var settings = new TestStyleSettings("same-line", "same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -124,7 +124,7 @@ public class CSharpMethodTests
     public async Task InterfaceMethodStaticModifierSet()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("same-line", "same-line");
+        var settings = new TestStyleSettings("same-line", "same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddInterface("MyInterface", c =>
@@ -144,7 +144,7 @@ public class CSharpMethodTests
     public async Task InterfaceMethodStaticModifierNotSet()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("same-line", "same-line");
+        var settings = new TestStyleSettings("same-line", "same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddInterface("MyInterface", c =>

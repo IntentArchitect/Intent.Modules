@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.CSharp</id>
   <version>3.9.6-pre.1</version>
@@ -84,6 +84,13 @@
             <option value="same-line" description="Same Line" />
             <option value="depends-on-length" description="Depends on length" />
             <option value="default" description="Default" />
+          </options>
+        </setting>
+        <setting id="727bb639-f91c-4f86-bd81-b1eccd7e4d45" title="Blank lines between Members" type="select">
+          <defaultValue>default</defaultValue>
+          <options>
+            <option value="default" description="Default" />
+            <option value="blank-line" description="Ensure blank line" />
           </options>
         </setting>
       </settings>

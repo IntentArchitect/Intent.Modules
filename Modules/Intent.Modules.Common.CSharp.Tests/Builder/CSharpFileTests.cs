@@ -78,7 +78,7 @@ public class CSharpFileTests
     [Fact]
     public async Task EnumTest()
     {
-        var settings = new TestStyleSettings("SameLine", "DependsOnLength");
+        var settings = new TestStyleSettings("SameLine", "DependsOnLength", "default");
 
         var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation", settings)
             .AddUsing("System")

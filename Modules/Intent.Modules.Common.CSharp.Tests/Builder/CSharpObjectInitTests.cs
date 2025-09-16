@@ -14,7 +14,7 @@ public class CSharpObjectInitTests
     public async Task NoChangeObjectInit()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("same-line", "same-line");
+        var settings = new TestStyleSettings("same-line", "same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("MyClass", c =>
@@ -37,7 +37,7 @@ public class CSharpObjectInitTests
     public async Task LhsChangedObjectInit()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("same-line", "same-line");
+        var settings = new TestStyleSettings("same-line", "same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("MyClass", c =>
@@ -62,7 +62,7 @@ public class CSharpObjectInitTests
     public async Task RhsChangedObjectInit()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("same-line", "same-line");
+        var settings = new TestStyleSettings("same-line", "same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("MyClass", c =>
@@ -87,7 +87,7 @@ public class CSharpObjectInitTests
     public async Task LhsAndRhsChangedObjectInit()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("same-line", "same-line");
+        var settings = new TestStyleSettings("same-line", "same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("MyClass", c =>
