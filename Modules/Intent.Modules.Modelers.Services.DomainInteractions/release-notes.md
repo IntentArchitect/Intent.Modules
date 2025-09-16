@@ -3,6 +3,7 @@
 - Improvement: Processing Actions that are executed after the current Processing Action will not show in the Mapping Dialog.
 - Improvement: Added syntax highlighting to Processing Actions.
 - Improvement: Added Constructor and Static Operation icons in the diagrams for Domain entities.
+- Improvement: Added suggestions to the Domain Designer to repository operations for creating CQRS requests and Traditional Services in the Services Designer.
 - Fixed: Syntax highlighting not showing for Operations and Constructors on Domain entities.
 
 ### Version 2.3.3

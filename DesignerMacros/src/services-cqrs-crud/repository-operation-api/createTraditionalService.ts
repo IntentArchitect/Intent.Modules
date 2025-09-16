@@ -1,7 +1,8 @@
 /// <reference path="../../common/openSelectItemDialog.ts" />
 /// <reference path="../../common/repositoryServiceHelper.ts" />
+/// <reference path="common.ts" />
 
-async function execute(repositoryOperation: MacroApi.Context.IElementApi) {
+async function createTraditionalService(repositoryOperation: IElementApi, diagram: IDiagramApi | undefined) {
     let servicePackages = getPackages().filter(pkg => pkg.specialization === "Services Package");
     let selectedPackage: MacroApi.Context.IPackageApi;
     if (servicePackages.length == 1) {
@@ -16,8 +17,13 @@ async function execute(repositoryOperation: MacroApi.Context.IElementApi) {
 
     let newOperation = RepositoryServiceHelper.createAppServiceOperationAction(repositoryOperation, folder, null, true);
  
-    // this can only be triggered from the diagram, so there will always be one.
-    const diagram = getCurrentDiagram();
+    if (diagram == null) {
+        diagram = await getOrCreateDiagram(folder, repositoryOperation, "Traditional Service Creation Options");
+    }
+
+    if (diagram == null) {
+        return;
+    }
 
     let newPosition: MacroApi.Context.IPoint = null;
     let repoElement = diagram.getVisual(repository.id);
@@ -32,11 +38,3 @@ async function execute(repositoryOperation: MacroApi.Context.IElementApi) {
 
     diagram.layoutVisuals(newOperation.getParent(), newPosition , true);
 }
-
-/**
- * Used by Intent.Modelers.Services.DomainInteractions
- *
- * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-crud/create-appservice-repository-operation-macro-advanced-mapping/create-appservice-repository-operation-macro-advanced-mapping.ts
- */
-//await execute(element);

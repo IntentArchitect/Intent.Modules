@@ -3,7 +3,7 @@
   "compilerOptions": {
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "outFile": "./_dist.js",
+    "outFile": "../../../../Modules/Intent.Modules.Modelers.Services.DomainInteractions/resources/repository-operation-api.js",
     "removeComments": false,
     "sourceMap": false,
     "target": "ES2020",
