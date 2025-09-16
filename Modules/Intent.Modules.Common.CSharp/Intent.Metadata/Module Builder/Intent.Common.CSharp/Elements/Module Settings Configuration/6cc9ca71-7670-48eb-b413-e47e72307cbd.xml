@@ -167,8 +167,8 @@
       </childElements>
     </childElement>
     <childElement id="727bb639-f91c-4f86-bd81-b1eccd7e4d45" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
-      <name>Blank lines between Members</name>
-      <display>Blank lines between Members</display>
+      <name>Blank line between Members</name>
+      <display>Blank line between Members</display>
       <isAbstract>false</isAbstract>
       <sort-children>manually</sort-children>
       <genericTypes />
@@ -209,10 +209,10 @@
           <childElements />
         </childElement>
         <childElement id="890b4597-2b81-4d83-b34b-c2e17ba1e2df" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
-          <name>Ensure blank line</name>
-          <display>Ensure blank line = blank-line</display>
+          <name>Always</name>
+          <display>Always = always</display>
           <isAbstract>false</isAbstract>
-          <value>blank-line</value>
+          <value>always</value>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>727bb639-f91c-4f86-bd81-b1eccd7e4d45</parentFolderId>

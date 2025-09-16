@@ -125,24 +125,23 @@ namespace Intent.Modules.Common.CSharp.Settings
             DependsOnLength,
             Default,
         }
+        public BlankLineBetweenMembersOptions BlankLineBetweenMembers() => new BlankLineBetweenMembersOptions(_groupSettings.GetSetting("727bb639-f91c-4f86-bd81-b1eccd7e4d45")?.Value);
 
-        public BlankLinesBetweenMembersOptions BlankLinesBetweenMembers() => new BlankLinesBetweenMembersOptions(_groupSettings.GetSetting("727bb639-f91c-4f86-bd81-b1eccd7e4d45")?.Value);
-
-        public class BlankLinesBetweenMembersOptions
+        public class BlankLineBetweenMembersOptions
         {
             public readonly string Value;
 
-            public BlankLinesBetweenMembersOptions(string value)
+            public BlankLineBetweenMembersOptions(string value)
             {
                 Value = value;
             }
 
-            public BlankLinesBetweenMembersOptionsEnum AsEnum()
+            public BlankLineBetweenMembersOptionsEnum AsEnum()
             {
                 return Value switch
                 {
-                    "default" => BlankLinesBetweenMembersOptionsEnum.Default,
-                    "blank-line" => BlankLinesBetweenMembersOptionsEnum.BlankLine,
+                    "default" => BlankLineBetweenMembersOptionsEnum.Default,
+                    "always" => BlankLineBetweenMembersOptionsEnum.Always,
                     _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
                 };
             }
@@ -152,16 +151,16 @@ namespace Intent.Modules.Common.CSharp.Settings
                 return Value == "default";
             }
 
-            public bool IsBlankLine()
+            public bool IsAlways()
             {
-                return Value == "blank-line";
+                return Value == "always";
             }
         }
 
-        public enum BlankLinesBetweenMembersOptionsEnum
+        public enum BlankLineBetweenMembersOptionsEnum
         {
             Default,
-            BlankLine,
+            Always,
         }
     }
 }

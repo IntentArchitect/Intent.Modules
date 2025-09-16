@@ -86,11 +86,11 @@
             <option value="default" description="Default" />
           </options>
         </setting>
-        <setting id="727bb639-f91c-4f86-bd81-b1eccd7e4d45" title="Blank lines between Members" type="select">
+        <setting id="727bb639-f91c-4f86-bd81-b1eccd7e4d45" title="Blank line between Members" type="select">
           <defaultValue>default</defaultValue>
           <options>
             <option value="default" description="Default" />
-            <option value="blank-line" description="Ensure blank line" />
+            <option value="always" description="Always" />
           </options>
         </setting>
       </settings>

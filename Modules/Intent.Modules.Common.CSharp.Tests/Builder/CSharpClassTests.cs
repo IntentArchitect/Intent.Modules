@@ -207,4 +207,26 @@ public class CSharpClassTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
+    
+    [Fact]
+    public async Task ClassWithBlankLinesTest()
+    {
+        var settings = new TestStyleSettings("same-line", "depends-on-length", "always");
+
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation", settings)
+            .AddUsing("System")
+            .AddClass("ConcreteClass", @class =>
+            {
+                @class.AddField("string", "_test", field => field.Private());
+                @class.AddField("string", "_testProtected", field => field.Protected());
+                @class.AddField("string", "_testProtectedReadOnly", field => field.ProtectedReadOnly());
+                //Add arb properties
+                @class.AddProperty("string", "Property1");
+                @class.AddProperty("string", "Property2");
+                @class.AddProperty("string", "Property3");
+                @class.AddProperty("string", "Property4");
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }

@@ -14,14 +14,14 @@ internal class TestStyleSettings : ICSharpStyleSettings
     {
         ConstructorInitializerBehavior = new ConstructorInitializerOptions(constructorInitValue);
         ParameterPlacement = new ParameterPlacementOptions(paramNewLineValue);
-        BlankLinesBetweenMembers = new BlankLinesBetweenMembersOptions(blankLinesValue);
+        BlankLineBetweenMembers = new BlankLineBetweenMembersOptions(blankLinesValue);
     }
 
     public ConstructorInitializerOptions ConstructorInitializerBehavior { get; init; }
 
     public ParameterPlacementOptions ParameterPlacement { get; init; }
     
-    public BlankLinesBetweenMembersOptions BlankLinesBetweenMembers { get; init; }
+    public BlankLineBetweenMembersOptions BlankLineBetweenMembers { get; init; }
 
     public IEnumerable<string> ElementOrder { get; } = ["public", "internal", "protected readonly", "protected internal", "protected", "", "private readonly", "private protected", "private"];
     

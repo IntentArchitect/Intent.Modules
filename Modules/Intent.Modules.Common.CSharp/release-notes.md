@@ -2,6 +2,7 @@
 
 - Improvement: Added `AddNestedRecord` to `CSharpClass`.
 - Improvement: Clears InteractionStrategy cache between "Hot" Software Factory restarts.
+- Improvement: Added `Blank line between Members` setting to allow for "always" adding a blank line between members.
 
 ### Version 3.9.5
 
