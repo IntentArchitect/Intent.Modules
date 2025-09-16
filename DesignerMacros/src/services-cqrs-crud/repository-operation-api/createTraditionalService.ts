@@ -12,7 +12,7 @@ async function createTraditionalService(repositoryOperation: IElementApi, diagra
     }
 
     const repository = repositoryOperation.getParent();
-    const folderName = pluralize(repository.getName().replace("Repository", ""));
+    const folderName = pluralize(removeSuffix(repository.getName(), "Repository", "DAL"));
     const folder = selectedPackage.getChildren("Folder").find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
 
     let newOperation = RepositoryServiceHelper.createAppServiceOperationAction(repositoryOperation, folder, null, true);

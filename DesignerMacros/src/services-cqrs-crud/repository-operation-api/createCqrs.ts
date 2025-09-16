@@ -12,7 +12,7 @@ async function createCQRSService(repositoryOperation: IElementApi, diagram: IDia
     }
 
     const repository = repositoryOperation.getParent();
-    const folderName = pluralize(repository.getName().replace("Repository", ""));
+    const folderName = pluralize(removeSuffix(repository.getName(), "Repository", "DAL"));
     const folder = selectedPackage.getChildren("Folder").find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
 
     RepositoryServiceHelper.createCqrsAction(repositoryOperation, folder, true);

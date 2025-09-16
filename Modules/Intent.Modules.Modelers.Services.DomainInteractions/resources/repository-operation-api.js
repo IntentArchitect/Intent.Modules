@@ -1306,7 +1306,7 @@ class RepositoryServiceHelper {
         return serviceElement;
     }
     static sanitizeServiceName(name) {
-        name = removeSuffix(name, "Repository");
+        name = removeSuffix(name, "Repository", "DAL");
         name += "Service";
         name = toPascalCase(name);
         return name;
@@ -1621,7 +1621,7 @@ async function createCQRSService(repositoryOperation, diagram) {
         selectedPackage = await openSelectItemDialog(getPackageSelectItemOptions(servicePackages, "Service Package"));
     }
     const repository = repositoryOperation.getParent();
-    const folderName = pluralize(repository.getName().replace("Repository", ""));
+    const folderName = pluralize(removeSuffix(repository.getName(), "Repository", "DAL"));
     const folder = selectedPackage.getChildren("Folder").find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
     RepositoryServiceHelper.createCqrsAction(repositoryOperation, folder, true);
     if (diagram == null) {
@@ -1673,7 +1673,7 @@ async function createTraditionalService(repositoryOperation, diagram) {
         selectedPackage = await openSelectItemDialog(getPackageSelectItemOptions(servicePackages, "Service Package"));
     }
     const repository = repositoryOperation.getParent();
-    const folderName = pluralize(repository.getName().replace("Repository", ""));
+    const folderName = pluralize(removeSuffix(repository.getName(), "Repository", "DAL"));
     const folder = selectedPackage.getChildren("Folder").find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
     let newOperation = RepositoryServiceHelper.createAppServiceOperationAction(repositoryOperation, folder, null, true);
     if (diagram == null) {

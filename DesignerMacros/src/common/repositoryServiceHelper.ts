@@ -34,7 +34,7 @@ class RepositoryServiceHelper {
     }
 
     public static sanitizeServiceName(name: string): string {
-        name = removeSuffix(name, "Repository");
+        name = removeSuffix(name, "Repository", "DAL");
         name += "Service";
         name = toPascalCase(name);
         return name;
