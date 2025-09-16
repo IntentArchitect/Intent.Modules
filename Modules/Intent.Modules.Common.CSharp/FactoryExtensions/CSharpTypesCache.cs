@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Transactions;
 using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.CSharp.TypeResolvers;
 using Intent.Modules.Common.CSharp.VisualStudio;
@@ -34,6 +35,14 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
         public override int Order { get; set; }
 
         /// <inheritdoc />
+        protected override void OnStart(IApplication application)
+        {
+            ManuallyAddedKnownTypes.Clear();
+            GlobalUsingsByProjectId.Clear();
+            base.OnStart(application);
+        }
+
+        /// <inheritdoc />
         protected override void OnAfterTemplateRegistrations(IApplication application)
         {
             var knownTypesByNamespace = application
@@ -58,6 +67,43 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
             _outputTargetNames = new TypeRegistry().WithNamespaces(outputTargetNames);
 
             PopulateGlobalUsings(application);
+            AddFromCSharpStereotypes(application);
+        }
+
+        private static void AddFromCSharpStereotypes(IApplication application)
+        {
+            var domainDesigner = application.MetadataManager.GetDesigner(application.Id, "6ab29b31-27af-4f56-a67c-986d82097d63");
+            var servicesDesigner = application.MetadataManager.GetDesigner(application.Id, "55d06096-83fe-4acf-86ef-586d254e5170");
+            var elements = domainDesigner.Elements.Union(servicesDesigner.Elements);
+
+            foreach (var element in elements)
+            {
+                var cSharpStereotype = element.GetStereotype("30c5995e-17ab-4cc7-8881-3e9561ab06fe");
+                if (cSharpStereotype == null)
+                {
+                    continue;
+                }
+
+                var typeProperty = cSharpStereotype.GetProperty<string>("Type");
+                var namespaceProperty = cSharpStereotype.GetProperty<string>("Namespace");
+                var typeName = !string.IsNullOrEmpty(typeProperty)
+                    ? typeProperty
+                    : element.Name;
+                if (string.IsNullOrWhiteSpace(typeName))
+                {
+                    continue;
+                }
+
+                var fullyQualifiedType = !string.IsNullOrWhiteSpace(namespaceProperty)
+                    ? namespaceProperty + "." + typeName
+                    : typeName;
+                if (!fullyQualifiedType.Contains('.'))
+                {
+                    continue;
+                }
+
+                AddKnownType(fullyQualifiedType);
+            }
         }
 
         private static void PopulateGlobalUsings(IApplication application)
