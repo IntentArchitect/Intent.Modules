@@ -973,7 +973,12 @@ navigateToDesigner("81104ae6-2bc5-4bae-b05a-f987b0372d81", {
     </suggestionSetting>
     <suggestionSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" locations="diagram, model">
       <name>Publish Domain Event</name>
-      <filterFunction>let publishDomainEventAssociation = "4c0cc50b-8a9d-43cd-b731-9f354f69f3c9";
+      <filterFunction>const publishDomainEventAssociation = "4c0cc50b-8a9d-43cd-b731-9f354f69f3c9";
+const classTypeId = "04e12b51-ed12-42a3-9667-a6aa81bb6d10";
+
+if (element.getParent()?.specializationId != classTypeId) {
+    return false;
+}
 
 let isAggregateRoot = !element.getParent()?.getAssociations("Association")
     .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
