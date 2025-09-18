@@ -1,4 +1,8 @@
-﻿### Version 3.12.7
+﻿### Version 3.12.8
+
+- Fixed: `[Static Constructor]` script removing stereotype on edit incorrectly.
+
+### Version 3.12.7
 
 - Improvement: Added `[Static Constructor]` trait, which automatically applies itself to static `Operations` that return the `Class` type.
 - Improvement: Show static operation icon in the diagrams.
