@@ -961,10 +961,10 @@ validateOperation(element);
           <macros>
             <macro trigger="on-changed">
               <script>const staticConstructorStereotype = "39a4c065-f9c5-46dc-b035-2eb025698330";
-if (element.getIsStatic() 
-    &amp;&amp; element.typeReference.getTypeId() == element.getParent()?.id 
-    &amp;&amp; !element.hasStereotype(staticConstructorStereotype)) {
-    element.addStereotype(staticConstructorStereotype);
+if (element.getIsStatic() &amp;&amp; element.typeReference.getTypeId() == element.getParent()?.id) {
+    if (!element.hasStereotype(staticConstructorStereotype)){        
+        element.addStereotype(staticConstructorStereotype);
+    }
 } else if (element.hasStereotype(staticConstructorStereotype)) {
     element.removeStereotype(staticConstructorStereotype);
 }</script>
