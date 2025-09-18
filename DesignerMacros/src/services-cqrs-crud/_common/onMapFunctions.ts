@@ -125,6 +125,7 @@ function getPrimaryKeysWithMapPath(entity: MacroApi.Context.IElementApi): IAttri
         id: key.id,
         name: key.getName(),
         typeId: key.typeReference.typeId,
+        typeReferenceModel: key.typeReference.toModel(),
         mapPath: [key.id],
         isNullable: false,
         isCollection: false
@@ -155,6 +156,7 @@ function getPrimaryKeysWithMapPath(entity: MacroApi.Context.IElementApi): IAttri
                 id: key.id,
                 name: key.getName(),
                 typeId: key.typeReference.typeId,
+                typeReferenceModel: key.typeReference.toModel(),
                 mapPath: generalizationStack.concat([key.id]),
                 isNullable: key.typeReference.isNullable,
                 isCollection: key.typeReference.isCollection
@@ -174,6 +176,7 @@ function getAttributesWithMapPath(entity: MacroApi.Context.IElementApi): { [inde
         id: attr.id,
         name: attr.getName(),
         typeId: attr.typeReference.typeId,
+        typeReferenceModel: attr.typeReference.toModel(),
         mapPath: [attr.id],
         isNullable: false,
         isCollection: false
@@ -203,6 +206,7 @@ function getAttributesWithMapPath(entity: MacroApi.Context.IElementApi): { [inde
                 id: attr.id,
                 name: attr.getName(),
                 typeId: attr.typeReference.typeId,
+                typeReferenceModel: attr.typeReference.toModel(),
                 mapPath: generalizationStack.concat([attr.id]),
                 isNullable: attr.typeReference.isNullable,
                 isCollection: attr.typeReference.isCollection

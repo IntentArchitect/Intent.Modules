@@ -14,8 +14,7 @@ async function createCQRSService(repositoryOperation: IElementApi, diagram: IDia
     const repository = repositoryOperation.getParent();
     const folderName = pluralize(removeSuffix(repository.getName(), "Repository", "DAL"));
     const folder = selectedPackage.getChildren("Folder").find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
-
-    RepositoryServiceHelper.createCqrsAction(repositoryOperation, folder, true);
+    const requestElement = RepositoryServiceHelper.createCqrsAction(repositoryOperation, folder, true);
 
     if (diagram == null) {
         diagram = await getOrCreateDiagram(folder, repositoryOperation, "CQRS Creation Options");
@@ -56,4 +55,5 @@ async function createCQRSService(repositoryOperation: IElementApi, diagram: IDia
     }
 
     diagram.layoutVisuals(folder, newPosition, true);
+    diagram.getVisual(requestElement.id)?.select();
 }

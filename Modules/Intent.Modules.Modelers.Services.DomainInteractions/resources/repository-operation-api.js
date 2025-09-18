@@ -103,7 +103,7 @@ async function openSelectItemDialog(options) {
     let foundItem = items.filter(item => options.getId(item) === itemId)[0];
     return foundItem;
 }
-;
+/// <reference path="../../typings/elementmacro.context.api.d.ts"/>
 /// <reference path="attributeWithMapPath.ts" />
 class ServicesConstants {
 }
@@ -253,15 +253,15 @@ class ElementManager {
         let existingField = this.innerElement.getChildren(this.settings.childSpecialization)
             .find(c => c.getName().toLowerCase() == ServicesHelper.formatName(name, this.settings.childType ?? "property").toLowerCase());
         let field = existingField ?? createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
-        const typeReferenceDetails = type == null
-            ? null
-            : typeof (type) === "string"
-                ? { id: type, isNullable: false, isCollection: false }
-                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
-        if (typeReferenceDetails != null) {
-            field.typeReference.setType(typeReferenceDetails.id);
-            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
-            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
+        if (type != null) {
+            if (typeof (type) === "string") {
+                field.typeReference.setType(type);
+                field.typeReference.setIsCollection(false);
+                field.typeReference.setIsNullable(false);
+            }
+            else {
+                field.typeReference.setType(type.toModel());
+            }
         }
         return field;
     }
@@ -411,6 +411,7 @@ class DomainHelper {
             id: key.id,
             name: key.getName(),
             typeId: key.typeReference.typeId,
+            typeReferenceModel: key.typeReference.toModel(),
             mapPath: [key.id],
             isNullable: false,
             isCollection: false
@@ -434,6 +435,7 @@ class DomainHelper {
                     id: key.id,
                     name: key.getName(),
                     typeId: key.typeReference.typeId,
+                    typeReferenceModel: key.typeReference.toModel(),
                     mapPath: generalizationStack.concat([key.id]),
                     isNullable: key.typeReference.isNullable,
                     isCollection: key.typeReference.isCollection
@@ -468,6 +470,7 @@ class DomainHelper {
         return foreignKeys.map(x => ({
             name: DomainHelper.getAttributeNameFormat(x.getName()),
             typeId: x.typeReference.typeId,
+            typeReferenceModel: x.typeReference.toModel(),
             id: x.id,
             mapPath: [x.id],
             isCollection: x.typeReference.isCollection,
@@ -491,6 +494,7 @@ class DomainHelper {
             id: attr.id,
             name: attr.getName(),
             typeId: attr.typeReference.typeId,
+            typeReferenceModel: attr.typeReference.toModel(),
             mapPath: [attr.id],
             isNullable: attr.typeReference.isNullable,
             isCollection: attr.typeReference.isCollection
@@ -508,6 +512,7 @@ class DomainHelper {
             id: attr.id,
             name: attr.getName(),
             typeId: attr.typeReference.typeId,
+            typeReferenceModel: attr.typeReference.toModel(),
             mapPath: [attr.id],
             isNullable: false,
             isCollection: false
@@ -531,6 +536,7 @@ class DomainHelper {
                     id: attr.id,
                     name: attr.getName(),
                     typeId: attr.typeReference.typeId,
+                    typeReferenceModel: attr.typeReference.toModel(),
                     mapPath: generalizationStack.concat([attr.id]),
                     isNullable: attr.typeReference.isNullable,
                     isCollection: attr.typeReference.isCollection
@@ -551,6 +557,7 @@ class DomainHelper {
                     id: association.id,
                     name: association.getName(),
                     typeId: null,
+                    typeReferenceModel: null,
                     mapPath: generalizationStack.concat([association.id]),
                     isNullable: false,
                     isCollection: false
@@ -765,6 +772,7 @@ function getPrimaryKeysWithMapPath(entity) {
         id: key.id,
         name: key.getName(),
         typeId: key.typeReference.typeId,
+        typeReferenceModel: key.typeReference.toModel(),
         mapPath: [key.id],
         isNullable: false,
         isCollection: false
@@ -788,6 +796,7 @@ function getPrimaryKeysWithMapPath(entity) {
                 id: key.id,
                 name: key.getName(),
                 typeId: key.typeReference.typeId,
+                typeReferenceModel: key.typeReference.toModel(),
                 mapPath: generalizationStack.concat([key.id]),
                 isNullable: key.typeReference.isNullable,
                 isCollection: key.typeReference.isCollection
@@ -806,6 +815,7 @@ function getAttributesWithMapPath(entity) {
         id: attr.id,
         name: attr.getName(),
         typeId: attr.typeReference.typeId,
+        typeReferenceModel: attr.typeReference.toModel(),
         mapPath: [attr.id],
         isNullable: false,
         isCollection: false
@@ -829,6 +839,7 @@ function getAttributesWithMapPath(entity) {
                 id: attr.id,
                 name: attr.getName(),
                 typeId: attr.typeReference.typeId,
+                typeReferenceModel: attr.typeReference.toModel(),
                 mapPath: generalizationStack.concat([attr.id]),
                 isNullable: attr.typeReference.isNullable,
                 isCollection: attr.typeReference.isCollection
@@ -1146,6 +1157,7 @@ class CrudHelper {
             id: key.id,
             name: key.getName(),
             typeId: key.typeReference.typeId,
+            typeReferenceModel: key.typeReference.toModel(),
             mapPath: [key.id],
             isNullable: false,
             isCollection: false
@@ -1169,6 +1181,7 @@ class CrudHelper {
                     id: key.id,
                     name: key.getName(),
                     typeId: key.typeReference.typeId,
+                    typeReferenceModel: key.typeReference.toModel(),
                     mapPath: generalizationStack.concat([key.id]),
                     isNullable: key.typeReference.isNullable,
                     isCollection: key.typeReference.isCollection
@@ -1188,6 +1201,7 @@ class CrudHelper {
             id: attr.id,
             name: attr.getName(),
             typeId: attr.typeReference.typeId,
+            typeReferenceModel: attr.typeReference.toModel(),
             mapPath: [attr.id],
             // GCB - if you're seeing this change in your script, where these used to be false, you need to check.
             // I had to "fix" this so that basic mapping DTO projections worked properly (e.g. adding OrderLines to an Order DTO via basic mapping)
@@ -1213,6 +1227,7 @@ class CrudHelper {
                     id: attr.id,
                     name: attr.getName(),
                     typeId: attr.typeReference.typeId,
+                    typeReferenceModel: attr.typeReference.toModel(),
                     mapPath: generalizationStack.concat([attr.id]),
                     isNullable: attr.typeReference.isNullable,
                     isCollection: attr.typeReference.isCollection
@@ -1461,10 +1476,10 @@ class RepositoryServiceHelper {
             httpRouteParams: httpRouteParams
         };
     }
-    static createAction(repositoryFields, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore, isExistingElement = false) {
+    static createAction(parameters, actionElement, flattenFieldsFromComplexTypes, folder, mappingStore, isExistingElement = false) {
         const childSpecialization = actionElement.specialization == "Operation" ? "Parameter" : "DTO-Field";
         let elementManager = new ElementManager(actionElement, { childSpecialization: childSpecialization });
-        for (let repositoryField of repositoryFields) {
+        for (let repositoryField of parameters) {
             let paramRefType = repositoryField.typeReference?.getType()?.specialization;
             switch (paramRefType) {
                 case "Class":
@@ -1555,7 +1570,7 @@ class RepositoryServiceHelper {
                 continue;
             }
             let field = createElement("DTO-Field", attr.name, dto.id);
-            field.typeReference.setType(attr.typeId);
+            field.typeReference.setType(attr.typeReferenceModel);
             field.setMapping(attr.mapPath);
         }
         onMapDto(dto, folder);
@@ -1623,7 +1638,7 @@ async function createCQRSService(repositoryOperation, diagram) {
     const repository = repositoryOperation.getParent();
     const folderName = pluralize(removeSuffix(repository.getName(), "Repository", "DAL"));
     const folder = selectedPackage.getChildren("Folder").find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), selectedPackage.id);
-    RepositoryServiceHelper.createCqrsAction(repositoryOperation, folder, true);
+    const requestElement = RepositoryServiceHelper.createCqrsAction(repositoryOperation, folder, true);
     if (diagram == null) {
         diagram = await getOrCreateDiagram(folder, repositoryOperation, "CQRS Creation Options");
     }
@@ -1659,6 +1674,7 @@ async function createCQRSService(repositoryOperation, diagram) {
         }
     }
     diagram.layoutVisuals(folder, newPosition, true);
+    diagram.getVisual(requestElement.id)?.select();
 }
 /// <reference path="../../common/openSelectItemDialog.ts" />
 /// <reference path="../../common/repositoryServiceHelper.ts" />
@@ -1693,6 +1709,7 @@ async function createTraditionalService(repositoryOperation, diagram) {
         };
     }
     diagram.layoutVisuals(newOperation.getParent(), newPosition, true);
+    diagram.getVisual(newOperation.id)?.select();
 }
 /// <reference path="createCqrs.ts" />
 const RepositoryOperationApi = {

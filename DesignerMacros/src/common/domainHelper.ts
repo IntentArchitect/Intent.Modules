@@ -98,6 +98,7 @@ class DomainHelper {
             id: key.id,
             name: key.getName(),
             typeId: key.typeReference.typeId,
+            typeReferenceModel: key.typeReference.toModel(),
             mapPath: [key.id],
             isNullable: false,
             isCollection: false
@@ -128,6 +129,7 @@ class DomainHelper {
                     id: key.id,
                     name: key.getName(),
                     typeId: key.typeReference.typeId,
+                    typeReferenceModel: key.typeReference.toModel(),
                     mapPath: generalizationStack.concat([key.id]),
                     isNullable: key.typeReference.isNullable,
                     isCollection: key.typeReference.isCollection
@@ -166,6 +168,7 @@ class DomainHelper {
         return foreignKeys.map(x => ({
             name: DomainHelper.getAttributeNameFormat(x.getName()),
             typeId: x.typeReference.typeId,
+            typeReferenceModel: x.typeReference.toModel(),
             id: x.id,
             mapPath: [x.id],
             isCollection: x.typeReference.isCollection,
@@ -191,6 +194,7 @@ class DomainHelper {
             id: attr.id,
             name: attr.getName(),
             typeId: attr.typeReference.typeId,
+            typeReferenceModel: attr.typeReference.toModel(),
             mapPath: [attr.id],
             isNullable: attr.typeReference.isNullable,
             isCollection: attr.typeReference.isCollection
@@ -209,6 +213,7 @@ class DomainHelper {
             id: attr.id,
             name: attr.getName(),
             typeId: attr.typeReference.typeId,
+            typeReferenceModel: attr.typeReference.toModel(),
             mapPath: [attr.id],
             isNullable: false,
             isCollection: false
@@ -241,6 +246,7 @@ class DomainHelper {
                     id: attr.id,
                     name: attr.getName(),
                     typeId: attr.typeReference.typeId,
+                    typeReferenceModel: attr.typeReference.toModel(),
                     mapPath: generalizationStack.concat([attr.id]),
                     isNullable: attr.typeReference.isNullable,
                     isCollection: attr.typeReference.isCollection
@@ -267,6 +273,7 @@ class DomainHelper {
                         id: association.id,
                         name: association.getName(),
                         typeId: null,
+                        typeReferenceModel: null,
                         mapPath: generalizationStack.concat([association.id]),
                         isNullable: false,
                         isCollection: false

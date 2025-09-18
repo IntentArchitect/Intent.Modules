@@ -37,4 +37,5 @@ async function createTraditionalService(repositoryOperation: IElementApi, diagra
     }
 
     diagram.layoutVisuals(newOperation.getParent(), newPosition , true);
+    diagram.getVisual(newOperation.id)?.select();
 }
