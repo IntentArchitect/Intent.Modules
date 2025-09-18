@@ -78,6 +78,7 @@ internal class CSharpInterfaceMethodWrapper(CSharpInterfaceMethod wrapped) :
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.IsExplicitImplementationFor(string @interface) => wrapped.IsExplicitImplementationFor(@interface);
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.New() => wrapped.New();
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Override() => wrapped.Override();
+    ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Partial() => wrapped.Partial();
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Private() => wrapped.Private();
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Protected() => wrapped.Protected();
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Virtual() => wrapped.Virtual();

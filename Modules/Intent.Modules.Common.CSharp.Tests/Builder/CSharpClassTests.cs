@@ -229,4 +229,20 @@ public class CSharpClassTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task PartialMethodTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddClass("SomeClass", @class =>
+            {
+                @class.AddMethod("void", "PartialMethod", record =>
+                {
+                    record.Partial();
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }

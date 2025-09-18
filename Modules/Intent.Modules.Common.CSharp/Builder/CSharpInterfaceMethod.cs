@@ -49,6 +49,12 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
         return this;
     }
 
+    public CSharpInterfaceMethod Partial()
+    {
+        OverrideModifier = "partial ";
+        return this;
+    }
+
     public CSharpInterfaceMethod Private()
     {
         AccessModifier = "private ";
@@ -471,6 +477,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.IsExplicitImplementationFor(string @interface) => _wrapper.IsExplicitImplementationFor(@interface);
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.New() => _wrapper.New();
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Override() => _wrapper.Override();
+    ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Partial() => _wrapper.Partial();
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Private() => _wrapper.Private();
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Protected() => _wrapper.Protected();
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Virtual() => _wrapper.Virtual();
