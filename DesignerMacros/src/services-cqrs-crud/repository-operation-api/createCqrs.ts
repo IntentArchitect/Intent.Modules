@@ -21,6 +21,7 @@ async function createCQRSService(repositoryOperation: IElementApi, diagram: IDia
     }
 
     if (diagram == null) {
+        selectElement(requestElement.id);
         return;
     }
 

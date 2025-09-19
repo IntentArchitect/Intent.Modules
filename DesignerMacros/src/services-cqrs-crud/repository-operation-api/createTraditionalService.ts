@@ -22,6 +22,7 @@ async function createTraditionalService(repositoryOperation: IElementApi, diagra
     }
 
     if (diagram == null) {
+        selectElement(newOperation.id);
         return;
     }
 

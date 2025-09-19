@@ -1643,6 +1643,7 @@ async function createCQRSService(repositoryOperation, diagram) {
         diagram = await getOrCreateDiagram(folder, repositoryOperation, "CQRS Creation Options");
     }
     if (diagram == null) {
+        selectElement(requestElement.id);
         return;
     }
     //Since we're adding a single new element on the diagram, it may not be positioned below the last created one.
@@ -1696,6 +1697,7 @@ async function createTraditionalService(repositoryOperation, diagram) {
         diagram = await getOrCreateDiagram(folder, repositoryOperation, "Traditional Service Creation Options");
     }
     if (diagram == null) {
+        selectElement(newOperation.id);
         return;
     }
     let newPosition = null;

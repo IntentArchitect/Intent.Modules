@@ -412,6 +412,7 @@ class EntityProjector {
             id: attr.id,
             name: attr.getName(),
             typeId: attr.typeReference.typeId,
+            typeReferenceModel: attr.typeReference.toModel(),
             mapPath: [attr.id],
             isNullable: attr.typeReference.isNullable,
             isCollection: attr.typeReference.isCollection
@@ -442,6 +443,7 @@ class EntityProjector {
                     id: attr.id,
                     name: attr.getName(),
                     typeId: attr.typeReference.typeId,
+                    typeReferenceModel: attr.typeReference.toModel(),
                     mapPath: generalizationStack.concat([attr.id]),
                     isNullable: attr.typeReference.isNullable,
                     isCollection: attr.typeReference.isCollection
