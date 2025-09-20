@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="ad38ef37-45b8-4a6a-96de-f8d41da3cfe0" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Module Task</name>
+  <display>Module Task</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>9c1edf37-2624-4016-bed3-621c4e4d3d88</parentFolderId>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="false" />
+        <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="false" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="null" isActive="false" />
+        <property name="52f3c2e8-6438-494a-b0a7-7a9e61c8aae8" display="Target Traits" value="[]" isActive="true" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="[]" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0idXVpZC04YzczYmRjNC1kZGFlLTQ3ZjgtYTAyZi02ZWY5M2E3MjNkYjEiIGRhdGEtbmFtZT0iUXVlcnktcGxheS1idXR0b24tZ3JlZW4iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA0OC4xIDQ4Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnV1aWQtZTIwNDQ1YWMtYzU0YS00YjAxLWIxNjUtMjFmNGZiOGQyYTA2IHsKICAgICAgICBmaWxsOiB1cmwoI3V1aWQtZGUyMzQxNTgtZjUyNy00ZjJkLTlmZDgtNTgyMDM1YTY4ZjYxKTsKICAgICAgfQoKICAgICAgLnV1aWQtNmExNWQzNTUtNTU2Ni00NzE4LTk4NDQtYTYzYTY0ZTE4ZDhkIHsKICAgICAgICBmaWxsOiB1cmwoI3V1aWQtNTdkMTdiYjQtYjZiNC00MzAzLThhMjAtYTRiOTdhZGJiY2JmKTsKICAgICAgfQogICAgPC9zdHlsZT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0idXVpZC01N2QxN2JiNC1iNmI0LTQzMDMtOGEyMC1hNGI5N2FkYmJjYmYiIHgxPSIyNC4wNSIgeTE9Ii4xMSIgeDI9IjI0LjA1IiB5Mj0iNzUuMjEiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMjcuMDEpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzg2ZGUzMyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM0YTk5MjQiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InV1aWQtZGUyMzQxNTgtZjUyNy00ZjJkLTlmZDgtNTgyMDM1YTY4ZjYxIiB4MT0iLTkwLjkiIHkxPSItMTAyLjQiIHgyPSItMTYwIiB5Mj0iLTEwMi40IiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKC03NS42OSAxMzkuNSkgcm90YXRlKDkwKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM0YTk5MjQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjODZkZTMzIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cGF0aCBpZD0idXVpZC1hZDhhN2FiZi0zM2UzLTQ1OWYtYmJjYi0wODM2OTYyOWY4MTciIGRhdGEtbmFtZT0iRWRnZSIgY2xhc3M9InV1aWQtNmExNWQzNTUtNTU2Ni00NzE4LTk4NDQtYTYzYTY0ZTE4ZDhkIiBkPSJNNDMuOCwxMC42Yy0uMi0uNC0uNC0uNS0uNS0uOS0uNy0uOS0xLjYtMS45LTIuNC0yLjZDMzYuOSwzLjEsMzEuOS43LDI2LjMuMmMtLjksMC0xLjYtLjItMi40LS4ycy0yLjQsMC0zLjYuM2MtLjMsMC0uOS4yLTEuMi4yLS43LjItMS40LjMtMi4xLjVoLS4yYy0uMy4yLS43LjItMSwuMy0xLC4zLTIuMS45LTMuMSwxLjQtLjcuMy0xLjIuNy0xLjksMS0uMy4yLS43LjUtMSwuNy0uOS43LTEuOSwxLjYtMi42LDIuNEMtLjYsMTQuNi0yLDI2LjEsMi43LDM1LjFjMS43LDMuMSw0LjIsNi4xLDYuOSw4LjIuNS41LDEuMi45LDEuOSwxLjIsMy42LDIuMyw4LDMuNSwxMi41LDMuNSwxMy40LDAsMjQuMS0xMC44LDI0LjEtMjQuMS0uMi00LjctMS43LTkuNC00LjMtMTMuMnYtLjFaTTIzLjksNDIuN2MtMTAuMywwLTE4LjYtOC4yLTE4LjYtMTguNVMxMy42LDUuNSwyMy45LDUuNXMxOC42LDguMywxOC42LDE4LjYtOC4zLDE4LjYtMTguNiwxOC42aDBaIi8+CiAgPHBhdGggaWQ9InV1aWQtNjQ5YjNmNjAtMWJjNy00MGRlLWFlNTItYzVkZTg4MDM1OWJjIiBkYXRhLW5hbWU9IlBsYXkiIGNsYXNzPSJ1dWlkLWUyMDQ0NWFjLWM1NGEtNGIwMS1iMTY1LTIxZjRmYjhkMmEwNiIgZD0iTTE3LjQsMTEuNmMtLjktLjUtMS45LjItMS45LDF2MjIuOWMwLC45LDEsMS42LDEuOSwxbDIwLTExLjVjLjctLjUuNy0xLjYsMC0yLjEiLz4KPC9zdmc+&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="581e77d6-4587-4041-86f6-880bd57d5848" display="Name Must Be Unique" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
+        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" value="By type then name" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>

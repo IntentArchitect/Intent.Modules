@@ -27,6 +27,6 @@
   </metadata>
   <moduleSettings />
   <moduleSettingsExtensions />
-  <tags>domain designer uml modeler entity ddd events</tags>
+  <tags>domain designer uml modeler entity ddd events eventsourcing sourcing</tags>
   <migrations />
 </package>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="6c77ca45-fb33-42d2-be23-ea2c2c90ea4e" type="Mapping Settings" typeId="a901c634-6482-4993-ae3c-bd1b637f78d4">
+  <comment>Not used. Consider deleting.</comment>
   <name>Domain Event to Entity Mapping</name>
   <display>Domain Event to Entity Mapping</display>
   <isAbstract>false</isAbstract>

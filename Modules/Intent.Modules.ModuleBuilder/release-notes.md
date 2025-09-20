@@ -1,4 +1,8 @@
-﻿### Version 3.17.1
+﻿### Version 3.18.0
+
+- Feature: Module Builder can now model `Module Tasks` in the designer which generate a base implementation.
+
+### Version 3.17.1
 
 - Fixed: Critical bug of Module Builder not populating the `MappingOptions` for Element and Association settings.
 

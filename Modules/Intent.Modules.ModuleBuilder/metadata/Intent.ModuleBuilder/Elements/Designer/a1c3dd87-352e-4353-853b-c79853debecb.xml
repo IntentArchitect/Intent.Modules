@@ -142,5 +142,29 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="40258bbc-b6c0-46f6-8f7f-0ccdaa68b396" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+      <name>reference</name>
+      <display>reference: Module Task Extension</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="a408a257-9ad5-4336-890c-9ea4c7a31fbd">
+        <typeId>9c1edf37-2624-4016-bed3-621c4e4d3d88</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.ModuleBuilder</typePackageName>
+        <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>a1c3dd87-352e-4353-853b-c79853debecb</parentFolderId>
+      <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+      <packageName>Intent.ModuleBuilder</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
   </childElements>
 </class>
