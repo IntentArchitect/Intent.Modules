@@ -1,3 +1,7 @@
+### Version 4.7.15
+
+- Fixed: Multitenancy route parameter no longer automatically gets removed.
+
 ### Version 4.7.14
 
 - Fixed: Applying a `{version}` on a route didn't apply on CQRS types.
