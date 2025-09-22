@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common</id>
-  <version>3.9.1-pre.2</version>
+  <version>3.9.1-pre.3</version>
   <supportedClientVersions>[4.5.15-a, 5.0.0-a)</supportedClientVersions>
   <summary>Base Implementation and Helper classes for modules.</summary>
   <description>Base Implementation and Helper classes for modules.</description>
@@ -27,6 +27,11 @@
         <package id="Intent.Application.MediatR.CRUD.Tests" version="1.3.11-pre.0" />
       </install>
     </detect>
+	<detect id="Intent.EntityFrameworkCore">
+		<install>
+			<package id="Intent.EntityFrameworkCore" version="5.0.30-pre.3" />
+		</install>
+	</detect>
   </interoperability>
   <metadata>
     <install target="Module Builder" src="Intent.Metadata/Module Builder/Intent.Common/Intent.Common.pkg.config" externalReference="caccdda9-26f4-49bf-8b73-cadc2220de16" />
