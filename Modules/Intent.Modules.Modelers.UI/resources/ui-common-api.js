@@ -42,11 +42,11 @@ class BackendServiceHelper {
     callService(component, serviceRequest, presentMappingDialogs, existingCallServiceAssociation, existingOperation, existingProperty) {
         var _a;
         const diagram = getCurrentDiagram();
-        const componentVisual = diagram.getVisual(component.id);
-        const space = diagram.findEmptySpace({ x: componentVisual.getDimensions().right + 250, y: componentVisual.getDimensions().getCenter().y }, { width: 200, height: 100 });
+        const componentVisual = diagram === null || diagram === void 0 ? void 0 : diagram.getVisual(component.id);
+        const space = diagram === null || diagram === void 0 ? void 0 : diagram.findEmptySpace({ x: componentVisual.getDimensions().right + 250, y: componentVisual.getDimensions().getCenter().y }, { width: 200, height: 100 });
         if (serviceRequest.specialization == "Query") {
             const query = serviceRequest;
-            diagram.layoutVisuals([query.id], space, false);
+            diagram === null || diagram === void 0 ? void 0 : diagram.layoutVisuals([query.id], space, false);
             let conceptName = removePrefix(removeSuffix(query.getName(), "Query"), "Get");
             const operation = existingOperation !== null && existingOperation !== void 0 ? existingOperation : createElement("Component Operation", "Load" + conceptName, component.id);
             query.getChildren("DTO-Field").forEach(param => {
@@ -57,7 +57,7 @@ class BackendServiceHelper {
             property.typeReference.setType(query.typeReference.toModel());
             property.typeReference.setIsNullable(true);
             const callService = existingCallServiceAssociation !== null && existingCallServiceAssociation !== void 0 ? existingCallServiceAssociation : createAssociation("Call Service Operation Action", operation.id, query.id);
-            diagram.layoutVisuals([callService.id]);
+            diagram === null || diagram === void 0 ? void 0 : diagram.layoutVisuals([callService.id]);
             const mapping = callService.createAdvancedMapping(operation.id, query.id, "e4a4111b-cf13-4efe-8a5d-fea9457ac8ad");
             mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc", [operation.id, callService.id], [query.id]);
             query.getChildren("DTO-Field").forEach((param, $index) => {
@@ -68,26 +68,20 @@ class BackendServiceHelper {
         }
         else if (serviceRequest.specialization == "Command") {
             const command = serviceRequest;
-            diagram.layoutVisuals([command.id], space, false);
+            diagram === null || diagram === void 0 ? void 0 : diagram.layoutVisuals([command.id], space, false);
             const operation = existingOperation !== null && existingOperation !== void 0 ? existingOperation : createElement("Component Operation", removeSuffix(command.getName(), "Command"), component.id);
             const callService = existingCallServiceAssociation !== null && existingCallServiceAssociation !== void 0 ? existingCallServiceAssociation : createAssociation("Call Service Operation Action", operation.id, command.id);
-            diagram.layoutVisuals([callService.id]);
+            diagram === null || diagram === void 0 ? void 0 : diagram.layoutVisuals([callService.id]);
             const mapping = callService.createAdvancedMapping(operation.id, command.id, "e4a4111b-cf13-4efe-8a5d-fea9457ac8ad");
             mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc", [operation.id, callService.id], [command.id]);
             this.addViewModel(command, component, mapping, ["Command", "Create", "Update"]);
-            // if (command.typeReference.isTypeFound())  {
-            //     const property = component.addChild("Property", "Model");
-            //     property.typeReference.setType(command.typeReference.toModel());
-            //     const returnMapping = callService.createAdvancedMapping(operation.id, command.id, "e60890c6-7ce7-47be-a0da-dff82b8adc02");
-            //     returnMapping.addMappedEnd("9cccf6be-31be-4ac0-a026-ed0c4f5578bf", [operation.id, callService.id, "2f68b1a4-a523-4987-b3da-f35e6e8e146b"], [property.id]);
-            // }
             if (presentMappingDialogs) {
                 mapping.launchDialog();
             }
         }
         else if (serviceRequest.specialization == "Operation") {
             const serviceOp = serviceRequest; // Service Operation
-            diagram.layoutVisuals([serviceOp.getParent().id], space, false);
+            diagram === null || diagram === void 0 ? void 0 : diagram.layoutVisuals([serviceOp.getParent().id], space, false);
             const operation = existingOperation !== null && existingOperation !== void 0 ? existingOperation : createElement("Component Operation", serviceOp.getName(), component.id);
             const callService = existingCallServiceAssociation !== null && existingCallServiceAssociation !== void 0 ? existingCallServiceAssociation : createAssociation("Call Service Operation Action", operation.id, serviceOp.id);
             diagram === null || diagram === void 0 ? void 0 : diagram.layoutVisuals([callService.id]);
@@ -171,18 +165,18 @@ class BackendServiceHelper {
         */
         const primitiveTypeIds = new Set([
             //"e6f92b09-b2c5-4536-8270-a4d9e5bbd930", // bool
-            "A4E9102F-C1C8-4902-A417-CA418E1874D2",
-            "C1B3A361-B1C6-48C3-B34C-7999B3E071F0",
-            "1fbaa056-b666-4f25-b8fd-76fe3165acc8",
-            "a4107c29-7851-4121-9416-cf1236908f1e",
-            "f1ba4df3-a5bc-427e-a591-4f6029f89bd7",
-            "675c7b84-997a-44e0-82b9-cd724c07c9e6",
-            "24A77F70-5B97-40DD-8F9A-4208AD5F9219",
-            "341929E9-E3E7-46AA-ACB3-B0438421F4C4",
-            "6b649125-18ea-48fd-a6ba-0bfff0d8f488",
-            "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74",
-            "33013006-E404-48C2-AC46-24EF5A5774FD",
-            "2ABF0FD3-CD56-4349-8838-D120ED268245",
+            "A4E9102F-C1C8-4902-A417-CA418E1874D2", // byte
+            "C1B3A361-B1C6-48C3-B34C-7999B3E071F0", // char
+            "1fbaa056-b666-4f25-b8fd-76fe3165acc8", // date
+            "a4107c29-7851-4121-9416-cf1236908f1e", // datetime
+            "f1ba4df3-a5bc-427e-a591-4f6029f89bd7", // datetimeoffset
+            "675c7b84-997a-44e0-82b9-cd724c07c9e6", // decimal
+            "24A77F70-5B97-40DD-8F9A-4208AD5F9219", // double
+            "341929E9-E3E7-46AA-ACB3-B0438421F4C4", // float
+            "6b649125-18ea-48fd-a6ba-0bfff0d8f488", // guid
+            "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74", // int
+            "33013006-E404-48C2-AC46-24EF5A5774FD", // long
+            "2ABF0FD3-CD56-4349-8838-D120ED268245", // short
             "46dbdc6c-aaa7-4d2e-ba1f-81abdb87a888", // TimeSpan
         ]);
         return primitiveTypeIds.has(field.typeReference.typeId);

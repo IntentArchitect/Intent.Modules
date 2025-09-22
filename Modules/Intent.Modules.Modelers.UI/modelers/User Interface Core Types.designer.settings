@@ -3201,136 +3201,9 @@ mapping.addMappingExpression(targetPath, "{" + navAssociation.getName() + "}");<
       <dependencies>
         <dependency name="Common UI Script" id="5bd2a61d-7aaa-4785-90fa-376796ccb6c8" />
       </dependencies>
-      <script>const result = await dialogService.openForm({
-    title: "Add to Diagram",
-    fields: [
-        {
-            id: "selectedElementIds",
-            label: "Select Elements",
-            fieldType: "tree-view",
-            treeViewOptions: { 
-                rootId: getCurrentDiagram().getOwner().getPackage().id,
-                isMultiSelect: true,
-                submitFormTriggers: ["double-click", "enter"],
-                hasFilter: true,
-                selectableTypes: [
-                    { specializationId: "Command", autoExpand: true, isSelectable: (x) =&gt; true },
-                    { specializationId: "Query", autoExpand: true, isSelectable: (x) =&gt; true },
-                    { specializationId: "Operation", autoExpand: true, isSelectable: (x) =&gt; x.getParent().specialization == "Service" },
-                ],
-            }
-        }
-    ]
-})
+      <script>/// &lt;reference path="ui-common.ts" /&gt;
 
-if (result.selectedElementIds.length == 0) {
-    return;
-}
-
-
-const component = element;
-const diagram = getCurrentDiagram();
-const componentVisual = diagram.getVisual(element.id);
-const space = diagram.findEmptySpace({ x: componentVisual.getDimensions().right + 250, y: componentVisual.getDimensions().getCenter().y}, { width: 200, height: 100 });
-
-result.selectedElementIds.forEach(selectedElementId =&gt; {
-
-    const serviceRequest = lookup(selectedElementId);
-
-    if (!serviceRequest) {
-        return;
-    }
-    BackendServiceHelperApi.setupCallServiceFromComponent(component, serviceRequest, result.selectedElementIds.length == 1);
-
-});
-return;
-
-if (serviceRequest.specialization == "Query") {
-    const query = serviceRequest;
-    diagram.layoutVisuals([query.id], space, false);
-    const operation = createElement("Component Operation", "Load" + removePrefix(removeSuffix(query.getName(), "Query"), "Get"), component.id);
-
-    query.getChildren("DTO-Field").forEach(param =&gt; {
-        const parameter = operation.addChild("Parameter", toCamelCase(param.getName()));
-        parameter.typeReference.setType(param.typeReference.toModel())
-    });
-
-    const property = component.addChild("Property", "Model");
-    property.typeReference.setType(query.typeReference.toModel());
-    property.typeReference.setIsNullable(true);
-
-    const callService = createAssociation("Call Service Operation Action", operation.id, query.id)
-    diagram.layoutVisuals([callService.id]);
-
-    const mapping = callService.createAdvancedMapping(operation.id, query.id, "e4a4111b-cf13-4efe-8a5d-fea9457ac8ad");
-    mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc", [operation.id, callService.id], [query.id]);
-    query.getChildren("DTO-Field").forEach((param, $index) =&gt; {
-        mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", [operation.id, operation.getChildren()[$index].id], [serviceRequest.id, param.id]);
-    });
-
-    const returnMapping = callService.createAdvancedMapping(operation.id, query.id, "e60890c6-7ce7-47be-a0da-dff82b8adc02");
-    returnMapping.addMappedEnd("9cccf6be-31be-4ac0-a026-ed0c4f5578bf", [operation.id, callService.id, "2f68b1a4-a523-4987-b3da-f35e6e8e146b"], [property.id]);
-
-} else if (serviceRequest.specialization == "Command") {
-    
-    const command = serviceRequest;
-    diagram.layoutVisuals([command.id], space, false);
-    const operation = createElement("Component Operation", removeSuffix(command.getName(), "Command"), component.id);
-
-    const callService = createAssociation("Call Service Operation Action", operation.id, command.id)
-    diagram.layoutVisuals([callService.id]);
-
-    const mapping = callService.createAdvancedMapping(operation.id, command.id, "e4a4111b-cf13-4efe-8a5d-fea9457ac8ad");
-    mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc", [operation.id, callService.id], [command.id]);
-
-    addViewModel(command, component, mapping, "Command", "Create", "Update");
-
-    // if (command.typeReference.isTypeFound())  {
-    //     const property = component.addChild("Property", "Model");
-    //     property.typeReference.setType(command.typeReference.toModel());
-
-    //     const returnMapping = callService.createAdvancedMapping(operation.id, command.id, "e60890c6-7ce7-47be-a0da-dff82b8adc02");
-    //     returnMapping.addMappedEnd("9cccf6be-31be-4ac0-a026-ed0c4f5578bf", [operation.id, callService.id, "2f68b1a4-a523-4987-b3da-f35e6e8e146b"], [property.id]);
-    // }
-    mapping.launchDialog();
-
-} else if (serviceRequest.specialization == "Operation") {
-    const serviceOp = serviceRequest; // Service Operation
-    diagram.layoutVisuals([serviceOp.getParent().id], space, false);
-    const operation = createElement("Component Operation", serviceOp.getName(), component.id);
-
-    const callService = createAssociation("Call Service Operation Action", operation.id, serviceOp.id)
-    diagram?.layoutVisuals([callService.id]);
-
-    const mapping = callService.createAdvancedMapping(operation.id, serviceOp.id, "e4a4111b-cf13-4efe-8a5d-fea9457ac8ad");
-    mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc", [operation.id, callService.id], [serviceOp.id]);
-
-
-    serviceOp.getChildren("Parameter").filter(x =&gt; x.typeReference.getType().specialization != "DTO").forEach(param =&gt; {
-        const parameter = operation.addChild("Parameter", toCamelCase(param.getName()));
-        parameter.typeReference.setType(param.typeReference.toModel())
-        mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", [operation.id, parameter.id], [serviceOp.id, param.id]);
-    });
-    
-    if (serviceOp.getStereotype("Http Settings")?.getProperty("Verb").getValue() == "GET") {
-        if (serviceOp.typeReference.getType() != null 
-            &amp;&amp; (serviceOp.typeReference.getType().specialization != "Type-Definition" || (serviceOp.typeReference.getType().specialization == "Type-Definition") &amp;&amp; serviceOp.typeReference.toModel().genericTypeParameters.length &gt; 0) ) {
-            const property = component.addChild("Property", "Model");
-            property.typeReference.setType(serviceOp.typeReference.toModel());
-            property.typeReference.setIsNullable(true);
-            const returnMapping = callService.createAdvancedMapping(operation.id, serviceOp.id, "e60890c6-7ce7-47be-a0da-dff82b8adc02");
-            returnMapping.addMappedEnd("9cccf6be-31be-4ac0-a026-ed0c4f5578bf", [operation.id, callService.id, "2f68b1a4-a523-4987-b3da-f35e6e8e146b"], [property.id]);
-
-        }
-    } else {
-        const dtoParam = serviceOp.getChild(x =&gt; x.specialization == "Parameter" &amp;&amp; x.typeReference.getType().specialization == "DTO")
-        const dto = dtoParam?.typeReference.getType();
-        addViewModel(dto, component, mapping, "DTO", "Dto");
-        mapping.launchDialog();
-    }
-}
-
-function addViewModel(contract, component, mapping, ...suffixesToRemove){
+function addViewModel(contract, component, mapping, ...suffixesToRemove) {
 
     if (!contract) return;
 
@@ -3344,32 +3217,76 @@ function addViewModel(contract, component, mapping, ...suffixesToRemove){
             newProperty.typeReference.setIsNullable(true);
         }
 
-        addChildElementsRecursivly(newModel, contract, component, mapping,[newProperty.id], [contract.id]);
+        addChildElementsRecursively(newModel, contract, component, mapping, [newProperty.id], [contract.id]);
     }
 }
 
-function addChildElementsRecursivly(model, contract, component, mapping, srcPath, dstPath){
+function addChildElementsRecursively(model, contract, component, mapping, srcPath, dstPath) {
     contract.getChildren("DTO-Field").forEach(field =&gt; {
 
         const modelProperty = model.addChild("Property", field.getName());
         const nextSrcPath = srcPath.concat(modelProperty.id);
-        const nextDstPath = dstPath.concat(field.id);                
+        const nextDstPath = dstPath.concat(field.id);
 
-        if (field.typeReference?.getType()?.specialization == "DTO"){
-            const complexChildType = component.addChild("Model Definition", removePrefix(removeSuffix(field.typeReference.getType().getName(), "DTO", "Dto"))  + "Model")
+        if (field.typeReference?.getType()?.specialization == "DTO") {
+            const complexChildType = component.addChild("Model Definition", removePrefix(removeSuffix(field.typeReference.getType().getName(), "DTO", "Dto")) + "Model")
             modelProperty.typeReference.setType(complexChildType.id);
             modelProperty.typeReference.setIsNullable(field.typeReference.isNullable)
             modelProperty.typeReference.setIsCollection(field.typeReference.isCollection)
-            if (field.typeReference.isCollection){
+            if (field.typeReference.isCollection) {
                 mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", nextSrcPath, nextDstPath);
             }
-            addChildElementsRecursivly(complexChildType, field.typeReference.getType(), component, mapping, nextSrcPath, nextDstPath);
-        } else {                   
+            addChildElementsRecursively(complexChildType, field.typeReference.getType(), component, mapping, nextSrcPath, nextDstPath);
+        } else {
             modelProperty.typeReference.setType(field.typeReference.toModel());
             mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", nextSrcPath, nextDstPath);
         }
-    })
-}</script>
+    });
+}
+
+async function execute() {
+    const result = await dialogService.openForm({
+        title: "Call Backend Service",
+        fields: [
+            {
+                id: "selectedElementIds",
+                label: "Select Elements",
+                fieldType: "tree-view",
+                treeViewOptions: {
+                    rootId: element.getPackage().id,
+                    isMultiSelect: true,
+                    submitFormTriggers: ["double-click", "enter"],
+                    hasFilter: true,
+                    selectableTypes: [
+                        { specializationId: "Command", autoExpand: true, isSelectable: (x) =&gt; true },
+                        { specializationId: "Query", autoExpand: true, isSelectable: (x) =&gt; true },
+                        { specializationId: "Operation", autoExpand: true, isSelectable: (x) =&gt; x.getParent().specialization == "Service" },
+                    ],
+                }
+            }
+        ]
+    });
+
+    if (result.selectedElementIds.length == 0) {
+        return;
+    }
+
+    const component = element;
+
+    result.selectedElementIds.forEach(selectedElementId =&gt; {
+
+        const serviceRequest = lookup(selectedElementId);
+
+        if (!serviceRequest) {
+            return;
+        }
+
+        BackendServiceHelperApi.setupCallServiceFromComponent(component, serviceRequest, result.selectedElementIds.length == 1);
+    });
+}
+
+await execute();
+</script>
     </suggestionSetting>
     <suggestionSetting type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" locations="diagram, model">
       <name>Make Route Parameter</name>

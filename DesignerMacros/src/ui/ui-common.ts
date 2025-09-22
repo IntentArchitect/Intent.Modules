@@ -1,8 +1,8 @@
 /// <reference path="../../typings/elementmacro.context.api.d.ts" />
 
 let BackendServiceHelperApi = {
-  setupCallServiceFromComponent,
-  remapServiceCall,
+    setupCallServiceFromComponent,
+    remapServiceCall,
 };
 
 function setupCallServiceFromComponent(component: IElementApi, serviceRequest: IElementApi, presentMappingDialogs: boolean) {
@@ -45,18 +45,24 @@ function remapServiceCall(association: IAssociationApi) {
 
     let helper = new BackendServiceHelper();
     helper.callService(component, serviceRequest, true, association, existingOperation, existingProperty);
-} 
+}
 
 class BackendServiceHelper {
-    callService(component: IElementApi, serviceRequest: IElementApi, presentMappingDialogs: boolean, existingCallServiceAssociation?: IAssociationApi, existingOperation?: IElementApi, existingProperty?: IElementApi) {
-        
+    callService(
+        component: IElementApi,
+        serviceRequest: IElementApi,
+        presentMappingDialogs: boolean,
+        existingCallServiceAssociation?: IAssociationApi,
+        existingOperation?: IElementApi,
+        existingProperty?: IElementApi
+    ): void {
         const diagram = getCurrentDiagram();
-        const componentVisual = diagram.getVisual(component.id);
-        const space = diagram.findEmptySpace({ x: componentVisual.getDimensions().right + 250, y: componentVisual.getDimensions().getCenter().y}, { width: 200, height: 100 });
+        const componentVisual = diagram?.getVisual(component.id);
+        const space = diagram?.findEmptySpace({ x: componentVisual.getDimensions().right + 250, y: componentVisual.getDimensions().getCenter().y }, { width: 200, height: 100 });
 
         if (serviceRequest.specialization == "Query") {
             const query = serviceRequest;
-            diagram.layoutVisuals([query.id], space, false);
+            diagram?.layoutVisuals([query.id], space, false);
             let conceptName = removePrefix(removeSuffix(query.getName(), "Query"), "Get");
             const operation = existingOperation ?? createElement("Component Operation", "Load" + conceptName, component.id);
 
@@ -70,7 +76,7 @@ class BackendServiceHelper {
             property.typeReference.setIsNullable(true);
 
             const callService = existingCallServiceAssociation ?? createAssociation("Call Service Operation Action", operation.id, query.id)
-            diagram.layoutVisuals([callService.id]);
+            diagram?.layoutVisuals([callService.id]);
 
             const mapping = callService.createAdvancedMapping(operation.id, query.id, "e4a4111b-cf13-4efe-8a5d-fea9457ac8ad");
             mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc", [operation.id, callService.id], [query.id]);
@@ -82,32 +88,25 @@ class BackendServiceHelper {
             returnMapping.addMappedEnd("9cccf6be-31be-4ac0-a026-ed0c4f5578bf", [operation.id, callService.id, "2f68b1a4-a523-4987-b3da-f35e6e8e146b"], [property.id]);
 
         } else if (serviceRequest.specialization == "Command") {
-            
+
             const command = serviceRequest;
-            diagram.layoutVisuals([command.id], space, false);
+            diagram?.layoutVisuals([command.id], space, false);
             const operation = existingOperation ?? createElement("Component Operation", removeSuffix(command.getName(), "Command"), component.id);
 
             const callService = existingCallServiceAssociation ?? createAssociation("Call Service Operation Action", operation.id, command.id)
-            diagram.layoutVisuals([callService.id]);
+            diagram?.layoutVisuals([callService.id]);
 
             const mapping = callService.createAdvancedMapping(operation.id, command.id, "e4a4111b-cf13-4efe-8a5d-fea9457ac8ad");
             mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc", [operation.id, callService.id], [command.id]);
 
             this.addViewModel(command, component, mapping, ["Command", "Create", "Update"]);
 
-            // if (command.typeReference.isTypeFound())  {
-            //     const property = component.addChild("Property", "Model");
-            //     property.typeReference.setType(command.typeReference.toModel());
-
-            //     const returnMapping = callService.createAdvancedMapping(operation.id, command.id, "e60890c6-7ce7-47be-a0da-dff82b8adc02");
-            //     returnMapping.addMappedEnd("9cccf6be-31be-4ac0-a026-ed0c4f5578bf", [operation.id, callService.id, "2f68b1a4-a523-4987-b3da-f35e6e8e146b"], [property.id]);
-            // }
-            if (presentMappingDialogs){
+            if (presentMappingDialogs) {
                 mapping.launchDialog();
             }
         } else if (serviceRequest.specialization == "Operation") {
             const serviceOp = serviceRequest; // Service Operation
-            diagram.layoutVisuals([serviceOp.getParent().id], space, false);
+            diagram?.layoutVisuals([serviceOp.getParent().id], space, false);
             const operation = existingOperation ?? createElement("Component Operation", serviceOp.getName(), component.id);
 
             const callService = existingCallServiceAssociation ?? createAssociation("Call Service Operation Action", operation.id, serviceOp.id)
@@ -122,10 +121,10 @@ class BackendServiceHelper {
                 parameter.typeReference.setType(param.typeReference.toModel())
                 mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", [operation.id, parameter.id], [serviceOp.id, param.id]);
             });
-            
+
             if (serviceOp.getStereotype("Http Settings")?.getProperty("Verb").getValue() == "GET") {
-                if (serviceOp.typeReference.getType() != null 
-                    && (serviceOp.typeReference.getType().specialization != "Type-Definition" || (serviceOp.typeReference.getType().specialization == "Type-Definition") && serviceOp.typeReference.toModel().genericTypeParameters.length > 0) ) {
+                if (serviceOp.typeReference.getType() != null
+                    && (serviceOp.typeReference.getType().specialization != "Type-Definition" || (serviceOp.typeReference.getType().specialization == "Type-Definition") && serviceOp.typeReference.toModel().genericTypeParameters.length > 0)) {
                     let conceptName = removePrefix(serviceOp.getName(), "Find", "Get");
                     const property = existingProperty ?? component.addChild("Property", conceptName + "Models");
                     property.typeReference.setType(serviceOp.typeReference.toModel());
@@ -137,16 +136,16 @@ class BackendServiceHelper {
                 const dtoParam = serviceOp.getChild(x => x.specialization == "Parameter" && x.typeReference.getType().specialization == "DTO")
                 const dto = dtoParam?.typeReference.getType();
                 this.addViewModel(dto, component, mapping, ["DTO", "Dto"], [serviceOp.id, dtoParam.id]);
-                if (presentMappingDialogs){
+                if (presentMappingDialogs) {
                     mapping.launchDialog();
                 }
             }
         }
     }
 
-    private addViewModel(contract: IElementApi, component: IElementApi, mapping: IElementToElementMappingApi, suffixesToRemove: string[], targetPath?: string[]){
+    private addViewModel(contract: IElementApi, component: IElementApi, mapping: IElementToElementMappingApi, suffixesToRemove: string[], targetPath?: string[]) {
 
-        if (targetPath == null){
+        if (targetPath == null) {
             targetPath = [contract.id];
         }
 
@@ -162,31 +161,31 @@ class BackendServiceHelper {
                 property.typeReference.setIsNullable(true);
             }
 
-            this.addChildElementsRecursively(modelDefinition, contract, component, mapping,[property.id], targetPath);
+            this.addChildElementsRecursively(modelDefinition, contract, component, mapping, [property.id], targetPath);
         }
     }
 
-    private addChildElementsRecursively(model: IElementApi, contract: IElementApi, component: IElementApi, mapping: IElementToElementMappingApi, srcPath: string[], dstPath: string[]){
-    
+    private addChildElementsRecursively(model: IElementApi, contract: IElementApi, component: IElementApi, mapping: IElementToElementMappingApi, srcPath: string[], dstPath: string[]) {
+
         contract.getChildren("DTO-Field").forEach(field => {
 
             const modelProperty = model.addChild("Property", field.getName());
             const nextSrcPath = srcPath.concat(modelProperty.id);
-            const nextDstPath = dstPath.concat(field.id);                
+            const nextDstPath = dstPath.concat(field.id);
 
-            if (field.typeReference?.getType()?.specialization == "DTO"){
-                const complexChildType = component.addChild("Model Definition", removePrefix(removeSuffix(field.typeReference.getType().getName(), "DTO", "Dto"))  + "Model")
+            if (field.typeReference?.getType()?.specialization == "DTO") {
+                const complexChildType = component.addChild("Model Definition", removePrefix(removeSuffix(field.typeReference.getType().getName(), "DTO", "Dto")) + "Model")
                 modelProperty.typeReference.setType(complexChildType.id);
                 modelProperty.typeReference.setIsNullable(field.typeReference.isNullable)
 
                 modelProperty.typeReference.setIsCollection(field.typeReference.isCollection)
-                if (field.typeReference.isCollection){
+                if (field.typeReference.isCollection) {
                     mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", nextSrcPath, nextDstPath);
                 }
                 this.addChildElementsRecursively(complexChildType, field.typeReference.getType(), component, mapping, nextSrcPath, nextDstPath);
-            } else {       
+            } else {
                 modelProperty.typeReference.setType(field.typeReference.toModel());
-                if (!field.typeReference.isCollection && this.makeNullableInModel(field)){
+                if (!field.typeReference.isCollection && this.makeNullableInModel(field)) {
                     //Make Model Definition primitives nullable for better UI binding support
                     modelProperty.typeReference.setIsNullable(true)
                 }
@@ -195,7 +194,7 @@ class BackendServiceHelper {
         })
     }
 
-    private makeNullableInModel(field: IElementApi) : boolean{
+    private makeNullableInModel(field: IElementApi): boolean {
         /*
         Lots of UI controls require nullable bindings to represent "Not select / No selection"
         Switches and Check boxes tend to not support nullable, hence removing the bool
@@ -217,6 +216,6 @@ class BackendServiceHelper {
             "46dbdc6c-aaa7-4d2e-ba1f-81abdb87a888", // TimeSpan
         ]);
 
-        return primitiveTypeIds.has(field.typeReference.typeId);    
+        return primitiveTypeIds.has(field.typeReference.typeId);
     }
 }
