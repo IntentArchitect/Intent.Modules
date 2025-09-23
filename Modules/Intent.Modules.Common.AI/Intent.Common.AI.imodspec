@@ -54,16 +54,16 @@ return provider === "open-router";</isActiveFunction>
 return provider === "azure-open-ai";</isActiveFunction>
           <isRequiredFunction>return true;</isRequiredFunction>
         </setting>
+        <setting id="07a3313b-0602-4f83-a1c1-820e746bde48" title="Deployment name" type="text">
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "azure-open-ai";</isActiveFunction>
+          <isRequiredFunction>return true;</isRequiredFunction>
+        </setting>
         <setting id="be17de04-c671-49c2-8124-cfa80bab9fcd" title="Ollama API Url" type="text">
           <hint>URL to connect to Ollama API.</hint>
           <defaultValue>http://localhost:11434</defaultValue>
           <isActiveFunction>let provider = getProperty("Provider").value;
 return provider === "ollama";</isActiveFunction>
-          <isRequiredFunction>return true;</isRequiredFunction>
-        </setting>
-        <setting id="07a3313b-0602-4f83-a1c1-820e746bde48" title="Deployment name" type="text">
-          <isActiveFunction>let provider = getProperty("Provider").value;
-return provider === "azure-open-ai";</isActiveFunction>
           <isRequiredFunction>return true;</isRequiredFunction>
         </setting>
         <setting id="4cb52ca6-af4f-4dbf-9f75-5a74438cd281" title="Max Tokens" type="text">
