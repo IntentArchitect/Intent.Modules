@@ -1,3 +1,7 @@
+### Version 2.0.4
+
+- Fixed: Compiled migration against latest version of Persistence SDK.
+
 ### Version 2.0.3
 
 - Improvement: Added syntax highlighting to all Publish and Subscribe Processing Actions and their visuals.

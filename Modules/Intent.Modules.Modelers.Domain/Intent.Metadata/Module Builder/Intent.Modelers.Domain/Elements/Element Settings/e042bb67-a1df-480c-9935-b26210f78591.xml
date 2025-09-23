@@ -404,7 +404,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const staticConstructorStereotype = &quot;39a4c065-f9c5-46dc-b035-2eb025698330&quot;;&#xD;&#xA;if (element.getIsStatic() &#xD;&#xA;    &amp;&amp; element.typeReference.getTypeId() == element.getParent()?.id &#xD;&#xA;    &amp;&amp; !element.hasStereotype(staticConstructorStereotype)) {&#xD;&#xA;    element.addStereotype(staticConstructorStereotype);&#xD;&#xA;} else if (element.hasStereotype(staticConstructorStereotype)) {&#xD;&#xA;    element.removeStereotype(staticConstructorStereotype);&#xD;&#xA;}" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const staticConstructorStereotype = &quot;39a4c065-f9c5-46dc-b035-2eb025698330&quot;;&#xD;&#xA;if (element.getIsStatic() &amp;&amp; element.typeReference.getTypeId() == element.getParent()?.id) {&#xD;&#xA;    if (!element.hasStereotype(staticConstructorStereotype)){        &#xD;&#xA;        element.addStereotype(staticConstructorStereotype);&#xD;&#xA;    }&#xD;&#xA;} else if (element.hasStereotype(staticConstructorStereotype)) {&#xD;&#xA;    element.removeStereotype(staticConstructorStereotype);&#xD;&#xA;}" isActive="true" />
                 <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>

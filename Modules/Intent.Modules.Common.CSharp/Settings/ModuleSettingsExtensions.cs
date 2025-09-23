@@ -125,5 +125,42 @@ namespace Intent.Modules.Common.CSharp.Settings
             DependsOnLength,
             Default,
         }
+        public BlankLineBetweenMembersOptions BlankLineBetweenMembers() => new BlankLineBetweenMembersOptions(_groupSettings.GetSetting("727bb639-f91c-4f86-bd81-b1eccd7e4d45")?.Value);
+
+        public class BlankLineBetweenMembersOptions
+        {
+            public readonly string Value;
+
+            public BlankLineBetweenMembersOptions(string value)
+            {
+                Value = value;
+            }
+
+            public BlankLineBetweenMembersOptionsEnum AsEnum()
+            {
+                return Value switch
+                {
+                    "default" => BlankLineBetweenMembersOptionsEnum.Default,
+                    "always" => BlankLineBetweenMembersOptionsEnum.Always,
+                    _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
+                };
+            }
+
+            public bool IsDefault()
+            {
+                return Value == "default";
+            }
+
+            public bool IsAlways()
+            {
+                return Value == "always";
+            }
+        }
+
+        public enum BlankLineBetweenMembersOptionsEnum
+        {
+            Default,
+            Always,
+        }
     }
 }

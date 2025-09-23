@@ -58,7 +58,6 @@
           <packageName>Intent.ApplicationTemplate.Builder</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -101,7 +100,6 @@
           <packageName>Intent.ApplicationTemplate.Builder</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -144,7 +142,6 @@
           <packageName>Intent.ApplicationTemplate.Builder</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -159,6 +156,56 @@
                 <property name="fdea9028-8611-4eb0-b1a5-4d54d267af41" display="Menu Group" isActive="true" />
                 <property name="aeaeff9b-f55b-4888-92e9-5317b5c14016" display="Top Divider" value="false" isActive="true" />
                 <property name="543cc5f5-0b0c-40cc-9df7-3ce45b555dd0" display="Bottom Divider" value="false" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="8edad1c0-bd40-403b-aa07-3feba5f712d3" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>Update versions from modules.config</name>
+          <display>Update versions from modules.config: Inline Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="05903c1d-3ef7-41d9-8c92-2acf83ae42c0">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>836c5724-15e5-4704-a638-0cb23a06dde4</parentFolderId>
+          <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
+          <packageName>Intent.ApplicationTemplate.Builder</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="/// &lt;reference path=&quot;../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;&#xD;&#xA;function parseToMap(xmlString) {&#xD;&#xA;  const regex = /moduleId=&quot;([A-Za-z0-9.\-]+)&quot;\s+version=&quot;([0-9A-Za-z.\-]+)&quot;/g;&#xD;&#xA;  const modulesMap = new Map();&#xD;&#xA;  let match;&#xD;&#xA;&#xD;&#xA;  while ((match = regex.exec(xmlString)) !== null) {&#xD;&#xA;    modulesMap.set(match[1], match[2]);&#xD;&#xA;  }&#xD;&#xA;&#xD;&#xA;  return modulesMap;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;const result = await dialogService.openForm({&#xD;&#xA;  title: &quot;modules.config importer&quot;,&#xD;&#xA;  fields: [&#xD;&#xA;    {&#xD;&#xA;      fieldType: &quot;textarea&quot;,&#xD;&#xA;      id: &quot;xml&quot;,&#xD;&#xA;      label: &quot;XML&quot;&#xD;&#xA;    }&#xD;&#xA;  ]&#xD;&#xA;});&#xD;&#xA;&#xD;&#xA;const parsedVersionsById = parseToMap(result.xml);&#xD;&#xA;&#xD;&#xA;const minVersions = lookupTypesOf(&quot;Module&quot;);&#xD;&#xA;for (let i = 0; i &lt; minVersions.length; i++) {&#xD;&#xA;  const item = minVersions[i];&#xD;&#xA;  const name = item.getName();&#xD;&#xA;&#xD;&#xA;  if (!parsedVersionsById.has(name)) {&#xD;&#xA;    continue;&#xD;&#xA;  }&#xD;&#xA;&#xD;&#xA;  const value = parsedVersionsById.get(name);&#xD;&#xA;  const oldValue = item.getValue();&#xD;&#xA;&#xD;&#xA;  item.setValue(value);&#xD;&#xA;&#xD;&#xA;  console.log(`Updated minimum version module ${name} from ${oldValue} to ${value}`);&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;const componentModules = lookupTypesOf(&quot;Component Module&quot;);&#xD;&#xA;for (let i = 0; i &lt; componentModules.length; i++) {&#xD;&#xA;  const item = componentModules[i];&#xD;&#xA;  const name = item.getName();&#xD;&#xA;&#xD;&#xA;  if (!parsedVersionsById.has(name)) {&#xD;&#xA;    continue;&#xD;&#xA;  }&#xD;&#xA;&#xD;&#xA;  const stereotype = item.getStereotype(&quot;Module Settings&quot;);&#xD;&#xA;  const property = stereotype.getProperty(&quot;Version&quot;);&#xD;&#xA;  const value = parsedVersionsById.get(name);&#xD;&#xA;  const oldValue = property.getValue();&#xD;&#xA;&#xD;&#xA;  property.setValue(value);&#xD;&#xA;&#xD;&#xA;  console.log(`Updated component module ${name} from ${oldValue} to ${value}`);&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;await dialogService.info(&quot;Complete.&quot;);&#xD;&#xA;" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
+                <property name="c37d8704-0003-4886-b6c2-4e51aa22a8f9" display="Menu Group" isActive="true" />
+                <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
+                <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

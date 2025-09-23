@@ -2,7 +2,7 @@
 
 namespace Namespace
 {
-    public interface Inteface
+    public interface Interface
     {
         System.Threading.Tasks.ValueTask<string> GetNameAsync();
     }

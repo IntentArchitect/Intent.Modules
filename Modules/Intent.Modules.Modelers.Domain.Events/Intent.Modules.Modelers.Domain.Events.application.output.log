@@ -18,6 +18,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>1cc97c8d-4e22-4123-9868-664e60bbe27d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#fa57ec52-536d-46a8-8aa0-4589812665c1</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DomainEventGeneralizationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DomainEventGeneralizationModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>1cc97c8d-4e22-4123-9868-664e60bbe27d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#90831494-f069-44eb-b488-ab2dba7518ea</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DomainEventHandlerAssociationModel.cs</ApplicationRelativeFilePath>
@@ -54,6 +62,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/DomainEventAssociationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>DomainEventAssociationModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>fc65166b-e61b-4b0f-bf59-d5c8d45547f2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#fa57ec52-536d-46a8-8aa0-4589812665c1</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/DomainEventGeneralizationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DomainEventGeneralizationModelAssociationExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

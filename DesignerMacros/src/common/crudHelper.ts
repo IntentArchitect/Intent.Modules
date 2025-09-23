@@ -346,6 +346,7 @@ class CrudHelper {
             id: key.id,
             name: key.getName(),
             typeId: key.typeReference.typeId,
+            typeReferenceModel: key.typeReference.toModel(),
             mapPath: [key.id],
             isNullable: false,
             isCollection: false
@@ -376,6 +377,7 @@ class CrudHelper {
                     id: key.id,
                     name: key.getName(),
                     typeId: key.typeReference.typeId,
+                    typeReferenceModel: key.typeReference.toModel(),
                     mapPath: generalizationStack.concat([key.id]),
                     isNullable: key.typeReference.isNullable,
                     isCollection: key.typeReference.isCollection
@@ -396,6 +398,7 @@ class CrudHelper {
             id: attr.id,
             name: attr.getName(),
             typeId: attr.typeReference.typeId,
+            typeReferenceModel: attr.typeReference.toModel(),
             mapPath: [attr.id],
             // GCB - if you're seeing this change in your script, where these used to be false, you need to check.
             // I had to "fix" this so that basic mapping DTO projections worked properly (e.g. adding OrderLines to an Order DTO via basic mapping)
@@ -427,6 +430,7 @@ class CrudHelper {
                     id: attr.id,
                     name: attr.getName(),
                     typeId: attr.typeReference.typeId,
+                    typeReferenceModel: attr.typeReference.toModel(),
                     mapPath: generalizationStack.concat([attr.id]),
                     isNullable: attr.typeReference.isNullable,
                     isCollection: attr.typeReference.isCollection

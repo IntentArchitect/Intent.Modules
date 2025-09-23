@@ -40,6 +40,38 @@ navigateToDesigner("81104ae6-2bc5-4bae-b05a-f987b0372d81", {
     scriptDependencies: ["61a8411f-b5bc-4a00-9a37-a967e0893d9d"]
 });</script>
     </suggestionSetting>
+    <suggestionSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" locations="diagram, model">
+      <name>Create CQRS request in Services designer</name>
+      <filterFunction>const repositorySpecializationId = "96ffceb2-a70a-4b69-869b-0df436c470c3";
+
+return element.getParent().specializationId == repositorySpecializationId &amp;&amp;
+       application.isModuleInstalled("Intent.Modelers.Services.CQRS");</filterFunction>
+      <dependencies />
+      <script>if (!await promptIfUnsavedChangesAsync()) {
+    return;
+}
+
+navigateToDesigner("81104ae6-2bc5-4bae-b05a-f987b0372d81", {
+    executeScript: `await RepositoryOperationApi.createCQRSService(lookup("${element.id}"), null);`,
+    scriptDependencies: ["8c5b2eb0-3b1a-4813-b69f-2713805e0891"]
+});</script>
+    </suggestionSetting>
+    <suggestionSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" locations="diagram, model">
+      <name>Create Traditional Service in Services designer</name>
+      <filterFunction>const repositorySpecializationId = "96ffceb2-a70a-4b69-869b-0df436c470c3";
+
+return element.getParent().specializationId == repositorySpecializationId &amp;&amp;
+       application.isModuleInstalled("Intent.Modelers.Services.CQRS");</filterFunction>
+      <dependencies />
+      <script>if (!await promptIfUnsavedChangesAsync()) {
+    return;
+}
+
+navigateToDesigner("81104ae6-2bc5-4bae-b05a-f987b0372d81", {
+    executeScript: `await RepositoryOperationApi.createTraditionalService(lookup("${element.id}"), null);`,
+    scriptDependencies: ["8c5b2eb0-3b1a-4813-b69f-2713805e0891"]
+});</script>
+    </suggestionSetting>
   </suggestionSettings>
   <scripts />
 </settings>

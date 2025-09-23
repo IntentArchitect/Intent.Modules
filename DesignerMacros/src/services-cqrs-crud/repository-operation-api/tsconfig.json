@@ -1,0 +1,16 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "outFile": "../../../../Modules/Intent.Modules.Modelers.Services.DomainInteractions/resources/repository-operation-api.js",
+    "removeComments": false,
+    "sourceMap": false,
+    "target": "ES2020",
+    "types": []
+  },
+  "include": [
+    "**/*"
+  ],
+  "exclude": []
+}

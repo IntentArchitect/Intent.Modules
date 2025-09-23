@@ -13,6 +13,7 @@ public interface ICSharpMethodDeclaration<out TCSharpMethodDeclaration> : ICShar
     bool IsAbstract { get; }
     string? ExplicitImplementationFor { get; }
     TCSharpMethodDeclaration IsExplicitImplementationFor(string? @interface);
+    TCSharpMethodDeclaration Partial();
     TCSharpMethodDeclaration Protected();
     TCSharpMethodDeclaration Private();
     TCSharpMethodDeclaration WithoutAccessModifier();

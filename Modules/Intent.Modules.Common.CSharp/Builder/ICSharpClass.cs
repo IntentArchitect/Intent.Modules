@@ -81,6 +81,7 @@ public interface ICSharpClass : ICSharpDeclaration<ICSharpClass>, IBuildsCSharpM
     ICSharpClass AddGenericParameter(string typeName, out ICSharpGenericParameter param);
     ICSharpClass AddGenericTypeConstraint(string genericParameterName, Action<ICSharpGenericTypeConstraint> configure);
     ICSharpClass AddNestedClass(string name, Action<ICSharpClass>? configure = null);
+    ICSharpClass AddNestedRecord(string name, Action<ICSharpClass>? configure = null);
     ICSharpClass AddNestedInterface(string name, Action<ICSharpInterface>? configure = null);
     new ICSharpClass InsertMethod(int index, string returnType, string name, Action<ICSharpClassMethodDeclaration>? configure = null);
     ICSharpClass WithFieldsSeparated(CSharpCodeSeparatorType separator = CSharpCodeSeparatorType.EmptyLines);

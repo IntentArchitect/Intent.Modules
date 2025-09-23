@@ -1,3 +1,14 @@
+### Version 4.4.5
+
+- Improvement: `Domain Events` support modeling inheritance.
+
+### Version 4.4.4
+
+- Improvement: `Publish Domain Event` association lines in the Services designer are now aligned with the Domain and dotted.
+- Fixed: Critical issue with missing configuration of Mapping Options causing loss of metadata on save.
+- Fixed: Unique name warning when modeling multiple domain events.
+- Fixed: Inheritance properties not accessible in `Entity to Domain Event Mapping`.
+
 ### Version 4.4.3
 
 - Improvement: Updated Properties icon and added syntax highlighting to visuals.

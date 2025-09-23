@@ -60,6 +60,9 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
         Name = name;
         File = file;
         Parent = parent;
+        
+        _propertiesSeparator = GetConfiguredSeparator(_propertiesSeparator);
+        _fieldsSeparator = GetConfiguredSeparator(_fieldsSeparator);
     }
 
     public CSharpClass(string name) : this(name, Type.Class)
@@ -462,6 +465,18 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
         return this;
     }
 
+    public CSharpClass AddNestedRecord(string name, Action<ICSharpClass>? configure = null)
+    {
+        var @class = new CSharpRecord(
+            name: name,
+            file: File,
+            parent: this);
+
+        configure?.Invoke(@class);
+        NestedClasses.Add(@class);
+        return this;
+    }
+
     public CSharpClass AddNestedInterface(string name, Action<CSharpInterface>? configure = null)
     {
         var @interface = new CSharpInterface(
@@ -476,16 +491,16 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
 
     public CSharpClass WithFieldsSeparated(CSharpCodeSeparatorType separator = CSharpCodeSeparatorType.EmptyLines)
     {
-        _fieldsSeparator = separator;
+        _fieldsSeparator = GetConfiguredSeparator(separator);
         return this;
     }
 
     public CSharpClass WithPropertiesSeparated(CSharpCodeSeparatorType separator = CSharpCodeSeparatorType.EmptyLines)
     {
-        _propertiesSeparator = separator;
+        _propertiesSeparator = GetConfiguredSeparator(separator);
         return this;
     }
-
+    
     public CSharpClassMethod? FindMethod(string name)
     {
         return Methods.FirstOrDefault(x => x.Name == name);
@@ -654,7 +669,15 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     {
         return ToString(indentation);
     }
-
+    
+    private CSharpCodeSeparatorType GetConfiguredSeparator(CSharpCodeSeparatorType defaultSeparator)
+    {
+        var setting = File?.StyleSettings?.BlankLineBetweenMembers;
+        return setting != null && setting.IsAlways()
+            ? CSharpCodeSeparatorType.EmptyLines
+            : defaultSeparator;
+    }
+    
     private CSharpConstructor? GetPrimaryConstructor()
     {
         var primaryConstructors = Constructors.Where(p => p.IsPrimaryConstructor).ToArray();
@@ -886,6 +909,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     ICSharpClass ICSharpClass.AddNestedClass(string name, Action<ICSharpClass>? configure)
     {
         return _wrapper.AddNestedClass(name, configure);
+    }
+    
+    ICSharpClass ICSharpClass.AddNestedRecord(string name, Action<ICSharpClass>? configure)
+    {
+        return _wrapper.AddNestedRecord(name, configure);
     }
 
     ICSharpClass ICSharpClass.AddNestedInterface(string name, Action<ICSharpInterface>? configure)

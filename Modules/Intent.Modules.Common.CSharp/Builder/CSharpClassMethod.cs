@@ -17,6 +17,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
     public bool IsAsync { get; private set; }
     public bool IsOperator { get; set; }
+    public bool IsPartial { get; set; }
     internal string AccessModifier { get; private set; } = "public ";
     protected string OverrideModifier { get; private set; } = string.Empty;
     public bool IsAbstract { get; private set; }
@@ -152,7 +153,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
     {
         parameterName ??= "cancellationToken";
 
-        if (Parameters.Any(x => x.Name == parameterName && 
+        if (Parameters.Any(x => x.Name == parameterName &&
                                 (x.Type == "CancellationToken" || x.Type.EndsWith(".CancellationToken"))))
         {
             return this;
@@ -252,6 +253,12 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
     public CSharpClassMethod Operator(bool isOperator = true)
     {
         IsOperator = isOperator;
+        return this;
+    }
+
+    public CSharpClassMethod Partial()
+    {
+        IsPartial = true;
         return this;
     }
 
@@ -435,6 +442,10 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
             declaration.Append(AccessModifier);
         }
 
+        if (IsPartial)
+        {
+            declaration.Append("partial ");
+        }
         declaration.Append(OverrideModifier);
         declaration.Append(IsAsync ? "async " : "");
         declaration.Append(ReturnType);
@@ -456,17 +467,22 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
 
         // calculate a rough estimate of the line length
         // +1 at the end to cater for backward compatibility where the check used to include the open brace in the length calc
-        var estimatedLength = declaration.Length + Parameters.Sum(x => x.ToString().Length) + 1; 
+        var estimatedLength = declaration.Length + Parameters.Sum(x => x.ToString().Length) + 1;
 
         // this only done after the estimate length is calculated to get a more accurate reading
         declaration.Insert(0, GetAttributes(indentation));
         declaration.Insert(0, GetComments(indentation));
 
-        declaration.Append($"({GetParameters(File.StyleSettings?.ParameterPlacement.AsEnum() ?? ParameterPlacementOptionsEnum.Default, 
+        declaration.Append($"({GetParameters(File.StyleSettings?.ParameterPlacement.AsEnum() ?? ParameterPlacementOptionsEnum.Default,
             estimatedLength, 120, indentation)})");
         declaration.Append(GetGenericTypeConstraints(indentation));
 
         if (IsAbstract && Statements.Count == 0)
+        {
+            return $@"{declaration};";
+        }
+
+        if (IsPartial && Statements.Count == 0)
         {
             return $@"{declaration};";
         }
@@ -507,9 +523,9 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
             (_, _, _) => $@"
 {indentation}    {string.Join($@",
 {indentation}    ", Parameters.Select(x => x.ToString()))}",
-            
+
         };
-    
+
     private string GetGenericTypeConstraints(string indentation)
     {
         if (!GenericTypeConstraints.Any())
@@ -537,7 +553,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
     #region ICSharpMethodDeclarationActual implementation
 
     IEnumerable<ICSharpAttribute> ICSharpDeclaration<ICSharpClassMethodDeclaration>.Attributes => Attributes;
-    
+
     ICSharpClassMethodDeclaration ICSharpDeclaration<ICSharpClassMethodDeclaration>.AddAttribute(ICSharpAttribute attribute, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(attribute, configure);
 
     ICSharpClassMethodDeclaration ICSharpDeclaration<ICSharpClassMethodDeclaration>.AddAttribute(string name, Action<ICSharpAttribute> configure) => _wrapper.AddAttribute(name, configure);
@@ -614,6 +630,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
 
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Override() => _wrapper.Override();
 
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Partial() => _wrapper.Partial();
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Private() => _wrapper.Private();
 
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Protected() => _wrapper.Protected();

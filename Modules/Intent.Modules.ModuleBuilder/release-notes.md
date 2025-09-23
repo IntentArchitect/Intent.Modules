@@ -1,4 +1,12 @@
-﻿### Version 3.17.0
+﻿### Version 3.18.0
+
+- Feature: Module Builder can now model `Module Tasks` in the designer which generate a base implementation.
+
+### Version 3.17.1
+
+- Fixed: Critical bug of Module Builder not populating the `MappingOptions` for Element and Association settings.
+
+### Version 3.17.0
 
 - Improvement: Added support for `Accepted Child Types` on `Association Destination End Settings`. This is necessary, for example, to allow for using the Trait system for reordering child types.
 - Fixed: `Mappable Element Settings` use the `Mapping Element Api` option, available in Intent Architect 4.5.15 and later.

@@ -26,7 +26,7 @@ public class CSharpMethodTests
     public async Task MethodStaticModifierSet()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("same-line", "same-line");
+        var settings = new TestStyleSettings("same-line", "same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -49,7 +49,7 @@ public class CSharpMethodTests
     public async Task MethodStaticModifierNotSet()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("same-line", "same-line");
+        var settings = new TestStyleSettings("same-line", "same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -74,7 +74,7 @@ public class CSharpMethodTests
     public async Task MethodAbstractModifierSet()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("same-line", "same-line");
+        var settings = new TestStyleSettings("same-line", "same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -98,7 +98,7 @@ public class CSharpMethodTests
     public async Task MethodAbstractModifierNotSet()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("same-line", "same-line");
+        var settings = new TestStyleSettings("same-line", "same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddClass("Class", c =>
@@ -124,7 +124,7 @@ public class CSharpMethodTests
     public async Task InterfaceMethodStaticModifierSet()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("same-line", "same-line");
+        var settings = new TestStyleSettings("same-line", "same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddInterface("MyInterface", c =>
@@ -144,7 +144,7 @@ public class CSharpMethodTests
     public async Task InterfaceMethodStaticModifierNotSet()
     {
         // setup the style settings
-        var settings = new TestStyleSettings("same-line", "same-line");
+        var settings = new TestStyleSettings("same-line", "same-line", "default");
 
         var fileBuilder = new CSharpFile("Namespace", "File", settings)
             .AddInterface("MyInterface", c =>
@@ -226,5 +226,55 @@ public class CSharpMethodTests
 
         var result = fileBuilder.ToString();
         await Verifier.Verify(result);
+    }
+    
+    [Fact]
+    public async Task MethodParametersTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("void", "NoParamMethod");
+                @class.AddMethod("void", "SingleParamMethod", method => method
+                    .AddParameter("string", "parm1")
+                    .AddStatement("// Expect parameters on same line"));
+                @class.AddMethod("void", "DoubleParamsMethod", method => method
+                    .AddParameter("string", "parm1")
+                    .AddParameter("string", "parm2")
+                    .AddStatement("// Expect parameters on same line"));
+                @class.AddMethod("void", "TripleParamsMethod", method => method
+                    .AddParameter("string", "parm1")
+                    .AddParameter("string", "parm2")
+                    .AddParameter("string", "parm3")
+                    .AddStatement("// Expect parameters on same line"));
+                @class.AddMethod("void", "LongAndManyParamsMethod", method => method
+                    .AddParameter("string", "firstParameter")
+                    .AddParameter("string", "secondParameter")
+                    .AddParameter("string", "thirdParameter")
+                    .AddParameter("string", "fourthParameter")
+                    .AddStatement("// Expect parameters to span over multiple lines"));
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+    
+    [Fact]
+    public async Task BasicMethodImplementationTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddStatement(@"var stringVariable = ""String value"";");
+                    method.AddStatement(@"var intVariable = 42;");
+                    method.AddStatement(@"const string StringConstant = ""Constant Value"";");
+                    method.AddStatement(@"const int IntConstant = 77;");
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
     }
 }

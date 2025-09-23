@@ -1,3 +1,7 @@
+### Version 2.3.5
+
+- Improvement: Added suggestions to the Domain Designer to repository operations for creating CQRS requests and Traditional Services in the Services Designer.
+
 ### Version 2.3.4
 
 - Improvement: Processing Actions that are executed after the current Processing Action will not show in the Mapping Dialog.

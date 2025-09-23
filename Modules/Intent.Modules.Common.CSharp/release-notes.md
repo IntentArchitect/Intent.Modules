@@ -1,4 +1,12 @@
-﻿### Version 3.9.5
+﻿### Version 3.9.6
+
+- Improvement: Added `Partial` to `CSharpClassMethod`.
+- Improvement: Added `AddNestedRecord` to `CSharpClass`.
+- Improvement: Clears InteractionStrategy cache between "Hot" Software Factory restarts.
+- Improvement: Added `Blank line between Members` setting to allow for "always" adding a blank line between members.
+- Improvement: Elements in the `Domain` and `Services` designers will be scanned for the presence of `C#` stereotypes and add known C# types for purposes of disambiguation.
+
+### Version 3.9.5
 
 - Improvement: Added `StaticMethodInvocationMapping` and support for "Static Constructors" in the `ObjectInitializationMapping`.
 - Improvement: Add properties for command line arguments, executable path, and working directory in LaunchProfileRegistrationRequest.

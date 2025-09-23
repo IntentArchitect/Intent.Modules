@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.FactoryExtensions;
 using Intent.Utils;
 
 namespace Intent.Modules.Common.CSharp.Interactions;
@@ -11,6 +12,14 @@ public class InteractionStrategyProvider
 {
     private readonly List<(IInteractionStrategy Strategy, int Priority)> _strategies = [];
     public static readonly InteractionStrategyProvider Instance = new();
+
+    static InteractionStrategyProvider()
+    {
+        ExecutionLifeCycle.OnStart(() =>
+        {
+            Instance._strategies.Clear();
+        });
+    }
 
     public void Register(IInteractionStrategy strategy) => Register(strategy, priority: 0);
 
@@ -45,7 +54,8 @@ public class InteractionStrategyProvider
 
         if (matched.Count > 1)
         {
-            Logging.Log.Debug($"Multiple interaction strategies found for {interaction}: [{string.Join(", ", matched)}]");
+            Logging.Log.Debug($@"Multiple interaction strategies found for {interaction}: [{string.Join(", ", matched.Select(x => x.Strategy.GetType().Name))}]
+Choosing highest priority: {matched[0].Strategy.GetType().Name}");
         }
 
         return matched[0].Strategy;

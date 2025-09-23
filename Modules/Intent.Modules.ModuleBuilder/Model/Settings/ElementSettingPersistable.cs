@@ -161,7 +161,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("mappingOptions")]
         [XmlArrayItem("option")]
-        public List<MappingOption> MappingOptions { get; set; } = [];
+        public required List<MappingOption> MappingOptions { get; set; } = [];
         public bool ShouldSerializeMappingOptions() => MappingOptions.Any();
 
         [XmlArray("mappingSettings")]

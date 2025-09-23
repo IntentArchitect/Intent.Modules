@@ -21,6 +21,11 @@ public interface ICSharpStyleSettings
     ParameterPlacementOptions ParameterPlacement { get; init; }
 
     /// <summary>
+    /// Setting to determine whether to always insert blank lines between members of a class or not
+    /// </summary>
+    BlankLineBetweenMembersOptions BlankLineBetweenMembers { get; init; }
+    
+    /// <summary>
     /// The order in which elements in the file should be ordered
     /// </summary>
     IEnumerable<string> ElementOrder { get; }

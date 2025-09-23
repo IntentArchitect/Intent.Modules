@@ -7583,6 +7583,26 @@ function exposeAsHttpEndPoint(request) {
     }
 }
 
+function getRouteRemovalExclusions(element) {
+    let routeExclusions = [];
+
+    if(element.hasStereotype("20855f03-c663-4ec6-b106-de06be98f1fe")) {
+        // version is always excluded
+        routeExclusions.push("version");
+    }
+
+    // get the multi-tenancy route parameter configured
+    let multiTenancyRouteStrategy = application.getSettings("41ae5a02-3eb2-42a6-ade2-322b3c1f1115")?.getField("e15fe0fb-be28-4cc5-8b85-37a07b7ca160")?.value;
+    let multiTenancyRoute = application.getSettings("41ae5a02-3eb2-42a6-ade2-322b3c1f1115")?.getField("c8ff4af6-68b6-4e31-a291-43ada6a0008a")?.value;
+
+    if(multiTenancyRouteStrategy &amp;&amp; multiTenancyRouteStrategy != "" &amp;&amp; multiTenancyRouteStrategy === "route" 
+        &amp;&amp; multiTenancyRoute &amp;&amp; multiTenancyRoute != "") {
+        routeExclusions.push(multiTenancyRoute);
+    }
+
+    return routeExclusions;
+}
+
 function getDefaultRoutePrefix(includeLastPathSeparator) {
     const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
 
@@ -7633,6 +7653,8 @@ function updateRouteParameters(element) {
         route = removeSuffix(route, "/") + `/{${toCamelCase(x.getName())}}`
     });
 
+    let routeExclusions = getRouteRemovalExclusions(element);
+
     // REMOVE UNBINDABLE ROUTE PARAMETERS;
     const parametersInRoute = route.split("{").filter(x =&gt; x.indexOf("}") != -1).map(x =&gt; x.split("}")[0]);
     parametersInRoute.forEach(param =&gt; {
@@ -7643,7 +7665,7 @@ function updateRouteParameters(element) {
                     x.hasStereotype(parameterSettingsStereotypeId) &amp;&amp;
                     ["From Route", "Default"].every(s =&gt; x.getStereotype(parameterSettingsStereotypeId).getProperty("Source").getValue() != s)
                 )
-            ) &amp;&amp; param != "version"
+            ) &amp;&amp; routeExclusions.indexOf(param) &lt; 0;
         if (mustRemove) {
             route = route.replace(`/{${param}}`, ``);
         }

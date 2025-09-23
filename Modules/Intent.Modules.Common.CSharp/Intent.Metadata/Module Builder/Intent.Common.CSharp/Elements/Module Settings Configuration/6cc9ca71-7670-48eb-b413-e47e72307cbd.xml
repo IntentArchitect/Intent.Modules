@@ -10,7 +10,16 @@
   <parentFolderId>730e1275-0c32-44f7-991a-9619d07ca68d</parentFolderId>
   <packageId>730e1275-0c32-44f7-991a-9619d07ca68d</packageId>
   <packageName>Intent.Common.CSharp</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="15b3e709-aeb8-410a-9172-1273eb7b0864" name="Configuration">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="ce4eefa2-657c-42b0-a8cf-bbe35ef1d8a9" display="Settings Type" value="Application Settings" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <metadata />
   <childElements>
     <childElement id="0c43b221-fec0-4df7-96d2-e7281ddf9207" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
@@ -35,6 +44,7 @@
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="same-line" isActive="true" />
             <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="" isActive="true" />
             <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="" isActive="true" />
+            <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -106,6 +116,7 @@
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="default" isActive="true" />
             <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="" isActive="true" />
             <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="" isActive="true" />
+            <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -147,6 +158,64 @@
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>6483b559-92bb-43d7-a0b4-af20ded10a1b</parentFolderId>
+          <packageId>730e1275-0c32-44f7-991a-9619d07ca68d</packageId>
+          <packageName>Intent.Common.CSharp</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="727bb639-f91c-4f86-bd81-b1eccd7e4d45" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+      <name>Blank line between Members</name>
+      <display>Blank line between Members</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>6cc9ca71-7670-48eb-b413-e47e72307cbd</parentFolderId>
+      <packageId>730e1275-0c32-44f7-991a-9619d07ca68d</packageId>
+      <packageName>Intent.Common.CSharp</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Apply empty lines between properties and fields." isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="default" isActive="true" />
+            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" isActive="true" />
+            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" isActive="true" />
+            <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="9a68f109-24e5-48ae-a040-850b2e15aecc" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Default</name>
+          <display>Default = default</display>
+          <isAbstract>false</isAbstract>
+          <value>default</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>727bb639-f91c-4f86-bd81-b1eccd7e4d45</parentFolderId>
+          <packageId>730e1275-0c32-44f7-991a-9619d07ca68d</packageId>
+          <packageName>Intent.Common.CSharp</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="890b4597-2b81-4d83-b34b-c2e17ba1e2df" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Always</name>
+          <display>Always = always</display>
+          <isAbstract>false</isAbstract>
+          <value>always</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>727bb639-f91c-4f86-bd81-b1eccd7e4d45</parentFolderId>
           <packageId>730e1275-0c32-44f7-991a-9619d07ca68d</packageId>
           <packageName>Intent.Common.CSharp</packageName>
           <stereotypes />

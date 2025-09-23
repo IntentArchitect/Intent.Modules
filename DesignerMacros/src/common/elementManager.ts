@@ -21,18 +21,17 @@ class ElementManager {
     addChild(name: string, type?: string | MacroApi.Context.ITypeReference): MacroApi.Context.IElementApi {
         let existingField = this.innerElement.getChildren(this.settings.childSpecialization)
             .find(c => c.getName().toLowerCase() == ServicesHelper.formatName(name, this.settings.childType ?? "property").toLowerCase());
-        
-        let field = existingField ?? createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
-        const typeReferenceDetails = type == null
-            ? null
-            : typeof (type) === "string"
-                ? { id: type as string, isNullable: false, isCollection: false }
-                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
 
-        if (typeReferenceDetails != null) {
-            field.typeReference.setType(typeReferenceDetails.id);
-            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
-            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
+        let field = existingField ?? createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, this.settings.childType ?? "property"), this.innerElement.id);
+
+        if (type != null) {
+            if (typeof (type) === "string") {
+                field.typeReference.setType(type as string);
+                field.typeReference.setIsCollection(false);
+                field.typeReference.setIsNullable(false);
+            } else {
+                field.typeReference.setType(type.toModel());
+            }
         }
 
         return field;

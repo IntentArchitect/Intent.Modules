@@ -19,6 +19,7 @@ internal class CSharpStyleSettings : ICSharpStyleSettings
     {
         ConstructorInitializerBehavior = application.Settings.GetCSharpStyleConfiguration()?.ConstructorInitializer();
         ParameterPlacement = application.Settings.GetCSharpStyleConfiguration()?.ParameterPlacement();
+        BlankLineBetweenMembers = application.Settings.GetCSharpStyleConfiguration()?.BlankLineBetweenMembers();
 
         Settings = this;
     }
@@ -39,6 +40,11 @@ internal class CSharpStyleSettings : ICSharpStyleSettings
     /// <inheritdoc/>
     /// </summary>
     public ParameterPlacementOptions ParameterPlacement { get; init; }
+
+    /// <summary>
+    /// <inheritdoc/>
+    /// </summary>
+    public BlankLineBetweenMembersOptions BlankLineBetweenMembers { get; init; }
 
     /// <summary>
     /// <inheritdoc/>

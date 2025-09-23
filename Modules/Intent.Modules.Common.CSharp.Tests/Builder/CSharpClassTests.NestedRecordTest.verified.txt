@@ -1,0 +1,20 @@
+﻿using System;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    public class SomeClass
+    {
+        private record SomeNestedRecord(int Identifier);
+
+    }
+
+    public record SomeRecord
+    {
+        public int Id { get; set; }
+        public SomeNestedRecord NestedRecord { get; set; }
+        private record SomeOtherNestedRecord(int Identifier);
+
+    }
+}

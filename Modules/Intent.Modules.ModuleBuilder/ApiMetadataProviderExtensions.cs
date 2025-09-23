@@ -150,6 +150,13 @@ namespace Intent.ModuleBuilder.Api
                 .ToList();
         }
 
+        public static IList<ModuleTaskModel> GetModuleTaskModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(ModuleTaskModel.SpecializationTypeId)
+                .Select(x => new ModuleTaskModel(x))
+                .ToList();
+        }
+
         public static IList<OnInstallMigrationModel> GetOnInstallMigrationModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(OnInstallMigrationModel.SpecializationTypeId)

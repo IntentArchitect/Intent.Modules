@@ -84,7 +84,7 @@ namespace Intent.ModuleBuilder.Api
                 ContextMenuOptions = MenuOptions?.ToPersistable(),
                 //CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
                 //ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
-                //MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList(),
+                MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList() ?? [],
                 TypeOrder = MenuOptions?.TypeOrder.Select(x => x.ToPersistable()).ToList(),
                 MappingSettings = MappingSettings.Select(x => x.ToPersistable()).ToList(),
                 DiagramSettings = DiagramSettings?.ToPersistable(),
