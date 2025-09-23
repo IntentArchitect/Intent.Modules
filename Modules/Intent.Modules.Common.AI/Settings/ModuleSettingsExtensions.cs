@@ -105,9 +105,9 @@ namespace Intent.Modules.Common.AI.Settings
 
         public string OpenRouterAPIKey() => _groupSettings.GetSetting("d615e7c5-e3d6-4ee0-a1b2-b671e03b5330")?.Value;
 
-        public string Model() => _groupSettings.GetSetting("effcfd41-aaed-4278-a7e7-818009584139")?.Value;
+        public string AzureOpenAIAPIUrl() => _groupSettings.GetSetting("5d2a1254-9f21-4cbd-818e-497bf09c87ea")?.Value;
 
-        public string APIUrl() => _groupSettings.GetSetting("5d2a1254-9f21-4cbd-818e-497bf09c87ea")?.Value;
+        public string OllamaAPIUrl() => _groupSettings.GetSetting("be17de04-c671-49c2-8124-cfa80bab9fcd")?.Value;
 
         public string DeploymentName() => _groupSettings.GetSetting("07a3313b-0602-4f83-a1c1-820e746bde48")?.Value;
 

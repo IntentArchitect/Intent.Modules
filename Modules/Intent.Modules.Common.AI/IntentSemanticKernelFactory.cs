@@ -25,9 +25,10 @@ public class IntentSemanticKernelFactory
     public Kernel BuildSemanticKernel() => BuildSemanticKernel(null);
     public Kernel BuildSemanticKernel(Action<IKernelBuilder>? configure)
     {
-        var settings = _userSettingsProvider.GetAISettings();
-        var model = string.IsNullOrWhiteSpace(settings.Model()) ? "gpt-4.1" : settings.Model();
-        return BuildSemanticKernel(model, configure);
+        //var settings = _userSettingsProvider.GetAISettings();
+        //var model = string.IsNullOrWhiteSpace(settings.Model()) ? "gpt-4.1" : settings.Model();
+        throw new NotSupportedException("Obsolete");
+        //return BuildSemanticKernel(model, configure);
     }
 
     public Kernel BuildSemanticKernel(string model, Action<IKernelBuilder>? configure)
@@ -83,7 +84,7 @@ public class IntentSemanticKernelFactory
 
                 builder.Services.AddAzureOpenAIChatCompletion(
                     deploymentName: settings.DeploymentName(),
-                    endpoint: settings.APIUrl(),
+                    endpoint: settings.AzureOpenAIAPIUrl(),
                     apiKey: !string.IsNullOrWhiteSpace(value: apiKey) 
                         ? apiKey : throw new FriendlyException(message: GetErrorMessage("AZURE_OPENAI_API_KEY")),
                     modelId: model);
@@ -95,7 +96,7 @@ public class IntentSemanticKernelFactory
                         client: new HttpClient
                         {
                             Timeout = TimeSpan.FromMinutes(value: 10), // Running this locally could be slow
-                            BaseAddress = new Uri(uriString: settings.APIUrl())
+                            BaseAddress = new Uri(uriString: settings.OllamaAPIUrl())
                         },
                         defaultModel: model)
                 );

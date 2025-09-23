@@ -16,6 +16,7 @@
     <group id="62594c9b-21fe-4c65-ac5c-b32a836a2ca5" title="AI Settings" type="user-settings" externalReference="62594c9b-21fe-4c65-ac5c-b32a836a2ca5">
       <settings>
         <setting id="41ac1bce-6362-4b77-b588-ba3df55a2afb" title="Provider" type="select" orderPriority="-1">
+          <hint>Select provider to configure</hint>
           <defaultValue>open-ai</defaultValue>
           <isRequiredFunction>return true;</isRequiredFunction>
           <options>
@@ -27,34 +28,37 @@
           </options>
         </setting>
         <setting id="9e9a32b4-194e-4d53-b62c-c9c28fb7b6f8" title="Open AI API Key" type="text">
-          <hint>Will fall back to environment variable if empty.</hint>
+          <hint>Will fall back to environment variable `OPENAI_API_KEY` if empty.</hint>
           <isActiveFunction>let provider = getProperty("Provider").value;
 return provider === "open-ai";</isActiveFunction>
         </setting>
         <setting id="d76d0a4d-60c5-42b4-aa3b-de4f11b44ac1" title="Azure Open AI API Key" type="text">
-          <hint>Will fall back to environment variable if empty.</hint>
+          <hint>Will fall back to environment variable `AZURE_OPENAI_API_KEY` if empty.</hint>
           <isActiveFunction>let provider = getProperty("Provider").value;
 return provider === "azure-open-ai";</isActiveFunction>
         </setting>
         <setting id="715e2ce8-677c-467d-a876-8dc84b99ae05" title="Anthropic API Key" type="text">
-          <hint>Will fall back to environment variable if empty.</hint>
+          <hint>Will fall back to environment variable `ANTHROPIC_API_KEY` if empty.</hint>
           <isActiveFunction>let provider = getProperty("Provider").value;
 return provider === "anthropic";</isActiveFunction>
         </setting>
         <setting id="d615e7c5-e3d6-4ee0-a1b2-b671e03b5330" title="Open Router API Key" type="text">
-          <hint>Will fall back to environment variable if empty.</hint>
+          <hint>Will fall back to environment variable `OPENROUTER_API_KEY` if empty.</hint>
           <isActiveFunction>let provider = getProperty("Provider").value;
 return provider === "open-router";</isActiveFunction>
         </setting>
-        <setting id="effcfd41-aaed-4278-a7e7-818009584139" title="Model" type="text">
-          <defaultValue>gpt-4o</defaultValue>
-          <isRequiredFunction>return true;</isRequiredFunction>
-        </setting>
-        <setting id="5d2a1254-9f21-4cbd-818e-497bf09c87ea" title="API Url" type="text">
-          <hint>URL to connect to AI API.</hint>
+        <setting id="5d2a1254-9f21-4cbd-818e-497bf09c87ea" title="Azure OpenAI API Url" type="text">
+          <hint>URL to connect to Azure OpenAI API.</hint>
           <defaultValue>http://localhost:11434</defaultValue>
           <isActiveFunction>let provider = getProperty("Provider").value;
-return provider === "ollama" || provider === "azure-open-ai";</isActiveFunction>
+return provider === "azure-open-ai";</isActiveFunction>
+          <isRequiredFunction>return true;</isRequiredFunction>
+        </setting>
+        <setting id="be17de04-c671-49c2-8124-cfa80bab9fcd" title="Ollama API Url" type="text">
+          <hint>URL to connect to Ollama API.</hint>
+          <defaultValue>http://localhost:11434</defaultValue>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "ollama";</isActiveFunction>
           <isRequiredFunction>return true;</isRequiredFunction>
         </setting>
         <setting id="07a3313b-0602-4f83-a1c1-820e746bde48" title="Deployment name" type="text">
