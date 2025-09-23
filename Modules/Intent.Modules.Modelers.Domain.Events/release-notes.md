@@ -1,3 +1,7 @@
+### Version 4.4.5
+
+- Improvement: `Domain Events` support modeling inheritance.
+
 ### Version 4.4.4
 
 - Improvement: `Publish Domain Event` association lines in the Services designer are now aligned with the Domain and dotted.
