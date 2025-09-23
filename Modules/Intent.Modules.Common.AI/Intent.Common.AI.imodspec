@@ -49,7 +49,7 @@ return provider === "open-router";</isActiveFunction>
         </setting>
         <setting id="5d2a1254-9f21-4cbd-818e-497bf09c87ea" title="Azure OpenAI API Url" type="text">
           <hint>URL to connect to Azure OpenAI API.</hint>
-          <defaultValue>http://localhost:11434</defaultValue>
+          <defaultValue>https://{my resource}.openai.azure.com/</defaultValue>
           <isActiveFunction>let provider = getProperty("Provider").value;
 return provider === "azure-open-ai";</isActiveFunction>
           <isRequiredFunction>return true;</isRequiredFunction>

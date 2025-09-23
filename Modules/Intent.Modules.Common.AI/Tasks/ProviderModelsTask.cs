@@ -23,25 +23,28 @@ public class ProviderModelsTask : IModuleTask
     
     public string Execute(params string[] args)
     {
+        var azureDeploymentName = _userSettingsProvider.GetAISettings().DeploymentName();
+        
         List<ModelRecord> providerModels =
         [
-            new("open-ai",     "gpt-4.1",                            "OpenAI",      ThinkingType.None),
-            new("open-ai",     "gpt-4o",                             "OpenAI",      ThinkingType.None),
-            new("open-ai",     "gpt-5",                              "OpenAI",      ThinkingType.ThinkingLevels),
-            new("open-ai",     "o1",                                 "OpenAI",      ThinkingType.ThinkingLevels),
-            new("open-ai",     "o1-pro",                             "OpenAI",      ThinkingType.ThinkingLevels),
-            new("open-ai",     "o3",                                 "OpenAI",      ThinkingType.ThinkingLevels),
-            new("anthropic",   "claude-opus-4-1-20250805",           "Anthropic",   ThinkingType.ToggleThinking),
-            new("anthropic",   "claude-opus-4-20250514",             "Anthropic",   ThinkingType.ToggleThinking),
-            new("anthropic",   "claude-sonnet-4-20250514",           "Anthropic",   ThinkingType.ToggleThinking),
-            new("open-router", "x-ai/grok-4",                        "OpenRouter",  ThinkingType.ThinkingLevels),
-            new("open-router", "google/gemini-2.5-pro",              "OpenRouter",  ThinkingType.ThinkingLevels),
-            new("open-router", "deepseek/deepseek-r1-0528",          "OpenRouter",  ThinkingType.ThinkingLevels),
-            new("open-router", "qwen/qwen3-coder",                   "OpenRouter",  ThinkingType.None),
-            new("open-router", "qwen/qwen3-235b-a22b-thinking-2507", "OpenRouter",  ThinkingType.ThinkingLevels),
-            new("open-router", "anthropic/claude-sonnet-4",          "OpenRouter",  ThinkingType.ToggleThinking),
-            new("open-router", "anthropic/claude-opus-4",            "OpenRouter",  ThinkingType.ToggleThinking),
-            new("open-router", "anthropic/claude-opus-4.1",          "OpenRouter",  ThinkingType.ToggleThinking)
+            new("azure-open-ai",    azureDeploymentName,                              "Azure OpenAI", ThinkingType.ToggleThinking),
+            new("open-ai",          "gpt-4.1",                              "OpenAI",       ThinkingType.None),
+            new("open-ai",          "gpt-4o",                               "OpenAI",       ThinkingType.None),
+            new("open-ai",          "gpt-5",                                "OpenAI",       ThinkingType.ThinkingLevels),
+            new("open-ai",          "o1",                                   "OpenAI",       ThinkingType.ThinkingLevels),
+            new("open-ai",          "o1-pro",                               "OpenAI",       ThinkingType.ThinkingLevels),
+            new("open-ai",          "o3",                                   "OpenAI",       ThinkingType.ThinkingLevels),
+            new("anthropic",        "claude-opus-4-1-20250805",             "Anthropic",    ThinkingType.ToggleThinking),
+            new("anthropic",        "claude-opus-4-20250514",               "Anthropic",    ThinkingType.ToggleThinking),
+            new("anthropic",        "claude-sonnet-4-20250514",             "Anthropic",    ThinkingType.ToggleThinking),
+            new("open-router",      "x-ai/grok-4",                          "OpenRouter",   ThinkingType.ThinkingLevels),
+            new("open-router",      "google/gemini-2.5-pro",                "OpenRouter",   ThinkingType.ThinkingLevels),
+            new("open-router",      "deepseek/deepseek-r1-0528",            "OpenRouter",   ThinkingType.ThinkingLevels),
+            new("open-router",      "qwen/qwen3-coder",                     "OpenRouter",   ThinkingType.None),
+            new("open-router",      "qwen/qwen3-235b-a22b-thinking-2507",   "OpenRouter",   ThinkingType.ThinkingLevels),
+            new("open-router",      "anthropic/claude-sonnet-4",            "OpenRouter",   ThinkingType.ToggleThinking),
+            new("open-router",      "anthropic/claude-opus-4",              "OpenRouter",   ThinkingType.ToggleThinking),
+            new("open-router",      "anthropic/claude-opus-4.1",            "OpenRouter",   ThinkingType.ToggleThinking)
         ];
         
         // Let's filter these models based on whether API keys (or their environment variable counterparts) are set.
@@ -51,6 +54,8 @@ public class ProviderModelsTask : IModuleTask
             {
                 "open-ai" => !string.IsNullOrWhiteSpace(settings.OpenAIAPIKey()) ||
                              !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENAI_API_KEY")),
+                "azure-open-ai" => !string.IsNullOrWhiteSpace(settings.AzureOpenAIAPIKey()) ||
+                             !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY")),
                 "anthropic" => !string.IsNullOrWhiteSpace(settings.AnthropicAPIKey()) ||
                                !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("ANTHROPIC_API_KEY")),
                 "open-router" => !string.IsNullOrWhiteSpace(settings.OpenRouterAPIKey()) ||
