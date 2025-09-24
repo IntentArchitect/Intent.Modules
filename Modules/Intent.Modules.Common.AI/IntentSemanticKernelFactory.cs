@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using Intent.Engine;
 using Intent.Exceptions;
 using Intent.Modules.Common.AI.ChatCompletionServices;
@@ -91,13 +92,26 @@ public class IntentSemanticKernelFactory
                 break;
             
             case AISettings.ProviderOptionsEnum.Ollama:
+                apiKey = settings.OllamaAPIKey();
+                if (string.IsNullOrWhiteSpace(value: apiKey))
+                {
+                    apiKey = Environment.GetEnvironmentVariable(variable: "OLLAMA_API_KEY");
+                }
+                
+                var ollamaHttpClient = new HttpClient
+                {
+                    Timeout = TimeSpan.FromMinutes(value: 10), // Running this locally could be slow
+                    BaseAddress = new Uri(uriString: settings.OllamaAPIUrl())
+                };
+
+                if (!string.IsNullOrWhiteSpace(apiKey))
+                {
+                    ollamaHttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
+                }
+
                 builder.Services.AddOllamaChatCompletion(
                     ollamaClient: new OllamaApiClient(
-                        client: new HttpClient
-                        {
-                            Timeout = TimeSpan.FromMinutes(value: 10), // Running this locally could be slow
-                            BaseAddress = new Uri(uriString: settings.OllamaAPIUrl())
-                        },
+                        client: ollamaHttpClient,
                         defaultModel: model)
                 );
                 break;

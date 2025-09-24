@@ -23,7 +23,8 @@ public class ProviderModelsTask : IModuleTask
     
     public string Execute(params string[] args)
     {
-        var azureDeploymentName = _userSettingsProvider.GetAISettings().DeploymentName();
+        var azureDeploymentName = _userSettingsProvider.GetAISettings().DeploymentName() ?? "Unspecified";
+        var ollamaModelName = _userSettingsProvider.GetAISettings().OllamaModel() ?? "Unspecified";
         
         List<ModelRecord> providerModels =
         [
@@ -44,7 +45,8 @@ public class ProviderModelsTask : IModuleTask
             new("open-router",      "qwen/qwen3-235b-a22b-thinking-2507",   "OpenRouter",   ThinkingType.ThinkingLevels),
             new("open-router",      "anthropic/claude-sonnet-4",            "OpenRouter",   ThinkingType.ToggleThinking),
             new("open-router",      "anthropic/claude-opus-4",              "OpenRouter",   ThinkingType.ToggleThinking),
-            new("open-router",      "anthropic/claude-opus-4.1",            "OpenRouter",   ThinkingType.ToggleThinking)
+            new("open-router",      "anthropic/claude-opus-4.1",            "OpenRouter",   ThinkingType.ToggleThinking),
+            new("ollama",           ollamaModelName,                                  "Ollama",       ThinkingType.None)
         ];
         
         // Let's filter these models based on whether API keys (or their environment variable counterparts) are set.
@@ -60,6 +62,7 @@ public class ProviderModelsTask : IModuleTask
                                !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("ANTHROPIC_API_KEY")),
                 "open-router" => !string.IsNullOrWhiteSpace(settings.OpenRouterAPIKey()) ||
                                  !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY")),
+                "ollama" => !string.IsNullOrWhiteSpace(ollamaModelName),
                 _ => false
             });
         
