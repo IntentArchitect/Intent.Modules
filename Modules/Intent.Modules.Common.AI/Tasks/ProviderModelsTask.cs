@@ -38,6 +38,7 @@ public class ProviderModelsTask : IModuleTask
             new("anthropic",        "claude-opus-4-1-20250805",             "Anthropic",    ThinkingType.ToggleThinking),
             new("anthropic",        "claude-opus-4-20250514",               "Anthropic",    ThinkingType.ToggleThinking),
             new("anthropic",        "claude-sonnet-4-20250514",             "Anthropic",    ThinkingType.ToggleThinking),
+            new("open-router",      "openrouter/auto",                      "OpenRouter",   ThinkingType.ThinkingLevels),
             new("open-router",      "x-ai/grok-4",                          "OpenRouter",   ThinkingType.ThinkingLevels),
             new("open-router",      "google/gemini-2.5-pro",                "OpenRouter",   ThinkingType.ThinkingLevels),
             new("open-router",      "deepseek/deepseek-r1-0528",            "OpenRouter",   ThinkingType.ThinkingLevels),
@@ -62,7 +63,7 @@ public class ProviderModelsTask : IModuleTask
                                !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("ANTHROPIC_API_KEY")),
                 "open-router" => !string.IsNullOrWhiteSpace(settings.OpenRouterAPIKey()) ||
                                  !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY")),
-                "ollama" => !string.IsNullOrWhiteSpace(ollamaModelName),
+                "ollama" => !string.IsNullOrWhiteSpace(_userSettingsProvider.GetAISettings().OllamaModel()),
                 _ => false
             });
         
