@@ -1,4 +1,8 @@
-﻿### Version 3.9.6
+﻿### Version 3.9.7
+
+- Improvement: Improved performance when running in a hot software factory.
+
+### Version 3.9.6
 
 - Improvement: Added `Partial` to `CSharpClassMethod`.
 - Improvement: Added `AddNestedRecord` to `CSharpClass`.
