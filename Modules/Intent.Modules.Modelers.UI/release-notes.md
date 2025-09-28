@@ -1,3 +1,9 @@
+### Version 1.0.2
+
+- Improvement: Navigations between Pages will be bidirectional by default.
+- Fixed: Color of light-mode navigations is hard to see (too light).
+- Fixed: Navigations can only target pages.
+
 ### Version 1.0.1
 
 - Improvement: Created common TypeScript structure for calling backend services.

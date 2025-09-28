@@ -320,6 +320,16 @@
                 <property name="cd37f0a2-3a8f-49f5-8b23-6a4544257935" display="Bottom Divider" value="false" isActive="true" />
               </properties>
             </stereotype>
+            <stereotype stereotypeDefinitionId="0238ed04-0e7b-42e8-9674-f7d1fd67275b" name="Source End Defaults">
+              <addedByDefault>false</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="fcb73371-e64e-4599-8b5f-f6c616da6978" display="Is Navigable" value="true" isActive="true" />
+                <property name="1b3a99ec-1bbd-4e74-9bd3-9e24d1b7fbd4" display="Is Nullable" value="false" isActive="true" />
+                <property name="e9a100c6-cf0e-4b74-973a-6e90687fbc8a" display="Is Collection" value="false" isActive="true" />
+              </properties>
+            </stereotype>
           </stereotypes>
           <metadata />
           <childElements />
