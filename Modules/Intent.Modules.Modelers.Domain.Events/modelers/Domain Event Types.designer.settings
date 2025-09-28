@@ -552,7 +552,7 @@ return result;
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
           <allowIsCollection>false</allowIsCollection>
-          <isNavigableDefault>true</isNavigableDefault>
+          <isNavigableDefault>false</isNavigableDefault>
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
