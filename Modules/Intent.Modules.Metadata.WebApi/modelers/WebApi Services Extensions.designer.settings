@@ -3989,6 +3989,17 @@ if (!element.hasStereotype(parameterSettingsStereotypeId)) {
           <mappingOptions />
           <typeOrder />
           <mappingSettings />
+          <macros>
+            <macro trigger="on-created">
+              <script>const fileTransferStereotype = "d30e48e8-389e-4b70-84fd-e3bac44cfe19";
+const paramSettingsStereotype = "d01df110-1208-4af8-a913-92a49d219552";
+
+const fieldParent = element.getParent();
+if (fieldParent?.hasStereotype(fileTransferStereotype)) {
+    element.addStereotype(paramSettingsStereotype);
+}</script>
+            </macro>
+          </macros>
         </childElementExtension>
       </childElementExtensions>
     </elementExtension>
