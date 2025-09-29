@@ -1,7 +1,7 @@
 ### Version 2.0.4
 
 - Fixed: Compiled migration against latest version of Persistence SDK.
-- Fixed: `Integration Event Handlers` cannot map as invoking Commands.
+- Fixed: `Integration Event Handlers` cannot map to indicate the "invoking" of Commands.
 
 ### Version 2.0.3
 
