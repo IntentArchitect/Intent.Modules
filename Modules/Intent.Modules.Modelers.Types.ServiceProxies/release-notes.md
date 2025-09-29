@@ -1,4 +1,8 @@
-﻿### Version 5.5.1
+﻿### Version 5.5.2
+
+- Fixed: Parameter synchronization in Services designer no longer working since the `Intent.Modelers.ServiceProxies` module is no longer a related dependency.
+
+### Version 5.5.1
 
 - Improvement: Will now also recognize the UI designer's "Call Service Operation" associations to HTTP exposed endpoints such as Command's Queries and Service Operations.
 - Fixed: When more than one "Perform Invocation" was targetting the same HTTP endpoint an exception would occur.

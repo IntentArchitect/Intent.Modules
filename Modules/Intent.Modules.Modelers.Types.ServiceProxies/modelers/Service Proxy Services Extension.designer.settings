@@ -6,9 +6,169 @@
     <designerReference id="8cf2b93d-9449-4e40-af62-12daf6f7e0f4" name="Service Proxy Types" module="Intent.Modelers.Types.ServiceProxies" />
   </designerReferences>
   <packageSettings />
-  <packageExtensions />
+  <packageExtensions>
+    <packageExtension type="Services Package" typeId="df45eaf6-9202-4c25-8dd5-677e9ba1e906">
+      <requiredPackages />
+      <macros>
+        <macro trigger="on-loaded">
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function GetParameters(targetService) {
+    let httpSettings = targetService.getStereotype("Http Settings");
+    if (!httpSettings) {
+        console.warn(`Could not process '${targetService.getName()}': Http Settings not found`);
+        return [];
+    }
+    var isForCqrs = targetService.specialization == "Query" || targetService.specialization == "Command";
+    var verbAllowsBody = ["PUT", "PATCH", "POST"].some(x =&gt; x == httpSettings.getProperty("Verb").getValue());
+    var requiresBody = false;
+    let result = [];
+    targetService.getChildren("Parameter").concat(targetService.getChildren("DTO-Field")).forEach(childElement =&gt; {
+        var parameterSettings = childElement.getStereotype("d01df110-1208-4af8-a913-92a49d219552"); // "Paremeter Settings"
+        var routeContainsParameter = httpSettings.getProperty("Route").getValue().toString().toLowerCase().indexOf(`{${childElement.getName().toLowerCase()}}`) != -1;
+        if (isForCqrs &amp;&amp; !parameterSettings &amp;&amp; !routeContainsParameter &amp;&amp; verbAllowsBody) {
+            requiresBody = true;
+            return;
+        }
+        result.push({
+            id: childElement.id,
+            name: toCamelCase(childElement.getName()),
+            typeId: childElement.typeReference.getTypeId(),
+            isNullable: childElement.typeReference.getIsNullable(),
+            isCollection: childElement.typeReference.getIsCollection(),
+        });
+    });
+    if (isForCqrs &amp;&amp; requiresBody) {
+        result.push({
+            id: targetService.id,
+            name: targetService.specialization.toLowerCase(),
+            typeId: targetService.id,
+            isNullable: false,
+            isCollection: false,
+        });
+    }
+    return result;
+}
+function execute(proxyElement) {
+    proxyElement.getChildren("Operation").forEach(operation =&gt; {
+        let targetService = operation.getMapping().getElement();
+        let params = GetParameters(targetService);
+        params.forEach((param, index) =&gt; {
+            let existing = operation.getChildren("Parameter").find(x =&gt; x.getMetadata("endpoint-input-id") == param.id);
+            if (!existing) {
+                existing = createElement("Parameter", param.name, operation.id);
+                operation.collapse();
+            }
+            existing.setName(param.name);
+            existing.setOrder(index);
+            existing.typeReference.setType(param.typeId);
+            existing.typeReference.setIsCollection(param.isCollection);
+            existing.typeReference.setIsNullable(param.isNullable);
+            existing.setMetadata("endpoint-input-id", param.id);
+        });
+        operation.getChildren("Parameter")
+            .filter(x =&gt; params.every(p =&gt; p.id != x.getMetadata("endpoint-input-id")))
+            .forEach(x =&gt; x.delete());
+    });
+}
+/**
+ * Used by Intent.Modules\Modules\Intent.Modelers.Types.ServiceProxies
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/service-proxies/manage-parameters/service-proxies-manage-parameters.ts
+ */
+if (element.specialization == "Service Proxy") {
+    execute(element);
+}
+else {
+    lookupTypesOf("Service Proxy").forEach(x =&gt; execute(x));
+}
+</script>
+        </macro>
+      </macros>
+    </packageExtension>
+  </packageExtensions>
   <elementSettings />
-  <elementExtensions />
+  <elementExtensions>
+    <elementExtension type="Service Proxy" typeId="07d8d1a9-6b9f-4676-b7d3-8db06299e35c">
+      <mappingSettings />
+      <macros>
+        <macro trigger="on-changed">
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function GetParameters(targetService) {
+    let httpSettings = targetService.getStereotype("Http Settings");
+    if (!httpSettings) {
+        console.warn(`Could not process '${targetService.getName()}': Http Settings not found`);
+        return [];
+    }
+    var isForCqrs = targetService.specialization == "Query" || targetService.specialization == "Command";
+    var verbAllowsBody = ["PUT", "PATCH", "POST"].some(x =&gt; x == httpSettings.getProperty("Verb").getValue());
+    var requiresBody = false;
+    let result = [];
+    targetService.getChildren("Parameter").concat(targetService.getChildren("DTO-Field")).forEach(childElement =&gt; {
+        var parameterSettings = childElement.getStereotype("d01df110-1208-4af8-a913-92a49d219552"); // "Paremeter Settings"
+        var routeContainsParameter = httpSettings.getProperty("Route").getValue().toString().toLowerCase().indexOf(`{${childElement.getName().toLowerCase()}}`) != -1;
+        if (isForCqrs &amp;&amp; !parameterSettings &amp;&amp; !routeContainsParameter &amp;&amp; verbAllowsBody) {
+            requiresBody = true;
+            return;
+        }
+        result.push({
+            id: childElement.id,
+            name: toCamelCase(childElement.getName()),
+            typeId: childElement.typeReference.getTypeId(),
+            isNullable: childElement.typeReference.getIsNullable(),
+            isCollection: childElement.typeReference.getIsCollection(),
+        });
+    });
+    if (isForCqrs &amp;&amp; requiresBody) {
+        result.push({
+            id: targetService.id,
+            name: targetService.specialization.toLowerCase(),
+            typeId: targetService.id,
+            isNullable: false,
+            isCollection: false,
+        });
+    }
+    return result;
+}
+function execute(proxyElement) {
+    proxyElement.getChildren("Operation").forEach(operation =&gt; {
+        let targetService = operation.getMapping().getElement();
+        let params = GetParameters(targetService);
+        params.forEach((param, index) =&gt; {
+            let existing = operation.getChildren("Parameter").find(x =&gt; x.getMetadata("endpoint-input-id") == param.id);
+            if (!existing) {
+                existing = createElement("Parameter", param.name, operation.id);
+                operation.collapse();
+            }
+            existing.setName(param.name);
+            existing.setOrder(index);
+            existing.typeReference.setType(param.typeId);
+            existing.typeReference.setIsCollection(param.isCollection);
+            existing.typeReference.setIsNullable(param.isNullable);
+            existing.setMetadata("endpoint-input-id", param.id);
+        });
+        operation.getChildren("Parameter")
+            .filter(x =&gt; params.every(p =&gt; p.id != x.getMetadata("endpoint-input-id")))
+            .forEach(x =&gt; x.delete());
+    });
+}
+/**
+ * Used by Intent.Modules\Modules\Intent.Modelers.Types.ServiceProxies
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/service-proxies/manage-parameters/service-proxies-manage-parameters.ts
+ */
+if (element.specialization == "Service Proxy") {
+    execute(element);
+}
+else {
+    lookupTypesOf("Service Proxy").forEach(x =&gt; execute(x));
+}
+</script>
+        </macro>
+      </macros>
+    </elementExtension>
+  </elementExtensions>
   <associationSettings />
   <associationExtensions />
   <mappingSettings />
