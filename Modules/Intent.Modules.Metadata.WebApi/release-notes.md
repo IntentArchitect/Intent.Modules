@@ -1,3 +1,7 @@
+### Version 4.7.16
+
+- Improvement: Added `Service URL` stereotype, applied to a package, which make the URL available when creating proxy services.
+
 ### Version 4.7.15
 
 - Fixed: Multitenancy route parameter no longer automatically gets removed.
