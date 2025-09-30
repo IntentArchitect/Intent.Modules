@@ -2,6 +2,7 @@
 
 - Fixed: Compiled migration against latest version of Persistence SDK.
 - Fixed: `Integration Event Handlers` cannot map to indicate the "invoking" of Commands.
+- Fixed: Mapping from Service Operation Parameter can now be bound to the Integration Messages/Commands.
 
 ### Version 2.0.3
 
