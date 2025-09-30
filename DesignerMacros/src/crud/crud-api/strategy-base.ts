@@ -238,8 +238,9 @@ Compositional Entities (black diamond) must have 1 owner. Please adjust the asso
         if (projector.getMappings().length > 0) {
 
             let target = projector.getTarget();
-            let action = createAssociation("Update Entity Action", source.id, this.entity.id);
 
+            let action = createAssociation("Update Entity Action", source.id, target.id);
+ 
             //remove PKs from Update
             let updateMappingEnds = projector.getMappings().filter(x => {
                 const last = x.targetPath[x.targetPath.length - 1];
