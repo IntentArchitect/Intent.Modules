@@ -44,7 +44,7 @@ function getSurrogateKeyType() {
     }
     return typeNameToIdMap.get("guid");
 }
-;
+/// <reference path="../../typings/elementmacro.context.api.d.ts"/>
 /// <reference path="getSurrogateKeyType.ts"/>
 /// <reference path="attributeWithMapPath.ts"/>
 class DomainHelper {
@@ -126,6 +126,7 @@ class DomainHelper {
             id: key.id,
             name: key.getName(),
             typeId: key.typeReference.typeId,
+            typeReferenceModel: key.typeReference.toModel(),
             mapPath: [key.id],
             isNullable: false,
             isCollection: false
@@ -149,6 +150,7 @@ class DomainHelper {
                     id: key.id,
                     name: key.getName(),
                     typeId: key.typeReference.typeId,
+                    typeReferenceModel: key.typeReference.toModel(),
                     mapPath: generalizationStack.concat([key.id]),
                     isNullable: key.typeReference.isNullable,
                     isCollection: key.typeReference.isCollection
@@ -184,6 +186,7 @@ class DomainHelper {
         return foreignKeys.map(x => ({
             name: DomainHelper.getAttributeNameFormat(x.getName()),
             typeId: x.typeReference.typeId,
+            typeReferenceModel: x.typeReference.toModel(),
             id: x.id,
             mapPath: [x.id],
             isCollection: x.typeReference.isCollection,
@@ -208,6 +211,7 @@ class DomainHelper {
             id: attr.id,
             name: attr.getName(),
             typeId: attr.typeReference.typeId,
+            typeReferenceModel: attr.typeReference.toModel(),
             mapPath: [attr.id],
             isNullable: attr.typeReference.isNullable,
             isCollection: attr.typeReference.isCollection
@@ -228,6 +232,7 @@ class DomainHelper {
             id: attr.id,
             name: attr.getName(),
             typeId: attr.typeReference.typeId,
+            typeReferenceModel: attr.typeReference.toModel(),
             mapPath: [attr.id],
             isNullable: false,
             isCollection: false
@@ -251,6 +256,7 @@ class DomainHelper {
                     id: attr.id,
                     name: attr.getName(),
                     typeId: attr.typeReference.typeId,
+                    typeReferenceModel: attr.typeReference.toModel(),
                     mapPath: generalizationStack.concat([attr.id]),
                     isNullable: attr.typeReference.isNullable,
                     isCollection: attr.typeReference.isCollection
@@ -271,6 +277,7 @@ class DomainHelper {
                     id: association.id,
                     name: association.getName(),
                     typeId: null,
+                    typeReferenceModel: null,
                     mapPath: generalizationStack.concat([association.id]),
                     isNullable: false,
                     isCollection: false
@@ -848,6 +855,9 @@ class CrudHelper {
         let domainElement = mappedElement;
         let attributesWithMapPaths = CrudHelper.getAttributesWithMapPath(domainElement);
         let isCreateMode = ((_b = (_a = dto.getMetadata("originalVerb")) === null || _a === void 0 ? void 0 : _a.toLowerCase()) === null || _b === void 0 ? void 0 : _b.startsWith("create")) == true;
+        if (autoAddPrimaryKey && !isCreateMode) {
+            CrudHelper.addPrimaryKeys(dto, domainElement, true);
+        }
         for (var keyName of Object.keys(attributesWithMapPaths)) {
             let entry = attributesWithMapPaths[keyName];
             if (isCreateMode && CrudHelper.isOwnerForeignKey(entry.name, domainElement)) {
@@ -869,9 +879,6 @@ class CrudHelper {
             field.typeReference.setIsNullable(entry.isNullable);
             field.typeReference.setIsCollection(entry.isCollection);
             dtoUpdated = true;
-        }
-        if (autoAddPrimaryKey && !isCreateMode) {
-            CrudHelper.addPrimaryKeys(dto, domainElement, true);
         }
         if (dtoUpdated) {
             dto.collapse();
@@ -907,6 +914,7 @@ class CrudHelper {
             id: key.id,
             name: key.getName(),
             typeId: key.typeReference.typeId,
+            typeReferenceModel: key.typeReference.toModel(),
             mapPath: [key.id],
             isNullable: false,
             isCollection: false
@@ -930,6 +938,7 @@ class CrudHelper {
                     id: key.id,
                     name: key.getName(),
                     typeId: key.typeReference.typeId,
+                    typeReferenceModel: key.typeReference.toModel(),
                     mapPath: generalizationStack.concat([key.id]),
                     isNullable: key.typeReference.isNullable,
                     isCollection: key.typeReference.isCollection
@@ -952,9 +961,12 @@ class CrudHelper {
             id: attr.id,
             name: attr.getName(),
             typeId: attr.typeReference.typeId,
+            typeReferenceModel: attr.typeReference.toModel(),
             mapPath: [attr.id],
-            isNullable: false,
-            isCollection: false
+            // GCB - if you're seeing this change in your script, where these used to be false, you need to check.
+            // I had to "fix" this so that basic mapping DTO projections worked properly (e.g. adding OrderLines to an Order DTO via basic mapping)
+            isNullable: attr.typeReference.isNullable,
+            isCollection: attr.typeReference.isCollection
         });
         traverseInheritanceHierarchyForAttributes(attrDict, entity, []);
         return attrDict;
@@ -975,6 +987,7 @@ class CrudHelper {
                     id: attr.id,
                     name: attr.getName(),
                     typeId: attr.typeReference.typeId,
+                    typeReferenceModel: attr.typeReference.toModel(),
                     mapPath: generalizationStack.concat([attr.id]),
                     isNullable: attr.typeReference.isNullable,
                     isCollection: attr.typeReference.isCollection
@@ -1032,15 +1045,15 @@ class ElementManager {
         let existingField = this.innerElement.getChildren(this.settings.childSpecialization)
             .find(c => { var _a; return c.getName().toLowerCase() == ServicesHelper.formatName(name, (_a = this.settings.childType) !== null && _a !== void 0 ? _a : "property").toLowerCase(); });
         let field = existingField !== null && existingField !== void 0 ? existingField : createElement(this.settings.childSpecialization, ServicesHelper.formatName(name, (_a = this.settings.childType) !== null && _a !== void 0 ? _a : "property"), this.innerElement.id);
-        const typeReferenceDetails = type == null
-            ? null
-            : typeof (type) === "string"
-                ? { id: type, isNullable: false, isCollection: false }
-                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
-        if (typeReferenceDetails != null) {
-            field.typeReference.setType(typeReferenceDetails.id);
-            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
-            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
+        if (type != null) {
+            if (typeof (type) === "string") {
+                field.typeReference.setType(type);
+                field.typeReference.setIsCollection(false);
+                field.typeReference.setIsNullable(false);
+            }
+            else {
+                field.typeReference.setType(type.toModel());
+            }
         }
         return field;
     }
@@ -1393,6 +1406,7 @@ class EntityProjector {
             id: attr.id,
             name: attr.getName(),
             typeId: attr.typeReference.typeId,
+            typeReferenceModel: attr.typeReference.toModel(),
             mapPath: [attr.id],
             isNullable: attr.typeReference.isNullable,
             isCollection: attr.typeReference.isCollection
@@ -1417,6 +1431,7 @@ class EntityProjector {
                     id: attr.id,
                     name: attr.getName(),
                     typeId: attr.typeReference.typeId,
+                    typeReferenceModel: attr.typeReference.toModel(),
                     mapPath: generalizationStack.concat([attr.id]),
                     isNullable: attr.typeReference.isNullable,
                     isCollection: attr.typeReference.isCollection
@@ -1619,7 +1634,7 @@ Compositional Entities (black diamond) must have 1 owner. Please adjust the asso
     doAdvancedMappingCallOperation(projector, source) {
         if (projector.getMappings().length > 0) {
             let target = projector.getTarget();
-            let action = createAssociation("Update Entity Action", source.id, this.entity.id);
+            let action = createAssociation("Update Entity Action", source.id, target.id);
             //remove PKs from Update
             let updateMappingEnds = projector.getMappings().filter(x => {
                 const last = x.targetPath[x.targetPath.length - 1];
@@ -1774,6 +1789,19 @@ class CQRSCrudStrategy extends CrudStrategy {
         if (operationResultDto) {
             command.typeReference.setType(operationResultDto.id);
         }
+        // Add Aggregate PK to command for Query
+        let keys = this.primaryKeys.reverse();
+        keys.forEach((pk) => {
+            if (!command.getChildren().some(x => x.getName().toLowerCase() == pk.name.toLowerCase())) {
+                let field = createElement("DTO-Field", pk.name, command.id);
+                field.typeReference.setType(pk.typeId);
+                field.setOrder(0);
+            }
+            else {
+                let field = command.getChildren().find(x => x.getName().toLowerCase() == pk.name.toLowerCase());
+                field.setOrder(0);
+            }
+        });
         this.doAdvancedMappingCallOperation(projector, command);
         return command;
     }
