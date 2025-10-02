@@ -33,7 +33,7 @@
         return "[From Query]";
     }
     
-    return "[From Query]";
+    return null;
 }
 
 if (properties["Source"].value === "From Header" &amp;&amp; properties["Header Name"].value) {

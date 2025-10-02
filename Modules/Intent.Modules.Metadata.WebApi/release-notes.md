@@ -2,6 +2,7 @@
 
 - Improvement: Added `Service URL` stereotype, applied to a package, which make the URL available when creating proxy services.
 - Fixed: Creating a new DTO Field in the context of a File Transfer Command / Query will auto-add Default `Parameter Settings`.
+- Fixed: Message fields incorrectly showing as "From Query" visual bug.
 
 ### Version 4.7.15
 
