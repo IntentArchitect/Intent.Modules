@@ -4003,7 +4003,8 @@ const paramSettingsStereotype = "d01df110-1208-4af8-a913-92a49d219552";
 
 const fieldParent = element.getParent();
 if (fieldParent?.hasStereotype(fileTransferStereotype) &amp;&amp; !element.hasStereotype(paramSettingsStereotype)) {
-    element.addStereotype(paramSettingsStereotype);
+    const paramSetting = element.addStereotype(paramSettingsStereotype);
+    paramSetting.getProperty("Source").setValue("From Query");
 }</script>
             </macro>
           </macros>
