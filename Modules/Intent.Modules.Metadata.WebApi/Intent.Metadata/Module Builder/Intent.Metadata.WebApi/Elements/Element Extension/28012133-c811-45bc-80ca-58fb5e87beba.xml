@@ -419,7 +419,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const fileTransferStereotype = &quot;d30e48e8-389e-4b70-84fd-e3bac44cfe19&quot;;&#xD;&#xA;const paramSettingsStereotype = &quot;d01df110-1208-4af8-a913-92a49d219552&quot;;&#xD;&#xA;&#xD;&#xA;const fieldParent = element.getParent();&#xD;&#xA;if (fieldParent?.hasStereotype(fileTransferStereotype)) {&#xD;&#xA;    element.addStereotype(paramSettingsStereotype);&#xD;&#xA;}" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getName().toLocaleLowerCase() === &quot;content&quot; || &#xD;&#xA;    element.getName().toLocaleLowerCase() === &quot;filename&quot; || &#xD;&#xA;    element.getName().toLocaleLowerCase() === &quot;contenttype&quot; || &#xD;&#xA;    element.getName().toLocaleLowerCase() === &quot;contentlength&quot;) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;const fileTransferStereotype = &quot;d30e48e8-389e-4b70-84fd-e3bac44cfe19&quot;;&#xD;&#xA;const paramSettingsStereotype = &quot;d01df110-1208-4af8-a913-92a49d219552&quot;;&#xD;&#xA;&#xD;&#xA;const fieldParent = element.getParent();&#xD;&#xA;if (fieldParent?.hasStereotype(fileTransferStereotype) &amp;&amp; !element.hasStereotype(paramSettingsStereotype)) {&#xD;&#xA;    element.addStereotype(paramSettingsStereotype);&#xD;&#xA;}" isActive="true" />
                 <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
