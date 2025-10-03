@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -29,7 +29,7 @@
     <PackageReference Include="Intent.Modules.Modelers.Domain" Version="3.12.6" />
     <PackageReference Include="Intent.Modules.Modelers.Services" Version="4.0.0" />
     <PackageReference Include="Intent.Modules.Modelers.Services.CQRS" Version="6.0.4" />
-    <PackageReference Include="Intent.Packager" Version="3.6.0-pre.2">
+    <PackageReference Include="Intent.Packager" Version="3.6.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

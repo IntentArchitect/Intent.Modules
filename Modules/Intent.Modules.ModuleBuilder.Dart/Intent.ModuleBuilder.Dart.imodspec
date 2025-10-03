@@ -2,7 +2,7 @@
 <package>
   <id>Intent.ModuleBuilder.Dart</id>
   <version>1.2.1</version>
-  <supportedClientVersions>[4.2.4, 5.0.0-a)</supportedClientVersions>
+  <supportedClientVersions>[4.4.0-a, 5.0.0-a)</supportedClientVersions>
   <releaseNotes>release-notes.md</releaseNotes>
   <summary>For the creation of Dart Templates in the Intent Module Builder</summary>
   <description>For the creation of Dart Templates in the Intent Module Builder</description>
@@ -42,7 +42,7 @@
     <dependency id="Intent.Common" version="3.7.2" />
     <dependency id="Intent.Common.CSharp" version="3.8.0" />
     <dependency id="Intent.Common.Types" version="4.0.0" />
-    <dependency id="Intent.ModuleBuilder" version="3.12.0" />
+    <dependency id="Intent.ModuleBuilder" version="3.18.0-pre.0" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="4.5.1" />
   </dependencies>
   <files>
@@ -54,4 +54,5 @@
     <install target="Module Builder" src="Intent.Metadata/Module Builder/Intent.ModuleBuilder.Dart/Intent.ModuleBuilder.Dart.pkg.config" externalReference="1dd2296a-81c6-4e5a-aa3f-9f7a4abae39d" />
     <install target="Module Builder" src="modelers/Dart.designer.settings" externalReference="6edc08b9-02d6-4798-8e65-0cc50625240a" />
   </metadata>
+  <migrations />
 </package>
