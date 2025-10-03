@@ -4,7 +4,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using System.Linq;
 using Intent.Engine;
 using Intent.Eventing;
@@ -109,9 +108,6 @@ namespace Intent.Modules.Common.Templates
         IAfterTemplateRegistrationExecutionHook,
         ITemplateBeforeExecutionHook
     {
-        private readonly Lazy<(bool Result, string? Path)> _tryGetExistingFilePathCache;
-        private readonly Lazy<(bool Result, string? Content)> _tryGetExistingFileContentCache;
-
         /// <summary>
         /// Returns the known template dependencies added for this template.
         /// </summary>
@@ -128,8 +124,6 @@ namespace Intent.Modules.Common.Templates
             Id = templateId;
             BindingContext = new TemplateBindingContext(this);
             FileMetadata = null!;
-            _tryGetExistingFilePathCache = new Lazy<(bool, string?)>(TryGetExistingFilePathInternal);
-            _tryGetExistingFileContentCache = new Lazy<(bool, string?)>(TryGetExistingFileContentInternal);
         }
 
         /// <summary>
@@ -193,7 +187,7 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Returns the file path of the existing file for this template, if it exists. If it doesn't exist, or can't be found, will return null.
         /// </summary>
-        public virtual string? GetExistingFilePath() => _tryGetExistingFilePathCache.Value.Path;
+        public virtual string? GetExistingFilePath() => TryGetExistingFilePath(out var path) ? path : null;
 
         /// <summary>
         /// Override this method to control whether the template runs and the creates the output file.
@@ -972,67 +966,36 @@ namespace Intent.Modules.Common.Templates
         /// <inheritdoc />
         public bool TryGetExistingFileContent([NotNullWhen(true)] out string? content)
         {
-            (var result, content) = _tryGetExistingFileContentCache.Value;
+            if (TryGetExistingFilePath(out var path))
+            {
+                content = ExecutionContext.FileSystem.ReadAllText(path);
+                return true;
+            }
 
-            return result;
+            content = null;
+            return false;
         }
-
-        /// <summary>
-        /// Not to be called directly, this is a delegate for the <see cref="Lazy{T}"/> instance
-        /// for <see cref="_tryGetExistingFileContentCache"/>.
-        /// </summary>
-        private (bool result, string? content) TryGetExistingFileContentInternal()
-        {
-            return TryGetExistingFilePath(out var path)
-                ? (true, File.ReadAllText(path))
-                : (false, null);
-        }
-
-        /// <summary>
-        /// Not to be called directly, this is a delegate for the <see cref="Lazy{T}"/> instance
-        /// for <see cref="_tryGetExistingFilePathCache"/>.
-        /// </summary>
-        /// <remarks>
-        /// There is a significant performance impact even for <see cref="File.Exists"/> and
-        /// caching them has been shown to make a highly significant improvement in software
-        /// factory execution time.
-        /// <para>
-        /// It is intentional that if a file exists at the current output path then the file at the
-        /// current output path is considered the "existing" file, regardless of whether the
-        /// output path is different compared to the previous software execution.
-        /// </para>
-        /// <para>
-        /// This is so that the following scenario works as expected:
-        /// - Rename the file preemptively on the file system in your IDE.
-        /// - Rename the element in Intent Architect.
-        /// - Run the software factory.
-        /// </para>
-        /// </remarks>
-        private (bool Result, string? Path) TryGetExistingFilePathInternal()
+        
+        /// <inheritdoc />
+        public bool TryGetExistingFilePath([NotNullWhen(true)] out string? path)
         {
             var outputPath = FileMetadata.GetFilePath();
-            if (File.Exists(outputPath))
+            if (ExecutionContext.FileSystem.Exists(outputPath))
             {
-                return (true, outputPath);
+                path = outputPath;
+                return true;
             }
 
             var previousOutputPath = ExecutionContext.GetPreviousExecutionLog()?.TryGetFileLog(this)?.FilePath;
             if (previousOutputPath != null &&
-                File.Exists(previousOutputPath))
+                ExecutionContext.FileSystem.Exists(previousOutputPath))
             {
-                return (true, previousOutputPath);
+                path = previousOutputPath;
+                return true;
             }
 
-            return (false, null);
-        }
-
-
-        /// <inheritdoc />
-        public bool TryGetExistingFilePath([NotNullWhen(true)] out string? path)
-        {
-            (var result, path) = _tryGetExistingFilePathCache.Value;
-
-            return result;
+            path = null;
+            return false;
         }
 
         #region TryGetTypeName
@@ -1470,7 +1433,7 @@ namespace Intent.Modules.Common.Templates
             ExecutionContext.EventDispatcher.Subscribe(handler);
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="object.ToString" />
         public override string ToString()
         {
             return $"{Id}";

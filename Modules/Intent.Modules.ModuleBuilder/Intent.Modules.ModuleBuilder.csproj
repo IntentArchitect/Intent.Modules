@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -12,7 +12,7 @@
     <PackageReference Include="Intent.Modules.Common" Version="3.7.7" />
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.8.14" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="4.0.0" />
-    <PackageReference Include="Intent.Packager" Version="3.6.0-pre.2">
+    <PackageReference Include="Intent.Packager" Version="3.6.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
