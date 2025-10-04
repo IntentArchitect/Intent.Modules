@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ignoredFiles>
+  <files>
+    <file relativePath="Intent.Modules.ApplicationTemplate.Builder/modelers/Application Template Builder.designer.settings" />
+    <file relativePath="Intent.Modules.sln" />
+  </files>
+</ignoredFiles>

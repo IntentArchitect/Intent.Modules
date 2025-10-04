@@ -114,7 +114,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Solution Items", "0 - S
 		..\Directory.Build.props = ..\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Java.Weaving.Annotations", "Intent.Modules.Java.Weaving.Annotations\Intent.Modules.Java.Weaving.Annotations.csproj", "{AB7B334C-A6CF-4138-92DD-5F89BAF9505B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Java.Weaving.Annotations", "Intent.Modules.Java.Weaving.Annotations\Intent.Modules.Java.Weaving.Annotations.csproj", "{AB7B334C-A6CF-4138-92DD-5F89BAF9505B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Domain.StoredProcedures", "Intent.Modules.Modelers.Domain.StoredProcedures\Intent.Modules.Modelers.Domain.StoredProcedures.csproj", "{9DB519CC-52B4-4875-9A8F-1AAEA9AD450B}"
 EndProject

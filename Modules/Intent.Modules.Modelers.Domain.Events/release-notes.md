@@ -1,6 +1,7 @@
 ### Version 4.4.5
 
 - Improvement: `Domain Events` support modeling inheritance.
+- Improvement: Made `Source End` of domain events not navigable, this makes it possible to model Domain Events in different packages without dependencies.
 
 ### Version 4.4.4
 

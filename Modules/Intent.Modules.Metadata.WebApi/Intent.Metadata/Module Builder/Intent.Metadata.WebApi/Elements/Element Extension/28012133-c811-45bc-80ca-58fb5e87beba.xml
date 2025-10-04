@@ -380,5 +380,54 @@
         </childElement>
       </childElements>
     </childElement>
+    <childElement id="bd60be36-411e-4ab2-ac3a-1b0e56f4a669" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>28012133-c811-45bc-80ca-58fb5e87beba</parentFolderId>
+      <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+      <packageName>Intent.Metadata.WebApi</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="e25b660f-fe12-4c17-9bce-dca2cf0f243f" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Created</name>
+          <display>On Created: Inline Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="d5ff7f66-befc-4dd0-ad77-b94cfc4c6a22">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>bd60be36-411e-4ab2-ac3a-1b0e56f4a669</parentFolderId>
+          <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+          <packageName>Intent.Metadata.WebApi</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getName().toLocaleLowerCase() === &quot;content&quot; || &#xD;&#xA;    element.getName().toLocaleLowerCase() === &quot;filename&quot; || &#xD;&#xA;    element.getName().toLocaleLowerCase() === &quot;contenttype&quot; || &#xD;&#xA;    element.getName().toLocaleLowerCase() === &quot;contentlength&quot;) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;const fileTransferStereotype = &quot;d30e48e8-389e-4b70-84fd-e3bac44cfe19&quot;;&#xD;&#xA;const paramSettingsStereotype = &quot;d01df110-1208-4af8-a913-92a49d219552&quot;;&#xD;&#xA;&#xD;&#xA;const fieldParent = element.getParent();&#xD;&#xA;if (fieldParent?.hasStereotype(fileTransferStereotype) &amp;&amp; !element.hasStereotype(paramSettingsStereotype)) {&#xD;&#xA;    const paramSetting = element.addStereotype(paramSettingsStereotype);&#xD;&#xA;    paramSetting.getProperty(&quot;Source&quot;).setValue(&quot;From Query&quot;);&#xD;&#xA;}" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
   </childElements>
 </class>

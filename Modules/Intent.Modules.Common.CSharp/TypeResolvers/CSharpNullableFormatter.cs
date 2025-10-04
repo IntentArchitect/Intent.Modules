@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using Intent.Modules.Common.CSharp.VisualStudio;
+using Intent.Modules.Common.FactoryExtensions;
 using Intent.Modules.Common.TypeResolution;
 using Intent.SdkEvolutionHelpers;
 
@@ -13,6 +14,11 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
     {
         private readonly ICSharpProject _project;
         private static readonly ConcurrentDictionary<ICSharpProject, CSharpNullableFormatter> Cache = new();
+
+        static CSharpNullableFormatter()
+        {
+            ExecutionLifeCycle.OnStart(() => Cache.Clear());
+        }
 
         private CSharpNullableFormatter(ICSharpProject project)
         {

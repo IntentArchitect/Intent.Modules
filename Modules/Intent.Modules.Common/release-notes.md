@@ -1,3 +1,7 @@
+### Version 3.9.2
+
+- Improvement: Now leverages `IFileSystem` to benefit from file access caching in the Software Factory.
+
 ### Version 3.9.1
 
 - Improvement: Created `ExecutionLifeCycle` static for statically registering actions to be executed during Software Factory runs. Currently used to clear static cache between "hot SF" runs.

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Modelers.UI.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -37,20 +38,11 @@ namespace Intent.Modelers.UI.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<NavigationSourceEndModel> NavigateBackComponents(this ComponentModel model)
+        public static IList<NavigationSourceEndModel> NavigateBackComponents(this IPageModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == NavigationModel.SpecializationType && x.IsSourceEnd())
                 .Select(x => NavigationModel.CreateFromEnd(x).SourceEnd)
-                .ToList();
-        }
-
-        [IntentManaged(Mode.Fully)]
-        public static IList<NavigationEndModel> NavigationEnds(this ComponentModel model)
-        {
-            return model.InternalElement.AssociatedElements
-                .Where(x => x.IsNavigationEndModel())
-                .Select(NavigationEndModel.Create)
                 .ToList();
         }
 

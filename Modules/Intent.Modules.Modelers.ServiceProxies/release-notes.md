@@ -1,4 +1,8 @@
-﻿### Version 5.2.1
+﻿### Version 5.2.2
+
+- Improvement: Updated to the latest `Intent.Modelers.Types.ServiceProxies` dependency.
+
+### Version 5.2.1
 
 - Fixed: Until the Intent Architect client is fixed for this scenario, the Service Proxies package will not be installed in the Services designer.
 

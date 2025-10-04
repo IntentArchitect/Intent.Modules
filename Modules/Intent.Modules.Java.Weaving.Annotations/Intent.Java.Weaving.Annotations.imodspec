@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Java.Weaving.Annotations</id>
   <version>4.1.0</version>
-  <supportedClientVersions>[3.3.16, 5.0.0-a)</supportedClientVersions>
+  <supportedClientVersions>[4.4.0-a, 5.0.0-a)</supportedClientVersions>
   <releaseNotes>release-notes.md</releaseNotes>
   <summary>Annotations instructions Java code-management.</summary>
   <description>Annotations instructions Java code-management.</description>
@@ -50,9 +50,9 @@
   <factoryExtensions></factoryExtensions>
   <dependencies>
     <dependency id="Intent.Code.Weaving.Java" version="1.0.0" />
-    <dependency id="Intent.Common" version="3.5.0" />
+    <dependency id="Intent.Common" version="3.7.2" />
     <dependency id="Intent.Common.Java" version="4.0.0" />
-    <dependency id="Intent.Common.Types" version="3.3.9" />
+    <dependency id="Intent.Common.Types" version="3.4.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
@@ -62,4 +62,5 @@
   <moduleSettings />
   <moduleSettingsExtensions />
   <tags>java weaving annotations</tags>
+  <migrations />
 </package>

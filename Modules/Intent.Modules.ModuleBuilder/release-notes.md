@@ -1,6 +1,7 @@
 ﻿### Version 3.18.0
 
 - Feature: Module Builder can now model `Module Tasks` in the designer which generate a base implementation.
+- Fixed: T4 code behind files would have an outstanding change in the Software Factory if its output log entry was missing.
 
 ### Version 3.17.1
 

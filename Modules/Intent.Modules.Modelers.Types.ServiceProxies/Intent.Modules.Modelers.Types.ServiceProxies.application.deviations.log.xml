@@ -1,4 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files />
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#aee6811e-b2f6-4562-a8eb-502029f63bc8</correlationId>
+      <path>Intent.Modules.Modelers.Types.ServiceProxies/Api/OperationModel.cs</path>
+      <count>7</count>
+      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
+      <updatedAt>2025-09-29T08:57:06.9721166Z</updatedAt>
+      <deviationsHash>4A71A2ABA598A1716DA91661D44CEC3D0514CFA4CA08FB06F668273B6A88F949</deviationsHash>
+      <fileHash>62686B9AE2F0D8BB821C970FB35C4E94DE43D22E719F527CD4E152F00750C888</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#f11273c1-217f-4f42-b690-3d8b488f95a8</correlationId>
+      <path>Intent.Modules.Modelers.Types.ServiceProxies/Api/ParameterModel.cs</path>
+      <count>4</count>
+      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
+      <updatedAt>2025-09-29T08:57:06.9721279Z</updatedAt>
+      <deviationsHash>C6B92A38F1182280942FDB4A4DE0AC84B52BFB10A920B5BA4B50FC007B5A10F6</deviationsHash>
+      <fileHash>0A6FA2FA134675D9C72B05937907D51009FDFF2F917A982E8294FB38618A2C4C</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#07d8d1a9-6b9f-4676-b7d3-8db06299e35c</correlationId>
+      <path>Intent.Modules.Modelers.Types.ServiceProxies/Api/ServiceProxyModel.cs</path>
+      <count>1</count>
+      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
+      <updatedAt>2025-09-29T08:57:06.972139Z</updatedAt>
+      <deviationsHash>D1279D61559D2F03D4A91E847411DB97BF338BAB6FDAC573AD3826A3E5D63550</deviationsHash>
+      <fileHash>0FD4356BFB356FDA071F4BA55BBE735AE09217F31A3EE5083CCC52049F2ABC6D</fileHash>
+    </file>
+  </files>
 </deviationsLog>

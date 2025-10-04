@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.TypeScript.Weaving.Decorators</id>
   <version>4.1.0</version>
-  <supportedClientVersions>[4.1.0-pre.0, 5.0.0-a)</supportedClientVersions>
+  <supportedClientVersions>[4.4.0-a, 5.0.0-a)</supportedClientVersions>
   <releaseNotes>release-notes.md</releaseNotes>
   <summary>Provides TypeScript decorators for Intent Architect Code Management</summary>
   <description>Provides TypeScript decorators for Intent Architect Code Management</description>
@@ -17,8 +17,8 @@
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.5.0" />
-    <dependency id="Intent.Common.Types" version="3.3.9" />
+    <dependency id="Intent.Common" version="3.7.2" />
+    <dependency id="Intent.Common.Types" version="3.4.0" />
     <dependency id="Intent.Common.TypeScript" version="4.0.0" />
   </dependencies>
   <files>
@@ -29,4 +29,5 @@
   <moduleSettings />
   <moduleSettingsExtensions />
   <tags>typescript ts weaving</tags>
+  <migrations />
 </package>

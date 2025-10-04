@@ -79,6 +79,20 @@ class CQRSCrudStrategy extends CrudStrategy{
             command.typeReference.setType(operationResultDto.id);
         }
 
+        // Add Aggregate PK to command for Query
+        let keys = this.primaryKeys.reverse();
+        keys.forEach((pk) => {
+
+            if (!command.getChildren().some(x => x.getName().toLowerCase() == pk.name.toLowerCase())) {
+                let field = createElement("DTO-Field", pk.name, command.id);                
+                field.typeReference.setType(pk.typeId);
+                field.setOrder(0);
+            } else {
+                let field = command.getChildren().find(x => x.getName().toLowerCase() == pk.name.toLowerCase() );
+                field.setOrder(0);
+            }
+        });
+
         this.doAdvancedMappingCallOperation(projector, command);
         return command;
     }

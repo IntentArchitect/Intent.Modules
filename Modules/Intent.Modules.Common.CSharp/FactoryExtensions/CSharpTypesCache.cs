@@ -22,6 +22,8 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
     /// </summary>
     public class CSharpTypesCache : FactoryExtensionBase
     {
+        private readonly IFileSystem _fileSystem;
+
         /// <inheritdoc />
         public override string Id => "Intent.Modules.Common.CSharp.FactoryExtensions.KnownCSharpTypesCache";
 
@@ -30,6 +32,11 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
         private static readonly TypeRegistry Empty = new();
         private static readonly HashSet<string> ManuallyAddedKnownTypes = [];
         private static readonly Dictionary<string, HashSet<string>> GlobalUsingsByProjectId = [];
+
+        public CSharpTypesCache(IFileSystem fileSystem)
+        {
+            _fileSystem = fileSystem;
+        }
 
         /// <inheritdoc />
         public override int Order { get; set; }
@@ -106,7 +113,7 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
             }
         }
 
-        private static void PopulateGlobalUsings(IApplication application)
+        private void PopulateGlobalUsings(IApplication application)
         {
             var csharpTemplates = application.FindTemplateInstances<IIntentTemplate>(TemplateDependency.OfType<IIntentTemplate>());
             var csharpTemplatesByProject = csharpTemplates.GroupBy(GetOutputProjectId);
@@ -134,7 +141,7 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
                     }
 
                     if (Path.GetExtension(path).Equals(".csproj", StringComparison.OrdinalIgnoreCase) &&
-                        File.Exists(path))
+                        _fileSystem.Exists(path))
                     {
                         csProjFolder = Path.GetDirectoryName(path);
                     }
@@ -152,6 +159,8 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
                     continue;
                 }
 
+                _fileSystem.EnableCachingFor(csProjFolder);
+
                 var filePaths = Directory.EnumerateFiles(csProjFolder, "*.cs", new EnumerationOptions { MatchCasing = MatchCasing.CaseInsensitive, RecurseSubdirectories = true });
                 foreach (var filePath in filePaths)
                 {
@@ -160,7 +169,7 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
                         continue;
                     }
 
-                    globalUsings.UnionWith(File.ReadAllLines(filePath)
+                    globalUsings.UnionWith(_fileSystem.ReadAllLines(filePath)
                         .Select(x => x.Trim())
                         .Where(x => x.StartsWith("global using "))
                         .Select(x => x["global using ".Length..^1]));

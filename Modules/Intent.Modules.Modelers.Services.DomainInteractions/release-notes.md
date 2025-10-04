@@ -1,3 +1,7 @@
+### Version 2.3.6
+
+- Fixed: CRUD for domain operations now visually points to the operations.
+
 ### Version 2.3.5
 
 - Improvement: Added suggestions to the Domain Designer to repository operations for creating CQRS requests and Traditional Services in the Services Designer.

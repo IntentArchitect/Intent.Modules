@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ignoredFiles>
+  <files>
+    <file relativePath="Intent.Modules.Metadata.DocumentDB/Api/FolderExtensionsModel.cs" />
+    <file relativePath="Intent.Modules.Metadata.DocumentDB/Api/ModuleBuilderExtensionsModel.cs" />
+  </files>
+</ignoredFiles>

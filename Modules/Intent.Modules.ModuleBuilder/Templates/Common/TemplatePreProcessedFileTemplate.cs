@@ -91,7 +91,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
             var fileLog = ExecutionContext.GetPreviousExecutionLog()?.TryGetFileLog(this);
             if (fileLog == null)
             {
-                return true;
+                return false;
             }
 
             var result = Path.GetFullPath(fileLog.FilePath) != Path.GetFullPath(FileMetadata.GetFilePath());

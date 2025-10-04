@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ignoredFiles>
+  <files>
+    <file relativePath="Intent.Modules.Modelers.Services/Api/Extensions/CommentAssociationModelAssociationExtensions.cs" />
+    <file relativePath="Intent.Modules.Modelers.Services/Intent.Modules.Modelers.Services.csproj" />
+  </files>
+</ignoredFiles>
