@@ -132,12 +132,12 @@
       <fileHash>6CCC41AB63BFB350BFE7909733B148BC1C5E6FBAE1C21EEA0010B82CE82839E2</fileHash>
     </file>
     <file>
-      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</correlationId>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions#a0d763b5-c968-49fc-bbdc-f896a1b79a75</correlationId>
       <path>Intent.Modules.Modelers.Domain/ApiMetadataPackageExtensions.cs</path>
       <count>1</count>
-      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
-      <updatedAt>2024-08-31T14:47:33.8376198Z</updatedAt>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2025-10-05T05:22:04.2423341Z</updatedAt>
       <deviationsHash>BF57DDA59FA2C56591E5C181F52CD376CFEE77D09BE010D0FAD39D86BCF4E8C7</deviationsHash>
       <fileHash>EA1FAE9139005DDB020BF608DA8E4A4468660B9CC229316F13A80DDE59CB3323</fileHash>
     </file>
@@ -149,7 +149,7 @@
       <updatedByDisplayName>JP Seini</updatedByDisplayName>
       <updatedAt>2025-03-14T12:46:15.535578Z</updatedAt>
       <deviationsHash>5AEB22B40755AE1B1F458BE13F443F65EB4BE2F6440048EA4B65E8E31B54053F</deviationsHash>
-      <fileHash>4B5E27AD975EE71FC351BFFF813A15795D5C820AA609CB8866105D923790D018</fileHash>
+      <fileHash>A5ADE08391FA84335142E439012BF49135709A6347EA7A1FE878FF1478D8095C</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Migrations.OnInstallMigration#757ed2d2-d804-474a-a72d-2b21fbda6842</correlationId>
@@ -159,7 +159,7 @@
       <updatedByDisplayName>JP Seini</updatedByDisplayName>
       <updatedAt>2025-03-13T12:45:38.8802002Z</updatedAt>
       <deviationsHash>60B15F4438A329EF376A24573421236B612DF7AA4C8D71059A913DF6C1A1F6DD</deviationsHash>
-      <fileHash>5B67B65E7188DB917EF7C4A5CB8FF5873E566AD4398A5891C1A202008A9D21CC</fileHash>
+      <fileHash>FA3659EADC4FA0F181C6D74F3D70A3DDE7CA848470F88931A85C518E6947FE22</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions#6572b98d-5e13-4d4b-9ffc-820057da974e</correlationId>
@@ -169,7 +169,7 @@
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
       <updatedAt>2024-08-31T14:47:33.8378352Z</updatedAt>
       <deviationsHash>39B9D6CBFE243BFAF4DDBD78A9223AE6D2A1A8A82BC2114209CAD3A692EF1E53</deviationsHash>
-      <fileHash>9AF2166F533035EBAAD8928523A5DA3A76F8D0FEE1561DA9DFD723615F7E2FB6</fileHash>
+      <fileHash>19ECDCAA1980C750D8E93A3A5E07B991C1ACD204DEF73B80DE3C0FC080914041</fileHash>
     </file>
   </files>
 </deviationsLog>

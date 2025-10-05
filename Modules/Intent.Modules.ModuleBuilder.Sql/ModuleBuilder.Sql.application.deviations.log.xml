@@ -47,8 +47,8 @@
       <count>3</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2024-11-22T13:30:35.3658552Z</updatedAt>
-      <deviationsHash>6942C64B26A3530D52048ABB901804F34A6702CA318C2A784380C81D08FB374A</deviationsHash>
+      <updatedAt>2025-10-05T05:29:53.1801495Z</updatedAt>
+      <deviationsHash>310F1AD173A8F75D34686B4D0C0D4B206E855BCA3AD0FAAB0DB4091E1D39130E</deviationsHash>
       <fileHash>89F206C104C4E2D2D438724DF0293E88FBA700EBC0B2C400B775D3CE7A09ABC8</fileHash>
     </file>
     <file>
@@ -62,12 +62,12 @@
       <fileHash>C95ED706E936BA1951D4007C200AD65A983073064EF7CAA2A35076FBEC47E70D</fileHash>
     </file>
     <file>
-      <correlationId>Intent.ModuleBuilder.Templates.TemplateExtensions</correlationId>
+      <correlationId>Intent.ModuleBuilder.Templates.TemplateExtensions#33d5b61a-88e9-4073-95af-17292b36082a</correlationId>
       <path>Intent.Modules.ModuleBuilder.Sql/Templates/TemplateExtensions.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2024-11-22T13:30:35.366063Z</updatedAt>
+      <updatedAt>2025-10-05T05:29:53.1803693Z</updatedAt>
       <deviationsHash>B7203BFB9686F060DB0ACAA7C53E52041597E3DB8BC78F5BAE12E1FBA6835020</deviationsHash>
       <fileHash>70CEC422FC48D5B11377D1E2BC5C803A1E606D8DA9AC22FFB27318D49F1E0D71</fileHash>
     </file>

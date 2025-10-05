@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files />
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#739ac9eb-cc95-4aa2-9a64-fcf89a8e0888</correlationId>
+      <path>Intent.Modules.TypeScript.Weaving.Decorators/Templates/IntentDecorators/IntentDecoratorsTemplateRegistration.cs</path>
+      <count>1</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2025-10-05T05:21:42.7454024Z</updatedAt>
+      <deviationsHash>95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B</deviationsHash>
+      <fileHash>3F696750E7FCD9A2C0D9C12AEB8EED0720CC5766FF1AD2C3757FA72BDEAB4BA8</fileHash>
+    </file>
+  </files>
 </deviationsLog>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ignoredFiles>
+  <files>
+    <file relativePath="Intent.Modules.Modelers.Domain.ValueObjects/Api/AttributeExtensionModel.cs" />
+    <file relativePath="Intent.Modules.Modelers.Domain.ValueObjects/Api/OperationExtensionModel.cs" />
+    <file relativePath="Intent.Modules.Modelers.Domain.ValueObjects/Api/ParameterExtensionModel.cs" />
+  </files>
+</ignoredFiles>
