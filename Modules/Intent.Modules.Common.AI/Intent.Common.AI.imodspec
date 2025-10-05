@@ -22,9 +22,10 @@
           <options>
             <option value="open-ai" description="Open AI" />
             <option value="azure-open-ai" description="Azure Open AI" />
-            <option value="ollama" description="Ollama (Experimental)" />
             <option value="anthropic" description="Anthropic" />
             <option value="open-router" description="Open Router" />
+            <option value="google-gemini" description="Google Gemini" />
+            <option value="ollama" description="Ollama (Experimental)" />
           </options>
         </setting>
         <setting id="9e9a32b4-194e-4d53-b62c-c9c28fb7b6f8" title="Open AI API Key" type="text">
@@ -46,6 +47,10 @@ return provider === "anthropic";</isActiveFunction>
           <hint>Will fall back to environment variable `OPENROUTER\_API\_KEY` if empty.</hint>
           <isActiveFunction>let provider = getProperty("Provider").value;
 return provider === "open-router";</isActiveFunction>
+        </setting>
+        <setting id="1a61e521-a95b-4bd1-8f6a-b7031ae79a31" title="Google Gemini API Key" type="text">
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "google-gemini";</isActiveFunction>
         </setting>
         <setting id="c16ca802-12a6-412b-9710-de1f1b3eaf64" title="Ollama API Key" type="text">
           <hint>When using Ollama cloud. Will fall back to environment variable `OLLAMA\_API\_KEY` if empty.</hint>
@@ -116,6 +121,7 @@ return provider === "anthropic";</isActiveFunction>
     <file src="$outDir$/ModelContextProtocol.Core.dll" inspect="false" />
     <file src="$outDir$/ModelContextProtocol.dll" inspect="false" />
     <file src="$outDir$/System.Net.ServerSentEvents.dll" inspect="false" />
+    <file src="$outDir$/Microsoft.SemanticKernel.Connectors.Google.dll" inspect="false" />
   </files>
   <tags />
   <moduleSettingsExtensions />

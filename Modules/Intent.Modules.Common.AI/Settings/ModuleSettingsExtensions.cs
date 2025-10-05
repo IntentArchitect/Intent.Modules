@@ -55,9 +55,10 @@ namespace Intent.Modules.Common.AI.Settings
                 {
                     "open-ai" => ProviderOptionsEnum.OpenAi,
                     "azure-open-ai" => ProviderOptionsEnum.AzureOpenAi,
-                    "ollama" => ProviderOptionsEnum.Ollama,
                     "anthropic" => ProviderOptionsEnum.Anthropic,
                     "open-router" => ProviderOptionsEnum.OpenRouter,
+                    "google-gemini" => ProviderOptionsEnum.GoogleGemini,
+                    "ollama" => ProviderOptionsEnum.Ollama,
                     _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
                 };
             }
@@ -86,6 +87,11 @@ namespace Intent.Modules.Common.AI.Settings
             {
                 return Value == "open-router";
             }
+
+            public bool IsGoogleGemini()
+            {
+                return Value == "google-gemini";
+            }
         }
 
         public enum ProviderOptionsEnum
@@ -95,6 +101,7 @@ namespace Intent.Modules.Common.AI.Settings
             Ollama,
             Anthropic,
             OpenRouter,
+            GoogleGemini,
         }
 
         public string OpenAIAPIKey() => _groupSettings.GetSetting("9e9a32b4-194e-4d53-b62c-c9c28fb7b6f8")?.Value;
@@ -104,6 +111,8 @@ namespace Intent.Modules.Common.AI.Settings
         public string AnthropicAPIKey() => _groupSettings.GetSetting("715e2ce8-677c-467d-a876-8dc84b99ae05")?.Value;
 
         public string OpenRouterAPIKey() => _groupSettings.GetSetting("d615e7c5-e3d6-4ee0-a1b2-b671e03b5330")?.Value;
+
+        public string GoogleGeminiAPIKey() => _groupSettings.GetSetting("1a61e521-a95b-4bd1-8f6a-b7031ae79a31")?.Value;
 
         public string OllamaAPIKey() => _groupSettings.GetSetting("c16ca802-12a6-412b-9710-de1f1b3eaf64")?.Value;
 

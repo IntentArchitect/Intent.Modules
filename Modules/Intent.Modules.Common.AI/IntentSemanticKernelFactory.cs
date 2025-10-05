@@ -12,8 +12,6 @@ using OllamaSharp;
 
 namespace Intent.Modules.Common.AI;
 
-#nullable enable
-
 public class IntentSemanticKernelFactory
 {
     private readonly IUserSettingsProvider _userSettingsProvider;
@@ -21,15 +19,6 @@ public class IntentSemanticKernelFactory
     public IntentSemanticKernelFactory(IUserSettingsProvider userSettingsProvider)
     {
         _userSettingsProvider = userSettingsProvider;
-    }
-
-    public Kernel BuildSemanticKernel() => BuildSemanticKernel(null);
-    public Kernel BuildSemanticKernel(Action<IKernelBuilder>? configure)
-    {
-        //var settings = _userSettingsProvider.GetAISettings();
-        //var model = string.IsNullOrWhiteSpace(settings.Model()) ? "gpt-4.1" : settings.Model();
-        throw new NotSupportedException("Obsolete");
-        //return BuildSemanticKernel(model, configure);
     }
 
     public Kernel BuildSemanticKernel(string model, Action<IKernelBuilder>? configure)
@@ -74,6 +63,9 @@ public class IntentSemanticKernelFactory
                     modelId: model,
                     apiKey: !string.IsNullOrWhiteSpace(value: apiKey) 
                         ? apiKey : throw new FriendlyException(message: GetErrorMessage("OPENAI_API_KEY")));
+
+                builder.Services.AddSingleton<IAiProviderService>(AiProviderService.CreateOpenAiService());
+                
                 break;
             
             case AISettings.ProviderOptionsEnum.AzureOpenAi:
@@ -89,6 +81,60 @@ public class IntentSemanticKernelFactory
                     apiKey: !string.IsNullOrWhiteSpace(value: apiKey) 
                         ? apiKey : throw new FriendlyException(message: GetErrorMessage("AZURE_OPENAI_API_KEY")),
                     modelId: model);
+                
+                builder.Services.AddSingleton<IAiProviderService>(AiProviderService.CreateAzureOpenAiService());
+                
+                break;
+            
+            case AISettings.ProviderOptionsEnum.Anthropic:
+                apiKey = settings.AnthropicAPIKey();
+                if (string.IsNullOrWhiteSpace(value: apiKey))
+                {
+                    apiKey = Environment.GetEnvironmentVariable(variable: "ANTHROPIC_API_KEY");
+                }
+
+                builder.Services.AddAnthropicChatCompletion(
+                    apiKey: !string.IsNullOrWhiteSpace(value: apiKey) 
+                        ? apiKey : throw new FriendlyException(message: GetErrorMessage("ANTHROPIC_API_KEY")),
+                    model: model,
+                    maxTokens: int.TryParse(s: _userSettingsProvider.GetAISettings().MaxTokens(), result: out var maxTokens) ? maxTokens : null);
+                
+                builder.Services.AddSingleton<IAiProviderService>(AiProviderService.CreateAnthropicService());
+                
+                break;
+            
+            case AISettings.ProviderOptionsEnum.OpenRouter:
+                apiKey = settings.OpenRouterAPIKey();
+                if (string.IsNullOrWhiteSpace(value: apiKey))
+                {
+                    apiKey = Environment.GetEnvironmentVariable(variable: "OPENROUTER_API_KEY");
+                }
+                
+                builder.Services.AddOpenRouterChatCompletion(
+                    apiKey: !string.IsNullOrWhiteSpace(value: apiKey) 
+                        ? apiKey : throw new FriendlyException(message: GetErrorMessage("OPENROUTER_API_KEY")),
+                    modelId: model);
+                
+                builder.Services.AddSingleton<IAiProviderService>(AiProviderService.CreateOpenRouterService());
+                
+                break;
+            
+            case AISettings.ProviderOptionsEnum.GoogleGemini:
+                apiKey = settings.GoogleGeminiAPIKey();
+                if (string.IsNullOrWhiteSpace(value: apiKey))
+                {
+                    // Google's docs actually have both: https://ai.google.dev/gemini-api/docs/api-key#set-api-env-var
+                    apiKey = Environment.GetEnvironmentVariable(variable: "GOOGLE_API_KEY")
+                        ?? Environment.GetEnvironmentVariable(variable: "GEMINI_API_KEY");
+                }
+                
+                builder.Services.AddGoogleAIGeminiChatCompletion(
+                    apiKey: !string.IsNullOrWhiteSpace(value: apiKey) 
+                        ? apiKey : throw new FriendlyException(message: GetErrorMessage("GOOGLE_API_KEY OR GEMINI_API_KEY")),
+                    modelId: model);
+
+                builder.Services.AddSingleton<IAiProviderService>(AiProviderService.CreateGoogleGeminiService());
+                
                 break;
             
             case AISettings.ProviderOptionsEnum.Ollama:
@@ -114,33 +160,9 @@ public class IntentSemanticKernelFactory
                         client: ollamaHttpClient,
                         defaultModel: model)
                 );
-                break;
-            
-            case AISettings.ProviderOptionsEnum.Anthropic:
-                apiKey = settings.AnthropicAPIKey();
-                if (string.IsNullOrWhiteSpace(value: apiKey))
-                {
-                    apiKey = Environment.GetEnvironmentVariable(variable: "ANTHROPIC_API_KEY");
-                }
-
-                builder.Services.AddAnthropicChatCompletion(
-                    apiKey: !string.IsNullOrWhiteSpace(value: apiKey) 
-                        ? apiKey : throw new FriendlyException(message: GetErrorMessage("ANTHROPIC_API_KEY")),
-                    model: model,
-                    maxTokens: int.TryParse(s: _userSettingsProvider.GetAISettings().MaxTokens(), result: out var maxTokens) ? maxTokens : null);
-                break;
-            
-            case AISettings.ProviderOptionsEnum.OpenRouter:
-                apiKey = settings.OpenRouterAPIKey();
-                if (string.IsNullOrWhiteSpace(value: apiKey))
-                {
-                    apiKey = Environment.GetEnvironmentVariable(variable: "OPENROUTER_API_KEY");
-                }
                 
-                builder.Services.AddOpenRouterChatCompletion(
-                    apiKey: !string.IsNullOrWhiteSpace(value: apiKey) 
-                        ? apiKey : throw new FriendlyException(message: GetErrorMessage("OPENROUTER_API_KEY")),
-                    modelId: model);
+                builder.Services.AddSingleton<IAiProviderService>(AiProviderService.CreateOllamaService());
+                
                 break;
             
             default:

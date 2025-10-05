@@ -77,20 +77,6 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="c77e69ea-2700-46f9-9379-029574e9ac0b" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
-          <name>Ollama (Experimental)</name>
-          <display>Ollama (Experimental) = ollama</display>
-          <isAbstract>false</isAbstract>
-          <value>ollama</value>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>41ac1bce-6362-4b77-b588-ba3df55a2afb</parentFolderId>
-          <packageId>3d488031-cdd1-4987-8d07-427d7cbc605e</packageId>
-          <packageName>Intent.Common.AI</packageName>
-          <stereotypes />
-          <metadata />
-          <childElements />
-        </childElement>
         <childElement id="26cd5a3b-0e82-4400-95d4-e3bea4933e5a" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Anthropic</name>
           <display>Anthropic = anthropic</display>
@@ -110,6 +96,34 @@
           <display>Open Router = open-router</display>
           <isAbstract>false</isAbstract>
           <value>open-router</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>41ac1bce-6362-4b77-b588-ba3df55a2afb</parentFolderId>
+          <packageId>3d488031-cdd1-4987-8d07-427d7cbc605e</packageId>
+          <packageName>Intent.Common.AI</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="42ef91de-3b1b-4ae6-8fbc-e4ca61cf640c" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Google Gemini</name>
+          <display>Google Gemini = google-gemini</display>
+          <isAbstract>false</isAbstract>
+          <value>google-gemini</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>41ac1bce-6362-4b77-b588-ba3df55a2afb</parentFolderId>
+          <packageId>3d488031-cdd1-4987-8d07-427d7cbc605e</packageId>
+          <packageName>Intent.Common.AI</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="c77e69ea-2700-46f9-9379-029574e9ac0b" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Ollama (Experimental)</name>
+          <display>Ollama (Experimental) = ollama</display>
+          <isAbstract>false</isAbstract>
+          <value>ollama</value>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>41ac1bce-6362-4b77-b588-ba3df55a2afb</parentFolderId>
@@ -225,6 +239,34 @@
             <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Will fall back to environment variable `OPENROUTER\_API\_KEY` if empty." isActive="true" />
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" isActive="true" />
             <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="let provider = getProperty(&quot;Provider&quot;).value;&#xD;&#xA;return provider === &quot;open-router&quot;;" isActive="true" />
+            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" isActive="true" />
+            <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="1a61e521-a95b-4bd1-8f6a-b7031ae79a31" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+      <name>Google Gemini API Key</name>
+      <display>Google Gemini API Key</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>62594c9b-21fe-4c65-ac5c-b32a836a2ca5</parentFolderId>
+      <packageId>3d488031-cdd1-4987-8d07-427d7cbc605e</packageId>
+      <packageName>Intent.Common.AI</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Text Box" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Will fall back to environment variable `GOOGLE_API\_KEY` OR `GEMINI\_API\_KEY` if empty." isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" isActive="true" />
+            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="let provider = getProperty(&quot;Provider&quot;).value;&#xD;&#xA;return provider === &quot;google-gemini&quot;;" isActive="true" />
             <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" isActive="true" />
             <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
           </properties>

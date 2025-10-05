@@ -23,7 +23,10 @@ internal static class SettingsMock
                 return GetProviderStubConfig("ANTHROPIC_API_KEY", "anthropic", model, "715e2ce8-677c-467d-a876-8dc84b99ae05");
             case AISettings.ProviderOptionsEnum.OpenRouter:
                 return GetProviderStubConfig("OPENROUTER_API_KEY", "open-router", model, "d615e7c5-e3d6-4ee0-a1b2-b671e03b5330");
+            case AISettings.ProviderOptionsEnum.GoogleGemini:
+                return GetProviderStubConfig("GEMINI_API_KEY", "google-gemini", model, "1a61e521-a95b-4bd1-8f6a-b7031ae79a31");
             default:
+                // Maybe you're missing a new AI provider?
                 throw new ArgumentOutOfRangeException(nameof(providerOptionsEnum), providerOptionsEnum, null);
         }
     }

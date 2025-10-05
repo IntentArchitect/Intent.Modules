@@ -3,9 +3,15 @@ using System.Globalization;
 using System.Threading.Tasks;
 using Intent.Modules.Common.AI.Settings;
 using Intent.Modules.Common.AI.Tests.Helpers;
+using Intent.Modules.Common.AI.Tasks;
 using Intent.Utils;
 using Microsoft.SemanticKernel;
 using Xunit;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Linq;
+
+[assembly: CollectionBehavior(DisableTestParallelization = false, MaxParallelThreads = 4)]
 
 namespace Intent.Modules.Common.AI.Tests;
 
@@ -17,16 +23,14 @@ public class IntentSemanticKernelFactoryTests
      }
      
      [Theory(
-          Skip = "Requires API Token environment variables to be set AND access to AI providers."
+          //Skip = "Requires API Token environment variables to be set AND access to AI providers."
           )]
-     [InlineData(AISettings.ProviderOptionsEnum.OpenAi, "gpt-4o")]
-     [InlineData(AISettings.ProviderOptionsEnum.Anthropic, "claude-3-5-haiku-20241022")]
-     [InlineData(AISettings.ProviderOptionsEnum.OpenRouter, "qwen/qwen3-coder")]
+     [MemberData(nameof(GetProviderModelTestData))]
      public async Task AiConnectionWithCalculatorToolTest(AISettings.ProviderOptionsEnum provider, string model)
      {
           // ARRANGE
           var factory = new IntentSemanticKernelFactory(SettingsMock.GetUserSettingsProvider(provider, model));
-          var kernel = factory.BuildSemanticKernel(builder =>
+          var kernel = factory.BuildSemanticKernel(model, builder =>
           {
                builder.Plugins.AddFromType<CalculatorPlugin>();
           });
@@ -34,16 +38,48 @@ public class IntentSemanticKernelFactoryTests
           // ACT
           var function = kernel.CreateFunctionFromPrompt(
                "What is 847,293,156 × 923,847,521? Use the calculator tool and return only the answer (in the form 0,000.0)!",
-               new PromptExecutionSettings
-               {
-                    FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
-               });
+               kernel.GetRequiredService<IAiProviderService>().GetPromptExecutionSettings(null));
           var result = await function.InvokeAsync(kernel);
           
           // ASSERT
           Assert.NotNull(result);
-          Assert.Equal((847_293_156L * 923_847_521L).ToString("N1", CultureInfo.InvariantCulture), result.ToString());
+          Assert.Equal((847_293_156L * 923_847_521L).ToString("N1", CultureInfo.InvariantCulture), result.ToString().Trim());
      }
+
+     public static IEnumerable<object[]> GetProviderModelTestData()
+     {
+          var userSettingsProvider = SettingsMock.GetUserSettingsProvider(AISettings.ProviderOptionsEnum.OpenAi, "gpt-4o");
+          var task = new ProviderModelsTask(userSettingsProvider);
+          var json = task.Execute();
+          
+          var models = JsonSerializer.Deserialize<List<ModelRecord>>(json, new JsonSerializerOptions
+          {
+               PropertyNameCaseInsensitive = true,
+               PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+          });
+
+          return models.Select(m => new object[]
+          {
+               MapProviderIdToEnum(m.ProviderId),
+               m.ModelName
+          });
+     }
+
+     private static AISettings.ProviderOptionsEnum MapProviderIdToEnum(string providerId)
+     {
+          return providerId switch
+          {
+               "open-ai" => AISettings.ProviderOptionsEnum.OpenAi,
+               "azure-open-ai" => AISettings.ProviderOptionsEnum.AzureOpenAi,
+               "anthropic" => AISettings.ProviderOptionsEnum.Anthropic,
+               "open-router" => AISettings.ProviderOptionsEnum.OpenRouter,
+               "google-gemini" => AISettings.ProviderOptionsEnum.GoogleGemini,
+               "ollama" => AISettings.ProviderOptionsEnum.Ollama,
+               _ => throw new System.ArgumentException($"Unknown provider ID: {providerId}")
+          };
+     }
+
+     private record ModelRecord(string ProviderId, string ModelName, string ProviderName, string ThinkingType);
 
      private class CalculatorPlugin
      {
