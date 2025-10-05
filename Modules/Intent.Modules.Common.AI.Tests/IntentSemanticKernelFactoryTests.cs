@@ -23,7 +23,7 @@ public class IntentSemanticKernelFactoryTests
      }
      
      [Theory(
-          //Skip = "Requires API Token environment variables to be set AND access to AI providers."
+          Skip = "Requires API Token environment variables to be set AND access to AI providers."
           )]
      [MemberData(nameof(GetProviderModelTestData))]
      public async Task AiConnectionWithCalculatorToolTest(AISettings.ProviderOptionsEnum provider, string model)
@@ -67,16 +67,7 @@ public class IntentSemanticKernelFactoryTests
 
      private static AISettings.ProviderOptionsEnum MapProviderIdToEnum(string providerId)
      {
-          return providerId switch
-          {
-               "open-ai" => AISettings.ProviderOptionsEnum.OpenAi,
-               "azure-open-ai" => AISettings.ProviderOptionsEnum.AzureOpenAi,
-               "anthropic" => AISettings.ProviderOptionsEnum.Anthropic,
-               "open-router" => AISettings.ProviderOptionsEnum.OpenRouter,
-               "google-gemini" => AISettings.ProviderOptionsEnum.GoogleGemini,
-               "ollama" => AISettings.ProviderOptionsEnum.Ollama,
-               _ => throw new System.ArgumentException($"Unknown provider ID: {providerId}")
-          };
+          return new AISettings.ProviderOptions(providerId).AsEnum();
      }
 
      private record ModelRecord(string ProviderId, string ModelName, string ProviderName, string ThinkingType);
