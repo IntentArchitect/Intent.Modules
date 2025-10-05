@@ -56,23 +56,29 @@ public class ProviderModelsTask : IModuleTask
             new("ollama",           ollamaModelName,                        "Ollama",       ThinkingType.None)
         ];
         
+        var hasOpenAiKey = !string.IsNullOrWhiteSpace(_userSettingsProvider.GetAISettings().OpenAIAPIKey()) ||
+                          !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENAI_API_KEY"));
+        var hasAzureOpenAiKey = !string.IsNullOrWhiteSpace(_userSettingsProvider.GetAISettings().AzureOpenAIAPIKey()) ||
+                               !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY"));
+        var hasAnthropicKey = !string.IsNullOrWhiteSpace(_userSettingsProvider.GetAISettings().AnthropicAPIKey()) ||
+                             !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("ANTHROPIC_API_KEY"));
+        var hasOpenRouterKey = !string.IsNullOrWhiteSpace(_userSettingsProvider.GetAISettings().OpenRouterAPIKey()) ||
+                              !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY"));
+        var hasGoogleGeminiKey = !string.IsNullOrWhiteSpace(_userSettingsProvider.GetAISettings().GoogleGeminiAPIKey()) ||
+                                 !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("GOOGLE_API_KEY")) ||
+                                 !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("GEMINI_API_KEY"));
+        var hasOllamaModel = !string.IsNullOrWhiteSpace(_userSettingsProvider.GetAISettings().OllamaModel());
+        
         // Let's filter these models based on whether API keys (or their environment variable counterparts) are set.
-        var settings = _userSettingsProvider.GetAISettings();
         providerModels = providerModels.FindAll(model =>
             model.ProviderId switch
             {
-                "open-ai" => !string.IsNullOrWhiteSpace(settings.OpenAIAPIKey()) ||
-                             !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENAI_API_KEY")),
-                "azure-open-ai" => !string.IsNullOrWhiteSpace(settings.AzureOpenAIAPIKey()) ||
-                             !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY")),
-                "anthropic" => !string.IsNullOrWhiteSpace(settings.AnthropicAPIKey()) ||
-                               !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("ANTHROPIC_API_KEY")),
-                "open-router" => !string.IsNullOrWhiteSpace(settings.OpenRouterAPIKey()) ||
-                                 !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY")),
-                "google-gemini" => !string.IsNullOrWhiteSpace(settings.GoogleGeminiAPIKey()) ||
-                                   !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("GOOGLE_API_KEY")) ||
-                                   !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("GEMINI_API_KEY")),
-                "ollama" => !string.IsNullOrWhiteSpace(_userSettingsProvider.GetAISettings().OllamaModel()),
+                "open-ai" => hasOpenAiKey,
+                "azure-open-ai" => hasAzureOpenAiKey,
+                "anthropic" => hasAnthropicKey,
+                "open-router" => hasOpenRouterKey,
+                "google-gemini" => hasGoogleGeminiKey,
+                "ollama" => hasOllamaModel,
                 _ => false
             });
         
