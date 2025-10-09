@@ -14,18 +14,31 @@
     const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
     const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
     const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+    const dtoFieldTypeId = "7baed1fd-469b-4980-8fd9-4cefb8331eb2"; // from WebApi module
 
     if (!element.hasStereotype(azureFunctionId)) {
         return;
     }
 
-    if (element.getStereotype(azureFunctionId).getProperty(azureFunctionTriggerId).getValue() !== "Http Trigger") {
-        element.removeStereotype(httpSettingsId);
-        element.getChildren().forEach(x => x.removeStereotype(parameterSettingsId));
-        return;
-    }
+    
+    let httpSettings: MacroApi.Context.IStereotypeApi;
+    //This is a switch for opting out of this managed behaviour , allowing the manual adding of http settings
+    if (!element.hasMetadata("manual-http-settings")){
+     
+        if (element.getStereotype(azureFunctionId).getProperty(azureFunctionTriggerId).getValue() !== "Http Trigger") {
+            element.removeStereotype(httpSettingsId);        
+            element.getChildren(dtoFieldTypeId).forEach(x => x.removeStereotype(parameterSettingsId));
+            return;
+        }
 
-    let httpSettings = element.getStereotype(httpSettingsId) ?? element.addStereotype(httpSettingsId);
+        httpSettings = element.getStereotype(httpSettingsId) ?? element.addStereotype(httpSettingsId);        
+    }
+    else{
+        httpSettings = element.getStereotype(httpSettingsId);
+        if (httpSettings == null){
+            return;
+        }
+    }
 
     if (httpSettings.getProperty("Route").getValue()) {
         return;
