@@ -6,7 +6,7 @@
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>d2d4fd91-e669-4bc0-a558-78d334492481</parentFolderId>
+  <parentFolderId>5e9a5343-fede-41f6-b568-48c23c319812</parentFolderId>
   <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
   <packageName>Intent.Modules</packageName>
   <stereotypes>
@@ -21,20 +21,6 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="33d5b61a-88e9-4073-95af-17292b36082a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.Templates.TemplateExtensions</name>
-      <display>Intent.ModuleBuilder.Templates.TemplateExtensions</display>
-      <externalReference>Intent.ModuleBuilder</externalReference>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>9594ba4a-7806-4d8f-aa49-2a6ef89462bd</parentFolderId>
-      <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
-      <packageName>Intent.Modules</packageName>
-      <stereotypes />
-      <metadata />
-      <childElements />
-    </childElement>
     <childElement id="43724ddf-f9da-4357-8f8c-547875989562" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.CSharp.Templates.RazorStringInterpolationTemplate</name>
       <display>Intent.ModuleBuilder.CSharp.Templates.RazorStringInterpolationTemplate</display>
@@ -43,7 +29,19 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9594ba4a-7806-4d8f-aa49-2a6ef89462bd</parentFolderId>
-      <stereotypes />
+      <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
+      <packageName>Intent.Modules</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
+          <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
       <metadata>
         <entry key="status" value="assigned" />
       </metadata>
@@ -57,7 +55,45 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9594ba4a-7806-4d8f-aa49-2a6ef89462bd</parentFolderId>
-      <stereotypes />
+      <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
+      <packageName>Intent.Modules</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
+          <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+    <childElement id="33d5b61a-88e9-4073-95af-17292b36082a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.TemplateExtensions</name>
+      <display>Intent.ModuleBuilder.Templates.TemplateExtensions</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9594ba4a-7806-4d8f-aa49-2a6ef89462bd</parentFolderId>
+      <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
+      <packageName>Intent.Modules</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
+          <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
       <metadata>
         <entry key="status" value="assigned" />
       </metadata>

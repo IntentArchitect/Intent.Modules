@@ -8,17 +8,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{B78BC1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module Builder", "Module Builder", "{4EF0E910-DD23-4813-8959-9D10F1E4E788}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Metadata.RDBMS", "Intent.Modules.Metadata.RDBMS\Intent.Modules.Metadata.RDBMS.csproj", "{3A9AA6C6-E8DA-41BE-B69C-9DC662D084B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Metadata.RDBMS", "Intent.Modules.Metadata.RDBMS\Intent.Modules.Metadata.RDBMS.csproj", "{3A9AA6C6-E8DA-41BE-B69C-9DC662D084B2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Designers", "Designers", "{C643FF80-0938-4E5C-81AD-E9FDFE6D9654}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Domain", "Intent.Modules.Modelers.Domain\Intent.Modules.Modelers.Domain.csproj", "{944F5519-873F-4C88-BACE-1A383E0C5F49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Domain", "Intent.Modules.Modelers.Domain\Intent.Modules.Modelers.Domain.csproj", "{944F5519-873F-4C88-BACE-1A383E0C5F49}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Services", "Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.csproj", "{C5A5AE9C-9137-4309-AC4E-F9494694390E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Metadata", "Metadata", "{E684E1EF-92C6-4A31-B7AF-DC0AA39C95C4}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder", "Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.csproj", "{ADF69C43-E3B2-4048-866E-FBE9BFF55EC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder", "Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.csproj", "{ADF69C43-E3B2-4048-866E-FBE9BFF55EC6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common", "Intent.Modules.Common\Intent.Modules.Common.csproj", "{2149B693-AA4E-43F3-AA72-D1EF8FA14E6D}"
 EndProject
@@ -26,15 +26,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{41EB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.CSharp", "Intent.Modules.ModuleBuilder.CSharp\Intent.Modules.ModuleBuilder.CSharp.csproj", "{FC0DF4DD-975B-40A0-8534-871752B685B5}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder.TypeScript", "Intent.Modules.ModuleBuilder.TypeScript\Intent.Modules.ModuleBuilder.TypeScript.csproj", "{ED3B03AC-DDEB-4A29-83D6-4BF83D1C563B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.TypeScript", "Intent.Modules.ModuleBuilder.TypeScript\Intent.Modules.ModuleBuilder.TypeScript.csproj", "{ED3B03AC-DDEB-4A29-83D6-4BF83D1C563B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Types", "Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj", "{ED404A63-FC25-4C42-AB4C-619815D8A6EB}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Common.Sql", "Intent.Modules.Common.Sql\Intent.Modules.Common.Sql.csproj", "{A412121D-D444-44CC-9974-A603F2372BDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Sql", "Intent.Modules.Common.Sql\Intent.Modules.Common.Sql.csproj", "{A412121D-D444-44CC-9974-A603F2372BDC}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder.Sql", "Intent.Modules.ModuleBuilder.Sql\Intent.Modules.ModuleBuilder.Sql.csproj", "{3EFDFF8D-5841-49E9-B091-C4F1ABEC3D76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.Sql", "Intent.Modules.ModuleBuilder.Sql\Intent.Modules.ModuleBuilder.Sql.csproj", "{3EFDFF8D-5841-49E9-B091-C4F1ABEC3D76}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder.Java", "Intent.Modules.ModuleBuilder.Java\Intent.Modules.ModuleBuilder.Java.csproj", "{1486EC79-2FBD-4DA7-AF1F-7DC8F7CC0AAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.Java", "Intent.Modules.ModuleBuilder.Java\Intent.Modules.ModuleBuilder.Java.csproj", "{1486EC79-2FBD-4DA7-AF1F-7DC8F7CC0AAB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.Html", "Intent.Modules.ModuleBuilder.Html\Intent.Modules.ModuleBuilder.Html.csproj", "{4493CCFC-6BF3-4971-9E55-DA3E0E8ED660}"
 EndProject
@@ -44,65 +44,61 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ApplicationT
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application Template Builder", "Application Template Builder", "{746CCE70-FBE9-41D2-8E74-A39813FC75D9}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Types.ServiceProxies", "Intent.Modules.Modelers.Types.ServiceProxies\Intent.Modules.Modelers.Types.ServiceProxies.csproj", "{5D8691BE-86ED-4521-861F-D0045712FB9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Types.ServiceProxies", "Intent.Modules.Modelers.Types.ServiceProxies\Intent.Modules.Modelers.Types.ServiceProxies.csproj", "{5D8691BE-86ED-4521-861F-D0045712FB9A}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.ServiceProxies", "Intent.Modules.Modelers.ServiceProxies\Intent.Modules.Modelers.ServiceProxies.csproj", "{817EC71F-A91D-4598-9A09-E05373EF4333}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.ServiceProxies", "Intent.Modules.Modelers.ServiceProxies\Intent.Modules.Modelers.ServiceProxies.csproj", "{817EC71F-A91D-4598-9A09-E05373EF4333}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.ApplicationTemplates", "Intent.ApplicationTemplates\Intent.ApplicationTemplates.csproj", "{45D36FA6-CF88-498B-9089-456EB751A331}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application Templates", "Application Templates", "{CFF4E896-BD1F-4354-AAA8-8DB27FC8B102}"
-EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Services.CQRS", "Intent.Modules.Modelers.Services.CQRS\Intent.Modules.Modelers.Services.CQRS.csproj", "{FFBF27C5-A296-4DBC-9AF5-ACF0BFF187A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Services.CQRS", "Intent.Modules.Modelers.Services.CQRS\Intent.Modules.Modelers.Services.CQRS.csproj", "{FFBF27C5-A296-4DBC-9AF5-ACF0BFF187A2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.CSharp", "Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj", "{58588E96-AF3B-4B66-AD5F-CDB9FAABA109}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.CSharp.Tests", "Intent.Modules.Common.CSharp.Tests\Intent.Modules.Common.CSharp.Tests.csproj", "{A895DE2E-64EF-4750-A485-748ED052EFD3}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Common.Java", "Intent.Modules.Common.Java\Intent.Modules.Common.Java.csproj", "{1E028CA1-8132-4E7C-9856-50406F7F76C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Java", "Intent.Modules.Common.Java\Intent.Modules.Common.Java.csproj", "{1E028CA1-8132-4E7C-9856-50406F7F76C7}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Common.TypeScript", "Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj", "{E77CFD3A-9486-426C-8D00-5469A1229054}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.TypeScript", "Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj", "{E77CFD3A-9486-426C-8D00-5469A1229054}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Html", "Intent.Modules.Common.Html\Intent.Modules.Common.Html.csproj", "{21D5B8AB-C920-4FAB-B3BA-3A8367F9C059}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Domain.Events", "Intent.Modules.Modelers.Domain.Events\Intent.Modules.Modelers.Domain.Events.csproj", "{54740661-E598-4671-ADE3-D2F798401653}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Domain.Events", "Intent.Modules.Modelers.Domain.Events\Intent.Modules.Modelers.Domain.Events.csproj", "{54740661-E598-4671-ADE3-D2F798401653}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Metadata.WebApi", "Intent.Modules.Metadata.WebApi\Intent.Modules.Metadata.WebApi.csproj", "{9B26C297-0062-4303-B90A-752DA4B75DE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Metadata.WebApi", "Intent.Modules.Metadata.WebApi\Intent.Modules.Metadata.WebApi.csproj", "{9B26C297-0062-4303-B90A-752DA4B75DE6}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder.AutoCompile", "Intent.Modules.ModuleBuilder.AutoCompile\Intent.Modules.ModuleBuilder.AutoCompile.csproj", "{DEC6FF7A-9304-4BBE-9DCC-B8B49B420D0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.AutoCompile", "Intent.Modules.ModuleBuilder.AutoCompile\Intent.Modules.ModuleBuilder.AutoCompile.csproj", "{DEC6FF7A-9304-4BBE-9DCC-B8B49B420D0F}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Eventing", "Intent.Modules.Modelers.Eventing\Intent.Modules.Modelers.Eventing.csproj", "{556E7BCC-4E9B-45EE-8A05-6022C1084A2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Eventing", "Intent.Modules.Modelers.Eventing\Intent.Modules.Modelers.Eventing.csproj", "{556E7BCC-4E9B-45EE-8A05-6022C1084A2C}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.TypeScript.Weaving.Decorators", "Intent.Modules.TypeScript.Weaving.Decorators\Intent.Modules.TypeScript.Weaving.Decorators.csproj", "{68A6B5AA-3C9A-40F6-B191-6D46EA2F9D5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.TypeScript.Weaving.Decorators", "Intent.Modules.TypeScript.Weaving.Decorators\Intent.Modules.TypeScript.Weaving.Decorators.csproj", "{68A6B5AA-3C9A-40F6-B191-6D46EA2F9D5F}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Common.Kotlin", "Intent.Modules.Common.Kotlin\Intent.Modules.Common.Kotlin.csproj", "{4E438778-934D-4851-BD5A-D1A222C73C28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Kotlin", "Intent.Modules.Common.Kotlin\Intent.Modules.Common.Kotlin.csproj", "{4E438778-934D-4851-BD5A-D1A222C73C28}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder.Kotlin", "Intent.Modules.ModuleBuilder.Kotlin\Intent.Modules.ModuleBuilder.Kotlin.csproj", "{430DA63E-E53B-4257-9EA7-B62823D045EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.Kotlin", "Intent.Modules.ModuleBuilder.Kotlin\Intent.Modules.ModuleBuilder.Kotlin.csproj", "{430DA63E-E53B-4257-9EA7-B62823D045EF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Tests", "Intent.Modules.Common.Tests\Intent.Modules.Common.Tests.csproj", "{C551F279-7F20-43EF-9EC9-190C25A912E7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Java.Tests", "Intent.Modules.Common.Java.Tests\Intent.Modules.Common.Java.Tests.csproj", "{3D45037D-C252-4E03-80FD-D84FDC8338D3}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Domain.ValueObjects", "Intent.Modules.Modelers.Domain.ValueObjects\Intent.Modules.Modelers.Domain.ValueObjects.csproj", "{BB85B1B9-7097-4DF3-94C7-771EEC17712A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Domain.ValueObjects", "Intent.Modules.Modelers.Domain.ValueObjects\Intent.Modules.Modelers.Domain.ValueObjects.csproj", "{BB85B1B9-7097-4DF3-94C7-771EEC17712A}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Domain.Repositories", "Intent.Modules.Modelers.Domain.Repositories\Intent.Modules.Modelers.Domain.Repositories.csproj", "{4608B4E9-66A1-47CE-BEEA-2C155B3E43CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Domain.Repositories", "Intent.Modules.Modelers.Domain.Repositories\Intent.Modules.Modelers.Domain.Repositories.csproj", "{4608B4E9-66A1-47CE-BEEA-2C155B3E43CC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.TypeScript.Tests", "Intent.Modules.Common.TypeScript.Tests\Intent.Modules.Common.TypeScript.Tests.csproj", "{3E3FD03E-6D22-4090-A8B4-DF38C5F99F76}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Common.Dart", "Intent.Modules.Common.Dart\Intent.Modules.Common.Dart.csproj", "{C5D19ADB-2268-4C81-BFC1-D4D2D92147BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Dart", "Intent.Modules.Common.Dart\Intent.Modules.Common.Dart.csproj", "{C5D19ADB-2268-4C81-BFC1-D4D2D92147BE}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.ModuleBuilder.Dart", "Intent.Modules.ModuleBuilder.Dart\Intent.Modules.ModuleBuilder.Dart.csproj", "{3606077E-C2CC-4C5D-8B55-9B57A36987AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.Dart", "Intent.Modules.ModuleBuilder.Dart\Intent.Modules.ModuleBuilder.Dart.csproj", "{3606077E-C2CC-4C5D-8B55-9B57A36987AA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Types.Tests", "Intent.Modules.Common.Types.Tests\Intent.Modules.Common.Types.Tests.csproj", "{0FA79695-9CB5-4A45-AE6D-3ADF13A0DCDA}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Domain.Services", "Intent.Modules.Modelers.Domain.Services\Intent.Modules.Modelers.Domain.Services.csproj", "{A58BD37E-966F-49A4-A4A2-4A2245A9607A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Domain.Services", "Intent.Modules.Modelers.Domain.Services\Intent.Modules.Modelers.Domain.Services.csproj", "{A58BD37E-966F-49A4-A4A2-4A2245A9607A}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Metadata.DocumentDB", "Intent.Modules.Metadata.DocumentDB\Intent.Modules.Metadata.DocumentDB.csproj", "{3E1907E5-D07B-4803-9C2C-7C8904D02F00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Metadata.DocumentDB", "Intent.Modules.Metadata.DocumentDB\Intent.Modules.Metadata.DocumentDB.csproj", "{3E1907E5-D07B-4803-9C2C-7C8904D02F00}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Services.GraphQL", "Intent.Modules.Modelers.Services.GraphQL\Intent.Modules.Modelers.Services.GraphQL.csproj", "{7F93839B-96D1-493A-8ED8-D30B3F05A35E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Services.GraphQL", "Intent.Modules.Modelers.Services.GraphQL\Intent.Modules.Modelers.Services.GraphQL.csproj", "{7F93839B-96D1-493A-8ED8-D30B3F05A35E}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Services.DomainInteractions", "Intent.Modules.Modelers.Services.DomainInteractions\Intent.Modules.Modelers.Services.DomainInteractions.csproj", "{EAECF732-6A98-4D4F-9E18-02BD112C6E8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Services.DomainInteractions", "Intent.Modules.Modelers.Services.DomainInteractions\Intent.Modules.Modelers.Services.DomainInteractions.csproj", "{EAECF732-6A98-4D4F-9E18-02BD112C6E8E}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Services.EventInteractions", "Intent.Modules.Modelers.Services.EventInteractions\Intent.Modules.Modelers.Services.EventInteractions.csproj", "{9BCD766F-1590-471F-AE5C-9F958ACA7130}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Services.EventInteractions", "Intent.Modules.Modelers.Services.EventInteractions\Intent.Modules.Modelers.Services.EventInteractions.csproj", "{9BCD766F-1590-471F-AE5C-9F958ACA7130}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.UI", "Intent.Modules.Modelers.UI\Intent.Modules.Modelers.UI.csproj", "{DA913B66-E595-4227-BD2B-4CB5E537785E}"
 EndProject
@@ -206,10 +202,6 @@ Global
 		{817EC71F-A91D-4598-9A09-E05373EF4333}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{817EC71F-A91D-4598-9A09-E05373EF4333}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{817EC71F-A91D-4598-9A09-E05373EF4333}.Release|Any CPU.Build.0 = Release|Any CPU
-		{45D36FA6-CF88-498B-9089-456EB751A331}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45D36FA6-CF88-498B-9089-456EB751A331}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45D36FA6-CF88-498B-9089-456EB751A331}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{45D36FA6-CF88-498B-9089-456EB751A331}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FFBF27C5-A296-4DBC-9AF5-ACF0BFF187A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FFBF27C5-A296-4DBC-9AF5-ACF0BFF187A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFBF27C5-A296-4DBC-9AF5-ACF0BFF187A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -385,7 +377,6 @@ Global
 		{746CCE70-FBE9-41D2-8E74-A39813FC75D9} = {41EB094E-7906-4D47-85B8-42FAC60C5178}
 		{5D8691BE-86ED-4521-861F-D0045712FB9A} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{817EC71F-A91D-4598-9A09-E05373EF4333} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
-		{45D36FA6-CF88-498B-9089-456EB751A331} = {CFF4E896-BD1F-4354-AAA8-8DB27FC8B102}
 		{FFBF27C5-A296-4DBC-9AF5-ACF0BFF187A2} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{58588E96-AF3B-4B66-AD5F-CDB9FAABA109} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{A895DE2E-64EF-4750-A485-748ED052EFD3} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
@@ -417,8 +408,8 @@ Global
 		{AB7B334C-A6CF-4138-92DD-5F89BAF9505B} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{9DB519CC-52B4-4875-9A8F-1AAEA9AD450B} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{FDF759EE-A471-483F-884E-EBD0D02185E4} = {E684E1EF-92C6-4A31-B7AF-DC0AA39C95C4}
-		{B5B10D02-7A7D-4080-89BF-605237C5942E} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{D6BBCA39-00E9-49F0-95A5-9F1BCE9F15B9} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
+		{B5B10D02-7A7D-4080-89BF-605237C5942E} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{F105BE41-3D25-4ECC-919C-0088AFD099A4} = {E684E1EF-92C6-4A31-B7AF-DC0AA39C95C4}
 		{61EAFB82-FCF1-465E-B58C-70C4A26F201A} = {E684E1EF-92C6-4A31-B7AF-DC0AA39C95C4}
 		{81AE7F80-FF93-4C7D-8CAC-08FF0249991B} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}

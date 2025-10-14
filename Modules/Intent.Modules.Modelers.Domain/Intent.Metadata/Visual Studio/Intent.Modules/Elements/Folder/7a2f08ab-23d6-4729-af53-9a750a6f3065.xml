@@ -6,7 +6,7 @@
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>9767fed7-a950-4ba5-81f4-98098705c830</parentFolderId>
+  <parentFolderId>14652b7c-e417-4d90-90f4-1b64b4530124</parentFolderId>
   <packageId>60552236-e866-429d-aebd-855a2058b995</packageId>
   <packageName>Intent.Modules</packageName>
   <stereotypes>
@@ -31,7 +31,17 @@
       <parentFolderId>7a2f08ab-23d6-4729-af53-9a750a6f3065</parentFolderId>
       <packageId>60552236-e866-429d-aebd-855a2058b995</packageId>
       <packageName>Intent.Modules</packageName>
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
+          <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
       <metadata>
         <entry key="status" value="assigned" />
       </metadata>

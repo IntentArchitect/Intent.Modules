@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files />
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.FactoryExtension#e2167dd4-7302-418d-be65-bec84384cf3e</correlationId>
+      <path>Intent.Modules.ModuleBuilder.AutoCompile/FactoryExtensions/AutoCompileFactoryExtension.cs</path>
+      <count>2</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2025-10-05T05:27:48.9804434Z</updatedAt>
+      <deviationsHash>7714045F6CB6A661DBB1D8DA468EC726A9B30A77C7655519F8A23A6F0AADF869</deviationsHash>
+      <fileHash>1D0F41B81A217064834705035C8D256A028B3304416F5C81AA9EAA19F66E7D97</fileHash>
+    </file>
+  </files>
 </deviationsLog>
