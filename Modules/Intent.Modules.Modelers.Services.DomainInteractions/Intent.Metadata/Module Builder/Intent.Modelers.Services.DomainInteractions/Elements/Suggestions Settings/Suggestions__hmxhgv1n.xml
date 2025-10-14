@@ -41,8 +41,10 @@
             <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
             <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const callServiceOperationTargetEnd = &quot;093e5909-ffe4-4510-b3ea-532f30212f3c&quot;;&#xD;&#xA;let notMapped = lookupTypesOf(callServiceOperationTargetEnd).every(x =&gt; x.typeReference.getTypeId() != element.id)&#xD;&#xA;&#xD;&#xA;return application.isModuleInstalled(&quot;Intent.Modelers.Services.CQRS&quot;) &amp;&amp;&#xD;&#xA;    application.getSettings(&quot;0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad&quot;).getField(&quot;14bc1e98-930b-494c-97a9-5da4e1f3a5fa&quot;).value == &quot;advanced&quot;&#xD;&#xA;    &amp;&amp; element.getParent() &amp;&amp; element.getParent().specializationId == &quot;96ffceb2-a70a-4b69-869b-0df436c470c3&quot; // is a Repository&#xD;&#xA;    &amp;&amp; notMapped; // not already mapped" isActive="true" />
             <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" value="" isActive="true" />
+            <property name="bbf03fa4-5beb-4d27-a24f-9858af08d97f" display="Icon" isActive="true" />
             <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="await RepositoryOperationApi.createCQRSService(element, getCurrentDiagram());" isActive="true" />
             <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[&quot;8c5b2eb0-3b1a-4813-b69f-2713805e0891&quot;]" isActive="true" />
+            <property name="eb1aad5a-4eb8-46aa-84a0-9e4fec251d84" display="Order Priority" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -78,8 +80,10 @@
             <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;,&quot;Model&quot;]" isActive="true" />
             <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="const callServiceOperationTargetEnd = &quot;093e5909-ffe4-4510-b3ea-532f30212f3c&quot;;&#xD;&#xA;let notMapped = lookupTypesOf(callServiceOperationTargetEnd).every(x =&gt; x.typeReference.getTypeId() != element.id)&#xD;&#xA;&#xD;&#xA;return application.getSettings(&quot;0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad&quot;).getField(&quot;14bc1e98-930b-494c-97a9-5da4e1f3a5fa&quot;).value == &quot;advanced&quot;&#xD;&#xA;    &amp;&amp; element.getParent() &amp;&amp; element.getParent().specializationId == &quot;96ffceb2-a70a-4b69-869b-0df436c470c3&quot; // is a Repository&#xD;&#xA;    &amp;&amp; notMapped;" isActive="true" />
             <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" value="" isActive="true" />
+            <property name="bbf03fa4-5beb-4d27-a24f-9858af08d97f" display="Icon" isActive="true" />
             <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="await RepositoryOperationApi.createTraditionalService(element, getCurrentDiagram());" isActive="true" />
             <property name="1d9dd994-46c3-4fdc-a24b-c69f689ca283" display="Dependencies" value="[&quot;8c5b2eb0-3b1a-4813-b69f-2713805e0891&quot;]" isActive="true" />
+            <property name="eb1aad5a-4eb8-46aa-84a0-9e4fec251d84" display="Order Priority" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

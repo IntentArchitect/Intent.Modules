@@ -1,3 +1,7 @@
+### Version 2.3.7
+
+- Improvement: It is now possible to use the result of an invocation as a data source on `Create` and `Update` mapping screens.
+
 ### Version 2.3.6
 
 - Fixed: CRUD for domain operations now visually points to the operations.
