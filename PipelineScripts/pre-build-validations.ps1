@@ -20,6 +20,7 @@ class ModuleSpecification {
     [Dependency[]]$Dependencies
     [string]$ReleaseNotes
     [string]$Tags
+    [string]$IconUrl
 
     ModuleSpecification([System.IO.FileInfo]$file) {
         [xml]$content = Get-Content $file.FullName
@@ -35,6 +36,7 @@ class ModuleSpecification {
         $this.Dependencies = $content.package.dependencies.dependency | Where-Object { $null -ne $_.Id } | ForEach-Object { [Dependency]::new($_.id, $_.version) }
         $this.ReleaseNotes = $content.package.releaseNotes
         $this.Tags = $content.package.tags
+        $this.IconUrl = $content.package.iconUrl
     }
 }
 
@@ -95,6 +97,10 @@ foreach ($info in $moduleSpecifications) {
 
     if ($null -eq $info.Version) {
         PrintError $info.FilePath "Does not have a version specified"
+    }
+
+    if ([string]::IsNullOrEmpty($info.IconUrl) -or ($info.IconUrl -notlike "data:*")) {
+        PrintError $info.FilePath "IconUrl not set correctly."
     }
 
     if ($null -ne $info.Dependencies) {
