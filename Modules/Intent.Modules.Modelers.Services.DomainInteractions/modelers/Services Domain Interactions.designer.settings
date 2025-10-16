@@ -11260,14 +11260,16 @@ return typeReference.getIsCollection()
       </visualSettings>
       <macros>
         <macro trigger="on-created">
-          <script>if (association.getParent().specialization !== "Command") {
+          <script>const command = association.getParent("Command") ?? association.getParent("Operation");
+if (!command) {
     return;
 }
-let mapping = association.createMapping(association.getOtherEnd().typeReference.getTypeId(), association.typeReference.getTypeId(), "25f25af9-c38b-4053-9474-b0fabe9d7ea7") // Query Entity Mapping
-association.typeReference.getType().getChildren("Attribute")
+let mapping = association.createMapping(command.id, association.typeReference.getTypeId(), "25f25af9-c38b-4053-9474-b0fabe9d7ea7") // Query Entity Mapping
+const entity = association.typeReference.getType().specialization == "Class" ? association.typeReference.getType() : association.typeReference.getType().getParent("Class")
+entity.getChildren("Attribute")
     .filter(x =&gt; x.hasStereotype("Primary Key"))
     .forEach(attr =&gt; {
-        let sourceType = association.getOtherEnd().typeReference.getType();
+        let sourceType = command;
         let pkField = sourceType.specialization == "Command" 
             ? getOrCreatePkField(sourceType, attr, "DTO-Field")
             : getOrCreatePkField(sourceType, attr, "Parameter")

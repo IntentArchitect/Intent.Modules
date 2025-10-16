@@ -3,6 +3,5 @@
   <files>
     <file relativePath="Intent.Modules.Modelers.Services.DomainInteractions/Api/CommandExtensionModel.cs" />
     <file relativePath="Intent.Modules.Modelers.Services.DomainInteractions/Api/OperationExtensionModel.cs" />
-    <file relativePath="Intent.Modules.Modelers.Services.DomainInteractions/modelers/Services Domain Interactions.designer.settings" />
   </files>
 </ignoredFiles>

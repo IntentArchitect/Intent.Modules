@@ -2,6 +2,7 @@
 
 - Improvement: It is now possible to use the result of an invocation as a data source on `Create` and `Update` mapping screens.
 - Fixed: Create CRUD Operations for Services and CQRS didn't generate elements for Domain Entity Operations.
+- Fixed: Update Entity associations not querying by surrogate key by default when connected to Domain Operations.
 
 ### Version 2.3.6
 
