@@ -67,7 +67,12 @@ public class CSharpField : CSharpMember<CSharpField>, ICSharpField
         return this;
     }
 
-    public CSharpField PrivateReadOnly() => Private().ReadOnly();
+    public CSharpField PrivateReadOnly()
+    {
+        AccessModifier = "private ";
+        IsReadOnly = true;
+        return this;
+    }
 
     public CSharpField Private() => Private(null);
 
@@ -78,7 +83,13 @@ public class CSharpField : CSharpMember<CSharpField>, ICSharpField
         return this;
     }
 
-    public CSharpField PrivateConstant(string value) => Private().Constant(value);
+    public CSharpField PrivateConstant(string value)
+    {
+        AccessModifier = "private ";
+        IsConstant = true;
+        Assignment = value;
+        return this;
+    }
 
     public CSharpField ProtectedReadOnly() => Protected().ReadOnly();
 

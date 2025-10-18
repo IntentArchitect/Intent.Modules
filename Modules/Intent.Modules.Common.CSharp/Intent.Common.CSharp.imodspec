@@ -56,6 +56,11 @@
         <package id="Intent.OutputManager.RoslynWeaver" version="4.9.12" />
       </install>
     </detect>
+    <detect id="Intent.Entities.Constants">
+      <install>
+        <package id="Intent.Entities.Constants" version="3.9.8-pre.0" />
+      </install>
+    </detect>
     <!-- /Minimum Compatible Versions -->
   </interoperability>
   <files>
