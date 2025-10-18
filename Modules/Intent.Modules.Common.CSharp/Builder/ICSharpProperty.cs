@@ -1,6 +1,6 @@
 #nullable enable
-using Intent.Metadata.Models;
 using System;
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -14,12 +14,15 @@ public interface ICSharpProperty : ICSharpMember<ICSharpProperty>, ICSharpRefere
     bool IsRequired { get; }
     string InitialValue { get; }
     string ExplicitlyImplementing { get; }
-    bool IsOmittedFromRender { get; } 
+    bool IsOmittedFromRender { get; }
     ICSharpPropertyAccessor Getter { get; }
     ICSharpPropertyAccessor Setter { get; }
     string GetReferenceName();
-    ICSharpProperty Protected();
+    ICSharpProperty Internal();
     ICSharpProperty Private();
+    ICSharpProperty Protected();
+    ICSharpProperty ProtectedInternal();
+    ICSharpProperty Public();
     ICSharpProperty WithoutAccessModifier();
     ICSharpProperty Override();
     ICSharpProperty New();

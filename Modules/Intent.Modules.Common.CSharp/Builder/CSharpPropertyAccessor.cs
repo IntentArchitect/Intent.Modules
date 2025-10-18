@@ -1,3 +1,4 @@
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpPropertyAccessor : ICSharpPropertyAccessor
@@ -23,20 +24,6 @@ public class CSharpPropertyAccessor : ICSharpPropertyAccessor
         return new CSharpPropertyAccessor("set");
     }
 
-    ICSharpPropertyAccessor ICSharpPropertyAccessor.Public() => Public();
-    public CSharpPropertyAccessor Public()
-    {
-        AccessModifier = "public ";
-        return this;
-    }
-
-    ICSharpPropertyAccessor ICSharpPropertyAccessor.Protected() => Protected();
-    public CSharpPropertyAccessor Protected()
-    {
-        AccessModifier = "protected ";
-        return this;
-    }
-
     ICSharpPropertyAccessor ICSharpPropertyAccessor.Internal() => Internal();
     public CSharpPropertyAccessor Internal()
     {
@@ -48,6 +35,27 @@ public class CSharpPropertyAccessor : ICSharpPropertyAccessor
     public CSharpPropertyAccessor Private()
     {
         AccessModifier = "private ";
+        return this;
+    }
+
+    ICSharpPropertyAccessor ICSharpPropertyAccessor.Protected() => Protected();
+    public CSharpPropertyAccessor Protected()
+    {
+        AccessModifier = "protected ";
+        return this;
+    }
+
+    ICSharpPropertyAccessor ICSharpPropertyAccessor.ProtectedInternal() => ProtectedInternal();
+    public CSharpPropertyAccessor ProtectedInternal()
+    {
+        AccessModifier = "protected internal ";
+        return this;
+    }
+
+    ICSharpPropertyAccessor ICSharpPropertyAccessor.Public() => Public();
+    public CSharpPropertyAccessor Public()
+    {
+        AccessModifier = "public ";
         return this;
     }
 

@@ -55,6 +55,12 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
         return this;
     }
 
+    public CSharpInterfaceMethod Internal()
+    {
+        AccessModifier = "internal ";
+        return this;
+    }
+
     public CSharpInterfaceMethod Private()
     {
         AccessModifier = "private ";
@@ -64,6 +70,18 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
     public CSharpInterfaceMethod Protected()
     {
         AccessModifier = "protected ";
+        return this;
+    }
+
+    public CSharpInterfaceMethod ProtectedInternal()
+    {
+        AccessModifier = "protected internal ";
+        return this;
+    }
+
+    public CSharpInterfaceMethod Public()
+    {
+        AccessModifier = "public ";
         return this;
     }
 
@@ -474,12 +492,15 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Abstract() => _wrapper.Abstract();
     string? ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.ExplicitImplementationFor => _wrapper.ExplicitImplementationFor;
     bool ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.IsAbstract => _wrapper.IsAbstract;
-    ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.IsExplicitImplementationFor(string @interface) => _wrapper.IsExplicitImplementationFor(@interface);
+    ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.IsExplicitImplementationFor(string? @interface) => _wrapper.IsExplicitImplementationFor(@interface);
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.New() => _wrapper.New();
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Override() => _wrapper.Override();
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Partial() => _wrapper.Partial();
+    ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Internal() => _wrapper.Internal();
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Private() => _wrapper.Private();
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Protected() => _wrapper.Protected();
+    ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.ProtectedInternal() => _wrapper.ProtectedInternal();
+    ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Public() => _wrapper.Public();
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Virtual() => _wrapper.Virtual();
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.WithoutAccessModifier() => _wrapper.WithoutAccessModifier();
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.WithoutMethodModifier() => _wrapper.WithoutMethodModifier();

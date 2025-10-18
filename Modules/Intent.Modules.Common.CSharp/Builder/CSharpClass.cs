@@ -98,7 +98,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
             var elementOrder = File.StyleSettings?.ElementOrder.ToArray() ?? [];
 
             var codeBlocks = new List<ICodeBlock>();
-            codeBlocks.AddRange(Fields.Where(p => !p.IsOmittedFromRender).OrderBy(f => Array.IndexOf(elementOrder, f.AccessModifier.Trim())));
+            codeBlocks.AddRange(Fields.Where(p => !p.IsOmittedFromRender).OrderBy(f => Array.IndexOf(elementOrder, $"{f.AccessModifier.Trim()} {(f.IsReadOnly ? "readonly" : string.Empty)}{(f.IsConstant ? "const" : string.Empty)}".Trim())));
             codeBlocks.AddRange(Constructors.Where(p => !p.IsPrimaryConstructor).OrderBy(c => Array.IndexOf(elementOrder, c.AccessModifier.Trim())));
             codeBlocks.AddRange(Properties.Where(p => !p.IsOmittedFromRender).OrderBy(c => Array.IndexOf(elementOrder, c.AccessModifier.Trim())));
             codeBlocks.AddRange(Methods.OrderBy(m => Array.IndexOf(elementOrder, m.AccessModifier.Trim())).GroupBy(m => m.Name).SelectMany(g => g));
@@ -517,9 +517,19 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
         return this;
     }
 
+    /// <summary>
+    /// Obsolete. Use <see cref="ProtectedInternal"/> instead.
+    /// </summary>
+    [Obsolete]
     public CSharpClass InternalProtected()
     {
         AccessModifier = "internal protected ";
+        return this;
+    }
+
+    public CSharpClass Private()
+    {
+        AccessModifier = "private ";
         return this;
     }
 
@@ -529,9 +539,15 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
         return this;
     }
 
-    public CSharpClass Private()
+    public CSharpClass ProtectedInternal()
     {
-        AccessModifier = "private ";
+        AccessModifier = "protected internal ";
+        return this;
+    }
+
+    public CSharpClass Public()
+    {
+        AccessModifier = "public ";
         return this;
     }
 
@@ -956,14 +972,24 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
         return _wrapper.InternalProtected();
     }
 
+    ICSharpClass ICSharpClass.Private()
+    {
+        return _wrapper.Private();
+    }
+
     ICSharpClass ICSharpClass.Protected()
     {
         return _wrapper.Protected();
     }
 
-    ICSharpClass ICSharpClass.Private()
+    ICSharpClass ICSharpClass.ProtectedInternal()
     {
-        return _wrapper.Private();
+        return _wrapper.ProtectedInternal();
+    }
+
+    ICSharpClass ICSharpClass.Public()
+    {
+        return _wrapper.Public();
     }
 
     ICSharpClass ICSharpClass.Partial()

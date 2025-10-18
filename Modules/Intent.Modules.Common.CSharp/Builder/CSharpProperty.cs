@@ -7,6 +7,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.CSharp.VisualStudio;
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -51,7 +52,7 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpProperty
 
     internal static CSharpProperty CreatePropertyOmittedFromRender(string type, string name, CSharpClass @class, bool hasInitSetter = true)
     {
-        var property = new CSharpProperty(type,name,@class);
+        var property = new CSharpProperty(type, name, @class);
         property.IsOmittedFromRender = true;
         if (hasInitSetter)
         {
@@ -65,15 +66,33 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpProperty
         return Name;
     }
 
+    public CSharpProperty Internal()
+    {
+        AccessModifier = "internal ";
+        return this;
+    }
+
+    public CSharpProperty Private()
+    {
+        AccessModifier = "private ";
+        return this;
+    }
+
     public CSharpProperty Protected()
     {
         AccessModifier = "protected ";
         return this;
     }
-    
-    public CSharpProperty Private()
+
+    public CSharpProperty ProtectedInternal()
     {
-        AccessModifier = "private ";
+        AccessModifier = "protected internal ";
+        return this;
+    }
+
+    public CSharpProperty Public()
+    {
+        AccessModifier = "public ";
         return this;
     }
 
@@ -100,7 +119,7 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpProperty
         OverrideModifier = "virtual ";
         return this;
     }
-    
+
     public CSharpProperty Static()
     {
         IsStatic = true;
@@ -188,12 +207,12 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpProperty
 
     private string GetInstantiationValue(CSharpType? propertyType, ICSharpType concreteImplementation)
     {
-        if(propertyType is CSharpTypeGeneric generic)
+        if (propertyType is CSharpTypeGeneric generic)
         {
             var argTypes = string.Join(", ", generic.TypeArgumentList.Select(s => File.Template.UseType(s.ToString())));
             return $"new {File.Template.UseType($"{concreteImplementation}<{argTypes}>").Replace("?", "")}()";
         }
-        
+
         return $"new {File.Template.UseType($"{concreteImplementation}").Replace("?", "")}()";
     }
 
@@ -257,9 +276,15 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpProperty
 
     ICSharpProperty ICSharpDeclaration<ICSharpProperty>.WithComments(IEnumerable<string> xmlComments) => _wrapper.WithComments(xmlComments);
 
-    ICSharpProperty ICSharpProperty.Protected() => _wrapper.Protected();
+    ICSharpProperty ICSharpProperty.Internal() => _wrapper.Internal();
 
     ICSharpProperty ICSharpProperty.Private() => _wrapper.Private();
+
+    ICSharpProperty ICSharpProperty.Protected() => _wrapper.Protected();
+
+    ICSharpProperty ICSharpProperty.ProtectedInternal() => _wrapper.ProtectedInternal();
+
+    ICSharpProperty ICSharpProperty.Public() => _wrapper.Public();
 
     ICSharpProperty ICSharpProperty.WithoutAccessModifier() => _wrapper.WithoutAccessModifier();
 

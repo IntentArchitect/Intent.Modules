@@ -5,6 +5,7 @@ using System.Linq;
 using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.Templates;
 using static Intent.Modules.Common.CSharp.Settings.CSharpStyleConfiguration;
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -142,9 +143,9 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
         return this;
     }
 
-    public CSharpConstructor Protected()
+    public CSharpConstructor Internal()
     {
-        AccessModifier = "protected ";
+        AccessModifier = "internal ";
         return this;
     }
 
@@ -154,9 +155,21 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
         return this;
     }
 
-    public CSharpConstructor Internal()
+    public CSharpConstructor Protected()
     {
-        AccessModifier = "internal ";
+        AccessModifier = "protected ";
+        return this;
+    }
+
+    public CSharpConstructor ProtectedInternal()
+    {
+        AccessModifier = "protected internal ";
+        return this;
+    }
+
+    public CSharpConstructor Public()
+    {
+        AccessModifier = "public ";
         return this;
     }
 
@@ -298,11 +311,15 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, ICSharpConstru
 
     ICSharpConstructor ICSharpConstructor.AddStatements(IEnumerable<ICSharpStatement> statements, Action<IEnumerable<ICSharpStatement>> configure) => _wrapper.AddStatements(statements, configure);
 
-    ICSharpConstructor ICSharpConstructor.Protected() => _wrapper.Protected();
+    ICSharpConstructor ICSharpConstructor.Internal() => _wrapper.Internal();
 
     ICSharpConstructor ICSharpConstructor.Private() => _wrapper.Private();
 
-    ICSharpConstructor ICSharpConstructor.Internal() => _wrapper.Internal();
+    ICSharpConstructor ICSharpConstructor.Protected() => _wrapper.Protected();
+
+    ICSharpConstructor ICSharpConstructor.ProtectedInternal() => _wrapper.ProtectedInternal();
+
+    ICSharpConstructor ICSharpConstructor.Public() => _wrapper.Public();
 
     ICSharpConstructor ICSharpConstructor.Static() => _wrapper.Static();
 

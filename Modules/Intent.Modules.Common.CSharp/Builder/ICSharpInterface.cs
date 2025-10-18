@@ -4,6 +4,7 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 public interface ICSharpInterface : ICSharpDeclaration<ICSharpInterface>, ICSharpReferenceable, ICodeBlock
 {
     IList<string> Interfaces { get; set; }
@@ -31,9 +32,15 @@ public interface ICSharpInterface : ICSharpDeclaration<ICSharpInterface>, ICShar
     ICSharpInterface WithMethodsSeparated(CSharpCodeSeparatorType separator = CSharpCodeSeparatorType.EmptyLines);
     ICSharpInterface WithMembersSeparated(CSharpCodeSeparatorType separator = CSharpCodeSeparatorType.EmptyLines);
     ICSharpInterface Internal();
+    /// <summary>
+    /// Obsolete. Use <see cref="ProtectedInternal"/> instead.
+    /// </summary>
+    [Obsolete]
     ICSharpInterface InternalProtected();
-    ICSharpInterface Protected();
     ICSharpInterface Private();
+    ICSharpInterface Protected();
+    ICSharpInterface ProtectedInternal();
+    ICSharpInterface Public();
     ICSharpInterface Partial();
     bool IsPartial { get; set; }
 }

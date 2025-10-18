@@ -30,7 +30,13 @@ internal class CSharpPropertyWrapper(CSharpProperty wrapped) :
 
     string ICSharpProperty.GetReferenceName() => wrapped.GetReferenceName();
 
+    ICSharpProperty ICSharpProperty.Internal() => wrapped.Internal();
+
     ICSharpProperty ICSharpProperty.Protected() => wrapped.Protected();
+
+    ICSharpProperty ICSharpProperty.ProtectedInternal() => wrapped.ProtectedInternal();
+
+    ICSharpProperty ICSharpProperty.Public() => wrapped.Public();
 
     ICSharpProperty ICSharpProperty.Private() => wrapped.Private();
 

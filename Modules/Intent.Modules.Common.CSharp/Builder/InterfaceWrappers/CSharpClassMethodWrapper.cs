@@ -82,9 +82,12 @@ internal class CSharpClassMethodWrapper(CSharpClassMethod wrapped) :
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.New() => wrapped.New();
     ICSharpClassMethodDeclaration ICSharpClassMethodDeclaration.Operator(bool isOperator) => wrapped.Operator(isOperator);
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Override() => wrapped.Override();
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Internal() => wrapped.Internal();
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Private() => wrapped.Private();
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Partial() => wrapped.Partial();
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Protected() => wrapped.Protected();
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.ProtectedInternal() => wrapped.ProtectedInternal();
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Public() => wrapped.Public();
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Virtual() => wrapped.Virtual();
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.WithoutAccessModifier() => wrapped.WithoutAccessModifier();
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.WithoutMethodModifier() => wrapped.WithoutMethodModifier();

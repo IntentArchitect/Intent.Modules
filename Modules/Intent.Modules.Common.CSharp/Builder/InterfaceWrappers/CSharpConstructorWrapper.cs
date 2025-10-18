@@ -46,6 +46,10 @@ internal class CSharpConstructorWrapper(CSharpConstructor wrapped) :
 
     ICSharpConstructor ICSharpConstructor.Protected() => wrapped.Protected();
 
+    ICSharpConstructor ICSharpConstructor.ProtectedInternal() => wrapped.ProtectedInternal();
+
+    ICSharpConstructor ICSharpConstructor.Public() => wrapped.Public();
+
     ICSharpConstructor ICSharpConstructor.Private() => wrapped.Private();
 
     ICSharpConstructor ICSharpConstructor.Static() => wrapped.Static();

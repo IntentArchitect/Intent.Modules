@@ -1,4 +1,5 @@
-﻿using System;
+﻿#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -28,9 +29,18 @@ public class CSharpEnum : CSharpDeclaration<CSharpEnum>, ICodeBlock
         return this;
     }
 
+    /// <summary>
+    /// Obsolete. Use <see cref="ProtectedInternal"/> instead.
+    /// </summary>
     public CSharpEnum InternalProtected()
     {
         AccessModifier = "internal protected ";
+        return this;
+    }
+
+    public CSharpEnum Private()
+    {
+        AccessModifier = "private ";
         return this;
     }
 
@@ -40,9 +50,15 @@ public class CSharpEnum : CSharpDeclaration<CSharpEnum>, ICodeBlock
         return this;
     }
 
-    public CSharpEnum Private()
+    public CSharpEnum ProtectedInternal()
     {
-        AccessModifier = "private ";
+        AccessModifier = "protected internal ";
+        return this;
+    }
+
+    public CSharpEnum Public()
+    {
+        AccessModifier = "public ";
         return this;
     }
 

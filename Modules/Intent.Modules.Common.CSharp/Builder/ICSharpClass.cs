@@ -89,9 +89,14 @@ public interface ICSharpClass : ICSharpDeclaration<ICSharpClass>, IBuildsCSharpM
     ICSharpClassMethodDeclaration? FindMethod(string name);
     ICSharpClassMethodDeclaration? FindMethod(Func<ICSharpClassMethodDeclaration, bool> matchFunc);
     ICSharpClass Internal();
+    /// <summary>
+    /// Obsolete. Use <see cref="ProtectedInternal"/> instead.
+    /// </summary>
     ICSharpClass InternalProtected();
-    ICSharpClass Protected();
     ICSharpClass Private();
+    ICSharpClass Protected();
+    ICSharpClass ProtectedInternal();
+    ICSharpClass Public();
     ICSharpClass Partial();
     ICSharpClass Sealed();
     ICSharpClass Unsealed();

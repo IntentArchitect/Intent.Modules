@@ -75,6 +75,8 @@ public class CSharpClassTests
         await Verifier.Verify(fileBuilder.ToString());
     }
 
+    private static readonly object Field;
+
     [Fact]
     public async Task AsyncOnNestedClassesShouldWork()
     {

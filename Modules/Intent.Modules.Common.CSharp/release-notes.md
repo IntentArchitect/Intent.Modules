@@ -1,4 +1,8 @@
-﻿### Version 3.9.7
+﻿### Version 3.9.8
+
+- Improvement: `internal`, `private`, `protected`, `protected internal` and `public` access modifiers are now consistently available for use in C# builders.
+
+### Version 3.9.7
 
 - Improvement: Improved performance when running in a hot software factory.
 

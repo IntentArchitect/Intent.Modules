@@ -88,6 +88,10 @@ internal class CSharpInterfaceWrapper(CSharpInterface wrapped) :
 
     ICSharpInterface ICSharpInterface.Protected() => wrapped.Protected();
 
+    ICSharpInterface ICSharpInterface.ProtectedInternal() => wrapped.ProtectedInternal();
+
+    ICSharpInterface ICSharpInterface.Public() => wrapped.Public();
+
     ICSharpInterface ICSharpInterface.Private() => wrapped.Private();
 
     ICSharpInterface ICSharpInterface.Partial() => wrapped.Partial();

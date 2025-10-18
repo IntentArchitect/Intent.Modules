@@ -262,9 +262,9 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
         return this;
     }
 
-    public CSharpClassMethod Protected()
+    public CSharpClassMethod Internal()
     {
-        AccessModifier = "protected ";
+        AccessModifier = "internal ";
         return this;
     }
 
@@ -273,12 +273,24 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
         AccessModifier = "private ";
         return this;
     }
+
+    public CSharpClassMethod Protected()
+    {
+        AccessModifier = "protected ";
+        return this;
+    }
+
+    public CSharpClassMethod ProtectedInternal()
+    {
+        AccessModifier = "protected internal ";
+        return this;
+    }
+
     public CSharpClassMethod Public()
     {
         AccessModifier = "public ";
         return this;
     }
-
 
     public CSharpClassMethod WithReturnType(CSharpType returnType)
     {
@@ -631,9 +643,16 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Override() => _wrapper.Override();
 
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Partial() => _wrapper.Partial();
+
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Internal() => _wrapper.Internal();
+
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Private() => _wrapper.Private();
 
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Protected() => _wrapper.Protected();
+
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.ProtectedInternal() => _wrapper.ProtectedInternal();
+
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Public() => _wrapper.Public();
 
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Virtual() => _wrapper.Virtual();
 

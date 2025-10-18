@@ -14,8 +14,11 @@ public interface ICSharpMethodDeclaration<out TCSharpMethodDeclaration> : ICShar
     string? ExplicitImplementationFor { get; }
     TCSharpMethodDeclaration IsExplicitImplementationFor(string? @interface);
     TCSharpMethodDeclaration Partial();
-    TCSharpMethodDeclaration Protected();
+    TCSharpMethodDeclaration Internal();
     TCSharpMethodDeclaration Private();
+    TCSharpMethodDeclaration Protected();
+    TCSharpMethodDeclaration ProtectedInternal();
+    TCSharpMethodDeclaration Public();
     TCSharpMethodDeclaration WithoutAccessModifier();
     TCSharpMethodDeclaration Override();
     TCSharpMethodDeclaration New();

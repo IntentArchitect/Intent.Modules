@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.Templates;
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -229,9 +230,20 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpInterf
         AccessModifier = "internal ";
         return this;
     }
+
+    /// <summary>
+    /// Obsolete. Use <see cref="ProtectedInternal"/> instead.
+    /// </summary>
+    [Obsolete]
     public CSharpInterface InternalProtected()
     {
         AccessModifier = "internal protected ";
+        return this;
+    }
+
+    public CSharpInterface Private()
+    {
+        AccessModifier = "private ";
         return this;
     }
 
@@ -240,11 +252,19 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpInterf
         AccessModifier = "protected ";
         return this;
     }
-    public CSharpInterface Private()
+
+    public CSharpInterface ProtectedInternal()
     {
-        AccessModifier = "private ";
+        AccessModifier = "protected internal ";
         return this;
     }
+
+    public CSharpInterface Public()
+    {
+        AccessModifier = "public ";
+        return this;
+    }
+
     public CSharpInterface Partial()
     {
         IsPartial = true;
@@ -417,9 +437,15 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpInterf
         return _wrapper.Internal();
     }
 
+    [Obsolete]
     ICSharpInterface ICSharpInterface.InternalProtected()
     {
         return _wrapper.InternalProtected();
+    }
+
+    ICSharpInterface ICSharpInterface.Private()
+    {
+        return _wrapper.Private();
     }
 
     ICSharpInterface ICSharpInterface.Protected()
@@ -427,9 +453,14 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpInterf
         return _wrapper.Protected();
     }
 
-    ICSharpInterface ICSharpInterface.Private()
+    ICSharpInterface ICSharpInterface.ProtectedInternal()
     {
-        return _wrapper.Private();
+        return _wrapper.ProtectedInternal();
+    }
+
+    ICSharpInterface ICSharpInterface.Public()
+    {
+        return _wrapper.Public();
     }
 
     ICSharpInterface ICSharpInterface.Partial()

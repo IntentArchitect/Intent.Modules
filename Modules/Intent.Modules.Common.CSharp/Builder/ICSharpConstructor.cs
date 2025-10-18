@@ -1,3 +1,4 @@
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 using System;
 using System.Collections.Generic;
 using Intent.Metadata.Models;
@@ -19,9 +20,11 @@ public interface ICSharpConstructor : ICSharpMember<ICSharpConstructor>, IHasCSh
     ICSharpConstructor AddStatements(string statements, Action<IEnumerable<ICSharpStatement>> configure = null);
     ICSharpConstructor AddStatements(IEnumerable<string> statements, Action<IEnumerable<ICSharpStatement>> configure = null);
     ICSharpConstructor AddStatements(IEnumerable<ICSharpStatement> statements, Action<IEnumerable<ICSharpStatement>> configure = null);
-    ICSharpConstructor Protected();
-    ICSharpConstructor Private();
     ICSharpConstructor Internal();
+    ICSharpConstructor Private();
+    ICSharpConstructor Protected();
+    ICSharpConstructor ProtectedInternal();
+    ICSharpConstructor Public();
     ICSharpConstructor Static();
     ICSharpConstructor CallsBase(Action<ICSharpConstructorCall> configure = null);
     ICSharpConstructor CallsThis(Action<ICSharpConstructorCall> configure = null);

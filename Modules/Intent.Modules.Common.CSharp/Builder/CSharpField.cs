@@ -1,6 +1,8 @@
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 using Intent.Modules.Common.CSharp.VisualStudio;
@@ -19,9 +21,11 @@ public class CSharpField : CSharpMember<CSharpField>, ICSharpField
     public CSharpStatement Assignment { get; private set; }
     public bool IsStatic { get; private set; }
     public bool IsRequired { get; private set; }
-    public bool IsOmittedFromRender { get; private set; } 
+    public bool IsOmittedFromRender { get; private set; }
+    public bool IsReadOnly { get; private set; }
+    public bool IsConstant { get; private set; }
 
-    public CSharpField(string type, string name, ICSharpCodeContext @class) : this (type, name, @class, null)
+    public CSharpField(string type, string name, ICSharpCodeContext @class) : this(type, name, @class, null)
     {
     }
 
@@ -53,50 +57,97 @@ public class CSharpField : CSharpMember<CSharpField>, ICSharpField
         return field;
     }
 
-    public CSharpField ProtectedReadOnly()
+    public CSharpField Internal(string? value)
     {
-        AccessModifier = "protected readonly ";
+        AccessModifier = "internal ";
+        if (value != null)
+        {
+            Assignment = value;
+        }
         return this;
     }
 
-    public CSharpField Protected() => Protected(null);
-
-    public CSharpField Protected(string value)
-    {
-        AccessModifier = "protected ";
-        Assignment = value;
-        return this;
-    }
-
-    public CSharpField PrivateReadOnly()
-    {
-        AccessModifier = "private readonly ";
-        return this;
-    }
+    public CSharpField PrivateReadOnly() => Private().ReadOnly();
 
     public CSharpField Private() => Private(null);
 
-    public CSharpField Private(string value)
+    public CSharpField Private(string? value)
     {
         AccessModifier = "private ";
         Assignment = value;
         return this;
     }
 
-    public CSharpField Constant(string value)
+    public CSharpField PrivateConstant(string value) => Private().Constant(value);
+
+    public CSharpField ProtectedReadOnly() => Protected().ReadOnly();
+
+    public CSharpField Protected() => Protected(null);
+
+    public CSharpField Protected(string? value)
     {
-        AccessModifier = "public const ";
+        AccessModifier = "protected ";
         Assignment = value;
         return this;
     }
 
-    public CSharpField PrivateConstant(string value)
+    public CSharpField ProtectedInternal(string? value = null)
     {
-        AccessModifier = "private const ";
+        AccessModifier = "protected internal ";
+        if (value != null)
+        {
+            Assignment = value;
+        }
+        return this;
+    }
+
+    public CSharpField Public(string? value)
+    {
+        AccessModifier = "public ";
+        if (value != null)
+        {
+            Assignment = value;
+        }
+        return this;
+    }
+
+    public CSharpField ReadOnly(bool readOnly = true)
+    {
+        IsReadOnly = readOnly;
+        return this;
+    }
+
+    public CSharpField ReadOnly(string value, bool readOnly = true)
+    {
+        Assignment = value;
+        IsReadOnly = readOnly;
+        return this;
+    }
+
+    public CSharpField Constant(bool isConstant = true)
+    {
+        IsConstant = isConstant;
+        return this;
+    }
+
+    public CSharpField Constant(string value)
+    {
+        AccessModifier = "public ";
+        IsConstant = true;
         Assignment = value;
         return this;
     }
-    
+
+    public CSharpField Constant(string value, bool isConstant)
+    {
+        IsConstant = isConstant;
+        if (value != null)
+        {
+            Assignment = value;
+        }
+        return this;
+    }
+
     public CSharpField Static()
     {
         IsStatic = true;
@@ -120,7 +171,7 @@ public class CSharpField : CSharpMember<CSharpField>, ICSharpField
         Assignment = value;
         return this;
     }
-    
+
     public CSharpField WithAssignment(CSharpStatement value)
     {
         Assignment = value;
@@ -150,38 +201,61 @@ public class CSharpField : CSharpMember<CSharpField>, ICSharpField
 
     public override string GetText(string indentation)
     {
-        var assignment = string.Empty;
-        if (Assignment is not null)
+        var sb = new StringBuilder();
+
+        sb.Append(GetComments(indentation));
+        sb.Append(GetAttributes(indentation));
+        sb.Append(indentation);
+
+        if (AccessModifier != null)
         {
-            var result = Assignment.GetText(indentation).TrimStart();
-            if (!string.IsNullOrWhiteSpace(result))
-            {
-                assignment = $" = {result}";
-            }
+            sb.Append(AccessModifier);
         }
 
-        var accessModifier = AccessModifier;
         if (IsStatic)
         {
-            if (accessModifier.StartsWith("public "))
+            sb.Append("static ");
+        }
+
+        if (IsReadOnly)
+        {
+            sb.Append("readonly ");
+        }
+
+        if (IsConstant)
+        {
+            sb.Append("const ");
+        }
+
+        if (IsRequired)
+        {
+            sb.Append("required ");
+        }
+
+        sb.Append(Type);
+
+        if (_canBeNull)
+        {
+            sb.Append('?');
+        }
+
+        sb.Append(' ');
+
+        sb.Append(Name);
+
+        if (Assignment != null)
+        {
+            var assignment = Assignment.GetText(indentation).TrimStart();
+            if (!string.IsNullOrWhiteSpace(assignment))
             {
-                accessModifier = accessModifier.Replace("public ", "public static ");
-            }
-            else if (accessModifier.StartsWith("private "))
-            {
-                accessModifier = accessModifier.Replace("private ", "private static ");
-            }
-            else if (accessModifier.StartsWith("internal "))
-            {
-                accessModifier = accessModifier.Replace("internal ", "internal static ");
-            }
-            else
-            {
-                accessModifier = $"static {accessModifier}";
+                sb.Append(" = ");
+                sb.Append(assignment);
             }
         }
 
-        return $"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{accessModifier}{(IsRequired ? "required " : "")}{Type}{(_canBeNull ? "?" : "")} {Name}{assignment};";
+        sb.Append(';');
+
+        return sb.ToString();
     }
 
     private string GetInstantiationValue(CSharpType? propertyType, ICSharpType concreteImplementation)
@@ -199,85 +273,51 @@ public class CSharpField : CSharpMember<CSharpField>, ICSharpField
 
     IEnumerable<ICSharpAttribute> ICSharpDeclaration<ICSharpField>.Attributes => Attributes;
 
-    ICSharpField ICSharpDeclaration<ICSharpField>.AddAttribute(string name, Action<ICSharpAttribute> configure = null)
-    {
-        return _wrapping.AddAttribute(name, configure);
-    }
+    ICSharpField ICSharpDeclaration<ICSharpField>.AddAttribute(string name, Action<ICSharpAttribute> configure) => _wrapping.AddAttribute(name, configure);
 
-    ICSharpField ICSharpDeclaration<ICSharpField>.AddAttribute(ICSharpAttribute attribute, Action<ICSharpAttribute> configure = null)
-    {
-        return _wrapping.AddAttribute(attribute, configure);
-    }
+    ICSharpField ICSharpDeclaration<ICSharpField>.AddAttribute(ICSharpAttribute attribute, Action<ICSharpAttribute> configure = null) => _wrapping.AddAttribute(attribute, configure);
 
-    ICSharpField ICSharpDeclaration<ICSharpField>.WithComments(string xmlComments)
-    {
-        return _wrapping.WithComments(xmlComments);
-    }
+    ICSharpField ICSharpDeclaration<ICSharpField>.WithComments(string xmlComments) => _wrapping.WithComments(xmlComments);
 
-    ICSharpField ICSharpDeclaration<ICSharpField>.WithComments(IEnumerable<string> xmlComments)
-    {
-        return _wrapping.WithComments(xmlComments);
-    }
+    ICSharpField ICSharpDeclaration<ICSharpField>.WithComments(IEnumerable<string> xmlComments) => _wrapping.WithComments(xmlComments);
 
-    ICSharpField ICSharpField.Protected()
-    {
-        return _wrapping.Protected();
-    }
+    ICSharpField ICSharpField.CanBeNull() => _wrapping.CanBeNull();
 
-    ICSharpField ICSharpField.Protected(string value)
-    {
-        return _wrapping.Protected(value);
-    }
+    ICSharpField ICSharpField.Constant(bool isConstant) => _wrapping.Constant(isConstant);
 
-    ICSharpField ICSharpField.PrivateReadOnly()
-    {
-        return _wrapping.PrivateReadOnly();
-    }
+    ICSharpField ICSharpField.Constant(string value) => _wrapping.Constant(value);
+    
+    ICSharpField ICSharpField.Constant(string value, bool isConstant) => _wrapping.Constant(value, isConstant);
 
-    ICSharpField ICSharpField.Private()
-    {
-        return _wrapping.Private();
-    }
+    ICSharpField ICSharpField.Internal(string? value) => _wrapping.Internal(value);
 
-    ICSharpField ICSharpField.Private(string value)
-    {
-        return _wrapping.Private(value);
-    }
+    ICSharpField ICSharpField.Private() => _wrapping.Private();
 
-    ICSharpField ICSharpField.Constant(string value)
-    {
-        return _wrapping.Constant(value);
-    }
+    ICSharpField ICSharpField.Private(string value) => _wrapping.Private(value);
 
-    ICSharpField ICSharpField.PrivateConstant(string value)
-    {
-        return _wrapping.PrivateConstant(value);
-    }
+    ICSharpField ICSharpField.PrivateConstant(string value) => _wrapping.PrivateConstant(value);
 
-    ICSharpField ICSharpField.Static()
-    {
-        return _wrapping.Static();
-    }
+    ICSharpField ICSharpField.PrivateReadOnly() => _wrapping.PrivateReadOnly();
 
-    ICSharpField ICSharpField.Required()
-    {
-        return _wrapping.Required();
-    }
+    ICSharpField ICSharpField.Protected() => _wrapping.Protected();
 
-    ICSharpField ICSharpField.CanBeNull()
-    {
-        return _wrapping.CanBeNull();
-    }
+    ICSharpField ICSharpField.Protected(string value) => _wrapping.Protected(value);
 
-    ICSharpField ICSharpField.WithAssignment(ICSharpStatement value)
-    {
-        return _wrapping.WithAssignment(value);
-    }
+    ICSharpField ICSharpField.ProtectedInternal(string? value) => _wrapping.ProtectedInternal(value);
 
-    ICSharpField ICSharpField.ProtectedReadOnly()
-    {
-        return _wrapping.ProtectedReadOnly();
-    }
+    ICSharpField ICSharpField.ProtectedReadOnly() => _wrapping.ProtectedReadOnly();
+
+    ICSharpField ICSharpField.Public(string? value) => _wrapping.Public(value);
+
+    ICSharpField ICSharpField.ReadOnly(bool readOnly) => _wrapping.ReadOnly(readOnly);
+
+    ICSharpField ICSharpField.ReadOnly(string value, bool readOnly) => _wrapping.ReadOnly(value, readOnly);
+
+    ICSharpField ICSharpField.Required() => _wrapping.Required();
+
+    ICSharpField ICSharpField.Static() => _wrapping.Static();
+
+    ICSharpField ICSharpField.WithAssignment(ICSharpStatement value) => _wrapping.WithAssignment(value);
 
     ICSharpField ICSharpField.WithInstantiation() => _wrapping.WithInstantiation();
 
