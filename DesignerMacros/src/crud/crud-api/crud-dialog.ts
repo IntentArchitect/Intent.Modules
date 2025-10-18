@@ -172,25 +172,37 @@ async function openCrudCreationDialog(preselectedClassId?: string, defaultDiagra
                     fieldType: "tree-view",
                     label: "Domain Operations",
                     hint: "Generate operations from selected domain entity operations",
+                    isRequired: false,
                     treeViewOptions: {
-                        rootId: foundEntity.id,
-                        submitFormTriggers: ["double-click", "enter"],
+                        rootNode: {
+                            specializationId: "Class",
+                            id: "root",
+                            label: "Loading...",
+                            isExpanded: true,
+                            children: [],
+                        },
                         isMultiSelect: true,
+                        submitFormTriggers: ["double-click", "enter"],
                         selectableTypes: [
                             {
                                 specializationId: "Class",
                                 autoExpand: true,
                                 autoSelectChildren: false,
-                                isSelectable: (x) => false
+                                isSelectable: false
                             },
                             {
                                 specializationId: "Operation",
-                                isSelectable: (x) => true
+                                isSelectable: true
                             }
                         ]
                     }
                 }
-            ]
+            ],
+            onInitialize: async (formApi) => {
+                // This somehow loads the tree correctly as opposed to populating in the structure above directly.
+                const tree = formApi.getField("tree");
+                tree.treeViewOptions.rootId = foundEntity.id;
+            }
         });
 
         result.selectedDomainOperationIds = dialogResult.tree?.filter((x:any) => x != "0") ?? [];
@@ -225,4 +237,3 @@ interface IAttributeWithMapPath {
     isNullable: boolean,
     isCollection: boolean,
 }
-
