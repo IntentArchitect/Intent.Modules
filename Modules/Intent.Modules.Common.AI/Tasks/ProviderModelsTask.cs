@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Intent.Engine;
@@ -34,10 +35,12 @@ public class ProviderModelsTask : IModuleTask
             new("open-ai",          "gpt-5",                                "OpenAI",       ThinkingType.ThinkingLevels),
             new("open-ai",          "o1",                                   "OpenAI",       ThinkingType.ThinkingLevels),
             new("open-ai",          "o3",                                   "OpenAI",       ThinkingType.ThinkingLevels),
+            new("anthropic",        "claude-haiku-4-5-20251001",            "Anthropic",    ThinkingType.ToggleThinking),
             new("anthropic",        "claude-sonnet-4-5-20250929",           "Anthropic",    ThinkingType.ToggleThinking),
             new("anthropic",        "claude-opus-4-1-20250805",             "Anthropic",    ThinkingType.ToggleThinking),
             new("anthropic",        "claude-opus-4-20250514",               "Anthropic",    ThinkingType.ToggleThinking),
             new("anthropic",        "claude-sonnet-4-20250514",             "Anthropic",    ThinkingType.ToggleThinking),
+            new("anthropic",        "claude-3-7-sonnet-20250219",           "Anthropic",    ThinkingType.ToggleThinking),
             new("open-router",      "openrouter/auto",                      "OpenRouter",   ThinkingType.ThinkingLevels),
             new("open-router",      "x-ai/grok-4",                          "OpenRouter",   ThinkingType.ThinkingLevels),
             new("open-router",      "z-ai/glm-4.6",                         "OpenRouter",   ThinkingType.ThinkingLevels),
@@ -47,10 +50,11 @@ public class ProviderModelsTask : IModuleTask
             new("open-router",      "qwen/qwen3-coder-plus",                "OpenRouter",   ThinkingType.None),
             new("open-router",      "qwen/qwen3-max",                       "OpenRouter",   ThinkingType.None),
             new("open-router",      "qwen/qwen3-235b-a22b-thinking-2507",   "OpenRouter",   ThinkingType.ThinkingLevels),
-            new("open-router",      "anthropic/claude-sonnet-4",            "OpenRouter",   ThinkingType.ToggleThinking),
-            new("open-router",      "anthropic/claude-opus-4",              "OpenRouter",   ThinkingType.ToggleThinking),
-            new("open-router",      "anthropic/claude-opus-4.1",            "OpenRouter",   ThinkingType.ToggleThinking),
+            new("open-router",      "anthropic/claude-haiku-4.5",           "OpenRouter",   ThinkingType.ToggleThinking),
             new("open-router",      "anthropic/claude-sonnet-4.5",          "OpenRouter",   ThinkingType.ToggleThinking),
+            new("open-router",      "anthropic/claude-opus-4.1",            "OpenRouter",   ThinkingType.ToggleThinking),
+            new("open-router",      "anthropic/claude-opus-4",              "OpenRouter",   ThinkingType.ToggleThinking),
+            new("open-router",      "anthropic/claude-sonnet-4",            "OpenRouter",   ThinkingType.ToggleThinking),
             new("google-gemini",    "gemini-2.5-pro",                       "Google Gemini",ThinkingType.ToggleThinking),
             new("google-gemini",    "gemini-2.5-flash",                     "Google Gemini",ThinkingType.None),
             new("ollama",           ollamaModelName,                        "Ollama",       ThinkingType.None)
@@ -81,6 +85,8 @@ public class ProviderModelsTask : IModuleTask
                 "ollama" => hasOllamaModel,
                 _ => false
             });
+
+        providerModels = providerModels.OrderBy(x => x.ProviderName).ThenBy(x => x.ModelName).ToList();
         
         return JsonSerializer.Serialize(providerModels, new JsonSerializerOptions
         {

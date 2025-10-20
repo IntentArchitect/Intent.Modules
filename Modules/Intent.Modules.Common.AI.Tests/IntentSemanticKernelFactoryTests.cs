@@ -37,8 +37,18 @@ public class IntentSemanticKernelFactoryTests
           
           // ACT
           var function = kernel.CreateFunctionFromPrompt(
-               "What is 847,293,156 × 923,847,521? Use the calculator tool and return only the answer (in the form 0,000.0)!",
-               kernel.GetRequiredService<IAiProviderService>().GetPromptExecutionSettings(null));
+          """
+          You are a calculator. Use the calculator tool to compute 847,293,156 × 923,847,521.
+          
+          Output ONLY the number in format: 0,000.0
+          
+          Rules:
+          - NO explanatory text
+          - NO conversational phrases
+          - NO "let me calculate" or similar
+          - JUST the formatted number
+          """,
+          kernel.GetRequiredService<IAiProviderService>().GetPromptExecutionSettings(null));
           var result = await function.InvokeAsync(kernel);
           
           // ASSERT
