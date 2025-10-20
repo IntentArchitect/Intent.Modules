@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files>
-    <file>
-      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#46ef9b5e-e38c-48f2-8516-ea48c310ce23</correlationId>
-      <path>Intent.Modules.Modelers.ServiceProxies/Api/ServiceProxiesPackageModel.cs</path>
-      <count>1</count>
-      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2025-10-05T05:23:48.6892804Z</updatedAt>
-      <deviationsHash>0DFF54D9BD200511E98D86101E04BFE84B0C2772E5F0A8A3CA0C2667B5F9CD94</deviationsHash>
-      <fileHash>311FCEB978BA8B6DA1FE263C9587885920F0A08862C50C1E62C19C6725376FC0</fileHash>
-    </file>
-  </files>
+  <files />
 </deviationsLog>

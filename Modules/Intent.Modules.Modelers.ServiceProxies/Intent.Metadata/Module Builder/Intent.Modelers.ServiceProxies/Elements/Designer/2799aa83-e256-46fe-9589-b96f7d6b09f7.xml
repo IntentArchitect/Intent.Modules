@@ -72,17 +72,17 @@
     </childElement>
     <childElement id="fae88dc6-a14b-49d1-b1f8-4844f076d7fe" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
       <name>reference</name>
-      <display>reference: Service Proxies Core Types</display>
+      <display>reference: Service Proxy Services Extension</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="fd3603c2-27d8-4ef4-a225-7a9b9ab60d7f">
-        <typeId>acd93869-aa05-4bca-879d-a3efe397e534</typeId>
+        <typeId>fe730073-37a4-4662-91cd-1630f544f522</typeId>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
-        <typePackageName>Intent.Modelers.ServiceProxies</typePackageName>
-        <typePackageId>f4710958-060a-42e9-a987-48af8f90324a</typePackageId>
+        <typePackageName>Intent.Modelers.Types.ServiceProxies</typePackageName>
+        <typePackageId>b58a9e76-55b8-45ec-a22b-bcdfcb6fd833</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>

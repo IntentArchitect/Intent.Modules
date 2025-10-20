@@ -1,4 +1,8 @@
-﻿### Version 5.2.2
+﻿### Version 5.2.3
+
+- Improvement: Refactored Service Proxies metadata into the `Intent.Modelers.Types.ServiceProxies` module, version `5.5.3`.
+
+### Version 5.2.2
 
 - Improvement: Updated to the latest `Intent.Modelers.Types.ServiceProxies` dependency.
 

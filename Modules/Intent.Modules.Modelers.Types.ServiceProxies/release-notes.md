@@ -1,4 +1,8 @@
-﻿### Version 5.5.2
+﻿### Version 5.5.3
+
+- Improvement: Refactored `Service Proxies Package` metadata into this module, from the `Intent.Modelers.ServiceProxies` module
+
+### Version 5.5.2
 
 - Fixed: Parameter synchronization in Services designer no longer working since the `Intent.Modelers.ServiceProxies` module is no longer a related dependency.
 
