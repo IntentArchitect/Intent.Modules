@@ -142,7 +142,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Services Domain Interactions.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Services Domain Interactions.designer.settings</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>ab048376-1d44-4660-a2ad-f24194470a83</ProjectId>
