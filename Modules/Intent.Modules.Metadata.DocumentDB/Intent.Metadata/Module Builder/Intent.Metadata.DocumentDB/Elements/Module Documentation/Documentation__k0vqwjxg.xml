@@ -13,8 +13,8 @@
   <metadata />
   <childElements>
     <childElement id="deb9d68b-9caf-4930-bca4-5cf1d61ec308" type="Documentation Topic" typeId="5cc56ebc-6b61-41a6-a452-8efd9382da6f">
-      <name>Database Key Management</name>
-      <display>Database Key Management</display>
+      <name>DocumentDB Key Management</name>
+      <display>DocumentDB Key Management</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>

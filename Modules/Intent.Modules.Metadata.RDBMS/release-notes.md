@@ -1,3 +1,7 @@
+### Version 3.7.8
+
+- Improvement: Improved help topic title to be more descriptive
+
 ### Version 3.7.7
 
 - Fixed: Improved how foreign key names are handled, especially ones that are imported from a database schema.

@@ -1,3 +1,7 @@
+### Version 1.3.5
+
+- Improvement: Improved help topic title to be more descriptive
+
 ### Version 1.3.4
 
 - Improvement: The `Field Settings` stereotype has been moved from the `Intent.CosmosDB` module to allow use in other modules.
