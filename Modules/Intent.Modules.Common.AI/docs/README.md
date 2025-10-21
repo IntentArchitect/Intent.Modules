@@ -22,6 +22,8 @@ Within the **User Settings**, is an **AI Settings** section:
 
 ![AI Settings](images/user-settings.png)
 
+Use the **Provider** dropdown to select any supported provider and configure its credentials and defaults. When the relevant modules are installed, a **Model** dropdown becomes available so you can choose the exact model exposed by that provider. You can move between saved provider/model combinations at any time, and each keeps its own stored settings for quick reuse.
+
 ### Available Settings
 
 - **Provider**: The AI provider to use. Supported options:
@@ -32,9 +34,8 @@ Within the **User Settings**, is an **AI Settings** section:
   - [Open Router](#open-router-details)
   - [Google Gemini](#google-gemini-details)
   - [Ollama](#ollama-details)
-
-
-- **Model**: The LLM model to use, specific to the selected provider.
+  - Stored settings are provider-specific, so you can configure each supported provider without losing your previous selections.
+- **Model**: The LLM model to use, specific to the selected provider. If a provider or model you need is missing, contact support@intentarchitect.com to let us know.
 - **API Key**: The API key used to authenticate with the provider.
   - You can store a separate key for each provider if needed.
   - Instead of storing them in here, you can fall back to using environment variables:
