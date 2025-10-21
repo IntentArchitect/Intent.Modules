@@ -1,3 +1,5 @@
+using System;
+using System.Net.Http;
 using Anthropic.SDK;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,7 +25,10 @@ internal static class AnthropicChatCompletionService
         var apiAuth = new APIAuthentication(apiKey);
         services.AddTransient(sp =>
         {
-            var skChatService = new ChatClientBuilder(new AnthropicClient(apiAuth).Messages)
+            var skChatService = new ChatClientBuilder(new AnthropicClient(apiAuth, new HttpClient
+                {
+                    Timeout = TimeSpan.FromMinutes(5)
+                }).Messages)
                 .ConfigureOptions(x =>
                 {
                     x.ModelId = model;

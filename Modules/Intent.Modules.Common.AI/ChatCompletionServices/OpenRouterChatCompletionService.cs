@@ -26,7 +26,8 @@ internal static class OpenRouterChatCompletionService
         };
         services.AddOpenAIChatClient(modelId, apiKey, httpClient: new HttpClient(httpClientHandler)
         {
-            BaseAddress = new Uri("https://openrouter.ai/api/v1/")
+            BaseAddress = new Uri("https://openrouter.ai/api/v1/"),
+            Timeout = TimeSpan.FromMinutes(5)
         });
         return services;
     }

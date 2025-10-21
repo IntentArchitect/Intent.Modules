@@ -33,15 +33,13 @@ public class IntentSemanticKernelFactory
         var settings = _userSettingsProvider.GetAISettings();
         string? apiKey;
         
-        // Create the Semantic Kernel instance with your LLM service.
-        // Replace <your-openai-key> with your actual OpenAI API key and adjust the model name as needed.
         var builder = Kernel.CreateBuilder();
         builder.Services.AddLogging(configure: b => b.AddProvider(provider: new SoftwareFactoryLoggingProvider()).SetMinimumLevel(level: LogLevel.Trace));
         builder.Services.ConfigureHttpClientDefaults(configure: defaults =>
         {
             defaults.ConfigureHttpClient(configureClient: client =>
             {
-                client.Timeout = TimeSpan.FromSeconds(value: 180); // 3 min
+                client.Timeout = TimeSpan.FromMinutes(5);
             });
         });
 
