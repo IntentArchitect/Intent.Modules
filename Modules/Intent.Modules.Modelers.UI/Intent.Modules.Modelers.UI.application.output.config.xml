@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<outputFiles>
+  <files>
+    <file relativePath="Intent.Modules.Modelers.UI/Api/AssociationDestinationEndSettingsModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.UI/Api/AutoCompleteModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.UI/Api/ButtonModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.UI/Api/CheckboxModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.UI/Api/ElementExtensionModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.UI/Api/ElementSettingsModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.UI/Api/LinkModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.UI/Api/MenuItemModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.UI/Api/RadioGroupModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.UI/Api/SelectModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.UI/Api/TableModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.UI/Api/TextInputModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.UI/Api/UserInterfacePackageExtensionModel.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.UI/Intent.Modules.Modelers.UI.csproj" state="ignored" />
+  </files>
+</outputFiles>

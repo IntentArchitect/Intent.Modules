@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<outputFiles>
+  <files>
+    <file relativePath="Intent.Modules.Modelers.Services.DomainInteractions/Api/CommandExtensionModel.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.Services.DomainInteractions/Api/OperationExtensionModel.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.Services.DomainInteractions/release-notes.md" state="once-off-generated" />
+  </files>
+</outputFiles>

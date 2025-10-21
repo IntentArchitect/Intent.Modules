@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ignoredFiles>
-  <files>
-    <file relativePath="Intent.Modules.Metadata.WebApi/Api/Extensions/ApiGatewayRouteModelStereotypeExtensions.cs" />
-    <file relativePath="Intent.Modules.Metadata.WebApi/Api/Extensions/AzureFunctionModelStereotypeExtensions.cs" />
-    <file relativePath="Intent.Modules.Metadata.WebApi/Intent.Metadata.WebApi.imodspec" />
-    <file relativePath="Intent.Modules.Metadata.WebApi/Intent.Modules.Metadata.WebApi.csproj" />
-  </files>
-</ignoredFiles>

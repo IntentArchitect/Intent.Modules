@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ignoredFiles>
-  <files>
-    <file relativePath="Intent.Modules.Metadata.Security/Api/DomainPackageExtensionModel.cs" />
-    <file relativePath="Intent.Modules.Metadata.Security/Intent.Metadata.Security.imodspec" />
-    <file relativePath="Intent.Modules.Metadata.Security/Intent.Modules.Metadata.Security.csproj" />
-  </files>
-</ignoredFiles>

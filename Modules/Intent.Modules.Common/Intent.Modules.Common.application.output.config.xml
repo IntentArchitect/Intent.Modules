@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<outputFiles>
+  <files>
+    <file relativePath="Intent.Modules.Common/Api/AssociationDestinationEndSettingsModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Common/Api/ElementExtensionModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Common/Api/ElementSettingsModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Common/Intent.Common.imodspec" state="ignored" />
+    <file relativePath="Intent.Modules.Common/Intent.Modules.Common.csproj" state="ignored" />
+  </files>
+</outputFiles>

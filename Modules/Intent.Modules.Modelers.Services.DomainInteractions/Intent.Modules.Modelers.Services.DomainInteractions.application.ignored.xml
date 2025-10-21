@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ignoredFiles>
-  <files>
-    <file relativePath="Intent.Modules.Modelers.Services.DomainInteractions/Api/CommandExtensionModel.cs" />
-    <file relativePath="Intent.Modules.Modelers.Services.DomainInteractions/Api/OperationExtensionModel.cs" />
-  </files>
-</ignoredFiles>
