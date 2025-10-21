@@ -26,6 +26,7 @@ Within the **User Settings**, is an **AI Settings** section:
 
 - **Provider**: The AI provider to use. Supported options:
   - [OpenAI](#openai-details)
+  - [OpenAI Compatible](#openai-compatible-details)
   - [Azure OpenAI](#azure-openai-details)
   - [Anthropic](#anthropic-details)
   - [Open Router](#open-router-details)
@@ -54,11 +55,17 @@ Within the **User Settings**, is an **AI Settings** section:
 - **Available models**: [OpenAI Models](https://platform.openai.com/docs/models/compare)
 - **Pricing**: [OpenAI Pricing](https://platform.openai.com/docs/pricing)
 
+#### OpenAI Compatible Details
+
+- **Description**: Use this option for any third-party service that exposes a REST API compatible with OpenAI's schema (chat/completions).
+- **Setup**: Provide the service's base URL, API token, and model identifier in the AI settings. These values override the defaults used for OpenAI.
+- **Support**: Compatibility can vary per provider. If you encounter issues, contact Intent support at support@intentarchitect.com.
+
 #### Azure OpenAI Details
 
-- **Sign up for Azure account**: [Azure Free Account](https://azure.microsoft.com/en-us/free/ai/)
-- **Available models**: [Azure OpenAI Models](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models)
-- **Pricing**: [Azure OpenAI Pricing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/)
+- **Sign up for Azure account**: [Azure Free Account](https://azure.microsoft.com/free/ai/)
+- **Available models**: [Azure OpenAI Models](https://learn.microsoft.com/azure/ai-services/openai/concepts/models)
+- **Pricing**: [Azure OpenAI Pricing](https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/)
 
 #### Anthropic Details
 
