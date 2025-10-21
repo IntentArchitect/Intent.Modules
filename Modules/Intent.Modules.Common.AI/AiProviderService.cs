@@ -91,7 +91,7 @@ internal class AiProviderService : IAiProviderService
         {
             ThinkingConfig = new GeminiThinkingConfig()
             {
-                ThinkingBudget = thinkingType == "low" ? 0 : thinkingType == "high" ? 1024 : (int?)null
+                ThinkingBudget = thinkingType == "low" ? null : thinkingType == "high" ? 1024 : null
             },
             ToolCallBehavior = GeminiToolCallBehavior.AutoInvokeKernelFunctions
         });
