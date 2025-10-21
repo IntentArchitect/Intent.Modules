@@ -115,6 +115,23 @@ return provider === "ollama";</isActiveFunction>
     <dependency id="Intent.Common" version="3.7.2" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
   </dependencies>
+  <interoperability>
+    <detect id="Intent.AI.AutoImplementation">
+      <install>
+        <package id="Intent.AI.AutoImplementation" version="1.0.0-beta.15" />
+      </install>
+    </detect>
+    <detect id="Intent.AI.Blazor">
+      <install>
+        <package id="Intent.AI.Blazor" version="1.0.0-beta.17" />
+      </install>
+    </detect>
+    <detect id="Intent.AI.UnitTests">
+      <install>
+        <package id="Intent.AI.UnitTests" version="1.0.0-beta.13" />
+      </install>
+    </detect>
+  </interoperability>
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
