@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.AI</id>
-  <version>1.0.0-beta.8</version>
+  <version>1.0.0-beta.9</version>
   <supportedClientVersions>[4.5.0-a,5.0.0)</supportedClientVersions>
   <summary>Support for accessing LLMs via Semantic Kernel within Intent Architect module tasks.</summary>
   <description>Support for accessing LLMs via Semantic Kernel within Intent Architect module tasks.</description>
   <iconUrl>data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iYnJhY2tldF9zeW1ib2wtYmx1ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNDUuMiA0NS4yIj4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMjkuNi4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMi4xLjEgQnVpbGQgOSkgIC0tPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuc3QwLTU0OXk4dWhqZGZpOHVndGJobjQ1OTdndHk3aDRlODk1Z3loYjRlOTh5NWcgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpbnQtNTQ5eTh1aGpkZmk4dWd0YmhuNDU5N2d0eTdoNGU4OTVneWhiNGU5OHk1ZzIpOwogICAgICB9CgogICAgICAuc3QxLTU0OXk4dWhqZGZpOHVndGJobjQ1OTdndHk3aDRlODk1Z3loYjRlOTh5NWcgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpbnQtNTQ5eTh1aGpkZmk4dWd0YmhuNDU5N2d0eTdoNGU4OTVneWhiNGU5OHk1ZzEpOwogICAgICB9CgogICAgICAuc3QyLTU0OXk4dWhqZGZpOHVndGJobjQ1OTdndHk3aDRlODk1Z3loYjRlOTh5NWcgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpbnQtNTQ5eTh1aGpkZmk4dWd0YmhuNDU5N2d0eTdoNGU4OTVneWhiNGU5OHk1ZzcpOwogICAgICB9CgogICAgICAuc3QzLTU0OXk4dWhqZGZpOHVndGJobjQ1OTdndHk3aDRlODk1Z3loYjRlOTh5NWcgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpbnQtNTQ5eTh1aGpkZmk4dWd0YmhuNDU5N2d0eTdoNGU4OTVneWhiNGU5OHk1ZzQpOwogICAgICB9CgogICAgICAuc3Q0LTU0OXk4dWhqZGZpOHVndGJobjQ1OTdndHk3aDRlODk1Z3loYjRlOTh5NWcgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpbnQtNTQ5eTh1aGpkZmk4dWd0YmhuNDU5N2d0eTdoNGU4OTVneWhiNGU5OHk1ZzUpOwogICAgICB9CgogICAgICAuc3Q1LTU0OXk4dWhqZGZpOHVndGJobjQ1OTdndHk3aDRlODk1Z3loYjRlOTh5NWcgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpbnQtNTQ5eTh1aGpkZmk4dWd0YmhuNDU5N2d0eTdoNGU4OTVneWhiNGU5OHk1ZzMpOwogICAgICB9CgogICAgICAuc3Q2LTU0OXk4dWhqZGZpOHVndGJobjQ1OTdndHk3aDRlODk1Z3loYjRlOTh5NWcgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpbnQtNTQ5eTh1aGpkZmk4dWd0YmhuNDU5N2d0eTdoNGU4OTVneWhiNGU5OHk1ZzYpOwogICAgICB9CgogICAgICAuc3Q3LTU0OXk4dWhqZGZpOHVndGJobjQ1OTdndHk3aDRlODk1Z3loYjRlOTh5NWcgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpbnQtNTQ5eTh1aGpkZmk4dWd0YmhuNDU5N2d0eTdoNGU4OTVneWhiNGU5OHk1Zyk7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaW50LTU0OXk4dWhqZGZpOHVndGJobjQ1OTdndHk3aDRlODk1Z3loYjRlOTh5NWciIHgxPSItNDIzOS45IiB5MT0iMjUzMC4yIiB4Mj0iLTQyMzkuOSIgeTI9IjI1MDkuNyIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgtMjUwNS42IC00MjA4LjgpIHJvdGF0ZSgtOTApIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9Ii40IiBzdG9wLWNvbG9yPSIjMDljNGZmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwNzBjMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpbnQtNTQ5eTh1aGpkZmk4dWd0YmhuNDU5N2d0eTdoNGU4OTVneWhiNGU5OHk1ZzEiIHgxPSItNTc3MS4yIiB5MT0iNjE1LjEiIHgyPSItNTc3MS4yIiB5Mj0iNTk0LjYiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQ0ODUuOCAtMzYxOC44KSByb3RhdGUoLTEzNSkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iLjQiIHN0b3AtY29sb3I9IiMwOWM0ZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDA3MGMwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGludC01NDl5OHVoamRmaTh1Z3RiaG40NTk3Z3R5N2g0ZTg5NWd5aGI0ZTk4eTVnMiIgeDE9Ii01NDk5LjkiIHkxPSItMTgyMS44IiB4Mj0iLTU0OTkuOSIgeTI9Ii0xODQyLjMiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTU0NjguOCAtMTgwMS4yKSByb3RhdGUoLTE4MCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iLjQiIHN0b3AtY29sb3I9IiMwOWM0ZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDA3MGMwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGludC01NDl5OHVoamRmaTh1Z3RiaG40NTk3Z3R5N2g0ZTg5NWd5aGI0ZTk4eTVnMyIgeDE9Ii0zNTg0LjkiIHkxPSItMzM1My4yIiB4Mj0iLTM1ODQuOSIgeTI9Ii0zMzczLjciIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQ4NzguOCAxNzkuMSkgcm90YXRlKDEzNSkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iLjQiIHN0b3AtY29sb3I9IiMwOWM0ZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDA3MGMwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGludC01NDl5OHVoamRmaTh1Z3RiaG40NTk3Z3R5N2g0ZTg5NWd5aGI0ZTk4eTVnNCIgeDE9Ii0xMTQ3LjkiIHkxPSItMzA4MS44IiB4Mj0iLTExNDcuOSIgeTI9Ii0zMTAyLjMiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTMwNjEuMSAxMTYyLjEpIHJvdGF0ZSg5MCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iLjQiIHN0b3AtY29sb3I9IiMwOWM0ZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDA3MGMwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGludC01NDl5OHVoamRmaTh1Z3RiaG40NTk3Z3R5N2g0ZTg5NWd5aGI0ZTk4eTVnNSIgeDE9IjM4My40IiB5MT0iLTExNjYuOCIgeDI9IjM4My40IiB5Mj0iLTExODcuMyIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgtMTA4MC45IDU3Mikgcm90YXRlKDQ1KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIuNCIgc3RvcC1jb2xvcj0iIzA5YzRmZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMDcwYzAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaW50LTU0OXk4dWhqZGZpOHVndGJobjQ1OTdndHk3aDRlODk1Z3loYjRlOTh5NWc2IiB4MT0iMTEyLjEiIHkxPSIxMjcwLjIiIHgyPSIxMTIuMSIgeTI9IjEyNDkuNyIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgtOTcuOSAtMTI0NS42KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIuNCIgc3RvcC1jb2xvcj0iIzA5YzRmZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMDcwYzAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaW50LTU0OXk4dWhqZGZpOHVndGJobjQ1OTdndHk3aDRlODk1Z3loYjRlOTh5NWc3IiB4MT0iLTE4MDMiIHkxPSIyODAxLjUiIHgyPSItMTgwMyIgeTI9IjI3ODEiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTY4OCAtMzIyNS44KSByb3RhdGUoLTQ1KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIuNCIgc3RvcC1jb2xvcj0iIzA5YzRmZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMDcwYzAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxwYXRoIGNsYXNzPSJzdDctNTQ5eTh1aGpkZmk4dWd0YmhuNDU5N2d0eTdoNGU4OTVneWhiNGU5OHk1ZyIgZD0iTTI0LjYsMjQuNmMwLS40LjQsNC4yLTEuNyw3LjYtMiwzLjQtNC42LDQuNS04LjcsNS40LTIuMy41LTMuNywwLTUuNC0uNi0yLjUtLjgtMy44LTIuOS00LjItMy40cy0uOS0yLjEtLjYtMy42Yy42LTIuNSwyLjMtMy44LDQuNS00LjMuNCwwLDIuNS0uNiw0LjMuNHMyLjUsMS43LDQuMiwyLjFjMS43LjUsMy40LDAsNC4yLS40LDEuOC0uNywzLjItMi43LDMuNC0zLjR2LjJzMCwwLDAsMFoiLz4KICA8cGF0aCBjbGFzcz0ic3QxLTU0OXk4dWhqZGZpOHVndGJobjQ1OTdndHk3aDRlODk1Z3loYjRlOTh5NWciIGQ9Ik0yNS4zLDIyLjZjLS4zLS4zLDMuMiwyLjcsNC4yLDYuNnMuMiw2LjYtMi4zLDEwLjFjLTEuNCwxLjktMi42LDIuNy00LjIsMy41LTIuNCwxLjItNC43LjYtNS40LjZzLTIuMS0uOC0zLTIuMWMtMS4zLTIuMS0xLjEtNC4yLDAtNi4zLjMtLjMsMS4zLTIuMSwzLjMtMi44LDItLjYsMy0uNiw0LjQtMS41czIuNC0yLjQsMi43LTMuMmMuOC0xLjguNC00LjIsMC00LjgsMCwwLC4yLDAsLjIsMFoiLz4KICA8cGF0aCBjbGFzcz0ic3QwLTU0OXk4dWhqZGZpOHVndGJobjQ1OTdndHk3aDRlODk1Z3loYjRlOTh5NWciIGQ9Ik0yNC42LDIwLjdjLS40LDAsNC4yLS40LDcuNiwxLjcsMy40LDIsNC44LDQuNSw1LjQsOC43LjQsMi4zLDAsMy43LS42LDUuNC0uOCwyLjUtMi45LDMuOC0zLjQsNC4ycy0yLjEuOS0zLjYuNmMtMi41LS42LTMuOC0yLjMtNC4zLTQuNSwwLS40LS42LTIuNS40LTQuM3MxLjctMi41LDIuMS00LjIsMC0zLjQtLjQtNC4yYy0uNy0xLjgtMi43LTMuMi0zLjQtMy40aC4yczAsMCwwLDBaIi8+CiAgPHBhdGggY2xhc3M9InN0NS01NDl5OHVoamRmaTh1Z3RiaG40NTk3Z3R5N2g0ZTg5NWd5aGI0ZTk4eTVnIiBkPSJNMjIuNiwyMGMtLjMuMywyLjctMy4yLDYuNi00LjJzNi42LS4yLDEwLjEsMi4zYzEuOSwxLjQsMi43LDIuNiwzLjUsNC4yLDEuMiwyLjQuNiw0LjcuNiw1LjRzLS44LDIuMS0yLjEsM2MtMi4xLDEuMy00LjIsMS4xLTYuMywwLS4zLS4zLTIuMS0xLjMtMi44LTMuM3MtLjYtMy0xLjUtNC40LTIuNC0yLjQtMy4yLTIuN2MtMS44LS44LTQuMi0uNC00LjgsMGgwczAtLjIsMC0uMloiLz4KICA8cGF0aCBjbGFzcz0ic3QzLTU0OXk4dWhqZGZpOHVndGJobjQ1OTdndHk3aDRlODk1Z3loYjRlOTh5NWciIGQ9Ik0yMC43LDIwLjdjMCwuNC0uNC00LjIsMS43LTcuNnM0LjUtNC44LDguNy01LjRjMi4zLS40LDMuNywwLDUuNC42LDIuNS44LDMuOCwyLjksNC4yLDMuNHMuOSwyLjEuNiwzLjZjLS42LDIuNS0yLjMsMy44LTQuNSw0LjMtLjQsMC0yLjUuNi00LjMtLjRzLTIuNS0xLjctNC4yLTIuMS0zLjQsMC00LjIuNGMtMS44LjctMy4yLDIuNy0zLjQsMy40di0uMmgwWiIvPgogIDxwYXRoIGNsYXNzPSJzdDQtNTQ5eTh1aGpkZmk4dWd0YmhuNDU5N2d0eTdoNGU4OTVneWhiNGU5OHk1ZyIgZD0iTTIwLDIyLjZjLjMuMy0zLjItMi43LTQuMi02LjYtLjktMy45LS4yLTYuNiwyLjMtMTAuMSwxLjQtMS45LDIuNi0yLjcsNC4yLTMuNSwyLjQtMS4yLDQuNy0uNiw1LjQtLjZzMi4xLjgsMywyLjFjMS4zLDIuMSwxLjEsNC4yLDAsNi4zLS4zLjMtMS4zLDIuMS0zLjMsMi44cy0zLC42LTQuNCwxLjVjLTEuNS45LTIuNCwyLjQtMi43LDMuMi0uOCwxLjgtLjQsNC4yLDAsNC44LDAsMC0uMiwwLS4yLDBaIi8+CiAgPHBhdGggY2xhc3M9InN0Ni01NDl5OHVoamRmaTh1Z3RiaG40NTk3Z3R5N2g0ZTg5NWd5aGI0ZTk4eTVnIiBkPSJNMjAuNywyNC42Yy40LDAtNC4yLjQtNy42LTEuNy0zLjQtMi4xLTQuOC00LjUtNS40LTguNy0uNC0yLjMsMC0zLjcuNi01LjQuOC0yLjUsMi45LTMuOCwzLjQtNC4yczIuMS0uOSwzLjYtLjZjMi41LjYsMy44LDIuMyw0LjMsNC41LDAsLjQuNiwyLjUtLjQsNC4zcy0xLjcsMi41LTIuMSw0LjJjLS41LDEuNywwLDMuNC40LDQuMi43LDEuOCwyLjcsMy4yLDMuNCwzLjRoLS4yWiIvPgogIDxwYXRoIGNsYXNzPSJzdDItNTQ5eTh1aGpkZmk4dWd0YmhuNDU5N2d0eTdoNGU4OTVneWhiNGU5OHk1ZyIgZD0iTTIyLjYsMjUuM2MuMy0uMy0yLjcsMy4yLTYuNiw0LjItMy45LjktNi42LjItMTAuMS0yLjMtMS45LTEuNC0yLjctMi42LTMuNS00LjItMS4yLTIuNC0uNi00LjctLjYtNS40cy44LTIuMSwyLjEtM2MyLjEtMS4zLDQuMi0xLjEsNi4zLDAsLjMuMywyLjEsMS4zLDIuOCwzLjMuNiwyLC42LDMsMS41LDQuNC45LDEuNSwyLjQsMi40LDMuMiwyLjcsMS44LjgsNC4yLjQsNC44LDBoMHMwLC4yLDAsLjJaIi8+Cjwvc3ZnPg==</iconUrl>
   <authors>Intent Architect</authors>
-  <tags>gpt ai llm common semantickernel</tags>
+  <tags>gpt anthropic open ai router llm common semantickernel</tags>
   <releaseNotes>release-notes.md</releaseNotes>
   <templates></templates>
   <decorators></decorators>
@@ -16,50 +16,96 @@
     <group id="62594c9b-21fe-4c65-ac5c-b32a836a2ca5" title="AI Settings" type="user-settings" externalReference="62594c9b-21fe-4c65-ac5c-b32a836a2ca5">
       <settings>
         <setting id="41ac1bce-6362-4b77-b588-ba3df55a2afb" title="Provider" type="select" orderPriority="-1">
+          <hint>Select provider to configure</hint>
           <defaultValue>open-ai</defaultValue>
           <isRequiredFunction>return true;</isRequiredFunction>
           <options>
             <option value="open-ai" description="Open AI" />
             <option value="azure-open-ai" description="Azure Open AI" />
-            <option value="ollama" description="Ollama (Experimental)" />
             <option value="anthropic" description="Anthropic" />
+            <option value="open-router" description="Open Router" />
+            <option value="google-gemini" description="Google Gemini" />
+            <option value="open-ai-compatible" description="Open AI Compatible" />
+            <option value="ollama" description="Ollama" />
           </options>
         </setting>
         <setting id="9e9a32b4-194e-4d53-b62c-c9c28fb7b6f8" title="Open AI API Key" type="text">
-          <hint>Will fall back to environment variable if empty.</hint>
+          <hint>Will fall back to environment variable `OPENAI\_API\_KEY` if empty.</hint>
           <isActiveFunction>let provider = getProperty("Provider").value;
 return provider === "open-ai";</isActiveFunction>
         </setting>
         <setting id="d76d0a4d-60c5-42b4-aa3b-de4f11b44ac1" title="Azure Open AI API Key" type="text">
-          <hint>Will fall back to environment variable if empty.</hint>
+          <hint>Will fall back to environment variable `AZURE\_OPENAI\_API\_KEY` if empty.</hint>
           <isActiveFunction>let provider = getProperty("Provider").value;
 return provider === "azure-open-ai";</isActiveFunction>
         </setting>
+        <setting id="5d2a1254-9f21-4cbd-818e-497bf09c87ea" title="Azure OpenAI API Url" type="text">
+          <hint>URL to connect to Azure OpenAI API.</hint>
+          <defaultValue>https://{my resource}.openai.azure.com/</defaultValue>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "azure-open-ai";</isActiveFunction>
+          <isRequiredFunction>return true;</isRequiredFunction>
+        </setting>
+        <setting id="07a3313b-0602-4f83-a1c1-820e746bde48" title="Azure Open AI Deployment name" type="text">
+          <hint>Deployment name for Azure Open AI instance.</hint>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "azure-open-ai";</isActiveFunction>
+          <isRequiredFunction>return true;</isRequiredFunction>
+        </setting>
         <setting id="715e2ce8-677c-467d-a876-8dc84b99ae05" title="Anthropic API Key" type="text">
-          <hint>Will fall back to environment variable if empty.</hint>
+          <hint>Will fall back to environment variable `ANTHROPIC\_API\_KEY` if empty.</hint>
           <isActiveFunction>let provider = getProperty("Provider").value;
 return provider === "anthropic";</isActiveFunction>
         </setting>
-        <setting id="effcfd41-aaed-4278-a7e7-818009584139" title="Model" type="text">
-          <defaultValue>gpt-4o</defaultValue>
-          <isRequiredFunction>return true;</isRequiredFunction>
-        </setting>
-        <setting id="5d2a1254-9f21-4cbd-818e-497bf09c87ea" title="API Url" type="text">
-          <hint>URL to connect to AI API.</hint>
-          <defaultValue>http://localhost:11434</defaultValue>
-          <isActiveFunction>let provider = getProperty("Provider").value;
-return provider === "ollama" || provider === "azure-open-ai";</isActiveFunction>
-          <isRequiredFunction>return true;</isRequiredFunction>
-        </setting>
-        <setting id="07a3313b-0602-4f83-a1c1-820e746bde48" title="Deployment name" type="text">
-          <isActiveFunction>let provider = getProperty("Provider").value;
-return provider === "azure-open-ai";</isActiveFunction>
-          <isRequiredFunction>return true;</isRequiredFunction>
-        </setting>
-        <setting id="4cb52ca6-af4f-4dbf-9f75-5a74438cd281" title="Max Tokens" type="text">
+        <setting id="4cb52ca6-af4f-4dbf-9f75-5a74438cd281" title="Anthropic Max Tokens" type="text">
+          <hint>Specifies the maximum number of tokens (input + output) the AI can process in a single prompt for Anthropic models.</hint>
           <defaultValue>8192</defaultValue>
           <isActiveFunction>let provider = getProperty("Provider").value;
 return provider === "anthropic";</isActiveFunction>
+          <isRequiredFunction>return true;</isRequiredFunction>
+        </setting>
+        <setting id="d615e7c5-e3d6-4ee0-a1b2-b671e03b5330" title="Open Router API Key" type="text">
+          <hint>Will fall back to environment variable `OPENROUTER\_API\_KEY` if empty.</hint>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "open-router";</isActiveFunction>
+        </setting>
+        <setting id="1a61e521-a95b-4bd1-8f6a-b7031ae79a31" title="Google Gemini API Key" type="text">
+          <hint>Will fall back to environment variable `GOOGLE_API\_KEY` OR `GEMINI\_API\_KEY` if empty.</hint>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "google-gemini";</isActiveFunction>
+        </setting>
+        <setting id="fdb05d1a-47de-4aca-9079-c0636f46835f" title="Open AI Compatible API Key" type="text">
+          <hint>Will fall back to environment variable `OPENAI\_COMPATIBLE\_API\_KEY` if empty.</hint>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "open-ai-compatible";</isActiveFunction>
+        </setting>
+        <setting id="7dcb723b-c3fe-4763-b7e0-d0f8b7628578" title="Open AI Compatible API Url" type="text">
+          <hint>URL to connect to an OpenAI Compatible API.</hint>
+          <defaultValue>https://{compatible openai provider}.com/</defaultValue>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "open-ai-compatible";</isActiveFunction>
+          <isRequiredFunction>return true;</isRequiredFunction>
+        </setting>
+        <setting id="c1041ed3-450d-4b38-baf9-14f3c152f834" title="Open AI Compatible Model" type="text">
+          <hint>Specify the LLM Model name here provided by an Open AI Compatible provider.</hint>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "open-ai-compatible";</isActiveFunction>
+          <isRequiredFunction>return true;</isRequiredFunction>
+        </setting>
+        <setting id="c16ca802-12a6-412b-9710-de1f1b3eaf64" title="Ollama API Key" type="text">
+          <hint>When using Ollama cloud. Will fall back to environment variable `OLLAMA\_API\_KEY` if empty.</hint>
+          <isActiveFunction>let provider = getProperty("Provider").value;return provider === "ollama";</isActiveFunction>
+        </setting>
+        <setting id="be17de04-c671-49c2-8124-cfa80bab9fcd" title="Ollama API Url" type="text">
+          <hint>URL to connect to an Ollama API.</hint>
+          <defaultValue>http://localhost:11434</defaultValue>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "ollama";</isActiveFunction>
+          <isRequiredFunction>return true;</isRequiredFunction>
+        </setting>
+        <setting id="bba2d9ee-a96a-4c48-bdcc-a53702d58ef0" title="Ollama Model" type="text">
+          <hint>Specify the LLM Model name here provided by an Ollama provider.</hint>
+          <isActiveFunction>let provider = getProperty("Provider").value;return provider === "ollama";</isActiveFunction>
           <isRequiredFunction>return true;</isRequiredFunction>
         </setting>
       </settings>
@@ -69,6 +115,23 @@ return provider === "anthropic";</isActiveFunction>
     <dependency id="Intent.Common" version="3.7.2" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
   </dependencies>
+  <interoperability>
+    <detect id="Intent.AI.AutoImplementation">
+      <install>
+        <package id="Intent.AI.AutoImplementation" version="1.0.0-beta.15" />
+      </install>
+    </detect>
+    <detect id="Intent.AI.Blazor">
+      <install>
+        <package id="Intent.AI.Blazor" version="1.0.0-beta.17" />
+      </install>
+    </detect>
+    <detect id="Intent.AI.UnitTests">
+      <install>
+        <package id="Intent.AI.UnitTests" version="1.0.0-beta.13" />
+      </install>
+    </detect>
+  </interoperability>
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
@@ -83,6 +146,7 @@ return provider === "anthropic";</isActiveFunction>
     <file src="$outDir$/OllamaSharp.dll" inspect="false" />
     <file src="$outDir$/Microsoft.Extensions.DependencyInjection.Abstractions.dll" inspect="false" />
     <file src="$outDir$/Microsoft.Extensions.AI.dll" inspect="false" />
+    <file src="$outDir$/Microsoft.Extensions.AI.OpenAI.dll" inspect="false" />
     <file src="$outDir$/Microsoft.Extensions.DependencyInjection.dll" inspect="false" />
     <file src="$outDir$/Microsoft.Extensions.Logging.Abstractions.dll" inspect="false" />
     <file src="$outDir$/System.ClientModel.dll" inspect="false" />
@@ -96,7 +160,8 @@ return provider === "anthropic";</isActiveFunction>
     <file src="$outDir$/Microsoft.Extensions.Diagnostics.dll" inspect="false" />
     <file src="$outDir$/ModelContextProtocol.Core.dll" inspect="false" />
     <file src="$outDir$/ModelContextProtocol.dll" inspect="false" />
-    <file src="$outDir$/System.Net.ServerSentEvents.dll" inspect="false" />    
+    <file src="$outDir$/System.Net.ServerSentEvents.dll" inspect="false" />
+    <file src="$outDir$/Microsoft.SemanticKernel.Connectors.Google.dll" inspect="false" />
   </files>
   <tags />
   <moduleSettingsExtensions />
