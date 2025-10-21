@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<outputLog>
+  <ApplicationId>1b952c0f-d987-4027-b6e9-767e3ad01e16</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#9be7a2d8-adad-4e14-a19f-58c8f9753f94</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>b4cb4627-7ccb-4d35-88bd-8fac5ec68240</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#85fba0e9-9161-4c85-a603-a229ef312beb</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/EnumModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>EnumModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>b4cb4627-7ccb-4d35-88bd-8fac5ec68240</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/TypeDefinitionModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>TypeDefinitionModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>12f158e1-8165-4df8-866b-60ed164c7e72</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile#2a9ae32b-3f1d-4616-a4f2-44edcddf290f</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Common.Dart.imodspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Common.Dart.imodspec</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>12f158e1-8165-4df8-866b-60ed164c7e72</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CSharpProject#12f158e1-8165-4df8-866b-60ed164c7e72</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Common.Dart.csproj</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Common.Dart.csproj</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+  </FileLogs>
+</outputLog>

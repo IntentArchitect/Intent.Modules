@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<outputLog>
+  <ApplicationId>e52a0850-142f-406c-aa52-8c8bc5b261ed</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#a582132f-d52c-4495-9063-43179063d374</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>a990e9d9-e8de-4fda-8a7a-4d681102a0ad</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile#8d780a9a-033b-4020-99b4-bca06e99d6f5</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Common.Java.imodspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Common.Java.imodspec</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>a990e9d9-e8de-4fda-8a7a-4d681102a0ad</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CSharpProject#a990e9d9-e8de-4fda-8a7a-4d681102a0ad</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Common.Java.csproj</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Common.Java.csproj</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+  </FileLogs>
+</outputLog>

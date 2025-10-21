@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<outputLog>
+  <ApplicationId>57e2ba3f-25e6-4488-8cc8-5fb5573a7f8b</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <ProjectId>c2bf994c-394c-47f0-a134-94ba0df06b10</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile#3b1d4947-de5e-431f-82dd-312339305bac</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Intent.Modules.Common.Kotlin/Intent.Common.Kotlin.imodspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Common.Kotlin.imodspec</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>c2bf994c-394c-47f0-a134-94ba0df06b10</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CSharpProject#c2bf994c-394c-47f0-a134-94ba0df06b10</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Intent.Modules.Common.Kotlin/Intent.Modules.Common.Kotlin.csproj</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Common.Kotlin.csproj</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#c19ef5a0-9b32-4d31-b01d-305e44e87020</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+  </FileLogs>
+</outputLog>

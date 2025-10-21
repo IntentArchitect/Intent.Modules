@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<outputLog>
+  <ApplicationId>4c43397f-638c-4889-bb6b-fb7b064d5562</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#55fb9209-8ea6-4141-92ba-731604c129b2</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>c57afa46-d464-450f-93b4-3903dbcc1a7a</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile#4908682f-2854-4ccc-bb4b-bb45b587c911</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Common.Sql.imodspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Common.Sql.imodspec</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>c57afa46-d464-450f-93b4-3903dbcc1a7a</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CSharpProject#c57afa46-d464-450f-93b4-3903dbcc1a7a</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Common.Sql.csproj</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Common.Sql.csproj</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+  </FileLogs>
+</outputLog>
