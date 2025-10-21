@@ -76,7 +76,7 @@ public class IntentSemanticKernelFactory
                 }
 
                 builder.Services.AddAzureOpenAIChatCompletion(
-                    deploymentName: settings.DeploymentName(),
+                    deploymentName: settings.AzureOpenAIDeploymentName(),
                     endpoint: settings.AzureOpenAIAPIUrl(),
                     apiKey: !string.IsNullOrWhiteSpace(value: apiKey) 
                         ? apiKey : throw new FriendlyException(message: GetErrorMessage("AZURE_OPENAI_API_KEY")),
@@ -97,7 +97,7 @@ public class IntentSemanticKernelFactory
                     apiKey: !string.IsNullOrWhiteSpace(value: apiKey) 
                         ? apiKey : throw new FriendlyException(message: GetErrorMessage("ANTHROPIC_API_KEY")),
                     model: model,
-                    maxTokens: int.TryParse(s: _userSettingsProvider.GetAISettings().MaxTokens(), result: out var maxTokens) ? maxTokens : null);
+                    maxTokens: int.TryParse(s: _userSettingsProvider.GetAISettings().AnthropicMaxTokens(), result: out var maxTokens) ? maxTokens : null);
                 
                 builder.Services.AddSingleton<IAiProviderService>(AiProviderService.CreateAnthropicService());
                 
@@ -134,6 +134,23 @@ public class IntentSemanticKernelFactory
                     modelId: model);
 
                 builder.Services.AddSingleton<IAiProviderService>(AiProviderService.CreateGoogleGeminiService());
+                
+                break;
+            
+            case AISettings.ProviderOptionsEnum.OpenAiCompatible:
+                apiKey = settings.OpenAICompatibleAPIKey();
+                if (string.IsNullOrWhiteSpace(value: apiKey))
+                {
+                    apiKey = Environment.GetEnvironmentVariable(variable: "OPENAI_COMPATIBLE_API_KEY");
+                }
+
+                builder.Services.AddOpenAIChatCompletion(
+                    modelId: model,
+                    endpoint: new Uri(settings.OpenAICompatibleAPIUrl()),
+                    apiKey: !string.IsNullOrWhiteSpace(value: apiKey) 
+                        ? apiKey : throw new FriendlyException(message: GetErrorMessage("OPENAI_COMPATIBLE_API_KEY")));
+
+                builder.Services.AddSingleton<IAiProviderService>(AiProviderService.CreateOpenAiService());
                 
                 break;
             

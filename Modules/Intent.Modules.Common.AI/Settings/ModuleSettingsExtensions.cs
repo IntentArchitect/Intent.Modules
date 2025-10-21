@@ -58,6 +58,7 @@ namespace Intent.Modules.Common.AI.Settings
                     "anthropic" => ProviderOptionsEnum.Anthropic,
                     "open-router" => ProviderOptionsEnum.OpenRouter,
                     "google-gemini" => ProviderOptionsEnum.GoogleGemini,
+                    "open-ai-compatible" => ProviderOptionsEnum.OpenAiCompatible,
                     "ollama" => ProviderOptionsEnum.Ollama,
                     _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
                 };
@@ -92,6 +93,11 @@ namespace Intent.Modules.Common.AI.Settings
             {
                 return Value == "google-gemini";
             }
+
+            public bool IsOpenAiCompatible()
+            {
+                return Value == "open-ai-compatible";
+            }
         }
 
         public enum ProviderOptionsEnum
@@ -102,6 +108,7 @@ namespace Intent.Modules.Common.AI.Settings
             Anthropic,
             OpenRouter,
             GoogleGemini,
+            OpenAiCompatible,
         }
 
         public string OpenAIAPIKey() => _groupSettings.GetSetting("9e9a32b4-194e-4d53-b62c-c9c28fb7b6f8")?.Value;
@@ -110,20 +117,26 @@ namespace Intent.Modules.Common.AI.Settings
 
         public string AnthropicAPIKey() => _groupSettings.GetSetting("715e2ce8-677c-467d-a876-8dc84b99ae05")?.Value;
 
+        public string AnthropicMaxTokens() => _groupSettings.GetSetting("4cb52ca6-af4f-4dbf-9f75-5a74438cd281")?.Value;
+
         public string OpenRouterAPIKey() => _groupSettings.GetSetting("d615e7c5-e3d6-4ee0-a1b2-b671e03b5330")?.Value;
 
         public string GoogleGeminiAPIKey() => _groupSettings.GetSetting("1a61e521-a95b-4bd1-8f6a-b7031ae79a31")?.Value;
+
+        public string OpenAICompatibleAPIKey() => _groupSettings.GetSetting("fdb05d1a-47de-4aca-9079-c0636f46835f")?.Value;
 
         public string OllamaAPIKey() => _groupSettings.GetSetting("c16ca802-12a6-412b-9710-de1f1b3eaf64")?.Value;
 
         public string AzureOpenAIAPIUrl() => _groupSettings.GetSetting("5d2a1254-9f21-4cbd-818e-497bf09c87ea")?.Value;
 
+        public string AzureOpenAIDeploymentName() => _groupSettings.GetSetting("07a3313b-0602-4f83-a1c1-820e746bde48")?.Value;
+
         public string OllamaAPIUrl() => _groupSettings.GetSetting("be17de04-c671-49c2-8124-cfa80bab9fcd")?.Value;
 
+        public string OpenAICompatibleModel() => _groupSettings.GetSetting("c1041ed3-450d-4b38-baf9-14f3c152f834")?.Value;
+
+        public string OpenAICompatibleAPIUrl() => _groupSettings.GetSetting("7dcb723b-c3fe-4763-b7e0-d0f8b7628578")?.Value;
+
         public string OllamaModel() => _groupSettings.GetSetting("bba2d9ee-a96a-4c48-bdcc-a53702d58ef0")?.Value;
-
-        public string DeploymentName() => _groupSettings.GetSetting("07a3313b-0602-4f83-a1c1-820e746bde48")?.Value;
-
-        public string MaxTokens() => _groupSettings.GetSetting("4cb52ca6-af4f-4dbf-9f75-5a74438cd281")?.Value;
     }
 }

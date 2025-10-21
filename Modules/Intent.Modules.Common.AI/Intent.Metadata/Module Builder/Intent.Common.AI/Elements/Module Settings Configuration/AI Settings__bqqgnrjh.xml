@@ -119,9 +119,23 @@
           <metadata />
           <childElements />
         </childElement>
+        <childElement id="84efb10b-e0c1-4695-9122-692b900da384" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Open AI Compatible</name>
+          <display>Open AI Compatible = open-ai-compatible</display>
+          <isAbstract>false</isAbstract>
+          <value>open-ai-compatible</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>41ac1bce-6362-4b77-b588-ba3df55a2afb</parentFolderId>
+          <packageId>3d488031-cdd1-4987-8d07-427d7cbc605e</packageId>
+          <packageName>Intent.Common.AI</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
         <childElement id="c77e69ea-2700-46f9-9379-029574e9ac0b" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
-          <name>Ollama (Experimental)</name>
-          <display>Ollama (Experimental) = ollama</display>
+          <name>Ollama</name>
+          <display>Ollama = ollama</display>
           <isAbstract>false</isAbstract>
           <value>ollama</value>
           <genericTypes />
@@ -191,6 +205,62 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="5d2a1254-9f21-4cbd-818e-497bf09c87ea" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+      <name>Azure OpenAI API Url</name>
+      <display>Azure OpenAI API Url</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>62594c9b-21fe-4c65-ac5c-b32a836a2ca5</parentFolderId>
+      <packageId>3d488031-cdd1-4987-8d07-427d7cbc605e</packageId>
+      <packageName>Intent.Common.AI</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Text Box" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="URL to connect to Azure OpenAI API." isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="https://{my resource}.openai.azure.com/" isActive="true" />
+            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="let provider = getProperty(&quot;Provider&quot;).value;&#xD;&#xA;return provider === &quot;azure-open-ai&quot;;" isActive="true" />
+            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="return true;" isActive="true" />
+            <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="07a3313b-0602-4f83-a1c1-820e746bde48" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+      <name>Azure Open AI Deployment name</name>
+      <display>Azure Open AI Deployment name</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>62594c9b-21fe-4c65-ac5c-b32a836a2ca5</parentFolderId>
+      <packageId>3d488031-cdd1-4987-8d07-427d7cbc605e</packageId>
+      <packageName>Intent.Common.AI</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Text Box" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Deployment name for Azure Open AI instance." isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" isActive="true" />
+            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="let provider = getProperty(&quot;Provider&quot;).value;&#xD;&#xA;return provider === &quot;azure-open-ai&quot;;" isActive="true" />
+            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="return true;" isActive="true" />
+            <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
     <childElement id="715e2ce8-677c-467d-a876-8dc84b99ae05" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
       <name>Anthropic API Key</name>
       <display>Anthropic API Key</display>
@@ -212,6 +282,34 @@
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" isActive="true" />
             <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="let provider = getProperty(&quot;Provider&quot;).value;&#xD;&#xA;return provider === &quot;anthropic&quot;;" isActive="true" />
             <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" isActive="true" />
+            <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="4cb52ca6-af4f-4dbf-9f75-5a74438cd281" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+      <name>Anthropic Max Tokens</name>
+      <display>Anthropic Max Tokens</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>62594c9b-21fe-4c65-ac5c-b32a836a2ca5</parentFolderId>
+      <packageId>3d488031-cdd1-4987-8d07-427d7cbc605e</packageId>
+      <packageName>Intent.Common.AI</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Text Box" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Specifies the maximum number of tokens (input + output) the AI can process in a single prompt for Anthropic models." isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="8192" isActive="true" />
+            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="let provider = getProperty(&quot;Provider&quot;).value;&#xD;&#xA;return provider === &quot;anthropic&quot;;" isActive="true" />
+            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="return true;" isActive="true" />
             <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
           </properties>
         </stereotype>
@@ -275,6 +373,90 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="fdb05d1a-47de-4aca-9079-c0636f46835f" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+      <name>Open AI Compatible API Key</name>
+      <display>Open AI Compatible API Key</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>62594c9b-21fe-4c65-ac5c-b32a836a2ca5</parentFolderId>
+      <packageId>3d488031-cdd1-4987-8d07-427d7cbc605e</packageId>
+      <packageName>Intent.Common.AI</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Text Box" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Will fall back to environment variable `OPENAI\_COMPATIBLE\_API\_KEY` if empty." isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" isActive="true" />
+            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="let provider = getProperty(&quot;Provider&quot;).value;&#xD;&#xA;return provider === &quot;open-ai-compatible&quot;;" isActive="true" />
+            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" isActive="true" />
+            <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="7dcb723b-c3fe-4763-b7e0-d0f8b7628578" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+      <name>Open AI Compatible API Url</name>
+      <display>Open AI Compatible API Url</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>62594c9b-21fe-4c65-ac5c-b32a836a2ca5</parentFolderId>
+      <packageId>3d488031-cdd1-4987-8d07-427d7cbc605e</packageId>
+      <packageName>Intent.Common.AI</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Text Box" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="URL to connect to an OpenAI Compatible API." isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="https://{compatible openai provider}.com/" isActive="true" />
+            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="let provider = getProperty(&quot;Provider&quot;).value;&#xD;&#xA;return provider === &quot;open-ai-compatible&quot;;" isActive="true" />
+            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="return true;" isActive="true" />
+            <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="c1041ed3-450d-4b38-baf9-14f3c152f834" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+      <name>Open AI Compatible Model</name>
+      <display>Open AI Compatible Model</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>62594c9b-21fe-4c65-ac5c-b32a836a2ca5</parentFolderId>
+      <packageId>3d488031-cdd1-4987-8d07-427d7cbc605e</packageId>
+      <packageName>Intent.Common.AI</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Text Box" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Specify the LLM Model name here provided by an Open AI Compatible provider." isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" isActive="true" />
+            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="let provider = getProperty(&quot;Provider&quot;).value;&#xD;&#xA;return provider === &quot;open-ai-compatible&quot;;" isActive="true" />
+            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="return true;" isActive="true" />
+            <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
     <childElement id="c16ca802-12a6-412b-9710-de1f1b3eaf64" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
       <name>Ollama API Key</name>
       <display>Ollama API Key</display>
@@ -303,62 +485,6 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="5d2a1254-9f21-4cbd-818e-497bf09c87ea" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
-      <name>Azure OpenAI API Url</name>
-      <display>Azure OpenAI API Url</display>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>62594c9b-21fe-4c65-ac5c-b32a836a2ca5</parentFolderId>
-      <packageId>3d488031-cdd1-4987-8d07-427d7cbc605e</packageId>
-      <packageName>Intent.Common.AI</packageName>
-      <stereotypes>
-        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
-          <addedByDefault>true</addedByDefault>
-          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-          <properties>
-            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Text Box" isActive="true" />
-            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
-            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="URL to connect to Azure OpenAI API." isActive="true" />
-            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="https://{my resource}.openai.azure.com/" isActive="true" />
-            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="let provider = getProperty(&quot;Provider&quot;).value;&#xD;&#xA;return provider === &quot;azure-open-ai&quot;;" isActive="true" />
-            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="return true;" isActive="true" />
-            <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
-          </properties>
-        </stereotype>
-      </stereotypes>
-      <metadata />
-      <childElements />
-    </childElement>
-    <childElement id="07a3313b-0602-4f83-a1c1-820e746bde48" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
-      <name>Deployment name</name>
-      <display>Deployment name</display>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>62594c9b-21fe-4c65-ac5c-b32a836a2ca5</parentFolderId>
-      <packageId>3d488031-cdd1-4987-8d07-427d7cbc605e</packageId>
-      <packageName>Intent.Common.AI</packageName>
-      <stereotypes>
-        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
-          <addedByDefault>true</addedByDefault>
-          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-          <properties>
-            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Text Box" isActive="true" />
-            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
-            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" isActive="true" />
-            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" isActive="true" />
-            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="let provider = getProperty(&quot;Provider&quot;).value;&#xD;&#xA;return provider === &quot;azure-open-ai&quot;;" isActive="true" />
-            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="return true;" isActive="true" />
-            <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
-          </properties>
-        </stereotype>
-      </stereotypes>
-      <metadata />
-      <childElements />
-    </childElement>
     <childElement id="be17de04-c671-49c2-8124-cfa80bab9fcd" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
       <name>Ollama API Url</name>
       <display>Ollama API Url</display>
@@ -376,7 +502,7 @@
           <properties>
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Text Box" isActive="true" />
             <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
-            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="URL to connect to Ollama API." isActive="true" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="URL to connect to an Ollama API." isActive="true" />
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="http://localhost:11434" isActive="true" />
             <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="let provider = getProperty(&quot;Provider&quot;).value;&#xD;&#xA;return provider === &quot;ollama&quot;;" isActive="true" />
             <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="return true;" isActive="true" />
@@ -404,37 +530,9 @@
           <properties>
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Text Box" isActive="true" />
             <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
-            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" isActive="true" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Specify the LLM Model name here provided by an Ollama provider." isActive="true" />
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" isActive="true" />
             <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="let provider = getProperty(&quot;Provider&quot;).value;return provider === &quot;ollama&quot;;" isActive="true" />
-            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="return true;" isActive="true" />
-            <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
-          </properties>
-        </stereotype>
-      </stereotypes>
-      <metadata />
-      <childElements />
-    </childElement>
-    <childElement id="4cb52ca6-af4f-4dbf-9f75-5a74438cd281" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
-      <name>Max Tokens</name>
-      <display>Max Tokens</display>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>62594c9b-21fe-4c65-ac5c-b32a836a2ca5</parentFolderId>
-      <packageId>3d488031-cdd1-4987-8d07-427d7cbc605e</packageId>
-      <packageName>Intent.Common.AI</packageName>
-      <stereotypes>
-        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
-          <addedByDefault>true</addedByDefault>
-          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-          <properties>
-            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Text Box" isActive="true" />
-            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
-            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="" isActive="true" />
-            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="8192" isActive="true" />
-            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="let provider = getProperty(&quot;Provider&quot;).value;&#xD;&#xA;return provider === &quot;anthropic&quot;;" isActive="true" />
             <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="return true;" isActive="true" />
             <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
           </properties>

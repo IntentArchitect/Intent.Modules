@@ -25,7 +25,8 @@
             <option value="anthropic" description="Anthropic" />
             <option value="open-router" description="Open Router" />
             <option value="google-gemini" description="Google Gemini" />
-            <option value="ollama" description="Ollama (Experimental)" />
+            <option value="open-ai-compatible" description="Open AI Compatible" />
+            <option value="ollama" description="Ollama" />
           </options>
         </setting>
         <setting id="9e9a32b4-194e-4d53-b62c-c9c28fb7b6f8" title="Open AI API Key" type="text">
@@ -38,24 +39,6 @@ return provider === "open-ai";</isActiveFunction>
           <isActiveFunction>let provider = getProperty("Provider").value;
 return provider === "azure-open-ai";</isActiveFunction>
         </setting>
-        <setting id="715e2ce8-677c-467d-a876-8dc84b99ae05" title="Anthropic API Key" type="text">
-          <hint>Will fall back to environment variable `ANTHROPIC\_API\_KEY` if empty.</hint>
-          <isActiveFunction>let provider = getProperty("Provider").value;
-return provider === "anthropic";</isActiveFunction>
-        </setting>
-        <setting id="d615e7c5-e3d6-4ee0-a1b2-b671e03b5330" title="Open Router API Key" type="text">
-          <hint>Will fall back to environment variable `OPENROUTER\_API\_KEY` if empty.</hint>
-          <isActiveFunction>let provider = getProperty("Provider").value;
-return provider === "open-router";</isActiveFunction>
-        </setting>
-        <setting id="1a61e521-a95b-4bd1-8f6a-b7031ae79a31" title="Google Gemini API Key" type="text">
-          <isActiveFunction>let provider = getProperty("Provider").value;
-return provider === "google-gemini";</isActiveFunction>
-        </setting>
-        <setting id="c16ca802-12a6-412b-9710-de1f1b3eaf64" title="Ollama API Key" type="text">
-          <hint>When using Ollama cloud. Will fall back to environment variable `OLLAMA\_API\_KEY` if empty.</hint>
-          <isActiveFunction>let provider = getProperty("Provider").value;return provider === "ollama";</isActiveFunction>
-        </setting>
         <setting id="5d2a1254-9f21-4cbd-818e-497bf09c87ea" title="Azure OpenAI API Url" type="text">
           <hint>URL to connect to Azure OpenAI API.</hint>
           <defaultValue>https://{my resource}.openai.azure.com/</defaultValue>
@@ -63,26 +46,66 @@ return provider === "google-gemini";</isActiveFunction>
 return provider === "azure-open-ai";</isActiveFunction>
           <isRequiredFunction>return true;</isRequiredFunction>
         </setting>
-        <setting id="07a3313b-0602-4f83-a1c1-820e746bde48" title="Deployment name" type="text">
+        <setting id="07a3313b-0602-4f83-a1c1-820e746bde48" title="Azure Open AI Deployment name" type="text">
+          <hint>Deployment name for Azure Open AI instance.</hint>
           <isActiveFunction>let provider = getProperty("Provider").value;
 return provider === "azure-open-ai";</isActiveFunction>
           <isRequiredFunction>return true;</isRequiredFunction>
         </setting>
+        <setting id="715e2ce8-677c-467d-a876-8dc84b99ae05" title="Anthropic API Key" type="text">
+          <hint>Will fall back to environment variable `ANTHROPIC\_API\_KEY` if empty.</hint>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "anthropic";</isActiveFunction>
+        </setting>
+        <setting id="4cb52ca6-af4f-4dbf-9f75-5a74438cd281" title="Anthropic Max Tokens" type="text">
+          <hint>Specifies the maximum number of tokens (input + output) the AI can process in a single prompt for Anthropic models.</hint>
+          <defaultValue>8192</defaultValue>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "anthropic";</isActiveFunction>
+          <isRequiredFunction>return true;</isRequiredFunction>
+        </setting>
+        <setting id="d615e7c5-e3d6-4ee0-a1b2-b671e03b5330" title="Open Router API Key" type="text">
+          <hint>Will fall back to environment variable `OPENROUTER\_API\_KEY` if empty.</hint>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "open-router";</isActiveFunction>
+        </setting>
+        <setting id="1a61e521-a95b-4bd1-8f6a-b7031ae79a31" title="Google Gemini API Key" type="text">
+          <hint>Will fall back to environment variable `GOOGLE_API\_KEY` OR `GEMINI\_API\_KEY` if empty.</hint>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "google-gemini";</isActiveFunction>
+        </setting>
+        <setting id="fdb05d1a-47de-4aca-9079-c0636f46835f" title="Open AI Compatible API Key" type="text">
+          <hint>Will fall back to environment variable `OPENAI\_COMPATIBLE\_API\_KEY` if empty.</hint>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "open-ai-compatible";</isActiveFunction>
+        </setting>
+        <setting id="7dcb723b-c3fe-4763-b7e0-d0f8b7628578" title="Open AI Compatible API Url" type="text">
+          <hint>URL to connect to an OpenAI Compatible API.</hint>
+          <defaultValue>https://{compatible openai provider}.com/</defaultValue>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "open-ai-compatible";</isActiveFunction>
+          <isRequiredFunction>return true;</isRequiredFunction>
+        </setting>
+        <setting id="c1041ed3-450d-4b38-baf9-14f3c152f834" title="Open AI Compatible Model" type="text">
+          <hint>Specify the LLM Model name here provided by an Open AI Compatible provider.</hint>
+          <isActiveFunction>let provider = getProperty("Provider").value;
+return provider === "open-ai-compatible";</isActiveFunction>
+          <isRequiredFunction>return true;</isRequiredFunction>
+        </setting>
+        <setting id="c16ca802-12a6-412b-9710-de1f1b3eaf64" title="Ollama API Key" type="text">
+          <hint>When using Ollama cloud. Will fall back to environment variable `OLLAMA\_API\_KEY` if empty.</hint>
+          <isActiveFunction>let provider = getProperty("Provider").value;return provider === "ollama";</isActiveFunction>
+        </setting>
         <setting id="be17de04-c671-49c2-8124-cfa80bab9fcd" title="Ollama API Url" type="text">
-          <hint>URL to connect to Ollama API.</hint>
+          <hint>URL to connect to an Ollama API.</hint>
           <defaultValue>http://localhost:11434</defaultValue>
           <isActiveFunction>let provider = getProperty("Provider").value;
 return provider === "ollama";</isActiveFunction>
           <isRequiredFunction>return true;</isRequiredFunction>
         </setting>
         <setting id="bba2d9ee-a96a-4c48-bdcc-a53702d58ef0" title="Ollama Model" type="text">
+          <hint>Specify the LLM Model name here provided by an Ollama provider.</hint>
           <isActiveFunction>let provider = getProperty("Provider").value;return provider === "ollama";</isActiveFunction>
-          <isRequiredFunction>return true;</isRequiredFunction>
-        </setting>
-        <setting id="4cb52ca6-af4f-4dbf-9f75-5a74438cd281" title="Max Tokens" type="text">
-          <defaultValue>8192</defaultValue>
-          <isActiveFunction>let provider = getProperty("Provider").value;
-return provider === "anthropic";</isActiveFunction>
           <isRequiredFunction>return true;</isRequiredFunction>
         </setting>
       </settings>

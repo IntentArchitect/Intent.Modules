@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -41,8 +41,8 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.1" />
     <PackageReference Include="Microsoft.SemanticKernel" Version="1.65.0" />
     <PackageReference Include="Microsoft.SemanticKernel.Connectors.AzureOpenAI" Version="1.65.0" />
-    <PackageReference Include="Microsoft.SemanticKernel.Connectors.Ollama" Version="1.65.0-alpha" />
     <PackageReference Include="Microsoft.SemanticKernel.Connectors.Google" Version="1.65.0-alpha" />
+    <PackageReference Include="Microsoft.SemanticKernel.Connectors.Ollama" Version="1.65.0-alpha" />
     <PackageReference Include="ModelContextProtocol" Version="0.3.0-preview.4" />
   </ItemGroup>
 
