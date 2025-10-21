@@ -29,6 +29,7 @@ Within the **User Settings**, is an **AI Settings** section:
   - [Azure OpenAI](#azure-openai-details)
   - [Anthropic](#anthropic-details)
   - [Open Router](#open-router-details)
+  - [Google Gemini](#google-gemini-details)
   - [Ollama](#ollama-details)
 
 
@@ -40,6 +41,7 @@ Within the **User Settings**, is an **AI Settings** section:
     - **Azure OpenAI**: `AZURE_OPENAI_API_KEY`
     - **Anthropic**: `ANTHROPIC_API_KEY`
     - **Open Router**: `OPENROUTER_API_KEY`
+    - **Google Gemini**: `GOOGLE_API_KEY` or `GEMINI_API_KEY`
 - **Max Tokens**: Specifies the maximum number of tokens (input + output) the AI can process in a single prompt.
 - **API URL**: The endpoint URL used to connect to the AI provider’s API.
 - **Deployment Name**: The name of the deployed model to use when calling Azure OpenAI.
@@ -69,6 +71,12 @@ Within the **User Settings**, is an **AI Settings** section:
 - **Sign up for API access**: [Open Router](https://openrouter.ai)
 - **Available models**: 400+ models from 60+ providers (see [List Available Models](https://openrouter.ai/models)) — includes models from OpenAI, Anthropic, Google, open-source ones.
 - **Pricing**:  Varies per model; example per-token rates (prompt vs completion) given in the model catalog.
+
+#### Google Gemini Details
+
+- **Sign up for API access**: [Google AI Studio](https://aistudio.google.com/)
+- **Available models**: [Gemini Models](https://ai.google.dev/gemini-api/docs/models)
+- **Pricing**: [Gemini Pricing](https://ai.google.dev/pricing)
 
 #### Ollama Details
 
