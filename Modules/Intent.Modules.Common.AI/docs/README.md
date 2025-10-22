@@ -8,7 +8,9 @@ This module includes:
 - Standardized settings for prompts, token limits, and model selection
 - Utilities and abstractions to streamline AI module development
 
-> ℹ️ This module is intended to be used as a dependency for other AI modules and is not directly used for AI task execution.
+> [!NOTE] 
+> 
+> This module is intended to be used as a dependency for other AI modules and is not directly used for AI task execution.
 
 ## User Settings
 
@@ -34,6 +36,10 @@ Use the **Provider** dropdown to select any supported provider and configure its
   - [Open Router](#open-router-details)
   - [Google Gemini](#google-gemini-details)
   - [Ollama](#ollama-details)
+
+> [!NOTE]
+>
+> GitHub Copilot is not available as a provider option because it does not offer public API access. GitHub Copilot requires authentication tokens originating from the GitHub Copilot platform itself. For more information, see the [GitHub documentation](https://docs.github.com/en/copilot/how-tos/use-copilot-extensions/build-a-copilot-agent/use-copilots-llm).
 
 - **Model**: The LLM model to use, specific to the selected provider. If a provider or model you need is missing, contact support@intentarchitect.com to let us know.
   - Stored settings are provider-specific, so you can configure each supported provider without losing your previous selections.
