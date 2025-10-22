@@ -437,13 +437,14 @@ vertical-align: center`</style>
                 <display>
                   <drawText>
                     <condition>return element.hasStereotype("Http Settings");</condition>
-                    <text>return [
+                    <text>
+return [
     {
         text: element.getStereotype("Http Settings").getProperty("Verb").value,
         cssClass: "keyword"
     }, 
     {
-        text: " \"" + removeSuffix(element.getParent().getStereotype("Http Service Settings")?.getProperty("Route").value + "/" + element.getStereotype("Http Settings").getProperty("Route").value, "/") + "\"",
+        text: " \"" + removeSuffix(element.getParent().getStereotype("Http Service Settings")?.getProperty("Route")?.value ?? "" + "/" + element.getStereotype("Http Settings").getProperty("Route").value, "/") + "\"",
         cssClass: "function"
     }
 ]</text>

@@ -1,3 +1,7 @@
+### Version 4.0.6
+
+- Fixed: Visual bug on Azure Function traditional service routes.
+ 
 ### Version 4.0.5
 
 - Improvement: DTOs will now warn if default values have been set on properties which are proceeded by properties without default values
@@ -17,9 +21,9 @@
 
 ### Version 4.0.2
 
-- Improvement: Made `Service` visuals on diagrams slighly more compact.
+- Improvement: Made `Service` visuals on diagrams slightly more compact.
 - Improvement: Added HTTP information to the diagram visuals where a Service's `Operation` is exposed via HTTP.
-- Improvement: Added `CursorPagedResult` to suport cursor based pagination.
+- Improvement: Added `CursorPagedResult` to support cursor based pagination.
 
 ### Version 4.0.1
 
