@@ -10,6 +10,7 @@ using Xunit;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Linq;
+using System.Text.Json.Serialization;
 
 [assembly: CollectionBehavior(DisableTestParallelization = false, MaxParallelThreads = 4)]
 
@@ -26,7 +27,7 @@ public class IntentSemanticKernelFactoryTests
           Skip = "Requires API Token environment variables to be set AND access to AI providers."
           )]
      [MemberData(nameof(GetProviderModelTestData))]
-     public async Task AiConnectionWithCalculatorToolTest(AISettings.ProviderOptionsEnum provider, string model)
+     public async Task AiConnectionWithCalculatorToolTest(AISettings.ProviderOptionsEnum provider, string model, string thinkingLevel)
      {
           // ARRANGE
           var factory = new IntentSemanticKernelFactory(SettingsMock.GetUserSettingsProvider(provider, model));
@@ -48,7 +49,7 @@ public class IntentSemanticKernelFactoryTests
           - NO "let me calculate" or similar
           - JUST the formatted number
           """,
-          kernel.GetRequiredService<IAiProviderService>().GetPromptExecutionSettings(null));
+          kernel.GetRequiredService<IAiProviderService>().GetPromptExecutionSettings(thinkingLevel));
           var result = await function.InvokeAsync(kernel);
           
           // ASSERT
@@ -65,14 +66,28 @@ public class IntentSemanticKernelFactoryTests
           var models = JsonSerializer.Deserialize<List<ModelRecord>>(json, new JsonSerializerOptions
           {
                PropertyNameCaseInsensitive = true,
+               Converters = { new JsonStringEnumConverter() },
                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-          });
-
-          return models.Select(m => new object[]
+          })!;
+          
+          foreach (var model in models)
           {
-               MapProviderIdToEnum(m.ProviderId),
-               m.ModelName
-          });
+               if (model.ThinkingType == ProviderModelsTask.ThinkingType.ThinkingLevels)
+               {
+                    yield return new object[] { MapProviderIdToEnum(model.ProviderId), model.ModelName, "low" };
+                    yield return new object[] { MapProviderIdToEnum(model.ProviderId), model.ModelName, "high" };
+               }
+               else if (model.ThinkingType == ProviderModelsTask.ThinkingType.Unknown)
+               {
+                    yield return new object[] { MapProviderIdToEnum(model.ProviderId), model.ModelName, "none" };
+                    yield return new object[] { MapProviderIdToEnum(model.ProviderId), model.ModelName, "low" };
+                    yield return new object[] { MapProviderIdToEnum(model.ProviderId), model.ModelName, "high" };
+               }
+               else
+               {
+                    yield return new object[] { MapProviderIdToEnum(model.ProviderId), model.ModelName, null };
+               }
+          }
      }
 
      private static AISettings.ProviderOptionsEnum MapProviderIdToEnum(string providerId)
@@ -80,7 +95,7 @@ public class IntentSemanticKernelFactoryTests
           return new AISettings.ProviderOptions(providerId).AsEnum();
      }
 
-     private record ModelRecord(string ProviderId, string ModelName, string ProviderName, string ThinkingType);
+     private record ModelRecord(string ProviderId, string ModelName, string ProviderName, ProviderModelsTask.ThinkingType ThinkingType);
 
      private class CalculatorPlugin
      {

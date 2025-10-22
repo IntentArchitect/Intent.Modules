@@ -10,111 +10,144 @@ namespace Intent.Modules.Common.AI;
 
 public interface IAiProviderService
 {
-    PromptExecutionSettings GetPromptExecutionSettings(string thinkingType);
+    PromptExecutionSettings GetPromptExecutionSettings(string thinkingLevel);
 }
 
 internal class AiProviderService : IAiProviderService
 {
-    private delegate PromptExecutionSettings PromptExecutionSettingsFactory(string thinkingType);
-    
+    private delegate PromptExecutionSettings PromptExecutionSettingsFactory(string thinkingLevel);
+
     private readonly PromptExecutionSettingsFactory _promptExecutionSettingsFactory;
-    
+
     private AiProviderService(PromptExecutionSettingsFactory promptExecutionSettingsFactory)
     {
         ArgumentNullException.ThrowIfNull(nameof(promptExecutionSettingsFactory));
-        
+
         _promptExecutionSettingsFactory = promptExecutionSettingsFactory;
     }
-    
-    public PromptExecutionSettings GetPromptExecutionSettings(string thinkingType)
+
+    public PromptExecutionSettings GetPromptExecutionSettings(string thinkingLevel)
     {
-        return _promptExecutionSettingsFactory(thinkingType);
+        return _promptExecutionSettingsFactory(thinkingLevel);
     }
-    
+
     public static IAiProviderService CreateOpenAiService()
     {
-        return new AiProviderService(thinkingType => new OpenAIPromptExecutionSettings
+        return new AiProviderService(thinkingLevel => new OpenAIPromptExecutionSettings
         {
-            ReasoningEffort = thinkingType,
+            ReasoningEffort = thinkingLevel == "none" ? null : thinkingLevel,
             ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions
         });
     }
 
     public static IAiProviderService CreateAzureOpenAiService()
     {
-        return new AiProviderService(thinkingType => new AzureOpenAIPromptExecutionSettings
+        return new AiProviderService(thinkingLevel => new AzureOpenAIPromptExecutionSettings
         {
-            ReasoningEffort = thinkingType,
+            ReasoningEffort = thinkingLevel == "none" ? null : thinkingLevel,
             ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions
         });
     }
 
     public static IAiProviderService CreateAnthropicService()
     {
-        return new AiProviderService(thinkingType => new PromptExecutionSettings
+        return new AiProviderService(thinkingLevel =>
         {
-            ExtensionData = new Dictionary<string, object>
+            Dictionary<string, object>? extensionData = null;
+            if (!"none".Equals(thinkingLevel))
             {
-                ["thinking"] = new
+                extensionData = new Dictionary<string, object>
                 {
-                    type = thinkingType == "low" ? "disabled" : thinkingType == "high" ? "enabled" : null
-                }
-            },
-            FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
+                    ["thinking"] = new
+                    {
+                        type = thinkingLevel == "low" ? "disabled" : thinkingLevel == "high" ? "enabled" : null
+                    }
+                };
+            }
+
+            return new PromptExecutionSettings
+            {
+                ExtensionData = extensionData,
+                FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
+            };
         });
     }
 
     public static IAiProviderService CreateOpenRouterService()
     {
-        return new AiProviderService(thinkingType => new PromptExecutionSettings
+        return new AiProviderService(thinkingLevel =>
         {
-            ExtensionData = new Dictionary<string, object>
+            Dictionary<string, object>? extensionData = null;
+            if (!"none".Equals(thinkingLevel))
             {
-                // OpenAI equivalent
-                ["reasoning"] = new
+                extensionData = new Dictionary<string, object>
                 {
-                    effort = thinkingType
-                },
-                // Anthropic equivalent
-                ["thinking"] = new
-                {
-                    type = thinkingType == "low" ? "disabled" : thinkingType == "high" ? "enabled" : null
-                }
-            },
-            FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
+                    // OpenAI equivalent
+                    ["reasoning"] = new
+                    {
+                        effort = thinkingLevel
+                    },
+                    // Anthropic equivalent
+                    ["thinking"] = new
+                    {
+                        type = thinkingLevel == "low" ? "disabled" : thinkingLevel == "high" ? "enabled" : null
+                    }
+                };
+            }
+
+            return new PromptExecutionSettings
+            {
+                ExtensionData = extensionData,
+                FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
+            };
         });
     }
 
     public static IAiProviderService CreateGoogleGeminiService()
     {
-        return new AiProviderService(thinkingType => new GeminiPromptExecutionSettings
+        return new AiProviderService(thinkingLevel =>
         {
-            ThinkingConfig = new GeminiThinkingConfig()
+            var config = new GeminiThinkingConfig();
+            if (!"none".Equals(thinkingLevel))
             {
-                ThinkingBudget = thinkingType == "low" ? null : thinkingType == "high" ? 1024 : null
-            },
-            ToolCallBehavior = GeminiToolCallBehavior.AutoInvokeKernelFunctions
+                config.ThinkingBudget = thinkingLevel == "low" ? null : thinkingLevel == "high" ? 1024 : null;
+            }
+
+            return new GeminiPromptExecutionSettings
+            {
+                ThinkingConfig = config,
+                ToolCallBehavior = GeminiToolCallBehavior.AutoInvokeKernelFunctions
+            };
         });
     }
 
     public static IAiProviderService CreateOllamaService()
     {
-        return new AiProviderService(thinkingType => new OllamaPromptExecutionSettings
+        return new AiProviderService(thinkingLevel =>
         {
-            ExtensionData = new Dictionary<string, object>
+            Dictionary<string, object>? extensionData = null;
+            if (!"none".Equals(thinkingLevel))
             {
-                // OpenAI equivalent
-                ["reasoning"] = new
+                extensionData = new Dictionary<string, object>
                 {
-                    effort = thinkingType
-                },
-                // Anthropic equivalent
-                ["thinking"] = new
-                {
-                    type = thinkingType == "low" ? "disabled" : thinkingType == "high" ? "enabled" : null
-                }
-            },
-            FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
+                    // OpenAI equivalent
+                    ["reasoning"] = new
+                    {
+                        effort = thinkingLevel
+                    },
+                    // Anthropic equivalent
+                    ["thinking"] = new
+                    {
+                        type = thinkingLevel == "low" ? "disabled" : thinkingLevel == "high" ? "enabled" : null
+                    }
+                };
+            }
+
+            return new OllamaPromptExecutionSettings
+            {
+                ExtensionData = extensionData,
+                FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
+            };
         });
     }
 }

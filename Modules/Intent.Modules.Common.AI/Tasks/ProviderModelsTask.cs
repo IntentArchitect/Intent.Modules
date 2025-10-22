@@ -30,19 +30,19 @@ public class ProviderModelsTask : IModuleTask
         
         List<ModelRecord> providerModels =
         [
-            new("azure-open-ai",        azureDeploymentName,                    "Azure OpenAI",         ThinkingType.ToggleThinking),
+            new("azure-open-ai",        azureDeploymentName,                    "Azure OpenAI",         ThinkingType.Unknown),
             new("open-ai",              "gpt-4.1",                              "OpenAI",               ThinkingType.None),
             new("open-ai",              "gpt-4o",                               "OpenAI",               ThinkingType.None),
             new("open-ai",              "gpt-5",                                "OpenAI",               ThinkingType.ThinkingLevels),
             new("open-ai",              "o1",                                   "OpenAI",               ThinkingType.ThinkingLevels),
             new("open-ai",              "o3",                                   "OpenAI",               ThinkingType.ThinkingLevels),
-            new("anthropic",            "claude-haiku-4-5-20251001",            "Anthropic",            ThinkingType.ToggleThinking),
-            new("anthropic",            "claude-sonnet-4-5-20250929",           "Anthropic",            ThinkingType.ToggleThinking),
-            new("anthropic",            "claude-opus-4-1-20250805",             "Anthropic",            ThinkingType.ToggleThinking),
-            new("anthropic",            "claude-opus-4-20250514",               "Anthropic",            ThinkingType.ToggleThinking),
-            new("anthropic",            "claude-sonnet-4-20250514",             "Anthropic",            ThinkingType.ToggleThinking),
-            new("anthropic",            "claude-3-7-sonnet-20250219",           "Anthropic",            ThinkingType.ToggleThinking),
-            new("open-router",          "openrouter/auto",                      "OpenRouter",           ThinkingType.ThinkingLevels),
+            new("anthropic",            "claude-haiku-4-5-20251001",            "Anthropic",            ThinkingType.ThinkingLevels),
+            new("anthropic",            "claude-sonnet-4-5-20250929",           "Anthropic",            ThinkingType.ThinkingLevels),
+            new("anthropic",            "claude-opus-4-1-20250805",             "Anthropic",            ThinkingType.ThinkingLevels),
+            new("anthropic",            "claude-opus-4-20250514",               "Anthropic",            ThinkingType.ThinkingLevels),
+            new("anthropic",            "claude-sonnet-4-20250514",             "Anthropic",            ThinkingType.ThinkingLevels),
+            new("anthropic",            "claude-3-7-sonnet-20250219",           "Anthropic",            ThinkingType.ThinkingLevels),
+            new("open-router",          "openrouter/auto",                      "OpenRouter",           ThinkingType.Unknown),
             new("open-router",          "x-ai/grok-4",                          "OpenRouter",           ThinkingType.ThinkingLevels),
             new("open-router",          "z-ai/glm-4.6",                         "OpenRouter",           ThinkingType.ThinkingLevels),
             new("open-router",          "google/gemini-2.5-pro",                "OpenRouter",           ThinkingType.ThinkingLevels),
@@ -51,15 +51,15 @@ public class ProviderModelsTask : IModuleTask
             new("open-router",          "qwen/qwen3-coder-plus",                "OpenRouter",           ThinkingType.None),
             new("open-router",          "qwen/qwen3-max",                       "OpenRouter",           ThinkingType.None),
             new("open-router",          "qwen/qwen3-235b-a22b-thinking-2507",   "OpenRouter",           ThinkingType.ThinkingLevels),
-            new("open-router",          "anthropic/claude-haiku-4.5",           "OpenRouter",           ThinkingType.ToggleThinking),
-            new("open-router",          "anthropic/claude-sonnet-4.5",          "OpenRouter",           ThinkingType.ToggleThinking),
-            new("open-router",          "anthropic/claude-opus-4.1",            "OpenRouter",           ThinkingType.ToggleThinking),
-            new("open-router",          "anthropic/claude-opus-4",              "OpenRouter",           ThinkingType.ToggleThinking),
-            new("open-router",          "anthropic/claude-sonnet-4",            "OpenRouter",           ThinkingType.ToggleThinking),
-            new("google-gemini",        "gemini-2.5-pro",                       "Google Gemini",        ThinkingType.ToggleThinking),
+            new("open-router",          "anthropic/claude-haiku-4.5",           "OpenRouter",           ThinkingType.ThinkingLevels),
+            new("open-router",          "anthropic/claude-sonnet-4.5",          "OpenRouter",           ThinkingType.ThinkingLevels),
+            new("open-router",          "anthropic/claude-opus-4.1",            "OpenRouter",           ThinkingType.ThinkingLevels),
+            new("open-router",          "anthropic/claude-opus-4",              "OpenRouter",           ThinkingType.ThinkingLevels),
+            new("open-router",          "anthropic/claude-sonnet-4",            "OpenRouter",           ThinkingType.ThinkingLevels),
+            new("google-gemini",        "gemini-2.5-pro",                       "Google Gemini",        ThinkingType.ThinkingLevels),
             new("google-gemini",        "gemini-2.5-flash",                     "Google Gemini",        ThinkingType.None),
-            new("open-ai-compatible",   openAiCompatibleModelName,              "Open AI Compatible",   ThinkingType.ThinkingLevels),
-            new("ollama",               ollamaModelName,                        "Ollama",               ThinkingType.None)
+            new("open-ai-compatible",   openAiCompatibleModelName,              "Open AI Compatible",   ThinkingType.Unknown),
+            new("ollama",               ollamaModelName,                        "Ollama",               ThinkingType.Unknown)
         ];
         
         var hasOpenAiKey = !string.IsNullOrWhiteSpace(_userSettingsProvider.GetAISettings().OpenAIAPIKey()) ||
@@ -104,18 +104,18 @@ public class ProviderModelsTask : IModuleTask
         });
     }
 
-    private enum ThinkingType
+    internal enum ThinkingType
     {
         /// <summary>
-        /// Model is not nor does it have a reason/thinking mode.
+        /// Model does not have a thinking/reasoning mode.
         /// </summary>
         None,
         /// <summary>
-        /// Thinking/reasoning can be enabled but is not on by default.
+        /// Unknown if the model has a thinking/reasoning mode.
         /// </summary>
-        ToggleThinking,
+        Unknown,
         /// <summary>
-        /// This is a thinking/reasoning model, but it can operate at various levels.
+        /// Model has reasoning capabilities that can be set to high and low.
         /// </summary>
         ThinkingLevels
     }

@@ -77,3 +77,13 @@ declare function promptIfUnsavedChangesAsync(): Promise<boolean>;
  * Present a popup dialog for user feedback or intervention.
  */
 declare const dialogService: IDialogService;
+
+/**
+ * Provides access to local user settings.
+ */
+declare const userSettings: IUserSettingsAccessor;
+
+/**
+ * Logs messages to the log window.
+ */
+//declare const console: { debug(message: string): void, log(message: string): void, warn(message: string): void, error(message: string): void };

@@ -14,6 +14,8 @@ type IDialogService = MacroApi.Context.IDialogService;
 type IDiagramApi = MacroApi.Context.IDiagramApi;
 type IThemeApi = MacroApi.Context.IThemeApi;
 type IElementToElementMappingApi = MacroApi.Context.IElementToElementMappingApi;
+type IUserSettings = MacroApi.Context.IUserSettings;
+type IUserSettingsAccessor = MacroApi.Context.IUserSettingsAccessor;
 
 declare namespace MacroApi.Context {
     interface IDialogService {
@@ -66,6 +68,34 @@ declare namespace MacroApi.Context {
          * @param config The configuration of the form.
          */
         openForm(config: IDynamicFormConfig): Promise<any>;
+    }
+
+    interface IUserSettingsAccessor {
+        /**
+         * Loads the global user settings.
+         */
+        loadGlobalAsync(): Promise<IUserSettings>;
+    }
+
+    interface IUserSettings {
+        /**
+         * Gets the saved value for the specified key.
+         * @param key
+         */
+        get(key: string): any;
+
+        /**
+         * Sets and saves the provided value against the specified key
+         * @param key
+         * @param value
+         */
+        set(key: string, value: string | any): void;
+
+        /**
+         * Deletes any value stored against the specified key.
+         * @param key
+         */
+        delete(key: string): void;
     }
 
     interface IDynamicFormConfig extends IDynamicFormWizardPageConfig {
@@ -143,7 +173,7 @@ declare namespace MacroApi.Context {
 
     interface IDynamicFormFieldConfig {
         id: string;
-        fieldType: "text" | "select" | "multi-select" | "checkbox" | "textarea" | "tree-view" | "tiles" | "open-file" | "button" | "alert"
+        fieldType: "text" | "select" | "multi-select" | "checkbox" | "textarea" | "tree-view" | "tiles" | "open-file" | "button" | "alert" | "open-directory";
         label: string;
         isRequired?: boolean;
         isHidden?: boolean;
@@ -167,7 +197,8 @@ declare namespace MacroApi.Context {
         sortBy?: string;
         selectOptions?: IDynamicFormFieldSelectOption[];
         treeViewOptions?: ISelectableTreeViewOptions;
-        openFileOptions?: IDynamicFormOpenFileOptions
+        openFileOptions?: IDynamicFormOpenFileOptions;
+        openDirectoryOptions?: IDynamicFormOpenDirectoryOptions;
         onClick?: (formApi: IDynamicFormApi) => Promise<void>;
         onChange?: (formApi: IDynamicFormApi) => void;
     }
@@ -216,6 +247,22 @@ declare namespace MacroApi.Context {
     interface IDynamicFormOpenFileOptions_FileFilters {
         name: string;
         extensions: string[];
+    }
+
+    interface IDynamicFormOpenDirectoryOptions {
+        /**
+         * Set the title of the open file dialog.
+         */
+        title?: string;
+        /**
+         * Set the location to start browsing with the open file dialog. If not specified, it will open at your last location.
+         */
+        defaultPath?: string;
+        /**
+         * Custom label for the confirmation button, when left empty, the default label will
+         * be used.
+         */
+        buttonLabel?: string;
     }
 
     interface ISelectableTreeViewOptions {
@@ -267,6 +314,10 @@ declare namespace MacroApi.Context {
          * The icon of this node. A default icon will be used if this is not specified.
          */
         icon?: string | MacroApi.Context.IIcon;
+        /**
+         * This icon will be used only when the node is expanded.
+         */
+        expandedIcon?: string | MacroApi.Context.IIcon;
     }
 
     interface ISelectableTypeCriteria {
@@ -796,6 +847,14 @@ declare namespace MacroApi.Context {
          * Returns true if a metadata value exists for the specified key.
          */
         hasMetadata(key: string): boolean;
+        /**
+         * Returns true this association has any errors on it.
+         */
+        hasErrors(): boolean;
+        /**
+         * Returns true this association has any warnings on it.
+         */
+        hasWarnings(): boolean;
     }
 
     interface IElementApi extends IElementReadOnlyApi {
@@ -1132,6 +1191,14 @@ declare namespace MacroApi.Context {
          * Returns true if a metadata value exists for the specified key.
          */
         hasMetadata(key: string): boolean;
+        /**
+         * Returns true this association has any errors on it.
+         */
+        hasErrors(): boolean;
+        /**
+         * Returns true this association has any warnings on it.
+         */
+        hasWarnings(): boolean;
     }
 
     interface IAssociationApi extends IAssociationReadOnlyApi {
