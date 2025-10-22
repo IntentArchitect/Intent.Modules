@@ -34,8 +34,9 @@ Use the **Provider** dropdown to select any supported provider and configure its
   - [Open Router](#open-router-details)
   - [Google Gemini](#google-gemini-details)
   - [Ollama](#ollama-details)
-  - Stored settings are provider-specific, so you can configure each supported provider without losing your previous selections.
+
 - **Model**: The LLM model to use, specific to the selected provider. If a provider or model you need is missing, contact support@intentarchitect.com to let us know.
+  - Stored settings are provider-specific, so you can configure each supported provider without losing your previous selections.
 - **API Key**: The API key used to authenticate with the provider.
   - You can store a separate key for each provider if needed.
   - Instead of storing them in here, you can fall back to using environment variables:
@@ -44,6 +45,8 @@ Use the **Provider** dropdown to select any supported provider and configure its
     - **Anthropic**: `ANTHROPIC_API_KEY`
     - **Open Router**: `OPENROUTER_API_KEY`
     - **Google Gemini**: `GOOGLE_API_KEY` or `GEMINI_API_KEY`
+    - **OpenAI Compatible**: `OPENAI_COMPATIBLE_API_KEY`
+    - **Ollama**: `OLLAMA_API_KEY`
 - **Max Tokens**: Specifies the maximum number of tokens (input + output) the AI can process in a single prompt.
 - **API URL**: The endpoint URL used to connect to the AI provider’s API.
 - **Deployment Name**: The name of the deployed model to use when calling Azure OpenAI.
