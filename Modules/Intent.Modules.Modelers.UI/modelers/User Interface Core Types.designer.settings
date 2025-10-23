@@ -266,7 +266,7 @@ function getPropertyRoute(propertyIndex) {
     }
     let property = routeProperties[propertyIndex];
     const type = property.typeReference.getType().getName() == "int" || property.typeReference.getType().getName() == "guid" || property.typeReference.getType().getName() == "long" ?
-        ":" + property.typeReference.getType().getName() : "";
+        ":" + property.typeReference.getType().getName() + (property.typeReference.getIsNullable() ? "?" : "") : "";
     return `{${property.getName()}${type}}`
 }
 
