@@ -27,7 +27,7 @@
     <PackageReference Include="Intent.Modules.Common" Version="3.7.2" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.4.0" />
     <PackageReference Include="Intent.Modules.Modelers.Domain" Version="3.9.0" />
-    <PackageReference Include="Intent.Packager" Version="3.6.0-pre.1">
+    <PackageReference Include="Intent.Packager" Version="3.6.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

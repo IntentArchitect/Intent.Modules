@@ -20,7 +20,7 @@
     <PackageReference Include="Intent.Modules.Metadata.WebApi" Version="4.7.4-pre.0" />
     <PackageReference Include="Intent.Modules.Modelers.Services" Version="4.0.0" />
     <PackageReference Include="Intent.Modules.Modelers.Services.CQRS" Version="6.0.4" />
-    <PackageReference Include="Intent.Packager" Version="3.5.0">
+    <PackageReference Include="Intent.Packager" Version="3.6.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

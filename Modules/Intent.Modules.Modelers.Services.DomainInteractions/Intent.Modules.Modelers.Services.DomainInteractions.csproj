@@ -29,7 +29,7 @@
     <PackageReference Include="Intent.Modules.Modelers.Domain" Version="3.12.6" />
     <PackageReference Include="Intent.Modules.Modelers.Services" Version="4.0.5" />
     <PackageReference Include="Intent.Modules.Modelers.Services.CQRS" Version="6.0.4" />
-    <PackageReference Include="Intent.Packager" Version="3.6.0">
+    <PackageReference Include="Intent.Packager" Version="3.6.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
