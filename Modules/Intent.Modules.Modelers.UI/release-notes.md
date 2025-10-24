@@ -1,3 +1,7 @@
+### Version 1.0.3
+
+- Improvement: Route parameters now support nullable.
+
 ### Version 1.0.2
 
 - Improvement: Navigations between Pages will be bidirectional by default.
