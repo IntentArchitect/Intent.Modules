@@ -104,6 +104,9 @@ internal class CSharpClassWrapper(CSharpClass wrapped) :
 
     ICSharpClass ICSharpClass.ImplementsInterfaces(IEnumerable<string> types) => wrapped.ImplementsInterfaces(types);
 
+    ICSharpClass ICSharpClass.AddMethod(string returnType, string name, Action<ICSharpClassMethodDeclaration>? configure) =>
+        wrapped.AddMethod(returnType, name, configure);
+
     ICSharpClass ICSharpClass.AddMethod<TModel>(string returnType, TModel model, Action<ICSharpClassMethodDeclaration>? configure) => wrapped.AddMethod(returnType, model, configure);
 
     ICSharpClass ICSharpClass.AddMethod<TModel>(TModel model, Action<ICSharpClassMethodDeclaration>? configure) => wrapped.AddMethod(model, configure);

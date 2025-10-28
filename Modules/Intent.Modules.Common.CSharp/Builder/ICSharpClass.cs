@@ -59,6 +59,8 @@ public interface ICSharpClass : ICSharpDeclaration<ICSharpClass>, IBuildsCSharpM
     ICSharpClass AddPrimaryConstructor(Action<ICSharpConstructor>? configure = null);
     ICSharpClass AddNullForgivingConstructor(Action<CSharpConstructor>? configure = null);
 
+    ICSharpClass AddMethod(string returnType, string name, Action<ICSharpClassMethodDeclaration>? configure = null);
+    
     /// <summary>
     /// Resolves the method name from the <paramref name="model"/>. Registers this method as representative of the <paramref name="model"/>.
     /// </summary>

@@ -349,6 +349,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
         return this;
     }
 
+    ICSharpClass ICSharpClass.AddMethod(string returnType, string name, Action<ICSharpClassMethodDeclaration>? configure)
+    {
+        return AddMethod(returnType, name, configure);
+    }
+    
     IBuildsCSharpMembers IBuildsCSharpMembers.AddMethod(string returnType, string name, Action<ICSharpClassMethodDeclaration>? configure) => AddMethod(returnType, name, configure);
     public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod>? configure = null)
     {

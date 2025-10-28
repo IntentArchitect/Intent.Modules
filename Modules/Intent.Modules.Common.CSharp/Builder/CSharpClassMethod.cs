@@ -47,7 +47,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
         : this(CSharpTypeParser.Parse(returnType), name, (CSharpClass)@class)
     {
     }
-
+    
     public CSharpClassMethod(CSharpType returnType, string name, CSharpClass @class)
     {
         if (string.IsNullOrWhiteSpace(name))

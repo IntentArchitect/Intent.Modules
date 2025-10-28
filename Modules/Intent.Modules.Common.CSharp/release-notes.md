@@ -1,4 +1,8 @@
-﻿### Version 3.9.8
+﻿### Version 3.9.9
+
+- Improvement: Added `AddMethod` to `ICSharpClass` which allows method name as string specification. 
+
+### Version 3.9.8
 
 - Improvement: `internal`, `private`, `protected`, `protected internal` and `public` access modifiers are now consistently available for use in C# builders.
 
