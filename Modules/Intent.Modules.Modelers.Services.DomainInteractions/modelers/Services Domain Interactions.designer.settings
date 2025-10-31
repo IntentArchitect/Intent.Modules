@@ -12420,7 +12420,8 @@ return application.isModuleInstalled("Intent.Modelers.Services.CQRS") &amp;&amp;
     </suggestionSetting>
     <suggestionSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" locations="diagram">
       <name>Create CQRS Operation</name>
-      <filterFunction>return element.getParent().specialization == "Class";</filterFunction>
+      <filterFunction>return element.getParent().specialization == "Class" &amp;&amp;
+    element.getParent().getAssociations().some(x =&gt; x.typeReference.getType().specialization === "Command");</filterFunction>
       <dependencies>
         <dependency name="Crud Api" id="61a8411f-b5bc-4a00-9a37-a967e0893d9d" />
       </dependencies>
@@ -12428,7 +12429,8 @@ return application.isModuleInstalled("Intent.Modelers.Services.CQRS") &amp;&amp;
     </suggestionSetting>
     <suggestionSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" locations="diagram">
       <name>Create Service Operation</name>
-      <filterFunction>return element.getParent().specialization == "Class";</filterFunction>
+      <filterFunction>return element.getParent().specialization == "Class" &amp;&amp;
+    element.getParent().getAssociations().some(x =&gt; x.typeReference.getType().specialization === "Operation" &amp;&amp; x.typeReference.getType().getParent().specialization === "Service");</filterFunction>
       <dependencies>
         <dependency name="Crud Api" id="61a8411f-b5bc-4a00-9a37-a967e0893d9d" />
       </dependencies>

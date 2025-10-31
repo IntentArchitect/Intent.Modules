@@ -40,7 +40,7 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;]" isActive="true" />
-            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="return element.getParent().specialization == &quot;Class&quot;;" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="return element.getParent().specialization == &quot;Class&quot; &amp;&amp;&#xD;&#xA;    element.getParent().getAssociations().some(x =&gt; x.typeReference.getType().specialization === &quot;Command&quot;);" isActive="true" />
             <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
             <property name="bbf03fa4-5beb-4d27-a24f-9858af08d97f" display="Icon" isActive="true" />
             <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="await CrudApi.createCQRSServiceForOperation(element, getCurrentDiagram());" isActive="true" />
@@ -157,7 +157,7 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="bd242929-b399-4d13-88c0-d046b7161d41" display="Locations" value="[&quot;Diagram&quot;]" isActive="true" />
-            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="return element.getParent().specialization == &quot;Class&quot;;" isActive="true" />
+            <property name="8d51eb08-f4a9-4703-ba70-de87c9417d46" display="Filter Function" value="return element.getParent().specialization == &quot;Class&quot; &amp;&amp;&#xD;&#xA;    element.getParent().getAssociations().some(x =&gt; x.typeReference.getType().specialization === &quot;Operation&quot; &amp;&amp; x.typeReference.getType().getParent().specialization === &quot;Service&quot;);" isActive="true" />
             <property name="ecb7abbb-0297-486e-bd99-cded3226d2a4" display="Display Function" isActive="true" />
             <property name="bbf03fa4-5beb-4d27-a24f-9858af08d97f" display="Icon" isActive="true" />
             <property name="bfd10a66-2f93-4ffd-bf35-633ff96e7e6c" display="Script" value="await CrudApi.createTraditionalServiceForOperation(element, getCurrentDiagram());" isActive="true" />
