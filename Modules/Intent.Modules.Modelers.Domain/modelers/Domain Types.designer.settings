@@ -212,10 +212,6 @@ if (association != null) {
 
 return result;
 </displayFunction>
-      <validateFunction>let otherClasses = getParent().getChildren("Class").filter(x =&gt; x.id != id);
-if (otherClasses.some(x =&gt; x.getName() == getName())) {
-    return "Please ensure class names are unique in this location."
-}</validateFunction>
       <allowRename>true</allowRename>
       <nameMustBeUnique>true</nameMustBeUnique>
       <allowAbstract>true</allowAbstract>

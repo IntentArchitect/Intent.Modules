@@ -1,4 +1,8 @@
-﻿### Version 3.12.8
+﻿### Version 3.12.9
+
+- Fixed: A validation error that class names must be unique would show even when classes had a different number of generic type parameters.
+
+### Version 3.12.8
 
 - Fixed: `[Static Constructor]` script removing stereotype on edit incorrectly.
 
