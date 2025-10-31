@@ -28,9 +28,25 @@ let route = routeProperty.getValue();
 if (route.includes("//")){
     return "'//' in route is invalid.";
 }
+
+if(!hasBalancedBraces(route)) {
+    return "Brace pairing { } in route is invalid.";
+}
+
 return "";
 
-</validateFunction>
+function hasBalancedBraces(input) {
+    let balance = 0;
+    for (const char of input) {
+        if (char === '{') balance++;
+        else if (char === '}') balance--;
+
+        // If we ever have more closing than opening, it's invalid
+        if (balance &lt; 0) return false;
+    }
+    // Valid only if all braces are closed
+    return balance === 0;
+}</validateFunction>
   <properties>
     <property id="9dff9df1-a993-4bf6-9aa7-c16811142228">
       <name>Route</name>

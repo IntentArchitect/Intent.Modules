@@ -1,6 +1,7 @@
 ### Version 1.0.3
 
 - Improvement: Route parameters now support nullable.
+- Improvement: Updated error messaging when Route of a `Page` contains incorrect route parameters.
 
 ### Version 1.0.2
 
