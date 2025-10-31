@@ -12,7 +12,6 @@ class TraditionalServicesStrategy extends CrudStrategy {
         const serviceName = `${toPascalCase(pluralize(owningAggregate != null ? owningAggregate.getName() : entity.getName()))}Service`;
         const existingService = context.element.specialization == "Service" ? context.element : intentPackage.getChildren("Service").find(x => x.getName() == serviceName);
         this.service = existingService ?? createElement("Service", serviceName, intentPackage.id);
-        
     }
 
     protected doCreate(): IElementApi {     

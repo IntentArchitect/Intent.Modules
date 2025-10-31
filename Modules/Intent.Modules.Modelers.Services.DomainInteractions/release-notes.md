@@ -1,3 +1,7 @@
+### Version 2.3.8
+
+- Improvement: Add CQRS Operations and Traditional Service Operations from Domain Entity Operations. 
+
 ### Version 2.3.7
 
 - Improvement: It is now possible to use the result of an invocation as a data source on `Create` and `Update` mapping screens.

@@ -12418,6 +12418,22 @@ return application.isModuleInstalled("Intent.Modelers.Services.CQRS") &amp;&amp;
       </dependencies>
       <script>await RepositoryOperationApi.createCQRSService(element, getCurrentDiagram());</script>
     </suggestionSetting>
+    <suggestionSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" locations="diagram">
+      <name>Create CQRS Operation</name>
+      <filterFunction>return element.getParent().specialization == "Class";</filterFunction>
+      <dependencies>
+        <dependency name="Crud Api" id="61a8411f-b5bc-4a00-9a37-a967e0893d9d" />
+      </dependencies>
+      <script>await CrudApi.createCQRSServiceForOperation(element, getCurrentDiagram());</script>
+    </suggestionSetting>
+    <suggestionSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" locations="diagram">
+      <name>Create Service Operation</name>
+      <filterFunction>return element.getParent().specialization == "Class";</filterFunction>
+      <dependencies>
+        <dependency name="Crud Api" id="61a8411f-b5bc-4a00-9a37-a967e0893d9d" />
+      </dependencies>
+      <script>await CrudApi.createTraditionalServiceForOperation(element, getCurrentDiagram());</script>
+    </suggestionSetting>
     <suggestionSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" locations="diagram, model">
       <name>Create Service Operation</name>
       <filterFunction>const callServiceOperationTargetEnd = "093e5909-ffe4-4510-b3ea-532f30212f3c";

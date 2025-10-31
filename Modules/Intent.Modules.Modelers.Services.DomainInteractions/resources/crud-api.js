@@ -1587,6 +1587,54 @@ class CrudStrategy {
         this.doAddToDiagram(diagram, targetPoint);
         await notifyUserOfLimitations(dialogOptions.selectedEntity, dialogOptions);
     }
+    async executeForOperation(domainOperationElement, diagramElement) {
+        var _a, _b;
+        if (domainOperationElement.specialization != "Operation") {
+            throw new Error("Element is not an operation");
+        }
+        if (((_a = domainOperationElement.getParent()) === null || _a === void 0 ? void 0 : _a.specialization) !== "Class") {
+            throw new Error("Operation's parent is not a class");
+        }
+        const operation = domainOperationElement;
+        this.entity = operation.getParent();
+        this.targetFolder = CrudStrategy.getOrCreateEntityFolder(diagramElement.getOwner().getPackage(), this.entity);
+        this.initialize({
+            element: this.targetFolder,
+            dialogOptions: {
+                selectedEntity: this.entity,
+                canCreate: false,
+                canUpdate: false,
+                canDelete: false,
+                canQueryById: false,
+                canQueryAll: false,
+                canDomain: true,
+                selectedDomainOperationIds: [operation.id]
+            },
+            primaryKeys: DomainHelper.getPrimaryKeys(this.entity)
+        });
+        this.primaryKeys = DomainHelper.getPrimaryKeys(this.entity);
+        if (!await this.validate()) {
+            return;
+        }
+        let operationResultDto = null;
+        if (operation.typeReference != null) {
+            if (DomainHelper.isComplexType((_b = operation.typeReference) === null || _b === void 0 ? void 0 : _b.getType())) {
+                let projector2 = new EntityProjector();
+                let from = lookup(operation.typeReference.getTypeId());
+                operationResultDto = projector2.createOrGetDto(from, this.targetFolder);
+                if (projector2.getMappings().length > 0) {
+                    this.addBasicMapping(projector2.getMappings());
+                }
+            }
+        }
+        let x = this.doOperation(operation, operationResultDto);
+        const owningAggregate = DomainHelper.getOwningAggregateRecursive(this.entity);
+        if (owningAggregate != null) {
+            this.AddAggregateKeys(x);
+        }
+        x.collapse();
+        this.doAddToDiagram(diagramElement, null);
+    }
     async validate() {
         if (DomainHelper.getOwnersRecursive(this.entity).length > 1) {
             const owners = DomainHelper.getOwnersRecursive(this.entity).map(item => item.getName()).join(", ");
@@ -1722,9 +1770,10 @@ Compositional Entities (black diamond) must have 1 owner. Please adjust the asso
         });
     }
     AddAggregateKeys(element) {
+        var _a;
         //Have to do the reverse so setOrder works
-        let keys = DomainHelper.getOwningAggregateKeyChain(this.entity).reverse();
-        keys.forEach((pk) => {
+        let keys = (_a = DomainHelper.getOwningAggregateKeyChain(this.entity)) === null || _a === void 0 ? void 0 : _a.reverse();
+        keys === null || keys === void 0 ? void 0 : keys.forEach((pk) => {
             if (!element.getChildren().some(x => x.getName().toLowerCase() == pk.expectedName.toLowerCase())) {
                 let field = this.addMissingAggregateKey(element, pk.expectedName);
                 field.typeReference.setType(pk.attribute.typeReference.getTypeId());
@@ -1960,7 +2009,9 @@ class TraditionalServicesStrategy extends CrudStrategy {
 /// <reference path="strategy-traditional.ts" />
 let CrudApi = {
     createCQRSService,
-    createTraditionalService
+    createTraditionalService,
+    createCQRSServiceForOperation,
+    createTraditionalServiceForOperation
 };
 async function createCQRSService(element, preselectedClass, diagramElement) {
     let strategy = new CQRSCrudStrategy();
@@ -1969,4 +2020,12 @@ async function createCQRSService(element, preselectedClass, diagramElement) {
 async function createTraditionalService(element, preselectedClass, diagramElement) {
     let strategy = new TraditionalServicesStrategy();
     await strategy.execute(element, preselectedClass, diagramElement);
+}
+async function createCQRSServiceForOperation(domainOperationElement, diagramElement) {
+    let strategy = new CQRSCrudStrategy();
+    await strategy.executeForOperation(domainOperationElement, diagramElement);
+}
+async function createTraditionalServiceForOperation(domainOperationElement, diagramElement) {
+    let strategy = new TraditionalServicesStrategy();
+    await strategy.executeForOperation(domainOperationElement, diagramElement);
 }

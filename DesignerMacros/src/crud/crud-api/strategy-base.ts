@@ -158,6 +158,64 @@ abstract class CrudStrategy {
         await notifyUserOfLimitations(dialogOptions.selectedEntity, dialogOptions);
     }
 
+    public async executeForOperation(domainOperationElement: IElementApi, diagramElement?: IDiagramApi | undefined): Promise<void> {
+        if (domainOperationElement.specialization != "Operation") {
+            throw new Error("Element is not an operation");
+        }
+        if (domainOperationElement.getParent()?.specialization !== "Class") {
+            throw new Error("Operation's parent is not a class");
+        }
+
+        const operation = domainOperationElement;
+        this.entity = operation.getParent();
+
+        this.targetFolder = CrudStrategy.getOrCreateEntityFolder(diagramElement.getOwner().getPackage() as any as IElementApi, this.entity);
+
+        this.initialize({
+            element: this.targetFolder,
+            dialogOptions: {
+                selectedEntity: this.entity,
+                canCreate: false,
+                canUpdate: false,
+                canDelete: false,
+                canQueryById: false,
+                canQueryAll: false,
+                canDomain: true,
+                selectedDomainOperationIds: [operation.id]
+            },
+            primaryKeys: DomainHelper.getPrimaryKeys(this.entity)
+        } as ICrudCreationContext);
+
+        this.primaryKeys = DomainHelper.getPrimaryKeys(this.entity);
+
+        if (!await this.validate()) {
+            return;
+        }
+
+        let operationResultDto = null;
+        if (operation.typeReference != null) {
+            if (DomainHelper.isComplexType(operation.typeReference?.getType())) {
+                let projector2 = new EntityProjector();
+                let from = lookup(operation.typeReference.getTypeId());
+                operationResultDto = projector2.createOrGetDto(from, this.targetFolder);
+                if (projector2.getMappings().length > 0) {
+                    this.addBasicMapping(projector2.getMappings());
+                }
+            }
+        }
+
+        let x = this.doOperation(operation, operationResultDto);
+
+        const owningAggregate = DomainHelper.getOwningAggregateRecursive(this.entity);
+        if (owningAggregate != null) {
+            this.AddAggregateKeys(x);
+        }
+
+        x.collapse();
+
+        this.doAddToDiagram(diagramElement, null);
+    }
+
     protected abstract initialize(context: ICrudCreationContext): void;
     protected abstract doCreate(): IElementApi;
     protected abstract doUpdate(): IElementApi;
@@ -325,8 +383,8 @@ Compositional Entities (black diamond) must have 1 owner. Please adjust the asso
 
     protected AddAggregateKeys(element: IElementApi): void {
         //Have to do the reverse so setOrder works
-        let keys = DomainHelper.getOwningAggregateKeyChain(this.entity).reverse();
-        keys.forEach((pk) => {
+        let keys = DomainHelper.getOwningAggregateKeyChain(this.entity)?.reverse();
+        keys?.forEach((pk) => {
 
             if (!element.getChildren().some(x => x.getName().toLowerCase() == pk.expectedName.toLowerCase())) {
                 let field = this.addMissingAggregateKey(element, pk.expectedName);
