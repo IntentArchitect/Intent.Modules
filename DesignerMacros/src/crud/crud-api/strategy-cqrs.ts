@@ -105,10 +105,29 @@ class CQRSCrudStrategy extends CrudStrategy{
         return this.targetFolder.getChildren().find(x => x.getName() == elementName)
     }
 
-    protected doAddToDiagram(diagram: IDiagramApi, addAtPoint?: MacroApi.Context.IPoint): void {
+    protected doAddElementsToDiagram(diagram: IDiagramApi, addAtPoint?: MacroApi.Context.IPoint): void {
         const space = diagram.findEmptySpace(addAtPoint ?? diagram.getViewPort().getCenter(), { width: 500, height: 550 });
         const visuals = diagram.layoutVisuals(this.targetFolder, space, true);
         diagram.selectVisualsForElements(visuals.map(x => x.id))
+    }
+
+    protected doAddElementToDiagram(element: IElementApi, diagram: IDiagramApi): void {
+        const existingElements = this.entity.getAssociations()
+            .concat(this.entity.getChildren("Operation").map(x => x.getAssociations()).flat())
+            .map(x => x.typeReference?.getType())
+            .filter(x => x != null && diagram.getVisual(x) != null && (x.specialization === "Command" || x.specialization === "Query"));
+        if (existingElements.length > 0) {
+            const lowestPlacedElement = existingElements.reduce((lowest, current) => {
+                const lowestVisual = diagram.getVisual(lowest.id);
+                const currentVisual = diagram.getVisual(current.id);
+                return (currentVisual.getPosition().y > lowestVisual.getPosition().y) ? current : lowest;
+            });
+            const lastVisual = diagram.getVisual(lowestPlacedElement.id);
+            let space = lastVisual.getPosition();
+            space.y += lastVisual.getSize().height + 100;
+            space.x += 100; // Not sure why but its X auto-moved to the left. Let's move it to the right.
+            diagram.layoutVisuals([element.id], space);
+        }
     }
 
     protected addMissingAggregateKey(element: IElementApi, name: string):IElementApi{

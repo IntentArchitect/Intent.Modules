@@ -1584,7 +1584,7 @@ class CrudStrategy {
         diagramElement = (_b = lookup(this.context.dialogOptions.diagramId)) !== null && _b !== void 0 ? _b : this.getOrCreateDiagram(this.targetFolder);
         diagramElement.loadDiagram();
         const diagram = getCurrentDiagram();
-        this.doAddToDiagram(diagram, targetPoint);
+        this.doAddElementsToDiagram(diagram, targetPoint);
         await notifyUserOfLimitations(dialogOptions.selectedEntity, dialogOptions);
     }
     async executeForOperation(domainOperationElement, diagramElement) {
@@ -1633,7 +1633,7 @@ class CrudStrategy {
             this.AddAggregateKeys(x);
         }
         x.collapse();
-        this.doAddToDiagram(diagramElement, null);
+        this.doAddElementToDiagram(x, diagramElement);
     }
     async validate() {
         if (DomainHelper.getOwnersRecursive(this.entity).length > 1) {
@@ -1873,10 +1873,28 @@ class CQRSCrudStrategy extends CrudStrategy {
     elementExists(elementName) {
         return this.targetFolder.getChildren().find(x => x.getName() == elementName);
     }
-    doAddToDiagram(diagram, addAtPoint) {
+    doAddElementsToDiagram(diagram, addAtPoint) {
         const space = diagram.findEmptySpace(addAtPoint !== null && addAtPoint !== void 0 ? addAtPoint : diagram.getViewPort().getCenter(), { width: 500, height: 550 });
         const visuals = diagram.layoutVisuals(this.targetFolder, space, true);
         diagram.selectVisualsForElements(visuals.map(x => x.id));
+    }
+    doAddElementToDiagram(element, diagram) {
+        const existingElements = this.entity.getAssociations()
+            .concat(this.entity.getChildren("Operation").map(x => x.getAssociations()).flat())
+            .map(x => { var _a; return (_a = x.typeReference) === null || _a === void 0 ? void 0 : _a.getType(); })
+            .filter(x => x != null && diagram.getVisual(x) != null && (x.specialization === "Command" || x.specialization === "Query"));
+        if (existingElements.length > 0) {
+            const lowestPlacedElement = existingElements.reduce((lowest, current) => {
+                const lowestVisual = diagram.getVisual(lowest.id);
+                const currentVisual = diagram.getVisual(current.id);
+                return (currentVisual.getPosition().y > lowestVisual.getPosition().y) ? current : lowest;
+            });
+            const lastVisual = diagram.getVisual(lowestPlacedElement.id);
+            let space = lastVisual.getPosition();
+            space.y += lastVisual.getSize().height + 100;
+            space.x += 100; // Not sure why but its X auto-moved to the left. Let's move it to the right.
+            diagram.layoutVisuals([element.id], space);
+        }
     }
     addMissingAggregateKey(element, name) {
         return createElement("DTO-Field", name, element.id);
@@ -1996,10 +2014,13 @@ class TraditionalServicesStrategy extends CrudStrategy {
     operationExists(operationName) {
         return this.service.getChildren().find(x => x.getName() === operationName);
     }
-    doAddToDiagram(diagram, addAtPoint) {
+    doAddElementsToDiagram(diagram, addAtPoint) {
         const space = diagram.findEmptySpace(addAtPoint !== null && addAtPoint !== void 0 ? addAtPoint : diagram.getViewPort().getCenter(), { width: 500, height: 200 });
         const visuals = diagram.layoutVisuals(this.service, space, true);
         diagram.selectVisualsForElements(visuals.map(x => x.id));
+    }
+    doAddElementToDiagram(element, diagram) {
+        this.doAddElementsToDiagram(diagram, diagram.mousePosition);
     }
     addMissingAggregateKey(element, name) {
         return createElement("Parameter", toCamelCase(name), element.id);

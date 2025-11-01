@@ -1,7 +1,6 @@
 /// <reference path="strategy-base.ts" />
 
 class TraditionalServicesStrategy extends CrudStrategy {
-
     private service: IElementApi;
 
     protected initialize(context: ICrudCreationContext): void {
@@ -159,10 +158,14 @@ class TraditionalServicesStrategy extends CrudStrategy {
         return this.service.getChildren().find(x => x.getName() === operationName);
     }
 
-    protected doAddToDiagram(diagram: IDiagramApi, addAtPoint?: MacroApi.Context.IPoint): void {        
+    protected doAddElementsToDiagram(diagram: IDiagramApi, addAtPoint?: MacroApi.Context.IPoint): void {        
         const space = diagram.findEmptySpace(addAtPoint ?? diagram.getViewPort().getCenter(), { width: 500, height: 200 });
         const visuals = diagram.layoutVisuals(this.service, space, true);
         diagram.selectVisualsForElements(visuals.map(x => x.id))
+    }
+
+    protected doAddElementToDiagram(element: IElementApi, diagram: IDiagramApi): void {
+        this.doAddElementsToDiagram(diagram, diagram.mousePosition);
     }
 
     protected addMissingAggregateKey(element: IElementApi, name: string):IElementApi{

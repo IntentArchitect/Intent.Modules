@@ -153,12 +153,12 @@ abstract class CrudStrategy {
         diagramElement = lookup(this.context.dialogOptions.diagramId) ?? this.getOrCreateDiagram(this.targetFolder);
         diagramElement.loadDiagram();
         const diagram = getCurrentDiagram();
-        this.doAddToDiagram(diagram, targetPoint);
+        this.doAddElementsToDiagram(diagram, targetPoint);
 
         await notifyUserOfLimitations(dialogOptions.selectedEntity, dialogOptions);
     }
 
-    public async executeForOperation(domainOperationElement: IElementApi, diagramElement?: IDiagramApi | undefined): Promise<void> {
+    public async executeForOperation(domainOperationElement: IElementApi, diagramElement: IDiagramApi): Promise<void> {
         if (domainOperationElement.specialization != "Operation") {
             throw new Error("Element is not an operation");
         }
@@ -213,7 +213,7 @@ abstract class CrudStrategy {
 
         x.collapse();
 
-        this.doAddToDiagram(diagramElement, null);
+        this.doAddElementToDiagram(x, diagramElement);
     }
 
     protected abstract initialize(context: ICrudCreationContext): void;
@@ -223,7 +223,8 @@ abstract class CrudStrategy {
     protected abstract doGetById(): IElementApi;
     protected abstract doGetAll(): IElementApi;
     protected abstract doOperation(operation: IElementApi, operationResultDto?: IElementApi): IElementApi;
-    protected abstract doAddToDiagram(diagram: IDiagramApi, addAtPoint?: MacroApi.Context.IPoint): void;
+    protected abstract doAddElementsToDiagram(diagram: IDiagramApi, addAtPoint?: MacroApi.Context.IPoint): void;
+    protected abstract doAddElementToDiagram(element: IElementApi, diagram: IDiagramApi): void;
 
     protected async validate(): Promise<boolean> {
         if (DomainHelper.getOwnersRecursive(this.entity).length > 1) {
