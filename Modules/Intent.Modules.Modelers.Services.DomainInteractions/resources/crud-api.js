@@ -1123,7 +1123,12 @@ var MappingType;
 class EntityProjector {
     addMapping(type, sourceRelative, targetRelative, changeCurrent = false) {
         let result = { targetPops: 0, sourcePops: 0 };
-        this.mappings.push({ type: type, sourcePath: this.sourcePath.concat(sourceRelative), targetPath: this.targetPath.concat(targetRelative), targetPropertyStart: targetRelative[0] });
+        this.mappings.push({
+            type: type,
+            sourcePath: this.sourcePath.concat(sourceRelative),
+            targetPath: this.targetPath.concat(targetRelative),
+            targetPropertyStart: targetRelative[0]
+        });
         if (type == MappingType.Navigation && changeCurrent) {
             this.sourcePath.push(...sourceRelative);
             this.targetPath.push(...targetRelative);
@@ -1284,7 +1289,7 @@ class EntityProjector {
         }
         return contract;
     }
-    getOrCreateContract(elementName, elementType, entity, createMode, folder, inbound = false) {
+    getOrCreateContract(elementName, elementType, entity, createMode, folder, inbound = false, mandatoryRelationship = false) {
         let dto = this.getOrCreateElement(elementName, elementType, folder);
         const entityCtor = entity
             .getChildren("Class Constructor")
@@ -1298,16 +1303,16 @@ class EntityProjector {
         }
         else {
             this.addMapping(MappingType.TypeMap, [dto.id], [entity.id]);
-            this.addDtoFields(createMode, entity, dto, folder, inbound);
+            this.addDtoFields(createMode, entity, dto, folder, inbound, mandatoryRelationship);
         }
         return dto;
     }
-    addDtoFields(createMode, entity, dto, folder, inbound = false) {
+    addDtoFields(createMode, entity, dto, folder, inbound = false, mandatoryRelationship = false) {
         let dtoUpdated = false;
         let domainElement = entity;
         let attributesWithMapPaths = createMode ?
             this.getAttributesWithMapPath(domainElement, (x) => this.standardAttributeFilter(x) && !this.generatedPKFilter(x)) :
-            this.getAttributesWithMapPath(domainElement, this.standardAttributeFilter);
+            this.getAttributesWithMapPath(domainElement, (x) => this.standardAttributeFilter(x) && (!mandatoryRelationship || !this.compositePKFilter(x)));
         this.addDtoFieldsInternal(attributesWithMapPaths, createMode, entity, dto, folder, inbound);
     }
     addDtoFieldsInternal(attributes, createMode, entity, dto, folder, inbound = false) {
@@ -1322,7 +1327,7 @@ class EntityProjector {
                 continue;
             }
             let field = createElement("DTO-Field", entry.name, dto.id);
-            console.warn("Field : " + entry.name + " , mappath =" + entry.mapPath);
+            //console.warn("Field : " + entry.name + " , mappath =" + entry.mapPath);
             let pops = this.addMapping(MappingType.Navigation, [field.id], entry.mapPath, DomainHelper.isComplexTypeById(entry.typeId));
             if (DomainHelper.isComplexTypeById(entry.typeId)) {
                 let dtoName = dto.getName().replace(/(?:Dto|Command|Query)$/, "") + field.getName() + "Dto";
@@ -1346,7 +1351,7 @@ class EntityProjector {
                 let pops = this.addMapping(MappingType.Navigation, [field.id], entry.mapPath, true);
                 let dtoName = dto.getName().replace(/(?:Dto|Command|Query)$/, "") + field.getName() + "Dto";
                 let entityField = lookup(entry.id);
-                let newDto = this.getOrCreateContract(dtoName, "DTO", entityField.typeReference.getType(), createMode, folder, inbound);
+                let newDto = this.getOrCreateContract(dtoName, "DTO", entityField.typeReference.getType(), createMode, folder, inbound, true);
                 field.typeReference.setType(newDto.id);
                 this.popMapping(pops);
                 field.typeReference.setIsNullable(entry.isNullable);
@@ -1406,6 +1411,11 @@ class EntityProjector {
     }
     generatedPKFilter(x) {
         return x.hasStereotype("Primary Key") && (!x.getStereotype("Primary Key").hasProperty("Data source") || x.getStereotype("Primary Key").getProperty("Data source").value != "User supplied");
+    }
+    compositePKFilter(x) {
+        let pk = x.hasStereotype("Primary Key");
+        let entity = x.getParent();
+        return pk && DomainHelper.getOwningAggregateRecursive(entity) != null;
     }
     getAttributesWithMapPath(entity, attributeFilter) {
         if (attributeFilter == null) {

@@ -1,6 +1,7 @@
 ### Version 2.3.8
 
-- Improvement: Add CQRS Operations and Traditional Service Operations from Domain Entity Operations. 
+- Improvement: Add CQRS Operations and Traditional Service Operations from Domain Entity Operations.
+- Fixed: Creating Update Operations for Composite 1 -> 1 associations will no longer attempt to map `Id` attributes.
 
 ### Version 2.3.7
 

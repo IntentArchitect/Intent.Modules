@@ -1,18 +1,18 @@
 /// <reference path="common.ts" />
 
 interface IPathMapping {
-    type:MappingType,
+    type: MappingType,
     targetPropertyStart: string;
     sourcePath: string[],
     targetPath: string[]
 }
 
-enum MappingType{
+enum MappingType {
     Navigation = 1,
     TypeMap = 2
 }
 
-interface IPops{
+interface IPops {
     targetPops : number;
     sourcePops : number;
 }
@@ -28,8 +28,13 @@ class EntityProjector {
 
     private addMapping(type: MappingType, sourceRelative: string[], targetRelative: string[], changeCurrent:boolean  = false) : IPops  {        
         let result : IPops = {targetPops : 0, sourcePops : 0};
-        this.mappings.push({ type: type, sourcePath: this.sourcePath.concat(sourceRelative), targetPath: this.targetPath.concat(targetRelative), targetPropertyStart:targetRelative[0] });
-        if (type == MappingType.Navigation && changeCurrent){            
+        this.mappings.push({ 
+            type: type, 
+            sourcePath: this.sourcePath.concat(sourceRelative), 
+            targetPath: this.targetPath.concat(targetRelative), 
+            targetPropertyStart: targetRelative[0] 
+        });
+        if (type == MappingType.Navigation && changeCurrent) {            
             this.sourcePath.push(...sourceRelative);
             this.targetPath.push(...targetRelative);
             result.sourcePops = sourceRelative.length;
@@ -254,6 +259,7 @@ class EntityProjector {
         createMode: boolean,
         folder: MacroApi.Context.IElementApi,
         inbound: boolean = false,
+        mandatoryRelationship: boolean = false
     ): IElementApi {
 
         let dto = this.getOrCreateElement(elementName, elementType, folder);
@@ -267,20 +273,20 @@ class EntityProjector {
         if (inbound && entityCtor != null) {
             this.addMapping(MappingType.TypeMap, [dto.id], [entity.id, entityCtor.id]);
             this.addDtoFieldsForCtor(createMode, entityCtor, dto, folder);
-        } else {            
+        } else {
             this.addMapping(MappingType.TypeMap, [dto.id], [entity.id]);
-            this.addDtoFields(createMode, entity, dto, folder, inbound);
+            this.addDtoFields(createMode, entity, dto, folder, inbound, mandatoryRelationship);
         }
 
         return dto;
     }
 
-    private addDtoFields(createMode: boolean, entity: MacroApi.Context.IElementApi, dto: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi, inbound: boolean = false) {
+    private addDtoFields(createMode: boolean, entity: MacroApi.Context.IElementApi, dto: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi, inbound: boolean = false, mandatoryRelationship: boolean = false) {
         let dtoUpdated = false;
         let domainElement = entity;
         let attributesWithMapPaths = createMode ? 
             this.getAttributesWithMapPath(domainElement, (x) => this.standardAttributeFilter(x) && !this.generatedPKFilter(x)) :
-            this.getAttributesWithMapPath(domainElement, this.standardAttributeFilter);
+            this.getAttributesWithMapPath(domainElement, (x) => this.standardAttributeFilter(x) && (!mandatoryRelationship || !this.compositePKFilter(x)));
 
         this.addDtoFieldsInternal(attributesWithMapPaths, createMode, entity, dto, folder, inbound);
     }
@@ -298,7 +304,7 @@ class EntityProjector {
                 continue;
             }
             let field = createElement("DTO-Field", entry.name, dto.id);
-            console.warn("Field : " + entry.name + " , mappath =" + entry.mapPath);
+            //console.warn("Field : " + entry.name + " , mappath =" + entry.mapPath);
             let pops = this.addMapping(MappingType.Navigation, [field.id], entry.mapPath, DomainHelper.isComplexTypeById(entry.typeId));
             if (DomainHelper.isComplexTypeById(entry.typeId)) {
                 let dtoName = dto.getName().replace(/(?:Dto|Command|Query)$/, "") + field.getName() + "Dto";
@@ -325,7 +331,7 @@ class EntityProjector {
                 let pops = this.addMapping(MappingType.Navigation, [field.id], entry.mapPath, true);
                 let dtoName = dto.getName().replace(/(?:Dto|Command|Query)$/, "") + field.getName() + "Dto";
                 let entityField = lookup(entry.id);
-                let newDto = this.getOrCreateContract(dtoName, "DTO", entityField.typeReference.getType(), createMode, folder, inbound);
+                let newDto = this.getOrCreateContract(dtoName, "DTO", entityField.typeReference.getType(), createMode, folder, inbound, true);
                 field.typeReference.setType(newDto.id);
                 this.popMapping(pops);
 
@@ -389,13 +395,19 @@ class EntityProjector {
         return dto;
     }
 
-    private standardAttributeFilter(x: MacroApi.Context.IElementApi) : boolean{
+    private standardAttributeFilter(x: MacroApi.Context.IElementApi) : boolean {
         return !CrudHelper.legacyPartitionKey(x) &&
             (x["hasMetadata"] && (!x.hasMetadata("set-by-infrastructure") || x.getMetadata("set-by-infrastructure")?.toLocaleLowerCase() !== "true"));
     }
 
-    private generatedPKFilter(x: MacroApi.Context.IElementApi) : boolean{
+    private generatedPKFilter(x: MacroApi.Context.IElementApi) : boolean {
         return x.hasStereotype("Primary Key") && (!x.getStereotype("Primary Key").hasProperty("Data source") || x.getStereotype("Primary Key").getProperty("Data source").value != "User supplied"); 
+    }
+
+    private compositePKFilter(x: MacroApi.Context.IElementApi): boolean {
+        let pk = x.hasStereotype("Primary Key");
+        let entity = x.getParent();
+        return pk && DomainHelper.getOwningAggregateRecursive(entity) != null;
     }
 
     private getAttributesWithMapPath(entity: MacroApi.Context.IElementApi,
