@@ -1509,16 +1509,60 @@ class CrudStrategy {
         return pluralize(owningAggregate != null ? owningAggregate.getName() : entity.getName());
     }
     async execute(element, preselectedClass, diagramElement) {
-        var _a, _b;
+        var _a;
         this.context = await this.askUser(element, preselectedClass, diagramElement);
         if (this.context == null)
             return;
+        await this.executeWithContext(this.context, diagramElement);
+        const targetPoint = diagramElement != null && diagramElement.id == this.context.dialogOptions.diagramId ? getCurrentDiagram().mousePosition : null;
+        diagramElement = (_a = lookup(this.context.dialogOptions.diagramId)) !== null && _a !== void 0 ? _a : this.getOrCreateDiagram(this.targetFolder);
+        diagramElement.loadDiagram();
+        const diagram = getCurrentDiagram();
+        this.doAddElementsToDiagram(diagram, targetPoint);
+        await notifyUserOfLimitations(this.context.dialogOptions.selectedEntity, this.context.dialogOptions);
+    }
+    async executeForOperation(domainOperationElement, diagramElement) {
+        var _a;
+        if (domainOperationElement.specialization != "Operation") {
+            throw new Error("Element is not an operation");
+        }
+        if (((_a = domainOperationElement.getParent()) === null || _a === void 0 ? void 0 : _a.specialization) !== "Class") {
+            throw new Error("Operation's parent is not a class");
+        }
+        const operation = domainOperationElement;
+        const entity = operation.getParent();
+        const targetFolder = CrudStrategy.getOrCreateEntityFolder(diagramElement.getOwner().getPackage(), entity);
+        const context = {
+            element: targetFolder,
+            dialogOptions: {
+                selectedEntity: entity,
+                canCreate: false,
+                canUpdate: false,
+                canDelete: false,
+                canQueryById: false,
+                canQueryAll: false,
+                canDomain: true,
+                selectedDomainOperationIds: [operation.id],
+                diagramId: diagramElement.id
+            },
+            primaryKeys: DomainHelper.getPrimaryKeys(entity),
+            hasPrimaryKey: () => DomainHelper.getPrimaryKeys(entity).length > 0
+        };
+        const createdElements = await this.executeWithContext(context, diagramElement.getOwner());
+        if (createdElements.length > 0) {
+            this.doAddElementToDiagram(createdElements[createdElements.length - 1], diagramElement);
+        }
+    }
+    async executeWithContext(context, diagramElement) {
+        var _a;
+        this.context = context;
+        const createdElements = [];
         let dialogOptions = this.context.dialogOptions;
         this.entity = dialogOptions.selectedEntity;
         this.primaryKeys = this.context.primaryKeys;
         let hasPrimaryKey = this.context.hasPrimaryKey();
         if (!await this.validate()) {
-            return;
+            return createdElements;
         }
         const owningAggregate = DomainHelper.getOwningAggregateRecursive(this.entity);
         this.targetFolder = CrudStrategy.getOrCreateEntityFolder(this.context.element, this.entity);
@@ -1537,6 +1581,7 @@ class CrudStrategy {
                 this.AddAggregateKeys(x);
             }
             x.collapse();
+            createdElements.push(x);
         }
         if ((hasPrimaryKey && !privateSettersOnly) && dialogOptions.canUpdate) {
             let x = this.doUpdate();
@@ -1544,6 +1589,7 @@ class CrudStrategy {
                 this.AddAggregateKeys(x);
             }
             x.collapse();
+            createdElements.push(x);
         }
         if (hasPrimaryKey && dialogOptions.canQueryById) {
             let x = this.doGetById();
@@ -1551,6 +1597,7 @@ class CrudStrategy {
                 this.AddAggregateKeys(x);
             }
             x.collapse();
+            createdElements.push(x);
         }
         if (dialogOptions.canQueryAll) {
             let x = this.doGetAll();
@@ -1558,6 +1605,7 @@ class CrudStrategy {
                 this.AddAggregateKeys(x);
             }
             x.collapse();
+            createdElements.push(x);
         }
         if (hasPrimaryKey && dialogOptions.canDelete) {
             let x = this.doDelete();
@@ -1565,6 +1613,7 @@ class CrudStrategy {
                 this.AddAggregateKeys(x);
             }
             x.collapse();
+            createdElements.push(x);
         }
         if (dialogOptions.canDomain) {
             const operations = DomainHelper.getCommandOperations(this.entity);
@@ -1588,62 +1637,10 @@ class CrudStrategy {
                     this.AddAggregateKeys(x);
                 }
                 x.collapse();
+                createdElements.push(x);
             }
         }
-        const targetPoint = diagramElement != null && diagramElement.id == this.context.dialogOptions.diagramId ? getCurrentDiagram().mousePosition : null;
-        diagramElement = (_b = lookup(this.context.dialogOptions.diagramId)) !== null && _b !== void 0 ? _b : this.getOrCreateDiagram(this.targetFolder);
-        diagramElement.loadDiagram();
-        const diagram = getCurrentDiagram();
-        this.doAddElementsToDiagram(diagram, targetPoint);
-        await notifyUserOfLimitations(dialogOptions.selectedEntity, dialogOptions);
-    }
-    async executeForOperation(domainOperationElement, diagramElement) {
-        var _a, _b;
-        if (domainOperationElement.specialization != "Operation") {
-            throw new Error("Element is not an operation");
-        }
-        if (((_a = domainOperationElement.getParent()) === null || _a === void 0 ? void 0 : _a.specialization) !== "Class") {
-            throw new Error("Operation's parent is not a class");
-        }
-        const operation = domainOperationElement;
-        this.entity = operation.getParent();
-        this.targetFolder = CrudStrategy.getOrCreateEntityFolder(diagramElement.getOwner().getPackage(), this.entity);
-        this.initialize({
-            element: this.targetFolder,
-            dialogOptions: {
-                selectedEntity: this.entity,
-                canCreate: false,
-                canUpdate: false,
-                canDelete: false,
-                canQueryById: false,
-                canQueryAll: false,
-                canDomain: true,
-                selectedDomainOperationIds: [operation.id]
-            },
-            primaryKeys: DomainHelper.getPrimaryKeys(this.entity)
-        });
-        this.primaryKeys = DomainHelper.getPrimaryKeys(this.entity);
-        if (!await this.validate()) {
-            return;
-        }
-        let operationResultDto = null;
-        if (operation.typeReference != null) {
-            if (DomainHelper.isComplexType((_b = operation.typeReference) === null || _b === void 0 ? void 0 : _b.getType())) {
-                let projector2 = new EntityProjector();
-                let from = lookup(operation.typeReference.getTypeId());
-                operationResultDto = projector2.createOrGetDto(from, this.targetFolder);
-                if (projector2.getMappings().length > 0) {
-                    this.addBasicMapping(projector2.getMappings());
-                }
-            }
-        }
-        let x = this.doOperation(operation, operationResultDto);
-        const owningAggregate = DomainHelper.getOwningAggregateRecursive(this.entity);
-        if (owningAggregate != null) {
-            this.AddAggregateKeys(x);
-        }
-        x.collapse();
-        this.doAddElementToDiagram(x, diagramElement);
+        return createdElements;
     }
     async validate() {
         if (DomainHelper.getOwnersRecursive(this.entity).length > 1) {

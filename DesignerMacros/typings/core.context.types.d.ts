@@ -552,6 +552,11 @@ declare namespace MacroApi.Context {
 
     interface IDiagramApi {
         /**
+         * The unique identifier for the element.
+         */
+        id: string;
+        
+        /**
          * Return the element that owns this diagram
          */
         getOwner(): IElementApi;
