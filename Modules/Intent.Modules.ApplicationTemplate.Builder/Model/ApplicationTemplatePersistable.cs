@@ -71,6 +71,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Model
         [XmlArray("minimumDependencyVersions")]
         [XmlArrayItem("module")]
         public List<MinimumDependencyVersion> MinimumDependencyVersions { get; set; }
+        public bool ShouldSerializeMinimumDependencyVersions() => MinimumDependencyVersions?.Count > 0;
     }
 
     public class ApplicationTemplate_Image

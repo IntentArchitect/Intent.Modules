@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Intent.IArchitect.Agent.Persistence.Model.Module;
 
 namespace Intent.Modules.ApplicationTemplate.Builder.Model
 {
@@ -16,6 +17,10 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Model
         [XmlArray("settings")]
         [XmlArrayItem("setting")]
         public List<SettingFieldPersistable> Settings { get; set; }
+
+        [XmlAttribute("type")]
+        public SettingGroupPersistableType Type { get; set; } = SettingGroupPersistableType.ApplicationSettings;
+        public bool ShouldSerializeType() => Type != default;
 
         public bool Equals(SettingsGroupPersistable other)
         {
