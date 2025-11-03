@@ -5,7 +5,7 @@
     <file relativePath="Intent.Modules.ModuleBuilder/modelers/Documentation Extension.designer.settings" state="ignored" />
     <file relativePath="Intent.Modules.ModuleBuilder/modelers/Module Builder.designer.settings" state="ignored" />
     <file relativePath="Intent.Modules.ModuleBuilder/modelers/Module Migrations Extension.designer.settings" state="ignored" />
-    <file relativePath="Intent.Modules.ModuleBuilder/release-notes.md" state="once-off-generated" />
+    <file relativePath="Intent.Modules.ModuleBuilder/release-notes.md" state="ignored;once-off-generated" />
     <file relativePath="Intent.Modules.ModuleBuilder/Templates/Api/ApiElementModel/ApiElementModelTemplate.cs" state="ignored" />
     <file relativePath="Intent.Modules.ModuleBuilder/Templates/Api/ApiElementModel/ApiElementModelTemplate.tt" state="ignored" />
   </files>
