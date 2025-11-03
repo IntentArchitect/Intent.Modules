@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -49,7 +49,7 @@
   <ItemGroup>
     <Folder Include="docs\images\" />
   </ItemGroup>
-    
+
   <ItemGroup>
     <InternalsVisibleTo Include="Intent.Modules.Common.AI.Tests" />
   </ItemGroup>
