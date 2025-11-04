@@ -956,8 +956,29 @@ validateOperation(element);
           </mappingSettings>
           <macros>
             <macro trigger="on-changed">
-              <script>const staticConstructorStereotype = "39a4c065-f9c5-46dc-b035-2eb025698330";
-if (element.getIsStatic() &amp;&amp; element.typeReference.getTypeId() == element.getParent()?.id) {
+              <script>function isStaticConstructor(inElement) {
+    const operationId = "e042bb67-a1df-480c-9935-b26210f78591";
+
+    if (!inElement.getIsStatic() || inElement.specializationId !== operationId) {
+        return false;
+    }
+
+    const entityId = inElement.getParent()?.id;
+    const operationReturnTypeRef = inElement.typeReference;
+
+    // Check for generics
+    var genericParams = operationReturnTypeRef.toModel().genericTypeParameters;
+    if (genericParams.length === 1 &amp;&amp; genericParams[0].typeId === entityId)
+    {
+        return true;
+    }
+
+    return operationReturnTypeRef?.getTypeId() == entityId;
+}
+
+const staticConstructorStereotype = "39a4c065-f9c5-46dc-b035-2eb025698330";
+
+if (isStaticConstructor(element)) {
     if (!element.hasStereotype(staticConstructorStereotype)){        
         element.addStereotype(staticConstructorStereotype);
     }

@@ -190,7 +190,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 return ctor;
             }
 
-            ctor = childMappings.SingleOrDefault(x => x is StaticMethodInvocationMapping && x.Model.TypeReference?.ElementId == ((IElement)x.Model).ParentId);
+            ctor = childMappings.SingleOrDefault(IsMappingStaticConstructor);
             if (ctor != null)
             {
                 return ctor;
@@ -206,6 +206,28 @@ namespace Intent.Modules.Common.CSharp.Mapping
             }
 
             return null;
+
+            static bool IsMappingStaticConstructor(ICSharpMapping mapping)
+            {
+                if (mapping is not StaticMethodInvocationMapping)
+                {
+                    return false;
+                }
+                
+                // It maps to the operation, not the Entity
+                var entityId = ((IElement)mapping.Model).ParentId;
+                var operationReturnTypeRef = mapping.Model.TypeReference;
+
+                // Check for generics
+                var genericParams = operationReturnTypeRef.GenericTypeParameters.ToList();
+                if (genericParams.Count == 1 && genericParams[0].ElementId == entityId)
+                {
+                    // return true if we want to support this result-pattern scenario in the future
+                    throw new NotSupportedException("Wrapping the entity in a generic type is not supported for static constructor creation mappings.");
+                }
+
+                return operationReturnTypeRef?.ElementId == entityId;
+            }
         }
 
         private static List<ICSharpMapping> FindPropertyMappingsInHierarchy(IList<ICSharpMapping> childMappings)

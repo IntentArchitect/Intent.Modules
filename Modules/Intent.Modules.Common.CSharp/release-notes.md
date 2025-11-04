@@ -1,4 +1,8 @@
-﻿### Version 3.9.9
+﻿### Version 3.9.10
+
+- Internal Improvement: Preparing for future support for result pattern in mapping system.
+
+### Version 3.9.9
 
 - Improvement: Added `AddMethod` to `ICSharpClass` which allows method name as string specification. 
 

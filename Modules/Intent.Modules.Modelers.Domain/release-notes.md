@@ -1,4 +1,8 @@
-﻿### Version 3.12.9
+﻿### Version 3.12.10
+
+- Improvement: The `[Static Constructor]` trait can now be applied to static methods that return a type other than the containing entity, as long as that return type has a generic type parameter matching the containing entity.
+
+### Version 3.12.9
 
 - Fixed: A validation error that class names must be unique would show even when classes had a different number of generic type parameters.
 

@@ -1,3 +1,7 @@
+### Version 2.3.9
+
+- Improvement: Mapping a `Create Action` on a static `Operation` now also works when return a type other than the containing entity, as long as that return type has a generic type parameter matching the containing entity. 
+
 ### Version 2.3.8
 
 - Improvement: Add CQRS Operations and Traditional Service Operations from Domain Entity Operations.

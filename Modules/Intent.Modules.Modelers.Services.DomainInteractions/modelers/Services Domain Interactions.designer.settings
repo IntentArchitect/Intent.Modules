@@ -11539,8 +11539,28 @@ return (targetElement.specialization != "Class Constructor" &amp;&amp; targetEle
               <represents>data</represents>
             </childSetting>
             <childSetting id="8fe66303-08cc-4c0f-abfa-f3cc2256f5a3" name="Invoke Static Constructor" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" version="2.0.0">
-              <filterFunction>return element.getIsStatic() &amp;&amp; element.typeReference.getTypeId() == element.getParent().id;</filterFunction>
-              <isRequiredFunction>return element.id == mappingContext.targetElementId</isRequiredFunction>
+              <filterFunction>function isStaticConstructor(inElement) {
+    const operationId = "e042bb67-a1df-480c-9935-b26210f78591";
+
+    if (!inElement.getIsStatic() || inElement.specializationId !== operationId) {
+        return false;
+    }
+
+    const entityId = inElement.getParent()?.id;
+    const operationReturnTypeRef = inElement.typeReference;
+
+    // Check for generics
+    var genericParams = operationReturnTypeRef.toModel().genericTypeParameters;
+    if (genericParams.length === 1 &amp;&amp; genericParams[0].typeId === entityId)
+    {
+        return true;
+    }
+
+    return operationReturnTypeRef?.getTypeId() == entityId;
+}
+
+return isStaticConstructor(element);</filterFunction>
+              <isRequiredFunction>return element.id == mappingContext.targetElementId;</isRequiredFunction>
               <allowMultipleMappings>false</allowMultipleMappings>
               <isMappableFunction>if (element.id == mappingContext.targetElementId) {
     return true;
