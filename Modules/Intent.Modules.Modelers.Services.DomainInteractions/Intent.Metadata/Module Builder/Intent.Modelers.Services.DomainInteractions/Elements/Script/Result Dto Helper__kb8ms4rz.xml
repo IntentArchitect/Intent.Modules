@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="76e2c5fa-77ec-4190-9080-2a25eeb5fd31" type="Script" typeId="101fd5b6-3159-4810-9490-a103ef323e9c">
+  <name>Result Dto Helper</name>
+  <display>Result Dto Helper</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>f36cb21a-faf9-46ff-85e7-41f38345253d</parentFolderId>
+  <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+  <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="da7d632f-b07f-4c83-ab01-bc6175006aa5" name="Script Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="4708b6ef-0671-4ea1-a920-ccec2c9eb3ea" display="Type" value="Inline Script" isActive="true" />
+        <property name="3256efdd-5d71-46f3-bd51-ef08a8d95526" display="Script" value="async function createNewResultDto(element){&#xD;&#xA;    const mapFromDomainMappingSettingId = &quot;1f747d14-681c-4a20-8c68-34223f41b825&quot;;&#xD;&#xA;&#xD;&#xA;    let currentDto = lookup(getDtoTypeId(element));&#xD;&#xA;&#xD;&#xA;    let dto = createElement(&quot;DTO&quot;, element.getName() + &quot;Dto&quot;, currentDto.getParent().id);&#xD;&#xA;    await dto.enableEditing();&#xD;&#xA;&#xD;&#xA;    if (currentDto.getMapping()?.getElement()){&#xD;&#xA;        dto.setMapping(currentDto.getMapping().getElement().id);&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    await dto.launchMappingDialog(mapFromDomainMappingSettingId);&#xD;&#xA;    updateDtoType(element, dto);&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function getDtoTypeId(item){&#xD;&#xA;    &#xD;&#xA;    if (item.typeReference?.toModel()?.genericTypeId){&#xD;&#xA;        return item.typeReference?.toModel()?.genericTypeId;&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    return x.typeReference?.getTypeId();&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function updateDtoType(item, newDto) {&#xD;&#xA;&#xD;&#xA;    if (item.typeReference?.toModel()?.genericTypeParameters?.length &gt; 0){&#xD;&#xA;        item.typeReference.setType(item.typeReference.getTypeId(), [{ typeId : newDto.id, isCollection : item.typeReference.isCollection, isNullable : item.typeReference.isNullable  }] );&#xD;&#xA;    }else {&#xD;&#xA;        item.typeReference.setType(newDto.id);&#xD;&#xA;    }    &#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function onlyShowIfShared(item, elementType){&#xD;&#xA;    const siblings = item.getParent().getChildren(elementType);&#xD;&#xA;&#xD;&#xA;    // Only show in another operation has the same return DTO.&#xD;&#xA;    return siblings.some(&#xD;&#xA;    x =&gt; x.id !== item.id &amp;&amp; getDtoTypeId(x) === getDtoTypeId(item)&#xD;&#xA;    );&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function getDtoTypeId(item){&#xD;&#xA;    &#xD;&#xA;    if (item.typeReference?.toModel()?.genericTypeParameters?.length &gt; 0){&#xD;&#xA;        return item.typeReference?.toModel()?.genericTypeParameters[0].typeId;&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    return item.typeReference?.getTypeId();&#xD;&#xA;}" isActive="true" />
+        <property name="41cc0d56-3141-40fe-ae97-c024866d441e" display="File Path" isActive="false" />
+        <property name="540780ad-f54e-4bd5-95f3-20a58fd59105" display="Dependencies" value="[]" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>

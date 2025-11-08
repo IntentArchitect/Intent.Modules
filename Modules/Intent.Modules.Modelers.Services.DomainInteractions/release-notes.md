@@ -1,6 +1,7 @@
 ### Version 2.3.9
 
 - Improvement: Mapping a `Create Action` on a static `Operation` now also works when return a type other than the containing entity, as long as that return type has a generic type parameter matching the containing entity. 
+- Improvement: Added suggestions for creating new result dto contracts.
 
 ### Version 2.3.8
 

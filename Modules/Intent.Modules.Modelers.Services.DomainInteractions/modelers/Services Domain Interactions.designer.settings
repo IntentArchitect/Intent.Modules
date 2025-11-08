@@ -12447,6 +12447,32 @@ return application.isModuleInstalled("Intent.Modelers.Services.CQRS") &amp;&amp;
       </dependencies>
       <script>await CrudApi.createCQRSServiceForOperation(element, getCurrentDiagram());</script>
     </suggestionSetting>
+    <suggestionSetting type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" locations="diagram, model">
+      <name>Create new result DTO</name>
+      <filterFunction>return onlyShowIfShared(element, 'Operation');
+
+function onlyShowIfShared(item, elementType){
+    const siblings = item.getParent().getChildren(elementType);
+
+    // Only show in another operation has the same return DTO.
+    return siblings.some(
+    x =&gt; x.id !== item.id &amp;&amp; getDtoTypeId(x) === getDtoTypeId(item)
+    );
+}
+
+function getDtoTypeId(item){
+    
+    if (item.typeReference?.toModel()?.genericTypeParameters?.length &gt; 0){
+        return item.typeReference?.toModel()?.genericTypeParameters[0].typeId;
+    }
+
+    return item.typeReference?.getTypeId();
+}</filterFunction>
+      <dependencies>
+        <dependency name="Result Dto Helper" id="76e2c5fa-77ec-4190-9080-2a25eeb5fd31" />
+      </dependencies>
+      <script>await createNewResultDto(element);</script>
+    </suggestionSetting>
     <suggestionSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" locations="diagram">
       <name>Create Service Operation</name>
       <filterFunction>return element.getParent().specialization == "Class" &amp;&amp;
@@ -12469,6 +12495,33 @@ return application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad").getField(
       </dependencies>
       <script>await RepositoryOperationApi.createTraditionalService(element, getCurrentDiagram());</script>
     </suggestionSetting>
+    <suggestionSetting type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" locations="model, diagram">
+      <name>Create new result DTO</name>
+      <filterFunction>
+return onlyShowIfShared(element, 'Query');
+
+function onlyShowIfShared(item, elementType){
+    const siblings = item.getParent().getChildren(elementType);
+
+    // Only show in another operation has the same return DTO.
+    return siblings.some(
+    x =&gt; x.id !== item.id &amp;&amp; getDtoTypeId(x) === getDtoTypeId(item)
+    );
+}
+
+function getDtoTypeId(item){
+    
+    if (item.typeReference?.toModel()?.genericTypeParameters?.length &gt; 0){
+        return item.typeReference?.toModel()?.genericTypeParameters[0].typeId;
+    }
+
+    return item.typeReference?.getTypeId();
+}</filterFunction>
+      <dependencies>
+        <dependency name="Result Dto Helper" id="76e2c5fa-77ec-4190-9080-2a25eeb5fd31" />
+      </dependencies>
+      <script>await createNewResultDto(element);</script>
+    </suggestionSetting>
   </suggestionSettings>
   <scripts>
     <script name="Crud Api" id="61a8411f-b5bc-4a00-9a37-a967e0893d9d">
@@ -12476,6 +12529,59 @@ return application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad").getField(
     </script>
     <script name="Repository Operation Api" id="8c5b2eb0-3b1a-4813-b69f-2713805e0891">
       <filePath>repository-operation-api.js</filePath>
+    </script>
+    <script name="Result Dto Helper" id="76e2c5fa-77ec-4190-9080-2a25eeb5fd31">
+      <script>async function createNewResultDto(element){
+    const mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
+
+    let currentDto = lookup(getDtoTypeId(element));
+
+    let dto = createElement("DTO", element.getName() + "Dto", currentDto.getParent().id);
+    await dto.enableEditing();
+
+    if (currentDto.getMapping()?.getElement()){
+        dto.setMapping(currentDto.getMapping().getElement().id);
+    }
+
+    await dto.launchMappingDialog(mapFromDomainMappingSettingId);
+    updateDtoType(element, dto);
+}
+
+function getDtoTypeId(item){
+    
+    if (item.typeReference?.toModel()?.genericTypeId){
+        return item.typeReference?.toModel()?.genericTypeId;
+    }
+
+    return x.typeReference?.getTypeId();
+}
+
+function updateDtoType(item, newDto) {
+
+    if (item.typeReference?.toModel()?.genericTypeParameters?.length &gt; 0){
+        item.typeReference.setType(item.typeReference.getTypeId(), [{ typeId : newDto.id, isCollection : item.typeReference.isCollection, isNullable : item.typeReference.isNullable  }] );
+    }else {
+        item.typeReference.setType(newDto.id);
+    }    
+}
+
+function onlyShowIfShared(item, elementType){
+    const siblings = item.getParent().getChildren(elementType);
+
+    // Only show in another operation has the same return DTO.
+    return siblings.some(
+    x =&gt; x.id !== item.id &amp;&amp; getDtoTypeId(x) === getDtoTypeId(item)
+    );
+}
+
+function getDtoTypeId(item){
+    
+    if (item.typeReference?.toModel()?.genericTypeParameters?.length &gt; 0){
+        return item.typeReference?.toModel()?.genericTypeParameters[0].typeId;
+    }
+
+    return item.typeReference?.getTypeId();
+}</script>
     </script>
   </scripts>
 </settings>
