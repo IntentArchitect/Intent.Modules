@@ -1,3 +1,7 @@
+### Version 1.1.2
+
+- Fixed: Removed `Secure X` suggestions from End points which come from other applications.
+
 ### Version 1.1.1
 
 - Fixed: Removed duplicate validation being done on Commands, Queries and Operations.
