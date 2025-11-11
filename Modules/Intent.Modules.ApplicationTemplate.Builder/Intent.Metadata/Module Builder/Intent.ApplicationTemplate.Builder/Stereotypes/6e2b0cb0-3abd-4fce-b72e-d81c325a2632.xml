@@ -10,7 +10,16 @@
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
   <displayIconFunction>return false;</displayIconFunction>
-  <displayFunction>return `${properties["Version"].value} [Priority: ${properties["Priority"].value}]`;</displayFunction>
+  <displayFunction>let newCount = element.getChildren()
+    .reduce((totalCount, child) =&gt; {
+        const childNewCount = child.getChildren()
+            .filter(el =&gt; 
+                el.getStereotype("Component Settings")?.getProperty("Is New")?.getValue() === true
+            ).length;
+        return totalCount + childNewCount;
+    }, 0);
+const isNewStr = newCount &gt; 0 ? ` 🌟 (${newCount})` : "";
+return `${properties["Version"].value} [Priority: ${properties["Priority"].value}]${isNewStr}`;</displayFunction>
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>
