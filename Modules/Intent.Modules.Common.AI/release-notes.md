@@ -1,9 +1,6 @@
 ### Version 1.0.0
 
 - Improvement: Updated module documentation to use centralized documentation site.
-
-### Version 1.0.0
-
 - New Feature: `IntentSemanticKernelFactory` for creating SemanticKernel `Kernel` instances based on user settings. 
 
 > [!NOTE]

@@ -1,9 +1,6 @@
 ### Version 1.1.2
 
 - Improvement: Updated module documentation to use centralized documentation site.
-
-### Version 1.1.2
-
 - Fixed: Removed `Secure X` suggestions from End points which come from other applications.
 
 ### Version 1.1.1
