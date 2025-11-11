@@ -16,6 +16,10 @@ public class TypescriptFile
     public List<TypescriptClass> Classes { get; } = new();
     public List<TypescriptStatement> Statements { get; } = new();
 
+    public List<TypescriptVariable> Variables{ get; } = new();
+
+    public IList<TypescriptEnum> Enums { get; } = new List<TypescriptEnum>();
+
     public TypescriptFile(string relativeLocation)
     {
         RelativeLocation = relativeLocation;
@@ -124,6 +128,52 @@ public class TypescriptFile
         return this;
     }
 
+    public TypescriptFile AddVariable(string name, Action<TypescriptVariable> configure = null)
+    {
+        var variable = new TypescriptVariable(name, this);
+        Variables.Add(variable);
+        if (_isBuilt)
+        {
+            configure?.Invoke(variable);
+        }
+        else if (configure != null)
+        {
+            _configurations.Add((() => configure(variable), 0));
+        }
+        return this;
+    }
+
+    public TypescriptFile AddVariable(string name, string type, Action<TypescriptVariable> configure = null)
+    {
+        var variable = new TypescriptVariable(name, type, this);
+        Variables.Add(variable);
+        if (_isBuilt)
+        {
+            configure?.Invoke(variable);
+        }
+        else if (configure != null)
+        {
+            _configurations.Add((() => configure(variable), 0));
+        }
+        return this;
+    }
+
+    public TypescriptFile AddEnum(string name, Action<TypescriptEnum> configure = null)
+    {
+        var @enum = new TypescriptEnum(name);
+        Enums.Add(@enum);
+        if (_isBuilt)
+        {
+            configure?.Invoke(@enum);
+        }
+        else if (configure != null)
+        {
+            _configurations.Add((() => configure(@enum), 0));
+        }
+
+        return this;
+    }
+
     public TypeScriptFileConfig GetConfig(string typeName)
     {
         return new TypeScriptFileConfig(
@@ -225,6 +275,12 @@ public class TypescriptFile
         {
             sb.AppendLine();
             sb.Append(@class);
+        }
+
+        foreach (var variable in Variables)
+        {
+            sb.AppendLine();
+            sb.Append(variable);
         }
 
         return sb.ToString();

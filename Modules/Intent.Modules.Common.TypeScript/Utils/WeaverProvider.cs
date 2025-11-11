@@ -17,7 +17,7 @@ public static class WeaverProvider
     {
         if (_insertImportDirectivesProvider is null)
         {
-            throw new InvalidOperationException($"Cannot invoke {nameof(InsertImportDirectives)} without registering a delegate provider for it");
+            return existingContent;
         }
         return _insertImportDirectivesProvider(existingContent, imports);
     }

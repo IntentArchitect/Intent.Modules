@@ -20,6 +20,11 @@ public static class TypescriptBuilderExtensions
         }
     }
 
+    internal static string ConcatCode(this IReadOnlyCollection<ICodeBlock> codeBlocks, string separator, string indentation)
+    {
+        return string.Concat(codeBlocks.Select(s => $"{codeBlocks.DetermineSeparator(s, indentation, separator)}"));
+    }
+
     internal static string ConcatCode(this IReadOnlyCollection<ICodeBlock> codeBlocks, string indentation)
     {
         return string.Concat(codeBlocks.Select(s => $"{codeBlocks.DetermineSeparator(s, indentation, string.Empty)}"));

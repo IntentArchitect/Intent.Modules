@@ -1,4 +1,5 @@
 using System;
+using System.Net.Http.Headers;
 
 namespace Intent.Modules.Common.TypeScript.Builder;
 
@@ -6,7 +7,10 @@ public class TypescriptField : TypescriptMember<TypescriptField>
 {
     public string Type { get; }
     public string Name { get; }
+    public string Value { get; private set; }
     public string AccessModifier { get; private set; } = string.Empty;
+    public bool IsDefinitelyAssigned { get; private set; } = false;
+
 
     public TypescriptField(string name, string type)
     {
@@ -24,6 +28,16 @@ public class TypescriptField : TypescriptMember<TypescriptField>
         Name = name;
     }
 
+    public TypescriptField(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(name));
+        }
+
+        Name = name;
+    }
+
     public TypescriptField PrivateReadOnly()
     {
         AccessModifier = "private readonly ";
@@ -36,8 +50,20 @@ public class TypescriptField : TypescriptMember<TypescriptField>
         return this;
     }
 
+    public TypescriptField DefinitelyAssigned()
+    {
+        IsDefinitelyAssigned = true;
+        return this;
+    }
+
+    public TypescriptField WithValue(string value)
+    {
+        Value = value;
+        return this;
+    }
+
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}{Name}: {Type};";
+        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}{Name}{(IsDefinitelyAssigned ? "!" : string.Empty)}{(!string.IsNullOrWhiteSpace(Type) ? $": {Type}" : string.Empty)}{(!string.IsNullOrWhiteSpace(Value) ? $" = {Value}" : string.Empty )};";
     }
 }
