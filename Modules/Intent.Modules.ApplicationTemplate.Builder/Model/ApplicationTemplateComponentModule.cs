@@ -7,10 +7,10 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Model;
 public class ApplicationTemplateComponentModule
 {
     [XmlAttribute("id")]
-    public string Id { get; set; }
+    public required string Id { get; set; }
 
     [XmlAttribute("version")]
-    public string Version { get; set; }
+    public required string Version { get; set; }
 
     /// <inheritdoc cref="MetadataOnly"/>
     /// <remarks>
@@ -42,7 +42,7 @@ public class ApplicationTemplateComponentModule
     }
 
     [XmlAttribute("includeAssets")]
-    public string? IncludeAssets { get; set; }
+    public required string? IncludeAssets { get; set; }
     public bool ShouldSerializeIncludeAssets() => !string.IsNullOrWhiteSpace(IncludeAssets);
 
     [XmlIgnore]
@@ -61,12 +61,16 @@ public class ApplicationTemplateComponentModule
     public bool InstallTemplateOutputs => IncludeAssetsHelper.IncludesTemplateOutputs(IncludeAssets);
 
     [XmlElement("includedByDefault")]
-    public bool? IsIncludedByDefault { get; set; }
+    public required bool? IsIncludedByDefault { get; set; }
     public bool ShouldSerializeIsIncludedByDefault() => IsIncludedByDefault.HasValue;
 
     [XmlElement("required")]
-    public bool? IsRequired { get; set; }
+    public required bool? IsRequired { get; set; }
     public bool ShouldSerializeIsRequired() => IsRequired.HasValue;
+
+    [XmlElement("isNew")]
+    public required bool? IsNew { get; set; }
+    public bool ShouldSerializeIsNew() => IsNew.HasValue && IsNew.Value;
 
     internal void OnAfterDeserialization()
     {

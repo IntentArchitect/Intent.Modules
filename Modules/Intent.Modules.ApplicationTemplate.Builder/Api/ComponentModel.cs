@@ -47,11 +47,33 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
         public bool IsRequired => this.GetComponentSettings().IsRequired();
 
         [IntentManaged(Mode.Ignore)]
+        public bool IsNew => this.GetComponentSettings().IsNew();
+
+        [IntentManaged(Mode.Ignore)]
         public string Description => this.GetComponentSettings().Description();
 
         [IntentManaged(Mode.Ignore)]
         public IIconModel Icon => this.GetComponentSettings().Icon();
 
+        [IntentManaged(Mode.Ignore)]
+        public string DocumentationUrl => this.GetComponentSettings().DocumentationUrl();
+
+        [IntentManaged(Mode.Ignore)]
+        public string? MinimumLicenseRequired
+        {
+            get
+            {
+                return this.GetComponentSettings().RequiredLicense().Value switch
+                {
+                    "Professional" => "Professional",
+                    "Premium" => "Premium",
+                    _ => null
+                };
+            }
+        }
+
+        [IntentManaged(Mode.Ignore)]
+        public string Tags => this.GetComponentSettings().Tags();
         public override string ToString()
         {
             return _element.ToString();

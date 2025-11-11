@@ -73,6 +73,11 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 return _stereotype.GetProperty<string[]>("Included Assets")?.Select(x => new IncludedAssetsOptions(x)).ToArray() ?? new IncludedAssetsOptions[0];
             }
 
+            public bool IsNew()
+            {
+                return _stereotype.GetProperty<bool>("Is New");
+            }
+
             public class IncludeAssetsOptions
             {
                 public readonly string Value;

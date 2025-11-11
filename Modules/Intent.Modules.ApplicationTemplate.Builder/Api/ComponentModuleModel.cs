@@ -47,6 +47,9 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
         public bool IsRequired => this.GetModuleSettings().IsRequired();
 
         [IntentManaged(Mode.Ignore)]
+        public bool IsNew => this.GetModuleSettings().IsNew();
+
+        [IntentManaged(Mode.Ignore)]
         public bool AssetTypeIsIncluded(IncludedAssetsOptionsEnum assetType)
         {
             if (this.GetModuleSettings().IncludeAssets().IsAll())
