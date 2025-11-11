@@ -1,1 +1,0 @@
-Please see [the docs](https://docs.intentarchitect.com/articles/application-development/modelling/services-designer/modeling-services/modeling-services.html) to learn about modeling Services.

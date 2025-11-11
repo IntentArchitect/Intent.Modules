@@ -1,3 +1,7 @@
+### Version 3.6.1
+
+- Improvement: Updated module documentation to use centralized documentation site.
+
 ### Version 3.6.0
 
 - Improvement: Added [Invokable] trait to Repository Operations. A migration will add these automatically.

@@ -1,3 +1,7 @@
+### Version 4.0.7
+
+- Improvement: Updated module documentation to use centralized documentation site.
+
 ### Version 4.0.6
 
 - Fixed: Visual bug on Azure Function traditional service routes.

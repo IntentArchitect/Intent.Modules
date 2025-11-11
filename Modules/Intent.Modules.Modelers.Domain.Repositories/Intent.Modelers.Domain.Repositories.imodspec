@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Domain.Repositories</id>
-  <version>3.6.0</version>
+  <version>3.6.1-pre.0</version>
   <supportedClientVersions>[4.5.0-a, 5.0.0-a)</supportedClientVersions>
   <releaseNotes>release-notes.md</releaseNotes>
+  <projectUrl>https://docs.intentarchitect.com/articles/modules-dotnet/intent-modelers-domain-repositories/intent-modelers-domain-repositories.html</projectUrl>
   <summary>Introduces Repository elements in the Domain designer.</summary>
   <description>Introduces Repository elements in the Domain designer.</description>
   <authors>Intent Architect</authors>

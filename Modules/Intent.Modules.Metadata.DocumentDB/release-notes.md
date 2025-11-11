@@ -1,3 +1,7 @@
+### Version 1.3.6
+
+- Improvement: Updated module documentation to use centralized documentation site.
+
 ### Version 1.3.5
 
 - Improvement: Improved help topic title to be more descriptive

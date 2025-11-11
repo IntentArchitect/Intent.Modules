@@ -1,4 +1,8 @@
-﻿### Version 6.0.2
+﻿### Version 6.0.3
+
+- Improvement: Updated module documentation to use centralized documentation site.
+
+### Version 6.0.2
 
 - Improvement: Updated documentation and help topics
 
