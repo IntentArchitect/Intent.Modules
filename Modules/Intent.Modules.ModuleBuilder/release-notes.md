@@ -1,5 +1,6 @@
 ﻿### Version 3.18.1
 
+- Improvement: Updated module documentation to use centralized documentation site.
 - Improvement: Added help topic on designer scripting.
 
 ### Version 3.18.0

@@ -1,3 +1,7 @@
+### Version 1.1.5
+
+- Improvement: Updated module documentation to use centralized documentation site.
+
 ### Version 1.1.4
 
 - Fixed: Adjusted the creation of association from "Call Service Operation" to the new "Perform Invocation".

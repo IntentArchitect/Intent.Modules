@@ -1,3 +1,7 @@
+### Version 1.2.2
+
+- Improvement: Updated module documentation to use centralized documentation site.
+
 ### Version 1.2.1
 
 - Fixed: Removed incorrectly added `Map Result` option on a Stored Procedure.

@@ -1,5 +1,6 @@
 ﻿### Version 3.9.10
 
+- Improvement: Updated module documentation to use centralized documentation site.
 - Internal Improvement: Preparing for future support for result pattern in mapping system.
 
 ### Version 3.9.9
