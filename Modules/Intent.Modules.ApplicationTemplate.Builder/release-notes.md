@@ -1,6 +1,7 @@
 ﻿### Version 3.7.0
 
 - Improvement: Added support for `Is New`, `Incompatibilities`, `Documentation Url` and `Tags` to components, which will be respected in version `4.5.23` of Intent Architect and later.
+- Improvement: Icons for components will now render in the designer.
 
 ### Version 3.6.1
 
