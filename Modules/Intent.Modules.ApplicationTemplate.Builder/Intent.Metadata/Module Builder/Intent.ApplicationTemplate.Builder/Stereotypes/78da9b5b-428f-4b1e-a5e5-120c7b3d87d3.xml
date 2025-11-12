@@ -72,7 +72,7 @@ return "";</displayFunction>
     </property>
     <property id="ab4e67f3-24c9-47c3-8a27-0589c9c6656f">
       <comment>Which components are incompatible with this component and should not be included if this component is included.</comment>
-      <hint>Components that this component is dependent on.</hint>
+      <hint>Components that this component is not compatible with.</hint>
       <name>Incompatibilities</name>
       <type>string</type>
       <controlType>multi-select</controlType>
