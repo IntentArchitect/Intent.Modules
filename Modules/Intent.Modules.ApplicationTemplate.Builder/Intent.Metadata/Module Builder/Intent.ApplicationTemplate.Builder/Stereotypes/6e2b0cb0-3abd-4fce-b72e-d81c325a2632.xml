@@ -18,7 +18,7 @@
             ).length;
         return totalCount + childNewCount;
     }, 0);
-const isNewStr = newCount &gt; 0 ? ` 🌟 (${newCount})` : "";
+const isNewStr = newCount &gt; 0 ? ` 🌟` : "";
 return `${properties["Version"].value} [Priority: ${properties["Priority"].value}]${isNewStr}`;</displayFunction>
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>
