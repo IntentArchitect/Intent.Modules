@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Intent.Exceptions;
 using Intent.Modules.Common.AI.CodeGeneration;
-using Intent.Modules.Common.AI.CodeGeneration.Models;
 using Intent.Utils;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
@@ -16,7 +15,7 @@ namespace Intent.Modules.Common.AI.Extensions;
 /// <summary>
 /// Provides extension methods for <see cref="Kernel"/> to simplify AI-driven code generation workflows.
 /// </summary>
-public static class KernelExtensions
+public static class FileChangesInvocationExtensions
 {
     private const int MaxAttempts = 2;
     
