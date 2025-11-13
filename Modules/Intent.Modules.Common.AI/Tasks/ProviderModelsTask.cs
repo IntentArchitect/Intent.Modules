@@ -30,7 +30,6 @@ public class ProviderModelsTask : IModuleTask
         
         List<ModelRecord> providerModels =
         [
-            new("azure-open-ai",        azureDeploymentName,                    "Azure OpenAI",         ThinkingType.Unknown),
             new("open-ai",              "gpt-4.1",                              "OpenAI",               ThinkingType.None),
             new("open-ai",              "gpt-4o",                               "OpenAI",               ThinkingType.None),
             new("open-ai",              "gpt-5",                                "OpenAI",               ThinkingType.ThinkingLevels),
@@ -42,7 +41,6 @@ public class ProviderModelsTask : IModuleTask
             new("anthropic",            "claude-opus-4-20250514",               "Anthropic",            ThinkingType.ThinkingLevels),
             new("anthropic",            "claude-sonnet-4-20250514",             "Anthropic",            ThinkingType.ThinkingLevels),
             new("anthropic",            "claude-3-7-sonnet-20250219",           "Anthropic",            ThinkingType.ThinkingLevels),
-            new("open-router",          "openrouter/auto",                      "OpenRouter",           ThinkingType.Unknown),
             new("open-router",          "x-ai/grok-4",                          "OpenRouter",           ThinkingType.ThinkingLevels),
             new("open-router",          "z-ai/glm-4.6",                         "OpenRouter",           ThinkingType.ThinkingLevels),
             new("open-router",          "google/gemini-2.5-pro",                "OpenRouter",           ThinkingType.ThinkingLevels),
@@ -58,6 +56,7 @@ public class ProviderModelsTask : IModuleTask
             new("open-router",          "anthropic/claude-sonnet-4",            "OpenRouter",           ThinkingType.ThinkingLevels),
             new("google-gemini",        "gemini-2.5-pro",                       "Google Gemini",        ThinkingType.ThinkingLevels),
             new("google-gemini",        "gemini-2.5-flash",                     "Google Gemini",        ThinkingType.None),
+            new("azure-open-ai",        azureDeploymentName,                    "Azure OpenAI",         ThinkingType.Unknown),
             new("open-ai-compatible",   openAiCompatibleModelName,              "Open AI Compatible",   ThinkingType.Unknown),
             new("ollama",               ollamaModelName,                        "Ollama",               ThinkingType.Unknown)
         ];
