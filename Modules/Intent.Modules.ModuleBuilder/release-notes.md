@@ -2,6 +2,7 @@
 
 - Improvement: Updated module documentation to use centralized documentation site.
 - Improvement: Added help topic on designer scripting.
+- Improvement: You can add multiple Module Tasks with generated output that is ready to modify out the box.
 
 ### Version 3.18.0
 

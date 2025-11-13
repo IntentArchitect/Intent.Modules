@@ -20,10 +20,10 @@ namespace Intent.ModuleBuilder.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public ModuleTaskModel ModuleTask => UnderlyingPackage.ChildElements
+        public IList<ModuleTaskModel> ModuleTasks => UnderlyingPackage.ChildElements
             .GetElementsOfType(ModuleTaskModel.SpecializationTypeId)
             .Select(x => new ModuleTaskModel(x))
-            .SingleOrDefault();
+            .ToList();
 
     }
 }
