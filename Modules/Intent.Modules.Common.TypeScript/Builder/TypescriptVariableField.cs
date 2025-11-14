@@ -18,7 +18,7 @@ public class TypescriptVariableField : TypescriptVariableValue
         }
 
         Name = null;
-        Value = value;
+        Value = new TypescriptVariableScalar(value);    
     }
 
     public TypescriptVariableField(string name, string value)
@@ -34,19 +34,32 @@ public class TypescriptVariableField : TypescriptVariableValue
         }
 
         Name = name;
-        Value = value;
+        Value = new TypescriptVariableScalar(value);
     }
 
-    public string Value { get; }
-    public string Name { get; }
+    public TypescriptVariableField(string name, TypescriptVariableValue value)
+    {
+        if (value is null)
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(value));
+        }
+
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(name));
+        }
+
+        Name = name;
+        Value = value;
+    }
 
     public override string GetText(string indentation)
     {
         if(Name is null)
         {
-            return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{Value}";
+            return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{Value.GetText(indentation)}";
         }
 
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{Name}: {Value}";
+        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{Name}: {Value.GetText(indentation)}";
     }
 }

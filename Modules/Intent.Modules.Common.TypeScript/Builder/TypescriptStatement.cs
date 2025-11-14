@@ -7,6 +7,7 @@ public class TypescriptStatement : TypescriptMetadataBase<TypescriptStatement>, 
 {
     public TypescriptStatement(string invocation)
     {
+        IndentForLeadingSpaces(invocation);
         Text = invocation?.Trim();
     }
 
@@ -26,13 +27,13 @@ public class TypescriptStatement : TypescriptMetadataBase<TypescriptStatement>, 
 
     public TypescriptStatement Indent()
     {
-        RelativeIndentation += "    ";
+        RelativeIndentation += "  ";
         return this;
     }
 
     public TypescriptStatement Outdent()
     {
-        RelativeIndentation = RelativeIndentation.Substring("    ".Length);
+        RelativeIndentation = RelativeIndentation.Substring("  ".Length);
         return this;
     }
 
@@ -124,5 +125,22 @@ public class TypescriptStatement : TypescriptMetadataBase<TypescriptStatement>, 
     public static implicit operator TypescriptStatement(string input)
     {
         return new TypescriptStatement(input);
+    }
+
+    private void IndentForLeadingSpaces(string input)
+    {
+        int index = 0;
+        int callCount = 0;
+
+        while (index + 1 < input.Length && input[index] == ' ' && input[index + 1] == ' ')
+        {
+            callCount++;
+            index += 2;
+        }
+
+        for (int i = 0; i < callCount; i++)
+        {
+            Indent();
+        }
     }
 }

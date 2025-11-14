@@ -20,15 +20,22 @@ public class TypescriptVariableObject : TypescriptVariableValue
             AfterSeparator = _fieldsSeparator
         };
 
-        Field.Add(property);
+        Fields.Add(property);
         configure?.Invoke(property);
         return this;
     }
 
-    public TypescriptVariableObject AddField(string name, TypescriptVariableArray value, Action<TypescriptVariableArray> configure = null)
+    public TypescriptVariableObject AddField<T>(string name, T value, Action<TypescriptVariableField> configure = null)
+        where T : TypescriptVariableValue, new()
     {
-        Field.Add(value);
-        configure?.Invoke(value);
+        var property = new TypescriptVariableField(name, value)
+        {
+            BeforeSeparator = _fieldsSeparator,
+            AfterSeparator = _fieldsSeparator
+        };
+
+        Fields.Add(property);
+        configure?.Invoke(property);
         return this;
     }
 
@@ -38,14 +45,14 @@ public class TypescriptVariableObject : TypescriptVariableValue
         return this;
     }
 
-    public List<TypescriptVariableValue> Field { get; } = new();
+    public List<TypescriptVariableValue> Fields { get; } = new();
 
     public override string GetText(string indentation)
     {
         var codeBlocks = new List<ICodeBlock>();
-        codeBlocks.AddRange(Field);
+        codeBlocks.AddRange(Fields);
 
-        return $@"{indentation}{{ {string.Join($@"{GetSeperator()}", codeBlocks.ConcatCode(",", string.Concat(indentation)))}{GetSeperator()}{(_fieldsSeparator == TypescriptCodeSeparatorType.None ? " " : "")}}}";
+        return $@"{{ {string.Join($@"{GetSeperator()}", codeBlocks.ConcatCode(",", string.Concat(indentation)))}{GetSeperator()}{(_fieldsSeparator == TypescriptCodeSeparatorType.None ? " " : "")}}}";
     }
 
     private string GetSeperator() => _fieldsSeparator switch

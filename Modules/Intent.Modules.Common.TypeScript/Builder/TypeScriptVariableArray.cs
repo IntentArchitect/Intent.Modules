@@ -39,13 +39,18 @@ public class TypescriptVariableArray : TypescriptVariableValue
 
     public List<TypescriptVariableValue> Items { get; } = new();
 
+    //public override string ToString()
+    //{
+    //    return GetText(string.Empty);
+    //}
+
     public override string GetText(string indentation)
     {
         var codeBlocks = new List<ICodeBlock>();
         codeBlocks.AddRange(Items);
 
         return $@"[{string.Join(@"
-", codeBlocks.ConcatCode(",", indentation))}{GetSeperator()}]";
+", codeBlocks.ConcatCode(",", indentation + indentation))}{GetSeperator()}{indentation}]";
     }
 
     private string GetSeperator() => _fieldsSeparator switch
