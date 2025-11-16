@@ -33,6 +33,7 @@ public class ProviderModelsTask : IModuleTask
             new("open-ai",              "gpt-4.1",                              "OpenAI",               ThinkingType.None),
             new("open-ai",              "gpt-4o",                               "OpenAI",               ThinkingType.None),
             new("open-ai",              "gpt-5",                                "OpenAI",               ThinkingType.ThinkingLevels),
+            new("open-ai",              "gpt-5.1",                              "OpenAI",               ThinkingType.ThinkingLevels),
             new("open-ai",              "o1",                                   "OpenAI",               ThinkingType.ThinkingLevels),
             new("open-ai",              "o3",                                   "OpenAI",               ThinkingType.ThinkingLevels),
             new("anthropic",            "claude-haiku-4-5-20251001",            "Anthropic",            ThinkingType.ThinkingLevels),
