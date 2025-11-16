@@ -119,17 +119,17 @@ return provider === "ollama";</isActiveFunction>
   <interoperability>
     <detect id="Intent.AI.AutoImplementation">
       <install>
-        <package id="Intent.AI.AutoImplementation" version="1.0.0-beta.16" />
+        <package id="Intent.AI.AutoImplementation" version="1.0.0-beta.18" />
       </install>
     </detect>
     <detect id="Intent.AI.Blazor">
       <install>
-        <package id="Intent.AI.Blazor" version="1.0.0-beta.18" />
+        <package id="Intent.AI.Blazor" version="1.0.0-beta.19" />
       </install>
     </detect>
     <detect id="Intent.AI.UnitTests">
       <install>
-        <package id="Intent.AI.UnitTests" version="1.0.0-beta.14" />
+        <package id="Intent.AI.UnitTests" version="1.0.0-beta.18" />
       </install>
     </detect>
   </interoperability>
