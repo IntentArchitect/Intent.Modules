@@ -25,7 +25,7 @@ public static class FileChangesInvocationExtensions
     /// </summary>
     /// <param name="kernel">The Semantic Kernel instance.</param>
     /// <param name="promptTemplate">The prompt template to execute.</param>
-    /// <param name="thinkingType">The thinking/reasoning level to use (e.g., "none", "low", "medium", "high").</param>
+    /// <param name="thinkingLevel">The thinking/reasoning level to use (e.g., "none", "low", "medium", "high").</param>
     /// <param name="arguments">Optional kernel arguments to pass to the prompt.</param>
     /// <param name="additionalContent">Optional additional content items (e.g., images, files) to include with the prompt.</param>
     /// <param name="maxAttempts">Maximum number of retry attempts if parsing fails.</param>
@@ -33,12 +33,12 @@ public static class FileChangesInvocationExtensions
     public static FileChangesResult InvokeFileChangesPrompt(
         this Kernel kernel,
         string promptTemplate,
-        string thinkingType,
+        string thinkingLevel,
         KernelArguments? arguments = null,
         IReadOnlyList<KernelContent>? additionalContent = null,
         int maxAttempts = MaxAttempts)
     {
-        return InvokeFileChangesPromptAsync(kernel, promptTemplate, thinkingType, arguments, additionalContent, maxAttempts).GetAwaiter().GetResult();
+        return InvokeFileChangesPromptAsync(kernel, promptTemplate, thinkingLevel, arguments, additionalContent, maxAttempts).GetAwaiter().GetResult();
     }
     
     /// <summary>
@@ -47,7 +47,7 @@ public static class FileChangesInvocationExtensions
     /// </summary>
     /// <param name="kernel">The Semantic Kernel instance.</param>
     /// <param name="promptTemplate">The prompt template to execute.</param>
-    /// <param name="thinkingType">The thinking/reasoning level to use (e.g., "none", "low", "medium", "high").</param>
+    /// <param name="thinkingLevel">The thinking/reasoning level to use (e.g., "none", "low", "medium", "high").</param>
     /// <param name="arguments">Optional kernel arguments to pass to the prompt.</param>
     /// <param name="additionalContent">Optional additional content items (e.g., images, files) to include with the prompt.</param>
     /// <param name="maxAttempts">Maximum number of retry attempts if parsing fails.</param>
@@ -55,14 +55,14 @@ public static class FileChangesInvocationExtensions
     public static async Task<FileChangesResult> InvokeFileChangesPromptAsync(
         this Kernel kernel,
         string promptTemplate,
-        string thinkingType,
+        string thinkingLevel,
         KernelArguments? arguments = null,
         IReadOnlyList<KernelContent>? additionalContent = null,
         int maxAttempts = MaxAttempts)
     {
         // Get execution settings for this thinking type
         var aiProviderService = kernel.GetRequiredService<IAiProviderService>();
-        var executionSettings = aiProviderService.GetPromptExecutionSettings(thinkingType);
+        var executionSettings = aiProviderService.GetPromptExecutionSettings(thinkingLevel);
         
         return await ExecuteWithRetryAsync(kernel, promptTemplate, executionSettings, arguments, additionalContent, maxAttempts);
     }

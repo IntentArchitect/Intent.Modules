@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>1.0.0-beta.12</Version>
+    <Version>1.0.0-beta.13</Version>
     <Authors>Intent Architect</Authors>
     <Product>Intent Architect</Product>
     <Description>Support for accessing LLMs via Semantic Kernel within Intent Architect module tasks.</Description>
