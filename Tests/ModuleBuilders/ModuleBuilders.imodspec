@@ -373,7 +373,7 @@
     <dependency id="Intent.Common.Sql" version="3.4.0" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
     <dependency id="Intent.Common.TypeScript" version="4.0.0" />
-    <dependency id="Intent.Modelers.Domain" version="3.12.10-pre.1" />
+    <dependency id="Intent.Modelers.Domain" version="3.12.10" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="4.5.1" />
   </dependencies>
   <files>
