@@ -3158,7 +3158,7 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), propert
       <dependencies>
         <dependency name="Common UI Script" id="5bd2a61d-7aaa-4785-90fa-376796ccb6c8" />
       </dependencies>
-      <script>BackendServiceHelperApi.remapServiceCall(element);
+      <script>await BackendServiceHelperApi.remapServiceCall(element);
 </script>
     </suggestionSetting>
     <suggestionSetting type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" locations="diagram, model">
@@ -3275,7 +3275,7 @@ async function execute() {
 
     const component = element;
 
-    result.selectedElementIds.forEach(selectedElementId =&gt; {
+    for (const selectedElementId of result.selectedElementIds) {
 
         const serviceRequest = lookup(selectedElementId);
 
@@ -3283,8 +3283,8 @@ async function execute() {
             return;
         }
 
-        BackendServiceHelperApi.setupCallServiceFromComponent(component, serviceRequest, result.selectedElementIds.length == 1);
-    });
+        await (async () =&gt; await BackendServiceHelperApi.setupCallServiceFromComponent(component, serviceRequest, result.selectedElementIds.length == 1))();
+    }
 }
 
 await execute();

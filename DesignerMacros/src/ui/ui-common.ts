@@ -5,12 +5,12 @@ let BackendServiceHelperApi = {
     remapServiceCall,
 };
 
-function setupCallServiceFromComponent(component: IElementApi, serviceRequest: IElementApi, presentMappingDialogs: boolean) {
+async function setupCallServiceFromComponent(component: IElementApi, serviceRequest: IElementApi, presentMappingDialogs: boolean): Promise<void> {
     let helper = new BackendServiceHelper();
-    helper.callService(component, serviceRequest, presentMappingDialogs);
+    await helper.callService(component, serviceRequest, presentMappingDialogs);
 }
 
-function remapServiceCall(association: IAssociationApi) {
+async function remapServiceCall(association: IAssociationApi): Promise<void> {
     const component = association.getOtherEnd().typeReference.getType().getParent();
     const serviceRequest = association.typeReference.getType();
 
@@ -44,18 +44,18 @@ function remapServiceCall(association: IAssociationApi) {
     const existingProperty = lookup(existingPropertyId);
 
     let helper = new BackendServiceHelper();
-    helper.callService(component, serviceRequest, true, association, existingOperation, existingProperty);
+    await helper.callService(component, serviceRequest, true, association, existingOperation, existingProperty);
 }
 
 class BackendServiceHelper {
-    callService(
+    async callService(
         component: IElementApi,
         serviceRequest: IElementApi,
         presentMappingDialogs: boolean,
         existingCallServiceAssociation?: IAssociationApi,
         existingOperation?: IElementApi,
         existingProperty?: IElementApi
-    ): void {
+    ): Promise<void> {
         const diagram = getCurrentDiagram();
         const componentVisual = diagram?.getVisual(component.id);
         const space = diagram?.findEmptySpace({ x: componentVisual.getDimensions().right + 250, y: componentVisual.getDimensions().getCenter().y }, { width: 200, height: 100 });
@@ -102,7 +102,7 @@ class BackendServiceHelper {
             this.addViewModel(command, component, mapping, ["Command", "Create", "Update"]);
 
             if (presentMappingDialogs) {
-                mapping.launchDialog();
+                await mapping.launchDialog();
             }
         } else if (serviceRequest.specialization == "Operation") {
             const serviceOp = serviceRequest; // Service Operation
@@ -137,7 +137,7 @@ class BackendServiceHelper {
                 const dto = dtoParam?.typeReference.getType();
                 this.addViewModel(dto, component, mapping, ["DTO", "Dto"], [serviceOp.id, dtoParam.id]);
                 if (presentMappingDialogs) {
-                    mapping.launchDialog();
+                    await mapping.launchDialog();
                 }
             }
         }
