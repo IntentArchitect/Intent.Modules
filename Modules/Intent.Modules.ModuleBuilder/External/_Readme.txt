@@ -1,1 +1,0 @@
-﻿These are all from the propriety Intent Architect repository, we need some way to expose them or something.
