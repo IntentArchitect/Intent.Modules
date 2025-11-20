@@ -122,6 +122,11 @@ public static class FileChangesInvocationExtensions
                     throw new FriendlyException(@"The selected model does not have thinking capabilities. Please choose a different model or set the thinking level to 'None'.");
                 }
 
+                if (message.Contains("429 (Too Many Requests)", StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new FriendlyException("The AI service is experiencing heavy load or your account's rate limit has been exceeded. Please try again later or consider upgrading your plan if applicable.");
+                }
+
                 throw;
             }
 
