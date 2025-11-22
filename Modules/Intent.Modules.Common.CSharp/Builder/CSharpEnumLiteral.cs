@@ -1,13 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
+using Intent.Modules.Common.CSharp.Builder.InterfaceWrappers;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpEnumLiteral : CSharpDeclaration<CSharpEnumLiteral>, ICodeBlock
+public class CSharpEnumLiteral : CSharpDeclaration<CSharpEnumLiteral>, ICSharpEnumLiteral
 {
+    private readonly CSharpEnumLiteralWrapper _wrapper;
+
     public CSharpEnumLiteral(string literalName, string literalValue)
     {
-        LiteralName = literalName ?? throw new ArgumentNullException(nameof(literalName));
+        if (string.IsNullOrWhiteSpace(literalName))
+        {
+            throw new ArgumentNullException(nameof(literalName));
+        }
+        
+        _wrapper = new CSharpEnumLiteralWrapper(this);
+        
+        LiteralName = literalName;
         LiteralValue = literalValue;
     }
     
@@ -32,5 +43,27 @@ public class CSharpEnumLiteral : CSharpDeclaration<CSharpEnumLiteral>, ICodeBloc
         }
 
         return sb.ToString();
+    }
+
+    IEnumerable<ICSharpAttribute> ICSharpDeclaration<ICSharpEnumLiteral>.Attributes => _wrapper.Attributes;
+
+    ICSharpEnumLiteral ICSharpDeclaration<ICSharpEnumLiteral>.AddAttribute(string name, Action<ICSharpAttribute> configure)
+    {
+        return _wrapper.AddAttribute(name, configure);
+    }
+
+    ICSharpEnumLiteral ICSharpDeclaration<ICSharpEnumLiteral>.AddAttribute(ICSharpAttribute attribute, Action<ICSharpAttribute> configure)
+    {
+        return _wrapper.AddAttribute(attribute, configure);
+    }
+
+    ICSharpEnumLiteral ICSharpDeclaration<ICSharpEnumLiteral>.WithComments(string xmlComments)
+    {
+        return _wrapper.WithComments(xmlComments);
+    }
+
+    ICSharpEnumLiteral ICSharpDeclaration<ICSharpEnumLiteral>.WithComments(IEnumerable<string> xmlComments)
+    {
+        return _wrapper.WithComments(xmlComments);
     }
 }

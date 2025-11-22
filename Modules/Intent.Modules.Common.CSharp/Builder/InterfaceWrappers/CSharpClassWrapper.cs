@@ -45,6 +45,8 @@ internal class CSharpClassWrapper(CSharpClass wrapped) :
     IList<ICSharpClassMethodDeclaration> ICSharpClass.Methods => new WrappedList<CSharpClassMethod, ICSharpClassMethodDeclaration>(wrapped.Methods);
 
     IList<ICSharpGenericParameter> ICSharpClass.GenericParameters => new WrappedList<CSharpGenericParameter, ICSharpGenericParameter>(wrapped.GenericParameters);
+    
+    IList<ICSharpEnum> ICSharpClass.NestedEnums => new WrappedList<CSharpEnum, ICSharpEnum>(wrapped.NestedEnums);
 
     IList<ICSharpClass> ICSharpClass.NestedClasses => new WrappedList<CSharpClass, ICSharpClass>(wrapped.NestedClasses);
 
