@@ -4,6 +4,10 @@
 
 ### Version 1.0.3
 
+- Improvement: Service call mappings not have `Re-map Service Call` accelerators, for when you change your service contracts.
+
+### Version 1.0.3
+
 - Improvement: Route parameters now support nullable.
 - Improvement: Updated error messaging when Route of a `Page` contains incorrect route parameters.
 

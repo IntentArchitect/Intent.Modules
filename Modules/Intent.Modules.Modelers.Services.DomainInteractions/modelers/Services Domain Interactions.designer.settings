@@ -12223,6 +12223,19 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
           <traversableTypes>
             <mappingId>5ef8e1c3-9626-4501-8968-6d9e432fb3b5</mappingId>
           </traversableTypes>
+          <overrideTypeReferenceFunction>const domainOperationSpecializationId = "e042bb67-a1df-480c-9935-b26210f78591";
+
+if (element.typeReference.getType().specializationId == domainOperationSpecializationId){
+    return {
+        typeId:  element.typeReference.getType().getParent().id,
+        isNullable: false,
+        isCollection: false,
+        genericTypeId: undefined,
+        genericTypeParameters: []
+    };
+}
+return element.typeReference.toModel();
+</overrideTypeReferenceFunction>
           <canBeModified>false</canBeModified>
           <represents>data</represents>
         </mappableElement>
