@@ -1,6 +1,8 @@
-﻿using System.Linq;
-using Intent.Metadata.Models;
+﻿using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Intent.Modules.Common.TypeScript.TypeResolvers
 {
@@ -12,20 +14,20 @@ namespace Intent.Modules.Common.TypeScript.TypeResolvers
         /// <summary>
         /// Creates a new instance of <see cref="TypeScriptTypeResolver"/>.
         /// </summary>
-        public TypeScriptTypeResolver() : base(new TypeScriptTypeResolverContext(CollectionFormatter.Create("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance))
+        public TypeScriptTypeResolver() : base(new TypeScriptTypeResolverContext(TypescriptCollectionFormatter.Create("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance))
         {
         }
 
         /// <inheritdoc />
         protected override ITypeResolverContext CreateContext()
         {
-            return new TypeScriptTypeResolverContext(CollectionFormatter.Create("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance);
+            return new TypeScriptTypeResolverContext(TypescriptCollectionFormatter.Create("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance);
         }
 
-        private class TypeScriptTypeResolverContext : TypeResolverContextBase
+        private class TypeScriptTypeResolverContext : TypeResolverContextBase<TypescriptCollectionFormatter, TypescriptResolvedTypeInfo>
         {
             public TypeScriptTypeResolverContext(
-                ICollectionFormatter defaultCollectionFormatter,
+                TypescriptCollectionFormatter defaultCollectionFormatter,
                 INullableFormatter defaultNullableFormatter)
                 : base(
                     defaultCollectionFormatter,
@@ -33,12 +35,51 @@ namespace Intent.Modules.Common.TypeScript.TypeResolvers
             {
             }
 
-            protected override IResolvedTypeInfo ResolveType(ITypeReference typeReference, INullableFormatter nullableFormatter)
+            protected override TypescriptResolvedTypeInfo Get(IClassProvider classProvider)
+            {
+                return TypescriptResolvedTypeInfo.Create(
+                    name: classProvider.ClassName,
+                    @namespace: classProvider.Namespace,
+                    isPrimitive: false,
+                    isNullable: false,
+                    isCollection: false,
+                    typeReference: null,
+                    nullableFormatter: null,
+                    template: classProvider,
+                    genericTypeParameters: null);
+            }
+
+            protected override TypescriptResolvedTypeInfo Get(
+                IResolvedTypeInfo resolvedTypeInfo,
+                IEnumerable<ITypeReference> genericTypeParameters,
+                TypescriptCollectionFormatter collectionFormatter)
+            {
+                return TypescriptResolvedTypeInfo.Create(
+                    resolvedTypeInfo: resolvedTypeInfo,
+                    genericTypeParameters: genericTypeParameters
+                        .Select(type => Get(type, collectionFormatter))
+                        .ToArray());
+            }
+
+            protected override TypescriptResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
+            {
+                var collectionFormatter = !string.IsNullOrWhiteSpace(collectionFormat)
+                    ? TypescriptCollectionFormatter.Create(collectionFormat)
+                    : null;
+
+                return Get(typeInfo, collectionFormatter);
+            }
+
+            protected override TypescriptResolvedTypeInfo ResolveType(
+                ITypeReference typeReference,
+                INullableFormatter nullableFormatter,
+                TypescriptCollectionFormatter collectionFormatter)
             {
                 if (typeReference.Element == null)
                 {
-                    return ResolvedTypeInfo.Create(
+                    return TypescriptResolvedTypeInfo.Create(
                         name: "void",
+                        @namespace: string.Empty,
                         isPrimitive: true,
                         isNullable: false,
                         isCollection: false,
@@ -91,13 +132,13 @@ namespace Intent.Modules.Common.TypeScript.TypeResolvers
                         : typeReference.Element.Name;
                 }
 
-                return ResolvedTypeInfo.Create(
+                return TypescriptResolvedTypeInfo.Create(
                     name: name,
+                    @namespace: string.Empty,    
                     isPrimitive: isPrimitive,
                     typeReference: typeReference,
                     template: null,
                     nullableFormatter: nullableFormatter,
-                    collectionFormatter: null,
                     genericTypeParameters: (typeReference.GenericTypeParameters ?? Enumerable.Empty<ITypeReference>())
                         .Select(Get)
                         .ToArray()

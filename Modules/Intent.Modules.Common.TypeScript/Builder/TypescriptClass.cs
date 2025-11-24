@@ -158,7 +158,7 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
 
     public TypescriptClass InsertMethod(int index, string name, string returnType, Action<TypescriptMethod> configure = null)
     {
-        var method = new TypescriptMethod(name, returnType, File);
+        var method = new TypescriptMethod(name, returnType, this);
         Methods.Insert(index, method);
         configure?.Invoke(method);
         return this;
