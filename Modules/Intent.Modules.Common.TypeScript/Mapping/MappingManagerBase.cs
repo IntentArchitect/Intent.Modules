@@ -60,9 +60,7 @@ public abstract class MappingManagerBase
         var mapping = ResolveMappings(mappingModel);
         ApplyReplacements(mapping);
 
-        //TODO
-        return new TypescriptStatement("");
-        //return mapping.GetTargetStatement();
+        return mapping.GetTargetStatement();
     }
 
     public void SetFromReplacement(IMetadataModel type, string replacement)

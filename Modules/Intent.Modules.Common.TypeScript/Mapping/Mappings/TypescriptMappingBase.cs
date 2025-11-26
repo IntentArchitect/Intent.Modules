@@ -1,6 +1,7 @@
 ﻿#nullable enable
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Common.TypeScript.Builder;
 using Intent.Modules.Common.TypeScript.Templates;
@@ -78,8 +79,8 @@ public abstract partial class TypescriptMappingBase : ITypescriptMapping
     public virtual TypescriptStatement GetTargetStatement(bool withNullConditionalOperators)
     {
         //TODO
-        return new TypescriptStatement("");
-        //return GetTargetPathText(withNullConditionalOperators);
+        //return new TypescriptStatement("");
+        return GetTargetPathText(withNullConditionalOperators);
     }
 
     public virtual IDictionary<string, TypescriptStatement> GetExpressionMap()
@@ -169,9 +170,7 @@ public abstract partial class TypescriptMappingBase : ITypescriptMapping
 
     protected string? GetSourcePathText(IList<IElementMappingPathTarget> mappingPaths, bool targetIsNullable)
     {
-        // TODO
-        return "";
-        //return GetSourcePathExpression(mappingPaths, targetIsNullable)?.ToString();
+        return GetSourcePathExpression(mappingPaths, targetIsNullable)?.ToString();
     }
 
     [GeneratedRegex(@"[\(\)?:!=+|&]")]
@@ -211,58 +210,59 @@ public abstract partial class TypescriptMappingBase : ITypescriptMapping
         return result;
     }
 
-    //protected ICSharpExpression? GetSourcePathExpression(IList<IElementMappingPathTarget> mappingPaths, bool targetIsNullable)
-    //{
-    //    // TODO: GCB - The check for inheritance like this is a hack.
-    //    // Consider making associations indicating inheritance a first-class citizen via the settings.
-    //    // Alternatively, consider using the metadata to indicate this.
-    //    mappingPaths = mappingPaths.Where(x => x.Element.SpecializationType != "Generalization Target End").ToList();
+    protected ITypescriptExpression? GetSourcePathExpression(IList<IElementMappingPathTarget> mappingPaths, bool targetIsNullable)
+    {
+        // TODO: GCB - The check for inheritance like this is a hack.
+        // Consider making associations indicating inheritance a first-class citizen via the settings.
+        // Alternatively, consider using the metadata to indicate this.
+        mappingPaths = mappingPaths.Where(x => x.Element.SpecializationType != "Generalization Target End").ToList();
 
-    //    CSharpStatement? result = null;
-    //    foreach (var mappingPathTarget in mappingPaths)
-    //    {
-    //        if (TryGetSourceReplacement(mappingPathTarget.Element, out var replacement))
-    //        {
-    //            if (replacement == string.Empty)
-    //            {
-    //                continue;
-    //            }
-    //            result = !string.IsNullOrWhiteSpace(replacement) ? new CSharpStatement(replacement) : null;
-    //        }
-    //        else
-    //        {
-    //            var relativeMappingPath = mappingPaths.Take(mappingPaths.IndexOf(mappingPathTarget) + 1).ToList();
-    //            CSharpStatement? member;
-    //            if (TryGetReferenceName(mappingPathTarget, out var referenceName))
-    //            {
-    //                member = new CSharpStatement(referenceName);
-    //            }
-    //            else if (TryGetReference(relativeMappingPath, out var reference))
-    //            {
-    //                member = new CSharpStatement(reference.Name, (ICSharpReferenceable)reference);
-    //            }
-    //            else
-    //            {
-    //                // fall back on using the element's name from the metadata:
-    //                //If this is not expected, you have not set up a `Represents` inside of you template, note you will need to do this for each part of the mapping path
-    //                member = new CSharpStatement(mappingPathTarget.Element.Name);
-    //            }
+        TypescriptStatement? result = null;
+        foreach (var mappingPathTarget in mappingPaths)
+        {
+            if (TryGetSourceReplacement(mappingPathTarget.Element, out var replacement))
+            {
+                if (replacement == string.Empty)
+                {
+                    continue;
+                }
+                result = !string.IsNullOrWhiteSpace(replacement) ? new TypescriptStatement(replacement) : null;
+            }
+            else
+            {
+                var relativeMappingPath = mappingPaths.Take(mappingPaths.IndexOf(mappingPathTarget) + 1).ToList();
+                TypescriptStatement? member;
+                if (TryGetReferenceName(mappingPathTarget, out var referenceName))
+                {
+                    member = new TypescriptStatement(referenceName);
+                }
+                else if (TryGetReference(relativeMappingPath, out var reference))
+                {
+                    member = new TypescriptStatement(reference.Name, (ITypescriptReferenceable)reference);
+                }
+                else
+                {
+                    // fall back on using the element's name from the metadata:
+                    //If this is not expected, you have not set up a `Represents` inside of you template, note you will need to do this for each part of the mapping path
+                    member = new TypescriptStatement(mappingPathTarget.Element.Name.ToCamelCase());
+                }
 
-    //            result = result != null ? new CSharpAccessMemberStatement(result, member) : member;
-    //            var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
-    //            if (targetIsNullable && IsTransitional(previousMappingPath, mappingPathTarget))
-    //            {
-    //                if (previousMappingPath?.Element.TypeReference?.IsNullable == true
-    //                    && result is CSharpAccessMemberStatement accessMember)
-    //                {
-    //                    accessMember.IsConditional();
-    //                }
-    //            }
-    //        }
-    //    }
+                result = result != null ? new TypescriptStatement($"this.{result}.{member}") : $"{member}";
+                //result = result != null ? new TypescriptStatement(result, member) : member;
+                var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
+                if (targetIsNullable && IsTransitional(previousMappingPath, mappingPathTarget))
+                {
+                    if (previousMappingPath?.Element.TypeReference?.IsNullable == true)
+                        //&& result is CSharpAccessMemberStatement accessMember)
+                    {
+                        //accessMember.IsConditional();
+                    }
+                }
+            }
+        }
 
-    //    return result;
-    //}
+        return result;
+    }
 
     private static bool IsTransitional(IElementMappingPathTarget? previousMappingPath, IElementMappingPathTarget mappingPathTarget)
     {
@@ -273,64 +273,64 @@ public abstract partial class TypescriptMappingBase : ITypescriptMapping
         return !((IElement)previousMappingPath.Element).ChildElements.Contains((IElement)mappingPathTarget.Element);
     }
 
-    //protected string? GetTargetPathText(bool withNullConditionalOperators = false)
-    //{
-    //    var targetPathExpression = GetTargetPathExpression(withNullConditionalOperators);
-    //    if (targetPathExpression == null)
-    //    {
-    //        throw new Exception($"The target path text returned null for mapping {GetType().Name}. Check that you are resolving the appropriate mapping type for this model: {Model}");
-    //    }
-    //    return GetTargetPathExpression(withNullConditionalOperators)?.ToString();
-    //}
+    protected string? GetTargetPathText(bool withNullConditionalOperators = false)
+    {
+        var targetPathExpression = GetTargetPathExpression(withNullConditionalOperators);
+        if (targetPathExpression == null)
+        {
+            throw new Exception($"The target path text returned null for mapping {GetType().Name}. Check that you are resolving the appropriate mapping type for this model: {Model}");
+        }
+        return GetTargetPathExpression(withNullConditionalOperators)?.ToString();
+    }
 
-    //protected ICSharpExpression? GetTargetPathExpression(bool withNullConditionalOperators = false)
-    //{
-    //    Ty? result = null;
-    //    var mappingPaths = GetTargetPath();
-    //    foreach (var mappingPathTarget in mappingPaths)
-    //    {
-    //        if (TryGetTargetReplacement(mappingPathTarget.Element, out var replacement))
-    //        {
-    //            if (replacement == string.Empty)
-    //            {
-    //                continue;
-    //            }
-    //            result = !string.IsNullOrWhiteSpace(replacement) ? new CSharpStatement(replacement) : null;
-    //        }
-    //        else
-    //        {
-    //            CSharpStatement member;
-    //            var relativeMappingPath = mappingPaths.Take(mappingPaths.IndexOf(mappingPathTarget) + 1).ToList();
-    //            if (TryGetReferenceName(mappingPathTarget, out var referenceName))
-    //            {
-    //                member = new CSharpStatement(referenceName);
-    //            }
-    //            else if (TryGetReference(relativeMappingPath, out var reference))
-    //            {
-    //                member = new CSharpStatement(reference.Name, (ICSharpReferenceable)reference);
-    //            }
-    //            else
-    //            {
-    //                // fall back on using the element's name from the metadata:
-    //                //If this is not expected, you have not set up a `Represents` inside of you template, note you will need to do this for each part of the mapping path
-    //                member = new CSharpStatement(mappingPathTarget.Element.Name);
-    //            }
+    protected TypescriptStatement? GetTargetPathExpression(bool withNullConditionalOperators = false)
+    {
+        TypescriptStatement? result = null;
+        var mappingPaths = GetTargetPath();
+        foreach (var mappingPathTarget in mappingPaths)
+        {
+            if (TryGetTargetReplacement(mappingPathTarget.Element, out var replacement))
+            {
+                if (string.IsNullOrWhiteSpace(replacement))
+                {
+                    continue;
+                }
+                result = !string.IsNullOrWhiteSpace(replacement) ? new TypescriptStatement(replacement) : null;
+            }
+            else
+            {
+                TypescriptStatement member = new TypescriptStatement("");
+                var relativeMappingPath = mappingPaths.Take(mappingPaths.IndexOf(mappingPathTarget) + 1).ToList();
+                if (TryGetReferenceName(mappingPathTarget, out var referenceName))
+                {
+                    member = new TypescriptStatement(referenceName);
+                }
+                else if (TryGetReference(relativeMappingPath, out var reference))
+                {
+                    member = new TypescriptStatement(reference.Name);//, (ITypescriptReferenceable)reference);
+                }
+                else
+                {
+                    // fall back on using the element's name from the metadata:
+                    //If this is not expected, you have not set up a `Represents` inside of you template, note you will need to do this for each part of the mapping path
+                    member = new TypescriptStatement(mappingPathTarget.Element.Name.ToCamelCase());
+                }
 
-    //            result = result != null ? new CSharpAccessMemberStatement(result, member, member.Reference) : member;
-    //            var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
-    //            if (withNullConditionalOperators && IsTransitional(previousMappingPath, mappingPathTarget))
-    //            {
-    //                if (previousMappingPath?.Element.TypeReference?.IsNullable == true
-    //                    && result is CSharpAccessMemberStatement accessMember)
-    //                {
-    //                    accessMember.IsConditional();
-    //                }
-    //            }
-    //        }
-    //    }
-
-    //    return result;
-    //}
+                result = member;
+                //result = result != null ? new CSharpAccessMemberStatement(result, member, member.Reference) : member;
+                //var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
+                //if (withNullConditionalOperators && IsTransitional(previousMappingPath, mappingPathTarget))
+                //{
+                //    if (previousMappingPath?.Element.TypeReference?.IsNullable == true
+                //        && result is CSharpAccessMemberStatement accessMember)
+                //    {
+                //        accessMember.IsConditional();
+                //    }
+                //}
+            }
+        }
+        return result;
+    }
 
     //protected TypescriptStatement GetNullableAwareInstantiation(ICanBeReferencedType model, IList<TypescriptStatement> children, TypescriptStatement instantiationStatement)
     //{
@@ -354,81 +354,82 @@ public abstract partial class TypescriptMappingBase : ITypescriptMapping
         return children.All(c => predicate(c) || CheckChildrenRecursive(c.Children, predicate));
     }
 
-    //private bool TryGetReference(IList<IElementMappingPathTarget> mappingPath, [NotNullWhen(true)] out IHasCSharpName? reference)
-    //{
-    //    reference = null;
-    //    var mappingPathTarget = mappingPath.Last();
-    //    var previousPathTarget = (IElement)mappingPath.TakeLast(2).First().Element;
+    private bool TryGetReference(IList<IElementMappingPathTarget> mappingPath, [NotNullWhen(true)] out IHasTypescriptName? reference)
+    {
+        reference = null;
+        var mappingPathTarget = mappingPath.Last();
+        var previousPathTarget = (IElement)mappingPath.TakeLast(2).First().Element;
 
-    //    // First try the previous mapping element, but only if it has children (e.g. a command / query):
-    //    if (previousPathTarget.ChildElements.Any() && TryFindTemplates(Template, previousPathTarget, out var foundTypeTemplates))
-    //    {
-    //        foreach (var context in foundTypeTemplates ?? [])
-    //        {
-    //            if (context.RootCodeContext.TryGetReferenceForModel(mappingPathTarget.Id, out reference))
-    //            {
-    //                return true;
-    //            }
-    //        }
-    //    }
-    //    // Second try the previous mapping element's type reference (e.g. an attribute with a complex type):
-    //    if (TryFindTemplates(Template, previousPathTarget.TypeReference?.Element as IElement, out foundTypeTemplates))
-    //    {
-    //        foreach (var context in foundTypeTemplates ?? [])
-    //        {
-    //            if (context.RootCodeContext.TryGetReferenceForModel(mappingPathTarget.Id, out reference))
-    //            {
-    //                return true;
-    //            }
-    //        }
-    //    }
+        // First try the previous mapping element, but only if it has children (e.g. a command / query):
+        if (previousPathTarget.ChildElements.Any() && TryFindTemplates(Template, previousPathTarget, out var foundTypeTemplates))
+        {
+            foreach (var context in foundTypeTemplates ?? [])
+            {
+                if (context.RootCodeContext.TryGetReferenceForModel(mappingPathTarget.Id, out reference))
+                {
+                    return true;
+                }
+            }
+        }
 
-    //    // Finally try the previous mapping element's parent (e.g. when you're mapping to an injected service's operation):
-    //    if (TryFindTemplates(Template, previousPathTarget.ParentElement, out foundTypeTemplates))
-    //    {
-    //        foreach (var context in foundTypeTemplates ?? [])
-    //        {
-    //            if (context.RootCodeContext.TryGetReferenceForModel(mappingPathTarget.Id, out reference))
-    //            {
-    //                return true;
-    //            }
-    //        }
-    //    }
+        // Second try the previous mapping element's type reference (e.g. an attribute with a complex type):
+        if (TryFindTemplates(Template, previousPathTarget.TypeReference?.Element as IElement, out foundTypeTemplates))
+        {
+            foreach (var context in foundTypeTemplates ?? [])
+            {
+                if (context.RootCodeContext.TryGetReferenceForModel(mappingPathTarget.Id, out reference))
+                {
+                    return true;
+                }
+            }
+        }
 
-    //    // Finally, Finally, try the type reference's type reference. This is for when mapping from a property on an operation result DTO
-    //    // e.g. The Response from a operation call is a DTO, and one of the DTO's fields is mapped
-    //    if (TryFindTemplates(Template, previousPathTarget.TypeReference?.Element?.TypeReference?.Element as IElement, out foundTypeTemplates))
-    //    {
-    //        foreach (var context in foundTypeTemplates ?? [])
-    //        {
-    //            if (context.RootCodeContext.TryGetReferenceForModel(mappingPathTarget.Id, out reference))
-    //            {
-    //                return true;
-    //            }
-    //        }
-    //    }
+        // Finally try the previous mapping element's parent (e.g. when you're mapping to an injected service's operation):
+        if (TryFindTemplates(Template, previousPathTarget.ParentElement, out foundTypeTemplates))
+        {
+            foreach (var context in foundTypeTemplates ?? [])
+            {
+                if (context.RootCodeContext.TryGetReferenceForModel(mappingPathTarget.Id, out reference))
+                {
+                    return true;
+                }
+            }
+        }
 
-    //    return false;
-    //}
+        // Finally, Finally, try the type reference's type reference. This is for when mapping from a property on an operation result DTO
+        // e.g. The Response from a operation call is a DTO, and one of the DTO's fields is mapped
+        if (TryFindTemplates(Template, previousPathTarget.TypeReference?.Element?.TypeReference?.Element as IElement, out foundTypeTemplates))
+        {
+            foreach (var context in foundTypeTemplates ?? [])
+            {
+                if (context.RootCodeContext.TryGetReferenceForModel(mappingPathTarget.Id, out reference))
+                {
+                    return true;
+                }
+            }
+        }
 
-    //private static bool TryFindTemplates(ITypeScriptMerged template, IElement? elementToLookup, out IList<ITypescriptFileBuilderTemplate>? foundTemplates)
-    //{
-    //    if (elementToLookup is null)
-    //    {
-    //        foundTemplates = null;
-    //        return false;
-    //    }
+        return false;
+    }
 
-    //    foundTemplates = [];
+    private static bool TryFindTemplates(ITypescriptTemplate template, IElement? elementToLookup, out IList<ITypescriptFileBuilderTemplate>? foundTemplates)
+    {
+        if (elementToLookup is null)
+        {
+            foundTemplates = null;
+            return false;
+        }
 
-    //    var foundTypeInfos = template.GetAllTypeInfo(elementToLookup.AsTypeReference());
-    //    foreach (var foundTemplate in foundTypeInfos.Select(x => x.Template).OfType<ICSharpFileBuilderTemplate>())
-    //    {
-    //        foundTemplates.Add(foundTemplate);
-    //    }
+        foundTemplates = [];
 
-    //    return foundTemplates.Any();
-    //}
+        var foundTypeInfos = template.GetAllTypeInfo(elementToLookup.AsTypeReference());
+        foreach (var foundTemplate in foundTypeInfos.Select(x => x.Template).OfType<ITypescriptFileBuilderTemplate>())
+        {
+            foundTemplates.Add(foundTemplate);
+        }
+
+        return foundTemplates.Any();
+    }
 
     /// <summary>
     /// Resolve the reference name after all replacement have been applied for this specified <paramref name="mappingPath"/>

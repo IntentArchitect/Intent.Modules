@@ -9,7 +9,7 @@ namespace Intent.Modules.Common.TypeScript.Tests.Builder
         public void ItShouldWork()
         {
             // Arrange
-            var builder = new TypescriptFile(string.Empty);
+            var builder = new TypescriptFile(string.Empty, null);
             builder
                 .AddImport("myType", "my-source")
                 .AddImport("myOtherType", "my-source")

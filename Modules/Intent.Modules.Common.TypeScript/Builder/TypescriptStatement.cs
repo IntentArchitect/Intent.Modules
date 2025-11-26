@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Intent.Modules.Common.TypeScript.Builder;
 
-public class TypescriptStatement : TypescriptMetadataBase<TypescriptStatement>, ICodeBlock
+public class TypescriptStatement : TypescriptMetadataBase<TypescriptStatement>, ICodeBlock, ITypescriptExpression
 {
     public TypescriptStatement(string invocation)
     {
@@ -11,7 +11,17 @@ public class TypescriptStatement : TypescriptMetadataBase<TypescriptStatement>, 
         Text = invocation?.Trim();
     }
 
+    public TypescriptStatement(string statement, ITypescriptReferenceable reference)
+    {
+        Reference = reference;
+
+        IndentForLeadingSpaces(statement);
+        Text = statement?.Trim();
+    }
+
     public IHasTypescriptStatements Parent { get; set; }
+
+    public ITypescriptReferenceable Reference { get; }
 
     public TypescriptCodeSeparatorType BeforeSeparator { get; set; } = TypescriptCodeSeparatorType.NewLine;
     public TypescriptCodeSeparatorType AfterSeparator { get; set; } = TypescriptCodeSeparatorType.NewLine;

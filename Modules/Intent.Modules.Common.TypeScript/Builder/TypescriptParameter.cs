@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Intent.Modules.Common.TypeScript.Builder;
 
-public class TypescriptParameter
+public class TypescriptParameter : TypescriptMetadataBase<TypescriptParameter>
 {
     public string Type { get; }
     public string Name { get; }

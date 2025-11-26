@@ -13,8 +13,8 @@ public interface ITypescriptMapping
     IEnumerable<TypescriptStatement> GetMappingStatements();
 
     TypescriptStatement GetSourceStatement(bool? withNullConditionalOperators = default);
-    //TypescriptStatement GetTargetStatement();
-    //TypescriptStatement GetTargetStatement(bool withNullConditionalOperators);
+    TypescriptStatement GetTargetStatement();
+    TypescriptStatement GetTargetStatement(bool withNullConditionalOperators);
 
     IDictionary<string, TypescriptStatement> GetExpressionMap();
 

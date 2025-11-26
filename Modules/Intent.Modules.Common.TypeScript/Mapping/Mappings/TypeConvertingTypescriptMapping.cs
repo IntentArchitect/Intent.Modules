@@ -22,7 +22,7 @@ public class TypeConvertingTypescriptMapping : TypescriptMappingBase
     // This is so that source statements used in null checks or queries don't get converted.
     public override IEnumerable<TypescriptStatement> GetMappingStatements()
     {
-        yield return new TypescriptStatement($"{GetTargetStatement()} = {GetTypeConvertedSourceStatement()}");
+        yield return new TypescriptStatement($"{GetTargetStatement()}: {GetTypeConvertedSourceStatement()}");
     }
 
     public TypescriptStatement GetTypeConvertedSourceStatement()
@@ -37,7 +37,7 @@ public class TypeConvertingTypescriptMapping : TypescriptMappingBase
             Mapping.SourceElement.TypeReference.HasStringType() == false)
         {
             // TODO
-            return new TypescriptStatement($"{base.GetSourceStatement()}.toString()");
+            return new TypescriptStatement($"this.{base.GetSourceStatement()}");
         }
 
         if (Mapping.IsOneToOne() &&
@@ -64,10 +64,9 @@ public class TypeConvertingTypescriptMapping : TypescriptMappingBase
             (Mapping.TargetElement.TypeReference.Element.IsTypeDefinitionModel() || Mapping.TargetElement.TypeReference.Element.IsEnumModel()) &&
             !Mapping.TargetElement.TypeReference.Element.IsStringType())
         {
-            // TODO
-            return new TypescriptStatement("");
-            //return new CSharpAccessMemberStatement(base.GetSourceStatement(), "Value");
+            return base.GetSourceStatement();
         }
+
         return base.GetSourceStatement();
     }
 }

@@ -20,9 +20,12 @@ public class TypescriptFile
 
     public IList<TypescriptEnum> Enums { get; } = new List<TypescriptEnum>();
 
-    public TypescriptFile(string relativeLocation)
+    public ITypescriptTemplate Template { get; internal set; }
+
+    public TypescriptFile(string relativeLocation, ITypescriptFileBuilderTemplate template)
     {
         RelativeLocation = relativeLocation;
+        Template = template;
     }
 
     public string Indentation { get; private set; } = "  ";
