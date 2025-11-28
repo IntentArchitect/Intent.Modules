@@ -1,6 +1,7 @@
 ### Version 4.0.8
 
-- Fixed: Refactor onMapDto to use method call for isMapped and improve DTO naming logic.
+- Fixed: onMapDto to use method call for isMapped and improve DTO naming logic.
+- Fixed: On mapping would sometimes fail due to not finding a folder parent.
 
 ### Version 4.0.7
 

@@ -1402,7 +1402,8 @@ function onMapDto(element, folder, autoAddPrimaryKey = true, dtoPrefix = null, i
                 || 'Details';
             nameArg = `${nameArg}${disambiguator}`;
         }
-        let newDto = CrudHelper.getOrCreateCrudDto(nameArg, f.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, targetMappingSettingId, folder, inbound);
+        const effectiveFolder = folder !== null && folder !== void 0 ? folder : element.getParent();
+        let newDto = CrudHelper.getOrCreateCrudDto(nameArg, f.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, targetMappingSettingId, effectiveFolder, inbound);
         f.typeReference.setType(newDto.id);
     });
     let complexAttributes = element.getChildren("DTO-Field")
@@ -1414,7 +1415,8 @@ function onMapDto(element, folder, autoAddPrimaryKey = true, dtoPrefix = null, i
     complexAttributes.forEach(f => {
         let targetMappingSettingId = f.getParent().getMapping().mappingSettingsId;
         const nameArg = CrudHelper.getName(element, f.getMapping().getElement(), dtoPrefix);
-        let newDto = CrudHelper.getOrCreateCrudDto(nameArg, f.getMapping().getElement().typeReference.getType(), false, targetMappingSettingId, folder, inbound);
+        const effectiveFolder = folder !== null && folder !== void 0 ? folder : element.getParent();
+        let newDto = CrudHelper.getOrCreateCrudDto(nameArg, f.getMapping().getElement().typeReference.getType(), false, targetMappingSettingId, effectiveFolder, inbound);
         f.typeReference.setType(newDto.id);
     });
 }

@@ -4,7 +4,7 @@
 
 const stringTypeId: string = "d384db9c-a279-45e1-801e-e4e8099625f2";
 
-function onMapDto(element: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi, autoAddPrimaryKey: boolean = true, dtoPrefix: string = null, inbound: boolean = false ): void {
+function onMapDto(element: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi, autoAddPrimaryKey: boolean = true, dtoPrefix: string = null, inbound: boolean = false): void {
 
     if (element.isMapped()) {
         let mappedFields = element.getChildren("DTO-Field").filter(x => x.getMapping());
@@ -12,8 +12,8 @@ function onMapDto(element: MacroApi.Context.IElementApi, folder: MacroApi.Contex
         for (let mappedField of mappedFields) {
             // Unfortunately have to take into account Intent's ability to disambiguate newly created fields... (the "1")
             let matchedUnmappedField = unmappedFields
-                .filter(x => 
-                    `${x.getName()}1` === mappedField.getName() || 
+                .filter(x =>
+                    `${x.getName()}1` === mappedField.getName() ||
                     x.getName() === mappedField.getName())[0];
             if (!matchedUnmappedField) { continue; }
             matchedUnmappedField.setMapping(mappedField.getMapping().getElement().id, mappedField.getMapping().mappingSettingsId);
@@ -29,20 +29,21 @@ function onMapDto(element: MacroApi.Context.IElementApi, folder: MacroApi.Contex
         let nameArg = CrudHelper.getName(element, f.getMapping().getElement().typeReference.getType(), dtoPrefix);
         const expectedDtoName = `${nameArg.replace(/Dto$/, '')}Dto`;
         if (expectedDtoName === element.getName()) {
-            const disambiguator = f.getName() 
-                || f.getMapping()?.getElement()?.typeReference?.getType()?.getName() 
+            const disambiguator = f.getName()
+                || f.getMapping()?.getElement()?.typeReference?.getType()?.getName()
                 || 'Details';
             nameArg = `${nameArg}${disambiguator}`;
         }
+        const effectiveFolder = folder ?? element.getParent();
         let newDto = CrudHelper.getOrCreateCrudDto(
-            nameArg, 
-            f.getMapping().getElement().typeReference.getType(), 
-            autoAddPrimaryKey, 
-            targetMappingSettingId, 
-            folder, 
+            nameArg,
+            f.getMapping().getElement().typeReference.getType(),
+            autoAddPrimaryKey,
+            targetMappingSettingId,
+            effectiveFolder,
             inbound);
         f.typeReference.setType(newDto.id);
-    });        
+    });
 
     let complexAttributes = element.getChildren("DTO-Field")
         .filter(x => x.typeReference.getType()?.specialization != "DTO"
@@ -51,12 +52,13 @@ function onMapDto(element: MacroApi.Context.IElementApi, folder: MacroApi.Contex
     complexAttributes.forEach(f => {
         let targetMappingSettingId = f.getParent().getMapping().mappingSettingsId;
         const nameArg = CrudHelper.getName(element, f.getMapping().getElement(), dtoPrefix);
+        const effectiveFolder = folder ?? element.getParent();
         let newDto = CrudHelper.getOrCreateCrudDto(
-            nameArg, 
-            f.getMapping().getElement().typeReference.getType(), 
-            false, 
-            targetMappingSettingId, 
-            folder, 
+            nameArg,
+            f.getMapping().getElement().typeReference.getType(),
+            false,
+            targetMappingSettingId,
+            effectiveFolder,
             inbound);
         f.typeReference.setType(newDto.id);
     });
