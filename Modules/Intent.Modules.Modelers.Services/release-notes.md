@@ -1,3 +1,7 @@
+### Version 4.0.8
+
+- Fixed: Refactor onMapDto to use method call for isMapped and improve DTO naming logic.
+
 ### Version 4.0.7
 
 - Improvement: Updated module documentation to use centralized documentation site.

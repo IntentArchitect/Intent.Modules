@@ -20,7 +20,7 @@ function getSurrogateKeyType() {
     }
     return typeNameToIdMap.get("guid");
 }
-;
+/// <reference path="../../typings/elementmacro.context.api.d.ts"/>
 /// <reference path="getSurrogateKeyType.ts"/>
 /// <reference path="attributeWithMapPath.ts"/>
 class DomainHelper {
@@ -102,6 +102,7 @@ class DomainHelper {
             id: key.id,
             name: key.getName(),
             typeId: key.typeReference.typeId,
+            typeReferenceModel: key.typeReference.toModel(),
             mapPath: [key.id],
             isNullable: false,
             isCollection: false
@@ -125,6 +126,7 @@ class DomainHelper {
                     id: key.id,
                     name: key.getName(),
                     typeId: key.typeReference.typeId,
+                    typeReferenceModel: key.typeReference.toModel(),
                     mapPath: generalizationStack.concat([key.id]),
                     isNullable: key.typeReference.isNullable,
                     isCollection: key.typeReference.isCollection
@@ -160,6 +162,7 @@ class DomainHelper {
         return foreignKeys.map(x => ({
             name: DomainHelper.getAttributeNameFormat(x.getName()),
             typeId: x.typeReference.typeId,
+            typeReferenceModel: x.typeReference.toModel(),
             id: x.id,
             mapPath: [x.id],
             isCollection: x.typeReference.isCollection,
@@ -184,6 +187,7 @@ class DomainHelper {
             id: attr.id,
             name: attr.getName(),
             typeId: attr.typeReference.typeId,
+            typeReferenceModel: attr.typeReference.toModel(),
             mapPath: [attr.id],
             isNullable: attr.typeReference.isNullable,
             isCollection: attr.typeReference.isCollection
@@ -204,6 +208,7 @@ class DomainHelper {
             id: attr.id,
             name: attr.getName(),
             typeId: attr.typeReference.typeId,
+            typeReferenceModel: attr.typeReference.toModel(),
             mapPath: [attr.id],
             isNullable: false,
             isCollection: false
@@ -227,6 +232,7 @@ class DomainHelper {
                     id: attr.id,
                     name: attr.getName(),
                     typeId: attr.typeReference.typeId,
+                    typeReferenceModel: attr.typeReference.toModel(),
                     mapPath: generalizationStack.concat([attr.id]),
                     isNullable: attr.typeReference.isNullable,
                     isCollection: attr.typeReference.isCollection
@@ -247,6 +253,7 @@ class DomainHelper {
                     id: association.id,
                     name: association.getName(),
                     typeId: null,
+                    typeReferenceModel: null,
                     mapPath: generalizationStack.concat([association.id]),
                     isNullable: false,
                     isCollection: false
@@ -803,6 +810,7 @@ function getPrimaryKeysWithMapPath(entity) {
         id: key.id,
         name: key.getName(),
         typeId: key.typeReference.typeId,
+        typeReferenceModel: key.typeReference.toModel(),
         mapPath: [key.id],
         isNullable: false,
         isCollection: false
@@ -826,6 +834,7 @@ function getPrimaryKeysWithMapPath(entity) {
                 id: key.id,
                 name: key.getName(),
                 typeId: key.typeReference.typeId,
+                typeReferenceModel: key.typeReference.toModel(),
                 mapPath: generalizationStack.concat([key.id]),
                 isNullable: key.typeReference.isNullable,
                 isCollection: key.typeReference.isCollection
@@ -847,6 +856,7 @@ function getAttributesWithMapPath(entity) {
         id: attr.id,
         name: attr.getName(),
         typeId: attr.typeReference.typeId,
+        typeReferenceModel: attr.typeReference.toModel(),
         mapPath: [attr.id],
         isNullable: false,
         isCollection: false
@@ -870,6 +880,7 @@ function getAttributesWithMapPath(entity) {
                 id: attr.id,
                 name: attr.getName(),
                 typeId: attr.typeReference.typeId,
+                typeReferenceModel: attr.typeReference.toModel(),
                 mapPath: generalizationStack.concat([attr.id]),
                 isNullable: attr.typeReference.isNullable,
                 isCollection: attr.typeReference.isCollection
@@ -1190,6 +1201,7 @@ class CrudHelper {
             id: key.id,
             name: key.getName(),
             typeId: key.typeReference.typeId,
+            typeReferenceModel: key.typeReference.toModel(),
             mapPath: [key.id],
             isNullable: false,
             isCollection: false
@@ -1213,6 +1225,7 @@ class CrudHelper {
                     id: key.id,
                     name: key.getName(),
                     typeId: key.typeReference.typeId,
+                    typeReferenceModel: key.typeReference.toModel(),
                     mapPath: generalizationStack.concat([key.id]),
                     isNullable: key.typeReference.isNullable,
                     isCollection: key.typeReference.isCollection
@@ -1235,6 +1248,7 @@ class CrudHelper {
             id: attr.id,
             name: attr.getName(),
             typeId: attr.typeReference.typeId,
+            typeReferenceModel: attr.typeReference.toModel(),
             mapPath: [attr.id],
             // GCB - if you're seeing this change in your script, where these used to be false, you need to check.
             // I had to "fix" this so that basic mapping DTO projections worked properly (e.g. adding OrderLines to an Order DTO via basic mapping)
@@ -1260,6 +1274,7 @@ class CrudHelper {
                     id: attr.id,
                     name: attr.getName(),
                     typeId: attr.typeReference.typeId,
+                    typeReferenceModel: attr.typeReference.toModel(),
                     mapPath: generalizationStack.concat([attr.id]),
                     isNullable: attr.typeReference.isNullable,
                     isCollection: attr.typeReference.isCollection
@@ -1359,7 +1374,7 @@ function onMapCommand(element, isForCrudScript, excludePrimaryKeys = false, inbo
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
 function onMapDto(element, folder, autoAddPrimaryKey = true, dtoPrefix = null, inbound = false) {
-    if (element.isMapped) {
+    if (element.isMapped()) {
         let mappedFields = element.getChildren("DTO-Field").filter(x => x.getMapping());
         let unmappedFields = element.getChildren("DTO-Field").filter(x => !x.getMapping());
         for (let mappedField of mappedFields) {
@@ -1377,8 +1392,17 @@ function onMapDto(element, folder, autoAddPrimaryKey = true, dtoPrefix = null, i
     let fields = element.getChildren("DTO-Field")
         .filter(x => { var _a, _b, _c; return ((_a = x.typeReference.getType()) === null || _a === void 0 ? void 0 : _a.specialization) != "DTO" && ((_c = (_b = x.getMapping()) === null || _b === void 0 ? void 0 : _b.getElement()) === null || _c === void 0 ? void 0 : _c.specialization.startsWith("Association")); });
     fields.forEach(f => {
+        var _a, _b, _c, _d;
         let targetMappingSettingId = f.getParent().getMapping().mappingSettingsId;
-        let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(element, f.getMapping().getElement().typeReference.getType(), dtoPrefix), f.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, targetMappingSettingId, folder, inbound);
+        let nameArg = CrudHelper.getName(element, f.getMapping().getElement().typeReference.getType(), dtoPrefix);
+        const expectedDtoName = `${nameArg.replace(/Dto$/, '')}Dto`;
+        if (expectedDtoName === element.getName()) {
+            const disambiguator = f.getName()
+                || ((_d = (_c = (_b = (_a = f.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.typeReference) === null || _c === void 0 ? void 0 : _c.getType()) === null || _d === void 0 ? void 0 : _d.getName())
+                || 'Details';
+            nameArg = `${nameArg}${disambiguator}`;
+        }
+        let newDto = CrudHelper.getOrCreateCrudDto(nameArg, f.getMapping().getElement().typeReference.getType(), autoAddPrimaryKey, targetMappingSettingId, folder, inbound);
         f.typeReference.setType(newDto.id);
     });
     let complexAttributes = element.getChildren("DTO-Field")
@@ -1389,7 +1413,8 @@ function onMapDto(element, folder, autoAddPrimaryKey = true, dtoPrefix = null, i
     });
     complexAttributes.forEach(f => {
         let targetMappingSettingId = f.getParent().getMapping().mappingSettingsId;
-        let newDto = CrudHelper.getOrCreateCrudDto(CrudHelper.getName(element, f.getMapping().getElement(), dtoPrefix), f.getMapping().getElement().typeReference.getType(), false, targetMappingSettingId, folder, inbound);
+        const nameArg = CrudHelper.getName(element, f.getMapping().getElement(), dtoPrefix);
+        let newDto = CrudHelper.getOrCreateCrudDto(nameArg, f.getMapping().getElement().typeReference.getType(), false, targetMappingSettingId, folder, inbound);
         f.typeReference.setType(newDto.id);
     });
 }

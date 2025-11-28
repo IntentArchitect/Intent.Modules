@@ -6,7 +6,7 @@ const stringTypeId: string = "d384db9c-a279-45e1-801e-e4e8099625f2";
 
 function onMapDto(element: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi, autoAddPrimaryKey: boolean = true, dtoPrefix: string = null, inbound: boolean = false ): void {
 
-    if (element.isMapped) {
+    if (element.isMapped()) {
         let mappedFields = element.getChildren("DTO-Field").filter(x => x.getMapping());
         let unmappedFields = element.getChildren("DTO-Field").filter(x => !x.getMapping());
         for (let mappedField of mappedFields) {
@@ -26,8 +26,16 @@ function onMapDto(element: MacroApi.Context.IElementApi, folder: MacroApi.Contex
 
     fields.forEach(f => {
         let targetMappingSettingId = f.getParent().getMapping().mappingSettingsId;
+        let nameArg = CrudHelper.getName(element, f.getMapping().getElement().typeReference.getType(), dtoPrefix);
+        const expectedDtoName = `${nameArg.replace(/Dto$/, '')}Dto`;
+        if (expectedDtoName === element.getName()) {
+            const disambiguator = f.getName() 
+                || f.getMapping()?.getElement()?.typeReference?.getType()?.getName() 
+                || 'Details';
+            nameArg = `${nameArg}${disambiguator}`;
+        }
         let newDto = CrudHelper.getOrCreateCrudDto(
-            CrudHelper.getName(element, f.getMapping().getElement().typeReference.getType(), dtoPrefix), 
+            nameArg, 
             f.getMapping().getElement().typeReference.getType(), 
             autoAddPrimaryKey, 
             targetMappingSettingId, 
@@ -42,8 +50,9 @@ function onMapDto(element: MacroApi.Context.IElementApi, folder: MacroApi.Contex
 
     complexAttributes.forEach(f => {
         let targetMappingSettingId = f.getParent().getMapping().mappingSettingsId;
+        const nameArg = CrudHelper.getName(element, f.getMapping().getElement(), dtoPrefix);
         let newDto = CrudHelper.getOrCreateCrudDto(
-            CrudHelper.getName(element, f.getMapping().getElement(), dtoPrefix), 
+            nameArg, 
             f.getMapping().getElement().typeReference.getType(), 
             false, 
             targetMappingSettingId, 
