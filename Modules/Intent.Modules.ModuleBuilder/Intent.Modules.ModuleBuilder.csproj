@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>3.18.0</Version>
+    <Version>3.18.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
@@ -25,13 +25,10 @@
 
   <ItemGroup>
     <Compile Remove="Api\Modeler\**" />
-    <Compile Remove="External\Settings\**" />
     <Compile Remove="Intent.Metadata\**" />
     <EmbeddedResource Remove="Api\Modeler\**" />
-    <EmbeddedResource Remove="External\Settings\**" />
     <EmbeddedResource Remove="Intent.Metadata\**" />
     <None Remove="Api\Modeler\**" />
-    <None Remove="External\Settings\**" />
     <None Remove="Intent.Metadata\**" />
 
     <None Update="Templates\Api\ApiElementModelPartial\ApiElementModelPartialTemplate.tt">

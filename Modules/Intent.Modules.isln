@@ -15,7 +15,6 @@
     <application id="4e2487dd-3fec-4611-95fb-d49687929743" solutionFolder="Module Builder" relativePath="Intent.Modules.ModuleBuilder.TypeScript/ModuleBuilder.TypeScript.application.config" />
     <application id="a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb" solutionFolder="Designers" relativePath="Intent.Modules.Modelers.Services/Modeler.Services.application.config" />
     <application id="ff3070c6-4626-4a8b-85ab-7d56887a1445" solutionFolder="Common" relativePath="Intent.Modules.Common.Types/Common.Types.application.config" />
-    <application id="4c43397f-638c-4889-bb6b-fb7b064d5562" solutionFolder="Common" relativePath="Intent.Modules.Common.Sql/Common.Sql.application.config" />
     <application id="c5d9d6eb-8953-4b30-8e4d-a8d2890d31b4" solutionFolder="Module Builder" relativePath="Intent.Modules.ModuleBuilder.Sql/ModuleBuilder.Sql.application.config" />
     <application id="fbb9e269-8250-4831-a2ec-f73b68658e77" solutionFolder="Module Builder" relativePath="Intent.Modules.ModuleBuilder.Java/ModuleBuilder.Java.application.config" />
     <application id="275030c0-f660-4c46-8156-ce592d267b38" solutionFolder="Module Builder" relativePath="Intent.Modules.ModuleBuilder.Html/ModuleBuilder.Html.application.config" />
@@ -31,13 +30,11 @@
     <application id="7f521a90-df6d-409e-b3a4-ff4dc8ef9c45" name="Intent.Modules.ModuleBuilder.AutoCompile" solutionFolder="Module Builder" relativePath="Intent.Modules.ModuleBuilder.AutoCompile/Intent.Modules.ModuleBuilder.AutoCompile.application.config" />
     <application id="f7f12dd9-7193-4407-be08-2f7b7d232af3" name="Intent.Modules.Modelers.Eventing" solutionFolder="Designers" relativePath="Intent.Modules.Modelers.Eventing/Intent.Modules.Modelers.Eventing.application.config" />
     <application id="7cd27b49-d1d3-4c20-85b8-5090b0805098" name="Intent.Modules.TypeScript.Weaving.Decorators" solutionFolder="Common" relativePath="Intent.Modules.TypeScript.Weaving.Decorators/Intent.Modules.TypeScript.Weaving.Decorators.application.config" />
-    <application id="57e2ba3f-25e6-4488-8cc8-5fb5573a7f8b" name="Intent.Common.Kotlin" solutionFolder="Common" relativePath="Intent.Common.Kotlin/Intent.Common.Kotlin.application.config" />
     <application id="a951e417-89e5-4185-a5aa-730640fcebef" name="Intent.ModuleBuilder.Kotlin" solutionFolder="Module Builder" relativePath="Intent.ModuleBuilder.Kotlin/Intent.ModuleBuilder.Kotlin.application.config" />
     <application id="3517d53b-f6f7-4d96-8315-efcc6d5622ec" name="Common.CSharp" solutionFolder="Common" relativePath="Intent.Modules.Common.CSharp/Common.CSharp.application.config" />
     <application id="e52a0850-142f-406c-aa52-8c8bc5b261ed" name="Common.Java" solutionFolder="Common" relativePath="Intent.Modules.Common.Java/Common.Java.application.config" />
     <application id="0dd467e5-63fe-41f9-8a0a-f4454ff6cca9" name="Intent.Modules.Modelers.Domain.ValueObjects" solutionFolder="Designers" relativePath="Intent.Modules.Modelers.Domain.ValueObjects/Intent.Modules.Modelers.Domain.ValueObjects.application.config" />
     <application id="15f6f6c5-bac3-414f-8dd2-f1474dbf94e2" name="Intent.Modules.Modelers.Domain.Repositories" solutionFolder="Designers" relativePath="Intent.Modules.Modelers.Domain.Repositories/Intent.Modules.Modelers.Domain.Repositories.application.config" />
-    <application id="1b952c0f-d987-4027-b6e9-767e3ad01e16" name="Intent.Modules.Common.Dart" solutionFolder="Common" relativePath="Intent.Modules.Common.Dart/Intent.Modules.Common.Dart.application.config" />
     <application id="9d8529f0-1571-4889-aeba-df2b4497716b" name="Intent.Modules.ModuleBuilder.Dart" solutionFolder="Module Builder" relativePath="Intent.Modules.ModuleBuilder.Dart/Intent.Modules.ModuleBuilder.Dart.application.config" />
     <application id="8091eea0-0ab6-48c1-9aef-0ec7ae2b5b0c" name="Intent.Modules.Modelers.Domain.Services" solutionFolder="Designers" relativePath="Intent.Modules.Modelers.Domain.Services/Intent.Modules.Modelers.Domain.Services.application.config" />
     <application id="f87115d4-a7b2-4b55-9e86-7a6e86548703" name="Intent.Modules.Metadata.DocumentDB" solutionFolder="Metadata" relativePath="Intent.Modules.Metadata.DocumentDB/Intent.Modules.Metadata.DocumentDB.application.config" />

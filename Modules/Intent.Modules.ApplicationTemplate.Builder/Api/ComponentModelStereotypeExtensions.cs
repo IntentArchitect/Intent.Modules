@@ -68,9 +68,79 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 return _stereotype.GetProperty<bool>("Is Required");
             }
 
+            public bool IsNew()
+            {
+                return _stereotype.GetProperty<bool>("Is New");
+            }
+
             public IElement[] Dependencies()
             {
                 return _stereotype.GetProperty<IElement[]>("Dependencies") ?? new IElement[0];
+            }
+
+            public IElement[] Incompatibilities()
+            {
+                return _stereotype.GetProperty<IElement[]>("Incompatibilities") ?? new IElement[0];
+            }
+
+            public RequiredLicenseOptions RequiredLicense()
+            {
+                return new RequiredLicenseOptions(_stereotype.GetProperty<string>("Required License"));
+            }
+
+            public string DocumentationUrl()
+            {
+                return _stereotype.GetProperty<string>("Documentation Url");
+            }
+
+            public string Tags()
+            {
+                return _stereotype.GetProperty<string>("Tags");
+            }
+
+            public class RequiredLicenseOptions
+            {
+                public readonly string Value;
+
+                public RequiredLicenseOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public RequiredLicenseOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "None":
+                            return RequiredLicenseOptionsEnum.None;
+                        case "Professional":
+                            return RequiredLicenseOptionsEnum.Professional;
+                        case "Premium":
+                            return RequiredLicenseOptionsEnum.Premium;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsNone()
+                {
+                    return Value == "None";
+                }
+                public bool IsProfessional()
+                {
+                    return Value == "Professional";
+                }
+                public bool IsPremium()
+                {
+                    return Value == "Premium";
+                }
+            }
+
+            public enum RequiredLicenseOptionsEnum
+            {
+                None,
+                Professional,
+                Premium
             }
 
         }

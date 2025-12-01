@@ -1,6 +1,12 @@
+### Version 2.3.10
+
+- Improvement: Can map the aggregate when publishing Integration Events for domain Operations.
+
 ### Version 2.3.9
 
+- Improvement: Updated module documentation to use centralized documentation site.
 - Improvement: Mapping a `Create Action` on a static `Operation` now also works when return a type other than the containing entity, as long as that return type has a generic type parameter matching the containing entity. 
+- Improvement: Added suggestions for creating new result DTO contracts.
 
 ### Version 2.3.8
 

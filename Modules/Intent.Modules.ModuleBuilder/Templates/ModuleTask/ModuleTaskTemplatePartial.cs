@@ -27,33 +27,35 @@ namespace Intent.Modules.ModuleBuilder.Templates.ModuleTask
                 .AddUsing("System")
                 .AddClass($"{Model.Name}", @class =>
                 {
+                    @class.AddAttribute(CSharpIntentManagedAttribute.Merge());
                     @class.ImplementsInterface(UseType("Intent.Plugins.IModuleTask"));
                     @class.AddConstructor(ctor =>
                     {
-                        //ctor.AddParameter("string", "exampleParam", param =>
-                        //{
-                        //    param.IntroduceReadonlyField();
-                        //});
+                        ctor.AddAttribute(CSharpIntentManagedAttribute.Merge());
                     });
 
                     @class.AddProperty("string", "TaskTypeId", property =>
                     {
-                        property.WithInitialValue($"\"{model.InternalElement.Package.Name}.{model.Name}\"");
+                        property.WithoutSetter().Getter.WithExpressionImplementation($"\"{model.InternalElement.Package.Name}.{model.Name}\"");
                     });
 
                     @class.AddProperty("string", "TaskTypeName", property =>
                     {
-                        property.WithInitialValue($"\"{model.Name.RemoveSuffix("Task").ToSentenceCase()}\"");
+                        property.AddAttribute(CSharpIntentManagedAttribute.IgnoreBody());
+                        property.WithoutSetter().Getter.WithExpressionImplementation($"\"{model.Name.RemoveSuffix("Task").ToSentenceCase()}\"");
                     });
 
                     @class.AddProperty("int", "Order", property =>
                     {
-                        property.WithInitialValue("0");
+                        property.AddAttribute(CSharpIntentManagedAttribute.IgnoreBody());
+                        property.WithoutSetter().Getter.WithExpressionImplementation("0");
                     });
 
                     @class.AddMethod("string", "Execute", method =>
                     {
+                        method.AddAttribute(CSharpIntentManagedAttribute.IgnoreBody());
                         method.AddParameter("params string[]", "args");
+                        
                         method.AddStatement("// IntentInitialGen");
                         method.AddStatement($"// TODO: Implement {method.Class.Name}.{method.Name}(...) functionality");
                         method.AddStatement("throw new NotImplementedException(\"Implement your handler logic here...\");");

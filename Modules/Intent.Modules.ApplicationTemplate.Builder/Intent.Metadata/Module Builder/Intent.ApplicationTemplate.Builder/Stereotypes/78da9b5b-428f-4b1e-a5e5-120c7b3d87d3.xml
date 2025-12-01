@@ -36,6 +36,7 @@ return "";</displayFunction>
       <optionsSource>n/a</optionsSource>
     </property>
     <property id="b928f640-5dfd-4676-b8c9-4aadac826d18">
+      <comment />
       <name>Include by Default</name>
       <type>string</type>
       <controlType>checkbox</controlType>
@@ -43,13 +44,23 @@ return "";</displayFunction>
       <defaultValue>true</defaultValue>
     </property>
     <property id="07af017d-20a4-4e73-978f-ca4a59351f70">
+      <comment>Disables the ability to not include this component.</comment>
       <name>Is Required</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
       <defaultValue>false</defaultValue>
     </property>
+    <property id="aafd8156-fffe-471f-96da-813239f1982a">
+      <comment>Will indicate as NEW! on the architecture template.</comment>
+      <name>Is New</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <defaultValue>false</defaultValue>
+    </property>
     <property id="ed4d09bb-52e7-43dc-91db-6244d5390e53">
+      <comment>Which other components must be included for this component to be included.</comment>
       <hint>Components that this component is dependent on.</hint>
       <name>Dependencies</name>
       <type>string</type>
@@ -58,6 +69,44 @@ return "";</displayFunction>
       <lookupTypes>
         <type>47064ef1-2295-4287-8301-c446910a1b1e</type>
       </lookupTypes>
+    </property>
+    <property id="ab4e67f3-24c9-47c3-8a27-0589c9c6656f">
+      <comment>Which components are incompatible with this component and should not be included if this component is included.</comment>
+      <hint>Components that this component is not compatible with.</hint>
+      <name>Incompatibilities</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <lookupTypes>
+        <type>47064ef1-2295-4287-8301-c446910a1b1e</type>
+      </lookupTypes>
+    </property>
+    <property id="dc6f3968-ed14-40d5-b5c5-7c722b93b4cc">
+      <comment>This is used to indicate to the user what license package is required for the underlying modules.</comment>
+      <name>Required License</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <defaultValue>None</defaultValue>
+      <valueOptions>
+        <option>None</option>
+        <option>Professional</option>
+        <option>Premium</option>
+      </valueOptions>
+    </property>
+    <property id="25e2d8a3-0158-4823-842d-60773ff85edc">
+      <comment>Provide a link to documentation on this component.</comment>
+      <name>Documentation Url</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+    </property>
+    <property id="8d427d1f-985c-47e7-b925-719dbcbc485c">
+      <comment>Used when filtering components.</comment>
+      <name>Tags</name>
+      <type>string</type>
+      <controlType>textarea</controlType>
+      <optionsSource>n/a</optionsSource>
     </property>
   </properties>
 </stereotypeDefinition>

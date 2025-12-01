@@ -92,6 +92,10 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpec
                         Included = c.IncludeByDefault,
                         Required = c.IsRequired,
                         Description = c.Description,
+                        IsNew = c.IsNew,
+                        DocumentationUrl = c.DocumentationUrl,
+                        MinimumLicenseRequired = c.MinimumLicenseRequired,
+                        Tags = c.Tags,
                         Icon = new IconModelPersistable()
                         {
                             Type = c.Icon.Type,
@@ -109,8 +113,14 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpec
                                 templateOutputs: m.AssetTypeIsIncluded(IncludedAssetsOptionsEnum.TemplateOutputs)),
                             IsIncludedByDefault = m.IsIncludedByDefault,
                             IsRequired = m.IsRequired,
+                            IsNew = m.IsNew,
                         }).ToList(),
                         Dependencies = c.GetComponentSettings().Dependencies().Select(d => new ApplicationTemplateComponentDependency()
+                        {
+                            Id = d.Id,
+                            Name = d.Name
+                        }).ToList(),
+                        Incompatibilities = c.GetComponentSettings().Incompatibilities().Select(d => new ApplicationTemplateComponentDependency()
                         {
                             Id = d.Id,
                             Name = d.Name

@@ -1,3 +1,11 @@
+### Version 1.0.4
+
+- Fixed: Suggestions for `Call Backend Service` not processing correctly from an asyc/await microtask perspective when launching dialogs.
+
+### Version 1.0.3
+
+- Improvement: Service call mappings not have `Re-map Service Call` accelerators, for when you change your service contracts.
+
 ### Version 1.0.3
 
 - Improvement: Route parameters now support nullable.

@@ -102,5 +102,13 @@ if (isRequired &amp;&amp; !includeByDefault) {
       <isActiveFunction>return properties["Include Assets"].value == "Select";</isActiveFunction>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
+    <property id="406cbf38-4267-4260-8abc-4842116639d3">
+      <comment>Will indicate as NEW! on the architecture template.</comment>
+      <name>Is New</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <defaultValue>false</defaultValue>
+    </property>
   </properties>
 </stereotypeDefinition>

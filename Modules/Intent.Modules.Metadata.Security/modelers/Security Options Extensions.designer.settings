@@ -254,7 +254,8 @@ const unsecuredId = "8b65c29e-1448-43ac-a92a-0e0f86efd6c6";
 const httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
 const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
 
-return !element.hasStereotype(securedId)
+return !element.isReference() // Can't secure elements in other packages i.e. from other applications
+    &amp;&amp; !element.hasStereotype(securedId)
     &amp;&amp; (element.hasStereotype(httpServiceSettingsId) || element.hasStereotype(httpSettingsId))
     // API Settings -&gt; Default API Security (from Intent.AspNetCore.Controllers, which is a smell)
     &amp;&amp; application.getSettings("4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb").getField("061a559a-0d54-4eb1-8c70-ed0baa238a59").value != "secured";</filterFunction>
@@ -272,7 +273,8 @@ const unsecuredId = "8b65c29e-1448-43ac-a92a-0e0f86efd6c6";
 const httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
 const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
 
-return !element.hasStereotype(securedId)
+return !element.isReference() // Can't secure elements in other packages i.e. from other applications
+    &amp;&amp; !element.hasStereotype(securedId)
     &amp;&amp; (element.hasStereotype(httpServiceSettingsId) || element.hasStereotype(httpSettingsId))
     // API Settings -&gt; Default API Security (from Intent.AspNetCore.Controllers, which is a smell)
     &amp;&amp; application.getSettings("4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb").getField("061a559a-0d54-4eb1-8c70-ed0baa238a59").value != "secured";</filterFunction>
@@ -290,7 +292,8 @@ const unsecuredId = "8b65c29e-1448-43ac-a92a-0e0f86efd6c6";
 const httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
 const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
 
-return !element.hasStereotype(securedId)
+return !element.isReference() // Can't secure elements in other packages i.e. from other applications
+    &amp;&amp; !element.hasStereotype(securedId)
     &amp;&amp; (element.hasStereotype(httpServiceSettingsId) || element.hasStereotype(httpSettingsId))
     // API Settings -&gt; Default API Security (from Intent.AspNetCore.Controllers, which is a smell)
     &amp;&amp; application.getSettings("4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb").getField("061a559a-0d54-4eb1-8c70-ed0baa238a59").value != "secured";</filterFunction>
@@ -308,7 +311,8 @@ const unsecuredId = "8b65c29e-1448-43ac-a92a-0e0f86efd6c6";
 const httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
 const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
 
-return !element.hasStereotype(securedId)
+return !element.isReference() // Can't secure elements in other packages i.e. from other applications
+    &amp;&amp; !element.hasStereotype(securedId)
     &amp;&amp; (element.hasStereotype(httpServiceSettingsId) || element.hasStereotype(httpSettingsId))
     // API Settings -&gt; Default API Security (from Intent.AspNetCore.Controllers, which is a smell)
     &amp;&amp; application.getSettings("4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb").getField("061a559a-0d54-4eb1-8c70-ed0baa238a59").value != "secured";</filterFunction>

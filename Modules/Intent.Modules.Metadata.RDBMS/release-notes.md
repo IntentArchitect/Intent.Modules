@@ -1,3 +1,7 @@
+### Version 3.7.9
+
+- Improvement: Updated module documentation to use centralized documentation site.
+
 ### Version 3.7.8
 
 - Improvement: Improved help topic title to be more descriptive

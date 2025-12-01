@@ -27,6 +27,13 @@ namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
 
         protected override void OnAfterCommitChanges(IApplication application)
         {
+            const string environmentVariable = "INTENT_MODULE_BUILDER_AUTO_COMPILE_DISABLED";
+            if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(environmentVariable)))
+            {
+                Logging.Log.Info($"Skipping auto compilation as {environmentVariable} environment variable set.");
+                return;
+            }
+
             var location = GetRootExecutionLocation(application);
             if (location == null)
             {

@@ -222,8 +222,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 var genericParams = operationReturnTypeRef.GenericTypeParameters.ToList();
                 if (genericParams.Count == 1 && genericParams[0].ElementId == entityId)
                 {
-                    // return true if we want to support this result-pattern scenario in the future
-                    throw new NotSupportedException("Wrapping the entity in a generic type is not supported for static constructor creation mappings.");
+                    return true;
                 }
 
                 return operationReturnTypeRef?.ElementId == entityId;

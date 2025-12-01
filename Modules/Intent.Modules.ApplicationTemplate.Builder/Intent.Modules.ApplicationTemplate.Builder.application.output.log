@@ -214,7 +214,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Application Template Builder.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Application Template Builder.designer.settings</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>1374f433-31c5-4ca2-abec-b3d0d72047ec</ProjectId>

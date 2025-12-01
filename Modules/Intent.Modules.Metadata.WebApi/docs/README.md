@@ -118,6 +118,10 @@ Available options include:
 - **From Query**: The `Query String Name` must also be supplied if this option is chosen.
 - **From Route**.
 
+![Transitional Service with Parameter Settings](images/trad-service-param-settings.png)
+
+![Command with Parameter Settings](images/command-param-settings.png)
+
 ### Operation OpenAPI Configuration
 
 To change the way in which a `Service`, `Operation`, `Command`, `Query`, or `Azure Function` is reflected in the OpenAPI specification, the `OpenAPI Settings` stereotype is used.

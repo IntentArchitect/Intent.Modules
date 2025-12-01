@@ -1,3 +1,7 @@
+### Version 3.4.2
+
+- Improvement: Auto compilation can now be skipped by setting the `INTENT_MODULE_BUILDER_AUTO_COMPILE_DISABLED` environment variable to any non-empty value.
+
 ### Version 3.4.1
 
 - Improvement: Removed dependency on the `Intent.ModuleBuilder` module.

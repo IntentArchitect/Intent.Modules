@@ -14,7 +14,7 @@
           <specializationType>Module Task</specializationType>
           <specializationTypeId>ad38ef37-45b8-4a6a-96de-f8d41da3cfe0</specializationTypeId>
           <defaultName>NewModuleTask</defaultName>
-          <allowMultiple>false</allowMultiple>
+          <allowMultiple>true</allowMultiple>
         </createElement>
       </contextMenuOptions>
       <creationOptions>
@@ -24,7 +24,7 @@
           <specializationType>Module Task</specializationType>
           <specializationTypeId>ad38ef37-45b8-4a6a-96de-f8d41da3cfe0</specializationTypeId>
           <defaultName>NewModuleTask</defaultName>
-          <allowMultiple>false</allowMultiple>
+          <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
       <scriptOptions />

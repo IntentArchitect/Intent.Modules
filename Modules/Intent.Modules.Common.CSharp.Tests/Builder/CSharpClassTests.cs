@@ -209,6 +209,24 @@ public class CSharpClassTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task NestedEnumTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddClass("SomeClass", @class =>
+            {
+                @class.AddNestedEnum("SomeNestedEnum", enumType =>
+                {
+                    enumType.Private();
+                    enumType.AddLiteral("FirstLiteral");
+                    enumType.AddLiteral("SecondLiteral", "2");
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
     
     [Fact]
     public async Task ClassWithBlankLinesTest()

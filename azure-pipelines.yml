@@ -83,6 +83,11 @@ steps:
   inputs:
     version: '9.x'
 
+- task: UseDotNet@2
+  displayName: 'Install latest .NET 10 SDK'
+  inputs:
+    version: '10.x'
+
 - task: PowerShell@2
   displayName: 'Check TypeScript version'
   inputs:

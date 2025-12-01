@@ -1,3 +1,7 @@
+### Version 4.7.17
+
+- Improvement: Updated module documentation to use centralized documentation site.
+
 ### Version 4.7.16
 
 - Improvement: Added `Service URL` stereotype, applied to a package, which make the URL available when creating proxy services.

@@ -1,5 +1,11 @@
-﻿### Version 3.9.10
+﻿### Version 3.9.11
 
+- Improvement: Added support for nested Enum types in Classes and Records in the C# File Builder.
+- Improvement: CSharpEnum now has its own Interface and has the Literals exposed as a collection for manipulation.
+
+### Version 3.9.10
+
+- Improvement: Updated module documentation to use centralized documentation site.
 - Internal Improvement: Preparing for future support for result pattern in mapping system.
 
 ### Version 3.9.9

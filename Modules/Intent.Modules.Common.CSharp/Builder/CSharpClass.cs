@@ -87,6 +87,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     public IList<CSharpConstructor> Constructors { get; } = new List<CSharpConstructor>();
     public IList<CSharpProperty> Properties { get; } = new List<CSharpProperty>();
     public IList<CSharpClassMethod> Methods { get; } = new List<CSharpClassMethod>();
+    public IList<CSharpEnum> NestedEnums { get; } = new List<CSharpEnum>();
     public IList<CSharpClass> NestedClasses { get; } = new List<CSharpClass>();
     public IList<CSharpInterface> NestedInterfaces { get; } = new List<CSharpInterface>();
     public IList<CSharpCodeBlock> CodeBlocks { get; } = new List<CSharpCodeBlock>();
@@ -102,6 +103,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
             codeBlocks.AddRange(Constructors.Where(p => !p.IsPrimaryConstructor).OrderBy(c => Array.IndexOf(elementOrder, c.AccessModifier.Trim())));
             codeBlocks.AddRange(Properties.Where(p => !p.IsOmittedFromRender).OrderBy(c => Array.IndexOf(elementOrder, c.AccessModifier.Trim())));
             codeBlocks.AddRange(Methods.OrderBy(m => Array.IndexOf(elementOrder, m.AccessModifier.Trim())).GroupBy(m => m.Name).SelectMany(g => g));
+            codeBlocks.AddRange(NestedEnums.OrderBy(m => Array.IndexOf(elementOrder, m.AccessModifier.Trim())).GroupBy(m => m.Name).SelectMany(g => g));
             codeBlocks.AddRange(NestedClasses.OrderBy(c => Array.IndexOf(elementOrder, c.AccessModifier.Trim())).GroupBy(m => m.Name).SelectMany(g => g));
             codeBlocks.AddRange(NestedInterfaces);
             codeBlocks.AddRange(CodeBlocks);
@@ -433,6 +435,8 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
                 return Properties.IndexOf(property);
             case CSharpClassMethod method:
                 return Methods.IndexOf(method);
+            case CSharpEnum @enum:
+                return NestedEnums.IndexOf(@enum);
             case CSharpClass @class:
                 return NestedClasses.IndexOf(@class);
             case CSharpInterface @interface:
@@ -442,6 +446,14 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
         }
     }
 
+    public CSharpClass AddNestedEnum(string name, Action<CSharpEnum>? configure = null)
+    {
+        var @enum = new CSharpEnum(name: name);
+        configure?.Invoke(@enum);
+        NestedEnums.Add(@enum);
+        return this;
+    }
+    
     public CSharpClass AddNestedClass<TModel>(TModel model, Action<CSharpClass>? configure = null)
          where TModel
         : IMetadataModel, IHasName
@@ -815,6 +827,8 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
 
     IList<ICSharpGenericParameter> ICSharpClass.GenericParameters => _wrapper.GenericParameters;
 
+    IList<ICSharpEnum> ICSharpClass.NestedEnums => _wrapper.NestedEnums;
+    
     IList<ICSharpClass> ICSharpClass.NestedClasses => _wrapper.NestedClasses;
 
     IList<ICSharpInterface> ICSharpClass.NestedInterfaces => _wrapper.NestedInterfaces;

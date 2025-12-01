@@ -1,3 +1,12 @@
+### Version 4.0.8
+
+- Fixed: onMapDto to use method call for isMapped and improve DTO naming logic.
+- Fixed: On mapping would sometimes fail due to not finding a folder parent.
+
+### Version 4.0.7
+
+- Improvement: Updated module documentation to use centralized documentation site.
+
 ### Version 4.0.6
 
 - Fixed: Visual bug on Azure Function traditional service routes.

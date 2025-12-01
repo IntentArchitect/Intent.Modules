@@ -17,6 +17,7 @@ public interface ICSharpClass : ICSharpDeclaration<ICSharpClass>, IBuildsCSharpM
     IList<ICSharpProperty> Properties { get; }
     IList<ICSharpClassMethodDeclaration> Methods { get; }
     IList<ICSharpGenericParameter> GenericParameters { get; }
+    IList<ICSharpEnum> NestedEnums { get; }
     IList<ICSharpClass> NestedClasses { get; }
     IList<ICSharpInterface> NestedInterfaces { get; }
     IList<ICSharpGenericTypeConstraint> GenericTypeConstraints { get; }
