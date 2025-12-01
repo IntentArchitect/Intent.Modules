@@ -64,7 +64,7 @@ public class TypeConvertingTypescriptMapping : TypescriptMappingBase
             (Mapping.TargetElement.TypeReference.Element.IsTypeDefinitionModel() || Mapping.TargetElement.TypeReference.Element.IsEnumModel()) &&
             !Mapping.TargetElement.TypeReference.Element.IsStringType())
         {
-            return base.GetSourceStatement();
+            return $"{base.GetSourceStatement()}!";
         }
 
         return base.GetSourceStatement();

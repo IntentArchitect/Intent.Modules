@@ -196,6 +196,12 @@ namespace Intent.Modules.Common.TypeScript.Templates
                     continue;
                 }
 
+                // if the template is trying to add a reference to itself, skip it
+                if (this.GetRelativePath(this) == this.GetRelativePath(classProvider))
+                {
+                    continue;
+                }
+
                 typescriptImports.Add(new Utils.TypeScriptImport(classProvider.ClassName, this.GetRelativePath(classProvider)));
             }
 

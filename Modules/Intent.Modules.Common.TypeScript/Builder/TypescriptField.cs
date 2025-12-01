@@ -72,9 +72,17 @@ public class TypescriptField : TypescriptMember<TypescriptField>
         return this;
     }
 
+    public TypescriptField WithDefaultValue(string defaultValue)
+    {
+        Value = defaultValue;
+        return this;
+    }
+
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}{Name}{(IsDefinitelyAssigned ? "!" : string.Empty)}{(!string.IsNullOrWhiteSpace(Type) ? $": {Type}" : string.Empty)}{(!string.IsNullOrWhiteSpace(Value) ? $" = {Value}" : string.Empty )};";
+        // TODO. The ! operation screws up the weaving
+        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}{Name}{(!string.IsNullOrWhiteSpace(Type) ? $": {Type}" : string.Empty)}{(!string.IsNullOrWhiteSpace(Value) ? $" = {Value}" : string.Empty)};";
+        //return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}{Name}{(IsDefinitelyAssigned ? "!" : string.Empty)}{(!string.IsNullOrWhiteSpace(Type) ? $": {Type}" : string.Empty)}{(!string.IsNullOrWhiteSpace(Value) ? $" = {Value}" : string.Empty )};";
     }
 
     private string GetPropertyDefaultValue(IntentTemplateBase template, ITypeReference property, string indentation, string currentIndentation)

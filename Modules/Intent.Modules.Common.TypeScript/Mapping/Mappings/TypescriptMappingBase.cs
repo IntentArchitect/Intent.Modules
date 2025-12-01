@@ -66,7 +66,8 @@ public abstract partial class TypescriptMappingBase : ITypescriptMapping
     public virtual IEnumerable<TypescriptStatement> GetMappingStatements()
     {
         //TODO
-        yield return new TypescriptStatement($"{GetTargetStatement()} = {GetSourceStatement()};");
+        yield return new TypescriptStatement($"{GetSourceStatement()}()");
+        //yield return new TypescriptStatement($"{GetTargetStatement()} = {GetSourceStatement()};");
         //yield return new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement());
     }
 

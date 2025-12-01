@@ -47,11 +47,11 @@ public class MethodInvocationMapping : TypescriptMappingBase
                 }
                 else if (!optional)
                 {
-                    invocationParameters.Add("default");
+                    invocationParameters.Add("''");
                 }
             }
 
-            return new TypescriptStatement($"{GetTargetPathExpression()} = {method}({string.Join(", ", invocationParameters)})");
+            return $"{GetTargetPathExpression()}({string.Join(',', invocationParameters)})";
         }
         else
         {
