@@ -24,12 +24,13 @@ public class GenericCSharpTypeParserTests
     [InlineData("(List<DateTime[]>[], int[])[]")]
     [InlineData("(decimal, Dictionary<string, (bool, List<DateTime>, int)>)")]
     [InlineData("SpecialType<,,>")]
+    [InlineData("(string Endpoint, Dictionary<string, string> ResourceAttributes)")]
     public void NoTransformationParsingTest(string? fullTypeName)
     {
         var result = GenericCSharpTypeParser.Parse(fullTypeName, name => name);
         Assert.Equal(fullTypeName, result);
     }
-    
+
     [Fact]
     public void NoTransformationParsingNullTest()
     {

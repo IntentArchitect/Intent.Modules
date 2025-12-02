@@ -193,11 +193,22 @@ public class CSharpTypeParser
             }
                 break;
             case DetectedType.Generic:
-            {
-                CSharpType scopeType = new CSharpTypeGeneric(_currentScope.Buffer.ToString().Trim(), _currentScope.Entries.Select(s => s.Type).ToList());
-                scopeType = ApplyModifiers(scopeType);
-                typeEntry = new TypeEntry(scopeType);
-            }
+                {
+                    var text = _currentScope.Buffer.ToString().Trim();
+                    string? elementName = GetPossibleElementName(targetScope, ref text);
+
+                    var genericTypeName = text;
+                    CSharpType scopeType = new CSharpTypeGeneric(
+                        genericTypeName,
+                        _currentScope.Entries.Select(s => s.Type).ToList());
+
+                    scopeType = ApplyModifiers(scopeType);
+                    typeEntry = new TypeEntry(scopeType, elementName);
+                    /*
+                                    CSharpType scopeType = new CSharpTypeGeneric(_currentScope.Buffer.ToString().Trim(), _currentScope.Entries.Select(s => s.Type).ToList());
+                                    scopeType = ApplyModifiers(scopeType);
+                                    typeEntry = new TypeEntry(scopeType);*/
+                }
                 break;
             case DetectedType.Tuple:
             {
@@ -212,6 +223,89 @@ public class CSharpTypeParser
 
         targetScope.Entries.Add(typeEntry);
     }
+
+    private static string? GetPossibleElementName(ScopeTracker targetScope, ref string text)
+    {
+        string? elementName = null;
+
+        if (targetScope.DetectedType == DetectedType.Tuple)
+        {
+            // Try to peel off a trailing element name for tuple elements like:
+            //   Dictionary<string, string> ResourceAttributes
+            // but NOT for:
+            //   List<DateTime>
+            //   Dictionary<string, (bool, List<DateTime>, int)>
+            // where there is no element name.
+
+            var i = text.Length - 1;
+
+            // Skip trailing whitespace
+            while (i >= 0 && char.IsWhiteSpace(text[i]))
+            {
+                i--;
+            }
+
+            var end = i;
+
+            // Move backwards over the last token (non-whitespace chars)
+            while (i >= 0 && !char.IsWhiteSpace(text[i]))
+            {
+                i--;
+            }
+
+            var start = i + 1;
+
+            // Only consider this a "name" if there is something non-whitespace
+            // before the candidate (i.e. at least two tokens total).
+            // This avoids treating "List" or "Dictionary" themselves as names.
+            if (start > 0)
+            {
+                var candidate = text.Substring(start, end - start + 1);
+
+                if (IsValidIdentifier(candidate))
+                {
+                    elementName = candidate;
+                    text = text[..start].TrimEnd(); // keep only the type portion
+                }
+            }
+        }
+
+        return elementName;
+    }
+
+    private static bool IsValidIdentifier(string identifier)
+    {
+        if (string.IsNullOrEmpty(identifier))
+            return false;
+
+        var index = 0;
+
+        // Handle @-verbatim identifiers
+        if (identifier[0] == '@')
+        {
+            if (identifier.Length == 1)
+                return false;
+
+            index = 1;
+        }
+
+        if (!IsIdentifierStartChar(identifier[index]))
+            return false;
+
+        for (var i = index + 1; i < identifier.Length; i++)
+        {
+            if (!IsIdentifierPartChar(identifier[i]))
+                return false;
+        }
+
+        return true;
+    }
+
+    private static bool IsIdentifierStartChar(char c) =>
+        c == '_' || char.IsLetter(c);
+
+    private static bool IsIdentifierPartChar(char c) =>
+        c == '_' || char.IsLetterOrDigit(c);
 
     private CSharpType FinalizeScope()
     {

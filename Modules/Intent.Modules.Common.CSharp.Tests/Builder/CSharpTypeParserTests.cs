@@ -156,4 +156,18 @@ public class CSharpTypeParserTests
                 ]))
             ]), type);
     }
+
+    [Fact]
+    public void TryParseStringForType_ComplexStructure2()
+    {
+        var type = CSharpTypeParser.Parse("(string Endpoint, Dictionary<string, string> ResourceAttributes)");
+        Assert.Equal(new CSharpTypeTuple([
+                new CSharpTupleElement(new CSharpTypeName("string"), "Endpoint"),
+                new CSharpTupleElement(new CSharpTypeGeneric("Dictionary", [
+                    new CSharpTypeName("string"),
+                    new CSharpTypeName("string"),
+                ]), "ResourceAttributes")
+            ]), type);
+    }
+
 }
