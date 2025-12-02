@@ -66,8 +66,8 @@ public abstract partial class TypescriptMappingBase : ITypescriptMapping
     public virtual IEnumerable<TypescriptStatement> GetMappingStatements()
     {
         //TODO
-        yield return new TypescriptStatement($"{GetSourceStatement()}()");
-        //yield return new TypescriptStatement($"{GetTargetStatement()} = {GetSourceStatement()};");
+        //yield return new TypescriptStatement($"{GetSourceStatement()}()");
+        yield return new TypescriptStatement($"this.{GetTargetStatement()} = {GetSourceStatement()};");
         //yield return new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement());
     }
 
@@ -248,7 +248,7 @@ public abstract partial class TypescriptMappingBase : ITypescriptMapping
                     member = new TypescriptStatement(mappingPathTarget.Element.Name.ToCamelCase());
                 }
 
-                result = result != null ? new TypescriptStatement($"this.{result}.{member}") : $"{member}";
+                result = result != null ? new TypescriptStatement($"{result}.{member}") : $"{member}";
                 //result = result != null ? new TypescriptStatement(result, member) : member;
                 var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
                 if (targetIsNullable && IsTransitional(previousMappingPath, mappingPathTarget))

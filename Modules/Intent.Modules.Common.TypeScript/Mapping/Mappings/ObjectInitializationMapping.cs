@@ -110,15 +110,15 @@ namespace Intent.Modules.Common.Angular.Mapping
             //    return hybridInit;
             //}
 
-            var objectType = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null ?
-                _template.GetTypeName(Model.TypeReference.AsContructableType()) :
-                _template.GetTypeName((IElement)Model);
+            //var objectType = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null ?
+            //    _template.GetTypeName(Model.TypeReference.AsContructableType()) :
+            //    _template.GetTypeName((IElement)Model);
 
-            var variableName = Model.SpecializationType.ToCamelCase();
+            //var variableName = Model.SpecializationType.ToCamelCase();
 
             var sb = new StringBuilder();
 
-            sb.AppendLine($"const {variableName}: {objectType} = {{");
+            sb.AppendLine("{");
 
             foreach (var child in Children)
             {
