@@ -25,6 +25,7 @@ class EntityProjector {
     private targetPath: string[] = []; //Entity
     private isChild = false;
     private addMandatoryRelationships = false;
+    private visited = new Set<string>();
 
     private addMapping(type: MappingType, sourceRelative: string[], targetRelative: string[], changeCurrent:boolean  = false) : IPops  {        
         let result : IPops = {targetPops : 0, sourcePops : 0};
@@ -323,21 +324,27 @@ class EntityProjector {
 
         if (this.addMandatoryRelationships)
         {
-            this.isChild = true;
-            let requiredAssociations = DomainHelper.getMandatoryAssociationsWithMapPath(entity);
-            for (let entry of requiredAssociations) {
-                let field = createElement("DTO-Field", entry.name, dto.id);
+            if (!this.visited.has(entity.id)){
 
-                let pops = this.addMapping(MappingType.Navigation, [field.id], entry.mapPath, true);
-                let dtoName = dto.getName().replace(/(?:Dto|Command|Query)$/, "") + field.getName() + "Dto";
-                let entityField = lookup(entry.id);
-                let newDto = this.getOrCreateContract(dtoName, "DTO", entityField.typeReference.getType(), createMode, folder, inbound, true);
-                field.typeReference.setType(newDto.id);
-                this.popMapping(pops);
+                this.visited.add(entity.id);
+                this.isChild = true;
+                let requiredAssociations = DomainHelper.getMandatoryAssociationsWithMapPath(entity);
+                for (let entry of requiredAssociations) {
+                    let entityField = lookup(entry.id);
+                    if (!this.visited.has(entityField.typeReference.getType().id)){
+                        let field = createElement("DTO-Field", entry.name, dto.id);
 
-                field.typeReference.setIsNullable(entry.isNullable);
-                field.typeReference.setIsCollection(entry.isCollection);
-                dtoUpdated = true;
+                        let pops = this.addMapping(MappingType.Navigation, [field.id], entry.mapPath, true);
+                        let dtoName = dto.getName().replace(/(?:Dto|Command|Query)$/, "") + field.getName() + "Dto";
+                        let newDto = this.getOrCreateContract(dtoName, "DTO", entityField.typeReference.getType(), createMode, folder, inbound, true);
+                        field.typeReference.setType(newDto.id);
+                        this.popMapping(pops);
+
+                        field.typeReference.setIsNullable(entry.isNullable);
+                        field.typeReference.setIsCollection(entry.isCollection);
+                        dtoUpdated = true;
+                    }
+                }
             }        
         }
 

@@ -1,4 +1,8 @@
-﻿### Version 3.12.10
+﻿### Version 3.12.11
+
+- Fixed: Added missing association accelerators.
+
+### Version 3.12.10
 
 - Improvement: The `[Static Constructor]` trait can now be applied to static methods that return a type other than the containing entity, as long as that return type has a generic type parameter matching the containing entity.
 

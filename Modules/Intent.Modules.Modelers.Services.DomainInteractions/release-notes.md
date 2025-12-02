@@ -1,3 +1,7 @@
+### Version 2.3.11
+
+- Fixed: Circular reference bug in CRUD scripts, around bi-directional 1-1 relationships.
+
 ### Version 2.3.10
 
 - Improvement: Can map the aggregate when publishing Integration Events for domain Operations.
