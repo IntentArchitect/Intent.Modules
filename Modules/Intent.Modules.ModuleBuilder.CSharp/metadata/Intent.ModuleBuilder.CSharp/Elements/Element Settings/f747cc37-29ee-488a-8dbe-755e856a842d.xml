@@ -87,7 +87,6 @@
           <packageName>Intent.ModuleBuilder.CSharp</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -95,10 +94,13 @@
                 <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="1.0.0" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
                 <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="fdea9028-8611-4eb0-b1a5-4d54d267af41" display="Menu Group" isActive="true" />
+                <property name="aeaeff9b-f55b-4888-92e9-5317b5c14016" display="Top Divider" value="false" isActive="true" />
+                <property name="543cc5f5-0b0c-40cc-9df7-3ce45b555dd0" display="Bottom Divider" value="false" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -136,7 +138,6 @@
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
-              <comment />
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
@@ -144,8 +145,12 @@
                 <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxzdHlsZT4KICAgICAgICAubnVHZXRMb2dvMjAyNDA4MTMwMSB7CiAgICAgICAgICAgIGZpbGw6ICMwMDQ4ODAKICAgICAgICB9CiAgICAKICAgICAgICBbZGF0YS10aGVtZT0iZGFyayJdIC5udUdldExvZ28yMDI0MDgxMzAxIHsKICAgICAgICAgICAgZmlsbDogI2ZmZgogICAgICAgIH0KICAgICAgICA8L3N0eWxlPgogICAgPHRpdGxlPm51Z2V0PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+CiAgICAgICAgPHBvbHlnb24gaWQ9InBhdGgtMSIgcG9pbnRzPSIwIDQ2LjAyMTEwMyAwIDMuNzAwMjkzNSA4NC42NTIxNTc3IDMuNzAwMjkzNSA4NC42NTIxNTc3IDg4LjM0MTkxMjUgMCA4OC4zNDE5MTI1Ij48L3BvbHlnb24+CiAgICA8L2RlZnM+CiAgICA8ZyBpZD0iU3ltYm9scyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Im51Z2V0Ij4KICAgICAgICAgICAgPGcgaWQ9Ikdsb2JhbC9Mb2dvIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgNi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNMzc0LjQyNDk1OSw0NTQuODU2OTkxIEMzMjcuNjc1ODA1LDQ1NC44NTY5OTEgMjg5Ljc3MjgwMSw0MTYuOTUwMTc3IDI4OS43NzI4MDEsMzcwLjE5NjMyNCBDMjg5Ljc3MjgwMSwzMjMuNDYzNjM1IDMyNy42NzU4MDUsMjg1LjUzNTY1NiAzNzQuNDI0OTU5LDI4NS41MzU2NTYgQzQyMS4xNzQxMTMsMjg1LjUzNTY1NiA0NTkuMDc3MTE2LDMyMy40NjM2MzUgNDU5LjA3NzExNiwzNzAuMTk2MzI0IEM0NTkuMDc3MTE2LDQxNi45NTAxNzcgNDIxLjE3NDExMyw0NTQuODU2OTkxIDM3NC40MjQ5NTksNDU0Ljg1Njk5MSBNMjA1LjU2NTA2NywyNjAuODE0NzQxIEMxNzYuMzM4OTEsMjYwLjgxNDc0MSAxNTIuNjU3NDY5LDIzNy4xMDk3NTQgMTUyLjY1NzQ2OSwyMDcuOTAxODI0IEMxNTIuNjU3NDY5LDE3OC42NzI3MjggMTc2LjMzODkxLDE1NC45ODg5MDcgMjA1LjU2NTA2NywxNTQuOTg4OTA3IEMyMzQuNzkxMjI1LDE1NC45ODg5MDcgMjU4LjQ3MjY2NiwxNzguNjcyNzI4IDI1OC40NzI2NjYsMjA3LjkwMTgyNCBDMjU4LjQ3MjY2NiwyMzcuMTA5NzU0IDIzNC43OTEyMjUsMjYwLjgxNDc0MSAyMDUuNTY1MDY3LDI2MC44MTQ3NDEgTTM3OC4xNzA4MTcsOTUuNjQxNzc4NiBMMjM2Ljg4NjM2NSw5NS42NDE3Nzg2IEMxNjQuODg5NzA1LDk1LjY0MTc3ODYgMTA2LjQ3OTcxNywxNTQuMDU3NjM5IDEwNi40Nzk3MTcsMjI2LjA4MjcwMiBMMTA2LjQ3OTcxNywzNjcuMzYwMTkxIEMxMDYuNDc5NzE3LDQzOS40MDY0MiAxNjQuODg5NzA1LDQ5Ny43Nzk5NSAyMzYuODg2MzY1LDQ5Ny43Nzk5NSBMMzc4LjE3MDgxNyw0OTcuNzc5OTUgQzQ1MC4yMDk4MDMsNDk3Ljc3OTk1IDUwOC41Nzc0NjYsNDM5LjQwNjQyIDUwOC41Nzc0NjYsMzY3LjM2MDE5MSBMNTA4LjU3NzQ2NiwyMjYuMDgyNzAyIEM1MDguNTc3NDY2LDE1NC4wNTc2MzkgNDUwLjIwOTgwMyw5NS42NDE3Nzg2IDM3OC4xNzA4MTcsOTUuNjQxNzc4NiIgaWQ9IkZpbGwtMTIiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PC9wYXRoPgogICAgICAgICAgICAgICAgPGcgaWQ9IkNsaXAtMTUiPjwvZz4KICAgICAgICAgICAgICAgIDxwYXRoIGNsYXNzPSJudUdldExvZ28yMDI0MDgxMzAxIiBkPSJNODQuNjUyMTU3Nyw0Ni4wMTE1Nzg3IEM4NC42NTIxNTc3LDY5LjM5OTA4ODEgNjUuNjkwMDc0NCw4OC4zNDE5MTI1IDQyLjMyNjA3ODgsODguMzQxOTEyNSBDMTguOTQwOTIwMyw4OC4zNDE5MTI1IDAsNjkuMzk5MDg4MSAwLDQ2LjAxMTU3ODcgQzAsMjIuNjQ1MjM0NCAxOC45NDA5MjAzLDMuNjgxMjQ0ODUgNDIuMzI2MDc4OCwzLjY4MTI0NDg1IEM2NS42OTAwNzQ0LDMuNjgxMjQ0ODUgODQuNjUyMTU3NywyMi42NDUyMzQ0IDg0LjY1MjE1NzcsNDYuMDExNTc4NyIgaWQ9IkZpbGwtMTQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgbWFzaz0idXJsKCNtYXNrLTIpIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
                 <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
                 <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
-                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
+                <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
                 <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
+                <property name="c37d8704-0003-4886-b6c2-4e51aa22a8f9" display="Menu Group" isActive="true" />
+                <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
+                <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
