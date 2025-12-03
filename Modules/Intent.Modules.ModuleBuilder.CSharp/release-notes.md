@@ -1,6 +1,6 @@
-### Version 3.7.4
+### Version 3.7.5
 
-- Improvement: Added .Net 10 as NuGget framework targer.
+- Improvement: Added .Net 10 as NuGget framework target.
 
 ### Version 3.7.4
 
