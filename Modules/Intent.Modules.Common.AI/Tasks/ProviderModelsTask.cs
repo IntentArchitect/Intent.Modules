@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -89,7 +90,7 @@ public class ProviderModelsTask : IModuleTask
         providerModels = providerModels.FindAll(model =>
             model.ProviderId switch
             {
-                "open-ai" => hasOpenAiKey,
+                "open-ai" => hasOpenAiKey || (_userSettingsProvider.IntentOpenAIApiKey != null && !(hasAzureOpenAiKey || hasAnthropicKey || hasOpenRouterKey || hasGoogleGeminiKey || openAiCompatibleModel || hasOllamaModel)),
                 "azure-open-ai" => hasAzureOpenAiKey,
                 "anthropic" => hasAnthropicKey,
                 "open-router" => hasOpenRouterKey,
