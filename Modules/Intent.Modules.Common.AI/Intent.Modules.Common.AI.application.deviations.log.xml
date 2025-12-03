@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files />
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions#3d488031-cdd1-4987-8d07-427d7cbc605e</correlationId>
+      <path>Intent.Modules.Common.AI/Settings/ModuleSettingsExtensions.cs</path>
+      <count>1</count>
+      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
+      <updatedAt>2025-12-03T12:26:54.0735481Z</updatedAt>
+      <approvedByAccountName>gareth.baars@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Gareth Baars</approvedByDisplayName>
+      <approvedAt>2025-12-03T12:26:54.0737095Z</approvedAt>
+      <notes><![CDATA[Need to update Module Builder to accommodate for nullables]]></notes>
+      <deviationsHash>5D0B96BFDD54B1B5C762C0F90ED3B69DDAE1BBD28BD6A3580C4510A5465D1C18</deviationsHash>
+      <fileHash>EF6A048F330687F3A4660DE331A27EB49CB047BC850F5C5E7BF53840029BF6F4</fileHash>
+    </file>
+  </files>
 </deviationsLog>
