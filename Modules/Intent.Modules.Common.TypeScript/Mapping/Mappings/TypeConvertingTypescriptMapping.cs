@@ -36,26 +36,14 @@ public class TypeConvertingTypescriptMapping : TypescriptMappingBase
             Mapping.TargetElement.TypeReference.HasStringType() == true &&
             Mapping.SourceElement.TypeReference.HasStringType() == false)
         {
-            // TODO
-            return new TypescriptStatement($"this.{base.GetSourceStatement()}");
+            return new TypescriptStatement($"{base.GetSourceStatement()}");
         }
 
-        if (Mapping.IsOneToOne() &&
-            Mapping.TargetElement.TypeReference.HasGuidType() == true &&
-            Mapping.SourceElement.TypeReference.IsNullable == false &&
-            Mapping.SourceElement.TypeReference.HasStringType() == true)
-        {
-            // TODO
-            return new TypescriptStatement("");
-            //return new CSharpAccessMemberStatement("Guid", new CSharpInvocationStatement("Parse").AddArgument(base.GetSourceStatement()).WithoutSemicolon());
-        }
         if (Mapping.IsOneToOne() &&
             Mapping.TargetElement.TypeReference.Element?.SpecializationType == "Enum" &&
             Mapping.SourceElement.TypeReference.HasIntType())
         {
-            // TODO
-            return new TypescriptStatement("");
-            //return $"({Template.GetTypeName((IElement)Mapping.TargetElement.TypeReference.Element)}){base.GetSourceStatement()}";
+            return new TypescriptStatement($"{base.GetSourceStatement()}");
         }
 
         if (Mapping.IsOneToOne() &&

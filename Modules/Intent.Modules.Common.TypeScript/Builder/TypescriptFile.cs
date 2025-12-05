@@ -268,6 +268,12 @@ public class TypescriptFile
             sb.AppendLine(value.ToString());
         }
 
+        foreach (var @enum in Enums)
+        {
+            sb.AppendLine();
+            sb.Append(@enum);
+        }
+
         foreach (var @interface in Interfaces)
         {
             sb.AppendLine();

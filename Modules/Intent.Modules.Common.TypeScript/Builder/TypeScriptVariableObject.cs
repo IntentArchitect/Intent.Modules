@@ -17,7 +17,8 @@ public class TypescriptVariableObject : TypescriptVariableValue
         var property = new TypescriptVariableField(name, value)
         {
             BeforeSeparator = _fieldsSeparator,
-            AfterSeparator = _fieldsSeparator
+            AfterSeparator = _fieldsSeparator,
+            Indentation = this.Indentation
         };
 
         Fields.Add(property);
@@ -31,7 +32,8 @@ public class TypescriptVariableObject : TypescriptVariableValue
         var property = new TypescriptVariableField(name, value)
         {
             BeforeSeparator = _fieldsSeparator,
-            AfterSeparator = _fieldsSeparator
+            AfterSeparator = _fieldsSeparator,
+            Indentation = this.Indentation
         };
 
         Fields.Add(property);
@@ -52,7 +54,23 @@ public class TypescriptVariableObject : TypescriptVariableValue
         var codeBlocks = new List<ICodeBlock>();
         codeBlocks.AddRange(Fields);
 
-        return $@"{{ {string.Join($@"{GetSeperator()}", codeBlocks.ConcatCode(",", string.Concat(indentation)))}{GetSeperator()}{(_fieldsSeparator == TypescriptCodeSeparatorType.None ? " " : "")}}}";
+        if(codeBlocks.Count == 0)
+        {
+            return "{}";
+        }
+
+        indentation += Indentation;
+
+        foreach(var codeBlock in codeBlocks)
+        {
+            codeBlock.AfterSeparator = _fieldsSeparator;
+        }
+
+        var codeBlocksText = codeBlocks.ConcatCode(",", indentation);
+        var fieldSepearatorSpacing = _fieldsSeparator == TypescriptCodeSeparatorType.None ? " " : "";
+        var fieldSepearatorEndingSpacing = _fieldsSeparator == TypescriptCodeSeparatorType.None ? " " : $"{indentation.TrimEnd(Indentation)}";
+
+        return @$"{indentation.TrimEnd(Indentation)}{{{fieldSepearatorSpacing}{codeBlocksText}{GetSeperator()}{fieldSepearatorEndingSpacing}}}";
     }
 
     private string GetSeperator() => _fieldsSeparator switch

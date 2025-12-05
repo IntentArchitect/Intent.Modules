@@ -94,17 +94,23 @@ public class TypescriptField : TypescriptMember<TypescriptField>
             "number" => "0",
             "any" => "null",
             "string" => "''",
-            _ => BuildComplexDefaultValue(template, property.Element as IElement, indentation, indentation + indentation)
+            _ => BuildComplexDefaultValue(template, property, indentation, indentation + indentation)
         };
     }
 
-    private string BuildComplexDefaultValue(IntentTemplateBase template, IElement property, string indentation, string currentIndentation)
+    private string BuildComplexDefaultValue(IntentTemplateBase template, ITypeReference property, string indentation, string currentIndentation)
     {
+        if(property.IsCollection)
+        {
+            return "[]";
+        }
+
+        var element = property.Element as IElement;
         var builder = new StringBuilder();
 
         builder.AppendLine("{");
 
-        foreach (var child in property.ChildElements)
+        foreach (var child in element.ChildElements)
         {
             builder.AppendLine($"{currentIndentation}{child.Name.ToCamelCase()}: {GetPropertyDefaultValue(template, child.TypeReference, indentation, currentIndentation)},");
         }

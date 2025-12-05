@@ -23,11 +23,19 @@ public class TypescriptEnum : TypescriptDeclaration<TypescriptEnum>, ICodeBlock
     public TypescriptCodeSeparatorType BeforeSeparator { get; set; } = TypescriptCodeSeparatorType.NewLine;
     public TypescriptCodeSeparatorType AfterSeparator { get; set; } = TypescriptCodeSeparatorType.NewLine;
 
+    public bool IsExported { get; private set; }
+
     public TypescriptEnum AddLiteral(string literalName, string literalValue = null, Action<TypescriptEnumLiteral> configure = null)
     {
         var literal = new TypescriptEnumLiteral(literalName, literalValue);
         configure?.Invoke(literal);
         Literals.Add(literal);
+        return this;
+    }
+
+    public TypescriptEnum Export()
+    {
+        IsExported = true;
         return this;
     }
 
@@ -49,15 +57,14 @@ public class TypescriptEnum : TypescriptDeclaration<TypescriptEnum>, ICodeBlock
         sb.Append(GetDecorators(indentation));
         sb.Append(indentation);
 
-        sb.Append("enum ");
+        sb.Append($"{(IsExported ? "export " : string.Empty)}enum ");
         sb.Append(Name);
         sb.Append(" {");
-        sb.AppendLine();
         sb.Append(indentation);
         sb.Append(Literals.JoinCode(",", $"{indentation}    "));
         sb.AppendLine();
         sb.Append(indentation);
-        sb.Append("}");
+        sb.Append('}');
 
         return sb.ToString();
     }

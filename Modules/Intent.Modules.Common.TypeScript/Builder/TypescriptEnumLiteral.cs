@@ -17,8 +17,8 @@ public class TypescriptEnumLiteral : TypescriptDeclaration<TypescriptEnumLiteral
     public string LiteralName { get; }
     public string LiteralValue { get; }
 
-    public TypescriptCodeSeparatorType BeforeSeparator { get; set; } = TypescriptCodeSeparatorType.EmptyLines;
-    public TypescriptCodeSeparatorType AfterSeparator { get; set; } = TypescriptCodeSeparatorType.NewLine;
+    public TypescriptCodeSeparatorType BeforeSeparator { get; set; } = TypescriptCodeSeparatorType.NewLine;
+    public TypescriptCodeSeparatorType AfterSeparator { get; set; } = TypescriptCodeSeparatorType.None;
 
     public string GetText(string indentation)
     {

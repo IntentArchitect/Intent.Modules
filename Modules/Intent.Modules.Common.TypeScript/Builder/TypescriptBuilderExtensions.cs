@@ -60,9 +60,22 @@ public static class TypescriptBuilderExtensions
         if (s0.AfterSeparator is TypescriptCodeSeparatorType.NewLine ||
             s1.BeforeSeparator is TypescriptCodeSeparatorType.NewLine)
         {
-            return $"{Environment.NewLine}{s1.GetText(indentation)}{(index < codeBlocksList.Count - 1 ? separator : string.Empty)}";
+            return $"{Environment.NewLine}{s1.GetText(indentation)}{(separator)}";
         }
 
         return $"{s1.GetText(string.Empty)}{(index < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
+    }
+
+    public static string TrimEnd(this string value, string ending)
+    {
+        if (string.IsNullOrEmpty(value) || string.IsNullOrEmpty(ending))
+            return value;
+
+        if (value.EndsWith(ending, StringComparison.Ordinal))
+        {
+            value = value[..^ending.Length];
+        }
+
+        return value;
     }
 }

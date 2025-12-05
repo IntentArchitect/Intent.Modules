@@ -9,7 +9,6 @@ namespace Intent.Modules.Common.TypeScript.Builder;
 
 public class TypescriptVariable: TypescriptMember<TypescriptVariable>
 {
-    private TypescriptCodeSeparatorType _accessorsSeparator = TypescriptCodeSeparatorType.NewLine;
     private TypescriptCodeSeparatorType _fieldsSeparator = TypescriptCodeSeparatorType.NewLine;
 
     public TypescriptVariable(string name, TypescriptFile file)
@@ -25,7 +24,8 @@ public class TypescriptVariable: TypescriptMember<TypescriptVariable>
         Value = new TypescriptVariableObject
         {
             BeforeSeparator = _fieldsSeparator,
-            AfterSeparator = _fieldsSeparator
+            AfterSeparator = _fieldsSeparator,
+            Indentation = File.Indentation
         };
     }
 
@@ -43,7 +43,8 @@ public class TypescriptVariable: TypescriptMember<TypescriptVariable>
         Value = new TypescriptVariableObject
         {
             BeforeSeparator = _fieldsSeparator,
-            AfterSeparator = _fieldsSeparator
+            AfterSeparator = _fieldsSeparator,
+            Indentation = File.Indentation
         };
     }
 
@@ -76,7 +77,8 @@ public class TypescriptVariable: TypescriptMember<TypescriptVariable>
         Value = new TypescriptVariableObject
         {
             BeforeSeparator = _fieldsSeparator,
-            AfterSeparator = _fieldsSeparator
+            AfterSeparator = _fieldsSeparator,
+            Indentation = File.Indentation
         };
         configure?.Invoke((TypescriptVariableObject)Value);
         return this;
@@ -87,7 +89,8 @@ public class TypescriptVariable: TypescriptMember<TypescriptVariable>
         Value = new TypescriptVariableArray
         {
             BeforeSeparator = _fieldsSeparator,
-            AfterSeparator = _fieldsSeparator
+            AfterSeparator = _fieldsSeparator,
+            Indentation = File.Indentation
         };
         configure?.Invoke((TypescriptVariableArray)Value);
         return this;
@@ -98,7 +101,8 @@ public class TypescriptVariable: TypescriptMember<TypescriptVariable>
         Value = new TypeScriptVariableExpressionFunction
         {
             BeforeSeparator = _fieldsSeparator,
-            AfterSeparator = _fieldsSeparator
+            AfterSeparator = _fieldsSeparator,
+            Indentation = File.Indentation
         };
         configure?.Invoke((TypeScriptVariableExpressionFunction)Value);
         return this;
@@ -111,16 +115,11 @@ public class TypescriptVariable: TypescriptMember<TypescriptVariable>
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{(IsExported ? "export " : string.Empty)}{(IsConst ? "const " : "")}{Name}{(!string.IsNullOrEmpty(Type) ? $": {Type}" : "")} = {GetValue($"{File.Indentation}")};";
+        return $@"{GetComments(indentation)}{(IsExported ? "export " : string.Empty)}{(IsConst ? "const " : "")}{Name}{(!string.IsNullOrEmpty(Type) ? $": {Type}" : "")} = {GetValue("")};";
     }
 
     private string GetValue(string indentation)
     {
-        //if(Value is TypeScriptVariableExpressionFunction)
-        //{
-        //    indentation = string.Empty;
-        //}
-
         if (Value is not null)
         {
             return Value.GetText(indentation);

@@ -10,6 +10,8 @@ public abstract class TypescriptVariableValue : TypescriptMember<TypescriptVaria
 {
     public string Name { get; internal set; }
 
+    public string Indentation { get; set; }
+
     public TypescriptVariableValue Value { get; internal set; }
 
     public TypescriptVariableValue WithName(string name)

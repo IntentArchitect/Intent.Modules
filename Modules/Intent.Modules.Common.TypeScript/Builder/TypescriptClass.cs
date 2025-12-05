@@ -282,7 +282,11 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
         codeBlocks.AddRange(Constructors);
         codeBlocks.AddRange(Getters);
         codeBlocks.AddRange(Setters);
-        codeBlocks.AddRange(Methods);
+        codeBlocks.AddRange(
+            Methods
+            .OrderBy(m => string.Equals(m.Name, "ngOnInit", StringComparison.Ordinal) ? 0 : 1)
+            .ThenBy(m => m.Name, StringComparer.OrdinalIgnoreCase)
+            .ToList());
 
         return $@"{string.Join(@"
 ", codeBlocks.ConcatCode(indentation))}";

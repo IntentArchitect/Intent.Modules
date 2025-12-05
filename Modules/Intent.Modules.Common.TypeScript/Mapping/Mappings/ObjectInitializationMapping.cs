@@ -34,12 +34,6 @@ namespace Intent.Modules.Common.Angular.Mapping
         /// <inheritdoc />
         public override TypescriptStatement GetSourceStatement(bool? withNullConditionalOperators = null)
         {
-            //if (Model.TypeReference == null)
-            //{
-            //    SetTargetReplacement(Model, null);
-            //    return GetConstructorStatement();
-            //}
-
             if (Children.Count == 0)
             {
                 return $"{GetSourcePathText()}";
@@ -68,91 +62,38 @@ namespace Intent.Modules.Common.Angular.Mapping
 
         private TypescriptStatement GetConstructorStatement()
         {
-            //var ctorMapping = FindConstructorMappingInHierarchy(Children);
-            //if (ctorMapping != null)
-            //{
-            //    var children = FindPropertyMappingsInHierarchy(Children).ToList();
-            //    if (children.Count == 0)
-            //    {
-            //        // use constructor only:
-            //        return ctorMapping.GetSourceStatement();
-            //    }
-
-            //    // use constructor and object initialization syntax:
-            //    var hybridInit = new CSharpObjectInitializerBlock(ctorMapping.GetSourceStatement());
-            //    hybridInit.AddStatements(children.Select(x => new CSharpAssignmentStatement(x.GetTargetStatement(), x.GetSourceStatement())));
-            //    return hybridInit;
-            //}
-
-            //var fileBuilderConstructors = GetFileBuilderConstructors();
-            //if (fileBuilderConstructors.Any())
-            //{
-            //    var targetCtor = fileBuilderConstructors[0];
-            //    var ctorInit = new TypescriptStatement($"new {_template.GetTypeName(targetCtor.Element)}");
-            //    var childMappings = FindPropertyMappingsInHierarchy(Children).ToList();
-            //    foreach (var ctorParameter in targetCtor.Ctor.Parameters)
-            //    {
-            //        var match = childMappings.FirstOrDefault(child =>
-            //            ctorParameter.TryGetReferenceForModel(child.Mapping.TargetElement, out var match) && match.Name == ctorParameter.Name);
-            //        ctorInit.AddArgument(match?.GetSourceStatement() ?? "default");
-            //    }
-
-            //    if (childMappings.Count == targetCtor.Ctor.Parameters.Count)
-            //    {
-            //        return ctorInit;
-            //    }
-
-            //    // use constructor and object initialization syntax:
-            //    var hybridInit = new CSharpObjectInitializerBlock(ctorInit);
-            //    hybridInit.AddStatements(childMappings
-            //        .Where(x => !targetCtor.Ctor.Parameters.Any(ctorParameter => ctorParameter.TryGetReferenceForModel(x.Mapping.TargetElement, out var match) && match.Name == ctorParameter.Name))
-            //        .Select(x => new CSharpAssignmentStatement(x.GetTargetStatement(), x.GetSourceStatement())));
-            //    return hybridInit;
-            //}
-
-            //var objectType = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null ?
-            //    _template.GetTypeName(Model.TypeReference.AsContructableType()) :
-            //    _template.GetTypeName((IElement)Model);
-
-            //var variableName = Model.SpecializationType.ToCamelCase();
-
             var sb = new StringBuilder();
 
             sb.AppendLine("{");
+
+            // Might be a better way to do this, but this works for now.
+            // This records the number of levels of mapping, and will indent based on this.
+            var mappingLevel = 0;
+
+            // Call Service Response Mapping (vs call service mapping)
+            var spacer = _mappingModel.MappingTypeId == "e60890c6-7ce7-47be-a0da-dff82b8adc02" ? 4 : 2;
 
             foreach (var child in Children)
             {
                 var statements = child.GetMappingStatements();
 
+                mappingLevel = 1;
+                var parent = child.Parent;
+                while (parent is not null)
+                {
+                    mappingLevel++;
+                    parent = parent.Parent;
+                }
+
                 foreach(var statement in statements)    
                 {
-                    sb.AppendLine($"        {statement.GetText(string.Empty)},");
+                    // this is approproate indendation
+                    sb.AppendLine($"{new string(' ', (mappingLevel * 2) + spacer)}{statement.GetText(string.Empty)},");
                 }
             }
 
-            // remove the last , char
-            for (int i = sb.Length - 1; i >= 0; i--)
-            {
-                if (!char.IsWhiteSpace(sb[i]))
-                {
-                    if (sb[i] == ',')
-                    {
-                        sb.Remove(i, 1);
-                    }
-                    break;
-                }
-            }
-
-            sb.AppendLine($"    }}");
-
-
-            //var propInit = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null
-            //    ? new TypescriptStatement($"new {_template.GetTypeName(Model.TypeReference.AsContructableType())}")
-            //    : new TypescriptStatement($"new {_template.GetTypeName((IElement)Model)}");
-            //foreach (var child in Children)
-            //{
-            //    propInit.AddStatements(child.GetMappingStatements());
-            //}
+            // indent the closing bracket to the appropriate level
+            sb.AppendLine($"{new string(' ', (mappingLevel * 2) + (spacer - 2))}}}");
 
             return sb.ToString();
         }
@@ -200,30 +141,8 @@ namespace Intent.Modules.Common.Angular.Mapping
             return (deepest.maxDepth + 1, validChild);
         }
 
-        private IReadOnlyList<(TypescriptMethod Ctor, IElement Element)> GetFileBuilderConstructors()
-        {
-            var returnTypeElement = ((IElement)_mappingModel.Model)?.TypeReference?.Element;
-            if (returnTypeElement is null ||
-                _template.GetTypeInfo(returnTypeElement.AsTypeReference())?.Template is not ITypescriptFileBuilderTemplate template)
-            {
-                return ArraySegment<(TypescriptMethod, IElement)>.Empty;
-            }
-
-            var constructors = template.TypescriptFile.Classes.SelectMany(s => s.Methods.Where(m => m.Name == "ngOnInit")).ToArray();
-            var mapTargetElements = FindPropertyMappingsInHierarchy(Children).Where(s => s.Mapping != null).Select(s => s.Mapping.TargetElement).ToList();
-
-            return constructors
-                .Where(ctor => mapTargetElements
-                    .All(target => ctor.Parameters.Any(param => param.TryGetReferenceForModel(target, out var match) && param.Name == match.Name)))
-                .Select(s => (Ctor: s, MetadataElement: (IElement)returnTypeElement))
-                .ToList();
-        }
-
-
         private static ITypescriptMapping? FindConstructorMappingInHierarchy(IList<ITypescriptMapping> childMappings)
         {
-            // TODO
-            //var ctor = childMappings.SingleOrDefault(x => x is ConstructorMapping && x.Model.TypeReference == null);
             var ctor = childMappings.SingleOrDefault(x => x.Model.Name == "OnInit" && x.Model.TypeReference == null);
             if (ctor != null)
             {
@@ -289,6 +208,12 @@ namespace Intent.Modules.Common.Angular.Mapping
         {
             // TODO: Please revisit, this only writing out the property name and doesn't allow for accessor variables
             return Model.Name.ToCamelCase();
+        }
+
+        /// <inheritdoc />
+        public override IEnumerable<TypescriptStatement> GetMappingStatements()
+        {
+            yield return new TypescriptStatement($"this.{GetTargetStatement()} = {GetSourceStatement()};");
         }
     }
 }

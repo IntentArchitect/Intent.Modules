@@ -20,7 +20,6 @@ public class StaticMethodInvocationMapping : MethodInvocationMapping
         var invocation = base.GetSourceStatement(withNullConditionalOperators);
         // TODO
         return new TypescriptStatement($"{(invocation.Reference != null
-        //return new CSharpAccessMemberStatement(invocation.Reference != null
                 ? _template.GetTypeName(invocation.Reference.File.Template)
                 : _template.GetTypeName(((IElement)Model).ParentElement))} = {invocation}");
     }

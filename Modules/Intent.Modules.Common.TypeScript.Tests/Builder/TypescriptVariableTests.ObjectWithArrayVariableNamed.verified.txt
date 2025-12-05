@@ -1,0 +1,7 @@
+﻿
+export const appConfig: ApplicationConfig = {
+  providers: [
+    methodCallOne(),
+    methodCallOne(),
+  ]
+};

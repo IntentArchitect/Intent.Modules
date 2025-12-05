@@ -8,7 +8,6 @@ namespace Intent.Modules.Common.TypeScript.Builder;
 
 public class TypescriptVariableArray : TypescriptVariableValue
 {
-    private TypescriptCodeSeparatorType _accessorsSeparator = TypescriptCodeSeparatorType.NewLine;
     private TypescriptCodeSeparatorType _fieldsSeparator = TypescriptCodeSeparatorType.NewLine;
 
     public TypescriptVariableArray AddObject(Action<TypescriptVariableObject> configure = null)
@@ -16,7 +15,8 @@ public class TypescriptVariableArray : TypescriptVariableValue
         var item = new TypescriptVariableObject
         {
             BeforeSeparator = _fieldsSeparator,
-            AfterSeparator = _fieldsSeparator
+            AfterSeparator = _fieldsSeparator,
+            Indentation = this.Indentation
         };
 
         Items.Add(item);
@@ -39,18 +39,19 @@ public class TypescriptVariableArray : TypescriptVariableValue
 
     public List<TypescriptVariableValue> Items { get; } = new();
 
-    //public override string ToString()
-    //{
-    //    return GetText(string.Empty);
-    //}
-
+    /// InheritedDoc
     public override string GetText(string indentation)
     {
         var codeBlocks = new List<ICodeBlock>();
         codeBlocks.AddRange(Items);
 
-        return $@"[{string.Join(@"
-", codeBlocks.ConcatCode(",", indentation + indentation))}{GetSeperator()}{indentation}]";
+        var incomingIndentation = indentation;
+        indentation += this.Indentation;
+
+        var codeBlockText = codeBlocks.ConcatCode($",", indentation);
+
+        return $@"[{codeBlockText}
+{incomingIndentation}]";
     }
 
     private string GetSeperator() => _fieldsSeparator switch

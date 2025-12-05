@@ -96,6 +96,8 @@ public class TypeScriptVariableExpressionFunction : TypescriptVariableValue, IHa
 
     public override string GetText(string indentation)
     {
+        indentation += Indentation;
+
         var text = $@"{GetComments(indentation)}{GetDecorators(indentation)}({string.Join(", ", Parameters.Select(x => x.ToString()))}) => {{{Statements.ConcatCode("")}";
         text = $"{text.Replace(Environment.NewLine, $"{Environment.NewLine}{indentation}")}";
         return $@"{text}

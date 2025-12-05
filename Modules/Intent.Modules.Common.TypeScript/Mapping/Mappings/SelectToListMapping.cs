@@ -29,7 +29,7 @@ namespace Intent.Modules.Common.Angular.Mapping
             }
 
             var chain = new TypescriptStatement($"{GetSourcePathText()}{(Mapping.SourceElement.TypeReference.IsNullable ? "?" : "")}");
-            var select = new TypescriptStatement($"Select");
+            var map = new TypescriptStatement($".map");
 
             var variableName = GetVariableNameForSelect();
 
@@ -38,11 +38,10 @@ namespace Intent.Modules.Common.Angular.Mapping
 
             itemMapping.SetSourceReplacement(GetSourcePath().Last().Element, variableName);
             itemMapping.SetTargetReplacement(GetTargetPath().Last().Element, null);
-            //select.AddArgument(new CSharpLambdaBlock(variableName).WithExpressionBody(itemMapping.GetSourceStatement().WithoutSemicolon()));
 
-            var init = new TypescriptStatement($"{chain}");
-                //.AddChainStatement(select)
-                //.AddChainStatement("ToList()");
+            var sourceStatement = itemMapping.GetSourceStatement();
+
+            var init = new TypescriptStatement(@$"{chain}{map}({variableName} => ({sourceStatement}))");
             return init;
         }
 

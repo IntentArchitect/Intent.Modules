@@ -66,9 +66,7 @@ public abstract partial class TypescriptMappingBase : ITypescriptMapping
     public virtual IEnumerable<TypescriptStatement> GetMappingStatements()
     {
         //TODO
-        //yield return new TypescriptStatement($"{GetSourceStatement()}()");
-        yield return new TypescriptStatement($"this.{GetTargetStatement()} = {GetSourceStatement()};");
-        //yield return new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement());
+        yield return new TypescriptStatement($"{GetTargetStatement()} = {GetSourceStatement()};");
     }
 
     public virtual TypescriptStatement GetSourceStatement(bool? withNullConditionalOperators = null)
@@ -79,8 +77,6 @@ public abstract partial class TypescriptMappingBase : ITypescriptMapping
     public virtual TypescriptStatement GetTargetStatement() => GetTargetStatement(false);
     public virtual TypescriptStatement GetTargetStatement(bool withNullConditionalOperators)
     {
-        //TODO
-        //return new TypescriptStatement("");
         return GetTargetPathText(withNullConditionalOperators);
     }
 
@@ -248,17 +244,19 @@ public abstract partial class TypescriptMappingBase : ITypescriptMapping
                     member = new TypescriptStatement(mappingPathTarget.Element.Name.ToCamelCase());
                 }
 
+                // TODO
                 result = result != null ? new TypescriptStatement($"{result}.{member}") : $"{member}";
-                //result = result != null ? new TypescriptStatement(result, member) : member;
-                var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
-                if (targetIsNullable && IsTransitional(previousMappingPath, mappingPathTarget))
-                {
-                    if (previousMappingPath?.Element.TypeReference?.IsNullable == true)
-                        //&& result is CSharpAccessMemberStatement accessMember)
-                    {
-                        //accessMember.IsConditional();
-                    }
-                }
+
+                // TODO look into if needed for Typescript
+                //var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
+                //if (targetIsNullable && IsTransitional(previousMappingPath, mappingPathTarget))
+                //{
+                //    if (previousMappingPath?.Element.TypeReference?.IsNullable == true)
+                //        //&& result is CSharpAccessMemberStatement accessMember)
+                //    {
+                //        //accessMember.IsConditional();
+                //    }
+                //}
             }
         }
 
@@ -318,7 +316,7 @@ public abstract partial class TypescriptMappingBase : ITypescriptMapping
                 }
 
                 result = member;
-                //result = result != null ? new CSharpAccessMemberStatement(result, member, member.Reference) : member;
+                // TODO - is this needed?
                 //var previousMappingPath = mappingPaths.TakeWhile(x => x != mappingPathTarget).LastOrDefault();
                 //if (withNullConditionalOperators && IsTransitional(previousMappingPath, mappingPathTarget))
                 //{
@@ -332,23 +330,6 @@ public abstract partial class TypescriptMappingBase : ITypescriptMapping
         }
         return result;
     }
-
-    //protected TypescriptStatement GetNullableAwareInstantiation(ICanBeReferencedType model, IList<TypescriptStatement> children, TypescriptStatement instantiationStatement)
-    //{
-    //    // Only go for Target Elements that are Nullable and that have children whose source mappings have a Map path length that is beyond the root Element.
-    //    // e.g. We won't target "request.FieldName" (flat mappings pose problems) but rather "request.NavProp.FieldName" for source elements.
-    //    if (model is IElement { TypeReference: { IsNullable: true, IsCollection: false } } &&
-    //        CheckChildrenRecursive(children, c => c.Mapping != null && c.Mapping.SourcePath.SkipLast(1).Count() > 1) &&
-    //        GetSourcePath().Last().Element.TypeReference.IsNullable)
-    //    {
-    //        // GCB - this code (now commented out) was seriously hacky and broke in a simple use case of assigning a DTO to a Model (UI)
-    //        //var child = children.First();
-    //        //var accessPath = child.Mapping.SourcePath.SkipLast(1).Select(s => child.TryGetSourceReplacement(s.Element, out var a) ? a : s.Name).ToArray();
-    //        return new TypescriptStatement($"{GetSourcePathText(GetSourcePath(), true)} is not null ? {instantiationStatement} : null");
-    //    }
-
-    //    return instantiationStatement;
-    //}
 
     private static bool CheckChildrenRecursive(IList<ITypescriptMapping> children, Func<ITypescriptMapping, bool> predicate)
     {

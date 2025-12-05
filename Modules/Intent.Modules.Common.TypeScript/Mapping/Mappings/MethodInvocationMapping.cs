@@ -66,11 +66,6 @@ public class MethodInvocationMapping : TypescriptMappingBase
         }
     }
 
-    //public override CSharpStatement GetTargetStatement()
-    //{
-    //    return GetSourcePathText(Children.First(x => x.Mapping != null).Mapping.TargetPath.SkipLast(1).ToList());
-    //}
-
     public override IEnumerable<TypescriptStatement> GetMappingStatements()
     {
         yield return GetSourceStatement(false);
