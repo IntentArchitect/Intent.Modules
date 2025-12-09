@@ -10,7 +10,7 @@ using Intent.Modules.Common.Typescript.Mapping;
 using Intent.Modules.Common.TypeScript.Builder;
 using Intent.Modules.Common.TypeScript.Templates;
 
-namespace Intent.Modules.Common.Angular.Mapping
+namespace Intent.Modules.Common.Typescript.Mapping
 {
     /// <inheritdoc />
     public class PropertyObjectInitializationMapping : ObjectInitializationMapping

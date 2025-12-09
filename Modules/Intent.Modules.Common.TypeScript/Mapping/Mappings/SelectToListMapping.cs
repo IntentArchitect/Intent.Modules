@@ -6,7 +6,7 @@ using Intent.Modules.Common.Typescript.Mapping;
 using Intent.Modules.Common.TypeScript.Builder;
 using Intent.Modules.Common.TypeScript.Templates;
 
-namespace Intent.Modules.Common.Angular.Mapping
+namespace Intent.Modules.Common.Typescript.Mapping
 {
     public class SelectToListMapping : TypescriptMappingBase
     {
