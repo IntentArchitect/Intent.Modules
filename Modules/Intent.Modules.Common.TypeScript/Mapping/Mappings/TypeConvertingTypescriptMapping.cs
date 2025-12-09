@@ -1,4 +1,5 @@
 ﻿using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.TypeScript.Builder;
 using Intent.Modules.Common.TypeScript.Templates;
@@ -52,9 +53,22 @@ public class TypeConvertingTypescriptMapping : TypescriptMappingBase
             (Mapping.TargetElement.TypeReference.Element.IsTypeDefinitionModel() || Mapping.TargetElement.TypeReference.Element.IsEnumModel()) &&
             !Mapping.TargetElement.TypeReference.Element.IsStringType())
         {
-            return $"{base.GetSourceStatement()}!";
+            return $"{base.GetSourceStatement()} ?? {GetPropertyDefaultValue(Mapping.SourceElement.TypeReference)}";
         }
 
         return base.GetSourceStatement();
+    }
+
+    private string GetPropertyDefaultValue(ITypeReference property)
+    {
+        return Template.GetTypeName(property) switch
+        {
+            "boolean" => "false",
+            "Date" => "null",
+            "number" => "0",
+            "any" => "null",
+            "string" => "''",
+            _ => "null"
+        };
     }
 }

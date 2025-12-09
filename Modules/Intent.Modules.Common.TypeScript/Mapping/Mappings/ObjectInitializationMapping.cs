@@ -66,12 +66,25 @@ namespace Intent.Modules.Common.Typescript.Mapping
 
             sb.AppendLine("{");
 
+            var addNullCheck = false;
+            if (Model is IElement { TypeReference: { IsNullable: true, IsCollection: false } } &&
+                CheckChildrenRecursive(Children, c => c.Mapping != null && c.Mapping.SourcePath.SkipLast(1).Count() > 1) &&
+                GetSourcePath().Last().Element.TypeReference.IsNullable)
+            {
+                addNullCheck = true;
+            }
+
             // Might be a better way to do this, but this works for now.
             // This records the number of levels of mapping, and will indent based on this.
             var mappingLevel = 0;
 
             // Call Service Response Mapping (vs call service mapping)
             var spacer = _mappingModel.MappingTypeId == "e60890c6-7ce7-47be-a0da-dff82b8adc02" ? 4 : 2;
+
+            if(addNullCheck)
+            {
+                spacer += 4;
+            }
 
             foreach (var child in Children)
             {
@@ -92,10 +105,26 @@ namespace Intent.Modules.Common.Typescript.Mapping
                 }
             }
 
+            if(addNullCheck)
+            {
+                var checkedSb = new StringBuilder(@$"{GetSourcePathText(GetSourcePath(), true)}
+        ? {sb}");
+
+                checkedSb.AppendLine($"{new string(' ', (mappingLevel * 2) + (spacer - 2))}}}");
+                checkedSb.AppendLine($"{new string(' ', (mappingLevel * 2) + (spacer - 4))}: null");
+
+                return checkedSb.ToString();
+            }
+
             // indent the closing bracket to the appropriate level
             sb.AppendLine($"{new string(' ', (mappingLevel * 2) + (spacer - 2))}}}");
 
             return sb.ToString();
+        }
+
+        private static bool CheckChildrenRecursive(IList<ITypescriptMapping> children, Func<ITypescriptMapping, bool> predicate)
+        {
+            return children.All(c => predicate(c) || CheckChildrenRecursive(c.Children, predicate));
         }
 
         /// <inheritdoc />
