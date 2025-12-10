@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿#nullable enable
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Intent.Metadata.Models;
 
 namespace Intent.Modules.Common.TypeResolution
@@ -30,5 +32,17 @@ namespace Intent.Modules.Common.TypeResolution
         /// A formatter for if the <see cref="ITypeReference"/> provided to the <see cref="GetType"/> method is marked as nullable.
         /// </summary>
         INullableFormatter NullableFormatter { get; }
+
+        /// <summary>
+        /// The template ID that this type source is associated with (if any).
+        /// </summary>
+        string? TemplateId => null;
+
+        // TODO JL: Document
+        public bool TryGetTypeReference(string typeName, [NotNullWhen(true)] out ITypeNameTypeReference? typeReference)
+        {
+            typeReference = null;
+            return false;
+        }
     }
 }

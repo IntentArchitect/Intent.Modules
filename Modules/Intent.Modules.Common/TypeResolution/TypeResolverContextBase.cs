@@ -1,7 +1,8 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Reflection.Metadata;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 using Intent.SdkEvolutionHelpers;
@@ -101,6 +102,21 @@ namespace Intent.Modules.Common.TypeResolution
                 : null;
 
             return Get(typeInfo, collectionFormatter);
+        }
+
+        /// <inheritdoc />
+        public virtual bool TryGetTypeReference(string typeName, IPackage package, out ITypeNameTypeReference? typeReference)
+        {
+            foreach (var source in TypeSources)
+            {
+                if (source.TryGetTypeReference(typeName, out typeReference))
+                {
+                    return true;
+                }
+            }
+
+            typeReference = null;
+            return false;
         }
 
         /// <inheritdoc />

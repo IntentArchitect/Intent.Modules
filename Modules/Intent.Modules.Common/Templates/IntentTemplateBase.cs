@@ -1193,7 +1193,6 @@ namespace Intent.Modules.Common.Templates
             return true;
         }
 
-
         #endregion
 
         #region GetTemplate
@@ -1370,6 +1369,18 @@ namespace Intent.Modules.Common.Templates
             return false;
         }
 
+
+        #endregion
+
+        #region GetTypeReference
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual bool TryGetTypeReference(string typeName, IPackage package, [NotNullWhen(true)] out ITypeNameTypeReference? typeReference)
+        {
+            return Types.TryGetTypeReference(typeName, package, out typeReference);
+        }
 
         #endregion
 
