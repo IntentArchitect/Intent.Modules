@@ -1,5 +1,7 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 using Intent.SdkEvolutionHelpers;
@@ -70,5 +72,14 @@ namespace Intent.Modules.Common.TypeResolution
         /// The default <see cref="INullableFormatter"/>.
         /// </summary>
         INullableFormatter DefaultNullableFormatter { get; }
+
+        /// <summary>
+        /// Creates an <see cref="ITypeReference"/> based on a type name.
+        /// </summary>
+        bool TryGetTypeReference(string typeName, IPackage package, out ITypeNameTypeReference? typeReference)
+        {
+            typeReference = null;
+            return false;
+        }
     }
 }

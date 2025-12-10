@@ -1,5 +1,7 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 using Intent.SdkEvolutionHelpers;
@@ -128,5 +130,14 @@ namespace Intent.Modules.Common.TypeResolution
         /// Returns a collection of template dependencies discovered while discovering type names from templates.
         /// </summary>
         IEnumerable<ITemplateDependency> GetTemplateDependencies();
+
+        /// <summary>
+        /// Creates an <see cref="ITypeReference"/> based on a type name.
+        /// </summary>
+        bool TryGetTypeReference(string typeName, IPackage package, [NotNullWhen(true)] out ITypeNameTypeReference? typeReference)
+        {
+            typeReference = null;
+            return false;
+        }
     }
 }

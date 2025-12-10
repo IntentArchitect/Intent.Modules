@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
@@ -37,7 +38,7 @@ public class CSharpTypeParser
     /// <param name="typeName">The C# type in string form. If null is supplied, it will return with <see cref="CSharpTypeVoid" />.</param>
     /// <param name="type">Provides the type instance if the parsing was done successful.</param>
     /// <returns>True if the parsing was successful otherwise false.</returns>
-    public static bool TryParse(string? typeName, out CSharpType? type)
+    public static bool TryParse(string? typeName, [NotNullWhen(true)] out CSharpType? type)
     {
         try
         {

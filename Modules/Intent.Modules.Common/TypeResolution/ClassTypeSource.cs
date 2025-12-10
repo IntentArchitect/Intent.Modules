@@ -1,10 +1,15 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Net.NetworkInformation;
 using System.Reflection;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 using Intent.SdkEvolutionHelpers;
+using Intent.Templates;
 
 namespace Intent.Modules.Common.TypeResolution
 {
@@ -40,6 +45,8 @@ namespace Intent.Modules.Common.TypeResolution
         public ICollectionFormatter CollectionFormatter => Options.CollectionFormatter;
 
         public INullableFormatter NullableFormatter => Options.NullableFormatter;
+
+        string? ITypeSource.TemplateId => TemplateId;
 
         public static ClassTypeSource Create(
             ISoftwareFactoryExecutionContext context,
@@ -134,6 +141,28 @@ namespace Intent.Modules.Common.TypeResolution
             IClassProvider templateInstance)
         {
             return new[] { TemplateDependency.OnTemplate(templateInstance) };
+        }
+
+        /// <inheritdoc/>
+        public bool TryGetTypeReference(string typeName, [NotNullWhen(true)] out ITypeNameTypeReference? typeReference)
+        {
+            var templateInstances = Context.FindTemplateInstances<IClassProvider>(TemplateId);
+            var match = templateInstances.FirstOrDefault(x => x.ClassName == typeName);
+            if (match is not ITemplateWithModel { Model: IElementWrapper elementWrapper } ||
+                elementWrapper.InternalElement is null)
+            {
+                typeReference = null;
+                return false;
+            }
+
+            typeReference = new TypeNameTypeReference
+            {
+                IsNullable = false,
+                IsCollection = false,
+                GenericTypeParameters = [],
+                Element = elementWrapper.InternalElement
+            };
+            return true;
         }
 
         private IResolvedTypeInfo TryGetType(ITypeReference typeReference)

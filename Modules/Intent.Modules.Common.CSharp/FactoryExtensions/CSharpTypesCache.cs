@@ -1,5 +1,6 @@
 ﻿#nullable enable
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,6 +13,7 @@ using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
+using Intent.Modules.Common.Types.Api;
 using Intent.Utils;
 
 namespace Intent.Modules.Common.CSharp.FactoryExtensions
@@ -32,6 +34,7 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
         private static readonly TypeRegistry Empty = new();
         private static readonly HashSet<string> ManuallyAddedKnownTypes = [];
         private static readonly Dictionary<string, HashSet<string>> GlobalUsingsByProjectId = [];
+        private static readonly ConcurrentDictionary<string, Dictionary<string, IElement>> _typeDefinitionsByPackageIdAndName = new();
 
         public CSharpTypesCache(IFileSystem fileSystem)
         {
@@ -46,7 +49,17 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
         {
             ManuallyAddedKnownTypes.Clear();
             GlobalUsingsByProjectId.Clear();
+            _typeDefinitionsByPackageIdAndName.Clear();
             base.OnStart(application);
+        }
+
+        internal static Dictionary<string, IElement> GetTypeDefinitionsByName(IPackage package, IMetadataManager metadataManager)
+        {
+            return _typeDefinitionsByPackageIdAndName.GetOrAdd(package.DesignerId, _ =>
+            {
+                return metadataManager.GetDesigner(package.ApplicationId, package.DesignerId).GetTypeDefinitionModels()
+                    .ToDictionary(x => x.Name, x => x.InternalElement);
+            });
         }
 
         /// <inheritdoc />

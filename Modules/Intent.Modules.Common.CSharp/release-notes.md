@@ -1,4 +1,8 @@
-﻿### Version 3.9.12
+﻿### Version 3.10.0
+
+- Feature: Added support for templates to be able to accept changes manually applied to the codebase to be "reverse engineered" into Intent Architect designers.
+
+### Version 3.9.12
 
 - Fixed: Type parsing for type resolution did not support named Typles.
 

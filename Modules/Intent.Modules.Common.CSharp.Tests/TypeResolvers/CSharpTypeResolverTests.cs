@@ -15,6 +15,60 @@ namespace Intent.Modules.Common.CSharp.Tests.TypeResolvers
 {
     public class CSharpTypeResolverTests
     {
+        [Theory]
+        [InlineData("Dictionary<string, int>")]
+        [InlineData("System.Collections.Generic.Dictionary<string, int>")]
+        [InlineData("System.Collections.Generic.Dictionary<String, System.Int32>")]
+        [InlineData("System.Collections.Generic.Dictionary<System.String, System.Int32>")]
+        public void ItShouldGetTypeReferenceForGenerics(string input)
+        {
+            // Arrange
+            var project = Substitute.For<ICSharpProject>();
+            var package = Substitute.For<IPackage>();
+
+            var typeResolver = new CSharpTypeResolver(
+                defaultCollectionFormatter: CSharpCollectionFormatter.Create("List<{0}>"),
+                defaultNullableFormatter: CSharpNullableFormatter.Create(project));
+
+            // Act
+            var result = typeResolver.TryGetTypeReference(input, package, out var typeReference);
+
+            typeReference.ShouldNotBeNull();
+            typeReference.Element.Name.ShouldBe("Dictionary");
+            typeReference.GenericTypeParameters[0].Element.Name.ShouldBe("string");
+            typeReference.GenericTypeParameters[1].Element.Name.ShouldBe("int");
+        }
+
+        [Theory]
+        [InlineData("IEnumerable<string>")]
+        [InlineData("System.Collections.Generic.IEnumerable<string>")]
+        [InlineData("System.Collections.Generic.IEnumerable<String>")]
+        [InlineData("System.Collections.Generic.IEnumerable<System.String>")]
+        [InlineData("List<string>")]
+        [InlineData("System.Collections.Generic.List<string>")]
+        [InlineData("System.Collections.Generic.List<String>")]
+        [InlineData("System.Collections.Generic.List<System.String>")]
+        [InlineData("string[]")]
+        [InlineData("String[]")]
+        [InlineData("System.String[]")]
+        public void ItShouldGetTypeReferenceForCollections(string input)
+        {
+            // Arrange
+            var project = Substitute.For<ICSharpProject>();
+            var package = Substitute.For<IPackage>();
+
+            var typeResolver = new CSharpTypeResolver(
+                defaultCollectionFormatter: CSharpCollectionFormatter.Create("List<{0}>"),
+                defaultNullableFormatter: CSharpNullableFormatter.Create(project));
+
+            // Act
+            var result = typeResolver.TryGetTypeReference(input, package, out var typeReference);
+
+            typeReference.ShouldNotBeNull();
+            typeReference.IsCollection.ShouldBeTrue();
+            typeReference.Element.Name.ShouldBe("string");
+        }
+
         [Fact]
         public void ItShouldResolveNamespacesForClassProvidersAsGenericParameters()
         {
