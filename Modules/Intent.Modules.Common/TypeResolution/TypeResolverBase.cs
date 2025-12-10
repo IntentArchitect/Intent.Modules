@@ -1,5 +1,7 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
@@ -101,6 +103,13 @@ namespace Intent.Modules.Common.TypeResolution
                 .SelectMany(x => x.TypeSources)
                 .SelectMany(x => x.GetTemplateDependencies())
                 .ToList();
+        }
+
+        /// <inheritdoc />
+        public bool TryGetTypeReference(string typeName, IPackage package, [NotNullWhen(true)] out ITypeNameTypeReference? typeReference)
+        {
+            var context = InContext(DEFAULT_CONTEXT);
+            return context.TryGetTypeReference(typeName, package, out typeReference);
         }
 
         public IResolvedTypeInfo Get(IClassProvider classProvider)

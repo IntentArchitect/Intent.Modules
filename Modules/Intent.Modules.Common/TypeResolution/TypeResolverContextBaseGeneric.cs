@@ -1,6 +1,6 @@
-﻿using System;
+﻿#nullable enable
 using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 
@@ -22,6 +22,21 @@ namespace Intent.Modules.Common.TypeResolution
         {
             DefaultCollectionFormatter = defaultCollectionFormatter;
             DefaultNullableFormatter = nullableFormatter;
+        }
+
+        /// <inheritdoc />
+        public virtual bool TryGetTypeReference(string typeName, IPackage package, out ITypeNameTypeReference? typeReference)
+        {
+            foreach (var source in TypeSources)
+            {
+                if (source.TryGetTypeReference(typeName, out typeReference))
+                {
+                    return true;
+                }
+            }
+
+            typeReference = null;
+            return false;
         }
 
         /// <inheritdoc cref="ITypeResolverContext.DefaultCollectionFormatter"/>
@@ -67,7 +82,7 @@ namespace Intent.Modules.Common.TypeResolution
         protected abstract TResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat);
 
         /// <inheritdoc cref="ITypeResolverContext.Get(ITypeReference,ICollectionFormatter)"/>
-        protected virtual TResolvedTypeInfo Get(ITypeReference typeReference, TCollectionFormatter collectionFormatter)
+        protected virtual TResolvedTypeInfo Get(ITypeReference typeReference, TCollectionFormatter? collectionFormatter)
         {
             if (typeReference == null)
             {
