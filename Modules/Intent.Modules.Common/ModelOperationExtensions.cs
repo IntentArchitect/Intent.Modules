@@ -2,15 +2,35 @@
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 using System.Collections.Generic;
 using Intent.Metadata.Models;
-using Intent.UserChanges;
-using ITypeReference = Intent.UserChanges.ITypeReference;
+using Intent.CodeToModelOperations;
+using ITypeReference = Intent.CodeToModelOperations.ITypeReference;
 
 namespace Intent.Modules.Common;
 
-public static class UserChangeFactoryExtensions
+public static class ModelOperationExtensions
 {
     public static ICreateElement CreateChildElement(
-        this IUserChangeFactory factory,
+        this ICodeToModelOperationFactory factory,
+        ICreateElement parent,
+        string elementId,
+        string name,
+        string? specialization,
+        string specializationId,
+        ITypeReference? typeReference)
+    {
+        return factory.CreateElement(
+            applicationId: parent.ApplicationId,
+            designerId: parent.DesignerId,
+            elementId: elementId,
+            name: name,
+            specialization: specialization,
+            specializationId: specializationId,
+            parentId: parent.ElementId,
+            typeReference: typeReference);
+    }
+
+    public static ICreateElement CreateChildElement(
+        this ICodeToModelOperationFactory factory,
         IElement parent,
         string elementId,
         string name,
@@ -30,7 +50,7 @@ public static class UserChangeFactoryExtensions
     }
 
     public static ICreateElement CreateChildElement(
-        this IUserChangeFactory factory,
+        this ICodeToModelOperationFactory factory,
         IElementWrapper parent,
         string elementId,
         string name,
@@ -48,7 +68,7 @@ public static class UserChangeFactoryExtensions
             typeReference: typeReference);
     }
 
-    public static IRenameElement RenameElement(this IUserChangeFactory factory, IElement element, string newName)
+    public static IRenameElement RenameElement(this ICodeToModelOperationFactory factory, IElement element, string newName)
     {
         return factory.RenameElement(
             applicationId: element.Package.ApplicationId,
@@ -57,12 +77,12 @@ public static class UserChangeFactoryExtensions
             newName: newName);
     }
 
-    public static IRenameElement RenameElement(this IUserChangeFactory factory, IElementWrapper wrappedElement, string newName)
+    public static IRenameElement RenameElement(this ICodeToModelOperationFactory factory, IElementWrapper wrappedElement, string newName)
     {
         return RenameElement(factory, wrappedElement.InternalElement, newName);
     }
 
-    public static IChangeElementTypeReference ChangeElementTypeReference(this IUserChangeFactory factory, IElement element, ITypeReference? typeReference)
+    public static IChangeElementTypeReference ChangeElementTypeReference(this ICodeToModelOperationFactory factory, IElement element, ITypeReference? typeReference)
     {
         return factory.ChangeElementTypeReference(
             applicationId: element.Package.ApplicationId,
@@ -71,7 +91,7 @@ public static class UserChangeFactoryExtensions
             typeReference: typeReference);
     }
 
-    public static IChangeElementTypeReference ChangeElementTypeReference(this IUserChangeFactory factory, IElementWrapper wrappedElement, ITypeReference? typeReference)
+    public static IChangeElementTypeReference ChangeElementTypeReference(this ICodeToModelOperationFactory factory, IElementWrapper wrappedElement, ITypeReference? typeReference)
     {
         return ChangeElementTypeReference(
             factory: factory,
@@ -79,7 +99,7 @@ public static class UserChangeFactoryExtensions
             typeReference: typeReference);
     }
 
-    public static IUpdateElementMetadata UpdateElementMetadata(this IUserChangeFactory factory, IElement element, Dictionary<string, string> metadata)
+    public static IUpdateElementMetadata UpdateElementMetadata(this ICodeToModelOperationFactory factory, IElement element, Dictionary<string, string> metadata)
     {
         return factory.UpdateElementMetadata(
             applicationId: element.Package.ApplicationId,
@@ -88,7 +108,7 @@ public static class UserChangeFactoryExtensions
             metadata: metadata);
     }
 
-    public static IUpdateElementMetadata UpdateElementMetadata(this IUserChangeFactory factory, IElementWrapper wrappedElement, Dictionary<string, string> metadata)
+    public static IUpdateElementMetadata UpdateElementMetadata(this ICodeToModelOperationFactory factory, IElementWrapper wrappedElement, Dictionary<string, string> metadata)
     {
         return UpdateElementMetadata(
             factory: factory,
