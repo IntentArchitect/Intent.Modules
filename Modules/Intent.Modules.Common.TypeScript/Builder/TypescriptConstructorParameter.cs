@@ -78,12 +78,12 @@ public class TypescriptConstructorParameter
 
         sb.Append(Name);
 
+        sb.Append($": {Type}");
+
         if (IsOptional)
         {
-            sb.Append("?");
+            sb.Append(" | null");
         }
-
-        sb.Append($": {Type}");
 
         return sb.ToString();
     }
