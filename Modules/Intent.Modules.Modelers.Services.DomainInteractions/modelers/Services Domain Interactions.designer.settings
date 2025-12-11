@@ -11468,27 +11468,50 @@ return isChildOfTargetClassOrCtor
     &amp;&amp; !association.getOtherEnd().typeReference.getIsNullable() &amp;&amp; !association.getOtherEnd().typeReference.getIsCollection()
     &amp;&amp; association.getParent("Class").getIsMapped();</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>// Attribute is under mapped to Class or Constructor
+              <isMappableFunction>return false;
+// Attribute is under mapped to Class or Constructor
 let underClassOrCtor = element.getParent("Class").id == mappingContext.targetElementId || element.getParent("Class Constructor")?.id == mappingContext.targetElementId
 
 return underClassOrCtor
     // Entity Settings -&gt; Ensure Private Property Settings != true
     &amp;&amp; (application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")?.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")?.value != "true")</isMappableFunction>
-              <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>e04ab087-8c1a-42b9-aac7-d76ed674e319</mappingId>
-                <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
-              </traversableTypes>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
               <canBeModified>false</canBeModified>
               <useChildSettingsFrom>e04ab087-8c1a-42b9-aac7-d76ed674e319</useChildSettingsFrom>
               <represents>data</represents>
+              <staticMappableSettings>
+                <staticMappableSetting id="5be4e1b7-855b-4ae6-a56e-6fc9d8ba0a87" name="Lookup IDs" type="Lookup IDs" typeId="5be4e1b7-855b-4ae6-a56e-6fc9d8ba0a87" version="2.0.0">
+                  <displayFunction>let type = element.getParent().typeReference.getType()
+    .getChildren("Attribute")
+    .filter(x =&gt; x.hasStereotype("Primary Key"))[0]
+    ?.typeReference
+    ?.getType();
+return `Lookup IDs: ${type?.getDisplay()??"&lt;not set&gt;"}[*]`;</displayFunction>
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>false</isTraversable>
+                  <traversableTypes />
+                  <overrideTypeReferenceFunction>let model = element.typeReference.getType()
+    .getChildren("Attribute")
+    .filter(x =&gt; x.hasStereotype("Primary Key"))[0]
+    ?.typeReference
+    ?.toModel();
+model.isCollection = true;
+return model;</overrideTypeReferenceFunction>
+                  <canBeModified>false</canBeModified>
+                  <represents>data</represents>
+                </staticMappableSetting>
+              </staticMappableSettings>
             </childSetting>
             <childSetting id="adb76398-4759-40ce-9b58-f98c1358f8e9" name="Set Association Source End" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58" version="2.0.0">
               <filterFunction>return element.typeReference.isNavigable &amp;&amp; application.isModuleInstalled("Intent.EntityFrameworkCore")</filterFunction>
               <isRequiredFunction>return false;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>// anemic mapping
-return element.getParent("Class")?.id == mappingContext.targetElementId</isMappableFunction>
+              <isMappableFunction>return false;
+
+// anemic mapping
+return element.getParent("Class")?.id == mappingContext.targetElementId;</isMappableFunction>
               <isTraversable>true</isTraversable>
               <traversableTypes>
                 <mappingId>e04ab087-8c1a-42b9-aac7-d76ed674e319</mappingId>
@@ -11632,6 +11655,16 @@ return (targetElement.specialization != "Class Constructor" &amp;&amp; targetEle
             <target id="adb76398-4759-40ce-9b58-f98c1358f8e9" name="Set Association Source End" />
             <target id="886a7d52-5575-45df-ab0e-01d777375990" name="Parameter" />
           </targets>
+          <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
+          <allowAutoMap>true</allowAutoMap>
+        </mappingType>
+        <mappingType type="Static Mapping" typeId="233641f7-df43-45d4-bc37-054b19414bcf">
+          <represents>data</represents>
+          <sources />
+          <sourceFilterFunction>return element.represents == 'data'</sourceFilterFunction>
+          <sourceArrowFunction>return null</sourceArrowFunction>
+          <targets />
+          <targetFilterFunction>return element.represents == 'data'</targetFilterFunction>
           <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
         </mappingType>
