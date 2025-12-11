@@ -1,6 +1,7 @@
 ﻿using Anthropic.SDK.Messaging;
 using Intent.Configuration;
 using Intent.Engine;
+using Intent.Modules.Common.Templates;
 using Intent.Templates;
 using Intent.Utils;
 using Microsoft.SemanticKernel;
@@ -90,7 +91,7 @@ namespace Intent.Modules.Common.AI.Configuration
         /// <param name="templateId">The template ID to validate (optional).</param>
         /// <returns>The loaded <see cref="PromptConfig"/> instance.</returns>
         /// <exception cref="Exception">Thrown if the prompt template file is not found or the template ID is invalid.</exception>
-        public static PromptConfig Load(string solutionPath, string applicationName, string promptName, string templateId = null)
+        public static PromptConfig Load(string solutionPath, string applicationName, string promptName, string? templateId = null)
         {
             var path = GetTemplatePromptPath(solutionPath, applicationName, promptName);
             var filename = System.IO.Directory.Exists(path) ? Path.Combine(path, DefaultConfigFileName) : path;
@@ -268,14 +269,24 @@ namespace Intent.Modules.Common.AI.Configuration
             {
                 return [];
             }
-            var folderPath = Path.Combine(FilePath, template.TemplateFolder.Replace("\\", "/"));
+            //Default the Path to the ID of the template
+            string templateFolder = template.Id;
 
-            if (!System.IO.Directory.Exists(folderPath))
-                throw new System.IO.DirectoryNotFoundException($"Template folder not found: {folderPath}");
+            if (!string.IsNullOrWhiteSpace(template.TemplateFolder))
+            {
+                templateFolder = template.TemplateFolder.Replace("\\", "/");
+            }            
 
-            var files = System.IO.Directory.GetFiles(folderPath, "*.*", System.IO.SearchOption.TopDirectoryOnly);
+            var folderPath = Path.Combine(FilePath, templateFolder);
 
-            return files.Select(f => new FileDetails(System.IO.File.ReadAllText(f))).ToList();
+            if (Directory.Exists(folderPath))
+            {
+                var files = System.IO.Directory.GetFiles(folderPath, "*.*", System.IO.SearchOption.TopDirectoryOnly);
+
+                return files.Select(f => new FileDetails(System.IO.File.ReadAllText(f))).ToList();
+
+            }
+            return [];
         }
 
         /// <summary>
@@ -286,6 +297,15 @@ namespace Intent.Modules.Common.AI.Configuration
         public string GetAdditionalRules(string templateId)
         {
             var result = new StringBuilder();
+
+            if (!string.IsNullOrWhiteSpace(templateId))
+            {
+                if (TryFindTemplatePromptFile(templateId, out var promptFile))
+                {
+                    result.AppendLine(File.ReadAllText(promptFile));
+                }
+            }
+
             var template = Templates.FirstOrDefault(t => t.Id == templateId);
 
             foreach (var rule in Rules)
@@ -300,6 +320,24 @@ namespace Intent.Modules.Common.AI.Configuration
                 }
             }
             return result.ToString();
+        }
+
+        private bool TryFindTemplatePromptFile(string templateId, out string promptFile)
+        {
+            string tryFileName = Path.Combine(FilePath, $"{templateId}.md");
+            if (File.Exists(tryFileName))
+            {
+                promptFile = tryFileName;
+                return true;
+            }
+            tryFileName = Path.Combine(FilePath, $"{templateId.ToKebabCase()}.md");
+            if (File.Exists(tryFileName))
+            {
+                promptFile = tryFileName;
+                return true;
+            }
+            promptFile = string.Empty;
+            return false;
         }
 
         /// <summary>
@@ -362,7 +400,7 @@ namespace Intent.Modules.Common.AI.Configuration
         /// </summary>
         /// <param name="templateId">The template ID to validate.</param>
         /// <exception cref="Exception">Thrown if the template ID is not found.</exception>
-        private void ValidateTemplateId(string templateId)
+        private void ValidateTemplateId(string? templateId)
         {
             if (templateId is not null &&
                 Templates.All(t => t.Id != templateId))
