@@ -1,4 +1,8 @@
-﻿### Version 3.18.1
+﻿### Version 3.18.2
+
+- Improvement: Added `Static Mappable Settings` as selectable types for `Target Types` for `Mapping Types`.
+
+### Version 3.18.1
 
 - Improvement: Updated module documentation to use centralized documentation site.
 - Improvement: Added help topic on designer scripting.
