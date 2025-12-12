@@ -29,8 +29,15 @@ public class ProviderModelsTask : IModuleTask
         var openAiCompatibleModelName = _userSettingsProvider.GetAISettings().OpenAICompatibleModel();
         var ollamaModelName = _userSettingsProvider.GetAISettings().OllamaModel();
         
+        // URLs to look at for newer models:
+        // https://platform.openai.com/docs/models
+        // https://platform.claude.com/docs/en/about-claude/models/overview
+        // https://openrouter.ai
+        // https://ai.google.dev/gemini-api/docs/models
+        
         List<ModelRecord> providerModels =
         [
+            new("open-ai",              "gpt-5.2",                              "OpenAI",               ThinkingType.ThinkingLevels),
             new("open-ai",              "gpt-5.1",                              "OpenAI",               ThinkingType.ThinkingLevels),
             new("open-ai",              "gpt-5",                                "OpenAI",               ThinkingType.ThinkingLevels),
             new("open-ai",              "o3",                                   "OpenAI",               ThinkingType.ThinkingLevels),
@@ -38,6 +45,7 @@ public class ProviderModelsTask : IModuleTask
             new("open-ai",              "gpt-4o",                               "OpenAI",               ThinkingType.None),
             new("open-ai",              "o1",                                   "OpenAI",               ThinkingType.ThinkingLevels),
             
+            new("anthropic",            "claude-opus-4-5-20251101",             "Anthropic",            ThinkingType.ThinkingLevels),
             new("anthropic",            "claude-haiku-4-5-20251001",            "Anthropic",            ThinkingType.ThinkingLevels),
             new("anthropic",            "claude-sonnet-4-5-20250929",           "Anthropic",            ThinkingType.ThinkingLevels),
             new("anthropic",            "claude-opus-4-1-20250805",             "Anthropic",            ThinkingType.ThinkingLevels),
@@ -48,11 +56,12 @@ public class ProviderModelsTask : IModuleTask
             new("open-router",          "x-ai/grok-4",                          "OpenRouter",           ThinkingType.ThinkingLevels),
             new("open-router",          "z-ai/glm-4.6",                         "OpenRouter",           ThinkingType.ThinkingLevels),
             new("open-router",          "google/gemini-2.5-pro",                "OpenRouter",           ThinkingType.ThinkingLevels),
-            new("open-router",          "deepseek/deepseek-v3.2-exp",           "OpenRouter",           ThinkingType.ThinkingLevels),
+            new("open-router",          "deepseek/deepseek-v3.2",               "OpenRouter",           ThinkingType.ThinkingLevels),
             new("open-router",          "qwen/qwen3-coder",                     "OpenRouter",           ThinkingType.None),
             new("open-router",          "qwen/qwen3-coder-plus",                "OpenRouter",           ThinkingType.None),
             new("open-router",          "qwen/qwen3-max",                       "OpenRouter",           ThinkingType.None),
             new("open-router",          "qwen/qwen3-235b-a22b-thinking-2507",   "OpenRouter",           ThinkingType.ThinkingLevels),
+            new("open-router",          "anthropic/claude-opus-4.5",            "OpenRouter",           ThinkingType.ThinkingLevels),
             new("open-router",          "anthropic/claude-haiku-4.5",           "OpenRouter",           ThinkingType.ThinkingLevels),
             new("open-router",          "anthropic/claude-sonnet-4.5",          "OpenRouter",           ThinkingType.ThinkingLevels),
             new("open-router",          "anthropic/claude-opus-4.1",            "OpenRouter",           ThinkingType.ThinkingLevels),
