@@ -11487,6 +11487,13 @@ return underClassOrCtor
     ?.typeReference
     ?.getType();
 return `Lookup IDs: ${type?.getDisplay()??"&lt;not set&gt;"}[*]`;</displayFunction>
+                  <filterFunction>function isAggregateRoot(possibleAggrEntity) {
+    let result = !possibleAggrEntity.getAssociations("Association")
+        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
+    return result;
+}
+
+return isAggregateRoot(element.typeReference.getType());</filterFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>false</isTraversable>
