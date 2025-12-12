@@ -115,6 +115,7 @@ return getAllPackageIds(sourceMappables);</lookupInternalTargetPropertyId>
       <optionsSource>lookup-children</optionsSource>
       <lookupTypes>
         <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
+        <type>c776bc38-c0e8-4535-87dd-79cfd33be2ad</type>
       </lookupTypes>
       <lookupInternalTargetPropertyId>let mappingTypeSettingsId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
 let targetMappingSettingsId = "a812bff7-017a-4692-8ec7-1caad0a1dd88";
