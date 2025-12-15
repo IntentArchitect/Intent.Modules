@@ -16,11 +16,13 @@ public class TypescriptFile
     public List<TypescriptClass> Classes { get; } = new();
     public List<TypescriptStatement> Statements { get; } = new();
 
-    public List<TypescriptVariable> Variables{ get; } = new();
+    public List<TypescriptVariable> Variables { get; } = new();
 
     public IList<TypescriptEnum> Enums { get; } = new List<TypescriptEnum>();
 
     public ITypescriptTemplate Template { get; internal set; }
+
+    public TypescriptComments Comments { get; } = new();
 
     public TypescriptFile(string relativeLocation, ITypescriptFileBuilderTemplate template)
     {
@@ -177,6 +179,18 @@ public class TypescriptFile
         return this;
     }
 
+    public TypescriptFile WithComments(string comments)
+    {
+        Comments.AddStatements(comments);
+        return this;
+    }
+
+    public TypescriptFile WithComments(IEnumerable<string> comments)
+    {
+        Comments.AddStatements(comments);
+        return this;
+    }
+
     public TypeScriptFileConfig GetConfig(string typeName)
     {
         return new TypeScriptFileConfig(
@@ -262,6 +276,8 @@ public class TypescriptFile
         }
 
         var sb = new StringBuilder();
+
+        sb.AppendLine(Comments.ToString());
 
         foreach (var value in ImportsBySource.Values)
         {
