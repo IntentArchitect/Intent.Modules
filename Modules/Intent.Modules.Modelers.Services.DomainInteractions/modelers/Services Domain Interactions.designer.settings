@@ -11514,18 +11514,43 @@ return model;</overrideTypeReferenceFunction>
               <filterFunction>return element.typeReference.isNavigable &amp;&amp; application.isModuleInstalled("Intent.EntityFrameworkCore")</filterFunction>
               <isRequiredFunction>return false;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return false;
-
-// anemic mapping
+              <isMappableFunction>// anemic mapping
 return element.getParent("Class")?.id == mappingContext.targetElementId;</isMappableFunction>
-              <isTraversable>true</isTraversable>
-              <traversableTypes>
-                <mappingId>e04ab087-8c1a-42b9-aac7-d76ed674e319</mappingId>
-                <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>
-              </traversableTypes>
+              <isTraversable>false</isTraversable>
+              <traversableTypes />
               <canBeModified>false</canBeModified>
               <useChildSettingsFrom>e04ab087-8c1a-42b9-aac7-d76ed674e319</useChildSettingsFrom>
               <represents>data</represents>
+              <staticMappableSettings>
+                <staticMappableSetting id="11201123-7476-4b32-9452-f4ccc96449ef" name="Lookup IDs" type="Lookup IDs" typeId="11201123-7476-4b32-9452-f4ccc96449ef" version="2.0.0">
+                  <displayFunction>let type = element.getParent().typeReference.getType()
+    .getChildren("Attribute")
+    .filter(x =&gt; x.hasStereotype("Primary Key"))[0]
+    ?.typeReference
+    ?.getType();
+return `Lookup IDs: ${type?.getDisplay()??"&lt;not set&gt;"}[*]`;</displayFunction>
+                  <filterFunction>function isAggregateRoot(possibleAggrEntity) {
+    let result = !possibleAggrEntity.getAssociations("Association")
+        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
+    return result;
+}
+
+return isAggregateRoot(element.typeReference.getType());</filterFunction>
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>false</isTraversable>
+                  <traversableTypes />
+                  <overrideTypeReferenceFunction>let model = element.typeReference.getType()
+    .getChildren("Attribute")
+    .filter(x =&gt; x.hasStereotype("Primary Key"))[0]
+    ?.typeReference
+    ?.toModel();
+model.isCollection = true;
+return model;</overrideTypeReferenceFunction>
+                  <canBeModified>false</canBeModified>
+                  <represents>data</represents>
+                </staticMappableSetting>
+              </staticMappableSettings>
             </childSetting>
             <childSetting id="1fba46e9-3cf7-4154-ad38-451c9696c413" name="Invoke Constructor" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b" version="2.0.0">
               <isRequiredFunction>return element.id == mappingContext.targetElementId</isRequiredFunction>
@@ -11661,6 +11686,7 @@ return (targetElement.specialization != "Class Constructor" &amp;&amp; targetEle
             <target id="adb76398-4759-40ce-9b58-f98c1358f8e9" name="Set Association Source End" />
             <target id="886a7d52-5575-45df-ab0e-01d777375990" name="Parameter" />
             <target id="5be4e1b7-855b-4ae6-a56e-6fc9d8ba0a87" name="Lookup IDs" />
+            <target id="11201123-7476-4b32-9452-f4ccc96449ef" name="Lookup IDs" />
           </targets>
           <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
@@ -12150,6 +12176,36 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               <canBeModified>false</canBeModified>
               <useChildSettingsFrom>72bbcbf9-96c1-483b-8ecd-ac7dd636fcc8</useChildSettingsFrom>
               <represents>data</represents>
+              <staticMappableSettings>
+                <staticMappableSetting id="a86c6393-1778-48d3-bb8d-d7ad2ad4b14c" name="Lookup IDs" type="Lookup IDs" typeId="a86c6393-1778-48d3-bb8d-d7ad2ad4b14c" version="2.0.0">
+                  <displayFunction>let type = element.getParent().typeReference.getType()
+    .getChildren("Attribute")
+    .filter(x =&gt; x.hasStereotype("Primary Key"))[0]
+    ?.typeReference
+    ?.getType();
+return `Lookup IDs: ${type?.getDisplay()??"&lt;not set&gt;"}[*]`;</displayFunction>
+                  <filterFunction>function isAggregateRoot(possibleAggrEntity) {
+    let result = !possibleAggrEntity.getAssociations("Association")
+        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
+    return result;
+}
+
+return isAggregateRoot(element.typeReference.getType());</filterFunction>
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>false</isTraversable>
+                  <traversableTypes />
+                  <overrideTypeReferenceFunction>let model = element.typeReference.getType()
+    .getChildren("Attribute")
+    .filter(x =&gt; x.hasStereotype("Primary Key"))[0]
+    ?.typeReference
+    ?.toModel();
+model.isCollection = true;
+return model;</overrideTypeReferenceFunction>
+                  <canBeModified>false</canBeModified>
+                  <represents>data</represents>
+                </staticMappableSetting>
+              </staticMappableSettings>
             </childSetting>
             <childSetting id="49bfbdb3-9697-4d84-9194-df60ee7dfd9a" name="Set Association Source End" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58" version="2.0.0">
               <filterFunction>return element.typeReference.isNavigable &amp;&amp; application.isModuleInstalled("Intent.EntityFrameworkCore")</filterFunction>
@@ -12165,6 +12221,36 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               <canBeModified>false</canBeModified>
               <useChildSettingsFrom>72bbcbf9-96c1-483b-8ecd-ac7dd636fcc8</useChildSettingsFrom>
               <represents>data</represents>
+              <staticMappableSettings>
+                <staticMappableSetting id="feac65ae-aa31-489c-832a-c329b14567cc" name="Lookup IDs" type="Lookup IDs" typeId="feac65ae-aa31-489c-832a-c329b14567cc" version="2.0.0">
+                  <displayFunction>let type = element.getParent().typeReference.getType()
+    .getChildren("Attribute")
+    .filter(x =&gt; x.hasStereotype("Primary Key"))[0]
+    ?.typeReference
+    ?.getType();
+return `Lookup IDs: ${type?.getDisplay()??"&lt;not set&gt;"}[*]`;</displayFunction>
+                  <filterFunction>function isAggregateRoot(possibleAggrEntity) {
+    let result = !possibleAggrEntity.getAssociations("Association")
+        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
+    return result;
+}
+
+return isAggregateRoot(element.typeReference.getType());</filterFunction>
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <isTraversable>false</isTraversable>
+                  <traversableTypes />
+                  <overrideTypeReferenceFunction>let model = element.typeReference.getType()
+    .getChildren("Attribute")
+    .filter(x =&gt; x.hasStereotype("Primary Key"))[0]
+    ?.typeReference
+    ?.toModel();
+model.isCollection = true;
+return model;</overrideTypeReferenceFunction>
+                  <canBeModified>false</canBeModified>
+                  <represents>data</represents>
+                </staticMappableSetting>
+              </staticMappableSettings>
             </childSetting>
             <childSetting id="091c6b4d-5cf7-4561-9d4c-b025905152e3" name="Invoke Class Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" version="2.0.0">
               <filterFunction>return !element.getIsStatic()</filterFunction>
