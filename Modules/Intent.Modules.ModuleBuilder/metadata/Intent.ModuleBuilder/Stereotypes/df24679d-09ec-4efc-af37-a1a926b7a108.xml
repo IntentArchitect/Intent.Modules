@@ -97,13 +97,15 @@
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="6da92064-59ef-4361-8ad6-c73b54c18cc2">
-      <comment>If an element is *traversable*, its type-reference is used to populate its mappable children. For example, a property of type `DTO` would typically be configured to be traversable so that the `DTO`'s fields can be mapped to / from.
+      <comment>If an element is *traversable*, its type-reference's children are used to populate the children of this element. For example, a property of type `DTO` would typically be configured to be traversable so that the `DTO`'s fields can be mapped to / from.
 
 * **Not Traversable** - indicates that this element is not traversable and it's type-reference should not be "explored" for mappable children.
 
 * **Traverse Specific Types** - indicates that only type-references of specific types can be traversed. This set is specified by the `Traversable Types` dropdown which becomes available when this option is selected.
 
-* **Traverse All Types** - indicates that any type-reference can be traversed.</comment>
+* **Traverse All Types** - indicates that any type-reference can be traversed.
+
+* **Function** - indicates that the `Is Traversable Function` must be used to determine if this element is traversable.</comment>
       <name>Traversable Mode</name>
       <type>string</type>
       <controlType>select</controlType>
@@ -113,6 +115,7 @@
         <option>Not Traversable</option>
         <option>Traverse Specific Types</option>
         <option>Traverse All Types</option>
+        <option>Function</option>
       </valueOptions>
     </property>
     <property id="3f279b0b-8772-4dd5-bf54-1fde024420e7">
@@ -166,6 +169,20 @@ return getAllPackageIds(mappablePackage);</lookupInternalTargetPropertyId>
 return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() == "Traverse Specific Types";</isActiveFunction>
       <isRequiredFunction>// Traversal Mode == Traverse Specific Types
 return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() == "Traverse Specific Types";</isRequiredFunction>
+    </property>
+    <property id="577e0308-9736-4097-a370-f8e0ef40aa41">
+      <comment>This function must return a boolean `true` or `false` to determine whether this Mappable Element is traversable or not.</comment>
+      <hint>Uses the element's type reference by default.</hint>
+      <name>Is Traversable Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(Default)</placeholder>
+      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
+      <isActiveFunction>// Traversal Mode == Function
+return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() == "Function";</isActiveFunction>
+      <isRequiredFunction>// Traversal Mode == Function
+return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() == "Function";</isRequiredFunction>
     </property>
     <property id="208475f3-1bb6-40c4-87e1-20f048e5caa8">
       <comment>This function can be used to override the type-reference that this element exposes to the mapping system. This function must return an `ITypeReferenceData` object as follows:

@@ -1,4 +1,8 @@
-﻿### Version 3.18.1
+﻿### Version 3.18.2
+
+- Improvement: Support for `Is Traversable Function` on advanced mapping settings for Element Settings. This allows for more sophisticated controlling of whether an element is traversable in the mapping engine.
+
+### Version 3.18.1
 
 - Improvement: Updated module documentation to use centralized documentation site.
 - Improvement: Added help topic on designer scripting.

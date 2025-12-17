@@ -103,6 +103,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<IElement[]>("Traversable Types") ?? new IElement[0];
             }
 
+            public string IsTraversableFunction()
+            {
+                return _stereotype.GetProperty<string>("Is Traversable Function");
+            }
+
             public string OverrideTypeReferenceFunction()
             {
                 return _stereotype.GetProperty<string>("Override Type Reference Function");
@@ -219,6 +224,8 @@ namespace Intent.ModuleBuilder.Api
                             return TraversableModeOptionsEnum.TraverseSpecificTypes;
                         case "Traverse All Types":
                             return TraversableModeOptionsEnum.TraverseAllTypes;
+                        case "Function":
+                            return TraversableModeOptionsEnum.Function;
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
@@ -236,13 +243,18 @@ namespace Intent.ModuleBuilder.Api
                 {
                     return Value == "Traverse All Types";
                 }
+                public bool IsFunction()
+                {
+                    return Value == "Function";
+                }
             }
 
             public enum TraversableModeOptionsEnum
             {
                 NotTraversable,
                 TraverseSpecificTypes,
-                TraverseAllTypes
+                TraverseAllTypes,
+                Function
             }
             public class SyncMappingToOptions
             {

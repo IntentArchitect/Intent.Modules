@@ -59,6 +59,10 @@ public class MappableElementSettingPersistable
     [XmlArrayItem("mappingId")]
     public List<string> TraversableTypes { get; set; } = new();
 
+    [XmlElement("isTraversableFunction")]
+    public string IsTraversableFunction { get; set; }
+    public bool ShouldSerializeIsTraversableFunction() => !string.IsNullOrWhiteSpace(IsTraversableFunction);
+
     [XmlElement("overrideTypeReferenceFunction")]
     public string OverrideTypeReferenceFunction { get; set; }
     public bool ShouldSerializeOverrideTypeReferenceFunction() => !string.IsNullOrWhiteSpace(OverrideTypeReferenceFunction);

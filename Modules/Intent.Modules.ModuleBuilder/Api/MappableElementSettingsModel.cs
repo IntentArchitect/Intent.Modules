@@ -99,6 +99,7 @@ namespace Intent.ModuleBuilder.Api
                 IsRequiredFunction = this.GetMappableSettings().IsRequiredFunction(),
                 IsTraversable = !this.GetMappableSettings().TraversableMode().IsNotTraversable(),
                 TraversableTypes = this.GetMappableSettings().TraversableTypes().Select(x => x.Id).ToList(),
+                IsTraversableFunction = this.GetMappableSettings().IsTraversableFunction(),
                 OverrideTypeReferenceFunction = this.GetMappableSettings().OverrideTypeReferenceFunction(),
                 GetTraversableTypeFunction = this.GetMappableSettings().GetTraversableTypeFunction(),
                 UseChildSettingsFrom = this.GetMappableSettings().UseChildMappingsFrom()?.Id,
