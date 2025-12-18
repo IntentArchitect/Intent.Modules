@@ -1151,6 +1151,7 @@ class EntityProjector {
         this.targetPath = []; //Entity
         this.isChild = false;
         this.addMandatoryRelationships = false;
+        this.visited = new Set();
     }
     getMappings() {
         return this.mappings;
@@ -1344,19 +1345,24 @@ class EntityProjector {
             dtoUpdated = true;
         }
         if (this.addMandatoryRelationships) {
-            this.isChild = true;
-            let requiredAssociations = DomainHelper.getMandatoryAssociationsWithMapPath(entity);
-            for (let entry of requiredAssociations) {
-                let field = createElement("DTO-Field", entry.name, dto.id);
-                let pops = this.addMapping(MappingType.Navigation, [field.id], entry.mapPath, true);
-                let dtoName = dto.getName().replace(/(?:Dto|Command|Query)$/, "") + field.getName() + "Dto";
-                let entityField = lookup(entry.id);
-                let newDto = this.getOrCreateContract(dtoName, "DTO", entityField.typeReference.getType(), createMode, folder, inbound, true);
-                field.typeReference.setType(newDto.id);
-                this.popMapping(pops);
-                field.typeReference.setIsNullable(entry.isNullable);
-                field.typeReference.setIsCollection(entry.isCollection);
-                dtoUpdated = true;
+            if (!this.visited.has(entity.id)) {
+                this.visited.add(entity.id);
+                this.isChild = true;
+                let requiredAssociations = DomainHelper.getMandatoryAssociationsWithMapPath(entity);
+                for (let entry of requiredAssociations) {
+                    let entityField = lookup(entry.id);
+                    if (!this.visited.has(entityField.typeReference.getType().id)) {
+                        let field = createElement("DTO-Field", entry.name, dto.id);
+                        let pops = this.addMapping(MappingType.Navigation, [field.id], entry.mapPath, true);
+                        let dtoName = dto.getName().replace(/(?:Dto|Command|Query)$/, "") + field.getName() + "Dto";
+                        let newDto = this.getOrCreateContract(dtoName, "DTO", entityField.typeReference.getType(), createMode, folder, inbound, true);
+                        field.typeReference.setType(newDto.id);
+                        this.popMapping(pops);
+                        field.typeReference.setIsNullable(entry.isNullable);
+                        field.typeReference.setIsCollection(entry.isCollection);
+                        dtoUpdated = true;
+                    }
+                }
             }
         }
         if (dtoUpdated) {

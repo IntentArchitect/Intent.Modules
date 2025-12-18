@@ -74,6 +74,8 @@ internal static class SettingsMock
             return _groups[groupId].GetSetting(settingId);
         }
 
+        public string? IntentOpenAIApiKey { get; }
+
         IGroupSettings IUserSettingsProvider.GetGroup(string groupId)
         {
             return _groups[groupId];

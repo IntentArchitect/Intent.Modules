@@ -1,3 +1,7 @@
+### Version 3.7.5
+
+- Improvement: Added .Net 10 as NuGget framework target.
+
 ### Version 3.7.4
 
 - Fixed: NuGet version switch statement check improved to cater for certain versions which would not be caught by the switch.

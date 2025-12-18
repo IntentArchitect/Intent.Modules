@@ -334,6 +334,26 @@ return result;
               <sourceEndDefault isNavigable="false" isNullable="true" isCollection="false" />
               <targetEndDefaults isNavigable="true" isNullable="false" isCollection="false" />
             </createAssociation>
+            <createAssociation type="association">
+              <text>Zero-or-One to Many</text>
+              <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+              <specializationType>Association Target End</specializationType>
+              <specializationTypeId>0a66489f-30aa-417b-a75d-b945863366fd</specializationTypeId>
+              <defaultName>NewAssociation</defaultName>
+              <allowMultiple>true</allowMultiple>
+              <sourceEndDefault isNavigable="false" isNullable="true" isCollection="false" />
+              <targetEndDefaults isNavigable="true" isNullable="false" isCollection="true" />
+            </createAssociation>
+            <createAssociation type="association">
+              <text>Zero-or-One to Zero-or-One</text>
+              <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+              <specializationType>Association Target End</specializationType>
+              <specializationTypeId>0a66489f-30aa-417b-a75d-b945863366fd</specializationTypeId>
+              <defaultName>NewAssociation</defaultName>
+              <allowMultiple>true</allowMultiple>
+              <sourceEndDefault isNavigable="false" isNullable="true" isCollection="false" />
+              <targetEndDefaults isNavigable="true" isNullable="true" isCollection="false" />
+            </createAssociation>
           </subMenuOptions>
           <specializationType>Association Target End</specializationType>
           <specializationTypeId>0a66489f-30aa-417b-a75d-b945863366fd</specializationTypeId>

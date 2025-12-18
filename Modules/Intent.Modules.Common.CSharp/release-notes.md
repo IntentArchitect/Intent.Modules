@@ -1,4 +1,8 @@
-﻿### Version 3.9.11
+﻿### Version 3.9.12
+
+- Fixed: Type parsing for type resolution did not support named Typles.
+
+### Version 3.9.11
 
 - Improvement: Added support for nested Enum types in Classes and Records in the C# File Builder.
 - Improvement: CSharpEnum now has its own Interface and has the Literals exposed as a collection for manipulation.

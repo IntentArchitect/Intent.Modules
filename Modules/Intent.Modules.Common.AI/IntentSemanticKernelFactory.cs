@@ -24,7 +24,7 @@ public class IntentSemanticKernelFactory
     public Kernel BuildSemanticKernel(string model, Action<IKernelBuilder>? configure)
     {
         var settings = _userSettingsProvider.GetAISettings();
-        var provider = settings.Provider().AsEnum();
+        var provider = settings.Provider().Value != null ? settings.Provider().AsEnum() : AISettings.ProviderOptionsEnum.OpenAi;
         return BuildSemanticKernel(model, provider, configure);
     }
 
@@ -51,7 +51,9 @@ public class IntentSemanticKernelFactory
         switch (provider)
         {
             case AISettings.ProviderOptionsEnum.OpenAi:
-                apiKey = settings.OpenAIAPIKey();
+#pragma warning disable CS0618 // Type or member is obsolete
+                apiKey = settings.OpenAIAPIKey() ?? _userSettingsProvider.IntentOpenAIApiKey;
+#pragma warning restore CS0618 // Type or member is obsolete
                 if (string.IsNullOrWhiteSpace(value: apiKey))
                 {
                     apiKey = Environment.GetEnvironmentVariable(variable: "OPENAI_API_KEY");

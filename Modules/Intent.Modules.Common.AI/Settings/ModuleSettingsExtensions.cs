@@ -111,7 +111,9 @@ namespace Intent.Modules.Common.AI.Settings
             OpenAiCompatible,
         }
 
-        public string OpenAIAPIKey() => _groupSettings.GetSetting("9e9a32b4-194e-4d53-b62c-c9c28fb7b6f8")?.Value;
+        // Update the module builder to fix these nullable issues:
+        [IntentIgnore]
+        public string? OpenAIAPIKey() => _groupSettings.GetSetting("9e9a32b4-194e-4d53-b62c-c9c28fb7b6f8")?.Value;
 
         public string AzureOpenAIAPIKey() => _groupSettings.GetSetting("d76d0a4d-60c5-42b4-aa3b-de4f11b44ac1")?.Value;
 
