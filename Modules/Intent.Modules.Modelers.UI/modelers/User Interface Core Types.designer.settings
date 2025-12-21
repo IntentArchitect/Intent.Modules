@@ -3203,12 +3203,25 @@ mapping.addMappedEnd(dataBindingMappingTypeId, element.getMappingPath(), propert
 ];
 const layoutSpecializationTypeId = "776a9393-6b23-4a8c-8937-fd7e833fa0ef";
 
-if (lookupTypesOf(layoutSpecializationTypeId).length &gt; 0){
+const navigationMenuTypeId = "d7282bf2-1626-4b8b-9446-1d530527db06";
+const siderTypeId = "c505f35f-7148-46a3-a812-d9f53a174490";
 
-return element.hasStereotype("ea4adc09-8978-4ede-ba5f-265debb2b60c")// Page
-  &amp;&amp; !lookupTypesOf(associationIds).some(a =&gt; 
-    a.typeReference.getType().id == element.id &amp;&amp; 
-    a.getOtherEnd().typeReference.getType().specializationId == layoutSpecializationTypeId);//Layout
+if (lookupTypesOf(layoutSpecializationTypeId).length &gt; 0) {
+  // this lookup is done in the execute script and crashes if menus is empty  
+  let menus = lookupTypesOf(navigationMenuTypeId);
+  if(menus.length == 0) {
+    return false;
+  }
+
+  let siderMenu = menus.find(x =&gt; x.getParent(siderTypeId));
+  if(!siderMenu) {
+    return false;
+  }
+
+  return element.hasStereotype("ea4adc09-8978-4ede-ba5f-265debb2b60c")// Page
+    &amp;&amp; !lookupTypesOf(associationIds).some(a =&gt; 
+      a.typeReference.getType().id == element.id &amp;&amp; 
+      a.getOtherEnd().typeReference.getType().specializationId == layoutSpecializationTypeId);//Layout
 }
 
 //If there are no modeled Layouts dont show suggestion
