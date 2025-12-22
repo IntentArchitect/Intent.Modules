@@ -11613,7 +11613,9 @@ return (targetElement.specialization != "Class Constructor" &amp;&amp; targetEle
     return result;
 }
 
-return isAggregateRoot(element.typeReference.getType());</filterFunction>
+return element.getPackage().hasStereotype("Relational Database") &amp;&amp;
+    element.typeReference.getType().getChildren("Attribute").some(x =&gt; x.hasStereotype("Primary Key")) &amp;&amp;
+    isAggregateRoot(element.typeReference.getType());</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>false</isTraversable>
@@ -11621,13 +11623,21 @@ return isAggregateRoot(element.typeReference.getType());</filterFunction>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
               <staticMappableSettings>
-                <staticMappableSetting id="5be4e1b7-855b-4ae6-a56e-6fc9d8ba0a87" name="Lookup IDs" type="Lookup IDs" typeId="5be4e1b7-855b-4ae6-a56e-6fc9d8ba0a87" version="2.0.0">
-                  <displayFunction>let type = element.getParent().typeReference.getType()
-    .getChildren("Attribute")
-    .filter(x =&gt; x.hasStereotype("Primary Key"))[0]
-    ?.typeReference
-    ?.getType();
-return `Lookup IDs: ${type?.getDisplay()??"&lt;not set&gt;"}[*]`;</displayFunction>
+                <staticMappableSetting id="5be4e1b7-855b-4ae6-a56e-6fc9d8ba0a87" name="Target Lookup IDs" type="Target Lookup IDs" typeId="5be4e1b7-855b-4ae6-a56e-6fc9d8ba0a87" version="2.0.0">
+                  <displayFunction>const entity = element.getParent().typeReference.getType();
+const keyAttr = entity
+     .getChildren("Attribute")
+     .filter(x =&gt; x.hasStereotype("Primary Key"))[0];
+
+if (keyAttr == null) {
+    return "&lt;no key&gt;";
+}
+
+const name = keyAttr.getName();
+const type = keyAttr.typeReference.getType();
+const typeStr = (type.getDisplay() + "[*]" ?? "no type");
+
+return `${entity.getName()} ${pluralize(name)}: ${typeStr}`;</displayFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>false</isTraversable>
@@ -11652,7 +11662,9 @@ return model;</overrideTypeReferenceFunction>
     return result;
 }
 
-return isAggregateRoot(element.typeReference.getType());</filterFunction>
+return element.getPackage().hasStereotype("Relational Database") &amp;&amp;
+    element.typeReference.getType().getChildren("Attribute").some(x =&gt; x.hasStereotype("Primary Key")) &amp;&amp;
+    isAggregateRoot(element.typeReference.getType());</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>false</isTraversable>
@@ -11660,13 +11672,21 @@ return isAggregateRoot(element.typeReference.getType());</filterFunction>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
               <staticMappableSettings>
-                <staticMappableSetting id="11201123-7476-4b32-9452-f4ccc96449ef" name="Lookup IDs" type="Lookup IDs" typeId="11201123-7476-4b32-9452-f4ccc96449ef" version="2.0.0">
-                  <displayFunction>let type = element.getParent().typeReference.getType()
-    .getChildren("Attribute")
-    .filter(x =&gt; x.hasStereotype("Primary Key"))[0]
-    ?.typeReference
-    ?.getType();
-return `Lookup IDs: ${type?.getDisplay()??"&lt;not set&gt;"}[*]`;</displayFunction>
+                <staticMappableSetting id="11201123-7476-4b32-9452-f4ccc96449ef" name="Source Lookup IDs" type="Source Lookup IDs" typeId="11201123-7476-4b32-9452-f4ccc96449ef" version="2.0.0">
+                  <displayFunction>const entity = element.getParent().typeReference.getType();
+const keyAttr = entity
+     .getChildren("Attribute")
+     .filter(x =&gt; x.hasStereotype("Primary Key"))[0];
+
+if (keyAttr == null) {
+    return "&lt;no key&gt;";
+}
+
+const name = keyAttr.getName();
+const type = keyAttr.typeReference.getType();
+const typeStr = (type.getDisplay() + "[*]" ?? "no type");
+
+return `${entity.getName()} ${pluralize(name)}: ${typeStr}`;</displayFunction>
                   <filterFunction>function isAggregateRoot(possibleAggrEntity) {
     let result = !possibleAggrEntity.getAssociations("Association")
         .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
@@ -11735,8 +11755,8 @@ return model;</overrideTypeReferenceFunction>
             <target id="886a7d52-5575-45df-ab0e-01d777375990" name="Parameter" />
             <target id="c4cbd2c2-42c5-4877-a448-f449b1e03297" name="Set Aggregate Association Target End" />
             <target id="f34b39c7-c86d-4de1-85b7-287a85841c3f" name="Set Aggregate Association Source End" />
-            <target id="5be4e1b7-855b-4ae6-a56e-6fc9d8ba0a87" name="Lookup IDs" />
-            <target id="11201123-7476-4b32-9452-f4ccc96449ef" name="Lookup IDs" />
+            <target id="5be4e1b7-855b-4ae6-a56e-6fc9d8ba0a87" name="Target Lookup IDs" />
+            <target id="11201123-7476-4b32-9452-f4ccc96449ef" name="Source Lookup IDs" />
           </targets>
           <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
@@ -11968,8 +11988,8 @@ return model;</overrideTypeReferenceFunction>
             <target id="49bfbdb3-9697-4d84-9194-df60ee7dfd9a" name="Set Association Source End" />
             <target id="dfad64c5-f363-48e2-b759-8c11a63d13e8" name="Set Aggregate Association Target End" />
             <target id="5b04fd79-138b-4299-97b3-fde0a5940065" name="Set Aggregate Association Source End" />
-            <target id="48ded4be-abe8-4a2b-b9f6-ad9fb81067d8" name="Lookup IDs" />
-            <target id="67ed3b19-a5eb-4b9a-a72a-d0a33b122fc0" name="Lookup IDs" />
+            <target id="48ded4be-abe8-4a2b-b9f6-ad9fb81067d8" name="Target Lookup IDs" />
+            <target id="67ed3b19-a5eb-4b9a-a72a-d0a33b122fc0" name="Source Lookup IDs" />
           </targets>
           <targetArrowFunction>return `M ${x} ${y} l -10 5 l 0 -10 z`</targetArrowFunction>
           <allowAutoMap>true</allowAutoMap>
@@ -12303,7 +12323,9 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
     return result;
 }
 
-return isAggregateRoot(element.typeReference.getType());</filterFunction>
+return element.getPackage().hasStereotype("Relational Database") &amp;&amp;
+    element.typeReference.getType().getChildren("Attribute").some(x =&gt; x.hasStereotype("Primary Key")) &amp;&amp;
+    isAggregateRoot(element.typeReference.getType());</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>false</isTraversable>
@@ -12311,13 +12333,21 @@ return isAggregateRoot(element.typeReference.getType());</filterFunction>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
               <staticMappableSettings>
-                <staticMappableSetting id="48ded4be-abe8-4a2b-b9f6-ad9fb81067d8" name="Lookup IDs" type="Lookup IDs" typeId="48ded4be-abe8-4a2b-b9f6-ad9fb81067d8" version="2.0.0">
-                  <displayFunction>let type = element.getParent().typeReference.getType()
-    .getChildren("Attribute")
-    .filter(x =&gt; x.hasStereotype("Primary Key"))[0]
-    ?.typeReference
-    ?.getType();
-return `Lookup IDs: ${type?.getDisplay()??"&lt;not set&gt;"}[*]`;</displayFunction>
+                <staticMappableSetting id="48ded4be-abe8-4a2b-b9f6-ad9fb81067d8" name="Target Lookup IDs" type="Target Lookup IDs" typeId="48ded4be-abe8-4a2b-b9f6-ad9fb81067d8" version="2.0.0">
+                  <displayFunction>const entity = element.getParent().typeReference.getType();
+const keyAttr = entity
+     .getChildren("Attribute")
+     .filter(x =&gt; x.hasStereotype("Primary Key"))[0];
+
+if (keyAttr == null) {
+    return "&lt;no key&gt;";
+}
+
+const name = keyAttr.getName();
+const type = keyAttr.typeReference.getType();
+const typeStr = (type.getDisplay() + "[*]" ?? "no type");
+
+return `${entity.getName()} ${pluralize(name)}: ${typeStr}`;</displayFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>false</isTraversable>
@@ -12342,7 +12372,9 @@ return model;</overrideTypeReferenceFunction>
     return result;
 }
 
-return isAggregateRoot(element.typeReference.getType());</filterFunction>
+return element.getPackage().hasStereotype("Relational Database") &amp;&amp;
+    element.typeReference.getType().getChildren("Attribute").some(x =&gt; x.hasStereotype("Primary Key")) &amp;&amp;
+    isAggregateRoot(element.typeReference.getType());</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>false</isTraversable>
@@ -12350,13 +12382,21 @@ return isAggregateRoot(element.typeReference.getType());</filterFunction>
               <canBeModified>false</canBeModified>
               <represents>data</represents>
               <staticMappableSettings>
-                <staticMappableSetting id="67ed3b19-a5eb-4b9a-a72a-d0a33b122fc0" name="Lookup IDs" type="Lookup IDs" typeId="67ed3b19-a5eb-4b9a-a72a-d0a33b122fc0" version="2.0.0">
-                  <displayFunction>let type = element.getParent().typeReference.getType()
-    .getChildren("Attribute")
-    .filter(x =&gt; x.hasStereotype("Primary Key"))[0]
-    ?.typeReference
-    ?.getType();
-return `Lookup IDs: ${type?.getDisplay()??"&lt;not set&gt;"}[*]`;</displayFunction>
+                <staticMappableSetting id="67ed3b19-a5eb-4b9a-a72a-d0a33b122fc0" name="Source Lookup IDs" type="Source Lookup IDs" typeId="67ed3b19-a5eb-4b9a-a72a-d0a33b122fc0" version="2.0.0">
+                  <displayFunction>const entity = element.getParent().typeReference.getType();
+const keyAttr = entity
+     .getChildren("Attribute")
+     .filter(x =&gt; x.hasStereotype("Primary Key"))[0];
+
+if (keyAttr == null) {
+    return "&lt;no key&gt;";
+}
+
+const name = keyAttr.getName();
+const type = keyAttr.typeReference.getType();
+const typeStr = (type.getDisplay() + "[*]" ?? "no type");
+
+return `${entity.getName()} ${pluralize(name)}: ${typeStr}`;</displayFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>false</isTraversable>
