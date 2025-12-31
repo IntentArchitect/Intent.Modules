@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Intent.Modules.Common.TypeScript.Builder;
@@ -11,6 +13,7 @@ public class TypescriptConstructorParameter
     public bool IsReadonly { get; private set; }
     public bool IsOptional { get; private set; }
     public string AccessModifier { get; private set; } = string.Empty;
+    public IList<TypescriptDecorator> Decorators { get; } = new List<TypescriptDecorator>();
 
     public TypescriptConstructorParameter(string name, string type)
     {
@@ -52,6 +55,14 @@ public class TypescriptConstructorParameter
         return this;
     }
 
+    public TypescriptConstructorParameter AddDecorator(string name, Action<TypescriptDecorator> configure = null)
+    {
+        var param = new TypescriptDecorator(name);
+        Decorators.Add(param);
+        configure?.Invoke(param);
+        return this;
+    }
+
     public TypescriptConstructorParameter WithPrivateFieldAssignment()
     {
         return WithFieldAssignment("private");
@@ -65,6 +76,8 @@ public class TypescriptConstructorParameter
     public override string ToString()
     {
         var sb = new StringBuilder();
+
+        sb.Append(GetDecorators());
 
         if (AssignsToField && !string.IsNullOrWhiteSpace(AccessModifier))
         {
@@ -86,5 +99,10 @@ public class TypescriptConstructorParameter
         }
 
         return sb.ToString();
+    }
+
+    protected string GetDecorators()
+    {
+        return $"{(Decorators.Any() ? $"{string.Join(" ", Decorators)} " : string.Empty)}";
     }
 }
