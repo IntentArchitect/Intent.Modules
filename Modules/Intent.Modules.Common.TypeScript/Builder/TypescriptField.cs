@@ -1,6 +1,7 @@
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 using System;
+using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 
@@ -105,18 +106,26 @@ public class TypescriptField : TypescriptMember<TypescriptField>
             return "[]";
         }
 
-        var element = property.Element as IElement;
-        var builder = new StringBuilder();
-
-        builder.AppendLine("{");
-
-        foreach (var child in element.ChildElements)
+        var element = (IElement)property.Element;
+        var childElements = element.ChildElements.ToArray();
+        if (childElements.Length == 0)
         {
-            builder.AppendLine($"{currentIndentation}{child.Name.ToCamelCase()}: {GetPropertyDefaultValue(template, child.TypeReference, indentation, currentIndentation)},");
+            return "{ }";
         }
 
-        builder.Remove(builder.Length - 3, 1);
-        builder.Append($"{currentIndentation.Remove(currentIndentation.IndexOf(indentation), indentation.Length)}}}");
+        var builder = new StringBuilder();
+        builder.Append('{');
+
+        foreach (var child in childElements)
+        {
+            builder.AppendLine();
+            builder.Append($"{currentIndentation}{child.Name.ToCamelCase()}: {GetPropertyDefaultValue(template, child.TypeReference, indentation, currentIndentation)},");
+        }
+
+        builder.Length -= 1; // Remove last comma
+        builder.AppendLine();
+
+        builder.Append($"{currentIndentation.Remove(currentIndentation.IndexOf(indentation, StringComparison.Ordinal), indentation.Length)}}}");
 
         return builder.ToString();
     }
