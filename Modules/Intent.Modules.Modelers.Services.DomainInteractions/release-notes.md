@@ -1,3 +1,7 @@
+### Version 2.3.12
+
+- Improvement: Introduced new `Aggregate Association Ends` to Create and Update Entity Action mappings in order to map to their IDs directly which helps with entity creation and updates that involve aggregate relationships.
+
 ### Version 2.3.11
 
 - Fixed: Circular reference bug in CRUD scripts, around bi-directional 1-1 relationships.
