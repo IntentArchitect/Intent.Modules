@@ -110,6 +110,8 @@ public class TypescriptInterface : TypescriptDeclaration<TypescriptInterface>
         var sb = new StringBuilder();
 
         sb.Append(indentation);
+        sb.Append(GetComments(indentation));
+        sb.Append(GetDecorators(indentation));
         if (IsExported)
         {
             sb.Append("export ");
@@ -121,7 +123,7 @@ public class TypescriptInterface : TypescriptDeclaration<TypescriptInterface>
 
         if (Interfaces.Count > 0)
         {
-            sb.Append("implements ");
+            sb.Append("extends ");
 
             foreach (var @interface in Interfaces)
             {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeScript.Builder;
 using Intent.Modules.Common.TypeScript.TypeResolvers;
 using Intent.Modules.Common.TypeScript.Utils;
 using Intent.Templates;
@@ -109,22 +110,26 @@ namespace Intent.Modules.Common.TypeScript.Templates
             }
         }
 
+        public virtual ITypescriptCodeContext? RootCodeContext => this is ITypescriptFileBuilderTemplate builder
+            ? builder.TypescriptFile.Classes.FirstOrDefault() ?? builder.TypescriptFile.Interfaces.FirstOrDefault() ?? (ITypescriptCodeContext)builder.TypescriptFile
+            : null;
+
         /// <summary>
         /// Gets the <see cref="TypeScriptFile"/> of the template output.
         /// </summary>
-//         public TypeScriptFile GetTemplateFile()
-//         {
-//             try
-//             {
-//                 return new TypeScriptFileEditor(base.RunTemplate()).File;
-//             }
-//             catch
-//             {
-//                 Logging.Log.Failure($@"Failed to parse TypesScript output file:
-// {base.RunTemplate()}");
-//                 throw;
-//             }
-//         }
+        //         public TypeScriptFile GetTemplateFile()
+        //         {
+        //             try
+        //             {
+        //                 return new TypeScriptFileEditor(base.RunTemplate()).File;
+        //             }
+        //             catch
+        //             {
+        //                 Logging.Log.Failure($@"Failed to parse TypesScript output file:
+        // {base.RunTemplate()}");
+        //                 throw;
+        //             }
+        //         }
 
         /// <summary>
         /// Adds an import with the specified information to this template and returns the
@@ -187,6 +192,12 @@ namespace Intent.Modules.Common.TypeScript.Templates
                 }
 
                 if (string.IsNullOrWhiteSpace(classProvider.ClassName))
+                {
+                    continue;
+                }
+
+                // if the template is trying to add a reference to itself, skip it
+                if (this.GetRelativePath(this) == this.GetRelativePath(classProvider))
                 {
                     continue;
                 }

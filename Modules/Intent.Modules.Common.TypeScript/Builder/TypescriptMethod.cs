@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Intent.Modules.Common.TypeScript.Builder;
 
-public class TypescriptMethod : TypescriptMember<TypescriptMethod>, IHasTypescriptStatements
+public class TypescriptMethod : TypescriptMember<TypescriptMethod>, IHasTypescriptStatements, ITypescriptReferenceable
 {
     public List<TypescriptStatement> Statements { get; } = new();
     protected string AsyncMode { get; private set; } = string.Empty;
@@ -14,7 +14,7 @@ public class TypescriptMethod : TypescriptMember<TypescriptMethod>, IHasTypescri
     public TypescriptFile File { get; }
     public string Name { get; }
     public List<TypescriptParameter> Parameters { get; } = new();
-    public TypescriptMethod(string name, string returnType, TypescriptFile file)
+    public TypescriptMethod(string name, string returnType, TypescriptClass @class)
     {
         if (string.IsNullOrWhiteSpace(returnType))
         {
@@ -27,7 +27,8 @@ public class TypescriptMethod : TypescriptMember<TypescriptMethod>, IHasTypescri
         }
 
         ReturnType = returnType;
-        File = file;
+        Parent = @class;
+        File = @class.File;
         Name = name;
         BeforeSeparator = TypescriptCodeSeparatorType.EmptyLines;
         AfterSeparator = TypescriptCodeSeparatorType.EmptyLines;

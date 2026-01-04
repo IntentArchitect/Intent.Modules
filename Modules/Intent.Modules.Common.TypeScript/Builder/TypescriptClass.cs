@@ -31,6 +31,7 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
     public List<TypescriptAccessor> Getters { get; } = new();
     public List<TypescriptAccessor> Setters { get; } = new();
     public List<TypescriptMethod> Methods { get; } = new();
+    public IList<TypescriptGenericParameter> GenericParameters { get; } = new List<TypescriptGenericParameter>();
 
     public TypescriptClass Export()
     {
@@ -77,6 +78,18 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
     public TypescriptClass AddField(string name, string type, Action<TypescriptField> configure = null)
     {
         var field = new TypescriptField(name, type)
+        {
+            BeforeSeparator = _fieldsSeparator,
+            AfterSeparator = _fieldsSeparator
+        };
+        Fields.Add(field);
+        configure?.Invoke(field);
+        return this;
+    }
+
+    public TypescriptClass AddField(string name, Action<TypescriptField> configure = null)
+    {
+        var field = new TypescriptField(name)
         {
             BeforeSeparator = _fieldsSeparator,
             AfterSeparator = _fieldsSeparator
@@ -145,7 +158,7 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
 
     public TypescriptClass InsertMethod(int index, string name, string returnType, Action<TypescriptMethod> configure = null)
     {
-        var method = new TypescriptMethod(name, returnType, File);
+        var method = new TypescriptMethod(name, returnType, this);
         Methods.Insert(index, method);
         configure?.Invoke(method);
         return this;
@@ -197,6 +210,20 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
         return this;
     }
 
+    public TypescriptClass AddGenericParameter(string typeName)
+    {
+        var param = new TypescriptGenericParameter(typeName);
+        GenericParameters.Add(param);
+        return this;
+    }
+
+    public TypescriptClass AddGenericParameter(string typeName, out TypescriptGenericParameter param)
+    {
+        param = new TypescriptGenericParameter(typeName);
+        GenericParameters.Add(param);
+        return this;
+    }
+
     public IEnumerable<TypescriptClass> GetParentPath()
     {
         if (BaseType == null)
@@ -227,7 +254,7 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
 
     public string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{(IsExported ? "export " : string.Empty)}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}class {Name}{GetBaseTypes()} {{{GetMembers($"{indentation}{File.Indentation}")}
+        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{(IsExported ? "export " : string.Empty)}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}class {Name}{GetGenericParameters()}{GetBaseTypes()} {{{GetMembers($"{indentation}{File.Indentation}")}
 {indentation}}}";
     }
 
@@ -255,9 +282,23 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
         codeBlocks.AddRange(Constructors);
         codeBlocks.AddRange(Getters);
         codeBlocks.AddRange(Setters);
-        codeBlocks.AddRange(Methods);
+        codeBlocks.AddRange(
+            Methods
+            .OrderBy(m => string.Equals(m.Name, "ngOnInit", StringComparison.Ordinal) ? 0 : 1)
+            .ThenBy(m => m.Name, StringComparer.OrdinalIgnoreCase)
+            .ToList());
 
         return $@"{string.Join(@"
 ", codeBlocks.ConcatCode(indentation))}";
+    }
+
+    private string GetGenericParameters()
+    {
+        if (!GenericParameters.Any())
+        {
+            return string.Empty;
+        }
+
+        return $"<{string.Join(", ", GenericParameters)}>";
     }
 }

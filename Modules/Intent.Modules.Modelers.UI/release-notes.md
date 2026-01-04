@@ -1,3 +1,8 @@
+### Version 1.0.5
+
+- Improvement: "Add to Sider menu" suggestions now only shows when there is a sider menu present.
+- Improvement: Added icons for certain stereotypes
+
 ### Version 1.0.4
 
 - Fixed: Suggestions for `Call Backend Service` not processing correctly from an asyc/await microtask perspective when launching dialogs.

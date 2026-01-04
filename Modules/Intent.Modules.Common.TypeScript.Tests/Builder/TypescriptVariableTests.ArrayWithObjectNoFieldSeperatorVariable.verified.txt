@@ -1,0 +1,6 @@
+﻿
+
+export const routes = [
+  { field1: "one", field2: "two", field3: "three" },
+  { field4: "four", field5: "five", field6: "six" },
+];

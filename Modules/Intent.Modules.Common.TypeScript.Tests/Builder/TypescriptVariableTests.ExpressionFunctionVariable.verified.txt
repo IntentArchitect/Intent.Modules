@@ -1,0 +1,6 @@
+﻿
+
+export const decoratorSample = (identifier?: string) => {
+  return (target: any, propertyKey?: string, descriptor?: any) => {
+  }
+};

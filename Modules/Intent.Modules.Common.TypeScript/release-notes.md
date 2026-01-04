@@ -1,3 +1,7 @@
+### Version 4.1.3
+
+- Improvement: Various enhancements to the build to cater for new Angular modules
+
 ### Version 4.1.2
 
 - Fixed: TypeScript file builder was adding unnecessary additional line endings.

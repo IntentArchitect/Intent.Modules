@@ -1,0 +1,10 @@
+﻿
+
+@Component({
+  selector: 'selectorValue',
+  standalone: true,
+  templateUrl: 'templateUrlValue',
+  styleUrls: ['styleUrlsValue'],
+})
+class MyClass {
+}

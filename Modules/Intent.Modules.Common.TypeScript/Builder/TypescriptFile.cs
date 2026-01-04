@@ -16,9 +16,18 @@ public class TypescriptFile
     public List<TypescriptClass> Classes { get; } = new();
     public List<TypescriptStatement> Statements { get; } = new();
 
-    public TypescriptFile(string relativeLocation)
+    public List<TypescriptVariable> Variables { get; } = new();
+
+    public IList<TypescriptEnum> Enums { get; } = new List<TypescriptEnum>();
+
+    public ITypescriptTemplate Template { get; internal set; }
+
+    public TypescriptComments Comments { get; } = new();
+
+    public TypescriptFile(string relativeLocation, ITypescriptFileBuilderTemplate template)
     {
         RelativeLocation = relativeLocation;
+        Template = template;
     }
 
     public string Indentation { get; private set; } = "  ";
@@ -124,6 +133,64 @@ public class TypescriptFile
         return this;
     }
 
+    public TypescriptFile AddVariable(string name, Action<TypescriptVariable> configure = null)
+    {
+        var variable = new TypescriptVariable(name, this);
+        Variables.Add(variable);
+        if (_isBuilt)
+        {
+            configure?.Invoke(variable);
+        }
+        else if (configure != null)
+        {
+            _configurations.Add((() => configure(variable), 0));
+        }
+        return this;
+    }
+
+    public TypescriptFile AddVariable(string name, string type, Action<TypescriptVariable> configure = null)
+    {
+        var variable = new TypescriptVariable(name, type, this);
+        Variables.Add(variable);
+        if (_isBuilt)
+        {
+            configure?.Invoke(variable);
+        }
+        else if (configure != null)
+        {
+            _configurations.Add((() => configure(variable), 0));
+        }
+        return this;
+    }
+
+    public TypescriptFile AddEnum(string name, Action<TypescriptEnum> configure = null)
+    {
+        var @enum = new TypescriptEnum(name);
+        Enums.Add(@enum);
+        if (_isBuilt)
+        {
+            configure?.Invoke(@enum);
+        }
+        else if (configure != null)
+        {
+            _configurations.Add((() => configure(@enum), 0));
+        }
+
+        return this;
+    }
+
+    public TypescriptFile WithComments(string comments)
+    {
+        Comments.AddStatements(comments);
+        return this;
+    }
+
+    public TypescriptFile WithComments(IEnumerable<string> comments)
+    {
+        Comments.AddStatements(comments);
+        return this;
+    }
+
     public TypeScriptFileConfig GetConfig(string typeName)
     {
         return new TypeScriptFileConfig(
@@ -210,9 +277,17 @@ public class TypescriptFile
 
         var sb = new StringBuilder();
 
+        sb.AppendLine(Comments.ToString());
+
         foreach (var value in ImportsBySource.Values)
         {
             sb.AppendLine(value.ToString());
+        }
+
+        foreach (var @enum in Enums)
+        {
+            sb.AppendLine();
+            sb.Append(@enum);
         }
 
         foreach (var @interface in Interfaces)
@@ -225,6 +300,12 @@ public class TypescriptFile
         {
             sb.AppendLine();
             sb.Append(@class);
+        }
+
+        foreach (var variable in Variables)
+        {
+            sb.AppendLine();
+            sb.Append(variable);
         }
 
         return sb.ToString();
