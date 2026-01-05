@@ -1,3 +1,7 @@
+### Version 3.10.0
+
+- Feature: Added support for being able to import code changes from files into designers.
+
 ### Version 3.9.2
 
 - Improvement: Now leverages `IFileSystem` to benefit from file access caching in the Software Factory.
