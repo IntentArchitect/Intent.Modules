@@ -187,15 +187,15 @@ return getProperty("6da92064-59ef-4361-8ad6-c73b54c18cc2").getValue() == "Functi
     <property id="208475f3-1bb6-40c4-87e1-20f048e5caa8">
       <comment>This function can be used to override the type-reference that this element exposes to the mapping system. This function must return an `ITypeReferenceData` object as follows:
 
-`
+```
 {
-        typeId: string;
-        isNullable: boolean;
-        isCollection: boolean;
-        genericTypeId?: string;
-        genericTypeParameters?: ITypeReferenceData[]
+    typeId: string;
+    isNullable: boolean;
+    isCollection: boolean;
+    genericTypeId?: string;
+    genericTypeParameters?: ITypeReferenceData[]
     }
-`</comment>
+```</comment>
       <hint>Uses the element's type reference by default.</hint>
       <name>Override Type Reference Function</name>
       <type>string</type>

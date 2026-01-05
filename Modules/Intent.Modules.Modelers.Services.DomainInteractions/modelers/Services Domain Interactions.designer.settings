@@ -5734,6 +5734,7 @@ await cqrsCrud.execute(element);
         </option>
       </mappingOptions>
       <mappingSettings />
+      <rules>NEVER use this type.</rules>
     </elementSetting>
   </elementSettings>
   <elementExtensions>
@@ -10820,6 +10821,7 @@ convertToAdvancedMapping.execute();
   </elementExtensions>
   <associationSettings>
     <associationSetting type="Create Entity Action" typeId="7a3f0474-3cf8-4249-baac-8c07c49465e0">
+      <comment>Indicates that the source operation will create the connected Domain entity when it is called.</comment>
       <sourceEnd type="Create Entity Action Source End" typeId="a3e7c59e-b0a1-47e1-ba29-66f2c7047b0a">
         <displayFunction>return `created by : ${typeReference.getType().getParent().getName()}.${typeReference.display}`</displayFunction>
         <nameAccessibilityMode>optional</nameAccessibilityMode>

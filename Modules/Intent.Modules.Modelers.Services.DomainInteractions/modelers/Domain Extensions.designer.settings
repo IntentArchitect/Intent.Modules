@@ -24,7 +24,7 @@
       <script>if (!await promptIfUnsavedChangesAsync()) {
     return;
 }
-navigateToDesigner("81104ae6-2bc5-4bae-b05a-f987b0372d81", {
+await navigateToDesigner("81104ae6-2bc5-4bae-b05a-f987b0372d81", {
     executeScript: `await CrudApi.createCQRSService(getPackages().find(x =&gt; x.specializationId == "df45eaf6-9202-4c25-8dd5-677e9ba1e906"), lookup('${element.id}'));`,
     scriptDependencies: ["61a8411f-b5bc-4a00-9a37-a967e0893d9d"]
 });</script>

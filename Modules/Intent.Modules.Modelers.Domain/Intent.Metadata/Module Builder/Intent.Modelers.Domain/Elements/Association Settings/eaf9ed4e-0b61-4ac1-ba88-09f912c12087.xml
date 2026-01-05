@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="eaf9ed4e-0b61-4ac1-ba88-09f912c12087" type="Association Settings" typeId="16d21684-d5ea-4fde-b648-f88d292fa272">
+  <comment>Describes the relationship between Domain concepts.</comment>
   <name>Association</name>
   <display>Association</display>
   <isAbstract>false</isAbstract>
@@ -9,7 +10,16 @@
   <parentFolderId>db2f5755-5256-46d1-bb45-72bf2c7cde42</parentFolderId>
   <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
   <packageName>Intent.Modelers.Domain</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="14441454-bfe0-4d5d-8dba-d86d74d33a3b" name="AI Settings">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="### Association Rules&#xA;- Associations are directional. The `ownerEnd` is the end where the association is created from, and the `targetEnd` is the end where it points to.&#xA;- The name of the relationship is managed by default. Only set the name if multiple relationships to the same entity or value object exist to differentiate them (e.g. BillingAddress and ShippingAddress).&#xA;- Do NOT name child elements and associations with duplicate names.&#xA;- Relationship that are one-to-one (1 -&gt; 1) or one-to-many (1 -&gt; *) imply composition and can only be created from aggregate roots to entities (e.g. Order 1 -&gt; * OrderLine). If you want to make one-to-many (1-&gt;*) between aggregates, rather invert the relationship to be a many-to-one (* -&gt; 1) the other way around (e.g. Order * -&gt; 1 Customer).&#xA;- ALWAYS ensure the multiplicity and navigability of association ends are correct." isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <metadata />
   <childElements>
     <childElement id="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58" type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">
