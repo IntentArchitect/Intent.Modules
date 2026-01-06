@@ -5,53 +5,48 @@
 /// <reference path="../../typings/core.context.types.d.ts" />
 
 async function syncDtoFields(element: MacroApi.Context.IElementApi): Promise<void> {
-    try {
-        // Validate element
-        if (!isValidSyncElement(element)) {
-            await dialogService.error(
-                `Invalid element type.\n\nThe selected element must be a DTO, Command, or Query. The current element is a '${element.specialization}'.`
-            );
-            return;
-        }
-        
-        // Find action associations
-        const associations = findAssociationsPointingToElement(element);
-        
-        // Try to get entity from associations
-        let entity = getEntityFromAssociations(associations);
-        
-        // If no associations found, ask user to select entity
-        if (!entity) {
-            // For now, show error - later we could add dialog for entity selection
-            await dialogService.warn(
-                `No entity mappings found.\n\nThe '${element.getName()}' element does not have any associated entity actions (Create, Update, Delete, or Query Entity Actions).`
-            );
-            return;
-        }
-        
-        // Extract field mappings from associations (not from DTO fields directly)
-        const fieldMappings = extractFieldMappings(associations);
-        
-        // Analyze discrepancies
-        const engine = new FieldSyncEngine();
-        const discrepancies = engine.analyzeFieldDiscrepancies(element, entity, fieldMappings);
-        
-        if (discrepancies.length === 0) {
-            await dialogService.info(
-                `All fields are synchronized.\n\nThe DTO fields are properly synchronized with the entity '${entity.getName()}' attributes.`
-            );
-            return;
-        }
-        
-        // Build tree view model
-        const treeNodes = engine.buildTreeNodes(discrepancies);
-        
-        // Present dialog with results
-        await presentSyncDialog(element, entity, discrepancies, treeNodes);
-        
-    } catch (error) {
-        await dialogService.error(`An error occurred: ${error}`);
+    // Validate element
+    if (!isValidSyncElement(element)) {
+        await dialogService.error(
+            `Invalid element type.\n\nThe selected element must be a DTO, Command, or Query. The current element is a '${element.specialization}'.`
+        );
+        return;
     }
+    
+    // Find action associations
+    const associations = findAssociationsPointingToElement(element);
+    
+    // Try to get entity from associations
+    let entity = getEntityFromAssociations(associations);
+    
+    // If no associations found, ask user to select entity
+    if (!entity) {
+        // For now, show error - later we could add dialog for entity selection
+        await dialogService.warn(
+            `No entity mappings found.\n\nThe '${element.getName()}' element does not have any associated entity actions (Create, Update, Delete, or Query Entity Actions).`
+        );
+        return;
+    }
+    
+    // Extract field mappings from associations (not from DTO fields directly)
+    const fieldMappings = extractFieldMappings(associations);
+    
+    // Analyze discrepancies
+    const engine = new FieldSyncEngine();
+    const discrepancies = engine.analyzeFieldDiscrepancies(element, entity, fieldMappings);
+    
+    if (discrepancies.length === 0) {
+        await dialogService.info(
+            `All fields are synchronized.\n\nThe DTO fields are properly synchronized with the entity '${entity.getName()}' attributes.`
+        );
+        return;
+    }
+    
+    // Build tree view model
+    const treeNodes = engine.buildTreeNodes(discrepancies);
+    
+    // Present dialog with results
+    await presentSyncDialog(element, entity, discrepancies, treeNodes);
 }
 
 async function presentSyncDialog(
@@ -85,11 +80,12 @@ async function presentSyncDialog(
                 treeViewOptions: {
                     rootNode: {
                         id: "root",
-                        label: `DTO: ${dtoElement.getName()}`,
+                        label: dtoElement.getName(),
                         specializationId: "dto-sync-root",
                         children: treeNodes,
                         isExpanded: true,
-                        isSelected: false
+                        isSelected: false,
+                        icon: dtoElement.getIcon()
                     },
                     height: "400px",
                     isMultiSelect: true,

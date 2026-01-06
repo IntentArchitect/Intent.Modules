@@ -53,7 +53,8 @@ function getDtoFields(dtoElement: MacroApi.Context.IElementApi): IDtoField[] {
             typeId: child.typeReference?.getTypeId(),
             typeDisplayText: child.typeReference?.display || "",
             isMapped: false, // Will be determined by extractFieldMappings
-            mappedToAttributeId: undefined
+            mappedToAttributeId: undefined,
+            icon: child.getIcon()
         };
         fields.push(field);
     }
@@ -76,7 +77,8 @@ function getEntityAttributes(entity: MacroApi.Context.IElementApi): IEntityAttri
             id: child.id,
             name: child.getName(),
             typeId: child.typeReference?.getTypeId(),
-            typeDisplayText: child.typeReference?.display || ""
+            typeDisplayText: child.typeReference?.display || "",
+            icon: child.getIcon()
         };
         attributes.push(attribute);
     }

@@ -318,6 +318,15 @@ declare namespace MacroApi.Context {
          * This icon will be used only when the node is expanded.
          */
         expandedIcon?: string | MacroApi.Context.IIcon;
+        /**
+         * Dynamic display function that returns string or IDisplayTextComponent[].
+         * The function receives a context object with: name, label, displayMetadata, children, isSelected
+         */
+        displayFunction?: (context: { name: string, label: string, displayMetadata: any, children: ISelectableTreeNode[], isSelected: boolean }) => string | IDisplayTextComponent[];
+        /**
+         * Custom metadata accessible within displayFunction context.
+         */
+        displayMetadata?: any;
     }
 
     interface ISelectableTypeCriteria {

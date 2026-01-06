@@ -43,6 +43,7 @@ class FieldSyncEngine {
                     dtoFieldName: dtoField.name,
                     dtoFieldType: dtoField.typeDisplayText,
                     entityAttributeName: "N/A",
+                    icon: dtoField.icon,
                     reason: "Field exists in DTO but has no entity mapping"
                 };
                 discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
@@ -64,7 +65,8 @@ class FieldSyncEngine {
                     entityAttributeId: entityAttr.id,
                     entityAttributeName: entityAttr.name,
                     entityAttributeType: entityAttr.typeDisplayText,
-                    reason: "Entity attribute does not exist in DTO"
+                    reason: "Entity attribute does not exist in DTO",
+                    icon: entityAttr.icon
                 };
                 discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
                 discrepancies.push(discrepancy);
@@ -83,7 +85,8 @@ class FieldSyncEngine {
                             entityAttributeName: entityAttr.name,
                             dtoFieldType: mappedDtoField.typeDisplayText,
                             entityAttributeType: entityAttr.typeDisplayText,
-                            reason: "Field name differs from entity attribute name"
+                            reason: "Field name differs from entity attribute name",
+                            icon: mappedDtoField.icon
                         };
                         discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
                         discrepancies.push(discrepancy);
@@ -100,7 +103,8 @@ class FieldSyncEngine {
                             entityAttributeId: entityAttr.id,
                             entityAttributeName: entityAttr.name,
                             entityAttributeType: entityAttr.typeDisplayText,
-                            reason: "Field type differs from entity attribute type"
+                            reason: "Field type differs from entity attribute type",
+                            icon: mappedDtoField.icon
                         };
                         discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
                         discrepancies.push(discrepancy);
@@ -126,12 +130,13 @@ class FieldSyncEngine {
                 label: displayName,
                 specializationId: "sync-field-discrepancy",
                 isExpanded: true,
-                isSelected: false
+                isSelected: false,
+                icon: discrepancy.icon
             };
             
             // Add display properties dynamically (not part of ISelectableTreeNode type)
-            (node as any).displayFunction = discrepancy.displayFunction;
-            (node as any).displayMetadata = {
+            node.displayFunction = discrepancy.displayFunction;
+            node.displayMetadata = {
                 type: discrepancy.type,
                 dtoFieldName: discrepancy.dtoFieldName,
                 dtoFieldType: discrepancy.dtoFieldType,

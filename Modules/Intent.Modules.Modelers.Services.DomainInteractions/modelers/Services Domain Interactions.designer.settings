@@ -12788,6 +12788,13 @@ function getDtoTypeId(item){
       </dependencies>
       <script>await createNewResultDto(element);</script>
     </suggestionSetting>
+    <suggestionSetting type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" locations="diagram, model">
+      <name>Sync Query Fields</name>
+      <dependencies>
+        <dependency name="Sync DTO Fields" id="9fa6137e-87c7-4dea-8604-9caaf62c0b4f" />
+      </dependencies>
+      <script>await syncDtoFields(element);</script>
+    </suggestionSetting>
   </suggestionSettings>
   <scripts>
     <script name="Crud Api" id="61a8411f-b5bc-4a00-9a37-a967e0893d9d">
