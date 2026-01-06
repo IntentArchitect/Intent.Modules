@@ -4,6 +4,7 @@
 
 // Constants
 const VALID_SPECIALIZATIONS = ["DTO", "Command", "Query", "Operation"] as const;
+const DTO_LIKE_SPECIALIZATIONS = ["DTO", "Command", "Query"] as const;
 const ENTITY_ACTION_TYPES = [
     "Create Entity Action", 
     "Update Entity Action", 
@@ -29,7 +30,7 @@ function getValidSpecializations(): string[] {
 }
 
 function extractDtoFromElement(element: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi | null {
-    if (["DTO", "Command", "Query"].includes(element.specialization)) {
+    if ((DTO_LIKE_SPECIALIZATIONS as readonly string[]).includes(element.specialization)) {
         return element;
     }
     
@@ -39,7 +40,7 @@ function extractDtoFromElement(element: MacroApi.Context.IElementApi): MacroApi.
             const typeRef = param.typeReference;
             if (typeRef && typeRef.isTypeFound()) {
                 const type = typeRef.getType() as MacroApi.Context.IElementApi;
-                if (["DTO", "Command", "Query"].includes(type.specialization)) {
+                if ((DTO_LIKE_SPECIALIZATIONS as readonly string[]).includes(type.specialization)) {
                     return type;
                 }
             }
@@ -89,7 +90,7 @@ function findAssociationsPointingToElement(searchElement: MacroApi.Context.IElem
     }
     
     // If no associations found and searchElement is a DTO/Command/Query, walk up the hierarchy
-    if (allAssociations.length === 0 && ["DTO", "Command", "Query"].includes(searchElement.specialization)) {
+    if (allAssociations.length === 0 && (DTO_LIKE_SPECIALIZATIONS as readonly string[]).includes(searchElement.specialization)) {
         let current: MacroApi.Context.IElementApi | null = searchElement;
         let depth = 0;
         while (current && allAssociations.length === 0 && depth < MAX_HIERARCHY_DEPTH) {
