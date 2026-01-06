@@ -18,8 +18,19 @@ class FieldSyncEngine {
         
         // Create a map of mapped DTO fields -> Entity attributes
         const mappedDtoToEntity = new Map<string, string>();
+        const mappedEntityToDto = new Map<string, string>();
+        
         for (const mapping of mappings) {
-            mappedDtoToEntity.set(mapping.sourceFieldId, mapping.targetAttributeId);
+            // Only consider field-level mappings (ignore invocation mappings to constructors)
+            const sourceField = dtoFields.find(f => f.id === mapping.sourceFieldId);
+            const targetAttr = entityAttributes.find(a => a.id === mapping.targetAttributeId);
+            
+            if (sourceField && targetAttr) {
+                mappedDtoToEntity.set(mapping.sourceFieldId, mapping.targetAttributeId);
+                mappedEntityToDto.set(mapping.targetAttributeId, mapping.sourceFieldId);
+                sourceField.isMapped = true;
+                sourceField.mappedToAttributeId = mapping.targetAttributeId;
+            }
         }
         
         // Check for DELETED fields (DTO fields not mapped to any entity attribute)
@@ -41,19 +52,9 @@ class FieldSyncEngine {
         
         // Check for NEW, RENAMED, and TYPE_CHANGED
         for (const entityAttr of entityAttributes) {
-            let found = false;
-            let mappedDtoField: IDtoField | undefined;
+            const mappedDtoFieldId = mappedEntityToDto.get(entityAttr.id);
             
-            // Find if this entity attribute is mapped from any DTO field
-            for (const dtoField of dtoFields) {
-                if (dtoField.isMapped && mappedDtoToEntity.get(dtoField.id) === entityAttr.id) {
-                    found = true;
-                    mappedDtoField = dtoField;
-                    break;
-                }
-            }
-            
-            if (!found) {
+            if (!mappedDtoFieldId) {
                 // NEW: Entity attribute not in DTO
                 const discrepancy: IFieldDiscrepancy = {
                     id: `new-${entityAttr.id}`,
@@ -67,42 +68,43 @@ class FieldSyncEngine {
                 };
                 discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
                 discrepancies.push(discrepancy);
-            } else if (mappedDtoField) {
-                // Found a mapping - check for RENAMED and TYPE_CHANGED
+            } else {
+                const mappedDtoField = dtoFields.find(f => f.id === mappedDtoFieldId);
                 
-                // RENAMED check
-                if (mappedDtoField.name !== entityAttr.name) {
-                    const discrepancy: IFieldDiscrepancy = {
-                        id: `renamed-${mappedDtoField.id}`,
-                        type: "RENAMED",
-                        dtoFieldId: mappedDtoField.id,
-                        dtoFieldName: mappedDtoField.name,
-                        entityAttributeId: entityAttr.id,
-                        entityAttributeName: entityAttr.name,
-                        dtoFieldType: mappedDtoField.typeDisplayText,
-                        entityAttributeType: entityAttr.typeDisplayText,
-                        reason: "Field name differs from entity attribute name"
-                    };
-                    discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
-                    discrepancies.push(discrepancy);
-                }
-                
-                // TYPE_CHANGED check
-                if (mappedDtoField.typeId !== entityAttr.typeId && 
-                    mappedDtoField.typeDisplayText !== entityAttr.typeDisplayText) {
-                    const discrepancy: IFieldDiscrepancy = {
-                        id: `type-changed-${mappedDtoField.id}`,
-                        type: "TYPE_CHANGED",
-                        dtoFieldId: mappedDtoField.id,
-                        dtoFieldName: mappedDtoField.name,
-                        dtoFieldType: mappedDtoField.typeDisplayText,
-                        entityAttributeId: entityAttr.id,
-                        entityAttributeName: entityAttr.name,
-                        entityAttributeType: entityAttr.typeDisplayText,
-                        reason: "Field type differs from entity attribute type"
-                    };
-                    discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
-                    discrepancies.push(discrepancy);
+                if (mappedDtoField) {
+                    // RENAMED check
+                    if (mappedDtoField.name !== entityAttr.name) {
+                        const discrepancy: IFieldDiscrepancy = {
+                            id: `renamed-${mappedDtoField.id}`,
+                            type: "RENAMED",
+                            dtoFieldId: mappedDtoField.id,
+                            dtoFieldName: mappedDtoField.name,
+                            entityAttributeId: entityAttr.id,
+                            entityAttributeName: entityAttr.name,
+                            dtoFieldType: mappedDtoField.typeDisplayText,
+                            entityAttributeType: entityAttr.typeDisplayText,
+                            reason: "Field name differs from entity attribute name"
+                        };
+                        discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
+                        discrepancies.push(discrepancy);
+                    }
+                    
+                    // TYPE_CHANGED check
+                    if (mappedDtoField.typeId !== entityAttr.typeId) {
+                        const discrepancy: IFieldDiscrepancy = {
+                            id: `type-changed-${mappedDtoField.id}`,
+                            type: "TYPE_CHANGED",
+                            dtoFieldId: mappedDtoField.id,
+                            dtoFieldName: mappedDtoField.name,
+                            dtoFieldType: mappedDtoField.typeDisplayText,
+                            entityAttributeId: entityAttr.id,
+                            entityAttributeName: entityAttr.name,
+                            entityAttributeType: entityAttr.typeDisplayText,
+                            reason: "Field type differs from entity attribute type"
+                        };
+                        discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
+                        discrepancies.push(discrepancy);
+                    }
                 }
             }
         }
@@ -114,13 +116,30 @@ class FieldSyncEngine {
         const nodes: MacroApi.Context.ISelectableTreeNode[] = [];
         
         for (const discrepancy of discrepancies) {
+            // Use the actual field name, not "[Missing]"
+            const displayName = discrepancy.type === "NEW" 
+                ? discrepancy.entityAttributeName 
+                : discrepancy.dtoFieldName;
+            
             const node: MacroApi.Context.ISelectableTreeNode = {
                 id: discrepancy.id,
-                label: discrepancy.dtoFieldName,
+                label: displayName,
                 specializationId: "sync-field-discrepancy",
                 isExpanded: true,
                 isSelected: false
             };
+            
+            // Add display properties dynamically (not part of ISelectableTreeNode type)
+            (node as any).displayFunction = discrepancy.displayFunction;
+            (node as any).displayMetadata = {
+                type: discrepancy.type,
+                dtoFieldName: discrepancy.dtoFieldName,
+                dtoFieldType: discrepancy.dtoFieldType,
+                entityAttributeName: discrepancy.entityAttributeName,
+                entityAttributeType: discrepancy.entityAttributeType,
+                reason: discrepancy.reason
+            };
+            
             nodes.push(node);
         }
         

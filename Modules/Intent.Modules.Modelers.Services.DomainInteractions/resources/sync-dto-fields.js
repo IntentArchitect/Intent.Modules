@@ -45,8 +45,8 @@ function getDtoFields(dtoElement) {
             name: child.getName(),
             typeId: child.typeReference?.getTypeId(),
             typeDisplayText: child.typeReference?.display || "",
-            isMapped: child.isMapped(),
-            mappedToAttributeId: child.isMapped() ? child.getMapping().getElement().id : undefined
+            isMapped: false, // Will be determined by extractFieldMappings
+            mappedToAttributeId: undefined
         };
         fields.push(field);
     }
@@ -56,6 +56,11 @@ function getEntityAttributes(entity) {
     const attributes = [];
     const children = entity.getChildren("Attribute");
     for (const child of children) {
+        // Skip managed keys (auto-generated primary keys)
+        const isManagedKey = child.hasMetadata("is-managed-key") && child.getMetadata("is-managed-key") === "true";
+        if (isManagedKey) {
+            continue;
+        }
         const attribute = {
             id: child.id,
             name: child.getName(),
@@ -66,17 +71,35 @@ function getEntityAttributes(entity) {
     }
     return attributes;
 }
-function extractFieldMappings(dtoElement) {
+function extractFieldMappings(associations) {
     const mappings = [];
-    const dtoFields = getDtoFields(dtoElement);
-    for (const field of dtoFields) {
-        if (field.isMapped && field.mappedToAttributeId) {
-            mappings.push({
-                sourcePath: [field.id],
-                targetPath: [field.mappedToAttributeId],
-                sourceFieldId: field.id,
-                targetAttributeId: field.mappedToAttributeId
-            });
+    // Get advanced mappings from each association
+    for (const association of associations) {
+        try {
+            const advancedMappings = association.getAdvancedMappings();
+            for (const advancedMapping of advancedMappings) {
+                const mappedEnds = advancedMapping.getMappedEnds();
+                for (const mappedEnd of mappedEnds) {
+                    // Get source and target paths
+                    const sourcePath = mappedEnd.sourcePath;
+                    const targetPath = mappedEnd.targetPath;
+                    // Only process if we have valid paths with at least one element
+                    if (sourcePath && sourcePath.length > 0 && targetPath && targetPath.length > 0) {
+                        const sourceFieldId = sourcePath[sourcePath.length - 1].id;
+                        const targetAttributeId = targetPath[targetPath.length - 1].id;
+                        mappings.push({
+                            sourcePath: sourcePath.map(p => p.id),
+                            targetPath: targetPath.map(p => p.id),
+                            sourceFieldId: sourceFieldId,
+                            targetAttributeId: targetAttributeId
+                        });
+                    }
+                }
+            }
+        }
+        catch (error) {
+            // Skip associations without advanced mappings
+            continue;
         }
     }
     return mappings;
@@ -86,61 +109,44 @@ function extractFieldMappings(dtoElement) {
 /// <reference path="../../typings/core.context.types.d.ts" />
 function formatDiscrepancy(discrepancy) {
     const components = [];
-    // Status badge with color and icon
     const statusInfo = getDiscrepancyStatusInfo(discrepancy.type);
-    components.push({
-        text: `[${discrepancy.type}]`,
-        cssClass: `text-highlight ${statusInfo.cssClass}`,
-        color: statusInfo.color
-    });
-    components.push({
-        text: " ",
-        cssClass: ""
-    });
-    // DTO field name
-    components.push({
-        text: discrepancy.dtoFieldName,
-        cssClass: "text-highlight keyword"
-    });
-    // Separator and arrow
-    components.push({
-        text: " → ",
-        cssClass: "text-highlight muted"
-    });
-    // Entity attribute name
-    components.push({
-        text: discrepancy.entityAttributeName,
-        cssClass: "text-highlight typeref"
-    });
-    // Type information if applicable
-    if (discrepancy.dtoFieldType || discrepancy.entityAttributeType) {
-        components.push({
-            text: " ",
-            cssClass: ""
-        });
-        if (discrepancy.type === "TYPE_CHANGED") {
-            components.push({
-                text: `(${discrepancy.dtoFieldType} → ${discrepancy.entityAttributeType})`,
-                cssClass: "text-highlight annotation"
-            });
-        }
-        else if (discrepancy.dtoFieldType) {
-            components.push({
-                text: `(${discrepancy.dtoFieldType})`,
-                cssClass: "text-highlight muted"
-            });
-        }
-    }
-    // Reason if provided
-    if (discrepancy.reason) {
-        components.push({
-            text: " - ",
-            cssClass: "text-highlight muted"
-        });
-        components.push({
-            text: discrepancy.reason,
-            cssClass: "text-highlight muted"
-        });
+    switch (discrepancy.type) {
+        case "NEW":
+            // EntityName: type [NEW]
+            components.push({ text: discrepancy.entityAttributeName, cssClass: "text-highlight" });
+            components.push({ text: ": ", cssClass: "text-highlight annotation" });
+            components.push({ text: discrepancy.entityAttributeType || "", cssClass: "text-highlight keyword" });
+            components.push({ text: " " });
+            components.push({ text: "[NEW]", color: statusInfo.color });
+            break;
+        case "RENAMED":
+            // CurrentName → EntityName: type [RENAMED]
+            components.push({ text: discrepancy.dtoFieldName, cssClass: "text-highlight" });
+            components.push({ text: " → ", cssClass: "text-highlight muted" });
+            components.push({ text: discrepancy.entityAttributeName, cssClass: "text-highlight" });
+            components.push({ text: ": ", cssClass: "text-highlight annotation" });
+            components.push({ text: discrepancy.entityAttributeType || "", cssClass: "text-highlight keyword" });
+            components.push({ text: " " });
+            components.push({ text: "[RENAMED]", color: statusInfo.color });
+            break;
+        case "TYPE_CHANGED":
+            // FieldName: currentType → entityType [TYPE CHANGED]
+            components.push({ text: discrepancy.dtoFieldName, cssClass: "text-highlight" });
+            components.push({ text: ": ", cssClass: "text-highlight annotation" });
+            components.push({ text: discrepancy.dtoFieldType || "", cssClass: "text-highlight keyword" });
+            components.push({ text: " → ", cssClass: "text-highlight muted" });
+            components.push({ text: discrepancy.entityAttributeType || "", cssClass: "text-highlight keyword" });
+            components.push({ text: " " });
+            components.push({ text: "[TYPE CHANGED]", color: statusInfo.color });
+            break;
+        case "DELETED":
+            // FieldName: type [DELETED]
+            components.push({ text: discrepancy.dtoFieldName, cssClass: "text-highlight" });
+            components.push({ text: ": ", cssClass: "text-highlight annotation" });
+            components.push({ text: discrepancy.dtoFieldType || "", cssClass: "text-highlight keyword" });
+            components.push({ text: " " });
+            components.push({ text: "[DELETED]", color: statusInfo.color });
+            break;
     }
     return components;
 }
@@ -173,8 +179,17 @@ class FieldSyncEngine {
         const entityAttributes = getEntityAttributes(entity);
         // Create a map of mapped DTO fields -> Entity attributes
         const mappedDtoToEntity = new Map();
+        const mappedEntityToDto = new Map();
         for (const mapping of mappings) {
-            mappedDtoToEntity.set(mapping.sourceFieldId, mapping.targetAttributeId);
+            // Only consider field-level mappings (ignore invocation mappings to constructors)
+            const sourceField = dtoFields.find(f => f.id === mapping.sourceFieldId);
+            const targetAttr = entityAttributes.find(a => a.id === mapping.targetAttributeId);
+            if (sourceField && targetAttr) {
+                mappedDtoToEntity.set(mapping.sourceFieldId, mapping.targetAttributeId);
+                mappedEntityToDto.set(mapping.targetAttributeId, mapping.sourceFieldId);
+                sourceField.isMapped = true;
+                sourceField.mappedToAttributeId = mapping.targetAttributeId;
+            }
         }
         // Check for DELETED fields (DTO fields not mapped to any entity attribute)
         for (const dtoField of dtoFields) {
@@ -194,17 +209,8 @@ class FieldSyncEngine {
         }
         // Check for NEW, RENAMED, and TYPE_CHANGED
         for (const entityAttr of entityAttributes) {
-            let found = false;
-            let mappedDtoField;
-            // Find if this entity attribute is mapped from any DTO field
-            for (const dtoField of dtoFields) {
-                if (dtoField.isMapped && mappedDtoToEntity.get(dtoField.id) === entityAttr.id) {
-                    found = true;
-                    mappedDtoField = dtoField;
-                    break;
-                }
-            }
-            if (!found) {
+            const mappedDtoFieldId = mappedEntityToDto.get(entityAttr.id);
+            if (!mappedDtoFieldId) {
                 // NEW: Entity attribute not in DTO
                 const discrepancy = {
                     id: `new-${entityAttr.id}`,
@@ -219,40 +225,41 @@ class FieldSyncEngine {
                 discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
                 discrepancies.push(discrepancy);
             }
-            else if (mappedDtoField) {
-                // Found a mapping - check for RENAMED and TYPE_CHANGED
-                // RENAMED check
-                if (mappedDtoField.name !== entityAttr.name) {
-                    const discrepancy = {
-                        id: `renamed-${mappedDtoField.id}`,
-                        type: "RENAMED",
-                        dtoFieldId: mappedDtoField.id,
-                        dtoFieldName: mappedDtoField.name,
-                        entityAttributeId: entityAttr.id,
-                        entityAttributeName: entityAttr.name,
-                        dtoFieldType: mappedDtoField.typeDisplayText,
-                        entityAttributeType: entityAttr.typeDisplayText,
-                        reason: "Field name differs from entity attribute name"
-                    };
-                    discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
-                    discrepancies.push(discrepancy);
-                }
-                // TYPE_CHANGED check
-                if (mappedDtoField.typeId !== entityAttr.typeId &&
-                    mappedDtoField.typeDisplayText !== entityAttr.typeDisplayText) {
-                    const discrepancy = {
-                        id: `type-changed-${mappedDtoField.id}`,
-                        type: "TYPE_CHANGED",
-                        dtoFieldId: mappedDtoField.id,
-                        dtoFieldName: mappedDtoField.name,
-                        dtoFieldType: mappedDtoField.typeDisplayText,
-                        entityAttributeId: entityAttr.id,
-                        entityAttributeName: entityAttr.name,
-                        entityAttributeType: entityAttr.typeDisplayText,
-                        reason: "Field type differs from entity attribute type"
-                    };
-                    discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
-                    discrepancies.push(discrepancy);
+            else {
+                const mappedDtoField = dtoFields.find(f => f.id === mappedDtoFieldId);
+                if (mappedDtoField) {
+                    // RENAMED check
+                    if (mappedDtoField.name !== entityAttr.name) {
+                        const discrepancy = {
+                            id: `renamed-${mappedDtoField.id}`,
+                            type: "RENAMED",
+                            dtoFieldId: mappedDtoField.id,
+                            dtoFieldName: mappedDtoField.name,
+                            entityAttributeId: entityAttr.id,
+                            entityAttributeName: entityAttr.name,
+                            dtoFieldType: mappedDtoField.typeDisplayText,
+                            entityAttributeType: entityAttr.typeDisplayText,
+                            reason: "Field name differs from entity attribute name"
+                        };
+                        discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
+                        discrepancies.push(discrepancy);
+                    }
+                    // TYPE_CHANGED check
+                    if (mappedDtoField.typeId !== entityAttr.typeId) {
+                        const discrepancy = {
+                            id: `type-changed-${mappedDtoField.id}`,
+                            type: "TYPE_CHANGED",
+                            dtoFieldId: mappedDtoField.id,
+                            dtoFieldName: mappedDtoField.name,
+                            dtoFieldType: mappedDtoField.typeDisplayText,
+                            entityAttributeId: entityAttr.id,
+                            entityAttributeName: entityAttr.name,
+                            entityAttributeType: entityAttr.typeDisplayText,
+                            reason: "Field type differs from entity attribute type"
+                        };
+                        discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
+                        discrepancies.push(discrepancy);
+                    }
                 }
             }
         }
@@ -261,12 +268,26 @@ class FieldSyncEngine {
     buildTreeNodes(discrepancies) {
         const nodes = [];
         for (const discrepancy of discrepancies) {
+            // Use the actual field name, not "[Missing]"
+            const displayName = discrepancy.type === "NEW"
+                ? discrepancy.entityAttributeName
+                : discrepancy.dtoFieldName;
             const node = {
                 id: discrepancy.id,
-                label: discrepancy.dtoFieldName,
+                label: displayName,
                 specializationId: "sync-field-discrepancy",
                 isExpanded: true,
                 isSelected: false
+            };
+            // Add display properties dynamically (not part of ISelectableTreeNode type)
+            node.displayFunction = discrepancy.displayFunction;
+            node.displayMetadata = {
+                type: discrepancy.type,
+                dtoFieldName: discrepancy.dtoFieldName,
+                dtoFieldType: discrepancy.dtoFieldType,
+                entityAttributeName: discrepancy.entityAttributeName,
+                entityAttributeType: discrepancy.entityAttributeType,
+                reason: discrepancy.reason
             };
             nodes.push(node);
         }
@@ -295,8 +316,8 @@ async function syncDtoFields(element) {
             await dialogService.warn(`No entity mappings found.\n\nThe '${element.getName()}' element does not have any associated entity actions (Create, Update, Delete, or Query Entity Actions).`);
             return;
         }
-        // Extract field mappings from DTO fields
-        const fieldMappings = extractFieldMappings(element);
+        // Extract field mappings from associations (not from DTO fields directly)
+        const fieldMappings = extractFieldMappings(associations);
         // Analyze discrepancies
         const engine = new FieldSyncEngine();
         const discrepancies = engine.analyzeFieldDiscrepancies(element, entity, fieldMappings);
