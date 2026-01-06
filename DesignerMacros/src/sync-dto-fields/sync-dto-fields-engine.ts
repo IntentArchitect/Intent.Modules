@@ -273,17 +273,36 @@ class FieldSyncEngine {
             try {
                 const advancedMappings = association.getAdvancedMappings();
                 
-                // Find or use the first "Data Mapping" or create one
-                let dataMapping = advancedMappings.find(m => m.mappingTypeId === "Data Mapping");
-                
-                if (!dataMapping && advancedMappings.length > 0) {
-                    // Use first available mapping if no Data Mapping found
-                    dataMapping = advancedMappings[0];
-                }
-                
-                if (dataMapping) {
-                    // Add mapped end with source path (DTO field) and target path (entity attribute)
-                    dataMapping.addMappedEnd("Data Mapping", [newField.id], [attribute.id]);
+                if (advancedMappings.length > 0) {
+                    const targetMapping = advancedMappings[0];
+                    
+                    if (targetMapping) {
+                        const sourceElement = targetMapping.getSourceElement();
+                        
+                        // Determine source and target paths based on element type
+                        let sourcePath: string[];
+                        let targetPath: string[];
+                        
+                        if (sourceElement.specialization === "Operation") {
+                            // For Operations: [Operation, Parameter (containing DTO), DTO-Field]
+                            const dtoParameter = sourceElement.getChildren(ELEMENT_TYPE_NAMES.PARAMETER)
+                                .find(p => p.typeReference && p.typeReference.typeId === dtoElement.id);
+                            
+                            if (!dtoParameter) {
+                                console.warn("Could not find parameter containing DTO for Operation");
+                                return;
+                            }
+                            
+                            sourcePath = [sourceElement.id, dtoParameter.id, newField.id];
+                            targetPath = [attribute.getParent()!.id, attribute.id];
+                        } else {
+                            // For Commands/Queries: just use field and attribute IDs
+                            sourcePath = [newField.id];
+                            targetPath = [attribute.id];
+                        }
+                        
+                        targetMapping.addMappedEnd("Data Mapping", sourcePath, targetPath);
+                    }
                 }
             } catch (error) {
                 console.warn("Failed to create advanced mapping:", error);
