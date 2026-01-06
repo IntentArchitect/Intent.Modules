@@ -13,15 +13,7 @@ interface IFieldDiscrepancy {
     mappingPath?: string[];
     reason?: string;
     icon: MacroApi.Context.IIcon;
-    displayFunction?: (context: any) => MacroApi.Context.IDisplayTextComponent[];
-}
-
-interface ISyncContext {
-    dtoElement: MacroApi.Context.IElementApi;
-    entity: MacroApi.Context.IElementApi;
-    actionAssociations: MacroApi.Context.IAssociationApi[];
-    mappings: MacroApi.Context.IElementToElementMappingApi[];
-    discrepancies: IFieldDiscrepancy[];
+    displayFunction?: () => MacroApi.Context.IDisplayTextComponent[];
 }
 
 interface IFieldMapping {
@@ -48,12 +40,4 @@ interface IEntityAttribute {
     typeDisplayText?: string;
     icon: MacroApi.Context.IIcon;
     isManagedKey?: boolean;
-}
-
-interface IDiscrepancyDetails {
-    oldValue?: string;
-    newValue?: string;
-    oldType?: string;
-    newType?: string;
-    details?: string;
 }
