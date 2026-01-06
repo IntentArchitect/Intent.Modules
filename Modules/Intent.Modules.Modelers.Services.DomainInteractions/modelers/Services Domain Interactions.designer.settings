@@ -12683,6 +12683,13 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
     </mappableElementPackageExtension>
   </mappableElementPackageExtensions>
   <suggestionSettings>
+    <suggestionSetting type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" locations="diagram, model">
+      <name>Sync Command Fields</name>
+      <dependencies>
+        <dependency name="Sync DTO Fields" id="9fa6137e-87c7-4dea-8604-9caaf62c0b4f" />
+      </dependencies>
+      <script>await syncDtoFields(element);</script>
+    </suggestionSetting>
     <suggestionSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591" locations="diagram, model">
       <name>Create CQRS Operation</name>
       <filterFunction>const callServiceOperationTargetEnd = "093e5909-ffe4-4510-b3ea-532f30212f3c";
@@ -12841,6 +12848,9 @@ function getDtoTypeId(item){
 
     return item.typeReference?.getTypeId();
 }</script>
+    </script>
+    <script name="Sync DTO Fields" id="9fa6137e-87c7-4dea-8604-9caaf62c0b4f">
+      <filePath>sync-dto-fields.js</filePath>
     </script>
   </scripts>
 </settings>
