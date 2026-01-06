@@ -1,3 +1,7 @@
+### Version 6.0.5
+
+- Improvement: Documented standard rules for AI-implemented Service model changes regarding Commands and Queries.
+
 ### Version 6.0.4
 
 - Fixed : Commands and Queries not indicating as required mappings in the `Perform Invocation` interactions.
