@@ -29,12 +29,10 @@ function getValidSpecializations(): string[] {
 }
 
 function extractDtoFromElement(element: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi | null {
-    // If element is already a DTO, Command, or Query, return it
     if (["DTO", "Command", "Query"].includes(element.specialization)) {
         return element;
     }
     
-    // If element is an Operation, find the DTO parameter
     if (element.specialization === "Operation") {
         const parameters = element.getChildren(ELEMENT_TYPE_NAMES.PARAMETER);
         for (const param of parameters) {
@@ -61,12 +59,13 @@ function findAssociationsPointingToElement(searchElement: MacroApi.Context.IElem
             const results = searchElement.getAssociations(actionName);
             
             if (results && results.length > 0) {
-                // For Operations, or when searchElement IS the DTO (Commands/Queries), don't filter
-                // All associations from these elements are valid
+                // Operations have associations directly (typeReference points to entity, not DTO)
+                // Commands/Queries also have associations directly when searchElement IS the DTO
+                // In both cases, accept all associations without filtering
                 if (searchElement.specialization === "Operation" || searchElement.id === dtoElement.id) {
                     allAssociations.push(...(results as any as MacroApi.Context.IAssociationApi[]));
                 } else {
-                    // For other cases (DTO nested in Operation), filter to associations that reference this element
+                    // When searching from a parent of the DTO, filter to only associations targeting our DTO
                     const filtered = (results as any as MacroApi.Context.IAssociationApi[]).filter(assoc => {
                         try {
                             const typeRef = assoc.typeReference;
@@ -75,7 +74,7 @@ function findAssociationsPointingToElement(searchElement: MacroApi.Context.IElem
                                 return type.id === dtoElement.id;
                             }
                         } catch (e) {
-                            // Skip associations that error out
+                            // SDK may throw if association is incomplete
                         }
                         return false;
                     });
@@ -85,7 +84,7 @@ function findAssociationsPointingToElement(searchElement: MacroApi.Context.IElem
                 }
             }
         } catch (e) {
-            // Continue to next action type
+            // SDK method may fail on certain association types
         }
     }
     
@@ -134,8 +133,7 @@ function findAssociationsPointingToElement(searchElement: MacroApi.Context.IElem
 function getEntityFromAssociations(associations: MacroApi.Context.IAssociationApi[]): MacroApi.Context.IElementApi | null {
     if (associations.length === 0) return null;
     
-    // Get the typeReference from the first association
-    // The association's typeReference points to the entity
+    // Association typeReference points to the entity being acted upon
     const association = associations[0];
     if (association.typeReference && association.typeReference.isTypeFound()) {
         return association.typeReference.getType() as MacroApi.Context.IElementApi;
@@ -186,7 +184,6 @@ function getEntityAttributes(entity: MacroApi.Context.IElementApi): IEntityAttri
 function extractFieldMappings(associations: MacroApi.Context.IAssociationApi[]): IFieldMapping[] {
     const mappings: IFieldMapping[] = [];
     
-    // Get advanced mappings from each association
     for (const association of associations) {
         try {
             const advancedMappings = association.getAdvancedMappings();
@@ -195,11 +192,9 @@ function extractFieldMappings(associations: MacroApi.Context.IAssociationApi[]):
                 const mappedEnds = advancedMapping.getMappedEnds();
                 
                 for (const mappedEnd of mappedEnds) {
-                    // Get source and target paths
                     const sourcePath = mappedEnd.sourcePath;
                     const targetPath = mappedEnd.targetPath;
                     
-                    // Only process if we have valid paths with at least one element
                     if (sourcePath && sourcePath.length > 0 && targetPath && targetPath.length > 0) {
                         const sourceFieldId = sourcePath[sourcePath.length - 1].id;
                         const targetAttributeId = targetPath[targetPath.length - 1].id;
@@ -214,7 +209,7 @@ function extractFieldMappings(associations: MacroApi.Context.IAssociationApi[]):
                 }
             }
         } catch (error) {
-            // Skip associations without advanced mappings
+            // Association may not have advanced mappings configured
             continue;
         }
     }
