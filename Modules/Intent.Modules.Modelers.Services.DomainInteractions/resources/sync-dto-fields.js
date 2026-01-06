@@ -38,13 +38,13 @@ function findAssociationsPointingToElement(searchElement, dtoElement) {
         try {
             const results = searchElement.getAssociations(actionName);
             if (results && results.length > 0) {
-                // For Operations, don't filter - all associations from the operation are valid
-                // The DTO mapping is in the mapping source paths
-                if (searchElement.specialization === "Operation") {
+                // For Operations, or when searchElement IS the DTO (Commands/Queries), don't filter
+                // All associations from these elements are valid
+                if (searchElement.specialization === "Operation" || searchElement.id === dtoElement.id) {
                     allAssociations.push(...results);
                 }
                 else {
-                    // For DTOs/Commands/Queries, filter to associations that reference this element
+                    // For other cases (DTO nested in Operation), filter to associations that reference this element
                     const filtered = results.filter(assoc => {
                         try {
                             const typeRef = assoc.typeReference;
