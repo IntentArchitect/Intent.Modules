@@ -103,6 +103,7 @@ namespace Intent.ModuleBuilder.Api
                 TypeOrder = GetTypeOrder(),
                 VisualSettings = this.VisualSettings?.ToPersistable(),
                 Macros = EventSettings?.ToPersistable(),
+                Rules = this.GetAISettings()?.Rules()
             };
         }
 

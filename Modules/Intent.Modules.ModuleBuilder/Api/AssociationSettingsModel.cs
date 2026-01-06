@@ -69,7 +69,8 @@ namespace Intent.ModuleBuilder.Api
                 SourceEnd = this.SourceEnd.ToPersistable(),
                 TargetEnd = this.TargetEnd.ToPersistable(),
                 VisualSettings = VisualSettings?.ToPersistable(),
-                Macros = this.EventSettings?.ToPersistable()
+                Macros = this.EventSettings?.ToPersistable(),
+                Rules = this.GetAISettings()?.Rules()
             };
         }
 

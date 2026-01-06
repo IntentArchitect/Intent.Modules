@@ -57,6 +57,14 @@
       <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
       <properties />
     </stereotype>
+    <stereotype stereotypeDefinitionId="14441454-bfe0-4d5d-8dba-d86d74d33a3b" name="AI Settings">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="NEVER use this type." isActive="true" />
+      </properties>
+    </stereotype>
   </stereotypes>
   <metadata />
   <childElements>

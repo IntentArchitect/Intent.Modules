@@ -74,7 +74,8 @@ namespace Intent.ModuleBuilder.Api
                 SpecializationType = this.TypeReference.Element.Name,
                 SourceEndExtension = this.SourceEnd.ToPersistable(),
                 TargetEndExtension = this.TargetEnd.ToPersistable(),
-                Macros = this.EventSettings?.ToPersistable()
+                Macros = this.EventSettings?.ToPersistable(),
+                Rules = this.GetAISettings()?.Rules()
             };
         }
 

@@ -188,6 +188,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public ElementSettingExtensionPersistable[] ChildElementExtensions { get; set; } = [];
         public bool ShouldSerializeChildElementExtensions() => ChildElementExtensions.Any();
 
+        [XmlElement("rules")]
+        public string Rules { get; set; }
+        public bool ShouldSerializeRules() => !string.IsNullOrWhiteSpace(Rules);
+
         public override string ToString()
         {
             return $"{nameof(SpecializationType)} = '{SpecializationType}'";

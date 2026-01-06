@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="e71b0662-e29d-4db2-868b-8a12464b25d0" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <comment>Queries defines a request for information that retrieves data without modifying the state of the system.</comment>
   <name>Query</name>
   <display>Query</display>
   <isAbstract>false</isAbstract>
@@ -71,6 +72,14 @@
       <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
       <properties />
     </stereotype>
+    <stereotype stereotypeDefinitionId="14441454-bfe0-4d5d-8dba-d86d74d33a3b" name="AI Settings">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="- The response of the Query is defined by its type-reference (i.e. a DTO).&#xA;- The Query's properties define its request payload and must be defined when creating Queries." isActive="true" />
+      </properties>
+    </stereotype>
   </stereotypes>
   <metadata />
   <childElements>
@@ -111,9 +120,9 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="f98cdb36-8502-4406-9b78-1efc6317ca10" type="Accepted Stereotypes" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
+        <childElement id="f98cdb36-8502-4406-9b78-1efc6317ca10" type="Accepted Traits" typeId="59b63cd3-4af8-4f3c-aa94-61407ac3a3bd">
           <name>[type with stereotype]</name>
-          <display>[type with stereotype]: [Processing Action]</display>
+          <display>[type with trait]: [Processing Action]</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>

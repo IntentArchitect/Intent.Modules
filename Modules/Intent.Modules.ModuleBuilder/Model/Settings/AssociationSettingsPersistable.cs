@@ -29,6 +29,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArrayItem("macro")]
         public List<MacroPersistable> Macros { get; set; } = new List<MacroPersistable>();
 
+        [XmlElement("rules")]
+        public string Rules { get; set; }
+        public bool ShouldSerializeRules() => !string.IsNullOrWhiteSpace(Rules);
+
         public override string ToString()
         {
             return $"{nameof(SpecializationType)} = '{SpecializationType}'";

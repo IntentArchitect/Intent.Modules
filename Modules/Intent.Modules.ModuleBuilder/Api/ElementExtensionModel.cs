@@ -82,8 +82,6 @@ namespace Intent.ModuleBuilder.Api
                 DisplayFunctionOverride = this.GetExtensionSettings()?.DisplayTextFunction(),
                 ValidateFunctionOverride = this.GetExtensionSettings()?.ValidateFunction(),
                 ContextMenuOptions = MenuOptions?.ToPersistable(),
-                //CreationOptions = this.MenuOptions?.ToCreationOptionsPersistable(),
-                //ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList() ?? [],
                 TypeOrder = MenuOptions?.TypeOrder.Select(x => x.ToPersistable()).ToList(),
                 MappingSettings = MappingSettings.Select(x => x.ToPersistable()).ToList(),
@@ -103,6 +101,7 @@ namespace Intent.ModuleBuilder.Api
                     } : null,
                 Macros = this.EventSettings?.ToPersistable(),
                 ChildElementExtensions = this.ElementExtensions.Select(x => x.ToPersistable()).ToArray(),
+                Rules = this.GetAISettings()?.Rules()
             };
         }
 

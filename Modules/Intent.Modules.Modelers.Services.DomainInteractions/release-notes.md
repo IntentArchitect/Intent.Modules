@@ -1,3 +1,7 @@
+### Version 2.3.13
+
+- Improvement: Documented relevant rules for AI-implemented Service model changes.
+
 ### Version 2.3.12
 
 - Improvement: Introduced new `Aggregate Association Ends` to Create and Update Entity Action mappings in order to map to their IDs directly which helps with entity creation and updates that involve aggregate relationships.

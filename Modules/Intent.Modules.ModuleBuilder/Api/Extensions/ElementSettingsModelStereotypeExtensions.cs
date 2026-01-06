@@ -12,6 +12,29 @@ namespace Intent.ModuleBuilder.Api
 {
     public static class ElementSettingsModelStereotypeExtensions
     {
+        public static AISettings GetAISettings(this ElementSettingsModel model)
+        {
+            var stereotype = model.GetStereotype(AISettings.DefinitionId);
+            return stereotype != null ? new AISettings(stereotype) : null;
+        }
+
+
+        public static bool HasAISettings(this ElementSettingsModel model)
+        {
+            return model.HasStereotype(AISettings.DefinitionId);
+        }
+
+        public static bool TryGetAISettings(this ElementSettingsModel model, out AISettings stereotype)
+        {
+            if (!HasAISettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new AISettings(model.GetStereotype(AISettings.DefinitionId));
+            return true;
+        }
         public static Settings GetSettings(this ElementSettingsModel model)
         {
             var stereotype = model.GetStereotype(Settings.DefinitionId);
@@ -56,6 +79,25 @@ namespace Intent.ModuleBuilder.Api
 
             stereotype = new TypeReferenceSettings(model.GetStereotype(TypeReferenceSettings.DefinitionId));
             return true;
+        }
+
+        public class AISettings
+        {
+            private IStereotype _stereotype;
+            public const string DefinitionId = "14441454-bfe0-4d5d-8dba-d86d74d33a3b";
+
+            public AISettings(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public string Rules()
+            {
+                return _stereotype.GetProperty<string>("Rules");
+            }
+
         }
 
 
