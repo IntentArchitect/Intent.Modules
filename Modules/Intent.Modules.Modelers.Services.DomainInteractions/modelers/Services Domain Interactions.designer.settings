@@ -12763,6 +12763,7 @@ return application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad").getField(
     </suggestionSetting>
     <suggestionSetting type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" locations="diagram, model">
       <name>Sync Operation DTO Fields</name>
+      <filterFunction>return element.getChildren("Parameter").some(x =&gt; x.typeReference?.getType()?.specialization === "DTO");</filterFunction>
       <dependencies>
         <dependency name="Sync DTO Fields" id="9fa6137e-87c7-4dea-8604-9caaf62c0b4f" />
       </dependencies>

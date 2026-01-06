@@ -5,6 +5,7 @@
 /// <reference path="../../typings/core.context.types.d.ts" />
 // Constants
 const VALID_SPECIALIZATIONS = ["DTO", "Command", "Query", "Operation"];
+const DTO_LIKE_SPECIALIZATIONS = ["DTO", "Command", "Query"];
 const ENTITY_ACTION_TYPES = [
     "Create Entity Action",
     "Update Entity Action",
@@ -27,7 +28,7 @@ function getValidSpecializations() {
     return [...VALID_SPECIALIZATIONS];
 }
 function extractDtoFromElement(element) {
-    if (["DTO", "Command", "Query"].includes(element.specialization)) {
+    if (DTO_LIKE_SPECIALIZATIONS.includes(element.specialization)) {
         return element;
     }
     if (element.specialization === "Operation") {
@@ -36,7 +37,7 @@ function extractDtoFromElement(element) {
             const typeRef = param.typeReference;
             if (typeRef && typeRef.isTypeFound()) {
                 const type = typeRef.getType();
-                if (["DTO", "Command", "Query"].includes(type.specialization)) {
+                if (DTO_LIKE_SPECIALIZATIONS.includes(type.specialization)) {
                     return type;
                 }
             }
@@ -84,7 +85,7 @@ function findAssociationsPointingToElement(searchElement, dtoElement) {
         }
     }
     // If no associations found and searchElement is a DTO/Command/Query, walk up the hierarchy
-    if (allAssociations.length === 0 && ["DTO", "Command", "Query"].includes(searchElement.specialization)) {
+    if (allAssociations.length === 0 && DTO_LIKE_SPECIALIZATIONS.includes(searchElement.specialization)) {
         let current = searchElement;
         let depth = 0;
         while (current && allAssociations.length === 0 && depth < MAX_HIERARCHY_DEPTH) {
@@ -412,6 +413,106 @@ class FieldSyncEngine {
         }
         return nodes;
     }
+    applySyncActions(dtoElement, entity, selectedDiscrepancies, associations) {
+        if (selectedDiscrepancies.length === 0) {
+            return;
+        }
+        // Group discrepancies by type for ordered processing
+        const deleted = selectedDiscrepancies.filter(d => d.type === "DELETED");
+        const renamed = selectedDiscrepancies.filter(d => d.type === "RENAMED");
+        const typeChanged = selectedDiscrepancies.filter(d => d.type === "TYPE_CHANGED");
+        const newFields = selectedDiscrepancies.filter(d => d.type === "NEW");
+        // Process DELETED first (remove fields)
+        for (const discrepancy of deleted) {
+            this.deleteField(dtoElement, discrepancy);
+        }
+        // Process RENAMED (update field names)
+        for (const discrepancy of renamed) {
+            this.renameField(dtoElement, discrepancy);
+        }
+        // Process TYPE_CHANGED (update type references)
+        for (const discrepancy of typeChanged) {
+            this.changeFieldType(dtoElement, entity, discrepancy);
+        }
+        // Process NEW last (create fields and mappings)
+        for (const discrepancy of newFields) {
+            this.createFieldWithMapping(dtoElement, entity, discrepancy, associations);
+        }
+    }
+    deleteField(dtoElement, discrepancy) {
+        if (!discrepancy.dtoFieldId)
+            return;
+        const field = dtoElement.getChildren(ELEMENT_TYPE_NAMES.DTO_FIELD)
+            .find(f => f.id === discrepancy.dtoFieldId);
+        if (field) {
+            field.delete();
+        }
+    }
+    renameField(dtoElement, discrepancy) {
+        if (!discrepancy.dtoFieldId || !discrepancy.entityAttributeName)
+            return;
+        const field = dtoElement.getChildren(ELEMENT_TYPE_NAMES.DTO_FIELD)
+            .find(f => f.id === discrepancy.dtoFieldId);
+        if (field) {
+            field.setName(discrepancy.entityAttributeName, false);
+        }
+    }
+    changeFieldType(dtoElement, entity, discrepancy) {
+        if (!discrepancy.dtoFieldId || !discrepancy.entityAttributeId)
+            return;
+        const field = dtoElement.getChildren(ELEMENT_TYPE_NAMES.DTO_FIELD)
+            .find(f => f.id === discrepancy.dtoFieldId);
+        const attribute = entity.getChildren(ELEMENT_TYPE_NAMES.ATTRIBUTE)
+            .find(a => a.id === discrepancy.entityAttributeId);
+        if (field && field.typeReference && attribute && attribute.typeReference) {
+            field.typeReference.setType(attribute.typeReference.typeId);
+            field.typeReference.setIsNullable(attribute.typeReference.isNullable);
+            field.typeReference.setIsCollection(attribute.typeReference.isCollection);
+        }
+    }
+    createFieldWithMapping(dtoElement, entity, discrepancy, associations) {
+        if (!discrepancy.entityAttributeId || !discrepancy.entityAttributeName)
+            return;
+        const attribute = entity.getChildren(ELEMENT_TYPE_NAMES.ATTRIBUTE)
+            .find(a => a.id === discrepancy.entityAttributeId);
+        if (!attribute)
+            return;
+        // Create new DTO field using createElement
+        const newField = createElement(ELEMENT_TYPE_NAMES.DTO_FIELD, discrepancy.entityAttributeName, dtoElement.id);
+        // Set type to match entity attribute
+        if (newField.typeReference && attribute.typeReference) {
+            newField.typeReference.setType(attribute.typeReference.typeId);
+            newField.typeReference.setIsNullable(attribute.typeReference.isNullable);
+            newField.typeReference.setIsCollection(attribute.typeReference.isCollection);
+        }
+        // Create mapping using advanced mapping API (for entity action associations)
+        if (associations.length > 0) {
+            const association = associations[0];
+            try {
+                const advancedMappings = association.getAdvancedMappings();
+                // Find or use the first "Data Mapping" or create one
+                let dataMapping = advancedMappings.find(m => m.mappingTypeId === "Data Mapping");
+                if (!dataMapping && advancedMappings.length > 0) {
+                    // Use first available mapping if no Data Mapping found
+                    dataMapping = advancedMappings[0];
+                }
+                if (dataMapping) {
+                    // Add mapped end with source path (DTO field) and target path (entity attribute)
+                    dataMapping.addMappedEnd("Data Mapping", [newField.id], [attribute.id]);
+                }
+            }
+            catch (error) {
+                console.warn("Failed to create advanced mapping:", error);
+                // Fallback: try simple mapping
+                try {
+                    newField.setMapping(attribute.id);
+                }
+                catch (fallbackError) {
+                    console.warn("Fallback mapping also failed:", fallbackError);
+                }
+            }
+        }
+    }
 }
 /// <reference path="types.ts" />
 /// <reference path="common.ts" />
@@ -452,7 +553,17 @@ async function syncDtoFields(element) {
     // Build tree view model
     const treeNodes = engine.buildTreeNodes(discrepancies);
     // Present dialog with results
-    await presentSyncDialog(dtoElement, entity, discrepancies, treeNodes);
+    const selectedNodeIds = await presentSyncDialog(dtoElement, entity, discrepancies, treeNodes);
+    console.log("Selected node IDs from dialog:", selectedNodeIds);
+    console.log("All discrepancy IDs:", discrepancies.map(d => d.id));
+    // Apply sync actions for selected discrepancies
+    if (selectedNodeIds.length > 0) {
+        const selectedDiscrepancies = discrepancies.filter(d => selectedNodeIds.includes(d.id));
+        console.log("Filtered discrepancies count:", selectedDiscrepancies.length);
+        console.log("Filtered discrepancies:", selectedDiscrepancies.map(d => ({ id: d.id, type: d.type })));
+        engine.applySyncActions(dtoElement, entity, selectedDiscrepancies, associations);
+        await dialogService.info(`Synchronization complete.\n\n${selectedDiscrepancies.length} field(s) synchronized successfully.`);
+    }
 }
 async function presentSyncDialog(dtoElement, entity, discrepancies, treeNodes) {
     const config = {
@@ -499,5 +610,29 @@ async function presentSyncDialog(dtoElement, entity, discrepancies, treeNodes) {
             }
         ]
     };
-    await dialogService.openForm(config);
+    const result = await dialogService.openForm(config);
+    console.log("Dialog result:", result);
+    console.log("Result type:", typeof result);
+    console.log("Result keys:", result ? Object.keys(result) : "null");
+    if (!result) {
+        return [];
+    }
+    console.log("result.discrepancies:", result.discrepancies);
+    // Tree-view returns selected IDs as a comma-separated string (single) or array (multiple)
+    const selectedValue = result.discrepancies;
+    if (!selectedValue) {
+        return [];
+    }
+    // Handle both string and array formats
+    let selectedIds = [];
+    if (typeof selectedValue === 'string') {
+        // Single selection or comma-separated string
+        selectedIds = selectedValue.split(',').map(id => id.trim()).filter(id => id.length > 0);
+    }
+    else if (Array.isArray(selectedValue)) {
+        // Multiple selections as array
+        selectedIds = selectedValue;
+    }
+    console.log("Parsed selected IDs:", selectedIds);
+    return selectedIds;
 }
