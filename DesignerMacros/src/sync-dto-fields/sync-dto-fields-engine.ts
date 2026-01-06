@@ -56,6 +56,11 @@ class FieldSyncEngine {
             const mappedDtoFieldId = mappedEntityToDto.get(entityAttr.id);
             
             if (!mappedDtoFieldId) {
+                // Skip NEW discrepancy for unmapped managed keys (they're auto-generated or should be mapped in the association)
+                if (entityAttr.isManagedKey) {
+                    continue;
+                }
+                
                 // NEW: Entity attribute not in DTO
                 const discrepancy: IFieldDiscrepancy = {
                     id: `new-${entityAttr.id}`,
