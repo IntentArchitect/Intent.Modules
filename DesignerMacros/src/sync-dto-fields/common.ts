@@ -67,18 +67,13 @@ function getEntityAttributes(entity: MacroApi.Context.IElementApi): IEntityAttri
     const children = entity.getChildren("Attribute");
     
     for (const child of children) {
-        // Skip managed keys (auto-generated primary keys)
-        const isManagedKey = child.hasMetadata("is-managed-key") && child.getMetadata("is-managed-key") === "true";
-        if (isManagedKey) {
-            continue;
-        }
-        
         const attribute: IEntityAttribute = {
             id: child.id,
             name: child.getName(),
             typeId: child.typeReference?.getTypeId(),
             typeDisplayText: child.typeReference?.display || "",
-            icon: child.getIcon()
+            icon: child.getIcon(),
+            isManagedKey: child.hasMetadata("is-managed-key") && child.getMetadata("is-managed-key") === "true"
         };
         attributes.push(attribute);
     }

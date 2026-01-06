@@ -57,17 +57,13 @@ function getEntityAttributes(entity) {
     const attributes = [];
     const children = entity.getChildren("Attribute");
     for (const child of children) {
-        // Skip managed keys (auto-generated primary keys)
-        const isManagedKey = child.hasMetadata("is-managed-key") && child.getMetadata("is-managed-key") === "true";
-        if (isManagedKey) {
-            continue;
-        }
         const attribute = {
             id: child.id,
             name: child.getName(),
             typeId: child.typeReference?.getTypeId(),
             typeDisplayText: child.typeReference?.display || "",
-            icon: child.getIcon()
+            icon: child.getIcon(),
+            isManagedKey: child.hasMetadata("is-managed-key") && child.getMetadata("is-managed-key") === "true"
         };
         attributes.push(attribute);
     }
@@ -214,6 +210,10 @@ class FieldSyncEngine {
         for (const entityAttr of entityAttributes) {
             const mappedDtoFieldId = mappedEntityToDto.get(entityAttr.id);
             if (!mappedDtoFieldId) {
+                // Skip NEW discrepancy for unmapped managed keys (they're auto-generated or should be mapped in the association)
+                if (entityAttr.isManagedKey) {
+                    continue;
+                }
                 // NEW: Entity attribute not in DTO
                 const discrepancy = {
                     id: `new-${entityAttr.id}`,

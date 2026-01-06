@@ -47,6 +47,7 @@ interface IEntityAttribute {
     typeId?: string;
     typeDisplayText?: string;
     icon: MacroApi.Context.IIcon;
+    isManagedKey?: boolean;
 }
 
 interface IDiscrepancyDetails {
