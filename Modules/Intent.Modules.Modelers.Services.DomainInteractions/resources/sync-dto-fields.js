@@ -4,23 +4,107 @@
 /// <reference path="../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../typings/core.context.types.d.ts" />
 function isValidSyncElement(element) {
-    const validSpecializations = ["DTO", "Command", "Query"];
+    const validSpecializations = ["DTO", "Command", "Query", "Operation"];
     return validSpecializations.includes(element.specialization);
 }
 function getValidSpecializations() {
-    return ["DTO", "Command", "Query"];
+    return ["DTO", "Command", "Query", "Operation"];
 }
-function findAssociationsPointingToElement(dtoElement) {
-    const package_ = dtoElement.getPackage();
-    if (!package_)
-        return [];
+function extractDtoFromElement(element) {
+    // If element is already a DTO, Command, or Query, return it
+    if (["DTO", "Command", "Query"].includes(element.specialization)) {
+        return element;
+    }
+    // If element is an Operation, find the DTO parameter
+    if (element.specialization === "Operation") {
+        const parameters = element.getChildren("Parameter");
+        for (const param of parameters) {
+            const typeRef = param.typeReference;
+            if (typeRef && typeRef.isTypeFound()) {
+                const type = typeRef.getType();
+                if (["DTO", "Command", "Query"].includes(type.specialization)) {
+                    return type;
+                }
+            }
+        }
+    }
+    return null;
+}
+function findAssociationsPointingToElement(searchElement, dtoElement) {
     const allAssociations = [];
     const actionNames = ["Create Entity Action", "Update Entity Action", "Delete Entity Action", "Query Entity Action"];
-    // Get all associations from the element  
+    // First try to get associations from searchElement
     for (const actionName of actionNames) {
-        const results = dtoElement.getAssociations(actionName);
-        if (results && results.length > 0) {
-            allAssociations.push(...results);
+        try {
+            const results = searchElement.getAssociations(actionName);
+            if (results && results.length > 0) {
+                // For Operations, don't filter - all associations from the operation are valid
+                // The DTO mapping is in the mapping source paths
+                if (searchElement.specialization === "Operation") {
+                    allAssociations.push(...results);
+                }
+                else {
+                    // For DTOs/Commands/Queries, filter to associations that reference this element
+                    const filtered = results.filter(assoc => {
+                        try {
+                            const typeRef = assoc.typeReference;
+                            if (typeRef && typeRef.getType()) {
+                                const type = typeRef.getType();
+                                return type.id === dtoElement.id;
+                            }
+                        }
+                        catch (e) {
+                            // Skip associations that error out
+                        }
+                        return false;
+                    });
+                    if (filtered.length > 0) {
+                        allAssociations.push(...filtered);
+                    }
+                }
+            }
+        }
+        catch (e) {
+            // Continue to next action type
+        }
+    }
+    // If no associations found and searchElement is a DTO/Command/Query, walk up the hierarchy
+    if (allAssociations.length === 0 && ["DTO", "Command", "Query"].includes(searchElement.specialization)) {
+        let current = searchElement;
+        let depth = 0;
+        while (current && allAssociations.length === 0 && depth < 10) {
+            // Try all action types on current element
+            for (const actionName of actionNames) {
+                try {
+                    const results = current.getAssociations(actionName);
+                    if (results && results.length > 0) {
+                        // Filter to only associations that reference our DTO element
+                        const filtered = results.filter(assoc => {
+                            try {
+                                const typeRef = assoc.typeReference;
+                                if (typeRef && typeRef.getType()) {
+                                    const type = typeRef.getType();
+                                    return type.id === dtoElement.id;
+                                }
+                            }
+                            catch (e) {
+                                // Skip associations that error out
+                            }
+                            return false;
+                        });
+                        if (filtered.length > 0) {
+                            allAssociations.push(...filtered);
+                        }
+                    }
+                }
+                catch (e) {
+                    // Continue to next parent if this fails
+                }
+            }
+            if (allAssociations.length > 0)
+                break;
+            current = current.getParent() || null;
+            depth++;
         }
     }
     return allAssociations;
@@ -37,14 +121,15 @@ function getEntityFromAssociations(associations) {
     return null;
 }
 function getDtoFields(dtoElement) {
+    var _a, _b;
     const fields = [];
     const children = dtoElement.getChildren("DTO-Field");
     for (const child of children) {
         const field = {
             id: child.id,
             name: child.getName(),
-            typeId: child.typeReference?.getTypeId(),
-            typeDisplayText: child.typeReference?.display || "",
+            typeId: (_a = child.typeReference) === null || _a === void 0 ? void 0 : _a.getTypeId(),
+            typeDisplayText: ((_b = child.typeReference) === null || _b === void 0 ? void 0 : _b.display) || "",
             isMapped: false, // Will be determined by extractFieldMappings
             mappedToAttributeId: undefined,
             icon: child.getIcon()
@@ -54,14 +139,15 @@ function getDtoFields(dtoElement) {
     return fields;
 }
 function getEntityAttributes(entity) {
+    var _a, _b;
     const attributes = [];
     const children = entity.getChildren("Attribute");
     for (const child of children) {
         const attribute = {
             id: child.id,
             name: child.getName(),
-            typeId: child.typeReference?.getTypeId(),
-            typeDisplayText: child.typeReference?.display || "",
+            typeId: (_a = child.typeReference) === null || _a === void 0 ? void 0 : _a.getTypeId(),
+            typeDisplayText: ((_b = child.typeReference) === null || _b === void 0 ? void 0 : _b.display) || "",
             icon: child.getIcon(),
             isManagedKey: child.hasMetadata("is-managed-key") && child.getMetadata("is-managed-key") === "true"
         };
@@ -309,24 +395,30 @@ class FieldSyncEngine {
 async function syncDtoFields(element) {
     // Validate element
     if (!isValidSyncElement(element)) {
-        await dialogService.error(`Invalid element type.\n\nThe selected element must be a DTO, Command, or Query. The current element is a '${element.specialization}'.`);
+        await dialogService.error(`Invalid element type.\n\nThe selected element must be a DTO, Command, Query, or Service Operation. The current element is a '${element.specialization}'.`);
         return;
     }
-    // Find action associations
-    const associations = findAssociationsPointingToElement(element);
+    // Extract DTO from element (handles both direct DTO/Command/Query and Operation with DTO parameter)
+    const dtoElement = extractDtoFromElement(element);
+    if (!dtoElement) {
+        await dialogService.error(`Unable to find DTO.\n\nFor Operations, a DTO parameter must be present. The operation '${element.getName()}' does not have a DTO parameter.`);
+        return;
+    }
+    // Find action associations - use the original element if it's an Operation, otherwise use the DTO
+    const elementToSearchForAssociations = element.specialization === "Operation" ? element : dtoElement;
+    const associations = findAssociationsPointingToElement(elementToSearchForAssociations, dtoElement);
     // Try to get entity from associations
     let entity = getEntityFromAssociations(associations);
     // If no associations found, ask user to select entity
     if (!entity) {
-        // For now, show error - later we could add dialog for entity selection
-        await dialogService.warn(`No entity mappings found.\n\nThe '${element.getName()}' element does not have any associated entity actions (Create, Update, Delete, or Query Entity Actions).`);
+        await dialogService.warn(`No entity mappings found.\n\nThe '${dtoElement.getName()}' element does not have any associated entity actions (Create, Update, Delete, or Query Entity Actions).`);
         return;
     }
     // Extract field mappings from associations (not from DTO fields directly)
     const fieldMappings = extractFieldMappings(associations);
     // Analyze discrepancies
     const engine = new FieldSyncEngine();
-    const discrepancies = engine.analyzeFieldDiscrepancies(element, entity, fieldMappings);
+    const discrepancies = engine.analyzeFieldDiscrepancies(dtoElement, entity, fieldMappings);
     if (discrepancies.length === 0) {
         await dialogService.info(`All fields are synchronized.\n\nThe DTO fields are properly synchronized with the entity '${entity.getName()}' attributes.`);
         return;
@@ -334,7 +426,7 @@ async function syncDtoFields(element) {
     // Build tree view model
     const treeNodes = engine.buildTreeNodes(discrepancies);
     // Present dialog with results
-    await presentSyncDialog(element, entity, discrepancies, treeNodes);
+    await presentSyncDialog(dtoElement, entity, discrepancies, treeNodes);
 }
 async function presentSyncDialog(dtoElement, entity, discrepancies, treeNodes) {
     const config = {

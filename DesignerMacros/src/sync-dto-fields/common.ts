@@ -3,26 +3,110 @@
 /// <reference path="../../typings/core.context.types.d.ts" />
 
 function isValidSyncElement(element: MacroApi.Context.IElementApi): boolean {
-    const validSpecializations = ["DTO", "Command", "Query"];
+    const validSpecializations = ["DTO", "Command", "Query", "Operation"];
     return validSpecializations.includes(element.specialization);
 }
 
 function getValidSpecializations(): string[] {
-    return ["DTO", "Command", "Query"];
+    return ["DTO", "Command", "Query", "Operation"];
 }
 
-function findAssociationsPointingToElement(dtoElement: MacroApi.Context.IElementApi): MacroApi.Context.IAssociationApi[] {
-    const package_ = dtoElement.getPackage();
-    if (!package_) return [];
+function extractDtoFromElement(element: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi | null {
+    // If element is already a DTO, Command, or Query, return it
+    if (["DTO", "Command", "Query"].includes(element.specialization)) {
+        return element;
+    }
     
+    // If element is an Operation, find the DTO parameter
+    if (element.specialization === "Operation") {
+        const parameters = element.getChildren("Parameter");
+        for (const param of parameters) {
+            const typeRef = param.typeReference;
+            if (typeRef && typeRef.isTypeFound()) {
+                const type = typeRef.getType() as MacroApi.Context.IElementApi;
+                if (["DTO", "Command", "Query"].includes(type.specialization)) {
+                    return type;
+                }
+            }
+        }
+    }
+    
+    return null;
+}
+
+function findAssociationsPointingToElement(searchElement: MacroApi.Context.IElementApi, dtoElement: MacroApi.Context.IElementApi): MacroApi.Context.IAssociationApi[] {
     const allAssociations: MacroApi.Context.IAssociationApi[] = [];
     const actionNames = ["Create Entity Action", "Update Entity Action", "Delete Entity Action", "Query Entity Action"];
     
-    // Get all associations from the element  
+    // First try to get associations from searchElement
     for (const actionName of actionNames) {
-        const results = dtoElement.getAssociations(actionName);
-        if (results && results.length > 0) {
-            allAssociations.push(...(results as any as MacroApi.Context.IAssociationApi[]));
+        try {
+            const results = searchElement.getAssociations(actionName);
+            
+            if (results && results.length > 0) {
+                // For Operations, don't filter - all associations from the operation are valid
+                // The DTO mapping is in the mapping source paths
+                if (searchElement.specialization === "Operation") {
+                    allAssociations.push(...(results as any as MacroApi.Context.IAssociationApi[]));
+                } else {
+                    // For DTOs/Commands/Queries, filter to associations that reference this element
+                    const filtered = (results as any as MacroApi.Context.IAssociationApi[]).filter(assoc => {
+                        try {
+                            const typeRef = assoc.typeReference;
+                            if (typeRef && typeRef.getType()) {
+                                const type = typeRef.getType() as MacroApi.Context.IElementApi;
+                                return type.id === dtoElement.id;
+                            }
+                        } catch (e) {
+                            // Skip associations that error out
+                        }
+                        return false;
+                    });
+                    if (filtered.length > 0) {
+                        allAssociations.push(...filtered);
+                    }
+                }
+            }
+        } catch (e) {
+            // Continue to next action type
+        }
+    }
+    
+    // If no associations found and searchElement is a DTO/Command/Query, walk up the hierarchy
+    if (allAssociations.length === 0 && ["DTO", "Command", "Query"].includes(searchElement.specialization)) {
+        let current: MacroApi.Context.IElementApi | null = searchElement;
+        let depth = 0;
+        while (current && allAssociations.length === 0 && depth < 10) {
+            // Try all action types on current element
+            for (const actionName of actionNames) {
+                try {
+                    const results = current.getAssociations(actionName);
+                    if (results && results.length > 0) {
+                        // Filter to only associations that reference our DTO element
+                        const filtered = (results as any as MacroApi.Context.IAssociationApi[]).filter(assoc => {
+                            try {
+                                const typeRef = assoc.typeReference;
+                                if (typeRef && typeRef.getType()) {
+                                    const type = typeRef.getType() as MacroApi.Context.IElementApi;
+                                    return type.id === dtoElement.id;
+                                }
+                            } catch (e) {
+                                // Skip associations that error out
+                            }
+                            return false;
+                        });
+                        if (filtered.length > 0) {
+                            allAssociations.push(...filtered);
+                        }
+                    }
+                } catch (e) {
+                    // Continue to next parent if this fails
+                }
+            }
+            
+            if (allAssociations.length > 0) break;
+            current = current.getParent() as MacroApi.Context.IElementApi || null;
+            depth++;
         }
     }
     

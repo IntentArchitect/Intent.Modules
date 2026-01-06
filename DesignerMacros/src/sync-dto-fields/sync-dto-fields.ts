@@ -8,32 +8,40 @@ async function syncDtoFields(element: MacroApi.Context.IElementApi): Promise<voi
     // Validate element
     if (!isValidSyncElement(element)) {
         await dialogService.error(
-            `Invalid element type.\n\nThe selected element must be a DTO, Command, or Query. The current element is a '${element.specialization}'.`
+            `Invalid element type.\n\nThe selected element must be a DTO, Command, Query, or Service Operation. The current element is a '${element.specialization}'.`
         );
         return;
     }
     
-    // Find action associations
-    const associations = findAssociationsPointingToElement(element);
+    // Extract DTO from element (handles both direct DTO/Command/Query and Operation with DTO parameter)
+    const dtoElement = extractDtoFromElement(element);
+    if (!dtoElement) {
+        await dialogService.error(
+            `Unable to find DTO.\n\nFor Operations, a DTO parameter must be present. The operation '${element.getName()}' does not have a DTO parameter.`
+        );
+        return;
+    }
+    
+    // Find action associations - use the original element if it's an Operation, otherwise use the DTO
+    const elementToSearchForAssociations = element.specialization === "Operation" ? element : dtoElement;
+    const associations = findAssociationsPointingToElement(elementToSearchForAssociations, dtoElement);
     
     // Try to get entity from associations
     let entity = getEntityFromAssociations(associations);
     
     // If no associations found, ask user to select entity
     if (!entity) {
-        // For now, show error - later we could add dialog for entity selection
         await dialogService.warn(
-            `No entity mappings found.\n\nThe '${element.getName()}' element does not have any associated entity actions (Create, Update, Delete, or Query Entity Actions).`
+            `No entity mappings found.\n\nThe '${dtoElement.getName()}' element does not have any associated entity actions (Create, Update, Delete, or Query Entity Actions).`
         );
         return;
     }
-    
     // Extract field mappings from associations (not from DTO fields directly)
     const fieldMappings = extractFieldMappings(associations);
     
     // Analyze discrepancies
     const engine = new FieldSyncEngine();
-    const discrepancies = engine.analyzeFieldDiscrepancies(element, entity, fieldMappings);
+    const discrepancies = engine.analyzeFieldDiscrepancies(dtoElement, entity, fieldMappings);
     
     if (discrepancies.length === 0) {
         await dialogService.info(
@@ -46,7 +54,7 @@ async function syncDtoFields(element: MacroApi.Context.IElementApi): Promise<voi
     const treeNodes = engine.buildTreeNodes(discrepancies);
     
     // Present dialog with results
-    await presentSyncDialog(element, entity, discrepancies, treeNodes);
+    await presentSyncDialog(dtoElement, entity, discrepancies, treeNodes);
 }
 
 async function presentSyncDialog(
