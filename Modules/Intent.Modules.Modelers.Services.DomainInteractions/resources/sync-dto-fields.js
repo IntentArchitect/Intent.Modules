@@ -46,7 +46,8 @@ function getDtoFields(dtoElement) {
             typeId: child.typeReference?.getTypeId(),
             typeDisplayText: child.typeReference?.display || "",
             isMapped: false, // Will be determined by extractFieldMappings
-            mappedToAttributeId: undefined
+            mappedToAttributeId: undefined,
+            icon: child.getIcon()
         };
         fields.push(field);
     }
@@ -65,7 +66,8 @@ function getEntityAttributes(entity) {
             id: child.id,
             name: child.getName(),
             typeId: child.typeReference?.getTypeId(),
-            typeDisplayText: child.typeReference?.display || ""
+            typeDisplayText: child.typeReference?.display || "",
+            icon: child.getIcon()
         };
         attributes.push(attribute);
     }
@@ -201,6 +203,7 @@ class FieldSyncEngine {
                     dtoFieldName: dtoField.name,
                     dtoFieldType: dtoField.typeDisplayText,
                     entityAttributeName: "N/A",
+                    icon: dtoField.icon,
                     reason: "Field exists in DTO but has no entity mapping"
                 };
                 discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
@@ -220,7 +223,8 @@ class FieldSyncEngine {
                     entityAttributeId: entityAttr.id,
                     entityAttributeName: entityAttr.name,
                     entityAttributeType: entityAttr.typeDisplayText,
-                    reason: "Entity attribute does not exist in DTO"
+                    reason: "Entity attribute does not exist in DTO",
+                    icon: entityAttr.icon
                 };
                 discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
                 discrepancies.push(discrepancy);
@@ -239,7 +243,8 @@ class FieldSyncEngine {
                             entityAttributeName: entityAttr.name,
                             dtoFieldType: mappedDtoField.typeDisplayText,
                             entityAttributeType: entityAttr.typeDisplayText,
-                            reason: "Field name differs from entity attribute name"
+                            reason: "Field name differs from entity attribute name",
+                            icon: mappedDtoField.icon
                         };
                         discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
                         discrepancies.push(discrepancy);
@@ -255,7 +260,8 @@ class FieldSyncEngine {
                             entityAttributeId: entityAttr.id,
                             entityAttributeName: entityAttr.name,
                             entityAttributeType: entityAttr.typeDisplayText,
-                            reason: "Field type differs from entity attribute type"
+                            reason: "Field type differs from entity attribute type",
+                            icon: mappedDtoField.icon
                         };
                         discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
                         discrepancies.push(discrepancy);
@@ -277,7 +283,8 @@ class FieldSyncEngine {
                 label: displayName,
                 specializationId: "sync-field-discrepancy",
                 isExpanded: true,
-                isSelected: false
+                isSelected: false,
+                icon: discrepancy.icon
             };
             // Add display properties dynamically (not part of ISelectableTreeNode type)
             node.displayFunction = discrepancy.displayFunction;
@@ -300,39 +307,34 @@ class FieldSyncEngine {
 /// <reference path="../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../typings/core.context.types.d.ts" />
 async function syncDtoFields(element) {
-    try {
-        // Validate element
-        if (!isValidSyncElement(element)) {
-            await dialogService.error(`Invalid element type.\n\nThe selected element must be a DTO, Command, or Query. The current element is a '${element.specialization}'.`);
-            return;
-        }
-        // Find action associations
-        const associations = findAssociationsPointingToElement(element);
-        // Try to get entity from associations
-        let entity = getEntityFromAssociations(associations);
-        // If no associations found, ask user to select entity
-        if (!entity) {
-            // For now, show error - later we could add dialog for entity selection
-            await dialogService.warn(`No entity mappings found.\n\nThe '${element.getName()}' element does not have any associated entity actions (Create, Update, Delete, or Query Entity Actions).`);
-            return;
-        }
-        // Extract field mappings from associations (not from DTO fields directly)
-        const fieldMappings = extractFieldMappings(associations);
-        // Analyze discrepancies
-        const engine = new FieldSyncEngine();
-        const discrepancies = engine.analyzeFieldDiscrepancies(element, entity, fieldMappings);
-        if (discrepancies.length === 0) {
-            await dialogService.info(`All fields are synchronized.\n\nThe DTO fields are properly synchronized with the entity '${entity.getName()}' attributes.`);
-            return;
-        }
-        // Build tree view model
-        const treeNodes = engine.buildTreeNodes(discrepancies);
-        // Present dialog with results
-        await presentSyncDialog(element, entity, discrepancies, treeNodes);
+    // Validate element
+    if (!isValidSyncElement(element)) {
+        await dialogService.error(`Invalid element type.\n\nThe selected element must be a DTO, Command, or Query. The current element is a '${element.specialization}'.`);
+        return;
     }
-    catch (error) {
-        await dialogService.error(`An error occurred: ${error}`);
+    // Find action associations
+    const associations = findAssociationsPointingToElement(element);
+    // Try to get entity from associations
+    let entity = getEntityFromAssociations(associations);
+    // If no associations found, ask user to select entity
+    if (!entity) {
+        // For now, show error - later we could add dialog for entity selection
+        await dialogService.warn(`No entity mappings found.\n\nThe '${element.getName()}' element does not have any associated entity actions (Create, Update, Delete, or Query Entity Actions).`);
+        return;
     }
+    // Extract field mappings from associations (not from DTO fields directly)
+    const fieldMappings = extractFieldMappings(associations);
+    // Analyze discrepancies
+    const engine = new FieldSyncEngine();
+    const discrepancies = engine.analyzeFieldDiscrepancies(element, entity, fieldMappings);
+    if (discrepancies.length === 0) {
+        await dialogService.info(`All fields are synchronized.\n\nThe DTO fields are properly synchronized with the entity '${entity.getName()}' attributes.`);
+        return;
+    }
+    // Build tree view model
+    const treeNodes = engine.buildTreeNodes(discrepancies);
+    // Present dialog with results
+    await presentSyncDialog(element, entity, discrepancies, treeNodes);
 }
 async function presentSyncDialog(dtoElement, entity, discrepancies, treeNodes) {
     const config = {
@@ -360,11 +362,12 @@ async function presentSyncDialog(dtoElement, entity, discrepancies, treeNodes) {
                 treeViewOptions: {
                     rootNode: {
                         id: "root",
-                        label: `DTO: ${dtoElement.getName()}`,
+                        label: dtoElement.getName(),
                         specializationId: "dto-sync-root",
                         children: treeNodes,
                         isExpanded: true,
-                        isSelected: false
+                        isSelected: false,
+                        icon: dtoElement.getIcon()
                     },
                     height: "400px",
                     isMultiSelect: true,

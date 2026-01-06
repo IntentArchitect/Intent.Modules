@@ -12,6 +12,7 @@ interface IFieldDiscrepancy {
     entityAttributeType?: string;
     mappingPath?: string[];
     reason?: string;
+    icon: MacroApi.Context.IIcon;
     displayFunction?: (context: any) => MacroApi.Context.IDisplayTextComponent[];
 }
 
@@ -37,6 +38,7 @@ interface IDtoField {
     typeDisplayText?: string;
     isMapped: boolean;
     mappedToAttributeId?: string;
+    icon: MacroApi.Context.IIcon;
 }
 
 interface IEntityAttribute {
@@ -44,6 +46,7 @@ interface IEntityAttribute {
     name: string;
     typeId?: string;
     typeDisplayText?: string;
+    icon: MacroApi.Context.IIcon;
 }
 
 interface IDiscrepancyDetails {
