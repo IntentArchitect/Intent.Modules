@@ -4,69 +4,48 @@
 
 function formatDiscrepancy(discrepancy: IFieldDiscrepancy): MacroApi.Context.IDisplayTextComponent[] {
     const components: MacroApi.Context.IDisplayTextComponent[] = [];
-    
-    // Status badge with color and icon
     const statusInfo = getDiscrepancyStatusInfo(discrepancy.type);
-    components.push({
-        text: `[${discrepancy.type}]`,
-        cssClass: `text-highlight ${statusInfo.cssClass}`,
-        color: statusInfo.color
-    });
     
-    components.push({
-        text: " ",
-        cssClass: ""
-    });
-    
-    // DTO field name
-    components.push({
-        text: discrepancy.dtoFieldName,
-        cssClass: "text-highlight keyword"
-    });
-    
-    // Separator and arrow
-    components.push({
-        text: " → ",
-        cssClass: "text-highlight muted"
-    });
-    
-    // Entity attribute name
-    components.push({
-        text: discrepancy.entityAttributeName,
-        cssClass: "text-highlight typeref"
-    });
-    
-    // Type information if applicable
-    if (discrepancy.dtoFieldType || discrepancy.entityAttributeType) {
-        components.push({
-            text: " ",
-            cssClass: ""
-        });
-        
-        if (discrepancy.type === "TYPE_CHANGED") {
-            components.push({
-                text: `(${discrepancy.dtoFieldType} → ${discrepancy.entityAttributeType})`,
-                cssClass: "text-highlight annotation"
-            });
-        } else if (discrepancy.dtoFieldType) {
-            components.push({
-                text: `(${discrepancy.dtoFieldType})`,
-                cssClass: "text-highlight muted"
-            });
-        }
-    }
-    
-    // Reason if provided
-    if (discrepancy.reason) {
-        components.push({
-            text: " - ",
-            cssClass: "text-highlight muted"
-        });
-        
-        components.push({
-            text: discrepancy.reason,
-            cssClass: "text-highlight muted"
-        });
+    switch (discrepancy.type) {
+        case "NEW":
+            // EntityName: type [NEW]
+            components.push({ text: discrepancy.entityAttributeName, cssClass: "text-highlight" });
+            components.push({ text: ": ", cssClass: "text-highlight annotation" });
+            components.push({ text: discrepancy.entityAttributeType || "", cssClass: "text-highlight keyword" });
+            components.push({ text: " " });
+            components.push({ text: "[NEW]", color: statusInfo.color });
+            break;
+            
+        case "RENAMED":
+            // CurrentName → EntityName: type [RENAMED]
+            components.push({ text: discrepancy.dtoFieldName, cssClass: "text-highlight" });
+            components.push({ text: " → ", cssClass: "text-highlight muted" });
+            components.push({ text: discrepancy.entityAttributeName, cssClass: "text-highlight" });
+            components.push({ text: ": ", cssClass: "text-highlight annotation" });
+            components.push({ text: discrepancy.entityAttributeType || "", cssClass: "text-highlight keyword" });
+            components.push({ text: " " });
+            components.push({ text: "[RENAMED]", color: statusInfo.color });
+            break;
+            
+        case "TYPE_CHANGED":
+            // FieldName: currentType → entityType [TYPE CHANGED]
+            components.push({ text: discrepancy.dtoFieldName, cssClass: "text-highlight" });
+            components.push({ text: ": ", cssClass: "text-highlight annotation" });
+            components.push({ text: discrepancy.dtoFieldType || "", cssClass: "text-highlight keyword" });
+            components.push({ text: " → ", cssClass: "text-highlight muted" });
+            components.push({ text: discrepancy.entityAttributeType || "", cssClass: "text-highlight keyword" });
+            components.push({ text: " " });
+            components.push({ text: "[TYPE CHANGED]", color: statusInfo.color });
+            break;
+            
+        case "DELETED":
+            // FieldName: type [DELETED]
+            components.push({ text: discrepancy.dtoFieldName, cssClass: "text-highlight" });
+            components.push({ text: ": ", cssClass: "text-highlight annotation" });
+            components.push({ text: discrepancy.dtoFieldType || "", cssClass: "text-highlight keyword" });
+            components.push({ text: " " });
+            components.push({ text: "[DELETED]", color: statusInfo.color });
+            break;
     }
     
     return components;

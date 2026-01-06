@@ -52,8 +52,8 @@ function getDtoFields(dtoElement: MacroApi.Context.IElementApi): IDtoField[] {
             name: child.getName(),
             typeId: child.typeReference?.getTypeId(),
             typeDisplayText: child.typeReference?.display || "",
-            isMapped: child.isMapped(),
-            mappedToAttributeId: child.isMapped() ? child.getMapping().getElement().id : undefined
+            isMapped: false, // Will be determined by extractFieldMappings
+            mappedToAttributeId: undefined
         };
         fields.push(field);
     }
@@ -66,6 +66,12 @@ function getEntityAttributes(entity: MacroApi.Context.IElementApi): IEntityAttri
     const children = entity.getChildren("Attribute");
     
     for (const child of children) {
+        // Skip managed keys (auto-generated primary keys)
+        const isManagedKey = child.hasMetadata("is-managed-key") && child.getMetadata("is-managed-key") === "true";
+        if (isManagedKey) {
+            continue;
+        }
+        
         const attribute: IEntityAttribute = {
             id: child.id,
             name: child.getName(),
@@ -78,18 +84,39 @@ function getEntityAttributes(entity: MacroApi.Context.IElementApi): IEntityAttri
     return attributes;
 }
 
-function extractFieldMappings(dtoElement: MacroApi.Context.IElementApi): IFieldMapping[] {
+function extractFieldMappings(associations: MacroApi.Context.IAssociationApi[]): IFieldMapping[] {
     const mappings: IFieldMapping[] = [];
-    const dtoFields = getDtoFields(dtoElement);
     
-    for (const field of dtoFields) {
-        if (field.isMapped && field.mappedToAttributeId) {
-            mappings.push({
-                sourcePath: [field.id],
-                targetPath: [field.mappedToAttributeId],
-                sourceFieldId: field.id,
-                targetAttributeId: field.mappedToAttributeId
-            });
+    // Get advanced mappings from each association
+    for (const association of associations) {
+        try {
+            const advancedMappings = association.getAdvancedMappings();
+            
+            for (const advancedMapping of advancedMappings) {
+                const mappedEnds = advancedMapping.getMappedEnds();
+                
+                for (const mappedEnd of mappedEnds) {
+                    // Get source and target paths
+                    const sourcePath = mappedEnd.sourcePath;
+                    const targetPath = mappedEnd.targetPath;
+                    
+                    // Only process if we have valid paths with at least one element
+                    if (sourcePath && sourcePath.length > 0 && targetPath && targetPath.length > 0) {
+                        const sourceFieldId = sourcePath[sourcePath.length - 1].id;
+                        const targetAttributeId = targetPath[targetPath.length - 1].id;
+                        
+                        mappings.push({
+                            sourcePath: sourcePath.map(p => p.id),
+                            targetPath: targetPath.map(p => p.id),
+                            sourceFieldId: sourceFieldId,
+                            targetAttributeId: targetAttributeId
+                        });
+                    }
+                }
+            }
+        } catch (error) {
+            // Skip associations without advanced mappings
+            continue;
         }
     }
     

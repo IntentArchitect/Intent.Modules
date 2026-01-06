@@ -29,8 +29,8 @@ async function syncDtoFields(element: MacroApi.Context.IElementApi): Promise<voi
             return;
         }
         
-        // Extract field mappings from DTO fields
-        const fieldMappings = extractFieldMappings(element);
+        // Extract field mappings from associations (not from DTO fields directly)
+        const fieldMappings = extractFieldMappings(associations);
         
         // Analyze discrepancies
         const engine = new FieldSyncEngine();
