@@ -4,6 +4,19 @@
 /// <reference path="../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../typings/core.context.types.d.ts" />
 
+// Extended tree node interface with display function support
+interface IExtendedTreeNode extends MacroApi.Context.ISelectableTreeNode {
+    displayFunction?: () => MacroApi.Context.IDisplayTextComponent[];
+    displayMetadata?: {
+        type: string;
+        dtoFieldName: string;
+        dtoFieldType?: string;
+        entityAttributeName: string;
+        entityAttributeType?: string;
+        reason?: string;
+    };
+}
+
 class FieldSyncEngine {
     
     public analyzeFieldDiscrepancies(
@@ -20,6 +33,8 @@ class FieldSyncEngine {
         const mappedDtoToEntity = new Map<string, string>();
         const mappedEntityToDto = new Map<string, string>();
         
+        // SIDE EFFECT: This loop mutates dtoFields elements by setting isMapped and mappedToAttributeId
+        // This is intentional for performance to avoid creating new objects
         for (const mapping of mappings) {
             // Only consider field-level mappings (ignore invocation mappings to constructors)
             const sourceField = dtoFields.find(f => f.id === mapping.sourceFieldId);
@@ -130,24 +145,22 @@ class FieldSyncEngine {
                 ? discrepancy.entityAttributeName 
                 : discrepancy.dtoFieldName;
             
-            const node: MacroApi.Context.ISelectableTreeNode = {
+            const node: IExtendedTreeNode = {
                 id: discrepancy.id,
                 label: displayName,
                 specializationId: "sync-field-discrepancy",
                 isExpanded: true,
                 isSelected: false,
-                icon: discrepancy.icon
-            };
-            
-            // Add display properties dynamically (not part of ISelectableTreeNode type)
-            node.displayFunction = discrepancy.displayFunction;
-            node.displayMetadata = {
-                type: discrepancy.type,
-                dtoFieldName: discrepancy.dtoFieldName,
-                dtoFieldType: discrepancy.dtoFieldType,
-                entityAttributeName: discrepancy.entityAttributeName,
-                entityAttributeType: discrepancy.entityAttributeType,
-                reason: discrepancy.reason
+                icon: discrepancy.icon,
+                displayFunction: discrepancy.displayFunction,
+                displayMetadata: {
+                    type: discrepancy.type,
+                    dtoFieldName: discrepancy.dtoFieldName,
+                    dtoFieldType: discrepancy.dtoFieldType,
+                    entityAttributeName: discrepancy.entityAttributeName,
+                    entityAttributeType: discrepancy.entityAttributeType,
+                    reason: discrepancy.reason
+                }
             };
             
             nodes.push(node);

@@ -2,13 +2,30 @@
 /// <reference path="../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../typings/core.context.types.d.ts" />
 
+// Constants
+const VALID_SPECIALIZATIONS = ["DTO", "Command", "Query", "Operation"] as const;
+const ENTITY_ACTION_TYPES = [
+    "Create Entity Action", 
+    "Update Entity Action", 
+    "Delete Entity Action", 
+    "Query Entity Action"
+] as const;
+const MAX_HIERARCHY_DEPTH = 10;
+const ELEMENT_TYPE_NAMES = {
+    DTO_FIELD: "DTO-Field",
+    ATTRIBUTE: "Attribute",
+    PARAMETER: "Parameter"
+} as const;
+const METADATA_KEYS = {
+    IS_MANAGED_KEY: "is-managed-key"
+} as const;
+
 function isValidSyncElement(element: MacroApi.Context.IElementApi): boolean {
-    const validSpecializations = ["DTO", "Command", "Query", "Operation"];
-    return validSpecializations.includes(element.specialization);
+    return (VALID_SPECIALIZATIONS as readonly string[]).includes(element.specialization);
 }
 
 function getValidSpecializations(): string[] {
-    return ["DTO", "Command", "Query", "Operation"];
+    return [...VALID_SPECIALIZATIONS];
 }
 
 function extractDtoFromElement(element: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi | null {
@@ -19,7 +36,7 @@ function extractDtoFromElement(element: MacroApi.Context.IElementApi): MacroApi.
     
     // If element is an Operation, find the DTO parameter
     if (element.specialization === "Operation") {
-        const parameters = element.getChildren("Parameter");
+        const parameters = element.getChildren(ELEMENT_TYPE_NAMES.PARAMETER);
         for (const param of parameters) {
             const typeRef = param.typeReference;
             if (typeRef && typeRef.isTypeFound()) {
@@ -36,11 +53,11 @@ function extractDtoFromElement(element: MacroApi.Context.IElementApi): MacroApi.
 
 function findAssociationsPointingToElement(searchElement: MacroApi.Context.IElementApi, dtoElement: MacroApi.Context.IElementApi): MacroApi.Context.IAssociationApi[] {
     const allAssociations: MacroApi.Context.IAssociationApi[] = [];
-    const actionNames = ["Create Entity Action", "Update Entity Action", "Delete Entity Action", "Query Entity Action"];
     
     // First try to get associations from searchElement
-    for (const actionName of actionNames) {
+    for (const actionName of ENTITY_ACTION_TYPES) {
         try {
+            // SDK limitation: getAssociations() return type needs casting to IAssociationApi[]
             const results = searchElement.getAssociations(actionName);
             
             if (results && results.length > 0) {
@@ -76,10 +93,11 @@ function findAssociationsPointingToElement(searchElement: MacroApi.Context.IElem
     if (allAssociations.length === 0 && ["DTO", "Command", "Query"].includes(searchElement.specialization)) {
         let current: MacroApi.Context.IElementApi | null = searchElement;
         let depth = 0;
-        while (current && allAssociations.length === 0 && depth < 10) {
+        while (current && allAssociations.length === 0 && depth < MAX_HIERARCHY_DEPTH) {
             // Try all action types on current element
-            for (const actionName of actionNames) {
+            for (const actionName of ENTITY_ACTION_TYPES) {
                 try {
+                    // SDK limitation: getAssociations() return type needs casting to IAssociationApi[]
                     const results = current.getAssociations(actionName);
                     if (results && results.length > 0) {
                         // Filter to only associations that reference our DTO element
@@ -128,7 +146,7 @@ function getEntityFromAssociations(associations: MacroApi.Context.IAssociationAp
 
 function getDtoFields(dtoElement: MacroApi.Context.IElementApi): IDtoField[] {
     const fields: IDtoField[] = [];
-    const children = dtoElement.getChildren("DTO-Field");
+    const children = dtoElement.getChildren(ELEMENT_TYPE_NAMES.DTO_FIELD);
     
     for (const child of children) {
         const field: IDtoField = {
@@ -148,7 +166,7 @@ function getDtoFields(dtoElement: MacroApi.Context.IElementApi): IDtoField[] {
 
 function getEntityAttributes(entity: MacroApi.Context.IElementApi): IEntityAttribute[] {
     const attributes: IEntityAttribute[] = [];
-    const children = entity.getChildren("Attribute");
+    const children = entity.getChildren(ELEMENT_TYPE_NAMES.ATTRIBUTE);
     
     for (const child of children) {
         const attribute: IEntityAttribute = {
@@ -157,7 +175,7 @@ function getEntityAttributes(entity: MacroApi.Context.IElementApi): IEntityAttri
             typeId: child.typeReference?.getTypeId(),
             typeDisplayText: child.typeReference?.display || "",
             icon: child.getIcon(),
-            isManagedKey: child.hasMetadata("is-managed-key") && child.getMetadata("is-managed-key") === "true"
+            isManagedKey: child.hasMetadata(METADATA_KEYS.IS_MANAGED_KEY) && child.getMetadata(METADATA_KEYS.IS_MANAGED_KEY) === "true"
         };
         attributes.push(attribute);
     }

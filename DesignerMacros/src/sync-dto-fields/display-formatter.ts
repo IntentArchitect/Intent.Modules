@@ -2,6 +2,21 @@
 /// <reference path="../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../typings/core.context.types.d.ts" />
 
+// Discrepancy status colors
+const DISCREPANCY_COLORS = {
+    NEW: "#22c55e",      // Green
+    DELETED: "#ef4444",  // Red
+    RENAMED: "#007777",  // Teal
+    TYPE_CHANGED: "#f97316"  // Orange
+} as const;
+
+const DISCREPANCY_LABELS = {
+    NEW: "[NEW]",
+    DELETED: "[DELETED]",
+    RENAMED: "[RENAMED]",
+    TYPE_CHANGED: "[TYPE CHANGED]"
+} as const;
+
 function formatDiscrepancy(discrepancy: IFieldDiscrepancy): MacroApi.Context.IDisplayTextComponent[] {
     const components: MacroApi.Context.IDisplayTextComponent[] = [];
     const statusInfo = getDiscrepancyStatusInfo(discrepancy.type);
@@ -13,7 +28,7 @@ function formatDiscrepancy(discrepancy: IFieldDiscrepancy): MacroApi.Context.IDi
             components.push({ text: ": ", cssClass: "text-highlight annotation" });
             components.push({ text: discrepancy.entityAttributeType || "", cssClass: "text-highlight keyword" });
             components.push({ text: " " });
-            components.push({ text: "[NEW]", color: statusInfo.color });
+            components.push({ text: DISCREPANCY_LABELS.NEW, color: statusInfo.color });
             break;
             
         case "RENAMED":
@@ -24,7 +39,7 @@ function formatDiscrepancy(discrepancy: IFieldDiscrepancy): MacroApi.Context.IDi
             components.push({ text: ": ", cssClass: "text-highlight annotation" });
             components.push({ text: discrepancy.entityAttributeType || "", cssClass: "text-highlight keyword" });
             components.push({ text: " " });
-            components.push({ text: "[RENAMED]", color: statusInfo.color });
+            components.push({ text: DISCREPANCY_LABELS.RENAMED, color: statusInfo.color });
             break;
             
         case "TYPE_CHANGED":
@@ -35,7 +50,7 @@ function formatDiscrepancy(discrepancy: IFieldDiscrepancy): MacroApi.Context.IDi
             components.push({ text: " → ", cssClass: "text-highlight muted" });
             components.push({ text: discrepancy.entityAttributeType || "", cssClass: "text-highlight keyword" });
             components.push({ text: " " });
-            components.push({ text: "[TYPE CHANGED]", color: statusInfo.color });
+            components.push({ text: DISCREPANCY_LABELS.TYPE_CHANGED, color: statusInfo.color });
             break;
             
         case "DELETED":
@@ -44,7 +59,7 @@ function formatDiscrepancy(discrepancy: IFieldDiscrepancy): MacroApi.Context.IDi
             components.push({ text: ": ", cssClass: "text-highlight annotation" });
             components.push({ text: discrepancy.dtoFieldType || "", cssClass: "text-highlight keyword" });
             components.push({ text: " " });
-            components.push({ text: "[DELETED]", color: statusInfo.color });
+            components.push({ text: DISCREPANCY_LABELS.DELETED, color: statusInfo.color });
             break;
     }
     
@@ -54,18 +69,18 @@ function formatDiscrepancy(discrepancy: IFieldDiscrepancy): MacroApi.Context.IDi
 function getDiscrepancyStatusInfo(type: "NEW" | "DELETED" | "RENAMED" | "TYPE_CHANGED"): { color: string; cssClass: string } {
     switch (type) {
         case "NEW":
-            return { color: "#22c55e", cssClass: "keyword" }; // Green
+            return { color: DISCREPANCY_COLORS.NEW, cssClass: "keyword" };
         case "DELETED":
-            return { color: "#ef4444", cssClass: "typeref" }; // Red
+            return { color: DISCREPANCY_COLORS.DELETED, cssClass: "typeref" };
         case "RENAMED":
-            return { color: "#007777", cssClass: "annotation" }; // Teal
+            return { color: DISCREPANCY_COLORS.RENAMED, cssClass: "annotation" };
         case "TYPE_CHANGED":
-            return { color: "#f97316", cssClass: "muted" }; // Orange
+            return { color: DISCREPANCY_COLORS.TYPE_CHANGED, cssClass: "muted" };
         default:
-            return { color: "#6b7280", cssClass: "" }; // Gray
+            return { color: "#6b7280", cssClass: "" }; // Gray fallback
     }
 }
 
-function createDiscrepancyDisplayFunction(discrepancy: IFieldDiscrepancy): (context: any) => MacroApi.Context.IDisplayTextComponent[] {
-    return (context: any) => formatDiscrepancy(discrepancy);
+function createDiscrepancyDisplayFunction(discrepancy: IFieldDiscrepancy): () => MacroApi.Context.IDisplayTextComponent[] {
+    return () => formatDiscrepancy(discrepancy);
 }

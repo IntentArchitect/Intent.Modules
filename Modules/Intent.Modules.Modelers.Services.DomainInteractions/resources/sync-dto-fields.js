@@ -3,12 +3,28 @@
 /// <reference path="types.ts" />
 /// <reference path="../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../typings/core.context.types.d.ts" />
+// Constants
+const VALID_SPECIALIZATIONS = ["DTO", "Command", "Query", "Operation"];
+const ENTITY_ACTION_TYPES = [
+    "Create Entity Action",
+    "Update Entity Action",
+    "Delete Entity Action",
+    "Query Entity Action"
+];
+const MAX_HIERARCHY_DEPTH = 10;
+const ELEMENT_TYPE_NAMES = {
+    DTO_FIELD: "DTO-Field",
+    ATTRIBUTE: "Attribute",
+    PARAMETER: "Parameter"
+};
+const METADATA_KEYS = {
+    IS_MANAGED_KEY: "is-managed-key"
+};
 function isValidSyncElement(element) {
-    const validSpecializations = ["DTO", "Command", "Query", "Operation"];
-    return validSpecializations.includes(element.specialization);
+    return VALID_SPECIALIZATIONS.includes(element.specialization);
 }
 function getValidSpecializations() {
-    return ["DTO", "Command", "Query", "Operation"];
+    return [...VALID_SPECIALIZATIONS];
 }
 function extractDtoFromElement(element) {
     // If element is already a DTO, Command, or Query, return it
@@ -17,7 +33,7 @@ function extractDtoFromElement(element) {
     }
     // If element is an Operation, find the DTO parameter
     if (element.specialization === "Operation") {
-        const parameters = element.getChildren("Parameter");
+        const parameters = element.getChildren(ELEMENT_TYPE_NAMES.PARAMETER);
         for (const param of parameters) {
             const typeRef = param.typeReference;
             if (typeRef && typeRef.isTypeFound()) {
@@ -32,10 +48,10 @@ function extractDtoFromElement(element) {
 }
 function findAssociationsPointingToElement(searchElement, dtoElement) {
     const allAssociations = [];
-    const actionNames = ["Create Entity Action", "Update Entity Action", "Delete Entity Action", "Query Entity Action"];
     // First try to get associations from searchElement
-    for (const actionName of actionNames) {
+    for (const actionName of ENTITY_ACTION_TYPES) {
         try {
+            // SDK limitation: getAssociations() return type needs casting to IAssociationApi[]
             const results = searchElement.getAssociations(actionName);
             if (results && results.length > 0) {
                 // For Operations, or when searchElement IS the DTO (Commands/Queries), don't filter
@@ -72,10 +88,11 @@ function findAssociationsPointingToElement(searchElement, dtoElement) {
     if (allAssociations.length === 0 && ["DTO", "Command", "Query"].includes(searchElement.specialization)) {
         let current = searchElement;
         let depth = 0;
-        while (current && allAssociations.length === 0 && depth < 10) {
+        while (current && allAssociations.length === 0 && depth < MAX_HIERARCHY_DEPTH) {
             // Try all action types on current element
-            for (const actionName of actionNames) {
+            for (const actionName of ENTITY_ACTION_TYPES) {
                 try {
+                    // SDK limitation: getAssociations() return type needs casting to IAssociationApi[]
                     const results = current.getAssociations(actionName);
                     if (results && results.length > 0) {
                         // Filter to only associations that reference our DTO element
@@ -123,7 +140,7 @@ function getEntityFromAssociations(associations) {
 function getDtoFields(dtoElement) {
     var _a, _b;
     const fields = [];
-    const children = dtoElement.getChildren("DTO-Field");
+    const children = dtoElement.getChildren(ELEMENT_TYPE_NAMES.DTO_FIELD);
     for (const child of children) {
         const field = {
             id: child.id,
@@ -141,7 +158,7 @@ function getDtoFields(dtoElement) {
 function getEntityAttributes(entity) {
     var _a, _b;
     const attributes = [];
-    const children = entity.getChildren("Attribute");
+    const children = entity.getChildren(ELEMENT_TYPE_NAMES.ATTRIBUTE);
     for (const child of children) {
         const attribute = {
             id: child.id,
@@ -149,7 +166,7 @@ function getEntityAttributes(entity) {
             typeId: (_a = child.typeReference) === null || _a === void 0 ? void 0 : _a.getTypeId(),
             typeDisplayText: ((_b = child.typeReference) === null || _b === void 0 ? void 0 : _b.display) || "",
             icon: child.getIcon(),
-            isManagedKey: child.hasMetadata("is-managed-key") && child.getMetadata("is-managed-key") === "true"
+            isManagedKey: child.hasMetadata(METADATA_KEYS.IS_MANAGED_KEY) && child.getMetadata(METADATA_KEYS.IS_MANAGED_KEY) === "true"
         };
         attributes.push(attribute);
     }
@@ -191,6 +208,19 @@ function extractFieldMappings(associations) {
 /// <reference path="types.ts" />
 /// <reference path="../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../typings/core.context.types.d.ts" />
+// Discrepancy status colors
+const DISCREPANCY_COLORS = {
+    NEW: "#22c55e", // Green
+    DELETED: "#ef4444", // Red
+    RENAMED: "#007777", // Teal
+    TYPE_CHANGED: "#f97316" // Orange
+};
+const DISCREPANCY_LABELS = {
+    NEW: "[NEW]",
+    DELETED: "[DELETED]",
+    RENAMED: "[RENAMED]",
+    TYPE_CHANGED: "[TYPE CHANGED]"
+};
 function formatDiscrepancy(discrepancy) {
     const components = [];
     const statusInfo = getDiscrepancyStatusInfo(discrepancy.type);
@@ -201,7 +231,7 @@ function formatDiscrepancy(discrepancy) {
             components.push({ text: ": ", cssClass: "text-highlight annotation" });
             components.push({ text: discrepancy.entityAttributeType || "", cssClass: "text-highlight keyword" });
             components.push({ text: " " });
-            components.push({ text: "[NEW]", color: statusInfo.color });
+            components.push({ text: DISCREPANCY_LABELS.NEW, color: statusInfo.color });
             break;
         case "RENAMED":
             // CurrentName → EntityName: type [RENAMED]
@@ -211,7 +241,7 @@ function formatDiscrepancy(discrepancy) {
             components.push({ text: ": ", cssClass: "text-highlight annotation" });
             components.push({ text: discrepancy.entityAttributeType || "", cssClass: "text-highlight keyword" });
             components.push({ text: " " });
-            components.push({ text: "[RENAMED]", color: statusInfo.color });
+            components.push({ text: DISCREPANCY_LABELS.RENAMED, color: statusInfo.color });
             break;
         case "TYPE_CHANGED":
             // FieldName: currentType → entityType [TYPE CHANGED]
@@ -221,7 +251,7 @@ function formatDiscrepancy(discrepancy) {
             components.push({ text: " → ", cssClass: "text-highlight muted" });
             components.push({ text: discrepancy.entityAttributeType || "", cssClass: "text-highlight keyword" });
             components.push({ text: " " });
-            components.push({ text: "[TYPE CHANGED]", color: statusInfo.color });
+            components.push({ text: DISCREPANCY_LABELS.TYPE_CHANGED, color: statusInfo.color });
             break;
         case "DELETED":
             // FieldName: type [DELETED]
@@ -229,7 +259,7 @@ function formatDiscrepancy(discrepancy) {
             components.push({ text: ": ", cssClass: "text-highlight annotation" });
             components.push({ text: discrepancy.dtoFieldType || "", cssClass: "text-highlight keyword" });
             components.push({ text: " " });
-            components.push({ text: "[DELETED]", color: statusInfo.color });
+            components.push({ text: DISCREPANCY_LABELS.DELETED, color: statusInfo.color });
             break;
     }
     return components;
@@ -237,19 +267,19 @@ function formatDiscrepancy(discrepancy) {
 function getDiscrepancyStatusInfo(type) {
     switch (type) {
         case "NEW":
-            return { color: "#22c55e", cssClass: "keyword" }; // Green
+            return { color: DISCREPANCY_COLORS.NEW, cssClass: "keyword" };
         case "DELETED":
-            return { color: "#ef4444", cssClass: "typeref" }; // Red
+            return { color: DISCREPANCY_COLORS.DELETED, cssClass: "typeref" };
         case "RENAMED":
-            return { color: "#007777", cssClass: "annotation" }; // Teal
+            return { color: DISCREPANCY_COLORS.RENAMED, cssClass: "annotation" };
         case "TYPE_CHANGED":
-            return { color: "#f97316", cssClass: "muted" }; // Orange
+            return { color: DISCREPANCY_COLORS.TYPE_CHANGED, cssClass: "muted" };
         default:
-            return { color: "#6b7280", cssClass: "" }; // Gray
+            return { color: "#6b7280", cssClass: "" }; // Gray fallback
     }
 }
 function createDiscrepancyDisplayFunction(discrepancy) {
-    return (context) => formatDiscrepancy(discrepancy);
+    return () => formatDiscrepancy(discrepancy);
 }
 /// <reference path="types.ts" />
 /// <reference path="common.ts" />
@@ -264,6 +294,8 @@ class FieldSyncEngine {
         // Create a map of mapped DTO fields -> Entity attributes
         const mappedDtoToEntity = new Map();
         const mappedEntityToDto = new Map();
+        // SIDE EFFECT: This loop mutates dtoFields elements by setting isMapped and mappedToAttributeId
+        // This is intentional for performance to avoid creating new objects
         for (const mapping of mappings) {
             // Only consider field-level mappings (ignore invocation mappings to constructors)
             const sourceField = dtoFields.find(f => f.id === mapping.sourceFieldId);
@@ -370,17 +402,16 @@ class FieldSyncEngine {
                 specializationId: "sync-field-discrepancy",
                 isExpanded: true,
                 isSelected: false,
-                icon: discrepancy.icon
-            };
-            // Add display properties dynamically (not part of ISelectableTreeNode type)
-            node.displayFunction = discrepancy.displayFunction;
-            node.displayMetadata = {
-                type: discrepancy.type,
-                dtoFieldName: discrepancy.dtoFieldName,
-                dtoFieldType: discrepancy.dtoFieldType,
-                entityAttributeName: discrepancy.entityAttributeName,
-                entityAttributeType: discrepancy.entityAttributeType,
-                reason: discrepancy.reason
+                icon: discrepancy.icon,
+                displayFunction: discrepancy.displayFunction,
+                displayMetadata: {
+                    type: discrepancy.type,
+                    dtoFieldName: discrepancy.dtoFieldName,
+                    dtoFieldType: discrepancy.dtoFieldType,
+                    entityAttributeName: discrepancy.entityAttributeName,
+                    entityAttributeType: discrepancy.entityAttributeType,
+                    reason: discrepancy.reason
+                }
             };
             nodes.push(node);
         }
