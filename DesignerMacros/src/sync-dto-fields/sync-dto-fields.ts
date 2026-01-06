@@ -56,15 +56,9 @@ async function syncDtoFields(element: MacroApi.Context.IElementApi): Promise<voi
     // Present dialog with results
     const selectedNodeIds = await presentSyncDialog(dtoElement, entity, discrepancies, treeNodes);
     
-    console.log("Selected node IDs from dialog:", selectedNodeIds);
-    console.log("All discrepancy IDs:", discrepancies.map(d => d.id));
-    
     // Apply sync actions for selected discrepancies
     if (selectedNodeIds.length > 0) {
         const selectedDiscrepancies = discrepancies.filter(d => selectedNodeIds.includes(d.id));
-        console.log("Filtered discrepancies count:", selectedDiscrepancies.length);
-        console.log("Filtered discrepancies:", selectedDiscrepancies.map(d => ({ id: d.id, type: d.type })));
-        
         engine.applySyncActions(dtoElement, entity, selectedDiscrepancies, associations);
         
         await dialogService.info(
@@ -126,15 +120,9 @@ async function presentSyncDialog(
     
     const result = await dialogService.openForm(config);
     
-    console.log("Dialog result:", result);
-    console.log("Result type:", typeof result);
-    console.log("Result keys:", result ? Object.keys(result) : "null");
-    
     if (!result) {
         return [];
     }
-    
-    console.log("result.discrepancies:", result.discrepancies);
     
     // Tree-view returns selected IDs as a comma-separated string (single) or array (multiple)
     const selectedValue = result.discrepancies;
@@ -152,8 +140,6 @@ async function presentSyncDialog(
         // Multiple selections as array
         selectedIds = selectedValue;
     }
-    
-    console.log("Parsed selected IDs:", selectedIds);
     
     return selectedIds;
 }
