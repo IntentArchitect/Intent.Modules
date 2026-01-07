@@ -21,6 +21,24 @@ interface IFieldMapping {
     targetPath: string[];
     sourceFieldId: string;
     targetAttributeId: string;
+    mappingType?: string;
+}
+
+interface IPathTemplate {
+    sourceDepth: number;
+    targetDepth: number;
+    sourceElementTypes: string[];
+    targetElementTypes: string[];
+    signature: string;
+    mappingType: string;
+}
+
+interface IMappingContext {
+    sourceRoot: MacroApi.Context.IElementApi;
+    targetRoot: MacroApi.Context.IElementApi;
+    mappingType: string;
+    pathTemplate: IPathTemplate | null;
+    requiresIntermediateElements: boolean;
 }
 
 interface IDtoField {

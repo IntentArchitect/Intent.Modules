@@ -209,7 +209,9 @@ class FieldSyncEngine {
     private deleteField(dtoElement: MacroApi.Context.IElementApi, discrepancy: IFieldDiscrepancy): void {
         if (!discrepancy.dtoFieldId) return;
         
-        const field = dtoElement.getChildren(ELEMENT_TYPE_NAMES.DTO_FIELD)
+        // Dynamically determine child type
+        const childType = inferSourceElementChildType(dtoElement);
+        const field = dtoElement.getChildren(childType)
             .find(f => f.id === discrepancy.dtoFieldId);
         
         if (field) {
@@ -220,7 +222,9 @@ class FieldSyncEngine {
     private renameField(dtoElement: MacroApi.Context.IElementApi, discrepancy: IFieldDiscrepancy): void {
         if (!discrepancy.dtoFieldId || !discrepancy.entityAttributeName) return;
         
-        const field = dtoElement.getChildren(ELEMENT_TYPE_NAMES.DTO_FIELD)
+        // Dynamically determine child type
+        const childType = inferSourceElementChildType(dtoElement);
+        const field = dtoElement.getChildren(childType)
             .find(f => f.id === discrepancy.dtoFieldId);
         
         if (field) {
@@ -231,10 +235,14 @@ class FieldSyncEngine {
     private changeFieldType(dtoElement: MacroApi.Context.IElementApi, entity: MacroApi.Context.IElementApi, discrepancy: IFieldDiscrepancy): void {
         if (!discrepancy.dtoFieldId || !discrepancy.entityAttributeId) return;
         
-        const field = dtoElement.getChildren(ELEMENT_TYPE_NAMES.DTO_FIELD)
+        // Dynamically determine child types
+        const sourceChildType = inferSourceElementChildType(dtoElement);
+        const targetChildType = inferTargetElementChildType(entity);
+        
+        const field = dtoElement.getChildren(sourceChildType)
             .find(f => f.id === discrepancy.dtoFieldId);
         
-        const attribute = entity.getChildren(ELEMENT_TYPE_NAMES.ATTRIBUTE)
+        const attribute = entity.getChildren(targetChildType)
             .find(a => a.id === discrepancy.entityAttributeId);
         
         if (field && field.typeReference && attribute && attribute.typeReference) {
@@ -252,13 +260,16 @@ class FieldSyncEngine {
     ): void {
         if (!discrepancy.entityAttributeId || !discrepancy.entityAttributeName) return;
         
-        const attribute = entity.getChildren(ELEMENT_TYPE_NAMES.ATTRIBUTE)
+        // Dynamically determine target element type (not hard-coded to "Attribute")
+        const targetChildType = inferTargetElementChildType(entity);
+        const attribute = entity.getChildren(targetChildType)
             .find(a => a.id === discrepancy.entityAttributeId);
         
         if (!attribute) return;
         
-        // Create new DTO field using createElement
-        const newField = createElement(ELEMENT_TYPE_NAMES.DTO_FIELD, discrepancy.entityAttributeName, dtoElement.id);
+        // Dynamically determine source element type (not hard-coded to "DTO-Field")
+        const sourceChildType = inferSourceElementChildType(dtoElement);
+        const newField = createElement(sourceChildType, discrepancy.entityAttributeName, dtoElement.id);
         
         // Set type to match entity attribute
         if (newField.typeReference && attribute.typeReference) {
@@ -267,7 +278,7 @@ class FieldSyncEngine {
             newField.typeReference.setIsCollection(attribute.typeReference.isCollection);
         }
         
-        // Create mapping using advanced mapping API (for entity action associations)
+        // Create mapping using generic path resolution
         if (associations.length > 0) {
             const association = associations[0];
             try {
@@ -277,31 +288,100 @@ class FieldSyncEngine {
                     const targetMapping = advancedMappings[0];
                     
                     if (targetMapping) {
-                        const sourceElement = targetMapping.getSourceElement();
+                        // Extract existing mappings to learn the path structure
+                        const existingMappings = extractFieldMappings([association]);
                         
-                        // Determine source and target paths based on element type
+                        // Analyze path structure from existing mappings
+                        const pathTemplate = analyzePathStructure(existingMappings);
+                        
                         let sourcePath: string[];
                         let targetPath: string[];
+                        let mappingType = "Data Mapping"; // Default
                         
-                        if (sourceElement.specialization === "Operation") {
-                            // For Operations: [Operation, Parameter (containing DTO), DTO-Field]
-                            const dtoParameter = sourceElement.getChildren(ELEMENT_TYPE_NAMES.PARAMETER)
-                                .find(p => p.typeReference && p.typeReference.typeId === dtoElement.id);
+                        if (pathTemplate) {
+                            // Use learned template to build paths generically
+                            // Determine sourceRoot from first existing mapping
+                            let sourceRoot: MacroApi.Context.IElementApi;
+                            let targetRoot: MacroApi.Context.IElementApi;
                             
-                            if (!dtoParameter) {
-                                console.warn("Could not find parameter containing DTO for Operation");
-                                return;
+                            if (existingMappings.length > 0) {
+                                // Get the actual roots from the existing mappings
+                                const firstMapping = existingMappings[0];
+                                sourceRoot = lookup(firstMapping.sourcePath[0]);
+                                targetRoot = lookup(firstMapping.targetPath[0]);
+                                
+                                console.log(`=== Determined Source/Target Roots from Existing Mappings ===`);
+                                console.log(`Source root from mapping: ${sourceRoot.getName()} (${sourceRoot.specialization})`);
+                                console.log(`Target root from mapping: ${targetRoot.getName()} (${targetRoot.specialization})`);
+                            } else {
+                                // Fallback to using mapping's source/target elements
+                                sourceRoot = targetMapping.getSourceElement();
+                                targetRoot = targetMapping.getTargetElement();
+                                console.log(`Using targetMapping.getSourceElement/getTargetElement`);
                             }
                             
-                            sourcePath = [sourceElement.id, dtoParameter.id, newField.id];
-                            targetPath = [attribute.getParent()!.id, attribute.id];
+                            console.log(`=== Path Building Diagnostics ===`);
+                            console.log(`Template signature: ${pathTemplate.signature}`);
+                            console.log(`Source root: ${sourceRoot.getName()} (${sourceRoot.specialization})`);
+                            console.log(`Target root: ${targetRoot.getName()} (${targetRoot.specialization})`);
+                            console.log(`DTO element: ${dtoElement?.getName()} (${dtoElement?.specialization})`);
+                            console.log(`Template source depth: ${pathTemplate.sourceDepth}, element types: ${pathTemplate.sourceElementTypes.join(" > ")}`);
+                            
+                            const paths = buildPathUsingTemplate(
+                                pathTemplate,
+                                newField.id,
+                                attribute.id,
+                                sourceRoot,
+                                targetRoot,
+                                dtoElement  // Pass dtoElement for Operations with Parameters
+                            );
+                            
+                            sourcePath = paths.sourcePath;
+                            targetPath = paths.targetPath;
+                            mappingType = pathTemplate.mappingType;
+                            
+                            console.log(`Built source path: [${sourcePath.map((id, i) => {
+                                try {
+                                    return `${lookup(id).getName()}(${lookup(id).specialization})`;
+                                } catch {
+                                    return id;
+                                }
+                            }).join(", ")}]`);
+                            console.log(`Built target path: [${targetPath.map((id, i) => {
+                                try {
+                                    return `${lookup(id).getName()}(${lookup(id).specialization})`;
+                                } catch {
+                                    return id;
+                                }
+                            }).join(", ")}]`);
                         } else {
-                            // For Commands/Queries: just use field and attribute IDs
-                            sourcePath = [newField.id];
-                            targetPath = [attribute.id];
+                            // Fallback: infer from source element type
+                            const sourceElement = targetMapping.getSourceElement();
+                            
+                            if (sourceElement.specialization === "Operation") {
+                                // For Operations: try to find parameter containing DTO
+                                const dtoParameter = this.findDtoParameter(sourceElement, dtoElement);
+                                
+                                if (dtoParameter) {
+                                    sourcePath = [sourceElement.id, dtoParameter.id, newField.id];
+                                    targetPath = [entity.id, attribute.id];
+                                } else {
+                                    // Fallback: simpler path
+                                    sourcePath = [sourceElement.id, newField.id];
+                                    targetPath = [entity.id, attribute.id];
+                                }
+                            } else if (sourceElement.id === dtoElement.id) {
+                                // Direct DTO/Command/Query: simple path
+                                sourcePath = [newField.id];
+                                targetPath = [attribute.id];
+                            } else {
+                                // Parent element: two-level path
+                                sourcePath = [dtoElement.id, newField.id];
+                                targetPath = [entity.id, attribute.id];
+                            }
                         }
                         
-                        targetMapping.addMappedEnd("Data Mapping", sourcePath, targetPath);
+                        targetMapping.addMappedEnd(mappingType, sourcePath, targetPath);
                     }
                 }
             } catch (error) {
@@ -314,5 +394,18 @@ class FieldSyncEngine {
                 }
             }
         }
+    }
+    
+    private findDtoParameter(
+        operation: MacroApi.Context.IElementApi,
+        dtoElement: MacroApi.Context.IElementApi
+    ): MacroApi.Context.IElementApi | null {
+        const parameters = operation.getChildren(ELEMENT_TYPE_NAMES.PARAMETER);
+        for (const param of parameters) {
+            if (param.typeReference && param.typeReference.typeId === dtoElement.id) {
+                return param;
+            }
+        }
+        return null;
     }
 }
