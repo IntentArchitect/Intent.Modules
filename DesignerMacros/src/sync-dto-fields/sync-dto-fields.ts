@@ -5,6 +5,8 @@
 /// <reference path="../../typings/core.context.types.d.ts" />
 
 async function syncDtoFields(element: MacroApi.Context.IElementApi): Promise<void> {
+    console.log(`[syncDtoFields] Called with element: ${element.getName()}, specialization: ${element.specialization}`);
+    
     // Validate element
     if (!isValidSyncElement(element)) {
         await dialogService.error(
@@ -22,9 +24,13 @@ async function syncDtoFields(element: MacroApi.Context.IElementApi): Promise<voi
         return;
     }
     
+    console.log(`[syncDtoFields] DTO Element: ${dtoElement.getName()}`);
+    
     // Find action associations - use the original element if it's an Operation, otherwise use the DTO
     const elementToSearchForAssociations = element.specialization === "Operation" ? element : dtoElement;
     const associations = findAssociationsPointingToElement(elementToSearchForAssociations, dtoElement);
+    
+    console.log(`[syncDtoFields] Associations found: ${associations.length}`);
     
     // Try to get entity from associations
     let entity = getEntityFromAssociations(associations);
@@ -36,12 +42,38 @@ async function syncDtoFields(element: MacroApi.Context.IElementApi): Promise<voi
         );
         return;
     }
+    
+    console.log(`[syncDtoFields] Entity: ${entity.getName()}`);
+    
     // Extract field mappings from associations (not from DTO fields directly)
     const fieldMappings = extractFieldMappings(associations);
     
+    // Extract parameter mappings for Operations
+    let parameterMappings = new Map<string, string>();
+    if (element.specialization === "Operation") {
+        parameterMappings = extractParameterMappings(associations);
+    }
+    
     // Analyze discrepancies
     const engine = new FieldSyncEngine();
-    const discrepancies = engine.analyzeFieldDiscrepancies(dtoElement, entity, fieldMappings);
+    const fieldDiscrepancies = engine.analyzeFieldDiscrepancies(dtoElement, entity, fieldMappings);
+    console.log(`[syncDtoFields] Field discrepancies: ${fieldDiscrepancies.length}`);
+    fieldDiscrepancies.forEach((d, i) => console.log(`  [${i}] ${d.id}: ${d.type}`));
+
+    
+    // For Operations, also analyze primitive parameter discrepancies (casing mismatches)
+    let primitiveParamDiscrepancies: IFieldDiscrepancy[] = [];
+    if (element.specialization === "Operation") {
+        console.log(`[syncDtoFields] Operation detected, analyzing primitive parameter discrepancies...`);
+        primitiveParamDiscrepancies = engine.analyzePrimitiveParameterDiscrepancies(element, entity, parameterMappings);
+        console.log(`[syncDtoFields] Primitive param discrepancies: ${primitiveParamDiscrepancies.length}`);
+        primitiveParamDiscrepancies.forEach((d, i) => console.log(`  [${i}] ${d.id}: ${d.type}`));
+    }
+
+    
+    // Combine all discrepancies
+    const discrepancies = [...fieldDiscrepancies, ...primitiveParamDiscrepancies];
+    console.log(`[syncDtoFields] Total discrepancies after combining: ${discrepancies.length}`);
     
     if (discrepancies.length === 0) {
         await dialogService.info(
@@ -50,11 +82,14 @@ async function syncDtoFields(element: MacroApi.Context.IElementApi): Promise<voi
         return;
     }
     
-    // Build tree view model
-    const treeNodes = engine.buildTreeNodes(discrepancies);
+    // Build tree view model with hierarchical structure
+    console.log(`[syncDtoFields] Building hierarchical tree nodes...`);
+    const treeNodes = engine.buildHierarchicalTreeNodes(element, dtoElement, discrepancies);
+    console.log(`[syncDtoFields] Tree nodes built: ${treeNodes.length} root nodes`);
     
-    // Present dialog with results
-    const selectedNodeIds = await presentSyncDialog(dtoElement, entity, discrepancies, treeNodes);
+    // Present dialog with results - pass element for hierarchical rendering
+    const selectedNodeIds = await presentSyncDialog(element, dtoElement, entity, discrepancies, treeNodes);
+    console.log(`[syncDtoFields] Selected node IDs: ${selectedNodeIds.length}`);
     
     // Apply sync actions for selected discrepancies
     if (selectedNodeIds.length > 0) {
@@ -68,11 +103,23 @@ async function syncDtoFields(element: MacroApi.Context.IElementApi): Promise<voi
 }
 
 async function presentSyncDialog(
+    sourceElement: MacroApi.Context.IElementApi,
     dtoElement: MacroApi.Context.IElementApi,
     entity: MacroApi.Context.IElementApi,
     discrepancies: IFieldDiscrepancy[],
     treeNodes: MacroApi.Context.ISelectableTreeNode[]
 ): Promise<string[]> {
+    // Determine root display based on source element type
+    // If it's an Operation, show the Operation; otherwise show the DTO
+    const rootElement = sourceElement.specialization === "Operation" ? sourceElement : dtoElement;
+    const rootLabel = sourceElement.specialization === "Operation" 
+        ? `${sourceElement.getName()} (${sourceElement.specialization})`
+        : dtoElement.getName();
+    
+    const infoHint = sourceElement.specialization === "Operation"
+        ? `Synchronizing operation '${sourceElement.getName()}' with entity '${entity.getName()}' - Found ${discrepancies.length} field discrepancy(ies).`
+        : `Comparing DTO '${dtoElement.getName()}' with entity '${entity.getName()}' - Found ${discrepancies.length} field discrepancy(ies).`;
+    
     const config: MacroApi.Context.IDynamicFormConfig = {
         title: "Synchronize DTO Fields",
         icon: "fa-sync",
@@ -86,7 +133,7 @@ async function presentSyncDialog(
                 fieldType: "alert",
                 label: "",
                 isHidden: false,
-                hint: `Comparing DTO '${dtoElement.getName()}' with entity '${entity.getName()}' - Found ${discrepancies.length} field discrepancy(ies).`,
+                hint: infoHint,
                 hintType: "info"
             },
             {
@@ -98,12 +145,12 @@ async function presentSyncDialog(
                 treeViewOptions: {
                     rootNode: {
                         id: "root",
-                        label: dtoElement.getName(),
+                        label: rootLabel,
                         specializationId: "dto-sync-root",
                         children: treeNodes,
                         isExpanded: true,
                         isSelected: false,
-                        icon: dtoElement.getIcon()
+                        icon: rootElement.getIcon()
                     },
                     height: "400px",
                     isMultiSelect: true,

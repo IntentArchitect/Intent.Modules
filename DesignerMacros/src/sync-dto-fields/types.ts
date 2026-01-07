@@ -59,3 +59,34 @@ interface IEntityAttribute {
     icon: MacroApi.Context.IIcon;
     isManagedKey?: boolean;
 }
+
+// Hierarchical structures for generic parameter and field representation
+interface IFieldNode {
+    id: string;
+    name: string;
+    type: "Primitive" | "DTO" | "Complex";
+    typeId?: string;
+    typeDisplayText?: string;
+    icon: MacroApi.Context.IIcon;
+    isMapped?: boolean;
+    mappedToId?: string;
+    children?: IFieldNode[];  // For nested structures (DTO fields, nested objects)
+}
+
+interface IParameterNode {
+    id: string;
+    name: string;
+    type: "Primitive" | "DTO" | "Complex";
+    typeId?: string;
+    typeDisplayText?: string;
+    icon: MacroApi.Context.IIcon;
+    children?: IFieldNode[];  // Only for DTO or Complex types
+    isMapped?: boolean;
+    mappedToId?: string;
+}
+
+interface IMappableElement {
+    element: MacroApi.Context.IElementApi;  // The Operation, Command, Query, etc.
+    parameters: IParameterNode[];            // All parameters in the element
+    targetEntity: MacroApi.Context.IElementApi | null;  // The target (Class) being mapped to
+}

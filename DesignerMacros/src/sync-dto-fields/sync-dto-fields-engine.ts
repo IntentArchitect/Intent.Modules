@@ -26,8 +26,12 @@ class FieldSyncEngine {
     ): IFieldDiscrepancy[] {
         const discrepancies: IFieldDiscrepancy[] = [];
         
+        console.log(`[analyzeFieldDiscrepancies] DTO: ${dtoElement.getName()}, Entity: ${entity.getName()}, Mappings: ${mappings.length}`);
+        
         const dtoFields = getDtoFields(dtoElement);
         const entityAttributes = getEntityAttributes(entity);
+        
+        console.log(`  DTO fields: ${dtoFields.length}, Entity attributes: ${entityAttributes.length}`);
         
         // Create a map of mapped DTO fields -> Entity attributes
         const mappedDtoToEntity = new Map<string, string>();
@@ -45,12 +49,14 @@ class FieldSyncEngine {
                 mappedEntityToDto.set(mapping.targetAttributeId, mapping.sourceFieldId);
                 sourceField.isMapped = true;
                 sourceField.mappedToAttributeId = mapping.targetAttributeId;
+                console.log(`  Mapped: ${sourceField.name} -> ${targetAttr.name}`);
             }
         }
         
         // Check for DELETED fields (DTO fields not mapped to any entity attribute)
         for (const dtoField of dtoFields) {
             if (!dtoField.isMapped) {
+                console.log(`  Found DELETED field: ${dtoField.name}`);
                 const discrepancy: IFieldDiscrepancy = {
                     id: `deleted-${dtoField.id}`,
                     type: "DELETED",
@@ -77,6 +83,7 @@ class FieldSyncEngine {
                 }
                 
                 // NEW: Entity attribute not in DTO
+                console.log(`  Found NEW attribute: ${entityAttr.name}`);
                 const discrepancy: IFieldDiscrepancy = {
                     id: `new-${entityAttr.id}`,
                     type: "NEW",
@@ -136,11 +143,227 @@ class FieldSyncEngine {
         return discrepancies;
     }
     
+    public analyzePrimitiveParameterDiscrepancies(
+        operation: MacroApi.Context.IElementApi,
+        entity: MacroApi.Context.IElementApi,
+        parameterMappings: Map<string, string>
+    ): IFieldDiscrepancy[] {
+        const discrepancies: IFieldDiscrepancy[] = [];
+        const parameters = operation.getChildren("Parameter");
+        const entityAttributes = getEntityAttributes(entity);
+        
+        console.log(`[analyzePrimitiveParameterDiscrepancies] Operation: ${operation.getName()}, Parameters count: ${parameters?.length || 0}, Entity attributes count: ${entityAttributes.length}, Parameter mappings: ${parameterMappings.size}`);
+        
+        if (!parameters) {
+            return discrepancies;
+        }
+        
+        for (const param of parameters) {
+            const paramName = param.getName();
+            const paramId = param.id;
+            const paramType = param.typeReference?.isTypeFound() ? param.typeReference.getType() as MacroApi.Context.IElementApi : null;
+            const paramTypeSpec = paramType?.specialization || "primitive";
+            
+            console.log(`  [param] name: "${paramName}", id: ${paramId}, type: ${paramTypeSpec}`);
+            
+            // Skip complex types - they're handled by field analysis
+            if (paramType && (paramType.specialization === "DTO" || paramType.specialization === "Class")) {
+                console.log(`    → Skipping (complex type)`);
+                continue;
+            }
+            
+            // Check if this parameter has an explicit mapping
+            const mappedAttributeId = parameterMappings.get(paramId);
+            if (mappedAttributeId) {
+                const mappedAttr = entityAttributes.find(a => a.id === mappedAttributeId);
+                if (mappedAttr) {
+                    // Parameter is already mapped
+                    if (mappedAttr.name !== paramName) {
+                        // Casing difference detected
+                        console.log(`    → Casing mismatch: "${paramName}" mapped to "${mappedAttr.name}"`);
+                        const discrepancy: IFieldDiscrepancy = {
+                            id: `param-casing-${paramId}`,
+                            type: "RENAMED",
+                            dtoFieldId: paramId,
+                            dtoFieldName: paramName,
+                            dtoFieldType: param.typeReference?.display || "Unknown",
+                            entityAttributeId: mappedAttr.id,
+                            entityAttributeName: mappedAttr.name,
+                            entityAttributeType: mappedAttr.typeDisplayText,
+                            reason: `Parameter name casing differs from mapped entity attribute name`,
+                            icon: param.getIcon()
+                        };
+                        discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
+                        discrepancies.push(discrepancy);
+                    } else {
+                        console.log(`    → Already mapped correctly to "${mappedAttr.name}"`);
+                    }
+                }
+            } else {
+                // No explicit mapping - try case-insensitive name matching
+                const matchingAttr = entityAttributes.find(attr => 
+                    attr.name.toLowerCase() === paramName.toLowerCase()
+                );
+                
+                if (matchingAttr) {
+                    // Check if names differ in casing
+                    if (matchingAttr.name !== paramName) {
+                        console.log(`    → Casing mismatch: "${paramName}" vs "${matchingAttr.name}"`);
+                        const discrepancy: IFieldDiscrepancy = {
+                            id: `param-casing-${paramId}`,
+                            type: "RENAMED",
+                            dtoFieldId: paramId,
+                            dtoFieldName: paramName,
+                            dtoFieldType: param.typeReference?.display || "Unknown",
+                            entityAttributeId: matchingAttr.id,
+                            entityAttributeName: matchingAttr.name,
+                            entityAttributeType: matchingAttr.typeDisplayText,
+                            reason: `Parameter name casing differs from entity attribute name`,
+                            icon: param.getIcon()
+                        };
+                        discrepancy.displayFunction = createDiscrepancyDisplayFunction(discrepancy);
+                        discrepancies.push(discrepancy);
+                    } else {
+                        console.log(`    → Names match exactly (no casing difference)`);
+                    }
+                } else {
+                    console.log(`    → No attribute found (no mapping, no case-insensitive match)`);
+                }
+            }
+        }
+        
+        console.log(`[analyzePrimitiveParameterDiscrepancies] Total discrepancies found: ${discrepancies.length}`);
+        return discrepancies;
+    }
+    
     public buildTreeNodes(discrepancies: IFieldDiscrepancy[]): MacroApi.Context.ISelectableTreeNode[] {
         const nodes: MacroApi.Context.ISelectableTreeNode[] = [];
         
         for (const discrepancy of discrepancies) {
             // Use the actual field name, not "[Missing]"
+            const displayName = discrepancy.type === "NEW" 
+                ? discrepancy.entityAttributeName 
+                : discrepancy.dtoFieldName;
+            
+            const node: IExtendedTreeNode = {
+                id: discrepancy.id,
+                label: displayName,
+                specializationId: "sync-field-discrepancy",
+                isExpanded: true,
+                isSelected: false,
+                icon: discrepancy.icon,
+                displayFunction: discrepancy.displayFunction,
+                displayMetadata: {
+                    type: discrepancy.type,
+                    dtoFieldName: discrepancy.dtoFieldName,
+                    dtoFieldType: discrepancy.dtoFieldType,
+                    entityAttributeName: discrepancy.entityAttributeName,
+                    entityAttributeType: discrepancy.entityAttributeType,
+                    reason: discrepancy.reason
+                }
+            };
+            
+            nodes.push(node);
+        }
+        
+        return nodes;
+    }
+    
+    public buildHierarchicalTreeNodes(
+        sourceElement: MacroApi.Context.IElementApi,
+        dtoElement: MacroApi.Context.IElementApi,
+        discrepancies: IFieldDiscrepancy[]
+    ): MacroApi.Context.ISelectableTreeNode[] {
+        console.log(`[buildHierarchicalTreeNodes] Source: ${sourceElement.getName()} (${sourceElement.specialization}), Discrepancies: ${discrepancies.length}`);
+        
+        // If source is an Operation, show parameter hierarchy
+        if (sourceElement.specialization === "Operation") {
+            console.log(`  → Building operation parameter tree`);
+            return this.buildOperationParameterTree(sourceElement, discrepancies);
+        } else {
+            // For other elements (DTO, Command, Query), use flat structure
+            return this.buildTreeNodes(discrepancies);
+        }
+    }
+    
+    private buildOperationParameterTree(operation: MacroApi.Context.IElementApi, discrepancies: IFieldDiscrepancy[]): MacroApi.Context.ISelectableTreeNode[] {
+        const parameterNodes: MacroApi.Context.ISelectableTreeNode[] = [];
+        
+        // Get all parameters from the operation
+        const parameters = operation.getChildren("Parameter");
+        
+        console.log(`[buildOperationParameterTree] Processing operation: ${operation.getName()}, parameters count: ${parameters?.length || 0}`);
+        console.log(`[buildOperationParameterTree] Discrepancies passed in: ${discrepancies.length}`);
+        discrepancies.forEach((d, i) => console.log(`  [${i}] id: ${d.id}, name: ${d.dtoFieldName}, type: ${d.type}`));
+        
+        if (!parameters) {
+            // Fallback to flat structure if no parameters found
+            return this.buildTreeNodes(discrepancies);
+        }
+        
+        // We need to figure out which parameter references a complex type (DTO)
+        // Only DTOs/complex types will have field discrepancies
+        let dtoParameter: MacroApi.Context.IElementApi | null = null;
+        let dtoElement: MacroApi.Context.IElementApi | null = null;
+        
+        for (const param of parameters) {
+            if (param.typeReference && param.typeReference.isTypeFound()) {
+                const paramType = param.typeReference.getType() as MacroApi.Context.IElementApi;
+                // Check if this parameter references a DTO or similar complex type
+                if (paramType.specialization === "DTO" || paramType.specialization === "Class") {
+                    dtoParameter = param;
+                    dtoElement = paramType;
+                    break;
+                }
+            }
+        }
+        
+        console.log(`[buildOperationParameterTree] DTO Parameter found: ${dtoParameter ? dtoParameter.getName() : "NONE"}`);
+        
+        // Group parameters and their discrepancies
+        for (const param of parameters) {
+            const paramName = param.getName();
+            const paramId = param.id;
+            
+            // Determine which discrepancies belong to this parameter
+            let parameterDiscrepancies: IFieldDiscrepancy[] = [];
+            
+            // If this parameter references a DTO, assign all field discrepancies to it
+            if (param.id === dtoParameter?.id && dtoElement) {
+                parameterDiscrepancies = discrepancies.filter(d => !d.id.startsWith("param-casing-"));
+                console.log(`  [param "${paramName}"] is DTO parameter, assigned ${parameterDiscrepancies.length} field discrepancies`);
+            } else {
+                // For primitive parameters, check for casing discrepancies
+                const expectedCasingId = `param-casing-${param.id}`;
+                parameterDiscrepancies = discrepancies.filter(d => d.id === expectedCasingId);
+                console.log(`  [param "${paramName}"] looking for casing discrepancy with id: ${expectedCasingId}, found: ${parameterDiscrepancies.length}`);
+            }
+            
+            if (parameterDiscrepancies.length > 0) {
+                // Create a node for this parameter
+                const paramNode: IExtendedTreeNode = {
+                    id: `param-${param.id}`,
+                    label: `${param.getName()}`,
+                    specializationId: "sync-parameter-node",
+                    isExpanded: true,
+                    isSelected: false,
+                    icon: param.getIcon(),
+                    children: this.buildDiscrepancyNodes(parameterDiscrepancies)
+                };
+                
+                console.log(`  → Created parameter node with ${parameterDiscrepancies.length} children`);
+                parameterNodes.push(paramNode);
+            }
+        }
+        
+        console.log(`[buildOperationParameterTree] Final node count: ${parameterNodes.length}`);
+        return parameterNodes.length > 0 ? parameterNodes : this.buildTreeNodes(discrepancies);
+    }
+    
+    private buildDiscrepancyNodes(discrepancies: IFieldDiscrepancy[]): MacroApi.Context.ISelectableTreeNode[] {
+        const nodes: MacroApi.Context.ISelectableTreeNode[] = [];
+        
+        for (const discrepancy of discrepancies) {
             const displayName = discrepancy.type === "NEW" 
                 ? discrepancy.entityAttributeName 
                 : discrepancy.dtoFieldName;
