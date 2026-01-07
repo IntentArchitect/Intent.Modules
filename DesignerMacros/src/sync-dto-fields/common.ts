@@ -30,21 +30,30 @@ function getValidSpecializations(): string[] {
 }
 
 function extractDtoFromElement(element: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi | null {
+    console.log(`[extractDtoFromElement] Element: ${element.getName()} (${element.specialization})`);
+    
     if ((DTO_LIKE_SPECIALIZATIONS as readonly string[]).includes(element.specialization)) {
+        console.log(`  → Element itself is DTO-like`);
         return element;
     }
     
     if (element.specialization === "Operation") {
         const parameters = element.getChildren(ELEMENT_TYPE_NAMES.PARAMETER);
+        console.log(`  → Operation with ${parameters.length} parameters, searching for DTO...`);
+        
         for (const param of parameters) {
             const typeRef = param.typeReference;
             if (typeRef && typeRef.isTypeFound()) {
                 const type = typeRef.getType() as MacroApi.Context.IElementApi;
+                console.log(`    - Param "${param.getName()}" type: ${type.specialization}`);
+                
                 if ((DTO_LIKE_SPECIALIZATIONS as readonly string[]).includes(type.specialization)) {
+                    console.log(`      → Found DTO: ${type.getName()}`);
                     return type;
                 }
             }
         }
+        console.log(`  → No DTO parameter found`);
     }
     
     return null;
@@ -53,6 +62,8 @@ function extractDtoFromElement(element: MacroApi.Context.IElementApi): MacroApi.
 function findAssociationsPointingToElement(searchElement: MacroApi.Context.IElementApi, dtoElement: MacroApi.Context.IElementApi): MacroApi.Context.IAssociationApi[] {
     const allAssociations: MacroApi.Context.IAssociationApi[] = [];
     
+    console.log(`[findAssociationsPointingToElement] Search element: ${searchElement.getName()} (${searchElement.specialization}), DTO: ${dtoElement.getName()}`);
+    
     // First try to get associations from searchElement
     for (const actionName of ENTITY_ACTION_TYPES) {
         try {
@@ -60,6 +71,7 @@ function findAssociationsPointingToElement(searchElement: MacroApi.Context.IElem
             const results = searchElement.getAssociations(actionName);
             
             if (results && results.length > 0) {
+                console.log(`  Found ${results.length} associations of type '${actionName}'`);
                 // Operations have associations directly (typeReference points to entity, not DTO)
                 // Commands/Queries also have associations directly when searchElement IS the DTO
                 // In both cases, accept all associations without filtering
@@ -79,6 +91,7 @@ function findAssociationsPointingToElement(searchElement: MacroApi.Context.IElem
                         }
                         return false;
                     });
+                    console.log(`  Filtered to ${filtered.length} associations matching DTO`);
                     if (filtered.length > 0) {
                         allAssociations.push(...filtered);
                     }
@@ -88,6 +101,8 @@ function findAssociationsPointingToElement(searchElement: MacroApi.Context.IElem
             // SDK method may fail on certain association types
         }
     }
+    
+    console.log(`[findAssociationsPointingToElement] Total associations: ${allAssociations.length}`);
     
     // If no associations found and searchElement is a DTO/Command/Query, walk up the hierarchy
     if (allAssociations.length === 0 && (DTO_LIKE_SPECIALIZATIONS as readonly string[]).includes(searchElement.specialization)) {
@@ -132,14 +147,19 @@ function findAssociationsPointingToElement(searchElement: MacroApi.Context.IElem
 }
 
 function getEntityFromAssociations(associations: MacroApi.Context.IAssociationApi[]): MacroApi.Context.IElementApi | null {
+    console.log(`[getEntityFromAssociations] Processing ${associations.length} associations`);
+    
     if (associations.length === 0) return null;
     
     // Association typeReference points to the entity being acted upon
     const association = associations[0];
     if (association.typeReference && association.typeReference.isTypeFound()) {
-        return association.typeReference.getType() as MacroApi.Context.IElementApi;
+        const entity = association.typeReference.getType() as MacroApi.Context.IElementApi;
+        console.log(`  Found entity: ${entity.getName()}`);
+        return entity;
     }
     
+    console.log(`  No entity found`);
     return null;
 }
 
@@ -148,7 +168,10 @@ function getDtoFields(dtoElement: MacroApi.Context.IElementApi): IDtoField[] {
     
     // Dynamically determine child type instead of hard-coding "DTO-Field"
     const childType = inferSourceElementChildType(dtoElement);
+    console.log(`[getDtoFields] DTO: ${dtoElement.getName()}, Child type: ${childType}`);
+    
     const children = dtoElement.getChildren(childType);
+    console.log(`  Found ${children.length} fields`);
     
     for (const child of children) {
         const field: IDtoField = {
@@ -171,7 +194,10 @@ function getEntityAttributes(entity: MacroApi.Context.IElementApi): IEntityAttri
     
     // Dynamically determine child type instead of hard-coding "Attribute"
     const childType = inferTargetElementChildType(entity);
+    console.log(`[getEntityAttributes] Entity: ${entity.getName()}, Child type: ${childType}`);
+    
     const children = entity.getChildren(childType);
+    console.log(`  Found ${children.length} attributes`);
     
     for (const child of children) {
         const attribute: IEntityAttribute = {
@@ -227,6 +253,55 @@ function extractFieldMappings(associations: MacroApi.Context.IAssociationApi[]):
     }
     
     return mappings;
+}
+
+function extractParameterMappings(associations: MacroApi.Context.IAssociationApi[]): Map<string, string> {
+    // Returns a map of Parameter ID -> Attribute ID for primitive parameter mappings
+    const parameterMappings = new Map<string, string>();
+    
+    console.log(`[extractParameterMappings] Processing ${associations.length} associations`);
+    
+    for (const association of associations) {
+        try {
+            const advancedMappings = association.getAdvancedMappings();
+            
+            for (const advancedMapping of advancedMappings) {
+                const mappedEnds = advancedMapping.getMappedEnds();
+                
+                for (const mappedEnd of mappedEnds) {
+                    const sourcePath = mappedEnd.sourcePath;
+                    const targetPath = mappedEnd.targetPath;
+                    
+                    if (!sourcePath || sourcePath.length === 0 || !targetPath || targetPath.length === 0) {
+                        continue;
+                    }
+                    
+                    // Check if the LAST element in the source path is a Parameter (not a DTO-Field or other field)
+                    const lastSourceElement = sourcePath[sourcePath.length - 1];
+                    const sourceSpecialization = (lastSourceElement as any).specialization || "unknown";
+                    
+                    console.log(`  Checking path: last source = ${lastSourceElement.name} (${sourceSpecialization}), length = ${sourcePath.length}`);
+                    
+                    // Only process if last source element is a Parameter (primitive parameters have direct mappings)
+                    if (sourceSpecialization === "Parameter") {
+                        const paramId = lastSourceElement.id;
+                        const targetAttributeId = targetPath[targetPath.length - 1].id;
+                        
+                        parameterMappings.set(paramId, targetAttributeId);
+                        console.log(`    ✓ Parameter ${lastSourceElement.name} -> Attribute ${targetPath[targetPath.length - 1].name}`);
+                    } else {
+                        console.log(`    ✗ Skipping (source is ${sourceSpecialization}, not Parameter)`);
+                    }
+                }
+            }
+        } catch (error) {
+            // Association may not have advanced mappings configured
+            continue;
+        }
+    }
+    
+    console.log(`[extractParameterMappings] Found ${parameterMappings.size} parameter mappings`);
+    return parameterMappings;
 }
 
 function inferSourceElementChildType(sourceRoot: MacroApi.Context.IElementApi): string {
@@ -500,3 +575,183 @@ function findIntermediateElement(parent: MacroApi.Context.IElementApi, expectedT
     return null;
 }
 
+// Phase 2/3: Generic hierarchical parameter discovery
+function discoverParameters(element: MacroApi.Context.IElementApi): IParameterNode[] {
+    const parameters: IParameterNode[] = [];
+    
+    const parameterChildren = element.getChildren("Parameter");
+    if (!parameterChildren) {
+        return parameters;
+    }
+    
+    for (const param of parameterChildren) {
+        const paramNode: IParameterNode = {
+            id: param.id,
+            name: param.getName(),
+            type: "Primitive",  // Default
+            typeId: param.typeReference?.getTypeId(),
+            typeDisplayText: param.typeReference?.display || "Unknown",
+            icon: param.getIcon()
+        };
+        
+        // Determine parameter type and discover nested fields
+        if (param.typeReference && param.typeReference.isTypeFound()) {
+            const paramType = param.typeReference.getType() as MacroApi.Context.IElementApi;
+            const paramSpecialization = paramType.specialization;
+            
+            // Check if it's a DTO or similar complex type
+            if (paramSpecialization === "DTO" || paramSpecialization === "Class") {
+                paramNode.type = paramSpecialization === "DTO" ? "DTO" : "Complex";
+                paramNode.typeId = paramType.id;
+                
+                // Recursively discover fields in the DTO/Complex type
+                paramNode.children = discoverFields(paramType, 0);
+            } else {
+                // It's a primitive type
+                paramNode.type = "Primitive";
+            }
+        }
+        
+        parameters.push(paramNode);
+    }
+    
+    return parameters;
+}
+
+function discoverFields(element: MacroApi.Context.IElementApi, depth: number): IFieldNode[] {
+    if (depth > MAX_HIERARCHY_DEPTH) {
+        return [];
+    }
+    
+    const fields: IFieldNode[] = [];
+    
+    // Determine what child type to look for based on element specialization
+    let childType = "DTO-Field";
+    if (element.specialization === "Class") {
+        childType = "Attribute";
+    }
+    
+    const fieldChildren = element.getChildren(childType);
+    if (!fieldChildren) {
+        return fields;
+    }
+    
+    for (const field of fieldChildren) {
+        const fieldNode: IFieldNode = {
+            id: field.id,
+            name: field.getName(),
+            type: "Primitive",  // Default
+            typeId: field.typeReference?.getTypeId(),
+            typeDisplayText: field.typeReference?.display || "Unknown",
+            icon: field.getIcon()
+        };
+        
+        // Check if field type is complex
+        if (field.typeReference && field.typeReference.isTypeFound()) {
+            const fieldType = field.typeReference.getType() as MacroApi.Context.IElementApi;
+            const fieldSpecialization = fieldType.specialization;
+            
+            if (fieldSpecialization === "DTO" || fieldSpecialization === "Class") {
+                fieldNode.type = fieldSpecialization === "DTO" ? "DTO" : "Complex";
+                fieldNode.typeId = fieldType.id;
+                
+                // Recursively discover nested fields
+                fieldNode.children = discoverFields(fieldType, depth + 1);
+            }
+        }
+        
+        fields.push(fieldNode);
+    }
+    
+    return fields;
+}
+
+// Find the mappable element (the one with advanced mappings) and target entity
+function findMappableElement(element: MacroApi.Context.IElementApi): IMappableElement | null {
+    const associations = findAssociationsPointingToElement(element, element);
+    const targetEntity = getEntityFromAssociations(associations);
+    
+    if (!targetEntity) {
+        return null;
+    }
+    
+    const parameters = discoverParameters(element);
+    
+    return {
+        element: element,
+        parameters: parameters,
+        targetEntity: targetEntity
+    };
+}
+// Flatten hierarchical parameters to extract all mappable fields
+function flattenParametersToFields(parameters: IParameterNode[]): IFieldNode[] {
+    const fields: IFieldNode[] = [];
+    
+    for (const param of parameters) {
+        if (param.type === "Primitive") {
+            // Primitive parameters map directly
+            fields.push({
+                id: param.id,
+                name: param.name,
+                type: "Primitive",
+                typeId: param.typeId,
+                typeDisplayText: param.typeDisplayText,
+                icon: param.icon,
+                isMapped: param.isMapped,
+                mappedToId: param.mappedToId
+            });
+        } else if (param.children) {
+            // Complex parameters have fields that can be mapped
+            fields.push(...flattenFieldNodes(param.children));
+        }
+    }
+    
+    return fields;
+}
+
+function flattenFieldNodes(nodes: IFieldNode[]): IFieldNode[] {
+    const fields: IFieldNode[] = [];
+    
+    for (const node of nodes) {
+        fields.push({
+            id: node.id,
+            name: node.name,
+            type: node.type,
+            typeId: node.typeId,
+            typeDisplayText: node.typeDisplayText,
+            icon: node.icon,
+            isMapped: node.isMapped,
+            mappedToId: node.mappedToId
+        });
+        
+        if (node.children) {
+            fields.push(...flattenFieldNodes(node.children));
+        }
+    }
+    
+    return fields;
+}
+
+// Helper to find a parameter node by ID in the hierarchy
+function findParameterNodeById(parameters: IParameterNode[], id: string): IParameterNode | null {
+    for (const param of parameters) {
+        if (param.id === id) {
+            return param;
+        }
+    }
+    return null;
+}
+
+// Helper to find a field node by ID in the hierarchy
+function findFieldNodeById(fields: IFieldNode[], id: string): IFieldNode | null {
+    for (const field of fields) {
+        if (field.id === id) {
+            return field;
+        }
+        if (field.children) {
+            const found = findFieldNodeById(field.children, id);
+            if (found) return found;
+        }
+    }
+    return null;
+}
