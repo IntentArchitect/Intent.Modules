@@ -1,7 +1,8 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Intent.Utils;
@@ -10,32 +11,60 @@ using NuGet.Configuration;
 using NuGet.Frameworks;
 using NuGet.Protocol.Core.Types;
 using NuGet.Versioning;
+using static Intent.ModuleBuilder.CSharp.Api.PackageVersionModelStereotypeExtensions.PackageVersionSettings;
 
 namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
 {
     internal class NuGetApi
     {
+        private static readonly IReadOnlyList<NuGetFramework> Frameworks;
+        private static readonly IReadOnlyList<NuGetFramework> FallBackFrameworks = [NuGetFramework.Parse("Any,Version=v0.0")];
 
-        private static List<NuGetFramework> _frameworks = new List<NuGetFramework>
+        static NuGetApi()
+        {
+            Frameworks = GetFrameworks();
+        }
+
+        /// <summary>
+        /// By reading these from the api generated for the enum, it will automatically pick up new
+        /// .NET Frameworks added to the stereotype option rather than having to remember to update
+        /// another list in here.
+        /// </summary>
+        private static ReadOnlyCollection<NuGetFramework> GetFrameworks()
+        {
+            var enumNames = Enum.GetNames<MinimumTargetFrameworkOptionsEnum>();
+            var list = new List<NuGetFramework>(enumNames.Length);
+
+            foreach (var name in enumNames)
             {
-                NuGetFramework.Parse(".NETStandard,Version=v2.0"),
-                NuGetFramework.Parse(".NETStandard,Version=v2.1"),
-                NuGetFramework.Parse(".NETCoreApp,Version=v6.0"),
-                NuGetFramework.Parse(".NETCoreApp,Version=v7.0"),
-                NuGetFramework.Parse(".NETCoreApp,Version=v8.0"),
-                NuGetFramework.Parse(".NETCoreApp,Version=v9.0")
-            };
+                var number = name.Split("V").LastOrDefault();
+                if (string.IsNullOrWhiteSpace(number))
+                {
+                    continue;
+                }
 
-        private static List<NuGetFramework> _fallBackFrameworks = new List<NuGetFramework>
-            {
-                NuGetFramework.Parse("Any,Version=v0.0"),
-            };
+                var majorMinorVersion = $"{number[..^1]}.{number[^1]}";
 
+                if (name.StartsWith("NETStandardVersionV"))
+                {
+                    list.Add(NuGetFramework.Parse($".NETStandard,Version=v{majorMinorVersion}"));
+
+                }
+                else if (name.StartsWith("NETCoreAppVersionV"))
+                {
+                    list.Add(NuGetFramework.Parse($".NETCoreApp,Version=v{majorMinorVersion}"));
+                }
+            }
+
+            return list
+                .OrderBy(x => x.Version.Major)
+                .ThenBy(x => x.Version.Minor)
+                .ToArray()
+                .AsReadOnly();
+        }
 
         public static async Task<List<NugetVersionInfo>> GetLatestVersionsForFrameworksAsync(string packageName)
         {
-
-
             Logging.Log.Info($"Executing: Fetching Package Details : {packageName}");
             var providers = new List<Lazy<INuGetResourceProvider>>();
             providers.AddRange(Repository.Provider.GetCoreV3());
@@ -44,25 +73,31 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
             var sourceRepository = new SourceRepository(packageSource, providers);
 
             var packageMetadataResource = await sourceRepository.GetResourceAsync<PackageMetadataResource>();
-            var searchMetadata = await packageMetadataResource.GetMetadataAsync(packageName, includePrerelease: false, includeUnlisted: false, new SourceCacheContext(), NullLogger.Instance, CancellationToken.None);
-            
+            var searchMetadata = (await packageMetadataResource.GetMetadataAsync(
+                packageName,
+                includePrerelease: false,
+                includeUnlisted: false,
+                new SourceCacheContext(),
+                NullLogger.Instance,
+                CancellationToken.None)).ToArray();
+
             if (!searchMetadata.Any())
             {
                 //Try pre-releases
-                searchMetadata = await packageMetadataResource.GetMetadataAsync(packageName, includePrerelease: true, includeUnlisted: false, new SourceCacheContext(), NullLogger.Instance, CancellationToken.None);
+                searchMetadata = (await packageMetadataResource.GetMetadataAsync(packageName, includePrerelease: true, includeUnlisted: false, new SourceCacheContext(), NullLogger.Instance, CancellationToken.None)).ToArray();
             }
 
-            var versionsForFrameworks = GetLatestVersionPerFramework(searchMetadata, _frameworks);
+            var versionsForFrameworks = GetLatestVersionPerFramework(searchMetadata, Frameworks);
 
             if (!versionsForFrameworks.Any())
             {
-                versionsForFrameworks = GetLatestVersionPerFramework(searchMetadata, _fallBackFrameworks, forceOne: true);
+                versionsForFrameworks = GetLatestVersionPerFramework(searchMetadata, FallBackFrameworks, forceOne: true);
             }
 
             return versionsForFrameworks;
         }
 
-        private static List<NugetVersionInfo> GetLatestVersionPerFramework(IEnumerable<IPackageSearchMetadata>? searchMetadata, List<NuGetFramework> frameworks, bool forceOne = false)
+        private static List<NugetVersionInfo> GetLatestVersionPerFramework(IReadOnlyList<IPackageSearchMetadata>? searchMetadata, IReadOnlyList<NuGetFramework> frameworks, bool forceOne = false)
         {
             var result = new List<NugetVersionInfo>();
             foreach (var framework in frameworks)
@@ -75,15 +110,19 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
                 if (latestPackage != null)
                 {
                     var dependencies = latestPackage.DependencySets.FirstOrDefault(d => d.TargetFramework == framework);
-                    result.Add(new NugetVersionInfo(framework, latestPackage.Identity.Version, dependencies.Packages.Select(p => new NugetDependencyInfo(p.Id, p.VersionRange)).ToList()));
+                    if (dependencies != null)
+                    {
+                        result.Add(new NugetVersionInfo(framework, latestPackage.Identity.Version, dependencies.Packages.Select(p => new NugetDependencyInfo(p.Id, p.VersionRange)).ToList()));
+                    }
                 }
             }
             if (forceOne && result.Count == 0)
             {
-                var latestPackage = searchMetadata?
-                    .OrderByDescending(p => p.Identity.Version)
-                    .FirstOrDefault();
-                result.Add(new NugetVersionInfo(_fallBackFrameworks[0], latestPackage.Identity.Version, new List<NugetDependencyInfo>()));
+                var latestPackage = searchMetadata?.OrderByDescending(p => p.Identity.Version).FirstOrDefault();
+                if (latestPackage != null)
+                {
+                    result.Add(new NugetVersionInfo(FallBackFrameworks[0], latestPackage.Identity.Version, new List<NugetDependencyInfo>()));
+                }
             }
 
             result = result.OrderBy(n => n.FrameworkVersion.Version).ToList();
@@ -92,7 +131,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
             // MediatR 11.1.1 is configured for 2.1
             // if you are running 2.1 you can use 12.4.1 because it works for 2.0
             // Step 2: Remove entries where a higher framework has a lower version than a lower framework
-            int i = 0;
+            var i = 0;
             while (i < result.Count - 1)
             {
                 var current = result[i];
@@ -140,7 +179,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
             }
 
             public string PackageName { get; }
-            public VersionRange Version { get; } 
+            public VersionRange Version { get; }
 
         }
     }
