@@ -1,6 +1,10 @@
+### Version 3.7.6
+
+- Improvement: Added support to NuGet package synchronization for .NET 10.
+
 ### Version 3.7.5
 
-- Improvement: Added .Net 10 as NuGget framework target.
+- Improvement: Added .NET 10 as NuGet framework target.
 
 ### Version 3.7.4
 
