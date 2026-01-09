@@ -1,0 +1,19 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class
+    {
+        public void Method()
+        {
+            document.Security.Add(
+                new Dictionary<string, string>
+                {
+                    {
+                        "key",
+                        "value"
+                    }
+                });
+        }
+    }
+}

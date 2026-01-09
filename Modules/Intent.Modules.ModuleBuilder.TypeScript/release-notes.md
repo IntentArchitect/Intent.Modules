@@ -1,3 +1,7 @@
+### Version 3.5.3
+
+- Improvement: Updated default output template to have correct constructor for TypeScriptFile.
+
 ### Version 3.5.2
 
 - Improvement: The templates for the templates no longer use T4.

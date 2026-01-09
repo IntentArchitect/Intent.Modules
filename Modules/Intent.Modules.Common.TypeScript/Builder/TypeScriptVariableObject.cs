@@ -69,8 +69,9 @@ public class TypescriptVariableObject : TypescriptVariableValue
         var codeBlocksText = codeBlocks.ConcatCode(",", indentation);
         var fieldSepearatorSpacing = _fieldsSeparator == TypescriptCodeSeparatorType.None ? " " : "";
         var fieldSepearatorEndingSpacing = _fieldsSeparator == TypescriptCodeSeparatorType.None ? " " : $"{indentation.TrimEnd(Indentation)}";
+        var fieldSepearatorStartSpacing = _fieldsSeparator == TypescriptCodeSeparatorType.None ? Indentation : $"{indentation.TrimEnd(Indentation)}";
 
-        return @$"{indentation.TrimEnd(Indentation)}{{{fieldSepearatorSpacing}{codeBlocksText}{GetSeperator()}{fieldSepearatorEndingSpacing}}}";
+        return @$"{fieldSepearatorStartSpacing}{{{fieldSepearatorSpacing}{codeBlocksText}{GetSeperator()}{fieldSepearatorEndingSpacing}}}";
     }
 
     private string GetSeperator() => _fieldsSeparator switch

@@ -6,7 +6,7 @@ using Intent.Modules.Common.TypeScript.Templates;
 
 namespace Intent.Modules.Common.TypeScript.Builder;
 
-public class TypescriptFile
+public class TypescriptFile : IHasTypescriptStatements
 {
     private readonly List<(Action Action, int Order)> _configurations = new();
     private readonly List<(Action Action, int Order)> _configurationsAfter = new();
@@ -191,6 +191,22 @@ public class TypescriptFile
         return this;
     }
 
+    public TypescriptFile AddStatement(TypescriptStatement statement, Action<TypescriptStatement>? configure = null)
+    {
+        Statements.Add(statement);
+        statement.Parent = this;
+        configure?.Invoke(statement);
+        return this;
+    }
+
+    public TypescriptFile InsertStatement(int index, TypescriptStatement statement, Action<TypescriptStatement>? configure = null)
+    {
+        Statements.Insert(index, statement);
+        statement.Parent = this;
+        configure?.Invoke(statement);
+        return this;
+    }
+
     public TypeScriptFileConfig GetConfig(string typeName)
     {
         return new TypeScriptFileConfig(
@@ -306,6 +322,12 @@ public class TypescriptFile
         {
             sb.AppendLine();
             sb.Append(variable);
+        }
+
+        foreach (var statement in Statements)
+        {
+            sb.AppendLine();
+            sb.Append(statement);
         }
 
         return sb.ToString();

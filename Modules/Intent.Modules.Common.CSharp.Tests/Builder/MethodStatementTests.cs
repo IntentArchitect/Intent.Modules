@@ -24,8 +24,8 @@ public class MethodStatementTests
             })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
-    } 
-    
+    }
+
     [Fact]
     public async Task MultiLineTernary()
     {
@@ -38,18 +38,18 @@ public class MethodStatementTests
                     m.AddParameter("string", "key");
                     m.AddStatement("var contentService = provider.GetService<IContentService>();");
                     m.AddReturn(new CSharpConditionalExpressionStatement(
-                        "contentService is not null", 
+                        "contentService is not null",
                         new CSharpConditionalExpressionStatement(
                             "contentService.GetSpecificContent(key) is not null",
                             "contentService.GetSpecificContent(key).GetValue()",
-                            "contentService.GetDefaultContent()"), 
+                            "contentService.GetDefaultContent()"),
                         "contentService.GetDefaultContent()"));
                 });
             })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
-    } 
-    
+    }
+
     [Fact]
     public async Task MethodChainingTest()
     {
@@ -80,7 +80,7 @@ public class MethodStatementTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
-    
+
     [Fact]
     public async Task InvocationStatement_MethodChaining()
     {
@@ -98,7 +98,7 @@ public class MethodStatementTests
                         .AddInvocation("MethodThree")
                         .AddInvocation("MethodFour", s => s.OnNewLine())
                     );
-                    
+
                     m.AddStatement(new CSharpObjectInitializerBlock("new Service")
                         .AddInitStatement("State", new CSharpStatement("service").AddInvocation("GetState", c => c.OnNewLine()))
                         .AddInvocation("RegisterService"));
@@ -110,7 +110,7 @@ public class MethodStatementTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
-    
+
     [Fact]
     public async Task InvocationStatement_MethodChaining_DeeperNesting()
     {
@@ -138,7 +138,7 @@ public class MethodStatementTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
-    
+
     [Fact]
     public async Task AllIfVariantStatementsTest()
     {
@@ -160,7 +160,7 @@ public class MethodStatementTests
         await Verifier.Verify(fileBuilder.ToString());
     }
 
-   
+
 
     [Fact]
     public async Task UsingBlocksTest()
@@ -178,7 +178,7 @@ public class MethodStatementTests
         await Verifier.Verify(fileBuilder.ToString());
     }
 
-    
+
 
     [Fact]
     public async Task ComplexIfConditionsTest()
@@ -214,8 +214,8 @@ public class MethodStatementTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
-    
-     [Fact]
+
+    [Fact]
     public async Task InvocationWithMultipleArgsStatementTest()
     {
         var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
@@ -271,7 +271,7 @@ public class MethodStatementTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
-    
+
     [Fact]
     public async Task ForEachLoopsTest()
     {
@@ -287,7 +287,7 @@ public class MethodStatementTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
-    
+
     [Fact]
     public async Task WhileLoopsTest()
     {
@@ -304,7 +304,7 @@ public class MethodStatementTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
-    
+
     [Fact]
     public async Task SwitchBreakStatementsTest()
     {
@@ -408,7 +408,7 @@ public class MethodStatementTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
-    
+
     [Fact]
     public async Task TryCatchWithWhenExpressionTest()
     {
@@ -429,7 +429,7 @@ public class MethodStatementTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
-    
+
     [Fact]
     public async Task TryCatchFinallyBlocksTest()
     {
@@ -447,7 +447,7 @@ public class MethodStatementTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
-    
+
     [Fact]
     public async Task CollectionInitializer()
     {
@@ -467,7 +467,7 @@ public class MethodStatementTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
-    
+
     [Fact]
     public async Task CollectionExpressionArgumentMultipleLines()
     {
@@ -492,7 +492,32 @@ public class MethodStatementTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
-    
+
+    [Fact]
+    public async Task DictionaryInitializer()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("void", "Method", method =>
+                {
+                    method.AddInvocationStatement("document.Security.Add", c =>
+                    {
+                        c.AddObjectInitializerBlock("new Dictionary<string, string>", block => block
+                            //.AddObjectInitializerBlock(null, b => b
+                            //    .AddStatement("\"key\"")
+                            //    .AddStatement("\"value\""))
+                            .AddObjectInitializerBlock(null, b => b
+                                .AddStatement("\"key\"")
+                                .AddStatement("\"value\"")));
+                    });
+                });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
     [Fact]
     public async Task CollectionExpressionStatementSingleLine()
     {

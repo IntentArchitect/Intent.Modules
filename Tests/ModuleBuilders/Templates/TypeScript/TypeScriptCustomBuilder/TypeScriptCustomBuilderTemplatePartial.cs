@@ -23,7 +23,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptCustomBuilder
         public TypeScriptCustomBuilderTemplate(IOutputTarget outputTarget, object model = null)
              : base(TemplateId, outputTarget, model)
         {
-            TypescriptFile = new TypescriptFile(this.GetFolderPath())
+            TypescriptFile = new TypescriptFile(this.GetFolderPath(), this)
                 .AddClass($"TypeScriptCustomBuilder", @class =>
                 {
                     @class.AddConstructor(ctor =>
