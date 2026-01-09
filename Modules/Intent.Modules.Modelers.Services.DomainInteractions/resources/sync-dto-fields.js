@@ -907,19 +907,12 @@ class FieldSyncEngine {
         this.entityMapCache = new Map();
     }
     /**
-     * Capture debug snapshot for regression testing
-     */
-    captureDebugSnapshot(phase, data) {
-        console.log(`[SNAPSHOT-${phase}] ${JSON.stringify(data, null, 2)}`);
-    }
-    /**
      * Main entry point: Build, annotate, and prune tree structure
      */
     analyzeFieldDiscrepancies(dtoElement, entity, mappings, excludedEntityAttributeIds, sourceElement) {
         console.log(`[BUILD] Starting structure tree for DTO: ${dtoElement.getName()}`);
         console.log(`[BUILD] ├─ Entity: ${entity.getName()}`);
         this.buildStructureTree(dtoElement, entity, mappings, sourceElement);
-        this.captureDebugSnapshot("TREE-BUILT", this.lastStructureTree);
         const discrepancies = [];
         const parameters = (sourceElement === null || sourceElement === void 0 ? void 0 : sourceElement.getChildren("Parameter")) || [];
         if (parameters.length > 0) {
@@ -929,9 +922,7 @@ class FieldSyncEngine {
         this.detectDiscrepanciesRecursive(dtoElement, entity, mappings, discrepancies, 0);
         this.annotateTreeWithDiscrepancies(this.lastStructureTree, discrepancies);
         console.log(`[ANALYZE] └─ Total discrepancies detected: ${discrepancies.length}`);
-        this.captureDebugSnapshot("DISCREPANCIES", discrepancies);
         this.pruneTreeWithoutDiscrepancies(this.lastStructureTree);
-        this.captureDebugSnapshot("TREE-AFTER-PRUNE", this.lastStructureTree);
         return discrepancies;
     }
     /**
@@ -1448,7 +1439,6 @@ class FieldSyncEngine {
             return [];
         }
         const displayNodes = this.convertTreeToDisplayNodes(this.lastStructureTree);
-        this.captureDebugSnapshot("DISPLAY-NODES", displayNodes);
         return displayNodes;
     }
     /**

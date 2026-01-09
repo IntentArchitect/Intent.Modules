@@ -14,13 +14,6 @@ class FieldSyncEngine {
     private entityMapCache: Map<string, Map<string, IEntityAttribute>> = new Map();
 
     /**
-     * Capture debug snapshot for regression testing
-     */
-    private captureDebugSnapshot(phase: string, data: any): void {
-        console.log(`[SNAPSHOT-${phase}] ${JSON.stringify(data, null, 2)}`);
-    }
-
-    /**
      * Main entry point: Build, annotate, and prune tree structure
      */
     public analyzeFieldDiscrepancies(
@@ -34,7 +27,6 @@ class FieldSyncEngine {
         console.log(`[BUILD] ├─ Entity: ${entity.getName()}`);
         
         this.buildStructureTree(dtoElement, entity, mappings, sourceElement);
-        this.captureDebugSnapshot("TREE-BUILT", this.lastStructureTree);
         
         const discrepancies: IFieldDiscrepancy[] = [];
         
@@ -48,10 +40,8 @@ class FieldSyncEngine {
         
         this.annotateTreeWithDiscrepancies(this.lastStructureTree!, discrepancies);
         console.log(`[ANALYZE] └─ Total discrepancies detected: ${discrepancies.length}`);
-        this.captureDebugSnapshot("DISCREPANCIES", discrepancies);
         
         this.pruneTreeWithoutDiscrepancies(this.lastStructureTree!);
-        this.captureDebugSnapshot("TREE-AFTER-PRUNE", this.lastStructureTree);
         
         return discrepancies;
     }
@@ -694,7 +684,6 @@ class FieldSyncEngine {
         }
         
         const displayNodes = this.convertTreeToDisplayNodes(this.lastStructureTree);
-        this.captureDebugSnapshot("DISPLAY-NODES", displayNodes);
         return displayNodes;
     }
 
