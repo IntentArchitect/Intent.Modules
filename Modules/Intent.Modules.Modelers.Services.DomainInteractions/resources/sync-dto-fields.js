@@ -886,14 +886,20 @@ class FieldSyncEngine {
         this.lastStructureTree = null;
     }
     /**
+     * Capture debug snapshot for regression testing
+     */
+    captureDebugSnapshot(phase, data) {
+        console.log(`[SNAPSHOT-${phase}] ${JSON.stringify(data, null, 2)}`);
+    }
+    /**
      * Main entry point: Build, annotate, and prune tree structure
      * Three-phase approach: BUILD -> ANNOTATE -> PRUNE
      */
     analyzeFieldDiscrepancies(dtoElement, entity, mappings, excludedEntityAttributeIds, sourceElement) {
         console.log(`[BUILD] Starting structure tree for DTO: ${dtoElement.getName()}`);
         console.log(`[BUILD] ├─ Entity: ${entity.getName()}`);
-        // Phase 1: Build complete structure and store it
         this.buildStructureTree(dtoElement, entity, mappings, sourceElement);
+        this.captureDebugSnapshot("TREE-BUILT", this.lastStructureTree);
         // Phase 2: Annotate discrepancies (including nested and operation parameters)
         const discrepancies = [];
         // Check operation parameters if present
@@ -904,8 +910,9 @@ class FieldSyncEngine {
         this.detectDiscrepanciesRecursive(dtoElement, entity, mappings, discrepancies, 0);
         this.annotateTreeWithDiscrepancies(this.lastStructureTree, discrepancies);
         console.log(`[ANALYZE] └─ Total discrepancies detected: ${discrepancies.length}`);
-        // Phase 3: Prune branches without discrepancies
+        this.captureDebugSnapshot("DISCREPANCIES", discrepancies);
         this.pruneTreeWithoutDiscrepancies(this.lastStructureTree);
+        this.captureDebugSnapshot("TREE-AFTER-PRUNE", this.lastStructureTree);
         return discrepancies;
     }
     /**
@@ -1469,8 +1476,9 @@ class FieldSyncEngine {
         if (!this.lastStructureTree) {
             return [];
         }
-        // Convert the tree to display nodes
-        return this.convertTreeToDisplayNodes(this.lastStructureTree);
+        const displayNodes = this.convertTreeToDisplayNodes(this.lastStructureTree);
+        this.captureDebugSnapshot("DISPLAY-NODES", displayNodes);
+        return displayNodes;
     }
     /**
      * Recursively convert tree nodes to display nodes

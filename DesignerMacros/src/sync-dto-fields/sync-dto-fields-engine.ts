@@ -15,6 +15,13 @@ class FieldSyncEngine {
     private lastStructureTree: IExtendedTreeNode | null = null;
 
     /**
+     * Capture debug snapshot for regression testing
+     */
+    private captureDebugSnapshot(phase: string, data: any): void {
+        console.log(`[SNAPSHOT-${phase}] ${JSON.stringify(data, null, 2)}`);
+    }
+
+    /**
      * Main entry point: Build, annotate, and prune tree structure
      * Three-phase approach: BUILD -> ANNOTATE -> PRUNE
      */
@@ -28,8 +35,8 @@ class FieldSyncEngine {
         console.log(`[BUILD] Starting structure tree for DTO: ${dtoElement.getName()}`);
         console.log(`[BUILD] ├─ Entity: ${entity.getName()}`);
         
-        // Phase 1: Build complete structure and store it
         this.buildStructureTree(dtoElement, entity, mappings, sourceElement);
+        this.captureDebugSnapshot("TREE-BUILT", this.lastStructureTree);
         
         // Phase 2: Annotate discrepancies (including nested and operation parameters)
         const discrepancies: IFieldDiscrepancy[] = [];
@@ -44,9 +51,10 @@ class FieldSyncEngine {
         
         this.annotateTreeWithDiscrepancies(this.lastStructureTree!, discrepancies);
         console.log(`[ANALYZE] └─ Total discrepancies detected: ${discrepancies.length}`);
+        this.captureDebugSnapshot("DISCREPANCIES", discrepancies);
         
-        // Phase 3: Prune branches without discrepancies
         this.pruneTreeWithoutDiscrepancies(this.lastStructureTree!);
+        this.captureDebugSnapshot("TREE-AFTER-PRUNE", this.lastStructureTree);
         
         return discrepancies;
     }
@@ -734,8 +742,9 @@ class FieldSyncEngine {
             return [];
         }
         
-        // Convert the tree to display nodes
-        return this.convertTreeToDisplayNodes(this.lastStructureTree);
+        const displayNodes = this.convertTreeToDisplayNodes(this.lastStructureTree);
+        this.captureDebugSnapshot("DISPLAY-NODES", displayNodes);
+        return displayNodes;
     }
 
     /**
