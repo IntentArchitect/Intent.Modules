@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -43,11 +44,31 @@ public class CSharpObjectInitializerBlock : CSharpStatement, IHasCSharpStatement
         return this;
     }
 
+    /// <inheritdoc/>
     public override string GetText(string indentation)
     {
+        var sb = new StringBuilder();
+
         var initialization = _initialization?.GetText(indentation) ?? base.GetText(indentation);
-        return @$"{initialization + Environment.NewLine}{indentation}{RelativeIndentation}{{{Statements.JoinCode(",", $"{indentation}{RelativeIndentation}    ")}
-{indentation}{RelativeIndentation}}}{(_withSemicolon ? ";" : "")}";
+        if (!string.IsNullOrWhiteSpace(initialization))
+        {
+            sb.AppendLine(initialization);
+        }
+
+        sb.Append(indentation);
+        sb.Append(RelativeIndentation);
+        sb.Append('{');
+        sb.AppendLine(Statements.JoinCode(",", $"{indentation}{RelativeIndentation}    "));
+        sb.Append(indentation);
+        sb.Append(RelativeIndentation);
+        sb.Append('}');
+
+        if (_withSemicolon)
+        {
+            sb.Append(';');
+        }
+
+        return sb.ToString();
     }
 
     bool IHasCSharpStatementsActual.IsCodeBlock => false;
