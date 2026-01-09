@@ -1,6 +1,7 @@
 ### Version 2.3.13
 
 - Improvement: Documented relevant rules for AI-implemented Service model changes.
+- Fixed: Updated `Intent.Persistence.SDK` to latest version to resolve compatibility issues.
 
 ### Version 2.3.12
 

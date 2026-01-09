@@ -1,3 +1,7 @@
+### Version 3.7.10
+
+- Fixed: Updated `Intent.Persistence.SDK` to latest version to resolve compatibility issues.
+
 ### Version 3.7.9
 
 - Improvement: Updated module documentation to use centralized documentation site.

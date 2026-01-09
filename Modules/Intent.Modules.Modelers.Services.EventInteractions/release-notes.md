@@ -1,3 +1,7 @@
+### Version 2.0.5
+
+- Fixed: Updated `Intent.Persistence.SDK` to latest version to resolve compatibility issues.
+
 ### Version 2.0.4
 
 - Fixed: Compiled migration against latest version of Persistence SDK.

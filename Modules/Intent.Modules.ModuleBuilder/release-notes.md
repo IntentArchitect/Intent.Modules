@@ -3,6 +3,7 @@
 - Improvement: Support for `Is Traversable Function` on advanced mapping settings for Element Settings. This allows for more sophisticated controlling of whether an element is traversable in the mapping engine.
 - Improvement: Added `Static Mappable Settings` as selectable types for `Target Types` for `Mapping Types`.
 - Improvement: Added support for explicit AI rules via the `AI Settings` stereotype with `Rules` property. These rules will be used by Intent AI features when making changes to the model.
+- Fixed: Updated `Intent.Persistence.SDK` to latest version to resolve compatibility issues.
 
 ### Version 3.18.1
 
