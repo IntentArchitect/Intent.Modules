@@ -23,7 +23,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptSingleFileBuilder
         public TypeScriptSingleFileBuilderTemplate(IOutputTarget outputTarget, object model = null)
              : base(TemplateId, outputTarget, model)
         {
-            TypescriptFile = new TypescriptFile(this.GetFolderPath())
+            TypescriptFile = new TypescriptFile(this.GetFolderPath(), this)
                 .AddClass($"TypeScriptSingleFileBuilder", @class =>
                 {
                     @class.AddConstructor(ctor =>

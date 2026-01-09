@@ -2,7 +2,7 @@
 <package>
   <id>ModuleBuilders</id>
   <version>1.0.2</version>
-  <supportedClientVersions>[4.4.0-a,5.0.0)</supportedClientVersions>
+  <supportedClientVersions>[4.5.15-a,5.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.Tests.</summary>
   <description>A custom module for Intent.Modules.Tests.</description>
   <authors>Intent.Modules.Tests</authors>

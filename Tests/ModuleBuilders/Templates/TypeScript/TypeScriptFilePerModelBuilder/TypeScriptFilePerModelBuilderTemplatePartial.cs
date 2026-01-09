@@ -25,7 +25,7 @@ namespace ModuleBuilders.Templates.TypeScript.TypeScriptFilePerModelBuilder
             Intent.Modelers.Domain.Api.ClassModel model)
              : base(TemplateId, outputTarget, model)
         {
-            TypescriptFile = new TypescriptFile(this.GetFolderPath())
+            TypescriptFile = new TypescriptFile(this.GetFolderPath(), this)
                 .AddClass($"{Model.Name}", @class =>
                 {
                     @class.AddConstructor(ctor =>
