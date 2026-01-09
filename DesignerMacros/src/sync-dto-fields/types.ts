@@ -1,9 +1,16 @@
 /// <reference path="../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../typings/core.context.types.d.ts" />
 
+interface IFieldType {
+    baseType?: string;
+    isCollection: boolean;
+    isNullable: boolean;
+    displayText: string;
+}
+
 interface IFieldDiscrepancy {
     id: string;
-    type: "NEW" | "DELETED" | "RENAMED" | "TYPE_CHANGED";
+    type: "NEW" | "DELETE" | "RENAME" | "CHANGE_TYPE";
     dtoFieldId?: string;
     dtoFieldName: string;
     dtoFieldType?: string;
@@ -13,7 +20,20 @@ interface IFieldDiscrepancy {
     mappingPath?: string[];
     reason?: string;
     icon: MacroApi.Context.IIcon;
-    displayFunction?: () => MacroApi.Context.IDisplayTextComponent[];
+
+    displayFunction?: (context: MacroApi.Context.ISelectableTreeNode) => string | MacroApi.Context.IDisplayTextComponent[];
+
+    fieldType?: IFieldType;
+    
+    // Type modifiers for source (DTO field)
+    dtoTypeId?: string;
+    dtoIsCollection?: boolean;
+    dtoIsNullable?: boolean;
+    
+    // Type modifiers for target (Entity attribute)
+    entityTypeId?: string;
+    entityIsCollection?: boolean;
+    entityIsNullable?: boolean;
 }
 
 interface IFieldMapping {
@@ -22,6 +42,7 @@ interface IFieldMapping {
     sourceFieldId: string;
     targetAttributeId: string;
     mappingType?: string;
+    mappingTypeId?: string;
 }
 
 interface IPathTemplate {
@@ -30,7 +51,8 @@ interface IPathTemplate {
     sourceElementTypes: string[];
     targetElementTypes: string[];
     signature: string;
-    mappingType: string;
+    mappingTypeId: string;
+    mappingTypeName: string;
 }
 
 interface IMappingContext {
@@ -89,4 +111,55 @@ interface IMappableElement {
     element: MacroApi.Context.IElementApi;  // The Operation, Command, Query, etc.
     parameters: IParameterNode[];            // All parameters in the element
     targetEntity: MacroApi.Context.IElementApi | null;  // The target (Class) being mapped to
+}
+
+// Association metadata for entity-to-entity composite relationships
+interface IAssociationMetadata {
+    id: string;
+    associationName: string;
+    sourceEntity: MacroApi.Context.IElementApi;          // The owning entity (e.g., Customer)
+    targetEntity: MacroApi.Context.IElementApi;          // The owned entity (e.g., CustomerAddress)
+    isCollection: boolean;                               // Whether it's a collection (array)
+    isNullable: boolean;                                 // Whether it's optional
+    targetAttributes: IEntityAttribute[];                // Fields of the target entity
+    icon: MacroApi.Context.IIcon;
+}
+
+// DTO field that references an associated entity
+interface IDtoAssociationField {
+    id: string;
+    name: string;
+    typeId?: string;
+    typeDisplayText?: string;
+    isCollection: boolean;
+    isNullable: boolean;
+    icon: MacroApi.Context.IIcon;
+}
+
+// Extended tree node for structure-first architecture
+interface IExtendedTreeNode extends MacroApi.Context.ISelectableTreeNode {
+    // Node identity
+    elementId: string;                      // The actual element this node represents
+    elementType: string;                    // "DTO-Field" | "Attribute" | "Association" etc
+    originalName: string;                   // Immutable original name
+    originalType?: string;                  // Immutable original type display
+    
+    // Discrepancy tracking
+    discrepancy?: IFieldDiscrepancy;        // If this node has a discrepancy
+    hasDiscrepancies: boolean;              // If this OR any descendant has one
+    
+    // Navigation
+    parentPath?: string[];                  // Path of element IDs to root
+    
+    // Context for nested comparisons
+    contextDtoElement?: MacroApi.Context.IElementApi;     // The nested DTO type context
+    contextEntityElement?: MacroApi.Context.IElementApi;  // The nested Entity type context
+    
+    // Type information for accurate comparison
+    dtoTypeId?: string;                     // Type ID of DTO field
+    dtoIsCollection?: boolean;              // Whether DTO field is collection
+    dtoIsNullable?: boolean;                // Whether DTO field is nullable
+    entityTypeId?: string;                  // Type ID of entity attribute
+    entityIsCollection?: boolean;           // Whether entity attribute is collection
+    entityIsNullable?: boolean;             // Whether entity attribute is nullable
 }

@@ -108,6 +108,10 @@ declare namespace MacroApi.Context {
          */
         icon?: string;
         /**
+         * Sets help text that will be shown in a tooltip when the user hovers over the help button (question mark icon) in the dialog header.
+         */
+        helpText?: string;
+        /**
          * Sets the primary button text. Defaults to "Done" if not set.
          **/
         submitButtonText?: string;
@@ -320,13 +324,9 @@ declare namespace MacroApi.Context {
         expandedIcon?: string | MacroApi.Context.IIcon;
         /**
          * Dynamic display function that returns string or IDisplayTextComponent[].
-         * The function receives a context object with: name, label, displayMetadata, children, isSelected
+         * The function receives a context object with: name, label, children, isSelected
          */
-        displayFunction?: (context: { name: string, label: string, displayMetadata: any, children: ISelectableTreeNode[], isSelected: boolean }) => string | IDisplayTextComponent[];
-        /**
-         * Custom metadata accessible within displayFunction context.
-         */
-        displayMetadata?: any;
+        displayFunction?: (context: ISelectableTreeNode) => string | IDisplayTextComponent[];
     }
 
     interface ISelectableTypeCriteria {
