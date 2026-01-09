@@ -52,39 +52,6 @@ async function syncDtoFields(element: MacroApi.Context.IElementApi): Promise<voi
     
     console.log(`[SYNC] ├─ Discrepancies found: ${discrepancies.length}`);
     
-    // TEMPORARY: Show structure visualization even without discrepancies
-    if (discrepancies.length === 0) {
-        // Create a dummy structure node to show the tree in the UI for verification
-        const structureNode: IFieldDiscrepancy = {
-            id: `structure-view-${entity.id}`,
-            type: "RENAME",  // Dummy type just for display
-            dtoFieldId: dtoElement.id,
-            dtoFieldName: "[Structure Visualization]",
-            dtoFieldType: "Structure-Only",
-            entityAttributeId: entity.id,
-            entityAttributeName: `${dtoElement.getName()} → ${entity.getName()}`,
-            entityAttributeType: "Structure-Only",
-            icon: dtoElement.getIcon()
-        };
-        
-        // Create display function
-        const displayFunction = () => {
-            return {
-                displayText: "[Structure Visualization] - No discrepancies found. This shows the complete tree structure for reference."
-            };
-        };
-        (structureNode as any).displayFunction = displayFunction;
-        
-        const treeNodes = engine.buildHierarchicalTreeNodes(element, dtoElement, [structureNode]);
-        console.log(`[SYNC] ├─ Tree nodes built: ${treeNodes.length}`);
-        console.log(`[SYNC] └─ Showing structure visualization dialog`);
-        
-        // Present dialog with structure visualization
-        const selectedNodeIds = await presentSyncDialog(element, dtoElement, entity, [structureNode], treeNodes);
-        console.log(`[SYNC] └─ Dialog closed, no changes applied`);
-        return;
-    }
-    
     // Build tree view model with hierarchical structure
     const treeNodes = engine.buildHierarchicalTreeNodes(element, dtoElement, discrepancies);
     
@@ -178,6 +145,26 @@ async function presentSyncDialog(
                         },
                         {
                             specializationId: "structure-nested-field",
+                            isSelectable: true,
+                            autoExpand: true
+                        },
+                        {
+                            specializationId: "discrepancy-delete",
+                            isSelectable: true,
+                            autoExpand: true
+                        },
+                        {
+                            specializationId: "discrepancy-new",
+                            isSelectable: true,
+                            autoExpand: true
+                        },
+                        {
+                            specializationId: "discrepancy-rename",
+                            isSelectable: true,
+                            autoExpand: true
+                        },
+                        {
+                            specializationId: "discrepancy-change_type",
                             isSelectable: true,
                             autoExpand: true
                         }
