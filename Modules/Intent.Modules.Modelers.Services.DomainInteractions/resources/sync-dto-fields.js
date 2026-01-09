@@ -196,7 +196,8 @@ function getEntityAttributes(entity) {
             typeId: (_a = child.typeReference) === null || _a === void 0 ? void 0 : _a.getTypeId(),
             typeDisplayText: ((_b = child.typeReference) === null || _b === void 0 ? void 0 : _b.display) || "",
             icon: child.getIcon(),
-            isManagedKey: child.hasMetadata(METADATA_KEYS.IS_MANAGED_KEY) && child.getMetadata(METADATA_KEYS.IS_MANAGED_KEY) === "true"
+            isManagedKey: child.hasMetadata(METADATA_KEYS.IS_MANAGED_KEY) && child.getMetadata(METADATA_KEYS.IS_MANAGED_KEY) === "true",
+            hasPrimaryKeyStereotype: child.hasStereotype && child.hasStereotype("Primary Key")
         };
         attributes.push(attribute);
     }
@@ -1164,7 +1165,10 @@ class FieldSyncEngine {
         }
         const entityAttrs = getEntityAttributes(entity);
         for (const entityAttr of entityAttrs) {
-            if (!mappedEntityIds.has(entityAttr.id) && !entityAttr.isManagedKey) {
+            // Show NEW discrepancies for unmapped attributes, including FK attributes
+            // Only exclude primary keys (which are managed keys with Primary Key stereotype)
+            const isPrimaryKey = entityAttr.isManagedKey && entityAttr.hasPrimaryKeyStereotype;
+            if (!mappedEntityIds.has(entityAttr.id) && !isPrimaryKey) {
                 const contextId = parentFieldId || dtoElement.id;
                 const discrepancy = {
                     id: `new-${entityAttr.id}-${contextId}`,

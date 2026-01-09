@@ -80,6 +80,7 @@ interface IEntityAttribute {
     typeDisplayText?: string;
     icon: MacroApi.Context.IIcon;
     isManagedKey?: boolean;
+    hasPrimaryKeyStereotype?: boolean;
 }
 
 // Hierarchical structures for generic parameter and field representation

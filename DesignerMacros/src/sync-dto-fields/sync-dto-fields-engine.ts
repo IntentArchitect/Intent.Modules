@@ -330,7 +330,10 @@ class FieldSyncEngine {
         
         const entityAttrs = getEntityAttributes(entity);
         for (const entityAttr of entityAttrs) {
-            if (!mappedEntityIds.has(entityAttr.id) && !entityAttr.isManagedKey) {
+            // Show NEW discrepancies for unmapped attributes, including FK attributes
+            // Only exclude primary keys (which are managed keys with Primary Key stereotype)
+            const isPrimaryKey = entityAttr.isManagedKey && entityAttr.hasPrimaryKeyStereotype;
+            if (!mappedEntityIds.has(entityAttr.id) && !isPrimaryKey) {
                 const contextId = parentFieldId || dtoElement.id;
                 const discrepancy: IFieldDiscrepancy = {
                     id: `new-${entityAttr.id}-${contextId}`,

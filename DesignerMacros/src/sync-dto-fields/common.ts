@@ -213,7 +213,8 @@ function getEntityAttributes(entity: MacroApi.Context.IElementApi): IEntityAttri
             typeId: child.typeReference?.getTypeId(),
             typeDisplayText: child.typeReference?.display || "",
             icon: child.getIcon(),
-            isManagedKey: child.hasMetadata(METADATA_KEYS.IS_MANAGED_KEY) && child.getMetadata(METADATA_KEYS.IS_MANAGED_KEY) === "true"
+            isManagedKey: child.hasMetadata(METADATA_KEYS.IS_MANAGED_KEY) && child.getMetadata(METADATA_KEYS.IS_MANAGED_KEY) === "true",
+            hasPrimaryKeyStereotype: child.hasStereotype && child.hasStereotype("Primary Key")
         };
         attributes.push(attribute);
     }
