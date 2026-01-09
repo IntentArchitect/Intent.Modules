@@ -1370,6 +1370,10 @@ class FieldSyncEngine {
         const elementIdsWithDiscrepancies = new Set();
         const discrepancyByElementId = new Map();
         for (const disc of discrepancies) {
+            // NEW discrepancies are synthetic nodes, don't mark their parent as having a discrepancy
+            if (disc.type === "NEW") {
+                continue;
+            }
             if (disc.dtoFieldId) {
                 elementIdsWithDiscrepancies.add(disc.dtoFieldId);
                 discrepancyByElementId.set(disc.dtoFieldId, disc);
@@ -1389,6 +1393,9 @@ class FieldSyncEngine {
     addNewDiscrepancyNodes(node, discrepancies) {
         // Find NEW discrepancies that belong to this node (by parent DTO element ID)
         const newDiscrepanciesForThisNode = discrepancies.filter(d => d.type === "NEW" && d.dtoFieldId === node.elementId);
+        if (newDiscrepanciesForThisNode.length > 0) {
+            console.log(`[ANNOTATE] Adding ${newDiscrepanciesForThisNode.length} NEW nodes to ${node.originalName} (elementId: ${node.elementId})`);
+        }
         // Add them as children
         for (const newDisc of newDiscrepanciesForThisNode) {
             const newNode = {
@@ -1416,9 +1423,10 @@ class FieldSyncEngine {
         }
     }
     annotateNodeRecursive(node, elementIdsWithDiscrepancies, discrepancyByElementId) {
-        let nodeHasDiscrepancies = elementIdsWithDiscrepancies.has(node.elementId);
+        // Start with pre-existing discrepancy marker (for synthetic NEW nodes)
+        let nodeHasDiscrepancies = node.discrepancy !== undefined || elementIdsWithDiscrepancies.has(node.elementId);
         // Attach discrepancy object if this node has one
-        if (nodeHasDiscrepancies && discrepancyByElementId.has(node.elementId)) {
+        if (nodeHasDiscrepancies && !node.discrepancy && discrepancyByElementId.has(node.elementId)) {
             node.discrepancy = discrepancyByElementId.get(node.elementId);
         }
         // Check children
@@ -1468,11 +1476,14 @@ class FieldSyncEngine {
      * Recursively convert tree nodes to display nodes
      */
     convertTreeToDisplayNodes(node) {
+        var _a;
         const result = [];
         // Process this node's children (skip root itself)
         if (node.children) {
+            console.log(`[BUILD-DISPLAY] Processing ${node.children.length} children of ${node.originalName} (elementId: ${node.elementId}, type: ${node.elementType})`);
             for (const child of node.children) {
                 const extChild = child;
+                console.log(`[BUILD-DISPLAY]   ├─ Child: ${extChild.originalName} (elementId: ${extChild.elementId}, type: ${extChild.elementType}, hasDiscrepancy: ${!!extChild.discrepancy}, children: ${((_a = extChild.children) === null || _a === void 0 ? void 0 : _a.length) || 0})`);
                 const displayNode = this.createDisplayNode(extChild);
                 result.push(displayNode);
             }
@@ -1495,6 +1506,7 @@ class FieldSyncEngine {
         // If this node has a discrepancy, attach the display function
         if (node.discrepancy) {
             const discrepancy = node.discrepancy;
+            console.log(`[BUILD-DISPLAY]     └─ Has discrepancy: ${discrepancy.type} (dtoFieldId: ${discrepancy.dtoFieldId}, nodeId: ${node.elementId})`);
             // For NEW items, always use entityAttributeName; for others use dtoFieldName
             const fieldName = discrepancy.type === "NEW"
                 ? discrepancy.entityAttributeName
@@ -1505,6 +1517,7 @@ class FieldSyncEngine {
         }
         // Recursively convert children
         if (node.children && node.children.length > 0) {
+            console.log(`[BUILD-DISPLAY]     └─ Processing ${node.children.length} nested children`);
             displayNode.children = [];
             for (const child of node.children) {
                 const extChild = child;
