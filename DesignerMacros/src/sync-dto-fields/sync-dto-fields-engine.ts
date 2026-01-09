@@ -104,8 +104,9 @@ class FieldSyncEngine {
                     const paramName = param.getName();
                     const entityAttrName = targetAttr.name;
                     
-                    // Check for rename - use case-sensitive for parameters
-                    if (paramName !== entityAttrName) {
+                    // Check for rename - use naming convention-aware comparison
+                    // This allows "id" to match "Id" (camelCase vs PascalCase)
+                    if (!namesAreEquivalent(paramName, entityAttrName)) {
                         const discrepancy: IFieldDiscrepancy = {
                             id: `rename-param-${param.id}`,
                             type: "RENAME",
@@ -282,8 +283,9 @@ class FieldSyncEngine {
                     const dtoFieldName = dtoField.getName();
                     const entityAttrName = targetAttr.name;
                     
-                    // Check for rename
-                    if (dtoFieldName !== entityAttrName) {
+                    // Check for rename - use naming convention-aware comparison
+                    // This allows "id" to match "Id" (camelCase vs PascalCase)
+                    if (!namesAreEquivalent(dtoFieldName, entityAttrName)) {
                         const discrepancy: IFieldDiscrepancy = {
                             id: `rename-${dtoField.id}`,
                             type: "RENAME",
@@ -774,12 +776,11 @@ class FieldSyncEngine {
             return;
         }
         
-        // Filter children - keep only those with discrepancies (and root/operation-param)
+        // Filter children - keep only those with discrepancies
         node.children = node.children.filter((child) => {
             const extChild = child as IExtendedTreeNode;
             const keep = extChild.hasDiscrepancies || 
-                        extChild.elementType === "Operation-Parameter" ||
-                        extChild.elementType === "DTO";  // Keep root
+                        extChild.elementType === "DTO";  // Keep root DTO
             
             if (keep && extChild.children) {
                 this.pruneTreeWithoutDiscrepancies(extChild);

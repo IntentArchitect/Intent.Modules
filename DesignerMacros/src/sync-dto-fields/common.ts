@@ -21,6 +21,30 @@ const METADATA_KEYS = {
     IS_MANAGED_KEY: "is-managed-key"
 } as const;
 
+/**
+ * Normalize a name for comparison purposes by converting to lowercase.
+ * This allows comparing camelCase, PascalCase, and other conventions uniformly.
+ * For example: "id", "Id", "ID" all normalize to "id"
+ * 
+ * @param name The name to normalize
+ * @returns The normalized name (lowercase)
+ */
+function normalizeNameForComparison(name: string): string {
+    return name.toLowerCase();
+}
+
+/**
+ * Check if two names are semantically equivalent (ignoring naming conventions).
+ * Uses normalized comparison to handle camelCase vs PascalCase differences.
+ * 
+ * @param name1 First name to compare
+ * @param name2 Second name to compare
+ * @returns true if names are equivalent ignoring case/convention
+ */
+function namesAreEquivalent(name1: string, name2: string): boolean {
+    return normalizeNameForComparison(name1) === normalizeNameForComparison(name2);
+}
+
 // Build structured field type information from typeReference
 function buildFieldType(typeReference: MacroApi.Context.ITypeReference | undefined, displayText?: string): IFieldType {
     if (!typeReference || !typeReference.isTypeFound?.()) {
