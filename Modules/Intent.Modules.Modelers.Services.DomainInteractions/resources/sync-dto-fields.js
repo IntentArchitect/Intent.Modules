@@ -886,16 +886,328 @@ class FieldSyncEngine {
         this.lastStructureTree = null;
     }
     /**
-     * Main entry point: Build and display tree structure
+     * Main entry point: Build, annotate, and prune tree structure
+     * Three-phase approach: BUILD -> ANNOTATE -> PRUNE
      */
     analyzeFieldDiscrepancies(dtoElement, entity, mappings, excludedEntityAttributeIds, sourceElement) {
         console.log(`[BUILD] Starting structure tree for DTO: ${dtoElement.getName()}`);
         console.log(`[BUILD] ├─ Entity: ${entity.getName()}`);
-        // Build structure and store it
-        // Pass sourceElement (the original Operation/Command/DTO) so we can show Operation params if needed
+        // Phase 1: Build complete structure and store it
         this.buildStructureTree(dtoElement, entity, mappings, sourceElement);
-        // Return empty discrepancies for now - we'll visualize the tree in the UI
-        return [];
+        // Phase 2: Annotate discrepancies (including nested and operation parameters)
+        const discrepancies = [];
+        // Check operation parameters if present
+        if (sourceElement && sourceElement.specialization === "Operation") {
+            this.detectOperationParameterDiscrepancies(sourceElement, dtoElement, entity, mappings, discrepancies);
+        }
+        // Check DTO fields recursively
+        this.detectDiscrepanciesRecursive(dtoElement, entity, mappings, discrepancies, 0);
+        this.annotateTreeWithDiscrepancies(this.lastStructureTree, discrepancies);
+        console.log(`[ANALYZE] └─ Total discrepancies detected: ${discrepancies.length}`);
+        // Phase 3: Prune branches without discrepancies
+        this.pruneTreeWithoutDiscrepancies(this.lastStructureTree);
+        return discrepancies;
+    }
+    /**
+     * Check operation parameters for discrepancies
+     */
+    detectOperationParameterDiscrepancies(sourceElement, dtoElement, entity, mappings, discrepancies) {
+        const operationParams = sourceElement.getChildren("Parameter");
+        console.log(`[ANALYZE-PARAMS] Checking ${operationParams.length} operation parameters`);
+        const entityAttrs = getEntityAttributes(entity);
+        const entityAttrMap = new Map();
+        for (const attr of entityAttrs) {
+            entityAttrMap.set(attr.id, attr);
+            entityAttrMap.set(attr.name.toLowerCase(), attr);
+        }
+        // Build a map of parameter ID -> mapping
+        const mappingsBySourceId = new Map();
+        for (const mapping of mappings) {
+            const sourceFieldId = mapping.sourceFieldId;
+            if (!mappingsBySourceId.has(sourceFieldId)) {
+                mappingsBySourceId.set(sourceFieldId, []);
+            }
+            mappingsBySourceId.get(sourceFieldId).push(mapping);
+        }
+        for (const param of operationParams) {
+            const paramTypeRef = param.typeReference;
+            // Skip the DTO parameter itself
+            if (paramTypeRef && paramTypeRef.isTypeFound()) {
+                const paramType = paramTypeRef.getType();
+                if (paramType && paramType.id === dtoElement.id) {
+                    console.log(`[ANALYZE-PARAMS] Skipping DTO parameter: ${param.getName()}`);
+                    continue;
+                }
+            }
+            // Check this parameter for discrepancies
+            const paramMappings = mappingsBySourceId.get(param.id) || [];
+            console.log(`[ANALYZE-PARAMS] Parameter ${param.getName()}: ${paramMappings.length} mappings`);
+            if (paramMappings.length === 0) {
+                // No mapping - parameter should be deleted or is unused
+                const discrepancy = {
+                    id: `delete-param-${param.id}`,
+                    type: "DELETE",
+                    dtoFieldId: param.id,
+                    dtoFieldName: param.getName(),
+                    dtoFieldType: (paramTypeRef === null || paramTypeRef === void 0 ? void 0 : paramTypeRef.display) || "Unknown",
+                    entityAttributeName: "(no mapping)",
+                    icon: param.getIcon(),
+                    reason: `Parameter '${param.getName()}' is not mapped to any entity attribute`
+                };
+                discrepancies.push(discrepancy);
+                console.log(`[ANALYZE] ├─ [DELETE] Parameter ${param.getName()}: Not mapped to entity`);
+            }
+            else {
+                // Check for renames and type mismatches
+                for (const mapping of paramMappings) {
+                    const targetAttr = entityAttrMap.get(mapping.targetAttributeId);
+                    if (!targetAttr) {
+                        continue;
+                    }
+                    const paramName = param.getName();
+                    const entityAttrName = targetAttr.name;
+                    // Check for rename - use case-sensitive for parameters
+                    if (paramName !== entityAttrName) {
+                        const discrepancy = {
+                            id: `rename-param-${param.id}`,
+                            type: "RENAME",
+                            dtoFieldId: param.id,
+                            dtoFieldName: paramName,
+                            dtoFieldType: (paramTypeRef === null || paramTypeRef === void 0 ? void 0 : paramTypeRef.display) || "Unknown",
+                            entityAttributeId: targetAttr.id,
+                            entityAttributeName: entityAttrName,
+                            entityAttributeType: targetAttr.typeDisplayText,
+                            icon: param.getIcon(),
+                            reason: `Parameter '${paramName}' should be renamed to '${entityAttrName}'`
+                        };
+                        discrepancies.push(discrepancy);
+                        console.log(`[ANALYZE] ├─ [RENAME] Parameter ${paramName} → ${entityAttrName}`);
+                    }
+                    // Check for type mismatch
+                    const paramType = (paramTypeRef === null || paramTypeRef === void 0 ? void 0 : paramTypeRef.display) || "Unknown";
+                    const entityType = targetAttr.typeDisplayText || "Unknown";
+                    if (paramType !== entityType) {
+                        const discrepancy = {
+                            id: `type-param-${param.id}`,
+                            type: "CHANGE_TYPE",
+                            dtoFieldId: param.id,
+                            dtoFieldName: paramName,
+                            dtoFieldType: paramType,
+                            entityAttributeId: targetAttr.id,
+                            entityAttributeName: entityAttrName,
+                            entityAttributeType: entityType,
+                            icon: param.getIcon(),
+                            reason: `Parameter '${paramName}' type mismatch: ${paramType} vs ${entityType}`
+                        };
+                        discrepancies.push(discrepancy);
+                        console.log(`[ANALYZE] ├─ [CHANGE_TYPE] Parameter ${paramName}: ${paramType} → ${entityType}`);
+                    }
+                }
+            }
+        }
+    }
+    /**
+     * Recursively detect discrepancies at all levels (root + nested associations)
+     * @param parentFieldId - For nested calls, the ID of the field that contains this DTO (for NEW items)
+     */
+    detectDiscrepanciesRecursive(dtoElement, entity, mappings, discrepancies, depth = 0, parentFieldId) {
+        var _a, _b, _c;
+        const indent = Array(depth).fill("  ").join("");
+        // Get entity attributes to compare against
+        const entityAttrs = getEntityAttributes(entity);
+        const entityAttrMap = new Map();
+        for (const attr of entityAttrs) {
+            entityAttrMap.set(attr.id, attr);
+            entityAttrMap.set(attr.name.toLowerCase(), attr);
+        }
+        // Build a map of DTO field ID -> mapping
+        const mappingsBySourceId = new Map();
+        for (const mapping of mappings) {
+            const sourceFieldId = mapping.sourceFieldId;
+            if (!mappingsBySourceId.has(sourceFieldId)) {
+                mappingsBySourceId.set(sourceFieldId, []);
+            }
+            mappingsBySourceId.get(sourceFieldId).push(mapping);
+        }
+        // Check each DTO field for discrepancies
+        const childType = inferSourceElementChildType(dtoElement);
+        const dtoChildren = dtoElement.getChildren(childType);
+        for (const dtoField of dtoChildren) {
+            const fieldMappings = mappingsBySourceId.get(dtoField.id) || [];
+            const fieldTypeRef = dtoField.typeReference;
+            // Check if this is a nested DTO/association field
+            let isAssociationField = false;
+            let nestedEntity = null;
+            let nestedMappings = [];
+            if (fieldTypeRef && fieldTypeRef.isTypeFound()) {
+                const fieldType = fieldTypeRef.getType();
+                // Check if field type itself maps to entity attributes through associations
+                if (fieldType && (fieldType.specialization === "DTO" || fieldType.specialization === "Class")) {
+                    // This might be a nested DTO that maps to an associated entity
+                    nestedEntity = this.findAssociatedEntity(dtoField, entity, mappings);
+                    if (nestedEntity) {
+                        isAssociationField = true;
+                        nestedMappings = this.getNestedMappings(mappings, dtoField.id);
+                        // Handle association/nested field recursively
+                        console.log(`${indent}[ANALYZE-NESTED] Analyzing nested DTO field: ${dtoField.getName()} → ${nestedEntity.getName()}`);
+                        this.detectDiscrepanciesRecursive(fieldType, nestedEntity, nestedMappings, discrepancies, depth + 1, dtoField.id);
+                    }
+                }
+            }
+            // Skip if already handled as association field
+            if (isAssociationField) {
+                continue;
+            }
+            // Handle root-level field
+            if (fieldMappings.length === 0) {
+                // No mapping found - this field should be deleted
+                const discrepancy = {
+                    id: `delete-${dtoField.id}`,
+                    type: "DELETE",
+                    dtoFieldId: dtoField.id,
+                    dtoFieldName: dtoField.getName(),
+                    dtoFieldType: ((_a = dtoField.typeReference) === null || _a === void 0 ? void 0 : _a.display) || "Unknown",
+                    entityAttributeName: "(no mapping)",
+                    icon: dtoField.getIcon(),
+                    reason: `Field '${dtoField.getName()}' is not mapped to any entity attribute`
+                };
+                discrepancies.push(discrepancy);
+                console.log(`${indent}[ANALYZE] ├─ [DELETE] ${dtoField.getName()}: Not mapped to entity`);
+            }
+            else {
+                // Check each mapping for type matches and renames
+                for (const mapping of fieldMappings) {
+                    const targetAttr = entityAttrMap.get(mapping.targetAttributeId);
+                    if (!targetAttr) {
+                        continue;
+                    }
+                    const dtoFieldName = dtoField.getName();
+                    const entityAttrName = targetAttr.name;
+                    // Check for rename
+                    if (dtoFieldName !== entityAttrName) {
+                        const discrepancy = {
+                            id: `rename-${dtoField.id}`,
+                            type: "RENAME",
+                            dtoFieldId: dtoField.id,
+                            dtoFieldName: dtoFieldName,
+                            dtoFieldType: ((_b = dtoField.typeReference) === null || _b === void 0 ? void 0 : _b.display) || "Unknown",
+                            entityAttributeId: targetAttr.id,
+                            entityAttributeName: entityAttrName,
+                            entityAttributeType: targetAttr.typeDisplayText,
+                            icon: dtoField.getIcon(),
+                            reason: `Field '${dtoFieldName}' should be renamed to '${entityAttrName}'`
+                        };
+                        discrepancies.push(discrepancy);
+                        console.log(`${indent}[ANALYZE] ├─ [RENAME] ${dtoFieldName} → ${entityAttrName}`);
+                    }
+                    // Check for type mismatch
+                    const dtoType = ((_c = dtoField.typeReference) === null || _c === void 0 ? void 0 : _c.display) || "Unknown";
+                    const entityType = targetAttr.typeDisplayText || "Unknown";
+                    if (dtoType !== entityType) {
+                        const discrepancy = {
+                            id: `type-${dtoField.id}`,
+                            type: "CHANGE_TYPE",
+                            dtoFieldId: dtoField.id,
+                            dtoFieldName: dtoFieldName,
+                            dtoFieldType: dtoType,
+                            entityAttributeId: targetAttr.id,
+                            entityAttributeName: entityAttrName,
+                            entityAttributeType: entityType,
+                            icon: dtoField.getIcon(),
+                            reason: `Field '${dtoFieldName}' type mismatch: ${dtoType} vs ${entityType}`
+                        };
+                        discrepancies.push(discrepancy);
+                        console.log(`${indent}[ANALYZE] ├─ [CHANGE_TYPE] ${dtoFieldName}: ${dtoType} → ${entityType}`);
+                    }
+                }
+            }
+        }
+        // Check for NEW fields (entity attributes not covered by any DTO field)
+        // This should run at ALL levels, not just root
+        const mappedEntityIds = new Set();
+        for (const mapping of mappings) {
+            mappedEntityIds.add(mapping.targetAttributeId);
+        }
+        for (const entityAttr of entityAttrs) {
+            if (!mappedEntityIds.has(entityAttr.id) && !entityAttr.isManagedKey) {
+                // Use parentFieldId if provided (nested context), otherwise use dtoElement.id (root)
+                const contextId = parentFieldId || dtoElement.id;
+                const discrepancy = {
+                    id: `new-${entityAttr.id}-${contextId}`,
+                    type: "NEW",
+                    dtoFieldId: contextId, // ID of the field/DTO where this should be added
+                    dtoFieldName: "(missing)",
+                    dtoFieldType: "N/A",
+                    entityAttributeId: entityAttr.id,
+                    entityAttributeName: entityAttr.name,
+                    entityAttributeType: entityAttr.typeDisplayText,
+                    icon: entityAttr.icon,
+                    reason: `Entity attribute '${entityAttr.name}' is not present in DTO`
+                };
+                discrepancies.push(discrepancy);
+                console.log(`${indent}[ANALYZE] ├─ [NEW] ${entityAttr.name}: Entity attribute not in DTO`);
+            }
+        }
+    }
+    /**
+     * Find the associated entity for a nested DTO field
+     * Match by the association name (e.g., "Block1Level3" field should match "Block1Level3" association)
+     */
+    findAssociatedEntity(dtoField, entity, mappings) {
+        const dtoFieldName = dtoField.getName();
+        const dtoFieldTypeRef = dtoField.typeReference;
+        // Get the actual DTO type that this field references
+        if (!dtoFieldTypeRef || !dtoFieldTypeRef.isTypeFound()) {
+            return null;
+        }
+        const nestedDtoType = dtoFieldTypeRef.getType();
+        if (!nestedDtoType) {
+            return null;
+        }
+        // Look through entity associations to find matching target
+        const associations = entity.getAssociations();
+        for (const assoc of associations) {
+            // Get association name - this should match the DTO field name or its singular form
+            const assocName = assoc.getName ? assoc.getName() : null;
+            // Try to match by name first (e.g., "Block1Level3" matches "Block1Level3")
+            // Handle both singular and plural (e.g., "Block1Level2s" might have association "Block1Level2")
+            const fieldNameSingular = dtoFieldName.replace(/s$/, ''); // Simple pluralization removal
+            if (assocName && (assocName === dtoFieldName || assocName === fieldNameSingular)) {
+                // Found matching association by name - get its target entity
+                if (assoc.typeReference && assoc.typeReference.isTypeFound()) {
+                    return assoc.typeReference.getType();
+                }
+            }
+        }
+        return null;
+    }
+    /**
+     * Get mappings for a nested DTO field
+     * For nested fields, the source path will be: [dto_param_id, parent_field_id, nested_field_id, ...]
+     * We want mappings where parent_field_id is in the path
+     */
+    getNestedMappings(allMappings, parentFieldId) {
+        const nestedMappings = [];
+        for (const mapping of allMappings) {
+            if (mapping.sourcePath && mapping.sourcePath.length > 1) {
+                // Check if parent field is in the path (but not the last element)
+                const parentIndex = mapping.sourcePath.indexOf(parentFieldId);
+                if (parentIndex >= 0 && parentIndex < mapping.sourcePath.length - 1) {
+                    // This mapping is for a nested field under this parent
+                    // Create a new mapping with adjusted paths
+                    const adjustedMapping = {
+                        sourcePath: mapping.sourcePath.slice(parentIndex + 1), // Remove parent and ancestors
+                        targetPath: mapping.targetPath, // Keep full target path for now
+                        sourceFieldId: mapping.sourceFieldId,
+                        targetAttributeId: mapping.targetAttributeId,
+                        mappingType: mapping.mappingType,
+                        mappingTypeId: mapping.mappingTypeId
+                    };
+                    nestedMappings.push(adjustedMapping);
+                }
+            }
+        }
+        return nestedMappings;
     }
     /**
      * Build the complete natural tree structure from DTO/entity
@@ -1049,38 +1361,172 @@ class FieldSyncEngine {
         }
     }
     /**
-     * Convert structure tree to display nodes
+     * PRUNE phase: Annotate tree nodes with discrepancies, then remove branches without discrepancies
+     */
+    annotateTreeWithDiscrepancies(node, discrepancies) {
+        // First, add NEW discrepancies as synthetic nodes to the tree
+        this.addNewDiscrepancyNodes(node, discrepancies);
+        // Create a map of element IDs that have discrepancies
+        const elementIdsWithDiscrepancies = new Set();
+        const discrepancyByElementId = new Map();
+        for (const disc of discrepancies) {
+            if (disc.dtoFieldId) {
+                elementIdsWithDiscrepancies.add(disc.dtoFieldId);
+                discrepancyByElementId.set(disc.dtoFieldId, disc);
+            }
+            if (disc.entityAttributeId) {
+                elementIdsWithDiscrepancies.add(disc.entityAttributeId);
+                discrepancyByElementId.set(disc.entityAttributeId, disc);
+            }
+        }
+        // Recursively annotate the tree
+        return this.annotateNodeRecursive(node, elementIdsWithDiscrepancies, discrepancyByElementId);
+    }
+    /**
+     * Add NEW discrepancies as synthetic nodes to the tree
+     * These represent entity attributes that don't exist in the DTO
+     */
+    addNewDiscrepancyNodes(node, discrepancies) {
+        // Find NEW discrepancies that belong to this node (by parent DTO element ID)
+        const newDiscrepanciesForThisNode = discrepancies.filter(d => d.type === "NEW" && d.dtoFieldId === node.elementId);
+        // Add them as children
+        for (const newDisc of newDiscrepanciesForThisNode) {
+            const newNode = {
+                id: newDisc.id,
+                label: `${newDisc.entityAttributeName}: ${newDisc.entityAttributeType}`,
+                specializationId: "structure-dto-field",
+                elementId: newDisc.entityAttributeId,
+                elementType: "NEW-Field",
+                originalName: newDisc.entityAttributeName,
+                originalType: newDisc.entityAttributeType,
+                hasDiscrepancies: true,
+                isExpanded: true,
+                isSelected: false,
+                icon: newDisc.icon,
+                discrepancy: newDisc,
+                children: []
+            };
+            node.children.push(newNode);
+        }
+        // Recursively process children
+        if (node.children) {
+            for (const child of node.children) {
+                this.addNewDiscrepancyNodes(child, discrepancies);
+            }
+        }
+    }
+    annotateNodeRecursive(node, elementIdsWithDiscrepancies, discrepancyByElementId) {
+        let nodeHasDiscrepancies = elementIdsWithDiscrepancies.has(node.elementId);
+        // Attach discrepancy object if this node has one
+        if (nodeHasDiscrepancies && discrepancyByElementId.has(node.elementId)) {
+            node.discrepancy = discrepancyByElementId.get(node.elementId);
+        }
+        // Check children
+        if (node.children && node.children.length > 0) {
+            let anyChildHasDiscrepancies = false;
+            for (const child of node.children) {
+                const childHasDiscrepancies = this.annotateNodeRecursive(child, elementIdsWithDiscrepancies, discrepancyByElementId);
+                anyChildHasDiscrepancies = anyChildHasDiscrepancies || childHasDiscrepancies;
+            }
+            nodeHasDiscrepancies = nodeHasDiscrepancies || anyChildHasDiscrepancies;
+        }
+        // Mark this node with discrepancy info
+        node.hasDiscrepancies = nodeHasDiscrepancies;
+        return nodeHasDiscrepancies;
+    }
+    /**
+     * Prune branches from tree that don't have discrepancies
+     */
+    pruneTreeWithoutDiscrepancies(node) {
+        if (!node.children) {
+            return;
+        }
+        // Filter children - keep only those with discrepancies (and root/operation-param)
+        node.children = node.children.filter((child) => {
+            const extChild = child;
+            const keep = extChild.hasDiscrepancies ||
+                extChild.elementType === "Operation-Parameter" ||
+                extChild.elementType === "DTO"; // Keep root
+            if (keep && extChild.children) {
+                this.pruneTreeWithoutDiscrepancies(extChild);
+            }
+            return keep;
+        });
+    }
+    /**
+     * Convert the pruned tree structure to display nodes
      */
     buildHierarchicalTreeNodes(sourceElement, dtoElement, discrepancies) {
-        // Return the children of the structure tree (not the root itself, since the dialog creates its own root)
-        if (this.lastStructureTree && this.lastStructureTree.children) {
-            const result = [];
-            for (const child of this.lastStructureTree.children) {
-                const displayNode = this.convertNodeToDisplay(child);
+        // Use the pruned tree structure that was built and annotated
+        if (!this.lastStructureTree) {
+            return [];
+        }
+        // Convert the tree to display nodes
+        return this.convertTreeToDisplayNodes(this.lastStructureTree);
+    }
+    /**
+     * Recursively convert tree nodes to display nodes
+     */
+    convertTreeToDisplayNodes(node) {
+        const result = [];
+        // Process this node's children (skip root itself)
+        if (node.children) {
+            for (const child of node.children) {
+                const extChild = child;
+                const displayNode = this.createDisplayNode(extChild);
                 result.push(displayNode);
             }
-            return result;
         }
-        return [];
+        return result;
     }
-    convertNodeToDisplay(node) {
+    /**
+     * Create a display node from a tree node
+     */
+    createDisplayNode(node) {
         const displayNode = {
             id: node.id,
             label: node.label,
             specializationId: node.specializationId,
-            isExpanded: node.isExpanded,
-            isSelected: node.isSelected,
+            isExpanded: true,
+            isSelected: false,
             icon: node.icon,
             children: []
         };
+        // If this node has a discrepancy, attach the display function
+        if (node.discrepancy) {
+            const discrepancy = node.discrepancy;
+            // For NEW items, always use entityAttributeName; for others use dtoFieldName
+            const fieldName = discrepancy.type === "NEW"
+                ? discrepancy.entityAttributeName
+                : (discrepancy.dtoFieldName || discrepancy.entityAttributeName || "Unknown");
+            displayNode.displayFunction = createDiscrepancyDisplayFunction(discrepancy, fieldName);
+            displayNode.specializationId = `discrepancy-${discrepancy.type.toLowerCase()}`;
+            displayNode.label = this.formatDiscrepancyLabel(discrepancy);
+        }
         // Recursively convert children
         if (node.children && node.children.length > 0) {
+            displayNode.children = [];
             for (const child of node.children) {
-                const childDisplayNode = this.convertNodeToDisplay(child);
+                const extChild = child;
+                const childDisplayNode = this.createDisplayNode(extChild);
                 displayNode.children.push(childDisplayNode);
             }
         }
         return displayNode;
+    }
+    formatDiscrepancyLabel(discrepancy) {
+        switch (discrepancy.type) {
+            case "DELETE":
+                return `[DELETE] ${discrepancy.dtoFieldName}: ${discrepancy.dtoFieldType}`;
+            case "NEW":
+                return `[NEW] ${discrepancy.entityAttributeName}: ${discrepancy.entityAttributeType}`;
+            case "RENAME":
+                return `[RENAME] ${discrepancy.dtoFieldName} → ${discrepancy.entityAttributeName}`;
+            case "CHANGE_TYPE":
+                return `[CHANGE_TYPE] ${discrepancy.dtoFieldName}: ${discrepancy.dtoFieldType} → ${discrepancy.entityAttributeType}`;
+            default:
+                return discrepancy.dtoFieldName || discrepancy.entityAttributeName || "Unknown";
+        }
     }
     /**
      * Apply sync actions (placeholder for later)
@@ -1124,35 +1570,6 @@ async function syncDtoFields(element) {
     const engine = new FieldSyncEngine();
     const discrepancies = engine.analyzeFieldDiscrepancies(dtoElement, entity, fieldMappings, new Set(), element);
     console.log(`[SYNC] ├─ Discrepancies found: ${discrepancies.length}`);
-    // TEMPORARY: Show structure visualization even without discrepancies
-    if (discrepancies.length === 0) {
-        // Create a dummy structure node to show the tree in the UI for verification
-        const structureNode = {
-            id: `structure-view-${entity.id}`,
-            type: "RENAME", // Dummy type just for display
-            dtoFieldId: dtoElement.id,
-            dtoFieldName: "[Structure Visualization]",
-            dtoFieldType: "Structure-Only",
-            entityAttributeId: entity.id,
-            entityAttributeName: `${dtoElement.getName()} → ${entity.getName()}`,
-            entityAttributeType: "Structure-Only",
-            icon: dtoElement.getIcon()
-        };
-        // Create display function
-        const displayFunction = () => {
-            return {
-                displayText: "[Structure Visualization] - No discrepancies found. This shows the complete tree structure for reference."
-            };
-        };
-        structureNode.displayFunction = displayFunction;
-        const treeNodes = engine.buildHierarchicalTreeNodes(element, dtoElement, [structureNode]);
-        console.log(`[SYNC] ├─ Tree nodes built: ${treeNodes.length}`);
-        console.log(`[SYNC] └─ Showing structure visualization dialog`);
-        // Present dialog with structure visualization
-        const selectedNodeIds = await presentSyncDialog(element, dtoElement, entity, [structureNode], treeNodes);
-        console.log(`[SYNC] └─ Dialog closed, no changes applied`);
-        return;
-    }
     // Build tree view model with hierarchical structure
     const treeNodes = engine.buildHierarchicalTreeNodes(element, dtoElement, discrepancies);
     console.log(`[SYNC] ├─ Tree nodes built: ${treeNodes.length}`);
@@ -1233,6 +1650,26 @@ async function presentSyncDialog(sourceElement, dtoElement, entity, discrepancie
                         },
                         {
                             specializationId: "structure-nested-field",
+                            isSelectable: true,
+                            autoExpand: true
+                        },
+                        {
+                            specializationId: "discrepancy-delete",
+                            isSelectable: true,
+                            autoExpand: true
+                        },
+                        {
+                            specializationId: "discrepancy-new",
+                            isSelectable: true,
+                            autoExpand: true
+                        },
+                        {
+                            specializationId: "discrepancy-rename",
+                            isSelectable: true,
+                            autoExpand: true
+                        },
+                        {
+                            specializationId: "discrepancy-change_type",
                             isSelectable: true,
                             autoExpand: true
                         }
