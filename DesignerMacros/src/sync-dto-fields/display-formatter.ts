@@ -2,6 +2,30 @@
 /// <reference path="../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../typings/core.context.types.d.ts" />
 
+/**
+ * Centralized tree node label building
+ */
+class TreeNodeLabelBuilder {
+    static buildFieldLabel(name: string, type: string): string {
+        return `${name}: ${type}`;
+    }
+    
+    static buildDiscrepancyLabel(discrepancy: IFieldDiscrepancy): string {
+        switch (discrepancy.type) {
+            case "DELETE":
+                return `[DELETE] ${discrepancy.dtoFieldName}: ${discrepancy.dtoFieldType}`;
+            case "NEW":
+                return `[NEW] ${discrepancy.entityAttributeName}: ${discrepancy.entityAttributeType}`;
+            case "RENAME":
+                return `[RENAME] ${discrepancy.dtoFieldName} → ${discrepancy.entityAttributeName}`;
+            case "CHANGE_TYPE":
+                return `[CHANGE_TYPE] ${discrepancy.dtoFieldName}: ${discrepancy.dtoFieldType} → ${discrepancy.entityAttributeType}`;
+            default:
+                return discrepancy.dtoFieldName || discrepancy.entityAttributeName || "Unknown";
+        }
+    }
+}
+
 // Discrepancy status colors
 const DISCREPANCY_COLORS = {
     NEW: "#22c55e",      // Green

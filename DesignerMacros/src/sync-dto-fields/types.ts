@@ -136,30 +136,11 @@ interface IDtoAssociationField {
     icon: MacroApi.Context.IIcon;
 }
 
-// Extended tree node for structure-first architecture
 interface IExtendedTreeNode extends MacroApi.Context.ISelectableTreeNode {
-    // Node identity
-    elementId: string;                      // The actual element this node represents
-    elementType: string;                    // "DTO-Field" | "Attribute" | "Association" etc
-    originalName: string;                   // Immutable original name
-    originalType?: string;                  // Immutable original type display
-    
-    // Discrepancy tracking
-    discrepancy?: IFieldDiscrepancy;        // If this node has a discrepancy
-    hasDiscrepancies: boolean;              // If this OR any descendant has one
-    
-    // Navigation
-    parentPath?: string[];                  // Path of element IDs to root
-    
-    // Context for nested comparisons
-    contextDtoElement?: MacroApi.Context.IElementApi;     // The nested DTO type context
-    contextEntityElement?: MacroApi.Context.IElementApi;  // The nested Entity type context
-    
-    // Type information for accurate comparison
-    dtoTypeId?: string;                     // Type ID of DTO field
-    dtoIsCollection?: boolean;              // Whether DTO field is collection
-    dtoIsNullable?: boolean;                // Whether DTO field is nullable
-    entityTypeId?: string;                  // Type ID of entity attribute
-    entityIsCollection?: boolean;           // Whether entity attribute is collection
-    entityIsNullable?: boolean;             // Whether entity attribute is nullable
+    elementId: string;
+    elementType: string;
+    originalName: string;
+    originalType?: string;
+    discrepancy?: IFieldDiscrepancy;
+    hasDiscrepancies: boolean;
 }

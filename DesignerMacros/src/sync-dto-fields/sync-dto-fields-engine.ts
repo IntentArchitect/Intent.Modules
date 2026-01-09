@@ -3,16 +3,15 @@
 /// <reference path="display-formatter.ts" />
 /// <reference path="../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../typings/core.context.types.d.ts" />
+/// <reference path="../../typings/designer-common.api.d.ts" />
 
 /**
  * Structure-first DTO field synchronization engine
- * 
- * Current focus: Build correct tree hierarchy
- * (Discrepancy detection deferred until structure is verified)
  */
 class FieldSyncEngine {
 
     private lastStructureTree: IExtendedTreeNode | null = null;
+    private entityMapCache: Map<string, Map<string, IEntityAttribute>> = new Map();
 
     /**
      * Capture debug snapshot for regression testing
@@ -23,7 +22,6 @@ class FieldSyncEngine {
 
     /**
      * Main entry point: Build, annotate, and prune tree structure
-     * Three-phase approach: BUILD -> ANNOTATE -> PRUNE
      */
     public analyzeFieldDiscrepancies(
         dtoElement: MacroApi.Context.IElementApi,
@@ -38,12 +36,11 @@ class FieldSyncEngine {
         this.buildStructureTree(dtoElement, entity, mappings, sourceElement);
         this.captureDebugSnapshot("TREE-BUILT", this.lastStructureTree);
         
-        // Phase 2: Annotate discrepancies (including nested and operation parameters)
         const discrepancies: IFieldDiscrepancy[] = [];
         
-        // Check operation parameters if present
-        if (sourceElement && sourceElement.specialization === "Operation") {
-            this.detectOperationParameterDiscrepancies(sourceElement, dtoElement, entity, mappings, discrepancies);
+        const parameters = sourceElement?.getChildren("Parameter") || [];
+        if (parameters.length > 0) {
+            this.detectOperationParameterDiscrepancies(sourceElement!, dtoElement, entity, mappings, discrepancies);
         }
         
         // Check DTO fields recursively
@@ -72,23 +69,8 @@ class FieldSyncEngine {
         const operationParams = sourceElement.getChildren("Parameter");
         console.log(`[ANALYZE-PARAMS] Checking ${operationParams.length} operation parameters`);
         
-        const entityAttrs = getEntityAttributes(entity);
-        const entityAttrMap = new Map<string, IEntityAttribute>();
-        
-        for (const attr of entityAttrs) {
-            entityAttrMap.set(attr.id, attr);
-            entityAttrMap.set(attr.name.toLowerCase(), attr);
-        }
-        
-        // Build a map of parameter ID -> mapping
-        const mappingsBySourceId = new Map<string, IFieldMapping[]>();
-        for (const mapping of mappings) {
-            const sourceFieldId = mapping.sourceFieldId;
-            if (!mappingsBySourceId.has(sourceFieldId)) {
-                mappingsBySourceId.set(sourceFieldId, []);
-            }
-            mappingsBySourceId.get(sourceFieldId)!.push(mapping);
-        }
+        const entityAttrMap = this.getOrBuildEntityAttributeMap(entity);
+        const mappingsBySourceId = this.groupMappingsBySourceId(mappings);
         
         for (const param of operationParams) {
             const paramTypeRef = param.typeReference;
@@ -178,6 +160,67 @@ class FieldSyncEngine {
      * Recursively detect discrepancies at all levels (root + nested associations)
      * @param parentFieldId - For nested calls, the ID of the field that contains this DTO (for NEW items)
      */
+    /**
+     * Get cached entity attribute map or build it
+     */
+    private getOrBuildEntityAttributeMap(entity: MacroApi.Context.IElementApi): Map<string, IEntityAttribute> {
+        const cached = this.entityMapCache.get(entity.id);
+        if (cached) {
+            return cached;
+        }
+        
+        const map = this.buildEntityAttributeMap(entity);
+        this.entityMapCache.set(entity.id, map);
+        return map;
+    }
+
+    private buildEntityAttributeMap(entity: MacroApi.Context.IElementApi): Map<string, IEntityAttribute> {
+        const entityAttrs = getEntityAttributes(entity);
+        const entityAttrMap = new Map<string, IEntityAttribute>();
+        
+        for (const attr of entityAttrs) {
+            entityAttrMap.set(attr.id, attr);
+            entityAttrMap.set(attr.name.toLowerCase(), attr);
+        }
+        
+        return entityAttrMap;
+    }
+
+    private groupMappingsBySourceId(mappings: IFieldMapping[]): Map<string, IFieldMapping[]> {
+        const grouped = new Map<string, IFieldMapping[]>();
+        
+        for (const mapping of mappings) {
+            const sourceFieldId = mapping.sourceFieldId;
+            if (!grouped.has(sourceFieldId)) {
+                grouped.set(sourceFieldId, []);
+            }
+            grouped.get(sourceFieldId)!.push(mapping);
+        }
+        
+        return grouped;
+    }
+
+    private isComplexType(element: MacroApi.Context.IElementApi): boolean {
+        return element.specialization === "DTO" || element.specialization === "Class";
+    }
+
+    private isNestedMapping(mapping: IFieldMapping, parentFieldId: string): boolean {
+        if (!mapping.sourcePath || mapping.sourcePath.length <= 1) {
+            return false;
+        }
+        
+        const parentIndex = mapping.sourcePath.indexOf(parentFieldId);
+        return parentIndex >= 0 && parentIndex < mapping.sourcePath.length - 1;
+    }
+
+    private adjustMappingForNestedContext(mapping: IFieldMapping, parentFieldId: string): IFieldMapping {
+        const parentIndex = mapping.sourcePath.indexOf(parentFieldId);
+        return {
+            ...mapping,
+            sourcePath: mapping.sourcePath.slice(parentIndex + 1)
+        };
+    }
+
     private detectDiscrepanciesRecursive(
         dtoElement: MacroApi.Context.IElementApi,
         entity: MacroApi.Context.IElementApi,
@@ -188,23 +231,8 @@ class FieldSyncEngine {
     ): void {
         const indent = Array(depth).fill("  ").join("");
         
-        // Get entity attributes to compare against
-        const entityAttrs = getEntityAttributes(entity);
-        const entityAttrMap = new Map<string, IEntityAttribute>();
-        for (const attr of entityAttrs) {
-            entityAttrMap.set(attr.id, attr);
-            entityAttrMap.set(attr.name.toLowerCase(), attr);
-        }
-        
-        // Build a map of DTO field ID -> mapping
-        const mappingsBySourceId = new Map<string, IFieldMapping[]>();
-        for (const mapping of mappings) {
-            const sourceFieldId = mapping.sourceFieldId;
-            if (!mappingsBySourceId.has(sourceFieldId)) {
-                mappingsBySourceId.set(sourceFieldId, []);
-            }
-            mappingsBySourceId.get(sourceFieldId)!.push(mapping);
-        }
+        const entityAttrMap = this.getOrBuildEntityAttributeMap(entity);
+        const mappingsBySourceId = this.groupMappingsBySourceId(mappings);
         
         // Check each DTO field for discrepancies
         const childType = inferSourceElementChildType(dtoElement);
@@ -221,15 +249,12 @@ class FieldSyncEngine {
             
             if (fieldTypeRef && fieldTypeRef.isTypeFound()) {
                 const fieldType = fieldTypeRef.getType() as MacroApi.Context.IElementApi;
-                // Check if field type itself maps to entity attributes through associations
-                if (fieldType && (fieldType.specialization === "DTO" || fieldType.specialization === "Class")) {
-                    // This might be a nested DTO that maps to an associated entity
+                if (fieldType && this.isComplexType(fieldType)) {
                     nestedEntity = this.findAssociatedEntity(dtoField, entity, mappings);
                     if (nestedEntity) {
                         isAssociationField = true;
                         nestedMappings = this.getNestedMappings(mappings, dtoField.id);
                         
-                        // Handle association/nested field recursively
                         console.log(`${indent}[ANALYZE-NESTED] Analyzing nested DTO field: ${dtoField.getName()} → ${nestedEntity.getName()}`);
                         this.detectDiscrepanciesRecursive(fieldType, nestedEntity, nestedMappings, discrepancies, depth + 1, dtoField.id);
                     }
@@ -308,21 +333,19 @@ class FieldSyncEngine {
             }
         }
         
-        // Check for NEW fields (entity attributes not covered by any DTO field)
-        // This should run at ALL levels, not just root
         const mappedEntityIds = new Set<string>();
         for (const mapping of mappings) {
             mappedEntityIds.add(mapping.targetAttributeId);
         }
         
+        const entityAttrs = getEntityAttributes(entity);
         for (const entityAttr of entityAttrs) {
             if (!mappedEntityIds.has(entityAttr.id) && !entityAttr.isManagedKey) {
-                // Use parentFieldId if provided (nested context), otherwise use dtoElement.id (root)
                 const contextId = parentFieldId || dtoElement.id;
                 const discrepancy: IFieldDiscrepancy = {
                     id: `new-${entityAttr.id}-${contextId}`,
                     type: "NEW",
-                    dtoFieldId: contextId, // ID of the field/DTO where this should be added
+                    dtoFieldId: contextId,
                     dtoFieldName: "(missing)",
                     dtoFieldType: "N/A",
                     entityAttributeId: entityAttr.id,
@@ -359,19 +382,14 @@ class FieldSyncEngine {
             return null;
         }
         
-        // Look through entity associations to find matching target
         const associations = entity.getAssociations();
         
         for (const assoc of associations) {
-            // Get association name - this should match the DTO field name or its singular form
             const assocName = (assoc as any).getName ? (assoc as any).getName() : null;
             
-            // Try to match by name first (e.g., "Block1Level3" matches "Block1Level3")
-            // Handle both singular and plural (e.g., "Block1Level2s" might have association "Block1Level2")
-            const fieldNameSingular = dtoFieldName.replace(/s$/, ''); // Simple pluralization removal
+            const fieldNameSingular = singularize(dtoFieldName);
             
             if (assocName && (assocName === dtoFieldName || assocName === fieldNameSingular)) {
-                // Found matching association by name - get its target entity
                 if ((assoc as any).typeReference && (assoc as any).typeReference.isTypeFound()) {
                     return (assoc as any).typeReference.getType() as MacroApi.Context.IElementApi;
                 }
@@ -381,38 +399,10 @@ class FieldSyncEngine {
         return null;
     }
 
-    /**
-     * Get mappings for a nested DTO field
-     * For nested fields, the source path will be: [dto_param_id, parent_field_id, nested_field_id, ...]
-     * We want mappings where parent_field_id is in the path
-     */
-    private getNestedMappings(
-        allMappings: IFieldMapping[],
-        parentFieldId: string
-    ): IFieldMapping[] {
-        const nestedMappings: IFieldMapping[] = [];
-        
-        for (const mapping of allMappings) {
-            if (mapping.sourcePath && mapping.sourcePath.length > 1) {
-                // Check if parent field is in the path (but not the last element)
-                const parentIndex = mapping.sourcePath.indexOf(parentFieldId);
-                if (parentIndex >= 0 && parentIndex < mapping.sourcePath.length - 1) {
-                    // This mapping is for a nested field under this parent
-                    // Create a new mapping with adjusted paths
-                    const adjustedMapping: IFieldMapping = {
-                        sourcePath: mapping.sourcePath.slice(parentIndex + 1), // Remove parent and ancestors
-                        targetPath: mapping.targetPath, // Keep full target path for now
-                        sourceFieldId: mapping.sourceFieldId,
-                        targetAttributeId: mapping.targetAttributeId,
-                        mappingType: mapping.mappingType,
-                        mappingTypeId: mapping.mappingTypeId
-                    };
-                    nestedMappings.push(adjustedMapping);
-                }
-            }
-        }
-        
-        return nestedMappings;
+    private getNestedMappings(allMappings: IFieldMapping[], parentFieldId: string): IFieldMapping[] {
+        return allMappings
+            .filter(mapping => this.isNestedMapping(mapping, parentFieldId))
+            .map(mapping => this.adjustMappingForNestedContext(mapping, parentFieldId));
     }
 
     /**
@@ -503,65 +493,27 @@ class FieldSyncEngine {
                 children: []
             };
 
-            // Check if this is a complex type and add nested fields
             if (fieldTypeRef && fieldTypeRef.isTypeFound()) {
                 const fieldType = fieldTypeRef.getType() as MacroApi.Context.IElementApi;
-                if (fieldType && (fieldType.specialization === "DTO" || fieldType.specialization === "Class")) {
-                    this.addNestedDtoFields(fieldNode, fieldType);
+                if (fieldType && this.isComplexType(fieldType)) {
+                    this.addDtoFieldsRecursive(fieldNode, fieldType, 2);
                 }
             }
             
             rootNode.children!.push(fieldNode);
         }
-
-        // NOTE: Entity attributes and associations are used for discrepancy detection
-        // but we don't show them in the tree visualization for now
-        // Only show the DTO fields structure
         
-        // Store the built tree for later use
         this.lastStructureTree = rootNode;
     }
 
-    private addNestedDtoFields(parentNode: IExtendedTreeNode, fieldType: MacroApi.Context.IElementApi): void {
-        const childType = inferSourceElementChildType(fieldType);
-        const children = fieldType.getChildren(childType);
-        
-        for (const child of children) {
-            const childTypeRef = child.typeReference;
-            const childTypeName = childTypeRef?.display || "Unknown";
-            console.log(`[BUILD] │  │  ├─ ${child.getName()}: ${childTypeName}`);
-            
-            const childNode: IExtendedTreeNode = {
-                id: child.id,
-                label: `${child.getName()}: ${childTypeName}`,
-                specializationId: "structure-nested-field",
-                elementId: child.id,
-                elementType: "Nested-Field",
-                originalName: child.getName(),
-                originalType: childTypeName,
-                hasDiscrepancies: true,
-                isExpanded: true,
-                isSelected: false,
-                icon: child.getIcon(),
-                children: []
-            };
-            
-            // Recursively add nested fields
-            if (childTypeRef && childTypeRef.isTypeFound()) {
-                const nestedType = childTypeRef.getType() as MacroApi.Context.IElementApi;
-                if (nestedType && (nestedType.specialization === "DTO" || nestedType.specialization === "Class")) {
-                    this.addNestedDtoFieldsWithDepth(childNode, nestedType, 3);
-                }
-            }
-            
-            parentNode.children!.push(childNode);
-        }
-    }
-
-    private addNestedDtoFieldsWithDepth(parentNode: IExtendedTreeNode, fieldType: MacroApi.Context.IElementApi, depth: number): void {
-        const childType = inferSourceElementChildType(fieldType);
-        const children = fieldType.getChildren(childType);
+    private addDtoFieldsRecursive(
+        parentNode: IExtendedTreeNode,
+        dtoElement: MacroApi.Context.IElementApi,
+        depth: number
+    ): void {
         const indent = Array(depth).fill("│  ").join("");
+        const childType = inferSourceElementChildType(dtoElement);
+        const children = dtoElement.getChildren(childType);
         
         for (const child of children) {
             const childTypeRef = child.typeReference;
@@ -570,7 +522,7 @@ class FieldSyncEngine {
             
             const childNode: IExtendedTreeNode = {
                 id: child.id,
-                label: `${child.getName()}: ${childTypeName}`,
+                label: TreeNodeLabelBuilder.buildFieldLabel(child.getName(), childTypeName),
                 specializationId: "structure-nested-field",
                 elementId: child.id,
                 elementType: "Nested-Field",
@@ -583,11 +535,10 @@ class FieldSyncEngine {
                 children: []
             };
             
-            // Recursively add nested fields
             if (childTypeRef && childTypeRef.isTypeFound()) {
                 const nestedType = childTypeRef.getType() as MacroApi.Context.IElementApi;
-                if (nestedType && (nestedType.specialization === "DTO" || nestedType.specialization === "Class")) {
-                    this.addNestedDtoFieldsWithDepth(childNode, nestedType, depth + 1);
+                if (nestedType && this.isComplexType(nestedType)) {
+                    this.addDtoFieldsRecursive(childNode, nestedType, depth + 1);
                 }
             }
             
@@ -791,10 +742,9 @@ class FieldSyncEngine {
                 : (discrepancy.dtoFieldName || discrepancy.entityAttributeName || "Unknown");
             displayNode.displayFunction = createDiscrepancyDisplayFunction(discrepancy, fieldName);
             displayNode.specializationId = `discrepancy-${discrepancy.type.toLowerCase()}`;
-            displayNode.label = this.formatDiscrepancyLabel(discrepancy);
+            displayNode.label = TreeNodeLabelBuilder.buildDiscrepancyLabel(discrepancy);
         }
         
-        // Recursively convert children
         if (node.children && node.children.length > 0) {
             console.log(`[BUILD-DISPLAY]     └─ Processing ${node.children.length} nested children`);
             displayNode.children = [];
@@ -806,21 +756,6 @@ class FieldSyncEngine {
         }
         
         return displayNode;
-    }
-
-    private formatDiscrepancyLabel(discrepancy: IFieldDiscrepancy): string {
-        switch (discrepancy.type) {
-            case "DELETE":
-                return `[DELETE] ${discrepancy.dtoFieldName}: ${discrepancy.dtoFieldType}`;
-            case "NEW":
-                return `[NEW] ${discrepancy.entityAttributeName}: ${discrepancy.entityAttributeType}`;
-            case "RENAME":
-                return `[RENAME] ${discrepancy.dtoFieldName} → ${discrepancy.entityAttributeName}`;
-            case "CHANGE_TYPE":
-                return `[CHANGE_TYPE] ${discrepancy.dtoFieldName}: ${discrepancy.dtoFieldType} → ${discrepancy.entityAttributeType}`;
-            default:
-                return discrepancy.dtoFieldName || discrepancy.entityAttributeName || "Unknown";
-        }
     }
 
     /**

@@ -771,6 +771,28 @@ function ensureGroupNode(rootMap, fullPath, icon) {
 /// <reference path="types.ts" />
 /// <reference path="../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../typings/core.context.types.d.ts" />
+/**
+ * Centralized tree node label building
+ */
+class TreeNodeLabelBuilder {
+    static buildFieldLabel(name, type) {
+        return `${name}: ${type}`;
+    }
+    static buildDiscrepancyLabel(discrepancy) {
+        switch (discrepancy.type) {
+            case "DELETE":
+                return `[DELETE] ${discrepancy.dtoFieldName}: ${discrepancy.dtoFieldType}`;
+            case "NEW":
+                return `[NEW] ${discrepancy.entityAttributeName}: ${discrepancy.entityAttributeType}`;
+            case "RENAME":
+                return `[RENAME] ${discrepancy.dtoFieldName} → ${discrepancy.entityAttributeName}`;
+            case "CHANGE_TYPE":
+                return `[CHANGE_TYPE] ${discrepancy.dtoFieldName}: ${discrepancy.dtoFieldType} → ${discrepancy.entityAttributeType}`;
+            default:
+                return discrepancy.dtoFieldName || discrepancy.entityAttributeName || "Unknown";
+        }
+    }
+}
 // Discrepancy status colors
 const DISCREPANCY_COLORS = {
     NEW: "#22c55e", // Green
@@ -875,15 +897,14 @@ function attachDiscrepancyDisplayFunction(discrepancy, cleanFieldName) {
 /// <reference path="display-formatter.ts" />
 /// <reference path="../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../typings/core.context.types.d.ts" />
+/// <reference path="../../typings/designer-common.api.d.ts" />
 /**
  * Structure-first DTO field synchronization engine
- *
- * Current focus: Build correct tree hierarchy
- * (Discrepancy detection deferred until structure is verified)
  */
 class FieldSyncEngine {
     constructor() {
         this.lastStructureTree = null;
+        this.entityMapCache = new Map();
     }
     /**
      * Capture debug snapshot for regression testing
@@ -893,17 +914,15 @@ class FieldSyncEngine {
     }
     /**
      * Main entry point: Build, annotate, and prune tree structure
-     * Three-phase approach: BUILD -> ANNOTATE -> PRUNE
      */
     analyzeFieldDiscrepancies(dtoElement, entity, mappings, excludedEntityAttributeIds, sourceElement) {
         console.log(`[BUILD] Starting structure tree for DTO: ${dtoElement.getName()}`);
         console.log(`[BUILD] ├─ Entity: ${entity.getName()}`);
         this.buildStructureTree(dtoElement, entity, mappings, sourceElement);
         this.captureDebugSnapshot("TREE-BUILT", this.lastStructureTree);
-        // Phase 2: Annotate discrepancies (including nested and operation parameters)
         const discrepancies = [];
-        // Check operation parameters if present
-        if (sourceElement && sourceElement.specialization === "Operation") {
+        const parameters = (sourceElement === null || sourceElement === void 0 ? void 0 : sourceElement.getChildren("Parameter")) || [];
+        if (parameters.length > 0) {
             this.detectOperationParameterDiscrepancies(sourceElement, dtoElement, entity, mappings, discrepancies);
         }
         // Check DTO fields recursively
@@ -921,21 +940,8 @@ class FieldSyncEngine {
     detectOperationParameterDiscrepancies(sourceElement, dtoElement, entity, mappings, discrepancies) {
         const operationParams = sourceElement.getChildren("Parameter");
         console.log(`[ANALYZE-PARAMS] Checking ${operationParams.length} operation parameters`);
-        const entityAttrs = getEntityAttributes(entity);
-        const entityAttrMap = new Map();
-        for (const attr of entityAttrs) {
-            entityAttrMap.set(attr.id, attr);
-            entityAttrMap.set(attr.name.toLowerCase(), attr);
-        }
-        // Build a map of parameter ID -> mapping
-        const mappingsBySourceId = new Map();
-        for (const mapping of mappings) {
-            const sourceFieldId = mapping.sourceFieldId;
-            if (!mappingsBySourceId.has(sourceFieldId)) {
-                mappingsBySourceId.set(sourceFieldId, []);
-            }
-            mappingsBySourceId.get(sourceFieldId).push(mapping);
-        }
+        const entityAttrMap = this.getOrBuildEntityAttributeMap(entity);
+        const mappingsBySourceId = this.groupMappingsBySourceId(mappings);
         for (const param of operationParams) {
             const paramTypeRef = param.typeReference;
             // Skip the DTO parameter itself
@@ -1017,25 +1023,60 @@ class FieldSyncEngine {
      * Recursively detect discrepancies at all levels (root + nested associations)
      * @param parentFieldId - For nested calls, the ID of the field that contains this DTO (for NEW items)
      */
-    detectDiscrepanciesRecursive(dtoElement, entity, mappings, discrepancies, depth = 0, parentFieldId) {
-        var _a, _b, _c;
-        const indent = Array(depth).fill("  ").join("");
-        // Get entity attributes to compare against
+    /**
+     * Get cached entity attribute map or build it
+     */
+    getOrBuildEntityAttributeMap(entity) {
+        const cached = this.entityMapCache.get(entity.id);
+        if (cached) {
+            return cached;
+        }
+        const map = this.buildEntityAttributeMap(entity);
+        this.entityMapCache.set(entity.id, map);
+        return map;
+    }
+    buildEntityAttributeMap(entity) {
         const entityAttrs = getEntityAttributes(entity);
         const entityAttrMap = new Map();
         for (const attr of entityAttrs) {
             entityAttrMap.set(attr.id, attr);
             entityAttrMap.set(attr.name.toLowerCase(), attr);
         }
-        // Build a map of DTO field ID -> mapping
-        const mappingsBySourceId = new Map();
+        return entityAttrMap;
+    }
+    groupMappingsBySourceId(mappings) {
+        const grouped = new Map();
         for (const mapping of mappings) {
             const sourceFieldId = mapping.sourceFieldId;
-            if (!mappingsBySourceId.has(sourceFieldId)) {
-                mappingsBySourceId.set(sourceFieldId, []);
+            if (!grouped.has(sourceFieldId)) {
+                grouped.set(sourceFieldId, []);
             }
-            mappingsBySourceId.get(sourceFieldId).push(mapping);
+            grouped.get(sourceFieldId).push(mapping);
         }
+        return grouped;
+    }
+    isComplexType(element) {
+        return element.specialization === "DTO" || element.specialization === "Class";
+    }
+    isNestedMapping(mapping, parentFieldId) {
+        if (!mapping.sourcePath || mapping.sourcePath.length <= 1) {
+            return false;
+        }
+        const parentIndex = mapping.sourcePath.indexOf(parentFieldId);
+        return parentIndex >= 0 && parentIndex < mapping.sourcePath.length - 1;
+    }
+    adjustMappingForNestedContext(mapping, parentFieldId) {
+        const parentIndex = mapping.sourcePath.indexOf(parentFieldId);
+        return {
+            ...mapping,
+            sourcePath: mapping.sourcePath.slice(parentIndex + 1)
+        };
+    }
+    detectDiscrepanciesRecursive(dtoElement, entity, mappings, discrepancies, depth = 0, parentFieldId) {
+        var _a, _b, _c;
+        const indent = Array(depth).fill("  ").join("");
+        const entityAttrMap = this.getOrBuildEntityAttributeMap(entity);
+        const mappingsBySourceId = this.groupMappingsBySourceId(mappings);
         // Check each DTO field for discrepancies
         const childType = inferSourceElementChildType(dtoElement);
         const dtoChildren = dtoElement.getChildren(childType);
@@ -1048,14 +1089,11 @@ class FieldSyncEngine {
             let nestedMappings = [];
             if (fieldTypeRef && fieldTypeRef.isTypeFound()) {
                 const fieldType = fieldTypeRef.getType();
-                // Check if field type itself maps to entity attributes through associations
-                if (fieldType && (fieldType.specialization === "DTO" || fieldType.specialization === "Class")) {
-                    // This might be a nested DTO that maps to an associated entity
+                if (fieldType && this.isComplexType(fieldType)) {
                     nestedEntity = this.findAssociatedEntity(dtoField, entity, mappings);
                     if (nestedEntity) {
                         isAssociationField = true;
                         nestedMappings = this.getNestedMappings(mappings, dtoField.id);
-                        // Handle association/nested field recursively
                         console.log(`${indent}[ANALYZE-NESTED] Analyzing nested DTO field: ${dtoField.getName()} → ${nestedEntity.getName()}`);
                         this.detectDiscrepanciesRecursive(fieldType, nestedEntity, nestedMappings, discrepancies, depth + 1, dtoField.id);
                     }
@@ -1129,20 +1167,18 @@ class FieldSyncEngine {
                 }
             }
         }
-        // Check for NEW fields (entity attributes not covered by any DTO field)
-        // This should run at ALL levels, not just root
         const mappedEntityIds = new Set();
         for (const mapping of mappings) {
             mappedEntityIds.add(mapping.targetAttributeId);
         }
+        const entityAttrs = getEntityAttributes(entity);
         for (const entityAttr of entityAttrs) {
             if (!mappedEntityIds.has(entityAttr.id) && !entityAttr.isManagedKey) {
-                // Use parentFieldId if provided (nested context), otherwise use dtoElement.id (root)
                 const contextId = parentFieldId || dtoElement.id;
                 const discrepancy = {
                     id: `new-${entityAttr.id}-${contextId}`,
                     type: "NEW",
-                    dtoFieldId: contextId, // ID of the field/DTO where this should be added
+                    dtoFieldId: contextId,
                     dtoFieldName: "(missing)",
                     dtoFieldType: "N/A",
                     entityAttributeId: entityAttr.id,
@@ -1171,16 +1207,11 @@ class FieldSyncEngine {
         if (!nestedDtoType) {
             return null;
         }
-        // Look through entity associations to find matching target
         const associations = entity.getAssociations();
         for (const assoc of associations) {
-            // Get association name - this should match the DTO field name or its singular form
             const assocName = assoc.getName ? assoc.getName() : null;
-            // Try to match by name first (e.g., "Block1Level3" matches "Block1Level3")
-            // Handle both singular and plural (e.g., "Block1Level2s" might have association "Block1Level2")
-            const fieldNameSingular = dtoFieldName.replace(/s$/, ''); // Simple pluralization removal
+            const fieldNameSingular = singularize(dtoFieldName);
             if (assocName && (assocName === dtoFieldName || assocName === fieldNameSingular)) {
-                // Found matching association by name - get its target entity
                 if (assoc.typeReference && assoc.typeReference.isTypeFound()) {
                     return assoc.typeReference.getType();
                 }
@@ -1188,33 +1219,10 @@ class FieldSyncEngine {
         }
         return null;
     }
-    /**
-     * Get mappings for a nested DTO field
-     * For nested fields, the source path will be: [dto_param_id, parent_field_id, nested_field_id, ...]
-     * We want mappings where parent_field_id is in the path
-     */
     getNestedMappings(allMappings, parentFieldId) {
-        const nestedMappings = [];
-        for (const mapping of allMappings) {
-            if (mapping.sourcePath && mapping.sourcePath.length > 1) {
-                // Check if parent field is in the path (but not the last element)
-                const parentIndex = mapping.sourcePath.indexOf(parentFieldId);
-                if (parentIndex >= 0 && parentIndex < mapping.sourcePath.length - 1) {
-                    // This mapping is for a nested field under this parent
-                    // Create a new mapping with adjusted paths
-                    const adjustedMapping = {
-                        sourcePath: mapping.sourcePath.slice(parentIndex + 1), // Remove parent and ancestors
-                        targetPath: mapping.targetPath, // Keep full target path for now
-                        sourceFieldId: mapping.sourceFieldId,
-                        targetAttributeId: mapping.targetAttributeId,
-                        mappingType: mapping.mappingType,
-                        mappingTypeId: mapping.mappingTypeId
-                    };
-                    nestedMappings.push(adjustedMapping);
-                }
-            }
-        }
-        return nestedMappings;
+        return allMappings
+            .filter(mapping => this.isNestedMapping(mapping, parentFieldId))
+            .map(mapping => this.adjustMappingForNestedContext(mapping, parentFieldId));
     }
     /**
      * Build the complete natural tree structure from DTO/entity
@@ -1289,63 +1297,27 @@ class FieldSyncEngine {
                 icon: dtoChild.getIcon(),
                 children: []
             };
-            // Check if this is a complex type and add nested fields
             if (fieldTypeRef && fieldTypeRef.isTypeFound()) {
                 const fieldType = fieldTypeRef.getType();
-                if (fieldType && (fieldType.specialization === "DTO" || fieldType.specialization === "Class")) {
-                    this.addNestedDtoFields(fieldNode, fieldType);
+                if (fieldType && this.isComplexType(fieldType)) {
+                    this.addDtoFieldsRecursive(fieldNode, fieldType, 2);
                 }
             }
             rootNode.children.push(fieldNode);
         }
-        // NOTE: Entity attributes and associations are used for discrepancy detection
-        // but we don't show them in the tree visualization for now
-        // Only show the DTO fields structure
-        // Store the built tree for later use
         this.lastStructureTree = rootNode;
     }
-    addNestedDtoFields(parentNode, fieldType) {
-        const childType = inferSourceElementChildType(fieldType);
-        const children = fieldType.getChildren(childType);
-        for (const child of children) {
-            const childTypeRef = child.typeReference;
-            const childTypeName = (childTypeRef === null || childTypeRef === void 0 ? void 0 : childTypeRef.display) || "Unknown";
-            console.log(`[BUILD] │  │  ├─ ${child.getName()}: ${childTypeName}`);
-            const childNode = {
-                id: child.id,
-                label: `${child.getName()}: ${childTypeName}`,
-                specializationId: "structure-nested-field",
-                elementId: child.id,
-                elementType: "Nested-Field",
-                originalName: child.getName(),
-                originalType: childTypeName,
-                hasDiscrepancies: true,
-                isExpanded: true,
-                isSelected: false,
-                icon: child.getIcon(),
-                children: []
-            };
-            // Recursively add nested fields
-            if (childTypeRef && childTypeRef.isTypeFound()) {
-                const nestedType = childTypeRef.getType();
-                if (nestedType && (nestedType.specialization === "DTO" || nestedType.specialization === "Class")) {
-                    this.addNestedDtoFieldsWithDepth(childNode, nestedType, 3);
-                }
-            }
-            parentNode.children.push(childNode);
-        }
-    }
-    addNestedDtoFieldsWithDepth(parentNode, fieldType, depth) {
-        const childType = inferSourceElementChildType(fieldType);
-        const children = fieldType.getChildren(childType);
+    addDtoFieldsRecursive(parentNode, dtoElement, depth) {
         const indent = Array(depth).fill("│  ").join("");
+        const childType = inferSourceElementChildType(dtoElement);
+        const children = dtoElement.getChildren(childType);
         for (const child of children) {
             const childTypeRef = child.typeReference;
             const childTypeName = (childTypeRef === null || childTypeRef === void 0 ? void 0 : childTypeRef.display) || "Unknown";
             console.log(`[BUILD] ${indent}├─ ${child.getName()}: ${childTypeName}`);
             const childNode = {
                 id: child.id,
-                label: `${child.getName()}: ${childTypeName}`,
+                label: TreeNodeLabelBuilder.buildFieldLabel(child.getName(), childTypeName),
                 specializationId: "structure-nested-field",
                 elementId: child.id,
                 elementType: "Nested-Field",
@@ -1357,11 +1329,10 @@ class FieldSyncEngine {
                 icon: child.getIcon(),
                 children: []
             };
-            // Recursively add nested fields
             if (childTypeRef && childTypeRef.isTypeFound()) {
                 const nestedType = childTypeRef.getType();
-                if (nestedType && (nestedType.specialization === "DTO" || nestedType.specialization === "Class")) {
-                    this.addNestedDtoFieldsWithDepth(childNode, nestedType, depth + 1);
+                if (nestedType && this.isComplexType(nestedType)) {
+                    this.addDtoFieldsRecursive(childNode, nestedType, depth + 1);
                 }
             }
             parentNode.children.push(childNode);
@@ -1521,9 +1492,8 @@ class FieldSyncEngine {
                 : (discrepancy.dtoFieldName || discrepancy.entityAttributeName || "Unknown");
             displayNode.displayFunction = createDiscrepancyDisplayFunction(discrepancy, fieldName);
             displayNode.specializationId = `discrepancy-${discrepancy.type.toLowerCase()}`;
-            displayNode.label = this.formatDiscrepancyLabel(discrepancy);
+            displayNode.label = TreeNodeLabelBuilder.buildDiscrepancyLabel(discrepancy);
         }
-        // Recursively convert children
         if (node.children && node.children.length > 0) {
             console.log(`[BUILD-DISPLAY]     └─ Processing ${node.children.length} nested children`);
             displayNode.children = [];
@@ -1534,20 +1504,6 @@ class FieldSyncEngine {
             }
         }
         return displayNode;
-    }
-    formatDiscrepancyLabel(discrepancy) {
-        switch (discrepancy.type) {
-            case "DELETE":
-                return `[DELETE] ${discrepancy.dtoFieldName}: ${discrepancy.dtoFieldType}`;
-            case "NEW":
-                return `[NEW] ${discrepancy.entityAttributeName}: ${discrepancy.entityAttributeType}`;
-            case "RENAME":
-                return `[RENAME] ${discrepancy.dtoFieldName} → ${discrepancy.entityAttributeName}`;
-            case "CHANGE_TYPE":
-                return `[CHANGE_TYPE] ${discrepancy.dtoFieldName}: ${discrepancy.dtoFieldType} → ${discrepancy.entityAttributeType}`;
-            default:
-                return discrepancy.dtoFieldName || discrepancy.entityAttributeName || "Unknown";
-        }
     }
     /**
      * Apply sync actions (placeholder for later)
@@ -1654,55 +1610,20 @@ async function presentSyncDialog(sourceElement, dtoElement, entity, discrepancie
                     height: "400px",
                     isMultiSelect: true,
                     selectableTypes: [
-                        {
-                            specializationId: "dto-sync-root",
-                            isSelectable: true,
-                            autoExpand: true,
-                            autoSelectChildren: true
-                        },
-                        {
-                            specializationId: "structure-operation-param",
-                            isSelectable: true,
-                            autoExpand: true,
-                            autoSelectChildren: true
-                        },
-                        {
-                            specializationId: "structure-dto-field",
-                            isSelectable: true,
-                            autoExpand: true,
-                            autoSelectChildren: true
-                        },
-                        {
-                            specializationId: "structure-nested-field",
-                            isSelectable: true,
-                            autoExpand: true,
-                            autoSelectChildren: true
-                        },
-                        {
-                            specializationId: "discrepancy-delete",
-                            isSelectable: true,
-                            autoExpand: true,
-                            autoSelectChildren: true
-                        },
-                        {
-                            specializationId: "discrepancy-new",
-                            isSelectable: true,
-                            autoExpand: true,
-                            autoSelectChildren: true
-                        },
-                        {
-                            specializationId: "discrepancy-rename",
-                            isSelectable: true,
-                            autoExpand: true,
-                            autoSelectChildren: true
-                        },
-                        {
-                            specializationId: "discrepancy-change_type",
-                            isSelectable: true,
-                            autoExpand: true,
-                            autoSelectChildren: true
-                        }
-                    ]
+                        "dto-sync-root",
+                        "structure-operation-param",
+                        "structure-dto-field",
+                        "structure-nested-field",
+                        "discrepancy-delete",
+                        "discrepancy-new",
+                        "discrepancy-rename",
+                        "discrepancy-change_type"
+                    ].map(id => ({
+                        specializationId: id,
+                        isSelectable: true,
+                        autoExpand: true,
+                        autoSelectChildren: true
+                    }))
                 }
             }
         ]

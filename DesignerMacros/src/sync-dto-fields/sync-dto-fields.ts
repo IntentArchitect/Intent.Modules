@@ -128,55 +128,20 @@ async function presentSyncDialog(
                     height: "400px",
                     isMultiSelect: true,
                     selectableTypes: [
-                        {
-                            specializationId: "dto-sync-root",
-                            isSelectable: true,
-                            autoExpand: true,
-                            autoSelectChildren: true
-                        },
-                        {
-                            specializationId: "structure-operation-param",
-                            isSelectable: true,
-                            autoExpand: true,
-                            autoSelectChildren: true
-                        },
-                        {
-                            specializationId: "structure-dto-field",
-                            isSelectable: true,
-                            autoExpand: true,
-                            autoSelectChildren: true
-                        },
-                        {
-                            specializationId: "structure-nested-field",
-                            isSelectable: true,
-                            autoExpand: true,
-                            autoSelectChildren: true
-                        },
-                        {
-                            specializationId: "discrepancy-delete",
-                            isSelectable: true,
-                            autoExpand: true,
-                            autoSelectChildren: true
-                        },
-                        {
-                            specializationId: "discrepancy-new",
-                            isSelectable: true,
-                            autoExpand: true,
-                            autoSelectChildren: true
-                        },
-                        {
-                            specializationId: "discrepancy-rename",
-                            isSelectable: true,
-                            autoExpand: true,
-                            autoSelectChildren: true
-                        },
-                        {
-                            specializationId: "discrepancy-change_type",
-                            isSelectable: true,
-                            autoExpand: true,
-                            autoSelectChildren: true
-                        }
-                    ]
+                        "dto-sync-root",
+                        "structure-operation-param",
+                        "structure-dto-field",
+                        "structure-nested-field",
+                        "discrepancy-delete",
+                        "discrepancy-new",
+                        "discrepancy-rename",
+                        "discrepancy-change_type"
+                    ].map(id => ({
+                        specializationId: id,
+                        isSelectable: true,
+                        autoExpand: true,
+                        autoSelectChildren: true
+                    }))
                 }
             }
         ]
