@@ -351,6 +351,121 @@ class FieldSyncEngine {
                 console.log(`${indent}[ANALYZE] ├─ [NEW] ${entityAttr.name}: Entity attribute not in DTO`);
             }
         }
+
+        // Check for missing associations (nested DTOs)
+        // Include both source-end (this entity -> other) and target-end (other -> this entity)
+        const allAssociations = entity.getAssociations("Association");
+        const sourceEndAssociations = allAssociations.filter(assoc => assoc.isSourceEnd());
+        const targetEndAssociations = allAssociations.filter(assoc => !assoc.isSourceEnd());
+        
+        console.log(`${indent}[ANALYZE-ASSOC] Found ${sourceEndAssociations.length} source-end and ${targetEndAssociations.length} target-end associations on ${entity.getName()}`);
+        
+        const mappedAssociationIds = new Set<string>();
+        for (const mapping of mappings) {
+            // Check if this mapping represents an association
+            if (mapping.targetPath && mapping.targetPath.length > 0) {
+                const lastTargetId = mapping.targetPath[mapping.targetPath.length - 1];
+                mappedAssociationIds.add(lastTargetId);
+            }
+        }
+
+        // Process source-end associations (parent -> child)
+        for (const assoc of sourceEndAssociations) {
+            const assocName = assoc.getName ? assoc.getName() : null;
+            const targetTypeRef = assoc.typeReference;
+            
+            if (!assocName || !targetTypeRef || !targetTypeRef.isTypeFound()) {
+                console.log(`${indent}[ANALYZE-ASSOC] Skipping source-end association - invalid name or type`);
+                continue;
+            }
+
+            const targetEntity = targetTypeRef.getType() as MacroApi.Context.IElementApi;
+            const assocId = assoc.id;
+            
+            console.log(`${indent}[ANALYZE-ASSOC] Checking source-end association ${assocName} (id: ${assocId}, mapped: ${mappedAssociationIds.has(assocId)})`);
+
+            // Check if this association is mapped
+            if (!mappedAssociationIds.has(assocId)) {
+                const contextId = parentFieldId || dtoElement.id;
+                const dtoName = dtoElement.getName();
+                const entityName = targetEntity.getName();
+                
+                // Generate expected DTO name: {SourceDTO}{EntityName}Dto
+                const expectedDtoName = `${dtoName}${entityName}Dto`;
+                const isCollection = targetTypeRef.isCollection ? "[*]" : "";
+                
+                const discrepancy: IFieldDiscrepancy = {
+                    id: `new-assoc-${assocId}-${contextId}`,
+                    type: "NEW",
+                    dtoFieldId: contextId,
+                    dtoFieldName: "(missing)",
+                    dtoFieldType: `${expectedDtoName}${isCollection}`,
+                    entityAttributeId: assocId,
+                    entityAttributeName: assocName,
+                    entityAttributeType: `${entityName}${isCollection}`,
+                    icon: targetEntity.getIcon(),
+                    reason: `Association '${assocName}' (type: ${entityName}) is not present in DTO. Consider adding: ${expectedDtoName}`
+                };
+                discrepancies.push(discrepancy);
+                console.log(`${indent}[ANALYZE] ├─ [NEW] ${assocName}: Association to ${entityName} should be added as ${expectedDtoName}`);
+            }
+        }
+        
+        // Process target-end associations (these represent inverse relationships that should also be included)
+        // But only if they're navigable and represent real composite associations from the perspective of the DTO
+        for (const assoc of targetEndAssociations) {
+            const assocName = assoc.getName ? assoc.getName() : null;
+            const typeRef = assoc.typeReference;
+            
+            if (!assocName || !typeRef || !typeRef.isTypeFound() || !typeRef.isNavigable) {
+                continue;
+            }
+
+            // For target-end associations, check the OTHER end (source end) to determine if it's composite
+            const otherEnd = assoc.getOtherEnd ? assoc.getOtherEnd() : null;
+            if (!otherEnd || !otherEnd.typeReference) {
+                continue;
+            }
+
+            // Composite relationship: source end should NOT be collection or nullable
+            // If source end is collection or nullable, it's an aggregate and should be filtered
+            const isComposite = !otherEnd.typeReference.isCollection && !otherEnd.typeReference.isNullable;
+            if (!isComposite) {
+                console.log(`${indent}[ANALYZE-ASSOC] Skipping target-end association ${assocName} - not composite (source is collection or nullable)`);
+                continue;
+            }
+
+            const sourceEntity = typeRef.getType() as MacroApi.Context.IElementApi;
+            const assocId = assoc.id;
+            
+            console.log(`${indent}[ANALYZE-ASSOC] Checking target-end association ${assocName} (id: ${assocId}, mapped: ${mappedAssociationIds.has(assocId)}, composite: ${isComposite})`);
+
+            // Check if this association is mapped
+            if (!mappedAssociationIds.has(assocId)) {
+                const contextId = parentFieldId || dtoElement.id;
+                const dtoName = dtoElement.getName();
+                const entityName = sourceEntity.getName();
+                
+                // Generate expected DTO name: {SourceDTO}{EntityName}Dto
+                const expectedDtoName = `${dtoName}${entityName}Dto`;
+                const isCollection = typeRef.isCollection ? "[*]" : "";
+                
+                const discrepancy: IFieldDiscrepancy = {
+                    id: `new-assoc-${assocId}-${contextId}`,
+                    type: "NEW",
+                    dtoFieldId: contextId,
+                    dtoFieldName: "(missing)",
+                    dtoFieldType: `${expectedDtoName}${isCollection}`,
+                    entityAttributeId: assocId,
+                    entityAttributeName: assocName,
+                    entityAttributeType: `${entityName}${isCollection}`,
+                    icon: sourceEntity.getIcon(),
+                    reason: `Association '${assocName}' (type: ${entityName}) is not present in DTO. Consider adding: ${expectedDtoName}`
+                };
+                discrepancies.push(discrepancy);
+                console.log(`${indent}[ANALYZE] ├─ [NEW] ${assocName}: Target-end association to ${entityName} should be added as ${expectedDtoName}`);
+            }
+        }
     }
 
     /**
