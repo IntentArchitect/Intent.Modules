@@ -1636,42 +1636,50 @@ async function presentSyncDialog(sourceElement, dtoElement, entity, discrepancie
                         {
                             specializationId: "dto-sync-root",
                             isSelectable: true,
-                            autoExpand: true
+                            autoExpand: true,
+                            autoSelectChildren: true
                         },
                         {
                             specializationId: "structure-operation-param",
                             isSelectable: true,
-                            autoExpand: true
+                            autoExpand: true,
+                            autoSelectChildren: true
                         },
                         {
                             specializationId: "structure-dto-field",
                             isSelectable: true,
-                            autoExpand: true
+                            autoExpand: true,
+                            autoSelectChildren: true
                         },
                         {
                             specializationId: "structure-nested-field",
                             isSelectable: true,
-                            autoExpand: true
+                            autoExpand: true,
+                            autoSelectChildren: true
                         },
                         {
                             specializationId: "discrepancy-delete",
                             isSelectable: true,
-                            autoExpand: true
+                            autoExpand: true,
+                            autoSelectChildren: true
                         },
                         {
                             specializationId: "discrepancy-new",
                             isSelectable: true,
-                            autoExpand: true
+                            autoExpand: true,
+                            autoSelectChildren: true
                         },
                         {
                             specializationId: "discrepancy-rename",
                             isSelectable: true,
-                            autoExpand: true
+                            autoExpand: true,
+                            autoSelectChildren: true
                         },
                         {
                             specializationId: "discrepancy-change_type",
                             isSelectable: true,
-                            autoExpand: true
+                            autoExpand: true,
+                            autoSelectChildren: true
                         }
                     ]
                 }
