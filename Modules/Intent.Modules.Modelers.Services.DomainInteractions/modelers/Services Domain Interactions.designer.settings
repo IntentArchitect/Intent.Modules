@@ -12685,6 +12685,131 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
   <suggestionSettings>
     <suggestionSetting type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" locations="diagram, model">
       <name>Sync Command Fields</name>
+      <filterFunction>function hasDataMappings() {
+    // Validate element type
+    const validSpecializations = ["DTO", "Command", "Query", "Operation"];
+    if (!validSpecializations.includes(element.specialization)) {
+        return false;
+    }
+    
+    // Extract DTO from element
+    let dtoElement = element;
+    if (element.specialization === "Operation") {
+        const parameters = element.getChildren("Parameter");
+        dtoElement = null;
+        
+        for (const param of parameters) {
+            if (param.typeReference &amp;&amp; param.typeReference.isTypeFound()) {
+                const paramType = param.typeReference.getType();
+                if (["DTO", "Command", "Query"].includes(paramType.specialization)) {
+                    dtoElement = paramType;
+                    break;
+                }
+            }
+        }
+        
+        if (!dtoElement) {
+            return false;
+        }
+    }
+    
+    // Find associations and check for Data Mappings
+    const entityActionTypes = ["Create Entity Action", "Update Entity Action", "Delete Entity Action", "Query Entity Action"];
+    
+    for (const actionType of entityActionTypes) {
+        try {
+            const associations = element.specialization === "Operation" 
+                ? element.getAssociations(actionType)
+                : dtoElement.getAssociations(actionType);
+            
+            if (associations &amp;&amp; associations.length &gt; 0) {
+                for (const association of associations) {
+                    try {
+                        const advancedMappings = association.getAdvancedMappings();
+                        if (advancedMappings &amp;&amp; advancedMappings.length &gt; 0) {
+                            for (const advancedMapping of advancedMappings) {
+                                const mappedEnds = advancedMapping.getMappedEnds();
+                                if (mappedEnds &amp;&amp; mappedEnds.some(end =&gt; end.mappingType === "Data Mapping")) {
+                                    return true;
+                                }
+                            }
+                        }
+                    } catch (e) {
+                        // Continue to next association
+                    }
+                }
+            }
+        } catch (e) {
+            // Continue to next association type
+        }
+    }
+    
+    return false;
+}
+
+const hasData = hasDataMappings();
+return hasData;</filterFunction>
+      <displayFunction>function generateSyncTitle() {
+    // Validate element type
+    const validSpecializations = ["DTO", "Command", "Query", "Operation"];
+    if (!validSpecializations.includes(element.specialization)) {
+        return null;
+    }
+    
+    // Extract DTO from element
+    let dtoElement = element;
+    if (element.specialization === "Operation") {
+        const parameters = element.getChildren("Parameter");
+        dtoElement = null;
+        
+        for (const param of parameters) {
+            if (param.typeReference &amp;&amp; param.typeReference.isTypeFound()) {
+                const paramType = param.typeReference.getType();
+                if (["DTO", "Command", "Query"].includes(paramType.specialization)) {
+                    dtoElement = paramType;
+                    break;
+                }
+            }
+        }
+        
+        if (!dtoElement) {
+            return null;
+        }
+    }
+    
+    // Find associations to get the entity
+    const entityActionTypes = ["Create Entity Action", "Update Entity Action", "Delete Entity Action", "Query Entity Action"];
+    let entity = null;
+    
+    for (const actionType of entityActionTypes) {
+        try {
+            const associations = element.specialization === "Operation" 
+                ? element.getAssociations(actionType)
+                : dtoElement.getAssociations(actionType);
+            
+            if (associations &amp;&amp; associations.length &gt; 0) {
+                const association = associations[0];
+                if (association.typeReference &amp;&amp; association.typeReference.isTypeFound()) {
+                    entity = association.typeReference.getType();
+                    break;
+                }
+            }
+        } catch (e) {
+            // Continue to next association type
+        }
+    }
+    
+    if (!entity) {
+        return null;
+    }
+    
+    const title = `Synchronize ${element.getName()} with ${entity.getName()}`;
+    
+    return title;
+}
+
+const title = generateSyncTitle();
+return title;</displayFunction>
       <dependencies>
         <dependency name="Sync DTO Fields" id="9fa6137e-87c7-4dea-8604-9caaf62c0b4f" />
       </dependencies>
@@ -12763,7 +12888,131 @@ return application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad").getField(
     </suggestionSetting>
     <suggestionSetting type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" locations="diagram, model">
       <name>Sync Operation DTO Fields</name>
-      <filterFunction>return element.getChildren("Parameter").some(x =&gt; x.typeReference?.getType()?.specialization === "DTO");</filterFunction>
+      <filterFunction>function hasDataMappings() {
+    // Validate element type
+    const validSpecializations = ["DTO", "Command", "Query", "Operation"];
+    if (!validSpecializations.includes(element.specialization)) {
+        return false;
+    }
+    
+    // Extract DTO from element
+    let dtoElement = element;
+    if (element.specialization === "Operation") {
+        const parameters = element.getChildren("Parameter");
+        dtoElement = null;
+        
+        for (const param of parameters) {
+            if (param.typeReference &amp;&amp; param.typeReference.isTypeFound()) {
+                const paramType = param.typeReference.getType();
+                if (["DTO", "Command", "Query"].includes(paramType.specialization)) {
+                    dtoElement = paramType;
+                    break;
+                }
+            }
+        }
+        
+        if (!dtoElement) {
+            return false;
+        }
+    }
+    
+    // Find associations and check for Data Mappings
+    const entityActionTypes = ["Create Entity Action", "Update Entity Action", "Delete Entity Action", "Query Entity Action"];
+    
+    for (const actionType of entityActionTypes) {
+        try {
+            const associations = element.specialization === "Operation" 
+                ? element.getAssociations(actionType)
+                : dtoElement.getAssociations(actionType);
+            
+            if (associations &amp;&amp; associations.length &gt; 0) {
+                for (const association of associations) {
+                    try {
+                        const advancedMappings = association.getAdvancedMappings();
+                        if (advancedMappings &amp;&amp; advancedMappings.length &gt; 0) {
+                            for (const advancedMapping of advancedMappings) {
+                                const mappedEnds = advancedMapping.getMappedEnds();
+                                if (mappedEnds &amp;&amp; mappedEnds.some(end =&gt; end.mappingType === "Data Mapping")) {
+                                    return true;
+                                }
+                            }
+                        }
+                    } catch (e) {
+                        // Continue to next association
+                    }
+                }
+            }
+        } catch (e) {
+            // Continue to next association type
+        }
+    }
+    
+    return false;
+}
+
+const hasData = hasDataMappings();
+return hasData;</filterFunction>
+      <displayFunction>function generateSyncTitle() {
+    // Validate element type
+    const validSpecializations = ["DTO", "Command", "Query", "Operation"];
+    if (!validSpecializations.includes(element.specialization)) {
+        return null;
+    }
+    
+    // Extract DTO from element
+    let dtoElement = element;
+    if (element.specialization === "Operation") {
+        const parameters = element.getChildren("Parameter");
+        dtoElement = null;
+        
+        for (const param of parameters) {
+            if (param.typeReference &amp;&amp; param.typeReference.isTypeFound()) {
+                const paramType = param.typeReference.getType();
+                if (["DTO", "Command", "Query"].includes(paramType.specialization)) {
+                    dtoElement = paramType;
+                    break;
+                }
+            }
+        }
+        
+        if (!dtoElement) {
+            return null;
+        }
+    }
+    
+    // Find associations to get the entity
+    const entityActionTypes = ["Create Entity Action", "Update Entity Action", "Delete Entity Action", "Query Entity Action"];
+    let entity = null;
+    
+    for (const actionType of entityActionTypes) {
+        try {
+            const associations = element.specialization === "Operation" 
+                ? element.getAssociations(actionType)
+                : dtoElement.getAssociations(actionType);
+            
+            if (associations &amp;&amp; associations.length &gt; 0) {
+                const association = associations[0];
+                if (association.typeReference &amp;&amp; association.typeReference.isTypeFound()) {
+                    entity = association.typeReference.getType();
+                    break;
+                }
+            }
+        } catch (e) {
+            // Continue to next association type
+        }
+    }
+    
+    if (!entity) {
+        return null;
+    }
+    
+    const title = `Synchronize ${element.getName()} with ${entity.getName()}`;
+    
+    return title;
+}
+
+const title = generateSyncTitle();
+return title;</displayFunction>
       <dependencies>
         <dependency name="Sync DTO Fields" id="9fa6137e-87c7-4dea-8604-9caaf62c0b4f" />
       </dependencies>
@@ -12798,6 +13047,131 @@ function getDtoTypeId(item){
     </suggestionSetting>
     <suggestionSetting type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" locations="diagram, model">
       <name>Sync Query Fields</name>
+      <filterFunction>function hasDataMappings() {
+    // Validate element type
+    const validSpecializations = ["DTO", "Command", "Query", "Operation"];
+    if (!validSpecializations.includes(element.specialization)) {
+        return false;
+    }
+    
+    // Extract DTO from element
+    let dtoElement = element;
+    if (element.specialization === "Operation") {
+        const parameters = element.getChildren("Parameter");
+        dtoElement = null;
+        
+        for (const param of parameters) {
+            if (param.typeReference &amp;&amp; param.typeReference.isTypeFound()) {
+                const paramType = param.typeReference.getType();
+                if (["DTO", "Command", "Query"].includes(paramType.specialization)) {
+                    dtoElement = paramType;
+                    break;
+                }
+            }
+        }
+        
+        if (!dtoElement) {
+            return false;
+        }
+    }
+    
+    // Find associations and check for Data Mappings
+    const entityActionTypes = ["Create Entity Action", "Update Entity Action", "Delete Entity Action", "Query Entity Action"];
+    
+    for (const actionType of entityActionTypes) {
+        try {
+            const associations = element.specialization === "Operation" 
+                ? element.getAssociations(actionType)
+                : dtoElement.getAssociations(actionType);
+            
+            if (associations &amp;&amp; associations.length &gt; 0) {
+                for (const association of associations) {
+                    try {
+                        const advancedMappings = association.getAdvancedMappings();
+                        if (advancedMappings &amp;&amp; advancedMappings.length &gt; 0) {
+                            for (const advancedMapping of advancedMappings) {
+                                const mappedEnds = advancedMapping.getMappedEnds();
+                                if (mappedEnds &amp;&amp; mappedEnds.some(end =&gt; end.mappingType === "Data Mapping")) {
+                                    return true;
+                                }
+                            }
+                        }
+                    } catch (e) {
+                        // Continue to next association
+                    }
+                }
+            }
+        } catch (e) {
+            // Continue to next association type
+        }
+    }
+    
+    return false;
+}
+
+const hasData = hasDataMappings();
+return hasData;</filterFunction>
+      <displayFunction>function generateSyncTitle() {
+    // Validate element type
+    const validSpecializations = ["DTO", "Command", "Query", "Operation"];
+    if (!validSpecializations.includes(element.specialization)) {
+        return null;
+    }
+    
+    // Extract DTO from element
+    let dtoElement = element;
+    if (element.specialization === "Operation") {
+        const parameters = element.getChildren("Parameter");
+        dtoElement = null;
+        
+        for (const param of parameters) {
+            if (param.typeReference &amp;&amp; param.typeReference.isTypeFound()) {
+                const paramType = param.typeReference.getType();
+                if (["DTO", "Command", "Query"].includes(paramType.specialization)) {
+                    dtoElement = paramType;
+                    break;
+                }
+            }
+        }
+        
+        if (!dtoElement) {
+            return null;
+        }
+    }
+    
+    // Find associations to get the entity
+    const entityActionTypes = ["Create Entity Action", "Update Entity Action", "Delete Entity Action", "Query Entity Action"];
+    let entity = null;
+    
+    for (const actionType of entityActionTypes) {
+        try {
+            const associations = element.specialization === "Operation" 
+                ? element.getAssociations(actionType)
+                : dtoElement.getAssociations(actionType);
+            
+            if (associations &amp;&amp; associations.length &gt; 0) {
+                const association = associations[0];
+                if (association.typeReference &amp;&amp; association.typeReference.isTypeFound()) {
+                    entity = association.typeReference.getType();
+                    break;
+                }
+            }
+        } catch (e) {
+            // Continue to next association type
+        }
+    }
+    
+    if (!entity) {
+        return null;
+    }
+    
+    const title = `Synchronize ${element.getName()} with ${entity.getName()}`;
+    
+    return title;
+}
+
+const title = generateSyncTitle();
+return title;</displayFunction>
       <dependencies>
         <dependency name="Sync DTO Fields" id="9fa6137e-87c7-4dea-8604-9caaf62c0b4f" />
       </dependencies>
