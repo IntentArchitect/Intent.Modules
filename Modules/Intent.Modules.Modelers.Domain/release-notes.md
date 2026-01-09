@@ -1,6 +1,7 @@
 ﻿### Version 3.12.12
 
 - Improvement: Documented standard rules for AI-implemented Domain model changes.
+- Fixed: Updated `Intent.Persistence.SDK` to latest version to resolve compatibility issues.
 
 ### Version 3.12.11
 
