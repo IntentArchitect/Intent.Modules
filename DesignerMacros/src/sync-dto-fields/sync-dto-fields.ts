@@ -48,7 +48,7 @@ async function syncDtoFields(element: MacroApi.Context.IElementApi): Promise<voi
     
     // Analyze discrepancies using new structure-first approach
     const engine = new FieldSyncEngine();
-    const discrepancies = engine.analyzeFieldDiscrepancies(dtoElement, entity, fieldMappings, new Set(), element);
+    const discrepancies = engine.analyzeFieldDiscrepancies(dtoElement, entity, fieldMappings, element);
     
     console.log(`[SYNC] ├─ Discrepancies found: ${discrepancies.length}`);
     

@@ -20,7 +20,6 @@ class FieldSyncEngine {
         dtoElement: MacroApi.Context.IElementApi,
         entity: MacroApi.Context.IElementApi,
         mappings: IFieldMapping[],
-        excludedEntityAttributeIds: Set<string>,
         sourceElement?: MacroApi.Context.IElementApi
     ): IFieldDiscrepancy[] {
         console.log(`[BUILD] Starting structure tree for DTO: ${dtoElement.getName()}`);
