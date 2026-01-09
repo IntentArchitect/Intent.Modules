@@ -79,6 +79,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
                                 lhs: "TypescriptFile",
                                 rhs: new CSharpInvocationStatement("new TypescriptFile")
                                     .AddArgument("this.GetFolderPath()")
+                                    .AddArgument("this")
                                     .AddInvocation("AddClass", addClass =>
                                     {
                                         addClass.OnNewLine();
