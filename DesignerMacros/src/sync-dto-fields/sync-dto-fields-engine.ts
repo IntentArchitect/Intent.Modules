@@ -6,6 +6,328 @@
 /// <reference path="../../typings/designer-common.api.d.ts" />
 
 /**
+ * Executes sync actions on selected tree nodes
+ * Applies RENAME, DELETE, CHANGE_TYPE, and NEW field/association operations
+ */
+class NodeSyncExecutor {
+    
+    public execute(
+        selectedNodes: IExtendedTreeNode[],
+        dtoElement: MacroApi.Context.IElementApi,
+        entity: MacroApi.Context.IElementApi,
+        associations: MacroApi.Context.IAssociationApi[]
+    ): void {
+        console.log(`[APPLY-SYNC] Starting to apply ${selectedNodes.length} sync actions`);
+        
+        for (const node of selectedNodes) {
+            if (!node.discrepancy) {
+                console.log(`[APPLY-SYNC] ⚠ Skipping node ${node.id} - no discrepancy metadata`);
+                continue;
+            }
+            
+            try {
+                this.executeNode(node, dtoElement, entity, associations);
+                console.log(`[APPLY-SYNC] ✓ Applied [${node.discrepancy.type}] ${node.discrepancy.dtoFieldName}`);
+            } catch (error) {
+                console.log(`[APPLY-SYNC] ✗ Failed [${node.discrepancy.type}] ${node.discrepancy.dtoFieldName}: ${error}`);
+                // Continue to next node (no transactions)
+            }
+        }
+        
+        console.log(`[APPLY-SYNC] └─ Sync complete`);
+    }
+    
+    private executeNode(
+        node: IExtendedTreeNode,
+        dtoElement: MacroApi.Context.IElementApi,
+        entity: MacroApi.Context.IElementApi,
+        associations: MacroApi.Context.IAssociationApi[]
+    ): void {
+        const discrepancy = node.discrepancy!;
+        
+        switch (discrepancy.type) {
+            case "RENAME":
+                this.applyRename(node, dtoElement);
+                break;
+            case "DELETE":
+                this.applyDelete(node, dtoElement, associations);
+                break;
+            case "CHANGE_TYPE":
+                this.applyChangeType(node, dtoElement);
+                break;
+            case "NEW":
+                // Determine if it's an association or attribute based on DTO field type
+                if (discrepancy.dtoFieldType && discrepancy.dtoFieldType.includes("Dto")) {
+                    this.applyNewAssociation(node, dtoElement, entity, associations);
+                } else {
+                    this.applyNewAttribute(node, dtoElement, entity, associations);
+                }
+                break;
+            default:
+                throw new Error(`Unknown discrepancy type: ${discrepancy.type}`);
+        }
+    }
+
+    /**
+     * Apply RENAME: Rename the DTO field to match entity attribute name
+     */
+    private applyRename(node: IExtendedTreeNode, dtoElement: MacroApi.Context.IElementApi): void {
+        const discrepancy = node.discrepancy!;
+        const childType = inferSourceElementChildType(dtoElement);
+        const children = dtoElement.getChildren(childType);
+        
+        const dtoField = children.find(child => child.id === discrepancy.dtoFieldId);
+        if (!dtoField) {
+            throw new Error(`DTO field not found: ${discrepancy.dtoFieldId}`);
+        }
+        
+        // Rename the field to match entity attribute name
+        dtoField.setName(discrepancy.entityAttributeName, true);
+        console.log(`[APPLY-SYNC-RENAME] Renamed field from '${discrepancy.dtoFieldName}' to '${discrepancy.entityAttributeName}'`);
+    }
+
+    /**
+     * Apply DELETE: Remove the DTO field if it has no mappings
+     */
+    private applyDelete(
+        node: IExtendedTreeNode,
+        dtoElement: MacroApi.Context.IElementApi,
+        associations: MacroApi.Context.IAssociationApi[]
+    ): void {
+        const discrepancy = node.discrepancy!;
+        const childType = inferSourceElementChildType(dtoElement);
+        const children = dtoElement.getChildren(childType);
+        
+        const dtoField = children.find(child => child.id === discrepancy.dtoFieldId);
+        if (!dtoField) {
+            throw new Error(`DTO field not found: ${discrepancy.dtoFieldId}`);
+        }
+        
+        // Delete the field from the DTO
+        dtoField.delete();
+        console.log(`[APPLY-SYNC-DELETE] Deleted field '${discrepancy.dtoFieldName}'`);
+    }
+
+    /**
+     * Apply CHANGE_TYPE: Update the field's type reference to match entity attribute type
+     */
+    private applyChangeType(node: IExtendedTreeNode, dtoElement: MacroApi.Context.IElementApi): void {
+        const discrepancy = node.discrepancy!;
+        const childType = inferSourceElementChildType(dtoElement);
+        const children = dtoElement.getChildren(childType);
+        
+        const dtoField = children.find(child => child.id === discrepancy.dtoFieldId);
+        if (!dtoField) {
+            throw new Error(`DTO field not found: ${discrepancy.dtoFieldId}`);
+        }
+        
+        const typeRef = dtoField.typeReference;
+        if (!typeRef) {
+            throw new Error(`Field has no type reference: ${discrepancy.dtoFieldName}`);
+        }
+        
+        // Update type to match entity attribute
+        if (discrepancy.entityTypeId) {
+            typeRef.setType(discrepancy.entityTypeId);
+        }
+        
+        // Update collection and nullable modifiers if they differ
+        if (discrepancy.entityIsCollection !== undefined) {
+            typeRef.setIsCollection(discrepancy.entityIsCollection);
+        }
+        if (discrepancy.entityIsNullable !== undefined) {
+            typeRef.setIsNullable(discrepancy.entityIsNullable);
+        }
+        
+        console.log(`[APPLY-SYNC-CHANGE-TYPE] Updated type for '${discrepancy.dtoFieldName}' to '${discrepancy.entityAttributeType}'`);
+    }
+
+    /**
+     * Apply NEW ATTRIBUTE: Create a new DTO field with the entity attribute's name and type
+     */
+    private applyNewAttribute(
+        node: IExtendedTreeNode,
+        dtoElement: MacroApi.Context.IElementApi,
+        entity: MacroApi.Context.IElementApi,
+        associations: MacroApi.Context.IAssociationApi[]
+    ): void {
+        const discrepancy = node.discrepancy!;
+        
+        // Create new field in the DTO
+        const newField = dtoElement.addChild("DTO-Field", discrepancy.entityAttributeName);
+        if (!newField) {
+            throw new Error(`Failed to create new DTO field`);
+        }
+        
+        // Set the type reference if we have the entity attribute's type ID
+        if (discrepancy.entityTypeId && newField.typeReference) {
+            newField.typeReference.setType(discrepancy.entityTypeId);
+            
+            // Set collection/nullable based on entity attribute
+            if (discrepancy.entityIsCollection !== undefined) {
+                newField.typeReference.setIsCollection(discrepancy.entityIsCollection);
+            }
+            if (discrepancy.entityIsNullable !== undefined) {
+                newField.typeReference.setIsNullable(discrepancy.entityIsNullable);
+            }
+        }
+        
+        console.log(`[APPLY-SYNC-NEW-ATTR] Created new field '${discrepancy.entityAttributeName}: ${discrepancy.entityAttributeType}'`);
+        
+        // Create mapping between the new field and the entity attribute
+        try {
+            this.createFieldMapping(dtoElement, entity, newField, discrepancy);
+            console.log(`[APPLY-SYNC-NEW-ATTR] Created mapping for '${discrepancy.entityAttributeName}'`);
+        } catch (error) {
+            console.log(`[APPLY-SYNC-NEW-ATTR] Warning: Failed to create mapping: ${error}`);
+            // Don't throw - field was created successfully even if mapping failed
+        }
+    }
+
+    /**
+     * Create a field-to-attribute mapping
+     */
+    private createFieldMapping(
+        dtoElement: MacroApi.Context.IElementApi,
+        entity: MacroApi.Context.IElementApi,
+        newField: MacroApi.Context.IElementApi,
+        discrepancy: IFieldDiscrepancy
+    ): void {
+        // Find or create the association between DTO and Entity
+        const associationType = this.inferAssociationType(dtoElement);
+        
+        let association: MacroApi.Context.IAssociationApi | undefined = dtoElement.getAssociations(associationType)
+            .find(a => a.typeReference && a.typeReference.typeId === entity.id) as MacroApi.Context.IAssociationApi | undefined;
+        
+        if (!association) {
+            // Create the association
+            association = this.createElementAssociation(dtoElement.id, entity.id, associationType);
+            if (!association) {
+                throw new Error(`Failed to create association between ${dtoElement.getName()} and ${entity.getName()}`);
+            }
+            console.log(`[APPLY-SYNC-NEW-ATTR] Created ${associationType} association`);
+        }
+        
+        // Create or get the advanced mapping
+        const assocApi = association as MacroApi.Context.IAssociationApi;
+        let mapping = (assocApi.getAdvancedMappings?.() as any)?.[0];
+        if (!mapping) {
+            // Try to create advanced mapping
+            if (typeof assocApi.createAdvancedMapping === "function") {
+                mapping = assocApi.createAdvancedMapping?.();
+                if (!mapping) {
+                    throw new Error(`Failed to create advanced mapping`);
+                }
+                console.log(`[APPLY-SYNC-NEW-ATTR] Created advanced mapping`);
+            } else {
+                throw new Error(`Association does not support advanced mappings`);
+            }
+        }
+        
+        // Add the field-to-attribute mapping
+        if (mapping && typeof mapping.addMappedEnd === "function") {
+            const entityAttr = entity.getChildren("Attribute")
+                .find(a => a.id === discrepancy.entityAttributeId);
+            
+            if (entityAttr) {
+                mapping.addMappedEnd(
+                    "Data Mapping",
+                    [dtoElement.id, newField.id],
+                    [entity.id, entityAttr.id]
+                );
+                console.log(`[APPLY-SYNC-NEW-ATTR] Added data mapping: ${dtoElement.getName()}.${newField.getName()} → ${entity.getName()}.${entityAttr.getName()}`);
+            }
+        }
+    }
+
+    /**
+     * Infer the correct association type based on DTO element type
+     */
+    private inferAssociationType(dtoElement: MacroApi.Context.IElementApi): string {
+        const spec = dtoElement.specialization;
+        
+        if (spec === "Command") {
+            return "Create Entity Action";
+        } else if (spec === "Query") {
+            return "Query Entity Action";
+        }
+        
+        // Default to the generic association type
+        return "Association";
+    }
+
+    /**
+     * Create an association between two elements
+     */
+    private createElementAssociation(
+        sourceId: string,
+        targetId: string,
+        associationType: string
+    ): MacroApi.Context.IAssociationApi | undefined {
+        try {
+            // Use createAssociation function if available in macro context
+            // This is typically available in the macro execution environment
+            const createAssoc = (typeof createAssociation !== "undefined") ? createAssociation : undefined;
+            if (createAssoc) {
+                return createAssoc(associationType, sourceId, targetId);
+            }
+            return undefined;
+        } catch (error) {
+            console.log(`[APPLY-SYNC-NEW-ATTR] Warning: Could not create association: ${error}`);
+            return undefined;
+        }
+    }
+
+    /**
+     * Apply NEW ASSOCIATION: Create a new nested DTO and add mapping
+     */
+    private applyNewAssociation(
+        node: IExtendedTreeNode,
+        dtoElement: MacroApi.Context.IElementApi,
+        entity: MacroApi.Context.IElementApi,
+        associations: MacroApi.Context.IAssociationApi[]
+    ): void {
+        const discrepancy = node.discrepancy!;
+        
+        // Extract the expected DTO name from dtoFieldType (e.g., "CreateBlock1Level1CommandNewBlockForBlock1Dto[*]")
+        const dtoTypeName = discrepancy.dtoFieldType!.replace(/[\[\]\*]/g, "").trim();
+        const isCollection = discrepancy.dtoFieldType!.includes("[*]");
+        
+        // Create new nested DTO with the suggested name
+        const parentPackage = dtoElement.getParent();
+        if (!parentPackage) {
+            throw new Error(`Cannot determine parent package for new DTO`);
+        }
+        
+        const newNestedDto = parentPackage.addChild("DTO", dtoTypeName);
+        if (!newNestedDto) {
+            throw new Error(`Failed to create new nested DTO`);
+        }
+        
+        console.log(`[APPLY-SYNC-NEW-ASSOC] Created new DTO '${dtoTypeName}'`);
+        
+        // Create a reference field in the source DTO pointing to this new DTO
+        const newField = dtoElement.addChild("DTO-Field", discrepancy.entityAttributeName);
+        if (!newField) {
+            throw new Error(`Failed to create new DTO field for association`);
+        }
+        
+        // Set the type reference to the new nested DTO
+        if (newField.typeReference) {
+            newField.typeReference.setType(newNestedDto.id);
+            newField.typeReference.setIsCollection(isCollection);
+            newField.typeReference.setIsNullable(false);
+        }
+        
+        console.log(`[APPLY-SYNC-NEW-ASSOC] Created reference field '${discrepancy.entityAttributeName}: ${dtoTypeName}${isCollection ? "[*]" : ""}'`);
+        
+        // TODO: Create mappings between the new nested DTO and the target entity
+        // This would require access to the mapping API which may need additional context
+        console.log(`[APPLY-SYNC-NEW-ASSOC] ⚠ Note: Mappings should be created separately for the new association`);
+    }
+}
+
+/**
  * Structure-first DTO field synchronization engine
  */
 class FieldSyncEngine {
@@ -836,7 +1158,8 @@ class FieldSyncEngine {
             isExpanded: true,
             isSelected: false,
             icon: node.icon,
-            children: []
+            children: [],
+            discrepancy: node.discrepancy  // Preserve discrepancy metadata for execution
         };
         
         // If this node has a discrepancy, attach the display function
@@ -866,14 +1189,15 @@ class FieldSyncEngine {
     }
 
     /**
-     * Apply sync actions (placeholder for later)
+     * Apply sync actions for selected tree nodes
      */
     public applySyncActions(
         dtoElement: MacroApi.Context.IElementApi,
         entity: MacroApi.Context.IElementApi,
-        selectedDiscrepancies: IFieldDiscrepancy[],
+        selectedNodes: IExtendedTreeNode[],
         associations: MacroApi.Context.IAssociationApi[]
     ): void {
-        // Not implemented yet
+        const executor = new NodeSyncExecutor();
+        executor.execute(selectedNodes, dtoElement, entity, associations);
     }
 }

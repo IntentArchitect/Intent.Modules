@@ -4,6 +4,47 @@
 /// <reference path="../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../typings/core.context.types.d.ts" />
 
+/**
+ * Build a flat map of all tree nodes by ID for quick lookup
+ */
+function buildNodeMap(treeNodes: IExtendedTreeNode[]): Map<string, IExtendedTreeNode> {
+    const map = new Map<string, IExtendedTreeNode>();
+    
+    function traverse(nodes: IExtendedTreeNode[]): void {
+        for (const node of nodes) {
+            map.set(node.id, node);
+            
+            // Recurse into children
+            if (node.children && node.children.length > 0) {
+                traverse(node.children as IExtendedTreeNode[]);
+            }
+        }
+    }
+    
+    traverse(treeNodes);
+    return map;
+}
+
+/**
+ * Find all tree nodes that match the given selected IDs using the pre-built map
+ */
+function findSelectedNodes(nodeMap: Map<string, IExtendedTreeNode>, selectedIds: string[]): IExtendedTreeNode[] {
+    const result: IExtendedTreeNode[] = [];
+    
+    for (const id of selectedIds) {
+        const node = nodeMap.get(id);
+        if (node) {
+            result.push(node);
+            console.log(`[FIND-NODES]   ├─ Node ${node.id}: has discrepancy = ${!!node.discrepancy}, type = ${node.discrepancy?.type}`);
+        } else {
+            console.log(`[FIND-NODES]   ├─ Node ${id}: NOT FOUND in map`);
+        }
+    }
+    
+    console.log(`[FIND-NODES] Found ${result.length} nodes from ${selectedIds.length} selected IDs`);
+    return result;
+}
+
 async function syncDtoFields(element: MacroApi.Context.IElementApi): Promise<void> {
     
     console.log(`[SYNC] Starting sync for element: ${element.getName()} (${element.specialization})`);
@@ -57,6 +98,10 @@ async function syncDtoFields(element: MacroApi.Context.IElementApi): Promise<voi
     
     console.log(`[SYNC] ├─ Tree nodes built: ${treeNodes.length}`);
     
+    // Build node map for quick lookup after dialog (preserves discrepancy metadata)
+    const nodeMap = buildNodeMap(treeNodes as IExtendedTreeNode[]);
+    console.log(`[SYNC] ├─ Node map built with ${nodeMap.size} entries`);
+    
     // Present dialog with results
     const selectedNodeIds = await presentSyncDialog(element, dtoElement, entity, discrepancies, treeNodes);
     
@@ -64,14 +109,11 @@ async function syncDtoFields(element: MacroApi.Context.IElementApi): Promise<voi
     
     // Apply sync actions for selected discrepancies
     if (selectedNodeIds.length > 0) {
-        // Filter to only actual discrepancy IDs
-        const discrepancyIds = new Set(discrepancies.map(d => d.id));
-        const selectedDiscrepancies = discrepancies.filter(d => 
-            selectedNodeIds.includes(d.id) && discrepancyIds.has(d.id)
-        );
+        // Find the selected tree nodes using the preserved map
+        const selectedNodes = findSelectedNodes(nodeMap, selectedNodeIds);
         
-        console.log(`[SYNC] └─ Applying ${selectedDiscrepancies.length} sync actions`);
-        engine.applySyncActions(dtoElement, entity, selectedDiscrepancies, associations);
+        console.log(`[SYNC] └─ Applying ${selectedNodes.length} sync actions`);
+        engine.applySyncActions(dtoElement, entity, selectedNodes, associations);
     } else {
         console.log(`[SYNC] └─ No discrepancies selected`);
     }
