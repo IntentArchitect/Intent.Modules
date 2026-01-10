@@ -13,15 +13,15 @@ class TreeNodeLabelBuilder {
     static buildDiscrepancyLabel(discrepancy: IFieldDiscrepancy): string {
         switch (discrepancy.type) {
             case "DELETE":
-                return `[DELETE] ${discrepancy.dtoFieldName}: ${discrepancy.dtoFieldType}`;
+                return `[DELETE] ${discrepancy.sourceFieldName}: ${discrepancy.sourceFieldTypeName}`;
             case "NEW":
-                return `[NEW] ${discrepancy.entityAttributeName}: ${discrepancy.entityAttributeType}`;
+                return `[NEW] ${discrepancy.targetAttributeName}: ${discrepancy.targetAttributeTypeName}`;
             case "RENAME":
-                return `[RENAME] ${discrepancy.dtoFieldName} → ${discrepancy.entityAttributeName}`;
+                return `[RENAME] ${discrepancy.sourceFieldName} → ${discrepancy.targetAttributeName}`;
             case "CHANGE_TYPE":
-                return `[CHANGE_TYPE] ${discrepancy.dtoFieldName}: ${discrepancy.dtoFieldType} → ${discrepancy.entityAttributeType}`;
+                return `[CHANGE_TYPE] ${discrepancy.sourceFieldName}: ${discrepancy.sourceFieldTypeName} → ${discrepancy.targetAttributeTypeName}`;
             default:
-                return discrepancy.dtoFieldName || discrepancy.entityAttributeName || "Unknown";
+                return discrepancy.sourceFieldName || discrepancy.targetAttributeName || "Unknown";
         }
     }
 }
@@ -71,9 +71,9 @@ function formatDiscrepancy(discrepancy: IFieldDiscrepancy, cleanFieldName: strin
             components.push({ text: ": ", cssClass: "text-highlight annotation" });
             
             const newTypeDisplay = buildTypeDisplay(
-                discrepancy.entityAttributeType || "",
-                discrepancy.entityIsCollection || false,
-                discrepancy.entityIsNullable || false
+                discrepancy.targetAttributeTypeName || "",
+                discrepancy.targetIsCollection || false,
+                discrepancy.targetIsNullable || false
             );
             components.push({ text: newTypeDisplay, cssClass: "text-highlight keyword" });
             components.push({ text: " " });
@@ -85,14 +85,14 @@ function formatDiscrepancy(discrepancy: IFieldDiscrepancy, cleanFieldName: strin
             components.push({ text: cleanFieldName, cssClass: "text-highlight" });
             components.push({ text: " → ", cssClass: "text-highlight muted" });
             
-            const targetName = discrepancy.entityAttributeName.split('.').pop() || discrepancy.entityAttributeName;
+            const targetName = discrepancy.targetAttributeName.split('.').pop() || discrepancy.targetAttributeName;
             components.push({ text: targetName, cssClass: "text-highlight" });
             components.push({ text: ": ", cssClass: "text-highlight annotation" });
             
             const renameTypeDisplay = buildTypeDisplay(
-                discrepancy.dtoFieldType || "",
-                discrepancy.dtoIsCollection || false,
-                discrepancy.dtoIsNullable || false
+                discrepancy.sourceFieldTypeName || "",
+                discrepancy.sourceIsCollection || false,
+                discrepancy.sourceIsNullable || false
             );
             components.push({ text: renameTypeDisplay, cssClass: "text-highlight keyword" });
             components.push({ text: " " });
@@ -105,18 +105,18 @@ function formatDiscrepancy(discrepancy: IFieldDiscrepancy, cleanFieldName: strin
             components.push({ text: ": ", cssClass: "text-highlight annotation" });
             
             const oldTypeDisplay = buildTypeDisplay(
-                discrepancy.dtoFieldType || "",
-                discrepancy.dtoIsCollection || false,
-                discrepancy.dtoIsNullable || false
+                discrepancy.sourceFieldTypeName || "",
+                discrepancy.sourceIsCollection || false,
+                discrepancy.sourceIsNullable || false
             );
             components.push({ text: oldTypeDisplay, cssClass: "text-highlight keyword" });
             
             components.push({ text: " → ", cssClass: "text-highlight muted" });
             
             const newTypeChangeDisplay = buildTypeDisplay(
-                discrepancy.entityAttributeType || "",
-                discrepancy.entityIsCollection || false,
-                discrepancy.entityIsNullable || false
+                discrepancy.targetAttributeTypeName || "",
+                discrepancy.targetIsCollection || false,
+                discrepancy.targetIsNullable || false
             );
             components.push({ text: newTypeChangeDisplay, cssClass: "text-highlight keyword" });
             components.push({ text: " " });
@@ -129,9 +129,9 @@ function formatDiscrepancy(discrepancy: IFieldDiscrepancy, cleanFieldName: strin
             components.push({ text: ": ", cssClass: "text-highlight annotation" });
             
             const deleteTypeDisplay = buildTypeDisplay(
-                discrepancy.dtoFieldType || "",
-                discrepancy.dtoIsCollection || false,
-                discrepancy.dtoIsNullable || false
+                discrepancy.sourceFieldTypeName || "",
+                discrepancy.sourceIsCollection || false,
+                discrepancy.sourceIsNullable || false
             );
             components.push({ text: deleteTypeDisplay, cssClass: "text-highlight keyword" });
             components.push({ text: " " });
@@ -158,7 +158,7 @@ function getDiscrepancyStatusInfo(type: "NEW" | "DELETE" | "RENAME" | "CHANGE_TY
 }
 
 function createDiscrepancyDisplayFunction(discrepancy: IFieldDiscrepancy, cleanFieldName?: string): () => MacroApi.Context.IDisplayTextComponent[] {
-    const fieldName = cleanFieldName || discrepancy.dtoFieldName || discrepancy.entityAttributeName;
+    const fieldName = cleanFieldName || discrepancy.sourceFieldName || discrepancy.targetAttributeName;
     return () => formatDiscrepancy(discrepancy, fieldName);
 }
 

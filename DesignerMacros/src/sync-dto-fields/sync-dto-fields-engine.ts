@@ -27,9 +27,9 @@ class NodeSyncExecutor {
             
             try {
                 this.executeNode(node, dtoElement, entity, associations);
-                console.log(`[APPLY-SYNC] ✓ Applied [${node.discrepancy.type}] ${node.discrepancy.dtoFieldName}`);
+                console.log(`[APPLY-SYNC] ✓ Applied [${node.discrepancy.type}] ${node.discrepancy.sourceFieldName}`);
             } catch (error) {
-                console.log(`[APPLY-SYNC] ✗ Failed [${node.discrepancy.type}] ${node.discrepancy.dtoFieldName}: ${error}`);
+                console.log(`[APPLY-SYNC] ✗ Failed [${node.discrepancy.type}] ${node.discrepancy.sourceFieldName}: ${error}`);
                 // Continue to next node (no transactions)
             }
         }
@@ -57,7 +57,7 @@ class NodeSyncExecutor {
                 break;
             case "NEW":
                 // Determine if it's an association or attribute based on DTO field type
-                if (discrepancy.dtoFieldType && discrepancy.dtoFieldType.includes("Dto")) {
+                if (discrepancy.sourceFieldTypeName && discrepancy.sourceFieldTypeName.includes("Dto")) {
                     this.applyNewAssociation(node, dtoElement, entity, associations);
                 } else {
                     this.applyNewAttribute(node, dtoElement, entity, associations);
@@ -73,17 +73,16 @@ class NodeSyncExecutor {
      */
     private applyRename(node: IExtendedTreeNode, dtoElement: MacroApi.Context.IElementApi): void {
         const discrepancy = node.discrepancy!;
-        const childType = inferSourceElementChildType(dtoElement);
-        const children = dtoElement.getChildren(childType);
+        const children = dtoElement.getChildren("DTO-Field");
         
-        const dtoField = children.find(child => child.id === discrepancy.dtoFieldId);
+        const dtoField = children.find(child => child.id === discrepancy.sourceFieldId);
         if (!dtoField) {
-            throw new Error(`DTO field not found: ${discrepancy.dtoFieldId}`);
+            throw new Error(`DTO field not found: ${discrepancy.sourceFieldId}`);
         }
         
         // Rename the field to match entity attribute name
-        dtoField.setName(discrepancy.entityAttributeName, true);
-        console.log(`[APPLY-SYNC-RENAME] Renamed field from '${discrepancy.dtoFieldName}' to '${discrepancy.entityAttributeName}'`);
+        dtoField.setName(discrepancy.targetAttributeName, true);
+        console.log(`[APPLY-SYNC-RENAME] Renamed field from '${discrepancy.sourceFieldName}' to '${discrepancy.targetAttributeName}'`);
     }
 
     /**
@@ -95,17 +94,16 @@ class NodeSyncExecutor {
         associations: MacroApi.Context.IAssociationApi[]
     ): void {
         const discrepancy = node.discrepancy!;
-        const childType = inferSourceElementChildType(dtoElement);
-        const children = dtoElement.getChildren(childType);
+        const children = dtoElement.getChildren("DTO-Field");
         
-        const dtoField = children.find(child => child.id === discrepancy.dtoFieldId);
+        const dtoField = children.find(child => child.id === discrepancy.sourceFieldId);
         if (!dtoField) {
-            throw new Error(`DTO field not found: ${discrepancy.dtoFieldId}`);
+            throw new Error(`DTO field not found: ${discrepancy.sourceFieldId}`);
         }
         
         // Delete the field from the DTO
         dtoField.delete();
-        console.log(`[APPLY-SYNC-DELETE] Deleted field '${discrepancy.dtoFieldName}'`);
+        console.log(`[APPLY-SYNC-DELETE] Deleted field '${discrepancy.sourceFieldName}'`);
     }
 
     /**
@@ -113,33 +111,32 @@ class NodeSyncExecutor {
      */
     private applyChangeType(node: IExtendedTreeNode, dtoElement: MacroApi.Context.IElementApi): void {
         const discrepancy = node.discrepancy!;
-        const childType = inferSourceElementChildType(dtoElement);
-        const children = dtoElement.getChildren(childType);
+        const children = dtoElement.getChildren("DTO-Field");
         
-        const dtoField = children.find(child => child.id === discrepancy.dtoFieldId);
+        const dtoField = children.find(child => child.id === discrepancy.sourceFieldId);
         if (!dtoField) {
-            throw new Error(`DTO field not found: ${discrepancy.dtoFieldId}`);
+            throw new Error(`DTO field not found: ${discrepancy.sourceFieldId}`);
         }
         
         const typeRef = dtoField.typeReference;
         if (!typeRef) {
-            throw new Error(`Field has no type reference: ${discrepancy.dtoFieldName}`);
+            throw new Error(`Field has no type reference: ${discrepancy.sourceFieldName}`);
         }
         
         // Update type to match entity attribute
-        if (discrepancy.entityTypeId) {
-            typeRef.setType(discrepancy.entityTypeId);
+        if (discrepancy.targetTypeId) {
+            typeRef.setType(discrepancy.targetTypeId);
         }
         
         // Update collection and nullable modifiers if they differ
-        if (discrepancy.entityIsCollection !== undefined) {
-            typeRef.setIsCollection(discrepancy.entityIsCollection);
+        if (discrepancy.targetIsCollection !== undefined) {
+            typeRef.setIsCollection(discrepancy.targetIsCollection);
         }
-        if (discrepancy.entityIsNullable !== undefined) {
-            typeRef.setIsNullable(discrepancy.entityIsNullable);
+        if (discrepancy.targetIsNullable !== undefined) {
+            typeRef.setIsNullable(discrepancy.targetIsNullable);
         }
         
-        console.log(`[APPLY-SYNC-CHANGE-TYPE] Updated type for '${discrepancy.dtoFieldName}' to '${discrepancy.entityAttributeType}'`);
+        console.log(`[APPLY-SYNC-CHANGE-TYPE] Updated type for '${discrepancy.sourceFieldName}' to '${discrepancy.targetAttributeTypeName}'`);
     }
 
     /**
@@ -154,30 +151,30 @@ class NodeSyncExecutor {
         const discrepancy = node.discrepancy!;
         
         // Create new field in the DTO
-        const newField = dtoElement.addChild("DTO-Field", discrepancy.entityAttributeName);
+        const newField = dtoElement.addChild("DTO-Field", discrepancy.targetAttributeName);
         if (!newField) {
             throw new Error(`Failed to create new DTO field`);
         }
         
         // Set the type reference if we have the entity attribute's type ID
-        if (discrepancy.entityTypeId && newField.typeReference) {
-            newField.typeReference.setType(discrepancy.entityTypeId);
+        if (discrepancy.targetTypeId && newField.typeReference) {
+            newField.typeReference.setType(discrepancy.targetTypeId);
             
             // Set collection/nullable based on entity attribute
-            if (discrepancy.entityIsCollection !== undefined) {
-                newField.typeReference.setIsCollection(discrepancy.entityIsCollection);
+            if (discrepancy.targetIsCollection !== undefined) {
+                newField.typeReference.setIsCollection(discrepancy.targetIsCollection);
             }
-            if (discrepancy.entityIsNullable !== undefined) {
-                newField.typeReference.setIsNullable(discrepancy.entityIsNullable);
+            if (discrepancy.targetIsNullable !== undefined) {
+                newField.typeReference.setIsNullable(discrepancy.targetIsNullable);
             }
         }
         
-        console.log(`[APPLY-SYNC-NEW-ATTR] Created new field '${discrepancy.entityAttributeName}: ${discrepancy.entityAttributeType}'`);
+        console.log(`[APPLY-SYNC-NEW-ATTR] Created new field '${discrepancy.targetAttributeName}: ${discrepancy.targetAttributeTypeName}'`);
         
         // Create mapping between the new field and the entity attribute
         try {
             this.createFieldMapping(dtoElement, entity, newField, discrepancy);
-            console.log(`[APPLY-SYNC-NEW-ATTR] Created mapping for '${discrepancy.entityAttributeName}'`);
+            console.log(`[APPLY-SYNC-NEW-ATTR] Created mapping for '${discrepancy.targetAttributeName}'`);
         } catch (error) {
             console.log(`[APPLY-SYNC-NEW-ATTR] Warning: Failed to create mapping: ${error}`);
             // Don't throw - field was created successfully even if mapping failed
@@ -227,7 +224,7 @@ class NodeSyncExecutor {
         // Add the field-to-attribute mapping
         if (mapping && typeof mapping.addMappedEnd === "function") {
             const entityAttr = entity.getChildren("Attribute")
-                .find(a => a.id === discrepancy.entityAttributeId);
+                .find(a => a.id === discrepancy.targetAttributeId);
             
             if (entityAttr) {
                 mapping.addMappedEnd(
@@ -290,8 +287,8 @@ class NodeSyncExecutor {
         const discrepancy = node.discrepancy!;
         
         // Extract the expected DTO name from dtoFieldType (e.g., "CreateBlock1Level1CommandNewBlockForBlock1Dto[*]")
-        const dtoTypeName = discrepancy.dtoFieldType!.replace(/[\[\]\*]/g, "").trim();
-        const isCollection = discrepancy.dtoFieldType!.includes("[*]");
+        const dtoTypeName = discrepancy.sourceFieldTypeName!.replace(/[\[\]\*]/g, "").trim();
+        const isCollection = discrepancy.sourceFieldTypeName!.includes("[*]");
         
         // Create new nested DTO with the suggested name
         const parentPackage = dtoElement.getParent();
@@ -307,7 +304,7 @@ class NodeSyncExecutor {
         console.log(`[APPLY-SYNC-NEW-ASSOC] Created new DTO '${dtoTypeName}'`);
         
         // Create a reference field in the source DTO pointing to this new DTO
-        const newField = dtoElement.addChild("DTO-Field", discrepancy.entityAttributeName);
+        const newField = dtoElement.addChild("DTO-Field", discrepancy.targetAttributeName);
         if (!newField) {
             throw new Error(`Failed to create new DTO field for association`);
         }
@@ -319,7 +316,7 @@ class NodeSyncExecutor {
             newField.typeReference.setIsNullable(false);
         }
         
-        console.log(`[APPLY-SYNC-NEW-ASSOC] Created reference field '${discrepancy.entityAttributeName}: ${dtoTypeName}${isCollection ? "[*]" : ""}'`);
+        console.log(`[APPLY-SYNC-NEW-ASSOC] Created reference field '${discrepancy.targetAttributeName}: ${dtoTypeName}${isCollection ? "[*]" : ""}'`);
         
         // TODO: Create mappings between the new nested DTO and the target entity
         // This would require access to the mapping API which may need additional context
@@ -405,12 +402,13 @@ class FieldSyncEngine {
                 const discrepancy: IFieldDiscrepancy = {
                     id: `delete-param-${param.id}`,
                     type: "DELETE",
-                    dtoFieldId: param.id,
-                    dtoFieldName: param.getName(),
-                    dtoFieldType: paramTypeRef?.display || "Unknown",
-                    entityAttributeName: "(no mapping)",
+                    sourceFieldId: param.id,
+                    sourceFieldName: param.getName(),
+                    sourceFieldTypeName: paramTypeRef?.display || "Unknown",
+                    targetAttributeName: "(no mapping)",
                     icon: param.getIcon(),
-                    reason: `Parameter '${param.getName()}' is not mapped to any entity attribute`
+                    reason: `Parameter '${param.getName()}' is not mapped to any entity attribute`,
+                    sourceParentId: sourceElement.id
                 };
                 discrepancies.push(discrepancy);
                 console.log(`[ANALYZE] ├─ [DELETE] Parameter ${param.getName()}: Not mapped to entity`);
@@ -431,14 +429,15 @@ class FieldSyncEngine {
                         const discrepancy: IFieldDiscrepancy = {
                             id: `rename-param-${param.id}`,
                             type: "RENAME",
-                            dtoFieldId: param.id,
-                            dtoFieldName: paramName,
-                            dtoFieldType: paramTypeRef?.display || "Unknown",
-                            entityAttributeId: targetAttr.id,
-                            entityAttributeName: entityAttrName,
-                            entityAttributeType: targetAttr.typeDisplayText,
+                            sourceFieldId: param.id,
+                            sourceFieldName: paramName,
+                            sourceFieldTypeName: paramTypeRef?.display || "Unknown",
+                            targetAttributeId: targetAttr.id,
+                            targetAttributeName: entityAttrName,
+                            targetAttributeTypeName: targetAttr.typeDisplayText,
                             icon: param.getIcon(),
-                            reason: `Parameter '${paramName}' should be renamed to '${entityAttrName}'`
+                            reason: `Parameter '${paramName}' should be renamed to '${entityAttrName}'`,
+                            sourceParentId: sourceElement.id
                         };
                         discrepancies.push(discrepancy);
                         console.log(`[ANALYZE] ├─ [RENAME] Parameter ${paramName} → ${entityAttrName}`);
@@ -451,14 +450,15 @@ class FieldSyncEngine {
                         const discrepancy: IFieldDiscrepancy = {
                             id: `type-param-${param.id}`,
                             type: "CHANGE_TYPE",
-                            dtoFieldId: param.id,
-                            dtoFieldName: paramName,
-                            dtoFieldType: paramType,
-                            entityAttributeId: targetAttr.id,
-                            entityAttributeName: entityAttrName,
-                            entityAttributeType: entityType,
+                            sourceFieldId: param.id,
+                            sourceFieldName: paramName,
+                            sourceFieldTypeName: paramType,
+                            targetAttributeId: targetAttr.id,
+                            targetAttributeName: entityAttrName,
+                            targetAttributeTypeName: entityType,
                             icon: param.getIcon(),
-                            reason: `Parameter '${paramName}' type mismatch: ${paramType} vs ${entityType}`
+                            reason: `Parameter '${paramName}' type mismatch: ${paramType} vs ${entityType}`,
+                            sourceParentId: sourceElement.id
                         };
                         discrepancies.push(discrepancy);
                         console.log(`[ANALYZE] ├─ [CHANGE_TYPE] Parameter ${paramName}: ${paramType} → ${entityType}`);
@@ -547,8 +547,7 @@ class FieldSyncEngine {
         const mappingsBySourceId = this.groupMappingsBySourceId(mappings);
         
         // Check each DTO field for discrepancies
-        const childType = inferSourceElementChildType(dtoElement);
-        const dtoChildren = dtoElement.getChildren(childType);
+        const dtoChildren = dtoElement.getChildren("DTO-Field");
         
         for (const dtoField of dtoChildren) {
             const fieldMappings = mappingsBySourceId.get(dtoField.id) || [];
@@ -584,12 +583,13 @@ class FieldSyncEngine {
                 const discrepancy: IFieldDiscrepancy = {
                     id: `delete-${dtoField.id}`,
                     type: "DELETE",
-                    dtoFieldId: dtoField.id,
-                    dtoFieldName: dtoField.getName(),
-                    dtoFieldType: dtoField.typeReference?.display || "Unknown",
-                    entityAttributeName: "(no mapping)",
+                    sourceFieldId: dtoField.id,
+                    sourceFieldName: dtoField.getName(),
+                    sourceFieldTypeName: dtoField.typeReference?.display || "Unknown",
+                    targetAttributeName: "(no mapping)",
                     icon: dtoField.getIcon(),
-                    reason: `Field '${dtoField.getName()}' is not mapped to any entity attribute`
+                    reason: `Field '${dtoField.getName()}' is not mapped to any entity attribute`,
+                    sourceParentId: dtoElement.id
                 };
                 discrepancies.push(discrepancy);
                 console.log(`${indent}[ANALYZE] ├─ [DELETE] ${dtoField.getName()}: Not mapped to entity`);
@@ -610,14 +610,15 @@ class FieldSyncEngine {
                         const discrepancy: IFieldDiscrepancy = {
                             id: `rename-${dtoField.id}`,
                             type: "RENAME",
-                            dtoFieldId: dtoField.id,
-                            dtoFieldName: dtoFieldName,
-                            dtoFieldType: dtoField.typeReference?.display || "Unknown",
-                            entityAttributeId: targetAttr.id,
-                            entityAttributeName: entityAttrName,
-                            entityAttributeType: targetAttr.typeDisplayText,
+                            sourceFieldId: dtoField.id,
+                            sourceFieldName: dtoFieldName,
+                            sourceFieldTypeName: dtoField.typeReference?.display || "Unknown",
+                            targetAttributeId: targetAttr.id,
+                            targetAttributeName: entityAttrName,
+                            targetAttributeTypeName: targetAttr.typeDisplayText,
                             icon: dtoField.getIcon(),
-                            reason: `Field '${dtoFieldName}' should be renamed to '${entityAttrName}'`
+                            reason: `Field '${dtoFieldName}' should be renamed to '${entityAttrName}'`,
+                            sourceParentId: dtoElement.id
                         };
                         discrepancies.push(discrepancy);
                         console.log(`${indent}[ANALYZE] ├─ [RENAME] ${dtoFieldName} → ${entityAttrName}`);
@@ -630,14 +631,15 @@ class FieldSyncEngine {
                         const discrepancy: IFieldDiscrepancy = {
                             id: `type-${dtoField.id}`,
                             type: "CHANGE_TYPE",
-                            dtoFieldId: dtoField.id,
-                            dtoFieldName: dtoFieldName,
-                            dtoFieldType: dtoType,
-                            entityAttributeId: targetAttr.id,
-                            entityAttributeName: entityAttrName,
-                            entityAttributeType: entityType,
+                            sourceFieldId: dtoField.id,
+                            sourceFieldName: dtoFieldName,
+                            sourceFieldTypeName: dtoType,
+                            targetAttributeId: targetAttr.id,
+                            targetAttributeName: entityAttrName,
+                            targetAttributeTypeName: entityType,
                             icon: dtoField.getIcon(),
-                            reason: `Field '${dtoFieldName}' type mismatch: ${dtoType} vs ${entityType}`
+                            reason: `Field '${dtoFieldName}' type mismatch: ${dtoType} vs ${entityType}`,
+                            sourceParentId: dtoElement.id
                         };
                         discrepancies.push(discrepancy);
                         console.log(`${indent}[ANALYZE] ├─ [CHANGE_TYPE] ${dtoFieldName}: ${dtoType} → ${entityType}`);
@@ -661,14 +663,15 @@ class FieldSyncEngine {
                 const discrepancy: IFieldDiscrepancy = {
                     id: `new-${entityAttr.id}-${contextId}`,
                     type: "NEW",
-                    dtoFieldId: contextId,
-                    dtoFieldName: "(missing)",
-                    dtoFieldType: "N/A",
-                    entityAttributeId: entityAttr.id,
-                    entityAttributeName: entityAttr.name,
-                    entityAttributeType: entityAttr.typeDisplayText,
+                    sourceFieldId: contextId,
+                    sourceFieldName: "(missing)",
+                    sourceFieldTypeName: "N/A",
+                    targetAttributeId: entityAttr.id,
+                    targetAttributeName: entityAttr.name,
+                    targetAttributeTypeName: entityAttr.typeDisplayText,
                     icon: entityAttr.icon,
-                    reason: `Entity attribute '${entityAttr.name}' is not present in DTO`
+                    reason: `Entity attribute '${entityAttr.name}' is not present in DTO`,
+                    sourceParentId: dtoElement.id
                 };
                 discrepancies.push(discrepancy);
                 console.log(`${indent}[ANALYZE] ├─ [NEW] ${entityAttr.name}: Entity attribute not in DTO`);
@@ -720,14 +723,15 @@ class FieldSyncEngine {
                 const discrepancy: IFieldDiscrepancy = {
                     id: `new-assoc-${assocId}-${contextId}`,
                     type: "NEW",
-                    dtoFieldId: contextId,
-                    dtoFieldName: "(missing)",
-                    dtoFieldType: `${expectedDtoName}${isCollection}`,
-                    entityAttributeId: assocId,
-                    entityAttributeName: assocName,
-                    entityAttributeType: `${entityName}${isCollection}`,
+                    sourceFieldId: contextId,
+                    sourceFieldName: "(missing)",
+                    sourceFieldTypeName: `${expectedDtoName}${isCollection}`,
+                    targetAttributeId: assocId,
+                    targetAttributeName: assocName,
+                    targetAttributeTypeName: `${entityName}${isCollection}`,
                     icon: targetEntity.getIcon(),
-                    reason: `Association '${assocName}' (type: ${entityName}) is not present in DTO. Consider adding: ${expectedDtoName}`
+                    reason: `Association '${assocName}' (type: ${entityName}) is not present in DTO. Consider adding: ${expectedDtoName}`,
+                    sourceParentId: dtoElement.id
                 };
                 discrepancies.push(discrepancy);
                 console.log(`${indent}[ANALYZE] ├─ [NEW] ${assocName}: Association to ${entityName} should be added as ${expectedDtoName}`);
@@ -776,14 +780,15 @@ class FieldSyncEngine {
                 const discrepancy: IFieldDiscrepancy = {
                     id: `new-assoc-${assocId}-${contextId}`,
                     type: "NEW",
-                    dtoFieldId: contextId,
-                    dtoFieldName: "(missing)",
-                    dtoFieldType: `${expectedDtoName}${isCollection}`,
-                    entityAttributeId: assocId,
-                    entityAttributeName: assocName,
-                    entityAttributeType: `${entityName}${isCollection}`,
+                    sourceFieldId: contextId,
+                    sourceFieldName: "(missing)",
+                    sourceFieldTypeName: `${expectedDtoName}${isCollection}`,
+                    targetAttributeId: assocId,
+                    targetAttributeName: assocName,
+                    targetAttributeTypeName: `${entityName}${isCollection}`,
                     icon: sourceEntity.getIcon(),
-                    reason: `Association '${assocName}' (type: ${entityName}) is not present in DTO. Consider adding: ${expectedDtoName}`
+                    reason: `Association '${assocName}' (type: ${entityName}) is not present in DTO. Consider adding: ${expectedDtoName}`,
+                    sourceParentId: dtoElement.id
                 };
                 discrepancies.push(discrepancy);
                 console.log(`${indent}[ANALYZE] ├─ [NEW] ${assocName}: Target-end association to ${entityName} should be added as ${expectedDtoName}`);
@@ -857,7 +862,8 @@ class FieldSyncEngine {
             isExpanded: true,
             isSelected: false,
             icon: dtoElement.getIcon(),
-            children: []
+            children: [],
+            elementParentId: dtoElement.getParent()?.id
         };
 
         // If sourceElement is an Operation, show its parameters first
@@ -892,7 +898,8 @@ class FieldSyncEngine {
                     isExpanded: true,
                     isSelected: false,
                     icon: param.getIcon(),
-                    children: []
+                    children: [],
+                    elementParentId: sourceElement.id
                 };
                 
                 rootNode.children!.push(paramNode);
@@ -900,8 +907,7 @@ class FieldSyncEngine {
         }
 
         // Add DTO fields (direct properties)
-        const childType = inferSourceElementChildType(dtoElement);
-        const dtoChildren = dtoElement.getChildren(childType);
+        const dtoChildren = dtoElement.getChildren("DTO-Field");
         console.log(`[BUILD] ├─ DTO fields (${dtoChildren.length}):`);
 
         for (const dtoChild of dtoChildren) {
@@ -921,7 +927,8 @@ class FieldSyncEngine {
                 isExpanded: true,
                 isSelected: false,
                 icon: dtoChild.getIcon(),
-                children: []
+                children: [],
+                elementParentId: dtoElement.id
             };
 
             if (fieldTypeRef && fieldTypeRef.isTypeFound()) {
@@ -943,8 +950,7 @@ class FieldSyncEngine {
         depth: number
     ): void {
         const indent = Array(depth).fill("│  ").join("");
-        const childType = inferSourceElementChildType(dtoElement);
-        const children = dtoElement.getChildren(childType);
+        const children = dtoElement.getChildren("DTO-Field");
         
         for (const child of children) {
             const childTypeRef = child.typeReference;
@@ -963,7 +969,8 @@ class FieldSyncEngine {
                 isExpanded: true,
                 isSelected: false,
                 icon: child.getIcon(),
-                children: []
+                children: [],
+                elementParentId: dtoElement.id
             };
             
             if (childTypeRef && childTypeRef.isTypeFound()) {
@@ -997,13 +1004,13 @@ class FieldSyncEngine {
                 continue;
             }
             
-            if (disc.dtoFieldId) {
-                elementIdsWithDiscrepancies.add(disc.dtoFieldId);
-                discrepancyByElementId.set(disc.dtoFieldId, disc);
+            if (disc.sourceFieldId) {
+                elementIdsWithDiscrepancies.add(disc.sourceFieldId);
+                discrepancyByElementId.set(disc.sourceFieldId, disc);
             }
-            if (disc.entityAttributeId) {
-                elementIdsWithDiscrepancies.add(disc.entityAttributeId);
-                discrepancyByElementId.set(disc.entityAttributeId, disc);
+            if (disc.targetAttributeId) {
+                elementIdsWithDiscrepancies.add(disc.targetAttributeId);
+                discrepancyByElementId.set(disc.targetAttributeId, disc);
             }
         }
         
@@ -1021,7 +1028,7 @@ class FieldSyncEngine {
     ): void {
         // Find NEW discrepancies that belong to this node (by parent DTO element ID)
         const newDiscrepanciesForThisNode = discrepancies.filter(d => 
-            d.type === "NEW" && d.dtoFieldId === node.elementId
+            d.type === "NEW" && d.sourceFieldId === node.elementId
         );
         
         if (newDiscrepanciesForThisNode.length > 0) {
@@ -1032,18 +1039,19 @@ class FieldSyncEngine {
         for (const newDisc of newDiscrepanciesForThisNode) {
             const newNode: IExtendedTreeNode = {
                 id: newDisc.id,
-                label: `${newDisc.entityAttributeName}: ${newDisc.entityAttributeType}`,
+                label: `${newDisc.targetAttributeName}: ${newDisc.targetAttributeTypeName}`,
                 specializationId: "structure-dto-field",
-                elementId: newDisc.entityAttributeId!,
+                elementId: newDisc.targetAttributeId!,
                 elementType: "NEW-Field",
-                originalName: newDisc.entityAttributeName,
-                originalType: newDisc.entityAttributeType,
+                originalName: newDisc.targetAttributeName,
+                originalType: newDisc.targetAttributeTypeName,
                 hasDiscrepancies: true,
                 isExpanded: true,
                 isSelected: false,
                 icon: newDisc.icon,
                 discrepancy: newDisc,
-                children: []
+                children: [],
+                elementParentId: newDisc.sourceParentId
             };
             node.children!.push(newNode);
         }
@@ -1165,11 +1173,11 @@ class FieldSyncEngine {
         // If this node has a discrepancy, attach the display function
         if (node.discrepancy) {
             const discrepancy = node.discrepancy;
-            console.log(`[BUILD-DISPLAY]     └─ Has discrepancy: ${discrepancy.type} (dtoFieldId: ${discrepancy.dtoFieldId}, nodeId: ${node.elementId})`);
+            console.log(`[BUILD-DISPLAY]     └─ Has discrepancy: ${discrepancy.type} (dtoFieldId: ${discrepancy.sourceFieldId}, nodeId: ${node.elementId})`);
             // For NEW items, always use entityAttributeName; for others use dtoFieldName
             const fieldName = discrepancy.type === "NEW" 
-                ? discrepancy.entityAttributeName 
-                : (discrepancy.dtoFieldName || discrepancy.entityAttributeName || "Unknown");
+                ? discrepancy.targetAttributeName 
+                : (discrepancy.sourceFieldName || discrepancy.targetAttributeName || "Unknown");
             displayNode.displayFunction = createDiscrepancyDisplayFunction(discrepancy, fieldName);
             displayNode.specializationId = `discrepancy-${discrepancy.type.toLowerCase()}`;
             displayNode.label = TreeNodeLabelBuilder.buildDiscrepancyLabel(discrepancy);
