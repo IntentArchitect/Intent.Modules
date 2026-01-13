@@ -3,49 +3,91 @@
 /// <reference path="display-formatter.ts" />
 /// <reference path="../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../typings/core.context.types.d.ts" />
+/// <reference path="../../typings/designer-common.api.d.ts" />
 
 /**
  * Structure-first DTO field synchronization engine
  * 
- * Current focus: Build correct tree hierarchy
- * (Discrepancy detection deferred until structure is verified)
+ * The engine receives three explicit context elements to eliminate conditional checks:
+ * 1. rootSourceElement: Where associations are located (Command or Service Operation)
+ * 2. rootTargetEntity: The root entity being synchronized to
+ * 3. workingSourceElement: Where new DTO fields are created (DTO or Command)
+ * 
+ * This architecture provides clear separation of concerns:
+ * - Association lookups: always on rootSourceElement
+ * - Field mutations: always on current workingSourceElement (changes per recursion level)
+ * - Entity context: current workingTargetEntity (changes per recursion level)
  */
 class FieldSyncEngine {
 
     private lastStructureTree: IExtendedTreeNode | null = null;
+    private entityMapCache: Map<string, Map<string, IEntityAttribute>> = new Map();
 
     /**
-     * Main entry point: Build, annotate, and prune tree structure
-     * Three-phase approach: BUILD -> ANNOTATE -> PRUNE
+     * Get the tree nodes for display - no conversion needed since IExtendedTreeNode extends ISelectableTreeNode
+     */
+    public buildHierarchicalTreeNodes(): MacroApi.Context.ISelectableTreeNode[] {
+        // Return children directly - IExtendedTreeNode is compatible with ISelectableTreeNode
+        if (!this.lastStructureTree || !this.lastStructureTree.children) {
+            return [];
+        }
+        
+        return this.lastStructureTree.children;
+    }
+
+    /**
+     * Apply sync actions for selected tree nodes
+     * 
+     * @param rootSourceElement - Where associations are located (Command or Operation)
+     * @param rootTargetEntity - Root entity for synchronization
+     * @param workingSourceElement - Current DTO being edited
+     * @param selectedNodes - Tree nodes selected by user for synchronization
+     */
+    public applySyncActions(
+        rootSourceElement: MacroApi.Context.IElementApi,
+        rootTargetEntity: MacroApi.Context.IElementApi,
+        workingSourceElement: MacroApi.Context.IElementApi,
+        selectedNodes: IExtendedTreeNode[],
+    ): void {
+        const executor = new NodeSyncExecutor(rootSourceElement, rootTargetEntity, workingSourceElement);
+        executor.execute(selectedNodes);
+    }
+
+    /**
+     * Main entry point: Analyze field discrepancies between working source and target entity
+     * 
+     * @param rootSourceElement - Where associations are located (Command or Operation) - CONSTANT
+     * @param rootTargetEntity - Root entity for synchronization - CONSTANT
+     * @param workingSourceElement - Current DTO being analyzed (changes per recursion)
+     * @param fieldMappings - Existing field mappings from associations
+     * @returns Array of detected discrepancies
      */
     public analyzeFieldDiscrepancies(
-        dtoElement: MacroApi.Context.IElementApi,
-        entity: MacroApi.Context.IElementApi,
-        mappings: IFieldMapping[],
-        excludedEntityAttributeIds: Set<string>,
-        sourceElement?: MacroApi.Context.IElementApi
+        rootSourceElement: MacroApi.Context.IElementApi,
+        rootTargetEntity: MacroApi.Context.IElementApi,
+        workingSourceElement: MacroApi.Context.IElementApi,
+        fieldMappings: IFieldMapping[]
     ): IFieldDiscrepancy[] {
-        console.log(`[BUILD] Starting structure tree for DTO: ${dtoElement.getName()}`);
-        console.log(`[BUILD] ├─ Entity: ${entity.getName()}`);
+        console.log(`[BUILD] Starting structure tree for DTO: ${workingSourceElement.getName()}`);
+        console.log(`[BUILD] ├─ Root source element: ${rootSourceElement.getName()} (${rootSourceElement.specialization})`);
+        console.log(`[BUILD] ├─ Root target entity: ${rootTargetEntity.getName()}`);
         
-        // Phase 1: Build complete structure and store it
-        this.buildStructureTree(dtoElement, entity, mappings, sourceElement);
+        // NEW: Pass entity to buildStructureTree so it can pre-compute targetPath
+        this.buildStructureTree(rootSourceElement, rootTargetEntity, workingSourceElement);
         
-        // Phase 2: Annotate discrepancies (including nested and operation parameters)
         const discrepancies: IFieldDiscrepancy[] = [];
         
-        // Check operation parameters if present
-        if (sourceElement && sourceElement.specialization === "Operation") {
-            this.detectOperationParameterDiscrepancies(sourceElement, dtoElement, entity, mappings, discrepancies);
+        const parameters = rootSourceElement.specialization === "Operation" ? rootSourceElement.getChildren("Parameter") : [];
+        if (parameters.length > 0) {
+            this.detectOperationParameterDiscrepancies(rootSourceElement, workingSourceElement, rootTargetEntity, fieldMappings, discrepancies);
         }
         
         // Check DTO fields recursively
-        this.detectDiscrepanciesRecursive(dtoElement, entity, mappings, discrepancies, 0);
+        this.detectDiscrepanciesRecursive(workingSourceElement, rootTargetEntity, fieldMappings, discrepancies, 0);
         
         this.annotateTreeWithDiscrepancies(this.lastStructureTree!, discrepancies);
         console.log(`[ANALYZE] └─ Total discrepancies detected: ${discrepancies.length}`);
         
-        // Phase 3: Prune branches without discrepancies
         this.pruneTreeWithoutDiscrepancies(this.lastStructureTree!);
         
         return discrepancies;
@@ -53,34 +95,20 @@ class FieldSyncEngine {
 
     /**
      * Check operation parameters for discrepancies
+     * Only called when rootSourceElement is a Service Operation.
      */
     private detectOperationParameterDiscrepancies(
-        sourceElement: MacroApi.Context.IElementApi,
-        dtoElement: MacroApi.Context.IElementApi,
-        entity: MacroApi.Context.IElementApi,
+        rootSourceElement: MacroApi.Context.IElementApi,
+        workingSourceElement: MacroApi.Context.IElementApi,
+        rootTargetEntity: MacroApi.Context.IElementApi,
         mappings: IFieldMapping[],
         discrepancies: IFieldDiscrepancy[]
     ): void {
-        const operationParams = sourceElement.getChildren("Parameter");
+        const operationParams = rootSourceElement.getChildren("Parameter");
         console.log(`[ANALYZE-PARAMS] Checking ${operationParams.length} operation parameters`);
         
-        const entityAttrs = getEntityAttributes(entity);
-        const entityAttrMap = new Map<string, IEntityAttribute>();
-        
-        for (const attr of entityAttrs) {
-            entityAttrMap.set(attr.id, attr);
-            entityAttrMap.set(attr.name.toLowerCase(), attr);
-        }
-        
-        // Build a map of parameter ID -> mapping
-        const mappingsBySourceId = new Map<string, IFieldMapping[]>();
-        for (const mapping of mappings) {
-            const sourceFieldId = mapping.sourceFieldId;
-            if (!mappingsBySourceId.has(sourceFieldId)) {
-                mappingsBySourceId.set(sourceFieldId, []);
-            }
-            mappingsBySourceId.get(sourceFieldId)!.push(mapping);
-        }
+        const entityAttrMap = this.getOrBuildEntityAttributeMap(rootTargetEntity);
+        const mappingsBySourceId = this.groupMappingsBySourceId(mappings);
         
         for (const param of operationParams) {
             const paramTypeRef = param.typeReference;
@@ -88,7 +116,7 @@ class FieldSyncEngine {
             // Skip the DTO parameter itself
             if (paramTypeRef && paramTypeRef.isTypeFound()) {
                 const paramType = paramTypeRef.getType() as MacroApi.Context.IElementApi;
-                if (paramType && paramType.id === dtoElement.id) {
+                if (paramType && paramType.id === workingSourceElement.id) {
                     console.log(`[ANALYZE-PARAMS] Skipping DTO parameter: ${param.getName()}`);
                     continue;
                 }
@@ -104,12 +132,13 @@ class FieldSyncEngine {
                 const discrepancy: IFieldDiscrepancy = {
                     id: `delete-param-${param.id}`,
                     type: "DELETE",
-                    dtoFieldId: param.id,
-                    dtoFieldName: param.getName(),
-                    dtoFieldType: paramTypeRef?.display || "Unknown",
-                    entityAttributeName: "(no mapping)",
+                    sourceFieldId: param.id,
+                    sourceFieldName: param.getName(),
+                    sourceFieldTypeName: paramTypeRef?.display || "Unknown",
+                    targetAttributeName: "(no mapping)",
                     icon: param.getIcon(),
-                    reason: `Parameter '${param.getName()}' is not mapped to any entity attribute`
+                    reason: `Parameter '${param.getName()}' is not mapped to any entity attribute`,
+                    sourceParentId: rootSourceElement.id
                 };
                 discrepancies.push(discrepancy);
                 console.log(`[ANALYZE] ├─ [DELETE] Parameter ${param.getName()}: Not mapped to entity`);
@@ -124,19 +153,21 @@ class FieldSyncEngine {
                     const paramName = param.getName();
                     const entityAttrName = targetAttr.name;
                     
-                    // Check for rename - use case-sensitive for parameters
-                    if (paramName !== entityAttrName) {
+                    // Check for rename - use naming convention-aware comparison
+                    // This allows "id" to match "Id" (camelCase vs PascalCase)
+                    if (!namesAreEquivalent(paramName, entityAttrName)) {
                         const discrepancy: IFieldDiscrepancy = {
                             id: `rename-param-${param.id}`,
                             type: "RENAME",
-                            dtoFieldId: param.id,
-                            dtoFieldName: paramName,
-                            dtoFieldType: paramTypeRef?.display || "Unknown",
-                            entityAttributeId: targetAttr.id,
-                            entityAttributeName: entityAttrName,
-                            entityAttributeType: targetAttr.typeDisplayText,
+                            sourceFieldId: param.id,
+                            sourceFieldName: paramName,
+                            sourceFieldTypeName: paramTypeRef?.display || "Unknown",
+                            targetId: targetAttr.id,
+                            targetAttributeName: entityAttrName,
+                            targetAttributeTypeName: targetAttr.typeDisplayText,
                             icon: param.getIcon(),
-                            reason: `Parameter '${paramName}' should be renamed to '${entityAttrName}'`
+                            reason: `Parameter '${paramName}' should be renamed to '${entityAttrName}'`,
+                            sourceParentId: rootSourceElement.id
                         };
                         discrepancies.push(discrepancy);
                         console.log(`[ANALYZE] ├─ [RENAME] Parameter ${paramName} → ${entityAttrName}`);
@@ -149,14 +180,18 @@ class FieldSyncEngine {
                         const discrepancy: IFieldDiscrepancy = {
                             id: `type-param-${param.id}`,
                             type: "CHANGE_TYPE",
-                            dtoFieldId: param.id,
-                            dtoFieldName: paramName,
-                            dtoFieldType: paramType,
-                            entityAttributeId: targetAttr.id,
-                            entityAttributeName: entityAttrName,
-                            entityAttributeType: entityType,
+                            sourceFieldId: param.id,
+                            sourceFieldName: paramName,
+                            sourceFieldTypeName: paramType,
+                            targetId: targetAttr.id,
+                            targetAttributeName: entityAttrName,
+                            targetAttributeTypeName: entityType,
+                            targetTypeId: targetAttr.typeId,
+                            targetIsCollection: targetAttr.isCollection,
+                            targetIsNullable: targetAttr.isNullable,
                             icon: param.getIcon(),
-                            reason: `Parameter '${paramName}' type mismatch: ${paramType} vs ${entityType}`
+                            reason: `Parameter '${paramName}' type mismatch: ${paramType} vs ${entityType}`,
+                            sourceParentId: rootSourceElement.id
                         };
                         discrepancies.push(discrepancy);
                         console.log(`[ANALYZE] ├─ [CHANGE_TYPE] Parameter ${paramName}: ${paramType} → ${entityType}`);
@@ -170,6 +205,67 @@ class FieldSyncEngine {
      * Recursively detect discrepancies at all levels (root + nested associations)
      * @param parentFieldId - For nested calls, the ID of the field that contains this DTO (for NEW items)
      */
+    /**
+     * Get cached entity attribute map or build it
+     */
+    private getOrBuildEntityAttributeMap(entity: MacroApi.Context.IElementApi): Map<string, IEntityAttribute> {
+        const cached = this.entityMapCache.get(entity.id);
+        if (cached) {
+            return cached;
+        }
+        
+        const map = this.buildEntityAttributeMap(entity);
+        this.entityMapCache.set(entity.id, map);
+        return map;
+    }
+
+    private buildEntityAttributeMap(entity: MacroApi.Context.IElementApi): Map<string, IEntityAttribute> {
+        const entityAttrs = getEntityAttributes(entity);
+        const entityAttrMap = new Map<string, IEntityAttribute>();
+        
+        for (const attr of entityAttrs) {
+            entityAttrMap.set(attr.id, attr);
+            entityAttrMap.set(attr.name.toLowerCase(), attr);
+        }
+        
+        return entityAttrMap;
+    }
+
+    private groupMappingsBySourceId(mappings: IFieldMapping[]): Map<string, IFieldMapping[]> {
+        const grouped = new Map<string, IFieldMapping[]>();
+        
+        for (const mapping of mappings) {
+            const sourceFieldId = mapping.sourceFieldId;
+            if (!grouped.has(sourceFieldId)) {
+                grouped.set(sourceFieldId, []);
+            }
+            grouped.get(sourceFieldId)!.push(mapping);
+        }
+        
+        return grouped;
+    }
+
+    private isComplexType(element: MacroApi.Context.IElementApi): boolean {
+        return element.specialization === "DTO" || element.specialization === "Class";
+    }
+
+    private isNestedMapping(mapping: IFieldMapping, parentFieldId: string): boolean {
+        if (!mapping.sourcePath || mapping.sourcePath.length <= 1) {
+            return false;
+        }
+        
+        const parentIndex = mapping.sourcePath.indexOf(parentFieldId);
+        return parentIndex >= 0 && parentIndex < mapping.sourcePath.length - 1;
+    }
+
+    private adjustMappingForNestedContext(mapping: IFieldMapping, parentFieldId: string): IFieldMapping {
+        const parentIndex = mapping.sourcePath.indexOf(parentFieldId);
+        return {
+            ...mapping,
+            sourcePath: mapping.sourcePath.slice(parentIndex + 1)
+        };
+    }
+
     private detectDiscrepanciesRecursive(
         dtoElement: MacroApi.Context.IElementApi,
         entity: MacroApi.Context.IElementApi,
@@ -180,27 +276,11 @@ class FieldSyncEngine {
     ): void {
         const indent = Array(depth).fill("  ").join("");
         
-        // Get entity attributes to compare against
-        const entityAttrs = getEntityAttributes(entity);
-        const entityAttrMap = new Map<string, IEntityAttribute>();
-        for (const attr of entityAttrs) {
-            entityAttrMap.set(attr.id, attr);
-            entityAttrMap.set(attr.name.toLowerCase(), attr);
-        }
-        
-        // Build a map of DTO field ID -> mapping
-        const mappingsBySourceId = new Map<string, IFieldMapping[]>();
-        for (const mapping of mappings) {
-            const sourceFieldId = mapping.sourceFieldId;
-            if (!mappingsBySourceId.has(sourceFieldId)) {
-                mappingsBySourceId.set(sourceFieldId, []);
-            }
-            mappingsBySourceId.get(sourceFieldId)!.push(mapping);
-        }
+        const entityAttrMap = this.getOrBuildEntityAttributeMap(entity);
+        const mappingsBySourceId = this.groupMappingsBySourceId(mappings);
         
         // Check each DTO field for discrepancies
-        const childType = inferSourceElementChildType(dtoElement);
-        const dtoChildren = dtoElement.getChildren(childType);
+        const dtoChildren = dtoElement.getChildren("DTO-Field");
         
         for (const dtoField of dtoChildren) {
             const fieldMappings = mappingsBySourceId.get(dtoField.id) || [];
@@ -213,15 +293,12 @@ class FieldSyncEngine {
             
             if (fieldTypeRef && fieldTypeRef.isTypeFound()) {
                 const fieldType = fieldTypeRef.getType() as MacroApi.Context.IElementApi;
-                // Check if field type itself maps to entity attributes through associations
-                if (fieldType && (fieldType.specialization === "DTO" || fieldType.specialization === "Class")) {
-                    // This might be a nested DTO that maps to an associated entity
-                    nestedEntity = this.findAssociatedEntity(dtoField, entity, mappings);
+                if (fieldType && this.isComplexType(fieldType)) {
+                    nestedEntity = this.findAssociatedEntity(dtoField, entity);
                     if (nestedEntity) {
                         isAssociationField = true;
                         nestedMappings = this.getNestedMappings(mappings, dtoField.id);
                         
-                        // Handle association/nested field recursively
                         console.log(`${indent}[ANALYZE-NESTED] Analyzing nested DTO field: ${dtoField.getName()} → ${nestedEntity.getName()}`);
                         this.detectDiscrepanciesRecursive(fieldType, nestedEntity, nestedMappings, discrepancies, depth + 1, dtoField.id);
                     }
@@ -239,12 +316,13 @@ class FieldSyncEngine {
                 const discrepancy: IFieldDiscrepancy = {
                     id: `delete-${dtoField.id}`,
                     type: "DELETE",
-                    dtoFieldId: dtoField.id,
-                    dtoFieldName: dtoField.getName(),
-                    dtoFieldType: dtoField.typeReference?.display || "Unknown",
-                    entityAttributeName: "(no mapping)",
+                    sourceFieldId: dtoField.id,
+                    sourceFieldName: dtoField.getName(),
+                    sourceFieldTypeName: dtoField.typeReference?.display || "Unknown",
+                    targetAttributeName: "(no mapping)",
                     icon: dtoField.getIcon(),
-                    reason: `Field '${dtoField.getName()}' is not mapped to any entity attribute`
+                    reason: `Field '${dtoField.getName()}' is not mapped to any entity attribute`,
+                    sourceParentId: dtoElement.id
                 };
                 discrepancies.push(discrepancy);
                 console.log(`${indent}[ANALYZE] ├─ [DELETE] ${dtoField.getName()}: Not mapped to entity`);
@@ -259,19 +337,21 @@ class FieldSyncEngine {
                     const dtoFieldName = dtoField.getName();
                     const entityAttrName = targetAttr.name;
                     
-                    // Check for rename
-                    if (dtoFieldName !== entityAttrName) {
+                    // Check for rename - use naming convention-aware comparison
+                    // This allows "id" to match "Id" (camelCase vs PascalCase)
+                    if (!namesAreEquivalent(dtoFieldName, entityAttrName)) {
                         const discrepancy: IFieldDiscrepancy = {
                             id: `rename-${dtoField.id}`,
                             type: "RENAME",
-                            dtoFieldId: dtoField.id,
-                            dtoFieldName: dtoFieldName,
-                            dtoFieldType: dtoField.typeReference?.display || "Unknown",
-                            entityAttributeId: targetAttr.id,
-                            entityAttributeName: entityAttrName,
-                            entityAttributeType: targetAttr.typeDisplayText,
+                            sourceFieldId: dtoField.id,
+                            sourceFieldName: dtoFieldName,
+                            sourceFieldTypeName: dtoField.typeReference?.display || "Unknown",
+                            targetId: targetAttr.id,
+                            targetAttributeName: entityAttrName,
+                            targetAttributeTypeName: targetAttr.typeDisplayText,
                             icon: dtoField.getIcon(),
-                            reason: `Field '${dtoFieldName}' should be renamed to '${entityAttrName}'`
+                            reason: `Field '${dtoFieldName}' should be renamed to '${entityAttrName}'`,
+                            sourceParentId: dtoElement.id
                         };
                         discrepancies.push(discrepancy);
                         console.log(`${indent}[ANALYZE] ├─ [RENAME] ${dtoFieldName} → ${entityAttrName}`);
@@ -284,14 +364,18 @@ class FieldSyncEngine {
                         const discrepancy: IFieldDiscrepancy = {
                             id: `type-${dtoField.id}`,
                             type: "CHANGE_TYPE",
-                            dtoFieldId: dtoField.id,
-                            dtoFieldName: dtoFieldName,
-                            dtoFieldType: dtoType,
-                            entityAttributeId: targetAttr.id,
-                            entityAttributeName: entityAttrName,
-                            entityAttributeType: entityType,
+                            sourceFieldId: dtoField.id,
+                            sourceFieldName: dtoFieldName,
+                            sourceFieldTypeName: dtoType,
+                            targetId: targetAttr.id,
+                            targetAttributeName: entityAttrName,
+                            targetAttributeTypeName: entityType,
+                            targetTypeId: targetAttr.typeId,
+                            targetIsCollection: targetAttr.isCollection,
+                            targetIsNullable: targetAttr.isNullable,
                             icon: dtoField.getIcon(),
-                            reason: `Field '${dtoFieldName}' type mismatch: ${dtoType} vs ${entityType}`
+                            reason: `Field '${dtoFieldName}' type mismatch: ${dtoType} vs ${entityType}`,
+                            sourceParentId: dtoElement.id
                         };
                         discrepancies.push(discrepancy);
                         console.log(`${indent}[ANALYZE] ├─ [CHANGE_TYPE] ${dtoFieldName}: ${dtoType} → ${entityType}`);
@@ -300,31 +384,134 @@ class FieldSyncEngine {
             }
         }
         
-        // Check for NEW fields (entity attributes not covered by any DTO field)
-        // This should run at ALL levels, not just root
         const mappedEntityIds = new Set<string>();
         for (const mapping of mappings) {
             mappedEntityIds.add(mapping.targetAttributeId);
         }
         
+        const entityAttrs = getEntityAttributes(entity);
         for (const entityAttr of entityAttrs) {
-            if (!mappedEntityIds.has(entityAttr.id) && !entityAttr.isManagedKey) {
-                // Use parentFieldId if provided (nested context), otherwise use dtoElement.id (root)
+            // Show NEW discrepancies only for unmapped, mappable attributes
+            // Skip attributes that shouldn't be mapped per Intent Architect's mapping rules:
+            // - Auto-generated primary keys
+            // - Required parent foreign keys (non-collection, non-nullable)
+            // - Infrastructure-managed fields
+            const isUnmapped = !mappedEntityIds.has(entityAttr.id);
+            if (isUnmapped && entityAttr.isMappable) {
                 const contextId = parentFieldId || dtoElement.id;
                 const discrepancy: IFieldDiscrepancy = {
                     id: `new-${entityAttr.id}-${contextId}`,
                     type: "NEW",
-                    dtoFieldId: contextId, // ID of the field/DTO where this should be added
-                    dtoFieldName: "(missing)",
-                    dtoFieldType: "N/A",
-                    entityAttributeId: entityAttr.id,
-                    entityAttributeName: entityAttr.name,
-                    entityAttributeType: entityAttr.typeDisplayText,
+                    sourceFieldId: contextId,
+                    sourceFieldName: "(missing)",
+                    sourceFieldTypeName: "N/A",
+                    targetId: entityAttr.id,
+                    targetAttributeName: entityAttr.name,
+                    targetAttributeTypeName: entityAttr.typeDisplayText,
+                    targetTypeId: entityAttr.typeId,
+                    targetIsCollection: entityAttr.isCollection,
+                    targetIsNullable: entityAttr.isNullable,
                     icon: entityAttr.icon,
-                    reason: `Entity attribute '${entityAttr.name}' is not present in DTO`
+                    reason: `Entity attribute '${entityAttr.name}' is not present in DTO`,
+                    sourceParentId: dtoElement.id
                 };
                 discrepancies.push(discrepancy);
                 console.log(`${indent}[ANALYZE] ├─ [NEW] ${entityAttr.name}: Entity attribute not in DTO`);
+            }
+        }
+
+        // Check for missing associations (nested DTOs)
+        // Only process TARGET-END associations (where current entity is the owning/source side)
+        const allAssociations = entity.getAssociations("Association");
+        const targetEndAssociations = allAssociations.filter(assoc => !assoc.isSourceEnd());
+        
+        console.log(`${indent}[ANALYZE-ASSOC] Found ${targetEndAssociations.length} target-end associations on ${entity.getName()}`);
+        
+        const mappedAssociationIds = new Set<string>();
+        for (const mapping of mappings) {
+            // Check if this mapping represents an association
+            if (mapping.targetPath && mapping.targetPath.length > 0) {
+                const lastTargetId = mapping.targetPath[mapping.targetPath.length - 1];
+                mappedAssociationIds.add(lastTargetId);
+            }
+        }
+
+        // Process target-end associations (where current entity owns/points to composite entities)
+        for (const assoc of targetEndAssociations) {
+            const assocName = assoc.getName ? assoc.getName() : null;
+            const typeRef = assoc.typeReference;
+            
+            if (!assocName || !typeRef || !typeRef.isTypeFound()) {
+                continue;
+            }
+
+            const targetEntity = typeRef.getType() as MacroApi.Context.IElementApi;
+            const assocId = assoc.id;
+            
+            // SKIP: Self-referential associations (target points back to current entity)
+            if (targetEntity.id === entity.id) {
+                console.log(`${indent}[ANALYZE-ASSOC] Skipping target-end association ${assocName} - self-referential (target is same entity)`);
+                continue;
+            }
+            
+            // SKIP: Aggregate relationships (source end has multiplicity > 1 or is nullable)
+            // Only process COMPOSITE relationships (source end has multiplicity of 1)
+            const otherEnd = assoc.getOtherEnd ? assoc.getOtherEnd() : null;
+            if (!otherEnd || !otherEnd.typeReference) {
+                continue;
+            }
+            
+            const isComposite = !otherEnd.typeReference.isCollection && !otherEnd.typeReference.isNullable;
+            if (!isComposite) {
+                console.log(`${indent}[ANALYZE-ASSOC] Skipping target-end association ${assocName} - aggregate relationship (source end is collection or nullable)`);
+                continue;
+            }
+            
+            console.log(`${indent}[ANALYZE-ASSOC] Checking target-end association ${assocName} (id: ${assocId}, mapped: ${mappedAssociationIds.has(assocId)})`);
+
+            // Check if this association is mapped
+            if (!mappedAssociationIds.has(assocId)) {
+                // Before suggesting NEW, check if a field with this association name already exists
+                const existingField = dtoChildren.find(field => 
+                    namesAreEquivalent(field.getName(), assocName)
+                );
+                
+                if (existingField) {
+                    // Field exists but is unmapped - it should be flagged as DELETE at next sync
+                    console.log(`${indent}[ANALYZE-ASSOC] Field '${assocName}' exists but is unmapped - will be handled by DELETE logic`);
+                } else {
+                    // Field doesn't exist and association is unmapped - suggest NEW
+                    const contextId = parentFieldId || dtoElement.id;
+                    const dtoName = dtoElement.getName();
+                    const entityName = targetEntity.getName();
+                    
+                    // Generate expected DTO name: {SourceDTO}{EntityName}Dto
+                    const expectedDtoName = `${dtoName}${entityName}Dto`;
+                    const isCollection = typeRef.isCollection;
+                    const isNullable = typeRef.isNullable;
+                    
+                    const discrepancy: IFieldDiscrepancy = {
+                        id: `new-assoc-${assocId}-${contextId}`,
+                        type: "NEW",
+                        sourceFieldId: contextId,
+                        sourceFieldName: "(missing)",
+                        sourceFieldTypeName: expectedDtoName,  // Pure display name, no [*]
+                        sourceIsCollection: isCollection,
+                        sourceIsNullable: isNullable,
+                        targetId: assocId,
+                        targetIdType: "association",  // Discriminator: this is an association
+                        targetAttributeName: assocName,
+                        targetAttributeTypeName: expectedDtoName,  // Pure display name, no [*]
+                        targetIsCollection: isCollection,
+                        targetIsNullable: isNullable,
+                        suggestedDtoName: expectedDtoName,  // For applyNewAssociation
+                        icon: targetEntity.getIcon(),
+                        reason: `Association '${assocName}' (type: ${entityName}) is not present in DTO. Consider adding: ${expectedDtoName}`,
+                        sourceParentId: dtoElement.id
+                    };
+                    discrepancies.push(discrepancy);
+                    console.log(`${indent}[ANALYZE] ├─ [NEW] ${assocName}: Target-end association to ${entityName} should be added as ${expectedDtoName}`);
+                }
             }
         }
     }
@@ -336,7 +523,6 @@ class FieldSyncEngine {
     private findAssociatedEntity(
         dtoField: MacroApi.Context.IElementApi,
         entity: MacroApi.Context.IElementApi,
-        mappings: IFieldMapping[]
     ): MacroApi.Context.IElementApi | null {
         const dtoFieldName = dtoField.getName();
         const dtoFieldTypeRef = dtoField.typeReference;
@@ -351,19 +537,14 @@ class FieldSyncEngine {
             return null;
         }
         
-        // Look through entity associations to find matching target
         const associations = entity.getAssociations();
         
         for (const assoc of associations) {
-            // Get association name - this should match the DTO field name or its singular form
             const assocName = (assoc as any).getName ? (assoc as any).getName() : null;
             
-            // Try to match by name first (e.g., "Block1Level3" matches "Block1Level3")
-            // Handle both singular and plural (e.g., "Block1Level2s" might have association "Block1Level2")
-            const fieldNameSingular = dtoFieldName.replace(/s$/, ''); // Simple pluralization removal
+            const fieldNameSingular = singularize(dtoFieldName);
             
             if (assocName && (assocName === dtoFieldName || assocName === fieldNameSingular)) {
-                // Found matching association by name - get its target entity
                 if ((assoc as any).typeReference && (assoc as any).typeReference.isTypeFound()) {
                     return (assoc as any).typeReference.getType() as MacroApi.Context.IElementApi;
                 }
@@ -373,68 +554,77 @@ class FieldSyncEngine {
         return null;
     }
 
-    /**
-     * Get mappings for a nested DTO field
-     * For nested fields, the source path will be: [dto_param_id, parent_field_id, nested_field_id, ...]
-     * We want mappings where parent_field_id is in the path
-     */
-    private getNestedMappings(
-        allMappings: IFieldMapping[],
-        parentFieldId: string
-    ): IFieldMapping[] {
-        const nestedMappings: IFieldMapping[] = [];
-        
-        for (const mapping of allMappings) {
-            if (mapping.sourcePath && mapping.sourcePath.length > 1) {
-                // Check if parent field is in the path (but not the last element)
-                const parentIndex = mapping.sourcePath.indexOf(parentFieldId);
-                if (parentIndex >= 0 && parentIndex < mapping.sourcePath.length - 1) {
-                    // This mapping is for a nested field under this parent
-                    // Create a new mapping with adjusted paths
-                    const adjustedMapping: IFieldMapping = {
-                        sourcePath: mapping.sourcePath.slice(parentIndex + 1), // Remove parent and ancestors
-                        targetPath: mapping.targetPath, // Keep full target path for now
-                        sourceFieldId: mapping.sourceFieldId,
-                        targetAttributeId: mapping.targetAttributeId,
-                        mappingType: mapping.mappingType,
-                        mappingTypeId: mapping.mappingTypeId
-                    };
-                    nestedMappings.push(adjustedMapping);
-                }
-            }
-        }
-        
-        return nestedMappings;
+    private getNestedMappings(allMappings: IFieldMapping[], parentFieldId: string): IFieldMapping[] {
+        return allMappings
+            .filter(mapping => this.isNestedMapping(mapping, parentFieldId))
+            .map(mapping => this.adjustMappingForNestedContext(mapping, parentFieldId));
     }
 
     /**
      * Build the complete natural tree structure from DTO/entity
+     * OPTION A: Pre-compute both sourcePath and targetPath during tree construction
      */
     private buildStructureTree(
-        dtoElement: MacroApi.Context.IElementApi,
-        entity: MacroApi.Context.IElementApi,
-        mappings: IFieldMapping[],
-        sourceElement?: MacroApi.Context.IElementApi
+        rootSourceElement: MacroApi.Context.IElementApi,
+        rootTargetEntity: MacroApi.Context.IElementApi,
+        workingSourceElement: MacroApi.Context.IElementApi,
     ): void {
+        // For Operations, sourcePath must start with [Operation, Parameter] (NOT including the DTO itself)
+        // The DTO is implicit - it's the type of the Parameter
+        // For Commands, sourcePath starts with [DTO]
+        let rootSourcePath: string[];
+        
+        if (rootSourceElement && rootSourceElement.specialization === "Operation") {
+            // For Operations: find the DTO parameter and build path [Operation, Parameter]
+            // The DTO is the type of the parameter, so we don't include it in the path
+            const operationParams = rootSourceElement.getChildren("Parameter");
+            const dtoParam = operationParams.find(p => 
+                p.typeReference?.typeId === workingSourceElement.id
+            );
+            
+            if (dtoParam) {
+                rootSourcePath = [rootSourceElement.id, dtoParam.id];
+                console.log(`[BUILD-TREE] ├─ Operation mode: sourcePath = [Operation, Parameter]`);
+            } else {
+                // Fallback: just use DTO if parameter not found
+                rootSourcePath = [workingSourceElement.id];
+                console.log(`[BUILD-TREE] ├─ ⚠ Operation found but dto parameter not located, using DTO-only path`);
+            }
+        } else {
+            // For Commands: standard path is just [DTO]
+            rootSourcePath = [workingSourceElement.id];
+        }
+        
         const rootNode: IExtendedTreeNode = {
-            id: dtoElement.id,
-            label: dtoElement.getName(),
-            specializationId: "structure-root",
-            elementId: dtoElement.id,
+            id: workingSourceElement.id,
+            label: workingSourceElement.getName(),
+            specializationId: "discrepancy",
+            elementId: workingSourceElement.id,
             elementType: "DTO",
-            originalName: dtoElement.getName(),
+            originalName: workingSourceElement.getName(),
             originalType: undefined,
             hasDiscrepancies: true,  // Set to true so it shows in tree
+            discrepancy: undefined,
             isExpanded: true,
             isSelected: false,
-            icon: dtoElement.getIcon(),
-            children: []
+            icon: workingSourceElement.getIcon(),
+            children: [],
+            elementParentId: workingSourceElement.getParent()?.id,
+            // Pre-computed paths: sourcePath includes Operation+Parameter for Operations
+            sourcePath: rootSourcePath,
+            targetPath: rootTargetEntity ? [rootTargetEntity.id] : [],
+            targetEntityId: rootTargetEntity?.id
         };
 
-        // If sourceElement is an Operation, show its parameters first
-        if (sourceElement && sourceElement.specialization === "Operation") {
-            const operationParams = sourceElement.getChildren("Parameter");
-            console.log(`[BUILD] ├─ Operation parameters (${operationParams.length}):`);
+        console.log(`[BUILD-TREE] Starting tree build for DTO: ${workingSourceElement.getName()}`);
+        if (rootTargetEntity) {
+            console.log(`[BUILD-TREE] ├─ Root entity: ${rootTargetEntity.getName()}`);
+        }
+
+        // If rootSourceElement is an Operation, show its parameters first
+        if (rootSourceElement && rootSourceElement.specialization === "Operation") {
+            const operationParams = rootSourceElement.getChildren("Parameter");
+            console.log(`[BUILD-TREE] ├─ Operation parameters (${operationParams.length}):`);
             
             for (const param of operationParams) {
                 const paramTypeRef = param.typeReference;
@@ -443,18 +633,18 @@ class FieldSyncEngine {
                 // Skip the DTO parameter itself - we'll show its fields instead
                 if (paramTypeRef && paramTypeRef.isTypeFound()) {
                     const paramType = paramTypeRef.getType() as MacroApi.Context.IElementApi;
-                    if (paramType && paramType.id === dtoElement.id) {
-                        console.log(`[BUILD] │  ├─ (Skipping DTO parameter: ${param.getName()})`);
-                        continue;  // Skip, we handle it separately
+                    if (paramType && paramType.id === workingSourceElement.id) {
+                        console.log(`[BUILD-TREE] │  ├─ (Skipping DTO parameter: ${param.getName()})`);
+                        continue;
                     }
                 }
                 
-                console.log(`[BUILD] │  ├─ ${param.getName()}: ${paramTypeName}`);
+                console.log(`[BUILD-TREE] │  ├─ ${param.getName()}: ${paramTypeName}`);
                 
                 const paramNode: IExtendedTreeNode = {
                     id: param.id,
                     label: `${param.getName()}: ${paramTypeName}`,
-                    specializationId: "structure-operation-param",
+                    specializationId: "discrepancy",
                     elementId: param.id,
                     elementType: "Operation-Parameter",
                     originalName: param.getName(),
@@ -463,27 +653,63 @@ class FieldSyncEngine {
                     isExpanded: true,
                     isSelected: false,
                     icon: param.getIcon(),
-                    children: []
+                    children: [],
+                    elementParentId: rootSourceElement.id,
+                    // Params don't have paths yet - they're not DTO fields
+                    sourcePath: undefined,
+                    targetPath: undefined
                 };
                 
                 rootNode.children!.push(paramNode);
             }
         }
 
-        // Add DTO fields (direct properties)
-        const childType = inferSourceElementChildType(dtoElement);
-        const dtoChildren = dtoElement.getChildren(childType);
-        console.log(`[BUILD] ├─ DTO fields (${dtoChildren.length}):`);
+        // Add DTO fields (direct properties) - WITH pre-computed paths
+        const dtoChildren = workingSourceElement.getChildren("DTO-Field");
+        console.log(`[BUILD-TREE] ├─ DTO fields (${dtoChildren.length}):`);
 
         for (const dtoChild of dtoChildren) {
             const fieldTypeRef = dtoChild.typeReference;
             const fieldTypeName = fieldTypeRef?.display || "Unknown";
-            console.log(`[BUILD] │  ├─ ${dtoChild.getName()}: ${fieldTypeName}`);
+            console.log(`[BUILD-TREE] │  ├─ ${dtoChild.getName()}: ${fieldTypeName}`);
+            
+            // Extend sourcePath from root: [rootSourcePath..., fieldId]
+            const sourcePath = [...rootSourcePath, dtoChild.id];
+            
+            // NEW: Pre-compute targetPath for root level
+            let targetPath: string[] = [];
+            let fieldTargetEntity: MacroApi.Context.IElementApi | undefined;
+            
+            if (rootTargetEntity) {
+                targetPath = [rootTargetEntity.id];
+                fieldTargetEntity = rootTargetEntity;
+                
+                // For complex type fields, try to resolve the actual target entity via associations
+                if (fieldTypeRef && fieldTypeRef.isTypeFound()) {
+                    const fieldType = fieldTypeRef.getType() as MacroApi.Context.IElementApi;
+                    if (fieldType && this.isComplexType(fieldType)) {
+                        const assoc = this.findAssociationToEntity(rootTargetEntity, dtoChild);
+                        if (assoc) {
+                            console.log(`[BUILD-TREE] │  │  ├─ Found association for root field: ${assoc.getName ? assoc.getName() : assoc.id}`);
+                            // Extend target path with the association
+                            targetPath.push(assoc.id);
+                            
+                            // Set target entity to the association's target
+                            if ((assoc as any).typeReference && (assoc as any).typeReference.isTypeFound()) {
+                                fieldTargetEntity = (assoc as any).typeReference.getType() as MacroApi.Context.IElementApi;
+                                console.log(`[BUILD-TREE] │  │  └─ Target entity: ${fieldTargetEntity?.getName()}`);
+                            }
+                        } else {
+                            console.log(`[BUILD-TREE] │  │  ├─ ⚠ No association found for root complex field`);
+                        }
+                    }
+                }
+            }
             
             const fieldNode: IExtendedTreeNode = {
                 id: dtoChild.id,
                 label: `${dtoChild.getName()}: ${fieldTypeName}`,
-                specializationId: "structure-dto-field",
+                specializationId: "discrepancy",
                 elementId: dtoChild.id,
                 elementType: "DTO-Field",
                 originalName: dtoChild.getName(),
@@ -492,41 +718,89 @@ class FieldSyncEngine {
                 isExpanded: true,
                 isSelected: false,
                 icon: dtoChild.getIcon(),
-                children: []
+                children: [],
+                elementParentId: workingSourceElement.id,
+                // NEW: Store pre-computed paths extending from root
+                sourcePath: sourcePath,
+                targetPath: targetPath,
+                targetEntityId: fieldTargetEntity?.id
             };
 
-            // Check if this is a complex type and add nested fields
             if (fieldTypeRef && fieldTypeRef.isTypeFound()) {
                 const fieldType = fieldTypeRef.getType() as MacroApi.Context.IElementApi;
-                if (fieldType && (fieldType.specialization === "DTO" || fieldType.specialization === "Class")) {
-                    this.addNestedDtoFields(fieldNode, fieldType);
+                if (fieldType && this.isComplexType(fieldType)) {
+                    console.log(`[BUILD-TREE] │  │  ├─ Nested DTO: ${fieldType.getName()}`);
+                    // Recursively add nested fields WITH path computation
+                    this.addDtoFieldsRecursive(
+                        fieldNode, 
+                        fieldType, 
+                        2,
+                        sourcePath,        // Current source path (will extend this)
+                        targetPath,        // Current target path
+                        fieldTargetEntity  // Current target entity
+                    );
                 }
             }
             
             rootNode.children!.push(fieldNode);
         }
-
-        // NOTE: Entity attributes and associations are used for discrepancy detection
-        // but we don't show them in the tree visualization for now
-        // Only show the DTO fields structure
         
-        // Store the built tree for later use
+        console.log(`[BUILD-TREE] └─ Tree build complete`);
         this.lastStructureTree = rootNode;
     }
 
-    private addNestedDtoFields(parentNode: IExtendedTreeNode, fieldType: MacroApi.Context.IElementApi): void {
-        const childType = inferSourceElementChildType(fieldType);
-        const children = fieldType.getChildren(childType);
+    private addDtoFieldsRecursive(
+        parentNode: IExtendedTreeNode,
+        dtoElement: MacroApi.Context.IElementApi,
+        depth: number,
+        parentSourcePath: string[] = [],
+        parentTargetPath: string[] = [],
+        parentTargetEntity?: MacroApi.Context.IElementApi
+    ): void {
+        const indent = Array(depth).fill("│  ").join("");
+        const children = dtoElement.getChildren("DTO-Field");
+        
+        console.log(`[BUILD-TREE] ${indent}├─ Processing ${children.length} nested fields in ${dtoElement.getName()}`);
         
         for (const child of children) {
             const childTypeRef = child.typeReference;
             const childTypeName = childTypeRef?.display || "Unknown";
-            console.log(`[BUILD] │  │  ├─ ${child.getName()}: ${childTypeName}`);
+            console.log(`[BUILD-TREE] ${indent}│  ├─ ${child.getName()}: ${childTypeName}`);
+            
+            // NEW: Extend both paths in parallel
+            const childSourcePath = [...parentSourcePath, child.id];
+            let childTargetPath = [...parentTargetPath];
+            let childTargetEntity = parentTargetEntity;
+            
+            // If this child is a complex type, try to find the corresponding entity
+            if (childTypeRef && childTypeRef.isTypeFound()) {
+                const childType = childTypeRef.getType() as MacroApi.Context.IElementApi;
+                
+                if (childType && this.isComplexType(childType)) {
+                    // Find the association from parentTargetEntity to the child's target entity
+                    if (parentTargetEntity) {
+                        const childAssoc = this.findAssociationToEntity(parentTargetEntity, child);
+                        if (childAssoc) {
+                            console.log(`[BUILD-TREE] ${indent}│  │  ├─ Found association: ${childAssoc.getName ? childAssoc.getName() : childAssoc.id}`);
+                            // Extend target path with the association ID
+                            childTargetPath.push(childAssoc.id);
+                            
+                            // Get the target entity of this association
+                            if ((childAssoc as any).typeReference && (childAssoc as any).typeReference.isTypeFound()) {
+                                childTargetEntity = (childAssoc as any).typeReference.getType() as MacroApi.Context.IElementApi;
+                                console.log(`[BUILD-TREE] ${indent}│  │  └─ Target entity: ${childTargetEntity?.getName()}`);
+                            }
+                        } else {
+                            console.log(`[BUILD-TREE] ${indent}│  │  ├─ ⚠ No association found for nested DTO field`);
+                        }
+                    }
+                }
+            }
             
             const childNode: IExtendedTreeNode = {
                 id: child.id,
-                label: `${child.getName()}: ${childTypeName}`,
-                specializationId: "structure-nested-field",
+                label: TreeNodeLabelBuilder.buildFieldLabel(child.getName(), childTypeName),
+                specializationId: "discrepancy",
                 elementId: child.id,
                 elementType: "Nested-Field",
                 originalName: child.getName(),
@@ -535,14 +809,29 @@ class FieldSyncEngine {
                 isExpanded: true,
                 isSelected: false,
                 icon: child.getIcon(),
-                children: []
+                children: [],
+                elementParentId: dtoElement.id,
+                // NEW: Store pre-computed paths
+                sourcePath: childSourcePath,
+                targetPath: childTargetPath,
+                targetEntityId: childTargetEntity?.id
             };
             
-            // Recursively add nested fields
+            console.log(`[BUILD-TREE] ${indent}│  ├─ Source path: [${childSourcePath.map(id => lookup(id)?.getName?.() || id).join(' → ')}]`);
+            console.log(`[BUILD-TREE] ${indent}│  └─ Target path: [${childTargetPath.map(id => lookup(id)?.getName?.() || id).join(' → ')}]`);
+            
             if (childTypeRef && childTypeRef.isTypeFound()) {
                 const nestedType = childTypeRef.getType() as MacroApi.Context.IElementApi;
-                if (nestedType && (nestedType.specialization === "DTO" || nestedType.specialization === "Class")) {
-                    this.addNestedDtoFieldsWithDepth(childNode, nestedType, 3);
+                if (nestedType && this.isComplexType(nestedType)) {
+                    // Recursively add nested fields WITH updated paths
+                    this.addDtoFieldsRecursive(
+                        childNode,
+                        nestedType,
+                        depth + 1,
+                        childSourcePath,      // Pass extended source path
+                        childTargetPath,      // Pass extended target path
+                        childTargetEntity     // Pass the new target entity
+                    );
                 }
             }
             
@@ -550,41 +839,53 @@ class FieldSyncEngine {
         }
     }
 
-    private addNestedDtoFieldsWithDepth(parentNode: IExtendedTreeNode, fieldType: MacroApi.Context.IElementApi, depth: number): void {
-        const childType = inferSourceElementChildType(fieldType);
-        const children = fieldType.getChildren(childType);
-        const indent = Array(depth).fill("│  ").join("");
+    /**
+     * Find the association from parentEntity to a child DTO field
+     * Match by field name and the DTO type it references
+     */
+    private findAssociationToEntity(
+        parentEntity: MacroApi.Context.IElementApi,
+        dtoField: MacroApi.Context.IElementApi
+    ): MacroApi.Context.IAssociationApi | null {
+        const fieldName = dtoField.getName();
+        const fieldTypeRef = dtoField.typeReference;
         
-        for (const child of children) {
-            const childTypeRef = child.typeReference;
-            const childTypeName = childTypeRef?.display || "Unknown";
-            console.log(`[BUILD] ${indent}├─ ${child.getName()}: ${childTypeName}`);
-            
-            const childNode: IExtendedTreeNode = {
-                id: child.id,
-                label: `${child.getName()}: ${childTypeName}`,
-                specializationId: "structure-nested-field",
-                elementId: child.id,
-                elementType: "Nested-Field",
-                originalName: child.getName(),
-                originalType: childTypeName,
-                hasDiscrepancies: true,
-                isExpanded: true,
-                isSelected: false,
-                icon: child.getIcon(),
-                children: []
-            };
-            
-            // Recursively add nested fields
-            if (childTypeRef && childTypeRef.isTypeFound()) {
-                const nestedType = childTypeRef.getType() as MacroApi.Context.IElementApi;
-                if (nestedType && (nestedType.specialization === "DTO" || nestedType.specialization === "Class")) {
-                    this.addNestedDtoFieldsWithDepth(childNode, nestedType, depth + 1);
-                }
+        if (!fieldTypeRef || !fieldTypeRef.isTypeFound()) {
+            return null;
+        }
+        
+        const fieldType = fieldTypeRef.getType() as MacroApi.Context.IElementApi;
+        if (!fieldType) {
+            return null;
+        }
+        
+        // Search for associations that match this field
+        const associations = parentEntity.getAssociations();
+        
+        for (const assoc of associations) {
+            const assocName = (assoc as any).getName ? (assoc as any).getName() : null;
+            if (!assocName) {
+                continue;
             }
             
-            parentNode.children!.push(childNode);
+            // Try to match by name (field name should match association name or singular form)
+            const fieldNameSingular = singularize(fieldName);
+            const nameMatches = assocName === fieldName || assocName === fieldNameSingular;
+            
+            if (!nameMatches) {
+                continue;
+            }
+            
+            // Verify the association points to an entity
+            if ((assoc as any).typeReference && (assoc as any).typeReference.isTypeFound()) {
+                const assocTarget = (assoc as any).typeReference.getType() as MacroApi.Context.IElementApi;
+                if (assocTarget && assocTarget.specialization === "Class") {
+                    return assoc as MacroApi.Context.IAssociationApi;
+                }
+            }
         }
+        
+        return null;
     }
 
     /**
@@ -602,13 +903,18 @@ class FieldSyncEngine {
         const discrepancyByElementId = new Map<string, IFieldDiscrepancy>();
         
         for (const disc of discrepancies) {
-            if (disc.dtoFieldId) {
-                elementIdsWithDiscrepancies.add(disc.dtoFieldId);
-                discrepancyByElementId.set(disc.dtoFieldId, disc);
+            // NEW discrepancies are synthetic nodes, don't mark their parent as having a discrepancy
+            if (disc.type === "NEW") {
+                continue;
             }
-            if (disc.entityAttributeId) {
-                elementIdsWithDiscrepancies.add(disc.entityAttributeId);
-                discrepancyByElementId.set(disc.entityAttributeId, disc);
+            
+            if (disc.sourceFieldId) {
+                elementIdsWithDiscrepancies.add(disc.sourceFieldId);
+                discrepancyByElementId.set(disc.sourceFieldId, disc);
+            }
+            if (disc.targetId) {
+                elementIdsWithDiscrepancies.add(disc.targetId);
+                discrepancyByElementId.set(disc.targetId, disc);
             }
         }
         
@@ -626,25 +932,42 @@ class FieldSyncEngine {
     ): void {
         // Find NEW discrepancies that belong to this node (by parent DTO element ID)
         const newDiscrepanciesForThisNode = discrepancies.filter(d => 
-            d.type === "NEW" && d.dtoFieldId === node.elementId
+            d.type === "NEW" && d.sourceFieldId === node.elementId
         );
+        
+        if (newDiscrepanciesForThisNode.length > 0) {
+            console.log(`[ANNOTATE] Adding ${newDiscrepanciesForThisNode.length} NEW nodes to ${node.originalName} (elementId: ${node.elementId})`);
+        }
         
         // Add them as children
         for (const newDisc of newDiscrepanciesForThisNode) {
+            console.log(`[ANNOTATE-NEW] Creating NEW node for: ${newDisc.targetAttributeName}`);
+            console.log(`[ANNOTATE-NEW] ├─ parent node: ${node.originalName} (elementId: ${node.elementId})`);
+            console.log(`[ANNOTATE-NEW] ├─ parent sourcePath: [${node.sourcePath?.join(' → ') || 'undefined'}]`);
+            console.log(`[ANNOTATE-NEW] ├─ parent targetPath: [${node.targetPath?.join(' → ') || 'undefined'}]`);
+            console.log(`[ANNOTATE-NEW] ├─ parent targetEntityId: ${node.targetEntityId}`);
+            console.log(`[ANNOTATE-NEW] └─ newDisc.sourceParentId: ${newDisc.sourceParentId}`);
+            
             const newNode: IExtendedTreeNode = {
                 id: newDisc.id,
-                label: `${newDisc.entityAttributeName}: ${newDisc.entityAttributeType}`,
-                specializationId: "structure-dto-field",
-                elementId: newDisc.entityAttributeId!,
+                label: TreeNodeLabelBuilder.buildDiscrepancyLabel(newDisc),
+                specializationId: `discrepancy`,
+                elementId: newDisc.targetId!,
                 elementType: "NEW-Field",
-                originalName: newDisc.entityAttributeName,
-                originalType: newDisc.entityAttributeType,
+                originalName: newDisc.targetAttributeName,
+                originalType: newDisc.targetAttributeTypeName,
                 hasDiscrepancies: true,
                 isExpanded: true,
                 isSelected: false,
                 icon: newDisc.icon,
                 discrepancy: newDisc,
-                children: []
+                displayFunction: createDiscrepancyDisplayFunction(newDisc, newDisc.targetAttributeName),
+                children: [],
+                elementParentId: newDisc.sourceParentId,
+                // NEW: Inherit paths from parent node so we have them when applying
+                sourcePath: node.sourcePath,
+                targetPath: node.targetPath,
+                targetEntityId: node.targetEntityId
             };
             node.children!.push(newNode);
         }
@@ -662,11 +985,21 @@ class FieldSyncEngine {
         elementIdsWithDiscrepancies: Set<string>,
         discrepancyByElementId: Map<string, IFieldDiscrepancy>
     ): boolean {
-        let nodeHasDiscrepancies = elementIdsWithDiscrepancies.has(node.elementId);
+        // Start with pre-existing discrepancy marker (for synthetic NEW nodes)
+        let nodeHasDiscrepancies = node.discrepancy !== undefined || elementIdsWithDiscrepancies.has(node.elementId);
         
         // Attach discrepancy object if this node has one
-        if (nodeHasDiscrepancies && discrepancyByElementId.has(node.elementId)) {
+        if (nodeHasDiscrepancies && !node.discrepancy && discrepancyByElementId.has(node.elementId)) {
             node.discrepancy = discrepancyByElementId.get(node.elementId);
+            // Format the node with display properties
+            if (node.discrepancy) {
+                const fieldName = node.discrepancy.type === "NEW" 
+                    ? node.discrepancy.targetAttributeName 
+                    : (node.discrepancy.sourceFieldName || node.discrepancy.targetAttributeName || "Unknown");
+                node.label = TreeNodeLabelBuilder.buildDiscrepancyLabel(node.discrepancy);
+                node.specializationId = `discrepancy`;
+                node.displayFunction = createDiscrepancyDisplayFunction(node.discrepancy, fieldName);
+            }
         }
         
         // Check children
@@ -697,12 +1030,11 @@ class FieldSyncEngine {
             return;
         }
         
-        // Filter children - keep only those with discrepancies (and root/operation-param)
+        // Filter children - keep only those with discrepancies
         node.children = node.children.filter((child) => {
             const extChild = child as IExtendedTreeNode;
             const keep = extChild.hasDiscrepancies || 
-                        extChild.elementType === "Operation-Parameter" ||
-                        extChild.elementType === "DTO";  // Keep root
+                        extChild.elementType === "DTO";  // Keep root DTO
             
             if (keep && extChild.children) {
                 this.pruneTreeWithoutDiscrepancies(extChild);
@@ -710,105 +1042,638 @@ class FieldSyncEngine {
             return keep;
         });
     }
+}
 
-    /**
-     * Convert the pruned tree structure to display nodes
-     */
-    public buildHierarchicalTreeNodes(
-        sourceElement: MacroApi.Context.IElementApi,
-        dtoElement: MacroApi.Context.IElementApi,
-        discrepancies: IFieldDiscrepancy[]
-    ): MacroApi.Context.ISelectableTreeNode[] {
-        // Use the pruned tree structure that was built and annotated
-        if (!this.lastStructureTree) {
-            return [];
-        }
+/**
+ * Executes sync actions on selected tree nodes
+ * Applies RENAME, DELETE, CHANGE_TYPE, and NEW field/association operations
+ */
+class NodeSyncExecutor {
+    
+    constructor(
+        private rootSourceElement: MacroApi.Context.IElementApi,
+        private rootTargetEntity: MacroApi.Context.IElementApi,
+        private workingSourceElement: MacroApi.Context.IElementApi,
+    ) {}
+    
+    public execute(
+        selectedNodes: IExtendedTreeNode[],
+    ): void {
+        console.log(`[APPLY-SYNC] Starting to apply ${selectedNodes.length} sync actions`);
         
-        // Convert the tree to display nodes
-        return this.convertTreeToDisplayNodes(this.lastStructureTree);
-    }
-
-    /**
-     * Recursively convert tree nodes to display nodes
-     */
-    private convertTreeToDisplayNodes(node: IExtendedTreeNode): MacroApi.Context.ISelectableTreeNode[] {
-        const result: MacroApi.Context.ISelectableTreeNode[] = [];
-        
-        // Process this node's children (skip root itself)
-        if (node.children) {
-            for (const child of node.children) {
-                const extChild = child as IExtendedTreeNode;
-                const displayNode = this.createDisplayNode(extChild);
-                result.push(displayNode);
+        for (const node of selectedNodes) {
+            if (!node.discrepancy) {
+                console.log(`[APPLY-SYNC] ⚠ Skipping node ${node.id} - no discrepancy metadata`);
+                continue;
+            }
+            
+            try {
+                this.executeNode(node);
+                console.log(`[APPLY-SYNC] ✓ Applied [${node.discrepancy.type}] ${node.discrepancy.sourceFieldName}`);
+            } catch (error) {
+                console.log(`[APPLY-SYNC] ✗ Failed [${node.discrepancy.type}] ${node.discrepancy.sourceFieldName}: ${error}`);
+                // Continue to next node (no transactions)
             }
         }
         
-        return result;
+        console.log(`[APPLY-SYNC] └─ Sync complete`);
     }
-
-    /**
-     * Create a display node from a tree node
-     */
-    private createDisplayNode(node: IExtendedTreeNode): MacroApi.Context.ISelectableTreeNode {
-        const displayNode: any = {
-            id: node.id,
-            label: node.label,
-            specializationId: node.specializationId,
-            isExpanded: true,
-            isSelected: false,
-            icon: node.icon,
-            children: []
-        };
+    
+    private executeNode(
+        node: IExtendedTreeNode,
+    ): void {
+        const discrepancy = node.discrepancy!;
         
-        // If this node has a discrepancy, attach the display function
-        if (node.discrepancy) {
-            const discrepancy = node.discrepancy;
-            // For NEW items, always use entityAttributeName; for others use dtoFieldName
-            const fieldName = discrepancy.type === "NEW" 
-                ? discrepancy.entityAttributeName 
-                : (discrepancy.dtoFieldName || discrepancy.entityAttributeName || "Unknown");
-            displayNode.displayFunction = createDiscrepancyDisplayFunction(discrepancy, fieldName);
-            displayNode.specializationId = `discrepancy-${discrepancy.type.toLowerCase()}`;
-            displayNode.label = this.formatDiscrepancyLabel(discrepancy);
+        console.log(`[EXECUTE-NODE] Processing node: ${node.id}`);
+        console.log(`[EXECUTE-NODE] ├─ type: ${discrepancy?.type}`);
+        console.log(`[EXECUTE-NODE] ├─ sourcePath: [${node.sourcePath?.join(' → ') || 'undefined'}]`);
+        console.log(`[EXECUTE-NODE] ├─ targetPath: [${node.targetPath?.join(' → ') || 'undefined'}]`);
+        console.log(`[EXECUTE-NODE] ├─ targetEntityId: ${node.targetEntityId}`);
+        console.log(`[EXECUTE-NODE] └─ elementParentId: ${node.elementParentId}`);
+        
+        let targetDtoElement: MacroApi.Context.IElementApi;
+        if(node.elementParentId) { 
+            targetDtoElement = lookup(node.elementParentId); 
+        } else {
+            throw new Error("No ElementParentId specified on node");
         }
         
-        // Recursively convert children
-        if (node.children && node.children.length > 0) {
-            displayNode.children = [];
-            for (const child of node.children) {
-                const extChild = child as IExtendedTreeNode;
-                const childDisplayNode = this.createDisplayNode(extChild);
-                displayNode.children.push(childDisplayNode);
-            }
+        if (!targetDtoElement) {
+            throw new Error(`Unable to find target DTO element: ${node.elementParentId}`);
         }
         
-        return displayNode;
-    }
-
-    private formatDiscrepancyLabel(discrepancy: IFieldDiscrepancy): string {
         switch (discrepancy.type) {
-            case "DELETE":
-                return `[DELETE] ${discrepancy.dtoFieldName}: ${discrepancy.dtoFieldType}`;
-            case "NEW":
-                return `[NEW] ${discrepancy.entityAttributeName}: ${discrepancy.entityAttributeType}`;
             case "RENAME":
-                return `[RENAME] ${discrepancy.dtoFieldName} → ${discrepancy.entityAttributeName}`;
+                this.applyRename(node, targetDtoElement);
+                break;
+            case "DELETE":
+                this.applyDelete(node, targetDtoElement);
+                break;
             case "CHANGE_TYPE":
-                return `[CHANGE_TYPE] ${discrepancy.dtoFieldName}: ${discrepancy.dtoFieldType} → ${discrepancy.entityAttributeType}`;
+                this.applyChangeType(node, targetDtoElement);
+                break;
+            case "NEW":
+                // Determine if it's an association or attribute based on targetIdType discriminator
+                if (discrepancy.targetIdType === "association") {
+                    this.applyNewAssociation(node, targetDtoElement);
+                } else {
+                    // For nested DTOs, resolve the correct entity
+                    const targetEntity = this.resolveEntityForDto(targetDtoElement, this.rootTargetEntity);
+                    this.applyNewAttribute(node, targetDtoElement, targetEntity);
+                }
+                break;
             default:
-                return discrepancy.dtoFieldName || discrepancy.entityAttributeName || "Unknown";
+                throw new Error(`Unknown discrepancy type: ${discrepancy.type}`);
         }
     }
 
     /**
-     * Apply sync actions (placeholder for later)
+     * Apply RENAME: Rename the DTO field to match entity attribute name
      */
-    public applySyncActions(
+    private applyRename(node: IExtendedTreeNode, dtoElement: MacroApi.Context.IElementApi): void {
+        const discrepancy = node.discrepancy!;
+        
+        // For Operations, look for Parameter children; for DTOs, look for DTO-Field children
+        const childType = dtoElement.specialization === "Operation" ? ELEMENT_TYPE_NAMES.PARAMETER : ELEMENT_TYPE_NAMES.DTO_FIELD;
+        const children = dtoElement.getChildren(childType);
+        
+        const field = children.find(child => child.id === discrepancy.sourceFieldId);
+        if (!field) {
+            throw new Error(`${childType} not found: ${discrepancy.sourceFieldId}`);
+        }
+        
+        // Rename the field to match entity attribute name
+        field.setName(discrepancy.targetAttributeName, true);
+        console.log(`[APPLY-SYNC-RENAME] Renamed field from '${discrepancy.sourceFieldName}' to '${discrepancy.targetAttributeName}'`);
+    }
+
+    /**
+     * Apply DELETE: Remove the DTO field if it has no mappings
+     */
+    private applyDelete(
+        node: IExtendedTreeNode,
+        dtoElement: MacroApi.Context.IElementApi,
+    ): void {
+        const discrepancy = node.discrepancy!;
+        
+        // For Operations, look for Parameter children; for DTOs, look for DTO-Field children
+        const childType = dtoElement.specialization === "Operation" ? ELEMENT_TYPE_NAMES.PARAMETER : ELEMENT_TYPE_NAMES.DTO_FIELD;
+        const children = dtoElement.getChildren(childType);
+        
+        const field = children.find(child => child.id === discrepancy.sourceFieldId);
+        if (!field) {
+            throw new Error(`${childType} not found: ${discrepancy.sourceFieldId}`);
+        }
+        
+        // Delete the field from the DTO/Operation
+        field.delete();
+        console.log(`[APPLY-SYNC-DELETE] Deleted field '${discrepancy.sourceFieldName}'`);
+    }
+
+    /**
+     * Apply CHANGE_TYPE: Update the field's type reference to match entity attribute type
+     */
+    private applyChangeType(node: IExtendedTreeNode, dtoElement: MacroApi.Context.IElementApi): void {
+        const discrepancy = node.discrepancy!;
+        
+        // For Operations, look for Parameter children; for DTOs, look for DTO-Field children
+        const childType = dtoElement.specialization === "Operation" ? ELEMENT_TYPE_NAMES.PARAMETER : ELEMENT_TYPE_NAMES.DTO_FIELD;
+        const children = dtoElement.getChildren(childType);
+        
+        const field = children.find(child => child.id === discrepancy.sourceFieldId);
+        if (!field) {
+            throw new Error(`${childType} not found: ${discrepancy.sourceFieldId}`);
+        }
+        
+        const typeRef = field.typeReference;
+        if (!typeRef) {
+            throw new Error(`Field has no type reference: ${discrepancy.sourceFieldName}`);
+        }
+        
+        // Update type to match entity attribute
+        if (discrepancy.targetTypeId) {
+            typeRef.setType(discrepancy.targetTypeId);
+        }
+        
+        // Update collection and nullable modifiers if they differ
+        if (discrepancy.targetIsCollection !== undefined) {
+            typeRef.setIsCollection(discrepancy.targetIsCollection);
+        }
+        if (discrepancy.targetIsNullable !== undefined) {
+            typeRef.setIsNullable(discrepancy.targetIsNullable);
+        }
+        
+        console.log(`[APPLY-SYNC-CHANGE-TYPE] Updated type for '${discrepancy.sourceFieldName}' to '${discrepancy.targetAttributeTypeName}'`);
+    }
+
+    /**
+     * Apply NEW ATTRIBUTE: Create a new DTO field with the entity attribute's name and type
+     */
+    private applyNewAttribute(
+        node: IExtendedTreeNode,
         dtoElement: MacroApi.Context.IElementApi,
         entity: MacroApi.Context.IElementApi,
-        selectedDiscrepancies: IFieldDiscrepancy[],
-        associations: MacroApi.Context.IAssociationApi[]
     ): void {
-        // Not implemented yet
+        const discrepancy = node.discrepancy!;
+        
+        console.log(`[APPLY-NEW] Processing NEW discrepancy: ${discrepancy.targetAttributeName}`);
+        console.log(`[APPLY-NEW] ├─ node.sourcePath: [${node.sourcePath?.join(' → ') || 'undefined'}]`);
+        console.log(`[APPLY-NEW] ├─ node.targetPath: [${node.targetPath?.join(' → ') || 'undefined'}]`);
+        console.log(`[APPLY-NEW] ├─ node.targetEntityId: ${node.targetEntityId}`);
+        console.log(`[APPLY-NEW] ├─ node.elementParentId: ${node.elementParentId}`);
+        console.log(`[APPLY-NEW] ├─ dtoElement: ${dtoElement.getName()}`);
+        console.log(`[APPLY-NEW] └─ entity: ${entity.getName()}`);
+        
+        // Create new field in the DTO
+        let newField = dtoElement.addChild("DTO-Field", discrepancy.targetAttributeName);
+        if (!newField) {
+            throw new Error(`Failed to create new DTO field`);
+        }
+
+        // Set the type reference if we have the entity attribute's type ID
+        if (discrepancy.targetTypeId && newField.typeReference) {
+            newField.typeReference.setType(discrepancy.targetTypeId);
+            
+            // Set collection/nullable based on entity attribute
+            if (discrepancy.targetIsCollection !== undefined) {
+                newField.typeReference.setIsCollection(discrepancy.targetIsCollection);
+            }
+            if (discrepancy.targetIsNullable !== undefined) {
+                newField.typeReference.setIsNullable(discrepancy.targetIsNullable);
+            }
+        } else {
+            console.warn(`[APPLY-SYNC-NEW-ATTR] Warning: No target type ID for new field '${discrepancy.targetAttributeName}', leaving type unset`);
+        }
+        
+        console.log(`[APPLY-SYNC-NEW-ATTR] Created new field '${discrepancy.targetAttributeName}: ${discrepancy.targetAttributeTypeName}'`);
+        
+        // Create mapping between the new field and the entity attribute
+        try {
+            // Find the actual entity that contains this attribute (may be different from fallback)
+            if (!discrepancy.targetId) {
+                throw new Error(`No target ID in discrepancy for ${discrepancy.targetAttributeName}`);
+            }
+            
+            const actualEntity = this.findEntityContainingAttribute(discrepancy.targetId);
+            if (!actualEntity) {
+                throw new Error(`Could not find entity containing attribute: ${discrepancy.targetAttributeName}`);
+            }
+            
+            // UPDATED: Use pre-computed paths from node and rootSourceElement for association lookup
+            this.createFieldMappingWithPath(dtoElement, actualEntity, newField, discrepancy, node);
+            console.log(`[APPLY-SYNC-NEW-ATTR] Created mapping for '${discrepancy.targetAttributeName}'`);
+        } catch (error) {
+            console.log(`[APPLY-SYNC-NEW-ATTR] Warning: Failed to create mapping: ${error}`);
+            // Don't throw - field was created successfully even if mapping failed
+        }
+    }
+
+    /**
+     * Select the appropriate advanced mapping for "Data Mapping" type
+     * 
+     * Prefers Create Entity Action, then Update Entity Action, skips Query/Delete actions
+     * (those use "Filter Mapping", not "Data Mapping")
+     * 
+     */
+    private selectMappingForDataMapping(
+        allMappings: MacroApi.Context.IElementToElementMappingApi[],
+    ): MacroApi.Context.IElementToElementMappingApi | null {
+        const QUERY_ENTITY_UUID = "25f25af9-c38b-4053-9474-b0fabe9d7ea7";
+        return allMappings.filter(m => m.mappingTypeId !== QUERY_ENTITY_UUID)[0] || null;
+    }
+
+    private findRootAssociation(
+        rootDto: MacroApi.Context.IElementApi,
+        rootEntity: MacroApi.Context.IElementApi,
+    ): MacroApi.Context.IAssociationApi | null {
+        // For Commands/Queries, root association is directly on the root source element.
+        let association = this.rootSourceElement
+            .getAssociations()
+            .find(a => a.typeReference?.typeId === rootEntity.id) as any as MacroApi.Context.IAssociationApi;
+
+        if (association) {
+            return association;
+        }
+
+        // For Operations, the association is on the DTO parameter.
+        if (this.rootSourceElement.specialization !== "Operation") {
+            return null;
+        }
+
+        const params = this.rootSourceElement.getChildren("Parameter");
+        for (const param of params) {
+            if (param.typeReference && param.typeReference.typeId === rootDto.id) {
+                const paramAssociations = param.getAssociations();
+                association = paramAssociations
+                    .find(a => a.typeReference?.typeId === rootEntity.id) as any as MacroApi.Context.IAssociationApi;
+                if (association) {
+                    return association;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Create a field-to-attribute mapping with OPTION A: pre-computed paths
+     * 
+     * IMPORTANT: The node should already have sourcePath and targetPath pre-computed
+     * during buildStructureTree. We use them directly here - NO calculation needed.
+     * 
+     * Strategy:
+     * 1. Get pre-computed sourcePath and targetPath from node
+     * 2. Append the new field ID to sourcePath
+     * 3. Append the target attribute ID to targetPath
+     * 4. Find ROOT association (rootDto → rootEntity)
+     * 5. Get/create SINGLE advanced mapping on that association
+     * 6. Add mappedEnd with complete paths
+     */
+    private createFieldMappingWithPath(
+        dtoElement: MacroApi.Context.IElementApi,
+        entity: MacroApi.Context.IElementApi,
+        newField: MacroApi.Context.IElementApi,
+        discrepancy: IFieldDiscrepancy,
+        node?: IExtendedTreeNode
+    ): void {
+        console.log(`[CREATE-MAPPING-V2] Starting mapping creation for field: ${newField.getName()}`);
+        console.log(`[CREATE-MAPPING-V2] ├─ DTO element: ${dtoElement.getName()}`);
+        console.log(`[CREATE-MAPPING-V2] ├─ Entity: ${entity.getName()}`);
+        
+        // Use pre-computed paths from node (should always be available)
+        if (!node || !node.sourcePath || !node.targetPath || !node.targetEntityId) {
+            throw new Error(`Node missing required pre-computed paths for ${newField.getName()}`);
+        }
+        
+        console.log(`[CREATE-MAPPING-V2] ├─ Using PRE-COMPUTED paths from node`);
+        
+        // Start with the pre-computed paths from the node
+        const sourcePath = [...node.sourcePath, newField.id];
+        const targetPath = [...node.targetPath];  // Will append attribute ID below
+        
+        // IMPORTANT: Extract the actual DTO ID from sourcePath
+        // For Operations: sourcePath = [Operation, Parameter, ...fields...]  → workingSourceElement is the DTO
+        // For Commands: sourcePath = [DTO, ...fields...]  → DTO at index 0
+        let rootDto: MacroApi.Context.IElementApi;
+        if (node.sourcePath.length === 2) {
+            // Operations: [Operation, Parameter] - DTO is dtoElement (passed in)
+            rootDto = dtoElement;
+        } else if (node.sourcePath.length === 1) {
+            // Commands: [DTO] at index 0
+            rootDto = lookup(node.sourcePath[0]) || dtoElement;
+        } else {
+            // Nested case - just use dtoElement
+            rootDto = dtoElement;
+        }
+        
+        const rootEntityId = node.targetPath[0];
+        const rootEntity = lookup(rootEntityId);
+        
+        if (!rootEntity) {
+            throw new Error(`Could not find root entity from targetPath[0]: ${rootEntityId}`);
+        }
+        
+        // Append the target attribute ID
+        if (discrepancy.targetId) {
+            targetPath.push(discrepancy.targetId);
+            console.log(`[CREATE-MAPPING-V2] ├─ Appended target attribute: ${discrepancy.targetAttributeName}`);
+        } else {
+            throw new Error(`No target ID in discrepancy for ${discrepancy.targetAttributeName}`);
+        }
+        
+        console.log(`[CREATE-MAPPING-V2] ├─ Final source path (${sourcePath.length} IDs): [${sourcePath.map(id => lookup(id)?.getName?.() || id).join(' → ')}]`);
+        console.log(`[CREATE-MAPPING-V2] ├─ Final target path (${targetPath.length} IDs): [${targetPath.map(id => lookup(id)?.getName?.() || id).join(' → ')}]`);
+        console.log(`[CREATE-MAPPING-V2] ├─ Root DTO: ${rootDto.getName()}`);
+        console.log(`[CREATE-MAPPING-V2] ├─ Root Entity: ${rootEntity.getName()}`);
+        
+        // Step 2: Find the ROOT association (root source → root entity)
+        const association = this.findRootAssociation(rootDto, rootEntity);
+        if (!association) {
+            throw new Error(`No root association found between ${rootDto.getName()} and ${rootEntity.getName()}`);
+        }
+        
+        // Step 3: Get advanced mappings on the root association
+        const assocApi = association as MacroApi.Context.IAssociationApi;
+        const allMappings = assocApi.getAdvancedMappings();
+        
+        if (!allMappings || allMappings.length === 0) {
+            console.log(`[CREATE-MAPPING-V2] ├─ ⚠ No advanced mappings found (FAIL-FAST)`);
+            throw new Error(`No advanced mapping found on association between ${rootDto.getName()} and ${rootEntity.getName()}`);
+        }
+        
+        console.log(`[CREATE-MAPPING-V2] ├─ Found ${allMappings.length} advanced mapping(s):`);
+        const mappingDetails = allMappings.map((m, idx) => {
+            return `Mapping[${idx}]: ${m.mappingTypeId} - ${m.mappingType}`;
+        });
+        mappingDetails.forEach(detail => console.log(`[CREATE-MAPPING-V2] │  ├─ ${detail}`));
+        
+        // Select the appropriate mapping for "Data Mapping" type
+        // Preference: Create Entity Action > Update Entity Action > first available
+        // "Data Mapping" is valid only for Create/Update actions, not Query/Delete actions
+        let mapping = this.selectMappingForDataMapping(allMappings);
+        
+        if (!mapping) {
+            console.log(`[CREATE-MAPPING-V2] ├─ ⚠ No suitable advanced mapping found for Data Mapping (all mappings may be Query/Filter type)`);
+            throw new Error(`No Create/Update Entity mapping found on association between ${rootDto.getName()} and ${rootEntity.getName()}`);
+        }
+        console.log(`[CREATE-MAPPING-V2] ├─ ✓ Selected mapping for Data Mapping: ${mapping.mappingTypeId} - ${mapping.mappingType}`);
+        
+        // Step 4: Add the mappedEnd with complete paths
+        console.log(`[CREATE-MAPPING-V2] ├─ Adding mappedEnd...`);
+        console.log(`[CREATE-MAPPING-V2] │  ├─ Mapping type: Data Mapping`);
+        console.log(`[CREATE-MAPPING-V2] │  ├─ Source path (${sourcePath.length} IDs): ${sourcePath.join(' → ')}`);
+        console.log(`[CREATE-MAPPING-V2] │  └─ Target path (${targetPath.length} IDs): ${targetPath.join(' → ')}`);
+        
+        mapping.addMappedEnd(
+            "Data Mapping",
+            sourcePath,
+            targetPath
+        );
+        
+        console.log(`[CREATE-MAPPING-V2] └─ ✓ MappedEnd added successfully`);
+    }
+
+    /**
+     * Resolve the entity for a given DTO element
+     * For nested DTOs, find the entity via the DTO's association
+     */
+    private resolveEntityForDto(dtoElement: MacroApi.Context.IElementApi, fallbackEntity: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
+        // Check if this DTO has any associations that point to an entity
+        const associations = dtoElement.getAssociations();
+        for (const assoc of associations) {
+            if (assoc.typeReference && assoc.typeReference.isTypeFound()) {
+                const targetElement = assoc.typeReference.getType() as MacroApi.Context.IElementApi;
+                if (targetElement && targetElement.specialization === "Class") {
+                    console.log(`[RESOLVE-ENTITY] Resolved entity for ${dtoElement.getName()}: ${targetElement.getName()}`);
+                    return targetElement;
+                }
+            }
+        }
+        
+        // If no association found, use fallback
+        console.log(`[RESOLVE-ENTITY] No entity found for ${dtoElement.getName()}, using fallback: ${fallbackEntity.getName()}`);
+        return fallbackEntity;
+    }
+
+    /**
+     * Find which entity contains a given attribute ID
+     * Searches from the provided entity and its related entities
+     */
+    private findEntityContainingAttribute(attributeId: string): MacroApi.Context.IElementApi | null {
+        const attr = lookup(attributeId);
+        if (!attr) {
+            return null;
+        }
+
+        return attr.getParent();
+    }
+
+    /**
+     * Apply NEW ASSOCIATION: Create a new nested DTO and add mapping
+     */
+    private applyNewAssociation(
+        node: IExtendedTreeNode,
+        dtoElement: MacroApi.Context.IElementApi,
+    ): void {
+        const discrepancy = node.discrepancy!;
+        
+        // Use the pre-computed suggested DTO name and collection flag from discrepancy
+        const dtoTypeName = discrepancy.suggestedDtoName!;
+        const isCollection = discrepancy.sourceIsCollection || false;
+        
+        // Find the association to get the target entity
+        const associationId = discrepancy.targetId!;
+        const association = lookup(associationId) as any as MacroApi.Context.IAssociationApi;
+        if (!association || !association.typeReference || !association.typeReference.isTypeFound()) {
+            throw new Error(`Cannot find association or its target entity: ${associationId}`);
+        }
+        
+        const targetEntity = association.typeReference.getType() as MacroApi.Context.IElementApi;
+        console.log(`[APPLY-SYNC-NEW-ASSOC] Target entity: ${targetEntity.getName()}`);
+        
+        // Create new nested DTO with the suggested name
+        const parentPackage = dtoElement.getParent();
+        if (!parentPackage) {
+            throw new Error(`Cannot determine parent package for new DTO`);
+        }
+        
+        const newNestedDto = parentPackage.addChild("DTO", dtoTypeName);
+        if (!newNestedDto) {
+            throw new Error(`Failed to create new nested DTO`);
+        }
+        
+        console.log(`[APPLY-SYNC-NEW-ASSOC] Created new DTO '${dtoTypeName}'`);
+        
+        // Populate the new DTO with fields from the target entity
+        const entityAttrs = getEntityAttributes(targetEntity);
+        let fieldsAdded = 0;
+        for (const attr of entityAttrs) {
+            // Skip non-mappable attributes (auto-generated PKs, required parent FKs, infrastructure fields)
+            if (!attr.isMappable) {
+                continue;
+            }
+            
+            const newField = newNestedDto.addChild("DTO-Field", attr.name);
+            if (newField && newField.typeReference && attr.typeId) {
+                newField.typeReference.setType(attr.typeId);
+                if (attr.isCollection !== undefined) {
+                    newField.typeReference.setIsCollection(attr.isCollection);
+                }
+                if (attr.isNullable !== undefined) {
+                    newField.typeReference.setIsNullable(attr.isNullable);
+                }
+                fieldsAdded++;
+            }
+        }
+        
+        console.log(`[APPLY-SYNC-NEW-ASSOC] Populated ${fieldsAdded} fields in new DTO from entity ${targetEntity.getName()}`);
+        
+        // Create a reference field in the source DTO pointing to this new DTO
+        const newField = dtoElement.addChild("DTO-Field", discrepancy.targetAttributeName);
+        if (!newField) {
+            throw new Error(`Failed to create new DTO field for association`);
+        }
+        
+        // Set the type reference to the new nested DTO
+        if (newField.typeReference) {
+            newField.typeReference.setType(newNestedDto.id);
+            newField.typeReference.setIsCollection(isCollection);
+            newField.typeReference.setIsNullable(false);
+        }
+        
+        console.log(`[APPLY-SYNC-NEW-ASSOC] Created reference field '${discrepancy.targetAttributeName}: ${dtoTypeName}${isCollection ? "[*]" : ""}'`);
+        
+        // Create mappings for all fields in the new DTO
+        this.createMappingsForNewDto(dtoElement, newNestedDto, newField, targetEntity, association, node, this.rootSourceElement);
+    }
+    
+    private createMappingsForNewDto(
+        parentDto: MacroApi.Context.IElementApi,
+        newDto: MacroApi.Context.IElementApi,
+        dtoField: MacroApi.Context.IElementApi,
+        targetEntity: MacroApi.Context.IElementApi,
+        association: MacroApi.Context.IAssociationApi,
+        node: IExtendedTreeNode,
+        rootSourceElement: MacroApi.Context.IElementApi
+    ): void {
+        console.log(`[CREATE-NEW-DTO-MAPPINGS] Creating mappings for new DTO: ${newDto.getName()}`);
+        
+        // Use pre-computed paths from node
+        if (!node.sourcePath || !node.targetPath) {
+             console.log(`[CREATE-NEW-DTO-MAPPINGS] ⚠ Node missing path information`);
+             return;
+        }
+
+        // 1. Identify Root Elements using Node Paths
+        // Extract the actual DTO ID from sourcePath
+        // For Operations: sourcePath = [Operation, Parameter, ...fields...]  → DTO is parentDto (root DTO)
+        // For Commands: sourcePath = [DTO, ...fields...]  → DTO at index 0
+        let rootDto: MacroApi.Context.IElementApi;
+        if (node.sourcePath.length === 2) {
+            // Operations: [Operation, Parameter] - DTO is parentDto
+            rootDto = parentDto;
+        } else if (node.sourcePath.length === 1) {
+            // Commands: [DTO] at index 0
+            rootDto = lookup(node.sourcePath[0]) || parentDto;
+        } else {
+            // Nested case - use parentDto
+            rootDto = parentDto;
+        }
+
+        // For the entity side, targetPath[0] is the root entity
+        const rootEntityId = node.targetPath[0];
+        const rootEntity = lookup(rootEntityId);
+        
+        if (!rootEntity) {
+             console.log(`[CREATE-NEW-DTO-MAPPINGS] ⚠ Could not find root entity: ${rootEntityId}`);
+             return;
+        }
+
+        console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Using paths from node`);
+        console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Root DTO: ${rootDto.getName()}`);
+        console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Root Entity: ${rootEntity.getName()}`);
+
+        // 2. Find Root Association
+        const rootAssociation = this.findRootAssociation(rootDto, rootEntity);
+        if (!rootAssociation) {
+            console.log(`[CREATE-NEW-DTO-MAPPINGS] ⚠ Could not find root association between ${rootDto.getName()} and ${rootEntity.getName()}`);
+            return;
+        }
+
+        // 3. Get Advanced Mapping - select the right one for "Data Mapping"
+        const rootAssocApi = rootAssociation as any;
+        const advancedMappings = rootAssocApi.getAdvancedMappings?.() || [];
+        
+        if (advancedMappings.length === 0) {
+            console.log(`[CREATE-NEW-DTO-MAPPINGS] ⚠ No advanced mappings found on root association`);
+            return;
+        }
+        
+        console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Found ${advancedMappings.length} advanced mapping(s)`);
+        
+        // Select the appropriate mapping for "Data Mapping" type
+        const advancedMapping = this.selectMappingForDataMapping(advancedMappings);
+        if (!advancedMapping) {
+            console.log(`[CREATE-NEW-DTO-MAPPINGS] ⚠ No Create/Update Entity mapping found (all mappings may be Query/Filter type)`);
+            return;
+        }
+        console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Selected mapping for Data Mapping`);
+        
+        // Debug: Check existing mapped ends
+        const existingEnds = advancedMapping.getMappedEnds ? advancedMapping.getMappedEnds() : [];
+        console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Existing mapped ends count: ${existingEnds.length}`);
+
+        // 4. Iterate and Map Fields
+        const dtoFields = newDto.getChildren("DTO-Field");
+        const entityAttrs = getEntityAttributes(targetEntity);
+        
+        let mappingsAdded = 0;
+        
+        // Base paths construction:
+        // Paths are already pre-computed correctly in node (including Operation+Parameter for Operations)
+        // Just extend with the new DTO
+        const sourceBasePath = [...node.sourcePath, newDto.id];
+        
+        // Target: [...ParentTargetPath, AssociationId]
+        const targetBasePath = [...node.targetPath, association.id];
+
+        console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Source Base Path: ${sourceBasePath.join(' -> ')}`);
+        console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Target Base Path: ${targetBasePath.join(' -> ')}`);
+        console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ New DTO ID: ${newDto.id}`);
+
+        // Debug: Check if advancedMapping is valid
+        console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Advanced mapping object type: ${typeof advancedMapping}`);
+        console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Advanced mapping has addMappedEnd: ${typeof advancedMapping.addMappedEnd === 'function'}`);
+
+        // 5. Map the fields in the new DTO
+        console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Processing ${dtoFields.length} fields in new DTO`);
+        
+        for (const field of dtoFields) {
+             const matchingAttr = entityAttrs.find(attr => namesAreEquivalent(attr.name, field.getName()));
+             if (matchingAttr) {
+                  // Full paths: Base + Field/Attribute ID
+                  const sourcePath = [...sourceBasePath, field.id];
+                  const targetPath = [...targetBasePath, matchingAttr.id];
+
+                  try {
+                       console.log(`[CREATE-NEW-DTO-MAPPINGS] │  ├─ Adding mapping for field '${field.getName()}'`);
+                       console.log(`[CREATE-NEW-DTO-MAPPINGS] │  │  ├─ Source path (${sourcePath.length} IDs): ${sourcePath.join(' → ')}`);
+                       console.log(`[CREATE-NEW-DTO-MAPPINGS] │  │  ├─ Target path (${targetPath.length} IDs): ${targetPath.join(' → ')}`);
+                       advancedMapping.addMappedEnd("Data Mapping", sourcePath, targetPath);
+                       const afterCount = advancedMapping.getMappedEnds ? advancedMapping.getMappedEnds().length : 'unknown';
+                       console.log(`[CREATE-NEW-DTO-MAPPINGS] │  │  └─ Mapped ends count after call: ${afterCount}`);
+                       mappingsAdded++;
+                       console.log(`[CREATE-NEW-DTO-MAPPINGS] │  └─ ✓ Mapping added for ${field.getName()}`);
+                  } catch (e) {
+                       console.log(`[CREATE-NEW-DTO-MAPPINGS] │  └─ ✗ Error: ${e}`);
+                  }
+             }
+        }
+        
+        console.log(`[CREATE-NEW-DTO-MAPPINGS] └─ Completed: Added ${mappingsAdded} mappings`);
+        
+        // Debug: Check mapped ends AFTER addition
+        const finalEnds = advancedMapping.getMappedEnds ? advancedMapping.getMappedEnds() : [];
+        console.log(`[CREATE-NEW-DTO-MAPPINGS] └─ Final mapped ends count: ${finalEnds.length}`);
     }
 }
