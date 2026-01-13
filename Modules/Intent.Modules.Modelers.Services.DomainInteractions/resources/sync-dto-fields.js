@@ -1712,7 +1712,7 @@ class NodeSyncExecutor {
         // Base paths construction:
         // Paths are already pre-computed correctly in node (including Operation+Parameter for Operations)
         // Just extend with the new DTO
-        const sourceBasePath = [...node.sourcePath, newDto.id];
+        const sourceBasePath = [...node.sourcePath, dtoField.id];
         // Target: [...ParentTargetPath, AssociationId]
         const targetBasePath = [...node.targetPath, association.id];
         console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Source Base Path: ${sourceBasePath.join(' -> ')}`);
@@ -1723,6 +1723,19 @@ class NodeSyncExecutor {
         console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Advanced mapping has addMappedEnd: ${typeof advancedMapping.addMappedEnd === 'function'}`);
         // 5. Map the fields in the new DTO
         console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Processing ${dtoFields.length} fields in new DTO`);
+        // 4.5 Add association root mapping: {NewBlockForBlock1s}
+        // This anchors nested mappings like {NewBlockForBlock1s.Name}
+        try {
+            console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Adding association root mapping for '${dtoField.getName()}'`);
+            console.log(`[CREATE-NEW-DTO-MAPPINGS] │  ├─ Source path (${sourceBasePath.length} IDs): ${sourceBasePath.join(' → ')}`);
+            console.log(`[CREATE-NEW-DTO-MAPPINGS] │  └─ Target path (${targetBasePath.length} IDs): ${targetBasePath.join(' → ')}`);
+            advancedMapping.addMappedEnd("Data Mapping", sourceBasePath, targetBasePath);
+            const afterAssocCount = advancedMapping.getMappedEnds ? advancedMapping.getMappedEnds().length : 'unknown';
+            console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Mapped ends count after assoc root: ${afterAssocCount}`);
+        }
+        catch (e) {
+            console.log(`[CREATE-NEW-DTO-MAPPINGS] └─ ✗ Error adding assoc root mapping: ${e}`);
+        }
         for (const field of dtoFields) {
             const matchingAttr = entityAttrs.find(attr => namesAreEquivalent(attr.name, field.getName()));
             if (matchingAttr) {
