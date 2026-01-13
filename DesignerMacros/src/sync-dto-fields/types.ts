@@ -3,7 +3,7 @@
 
 interface IFieldDiscrepancy {
     id: string;
-    type: "NEW" | "DELETE" | "RENAME" | "CHANGE_TYPE";
+    type: "ADD" | "DELETE" | "RENAME" | "CHANGE_TYPE";
     
     sourceParentId?: string;
     sourceFieldId?: string;
@@ -24,7 +24,7 @@ interface IFieldDiscrepancy {
     targetIsCollection?: boolean;
     targetIsNullable?: boolean;
     
-    // For NEW association discrepancies: the suggested DTO name to create
+    // For ADD association discrepancies: the suggested DTO name to create
     suggestedDtoName?: string;
     
     mappingPath?: string[];

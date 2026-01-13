@@ -14,8 +14,8 @@ class TreeNodeLabelBuilder {
         switch (discrepancy.type) {
             case "DELETE":
                 return `[DELETE] ${discrepancy.sourceFieldName}: ${discrepancy.sourceFieldTypeName}`;
-            case "NEW":
-                return `[NEW] ${discrepancy.targetAttributeName}: ${discrepancy.targetAttributeTypeName}`;
+            case "ADD":
+                return `[ADD] ${discrepancy.targetAttributeName}: ${discrepancy.targetAttributeTypeName}`;
             case "RENAME":
                 return `[RENAME] ${discrepancy.sourceFieldName} → ${discrepancy.targetAttributeName}`;
             case "CHANGE_TYPE":
@@ -28,14 +28,14 @@ class TreeNodeLabelBuilder {
 
 // Discrepancy status colors
 const DISCREPANCY_COLORS = {
-    NEW: "#22c55e",      // Green
+    ADD: "#22c55e",      // Green
     DELETE: "#ef4444",  // Red
     RENAME: "#007777",  // Teal
     CHANGE_TYPE: "#f97316"  // Orange
 } as const;
 
 const DISCREPANCY_LABELS = {
-    NEW: "[NEW]",
+    ADD: "[ADD]",
     DELETE: "[DELETE]",
     RENAME: "[RENAME]",
     CHANGE_TYPE: "[CHANGE TYPE]"
@@ -65,8 +65,8 @@ function formatDiscrepancy(discrepancy: IFieldDiscrepancy, cleanFieldName: strin
     const statusInfo = getDiscrepancyStatusInfo(discrepancy.type);
     
     switch (discrepancy.type) {
-        case "NEW":
-            // cleanFieldName: type [NEW]
+        case "ADD":
+            // cleanFieldName: type [ADD]
             components.push({ text: cleanFieldName, cssClass: "text-highlight" });
             components.push({ text: ": ", cssClass: "text-highlight annotation" });
             
@@ -77,7 +77,7 @@ function formatDiscrepancy(discrepancy: IFieldDiscrepancy, cleanFieldName: strin
             );
             components.push({ text: newTypeDisplay, cssClass: "text-highlight keyword" });
             components.push({ text: " " });
-            components.push({ text: DISCREPANCY_LABELS.NEW, color: statusInfo.color });
+            components.push({ text: DISCREPANCY_LABELS.ADD, color: statusInfo.color });
             break;
             
         case "RENAME":
@@ -142,10 +142,10 @@ function formatDiscrepancy(discrepancy: IFieldDiscrepancy, cleanFieldName: strin
     return components;
 }
 
-function getDiscrepancyStatusInfo(type: "NEW" | "DELETE" | "RENAME" | "CHANGE_TYPE"): { color: string; cssClass: string } {
+function getDiscrepancyStatusInfo(type: "ADD" | "DELETE" | "RENAME" | "CHANGE_TYPE"): { color: string; cssClass: string } {
     switch (type) {
-        case "NEW":
-            return { color: DISCREPANCY_COLORS.NEW, cssClass: "keyword" };
+        case "ADD":
+            return { color: DISCREPANCY_COLORS.ADD, cssClass: "keyword" };
         case "DELETE":
             return { color: DISCREPANCY_COLORS.DELETE, cssClass: "typeref" };
         case "RENAME":

@@ -272,8 +272,8 @@ class TreeNodeLabelBuilder {
         switch (discrepancy.type) {
             case "DELETE":
                 return `[DELETE] ${discrepancy.sourceFieldName}: ${discrepancy.sourceFieldTypeName}`;
-            case "NEW":
-                return `[NEW] ${discrepancy.targetAttributeName}: ${discrepancy.targetAttributeTypeName}`;
+            case "ADD":
+                return `[ADD] ${discrepancy.targetAttributeName}: ${discrepancy.targetAttributeTypeName}`;
             case "RENAME":
                 return `[RENAME] ${discrepancy.sourceFieldName} → ${discrepancy.targetAttributeName}`;
             case "CHANGE_TYPE":
@@ -285,13 +285,13 @@ class TreeNodeLabelBuilder {
 }
 // Discrepancy status colors
 const DISCREPANCY_COLORS = {
-    NEW: "#22c55e", // Green
+    ADD: "#22c55e", // Green
     DELETE: "#ef4444", // Red
     RENAME: "#007777", // Teal
     CHANGE_TYPE: "#f97316" // Orange
 };
 const DISCREPANCY_LABELS = {
-    NEW: "[NEW]",
+    ADD: "[ADD]",
     DELETE: "[DELETE]",
     RENAME: "[RENAME]",
     CHANGE_TYPE: "[CHANGE TYPE]"
@@ -314,14 +314,14 @@ function formatDiscrepancy(discrepancy, cleanFieldName) {
     const components = [];
     const statusInfo = getDiscrepancyStatusInfo(discrepancy.type);
     switch (discrepancy.type) {
-        case "NEW":
-            // cleanFieldName: type [NEW]
+        case "ADD":
+            // cleanFieldName: type [ADD]
             components.push({ text: cleanFieldName, cssClass: "text-highlight" });
             components.push({ text: ": ", cssClass: "text-highlight annotation" });
             const newTypeDisplay = buildTypeDisplay(discrepancy.targetAttributeTypeName || "", discrepancy.targetIsCollection || false, discrepancy.targetIsNullable || false);
             components.push({ text: newTypeDisplay, cssClass: "text-highlight keyword" });
             components.push({ text: " " });
-            components.push({ text: DISCREPANCY_LABELS.NEW, color: statusInfo.color });
+            components.push({ text: DISCREPANCY_LABELS.ADD, color: statusInfo.color });
             break;
         case "RENAME":
             // cleanFieldName → targetName: type [RENAME]
@@ -361,8 +361,8 @@ function formatDiscrepancy(discrepancy, cleanFieldName) {
 }
 function getDiscrepancyStatusInfo(type) {
     switch (type) {
-        case "NEW":
-            return { color: DISCREPANCY_COLORS.NEW, cssClass: "keyword" };
+        case "ADD":
+            return { color: DISCREPANCY_COLORS.ADD, cssClass: "keyword" };
         case "DELETE":
             return { color: DISCREPANCY_COLORS.DELETE, cssClass: "typeref" };
         case "RENAME":
@@ -718,7 +718,7 @@ class FieldSyncEngine {
                 const contextId = parentFieldId || dtoElement.id;
                 const discrepancy = {
                     id: `new-${entityAttr.id}-${contextId}`,
-                    type: "NEW",
+                    type: "ADD",
                     sourceFieldId: contextId,
                     sourceFieldName: "(missing)",
                     sourceFieldTypeName: "N/A",
@@ -794,7 +794,7 @@ class FieldSyncEngine {
                     const isNullable = typeRef.isNullable;
                     const discrepancy = {
                         id: `new-assoc-${assocId}-${contextId}`,
-                        type: "NEW",
+                        type: "ADD",
                         sourceFieldId: contextId,
                         sourceFieldName: "(missing)",
                         sourceFieldTypeName: expectedDtoName, // Pure display name, no [*]
@@ -1127,7 +1127,7 @@ class FieldSyncEngine {
         const discrepancyByElementId = new Map();
         for (const disc of discrepancies) {
             // NEW discrepancies are synthetic nodes, don't mark their parent as having a discrepancy
-            if (disc.type === "NEW") {
+            if (disc.type === "ADD") {
                 continue;
             }
             if (disc.sourceFieldId) {
@@ -1149,7 +1149,7 @@ class FieldSyncEngine {
     addNewDiscrepancyNodes(node, discrepancies) {
         var _a, _b;
         // Find NEW discrepancies that belong to this node (by parent DTO element ID)
-        const newDiscrepanciesForThisNode = discrepancies.filter(d => d.type === "NEW" && d.sourceFieldId === node.elementId);
+        const newDiscrepanciesForThisNode = discrepancies.filter(d => d.type === "ADD" && d.sourceFieldId === node.elementId);
         if (newDiscrepanciesForThisNode.length > 0) {
             console.log(`[ANNOTATE] Adding ${newDiscrepanciesForThisNode.length} NEW nodes to ${node.originalName} (elementId: ${node.elementId})`);
         }
@@ -1199,7 +1199,7 @@ class FieldSyncEngine {
             node.discrepancy = discrepancyByElementId.get(node.elementId);
             // Format the node with display properties
             if (node.discrepancy) {
-                const fieldName = node.discrepancy.type === "NEW"
+                const fieldName = node.discrepancy.type === "ADD"
                     ? node.discrepancy.targetAttributeName
                     : (node.discrepancy.sourceFieldName || node.discrepancy.targetAttributeName || "Unknown");
                 node.label = TreeNodeLabelBuilder.buildDiscrepancyLabel(node.discrepancy);
@@ -1296,7 +1296,7 @@ class NodeSyncExecutor {
             case "CHANGE_TYPE":
                 this.applyChangeType(node, targetDtoElement);
                 break;
-            case "NEW":
+            case "ADD":
                 // Determine if it's an association or attribute based on targetIdType discriminator
                 if (discrepancy.targetIdType === "association") {
                     this.applyNewAssociation(node, targetDtoElement);

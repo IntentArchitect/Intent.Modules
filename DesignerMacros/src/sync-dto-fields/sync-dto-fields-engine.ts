@@ -401,7 +401,7 @@ class FieldSyncEngine {
                 const contextId = parentFieldId || dtoElement.id;
                 const discrepancy: IFieldDiscrepancy = {
                     id: `new-${entityAttr.id}-${contextId}`,
-                    type: "NEW",
+                    type: "ADD",
                     sourceFieldId: contextId,
                     sourceFieldName: "(missing)",
                     sourceFieldTypeName: "N/A",
@@ -492,7 +492,7 @@ class FieldSyncEngine {
                     
                     const discrepancy: IFieldDiscrepancy = {
                         id: `new-assoc-${assocId}-${contextId}`,
-                        type: "NEW",
+                        type: "ADD",
                         sourceFieldId: contextId,
                         sourceFieldName: "(missing)",
                         sourceFieldTypeName: expectedDtoName,  // Pure display name, no [*]
@@ -904,7 +904,7 @@ class FieldSyncEngine {
         
         for (const disc of discrepancies) {
             // NEW discrepancies are synthetic nodes, don't mark their parent as having a discrepancy
-            if (disc.type === "NEW") {
+            if (disc.type === "ADD") {
                 continue;
             }
             
@@ -932,7 +932,7 @@ class FieldSyncEngine {
     ): void {
         // Find NEW discrepancies that belong to this node (by parent DTO element ID)
         const newDiscrepanciesForThisNode = discrepancies.filter(d => 
-            d.type === "NEW" && d.sourceFieldId === node.elementId
+            d.type === "ADD" && d.sourceFieldId === node.elementId
         );
         
         if (newDiscrepanciesForThisNode.length > 0) {
@@ -993,7 +993,7 @@ class FieldSyncEngine {
             node.discrepancy = discrepancyByElementId.get(node.elementId);
             // Format the node with display properties
             if (node.discrepancy) {
-                const fieldName = node.discrepancy.type === "NEW" 
+                const fieldName = node.discrepancy.type === "ADD" 
                     ? node.discrepancy.targetAttributeName 
                     : (node.discrepancy.sourceFieldName || node.discrepancy.targetAttributeName || "Unknown");
                 node.label = TreeNodeLabelBuilder.buildDiscrepancyLabel(node.discrepancy);
@@ -1112,7 +1112,7 @@ class NodeSyncExecutor {
             case "CHANGE_TYPE":
                 this.applyChangeType(node, targetDtoElement);
                 break;
-            case "NEW":
+            case "ADD":
                 // Determine if it's an association or attribute based on targetIdType discriminator
                 if (discrepancy.targetIdType === "association") {
                     this.applyNewAssociation(node, targetDtoElement);
