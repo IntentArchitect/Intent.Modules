@@ -220,3 +220,35 @@ async function presentSyncDialog(
     
     return selectedIds;
 }
+
+/**
+ * Extract DTO element from a given element.
+ *
+ * For DTO-like elements (DTO, Command, Query), returns the element itself.
+ * For Operation elements, searches parameter type references to find associated DTO-like elements.
+ *
+ * @param element The element to extract DTO from
+ * @returns The DTO element if found, null otherwise
+ */
+function extractDtoFromElement(element: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi | null {
+    if ((DTO_LIKE_SPECIALIZATIONS as readonly string[]).includes(element.specialization)) {
+        return element;
+    }
+
+    if (element.specialization === "Operation") {
+        const parameters = element.getChildren(ELEMENT_TYPE_NAMES.PARAMETER);
+        
+        for (const param of parameters) {
+            const typeRef = param.typeReference;
+            if (typeRef && typeRef.isTypeFound()) {
+                const type = typeRef.getType() as MacroApi.Context.IElementApi;
+                
+                if ((DTO_LIKE_SPECIALIZATIONS as readonly string[]).includes(type.specialization)) {
+                    return type;
+                }
+            }
+        }
+    }
+
+    return null;
+}

@@ -21,86 +21,97 @@ const ELEMENT_TYPE_NAMES = {
 const METADATA_KEYS = {
     IS_MANAGED_KEY: "is-managed-key"
 };
-/**
- * Normalize a name for comparison purposes by converting to lowercase.
- * This allows comparing camelCase, PascalCase, and other conventions uniformly.
- * For example: "id", "Id", "ID" all normalize to "id"
- *
- * @param name The name to normalize
- * @returns The normalized name (lowercase)
- */
 function normalizeNameForComparison(name) {
-    return name.toLowerCase();
+    return (name || "").toLowerCase();
 }
-/**
- * Check if two names are semantically equivalent (ignoring naming conventions).
- * Uses normalized comparison to handle camelCase vs PascalCase differences.
- *
- * @param name1 First name to compare
- * @param name2 Second name to compare
- * @returns true if names are equivalent ignoring case/convention
- */
 function namesAreEquivalent(name1, name2) {
     return normalizeNameForComparison(name1) === normalizeNameForComparison(name2);
 }
 function isValidSyncElement(element) {
     return VALID_SPECIALIZATIONS.includes(element.specialization);
 }
-function extractDtoFromElement(element) {
-    if (DTO_LIKE_SPECIALIZATIONS.includes(element.specialization)) {
-        return element;
+/**
+ * Safely get associations for an element and action type.
+ * Wraps getAssociations() with try/catch and returns empty array on failure.
+ *
+ * @param element The element to get associations from
+ * @param actionName The action type (e.g., "Create Entity Action")
+ * @returns Array of associations, or empty array if call fails
+ */
+function tryGetAssociations(element, actionName) {
+    try {
+        // SDK limitation: getAssociations() return type needs casting to IAssociationApi[]
+        const results = element.getAssociations(actionName);
+        return castAssociations(results);
     }
-    if (element.specialization === "Operation") {
-        const parameters = element.getChildren(ELEMENT_TYPE_NAMES.PARAMETER);
-        for (const param of parameters) {
-            const typeRef = param.typeReference;
-            if (typeRef && typeRef.isTypeFound()) {
+    catch (e) {
+        console.log(`[ASSOC] SDK call failed for ${actionName} on element ${element.id} (${element.getName()}): ${e}`);
+        return [];
+    }
+    function castAssociations(results) {
+        if (!results || !Array.isArray(results)) {
+            return [];
+        }
+        return results;
+    }
+}
+/**
+ * Filter associations to only those targeting a specific DTO element.
+ * Safely handles SDK errors when accessing typeReference.
+ *
+ * @param assocs Array of associations to filter
+ * @param dtoElementId The ID of the DTO element to target
+ * @returns Filtered array of associations targeting the DTO
+ */
+function filterAssociationsTargetingDto(assocs, dtoElementId) {
+    return assocs.filter(assoc => {
+        try {
+            const typeRef = assoc.typeReference;
+            if (typeRef && typeRef.getType()) {
                 const type = typeRef.getType();
-                if (DTO_LIKE_SPECIALIZATIONS.includes(type.specialization)) {
-                    return type;
-                }
+                return type.id === dtoElementId;
             }
         }
-    }
-    return null;
+        catch (e) {
+            // SDK may throw if association is incomplete
+            console.log(`[ASSOC] Error accessing typeReference for association: ${e}`);
+        }
+        return false;
+    });
 }
+/**
+ * Find all associations pointing to a specific DTO element.
+ *
+ * Searches for entity associations on the given search element. Special handling:
+ * - If searchElement is an Operation or is the DTO itself, accepts all associations without filtering
+ * - Otherwise, filters associations to only those targeting the specific DTO
+ * - If no associations found and searchElement is DTO-like, walks up the hierarchy up to MAX_HIERARCHY_DEPTH
+ *
+ * @param searchElement The element to search for associations (DTO, Command, Query, or Operation)
+ * @param dtoElement The DTO element that associations should target
+ * @returns Array of associations pointing to the DTO element
+ */
 function findAssociationsPointingToElement(searchElement, dtoElement) {
     const allAssociations = [];
     // First try to get associations from searchElement
     for (const actionName of ENTITY_ACTION_TYPES) {
-        try {
-            // SDK limitation: getAssociations() return type needs casting to IAssociationApi[]
-            const results = searchElement.getAssociations(actionName);
-            if (results && results.length > 0) {
-                // Operations have associations directly (typeReference points to entity, not DTO)
-                // Commands/Queries also have associations directly when searchElement IS the DTO
-                // In both cases, accept all associations without filtering
-                if (searchElement.specialization === "Operation" || searchElement.id === dtoElement.id) {
-                    allAssociations.push(...results);
-                }
-                else {
-                    // When searching from a parent of the DTO, filter to only associations targeting our DTO
-                    const filtered = results.filter(assoc => {
-                        try {
-                            const typeRef = assoc.typeReference;
-                            if (typeRef && typeRef.getType()) {
-                                const type = typeRef.getType();
-                                return type.id === dtoElement.id;
-                            }
-                        }
-                        catch (e) {
-                            // SDK may throw if association is incomplete
-                        }
-                        return false;
-                    });
-                    if (filtered.length > 0) {
-                        allAssociations.push(...filtered);
-                    }
+        const results = tryGetAssociations(searchElement, actionName);
+        if (results.length > 0) {
+            // Operations have associations directly (typeReference points to entity, not DTO)
+            // Commands/Queries also have associations directly when searchElement IS the DTO
+            // In both cases, accept all associations without filtering
+            if (searchElement.specialization === "Operation" || searchElement.id === dtoElement.id) {
+                console.log(`[ASSOC] Found ${results.length} associations for ${actionName} on ${searchElement.getName()} (accepting all)`);
+                allAssociations.push(...results);
+            }
+            else {
+                // When searching from a parent of the DTO, filter to only associations targeting our DTO
+                const filtered = filterAssociationsTargetingDto(results, dtoElement.id);
+                console.log(`[ASSOC] Found ${results.length} associations for ${actionName} on ${searchElement.getName()}, ${filtered.length} target DTO ${dtoElement.getName()}`);
+                if (filtered.length > 0) {
+                    allAssociations.push(...filtered);
                 }
             }
-        }
-        catch (e) {
-            // SDK method may fail on certain association types
         }
     }
     // If no associations found and searchElement is a DTO/Command/Query, walk up the hierarchy
@@ -108,33 +119,17 @@ function findAssociationsPointingToElement(searchElement, dtoElement) {
         let current = searchElement;
         let depth = 0;
         while (current && allAssociations.length === 0 && depth < MAX_HIERARCHY_DEPTH) {
+            console.log(`[ASSOC] Walking up hierarchy: checking parent ${current.getName()} at depth ${depth}`);
             // Try all action types on current element
             for (const actionName of ENTITY_ACTION_TYPES) {
-                try {
-                    // SDK limitation: getAssociations() return type needs casting to IAssociationApi[]
-                    const results = current.getAssociations(actionName);
-                    if (results && results.length > 0) {
-                        // Filter to only associations that reference our DTO element
-                        const filtered = results.filter(assoc => {
-                            try {
-                                const typeRef = assoc.typeReference;
-                                if (typeRef && typeRef.getType()) {
-                                    const type = typeRef.getType();
-                                    return type.id === dtoElement.id;
-                                }
-                            }
-                            catch (e) {
-                                // Skip associations that error out
-                            }
-                            return false;
-                        });
-                        if (filtered.length > 0) {
-                            allAssociations.push(...filtered);
-                        }
+                const results = tryGetAssociations(current, actionName);
+                if (results.length > 0) {
+                    // Filter to only associations that reference our DTO element
+                    const filtered = filterAssociationsTargetingDto(results, dtoElement.id);
+                    console.log(`[ASSOC] Found ${results.length} associations for ${actionName} on parent ${current.getName()}, ${filtered.length} target DTO ${dtoElement.getName()}`);
+                    if (filtered.length > 0) {
+                        allAssociations.push(...filtered);
                     }
-                }
-                catch (e) {
-                    // Continue to next parent if this fails
                 }
             }
             if (allAssociations.length > 0)
@@ -145,6 +140,15 @@ function findAssociationsPointingToElement(searchElement, dtoElement) {
     }
     return allAssociations;
 }
+/**
+ * Extract entity element from associations.
+ *
+ * Gets the target entity from the first association's typeReference.
+ * Assumes all associations in the array target the same entity.
+ *
+ * @param associations Array of associations (should not be empty)
+ * @returns The entity element that the associations target, or null if associations is empty or typeReference is invalid
+ */
 function getEntityFromAssociations(associations) {
     if (associations.length === 0)
         return null;
@@ -156,87 +160,153 @@ function getEntityFromAssociations(associations) {
     }
     return null;
 }
-function getEntityAttributes(entity) {
-    var _a, _b, _c, _d, _e;
-    const attributes = [];
-    const children = entity.getChildren("Attribute");
-    for (const child of children) {
-        // Determine mappability per Intent Architect's mapping requirements
-        // Check for auto-generated primary key (PK with non-user-supplied data source)
-        let isAutoGeneratedPk = false;
-        if (child.hasStereotype && child.hasStereotype("Primary Key")) {
-            const pkStereotype = child.getStereotype("Primary Key");
-            if (pkStereotype && pkStereotype.getProperty) {
-                const dataSourceProp = pkStereotype.getProperty("Data source");
-                isAutoGeneratedPk = dataSourceProp && dataSourceProp.value !== "User supplied";
-            }
+/**
+ * Check if an attribute is an auto-generated primary key.
+ * An auto-generated PK has the Primary Key stereotype with a non-user-supplied data source.
+ *
+ * @param attributeElement The attribute element to check
+ * @returns true if this is an auto-generated primary key
+ */
+function isAutoGeneratedPrimaryKey(attributeElement) {
+    if (attributeElement.hasStereotype && attributeElement.hasStereotype("Primary Key")) {
+        const pkStereotype = attributeElement.getStereotype("Primary Key");
+        if (pkStereotype && pkStereotype.getProperty) {
+            const dataSourceProp = pkStereotype.getProperty("Data source");
+            return dataSourceProp && dataSourceProp.value !== "User supplied";
         }
-        // Check for foreign key
-        let isForeignKey = false;
-        let fkIsRequiredParent = false;
-        if (child.hasStereotype && child.hasStereotype("Foreign Key")) {
-            isForeignKey = true;
-            const fkStereotype = child.getStereotype("Foreign Key");
-            if (fkStereotype && fkStereotype.getProperty) {
-                const assocProp = fkStereotype.getProperty("Association");
-                if (assocProp && assocProp.getSelected) {
-                    const fkAssociation = assocProp.getSelected();
-                    if (fkAssociation) {
-                        const otherEnd = (_a = fkAssociation.getOtherEnd) === null || _a === void 0 ? void 0 : _a.call(fkAssociation);
-                        if (otherEnd && otherEnd.typeReference) {
-                            // FK is required parent if NOT a collection and NOT nullable
-                            fkIsRequiredParent = !otherEnd.typeReference.isCollection && !otherEnd.typeReference.isNullable;
-                        }
+    }
+    return false;
+}
+/**
+ * Get foreign key information for an attribute.
+ *
+ * @param attributeElement The attribute element to check
+ * @returns Object with isForeignKey flag and whether it's a required parent relationship
+ */
+function getForeignKeyInfo(attributeElement) {
+    var _a;
+    let isForeignKey = false;
+    let fkIsRequiredParent = false;
+    if (attributeElement.hasStereotype && attributeElement.hasStereotype("Foreign Key")) {
+        isForeignKey = true;
+        const fkStereotype = attributeElement.getStereotype("Foreign Key");
+        if (fkStereotype && fkStereotype.getProperty) {
+            const assocProp = fkStereotype.getProperty("Association");
+            if (assocProp && assocProp.getSelected) {
+                // SDK limitation: stereotype property getters return unknown types that need casting
+                const fkAssociation = assocProp.getSelected();
+                if (fkAssociation) {
+                    const otherEnd = (_a = fkAssociation.getOtherEnd) === null || _a === void 0 ? void 0 : _a.call(fkAssociation);
+                    if (otherEnd && otherEnd.typeReference) {
+                        // FK is required parent if NOT a collection and NOT nullable
+                        fkIsRequiredParent = !otherEnd.typeReference.isCollection && !otherEnd.typeReference.isNullable;
                     }
                 }
             }
         }
-        // Check for infrastructure-managed field
-        const isSetByInfrastructure = child.hasMetadata && child.hasMetadata("set-by-infrastructure") &&
-            child.getMetadata("set-by-infrastructure") === "true";
-        // Determine if mappable using Intent Architect's logic
-        // An attribute is mappable if:
-        // - It's NOT an auto-generated primary key
-        // - If it's a foreign key, only if it's NOT a required parent (non-collection, non-nullable)
-        // - It's NOT infrastructure-managed
-        const isMappable = !isAutoGeneratedPk &&
-            (!isForeignKey || !fkIsRequiredParent) &&
-            !isSetByInfrastructure;
+    }
+    return { isForeignKey, fkIsRequiredParent };
+}
+/**
+ * Check if an attribute is set by infrastructure.
+ * Infrastructure-managed fields have the "set-by-infrastructure" metadata set to "true".
+ *
+ * @param attributeElement The attribute element to check
+ * @returns true if this attribute is managed by infrastructure
+ */
+function isSetByInfrastructure(attributeElement) {
+    return attributeElement.hasMetadata &&
+        attributeElement.hasMetadata("set-by-infrastructure") &&
+        attributeElement.getMetadata("set-by-infrastructure") === "true";
+}
+/**
+ * Determine if an attribute is mappable according to Intent Architect's mapping rules.
+ *
+ * Mapping rules:
+ * - NOT an auto-generated primary key
+ * - If it's a foreign key, only if it's NOT a required parent (non-collection AND non-nullable)
+ * - NOT infrastructure-managed
+ *
+ * @param isAutoGeneratedPk Whether the attribute is an auto-generated PK
+ * @param isForeignKey Whether the attribute is a foreign key
+ * @param fkIsRequiredParent Whether the FK is a required parent relationship
+ * @param isSetByInfrastructure Whether the attribute is infrastructure-managed
+ * @returns true if the attribute can be mapped
+ */
+function isMappableAttribute(isAutoGeneratedPk, isForeignKey, fkIsRequiredParent, isSetByInfrastructure) {
+    return !isAutoGeneratedPk &&
+        (!isForeignKey || !fkIsRequiredParent) &&
+        !isSetByInfrastructure;
+}
+/**
+ * Get all mappable attributes from an entity.
+ *
+ * Filters entity attributes according to Intent Architect's mapping requirements.
+ * Only attributes that can be safely mapped to DTO fields are included.
+ *
+ * @param entity The entity element to extract attributes from
+ * @returns Array of entity attributes with mapping metadata
+ */
+function getEntityAttributes(entity) {
+    var _a, _b, _c, _d;
+    const attributes = [];
+    const children = entity.getChildren("Attribute");
+    for (const child of children) {
+        // Determine mappability per Intent Architect's mapping requirements
+        const isAutoGeneratedPk = isAutoGeneratedPrimaryKey(child);
+        const { isForeignKey, fkIsRequiredParent } = getForeignKeyInfo(child);
+        const isSetByInfrastructureFlag = isSetByInfrastructure(child);
+        const isMappable = isMappableAttribute(isAutoGeneratedPk, isForeignKey, fkIsRequiredParent, isSetByInfrastructureFlag);
+        // Debug log the mapping decision
+        console.log(`[ATTR] ${child.getName()}: autoGenPK=${isAutoGeneratedPk}, fk=${isForeignKey}, reqParent=${fkIsRequiredParent}, infra=${isSetByInfrastructureFlag}, mappable=${isMappable}`);
         const attribute = {
             id: child.id,
             name: child.getName(),
-            typeId: (_b = child.typeReference) === null || _b === void 0 ? void 0 : _b.getTypeId(),
-            typeDisplayText: ((_c = child.typeReference) === null || _c === void 0 ? void 0 : _c.display) || "",
+            typeId: (_a = child.typeReference) === null || _a === void 0 ? void 0 : _a.getTypeId(),
+            typeDisplayText: ((_b = child.typeReference) === null || _b === void 0 ? void 0 : _b.display) || "",
             icon: child.getIcon(),
             isManagedKey: child.hasMetadata(METADATA_KEYS.IS_MANAGED_KEY) && child.getMetadata(METADATA_KEYS.IS_MANAGED_KEY) === "true",
             hasPrimaryKeyStereotype: child.hasStereotype && child.hasStereotype("Primary Key"),
-            isCollection: (_d = child.typeReference) === null || _d === void 0 ? void 0 : _d.isCollection,
-            isNullable: (_e = child.typeReference) === null || _e === void 0 ? void 0 : _e.isNullable,
+            isCollection: (_c = child.typeReference) === null || _c === void 0 ? void 0 : _c.isCollection,
+            isNullable: (_d = child.typeReference) === null || _d === void 0 ? void 0 : _d.isNullable,
             isAutoGeneratedPk,
             isForeignKey,
             fkIsRequiredParent,
-            isSetByInfrastructure,
+            isSetByInfrastructure: isSetByInfrastructureFlag,
             isMappable
         };
         attributes.push(attribute);
     }
     return attributes;
 }
+/**
+ * Extract field mappings from associations.
+ *
+ * Processes advanced mappings from associations, extracting source and target path information.
+ * Currently includes all mappings for compatibility, but flags nested mappings (path length > 2)
+ * for potential future filtering.
+ *
+ * @param associations Array of associations to extract mappings from
+ * @returns Array of field mappings with nested classification metadata
+ */
 function extractFieldMappings(associations) {
     const mappings = [];
     for (const association of associations) {
+        // Get association name/id for logging
+        const assocName = association.getName ? association.getName() : `id:${association.id}`;
         try {
             const advancedMappings = association.getAdvancedMappings();
+            console.log(`[MAPPING] Processing association ${assocName}: ${advancedMappings.length} advanced mappings`);
             for (const advancedMapping of advancedMappings) {
                 const mappedEnds = advancedMapping.getMappedEnds();
                 for (const mappedEnd of mappedEnds) {
                     const sourcePath = mappedEnd.sourcePath;
                     const targetPath = mappedEnd.targetPath;
                     if (sourcePath && sourcePath.length > 0 && targetPath && targetPath.length > 0) {
-                        // IMPORTANT: Only extract mappings for direct fields (path length 1 for simple cases, or where source is a direct child)
-                        // Skip nested mappings like [Command, AssociationField, NestedField] - these are handled separately
-                        // We only want mappings like [Command, Field] or [Field] where the second element is a direct child
-                        // For now, include all mappings for compatibility, but log them for debugging
+                        // IMPORTANT: Still includes nested mappings for compatibility, but now flags them
+                        // Nested mappings have sourcePath.length > 2 or targetPath.length > 2
+                        // This indicates complex mappings like [Command, AssociationField, NestedField]
+                        // Simple mappings are like [Command, Field] or [Field] (length 1-2)
                         const sourceFieldId = sourcePath[sourcePath.length - 1].id;
                         const targetAttributeId = targetPath[targetPath.length - 1].id;
                         mappings.push({
@@ -245,7 +315,7 @@ function extractFieldMappings(associations) {
                             sourceFieldId: sourceFieldId,
                             targetAttributeId: targetAttributeId,
                             mappingType: mappedEnd.mappingType,
-                            mappingTypeId: mappedEnd.mappingTypeId
+                            mappingTypeId: mappedEnd.mappingTypeId,
                         });
                     }
                 }
@@ -253,9 +323,11 @@ function extractFieldMappings(associations) {
         }
         catch (error) {
             // Association may not have advanced mappings configured
+            console.log(`[MAPPING] Error getting advanced mappings for association ${assocName}: ${error}`);
             continue;
         }
     }
+    console.log(`[MAPPING] Total mappings extracted: ${mappings.length}`);
     return mappings;
 }
 /// <reference path="types.ts" />
@@ -1938,4 +2010,31 @@ async function presentSyncDialog(rootSourceElement, workingSourceElement, rootTa
         selectedIds = selectedValue;
     }
     return selectedIds;
+}
+/**
+ * Extract DTO element from a given element.
+ *
+ * For DTO-like elements (DTO, Command, Query), returns the element itself.
+ * For Operation elements, searches parameter type references to find associated DTO-like elements.
+ *
+ * @param element The element to extract DTO from
+ * @returns The DTO element if found, null otherwise
+ */
+function extractDtoFromElement(element) {
+    if (DTO_LIKE_SPECIALIZATIONS.includes(element.specialization)) {
+        return element;
+    }
+    if (element.specialization === "Operation") {
+        const parameters = element.getChildren(ELEMENT_TYPE_NAMES.PARAMETER);
+        for (const param of parameters) {
+            const typeRef = param.typeReference;
+            if (typeRef && typeRef.isTypeFound()) {
+                const type = typeRef.getType();
+                if (DTO_LIKE_SPECIALIZATIONS.includes(type.specialization)) {
+                    return type;
+                }
+            }
+        }
+    }
+    return null;
 }
