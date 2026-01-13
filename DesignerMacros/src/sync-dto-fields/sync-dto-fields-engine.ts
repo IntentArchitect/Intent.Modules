@@ -8,15 +8,9 @@
 /**
  * Structure-first DTO field synchronization engine
  * 
- * The engine receives three explicit context elements to eliminate conditional checks:
- * 1. rootSourceElement: Where associations are located (Command or Service Operation)
- * 2. rootTargetEntity: The root entity being synchronized to
- * 3. workingSourceElement: Where new DTO fields are created (DTO or Command)
- * 
- * This architecture provides clear separation of concerns:
- * - Association lookups: always on rootSourceElement
- * - Field mutations: always on current workingSourceElement (changes per recursion level)
- * - Entity context: current workingTargetEntity (changes per recursion level)
+ * Handles complex type detection and automatic DTO generation for Value Objects
+ * that cannot be referenced directly in the Services layer. Creates nested
+ * advanced mappings for Value Object subfields to enable proper data flow.
  */
 class FieldSyncEngine {
 
@@ -37,6 +31,9 @@ class FieldSyncEngine {
 
     /**
      * Apply sync actions for selected tree nodes
+     * 
+     * Handles ADD and CHANGE_TYPE discrepancies, including automatic DTO generation
+     * for complex types (Value Objects) that require DTO representation in Services.
      * 
      * @param rootSourceElement - Where associations are located (Command or Operation)
      * @param rootTargetEntity - Root entity for synchronization
@@ -266,6 +263,11 @@ class FieldSyncEngine {
         };
     }
 
+    /**
+     * Recursively detect field discrepancies between DTO and entity structures.
+     * Handles complex type detection and suggests DTO creation for Value Objects
+     * that cannot be referenced directly in the Services layer.
+     */
     private detectDiscrepanciesRecursive(
         dtoElement: MacroApi.Context.IElementApi,
         entity: MacroApi.Context.IElementApi,
@@ -361,6 +363,16 @@ class FieldSyncEngine {
                     const dtoType = dtoField.typeReference?.display || "Unknown";
                     const entityType = targetAttr.typeDisplayText || "Unknown";
                     if (dtoType !== entityType) {
+                        let suggestedDtoName: string | undefined;
+                        let reason = `Field '${dtoFieldName}' type mismatch: ${dtoType} vs ${entityType}`;
+                        
+                        if (targetAttr.isComplexType) {
+                            // For complex types, suggest changing to a DTO type
+                            suggestedDtoName = targetAttr.typeName ? `${targetAttr.typeName}Dto` : `${targetAttr.name}Dto`;
+                            reason = `Complex type '${targetAttr.typeName || targetAttr.name}' requires DTO reference - change '${dtoFieldName}' from ${dtoType} to DTO '${suggestedDtoName}'`;
+                            console.log(`${indent}[ANALYZE-COMPLEX] ├─ Complex type mismatch ${dtoFieldName}: ${dtoType} → ${suggestedDtoName} (was ${entityType})`);
+                        }
+                        
                         const discrepancy: IFieldDiscrepancy = {
                             id: `type-${dtoField.id}`,
                             type: "CHANGE_TYPE",
@@ -374,11 +386,12 @@ class FieldSyncEngine {
                             targetIsCollection: targetAttr.isCollection,
                             targetIsNullable: targetAttr.isNullable,
                             icon: dtoField.getIcon(),
-                            reason: `Field '${dtoFieldName}' type mismatch: ${dtoType} vs ${entityType}`,
-                            sourceParentId: dtoElement.id
+                            reason,
+                            sourceParentId: dtoElement.id,
+                            suggestedDtoName
                         };
                         discrepancies.push(discrepancy);
-                        console.log(`${indent}[ANALYZE] ├─ [CHANGE_TYPE] ${dtoFieldName}: ${dtoType} → ${entityType}`);
+                        console.log(`${indent}[ANALYZE] ├─ [CHANGE_TYPE] ${dtoFieldName}: ${dtoType} → ${entityType}${suggestedDtoName ? ` (suggest ${suggestedDtoName})` : ''}`);
                     }
                 }
             }
@@ -398,13 +411,26 @@ class FieldSyncEngine {
             // - Infrastructure-managed fields
             const isUnmapped = !mappedEntityIds.has(entityAttr.id);
             if (isUnmapped && entityAttr.isMappable) {
+                let suggestedDtoName: string | undefined;
+                let sourceFieldTypeName = "N/A";
+                let reason = `Entity attribute '${entityAttr.name}' is not present in DTO`;
+                
+                if (entityAttr.isComplexType) {
+                    // For complex types (Value Objects, etc.), suggest creating a DTO
+                    // Use typeName for stable naming, fallback to attribute name
+                    suggestedDtoName = entityAttr.typeName ? `${entityAttr.typeName}Dto` : `${entityAttr.name}Dto`;
+                    sourceFieldTypeName = suggestedDtoName;
+                    reason = `Value Object '${entityAttr.typeName || entityAttr.name}' cannot be referenced directly in Services layer - create DTO '${suggestedDtoName}'`;
+                    console.log(`${indent}[ANALYZE-COMPLEX] ├─ Complex type ${entityAttr.name} (${entityAttr.typeName}): suggesting DTO ${suggestedDtoName}`);
+                }
+                
                 const contextId = parentFieldId || dtoElement.id;
                 const discrepancy: IFieldDiscrepancy = {
                     id: `new-${entityAttr.id}-${contextId}`,
                     type: "ADD",
                     sourceFieldId: contextId,
                     sourceFieldName: "(missing)",
-                    sourceFieldTypeName: "N/A",
+                    sourceFieldTypeName,
                     targetId: entityAttr.id,
                     targetAttributeName: entityAttr.name,
                     targetAttributeTypeName: entityAttr.typeDisplayText,
@@ -412,11 +438,12 @@ class FieldSyncEngine {
                     targetIsCollection: entityAttr.isCollection,
                     targetIsNullable: entityAttr.isNullable,
                     icon: entityAttr.icon,
-                    reason: `Entity attribute '${entityAttr.name}' is not present in DTO`,
-                    sourceParentId: dtoElement.id
+                    reason,
+                    sourceParentId: dtoElement.id,
+                    suggestedDtoName
                 };
                 discrepancies.push(discrepancy);
-                console.log(`${indent}[ANALYZE] ├─ [NEW] ${entityAttr.name}: Entity attribute not in DTO`);
+                console.log(`${indent}[ANALYZE] ├─ [NEW] ${entityAttr.name}: Entity attribute not in DTO${suggestedDtoName ? ` (suggest ${suggestedDtoName})` : ''}`);
             }
         }
 
@@ -1048,8 +1075,13 @@ class FieldSyncEngine {
  * Executes sync actions on selected tree nodes
  * Applies RENAME, DELETE, CHANGE_TYPE, and NEW field/association operations
  */
+/**
+ * Executes synchronization actions on selected discrepancy nodes.
+ * Handles ADD, DELETE, RENAME, and CHANGE_TYPE operations, including
+ * automatic DTO generation for complex types and nested advanced mappings
+ * for Value Object subfields during sync application.
+ */
 class NodeSyncExecutor {
-    
     constructor(
         private rootSourceElement: MacroApi.Context.IElementApi,
         private rootTargetEntity: MacroApi.Context.IElementApi,
@@ -1172,6 +1204,7 @@ class NodeSyncExecutor {
 
     /**
      * Apply CHANGE_TYPE: Update the field's type reference to match entity attribute type
+     * For complex types with suggestedDtoName, creates/reuses the DTO and sets type reference to it
      */
     private applyChangeType(node: IExtendedTreeNode, dtoElement: MacroApi.Context.IElementApi): void {
         const discrepancy = node.discrepancy!;
@@ -1190,24 +1223,72 @@ class NodeSyncExecutor {
             throw new Error(`Field has no type reference: ${discrepancy.sourceFieldName}`);
         }
         
-        // Update type to match entity attribute
-        if (discrepancy.targetTypeId) {
-            typeRef.setType(discrepancy.targetTypeId);
+        // Handle DTO generation for complex types
+        if (discrepancy.suggestedDtoName) {
+            console.log(`[APPLY-CHANGE-TYPE] Creating DTO for complex type: ${discrepancy.suggestedDtoName}`);
+            
+            // Find the entity containing the target attribute
+            const targetEntity = this.findEntityContainingAttribute(discrepancy.targetId!);
+            if (!targetEntity) {
+                throw new Error(`Cannot find entity containing attribute: ${discrepancy.targetAttributeName}`);
+            }
+            
+            // Get the actual attribute element from the entity
+            const attributeElements = targetEntity.getChildren("Attribute");
+            const attributeElement = attributeElements.find((attr: MacroApi.Context.IElementApi) => attr.id === discrepancy.targetId);
+            
+            if (!attributeElement || !attributeElement.typeReference) {
+                throw new Error(`Cannot find attribute element or typeReference: ${discrepancy.targetAttributeName}`);
+            }
+            
+            // Resolve the Value Object type element
+            const voTypeElement = tryGetTypeElement(attributeElement.typeReference);
+            if (!voTypeElement) {
+                throw new Error(`Cannot resolve Value Object type element for: ${discrepancy.targetAttributeName}`);
+            }
+            
+            // Create or reuse the DTO
+            const dtoTypeElement = this.createOrReuseValueObjectDto(voTypeElement, discrepancy.suggestedDtoName);
+            
+            // Set the field's type reference to the new DTO
+            typeRef.setType(dtoTypeElement.id);
+            typeRef.setIsCollection(discrepancy.targetIsCollection || false);
+            typeRef.setIsNullable(discrepancy.targetIsNullable || false);
+            
+            // Validate that the type reference resolves correctly
+            if (!typeRef.isTypeFound()) {
+                const dtoPackage = dtoTypeElement.getParent();
+                console.log(`[VO-DTO][ERROR] type not found for field '${discrepancy.sourceFieldName}'`);
+                console.log(`[VO-DTO][ERROR] ├─ DTO: ${dtoTypeElement.getName()} (id: ${dtoTypeElement.id})`);
+                console.log(`[VO-DTO][ERROR] ├─ Package: ${dtoPackage ? dtoPackage.getName() : 'unknown'}`);
+                console.log(`[VO-DTO][ERROR] └─ Type ID: ${dtoTypeElement.id}`);
+            }
+            
+            console.log(`[APPLY-SYNC-CHANGE-TYPE] Updated '${discrepancy.sourceFieldName}' to reference DTO '${discrepancy.suggestedDtoName}'`);
+            
+            // Create nested mappings for Value Object subfields
+            this.createNestedMappingsForValueObject(dtoElement, field, dtoTypeElement, voTypeElement, node);
+        } else {
+            // Standard type change logic
+            if (discrepancy.targetTypeId) {
+                typeRef.setType(discrepancy.targetTypeId);
+            }
+            
+            // Update collection and nullable modifiers if they differ
+            if (discrepancy.targetIsCollection !== undefined) {
+                typeRef.setIsCollection(discrepancy.targetIsCollection);
+            }
+            if (discrepancy.targetIsNullable !== undefined) {
+                typeRef.setIsNullable(discrepancy.targetIsNullable);
+            }
+            
+            console.log(`[APPLY-SYNC-CHANGE-TYPE] Updated type for '${discrepancy.sourceFieldName}' to '${discrepancy.targetAttributeTypeName}'`);
         }
-        
-        // Update collection and nullable modifiers if they differ
-        if (discrepancy.targetIsCollection !== undefined) {
-            typeRef.setIsCollection(discrepancy.targetIsCollection);
-        }
-        if (discrepancy.targetIsNullable !== undefined) {
-            typeRef.setIsNullable(discrepancy.targetIsNullable);
-        }
-        
-        console.log(`[APPLY-SYNC-CHANGE-TYPE] Updated type for '${discrepancy.sourceFieldName}' to '${discrepancy.targetAttributeTypeName}'`);
     }
 
     /**
      * Apply NEW ATTRIBUTE: Create a new DTO field with the entity attribute's name and type
+     * For complex types with suggestedDtoName, creates/reuses the DTO and sets type reference to it
      */
     private applyNewAttribute(
         node: IExtendedTreeNode,
@@ -1230,41 +1311,96 @@ class NodeSyncExecutor {
             throw new Error(`Failed to create new DTO field`);
         }
 
-        // Set the type reference if we have the entity attribute's type ID
-        if (discrepancy.targetTypeId && newField.typeReference) {
-            newField.typeReference.setType(discrepancy.targetTypeId);
+        // Handle DTO generation for complex types
+        if (discrepancy.suggestedDtoName) {
+            console.log(`[APPLY-NEW] Creating DTO for complex type: ${discrepancy.suggestedDtoName}`);
             
-            // Set collection/nullable based on entity attribute
-            if (discrepancy.targetIsCollection !== undefined) {
-                newField.typeReference.setIsCollection(discrepancy.targetIsCollection);
+            // Use the correct entity from node.targetEntityId instead of the parameter
+            if (!node.targetEntityId) {
+                throw new Error(`No targetEntityId in node for complex type: ${discrepancy.targetAttributeName}`);
             }
-            if (discrepancy.targetIsNullable !== undefined) {
-                newField.typeReference.setIsNullable(discrepancy.targetIsNullable);
+            
+            const correctEntity = lookup(node.targetEntityId) as MacroApi.Context.IElementApi;
+            if (!correctEntity) {
+                throw new Error(`Cannot find target entity with ID: ${node.targetEntityId}`);
             }
+            
+            console.log(`[APPLY-NEW] ├─ Using correct entity: ${correctEntity.getName()} (id: ${node.targetEntityId})`);
+            
+            // Get the actual attribute element from the correct entity
+            const attributeElements = correctEntity.getChildren("Attribute");
+            const attributeElement = attributeElements.find(attr => attr.getName() === discrepancy.targetAttributeName);
+            
+            if (!attributeElement || !attributeElement.typeReference) {
+                throw new Error(`Cannot find attribute element or typeReference: ${discrepancy.targetAttributeName} on entity ${correctEntity.getName()}`);
+            }
+            
+            // Resolve the Value Object type element
+            const voTypeElement = tryGetTypeElement(attributeElement.typeReference);
+            if (!voTypeElement) {
+                throw new Error(`Cannot resolve Value Object type element for: ${discrepancy.targetAttributeName}`);
+            }
+            
+            // Create or reuse the DTO
+            const dtoTypeElement = this.createOrReuseValueObjectDto(voTypeElement, discrepancy.suggestedDtoName);
+            
+            // Set the field's type reference to the new DTO
+            if (newField.typeReference) {
+                newField.typeReference.setType(dtoTypeElement.id);
+                newField.typeReference.setIsCollection(discrepancy.targetIsCollection || false);
+                newField.typeReference.setIsNullable(discrepancy.targetIsNullable || false);
+                
+                // Validate that the type reference resolves correctly
+                if (!newField.typeReference.isTypeFound()) {
+                    const dtoPackage = dtoTypeElement.getParent();
+                    console.log(`[VO-DTO][ERROR] type not found for field '${discrepancy.targetAttributeName}'`);
+                    console.log(`[VO-DTO][ERROR] ├─ DTO: ${dtoTypeElement.getName()} (id: ${dtoTypeElement.id})`);
+                    console.log(`[VO-DTO][ERROR] ├─ Package: ${dtoPackage ? dtoPackage.getName() : 'unknown'}`);
+                    console.log(`[VO-DTO][ERROR] └─ Type ID: ${dtoTypeElement.id}`);
+                }
+            }
+            
+            console.log(`[APPLY-SYNC-NEW-ATTR] Created new field '${discrepancy.targetAttributeName}' referencing DTO '${discrepancy.suggestedDtoName}'`);
+            
+            // Create nested mappings for Value Object subfields
+            this.createNestedMappingsForValueObject(dtoElement, newField, dtoTypeElement, voTypeElement, node);
         } else {
-            console.warn(`[APPLY-SYNC-NEW-ATTR] Warning: No target type ID for new field '${discrepancy.targetAttributeName}', leaving type unset`);
-        }
-        
-        console.log(`[APPLY-SYNC-NEW-ATTR] Created new field '${discrepancy.targetAttributeName}: ${discrepancy.targetAttributeTypeName}'`);
-        
-        // Create mapping between the new field and the entity attribute
-        try {
-            // Find the actual entity that contains this attribute (may be different from fallback)
-            if (!discrepancy.targetId) {
-                throw new Error(`No target ID in discrepancy for ${discrepancy.targetAttributeName}`);
+            // Standard attribute creation logic
+            if (discrepancy.targetTypeId && newField.typeReference) {
+                newField.typeReference.setType(discrepancy.targetTypeId);
+                
+                // Set collection/nullable based on entity attribute
+                if (discrepancy.targetIsCollection !== undefined) {
+                    newField.typeReference.setIsCollection(discrepancy.targetIsCollection);
+                }
+                if (discrepancy.targetIsNullable !== undefined) {
+                    newField.typeReference.setIsNullable(discrepancy.targetIsNullable);
+                }
+            } else {
+                console.warn(`[APPLY-SYNC-NEW-ATTR] Warning: No target type ID for new field '${discrepancy.targetAttributeName}', leaving type unset`);
             }
             
-            const actualEntity = this.findEntityContainingAttribute(discrepancy.targetId);
-            if (!actualEntity) {
-                throw new Error(`Could not find entity containing attribute: ${discrepancy.targetAttributeName}`);
-            }
+            console.log(`[APPLY-SYNC-NEW-ATTR] Created new field '${discrepancy.targetAttributeName}: ${discrepancy.targetAttributeTypeName}'`);
             
-            // UPDATED: Use pre-computed paths from node and rootSourceElement for association lookup
-            this.createFieldMappingWithPath(dtoElement, actualEntity, newField, discrepancy, node);
-            console.log(`[APPLY-SYNC-NEW-ATTR] Created mapping for '${discrepancy.targetAttributeName}'`);
-        } catch (error) {
-            console.log(`[APPLY-SYNC-NEW-ATTR] Warning: Failed to create mapping: ${error}`);
-            // Don't throw - field was created successfully even if mapping failed
+            // Create mapping between the new field and the entity attribute
+            try {
+                // Find the actual entity that contains this attribute (may be different from fallback)
+                if (!discrepancy.targetId) {
+                    throw new Error(`No target ID in discrepancy for ${discrepancy.targetAttributeName}`);
+                }
+                
+                const actualEntity = this.findEntityContainingAttribute(discrepancy.targetId);
+                if (!actualEntity) {
+                    throw new Error(`Could not find entity containing attribute: ${discrepancy.targetAttributeName}`);
+                }
+                
+                // UPDATED: Use pre-computed paths from node and rootSourceElement for association lookup
+                this.createFieldMappingWithPath(dtoElement, actualEntity, newField, discrepancy, node);
+                console.log(`[APPLY-SYNC-NEW-ATTR] Created mapping for '${discrepancy.targetAttributeName}'`);
+            } catch (error) {
+                console.log(`[APPLY-SYNC-NEW-ATTR] Warning: Failed to create mapping: ${error}`);
+                // Don't throw - field was created successfully even if mapping failed
+            }
         }
     }
 
@@ -1691,5 +1827,148 @@ class NodeSyncExecutor {
         // Debug: Check mapped ends AFTER addition
         const finalEnds = advancedMapping.getMappedEnds ? advancedMapping.getMappedEnds() : [];
         console.log(`[CREATE-NEW-DTO-MAPPINGS] └─ Final mapped ends count: ${finalEnds.length}`);
+    }
+
+    /**
+     * Create or reuse a DTO for a Value Object type.
+     * Creates the DTO in the same package as workingSourceElement.
+     * Populates it with fields from the Value Object's attributes.
+     * Returns the DTO element for use as a type reference.
+     */
+    private createOrReuseValueObjectDto(
+        valueObjectTypeElement: MacroApi.Context.IElementApi,
+        suggestedDtoName: string
+    ): MacroApi.Context.IElementApi {
+        const workingSourcePackage = this.workingSourceElement.getParent();
+        if (!workingSourcePackage) {
+            throw new Error(`Cannot determine package for working source element: ${this.workingSourceElement.getName()}`);
+        }
+
+        // Check if DTO already exists in the same package
+        const existingChildren = workingSourcePackage.getChildren("DTO");
+        const existingDto = existingChildren.find(child => child.getName() === suggestedDtoName);
+
+        if (existingDto) {
+            console.log(`[VO-DTO] Reusing existing DTO: ${suggestedDtoName}`);
+            return existingDto;
+        }
+
+        // Create new DTO
+        console.log(`[VO-DTO] Creating new DTO: ${suggestedDtoName}`);
+        const newDto = workingSourcePackage.addChild("DTO", suggestedDtoName);
+        if (!newDto) {
+            throw new Error(`Failed to create DTO: ${suggestedDtoName}`);
+        }
+
+        // Get attributes from the Value Object
+        const voAttributes = getEntityAttributes(valueObjectTypeElement);
+
+        // Add fields to the DTO for each mappable attribute
+        for (const attr of voAttributes) {
+            if (!attr.isMappable) {
+                console.log(`[VO-DTO] Skipping non-mappable attribute: ${attr.name}`);
+                continue;
+            }
+
+            const fieldName = attr.name;
+            const newField = newDto.addChild("DTO-Field", fieldName);
+            if (!newField) {
+                console.log(`[VO-DTO] Warning: Failed to create field ${fieldName} in ${suggestedDtoName}`);
+                continue;
+            }
+
+            // Set type reference
+            if (attr.typeId && newField.typeReference) {
+                newField.typeReference.setType(attr.typeId);
+                if (attr.isCollection !== undefined) {
+                    newField.typeReference.setIsCollection(attr.isCollection);
+                }
+                if (attr.isNullable !== undefined) {
+                    newField.typeReference.setIsNullable(attr.isNullable);
+                }
+            }
+
+            console.log(`[VO-DTO] Added field ${fieldName}: ${attr.typeDisplayText}`);
+        }
+
+        console.log(`[VO-DTO] Created ${suggestedDtoName} with ${voAttributes.filter(a => a.isMappable).length} fields`);
+        return newDto;
+    }
+
+    private createNestedMappingsForValueObject(
+        dtoElement: MacroApi.Context.IElementApi,
+        newField: MacroApi.Context.IElementApi,
+        valueObjectDto: MacroApi.Context.IElementApi,
+        valueObjectTypeElement: MacroApi.Context.IElementApi,
+        node: IExtendedTreeNode
+    ): void {
+        console.log(`[VO-MAPPING] Creating nested mappings for ${valueObjectDto.getName()}`);
+
+        if (!node.sourcePath || !node.targetPath) {
+            console.log(`[VO-MAPPING] ✗ Node missing required paths`);
+            return;
+        }
+
+        // Get the root association from the root source element
+        const association = this.rootSourceElement
+            .getAssociations()
+            .find(a => a.typeReference?.typeId === this.rootTargetEntity.id) as any as MacroApi.Context.IAssociationApi;
+        
+        if (!association) {
+            console.log(`[VO-MAPPING] ✗ No root association found between ${this.rootSourceElement.getName()} and ${this.rootTargetEntity.getName()}`);
+            return;
+        }
+
+        const assocApi = association as MacroApi.Context.IAssociationApi;
+        const allMappings = assocApi.getAdvancedMappings();
+
+        if (!allMappings || allMappings.length === 0) {
+            console.log(`[VO-MAPPING] ✗ No advanced mappings found on association`);
+            return;
+        }
+
+        // Get the DTO fields and Value Object attributes
+        const dtoFields = valueObjectDto.getChildren("DTO-Field");
+        const voAttributes = getEntityAttributes(valueObjectTypeElement);
+
+        console.log(`[VO-MAPPING] Found ${dtoFields.length} DTO fields and ${voAttributes.length} VO attributes`);
+
+        // Create mappings for each matching field/attribute pair
+        for (const dtoField of dtoFields) {
+            const fieldName = dtoField.getName();
+            const matchingAttr = voAttributes.find(attr => attr.name === fieldName && attr.isMappable);
+
+            if (!matchingAttr) {
+                console.log(`[VO-MAPPING] ⚠ No matching attribute found for DTO field: ${fieldName}`);
+                continue;
+            }
+
+            // Build source path: [rootSourceElement, newField, dtoField]
+            const sourcePath = [...node.sourcePath, newField.id, dtoField.id];
+
+            // Build target path: [root entities/associations, Money attribute, VO sub-attribute]
+            if (!node.discrepancy!.targetId) {
+                console.log(`[VO-MAPPING] ✗ No targetId in discrepancy for ${fieldName}`);
+                continue;
+            }
+            
+            const targetPath = [...node.targetPath, node.discrepancy!.targetId, matchingAttr.id];
+
+            console.log(`[VO-MAPPING] Creating mapping:`);
+            console.log(`[VO-MAPPING] ├─ Source path: [${sourcePath.map(id => lookup(id)?.getName?.() || id).join(' → ')}]`);
+            console.log(`[VO-MAPPING] ├─ Target path: [${targetPath.map(id => lookup(id)?.getName?.() || id).join(' → ')}]`);
+
+            try {
+                // Use the first advanced mapping (should be the main one)
+                const advancedMapping = allMappings[0];
+                advancedMapping.addMappedEnd("Data Mapping", sourcePath, targetPath);
+
+                console.log(`[VO-MAPPING] ✓ Created mapping for ${fieldName}`);
+            } catch (error) {
+                console.log(`[VO-MAPPING] ✗ Failed to create mapping for ${fieldName}: ${error}`);
+            }
+        }
+
+        console.log(`[VO-MAPPING] Completed nested mapping creation for ${valueObjectDto.getName()}`);
     }
 }

@@ -69,6 +69,11 @@ interface IEntityAttribute {
     fkIsRequiredParent?: boolean;          // FK that's non-collection and non-nullable
     isSetByInfrastructure?: boolean;       // Infrastructure-managed field
     isMappable?: boolean;                  // Final determination if this attribute can be mapped
+    // Type classification (resolved from type element)
+    typeName?: string;                     // Resolved type element name
+    typeSpecialization?: string;           // Type element specialization
+    isComplexType?: boolean;               // Whether this is a complex type
+    isValueObject?: boolean;               // Whether this is a value object
 }
 
 // Hierarchical structures for generic parameter and field representation
