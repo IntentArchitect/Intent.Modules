@@ -2,6 +2,6 @@
 <outputFiles>
   <files>
     <file relativePath="Intent.Modules.Metadata.ApiGateway/Intent.Metadata.ApiGateway.imodspec" state="ignored" />
-    <file relativePath="Intent.Modules.Metadata.ApiGateway/release-notes.md" state="once-off-generated" />
+    <file relativePath="Intent.Modules.Metadata.ApiGateway/release-notes.md" state="ignored;once-off-generated" />
   </files>
 </outputFiles>
