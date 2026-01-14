@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="51c78176-2df1-4711-b7d5-ae86bf996bd7" type="Service" typeId="b16578a5-27b1-4047-a8df-f0b783d706bd">
+  <name>Block2Level1sService</name>
+  <display>Block2Level1sService</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>57a732ed-f120-47cc-b17c-37b78297edcc</parentFolderId>
+  <packageId>57a732ed-f120-47cc-b17c-37b78297edcc</packageId>
+  <packageName>Accelerators.Services</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="3f335d4c-6a79-468b-9ac1-356811c40d7f" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+      <name>CreateBlock2Level1</name>
+      <display>CreateBlock2Level1(dto: CreateBlock2Level1Dto): guid</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <typeReference id="90622fb3-7908-4865-a422-503904e5a84f">
+        <typeId>6b649125-18ea-48fd-a6ba-0bfff0d8f488</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>51c78176-2df1-4711-b7d5-ae86bf996bd7</parentFolderId>
+      <packageId>57a732ed-f120-47cc-b17c-37b78297edcc</packageId>
+      <packageName>Accelerators.Services</packageName>
+      <traits>
+        <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable]" />
+        <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
+      </traits>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="69d97121-c10c-486c-b5f4-b47b43e017f7" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
+          <name>dto</name>
+          <display>in : dto: CreateBlock2Level1Dto</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="ef656ada-96ff-410c-b713-a4b68f14d809">
+            <typeId>1fe99bdd-a83e-4fb8-a648-904edbb21a4a</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Accelerators.Services</typePackageName>
+            <typePackageId>57a732ed-f120-47cc-b17c-37b78297edcc</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3f335d4c-6a79-468b-9ac1-356811c40d7f</parentFolderId>
+          <packageId>57a732ed-f120-47cc-b17c-37b78297edcc</packageId>
+          <packageName>Accelerators.Services</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="1a522de0-5806-4d48-a4a9-d0ced6750df1" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+      <name>UpdateBlock2Level1</name>
+      <display>UpdateBlock2Level1(id: guid, dto: UpdateBlock2Level1Dto): void</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <typeReference id="bb0d06bb-e129-49db-ab65-ca3204a7cad6">
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>51c78176-2df1-4711-b7d5-ae86bf996bd7</parentFolderId>
+      <packageId>57a732ed-f120-47cc-b17c-37b78297edcc</packageId>
+      <packageName>Accelerators.Services</packageName>
+      <traits>
+        <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable]" />
+        <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
+      </traits>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="b397ae2c-1d27-48b3-aca7-069fbf0fb67c" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
+          <name>id</name>
+          <display>in : id: guid</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="ee89f5b0-82b4-4e00-a6eb-19c572a1ba5c">
+            <typeId>6b649125-18ea-48fd-a6ba-0bfff0d8f488</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Common.Types</typePackageName>
+            <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>1a522de0-5806-4d48-a4a9-d0ced6750df1</parentFolderId>
+          <packageId>57a732ed-f120-47cc-b17c-37b78297edcc</packageId>
+          <packageName>Accelerators.Services</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="b3023b14-7a03-4bb3-99e4-98d6d29263de" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
+          <name>dto</name>
+          <display>in : dto: UpdateBlock2Level1Dto</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="c6db074d-f91c-4c67-8a2a-44ace033b09c">
+            <typeId>8cf255f6-6831-45cd-8259-cb4c9ccce095</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Accelerators.Services</typePackageName>
+            <typePackageId>57a732ed-f120-47cc-b17c-37b78297edcc</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>1a522de0-5806-4d48-a4a9-d0ced6750df1</parentFolderId>
+          <packageId>57a732ed-f120-47cc-b17c-37b78297edcc</packageId>
+          <packageName>Accelerators.Services</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="bf3d92f6-d49f-4718-b86a-1e241a2f7143" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+      <name>FindBlock2Level1ById</name>
+      <display>FindBlock2Level1ById(id: guid): Block2Level1Dto</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <typeReference id="73cf2f2d-7da2-4ac5-805a-e8f7b5b2282f">
+        <typeId>daa77e26-54a5-4254-9544-ff46314421f0</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Accelerators.Services</typePackageName>
+        <typePackageId>57a732ed-f120-47cc-b17c-37b78297edcc</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>51c78176-2df1-4711-b7d5-ae86bf996bd7</parentFolderId>
+      <packageId>57a732ed-f120-47cc-b17c-37b78297edcc</packageId>
+      <packageName>Accelerators.Services</packageName>
+      <traits>
+        <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable]" />
+        <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
+      </traits>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="3b1fb086-562c-4ed6-9ab8-c0bfa0ad156f" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
+          <name>id</name>
+          <display>in : id: guid</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="cbc39aae-c0b9-4521-93d2-fefd3a9efc04">
+            <typeId>6b649125-18ea-48fd-a6ba-0bfff0d8f488</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Common.Types</typePackageName>
+            <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>bf3d92f6-d49f-4718-b86a-1e241a2f7143</parentFolderId>
+          <packageId>57a732ed-f120-47cc-b17c-37b78297edcc</packageId>
+          <packageName>Accelerators.Services</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="21c57483-76bd-4cd5-8205-48c866093e5b" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+      <name>FindBlock2Level1s</name>
+      <display>FindBlock2Level1s(): Block2Level1Dto[*]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="3c6bd8f0-d908-42d1-8459-e489c4ae1f32">
+        <typeId>daa77e26-54a5-4254-9544-ff46314421f0</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>true</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Accelerators.Services</typePackageName>
+        <typePackageId>57a732ed-f120-47cc-b17c-37b78297edcc</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>51c78176-2df1-4711-b7d5-ae86bf996bd7</parentFolderId>
+      <packageId>57a732ed-f120-47cc-b17c-37b78297edcc</packageId>
+      <packageName>Accelerators.Services</packageName>
+      <traits>
+        <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable]" />
+        <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
+      </traits>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="1d3c5fa4-41ab-430d-8794-a5b50b26619f" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+      <name>DeleteBlock2Level1</name>
+      <display>DeleteBlock2Level1(id: guid): void</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <typeReference id="75489c21-c789-4bf4-b288-d438f9941af1">
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>51c78176-2df1-4711-b7d5-ae86bf996bd7</parentFolderId>
+      <packageId>57a732ed-f120-47cc-b17c-37b78297edcc</packageId>
+      <packageName>Accelerators.Services</packageName>
+      <traits>
+        <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable]" />
+        <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
+      </traits>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="d7cf8818-e7a5-4b37-886a-d6954c8c7935" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
+          <name>id</name>
+          <display>in : id: guid</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="e70a4f1a-aeba-4e8e-9a57-f7a6b00de05b">
+            <typeId>6b649125-18ea-48fd-a6ba-0bfff0d8f488</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Common.Types</typePackageName>
+            <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>1d3c5fa4-41ab-430d-8794-a5b50b26619f</parentFolderId>
+          <packageId>57a732ed-f120-47cc-b17c-37b78297edcc</packageId>
+          <packageName>Accelerators.Services</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="0fad330d-b2ff-4e19-b1c4-f7ce58250f91">
+  <sourceEnd id="68e3d166-bd19-4c15-b8e4-a35cfb0e388b" type="Delete Entity Action Source End" typeId="8c2d9fed-bd14-44b2-9f98-8a801aaf157e">
+    <display>deleted by : Block1Level1s.DeleteBlock1Level1Command</display>
+    <order>0</order>
+    <typeReference id="515f6f3c-c0ce-48ef-8e52-02b8e464189c">
+      <typeId>45b668df-36b8-4d08-85af-83295ad7abd3</typeId>
+      <isNavigable>false</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <isRequired>true</isRequired>
+      <typePackageName>Accelerators.Services</typePackageName>
+      <typePackageId>57a732ed-f120-47cc-b17c-37b78297edcc</typePackageId>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+    <metadata />
+    <childElements />
+  </sourceEnd>
+  <targetEnd id="0fad330d-b2ff-4e19-b1c4-f7ce58250f91" type="Delete Entity Action Target End" typeId="4a04cfc2-5841-438c-9c16-fb58b784b365">
+    <name>block1Level1</name>
+    <display>[delete] block1Level1: Block1Level1</display>
+    <order>1</order>
+    <traits>
+      <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
+    </traits>
+    <typeReference id="2f5aca92-2f5c-4a2b-bf97-5b06e7c64862">
+      <typeId>8d0dff37-d02f-40c4-9fc8-bd57ce3f4736</typeId>
+      <isNavigable>true</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <isRequired>true</isRequired>
+      <typePackageName>Accelerators.Domain</typePackageName>
+      <typePackageId>25962dc6-e77c-4beb-8d43-09d441f5c548</typePackageId>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+    <mappings>
+      <mapping type="Query Entity Mapping" typeId="25f25af9-c38b-4053-9474-b0fabe9d7ea7">
+        <source applicationId="5da3cbfa-1490-40a2-b587-6bb7ce5b4a63" designerId="81104ae6-2bc5-4bae-b05a-f987b0372d81" elementId="45b668df-36b8-4d08-85af-83295ad7abd3" location="[NewApplication].[Services].[DeleteBlock1Level1Command]" />
+        <target applicationId="5da3cbfa-1490-40a2-b587-6bb7ce5b4a63" designerId="6ab29b31-27af-4f56-a67c-986d82097d63" elementId="8d0dff37-d02f-40c4-9fc8-bd57ce3f4736" location="[NewApplication].[Services].[Block1Level1]" />
+        <mappedEnds>
+          <mappedEnd>
+            <expression>{Id}</expression>
+            <path>
+              <target id="8d0dff37-d02f-40c4-9fc8-bd57ce3f4736" name="Block1Level1" type="element" specialization="Class" specializationId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+              <target id="05de018a-a7f1-4b58-a47c-fc21018025d7" name="Id" type="element" specialization="Attribute" specializationId="0090fb93-483e-41af-a11d-5ad2dc796adf" />
+            </path>
+            <sources>
+              <source identifier="Id" mappingType="Filter Mapping" mappingTypeId="01d09a7f-0e7c-4670-b7bc-395d7e893ef2">
+                <path>
+                  <target id="45b668df-36b8-4d08-85af-83295ad7abd3" name="DeleteBlock1Level1Command" type="element" specialization="Command" specializationId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
+                  <target id="d34465f2-acfb-4681-ab7f-1731548aad38" name="Id" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                </path>
+              </source>
+            </sources>
+          </mappedEnd>
+        </mappedEnds>
+      </mapping>
+    </mappings>
+    <metadata />
+    <childElements />
+  </targetEnd>
+  <associationType>Delete Entity Action</associationType>
+  <associationTypeId>bfc823fb-60ab-451d-ba62-12671fe7e28e</associationTypeId>
+  <stereotypes />
+</association>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="b3bd30f0-b1ab-459b-80aa-f0b4926657f9">
+  <sourceEnd id="ee1c4f89-af0e-444a-ba9f-0945f5131b14" type="Query Entity Action Source End" typeId="32a65f26-2555-4616-8a2c-6a90805600bb">
+    <display>: FindBlock2Level1s</display>
+    <order>0</order>
+    <typeReference id="0473e9e1-4079-4075-888c-4f8581ffa242">
+      <typeId>21c57483-76bd-4cd5-8205-48c866093e5b</typeId>
+      <isNavigable>false</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <isRequired>true</isRequired>
+      <typePackageName>Accelerators.Services</typePackageName>
+      <typePackageId>57a732ed-f120-47cc-b17c-37b78297edcc</typePackageId>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+    <metadata />
+    <childElements />
+  </sourceEnd>
+  <targetEnd id="b3bd30f0-b1ab-459b-80aa-f0b4926657f9" type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4">
+    <name>block2Level1s</name>
+    <display>[query] block2Level1s: Block2Level1[*]</display>
+    <order>0</order>
+    <traits>
+      <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
+    </traits>
+    <typeReference id="c162ff8f-0626-4d42-95da-ba0bfa1f0bc0">
+      <typeId>04b13b75-3f89-488d-bee0-41f969878b30</typeId>
+      <isNavigable>true</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>true</isCollection>
+      <isRequired>true</isRequired>
+      <typePackageName>Accelerators.Domain</typePackageName>
+      <typePackageId>25962dc6-e77c-4beb-8d43-09d441f5c548</typePackageId>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+    <mappings>
+      <mapping type="Query Entity Mapping" typeId="25f25af9-c38b-4053-9474-b0fabe9d7ea7">
+        <source applicationId="5da3cbfa-1490-40a2-b587-6bb7ce5b4a63" designerId="81104ae6-2bc5-4bae-b05a-f987b0372d81" elementId="21c57483-76bd-4cd5-8205-48c866093e5b" location="[NewApplication].[Services].[FindBlock2Level1s]" />
+        <target applicationId="5da3cbfa-1490-40a2-b587-6bb7ce5b4a63" designerId="6ab29b31-27af-4f56-a67c-986d82097d63" elementId="04b13b75-3f89-488d-bee0-41f969878b30" location="[NewApplication].[Services].[Block2Level1]" />
+        <mappedEnds />
+      </mapping>
+    </mappings>
+    <metadata />
+    <childElements />
+  </targetEnd>
+  <associationType>Query Entity Action</associationType>
+  <associationTypeId>47ab5888-a258-4bec-a9fc-a83de69eb79d</associationTypeId>
+  <stereotypes />
+</association>

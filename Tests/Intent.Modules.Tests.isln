@@ -7,8 +7,9 @@
   <iconType>UrlImagePath</iconType>
   <metadataRelativePath>Intent.Metadata</metadataRelativePath>
   <modulesCacheRelativePath>.intent/modules</modulesCacheRelativePath>
-  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.ModuleBuilder" version="3.3.36" />
+  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.AspNetCore6.0.CleanArchitecture" version="5.1.18" />
   <applications>
     <application id="7c157446-328d-42e6-9233-f62d633cb7ff" name="ModuleBuilders" relativePath="ModuleBuilders/ModuleBuilders.application.config" />
+    <application id="d3b7ea79-72b9-4b9e-a18a-30c487c18bfd" name="Accelerators" solutionFolder="Testground" relativePath="Accelerators/Accelerators.application.config" />
   </applications>
 </solution>

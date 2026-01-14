@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="bf6094a2-7651-435a-b0cf-c1acbc771d34">
+  <sourceEnd id="192a36f5-227d-41f0-aba1-283286cae3c0" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
+    <name>Block1Level2s</name>
+    <display>Block1Level2s: Block1Level2[*]</display>
+    <order>0</order>
+    <typeReference id="a91beed7-bb59-4b30-9c43-96354c983718">
+      <typeId>8ff0bc01-a40b-4edc-9917-e117afd61d8f</typeId>
+      <isNavigable>false</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>true</isCollection>
+      <isRequired>true</isRequired>
+      <typePackageName>Accelerators.Domain</typePackageName>
+      <typePackageId>25962dc6-e77c-4beb-8d43-09d441f5c548</typePackageId>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+    <metadata />
+    <childElements />
+  </sourceEnd>
+  <targetEnd id="bf6094a2-7651-435a-b0cf-c1acbc771d34" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+    <name>ShouldNotSee</name>
+    <display>ShouldNotSee: ShouldNotSee</display>
+    <order>9</order>
+    <typeReference id="1a4884f8-ce06-4b40-8016-ff8a2679df3d">
+      <typeId>ab82179d-220c-4bcd-84cf-a8d0fb48684b</typeId>
+      <isNavigable>true</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <isRequired>true</isRequired>
+      <typePackageName>Accelerators.Domain</typePackageName>
+      <typePackageId>25962dc6-e77c-4beb-8d43-09d441f5c548</typePackageId>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+    <metadata />
+    <childElements />
+  </targetEnd>
+  <associationType>Association</associationType>
+  <associationTypeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</associationTypeId>
+  <stereotypes />
+</association>

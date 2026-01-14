@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="15abe107-0b22-4089-a6d4-d7780ce1c669">
+  <sourceEnd id="b8940731-8f3a-4c79-a9db-9048bc1c99b1" type="Query Entity Action Source End" typeId="32a65f26-2555-4616-8a2c-6a90805600bb">
+    <display>: GetBlock1Level1sQuery</display>
+    <order>0</order>
+    <typeReference id="a8a423e1-1544-40a4-ba7f-401aa6006bf5">
+      <typeId>0ad7f3c9-0f82-4f60-820c-f2f71c2e7a3e</typeId>
+      <isNavigable>false</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <isRequired>true</isRequired>
+      <typePackageName>Accelerators.Services</typePackageName>
+      <typePackageId>57a732ed-f120-47cc-b17c-37b78297edcc</typePackageId>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+    <metadata />
+    <childElements />
+  </sourceEnd>
+  <targetEnd id="15abe107-0b22-4089-a6d4-d7780ce1c669" type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4">
+    <name>block1Level1s</name>
+    <display>[query] block1Level1s: Block1Level1[*]</display>
+    <order>0</order>
+    <traits>
+      <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
+    </traits>
+    <typeReference id="18b532cc-774c-4018-ad47-e802eae1ffe5">
+      <typeId>8d0dff37-d02f-40c4-9fc8-bd57ce3f4736</typeId>
+      <isNavigable>true</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>true</isCollection>
+      <isRequired>true</isRequired>
+      <typePackageName>Accelerators.Domain</typePackageName>
+      <typePackageId>25962dc6-e77c-4beb-8d43-09d441f5c548</typePackageId>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+    <mappings>
+      <mapping type="Query Entity Mapping" typeId="25f25af9-c38b-4053-9474-b0fabe9d7ea7">
+        <source applicationId="5da3cbfa-1490-40a2-b587-6bb7ce5b4a63" designerId="81104ae6-2bc5-4bae-b05a-f987b0372d81" elementId="0ad7f3c9-0f82-4f60-820c-f2f71c2e7a3e" location="[NewApplication].[Services].[GetBlock1Level1sQuery]" />
+        <target applicationId="5da3cbfa-1490-40a2-b587-6bb7ce5b4a63" designerId="6ab29b31-27af-4f56-a67c-986d82097d63" elementId="8d0dff37-d02f-40c4-9fc8-bd57ce3f4736" location="[NewApplication].[Services].[Block1Level1]" />
+        <mappedEnds />
+      </mapping>
+    </mappings>
+    <metadata />
+    <childElements />
+  </targetEnd>
+  <associationType>Query Entity Action</associationType>
+  <associationTypeId>47ab5888-a258-4bec-a9fc-a83de69eb79d</associationTypeId>
+  <stereotypes />
+</association>

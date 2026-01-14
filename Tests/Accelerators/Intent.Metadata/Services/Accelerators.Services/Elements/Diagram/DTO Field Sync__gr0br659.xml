@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="aff44ed5-e9e3-4314-9aaf-88cfb7efb2d3" type="Diagram" typeId="8c90aca5-86f4-47f1-bd58-116fe79f5c55">
+  <name>DTO Field Sync</name>
+  <display>DTO Field Sync</display>
+  <externalReference>169f3801-8244-4b9e-ac2f-3eaede785048</externalReference>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>57a732ed-f120-47cc-b17c-37b78297edcc</parentFolderId>
+  <packageId>57a732ed-f120-47cc-b17c-37b78297edcc</packageId>
+  <packageName>Accelerators.Services</packageName>
+  <diagram>
+    <targetPackageId>57a732ed-f120-47cc-b17c-37b78297edcc</targetPackageId>
+  </diagram>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

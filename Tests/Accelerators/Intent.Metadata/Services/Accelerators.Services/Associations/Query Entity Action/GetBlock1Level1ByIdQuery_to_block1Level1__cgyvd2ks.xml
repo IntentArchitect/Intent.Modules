@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="ccfd24a6-dff0-41af-aa18-14b86e74d548">
+  <sourceEnd id="58266338-cfea-4bcc-85e5-735dbcf37578" type="Query Entity Action Source End" typeId="32a65f26-2555-4616-8a2c-6a90805600bb">
+    <display>: GetBlock1Level1ByIdQuery</display>
+    <order>0</order>
+    <typeReference id="9a515e5d-25f2-43da-b6d5-d4773df2b2a6">
+      <typeId>42a32e82-c606-4d11-88a3-042bd44f790a</typeId>
+      <isNavigable>false</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <isRequired>true</isRequired>
+      <typePackageName>Accelerators.Services</typePackageName>
+      <typePackageId>57a732ed-f120-47cc-b17c-37b78297edcc</typePackageId>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+    <metadata />
+    <childElements />
+  </sourceEnd>
+  <targetEnd id="ccfd24a6-dff0-41af-aa18-14b86e74d548" type="Query Entity Action Target End" typeId="93ef6675-cba4-4998-adff-cb22d5343ed4">
+    <name>block1Level1</name>
+    <display>[query] block1Level1: Block1Level1</display>
+    <order>1</order>
+    <traits>
+      <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
+    </traits>
+    <typeReference id="b359d19b-7fed-46b0-9fe7-d959aebb2412">
+      <typeId>8d0dff37-d02f-40c4-9fc8-bd57ce3f4736</typeId>
+      <isNavigable>true</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <isRequired>true</isRequired>
+      <typePackageName>Accelerators.Domain</typePackageName>
+      <typePackageId>25962dc6-e77c-4beb-8d43-09d441f5c548</typePackageId>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+    <mappings>
+      <mapping type="Query Entity Mapping" typeId="25f25af9-c38b-4053-9474-b0fabe9d7ea7">
+        <source applicationId="5da3cbfa-1490-40a2-b587-6bb7ce5b4a63" designerId="81104ae6-2bc5-4bae-b05a-f987b0372d81" elementId="42a32e82-c606-4d11-88a3-042bd44f790a" location="[NewApplication].[Services].[GetBlock1Level1ByIdQuery]" />
+        <target applicationId="5da3cbfa-1490-40a2-b587-6bb7ce5b4a63" designerId="6ab29b31-27af-4f56-a67c-986d82097d63" elementId="8d0dff37-d02f-40c4-9fc8-bd57ce3f4736" location="[NewApplication].[Services].[Block1Level1]" />
+        <mappedEnds>
+          <mappedEnd>
+            <expression>{Id}</expression>
+            <path>
+              <target id="8d0dff37-d02f-40c4-9fc8-bd57ce3f4736" name="Block1Level1" type="element" specialization="Class" specializationId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+              <target id="05de018a-a7f1-4b58-a47c-fc21018025d7" name="Id" type="element" specialization="Attribute" specializationId="0090fb93-483e-41af-a11d-5ad2dc796adf" />
+            </path>
+            <sources>
+              <source identifier="Id" mappingType="Filter Mapping" mappingTypeId="01d09a7f-0e7c-4670-b7bc-395d7e893ef2">
+                <path>
+                  <target id="42a32e82-c606-4d11-88a3-042bd44f790a" name="GetBlock1Level1ByIdQuery" type="element" specialization="Query" specializationId="e71b0662-e29d-4db2-868b-8a12464b25d0" />
+                  <target id="c5287630-0927-44f8-a181-0457e54ad73b" name="Id" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                </path>
+              </source>
+            </sources>
+          </mappedEnd>
+        </mappedEnds>
+      </mapping>
+    </mappings>
+    <metadata />
+    <childElements />
+  </targetEnd>
+  <associationType>Query Entity Action</associationType>
+  <associationTypeId>47ab5888-a258-4bec-a9fc-a83de69eb79d</associationTypeId>
+  <stereotypes />
+</association>

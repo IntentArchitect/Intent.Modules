@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="77d0286e-cf8a-490e-b0e4-b301dbba5095">
+  <sourceEnd id="d7946b95-eb13-47f2-87bf-482ab6c6c74e" type="Create Entity Action Source End" typeId="a3e7c59e-b0a1-47e1-ba29-66f2c7047b0a">
+    <display>created by : Block2Level1sService.CreateBlock2Level1</display>
+    <order>0</order>
+    <typeReference id="957778e5-3063-49cf-9c0e-c54486970bcd">
+      <typeId>3f335d4c-6a79-468b-9ac1-356811c40d7f</typeId>
+      <isNavigable>false</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <isRequired>true</isRequired>
+      <typePackageName>Accelerators.Services</typePackageName>
+      <typePackageId>57a732ed-f120-47cc-b17c-37b78297edcc</typePackageId>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+    <metadata />
+    <childElements />
+  </sourceEnd>
+  <targetEnd id="77d0286e-cf8a-490e-b0e4-b301dbba5095" type="Create Entity Action Target End" typeId="328f54e5-7bad-4b5f-90ca-03ce3105d016">
+    <name>block2Level1</name>
+    <display>[create] block2Level1: Block2Level1</display>
+    <order>1</order>
+    <traits>
+      <trait id="d00a2ab0-9a23-4192-b8bb-166798fc7dba" name="[Processing Action]" />
+    </traits>
+    <typeReference id="615992db-3a13-4335-8e77-f5394793122f">
+      <typeId>04b13b75-3f89-488d-bee0-41f969878b30</typeId>
+      <isNavigable>true</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <isRequired>true</isRequired>
+      <typePackageName>Accelerators.Domain</typePackageName>
+      <typePackageId>25962dc6-e77c-4beb-8d43-09d441f5c548</typePackageId>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+    <mappings>
+      <mapping type="Create Entity Mapping" typeId="5f172141-fdba-426b-980e-163e782ff53e">
+        <source applicationId="5da3cbfa-1490-40a2-b587-6bb7ce5b4a63" designerId="81104ae6-2bc5-4bae-b05a-f987b0372d81" elementId="3f335d4c-6a79-468b-9ac1-356811c40d7f" location="[NewApplication].[Services].[CreateBlock2Level1]" />
+        <target applicationId="5da3cbfa-1490-40a2-b587-6bb7ce5b4a63" designerId="6ab29b31-27af-4f56-a67c-986d82097d63" elementId="04b13b75-3f89-488d-bee0-41f969878b30" location="[NewApplication].[Services].[Block2Level1]" />
+        <mappedEnds>
+          <mappedEnd>
+            <expression>{CreateBlock2Level1}</expression>
+            <path>
+              <target id="04b13b75-3f89-488d-bee0-41f969878b30" name="Block2Level1" type="element" specialization="Class" specializationId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+            </path>
+            <sources>
+              <source identifier="CreateBlock2Level1" mappingType="Invocation Mapping" mappingTypeId="47dc4a51-30a3-4ee8-8c7d-25a35bb965b9">
+                <path>
+                  <target id="3f335d4c-6a79-468b-9ac1-356811c40d7f" name="CreateBlock2Level1" type="element" specialization="Operation" specializationId="e030c97a-e066-40a7-8188-808c275df3cb" />
+                </path>
+              </source>
+            </sources>
+          </mappedEnd>
+          <mappedEnd>
+            <expression>{dto.Name}</expression>
+            <path>
+              <target id="04b13b75-3f89-488d-bee0-41f969878b30" name="Block2Level1" type="element" specialization="Class" specializationId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+              <target id="b263a7a3-aea1-404e-a25e-a2c6c4a40c9f" name="Name" type="element" specialization="Attribute" specializationId="0090fb93-483e-41af-a11d-5ad2dc796adf" />
+            </path>
+            <sources>
+              <source identifier="dto.Name" mappingType="Data Mapping" mappingTypeId="50dccfb2-bd24-4135-adf6-ed31f28f8fe0">
+                <path>
+                  <target id="3f335d4c-6a79-468b-9ac1-356811c40d7f" name="CreateBlock2Level1" type="element" specialization="Operation" specializationId="e030c97a-e066-40a7-8188-808c275df3cb" />
+                  <target id="69d97121-c10c-486c-b5f4-b47b43e017f7" name="dto" type="element" specialization="Parameter" specializationId="00208d20-469d-41cb-8501-768fd5eb796b" />
+                  <target id="6a3dbc44-8ef8-41fb-bcb8-6832d43f0e36" name="Name" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                </path>
+              </source>
+            </sources>
+          </mappedEnd>
+          <mappedEnd>
+            <expression>{dto.BeforeRename}</expression>
+            <path>
+              <target id="04b13b75-3f89-488d-bee0-41f969878b30" name="Block2Level1" type="element" specialization="Class" specializationId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+              <target id="4733784c-adf9-4298-a455-07c9ab6b1144" name="Renamed" type="element" specialization="Attribute" specializationId="0090fb93-483e-41af-a11d-5ad2dc796adf" />
+            </path>
+            <sources>
+              <source identifier="dto.BeforeRename" mappingType="Data Mapping" mappingTypeId="50dccfb2-bd24-4135-adf6-ed31f28f8fe0">
+                <path>
+                  <target id="3f335d4c-6a79-468b-9ac1-356811c40d7f" name="CreateBlock2Level1" type="element" specialization="Operation" specializationId="e030c97a-e066-40a7-8188-808c275df3cb" />
+                  <target id="69d97121-c10c-486c-b5f4-b47b43e017f7" name="dto" type="element" specialization="Parameter" specializationId="00208d20-469d-41cb-8501-768fd5eb796b" />
+                  <target id="a772b453-ccce-4c7e-b615-59f33bf5cec9" name="BeforeRename" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                </path>
+              </source>
+            </sources>
+          </mappedEnd>
+          <mappedEnd>
+            <expression>{dto.TestEnum}</expression>
+            <path>
+              <target id="04b13b75-3f89-488d-bee0-41f969878b30" name="Block2Level1" type="element" specialization="Class" specializationId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+              <target id="ee4d5505-0833-4095-bc39-a97e6d1c4ce7" name="TestEnum" type="element" specialization="Attribute" specializationId="0090fb93-483e-41af-a11d-5ad2dc796adf" />
+            </path>
+            <sources>
+              <source identifier="dto.TestEnum" mappingType="Data Mapping" mappingTypeId="50dccfb2-bd24-4135-adf6-ed31f28f8fe0">
+                <path>
+                  <target id="3f335d4c-6a79-468b-9ac1-356811c40d7f" name="CreateBlock2Level1" type="element" specialization="Operation" specializationId="e030c97a-e066-40a7-8188-808c275df3cb" />
+                  <target id="69d97121-c10c-486c-b5f4-b47b43e017f7" name="dto" type="element" specialization="Parameter" specializationId="00208d20-469d-41cb-8501-768fd5eb796b" />
+                  <target id="785cc4bb-c291-44b9-baa0-654b87c6822e" name="TestEnum" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                </path>
+              </source>
+            </sources>
+          </mappedEnd>
+          <mappedEnd>
+            <expression>{dto.Block2Level2s}</expression>
+            <path>
+              <target id="04b13b75-3f89-488d-bee0-41f969878b30" name="Block2Level1" type="element" specialization="Class" specializationId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+              <target id="28b4d1e3-63a0-4fd6-953b-50c30bec869e" name="Block2Level2s" type="association" specialization="Association Target End" specializationId="0a66489f-30aa-417b-a75d-b945863366fd" />
+            </path>
+            <sources>
+              <source identifier="dto.Block2Level2s" mappingType="Data Mapping" mappingTypeId="50dccfb2-bd24-4135-adf6-ed31f28f8fe0">
+                <path>
+                  <target id="3f335d4c-6a79-468b-9ac1-356811c40d7f" name="CreateBlock2Level1" type="element" specialization="Operation" specializationId="e030c97a-e066-40a7-8188-808c275df3cb" />
+                  <target id="69d97121-c10c-486c-b5f4-b47b43e017f7" name="dto" type="element" specialization="Parameter" specializationId="00208d20-469d-41cb-8501-768fd5eb796b" />
+                  <target id="d4cd984a-9c4b-4c32-bcb8-60d1c109aed3" name="Block2Level2s" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                </path>
+              </source>
+            </sources>
+          </mappedEnd>
+          <mappedEnd>
+            <expression>{dto.Block2Level2s.Name}</expression>
+            <path>
+              <target id="04b13b75-3f89-488d-bee0-41f969878b30" name="Block2Level1" type="element" specialization="Class" specializationId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+              <target id="28b4d1e3-63a0-4fd6-953b-50c30bec869e" name="Block2Level2s" type="association" specialization="Association Target End" specializationId="0a66489f-30aa-417b-a75d-b945863366fd" />
+              <target id="de5fff38-4a1a-41db-aa78-3d0d0807fae2" name="Name" type="element" specialization="Attribute" specializationId="0090fb93-483e-41af-a11d-5ad2dc796adf" />
+            </path>
+            <sources>
+              <source identifier="dto.Block2Level2s.Name" mappingType="Data Mapping" mappingTypeId="50dccfb2-bd24-4135-adf6-ed31f28f8fe0">
+                <path>
+                  <target id="3f335d4c-6a79-468b-9ac1-356811c40d7f" name="CreateBlock2Level1" type="element" specialization="Operation" specializationId="e030c97a-e066-40a7-8188-808c275df3cb" />
+                  <target id="69d97121-c10c-486c-b5f4-b47b43e017f7" name="dto" type="element" specialization="Parameter" specializationId="00208d20-469d-41cb-8501-768fd5eb796b" />
+                  <target id="d4cd984a-9c4b-4c32-bcb8-60d1c109aed3" name="Block2Level2s" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                  <target id="21676ef9-85ce-47a1-90b3-39f1fab0f898" name="Name" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                </path>
+              </source>
+            </sources>
+          </mappedEnd>
+          <mappedEnd>
+            <expression>{dto.Block2Level2s.BeforeRename}</expression>
+            <path>
+              <target id="04b13b75-3f89-488d-bee0-41f969878b30" name="Block2Level1" type="element" specialization="Class" specializationId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+              <target id="28b4d1e3-63a0-4fd6-953b-50c30bec869e" name="Block2Level2s" type="association" specialization="Association Target End" specializationId="0a66489f-30aa-417b-a75d-b945863366fd" />
+              <target id="ef7f91c6-a83b-4ac0-a0b8-64db916817a3" name="Renamed" type="element" specialization="Attribute" specializationId="0090fb93-483e-41af-a11d-5ad2dc796adf" />
+            </path>
+            <sources>
+              <source identifier="dto.Block2Level2s.BeforeRename" mappingType="Data Mapping" mappingTypeId="50dccfb2-bd24-4135-adf6-ed31f28f8fe0">
+                <path>
+                  <target id="3f335d4c-6a79-468b-9ac1-356811c40d7f" name="CreateBlock2Level1" type="element" specialization="Operation" specializationId="e030c97a-e066-40a7-8188-808c275df3cb" />
+                  <target id="69d97121-c10c-486c-b5f4-b47b43e017f7" name="dto" type="element" specialization="Parameter" specializationId="00208d20-469d-41cb-8501-768fd5eb796b" />
+                  <target id="d4cd984a-9c4b-4c32-bcb8-60d1c109aed3" name="Block2Level2s" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                  <target id="1d33b53b-8dfd-4eea-932f-6fa77ad4804d" name="BeforeRename" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                </path>
+              </source>
+            </sources>
+          </mappedEnd>
+          <mappedEnd>
+            <expression>{dto.Block2Level2s.TestEnum}</expression>
+            <path>
+              <target id="04b13b75-3f89-488d-bee0-41f969878b30" name="Block2Level1" type="element" specialization="Class" specializationId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+              <target id="28b4d1e3-63a0-4fd6-953b-50c30bec869e" name="Block2Level2s" type="association" specialization="Association Target End" specializationId="0a66489f-30aa-417b-a75d-b945863366fd" />
+              <target id="d882bb45-7ada-4b49-9701-55c70b1ebf24" name="TestEnum" type="element" specialization="Attribute" specializationId="0090fb93-483e-41af-a11d-5ad2dc796adf" />
+            </path>
+            <sources>
+              <source identifier="dto.Block2Level2s.TestEnum" mappingType="Data Mapping" mappingTypeId="50dccfb2-bd24-4135-adf6-ed31f28f8fe0">
+                <path>
+                  <target id="3f335d4c-6a79-468b-9ac1-356811c40d7f" name="CreateBlock2Level1" type="element" specialization="Operation" specializationId="e030c97a-e066-40a7-8188-808c275df3cb" />
+                  <target id="69d97121-c10c-486c-b5f4-b47b43e017f7" name="dto" type="element" specialization="Parameter" specializationId="00208d20-469d-41cb-8501-768fd5eb796b" />
+                  <target id="d4cd984a-9c4b-4c32-bcb8-60d1c109aed3" name="Block2Level2s" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                  <target id="f4a7080b-0448-4c36-98d8-258eb7fb78fe" name="TestEnum" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                </path>
+              </source>
+            </sources>
+          </mappedEnd>
+          <mappedEnd>
+            <expression>{dto.Block2Level2s.Block2Level3.Name}</expression>
+            <path>
+              <target id="04b13b75-3f89-488d-bee0-41f969878b30" name="Block2Level1" type="element" specialization="Class" specializationId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+              <target id="28b4d1e3-63a0-4fd6-953b-50c30bec869e" name="Block2Level2s" type="association" specialization="Association Target End" specializationId="0a66489f-30aa-417b-a75d-b945863366fd" />
+              <target id="edf75f45-6076-4797-b643-136d3658dd48" name="Block2Level3" type="association" specialization="Association Target End" specializationId="0a66489f-30aa-417b-a75d-b945863366fd" />
+              <target id="b7c4f2ae-2dfb-42bd-9939-bd2d763068a4" name="Name" type="element" specialization="Attribute" specializationId="0090fb93-483e-41af-a11d-5ad2dc796adf" />
+            </path>
+            <sources>
+              <source identifier="dto.Block2Level2s.Block2Level3.Name" mappingType="Data Mapping" mappingTypeId="50dccfb2-bd24-4135-adf6-ed31f28f8fe0">
+                <path>
+                  <target id="3f335d4c-6a79-468b-9ac1-356811c40d7f" name="CreateBlock2Level1" type="element" specialization="Operation" specializationId="e030c97a-e066-40a7-8188-808c275df3cb" />
+                  <target id="69d97121-c10c-486c-b5f4-b47b43e017f7" name="dto" type="element" specialization="Parameter" specializationId="00208d20-469d-41cb-8501-768fd5eb796b" />
+                  <target id="d4cd984a-9c4b-4c32-bcb8-60d1c109aed3" name="Block2Level2s" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                  <target id="c3fd20a7-4b42-419e-bd83-468289671e3a" name="Block2Level3" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                  <target id="0ccb6ef0-c494-48cb-abf3-54856473a6d1" name="Name" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                </path>
+              </source>
+            </sources>
+          </mappedEnd>
+          <mappedEnd>
+            <expression>{dto.Block2Level2s.Block2Level3.BeforeRename}</expression>
+            <path>
+              <target id="04b13b75-3f89-488d-bee0-41f969878b30" name="Block2Level1" type="element" specialization="Class" specializationId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+              <target id="28b4d1e3-63a0-4fd6-953b-50c30bec869e" name="Block2Level2s" type="association" specialization="Association Target End" specializationId="0a66489f-30aa-417b-a75d-b945863366fd" />
+              <target id="edf75f45-6076-4797-b643-136d3658dd48" name="Block2Level3" type="association" specialization="Association Target End" specializationId="0a66489f-30aa-417b-a75d-b945863366fd" />
+              <target id="6f33ff03-94d0-4eff-b3be-a1c2105140a3" name="Renamed" type="element" specialization="Attribute" specializationId="0090fb93-483e-41af-a11d-5ad2dc796adf" />
+            </path>
+            <sources>
+              <source identifier="dto.Block2Level2s.Block2Level3.BeforeRename" mappingType="Data Mapping" mappingTypeId="50dccfb2-bd24-4135-adf6-ed31f28f8fe0">
+                <path>
+                  <target id="3f335d4c-6a79-468b-9ac1-356811c40d7f" name="CreateBlock2Level1" type="element" specialization="Operation" specializationId="e030c97a-e066-40a7-8188-808c275df3cb" />
+                  <target id="69d97121-c10c-486c-b5f4-b47b43e017f7" name="dto" type="element" specialization="Parameter" specializationId="00208d20-469d-41cb-8501-768fd5eb796b" />
+                  <target id="d4cd984a-9c4b-4c32-bcb8-60d1c109aed3" name="Block2Level2s" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                  <target id="c3fd20a7-4b42-419e-bd83-468289671e3a" name="Block2Level3" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                  <target id="5676268b-1751-47ed-b2fb-46b35b448ba9" name="BeforeRename" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                </path>
+              </source>
+            </sources>
+          </mappedEnd>
+          <mappedEnd>
+            <expression>{dto.Block2Level2s.Block2Level3.TestEnum}</expression>
+            <path>
+              <target id="04b13b75-3f89-488d-bee0-41f969878b30" name="Block2Level1" type="element" specialization="Class" specializationId="04e12b51-ed12-42a3-9667-a6aa81bb6d10" />
+              <target id="28b4d1e3-63a0-4fd6-953b-50c30bec869e" name="Block2Level2s" type="association" specialization="Association Target End" specializationId="0a66489f-30aa-417b-a75d-b945863366fd" />
+              <target id="edf75f45-6076-4797-b643-136d3658dd48" name="Block2Level3" type="association" specialization="Association Target End" specializationId="0a66489f-30aa-417b-a75d-b945863366fd" />
+              <target id="8d2a2c98-157d-4519-be16-cb8ee119ac02" name="TestEnum" type="element" specialization="Attribute" specializationId="0090fb93-483e-41af-a11d-5ad2dc796adf" />
+            </path>
+            <sources>
+              <source identifier="dto.Block2Level2s.Block2Level3.TestEnum" mappingType="Data Mapping" mappingTypeId="50dccfb2-bd24-4135-adf6-ed31f28f8fe0">
+                <path>
+                  <target id="3f335d4c-6a79-468b-9ac1-356811c40d7f" name="CreateBlock2Level1" type="element" specialization="Operation" specializationId="e030c97a-e066-40a7-8188-808c275df3cb" />
+                  <target id="69d97121-c10c-486c-b5f4-b47b43e017f7" name="dto" type="element" specialization="Parameter" specializationId="00208d20-469d-41cb-8501-768fd5eb796b" />
+                  <target id="d4cd984a-9c4b-4c32-bcb8-60d1c109aed3" name="Block2Level2s" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                  <target id="c3fd20a7-4b42-419e-bd83-468289671e3a" name="Block2Level3" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                  <target id="f0ed8942-98a3-494e-9dfa-306f8b5ea2ec" name="TestEnum" type="element" specialization="DTO-Field" specializationId="7baed1fd-469b-4980-8fd9-4cefb8331eb2" />
+                </path>
+              </source>
+            </sources>
+          </mappedEnd>
+        </mappedEnds>
+      </mapping>
+    </mappings>
+    <metadata />
+    <childElements />
+  </targetEnd>
+  <associationType>Create Entity Action</associationType>
+  <associationTypeId>7a3f0474-3cf8-4249-baac-8c07c49465e0</associationTypeId>
+  <stereotypes />
+</association>

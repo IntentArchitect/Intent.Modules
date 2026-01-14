@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="28363662-19c6-4963-8664-9455d30e6ab6">
+  <sourceEnd id="9a5b6f2a-9591-4b85-a059-feb5160a251a" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
+    <name>Block2Level3</name>
+    <display>Block2Level3: Block2Level3</display>
+    <order>0</order>
+    <typeReference id="e9990262-a86b-454b-9e0d-0cbd70ae94a2">
+      <typeId>e2b97913-9dd3-401b-8b82-d11bb7cd61f3</typeId>
+      <isNavigable>false</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <isRequired>true</isRequired>
+      <typePackageName>Accelerators.Domain</typePackageName>
+      <typePackageId>25962dc6-e77c-4beb-8d43-09d441f5c548</typePackageId>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+    <metadata />
+    <childElements />
+  </sourceEnd>
+  <targetEnd id="28363662-19c6-4963-8664-9455d30e6ab6" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+    <name>Monies</name>
+    <display>Monies: Money[*]</display>
+    <order>8</order>
+    <typeReference id="dae38909-1112-49bc-b2f6-3887de4cc806">
+      <typeId>4b62b0b9-996f-418c-a3a3-e200ff278ac9</typeId>
+      <isNavigable>true</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>true</isCollection>
+      <isRequired>true</isRequired>
+      <typePackageName>Accelerators.Domain</typePackageName>
+      <typePackageId>25962dc6-e77c-4beb-8d43-09d441f5c548</typePackageId>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+    <metadata />
+    <childElements />
+  </targetEnd>
+  <associationType>Association</associationType>
+  <associationTypeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</associationTypeId>
+  <stereotypes />
+</association>

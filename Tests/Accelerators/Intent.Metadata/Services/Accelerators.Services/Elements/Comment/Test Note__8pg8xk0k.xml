@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="131cc57d-34dd-4970-a58c-341c651d92c4" type="Comment" typeId="32cb9020-2896-4dc0-9a6d-2aaae3cb431f">
+  <comment>Until we can get some better automated tests you will need to test the DTO Field Sync this way.
+Apply across all fields and inspect the mappings screens. 
+
+DONT SAVE!</comment>
+  <name>Test Note</name>
+  <display>Test Note</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>57a732ed-f120-47cc-b17c-37b78297edcc</parentFolderId>
+  <packageId>57a732ed-f120-47cc-b17c-37b78297edcc</packageId>
+  <packageName>Accelerators.Services</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

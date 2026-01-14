@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<association id="588b5953-d1a7-4e0e-affe-85d9fbb4f53a">
+  <sourceEnd id="2c324ec5-4c82-4ef8-bc28-77e867aad705" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
+    <name>Block1Level3</name>
+    <display>Block1Level3: Block1Level3</display>
+    <order>0</order>
+    <typeReference id="3c0459d7-8fff-4875-ac7e-b51fe71a965b">
+      <typeId>e04c5b0c-bfca-4a8f-b202-2db3277f0eee</typeId>
+      <isNavigable>false</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <isRequired>true</isRequired>
+      <typePackageName>Accelerators.Domain</typePackageName>
+      <typePackageId>25962dc6-e77c-4beb-8d43-09d441f5c548</typePackageId>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+    <metadata />
+    <childElements />
+  </sourceEnd>
+  <targetEnd id="588b5953-d1a7-4e0e-affe-85d9fbb4f53a" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+    <name>Money</name>
+    <display>Money: Money</display>
+    <order>7</order>
+    <typeReference id="246b3412-2b6e-4779-ad20-1078ae234711">
+      <typeId>4b62b0b9-996f-418c-a3a3-e200ff278ac9</typeId>
+      <isNavigable>true</isNavigable>
+      <isNullable>false</isNullable>
+      <isCollection>false</isCollection>
+      <isRequired>true</isRequired>
+      <typePackageName>Accelerators.Domain</typePackageName>
+      <typePackageId>25962dc6-e77c-4beb-8d43-09d441f5c548</typePackageId>
+      <stereotypes />
+      <genericTypeParameters />
+    </typeReference>
+    <stereotypes />
+    <metadata />
+    <childElements />
+  </targetEnd>
+  <associationType>Association</associationType>
+  <associationTypeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</associationTypeId>
+  <stereotypes />
+</association>
