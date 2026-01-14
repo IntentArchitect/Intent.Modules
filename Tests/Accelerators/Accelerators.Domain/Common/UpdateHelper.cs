@@ -56,5 +56,50 @@ namespace Accelerators.Domain.Common
 
             return baseCollection;
         }
+
+        /// <summary>
+        /// Synchronizes a collection by adding and removing items to match the changed collection.
+        /// This is useful for many-to-many relationships where entities already exist and requires
+        /// that the `Add` and `Remove` Collection methods be called respectively 
+        /// (as opposed to overwriting the collection directly).
+        /// </summary>
+        /// <typeparam name="TEntity">The type of items in the base and changed collection.</typeparam>
+        /// <param name="baseCollection">The base collection to be synchronized.</param>
+        /// <param name="changedCollection">The collection to synchronize to.</param>
+        /// <param name="equalityCheck">A predicate that determines if an item from the base collection matches an item from the changed collection.</param>
+        /// <returns>The synchronized base collection.</returns>
+        /// <remarks>
+        /// This method does not create new entities or update existing ones. It only adds and removes items.
+        /// Typically used for many-to-many relationships where both sides already exist.
+        /// If the changed collection is <see langword="null" />, the base collection will be cleared.
+        /// </remarks>
+        public static ICollection<TEntity> SynchronizeCollection<TEntity>(
+            ICollection<TEntity> baseCollection,
+            IEnumerable<TEntity>? changedCollection,
+            Func<TEntity, TEntity, bool> equalityCheck)
+        {
+            if (changedCollection == null)
+            {
+                foreach (var entity in baseCollection)
+                {
+                    baseCollection.Remove(entity);
+                }
+                return baseCollection;
+            }
+
+            var result = baseCollection.CompareCollections(changedCollection, equalityCheck);
+
+            foreach (var elementToRemove in result.ToRemove)
+            {
+                baseCollection.Remove(elementToRemove);
+            }
+
+            foreach (var elementToAdd in result.ToAdd)
+            {
+                baseCollection.Add(elementToAdd);
+            }
+
+            return baseCollection;
+        }
     }
 }
