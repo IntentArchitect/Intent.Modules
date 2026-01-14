@@ -1,3 +1,10 @@
+### Version 2.4
+
+- Feature: Added suggestion to synchronize Commands/Queries/Service Operations with Domain Entity Attributes.
+
+> ⚠️ NOTE
+> Requires Intent Architect version 4.6 or higher.
+
 ### Version 2.3.13
 
 - Improvement: Documented relevant rules for AI-implemented Service model changes.
