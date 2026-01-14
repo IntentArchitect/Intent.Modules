@@ -1,4 +1,4 @@
-### Version 2.4
+### Version 2.4.0
 
 - Feature: Added suggestion to synchronize Commands/Queries/Service Operations with Domain Entity Attributes.
 
