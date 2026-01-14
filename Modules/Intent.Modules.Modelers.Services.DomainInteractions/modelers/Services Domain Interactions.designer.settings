@@ -12187,7 +12187,7 @@ return model;</overrideTypeReferenceFunction>
             <childSetting id="e2ccdf82-ec44-4eb3-b32d-513ac3833d3b" name="Set Value Object Attribute" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf" version="2.0.0">
               <isRequiredFunction>return true;</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
-              <isMappableFunction>return element.getParent(x =&gt; x.getIsMapped()) != null;</isMappableFunction>
+              <isMappableFunction>return true;</isMappableFunction>
               <isTraversable>true</isTraversable>
               <traversableTypes>
                 <mappingId>32b2649c-7d86-42ba-807f-d9449ed15980</mappingId>

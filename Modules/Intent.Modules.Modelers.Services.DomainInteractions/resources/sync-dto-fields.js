@@ -1599,7 +1599,7 @@ class NodeSyncExecutor {
             }
             console.log(`[APPLY-SYNC-CHANGE-TYPE] Updated '${discrepancy.sourceFieldName}' to reference DTO '${discrepancy.suggestedDtoName}'`);
             // Create nested mappings for Value Object subfields
-            this.createNestedMappingsForValueObject(dtoElement, field, dtoTypeElement, voTypeElement, node);
+            this.createNestedMappingsForValueObject(field, dtoTypeElement, voTypeElement, node);
         }
         else {
             // Standard type change logic
@@ -1676,7 +1676,7 @@ class NodeSyncExecutor {
             }
             console.log(`[APPLY-SYNC-NEW-ATTR] Created new field '${discrepancy.targetAttributeName}' referencing DTO '${discrepancy.suggestedDtoName}'`);
             // Create nested mappings for Value Object subfields
-            this.createNestedMappingsForValueObject(dtoElement, newField, dtoTypeElement, voTypeElement, node);
+            this.createNestedMappingsForValueObject(newField, dtoTypeElement, voTypeElement, node);
         }
         else {
             // Standard attribute creation logic
@@ -1934,9 +1934,9 @@ class NodeSyncExecutor {
         }
         console.log(`[APPLY-SYNC-NEW-ASSOC] Created reference field '${discrepancy.targetAttributeName}: ${dtoTypeName}${isCollection ? "[*]" : ""}'`);
         // Create mappings for all fields in the new DTO
-        this.createMappingsForNewDto(dtoElement, newNestedDto, newField, targetEntity, association, node, this.rootSourceElement);
+        this.createMappingsForNewDto(dtoElement, newNestedDto, newField, targetEntity, association, node);
     }
-    createMappingsForNewDto(parentDto, newDto, dtoField, targetEntity, association, node, rootSourceElement) {
+    createMappingsForNewDto(parentDto, newDto, dtoField, targetEntity, association, node) {
         var _a;
         console.log(`[CREATE-NEW-DTO-MAPPINGS] Creating mappings for new DTO: ${newDto.getName()}`);
         // Use pre-computed paths from node
@@ -2108,7 +2108,7 @@ class NodeSyncExecutor {
         console.log(`[VO-DTO] Created ${suggestedDtoName} with ${voAttributes.filter(a => a.isMappable).length} fields`);
         return newDto;
     }
-    createNestedMappingsForValueObject(dtoElement, newField, valueObjectDto, valueObjectTypeElement, node) {
+    createNestedMappingsForValueObject(newField, valueObjectDto, valueObjectTypeElement, node) {
         console.log(`[VO-MAPPING] Creating nested mappings for ${valueObjectDto.getName()}`);
         if (!node.sourcePath || !node.targetPath) {
             console.log(`[VO-MAPPING] ✗ Node missing required paths`);
@@ -2153,7 +2153,11 @@ class NodeSyncExecutor {
             console.log(`[VO-MAPPING] ├─ Target path: [${targetPath.map(id => { var _a, _b; return ((_b = (_a = lookup(id)) === null || _a === void 0 ? void 0 : _a.getName) === null || _b === void 0 ? void 0 : _b.call(_a)) || id; }).join(' → ')}]`);
             try {
                 // Use the first advanced mapping (should be the main one)
-                const advancedMapping = allMappings[0];
+                const advancedMapping = this.selectMappingForDataMapping(allMappings);
+                if (!advancedMapping) {
+                    console.log(`[VO-MAPPING] ⚠ No Create/Update Entity mapping found (all mappings may be Query/Filter type)`);
+                    return;
+                }
                 advancedMapping.addMappedEnd("Data Mapping", sourcePath, targetPath);
                 console.log(`[VO-MAPPING] ✓ Created mapping for ${fieldName}`);
             }

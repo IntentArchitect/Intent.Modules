@@ -1267,7 +1267,7 @@ class NodeSyncExecutor {
             console.log(`[APPLY-SYNC-CHANGE-TYPE] Updated '${discrepancy.sourceFieldName}' to reference DTO '${discrepancy.suggestedDtoName}'`);
             
             // Create nested mappings for Value Object subfields
-            this.createNestedMappingsForValueObject(dtoElement, field, dtoTypeElement, voTypeElement, node);
+            this.createNestedMappingsForValueObject(field, dtoTypeElement, voTypeElement, node);
         } else {
             // Standard type change logic
             if (discrepancy.targetTypeId) {
@@ -1363,7 +1363,7 @@ class NodeSyncExecutor {
             console.log(`[APPLY-SYNC-NEW-ATTR] Created new field '${discrepancy.targetAttributeName}' referencing DTO '${discrepancy.suggestedDtoName}'`);
             
             // Create nested mappings for Value Object subfields
-            this.createNestedMappingsForValueObject(dtoElement, newField, dtoTypeElement, voTypeElement, node);
+            this.createNestedMappingsForValueObject(newField, dtoTypeElement, voTypeElement, node);
         } else {
             // Standard attribute creation logic
             if (discrepancy.targetTypeId && newField.typeReference) {
@@ -1573,7 +1573,9 @@ class NodeSyncExecutor {
      * Resolve the entity for a given DTO element
      * For nested DTOs, find the entity via the DTO's association
      */
-    private resolveEntityForDto(dtoElement: MacroApi.Context.IElementApi, fallbackEntity: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
+    private resolveEntityForDto(
+        dtoElement: MacroApi.Context.IElementApi, 
+        fallbackEntity: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
         // Check if this DTO has any associations that point to an entity
         const associations = dtoElement.getAssociations();
         for (const assoc of associations) {
@@ -1680,7 +1682,7 @@ class NodeSyncExecutor {
         console.log(`[APPLY-SYNC-NEW-ASSOC] Created reference field '${discrepancy.targetAttributeName}: ${dtoTypeName}${isCollection ? "[*]" : ""}'`);
         
         // Create mappings for all fields in the new DTO
-        this.createMappingsForNewDto(dtoElement, newNestedDto, newField, targetEntity, association, node, this.rootSourceElement);
+        this.createMappingsForNewDto(dtoElement, newNestedDto, newField, targetEntity, association, node);
     }
     
     private createMappingsForNewDto(
@@ -1690,7 +1692,6 @@ class NodeSyncExecutor {
         targetEntity: MacroApi.Context.IElementApi,
         association: MacroApi.Context.IAssociationApi,
         node: IExtendedTreeNode,
-        rootSourceElement: MacroApi.Context.IElementApi
     ): void {
         console.log(`[CREATE-NEW-DTO-MAPPINGS] Creating mappings for new DTO: ${newDto.getName()}`);
         
@@ -1898,7 +1899,6 @@ class NodeSyncExecutor {
     }
 
     private createNestedMappingsForValueObject(
-        dtoElement: MacroApi.Context.IElementApi,
         newField: MacroApi.Context.IElementApi,
         valueObjectDto: MacroApi.Context.IElementApi,
         valueObjectTypeElement: MacroApi.Context.IElementApi,
@@ -1962,7 +1962,12 @@ class NodeSyncExecutor {
 
             try {
                 // Use the first advanced mapping (should be the main one)
-                const advancedMapping = allMappings[0];
+                const advancedMapping = this.selectMappingForDataMapping(allMappings);
+                if (!advancedMapping) {
+                    console.log(`[VO-MAPPING] ⚠ No Create/Update Entity mapping found (all mappings may be Query/Filter type)`);
+                    return;
+                }
+
                 advancedMapping.addMappedEnd("Data Mapping", sourcePath, targetPath);
 
                 console.log(`[VO-MAPPING] ✓ Created mapping for ${fieldName}`);
