@@ -114,3 +114,33 @@ Use the **`Create CQRS Operation`** option to generate either a `Command` or a `
 Use the **`Create Service Operation`** option to generate a traditional service method for calling the repository:
 
 ![Service Repository Invocation](./images/traditional-repository.png)
+
+## DTO Field Synchronizer
+
+The DTO Field Synchronizer is a feature in Intent Architect that synchronizes Data Transfer Object (DTO) fields with their associated entity attributes, ensuring consistency between service layer DTOs and domain entities.
+
+### How It Works
+
+Instead of manually updating DTOs to reflect changes in the underlying domain entities, the DTO Field Synchronizer automates this process.
+It analyzes field mappings through entity associations (Create and Update) and presents discrepancies in a hierarchical tree view dialog, where users can selectively apply changes.
+
+### Usage
+
+Hover over Commands, Queries, or Service Operations to see the suggestion icon and click on it. 
+Select the `Syncrhonize {Command/Query/Operation} with {Entity}` option.
+The tool identifies four types of discrepancies:
+
+- **ADD**: Missing fields that exist in the entity
+- **DELETE**: Orphaned fields no longer in the entity
+- **RENAME**: Field name changes
+- **CHANGE TYPE**: Type mismatches
+
+Select the fields you would like to synchronize and then click on DONE.
+The selected changes will be applied to the respective element.
+
+![DTO Sync Tree View](dto-field-sync-tree-view.png)
+
+### Supported Structures
+
+This can currently only be applied on Commands, Queries and Service Operations.
+The Domain elements that it supports are Entities, composite related Entities, and Value Objects.
