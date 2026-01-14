@@ -53,7 +53,7 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="- NEVER add primary keys (e.g. Id) or foreign keys to classes. These are add automatically by the designer." isActive="true" />
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="- NEVER add primary keys (e.g. Id) or foreign keys to classes. These are add automatically by the designer.&#xA;- A Class implicitly represents basic data access (i.e. CRUD functions). You do not need to explicitly model these." isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
