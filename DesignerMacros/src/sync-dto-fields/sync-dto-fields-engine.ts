@@ -1781,24 +1781,26 @@ class NodeSyncExecutor {
         console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Advanced mapping object type: ${typeof advancedMapping}`);
         console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Advanced mapping has addMappedEnd: ${typeof advancedMapping.addMappedEnd === 'function'}`);
 
-        // 5. Map the fields in the new DTO
-        console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Processing ${dtoFields.length} fields in new DTO`);
-        
         // 4.5 Add association root mapping: {NewBlockForBlock1s}
         // This anchors nested mappings like {NewBlockForBlock1s.Name}
-        try {
-            console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Adding association root mapping for '${dtoField.getName()}'`);
-            console.log(`[CREATE-NEW-DTO-MAPPINGS] │  ├─ Source path (${sourceBasePath.length} IDs): ${sourceBasePath.join(' → ')}`);
-            console.log(`[CREATE-NEW-DTO-MAPPINGS] │  └─ Target path (${targetBasePath.length} IDs): ${targetBasePath.join(' → ')}`);
+        // Should only execute when it maps to a collection.
+        if (association.typeReference.getIsCollection()) {
+            try {
+                console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Adding association root mapping for '${dtoField.getName()}'`);
+                console.log(`[CREATE-NEW-DTO-MAPPINGS] │  ├─ Source path (${sourceBasePath.length} IDs): ${sourceBasePath.join(' → ')}`);
+                console.log(`[CREATE-NEW-DTO-MAPPINGS] │  └─ Target path (${targetBasePath.length} IDs): ${targetBasePath.join(' → ')}`);
 
-            advancedMapping.addMappedEnd("Data Mapping", sourceBasePath, targetBasePath);
+                advancedMapping.addMappedEnd("Data Mapping", sourceBasePath, targetBasePath);
 
-            const afterAssocCount = advancedMapping.getMappedEnds ? advancedMapping.getMappedEnds().length : 'unknown';
-            console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Mapped ends count after assoc root: ${afterAssocCount}`);
-        } catch (e) {
-            console.log(`[CREATE-NEW-DTO-MAPPINGS] └─ ✗ Error adding assoc root mapping: ${e}`);
+                const afterAssocCount = advancedMapping.getMappedEnds ? advancedMapping.getMappedEnds().length : 'unknown';
+                console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Mapped ends count after assoc root: ${afterAssocCount}`);
+            } catch (e) {
+                console.log(`[CREATE-NEW-DTO-MAPPINGS] └─ ✗ Error adding assoc root mapping: ${e}`);
+            }
         }
 
+        // 5. Map the fields in the new DTO
+        console.log(`[CREATE-NEW-DTO-MAPPINGS] ├─ Processing ${dtoFields.length} fields in new DTO`);
 
         for (const field of dtoFields) {
              const matchingAttr = entityAttrs.find(attr => namesAreEquivalent(attr.name, field.getName()));
