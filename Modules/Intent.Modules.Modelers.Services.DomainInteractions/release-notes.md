@@ -1,3 +1,7 @@
+### Version 2.3.14
+
+- Fixed: Modified createQueryMappingEnds to use EntityProjector's pre-established field mappings instead of name-based lookups, eliminating case-sensitivity issues.
+
 ### Version 2.3.13
 
 - Improvement: Documented relevant rules for AI-implemented Service model changes.
