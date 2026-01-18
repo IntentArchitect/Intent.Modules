@@ -11,8 +11,8 @@
     "sourceMap": false
   },
   "include": [
-    "**/*"
-  ],
+    "**/*" 
+],
   "exclude": [
     "node_modules",
     "_dist.js"

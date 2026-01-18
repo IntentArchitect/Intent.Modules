@@ -12684,7 +12684,7 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
   </mappableElementPackageExtensions>
   <suggestionSettings>
     <suggestionSetting type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" locations="diagram, model">
-      <name>Sync Command Fields</name>
+      <name>Sync Command with Entity</name>
       <filterFunction>function hasDataMappings() {
     // Validate element type
     const validSpecializations = ["DTO", "Command", "Query", "Operation"];
@@ -12803,7 +12803,7 @@ return hasData;</filterFunction>
         return null;
     }
     
-    const title = `Synchronize ${element.getName()} with ${entity.getName()}`;
+    const title = `Synchronize with ${entity.getName()}`;
     
     return title;
 }
@@ -12811,7 +12811,7 @@ return hasData;</filterFunction>
 const title = generateSyncTitle();
 return title;</displayFunction>
       <dependencies>
-        <dependency name="Sync DTO Fields" id="9fa6137e-87c7-4dea-8604-9caaf62c0b4f" />
+        <dependency name="Service Sync Script" id="9fa6137e-87c7-4dea-8604-9caaf62c0b4f" />
       </dependencies>
       <script>await syncDtoFields(element);</script>
     </suggestionSetting>
@@ -12887,7 +12887,7 @@ return application.getSettings("0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad").getField(
       <script>await RepositoryOperationApi.createTraditionalService(element, getCurrentDiagram());</script>
     </suggestionSetting>
     <suggestionSetting type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" locations="diagram, model">
-      <name>Sync Operation DTO Fields</name>
+      <name>Sync Operation with Entity</name>
       <filterFunction>function hasDataMappings() {
     // Validate element type
     const validSpecializations = ["DTO", "Command", "Query", "Operation"];
@@ -13006,7 +13006,7 @@ return hasData;</filterFunction>
         return null;
     }
     
-    const title = `Synchronize ${element.getName()} with ${entity.getName()}`;
+    const title = `Synchronize with ${entity.getName()}`;
     
     return title;
 }
@@ -13014,7 +13014,7 @@ return hasData;</filterFunction>
 const title = generateSyncTitle();
 return title;</displayFunction>
       <dependencies>
-        <dependency name="Sync DTO Fields" id="9fa6137e-87c7-4dea-8604-9caaf62c0b4f" />
+        <dependency name="Service Sync Script" id="9fa6137e-87c7-4dea-8604-9caaf62c0b4f" />
       </dependencies>
       <script>await syncDtoFields(element);</script>
     </suggestionSetting>
@@ -13046,7 +13046,7 @@ function getDtoTypeId(item){
       <script>await createNewResultDto(element);</script>
     </suggestionSetting>
     <suggestionSetting type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0" locations="diagram, model">
-      <name>Sync Query Fields</name>
+      <name>Sync Query with Entity</name>
       <filterFunction>function hasDataMappings() {
     // Validate element type
     const validSpecializations = ["DTO", "Command", "Query", "Operation"];
@@ -13165,7 +13165,7 @@ return hasData;</filterFunction>
         return null;
     }
     
-    const title = `Synchronize ${element.getName()} with ${entity.getName()}`;
+    const title = `Synchronize with ${entity.getName()}`;
     
     return title;
 }
@@ -13173,7 +13173,7 @@ return hasData;</filterFunction>
 const title = generateSyncTitle();
 return title;</displayFunction>
       <dependencies>
-        <dependency name="Sync DTO Fields" id="9fa6137e-87c7-4dea-8604-9caaf62c0b4f" />
+        <dependency name="Service Sync Script" id="9fa6137e-87c7-4dea-8604-9caaf62c0b4f" />
       </dependencies>
       <script>await syncDtoFields(element);</script>
     </suggestionSetting>
@@ -13238,8 +13238,8 @@ function getDtoTypeId(item){
     return item.typeReference?.getTypeId();
 }</script>
     </script>
-    <script name="Sync DTO Fields" id="9fa6137e-87c7-4dea-8604-9caaf62c0b4f">
-      <filePath>sync-dto-fields.js</filePath>
+    <script name="Service Sync Script" id="9fa6137e-87c7-4dea-8604-9caaf62c0b4f">
+      <filePath>service-synchronizer.js</filePath>
     </script>
   </scripts>
 </settings>

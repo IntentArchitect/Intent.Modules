@@ -115,9 +115,9 @@ Use the **`Create Service Operation`** option to generate a traditional service 
 
 ![Service Repository Invocation](./images/traditional-repository.png)
 
-## DTO Field Synchronizer
+## Service Synchronizer
 
-The DTO Field Synchronizer is a feature in Intent Architect that synchronizes Data Transfer Object (DTO) fields with their associated entity attributes, ensuring consistency between service layer DTOs and domain entities.
+The Service Synchronizer is a feature in Intent Architect that synchronizes Data Transfer Object (DTO) fields with their associated entity attributes, ensuring consistency between service layer DTOs and domain entities.
 
 ### How It Works
 
@@ -127,7 +127,7 @@ It analyzes field mappings through entity associations (Create and Update) and p
 ### Usage
 
 Hover over Commands, Queries, or Service Operations to see the suggestion icon and click on it. 
-Select the `Syncrhonize {Command/Query/Operation} with {Entity}` option.
+Select the `Syncrhonize with {Entity}` option.
 The tool identifies four types of discrepancies:
 
 - **ADD**: Missing fields that exist in the entity
@@ -138,7 +138,7 @@ The tool identifies four types of discrepancies:
 Select the fields you would like to synchronize and then click on DONE.
 The selected changes will be applied to the respective element.
 
-![DTO Sync Tree View](dto-field-sync-tree-view.png)
+![Service Sync Tree View](dto-field-sync-tree-view.png)
 
 ### Supported Structures
 

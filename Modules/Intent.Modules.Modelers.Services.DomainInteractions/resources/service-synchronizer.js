@@ -2170,7 +2170,7 @@ class NodeSyncExecutor {
 }
 /// <reference path="types.ts" />
 /// <reference path="common.ts" />
-/// <reference path="sync-dto-fields-engine.ts" />
+/// <reference path="sync-engine.ts" />
 /// <reference path="../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../../typings/core.context.types.d.ts" />
 /**
@@ -2286,7 +2286,7 @@ async function presentSyncDialog(rootSourceElement, workingSourceElement, rootTa
         };
     }))}`);
     const config = {
-        title: `Synchronize ${rootSourceElement.getName()} with ${rootTargetEntity.getName()}`,
+        title: `Synchronize with ${rootTargetEntity.getName()}`,
         icon: "fa-sync",
         helpText: "Select the field discrepancies you want to synchronize. The utility will create missing DTO fields, remove orphaned fields, and update mappings to match the target entity structure.",
         submitButtonText: "Done",

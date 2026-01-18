@@ -3,7 +3,7 @@
   "compilerOptions": {
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "outFile": "../../../Modules/Intent.Modules.Modelers.Services.DomainInteractions/resources/sync-dto-fields.js",
+    "outFile": "../../../Modules/Intent.Modules.Modelers.Services.DomainInteractions/resources/service-synchronizer.js",
     "removeComments": false,
     "sourceMap": false,
     "target": "ES2019",
