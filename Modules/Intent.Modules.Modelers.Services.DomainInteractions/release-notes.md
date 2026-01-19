@@ -2,8 +2,12 @@
 
 - Feature: Added suggestion to synchronize Commands/Queries/Service Operations with Domain Entity Attributes.
 
-> ⚠️ NOTE
+> ?? NOTE
 > Requires Intent Architect version 4.6 or higher.
+
+### Version 2.3.14
+
+- Fixed: Modified createQueryMappingEnds to use EntityProjector's pre-established field mappings instead of name-based lookups, eliminating case-sensitivity issues.
 
 ### Version 2.3.13
 

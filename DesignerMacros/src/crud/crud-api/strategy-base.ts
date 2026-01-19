@@ -269,7 +269,7 @@ Compositional Entities (black diamond) must have 1 owner. Please adjust the asso
                 return !this.primaryKeys.some(pk => pk.id == last)
             });
 
-            let queryMappingEnds = this.createQueryMappingEnds(source);
+            let queryMappingEnds = this.createQueryMappingEnds(source, projector);
 
             // Query Entity Mapping
             let queryMapping = action.createAdvancedMapping(source.id, this.entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
@@ -299,7 +299,7 @@ Compositional Entities (black diamond) must have 1 owner. Please adjust the asso
                 return !this.primaryKeys.some(pk => pk.id == last)
             });
 
-            let queryMappingEnds = this.createQueryMappingEnds(source);
+            let queryMappingEnds = this.createQueryMappingEnds(source, projector);
 
             // Query Entity Mapping
             let queryMapping = action.createAdvancedMapping(source.id, this.entity.id, "25f25af9-c38b-4053-9474-b0fabe9d7ea7");
@@ -311,12 +311,40 @@ Compositional Entities (black diamond) must have 1 owner. Please adjust the asso
         }
     }
 
-    protected createQueryMappingEnds(source: IElementApi): IPathMapping[] {
+    protected createQueryMappingEnds(source: IElementApi, projector?: EntityProjector): IPathMapping[] {
         let queryMappingEnds: IPathMapping[] = [];
-        for (const pk of Object.values(this.primaryKeys)) {
-            var dtoField = source.getChildren().find(x => x.getName() == pk.name);
-            queryMappingEnds.push({ type: MappingType.Navigation, sourcePath: [dtoField.id], targetPath: pk.mapPath, targetPropertyStart: pk.mapPath[0] });
+        
+        if (projector != null) {
+            // Use the projector's existing mappings to find the DTO field that maps to each primary key
+            const projectorMappings = projector.getMappings();
+            
+            for (const pk of Object.values(this.primaryKeys)) {
+                // Find a mapping that targets this primary key in the entity
+                const matchingMapping = projectorMappings.find(m => 
+                    m.type === MappingType.Navigation && 
+                    m.targetPath[m.targetPath.length - 1] === pk.id
+                );
+                
+                if (matchingMapping != null) {
+                    // Use the mapping we found
+                    queryMappingEnds.push({ 
+                        type: MappingType.Navigation, 
+                        sourcePath: matchingMapping.sourcePath, 
+                        targetPath: pk.mapPath, 
+                        targetPropertyStart: pk.mapPath[0] 
+                    });
+                }
+            }
+        } else {
+            // Fallback to original behavior when projector is not provided
+            for (const pk of Object.values(this.primaryKeys)) {
+                var dtoField = source.getChildren().find(x => x.getName() == pk.name);
+                if (dtoField != null) {
+                    queryMappingEnds.push({ type: MappingType.Navigation, sourcePath: [dtoField.id], targetPath: pk.mapPath, targetPropertyStart: pk.mapPath[0] });
+                }
+            }
         }
+        
         return queryMappingEnds;
     }
 
