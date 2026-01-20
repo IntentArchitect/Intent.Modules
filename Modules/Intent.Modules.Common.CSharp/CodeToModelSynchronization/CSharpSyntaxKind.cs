@@ -16,6 +16,7 @@ public enum CSharpSyntaxKind
     EnumDeclaration = 8858,
     DelegateDeclaration = 8859,
 
+    EnumMemberDeclaration = 8872,
     MethodDeclaration = 8875,
     ConstructorDeclaration = 8878,
     PropertyDeclaration = 8892,
