@@ -79,15 +79,12 @@ return result;</displayFunction>
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
-        <typeOrder />
         <contextMenuOptions>
           <openMapping type="open-advanced-mapping" mappingType="Invocation Mapping" mappingTypeId="a4c4c5cc-76df-48ed-9d4e-c35caf44b567">
             <text>Map Call Operation</text>
             <shortcut>ctrl + space</shortcut>
           </openMapping>
         </contextMenuOptions>
-        <creationOptions />
-        <scriptOptions />
         <mappingOptions>
           <option type="open-advanced-mapping" mappingType="Invocation Mapping" mappingTypeId="a4c4c5cc-76df-48ed-9d4e-c35caf44b567">
             <text>Map Call Operation</text>

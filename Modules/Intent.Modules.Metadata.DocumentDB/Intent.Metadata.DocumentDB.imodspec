@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.DocumentDB</id>
-  <version>1.3.6</version>
-  <supportedClientVersions>[4.3.0-a, 5.0.0-a)</supportedClientVersions>
+  <version>1.3.7-pre.0</version>
+  <supportedClientVersions>[4.4.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Support for describing Entities in Document DB terms.</summary>
   <description>Support for describing Entities in Document DB terms.</description>
   <authors>Intent Architect</authors>
@@ -26,7 +26,7 @@
     </detect>
   </interoperability>
   <moduleSettings>
-    <group id="d5581fe8-7385-4bb6-88dc-8940e20ec1d4" title="Document Database" externalReference="d5581fe8-7385-4bb6-88dc-8940e20ec1d4">
+    <group id="d5581fe8-7385-4bb6-88dc-8940e20ec1d4" title="Document Database" externalReference="d5581fe8-7385-4bb6-88dc-8940e20ec1d4" type="application-settings">
       <settings>
         <setting id="8bcf2b5c-cd35-47d6-8705-7e8e83494083" title="Id Type" type="select">
           <hint>The default ID type to apply to newly created classes.</hint>
@@ -62,4 +62,5 @@
     <install target="Domain;Module Builder" src="Intent.Metadata/Module Builder/Intent.Metadata.DocumentDB/Intent.Metadata.DocumentDB.pkg.config" externalReference="1c7eab18-9482-4b4e-b61b-1fbd2d2427b6" />
     <install target="Module Builder" src="modelers/Document Db Providers.designer.settings" externalReference="9a392e6c-361e-450b-b543-43e34059fd2d" />
   </metadata>
+  <migrations />
 </package>

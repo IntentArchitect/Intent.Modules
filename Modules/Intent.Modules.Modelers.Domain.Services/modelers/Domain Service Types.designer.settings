@@ -65,19 +65,6 @@
           <allowMultiple>true</allowMultiple>
         </createElement>
       </contextMenuOptions>
-      <creationOptions>
-        <option type="element">
-          <text>Add Operation</text>
-          <shortcut>ctrl + shift + o</shortcut>
-          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0My43MDc2IiB4Mj0iMjUiIHkyPSI0LjMwNzYiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA0OSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjEzMDIiIHN0eWxlPSJzdG9wLWNvbG9yOiM5NDZCQzciLz4NCgk8c3RvcCAgb2Zmc2V0PSIwLjY2ODYiIHN0eWxlPSJzdG9wLWNvbG9yOiM3MTNGQjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjkzNkFBIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggb3BhY2l0eT0iMC44IiBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00NC4xLDExLjlMMjUuNSwyLjhjLTAuMy0wLjEtMC42LTAuMS0wLjksMEw1LjksMTEuOQ0KCWMtMC40LDAuMi0wLjYsMC41LTAuNiwwLjl2MjQuM2MwLDAuNCwwLjIsMC43LDAuNiwwLjlsMTguNiw5LjJjMC4xLDAuMSwwLjMsMC4xLDAuNSwwLjFzMC4zLDAsMC41LTAuMUw0NC4xLDM4DQoJYzAuNC0wLjIsMC42LTAuNSwwLjYtMC45VjEyLjlDNDQuNywxMi41LDQ0LjUsMTIuMSw0NC4xLDExLjl6IE0yNSw1LjlsMTQsNi45bC0xNCw2LjlsLTE0LTYuOUwyNSw1Ljl6IE04LjQsMzUuOVYxNWwxNS4xLDcuNHYyMC45DQoJTDExLDM3LjFMOC40LDM1Ljl6IE0yNi41LDQzLjNWMjIuNEw0MS42LDE1djIwLjlMMzksMzcuMUwyNi41LDQzLjN6Ii8+DQo8L3N2Zz4NCg==" />
-          <specializationType>Operation</specializationType>
-          <specializationTypeId>e042bb67-a1df-480c-9935-b26210f78591</specializationTypeId>
-          <defaultName>Operation</defaultName>
-          <allowMultiple>true</allowMultiple>
-        </option>
-      </creationOptions>
-      <scriptOptions />
-      <mappingOptions />
       <mappingSettings />
       <visualSettings type="Domain Service" typeId="07f936ea-3756-48c8-babd-24ac7271daac">
         <size width="${w}" height="120" />
@@ -166,7 +153,6 @@ white-space: inherit;`</style>
             <allowMultiple>true</allowMultiple>
           </option>
         </creationOptions>
-        <scriptOptions />
         <elementVisualSettings />
         <associationVisualSettings />
       </diagramSettings>
@@ -183,19 +169,6 @@ white-space: inherit;`</style>
           <allowMultiple>true</allowMultiple>
         </createElement>
       </contextMenuOptions>
-      <creationOptions>
-        <option type="element">
-          <text>New Domain Service</text>
-          <shortcut>ctrl + shift + s</shortcut>
-          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABXtJREFUeF7tWW2IVFUYfp47VrtCYhkUZEUpam2iWBG6O3fcyqi1sgjWuWMRRGAUQVaIBon2TVgYWBkkBrkzsyOlZdIPXdaZOy4UyGYfaFJhhfRLiUJll73njTuys3dnZ+beM2pMM/fA/th7nvc973nej/OeM0STDzb5/hESEEZAkzMQpkCTB0BYBMMUCFOgyRkIU6DJAyA8BcIUCFOg3hlYLwZm5RcZUPcIDROQ6QCuBCAAjgP4k4KsorEb8faDIN3vgUf9poC78Tn5hymyAcCNwXbEI0K8gSMd27GeKohMfRKQPjCD4qQA3BZkE2Uw3wic5bA6j/nJ1x8BPdkukmkQl/oZ7zN/QkRZSCzeWw1XXwQk9y8hjS8AtJQYPUTBTkXZBRqDGD59HC0XEyOYDhoLCD4IwP27qFROoJbAWmxXIqF+CEjbsygyCGByibE7BM5q33DO9M+kE9kIYFmJ/EkhFyIePVqOBH8CtmfnGhFjpUAWQ3AtiEsg+JkG+pTCR0iY351jqAKZTITOVa6XFnp0OSJ4AQlzk5b+dHYNha8BMMbkaEu8I1buhKhMQGag1XBG3hbgSaBix6hI2aKmnHoOXV1DWoZ6wSn7cUK2ej8J5VnEY+/WpDOZW0vi9XH6hAkkom5hHTfKE5AZaOWIsweUzkAGCPtl6j/31kSCCJm2vwfQNroWgV5lmfFAa5cDuTp7c59DeL9n+rBY5k2BCDDS9hYRWaljACnvq3jsaR2ZAjaZi5HY75EbEhWZjRXtv2nr8gpk8rPpqB8ATBr9LJAFsGJunSmOiRGwPTuXER6qEvaV7HKEznzEO91FAw8jmdsgxLqi9wU9KmE+ElhBFSBT2c8APjSmm2+qRHRtVQKMdPY9ET5ViwEkNqm4uUpHlqncPgB3Fr1EdiMe3aGjoyI2mX2M5Mdj8/KVWLGuqgQwmTsCYvZ5MaAGJaI4Ayuiv9YgOlEkmW8jC2kwOn4Ry5xZnYBU7lSZs/i82BNEiUQmTUb3ojNBsL6YHvsyGnLSgzsjljmuz5hQA9hIBGQGLqczcsJDwAmxzCt8IsA+DMgcX3YvEOACp8AxsczrqxfBlL1ZIPrHmXts1FIEk7m9IO76b4og+sQyi2u5a048BtP9N1Mi7jHoaSUDudsRMeYh0fFjIPQoKJV7icDLo/8STCorukJLRwUw07mdkMIlqTAEWAfLfKVqBLiTtRyFBDYry3xG2/DeXDsV8h65IYEzx/fy47dQ+UaoHVZswJcAbOtvYUvkS+/5XHU9wT6ZNG0putuG/eyaMH+2FXa7s3meKMgoK7pcW1fR1QWduwEs9egYFMtcUKqz8mVoW3+L0Rp5SwRuPaiUDg6BD1Rk2vM1bb6YBtkEwR6vcSJYpX0THEurFwm4N8LiEMJC3EwHJ2AUmcy3GYZaKcJOQK4u9AjEUQJ9Cs5W3da3rFfPXoezANo9846QqxGPvhM4EkSIlL2GxKslTsvKT9E7yr0T+r8HBF79HIE9B65jxPkWgqnjNBGfisPVvt2h+6ACtbHkBuiW+b/E4Dx0R38vZ2H9EOBal87eTeHOMp3oMMFdSrALGBnEyPAfhScxZVwDMW4lZRkED5R5Ejsl7guRZfZVck99EeBa2Zs1qegWsCnnGFN/i3ApElHvCTNBZf0R4JrYY99AyofeBkmPDNpCPFHpHdD/GNRb7cKg3YLWm3+UUKsgnB9wkUEhN2F5xydBfyGqzwgo3W3Kvt0A7hOoWwC6/ULrWYicBnmIgoMK3AMr+nVAooqw/wcBurvSwIcEaJDVkNAwAhrSrRqbCiNAg6yGhIYR0JBu1dhUGAEaZDUkNIyAhnSrxqbCCNAgqyGhYQQ0pFs1NhVGgAZZDQlt+gj4F2IV1VBPvOS9AAAAAElFTkSuQmCC" />
-          <specializationType>Domain Service</specializationType>
-          <specializationTypeId>07f936ea-3756-48c8-babd-24ac7271daac</specializationTypeId>
-          <defaultName>NewDomainService</defaultName>
-          <allowMultiple>true</allowMultiple>
-        </option>
-      </creationOptions>
-      <scriptOptions />
-      <mappingOptions />
       <typeOrder>
         <type type="Domain Service" typeId="07f936ea-3756-48c8-babd-24ac7271daac" />
       </typeOrder>

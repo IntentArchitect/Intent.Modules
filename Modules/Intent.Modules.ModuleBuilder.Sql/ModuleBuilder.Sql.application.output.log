@@ -62,7 +62,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Sql Extension.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Sql Extension.designer.settings</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>5e9a5343-fede-41f6-b568-48c23c319812</ProjectId>

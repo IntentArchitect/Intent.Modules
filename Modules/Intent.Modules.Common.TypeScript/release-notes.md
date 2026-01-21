@@ -1,3 +1,7 @@
+### Version 4.1.4
+
+- Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
+
 ### Version 4.1.3
 
 - Improvement: Various enhancements to the build to cater for new Angular modules

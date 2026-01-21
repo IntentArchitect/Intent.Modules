@@ -12,5 +12,19 @@
   <packageName>Intent.Modelers.Domain.Repositories</packageName>
   <stereotypes />
   <metadata />
-  <childElements />
+  <childElements>
+    <childElement id="67e91be7-5f2a-4053-8777-db9e8815d904" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>76809965-b35a-4ea0-b715-dd1882e2edc5</parentFolderId>
+      <packageId>464e0fa3-c4c0-497e-b252-a5df39f59158</packageId>
+      <packageName>Intent.Modelers.Domain.Repositories</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

@@ -1,3 +1,7 @@
+### Version 1.2.2
+
+- Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
+
 ### Version 1.2.1
 
 - Fixed: Module and nuget package installation will target stable version.

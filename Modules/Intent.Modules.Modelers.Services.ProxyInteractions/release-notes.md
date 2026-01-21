@@ -1,3 +1,7 @@
+### Version 1.1.6
+
+- Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
+
 ### Version 1.1.5
 
 - Improvement: Updated module documentation to use centralized documentation site.

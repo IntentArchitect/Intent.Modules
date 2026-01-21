@@ -1,4 +1,8 @@
-﻿### Version 3.18.2
+﻿### Version 3.18.3
+
+- Fixed: A possible null reference exception could occur when serializing certain diagram settings in some edge cases.
+
+### Version 3.18.2
 
 - Improvement: Support for `Is Traversable Function` on advanced mapping settings for Element Settings. This allows for more sophisticated controlling of whether an element is traversable in the mapping engine.
 - Improvement: Added `Static Mappable Settings` as selectable types for `Target Types` for `Mapping Types`.

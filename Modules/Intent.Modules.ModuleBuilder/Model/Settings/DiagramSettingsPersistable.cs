@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Xml.Serialization;
 
 namespace Intent.IArchitect.Agent.Persistence.Model.Common
 {
-    public class DiagramSettings {
+    public class DiagramSettings
+    {
 
         [XmlElement("addNewElementsTo")]
         public DiagramAddNewElementsTo AddNewElementsTo { get; set; }
@@ -20,13 +20,12 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArray("creationOptions")]
         [XmlArrayItem("option")]
         public List<ElementCreationOptionOld> CreationOptions { get; set; } = [];
-        public bool ShouldSerializeCreationOptions() => CreationOptions.Any();
-
+        public bool ShouldSerializeCreationOptions() => CreationOptions?.Count == 0;
 
         [XmlArray("scriptOptions")]
         [XmlArrayItem("option")]
         public List<RunScriptOption> ScriptOptions { get; set; } = [];
-        public bool ShouldSerializeScriptOptions() => ScriptOptions.Any();
+        public bool ShouldSerializeScriptOptions() => ScriptOptions?.Count == 0;
 
         [XmlArray("elementVisualSettings")]
         [XmlArrayItem("visualSettings")]

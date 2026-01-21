@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common" Version="3.7.2" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.8.0" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.4.0" />
     <PackageReference Include="Intent.Modules.Modelers.Domain" Version="3.12.1" />
     <PackageReference Include="Intent.Packager" Version="3.6.1">
@@ -16,7 +16,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Intent.Persistence.SDK" Version="1.0.2" />
-    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.1.6" />
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.1.7" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.7.0" />
   </ItemGroup>
 

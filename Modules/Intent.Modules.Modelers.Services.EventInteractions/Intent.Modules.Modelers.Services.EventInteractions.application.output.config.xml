@@ -2,6 +2,6 @@
 <outputFiles>
   <files>
     <file relativePath="Intent.Modules.Modelers.Services.EventInteractions/Intent.Modules.Modelers.Services.EventInteractions.csproj" state="ignored" />
-    <file relativePath="Intent.Modules.Modelers.Services.EventInteractions/release-notes.md" state="once-off-generated" />
+    <file relativePath="Intent.Modules.Modelers.Services.EventInteractions/release-notes.md" state="ignored;once-off-generated" />
   </files>
 </outputFiles>

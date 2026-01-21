@@ -77,9 +77,6 @@
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <contextMenuOptions />
-      <creationOptions />
-      <scriptOptions />
-      <mappingOptions />
       <mappingSettings />
     </elementSetting>
     <elementSetting type="Role" typeId="d6ce4e4c-fdd1-4fa1-82d8-f3405e114ec5">
@@ -98,9 +95,6 @@
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <contextMenuOptions />
-      <creationOptions />
-      <scriptOptions />
-      <mappingOptions />
       <mappingSettings />
     </elementSetting>
     <elementSetting type="Security Configuration" typeId="35a8b318-fd7e-40ec-b3b7-dd79cf26524a">
@@ -263,150 +257,6 @@ function getOrCreateSecurityChildElement(securityElement, elementName, elementTy
 </script>
         </runScript>
       </contextMenuOptions>
-      <creationOptions>
-        <option type="element">
-          <text>Add Role</text>
-          <icon type="UrlImagePath" source="data:image/png;base64,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" />
-          <specializationType>Role</specializationType>
-          <specializationTypeId>d6ce4e4c-fdd1-4fa1-82d8-f3405e114ec5</specializationTypeId>
-          <defaultName>NewRole</defaultName>
-          <allowMultiple>true</allowMultiple>
-        </option>
-        <option type="element">
-          <text>Add Policy</text>
-          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAABIJJREFUaEPt2F9MW1UcB/Dv77a9vS0tLQM2DI4QkBHcdGayRR9Q49wcysAZx6ZuMTExe5m4B81I5kyjcYw3I2YqamLkhQ0esJsDwhxZJpFMSNRoyBiby2C6KUgZtL1tufeYe7vChUIX/pRbDH1r77k9v8/5nXPP71zCMv/QMo8f/3/AR5cCLC5ZIlQf2myuXOh/3zMD8QBYeYIvyIBFQOgC2LHOiIvXJXgXAaELYNd6E/whtigI3QDK3F8MhK6AxUDoDlgoIiEAC0EkDGC+iIQCzAeRcIDpiENbzDFj1AUwl/JhBRCPWmglA5oRWFkDc5kO82m7sojjvYhtJsJqK4E3AoFxYNDPMKqcE+5+EjoDyWbCWnv0MrzlZRjyhxEJDchN4SAYgGst3+BGhxuZm7cjb+cbABEiiIQGPJjGqa9FLhwthxT0qyN+X+EzKHipYgKx/yE+AUsJAtKF8NxXBJebPsPNH7+bmPdaxLYcU4IBCLjfRnBoarSfm77CjfMnYbOYoxDbchMpA5rgKeSF+YdKyKIH9WcHMOYNwWmzRiH+9Y8ZXC6XPNsesnQ78bTghQsV4AZ/U+PyeAnfdhnhCxBS7BYkCZOZAKGm6lRLhb6AGMFHApsdwUarGlqTdQWkWwirkwjKtNGO/PSgFMSZX6zI2boPFoRwq/t7SAHfh8caWt9dcoCDJ6RZCWYjQMqeRIDQ/iYMty/FLIlCjnUIFtdNtNHlKWTnCVnJ0cuLP7sfpju9MQFSxhaIT9XoC8h1chCMwNWWOgx0uJFRuBUiePS11eH5jX6k2md+4e3xmeB55CjSNz2rL6AgjQOn7rC7IQVFNRivGMDwqB8CL6P0USkK4fEZ0dnnBOPteMJVry8gkoFe9+cY6DgzEcxsCGXkO/scCEkc8go3Iav0LTDzKvU+fdcAY+hp/Bh/dZ2LQthtJuwpzgRncaI/uQw97i+RvT4fBVILZGceRopqwCel6ANQok0VCBk2AmMMvU2f4mZn8xRE1tN7sbHs9SkLmgLDENor8IdnFa5eG8HDr72HF4vy9auFUi2EjCQCZshE5uMlyH/hAMAAvwS1rCYCgt5hdNW8DXH4bxjNFkii+NyxxuZJ/bRnWNxLidkQBrMVT75/EjIDeoZktazOchCUE5r3dj+6T7yDcdELgEmMuCPHTzVXz/T8jTtAnU6aTFw5/QX+/KkNa4vKkLN9n3qM7POEazUDATlODrwBGLrcjV+//gBMltRrBNQOpvxzsLa2O6SFLAlgCmLaMA7cYRjRnIF5LowwcEB/x2lccddq7qA2GaHd1Q3nRiI/LhlA6VDZodOV8sIAiBIw6Jt6gI8EZTUB2Y7wae384dJPAHZQo/idGVByvL7l+t3MxNzZEe+3ErP17hQImTZC7eFXjA9grAlgJZq2Q2BsV1Vj68UlzUDsoYq+usZKeHkDT65Xi5PFIDoIbEOkFWMQDRyV3xMw107j1b5y745sjFMnEVsz2QcbWDYAJegje4ofkyTWTgRB+c5k9C8rgIooL94pM/kEk4lxRAf+A4n0dgPfGmhtAAAAAElFTkSuQmCC" />
-          <specializationType>Policy</specializationType>
-          <specializationTypeId>9f37c60e-ad88-4484-98ca-6c9aa7ca3134</specializationTypeId>
-          <defaultName>NewPolicy</defaultName>
-          <allowMultiple>true</allowMultiple>
-        </option>
-      </creationOptions>
-      <scriptOptions>
-        <option type="run-script">
-          <text>Convert from "text based" Roles/Policies</text>
-          <icon type="UrlImagePath" source="data:image/png;base64,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" />
-          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-/**
- * Used by Intent.Modules\Modules\Intent.Metadata.WebApi
- *
- * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/authorization-rest/convert-script/convert-text-to-models.ts
- */
-convertTextToModel(element);
-function convertTextToModel(securityElement) {
-    let commands = lookupTypesOf("Command").filter(c =&gt; hasRoleOrPolicy(c)).map(x =&gt; getSecurityStereotype(x));
-    let queries = lookupTypesOf("Query").filter(c =&gt; hasRoleOrPolicy(c)).map(x =&gt; getSecurityStereotype(x));
-    let operations = lookupTypesOf("Operation").filter(x =&gt; hasRoleOrPolicy(x)).map(x =&gt; getSecurityStereotype(x));
-    let attributes = lookupTypesOf("Attribute").filter(x =&gt; hasRoleOrPolicy(x)).map(x =&gt; getSecurityStereotype(x));
-    let allStereotypes = [...commands, ...queries, ...operations, ...attributes];
-    allStereotypes.forEach(stereotype =&gt; {
-        var _a, _b;
-        if (hasConvertibleValues((_a = stereotype.getProperty("Roles")) === null || _a === void 0 ? void 0 : _a.value)) {
-            let roles = convertStringToArray(stereotype.getProperty("Roles").value);
-            stereotype.getProperty("Roles").setValue("");
-            if (arrayHasValues(roles)) {
-                let roleElements = [];
-                roles.forEach(role =&gt; roleElements.push(getOrCreateSecurityChildElement(securityElement, role, "Role")));
-                stereotype.getProperty("Security Roles").setValue(convertElementsToIdString(roleElements));
-            }
-        }
-        if (hasConvertibleValues((_b = stereotype.getProperty("Policy")) === null || _b === void 0 ? void 0 : _b.value)) {
-            let policies = convertStringToArray(stereotype.getProperty("Policy").value);
-            stereotype.getProperty("Policy").setValue("");
-            if (arrayHasValues(policies)) {
-                let policyElements = [];
-                policies.forEach(policy =&gt; policyElements.push(getOrCreateSecurityChildElement(securityElement, policy, "Policy")));
-                stereotype.getProperty("Security Policies").setValue(convertElementsToIdString(policyElements));
-            }
-        }
-    });
-}
-function hasConvertibleValues(value) {
-    if (!value || value == "")
-        return false;
-    if (value.includes('+'))
-        return false;
-    return true;
-}
-function convertElementsToIdString(objects) {
-    // Check if the input is a non-empty array
-    if (Array.isArray(objects) &amp;&amp; objects.length &gt; 0) {
-        // Map the array to extract the Id properties and join them into a string
-        return '[' + objects.map(obj =&gt; "\"" + obj.id + "\"").join(',') + ']';
-    }
-    else {
-        // Return an empty array representation if the input is empty or not an array
-        return '[]';
-    }
-}
-function arrayHasValues(arr) {
-    if (!arr)
-        return false;
-    return arr.some(item =&gt; item.trim().length &gt; 0);
-}
-function convertStringToArray(inputString) {
-    // Check if the input string is not empty or null
-    if (inputString) {
-        // Use split to convert the string into an array, trimming whitespace around elements
-        return inputString.split(',').map(item =&gt; item.trim());
-    }
-    else {
-        // Return an empty array if the input string is empty or null
-        return [];
-    }
-}
-function getSecurityStereotype(x) {
-    if (x.hasStereotype("Authorize")) {
-        return x.getStereotype("Authorize");
-    }
-    if (x.hasStereotype("Secured")) {
-        return x.getStereotype("Secured");
-    }
-    if (x.hasStereotype("Data Masking")) {
-        return x.getStereotype("Data Masking");
-    }
-    return null;
-}
-function hasRoleOrPolicy(x) {
-    var _a, _b, _c, _d, _e;
-    if (x.hasStereotype("Authorize")) {
-        var auth = x.getStereotype("Authorize");
-        if ((_a = auth.getProperty("Roles")) === null || _a === void 0 ? void 0 : _a.value) {
-            return true;
-        }
-        if ((_b = auth.getProperty("Policy")) === null || _b === void 0 ? void 0 : _b.value) {
-            return true;
-        }
-    }
-    if (x.hasStereotype("Secured")) {
-        var auth = x.getStereotype("Secured");
-        if ((_c = auth.getProperty("Roles")) === null || _c === void 0 ? void 0 : _c.value) {
-            return true;
-        }
-    }
-    if (x.hasStereotype("Data Masking")) {
-        var dm = x.getStereotype("Data Masking");
-        if ((_d = dm.getProperty("Roles")) === null || _d === void 0 ? void 0 : _d.value) {
-            return true;
-        }
-        if ((_e = dm.getProperty("Policy")) === null || _e === void 0 ? void 0 : _e.value) {
-            return true;
-        }
-    }
-    return false;
-}
-function getOrCreateSecurityChildElement(securityElement, elementName, elementType) {
-    let roleOrPolicy = securityElement.getChildren(elementType).find(x =&gt; x.getName() == elementName);
-    if (!roleOrPolicy) {
-        //Create a new attribute
-        roleOrPolicy = createElement(elementType, elementName, securityElement.id);
-    }
-    return roleOrPolicy;
-}
-</script>
-        </option>
-      </scriptOptions>
-      <mappingOptions />
       <mappingSettings />
     </elementSetting>
   </elementSettings>

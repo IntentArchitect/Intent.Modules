@@ -78,7 +78,7 @@ namespace Intent.Modelers.Services.EventInteractions
     }
 
     [IntentManaged(Mode.Fully)]
-    public class SendIntegrationCommandTargetEndModel : SendIntegrationCommandEndModel
+    public class SendIntegrationCommandTargetEndModel : SendIntegrationCommandEndModel, IProcessingActionModel
     {
         public const string SpecializationTypeId = "35a14f76-71e0-45f2-a17f-f8d1483510f7";
         public const string SpecializationType = "Send Integration Command Target End";

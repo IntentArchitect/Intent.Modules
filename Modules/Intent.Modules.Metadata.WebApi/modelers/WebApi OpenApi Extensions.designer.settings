@@ -69,25 +69,6 @@ return `V${ver}.0`;</defaultName>
           <allowMultiple>true</allowMultiple>
         </createElement>
       </contextMenuOptions>
-      <creationOptions>
-        <option type="element">
-          <text>Add Version</text>
-          <icon type="UrlImagePath" source="data:image/png;base64,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" />
-          <specializationType>Version</specializationType>
-          <specializationTypeId>95f4362b-8193-41cb-bd65-c17d6be3f96b</specializationTypeId>
-          <defaultName>let latestVersion = this.getChildren().reverse()[0];
-if(!latestVersion) {
-    return "V1.0";
-}
-let ver = latestVersion.getName().replace("V", "");
-ver = parseFloat(ver);
-ver++;
-return `V${ver}.0`;</defaultName>
-          <allowMultiple>true</allowMultiple>
-        </option>
-      </creationOptions>
-      <scriptOptions />
-      <mappingOptions />
       <mappingSettings />
       <childElementSettings>
         <childElementSetting type="Version" typeId="95f4362b-8193-41cb-bd65-c17d6be3f96b">
@@ -106,9 +87,6 @@ return `V${ver}.0`;</defaultName>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <contextMenuOptions />
-          <creationOptions />
-          <scriptOptions />
-          <mappingOptions />
           <mappingSettings />
           <macros>
             <macro trigger="on-created">

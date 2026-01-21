@@ -56,7 +56,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/modelers/Kotlin Types.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Kotlin Types.designer.settings</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>c0fd9295-4328-4a0e-9e58-3f0f6a419ead</ProjectId>

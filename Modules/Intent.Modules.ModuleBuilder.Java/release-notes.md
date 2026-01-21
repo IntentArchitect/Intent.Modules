@@ -1,3 +1,7 @@
+### Version 3.6.2
+
+- Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
+
 ### Version 3.6.1
 
 - Fixed: Module and nuget package installation will target stable version.

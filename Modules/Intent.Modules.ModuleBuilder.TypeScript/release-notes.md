@@ -1,3 +1,7 @@
+### Version 3.5.4
+
+- Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
+
 ### Version 3.5.3
 
 - Improvement: Updated default output template to have correct constructor for TypeScriptFile.

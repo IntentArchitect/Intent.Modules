@@ -1,3 +1,7 @@
+### Version 4.0.9
+
+- Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
+
 ### Version 4.0.8
 
 - Fixed: onMapDto to use method call for isMapped and improve DTO naming logic.

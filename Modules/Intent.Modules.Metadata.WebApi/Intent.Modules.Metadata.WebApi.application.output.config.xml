@@ -5,6 +5,6 @@
     <file relativePath="Intent.Modules.Metadata.WebApi/Api/Extensions/AzureFunctionModelStereotypeExtensions.cs" state="ignored" />
     <file relativePath="Intent.Modules.Metadata.WebApi/Intent.Metadata.WebApi.imodspec" state="ignored" />
     <file relativePath="Intent.Modules.Metadata.WebApi/Intent.Modules.Metadata.WebApi.csproj" state="ignored" />
-    <file relativePath="Intent.Modules.Metadata.WebApi/release-notes.md" state="once-off-generated" />
+    <file relativePath="Intent.Modules.Metadata.WebApi/release-notes.md" state="ignored;once-off-generated" />
   </files>
 </outputFiles>

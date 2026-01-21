@@ -12,16 +12,16 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.Modelers.Domain.StoredProcedures.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class StoredProcedureModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference, IHasFolder
+    public class StoredProcedureModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IInvokableModel, IHasTypeReference, IHasFolder
     {
         public const string SpecializationType = "Stored Procedure";
         public const string SpecializationTypeId = "575edd35-9438-406d-b0a7-b99d6f29b560";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public StoredProcedureModel(IElement element, string requiredType = SpecializationType)
+        public StoredProcedureModel(IElement element, string requiredType = SpecializationTypeId)
         {
-            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase) && !requiredType.Equals(element.SpecializationTypeId, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }

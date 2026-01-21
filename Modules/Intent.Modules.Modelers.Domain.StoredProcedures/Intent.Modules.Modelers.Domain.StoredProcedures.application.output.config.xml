@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <outputFiles>
   <files>
-    <file relativePath="Intent.Modules.Modelers.Domain.StoredProcedures/release-notes.md" state="once-off-generated" />
+    <file relativePath="Intent.Modules.Modelers.Domain.StoredProcedures/release-notes.md" state="ignored;once-off-generated" />
   </files>
 </outputFiles>

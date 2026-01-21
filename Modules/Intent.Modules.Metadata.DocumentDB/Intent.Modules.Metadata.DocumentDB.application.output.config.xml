@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <outputFiles>
   <files>
-    <file relativePath="Intent.Modules.Metadata.DocumentDB/Api/AttributeModelStereotypeExtensions.cs" state="ignored" />
     <file relativePath="Intent.Modules.Metadata.DocumentDB/Api/FolderExtensionsModel.cs" state="ignored" />
     <file relativePath="Intent.Modules.Metadata.DocumentDB/Api/ModuleBuilderExtensionsModel.cs" state="ignored" />
   </files>

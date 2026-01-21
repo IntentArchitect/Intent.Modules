@@ -7,6 +7,16 @@
   <packageExtensions>
     <packageExtension type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">
       <requiredPackages />
+      <contextMenuOptions>
+        <createElement type="element">
+          <text>New Document Db Provider</text>
+          <icon type="FontAwesome" source="database" />
+          <specializationType>Document Db Provider</specializationType>
+          <specializationTypeId>fcfbd83f-a3eb-4eff-b341-5a812b016d31</specializationTypeId>
+          <defaultName>NewDocumentDbProvider</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </createElement>
+      </contextMenuOptions>
       <creationOptions>
         <option type="element">
           <text>New Document Db Provider</text>
@@ -39,26 +49,22 @@
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
-      <creationOptions />
-      <scriptOptions />
-      <mappingOptions />
+      <contextMenuOptions />
       <mappingSettings />
     </elementSetting>
   </elementSettings>
   <elementExtensions>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-      <creationOptions>
-        <option type="element">
+      <contextMenuOptions>
+        <createElement type="element">
           <text>New Document Db Provider</text>
           <icon type="FontAwesome" source="database" />
           <specializationType>Document Db Provider</specializationType>
           <specializationTypeId>fcfbd83f-a3eb-4eff-b341-5a812b016d31</specializationTypeId>
           <defaultName>NewDocumentDbProvider</defaultName>
           <allowMultiple>true</allowMultiple>
-        </option>
-      </creationOptions>
-      <scriptOptions />
-      <mappingOptions />
+        </createElement>
+      </contextMenuOptions>
       <typeOrder>
         <type type="Document Db Provider" typeId="fcfbd83f-a3eb-4eff-b341-5a812b016d31" />
       </typeOrder>

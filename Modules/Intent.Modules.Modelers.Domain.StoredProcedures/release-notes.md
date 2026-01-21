@@ -1,3 +1,7 @@
+### Version 1.2.4
+
+- Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
+
 ### Version 1.2.3
 
 - Fixed: Updated `Intent.Persistence.SDK` to latest version to resolve compatibility issues.

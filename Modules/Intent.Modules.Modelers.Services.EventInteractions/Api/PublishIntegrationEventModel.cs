@@ -78,7 +78,7 @@ namespace Intent.Modelers.Services.EventInteractions
     }
 
     [IntentManaged(Mode.Fully)]
-    public class PublishIntegrationEventTargetEndModel : PublishIntegrationEventEndModel
+    public class PublishIntegrationEventTargetEndModel : PublishIntegrationEventEndModel, IProcessingActionModel
     {
         public const string SpecializationTypeId = "6feb1511-849a-4aa3-85eb-d0c736ac1fec";
         public const string SpecializationType = "Publish Integration Event Target End";

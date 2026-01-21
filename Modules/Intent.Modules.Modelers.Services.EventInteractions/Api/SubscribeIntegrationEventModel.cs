@@ -78,7 +78,7 @@ namespace Intent.Modelers.Services.EventInteractions
     }
 
     [IntentManaged(Mode.Fully)]
-    public class SubscribeIntegrationEventTargetEndModel : SubscribeIntegrationEventEndModel
+    public class SubscribeIntegrationEventTargetEndModel : SubscribeIntegrationEventEndModel, IProcessingHandlerModel
     {
         public const string SpecializationTypeId = "16fa2952-79e6-4150-b5ab-45aa4c106de4";
         public const string SpecializationType = "Subscribe Integration Event Target End";
