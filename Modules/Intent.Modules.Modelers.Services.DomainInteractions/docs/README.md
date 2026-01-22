@@ -138,7 +138,7 @@ The tool identifies four types of discrepancies:
 Select the fields you would like to synchronize and then click on DONE.
 The selected changes will be applied to the respective element.
 
-![Service Sync Tree View](dto-field-sync-tree-view.png)
+![Service Sync Tree View](images/dto-field-sync-tree-view.png)
 
 ### Supported Structures
 
