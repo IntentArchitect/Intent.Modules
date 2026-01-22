@@ -15,7 +15,12 @@ if ($Reset) {
 
 $currentPhase = 0;
 $modulesFolder = [System.IO.Path]::GetDirectoryName($ModulesIsln)
-$testsFolder = [System.IO.Path]::GetDirectoryName($TestsIsln)
+$testsIslnFolder = [System.IO.Path]::GetDirectoryName($TestsIsln)
+$testsFolder = $testsIslnFolder
+
+if ($testsFolder.EndsWith("intent")) {
+    $testsFolder = $testsFolder.Substring(0, $testsFolder.Length - "/intent".Length)
+}
 
 if ([int]$Env:INTENT_PRE_COMMIT_CHECK_PHASE -gt 0) {
     Write-Host "Resuming from last successfully completed phase, use the -Reset parameter to remove memory of successfully completed phases."
@@ -25,7 +30,7 @@ if ([int]$Env:INTENT_PRE_COMMIT_CHECK_PHASE -ge ++$currentPhase) {
     Write-Host "Skipping `"pre-build validations`" phase as was successfully completed previously."
 }
 else {
-    ./PipelineScripts/pre-build-validations.ps1 -ModulesFolder "$modulesFolder" -TestsFolder "$testsFolder"
+    ./PipelineScripts/pre-build-validations.ps1 -ModulesFolder "$modulesFolder" -TestsFolder "$testsIslnFolder"
     if ($LASTEXITCODE -ne 0) {
         exit
     }
