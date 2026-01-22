@@ -47,7 +47,8 @@ namespace Intent.Modules.Common.TypeResolution
         /// <returns></returns>
         public bool TryGetTypeReference(string typeName, [NotNullWhen(true)] out ITypeNameTypeReference? typeReference)
         {
-            throw new NotImplementedException($"{GetType().Name} does not have an implementation for {nameof(TryGetTypeReference)}");
+            typeReference = null;
+            return false;
         }
     }
 }
