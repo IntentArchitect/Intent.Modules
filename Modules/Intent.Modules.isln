@@ -51,6 +51,6 @@
     <application id="cadb9a6b-2e9a-487f-8711-e756d006b63c" name="Intent.Modules.Metadata.Security" solutionFolder="Metadata" relativePath="Intent.Modules.Metadata.Security/Intent.Modules.Metadata.Security.application.config" />
     <application id="a2dcd902-07bf-432f-9bc5-bc31d36d642d" name="Intent.Modules.Metadata.ApiGateway" solutionFolder="Metadata" relativePath="Intent.Modules.Metadata.ApiGateway/Intent.Modules.Metadata.ApiGateway.application.config" />
     <application id="372a17c5-5856-470c-b3ae-0ea381a0a3d6" name="Intent.Modules.Common.AI" solutionFolder="Common" relativePath="Intent.Modules.Common.AI/Intent.Modules.Common.AI.application.config" />
-    <application id="fd1d130c-fd95-4fee-b713-02c6641d1287" name="Intent.Modules.Modelers.ApplicationStructure" solutionFolder="Designers" relativePath="Intent.Modules.Modelers.ApplicationStructure/Intent.Modules.Modelers.ApplicationStructure.application.config" />
+    <application id="fd1d130c-fd95-4fee-b713-02c6641d1287" name="Intent.Modules.Modelers.CodebaseStructure" solutionFolder="Designers" relativePath="Intent.Modules.Modelers.CodebaseStructure/Intent.Modules.Modelers.CodebaseStructure.application.config" />
   </applications>
 </solution>

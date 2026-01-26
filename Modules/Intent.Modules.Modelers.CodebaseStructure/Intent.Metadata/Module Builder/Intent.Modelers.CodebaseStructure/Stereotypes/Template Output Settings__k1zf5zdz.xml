@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="967ae6f6-cc06-4b67-a391-44ed1aac1959" version="3.1.0">
+  <name>Template Output Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="d421c322-7a51-4094-89fa-e5d8a0a97b27">Template Output</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction>if (!properties["Is Enabled"].value) {
+    return "[DISABLED]";
+}
+
+var filteredValue = properties["Registration Filter"].value;
+if (filteredValue) {
+    return `[Filtered: ${filteredValue}]`;
+}
+
+return null;
+</displayFunction>
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>6537e6dd-d401-4065-a843-627fe0c89efb</parentFolderId>
+  <order>0</order>
+  <packageId>525868ff-adc0-4ab6-a90e-352288da941f</packageId>
+  <packageName>Intent.Modelers.CodebaseStructure</packageName>
+  <properties>
+    <property id="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa">
+      <name>Is Enabled</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <defaultValue>true</defaultValue>
+    </property>
+    <property id="2d8e6d2c-785c-4708-9104-bd3e9781a86a">
+      <name>Registration Filter</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <isActiveFunction>return properties["Is Enabled"].value;</isActiveFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

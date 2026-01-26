@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="025e933b-b602-4b6d-95ab-0ec36ae940da" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <comment>Used to determine the initial placement location of `Template Output` elements when modules are installed or updated.</comment>
+  <name>Output Anchor</name>
+  <display>Output Anchor</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>ba6abc27-ed11-4aae-a405-13fe7491636b</parentFolderId>
+  <packageId>525868ff-adc0-4ab6-a90e-352288da941f</packageId>
+  <packageName>Intent.Modelers.CodebaseStructure</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="false" />
+        <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="false" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="null" isActive="false" />
+        <property name="52f3c2e8-6438-494a-b0a7-7a9e61c8aae8" display="Target Traits" value="[]" isActive="true" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="As Child" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4NCiAgICA8c3R5bGU+DQogICAgICAgIC5hbmNob3JGaWxsIHsNCiAgICAgICAgICAgIGZpbGw6ICMwMDAwMDANCiAgICAgICAgfQ0KDQogICAgICAgIFtkYXRhLXRoZW1lPSJkYXJrIl0gLmFuY2hvckZpbGwgew0KICAgICAgICAgICAgZmlsbDogI2ZmZmZmZg0KICAgICAgICB9DQogICAgPC9zdHlsZT4NCiAgICA8ZyBjbGFzcz0iIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLDApIiBzdHlsZT0iIj4NCiAgICAgICAgPHBhdGgNCiAgICAgICAgICAgIGQ9Ik05MC41MyAyM2MtMTguMzQ1IDAtMzYuNjg4IDcuMDAyLTUwLjY4NiAyMS0yNy45OTYgMjcuOTk2LTI3Ljk5NCA3My4zOCAwIDEwMS4zNzUgMjEuNzc2IDIxLjc3NiA1NC4wOCAyNi42MDMgODAuNTMgMTQuNWw1My42OSA1My42ODhjLTIxLjQyNSAxOS42OTYtNDQgMzguMjU3LTY3LjQ0IDU1LjkzN2wzMC4xMjYgMzAuMTI1YzE4LjczNC0yMi41NDUgMzcuOTUzLTQ0LjQ3NCA1Ny44NDQtNjUuNTNsMTY5LjU5NCAxNjkuNTkzYy01MS44NDUgNDAuNDQ0LTEyMC44NjYgNTMuODM4LTE5Mi44MTMgNDIuNTYyTDE3MyA0MjQuOTA2IDcyLjQ3IDQwNC40N2w5NS40MDUgODguNDA1IDEuOTctMjZjODYuNTkzIDM2Ljk3IDE3Ny42MDMgMzQuNjEgMjQxLjM0My0xMS43NWw2My4wNjIgMjEuMzEzLTIxLjQ3LTYzLjU5NGM0NC42MS02My42MiA0Ni40MDgtMTUzLjQxMiA5LjkwOC0yMzguODc1bDI2LjAzLTEuOTctODguNDA2LTk1LjM3NSAyMC40MzggMTAwLjUzIDIxLjM0NC0xLjYyNGMxMS4yNzggNzEuOTgzLTIuMTY4IDE0MS4wMTctNDIuNjU2IDE5Mi44NzZsLTE2OS43ODItMTY5Ljc1YzIxLjA3NS0yMC4zNCA0Mi45My0zOS42NjUgNjUuNzgtNTcuNzJsLTMwLjEyMy0zMC4xMjRjLTE3LjAxNSAyNC4xNTQtMzUuNjczIDQ2LjY2LTU1LjY4OCA2Ny44MTNsLTUzLjk3LTUzLjk3QzE2Ny44MzQgOTguMTgzIDE2My4wMzIgNjUuODE0IDE0MS4yMiA0NGMtMTQtMTMuOTk4LTMyLjM0My0yMS01MC42OS0yMXptMCAyNy4wM2MxMS40MzQuMDAyIDIyLjg3MiA0LjM0IDMxLjU5NSAxMy4wNjQgMTcuNDQ3IDE3LjQ0NyAxNy40NDYgNDUuNzQyIDAgNjMuMTg3LTE3LjQ0NiAxNy40NDctNDUuNzEgMTcuNDQ3LTYzLjE1NiAwLTE3LjQ0Ny0xNy40NDQtMTcuNDQ4LTQ1Ljc0IDAtNjMuMTg2QzY3LjY5IDU0LjM3IDc5LjA5NyA1MC4wMyA5MC41MyA1MC4wM3oiDQogICAgICAgICAgICBjbGFzcz0iYW5jaG9yRmlsbCIgZmlsbC1vcGFjaXR5PSIxIj48L3BhdGg+DQogICAgPC9nPg0KPC9zdmc+&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="581e77d6-4587-4041-86f6-880bd57d5848" display="Name Must Be Unique" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="ad2bbaa1-becc-477b-83d2-97179678e4bb" display="Allow Static" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="false" isActive="true" />
+        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>

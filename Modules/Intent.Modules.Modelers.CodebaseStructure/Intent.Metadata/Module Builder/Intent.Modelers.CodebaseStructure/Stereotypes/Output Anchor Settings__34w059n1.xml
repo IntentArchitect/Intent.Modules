@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="a23c7901-31a5-4cbf-b8bf-1be128977e6d" version="3.1.0">
+  <name>Output Anchor Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="025e933b-b602-4b6d-95ab-0ec36ae940da">Output Anchor</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>false</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>6537e6dd-d401-4065-a843-627fe0c89efb</parentFolderId>
+  <order>0</order>
+  <packageId>525868ff-adc0-4ab6-a90e-352288da941f</packageId>
+  <packageName>Intent.Modelers.CodebaseStructure</packageName>
+  <onChangedScript>element.setMetadata("allow-create-subfolders", element.getStereotype("a23c7901-31a5-4cbf-b8bf-1be128977e6d").getProperty("8d79a350-96f1-4d50-bb0a-f65a5c53ec62").value.toString());</onChangedScript>
+  <properties>
+    <property id="8d79a350-96f1-4d50-bb0a-f65a5c53ec62">
+      <comment>Determines whether Template Outputs that match this role can create sub-folders based on their Default Location. If disabled, the Template Outputs will be added here, adjacent to this role.</comment>
+      <name>Create Sub-Folders</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <defaultValue>true</defaultValue>
+    </property>
+  </properties>
+</stereotypeDefinition>

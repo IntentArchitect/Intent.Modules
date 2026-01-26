@@ -120,7 +120,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.AI", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Common.AI.Tests", "Intent.Modules.Common.AI.Tests\Intent.Modules.Common.AI.Tests.csproj", "{A3325076-134A-4014-AADC-800E96C6F980}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.ApplicationStructure", "Intent.Modules.Modelers.ApplicationStructure\Intent.Modules.Modelers.ApplicationStructure.csproj", "{9425B6B8-038F-4670-B2F6-26D5AD46687C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.CodebaseStructure", "Intent.Modules.Modelers.CodebaseStructure\Intent.Modules.Modelers.CodebaseStructure.csproj", "{9425B6B8-038F-4670-B2F6-26D5AD46687C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
