@@ -141,6 +141,8 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>4802c3fe-db17-4969-86e0-e8ae6b73a83c</parentFolderId>
+      <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+      <packageName>Intent.Modules</packageName>
       <stereotypes />
       <metadata>
         <entry key="status" value="assigned" />

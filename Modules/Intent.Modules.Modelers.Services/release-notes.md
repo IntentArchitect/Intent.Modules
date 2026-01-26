@@ -5,6 +5,7 @@
 ### Version 4.0.9
 
 - Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
+- Improvement: Changed ordering of the Designer in the Solution Explorer so that appears after the Domain Designer.
 
 ### Version 4.0.8
 

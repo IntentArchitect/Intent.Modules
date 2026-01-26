@@ -17,14 +17,6 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>4802c3fe-db17-4969-86e0-e8ae6b73a83c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#4d95d53a-8855-4f35-aa82-e312643f5c5f</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/FolderModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>FolderModelStereotypeExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
       <ProjectId>499bd241-9cb1-40b7-90c8-7e94329db973</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.FactoryExtension#98dc02d8-76e0-4b0d-8664-a71e1534b68b</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
