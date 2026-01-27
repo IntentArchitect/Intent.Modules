@@ -300,6 +300,16 @@ if ((!handler.getName() || handler.getName() == "NewDomainEventHandler") &amp;&a
                   <canBeModified>false</canBeModified>
                   <represents>data</represents>
                 </childSetting>
+                <childSetting id="ad768888-b575-4a1b-a2e4-68ee38b16a7b" name="Inheritance" type="Domain Event Generalization Target End" typeId="1540252f-51ba-48e4-a7ad-f52ac32389e6" version="2.0.0">
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return false;</isMappableFunction>
+                  <isTraversable>true</isTraversable>
+                  <traversableTypes>
+                    <mappingId>92a0b71b-588d-408f-9096-5a3e335bdad7</mappingId>
+                  </traversableTypes>
+                  <canBeModified>false</canBeModified>
+                  <represents>data</represents>
+                </childSetting>
               </childSettings>
             </childSetting>
           </childSettings>

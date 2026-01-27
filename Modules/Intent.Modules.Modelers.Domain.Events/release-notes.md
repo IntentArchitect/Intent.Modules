@@ -1,3 +1,7 @@
+### Version 4.4.6
+
+- Improvement: Domain Event mapping now supports mapping from inherited properties.
+
 ### Version 4.4.5
 
 - Improvement: `Domain Events` support modeling inheritance.
