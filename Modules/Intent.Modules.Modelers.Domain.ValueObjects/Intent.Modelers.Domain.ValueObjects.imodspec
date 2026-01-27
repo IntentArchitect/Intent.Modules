@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Domain.ValueObjects</id>
-  <version>3.6.3-pre.0</version>
+  <version>3.6.3</version>
   <supportedClientVersions>[4.4.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Support for describing Value Objects in the Domain designer.</summary>
   <description>Support for describing Value Objects in the Domain designer.</description>

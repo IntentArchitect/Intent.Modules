@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.UI.Core</id>
-  <version>1.0.1-pre.0</version>
+  <version>1.0.1</version>
   <supportedClientVersions>[4.3.0-beta.4,5.0.0)</supportedClientVersions>
   <summary>Core user interface components for the user interface designer.</summary>
   <description>Core user interface components for the user interface designer.</description>
