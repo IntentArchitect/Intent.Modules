@@ -965,6 +965,16 @@ return result;
               <canBeModified>true</canBeModified>
               <represents>data</represents>
             </childSetting>
+            <childSetting id="30b4ec7f-652e-4226-9aa9-e9252588a3e1" name="Inheritance" type="Domain Event Generalization Target End" typeId="1540252f-51ba-48e4-a7ad-f52ac32389e6" version="2.0.0">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <isTraversable>true</isTraversable>
+              <traversableTypes>
+                <mappingId>9d360937-0a83-474d-a1e3-8a19c1f4e29e</mappingId>
+              </traversableTypes>
+              <canBeModified>false</canBeModified>
+              <represents>data</represents>
+            </childSetting>
           </childSettings>
         </mapping>
       </targetMappings>
