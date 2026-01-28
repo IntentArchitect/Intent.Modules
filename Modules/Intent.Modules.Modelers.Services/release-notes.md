@@ -1,11 +1,11 @@
 ### Version 4.0.10
 
 - Improvement: Added AI rules to Services and Operations to help AI agents better understand how to effectively create them.
+- Improvement: Changed ordering of the Designer in the Solution Explorer so that appears after the Domain Designer.
 
 ### Version 4.0.9
 
 - Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
-- Improvement: Changed ordering of the Designer in the Solution Explorer so that appears after the Domain Designer.
 
 ### Version 4.0.8
 

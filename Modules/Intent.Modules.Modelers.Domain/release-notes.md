@@ -1,7 +1,10 @@
-﻿### Version 3.12.13
+﻿### Version 3.12.14
+
+- Improvement: Changed ordering of the Designer in the Solution Explorer so that appears first.
+
+### Version 3.12.13
 
 - Improvement: Documented standard rules for AI-implemented Domain model changes.
-- Improvement: Changed ordering of the Designer in the Solution Explorer so that appears first.
 
 ### Version 3.12.12
 
