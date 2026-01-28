@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="b83cda93-4843-4937-8adb-c90fd953f5f2" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+  <comment />
   <name>Operation Extension</name>
   <display>Operation Extension: Operation</display>
   <isAbstract>false</isAbstract>

@@ -1,3 +1,7 @@
+### Version 4.0.10
+
+- Improvement: Added AI rules to Services and Operations to help AI agents better understand how to effectively create them.
+
 ### Version 4.0.9
 
 - Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
