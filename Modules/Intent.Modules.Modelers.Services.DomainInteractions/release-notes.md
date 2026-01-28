@@ -1,3 +1,7 @@
+### Version 2.4.1
+
+- Fixed: Mapping system not correctly handling primary keys when working with inheritance.
+
 ### Version 2.4.0
 
 - Feature: Added suggestion to synchronize Commands/Queries/Service Operations with Domain Entity Attributes.

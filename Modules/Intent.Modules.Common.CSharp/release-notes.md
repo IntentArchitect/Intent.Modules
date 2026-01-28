@@ -1,4 +1,8 @@
-﻿### Version 3.10.0
+﻿### Version 3.10.1
+
+- Fixed: Mapping system not correctly handling primary keys when working with inheritance.
+
+### Version 3.10.0
 
 - Feature: Added support for templates to be able to accept changes manually applied to the codebase to be "reverse engineered" into Intent Architect designers.
 

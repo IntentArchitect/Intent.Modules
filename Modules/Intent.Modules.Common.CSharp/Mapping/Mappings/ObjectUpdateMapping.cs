@@ -148,6 +148,13 @@ public class ObjectUpdateMapping : CSharpMappingBase
         // get all elements on the target element (which is a primary key)
         var qualifyingMappings = Children.Select(c => c.Mapping).Where(m => m is not null && m.TargetElement.HasStereotype("Primary Key"));
 
+        // Check Generalization Target End
+        // if there was no qualifying mappings, check if inheritence is involved, and then look for primary keys on the children of the inheriting types
+        if (!qualifyingMappings.Any() && Children.Any(c => c.Model?.SpecializationTypeId == "4686cc1d-b4d8-4b99-b45b-f77bd5496946"))
+        {
+            qualifyingMappings = Children.SelectMany(c => c.Children).Select(c => c.Mapping).Where(m => m is not null && m.TargetElement.HasStereotype("Primary Key"));
+        }
+
         // return a default if there are no primary keys.
         if (!qualifyingMappings.Any())
         {
@@ -208,6 +215,18 @@ public class ObjectUpdateMapping : CSharpMappingBase
 
                 SetSourceReplacement(GetSourcePath().Last().Element, "dto");
                 SetTargetReplacement(GetTargetPath().Last().Element, "entity");
+
+                // this is to replace the ".base" which can appear in the target path when dealing with inheritance
+                foreach (var generalization in Children?.SelectMany(x => x?.Children)
+                    .Where(c => c.Mapping is not null)
+                    .Where(c => c.Mapping.TargetPath.Any(p => p?.SpecializationId == "4686cc1d-b4d8-4b99-b45b-f77bd5496946")))
+                {
+                    foreach(var generalizationMapping in generalization.Mapping.TargetPath.Where(p => p?.SpecializationId == "4686cc1d-b4d8-4b99-b45b-f77bd5496946"))
+                    {
+                        generalization.SetTargetReplacement(generalizationMapping.Element, "entity");
+                    }
+                }
+
                 method.AddStatements(Children.SelectMany(x => x.GetMappingStatements()).Select(x =>
                 {
                     return x is CSharpIfStatement or CSharpElseStatement ? x : x.WithSemicolon();
