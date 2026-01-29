@@ -1,6 +1,8 @@
 ### Version 2.4.1
 
 - Fixed: Mapping system not correctly handling primary keys when working with inheritance.
+- Fixed: Aggregate Association Mapping via IDs incorrectly displayed for certain aggregate associations.
+- Improvement: Mapping screen cosmetic change when Aggregate Association Mapping IDs are present by having a `link` icon.
 
 ### Version 2.4.0
 

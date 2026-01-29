@@ -11609,15 +11609,19 @@ return (targetElement.specialization != "Class Constructor" &amp;&amp; targetEle
               </childSettings>
             </childSetting>
             <childSetting id="c4cbd2c2-42c5-4877-a448-f449b1e03297" name="Set Aggregate Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd" version="2.0.0">
-              <filterFunction>function isAggregateRoot(possibleAggrEntity) {
-    let result = !possibleAggrEntity.getAssociations("Association")
-        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
-    return result;
+              <filterFunction>function isLookupNavigational(association) {
+    if (association.typeReference.isCollection) {
+        const otherEnd = association.getOtherEnd();
+        if (otherEnd.typeReference.isCollection) return true;
+        if (otherEnd.typeReference.isNullable &amp;&amp; !otherEnd.typeReference.isCollection) return true;
+    }
+
+    return false;
 }
 
 return element.getPackage().hasStereotype("Relational Database") &amp;&amp;
     element.typeReference.getType().getChildren("Attribute").some(x =&gt; x.hasStereotype("Primary Key")) &amp;&amp;
-    isAggregateRoot(element.typeReference.getType());</filterFunction>
+    isLookupNavigational(element);</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>false</isTraversable>
@@ -11639,7 +11643,7 @@ const name = keyAttr.getName();
 const type = keyAttr.typeReference.getType();
 const typeStr = (type.getDisplay() + "[*]" ?? "no type");
 
-return `${entity.getName()} ${pluralize(name)}: ${typeStr}`;</displayFunction>
+return `${entity.getName()}${pluralize(name)}: ${typeStr}`;</displayFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>false</isTraversable>
@@ -11653,20 +11657,24 @@ model.isCollection = true;
 return model;</overrideTypeReferenceFunction>
                   <canBeModified>false</canBeModified>
                   <represents>data</represents>
-                  <iconOverride type="UrlImagePath" source="data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KDTwhLS0gVXBsb2FkZWQgdG86IFNWRyBSZXBvLCB3d3cuc3ZncmVwby5jb20sIFRyYW5zZm9ybWVkIGJ5OiBTVkcgUmVwbyBNaXhlciBUb29scyAtLT4KPHN2ZyBmaWxsPSIjMmQ2NWFlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNTIgNTIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUyIDUyIiB4bWw6c3BhY2U9InByZXNlcnZlIiBzdHJva2U9IiMyZDY1YWUiPgoNPGcgaWQ9IlNWR1JlcG9fYmdDYXJyaWVyIiBzdHJva2Utd2lkdGg9IjAiLz4KDTxnIGlkPSJTVkdSZXBvX3RyYWNlckNhcnJpZXIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgoNPGcgaWQ9IlNWR1JlcG9faWNvbkNhcnJpZXIiPiA8Zz4gPHBhdGggZD0iTTE3LjIsMTEuNmgxNy42YzAuOSwwLDEuNi0wLjcsMS42LTEuNlY2LjhjMC0yLjYtMi4yLTQuOC00LjgtNC44SDIwLjRjLTIuNiwwLTQuOCwyLjItNC44LDQuOFYxMCBDMTUuNiwxMC45LDE2LjMsMTEuNiwxNy4yLDExLjZ6Ii8+IDxwYXRoIGQ9Ik00My42LDZINDJjLTAuNSwwLTAuOCwwLjMtMC44LDAuOFYxMGMwLDMuNS0yLjksNi40LTYuNCw2LjRIMTcuMmMtMy41LDAtNi40LTIuOS02LjQtNi40VjYuOCBDMTAuOCw2LjMsMTAuNSw2LDEwLDZIOC40Yy0yLjYsMC00LjgsMi4yLTQuOCw0Ljh2MzQuNGMwLDIuNiwyLjIsNC44LDQuOCw0LjhoMzUuMmMyLjYsMCw0LjgtMi4yLDQuOC00LjhWMTAuOCBDNDguNCw4LjIsNDYuMiw2LDQzLjYsNnogTTM3LjUsNDQuMWwtMSwxYy0wLjMsMC4zLTAuNywwLjMtMSwwbC02LjUtNi41Yy0xLjksMS4zLTQuMiwyLTYuNywxLjZjLTQuMi0wLjYtNy41LTQuMS03LjktOC4zIGMtMC42LTUuOCw0LjMtMTAuNywxMC4xLTEwLjFjNC4zLDAuNCw3LjcsMy43LDguMyw3LjljMC40LDIuNS0wLjMsNC45LTEuNiw2LjdsNi41LDYuNUMzNy44LDQzLjMsMzcuOCw0My43LDM3LjUsNDQuMXoiLz4gPHBhdGggZD0iTTIzLjUsMjQuOGMtMy41LDAtNi4zLDIuOS02LjMsNi4zYzAsMy41LDIuOCw2LjMsNi4zLDYuM2MzLjUsMCw2LjMtMi44LDYuMy02LjMgQzI5LjgsMjcuNiwyNywyNC44LDIzLjUsMjQuOHoiLz4gPC9nPiA8L2c+Cg08L3N2Zz4=" />
+                  <iconOverride type="FontAwesome" source="fa-link" />
                 </staticMappableSetting>
               </staticMappableSettings>
             </childSetting>
             <childSetting id="f34b39c7-c86d-4de1-85b7-287a85841c3f" name="Set Aggregate Association Source End" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58" version="2.0.0">
-              <filterFunction>function isAggregateRoot(possibleAggrEntity) {
-    let result = !possibleAggrEntity.getAssociations("Association")
-        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
-    return result;
+              <filterFunction>function isLookupNavigational(association) {
+    if (association.typeReference.isCollection) {
+        const otherEnd = association.getOtherEnd();
+        if (otherEnd.typeReference.isCollection) return true;
+        if (otherEnd.typeReference.isNullable &amp;&amp; !otherEnd.typeReference.isCollection) return true;
+    }
+
+    return false;
 }
 
 return element.getPackage().hasStereotype("Relational Database") &amp;&amp;
     element.typeReference.getType().getChildren("Attribute").some(x =&gt; x.hasStereotype("Primary Key")) &amp;&amp;
-    isAggregateRoot(element.typeReference.getType());</filterFunction>
+    isLookupNavigational(element);</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>false</isTraversable>
@@ -11688,7 +11696,7 @@ const name = keyAttr.getName();
 const type = keyAttr.typeReference.getType();
 const typeStr = (type.getDisplay() + "[*]" ?? "no type");
 
-return `${entity.getName()} ${pluralize(name)}: ${typeStr}`;</displayFunction>
+return `${entity.getName()}${pluralize(name)}: ${typeStr}`;</displayFunction>
                   <filterFunction>function isAggregateRoot(possibleAggrEntity) {
     let result = !possibleAggrEntity.getAssociations("Association")
         .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
@@ -11709,7 +11717,7 @@ model.isCollection = true;
 return model;</overrideTypeReferenceFunction>
                   <canBeModified>false</canBeModified>
                   <represents>data</represents>
-                  <iconOverride type="UrlImagePath" source="data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KDTwhLS0gVXBsb2FkZWQgdG86IFNWRyBSZXBvLCB3d3cuc3ZncmVwby5jb20sIFRyYW5zZm9ybWVkIGJ5OiBTVkcgUmVwbyBNaXhlciBUb29scyAtLT4KPHN2ZyBmaWxsPSIjMmQ2NWFlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNTIgNTIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUyIDUyIiB4bWw6c3BhY2U9InByZXNlcnZlIiBzdHJva2U9IiMyZDY1YWUiPgoNPGcgaWQ9IlNWR1JlcG9fYmdDYXJyaWVyIiBzdHJva2Utd2lkdGg9IjAiLz4KDTxnIGlkPSJTVkdSZXBvX3RyYWNlckNhcnJpZXIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgoNPGcgaWQ9IlNWR1JlcG9faWNvbkNhcnJpZXIiPiA8Zz4gPHBhdGggZD0iTTE3LjIsMTEuNmgxNy42YzAuOSwwLDEuNi0wLjcsMS42LTEuNlY2LjhjMC0yLjYtMi4yLTQuOC00LjgtNC44SDIwLjRjLTIuNiwwLTQuOCwyLjItNC44LDQuOFYxMCBDMTUuNiwxMC45LDE2LjMsMTEuNiwxNy4yLDExLjZ6Ii8+IDxwYXRoIGQ9Ik00My42LDZINDJjLTAuNSwwLTAuOCwwLjMtMC44LDAuOFYxMGMwLDMuNS0yLjksNi40LTYuNCw2LjRIMTcuMmMtMy41LDAtNi40LTIuOS02LjQtNi40VjYuOCBDMTAuOCw2LjMsMTAuNSw2LDEwLDZIOC40Yy0yLjYsMC00LjgsMi4yLTQuOCw0Ljh2MzQuNGMwLDIuNiwyLjIsNC44LDQuOCw0LjhoMzUuMmMyLjYsMCw0LjgtMi4yLDQuOC00LjhWMTAuOCBDNDguNCw4LjIsNDYuMiw2LDQzLjYsNnogTTM3LjUsNDQuMWwtMSwxYy0wLjMsMC4zLTAuNywwLjMtMSwwbC02LjUtNi41Yy0xLjksMS4zLTQuMiwyLTYuNywxLjZjLTQuMi0wLjYtNy41LTQuMS03LjktOC4zIGMtMC42LTUuOCw0LjMtMTAuNywxMC4xLTEwLjFjNC4zLDAuNCw3LjcsMy43LDguMyw3LjljMC40LDIuNS0wLjMsNC45LTEuNiw2LjdsNi41LDYuNUMzNy44LDQzLjMsMzcuOCw0My43LDM3LjUsNDQuMXoiLz4gPHBhdGggZD0iTTIzLjUsMjQuOGMtMy41LDAtNi4zLDIuOS02LjMsNi4zYzAsMy41LDIuOCw2LjMsNi4zLDYuM2MzLjUsMCw2LjMtMi44LDYuMy02LjMgQzI5LjgsMjcuNiwyNywyNC44LDIzLjUsMjQuOHoiLz4gPC9nPiA8L2c+Cg08L3N2Zz4=" />
+                  <iconOverride type="FontAwesome" source="fa-link" />
                 </staticMappableSetting>
               </staticMappableSettings>
             </childSetting>
@@ -12368,15 +12376,19 @@ return element.getParent("Class")?.id == mappingContext.targetElementId</isMappa
               <represents>data</represents>
             </childSetting>
             <childSetting id="dfad64c5-f363-48e2-b759-8c11a63d13e8" name="Set Aggregate Association Target End" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd" version="2.0.0">
-              <filterFunction>function isAggregateRoot(possibleAggrEntity) {
-    let result = !possibleAggrEntity.getAssociations("Association")
-        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
-    return result;
+              <filterFunction>function isLookupNavigational(association) {
+    if (association.typeReference.isCollection) {
+        const otherEnd = association.getOtherEnd();
+        if (otherEnd.typeReference.isCollection) return true;
+        if (otherEnd.typeReference.isNullable &amp;&amp; !otherEnd.typeReference.isCollection) return true;
+    }
+
+    return false;
 }
 
 return element.getPackage().hasStereotype("Relational Database") &amp;&amp;
     element.typeReference.getType().getChildren("Attribute").some(x =&gt; x.hasStereotype("Primary Key")) &amp;&amp;
-    isAggregateRoot(element.typeReference.getType());</filterFunction>
+    isLookupNavigational(element);</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>false</isTraversable>
@@ -12398,7 +12410,7 @@ const name = keyAttr.getName();
 const type = keyAttr.typeReference.getType();
 const typeStr = (type.getDisplay() + "[*]" ?? "no type");
 
-return `${entity.getName()} ${pluralize(name)}: ${typeStr}`;</displayFunction>
+return `${entity.getName()}${pluralize(name)}: ${typeStr}`;</displayFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>false</isTraversable>
@@ -12412,20 +12424,24 @@ model.isCollection = true;
 return model;</overrideTypeReferenceFunction>
                   <canBeModified>false</canBeModified>
                   <represents>data</represents>
-                  <iconOverride type="UrlImagePath" source="data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KDTwhLS0gVXBsb2FkZWQgdG86IFNWRyBSZXBvLCB3d3cuc3ZncmVwby5jb20sIFRyYW5zZm9ybWVkIGJ5OiBTVkcgUmVwbyBNaXhlciBUb29scyAtLT4KPHN2ZyBmaWxsPSIjMmQ2NWFlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNTIgNTIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUyIDUyIiB4bWw6c3BhY2U9InByZXNlcnZlIiBzdHJva2U9IiMyZDY1YWUiPgoNPGcgaWQ9IlNWR1JlcG9fYmdDYXJyaWVyIiBzdHJva2Utd2lkdGg9IjAiLz4KDTxnIGlkPSJTVkdSZXBvX3RyYWNlckNhcnJpZXIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgoNPGcgaWQ9IlNWR1JlcG9faWNvbkNhcnJpZXIiPiA8Zz4gPHBhdGggZD0iTTE3LjIsMTEuNmgxNy42YzAuOSwwLDEuNi0wLjcsMS42LTEuNlY2LjhjMC0yLjYtMi4yLTQuOC00LjgtNC44SDIwLjRjLTIuNiwwLTQuOCwyLjItNC44LDQuOFYxMCBDMTUuNiwxMC45LDE2LjMsMTEuNiwxNy4yLDExLjZ6Ii8+IDxwYXRoIGQ9Ik00My42LDZINDJjLTAuNSwwLTAuOCwwLjMtMC44LDAuOFYxMGMwLDMuNS0yLjksNi40LTYuNCw2LjRIMTcuMmMtMy41LDAtNi40LTIuOS02LjQtNi40VjYuOCBDMTAuOCw2LjMsMTAuNSw2LDEwLDZIOC40Yy0yLjYsMC00LjgsMi4yLTQuOCw0Ljh2MzQuNGMwLDIuNiwyLjIsNC44LDQuOCw0LjhoMzUuMmMyLjYsMCw0LjgtMi4yLDQuOC00LjhWMTAuOCBDNDguNCw4LjIsNDYuMiw2LDQzLjYsNnogTTM3LjUsNDQuMWwtMSwxYy0wLjMsMC4zLTAuNywwLjMtMSwwbC02LjUtNi41Yy0xLjksMS4zLTQuMiwyLTYuNywxLjZjLTQuMi0wLjYtNy41LTQuMS03LjktOC4zIGMtMC42LTUuOCw0LjMtMTAuNywxMC4xLTEwLjFjNC4zLDAuNCw3LjcsMy43LDguMyw3LjljMC40LDIuNS0wLjMsNC45LTEuNiw2LjdsNi41LDYuNUMzNy44LDQzLjMsMzcuOCw0My43LDM3LjUsNDQuMXoiLz4gPHBhdGggZD0iTTIzLjUsMjQuOGMtMy41LDAtNi4zLDIuOS02LjMsNi4zYzAsMy41LDIuOCw2LjMsNi4zLDYuM2MzLjUsMCw2LjMtMi44LDYuMy02LjMgQzI5LjgsMjcuNiwyNywyNC44LDIzLjUsMjQuOHoiLz4gPC9nPiA8L2c+Cg08L3N2Zz4=" />
+                  <iconOverride type="FontAwesome" source="fa-link" />
                 </staticMappableSetting>
               </staticMappableSettings>
             </childSetting>
             <childSetting id="5b04fd79-138b-4299-97b3-fde0a5940065" name="Set Aggregate Association Source End" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58" version="2.0.0">
-              <filterFunction>function isAggregateRoot(possibleAggrEntity) {
-    let result = !possibleAggrEntity.getAssociations("Association")
-        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
-    return result;
+              <filterFunction>function isLookupNavigational(association) {
+    if (association.typeReference.isCollection) {
+        const otherEnd = association.getOtherEnd();
+        if (otherEnd.typeReference.isCollection) return true;
+        if (otherEnd.typeReference.isNullable &amp;&amp; !otherEnd.typeReference.isCollection) return true;
+    }
+
+    return false;
 }
 
 return element.getPackage().hasStereotype("Relational Database") &amp;&amp;
     element.typeReference.getType().getChildren("Attribute").some(x =&gt; x.hasStereotype("Primary Key")) &amp;&amp;
-    isAggregateRoot(element.typeReference.getType());</filterFunction>
+    isLookupNavigational(element);</filterFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
               <isTraversable>false</isTraversable>
@@ -12447,7 +12463,7 @@ const name = keyAttr.getName();
 const type = keyAttr.typeReference.getType();
 const typeStr = (type.getDisplay() + "[*]" ?? "no type");
 
-return `${entity.getName()} ${pluralize(name)}: ${typeStr}`;</displayFunction>
+return `${entity.getName()}${pluralize(name)}: ${typeStr}`;</displayFunction>
                   <allowMultipleMappings>true</allowMultipleMappings>
                   <isMappableFunction>return true;</isMappableFunction>
                   <isTraversable>false</isTraversable>
@@ -12461,7 +12477,7 @@ model.isCollection = true;
 return model;</overrideTypeReferenceFunction>
                   <canBeModified>false</canBeModified>
                   <represents>data</represents>
-                  <iconOverride type="UrlImagePath" source="data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KDTwhLS0gVXBsb2FkZWQgdG86IFNWRyBSZXBvLCB3d3cuc3ZncmVwby5jb20sIFRyYW5zZm9ybWVkIGJ5OiBTVkcgUmVwbyBNaXhlciBUb29scyAtLT4KPHN2ZyBmaWxsPSIjMmQ2NWFlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgNTIgNTIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUyIDUyIiB4bWw6c3BhY2U9InByZXNlcnZlIiBzdHJva2U9IiMyZDY1YWUiPgoNPGcgaWQ9IlNWR1JlcG9fYmdDYXJyaWVyIiBzdHJva2Utd2lkdGg9IjAiLz4KDTxnIGlkPSJTVkdSZXBvX3RyYWNlckNhcnJpZXIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgoNPGcgaWQ9IlNWR1JlcG9faWNvbkNhcnJpZXIiPiA8Zz4gPHBhdGggZD0iTTE3LjIsMTEuNmgxNy42YzAuOSwwLDEuNi0wLjcsMS42LTEuNlY2LjhjMC0yLjYtMi4yLTQuOC00LjgtNC44SDIwLjRjLTIuNiwwLTQuOCwyLjItNC44LDQuOFYxMCBDMTUuNiwxMC45LDE2LjMsMTEuNiwxNy4yLDExLjZ6Ii8+IDxwYXRoIGQ9Ik00My42LDZINDJjLTAuNSwwLTAuOCwwLjMtMC44LDAuOFYxMGMwLDMuNS0yLjksNi40LTYuNCw2LjRIMTcuMmMtMy41LDAtNi40LTIuOS02LjQtNi40VjYuOCBDMTAuOCw2LjMsMTAuNSw2LDEwLDZIOC40Yy0yLjYsMC00LjgsMi4yLTQuOCw0Ljh2MzQuNGMwLDIuNiwyLjIsNC44LDQuOCw0LjhoMzUuMmMyLjYsMCw0LjgtMi4yLDQuOC00LjhWMTAuOCBDNDguNCw4LjIsNDYuMiw2LDQzLjYsNnogTTM3LjUsNDQuMWwtMSwxYy0wLjMsMC4zLTAuNywwLjMtMSwwbC02LjUtNi41Yy0xLjksMS4zLTQuMiwyLTYuNywxLjZjLTQuMi0wLjYtNy41LTQuMS03LjktOC4zIGMtMC42LTUuOCw0LjMtMTAuNywxMC4xLTEwLjFjNC4zLDAuNCw3LjcsMy43LDguMyw3LjljMC40LDIuNS0wLjMsNC45LTEuNiw2LjdsNi41LDYuNUMzNy44LDQzLjMsMzcuOCw0My43LDM3LjUsNDQuMXoiLz4gPHBhdGggZD0iTTIzLjUsMjQuOGMtMy41LDAtNi4zLDIuOS02LjMsNi4zYzAsMy41LDIuOCw2LjMsNi4zLDYuM2MzLjUsMCw2LjMtMi44LDYuMy02LjMgQzI5LjgsMjcuNiwyNywyNC44LDIzLjUsMjQuOHoiLz4gPC9nPiA8L2c+Cg08L3N2Zz4=" />
+                  <iconOverride type="FontAwesome" source="fa-link" />
                 </staticMappableSetting>
               </staticMappableSettings>
             </childSetting>
