@@ -1,3 +1,7 @@
+### Version 1.0.6
+
+- Improvement: Updated designer ordering to appear after the Services designer.
+
 ### Version 1.0.5
 
 - Improvement: "Add to Sider menu" suggestions now only shows when there is a sider menu present.

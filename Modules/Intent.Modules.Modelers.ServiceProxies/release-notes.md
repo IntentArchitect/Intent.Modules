@@ -1,4 +1,8 @@
-﻿### Version 5.2.4
+﻿### Version 5.2.5
+
+- Improvement: Updated designer ordering to appear after the Services designer.
+
+### Version 5.2.4
 
 - Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
 
