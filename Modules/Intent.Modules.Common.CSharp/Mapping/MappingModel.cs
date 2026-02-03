@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using Intent.Exceptions;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 
@@ -63,28 +65,27 @@ public class MappingModel
         Mapping = matchedMapping.SingleOrDefault();
         Children = mappings.Where(x => x.TargetPath.Count > level)
             .GroupBy(x => x.TargetPath.Skip(level).First(), x => x)
-            .Select(x =>
+            .Select(mapPathTargetElement =>
             {
                 // Instead of the ugly "Null Reference Exception" we throw a more meaningful error
                 // when a mapping target is missing
-                if (x.Key.Element == null)
+                if (mapPathTargetElement.Key.Element == null)
                 {
-                    var staleMappings = x.ToList();
-                    var sourcePath = staleMappings.FirstOrDefault()?.SourcePath;
-                    var sourcePathDisplay = sourcePath != null 
-                        ? string.Join(" -> ", sourcePath.Select(p => $"{p.Element?.Name ?? "[DELETED]"} [{p.Element?.Id ?? "N/A"}]"))
-                        : "[Unknown]";
+                    var messageBuilder = new StringBuilder();
+                    var curLevelMappings = mapPathTargetElement.ToList();
 
-                    throw new Exception(
-                        $"""
-                         Target element is missing in mapping. Please review the following details to identify and fix the stale mapping:
-                         Mapping Type: {mappingType} [{mappingTypeId}]
-                         Current Target: {model.Name} [{model.Id}]
-                         Source Path: {sourcePathDisplay}
-                         Affected Mappings: {staleMappings.Count}
-                         """);
+                    messageBuilder.AppendLine("Mapping errors detected:");
+                    foreach (var mappedEnd in curLevelMappings)
+                    {
+                        if (mappedEnd.TargetElement is null)
+                        {
+                            messageBuilder.AppendLine($"Mapping target '{String.Join(".", mappedEnd.TargetPath.Select(x => x.Name))}' cound not be found.");
+                        }
+                    }
+
+                    throw new FriendlyException(messageBuilder.ToString());
                 }
-                return new MappingModel(mappingType, mappingTypeId, x.Key.Element, x.ToList(), manager, level + 1);
+                return new MappingModel(mappingType, mappingTypeId, mapPathTargetElement.Key.Element, mapPathTargetElement.ToList(), manager, level + 1);
             })
             .OrderBy(x => ((IElement)x.Model).Order)
             .ToList();
