@@ -63,7 +63,29 @@ public class MappingModel
         Mapping = matchedMapping.SingleOrDefault();
         Children = mappings.Where(x => x.TargetPath.Count > level)
             .GroupBy(x => x.TargetPath.Skip(level).First(), x => x)
-            .Select(x => new MappingModel(mappingType, mappingTypeId, x.Key.Element, x.ToList(), manager, level + 1))
+            .Select(x =>
+            {
+                // Instead of the ugly "Null Reference Exception" we throw a more meaningful error
+                // when a mapping target is missing
+                if (x.Key.Element == null)
+                {
+                    var staleMappings = x.ToList();
+                    var sourcePath = staleMappings.FirstOrDefault()?.SourcePath;
+                    var sourcePathDisplay = sourcePath != null 
+                        ? string.Join(" -> ", sourcePath.Select(p => $"{p.Element?.Name ?? "[DELETED]"} [{p.Element?.Id ?? "N/A"}]"))
+                        : "[Unknown]";
+
+                    throw new Exception(
+                        $"""
+                         Target element is missing in mapping. Please review the following details to identify and fix the stale mapping:
+                         Mapping Type: {mappingType} [{mappingTypeId}]
+                         Current Target: {model.Name} [{model.Id}]
+                         Source Path: {sourcePathDisplay}
+                         Affected Mappings: {staleMappings.Count}
+                         """);
+                }
+                return new MappingModel(mappingType, mappingTypeId, x.Key.Element, x.ToList(), manager, level + 1);
+            })
             .OrderBy(x => ((IElement)x.Model).Order)
             .ToList();
         foreach (var child in Children)

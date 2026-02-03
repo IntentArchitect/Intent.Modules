@@ -1,5 +1,6 @@
 ﻿### Version 3.10.1
 
+- Improvement: Mappings with missing target elements will have a better looking exception.
 - Fixed: Mapping system not correctly handling primary keys when working with inheritance.
 
 ### Version 3.10.0
