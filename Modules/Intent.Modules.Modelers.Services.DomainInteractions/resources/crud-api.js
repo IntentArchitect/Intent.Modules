@@ -1724,35 +1724,107 @@ Compositional Entities (black diamond) must have 1 owner. Please adjust the asso
         }
     }
     createQueryMappingEnds(source, projector) {
+        console.log(`[createQueryMappingEnds] Starting - source: ${source.getName()}, projector: ${projector != null ? 'provided' : 'null'}`);
         let queryMappingEnds = [];
+        const foundPkIds = new Set();
+        // Phase 1: Try to find PKs in projector mappings (if projector exists)
         if (projector != null) {
-            // Use the projector's existing mappings to find the DTO field that maps to each primary key
-            const projectorMappings = projector.getMappings();
-            for (const pk of Object.values(this.primaryKeys)) {
-                // Find a mapping that targets this primary key in the entity
-                const matchingMapping = projectorMappings.find(m => m.type === MappingType.Navigation &&
-                    m.targetPath[m.targetPath.length - 1] === pk.id);
-                if (matchingMapping != null) {
-                    // Use the mapping we found
-                    queryMappingEnds.push({
-                        type: MappingType.Navigation,
-                        sourcePath: matchingMapping.sourcePath,
-                        targetPath: pk.mapPath,
-                        targetPropertyStart: pk.mapPath[0]
-                    });
-                }
-            }
+            this.findPksInProjector(projector, queryMappingEnds, foundPkIds);
         }
-        else {
-            // Fallback to original behavior when projector is not provided
-            for (const pk of Object.values(this.primaryKeys)) {
-                var dtoField = source.getChildren().find(x => x.getName() == pk.name);
-                if (dtoField != null) {
-                    queryMappingEnds.push({ type: MappingType.Navigation, sourcePath: [dtoField.id], targetPath: pk.mapPath, targetPropertyStart: pk.mapPath[0] });
-                }
-            }
+        // Phase 2: Fallback for any missing PKs
+        const missingPks = Object.values(this.primaryKeys).filter(pk => !foundPkIds.has(pk.id));
+        if (missingPks.length > 0) {
+            this.findMissingPksInSource(source, missingPks, queryMappingEnds, foundPkIds);
         }
+        console.log(`[createQueryMappingEnds] Completed - created ${queryMappingEnds.length} query mapping ends`);
         return queryMappingEnds;
+    }
+    findPksInProjector(projector, queryMappingEnds, foundPkIds) {
+        console.log(`[createQueryMappingEnds] Using projector path`);
+        const projectorMappings = projector.getMappings();
+        console.log(`[createQueryMappingEnds] Projector mappings count: ${projectorMappings.length}`);
+        if (projectorMappings.length > 0) {
+            console.log(`[createQueryMappingEnds] Projector mappings details:`);
+            projectorMappings.forEach((m, idx) => {
+                console.log(`  Mapping ${idx}: type=${m.type}, sourcePath=[${m.sourcePath.map(id => { var _a; return (_a = lookup(id)) === null || _a === void 0 ? void 0 : _a.getName(); }).join('.')}], targetPath=[${m.targetPath.map(id => { var _a; return (_a = lookup(id)) === null || _a === void 0 ? void 0 : _a.getName(); }).join('.')}], last targetPath ID=${m.targetPath[m.targetPath.length - 1]}`);
+            });
+        }
+        for (const pk of Object.values(this.primaryKeys)) {
+            console.log(`[createQueryMappingEnds] Processing PK: ${pk.name} (id: ${pk.id})`);
+            const matchingMapping = projectorMappings.find(m => m.type === MappingType.Navigation &&
+                m.targetPath[m.targetPath.length - 1] === pk.id);
+            if (matchingMapping != null) {
+                console.log(`[createQueryMappingEnds] Found matching mapping for PK ${pk.name}, sourcePath: [${matchingMapping.sourcePath.map(id => { var _a; return (_a = lookup(id)) === null || _a === void 0 ? void 0 : _a.getName(); }).join('.')}]`);
+                queryMappingEnds.push({
+                    type: MappingType.Navigation,
+                    sourcePath: matchingMapping.sourcePath,
+                    targetPath: pk.mapPath,
+                    targetPropertyStart: pk.mapPath[0]
+                });
+                foundPkIds.add(pk.id);
+            }
+            else {
+                console.warn(`[createQueryMappingEnds] No matching mapping found for PK ${pk.name} in projector`);
+            }
+        }
+    }
+    findMissingPksInSource(source, missingPks, queryMappingEnds, foundPkIds) {
+        var _a;
+        console.log(`[createQueryMappingEnds] Falling back to source lookup for ${missingPks.length} missing PKs`);
+        const children = source.getChildren();
+        console.log(`[createQueryMappingEnds] Source has ${children.length} children: ${children.map(c => c.getName()).join(', ')}`);
+        for (const pk of missingPks) {
+            console.log(`[createQueryMappingEnds] Processing PK via fallback: ${pk.name} (id: ${pk.id})`);
+            // Try mapping-based lookup first, then name-based as final fallback
+            const dtoField = (_a = this.findFieldByMapping(children, pk)) !== null && _a !== void 0 ? _a : this.findFieldByName(children, pk);
+            if (dtoField != null) {
+                console.log(`[createQueryMappingEnds] Found DTO field via fallback: ${dtoField.getName()}`);
+                queryMappingEnds.push({
+                    type: MappingType.Navigation,
+                    sourcePath: [dtoField.id],
+                    targetPath: pk.mapPath,
+                    targetPropertyStart: pk.mapPath[0]
+                });
+                foundPkIds.add(pk.id);
+            }
+            else {
+                console.warn(`[createQueryMappingEnds] DTO field not found for PK ${pk.name}`);
+            }
+        }
+    }
+    findFieldByMapping(children, pk) {
+        return children.find(child => {
+            if (this.isAssociation(child) || !child.isMapped()) {
+                return false;
+            }
+            const path = child.getMapping().getPath();
+            if (path && path.length > 0) {
+                const matches = path[path.length - 1].id === pk.id;
+                if (matches) {
+                    console.log(`[createQueryMappingEnds] Found field ${child.getName()} with existing mapping to PK`);
+                }
+                return matches;
+            }
+            return false;
+        });
+    }
+    findFieldByName(children, pk) {
+        console.log(`[createQueryMappingEnds] Trying name-based lookup`);
+        const pkNameNormalized = pk.name.toLowerCase().replace(/_/g, '');
+        return children.find(child => {
+            if (this.isAssociation(child)) {
+                return false;
+            }
+            const childNameNormalized = child.getName().toLowerCase().replace(/_/g, '');
+            const matches = childNameNormalized === pkNameNormalized;
+            if (matches) {
+                console.log(`[createQueryMappingEnds] Found field by name: ${child.getName()} matches ${pk.name}`);
+            }
+            return matches;
+        });
+    }
+    isAssociation(element) {
+        return typeof element.isTargetEnd === "function";
     }
     getOrCreateDiagram(diagramFolder) {
         var _a;
