@@ -2274,6 +2274,10 @@ async function presentSyncDialog(rootSourceElement, workingSourceElement, rootTa
     const rootLabel = rootSourceElement.specialization === "Operation"
         ? `${rootSourceElement.getName()} (${rootSourceElement.specialization})`
         : workingSourceElement.getName();
+    // Default them to be selected
+    treeNodes.forEach(x => {
+        x.isSelected = true;
+    });
     console.log(`[DIALOG] rootSourceElement: ${JSON.stringify(rootSourceElement)}`);
     console.log(`[DIALOG] treeNodes: ${JSON.stringify(treeNodes.map(x => {
         return {
@@ -2306,7 +2310,7 @@ async function presentSyncDialog(rootSourceElement, workingSourceElement, rootTa
                         specializationId: "discrepancy",
                         children: treeNodes,
                         isExpanded: true,
-                        isSelected: false,
+                        isSelected: true,
                         icon: rootElement.getIcon()
                     },
                     height: "400px",
