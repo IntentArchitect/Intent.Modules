@@ -1,4 +1,8 @@
-﻿### Version 3.18.3
+﻿### Version 3.18.4
+
+- Fixed: `File Extension` on the `File Settings` stereotype would incorrectly show a validation error when not filled in.
+
+### Version 3.18.3
 
 - Fixed: A possible null reference exception could occur when serializing certain diagram settings in some edge cases.
 

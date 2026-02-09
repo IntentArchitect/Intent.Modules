@@ -84,10 +84,10 @@ return `[.${this.properties['File Extension'].value}]`;</displayFunction>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder>(required)</placeholder>
+      <placeholder>(optional)</placeholder>
       <defaultValue>txt</defaultValue>
       <isActiveFunction>return TemplatingMethod !== "Data File Builder" || DataFileOutputType === "Custom";</isActiveFunction>
-      <isRequiredFunction>return true;</isRequiredFunction>
+      <isRequiredFunction>return false;</isRequiredFunction>
     </property>
   </properties>
 </stereotypeDefinition>
