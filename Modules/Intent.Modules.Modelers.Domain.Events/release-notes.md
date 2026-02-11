@@ -1,3 +1,7 @@
+### Version 4.4.7
+
+- Fixed: User is now prompted to save the domain designer first when creating a domain event handler.
+
 ### Version 4.4.6
 
 - Improvement: Domain Event mapping now supports mapping from inherited properties.
