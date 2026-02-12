@@ -59,6 +59,21 @@ When exposing the item as a file upload endpoint, the following configuration is
 
 ![Http Upload Endpoint](images/http-upload.png)
 
+### Adding Additional Parameters to File Upload Endpoints
+
+When creating a file upload endpoint, you may need to pass additional information alongside the file being uploaded (such as metadata, identifiers, or configuration options). These additional parameters can be manually added to the endpoint, but they must be configured as either `Query` or `Route` parameters.
+
+![File upload parameter](images/file-upload-param.png)
+
+#### Why Query or Route Parameters Only?
+
+This restriction exists because file upload endpoints use the HTTP request body to transmit the file content itself. Since the body is already occupied by the file stream, additional parameters cannot be sent via the body. The two remaining options for passing parameters are:
+
+- **Route Parameters**: Embedded directly in the URL path (e.g., `/api/products/{productId}/upload-product-file`).
+- **Query Parameters**: Appended to the URL as key-value pairs (e.g., `/api/products/upload-product-file?productId=43267823&priority=high`).
+
+This ensures that the file content and any supplementary data can be transmitted together in a single HTTP request without conflicts.
+
 ## Configure an HTTP Endpoint
 
 ### Configuring Route Parameters
