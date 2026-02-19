@@ -23,7 +23,7 @@
     <install target="Domain;Module Builder" src="Metadata/Domain/Intent.Metadata.RDBMS.pkg.config" externalReference="AF8F3810-745C-42A2-93C8-798860DC45B1" />
     <install src="modelers/RDBMS Types.designer.settings" externalReference="1f1dbe49-766a-44f8-bf58-6c9fd5e4e9c5" target="Domain" />
     <install target="Domain" src="modelers/RDBMS Key Automation Extensions.designer.settings" externalReference="ee1b6efd-1cc6-441c-a50e-edc50f5ac6a3" />
-    <install target="Domain" src="modelers/RDBMS Introduce Link Entity Automation Extensions.designer.settings" externalReference="1b728352-8249-4290-a08e-cc256f2693e4" />
+    <install target="Domain" src="modelers/RDBMS Convert to Intermediate Entity Automation Extensions.designer.settings" externalReference="1b728352-8249-4290-a08e-cc256f2693e4" />
   </metadata>
   <moduleSettings>
     <group id="ac0a788e-d8b3-4eea-b56d-538608f1ded9" title="Database Settings" externalReference="ac0a788e-d8b3-4eea-b56d-538608f1ded9" type="application-settings">

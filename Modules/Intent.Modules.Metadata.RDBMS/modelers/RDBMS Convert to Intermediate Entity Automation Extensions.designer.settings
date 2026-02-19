@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <settings version="3.1.1">
   <id>1b728352-8249-4290-a08e-cc256f2693e4</id>
-  <name>RDBMS Introduce Link Entity Automation Extensions</name>
+  <name>RDBMS Convert to Intermediate Entity Automation Extensions</name>
   <designerReferences />
   <packageSettings />
   <packageExtensions />

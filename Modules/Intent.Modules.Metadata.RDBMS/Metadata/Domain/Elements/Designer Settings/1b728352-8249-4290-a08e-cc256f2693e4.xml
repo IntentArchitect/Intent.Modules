@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="1b728352-8249-4290-a08e-cc256f2693e4" type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
-  <name>RDBMS Introduce Link Entity Automation Extensions</name>
-  <display>RDBMS Introduce Link Entity Automation Extensions</display>
+  <name>RDBMS Convert to Intermediate Entity Automation Extensions</name>
+  <display>RDBMS Convert to Intermediate Entity Automation Extensions</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
