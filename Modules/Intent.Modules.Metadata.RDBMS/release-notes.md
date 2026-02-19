@@ -1,3 +1,7 @@
+### Version 3.7.12
+
+- Improvement: Added `Convert to Intermediate Entity` suggestion to convert many-to-many associations into explicit intermediate entities.
+
 ### Version 3.7.11
 
 - Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
