@@ -114,6 +114,28 @@ Once applied, the following property can be set:
 
 ![Join Table](images/join-table.png)
 
+### Convert to Intermediate Entity
+
+You can convert a `many-to-many` association into an explicit intermediate (join) entity using the `Convert to Intermediate Entity` macro.
+
+![Suggestion: Convert to Intermediate Entity](images/suggestion-convert-intermediate-entity.png)
+
+1. Hover over an association until a Suggestion icon shows up.
+2. Select `Convert to Intermediate Entity`.
+
+This action will:
+
+![Converted Intermediate Entity](images/converted-intermediate-entity.png)
+
+- Create a new `Entity` representing the "linking Entity" (join table), positioned between the two related entities (if they are visible on the diagram).
+- Replace the `many-to-many` association with two `many-to-one` associations from the intermediate entity to the original entities.
+- If the original association had a `Join Table` stereotype with a table name specified, a `Table` stereotype will be applied to the new intermediate entity with that name.
+
+This is useful when you need explicit control over the join table structure, such as adding additional columns, indexes, or constraints to the join table.
+
+> [!NOTE]  
+> This will mean that if you remove an instance of either original entities you will need to explicitly remove the appropriate Intermediate Entity instance first.
+
 ## Configure SQL Column specifics
 
 ### Modify Column Type
