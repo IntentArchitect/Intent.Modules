@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings version="3.1.1">
+  <id>1b728352-8249-4290-a08e-cc256f2693e4</id>
+  <name>RDBMS Introduce Link Entity Automation Extensions</name>
+  <designerReferences />
+  <packageSettings />
+  <packageExtensions />
+  <elementSettings />
+  <elementExtensions />
+  <associationSettings />
+  <associationExtensions />
+  <mappingSettings />
+  <mappableElementPackages />
+  <mappableElementPackageExtensions />
+  <suggestionSettings>
+    <suggestionSetting type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd" locations="diagram, model">
+      <name>Convert to Intermediate Entity</name>
+      <filterFunction>return element?.typeReference?.getIsCollection() &amp;&amp; element?.getOtherEnd()?.typeReference?.getIsCollection();</filterFunction>
+      <dependencies>
+        <dependency name="Convert to Intermediate Entity" id="9c55582d-2a5d-40fe-b4c2-88999285285e" />
+      </dependencies>
+      <script>await convertIntermediateEntity(element);</script>
+    </suggestionSetting>
+  </suggestionSettings>
+  <scripts>
+    <script name="Convert to Intermediate Entity" id="9c55582d-2a5d-40fe-b4c2-88999285285e">
+      <filePath>intermediate-entity.js</filePath>
+    </script>
+  </scripts>
+</settings>

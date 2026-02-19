@@ -154,6 +154,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>cb5bb8ab-1a66-4abe-945c-a843e36cb839</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#1b728352-8249-4290-a08e-cc256f2693e4</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/RDBMS Introduce Link Entity Automation Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>RDBMS Introduce Link Entity Automation Extensions.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>cb5bb8ab-1a66-4abe-945c-a843e36cb839</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#ee1b6efd-1cc6-441c-a50e-edc50f5ac6a3</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/RDBMS Key Automation Extensions.designer.settings</ApplicationRelativeFilePath>

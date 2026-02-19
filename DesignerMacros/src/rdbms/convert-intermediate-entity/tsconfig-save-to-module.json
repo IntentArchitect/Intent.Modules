@@ -1,0 +1,16 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "outFile": "../../../../Modules/Intent.Modules.Metadata.RDBMS/resources/intermediate-entity.js",
+    "removeComments": false,
+    "sourceMap": false,
+    "target": "ES2019",
+    "types": []
+  },
+  "include": [
+    "**/*"
+  ],
+  "exclude": []
+}
