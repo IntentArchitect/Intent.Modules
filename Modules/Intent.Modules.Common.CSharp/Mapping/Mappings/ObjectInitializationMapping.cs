@@ -43,7 +43,11 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 return $"{GetSourcePathText()}";
             }
 
-            if (Model.TypeReference.IsCollection)
+            // Add an additional check here to only do the SelectToListMapping if the parent element
+            // is not null and is not a folder. If the parent is null or the parent is a folder, then Model is a property and the
+            // mapping should take place. It is skipped if it is the main mapping.
+            if (Model.TypeReference.IsCollection && Model is IElement element && element?.ParentElement is not null
+                && element?.ParentElement.SpecializationTypeId != "4d95d53a-8855-4f35-aa82-e312643f5c5f")
             {
                 var m = new SelectToListMapping(_mappingModel, _template)
                 {
