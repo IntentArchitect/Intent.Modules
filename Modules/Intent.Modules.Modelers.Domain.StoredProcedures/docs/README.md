@@ -11,7 +11,7 @@ Stored procedures are exposed through `Repository` element types on the designer
 
 ## Creating a stored procedure
 
-On a `Repository` and `Package` and `Folder` elements you can create `Stored Procedure` element:
+On a `Repository`, `Package` or `Folder` element you can create `Stored Procedure` element:
 
 ![Add Stored Procedure context menu option](images/add-stored-procedure-context-menu-option.png)
 
@@ -37,9 +37,19 @@ A `Stored Procedure Parameter` has the following properties:
 - **Is Collection** - Whether the type's value is a set of values.
 - **Is Output Parameter** - Whether it is an output parameter, i.e. not an input.
 
-## Mapping Stored Procedure Invocations
+## Linking an Operation to Stored Procedure
 
-When a `Stored Procedure` has output parameters you may need to create an invocation mapping to it from an `Operation` on a `Repository` in order to be able to access all the returned data.
+### Stored Procedure Stereotype
+
+When a `Stored Procedure` has **no** output parameters, you can apply the the `Stored Procedure` stereotype to an `Operation` to indicate the Stored Procedure it invokes.
+
+![Stored Procedure Stereotype](images/stored-procedure-stereotype.png)
+
+Using this approach, the `Operation` will invoke the `Stored Procedure` specified in the stereotype, with the operation's parameter values passed to the Stored Procedure as arguments, in the specified order.
+
+### Mapping Stored Procedure Invocations
+
+When a `Stored Procedure` has output parameters - or if you want to explicitly control how data is mapped between the `Operation` and `Stored Procedure` - create an invocation mapping to it from an `Operation` on a `Repository`. This allows you to access and map all returned values.
 
 For example, consider the following stored procedure which will return the sum of two numbers and has an output parameter which contains the product of them:
 
@@ -57,7 +67,6 @@ To be able to use both returned results, we will want to model an `Operation` on
 2. Create an `Operation` on the `Repository`, setting its return type to the `Data Contract` and adding input parameters:
 
   ![GetSumAndProductOperation](images/get-sum-and-product-operation.png)
-
 3. On the `Operation` use the _Map to Stored Procedure_ context menu option:
 
   ![Map to Stored Procedure context menu option](images/map-to-stored-procedure-context-menu-option.png)
