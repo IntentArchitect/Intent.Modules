@@ -30,6 +30,8 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
         {
             AddNugetDependency(IntentNugetPackages.IntentModulesCommonTypeScript);
 
+            var templateName = $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
+            
             CSharpFile = new CSharpFile($"{OutputTarget.GetNamespace()}.{FolderNamespace}", this.GetFolderPath())
                 .AddUsing("System")
                 .AddUsing("System.Collections.Generic")
@@ -39,7 +41,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
                 .AddUsing("Intent.Modules.Common.TypeScript.Templates")
                 .AddUsing("Intent.RoslynWeaver.Attributes")
                 .AddUsing("Intent.Templates")
-                .AddClass($"{Model.Name}", @class =>
+                .AddClass(templateName, @class =>
                 {
                     @class.AddAttribute("[IntentManaged(Mode.Merge, Signature = Mode.Fully)]");
 

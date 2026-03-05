@@ -1,3 +1,8 @@
+### Version 3.5.5
+
+- Fixed: TypeScript Template Class name will ensure a `Template` suffix.
+- Fixed: Generated code will also work out the box with latest dependencies.
+
 ### Version 3.5.4
 
 - Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
