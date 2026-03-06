@@ -1,4 +1,8 @@
-﻿### Version 5.5.3
+﻿### Version 5.5.4
+
+- Improvement: `Service Proxies` can now be created on a Service Package level.
+
+### Version 5.5.3
 
 - Improvement: Refactored `Service Proxies Package` metadata into this module, from the `Intent.Modelers.ServiceProxies` module
 
@@ -9,7 +13,7 @@
 ### Version 5.5.1
 
 - Improvement: Will now also recognize the UI designer's "Call Service Operation" associations to HTTP exposed endpoints such as Command's Queries and Service Operations.
-- Fixed: When more than one "Perform Invocation" was targetting the same HTTP endpoint an exception would occur.
+- Fixed: When more than one "Perform Invocation" was targeting the same HTTP endpoint an exception would occur.
 
 ### Version 5.5.0
 

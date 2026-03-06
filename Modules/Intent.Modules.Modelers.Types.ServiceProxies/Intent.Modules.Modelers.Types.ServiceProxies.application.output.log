@@ -96,5 +96,13 @@
       <ProjectRelativeFilePath>Service Proxy Types.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
+    <FileLog>
+      <ProjectId>c15021d7-d580-4a7a-b775-641d224323eb</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#8a3de38f-7c40-4f91-a706-3f3baf62c16a</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>ServicesPackageExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ServicesPackageExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
   </FileLogs>
 </outputLog>
