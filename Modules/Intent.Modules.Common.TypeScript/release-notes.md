@@ -1,3 +1,7 @@
+### Version 4.1.5
+
+- Improvement: Added entities to be able to add scripts and general entries to the npm package.json.
+
 ### Version 4.1.4
 
 - Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
