@@ -410,6 +410,8 @@ return `color: ${(element.isReference() ? theme.isDark ? "#9AD6D9" : "#007D80" :
           <script>element.loadDiagram();</script>
         </macro>
       </macros>
+      <rules>- Lay out elements (e.g. services) vertically
+- When adding elements to the diagram, also add any interaction associations.</rules>
     </elementSetting>
     <elementSetting type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
       <comment>Represents a Data Transfer Object (DTO) for passing data between systems. These objects don't contain business logic and should be easily serializable.</comment>
