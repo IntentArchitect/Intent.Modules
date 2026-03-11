@@ -153,7 +153,7 @@ internal class CSharpClassWrapper(CSharpClass wrapped) :
 
     ICSharpClass ICSharpClass.ProtectedInternal() => wrapped.ProtectedInternal();
 
-    ICSharpClass ICSharpClass.Public() => wrapped.Protected();
+    ICSharpClass ICSharpClass.Public() => wrapped.Public();
 
     ICSharpClass ICSharpClass.Partial() => wrapped.Partial();
 

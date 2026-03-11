@@ -1,4 +1,8 @@
-﻿### Version 3.10.2
+﻿### Version 3.10.3
+
+- Fixed: `CSharpClassWrapper` had `ICSharpClass.Public() => wrapped.Protected()` but is now fixed to be `ICSharpClass.Public() => wrapped.Public()`.
+
+### Version 3.10.2
 
 - Fixed: Mapping system not correctly handling Queries which return a collection and have more than one parameters.
 
