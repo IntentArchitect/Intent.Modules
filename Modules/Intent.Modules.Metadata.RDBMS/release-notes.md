@@ -1,3 +1,8 @@
+### Version 3.7.13
+
+- Improvement: Scripts are now stored in the `resources` folder for ease of update and use.
+- Fixed: Some scripts had a bug which would cause an infinite loop in some cases. This has been alleviated.
+
 ### Version 3.7.12
 
 - Improvement: Added `Convert to Intermediate Entity` suggestion to convert many-to-many associations into explicit intermediate entities.
