@@ -37,6 +37,7 @@ public class ProviderModelsTask : IModuleTask
         
         List<ModelRecord> providerModels =
         [
+            new("open-ai",              "gpt-5.4",                              "OpenAI",               ThinkingType.None),
             new("open-ai",              "gpt-5.2",                              "OpenAI",               ThinkingType.ThinkingLevels),
             new("open-ai",              "gpt-5.1",                              "OpenAI",               ThinkingType.ThinkingLevels),
             new("open-ai",              "gpt-5",                                "OpenAI",               ThinkingType.ThinkingLevels),
@@ -45,13 +46,14 @@ public class ProviderModelsTask : IModuleTask
             new("open-ai",              "gpt-4o",                               "OpenAI",               ThinkingType.None),
             new("open-ai",              "o1",                                   "OpenAI",               ThinkingType.ThinkingLevels),
             
+            new("anthropic",            "claude-opus-4-6",                      "Anthropic",            ThinkingType.ThinkingLevels),
+            new("anthropic",            "claude-sonnet-4-6",                    "Anthropic",            ThinkingType.ThinkingLevels),
             new("anthropic",            "claude-opus-4-5-20251101",             "Anthropic",            ThinkingType.ThinkingLevels),
             new("anthropic",            "claude-haiku-4-5-20251001",            "Anthropic",            ThinkingType.ThinkingLevels),
             new("anthropic",            "claude-sonnet-4-5-20250929",           "Anthropic",            ThinkingType.ThinkingLevels),
             new("anthropic",            "claude-opus-4-1-20250805",             "Anthropic",            ThinkingType.ThinkingLevels),
             new("anthropic",            "claude-opus-4-20250514",               "Anthropic",            ThinkingType.ThinkingLevels),
             new("anthropic",            "claude-sonnet-4-20250514",             "Anthropic",            ThinkingType.ThinkingLevels),
-            new("anthropic",            "claude-3-7-sonnet-20250219",           "Anthropic",            ThinkingType.ThinkingLevels),
             
             new("open-router",          "x-ai/grok-4",                          "OpenRouter",           ThinkingType.ThinkingLevels),
             new("open-router",          "z-ai/glm-4.6",                         "OpenRouter",           ThinkingType.ThinkingLevels),
@@ -68,7 +70,8 @@ public class ProviderModelsTask : IModuleTask
             new("open-router",          "anthropic/claude-opus-4",              "OpenRouter",           ThinkingType.ThinkingLevels),
             new("open-router",          "anthropic/claude-sonnet-4",            "OpenRouter",           ThinkingType.ThinkingLevels),
             
-            new("google-gemini",        "gemini-3-pro-preview",                 "Google Gemini",        ThinkingType.ThinkingLevels),
+            new("google-gemini",        "gemini-3.1-pro-preview",               "Google Gemini",        ThinkingType.ThinkingLevels),
+            new("google-gemini",        "gemini-3-flash-preview",               "Google Gemini",        ThinkingType.ThinkingLevels),
             new("google-gemini",        "gemini-2.5-pro",                       "Google Gemini",        ThinkingType.ThinkingLevels),
             new("google-gemini",        "gemini-2.5-flash",                     "Google Gemini",        ThinkingType.None),
             
