@@ -131,18 +131,20 @@ function getPrimaryKeysWithMapPath(entity: MacroApi.Context.IElementApi): IAttri
         isCollection: false
     });
 
-    traverseInheritanceHierarchyForPrimaryKeys(keydict, entity, []);
+    traverseInheritanceHierarchyForPrimaryKeys(keydict, entity, [], new Set<string>());
 
     return Object.values(keydict);
 
     function traverseInheritanceHierarchyForPrimaryKeys(
         keydict: { [index: string]: IAttributeWithMapPath },
         curEntity: MacroApi.Context.IElementApi,
-        generalizationStack: string[]
+        generalizationStack: string[],
+        visited: Set<string>
     ): void {
-        if (!curEntity) {
+        if (!curEntity || visited.has(curEntity.id)) {
             return;
         }
+        visited.add(curEntity.id);
         let generalizations = curEntity.getAssociations("Generalization").filter(x => x.isTargetEnd());
         if (generalizations.length == 0) {
             return;
@@ -162,7 +164,7 @@ function getPrimaryKeysWithMapPath(entity: MacroApi.Context.IElementApi): IAttri
                 isCollection: key.typeReference.isCollection
             };
         });
-        traverseInheritanceHierarchyForPrimaryKeys(keydict, nextEntity, generalizationStack);
+        traverseInheritanceHierarchyForPrimaryKeys(keydict, nextEntity, generalizationStack, visited);
     }
 }
 
@@ -182,17 +184,19 @@ function getAttributesWithMapPath(entity: MacroApi.Context.IElementApi): { [inde
         isCollection: false
     });
 
-    traverseInheritanceHierarchyForAttributes(attrDict, entity, []);
+    traverseInheritanceHierarchyForAttributes(attrDict, entity, [], new Set<string>());
 
     return attrDict;
 
     function traverseInheritanceHierarchyForAttributes(attrDict: { [index: string]: IAttributeWithMapPath },
         curEntity: MacroApi.Context.IElementApi,
-        generalizationStack: string[]
+        generalizationStack: string[],
+        visited: Set<string>
     ): void {
-        if (!curEntity) {
+        if (!curEntity || visited.has(curEntity.id)) {
             return;
         }
+        visited.add(curEntity.id);
         let generalizations = curEntity.getAssociations("Generalization").filter(x => x.isTargetEnd());
         if (generalizations.length == 0) {
             return;
@@ -212,7 +216,7 @@ function getAttributesWithMapPath(entity: MacroApi.Context.IElementApi): { [inde
                 isCollection: attr.typeReference.isCollection
             };
         });
-        traverseInheritanceHierarchyForAttributes(attrDict, nextEntity, generalizationStack);
+        traverseInheritanceHierarchyForAttributes(attrDict, nextEntity, generalizationStack, visited);
     }
 }
 

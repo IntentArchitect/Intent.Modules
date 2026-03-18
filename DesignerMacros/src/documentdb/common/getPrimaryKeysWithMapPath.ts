@@ -32,18 +32,20 @@ function getPrimaryKeysWithMapPath(entity: MacroApi.Context.IElementApi) {
         });
     }
 
-    traverseInheritanceHierarchyForPrimaryKeys(keyDict, entity, []);
+    traverseInheritanceHierarchyForPrimaryKeys(keyDict, entity, [], new Set<string>());
 
     return keyDict;
 
     function traverseInheritanceHierarchyForPrimaryKeys(
         keyDict: { [characterName: string]: IAttributeWithMapPath },
         curEntity: MacroApi.Context.IElementApi,
-        generalizationStack: string[]
+        generalizationStack: string[],
+        visited: Set<string>
     ) {
-        if (!curEntity) {
+        if (!curEntity || visited.has(curEntity.id)) {
             return;
         }
+        visited.add(curEntity.id);
         let generalizations = curEntity.getAssociations("Generalization").filter(x => x.isTargetEnd());
         if (generalizations.length == 0) {
             return;
@@ -64,6 +66,6 @@ function getPrimaryKeysWithMapPath(entity: MacroApi.Context.IElementApi) {
                 isCollection: key.typeReference.isCollection
             };
         });
-        traverseInheritanceHierarchyForPrimaryKeys(keyDict, nextEntity, generalizationStack);
+        traverseInheritanceHierarchyForPrimaryKeys(keyDict, nextEntity, generalizationStack, visited);
     }
 }

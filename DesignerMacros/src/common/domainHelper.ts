@@ -104,18 +104,20 @@ class DomainHelper {
             isCollection: false
         });
 
-        traverseInheritanceHierarchyForPrimaryKeys(keydict, entity, []);
+        traverseInheritanceHierarchyForPrimaryKeys(keydict, entity, [], new Set<string>());
 
         return keydict;
 
         function traverseInheritanceHierarchyForPrimaryKeys(
             keydict: { [characterName: string]: IAttributeWithMapPath },
             curEntity: MacroApi.Context.IElementApi,
-            generalizationStack: string[]
+            generalizationStack: string[],
+            visited: Set<string>
         ) {
-            if (!curEntity) {
+            if (!curEntity || visited.has(curEntity.id)) {
                 return;
             }
+            visited.add(curEntity.id);
             let generalizations = curEntity.getAssociations("Generalization").filter(x => x.isTargetEnd());
             if (generalizations.length == 0) {
                 return;
@@ -135,7 +137,7 @@ class DomainHelper {
                     isCollection: key.typeReference.isCollection
                 };
             });
-            traverseInheritanceHierarchyForPrimaryKeys(keydict, nextEntity, generalizationStack);
+            traverseInheritanceHierarchyForPrimaryKeys(keydict, nextEntity, generalizationStack, visited);
         }
     }
 
@@ -219,18 +221,20 @@ class DomainHelper {
             isCollection: false
         });
 
-        traverseInheritanceHierarchyForAttributes(attrDict, entity, []);
+        traverseInheritanceHierarchyForAttributes(attrDict, entity, [], new Set<string>());
 
         return Object.values(attrDict);
 
         function traverseInheritanceHierarchyForAttributes(
             attrDict: { [characterName: string]: IAttributeWithMapPath },
             curEntity: MacroApi.Context.IElementApi,
-            generalizationStack: string[]
+            generalizationStack: string[],
+            visited: Set<string>
         ) {
-            if (!curEntity) {
+            if (!curEntity || visited.has(curEntity.id)) {
                 return;
             }
+            visited.add(curEntity.id);
 
             let generalizations = curEntity.getAssociations("Generalization").filter(x => x.isTargetEnd());
             if (generalizations.length == 0) {
@@ -252,18 +256,24 @@ class DomainHelper {
                     isCollection: attr.typeReference.isCollection
                 };
             });
-            traverseInheritanceHierarchyForAttributes(attrDict, nextEntity, generalizationStack);
+            traverseInheritanceHierarchyForAttributes(attrDict, nextEntity, generalizationStack, visited);
         }
     }
 
     static getMandatoryAssociationsWithMapPath(entity: MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
-        return traverseInheritanceHierarchy(entity, [], []);
+        return traverseInheritanceHierarchy(entity, [], [], new Set<string>());
 
         function traverseInheritanceHierarchy(
             entity: MacroApi.Context.IElementApi,
             results: IAttributeWithMapPath[],
-            generalizationStack: string[]
+            generalizationStack: string[],
+            visited: Set<string>
         ): IAttributeWithMapPath[] {
+            if (!entity || visited.has(entity.id)) {
+                return results;
+            }
+            visited.add(entity.id);
+
             entity
                 .getAssociations("Association")
                 .filter(x => !x.typeReference.isCollection && !x.typeReference.isNullable && x.typeReference.isNavigable &&
@@ -289,7 +299,7 @@ class DomainHelper {
             let generalization = generalizations[0];
             generalizationStack.push(generalization.id);
 
-            return traverseInheritanceHierarchy(generalization.typeReference.getType(), results, generalizationStack);
+            return traverseInheritanceHierarchy(generalization.typeReference.getType(), results, generalizationStack, visited);
         }
     }
 
@@ -346,10 +356,11 @@ class DomainHelper {
         return owners[0];
     }
 
-    static getOwnersRecursive(entity: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi[] {
-        if (!entity || entity.specialization != "Class") {
-            return null;
+    static getOwnersRecursive(entity: MacroApi.Context.IElementApi, visited: Set<string> = new Set()): MacroApi.Context.IElementApi[] {
+        if (!entity || entity.specialization != "Class" || visited.has(entity.id)) {
+            return [];
         }
+        visited.add(entity.id);
         
         let results = entity.getAssociations("Association").filter(x => DomainHelper.isOwnedByAssociation(x));        
 
@@ -360,7 +371,7 @@ class DomainHelper {
             if (DomainHelper.isAggregateRoot(owner)){
                 result.push(owner);
             } else {
-                result.push(...DomainHelper.getOwnersRecursive(owner));
+                result.push(...DomainHelper.getOwnersRecursive(owner, visited));
             }               
         }        
         return result;
@@ -372,10 +383,14 @@ class DomainHelper {
             !association.typeReference.isCollection;
     }
 
-    static getOwningAggregateKeyChain(entity: MacroApi.Context.IElementApi): IKeyChain[] {
+    static getOwningAggregateKeyChain(entity: MacroApi.Context.IElementApi, visited: Set<string> = new Set()): IKeyChain[] {
         if (!entity || entity.specialization != "Class") {
             return null;
         }
+        if (visited.has(entity.id)) {
+            return [];
+        }
+        visited.add(entity.id);
         
         let results = entity.getAssociations("Association").filter(x => DomainHelper.isOwnedByAssociation(x));        
 
@@ -404,7 +419,7 @@ class DomainHelper {
         });
 
         if (!DomainHelper.isAggregateRoot(owner)){
-            result.unshift(...DomainHelper.getOwningAggregateKeyChain(owner));
+            result.unshift(...DomainHelper.getOwningAggregateKeyChain(owner, visited));
         }               
         return result;
     }

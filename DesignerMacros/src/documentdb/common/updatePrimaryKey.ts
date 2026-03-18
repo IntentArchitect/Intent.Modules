@@ -1,10 +1,11 @@
 /// <reference path="isAggregateRoot.ts" />
 /// <reference path="getDefaultIdType.ts" />
 
-function updatePrimaryKey(element: IElementApi): void {
-    if (element.specialization !== "Class") {
+function updatePrimaryKey(element: IElementApi, visitedElementIds: Set<string> = new Set<string>()): void {
+    if (!element || element.specialization !== "Class" || visitedElementIds.has(element.id)) {
         return;
     }
+    visitedElementIds.add(element.id);
 
     const documentDbSettingsId: string = "d5581fe8-7385-4bb6-88dc-8940e20ec1d4";
     const keyCreationMode: string = "fbc6e85f-f59f-4968-85e6-ef71f88ab05b";
@@ -17,7 +18,7 @@ function updatePrimaryKey(element: IElementApi): void {
 
     const isToCompositionalOneRelationshipTarget = () => element.getAssociations("Association")
         .some(x => x.isSourceEnd() && !x.typeReference.isCollection && !x.typeReference.isNullable && !x.getOtherEnd().typeReference.isCollection);
-    if ((!isAggregateRoot(element) && isToCompositionalOneRelationshipTarget()) || derivedFromTypeHasPk(element)) {
+    if ((!isAggregateRoot(element) && isToCompositionalOneRelationshipTarget()) || derivedFromTypeHasPk(element, new Set<string>())) {
         if (idAttr != null && (!onlyKeyDocuments || (onlyKeyDocuments && idAttr.hasMetadata("managed")))) {
             idAttr.delete();
         }
@@ -55,7 +56,12 @@ function updatePrimaryKey(element: IElementApi): void {
 
     updateDerivedTypePks(element);
 
-    function derivedFromTypeHasPk(element: IElementApi): boolean {
+    function derivedFromTypeHasPk(element: IElementApi, visitedBaseTypeIds: Set<string>): boolean {
+        if (!element || visitedBaseTypeIds.has(element.id)) {
+            return false;
+        }
+        visitedBaseTypeIds.add(element.id);
+
         const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
     
         return element.getAssociations("Generalization")
@@ -69,7 +75,7 @@ function updatePrimaryKey(element: IElementApi): void {
                     return true;
                 }
     
-                return derivedFromTypeHasPk(baseType);
+                return derivedFromTypeHasPk(baseType, visitedBaseTypeIds);
             });
     }
 
@@ -79,7 +85,7 @@ function updatePrimaryKey(element: IElementApi): void {
             .map(generalization => generalization.typeReference.getType());
     
         for (const derivedType of derivedTypes) {
-            updatePrimaryKey(derivedType);
+            updatePrimaryKey(derivedType, visitedElementIds);
         }
     }
 }

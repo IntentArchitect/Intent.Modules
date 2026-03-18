@@ -2,7 +2,12 @@
 /// <reference path="../../../common/getSurrogateKeyType.ts" />
 /// <reference path="constants.ts" />
 
-function updatePrimaryKeys(element: IElementApi): void {
+function updatePrimaryKeys(element: IElementApi, visitedElementIds: Set<string> = new Set<string>()): void {
+    if (!element || visitedElementIds.has(element.id)) {
+        return;
+    }
+    visitedElementIds.add(element.id);
+
     if (element.getMetadata(metadataKey.autoManageKeys) === "false" ||
         element.getPackage().specialization !== "Domain Package" ||
         !element.getPackage().hasStereotype(relationalDatabaseId)
@@ -13,7 +18,7 @@ function updatePrimaryKeys(element: IElementApi): void {
 
     const pkAttributes = element.getChildren("Attribute").filter(x => x.hasStereotype(primaryKeyStereotypeId));
 
-    if (derivedFromTypeHasPk(element)) {
+    if (derivedFromTypeHasPk(element, new Set<string>())) {
         for (const pkAttribute of pkAttributes.filter(x => x.getMetadata(metadataKey.isManagedKey) === "true")) {
             pkAttribute.setMetadata(metadataKey.isBeingDeletedByScript, "true");
             pkAttribute.delete();
@@ -34,7 +39,12 @@ function updatePrimaryKeys(element: IElementApi): void {
     pkAttribute.addStereotype(primaryKeyStereotypeId);
     pkAttribute.setMetadata(metadataKey.isManagedKey, "true");
 
-    function derivedFromTypeHasPk(element: IElementApi): boolean {
+    function derivedFromTypeHasPk(element: IElementApi, visitedBaseTypeIds: Set<string>): boolean {
+        if (!element || visitedBaseTypeIds.has(element.id)) {
+            return false;
+        }
+        visitedBaseTypeIds.add(element.id);
+
         return element.getAssociations("Generalization")
             .some(generalization => {
                 if (!generalization.isTargetEnd()) {
@@ -46,7 +56,7 @@ function updatePrimaryKeys(element: IElementApi): void {
                     return true;
                 }
 
-                return derivedFromTypeHasPk(baseType);
+                return derivedFromTypeHasPk(baseType, visitedBaseTypeIds);
             });
     }
 
@@ -56,7 +66,7 @@ function updatePrimaryKeys(element: IElementApi): void {
             .map(generalization => generalization.typeReference.getType());
 
         for (const derivedType of derivedTypes) {
-            updatePrimaryKeys(derivedType);
+            updatePrimaryKeys(derivedType, visitedElementIds);
         }
     }
 }

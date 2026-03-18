@@ -274,8 +274,15 @@ class FieldSyncEngine {
         mappings: IFieldMapping[],
         discrepancies: IFieldDiscrepancy[],
         depth: number = 0,
-        parentFieldId?: string
+        parentFieldId?: string,
+        visitedDtoIds: Set<string> = new Set<string>()
     ): void {
+        if (!dtoElement || visitedDtoIds.has(dtoElement.id)) {
+            return;
+        }
+        const nextVisitedDtoIds = new Set(visitedDtoIds);
+        nextVisitedDtoIds.add(dtoElement.id);
+
         const indent = Array(depth).fill("  ").join("");
         
         const entityAttrMap = this.getOrBuildEntityAttributeMap(entity);
@@ -302,7 +309,7 @@ class FieldSyncEngine {
                         nestedMappings = this.getNestedMappings(mappings, dtoField.id);
                         
                         console.log(`${indent}[ANALYZE-NESTED] Analyzing nested DTO field: ${dtoField.getName()} → ${nestedEntity.getName()}`);
-                        this.detectDiscrepanciesRecursive(fieldType, nestedEntity, nestedMappings, discrepancies, depth + 1, dtoField.id);
+                        this.detectDiscrepanciesRecursive(fieldType, nestedEntity, nestedMappings, discrepancies, depth + 1, dtoField.id, nextVisitedDtoIds);
                     }
                 }
             }
@@ -782,8 +789,15 @@ class FieldSyncEngine {
         depth: number,
         parentSourcePath: string[] = [],
         parentTargetPath: string[] = [],
-        parentTargetEntity?: MacroApi.Context.IElementApi
+        parentTargetEntity?: MacroApi.Context.IElementApi,
+        visitedDtoIds: Set<string> = new Set<string>()
     ): void {
+        if (!dtoElement || visitedDtoIds.has(dtoElement.id)) {
+            return;
+        }
+        const nextVisitedDtoIds = new Set(visitedDtoIds);
+        nextVisitedDtoIds.add(dtoElement.id);
+
         const indent = Array(depth).fill("│  ").join("");
         const children = dtoElement.getChildren("DTO-Field");
         
@@ -857,7 +871,8 @@ class FieldSyncEngine {
                         depth + 1,
                         childSourcePath,      // Pass extended source path
                         childTargetPath,      // Pass extended target path
-                        childTargetEntity     // Pass the new target entity
+                        childTargetEntity,    // Pass the new target entity
+                        nextVisitedDtoIds
                     );
                 }
             }

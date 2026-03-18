@@ -19,7 +19,13 @@ async function remapServiceCall(association: IAssociationApi): Promise<void> {
 
     const modelProperty = component.getChildren("Property").find(x => x.typeReference.getType().specialization == "Model Definition" && x.getName() == "Model")
     if (modelProperty != null) {
+        const visitedTypeIds = new Set<string>();
         const processType = (type: IElementApi) => {
+            if (!type || visitedTypeIds.has(type.id)) {
+                return;
+            }
+            visitedTypeIds.add(type.id);
+
             // Traverse children recursively
             type.getChildren().forEach(x => {
                 const childType = x.typeReference.getType();
@@ -161,11 +167,16 @@ class BackendServiceHelper {
                 property.typeReference.setIsNullable(true);
             }
 
-            this.addChildElementsRecursively(modelDefinition, contract, component, mapping, [property.id], targetPath);
+            this.addChildElementsRecursively(modelDefinition, contract, component, mapping, [property.id], targetPath, new Set<string>());
         }
     }
 
-    private addChildElementsRecursively(model: IElementApi, contract: IElementApi, component: IElementApi, mapping: IElementToElementMappingApi, srcPath: string[], dstPath: string[]) {
+    private addChildElementsRecursively(model: IElementApi, contract: IElementApi, component: IElementApi, mapping: IElementToElementMappingApi, srcPath: string[], dstPath: string[], visitedContractIds: Set<string>) {
+        if (!contract || visitedContractIds.has(contract.id)) {
+            return;
+        }
+        const nextVisitedContractIds = new Set(visitedContractIds);
+        nextVisitedContractIds.add(contract.id);
 
         contract.getChildren("DTO-Field").forEach(field => {
 
@@ -182,7 +193,7 @@ class BackendServiceHelper {
                 if (field.typeReference.isCollection) {
                     mapping.addMappedEnd("ce70308a-e29d-4644-8410-f9e6bbd214fc", nextSrcPath, nextDstPath);
                 }
-                this.addChildElementsRecursively(complexChildType, field.typeReference.getType(), component, mapping, nextSrcPath, nextDstPath);
+                this.addChildElementsRecursively(complexChildType, field.typeReference.getType(), component, mapping, nextSrcPath, nextDstPath, nextVisitedContractIds);
             } else {
                 modelProperty.typeReference.setType(field.typeReference.toModel());
                 if (!field.typeReference.isCollection && this.makeNullableInModel(field)) {
