@@ -100,4 +100,5 @@ Use the **Provider** dropdown to select any supported provider and configure its
 - **Download and install**: [Ollama Download](https://ollama.ai/)
 - **Available models**: [Ollama Model Library](https://ollama.ai/library)
 - **Pricing**: Models are free but will require powerful hardware to run locally
+- **Using cloud models**: Keep to the `http://localhost:11434` url, specify to use a cloud model instead (i.e. `qwen3-coder:480b-cloud`). First sign in to cloud account on Ollama client.
 
