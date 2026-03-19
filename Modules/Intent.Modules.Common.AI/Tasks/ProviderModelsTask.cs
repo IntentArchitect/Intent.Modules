@@ -89,8 +89,8 @@ public class ProviderModelsTask : IModuleTask
         var hasOpenRouterKey = !string.IsNullOrWhiteSpace(_userSettingsProvider.GetAISettings().OpenRouterAPIKey()) ||
                               !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENROUTER_API_KEY"));
         var hasGoogleGeminiKey = !string.IsNullOrWhiteSpace(_userSettingsProvider.GetAISettings().GoogleGeminiAPIKey()) ||
-                                 !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("GOOGLE_API_KEY")) ||
-                                 !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("GEMINI_API_KEY"));
+                                 !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("GEMINI_API_KEY")) ||
+                                 !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("GOOGLE_API_KEY"));
         var openAiCompatibleModel = (
                                         !string.IsNullOrWhiteSpace(_userSettingsProvider.GetAISettings().OpenAICompatibleAPIKey()) ||
                                         !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("OPENAI_COMPATIBLE_API_KEY"))

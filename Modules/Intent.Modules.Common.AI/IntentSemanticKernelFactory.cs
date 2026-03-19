@@ -124,8 +124,8 @@ public class IntentSemanticKernelFactory
                 if (string.IsNullOrWhiteSpace(value: apiKey))
                 {
                     // Google's docs actually have both: https://ai.google.dev/gemini-api/docs/api-key#set-api-env-var
-                    apiKey = Environment.GetEnvironmentVariable(variable: "GOOGLE_API_KEY")
-                        ?? Environment.GetEnvironmentVariable(variable: "GEMINI_API_KEY");
+                    apiKey = Environment.GetEnvironmentVariable(variable: "GEMINI_API_KEY") ??
+                             Environment.GetEnvironmentVariable(variable: "GOOGLE_API_KEY");
                 }
                 
                 builder.Services.AddGoogleAIGeminiChatCompletion(
