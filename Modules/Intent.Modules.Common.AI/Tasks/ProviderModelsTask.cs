@@ -32,7 +32,7 @@ public class ProviderModelsTask : IModuleTask
         // URLs to look at for newer models:
         // https://platform.openai.com/docs/models
         // https://platform.claude.com/docs/en/about-claude/models/overview
-        // https://openrouter.ai
+        // https://openrouter.ai/models
         // https://ai.google.dev/gemini-api/docs/models
         
         List<ModelRecord> providerModels =
@@ -41,34 +41,25 @@ public class ProviderModelsTask : IModuleTask
             new("open-ai",              "gpt-5.2",                              "OpenAI",               ThinkingType.ThinkingLevels),
             new("open-ai",              "gpt-5.1",                              "OpenAI",               ThinkingType.ThinkingLevels),
             new("open-ai",              "gpt-5",                                "OpenAI",               ThinkingType.ThinkingLevels),
-            new("open-ai",              "o3",                                   "OpenAI",               ThinkingType.ThinkingLevels),
             new("open-ai",              "gpt-4.1",                              "OpenAI",               ThinkingType.None),
-            new("open-ai",              "gpt-4o",                               "OpenAI",               ThinkingType.None),
-            new("open-ai",              "o1",                                   "OpenAI",               ThinkingType.ThinkingLevels),
             
             new("anthropic",            "claude-opus-4-6",                      "Anthropic",            ThinkingType.ThinkingLevels),
             new("anthropic",            "claude-sonnet-4-6",                    "Anthropic",            ThinkingType.ThinkingLevels),
             new("anthropic",            "claude-opus-4-5-20251101",             "Anthropic",            ThinkingType.ThinkingLevels),
             new("anthropic",            "claude-haiku-4-5-20251001",            "Anthropic",            ThinkingType.ThinkingLevels),
             new("anthropic",            "claude-sonnet-4-5-20250929",           "Anthropic",            ThinkingType.ThinkingLevels),
-            new("anthropic",            "claude-opus-4-1-20250805",             "Anthropic",            ThinkingType.ThinkingLevels),
-            new("anthropic",            "claude-opus-4-20250514",               "Anthropic",            ThinkingType.ThinkingLevels),
-            new("anthropic",            "claude-sonnet-4-20250514",             "Anthropic",            ThinkingType.ThinkingLevels),
             
-            new("open-router",          "x-ai/grok-4",                          "OpenRouter",           ThinkingType.ThinkingLevels),
-            new("open-router",          "z-ai/glm-4.6",                         "OpenRouter",           ThinkingType.ThinkingLevels),
-            new("open-router",          "google/gemini-2.5-pro",                "OpenRouter",           ThinkingType.ThinkingLevels),
+            new("open-router",          "minimax/minimax-m2.5",                 "OpenRouter",           ThinkingType.ThinkingLevels),
             new("open-router",          "deepseek/deepseek-v3.2",               "OpenRouter",           ThinkingType.ThinkingLevels),
+            new("open-router",          "anthropic/claude-4.6-sonnet",          "OpenRouter",           ThinkingType.ThinkingLevels),
+            new("open-router",          "moonshotai/kimi-k2.5",                 "OpenRouter",           ThinkingType.ThinkingLevels),
+            new("open-router",          "z-ai/glm-5",                           "OpenRouter",           ThinkingType.ThinkingLevels),
+            new("open-router",          "openai/gpt-5.4-mini",                  "OpenRouter",           ThinkingType.None),
+            new("open-router",          "google/gemini-3-flash-preview",        "OpenRouter",           ThinkingType.None),
+            new("open-router",          "anthropic/claude-4.6-opus",            "OpenRouter",           ThinkingType.ThinkingLevels),
+            new("open-router",          "openai/gpt-5.4",                       "OpenRouter",           ThinkingType.ThinkingLevels),
+            new("open-router",          "google/gemini-3.1-pro-preview",        "OpenRouter",           ThinkingType.ThinkingLevels),
             new("open-router",          "qwen/qwen3-coder",                     "OpenRouter",           ThinkingType.None),
-            new("open-router",          "qwen/qwen3-coder-plus",                "OpenRouter",           ThinkingType.None),
-            new("open-router",          "qwen/qwen3-max",                       "OpenRouter",           ThinkingType.None),
-            new("open-router",          "qwen/qwen3-235b-a22b-thinking-2507",   "OpenRouter",           ThinkingType.ThinkingLevels),
-            new("open-router",          "anthropic/claude-opus-4.5",            "OpenRouter",           ThinkingType.ThinkingLevels),
-            new("open-router",          "anthropic/claude-haiku-4.5",           "OpenRouter",           ThinkingType.ThinkingLevels),
-            new("open-router",          "anthropic/claude-sonnet-4.5",          "OpenRouter",           ThinkingType.ThinkingLevels),
-            new("open-router",          "anthropic/claude-opus-4.1",            "OpenRouter",           ThinkingType.ThinkingLevels),
-            new("open-router",          "anthropic/claude-opus-4",              "OpenRouter",           ThinkingType.ThinkingLevels),
-            new("open-router",          "anthropic/claude-sonnet-4",            "OpenRouter",           ThinkingType.ThinkingLevels),
             
             new("google-gemini",        "gemini-3.1-pro-preview",               "Google Gemini",        ThinkingType.ThinkingLevels),
             new("google-gemini",        "gemini-3-flash-preview",               "Google Gemini",        ThinkingType.ThinkingLevels),

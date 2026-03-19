@@ -56,6 +56,10 @@ internal static class SettingsMock
             gs.GetSetting("effcfd41-aaed-4278-a7e7-818009584139").Value.Returns(model);
             gs.GetSetting("41ac1bce-6362-4b77-b588-ba3df55a2afb").Value.Returns(providerId);
             gs.GetSetting("4cb52ca6-af4f-4dbf-9f75-5a74438cd281").Value.Returns("8192");
+            
+            //Ollama model
+            gs.GetSetting("be17de04-c671-49c2-8124-cfa80bab9fcd").Value.Returns("http://localhost:11434");
+            gs.GetSetting("bba2d9ee-a96a-4c48-bdcc-a53702d58ef0").Value.Returns("qwen3-coder:480b-cloud");
             if (apiKeySettingId is not null)
             {
                 gs.GetSetting(apiKeySettingId).Value.Returns(apiKey);

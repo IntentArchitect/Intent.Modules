@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.Threading.Tasks;
@@ -30,31 +31,41 @@ public class IntentSemanticKernelFactoryTests
      public async Task AiConnectionWithCalculatorToolTest(AISettings.ProviderOptionsEnum provider, string model, string thinkingLevel)
      {
           // ARRANGE
+          var random = Random.Shared;
+          long num1 = random.Next(100_000_000, 999_999_999);
+          long num2 = random.Next(100_000_000, 999_999_999);
+          long expectedProduct = num1 * num2;
+
           var factory = new IntentSemanticKernelFactory(SettingsMock.GetUserSettingsProvider(provider, model));
           var kernel = factory.BuildSemanticKernel(model, builder =>
           {
                builder.Plugins.AddFromType<CalculatorPlugin>();
           });
-          
+
           // ACT
           var function = kernel.CreateFunctionFromPrompt(
-          """
-          You are a calculator. Use the calculator tool to compute 847,293,156 × 923,847,521.
-          
-          Output ONLY the number in format: 0,000.0
-          
-          Rules:
-          - NO explanatory text
-          - NO conversational phrases
-          - NO "let me calculate" or similar
-          - JUST the formatted number
-          """,
-          kernel.GetRequiredService<IAiProviderService>().GetPromptExecutionSettings(thinkingLevel));
+               $"""
+                You are a calculator. Use the calculator tool to compute {num1:N0} × {num2:N0}.
+
+                Output ONLY the number in format: 0,000.0
+
+                Rules:
+                - NO explanatory text
+                - NO conversational phrases
+                - NO "let me calculate" or similar
+                - JUST the formatted number
+                """,
+               kernel.GetRequiredService<IAiProviderService>().GetPromptExecutionSettings(thinkingLevel));
+
           var result = await function.InvokeAsync(kernel);
-          
+
           // ASSERT
           Assert.NotNull(result);
-          Assert.Equal((847_293_156L * 923_847_521L).ToString("N1", CultureInfo.InvariantCulture), result.ToString().Trim());
+
+          // We use InvariantCulture to ensure the comma is used as a group separator 
+          // and the period as a decimal point, matching your "0,000.0" requirement.
+          var expectedString = expectedProduct.ToString("N1", CultureInfo.InvariantCulture);
+          Assert.Equal(expectedString, result.ToString()?.Trim());
      }
 
      public static IEnumerable<object[]> GetProviderModelTestData()

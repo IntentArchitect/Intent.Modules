@@ -5,16 +5,22 @@
 
 > ⚠️ NOTE
 > 
-> Some models are removed (deprecated):
-> - claude-3-7-sonnet-20250219
-> - gemini-3-pro-preview
+> Some models are removed:
+> - claude-3-7-sonnet-20250219 (Anthropic)
+> - gemini-3-pro-preview (Google)
+> - claude-opus-4-1-20250805 (Anthropic)
+> - claude-opus-4-20250514 (Anthropic)
+> - claude-sonnet-4-20250514 (Anthropic)
+> - o3 (OpenAI)
+> - o1 (OpenAI)
+> - gpt-4o (OpenAI)
 > 
 > New models added:
-> - claude-opus-4-6
-> - claude-sonnet-4-6
-> - gpt-5.4 (no thinking levels)
-> - gemini-3.1-pro-preview
-> - gemini-3-flash-preview
+> - claude-opus-4-6 (Anthropic)
+> - claude-sonnet-4-6 (Anthropic)
+> - gpt-5.4 (no thinking levels) (OpenAI)
+> - gemini-3.1-pro-preview (Google)
+> - gemini-3-flash-preview (Google)
 
 ### Version 1.0.0
 
