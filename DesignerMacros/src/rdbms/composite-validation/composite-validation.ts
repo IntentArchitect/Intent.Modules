@@ -4,11 +4,17 @@
 // Check composite only has 1 owner
  
 const dbSettingsId = "ac0a788e-d8b3-4eea-b56d-538608f1ded9";
+const tableStereotypeId = "dd205b32-b48b-4c77-98f5-faefb2c047ce";
+const viewStereotypeId = "6dfa2c79-4b9a-4741-9201-95a9d7631b4d";
 
 function validateDomainEntity(entity:IElementApi):string | null{
 
     if (!entity.getPackage().hasStereotype("Relational Database")) {
         return null;
+    }
+
+    if (entity.hasStereotype(tableStereotypeId) && entity.hasStereotype(viewStereotypeId)) {
+        return "Entity has both a \"Table\" and \"View\" stereotype applied to it.";
     }
 
     if (isCosmosDbProvider() || DomainHelper.isAggregateRoot(element)) { 
