@@ -94,7 +94,7 @@ steps:
     targetType: inline
     script: |
       Write-Host "Install TypeScript:"
-      npm install -g typescript
+      npm install -g typescript@5.9.3
       Write-Host "Check TypeScript version:"
       tsc --version
 
