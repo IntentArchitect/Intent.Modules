@@ -1,4 +1,8 @@
-﻿### Version 3.10.3
+﻿### Version 3.10.4
+
+- Fixed: Having a `CSharpProperty` have a `Setter` set to `Public` will no longer emit the `public` keyword as it would result in invalid C#. Instead, the accessor / modifier will be removed when you invoke `Public()`.
+
+### Version 3.10.3
 
 - Fixed: `CSharpClassWrapper` had `ICSharpClass.Public() => wrapped.Protected()` but is now fixed to be `ICSharpClass.Public() => wrapped.Public()`.
 

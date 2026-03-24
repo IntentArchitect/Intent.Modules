@@ -55,7 +55,7 @@ public class CSharpPropertyAccessor : ICSharpPropertyAccessor
     ICSharpPropertyAccessor ICSharpPropertyAccessor.Public() => Public();
     public CSharpPropertyAccessor Public()
     {
-        AccessModifier = "public ";
+        AccessModifier = string.Empty; // "public set" doesn't work
         return this;
     }
 

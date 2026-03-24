@@ -1,0 +1,17 @@
+﻿using System;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    public class ConcreteClass
+    {
+        public string NormalProperty { get; set; }
+        public string PropertyInitSetter { get; init; }
+        public string PropertyInternalSetter { get; internal set; }
+        public string PropertyPrivateSetter { get; private set; }
+        public string PropertyProtectedSetter { get; protected set; }
+        public string PropertyProtectedInternalSetter { get; protected internal set; }
+        public string PropertyPublicSetter { get; set; }
+    }
+}
