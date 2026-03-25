@@ -1,5 +1,5 @@
 /// <reference path="../common/common-file-transfer.ts" />
-/// <reference path="../../services-expose-as-http-endpoint/operation/shared.ts" />
+/// <reference path="../../services-expose-as-http-endpoint/services/operation-expose-as-http-endpoint.ts" />
 
 /**
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.WebApi
@@ -11,8 +11,6 @@
 function configureUpload(element: MacroApi.Context.IElementApi): void{   
     applyFileTransferStereoType(element);
     addUploadFields(element, "Parameter");    
-    exposeAsHttpEndPoint(element);
+    exposeOperationAsHttpEndPoint(element);
     makePost(element);
 }
-
-configureUpload(element);

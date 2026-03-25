@@ -1,0 +1,17 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "outFile": "../../../../Modules/Intent.Modules.Metadata.WebApi/resources/expose-as-file-download-query.js",
+    "removeComments": false,
+    "sourceMap": false,
+    "target": "ES2019",
+    "types": []
+  },
+  "include": [
+    "**/*",
+    "../../../typings/**/*.d.ts"
+  ],
+  "exclude": []
+}

@@ -1,3 +1,78 @@
+/// <reference path="../../../typings/elementmacro.context.api.d.ts" />
+/// <reference path="../../../typings/elementmacro.context.api.d.ts" />
+function makeReturnTypeFileDownloadDto(element) {
+    var _a;
+    const commonTypes = {
+        string: "d384db9c-a279-45e1-801e-e4e8099625f2",
+        stream: "fd4ead8e-92e9-47c2-97a6-81d898525ea0"
+    };
+    let returnResultType = lookupTypesOf("DTO").find(x => x.getName() == "FileDownloadDto");
+    if (!returnResultType) {
+        let folderName = "Common";
+        const folder = (_a = element.getPackage().getChildren("Folder").find(x => x.getName() == folderName)) !== null && _a !== void 0 ? _a : createElement("Folder", folderName, element.getPackage().id);
+        returnResultType = createElement("DTO", "FileDownloadDto", folder.id);
+        returnResultType.id;
+        let stream = createElement("DTO-Field", "Content", returnResultType.id);
+        stream.typeReference.setType(commonTypes.stream);
+        let filename = createElement("DTO-Field", "Filename", returnResultType.id);
+        filename.typeReference.setType(commonTypes.string);
+        filename.typeReference.setIsNullable(true);
+        let contentType = createElement("DTO-Field", "ContentType", returnResultType.id);
+        contentType.typeReference.setType(commonTypes.string);
+        contentType.typeReference.setIsNullable(true);
+    }
+    element.typeReference.setType(returnResultType.id);
+    element.typeReference.setIsCollection(false);
+    element.typeReference.setIsNullable(false);
+}
+function applyFileTransferStereoType(element) {
+    var _a;
+    const fileTransferId = "d30e48e8-389e-4b70-84fd-e3bac44cfe19";
+    (_a = element.getStereotype(fileTransferId)) !== null && _a !== void 0 ? _a : element.addStereotype(fileTransferId);
+}
+function makePost(element) {
+    var _a;
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    const httpSettings = (_a = element.getStereotype(httpSettingsId)) !== null && _a !== void 0 ? _a : element.addStereotype(httpSettingsId);
+    httpSettings.getProperty("Verb").setValue("POST");
+}
+function addUploadFields(element, childType) {
+    const commonTypes = {
+        string: "d384db9c-a279-45e1-801e-e4e8099625f2",
+        long: "33013006-E404-48C2-AC46-24EF5A5774FD",
+        stream: "fd4ead8e-92e9-47c2-97a6-81d898525ea0"
+    };
+    const parameterSettingId = "d01df110-1208-4af8-a913-92a49d219552";
+    var existing = element.getChildren().find(x => x.getName() == "Content");
+    if (!existing) {
+        let stream = createElement(childType, "Content", element.id);
+        stream.typeReference.setType(commonTypes.stream);
+    }
+    var existing = element.getChildren().find(x => x.getName() == "Filename");
+    if (!existing) {
+        let filename = createElement(childType, "Filename", element.id);
+        filename.typeReference.setType(commonTypes.string);
+        filename.typeReference.setIsNullable(true);
+    }
+    var existing = element.getChildren().find(x => x.getName() == "ContentType");
+    if (!existing) {
+        let contentType = createElement(childType, "ContentType", element.id);
+        contentType.typeReference.setType(commonTypes.string);
+        contentType.typeReference.setIsNullable(true);
+        let parameterSetting = contentType.addStereotype(parameterSettingId);
+        parameterSetting.getProperty("Source").setValue("From Header");
+        parameterSetting.getProperty("Header Name").setValue("Content-Type");
+    }
+    var existing = element.getChildren().find(x => x.getName() == "ContentLength");
+    if (!existing) {
+        let contentType = createElement(childType, "ContentLength", element.id);
+        contentType.typeReference.setType(commonTypes.long);
+        contentType.typeReference.setIsNullable(true);
+        let parameterSetting = contentType.addStereotype(parameterSettingId);
+        parameterSetting.getProperty("Source").setValue("From Header");
+        parameterSetting.getProperty("Header Name").setValue("Content-Length");
+    }
+}
 /// <reference path="../../typings/elementmacro.context.api.d.ts" />
 function getSurrogateKeyType() {
     var _a, _b, _c;
@@ -807,91 +882,176 @@ function getMappedDomainElement(request) {
     }
     return new MappedDomainElement(entity);
 }
-/// <reference path="../_common/common.ts" />
-/// <reference path="contract.ts" />
 /// <reference path="../../common/getMappedDomainElement.ts" />
-const __exposeCommandAsHttpEndPoint = exposeCommandAsHttpEndPoint;
-function exposeCommandAsHttpEndPoint(command) {
-    let httpSettings = _prepareCommandAsHttpEndpoint(command);
-    if (["Create", "Add"].some(x => command.getName().startsWith(x))) {
+function applyHttpSettingsToOperations(operation, existingRoute = ``) {
+    var _a, _b;
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
+    const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+    const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
+    if (!operation.hasStereotype(httpSettingsId)) {
+        operation.addStereotype(httpSettingsId);
+    }
+    // get the name of the service, based on auto CRUD creation convention
+    let serviceDomain = ``;
+    if (operation.getParent() != null) {
+        var serviceName = operation.getParent().getName();
+        serviceDomain = singularize(serviceName.replace(`Service`, ``));
+    }
+    const domainElement = getMappedDomainElement(operation);
+    // filter out some common phrases
+    let toReplace = [
+        `Query`, `Request`, `ById`, `Create`, `Update`, `Delete`, `Modify`, `Insert`, `Patch`, `Remove`,
+        `Add`, `Set`, `List`, `Command`, `Find`, `Get`
+    ];
+    let supplementAdditionalReplacement = [];
+    existingRoute.split('/').forEach((replacement) => {
+        if (replacement.length > 0) {
+            supplementAdditionalReplacement.push(replacement[0].toUpperCase() + replacement.substring(1));
+            supplementAdditionalReplacement.push(pluralize(replacement[0].toUpperCase() + replacement.substring(1)));
+            supplementAdditionalReplacement.push(pluralize(replacement[0].toLowerCase() + replacement.substring(1)));
+            supplementAdditionalReplacement.push(pluralize(replacement));
+            supplementAdditionalReplacement.push(singularize(replacement[0].toUpperCase() + replacement.substring(1)));
+            supplementAdditionalReplacement.push(singularize(replacement[0].toLowerCase() + replacement.substring(1)));
+            supplementAdditionalReplacement.push(singularize(replacement));
+        }
+    });
+    toReplace.push(...supplementAdditionalReplacement);
+    let operationName = operation.getName();
+    toReplace.sort((a, b) => b.length - a.length).forEach((search) => {
+        operationName = operationName.replace(search, '');
+    });
+    let routePrefix = "";
+    if (domainElement != null && domainElement.entityDomainElementDetails.hasOwningEntity()) {
+        let routes = getOwningAggregateRouting(operation, domainElement);
+        routePrefix = routes.join("/");
+        serviceDomain = singularize(domainElement.entityDomainElementDetails.entity.getName());
+    }
+    let entity = (_a = domainElement === null || domainElement === void 0 ? void 0 : domainElement.entityDomainElementDetails) === null || _a === void 0 ? void 0 : _a.entity;
+    // first check if its the standard default operations
+    // if its not one of the "defaults" setup by the CRUD accelerator
+    // then calculate the route
+    const httpSettings = operation.getStereotype(httpSettingsId);
+    if (operation.getName() === `Create${serviceDomain}`) {
         httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(_getRouteInfo(operation, routePrefix, false, entity));
     }
-    else if (["Delete", "Remove"].some(x => command.getName().startsWith(x))) {
-        httpSettings.getProperty("Verb").setValue("DELETE");
-    }
-    else if (["Patch"].some(x => command.getName().startsWith(x))) {
-        httpSettings.getProperty("Verb").setValue("PATCH");
-    }
-    else {
+    else if (operation.getName() === `Update${serviceDomain}`) {
         httpSettings.getProperty("Verb").setValue("PUT");
+        httpSettings.getProperty("Route").setValue(_getRouteInfo(operation, routePrefix, true, entity));
     }
-}
-function exposeCommandAsHttpPatchEndpoint(command) {
-    let httpSettings = _prepareCommandAsHttpEndpoint(command);
-    httpSettings.getProperty("Verb").setValue("PATCH");
-}
-function _prepareCommandAsHttpEndpoint(command) {
-    var _a, _b;
-    const domainElement = getMappedDomainElement(command);
-    // Add the folder parts
-    const routeParts = [];
-    const defaultRoutePrefix = getDefaultRoutePrefix(false);
-    const defaultRoutePrefixParts = (!defaultRoutePrefix || defaultRoutePrefix == "") ? [] : defaultRoutePrefix.split("/");
-    if ((defaultRoutePrefixParts === null || defaultRoutePrefixParts === void 0 ? void 0 : defaultRoutePrefixParts.length) > 0) {
-        routeParts.push(...defaultRoutePrefixParts);
+    else if (operation.getName() === `Delete${serviceDomain}`) {
+        httpSettings.getProperty("Verb").setValue("DELETE");
+        httpSettings.getProperty("Route").setValue(_getRouteInfo(operation, routePrefix, true, entity));
     }
-    let folderParts = getFolderParts(command, domainElement);
-    routeParts.push(...folderParts);
-    if (domainElement != null) {
-        routeParts.push(...getRouteParts(command, domainElement));
+    else if (operation.getName() === `Patch${serviceDomain}`) {
+        httpSettings.getProperty("Verb").setValue("PATCH");
+        httpSettings.getProperty("Route").setValue(_getRouteInfo(operation, routePrefix, true, entity));
+    }
+    else if (operation.getName() === `Find${serviceDomain}ById`) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(_getRouteInfo(operation, routePrefix, true, entity));
+    }
+    else if (operation.getName() === `Find${pluralize(serviceDomain)}`) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(_getRouteInfo(operation, routePrefix, false, entity));
+    }
+    else if (_isMappedDomainOperation(operation)) {
+        httpSettings.getProperty("Verb").setValue("PUT");
+        httpSettings.getProperty("Route").setValue(_getRouteInfo(operation, routePrefix, true, entity, kebabCaseAcronymCorrection(toKebabCase(operationName), operationName)));
+    }
+    else if (operation.getName().startsWith("Get") || operation.getName().startsWith("Find") || operation.getName().startsWith("Lookup")) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${kebabCaseAcronymCorrection(toKebabCase(operationName), operationName)}${(operation.getChildren().some(x => x.getName().toLowerCase() == "id") ? `/{id}` : "")}`);
+    }
+    else if (operation.typeReference.getType() != null) {
+        httpSettings.getProperty("Verb").setValue("GET");
+        httpSettings.getProperty("Route").setValue(`${kebabCaseAcronymCorrection(toKebabCase(operationName), operationName)}${(operation.getChildren().some(x => x.getName().toLowerCase() == "id") ? `/{id}` : "")}`);
     }
     else {
-        routeParts.push(...generateNonDefaultEndpointRouteName(command, ``, folderParts));
+        httpSettings.getProperty("Verb").setValue("POST");
+        httpSettings.getProperty("Route").setValue(`${kebabCaseAcronymCorrection(toKebabCase(operationName), operationName)}`);
     }
-    let endpointInputIdElement = command.getChildren().filter(x => x.hasMetadata("endpoint-input-id"))[0];
-    if (endpointInputIdElement) {
-        routeParts.push(`{${toCamelCase(endpointInputIdElement.getName())}}`);
-    }
-    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
-    const httpSettings = (_a = command.getStereotype(httpSettingsId)) !== null && _a !== void 0 ? _a : command.addStereotype(httpSettingsId);
-    httpSettings.getProperty("Route").setValue(routeParts.join("/"));
-    if (((_b = command.typeReference.getType()) === null || _b === void 0 ? void 0 : _b.specialization) == "Type-Definition") {
+    operation.getChildren("Parameter").forEach(parameter => {
+        if (!parameter.hasStereotype(parameterSettingsId)) {
+            parameter.addStereotype(parameterSettingsId);
+        }
+    });
+    if (((_b = operation.typeReference.getType()) === null || _b === void 0 ? void 0 : _b.specialization) == "Type-Definition") {
         httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
     }
-    return httpSettings;
+}
+function _isMappedDomainOperation(operation) {
+    var mappings = getMappedRequestDetails(operation);
+    if (mappings == null)
+        return false;
+    return mappings.mappingTargetType === "Operation";
+}
+function _getRouteInfo(operation, routePrefix, addId, entity, additionalRoute) {
+    let result = routePrefix;
+    if (addId == true) {
+        let routeIds = [];
+        if (entity == null) {
+            if (operation.getChildren().some(x => x.getName().toLowerCase() == "id")) {
+                routeIds.push(`{id}`);
+            }
+        }
+        else {
+            let primaryKeys = DomainHelper.getPrimaryKeys(entity);
+            for (const key of primaryKeys) {
+                if (operation.getChildren().some(x => x.getName().toLowerCase() == key.name.toLowerCase() || x.getName().toLowerCase() == "id")) {
+                    routeIds.push(`{${operation.getChildren().find(x => x.getName().toLowerCase() == key.name.toLowerCase() || x.getName().toLowerCase() == "id").getName()}}`);
+                }
+            }
+        }
+        if (result.length > 0) {
+            result += "/";
+        }
+        result += routeIds.join("/");
+    }
+    if (additionalRoute != null) {
+        if (result.length > 0) {
+            result += "/";
+        }
+        result += additionalRoute;
+    }
+    return result;
 }
 /// <reference path="../_common/common.ts" />
-/// <reference path="../../common/getMappedDomainElement.ts" />
-/// <reference path="../../common/getMappedRequestDetails.ts" />
-function exposeQueryAsHttpEndPoint(request) {
-    var _a, _b;
-    const domainElement = getMappedDomainElement(request);
-    // Add the folder parts
-    const routeParts = [];
-    const defaultRoutePrefix = getDefaultRoutePrefix(false);
-    const defaultRoutePrefixParts = (!defaultRoutePrefix || defaultRoutePrefix == "") ? [] : defaultRoutePrefix.split("/");
-    if ((defaultRoutePrefixParts === null || defaultRoutePrefixParts === void 0 ? void 0 : defaultRoutePrefixParts.length) > 0) {
-        routeParts.push(...defaultRoutePrefixParts);
-    }
-    let folderParts = getFolderParts(request, domainElement);
-    routeParts.push(...folderParts);
-    if (domainElement != null) {
-        routeParts.push(...getRouteParts(request, domainElement));
-    }
-    else {
-        routeParts.push(...generateNonDefaultEndpointRouteName(request, ``, folderParts));
-    }
-    let endpointInputIdElement = request.getChildren().filter(x => x.hasMetadata("endpoint-input-id"))[0];
-    if (endpointInputIdElement) {
-        routeParts.push(`{${toCamelCase(endpointInputIdElement.getName())}}`);
-    }
+/// <reference path="common.ts" />
+function exposeOperationAsHttpEndPoint(element) {
+    let parentRoute = _getParentRoute(element);
+    applyHttpSettingsToOperations(element, parentRoute);
+}
+function exposeOperationAsHttpPatchEndpoint(element) {
+    let parentRoute = _getParentRoute(element);
+    applyHttpSettingsToOperations(element, parentRoute);
     const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    const httpSettings = (_a = request.getStereotype(httpSettingsId)) !== null && _a !== void 0 ? _a : request.addStereotype(httpSettingsId);
-    httpSettings.getProperty("Verb").setValue("GET");
-    httpSettings.getProperty("Route").setValue(routeParts.join("/"));
-    const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
-    if (((_b = request.typeReference.getType()) === null || _b === void 0 ? void 0 : _b.specialization) == "Type-Definition") {
-        httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
+    element.getStereotype(httpSettingsId).getProperty("Verb").setValue("PATCH");
+}
+function _getParentRoute(element) {
+    let httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd"; // from WebApi module
+    if (!element.getParent().hasStereotype(httpServiceSettingsId)) {
+        element.getParent().addStereotype(httpServiceSettingsId);
+        let serviceBaseName = removeSuffix(element.getParent().getName(), "Service");
+        element.getParent().getStereotype(httpServiceSettingsId).getProperty("Route").setValue(_getOperationRoute(serviceBaseName));
     }
+    let parentRoute = element.getParent().getStereotype(httpServiceSettingsId).getProperty("Route").getValue().toString();
+    return parentRoute;
+}
+function _getOperationRoute(serviceBaseName) {
+    return `${getDefaultRoutePrefix(true)}${kebabCaseAcronymCorrection(toKebabCase(serviceBaseName), serviceBaseName)}`;
+}
+/// <reference path="../common/common-file-transfer.ts" />
+/// <reference path="../../services-expose-as-http-endpoint/services/operation-expose-as-http-endpoint.ts" />
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Metadata.WebApi
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/expose-as-file-upload-operation/expose-as-file-upload-operation.ts
+ */
+function configureUpload(element) {
+    applyFileTransferStereoType(element);
+    addUploadFields(element, "Parameter");
+    exposeOperationAsHttpEndPoint(element);
+    makePost(element);
 }

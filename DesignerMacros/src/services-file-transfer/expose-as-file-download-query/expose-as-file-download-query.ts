@@ -1,5 +1,5 @@
 /// <reference path="../common/common-file-transfer.ts" />
-/// <reference path="../../services-expose-as-http-endpoint/query/shared.ts" />
+/// <reference path="../../services-expose-as-http-endpoint/cqrs/query-expose-as-http-endpoint.ts" />
 
 /**
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.WebApi
@@ -12,7 +12,5 @@ function configureDownload(element: MacroApi.Context.IElementApi): void{
 
     applyFileTransferStereoType(element);    
     makeReturnTypeFileDownloadDto(element);
-    exposeAsHttpEndPoint(element);
+    exposeQueryAsHttpEndPoint(element);
 }
-
-configureDownload(element);

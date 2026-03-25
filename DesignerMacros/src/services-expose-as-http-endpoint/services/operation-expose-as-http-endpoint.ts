@@ -1,4 +1,5 @@
 /// <reference path="../_common/common.ts" />
+/// <reference path="common.ts" />
 
 function exposeOperationAsHttpEndPoint(element: MacroApi.Context.IElementApi): void {
     let parentRoute = _getParentRoute(element);
