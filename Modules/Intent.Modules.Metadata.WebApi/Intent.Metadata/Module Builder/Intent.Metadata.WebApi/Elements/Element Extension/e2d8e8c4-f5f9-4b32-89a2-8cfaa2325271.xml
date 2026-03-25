@@ -87,8 +87,8 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="exposeAsHttpEndPoint(element);" isActive="true" />
-                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[&quot;a19cdcc4-6db9-45b7-888e-79147f987074&quot;]" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="exposeServiceAsHttpEndPoint(element);" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[&quot;c2073bc3-5649-457f-b470-90538774bbbc&quot;]" isActive="true" />
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">

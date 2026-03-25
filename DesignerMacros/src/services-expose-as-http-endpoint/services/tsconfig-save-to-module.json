@@ -3,14 +3,15 @@
   "compilerOptions": {
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "outFile": "./_dist.js",
+    "outFile": "../../../../Modules/Intent.Modules.Metadata.WebApi/resources/services-expose-as-http-endpoint.js",
     "removeComments": false,
     "sourceMap": false,
     "target": "ES2019",
     "types": []
   },
   "include": [
-    "**/*"
+    "**/*",
+    "../../../typings/**/*.d.ts"
   ],
   "exclude": []
 }

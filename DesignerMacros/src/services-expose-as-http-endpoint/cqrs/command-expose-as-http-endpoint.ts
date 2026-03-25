@@ -1,9 +1,26 @@
-/// <reference path="../_common/getFolderParts.ts" />
-/// <reference path="../_common/getRouteParts.ts" />
-/// <reference path="../_common/getDefaultRoutePrefix.ts" />
+/// <reference path="../_common/common.ts" />
 /// <reference path="../../common/getMappedDomainElement.ts" />
 
-function exposeAsHttpEndPoint(command: MacroApi.Context.IElementApi): void {
+function exposeCommandAsHttpEndPoint(command: MacroApi.Context.IElementApi): void {
+    let httpSettings = _prepareCommandAsHttpEndpoint(command);
+
+    if (["Create", "Add"].some(x => command.getName().startsWith(x))) {
+        httpSettings.getProperty("Verb").setValue("POST");
+    } else if (["Delete", "Remove"].some(x => command.getName().startsWith(x))) {
+        httpSettings.getProperty("Verb").setValue("DELETE");
+    } else if (["Patch"].some(x => command.getName().startsWith(x))) {
+        httpSettings.getProperty("Verb").setValue("PATCH");
+    } else {
+        httpSettings.getProperty("Verb").setValue("PUT");
+    }
+}
+
+function exposeCommandAsHttpPatchEndpoint(command: MacroApi.Context.IElementApi): void {
+    let httpSettings = _prepareCommandAsHttpEndpoint(command);
+    httpSettings.getProperty("Verb").setValue("PATCH");
+}
+
+function _prepareCommandAsHttpEndpoint(command: MacroApi.Context.IElementApi): MacroApi.Context.IStereotypeApi {
     const domainElement = getMappedDomainElement(command);
 
     // Add the folder parts
@@ -34,15 +51,8 @@ function exposeAsHttpEndPoint(command: MacroApi.Context.IElementApi): void {
     const httpSettings = command.getStereotype(httpSettingsId) ?? command.addStereotype(httpSettingsId);
     httpSettings.getProperty("Route").setValue(routeParts.join("/"))
 
-    if (["Create", "Add"].some(x => command.getName().startsWith(x))) {
-        httpSettings.getProperty("Verb").setValue("POST");
-    } else if (["Delete", "Remove"].some(x => command.getName().startsWith(x))) {
-        httpSettings.getProperty("Verb").setValue("DELETE");
-    } else {
-        httpSettings.getProperty("Verb").setValue("PUT");
-    }
-
     if (command.typeReference.getType()?.specialization == "Type-Definition") {
         httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
     }
+    return httpSettings;
 }

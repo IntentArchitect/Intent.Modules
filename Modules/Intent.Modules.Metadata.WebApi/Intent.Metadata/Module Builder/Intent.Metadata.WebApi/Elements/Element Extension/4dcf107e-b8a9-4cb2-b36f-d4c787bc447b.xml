@@ -88,8 +88,8 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="exposeAsHttpEndPoint(element);" isActive="true" />
-                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[&quot;f312c5d5-b017-4d5f-8ec4-6d1f1140f99f&quot;]" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="exposeCommandAsHttpEndPoint(element);" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[&quot;e0b54517-77f2-41cb-b8c5-ef6a26a5e731&quot;]" isActive="true" />
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
@@ -150,8 +150,8 @@
                       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                       <properties>
-                        <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="exposeAsHttpEndPoint(element);" isActive="true" />
-                        <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[&quot;f312c5d5-b017-4d5f-8ec4-6d1f1140f99f&quot;]" isActive="true" />
+                        <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="exposeCommandAsHttpEndPoint(element);" isActive="true" />
+                        <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[&quot;e0b54517-77f2-41cb-b8c5-ef6a26a5e731&quot;]" isActive="true" />
                       </properties>
                     </stereotype>
                     <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
@@ -264,6 +264,56 @@
                         <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
                         <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
                         <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                        <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
+                        <property name="c37d8704-0003-4886-b6c2-4e51aa22a8f9" display="Menu Group" isActive="true" />
+                        <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
+                        <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
+                      </properties>
+                    </stereotype>
+                  </stereotypes>
+                  <metadata />
+                  <childElements />
+                </childElement>
+                <childElement id="9db2a1a2-5ed4-4a99-baeb-43590edb2163" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                  <name>Expose as HTTP Patch Endpoint</name>
+                  <display>Expose as HTTP Patch Endpoint: Inline Script</display>
+                  <isAbstract>false</isAbstract>
+                  <genericTypes />
+                  <typeReference id="3528d49e-6d24-4e1b-9c3d-3913619084f6">
+                    <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+                    <isNavigable>true</isNavigable>
+                    <isNullable>false</isNullable>
+                    <isCollection>false</isCollection>
+                    <isRequired>true</isRequired>
+                    <typePackageName>Intent.ModuleBuilder</typePackageName>
+                    <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+                    <stereotypes />
+                    <genericTypeParameters />
+                  </typeReference>
+                  <isMapped>false</isMapped>
+                  <parentFolderId>13781338-e0d6-44fa-bd6a-92e69e2ed44b</parentFolderId>
+                  <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+                  <packageName>Intent.Metadata.WebApi</packageName>
+                  <stereotypes>
+                    <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="exposeCommandAsHttpPatchEndpoint(element);" isActive="true" />
+                        <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[&quot;e0b54517-77f2-41cb-b8c5-ef6a26a5e731&quot;]" isActive="true" />
+                      </properties>
+                    </stereotype>
+                    <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgdmlld0JveD0iMCAwIDUxMiA1MTIiCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9InN2ZzE5IgogICBzb2RpcG9kaTpkb2NuYW1lPSJwYXRjaC5zdmciCiAgIGlua3NjYXBlOnZlcnNpb249IjEuNC4zICgwZDE1Zjc1LCAyMDI1LTEyLTI1KSIKICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiCiAgIHhtbG5zOnNvZGlwb2RpPSJodHRwOi8vc29kaXBvZGkuc291cmNlZm9yZ2UubmV0L0RURC9zb2RpcG9kaS0wLmR0ZCIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgaWQ9Im5hbWVkdmlldzE5IgogICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIKICAgICBib3JkZXJjb2xvcj0iIzAwMDAwMCIKICAgICBib3JkZXJvcGFjaXR5PSIwLjI1IgogICAgIGlua3NjYXBlOnNob3dwYWdlc2hhZG93PSIyIgogICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwLjAiCiAgICAgaW5rc2NhcGU6cGFnZWNoZWNrZXJib2FyZD0iMCIKICAgICBpbmtzY2FwZTpkZXNrY29sb3I9IiNkMWQxZDEiCiAgICAgaW5rc2NhcGU6em9vbT0iMS41NzYxNzE5IgogICAgIGlua3NjYXBlOmN4PSIyNTYiCiAgICAgaW5rc2NhcGU6Y3k9IjI1NiIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjE5MjAiCiAgICAgaW5rc2NhcGU6d2luZG93LWhlaWdodD0iMTAwOSIKICAgICBpbmtzY2FwZTp3aW5kb3cteD0iMTkxMiIKICAgICBpbmtzY2FwZTp3aW5kb3cteT0iLTgiCiAgICAgaW5rc2NhcGU6d2luZG93LW1heGltaXplZD0iMSIKICAgICBpbmtzY2FwZTpjdXJyZW50LWxheWVyPSJzdmcxOSIgLz4KICA8ZGVmcwogICAgIGlkPSJkZWZzNCI+CiAgICA8bGluZWFyR3JhZGllbnQKICAgICAgIGlkPSJwaWxsR3JhZCIKICAgICAgIHgxPSIwIgogICAgICAgeTE9IjUxMiIKICAgICAgIHgyPSI1MTIiCiAgICAgICB5Mj0iMCIKICAgICAgIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3AKICAgICAgICAgb2Zmc2V0PSI0OS45JSIKICAgICAgICAgc3RvcC1jb2xvcj0iI2RlYmFhNyIKICAgICAgICAgaWQ9InN0b3AxIiAvPgogICAgICA8c3RvcAogICAgICAgICBvZmZzZXQ9IjUwLjElIgogICAgICAgICBzdG9wLWNvbG9yPSIjZjVkNWMxIgogICAgICAgICBpZD0ic3RvcDIiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50CiAgICAgICBpZD0icGFkR3JhZCIKICAgICAgIHgxPSIwIgogICAgICAgeTE9IjUxMiIKICAgICAgIHgyPSI1MTIiCiAgICAgICB5Mj0iMCIKICAgICAgIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3AKICAgICAgICAgb2Zmc2V0PSI0OS45JSIKICAgICAgICAgc3RvcC1jb2xvcj0iI2RhOGI1NSIKICAgICAgICAgaWQ9InN0b3AzIiAvPgogICAgICA8c3RvcAogICAgICAgICBvZmZzZXQ9IjUwLjElIgogICAgICAgICBzdG9wLWNvbG9yPSIjZWZhNzc2IgogICAgICAgICBpZD0ic3RvcDQiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8ZwogICAgIHRyYW5zZm9ybT0ibWF0cml4KDEuMTkwMTQ5NywtMS4xOTAxNDk3LDEuMTkwMTQ5NywxLjE5MDE0OTcsLTM1My4wMzk0LDI1NS42ODI3OCkiCiAgICAgaWQ9ImcxOSI+CiAgICA8cmVjdAogICAgICAgeD0iNzYiCiAgICAgICB5PSIxOTYiCiAgICAgICB3aWR0aD0iMzYwIgogICAgICAgaGVpZ2h0PSIxMjAiCiAgICAgICByeD0iNjAiCiAgICAgICBmaWxsPSJ1cmwoI3BpbGxHcmFkKSIKICAgICAgIGlkPSJyZWN0NCIKICAgICAgIHN0eWxlPSJmaWxsOnVybCgjcGlsbEdyYWQpIiAvPgogICAgPHJlY3QKICAgICAgIHg9IjE5NiIKICAgICAgIHk9IjE5NiIKICAgICAgIHdpZHRoPSIxMjAiCiAgICAgICBoZWlnaHQ9IjEyMCIKICAgICAgIGZpbGw9InVybCgjcGFkR3JhZCkiCiAgICAgICBpZD0icmVjdDUiCiAgICAgICBzdHlsZT0iZmlsbDp1cmwoI3BhZEdyYWQpIiAvPgogICAgPGNpcmNsZQogICAgICAgY3g9IjEyMSIKICAgICAgIGN5PSIyMjYiCiAgICAgICByPSI5IgogICAgICAgZmlsbD0iIzYyNDczYSIKICAgICAgIGlkPSJjaXJjbGU1IiAvPgogICAgPGNpcmNsZQogICAgICAgY3g9IjE1MSIKICAgICAgIGN5PSIyMjYiCiAgICAgICByPSI5IgogICAgICAgZmlsbD0iIzYyNDczYSIKICAgICAgIGlkPSJjaXJjbGU2IiAvPgogICAgPGNpcmNsZQogICAgICAgY3g9IjEwNiIKICAgICAgIGN5PSIyNTYiCiAgICAgICByPSI5IgogICAgICAgZmlsbD0iIzYyNDczYSIKICAgICAgIGlkPSJjaXJjbGU3IiAvPgogICAgPGNpcmNsZQogICAgICAgY3g9IjEzNiIKICAgICAgIGN5PSIyNTYiCiAgICAgICByPSI5IgogICAgICAgZmlsbD0iIzYyNDczYSIKICAgICAgIGlkPSJjaXJjbGU4IiAvPgogICAgPGNpcmNsZQogICAgICAgY3g9IjE2NiIKICAgICAgIGN5PSIyNTYiCiAgICAgICByPSI5IgogICAgICAgZmlsbD0iIzYyNDczYSIKICAgICAgIGlkPSJjaXJjbGU5IiAvPgogICAgPGNpcmNsZQogICAgICAgY3g9IjEyMSIKICAgICAgIGN5PSIyODYiCiAgICAgICByPSI5IgogICAgICAgZmlsbD0iIzYyNDczYSIKICAgICAgIGlkPSJjaXJjbGUxMCIgLz4KICAgIDxjaXJjbGUKICAgICAgIGN4PSIxNTEiCiAgICAgICBjeT0iMjg2IgogICAgICAgcj0iOSIKICAgICAgIGZpbGw9IiM2MjQ3M2EiCiAgICAgICBpZD0iY2lyY2xlMTEiIC8+CiAgICA8Y2lyY2xlCiAgICAgICBjeD0iMzYxIgogICAgICAgY3k9IjIyNiIKICAgICAgIHI9IjkiCiAgICAgICBmaWxsPSIjNjI0NzNhIgogICAgICAgaWQ9ImNpcmNsZTEyIiAvPgogICAgPGNpcmNsZQogICAgICAgY3g9IjM5MSIKICAgICAgIGN5PSIyMjYiCiAgICAgICByPSI5IgogICAgICAgZmlsbD0iIzYyNDczYSIKICAgICAgIGlkPSJjaXJjbGUxMyIgLz4KICAgIDxjaXJjbGUKICAgICAgIGN4PSIzNDYiCiAgICAgICBjeT0iMjU2IgogICAgICAgcj0iOSIKICAgICAgIGZpbGw9IiM2MjQ3M2EiCiAgICAgICBpZD0iY2lyY2xlMTQiIC8+CiAgICA8Y2lyY2xlCiAgICAgICBjeD0iMzc2IgogICAgICAgY3k9IjI1NiIKICAgICAgIHI9IjkiCiAgICAgICBmaWxsPSIjNjI0NzNhIgogICAgICAgaWQ9ImNpcmNsZTE1IiAvPgogICAgPGNpcmNsZQogICAgICAgY3g9IjQwNiIKICAgICAgIGN5PSIyNTYiCiAgICAgICByPSI5IgogICAgICAgZmlsbD0iIzYyNDczYSIKICAgICAgIGlkPSJjaXJjbGUxNiIgLz4KICAgIDxjaXJjbGUKICAgICAgIGN4PSIzNjEiCiAgICAgICBjeT0iMjg2IgogICAgICAgcj0iOSIKICAgICAgIGZpbGw9IiM2MjQ3M2EiCiAgICAgICBpZD0iY2lyY2xlMTciIC8+CiAgICA8Y2lyY2xlCiAgICAgICBjeD0iMzkxIgogICAgICAgY3k9IjI4NiIKICAgICAgIHI9IjkiCiAgICAgICBmaWxsPSIjNjI0NzNhIgogICAgICAgaWQ9ImNpcmNsZTE4IiAvPgogICAgPGxpbmUKICAgICAgIHgxPSIxOTYiCiAgICAgICB5MT0iMTk2IgogICAgICAgeDI9IjE5NiIKICAgICAgIHkyPSIzMTYiCiAgICAgICBzdHJva2U9IiM2MjQ3M2EiCiAgICAgICBzdHJva2Utd2lkdGg9IjE0IgogICAgICAgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiCiAgICAgICBpZD0ibGluZTE4IiAvPgogICAgPGxpbmUKICAgICAgIHgxPSIzMTYiCiAgICAgICB5MT0iMTk2IgogICAgICAgeDI9IjMxNiIKICAgICAgIHkyPSIzMTYiCiAgICAgICBzdHJva2U9IiM2MjQ3M2EiCiAgICAgICBzdHJva2Utd2lkdGg9IjE0IgogICAgICAgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiCiAgICAgICBpZD0ibGluZTE5IiAvPgogICAgPHJlY3QKICAgICAgIHg9Ijc2IgogICAgICAgeT0iMTk2IgogICAgICAgd2lkdGg9IjM2MCIKICAgICAgIGhlaWdodD0iMTIwIgogICAgICAgcng9IjYwIgogICAgICAgZmlsbD0ibm9uZSIKICAgICAgIHN0cm9rZT0iIzYyNDczYSIKICAgICAgIHN0cm9rZS13aWR0aD0iMTQiCiAgICAgICBpZD0icmVjdDE5IiAvPgogIDwvZz4KPC9zdmc+Cg==&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                        <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                        <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                        <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
+                        <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="return !element.hasStereotype(&quot;Http Settings&quot;);" isActive="true" />
                         <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
                         <property name="c37d8704-0003-4886-b6c2-4e51aa22a8f9" display="Menu Group" isActive="true" />
                         <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />

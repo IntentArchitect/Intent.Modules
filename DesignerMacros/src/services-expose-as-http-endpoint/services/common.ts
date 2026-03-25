@@ -1,6 +1,3 @@
-/// <reference path="../../../typings/elementmacro.context.api.d.ts" />
-/// <reference path="../_common/getDefaultRoutePrefix.ts" />
-/// <reference path="../_common/getRouteParts.ts" />
 /// <reference path="../../common/getMappedDomainElement.ts" />
 
 function applyHttpSettingsToOperations(operation: MacroApi.Context.IElementApi, existingRoute: string = ``): void {
@@ -51,7 +48,7 @@ function applyHttpSettingsToOperations(operation: MacroApi.Context.IElementApi, 
     if (domainElement != null && domainElement.entityDomainElementDetails.hasOwningEntity()){
         let routes = getOwningAggregateRouting(operation, domainElement );
         routePrefix = routes.join("/");
-        serviceDomain = singularize( domainElement.entityDomainElementDetails.entity.getName());
+        serviceDomain = singularize(domainElement.entityDomainElementDetails.entity.getName());
     }
 
     let entity = domainElement?.entityDomainElementDetails?.entity;
@@ -62,31 +59,34 @@ function applyHttpSettingsToOperations(operation: MacroApi.Context.IElementApi, 
     const httpSettings = operation.getStereotype(httpSettingsId);
     if(operation.getName() === `Create${serviceDomain}`) {
         httpSettings.getProperty("Verb").setValue("POST");
-        httpSettings.getProperty("Route").setValue(getRouteInfo(operation, routePrefix, false, entity))
+        httpSettings.getProperty("Route").setValue(_getRouteInfo(operation, routePrefix, false, entity));
     } else if (operation.getName() === `Update${serviceDomain}`) {
         httpSettings.getProperty("Verb").setValue("PUT");
-        httpSettings.getProperty("Route").setValue(getRouteInfo(operation, routePrefix, true, entity))
+        httpSettings.getProperty("Route").setValue(_getRouteInfo(operation, routePrefix, true, entity));
     } else if (operation.getName() === `Delete${serviceDomain}`) {
         httpSettings.getProperty("Verb").setValue("DELETE");
-        httpSettings.getProperty("Route").setValue(getRouteInfo(operation, routePrefix, true, entity))
+        httpSettings.getProperty("Route").setValue(_getRouteInfo(operation, routePrefix, true, entity));
+    } else if (operation.getName() === `Patch${serviceDomain}`) {
+        httpSettings.getProperty("Verb").setValue("PATCH");
+        httpSettings.getProperty("Route").setValue(_getRouteInfo(operation, routePrefix, true, entity));
     } else if (operation.getName() === `Find${serviceDomain}ById`) {
         httpSettings.getProperty("Verb").setValue("GET");
-        httpSettings.getProperty("Route").setValue(getRouteInfo(operation, routePrefix, true, entity))
+        httpSettings.getProperty("Route").setValue(_getRouteInfo(operation, routePrefix, true, entity));
     }else if (operation.getName() === `Find${pluralize(serviceDomain)}`) {
         httpSettings.getProperty("Verb").setValue("GET");
-        httpSettings.getProperty("Route").setValue(getRouteInfo(operation, routePrefix, false, entity))
-    } else if (isMappedDomainOperation(operation)) {
+        httpSettings.getProperty("Route").setValue(_getRouteInfo(operation, routePrefix, false, entity));
+    } else if (_isMappedDomainOperation(operation)) {
         httpSettings.getProperty("Verb").setValue("PUT");
-        httpSettings.getProperty("Route").setValue(getRouteInfo(operation, routePrefix, true, entity, kebabCaseAcronymCorrection(toKebabCase(operationName), operationName) ))
+        httpSettings.getProperty("Route").setValue(_getRouteInfo(operation, routePrefix, true, entity, kebabCaseAcronymCorrection(toKebabCase(operationName), operationName)));
     } else if (operation.getName().startsWith("Get") || operation.getName().startsWith("Find") || operation.getName().startsWith("Lookup")) {
         httpSettings.getProperty("Verb").setValue("GET");
-        httpSettings.getProperty("Route").setValue(`${kebabCaseAcronymCorrection(toKebabCase(operationName), operationName)}${(operation.getChildren().some(x => x.getName().toLowerCase() == "id") ? `/{id}` : "")}`)
+        httpSettings.getProperty("Route").setValue(`${kebabCaseAcronymCorrection(toKebabCase(operationName), operationName)}${(operation.getChildren().some(x => x.getName().toLowerCase() == "id") ? `/{id}` : "")}`);
     } else if (operation.typeReference.getType() != null) {
         httpSettings.getProperty("Verb").setValue("GET");
-        httpSettings.getProperty("Route").setValue(`${kebabCaseAcronymCorrection(toKebabCase(operationName), operationName)}${(operation.getChildren().some(x => x.getName().toLowerCase() == "id") ? `/{id}` : "")}`)
+        httpSettings.getProperty("Route").setValue(`${kebabCaseAcronymCorrection(toKebabCase(operationName), operationName)}${(operation.getChildren().some(x => x.getName().toLowerCase() == "id") ? `/{id}` : "")}`);
     } else {
         httpSettings.getProperty("Verb").setValue("POST");
-        httpSettings.getProperty("Route").setValue(`${kebabCaseAcronymCorrection(toKebabCase(operationName), operationName)}`)
+        httpSettings.getProperty("Route").setValue(`${kebabCaseAcronymCorrection(toKebabCase(operationName), operationName)}`);
     }
 
     operation.getChildren("Parameter").forEach(parameter => {
@@ -100,13 +100,13 @@ function applyHttpSettingsToOperations(operation: MacroApi.Context.IElementApi, 
     }
 }
 
-function isMappedDomainOperation(operation: IElementApi) :boolean{
+function _isMappedDomainOperation(operation: IElementApi): boolean {
     var mappings = getMappedRequestDetails(operation);
     if (mappings == null) return false;
     return mappings.mappingTargetType === "Operation";
 }
 
-function getRouteInfo(operation: IElementApi, routePrefix:string, addId: boolean, entity?: IElementApi, additionalRoute?:string):string {
+function _getRouteInfo(operation: IElementApi, routePrefix:string, addId: boolean, entity?: IElementApi, additionalRoute?:string): string {
 
     let result = routePrefix;
     if (addId == true){

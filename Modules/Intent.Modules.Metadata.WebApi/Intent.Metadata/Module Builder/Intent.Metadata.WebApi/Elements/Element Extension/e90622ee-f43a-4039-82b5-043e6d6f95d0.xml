@@ -104,8 +104,8 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="exposeAsHttpEndPoint(element);" isActive="true" />
-                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[&quot;78a50417-4750-4fb2-9730-3d617aebb612&quot;]" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="exposeQueryAsHttpEndPoint(element);" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[&quot;e0b54517-77f2-41cb-b8c5-ef6a26a5e731&quot;]" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -166,8 +166,8 @@
                       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                       <properties>
-                        <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="exposeAsHttpEndPoint(element);" isActive="true" />
-                        <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[&quot;78a50417-4750-4fb2-9730-3d617aebb612&quot;]" isActive="true" />
+                        <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="exposeQueryAsHttpEndPoint(element);" isActive="true" />
+                        <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[&quot;e0b54517-77f2-41cb-b8c5-ef6a26a5e731&quot;]" isActive="true" />
                       </properties>
                     </stereotype>
                   </stereotypes>

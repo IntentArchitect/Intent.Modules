@@ -1,3 +1,8 @@
+### Version 4.7.19
+
+- Improvement: Added Expose as HTTP Patch Endpoint option.
+- Improvement: Internal scripts compiled directly off TypeScript.
+
 ### Version 4.7.18
 
 - Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.

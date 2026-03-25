@@ -1,10 +1,8 @@
-/// <reference path="../_common/getFolderParts.ts" />
-/// <reference path="../_common/getRouteParts.ts" />
-/// <reference path="../../common/getMappedRequestDetails.ts" />
-/// <reference path="../_common/getDefaultRoutePrefix.ts" />
+/// <reference path="../_common/common.ts" />
 /// <reference path="../../common/getMappedDomainElement.ts" />
+/// <reference path="../../common/getMappedRequestDetails.ts" />
 
-function exposeAsHttpEndPoint(request: MacroApi.Context.IElementApi): void {
+function exposeQueryAsHttpEndPoint(request: MacroApi.Context.IElementApi): void {
     const domainElement = getMappedDomainElement(request);
 
     // Add the folder parts
@@ -19,7 +17,6 @@ function exposeAsHttpEndPoint(request: MacroApi.Context.IElementApi): void {
     routeParts.push(...folderParts);
 
     if (domainElement != null) {
-        console.warn("getRouteParts");
         routeParts.push(...getRouteParts(request, domainElement));
     }
     else { 
@@ -43,4 +40,3 @@ function exposeAsHttpEndPoint(request: MacroApi.Context.IElementApi): void {
         httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
     }
 }
-

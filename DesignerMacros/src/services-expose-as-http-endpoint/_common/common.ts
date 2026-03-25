@@ -1,5 +1,59 @@
-/// <reference path="../../../typings/elementmacro.context.api.d.ts" />
+/// <reference path="../../common/mappedDomainElement.ts" />
 /// <reference path="../../common/getMappedRequestDetails.ts" />
+
+function getDefaultRoutePrefix(includeLastPathSeparator: boolean): string {
+    const defaultApiRoutePrefix = "api/";
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+
+    let settingsGroup = application.getSettings(apiSettingsId);
+    let route = settingsGroup ? settingsGroup.getField("Default API Route Prefix").value : null;
+
+    // if the group is not present, use the default value
+    if(!settingsGroup)
+    {
+        route = defaultApiRoutePrefix;
+    }
+    
+    // if the route is null (or set to blank in settings, which results in null)
+    // set it to blank (the actual value in settings)
+    if (!route || route == "") {
+        return "";
+    }
+
+    if (includeLastPathSeparator && !route.endsWith("/")) {
+        route += "/";
+    } else if (!includeLastPathSeparator && route.endsWith("/")) {
+        route = removeSuffix(route, "/");
+    }
+
+    return route;
+}
+
+function getFolderParts(request: IElementApi, domainElement?: MappedDomainElement): string[] {
+    let depth = 0;
+    let currentElement = request.getParent();
+    let folderParts: string[] = [];
+
+    while (currentElement.specialization === "Folder") {
+        let folderName = currentElement.getName();
+
+        if (depth === 0 && domainElement != null) {
+            const singularizedFolderName = singularize(folderName);
+            const singularizedAggregateRootName = singularize(domainElement.entityDomainElementDetails?.getOwningOrTargetEntityName());
+
+            if (singularizedFolderName.toLowerCase() === singularizedAggregateRootName.toLowerCase()) {
+                folderName = pluralize(singularizedFolderName);
+            }
+        }
+
+        folderParts.unshift(toKebabCase(folderName));
+        currentElement = currentElement.getParent();
+        depth++;
+    }
+
+    return folderParts;
+}
+
 
 function getRouteParts(request: IElementApi, domainElement: MappedDomainElement): string[] {
     if (domainElement == null) {
