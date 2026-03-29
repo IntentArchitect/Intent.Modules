@@ -23,7 +23,7 @@
   <tags />
   <moduleSettingsExtensions />
   <metadata>
-    <install target="" src="Intent.Metadata/Module Builder/Intent.Metadata.Domain.Constraints/Intent.Metadata.Domain.Constraints.pkg.config" externalReference="f852e12f-1a19-4c8d-8192-8393c6ce59da" />
+    <install target="Domain" src="Intent.Metadata/Module Builder/Intent.Metadata.Domain.Constraints/Intent.Metadata.Domain.Constraints.pkg.config" externalReference="f852e12f-1a19-4c8d-8192-8393c6ce59da" />
   </metadata>
   <releaseNotes>release-notes.md</releaseNotes>
   <migrations />
