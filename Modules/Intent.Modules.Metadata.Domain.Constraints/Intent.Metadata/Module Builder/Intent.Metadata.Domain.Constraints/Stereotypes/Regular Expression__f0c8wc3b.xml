@@ -30,5 +30,12 @@
       <placeholder>(required)</placeholder>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
+    <property id="74671c4d-9ef8-4df7-a605-07ef9b02bdd8">
+      <name>Message</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(optional)</placeholder>
+    </property>
   </properties>
 </stereotypeDefinition>

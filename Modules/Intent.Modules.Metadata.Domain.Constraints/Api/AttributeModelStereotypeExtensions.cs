@@ -250,6 +250,11 @@ namespace Intent.Metadata.Domain.Constraints.Api
                 return _stereotype.GetProperty<string>("Pattern");
             }
 
+            public string Message()
+            {
+                return _stereotype.GetProperty<string>("Message");
+            }
+
         }
 
         public class Required
