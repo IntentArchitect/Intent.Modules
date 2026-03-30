@@ -32,7 +32,7 @@
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder>(optional)</placeholder>
+      <placeholder>(no minimum)</placeholder>
       <isRequiredFunction>if ((MinValue == null || MinValue === "") &amp;&amp; (MaxValue == null || MaxValue === "")) {
     return true;
 }
@@ -44,7 +44,7 @@ return false;</isRequiredFunction>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder>(optional)</placeholder>
+      <placeholder>(no maximum)</placeholder>
       <isRequiredFunction>if ((MinValue == null || MinValue === "") &amp;&amp; (MaxValue == null || MaxValue === "")) {
     return true;
 }
