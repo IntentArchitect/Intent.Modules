@@ -106,7 +106,7 @@ namespace Intent.Modules.Common.Templates
     public abstract class IntentTemplateBase : T4TemplateBase, IIntentTemplate, IConfigurableTemplate,
         IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook,
         IAfterTemplateRegistrationExecutionHook,
-        ITemplateBeforeExecutionHook
+        ITemplateBeforeExecutionHook, ITemplateWithAIContext
     {
         /// <summary>
         /// Returns the known template dependencies added for this template.
@@ -159,6 +159,8 @@ namespace Intent.Modules.Common.Templates
 
         /// <inheritdoc />
         public ITemplateBindingContext BindingContext { get; }
+
+        protected TemplateAIContext AIContext { get; } = new TemplateAIContext();
 
         /// <summary>
         /// Metadata of the template.
@@ -1448,6 +1450,19 @@ namespace Intent.Modules.Common.Templates
         public override string ToString()
         {
             return $"{Id}";
+        }
+
+        public virtual object? GetAIContext()
+        {
+            AIContext.Instructions = this.GetMetadata().CustomMetadata.TryGetValue("AI Context", out var instructions) ? instructions : null;
+            AIContext.RelatedFiles = this.GetAllTemplateDependencies().Select(x => ExecutionContext.FindTemplateInstance(x))
+                .Where(x => x != null)
+                .Select(x => new RelatedFile()
+                {
+                    FilePath = x!.GetMetadata().GetFilePath(),
+                    Reason = x!.GetMetadata().CustomMetadata.TryGetValue("AI Summary", out var aiContext) ? aiContext : null
+                }).ToList<IRelatedFile>();
+            return AIContext;
         }
 
         private class EmitOrPublishEnvelope<T>(T @event)

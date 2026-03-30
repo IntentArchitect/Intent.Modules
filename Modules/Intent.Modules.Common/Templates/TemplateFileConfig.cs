@@ -49,12 +49,42 @@ namespace Intent.Modules.Common.Templates
         public virtual string FileName { get; set; }
         /// <inheritdoc />
         public string LocationInProject { get; set; }
-        
+
         /// <inheritdoc />
         IDictionary<string, string> ITemplateFileConfig.CustomMetadata => CustomMetadata;
 
         /// <inheritdoc />
         public virtual Dictionary<string, string> CustomMetadata { get; }
 
+
+    }
+
+    public static class TemplateFileConfigExtensions
+    {
+        /// <summary>
+        /// Sets the AI summary for this template file configuration.
+        /// </summary>
+        /// <param name="fileConfig"></param>
+        /// <param name="aiSummary"></param>
+        /// <returns></returns>
+        public static T WithAISummary<T>(this T fileConfig, string aiSummary)
+            where T : ITemplateFileConfig
+        {
+            fileConfig.CustomMetadata["AI Summary"] = aiSummary;
+            return fileConfig;
+        }
+
+        /// <summary>
+        /// Sets the AI context for this template file configuration.
+        /// </summary>
+        /// <param name="fileConfig"></param>
+        /// <param name="aiContext"></param>
+        /// <returns></returns>
+        public static T WithAIContext<T>(this T fileConfig, string aiContext)
+            where T : ITemplateFileConfig
+        {
+            fileConfig.CustomMetadata["AI Context"] = aiContext;
+            return fileConfig;
+        }
     }
 }
