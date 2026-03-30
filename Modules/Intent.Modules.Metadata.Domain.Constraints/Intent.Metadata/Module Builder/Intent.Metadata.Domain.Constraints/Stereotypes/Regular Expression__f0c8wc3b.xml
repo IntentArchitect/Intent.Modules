@@ -28,7 +28,6 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(required)</placeholder>
-      <isActiveFunction>(pattern)</isActiveFunction>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
   </properties>
