@@ -1,4 +1,8 @@
-﻿### Version 3.12.14
+﻿### Version 3.12.15
+
+- Improvement: Diagrams will now name themselves the same name as their parent and enable editing after loading the diagram.
+
+### Version 3.12.14
 
 - Improvement: Changed ordering of the Designer in the Solution Explorer so that appears first.
 
