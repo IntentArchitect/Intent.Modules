@@ -37,30 +37,6 @@ namespace Intent.Metadata.Domain.Constraints.Api
             return true;
         }
 
-        public static Compare GetCompare(this AttributeModel model)
-        {
-            var stereotype = model.GetStereotype(Compare.DefinitionId);
-            return stereotype != null ? new Compare(stereotype) : null;
-        }
-
-
-        public static bool HasCompare(this AttributeModel model)
-        {
-            return model.HasStereotype(Compare.DefinitionId);
-        }
-
-        public static bool TryGetCompare(this AttributeModel model, out Compare stereotype)
-        {
-            if (!HasCompare(model))
-            {
-                stereotype = null;
-                return false;
-            }
-
-            stereotype = new Compare(model.GetStereotype(Compare.DefinitionId));
-            return true;
-        }
-
         public static Email GetEmail(this AttributeModel model)
         {
             var stereotype = model.GetStereotype(Email.DefinitionId);
@@ -85,75 +61,27 @@ namespace Intent.Metadata.Domain.Constraints.Api
             return true;
         }
 
-        public static MaxValue GetMaxValue(this AttributeModel model)
+        public static NumericLimits GetNumericLimits(this AttributeModel model)
         {
-            var stereotype = model.GetStereotype(MaxValue.DefinitionId);
-            return stereotype != null ? new MaxValue(stereotype) : null;
+            var stereotype = model.GetStereotype(NumericLimits.DefinitionId);
+            return stereotype != null ? new NumericLimits(stereotype) : null;
         }
 
 
-        public static bool HasMaxValue(this AttributeModel model)
+        public static bool HasNumericLimits(this AttributeModel model)
         {
-            return model.HasStereotype(MaxValue.DefinitionId);
+            return model.HasStereotype(NumericLimits.DefinitionId);
         }
 
-        public static bool TryGetMaxValue(this AttributeModel model, out MaxValue stereotype)
+        public static bool TryGetNumericLimits(this AttributeModel model, out NumericLimits stereotype)
         {
-            if (!HasMaxValue(model))
+            if (!HasNumericLimits(model))
             {
                 stereotype = null;
                 return false;
             }
 
-            stereotype = new MaxValue(model.GetStereotype(MaxValue.DefinitionId));
-            return true;
-        }
-
-        public static MinValue GetMinValue(this AttributeModel model)
-        {
-            var stereotype = model.GetStereotype(MinValue.DefinitionId);
-            return stereotype != null ? new MinValue(stereotype) : null;
-        }
-
-
-        public static bool HasMinValue(this AttributeModel model)
-        {
-            return model.HasStereotype(MinValue.DefinitionId);
-        }
-
-        public static bool TryGetMinValue(this AttributeModel model, out MinValue stereotype)
-        {
-            if (!HasMinValue(model))
-            {
-                stereotype = null;
-                return false;
-            }
-
-            stereotype = new MinValue(model.GetStereotype(MinValue.DefinitionId));
-            return true;
-        }
-
-        public static Range GetRange(this AttributeModel model)
-        {
-            var stereotype = model.GetStereotype(Range.DefinitionId);
-            return stereotype != null ? new Range(stereotype) : null;
-        }
-
-
-        public static bool HasRange(this AttributeModel model)
-        {
-            return model.HasStereotype(Range.DefinitionId);
-        }
-
-        public static bool TryGetRange(this AttributeModel model, out Range stereotype)
-        {
-            if (!HasRange(model))
-            {
-                stereotype = null;
-                return false;
-            }
-
-            stereotype = new Range(model.GetStereotype(Range.DefinitionId));
+            stereotype = new NumericLimits(model.GetStereotype(NumericLimits.DefinitionId));
             return true;
         }
 
@@ -205,27 +133,27 @@ namespace Intent.Metadata.Domain.Constraints.Api
             return true;
         }
 
-        public static StringLength GetStringLength(this AttributeModel model)
+        public static TextLimits GetTextLimits(this AttributeModel model)
         {
-            var stereotype = model.GetStereotype(StringLength.DefinitionId);
-            return stereotype != null ? new StringLength(stereotype) : null;
+            var stereotype = model.GetStereotype(TextLimits.DefinitionId);
+            return stereotype != null ? new TextLimits(stereotype) : null;
         }
 
 
-        public static bool HasStringLength(this AttributeModel model)
+        public static bool HasTextLimits(this AttributeModel model)
         {
-            return model.HasStereotype(StringLength.DefinitionId);
+            return model.HasStereotype(TextLimits.DefinitionId);
         }
 
-        public static bool TryGetStringLength(this AttributeModel model, out StringLength stereotype)
+        public static bool TryGetTextLimits(this AttributeModel model, out TextLimits stereotype)
         {
-            if (!HasStringLength(model))
+            if (!HasTextLimits(model))
             {
                 stereotype = null;
                 return false;
             }
 
-            stereotype = new StringLength(model.GetStereotype(StringLength.DefinitionId));
+            stereotype = new TextLimits(model.GetStereotype(TextLimits.DefinitionId));
             return true;
         }
 
@@ -267,25 +195,6 @@ namespace Intent.Metadata.Domain.Constraints.Api
 
         }
 
-        public class Compare
-        {
-            private IStereotype _stereotype;
-            public const string DefinitionId = "8a9c8792-14dc-4bdf-8b1b-1801c7c6a9f5";
-
-            public Compare(IStereotype stereotype)
-            {
-                _stereotype = stereotype;
-            }
-
-            public string Name => _stereotype.Name;
-
-            public IElement CompareTo()
-            {
-                return _stereotype.GetProperty<IElement>("Compare To");
-            }
-
-        }
-
         public class Email
         {
             private IStereotype _stereotype;
@@ -300,64 +209,26 @@ namespace Intent.Metadata.Domain.Constraints.Api
 
         }
 
-        public class MaxValue
+        public class NumericLimits
         {
             private IStereotype _stereotype;
-            public const string DefinitionId = "5ffee79d-e11e-4ae8-921e-a61e79624afa";
+            public const string DefinitionId = "cb14e47d-672c-4244-8950-7c4ebf8cf8ed";
 
-            public MaxValue(IStereotype stereotype)
+            public NumericLimits(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }
 
             public string Name => _stereotype.Name;
 
-            public int? Value()
+            public string MinValue()
             {
-                return _stereotype.GetProperty<int?>("Value");
+                return _stereotype.GetProperty<string>("Min Value");
             }
 
-        }
-
-        public class MinValue
-        {
-            private IStereotype _stereotype;
-            public const string DefinitionId = "c34a4c4b-e3ad-4cf5-98a4-5e13b4eb21ec";
-
-            public MinValue(IStereotype stereotype)
+            public string MaxValue()
             {
-                _stereotype = stereotype;
-            }
-
-            public string Name => _stereotype.Name;
-
-            public int? Value()
-            {
-                return _stereotype.GetProperty<int?>("Value");
-            }
-
-        }
-
-        public class Range
-        {
-            private IStereotype _stereotype;
-            public const string DefinitionId = "0e6009db-a169-452f-a053-f35871dae376";
-
-            public Range(IStereotype stereotype)
-            {
-                _stereotype = stereotype;
-            }
-
-            public string Name => _stereotype.Name;
-
-            public int? From()
-            {
-                return _stereotype.GetProperty<int?>("From");
-            }
-
-            public int? To()
-            {
-                return _stereotype.GetProperty<int?>("To");
+                return _stereotype.GetProperty<string>("Max Value");
             }
 
         }
@@ -395,17 +266,22 @@ namespace Intent.Metadata.Domain.Constraints.Api
 
         }
 
-        public class StringLength
+        public class TextLimits
         {
             private IStereotype _stereotype;
-            public const string DefinitionId = "c5f8489e-005f-4e39-bf5c-7ef6983d4cbc";
+            public const string DefinitionId = "13649b19-4dfe-43ec-967f-0b85a5801dd6";
 
-            public StringLength(IStereotype stereotype)
+            public TextLimits(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }
 
             public string Name => _stereotype.Name;
+
+            public int? MinLength()
+            {
+                return _stereotype.GetProperty<int?>("Min Length");
+            }
 
             public int? MaxLength()
             {
