@@ -6,49 +6,16 @@ This Intent Architect module adds Domain Designer metadata for modeling validati
 
 ## What It Provides
 
-- `Required`
-	- Ensures a value is present.
-	- Properties:
-		- None
-
-- `Text Limits`
-	- Restricts the length of text values.
-	- Properties:
-		- `Min Length` (optional)
-		- `Max Length` (optional)
-
-- `Numeric Limits`
-	- Restricts numeric values to a range.
-	- Properties:
-		- `Min Value` (optional)
-		- `Max Value` (optional)
-
-- `Collection Limits`
-	- Restricts the number of items in a collection.
-	- Properties:
-		- `Min Length` (optional)
-		- `Max Length` (optional)
-
-- `Regular Expression`
-	- Validates a value against a regex pattern.
-	- Properties:
-		- `Pattern` (required)
-		- `Message` (optional custom validation message)
-
-- `Email`
-	- Validates email format.
-	- Properties:
-		- None
-
-- `Url`
-	- Validates URL format.
-	- Properties:
-		- None
-
-- `Base64`
-	- Validates that a value is Base64 encoded.
-	- Properties:
-		- None
+| Constraint | Description | Properties |
+| --- | --- | --- |
+| `Required` | Ensures a value is present. | None |
+| `Text Limits` | Restricts the length of text values. | `Min Length` (optional), `Max Length` (optional) |
+| `Numeric Limits` | Restricts numeric values to a range. | `Min Value` (optional), `Max Value` (optional) |
+| `Collection Limits` | Restricts the number of items in a collection. | `Min Length` (optional), `Max Length` (optional) |
+| `Regular Expression` | Validates a value against a regex pattern. | `Pattern` (required), `Message` (optional custom validation message) |
+| `Email` | Validates email format. | None |
+| `Url` | Validates URL format. | None |
+| `Base64` | Validates that a value is Base64 encoded. | None |
 
 These constraints are metadata-driven and can be consumed by downstream modules to generate technology-specific validation implementations.
 
