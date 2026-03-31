@@ -2,6 +2,8 @@
 
 This Intent Architect module adds Domain Designer metadata for modeling validation rules on entity attributes.
 
+![Domain Constraints](images/domain-constraints.png)
+
 ## What It Provides
 
 - `Required`
@@ -50,7 +52,16 @@ This Intent Architect module adds Domain Designer metadata for modeling validati
 
 These constraints are metadata-driven and can be consumed by downstream modules to generate technology-specific validation implementations.
 
-Use the `Add Domain Constraint` [context menu](#how-to-apply) on a domain attribute to apply common constraints.
+## How To Apply
+
+Use the `Add Domain Constraint` context menu on a domain attribute to apply common constraints:
+
+1. Open the Domain Designer and select an `Attribute` on an entity.
+2. Right-click and choose `Add Domain Constraint`.
+3. Select the desired constraint.
+4. Configure the constraint properties where applicable.
+
+![Add Domain Constraints](images/add-domain-constraints.png)
 
 ## FluentValidation Integration
 
@@ -90,12 +101,3 @@ public class CreateProductCommandValidator : AbstractValidator<CreateProductComm
 ```
 
 Exact generated output can vary based on the target application templates and module versions in use.
-
-## How To Apply
-
-1. Open the Domain Designer and select an `Attribute` on an entity.
-2. Right-click and choose `Add Domain Constraint`.
-3. Select the desired constraint.
-4. Configure the constraint properties where applicable.
-
-![Add Domain Constraints](images/add-domain-constraints.png)
