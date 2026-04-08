@@ -1454,15 +1454,21 @@ namespace Intent.Modules.Common.Templates
 
         public virtual object? GetAIContext()
         {
-            AIContext.Instructions = this.GetMetadata().CustomMetadata.TryGetValue("AI Context", out var instructions) ? instructions : null;
-            AIContext.RelatedFiles = this.GetAllTemplateDependencies().Select(x => ExecutionContext.FindTemplateInstance(x))
-                .Where(x => x != null)
-                .Select(x => new RelatedFile()
-                {
-                    FilePath = x!.GetMetadata().GetFilePath(),
-                    Reason = x!.GetMetadata().CustomMetadata.TryGetValue("AI Summary", out var aiContext) ? aiContext : null
-                }).ToList<IRelatedFile>();
-            return AIContext;
+            return new
+            {
+                summary = this.GetMetadata().CustomMetadata.TryGetValue("AI Summary", out var summary) ? summary : null,
+                context = this.GetMetadata().CustomMetadata.TryGetValue("AI Context", out var context) ? context : null,
+                comment = (this is ITemplateWithModel { Model: IElementWrapper elementWrapper }) 
+                    ? elementWrapper.InternalElement.Comment : null,
+                relatedFiles = this.GetAllTemplateDependencies().Select(x => ExecutionContext.FindTemplateInstance(x))
+                    .Where(x => x != null)
+                    .Select(x => new
+                    {
+                        filePath = x!.GetMetadata().GetFullLocationPath(),
+                        summary = x.GetMetadata().CustomMetadata.TryGetValue("AI Summary", out var aiContext) ? aiContext : null
+                    }).ToList()
+                };
+
         }
 
         private class EmitOrPublishEnvelope<T>(T @event)
