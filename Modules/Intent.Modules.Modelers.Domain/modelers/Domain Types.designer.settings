@@ -1280,7 +1280,10 @@ getCurrentDiagram().layoutVisuals(result.elementIds, getCurrentDiagram().mousePo
       </diagramSettings>
       <macros>
         <macro trigger="on-created">
-          <script>element.loadDiagram();</script>
+          <script>element.loadDiagram().then(async () =&gt; {
+    element.setName(element.getParent().getName())
+    await element.enableEditing();
+})</script>
         </macro>
       </macros>
     </elementSetting>

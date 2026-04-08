@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="cb14e47d-672c-4244-8950-7c4ebf8cf8ed" version="3.1.0">
+  <name>Numeric Limits</name>
+  <targetMode>that-reference</targetMode>
+  <targetTypes>
+    <type id="0090fb93-483e-41af-a11d-5ad2dc796adf">Attribute</type>
+  </targetTypes>
+  <targetReferenceTypes>
+    <type id="fb0a362d-e9e2-40de-b6ff-5ce8167cbe74">int</type>
+    <type id="33013006-E404-48C2-AC46-24EF5A5774FD">long</type>
+    <type id="2ABF0FD3-CD56-4349-8838-D120ED268245">short</type>
+    <type id="675c7b84-997a-44e0-82b9-cd724c07c9e6">decimal</type>
+    <type id="341929E9-E3E7-46AA-ACB3-B0438421F4C4">float</type>
+    <type id="24A77F70-5B97-40DD-8F9A-4208AD5F9219">double</type>
+  </targetReferenceTypes>
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ29sbGVjdGlvbiBMaW1pdHM6IEdyZWVuIGNpcmNsZSwgd2hpdGUgYXJyYXkgYnJhY2tldHMgZW5jbG9zaW5nIGEgaG9yaXpvbnRhbCBkb3VibGUtYXJyb3cgLS0+Cgo8c3ZnCiAgIHdpZHRoPSIxMDAlIgogICBoZWlnaHQ9IjEwMCUiCiAgIHZpZXdCb3g9IjAgMCAxMDAgMTAwIgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmczIgogICBzb2RpcG9kaTpkb2NuYW1lPSJsZW5ndGgtY29uc3RyYWludHMtaWNvLnN2ZyIKICAgaW5rc2NhcGU6dmVyc2lvbj0iMS40LjMgKDBkMTVmNzUsIDIwMjUtMTItMjUpIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcwogICAgIGlkPSJkZWZzMyI+CiAgICA8bGluZWFyR3JhZGllbnQKICAgICAgIGlkPSJsaW5lYXJHcmFkaWVudDMiCiAgICAgICBpbmtzY2FwZTpjb2xsZWN0PSJhbHdheXMiPgogICAgICA8c3RvcAogICAgICAgICBzdHlsZT0ic3RvcC1jb2xvcjojMzM3YzM3O3N0b3Atb3BhY2l0eToxOyIKICAgICAgICAgb2Zmc2V0PSIwIgogICAgICAgICBpZD0ic3RvcDMiIC8+CiAgICAgIDxzdG9wCiAgICAgICAgIHN0eWxlPSJzdG9wLWNvbG9yOiM5ZWQ0YTA7c3RvcC1vcGFjaXR5OjE7IgogICAgICAgICBvZmZzZXQ9IjEiCiAgICAgICAgIGlkPSJzdG9wNCIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQKICAgICAgIGlua3NjYXBlOmNvbGxlY3Q9ImFsd2F5cyIKICAgICAgIHhsaW5rOmhyZWY9IiNsaW5lYXJHcmFkaWVudDMiCiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQ0IgogICAgICAgeDE9IjUwIgogICAgICAgeTE9Ijk1IgogICAgICAgeDI9IjUwIgogICAgICAgeTI9IjUiCiAgICAgICBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIKICAgICAgIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMS4wNzE1OTU4LDAsMCwxLjA3MTU5NTgsLTMuNTc5Nzg4LC0zLjU3OTc4OCkiIC8+CiAgPC9kZWZzPgogIDxzb2RpcG9kaTpuYW1lZHZpZXcKICAgICBpZD0ibmFtZWR2aWV3MyIKICAgICBwYWdlY29sb3I9IiNmZmZmZmYiCiAgICAgYm9yZGVyY29sb3I9IiMwMDAwMDAiCiAgICAgYm9yZGVyb3BhY2l0eT0iMC4yNSIKICAgICBpbmtzY2FwZTpzaG93cGFnZXNoYWRvdz0iMiIKICAgICBpbmtzY2FwZTpwYWdlb3BhY2l0eT0iMC4wIgogICAgIGlua3NjYXBlOnBhZ2VjaGVja2VyYm9hcmQ9IjAiCiAgICAgaW5rc2NhcGU6ZGVza2NvbG9yPSIjZDFkMWQxIgogICAgIGlua3NjYXBlOnpvb209IjguMDciCiAgICAgaW5rc2NhcGU6Y3g9IjQ5LjkzODA0MiIKICAgICBpbmtzY2FwZTpjeT0iNTAiCiAgICAgaW5rc2NhcGU6d2luZG93LXdpZHRoPSIxOTIwIgogICAgIGlua3NjYXBlOndpbmRvdy1oZWlnaHQ9IjEwMDkiCiAgICAgaW5rc2NhcGU6d2luZG93LXg9IjE5MTIiCiAgICAgaW5rc2NhcGU6d2luZG93LXk9Ii04IgogICAgIGlua3NjYXBlOndpbmRvdy1tYXhpbWl6ZWQ9IjEiCiAgICAgaW5rc2NhcGU6Y3VycmVudC1sYXllcj0ic3ZnMyIgLz4KICA8Y2lyY2xlCiAgICAgY3g9IjUwIgogICAgIGN5PSI1MCIKICAgICByPSI0OC4yMjE4MDkiCiAgICAgZmlsbD0iIzRDQUY1MCIKICAgICBpZD0iY2lyY2xlMSIKICAgICBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50NCk7c3Ryb2tlLXdpZHRoOjEuMDcxNiIgLz4KICA8IS0tIExlZnQgQXJyYXkgQnJhY2tldCAtLT4KICA8cGF0aAogICAgIGQ9Im0gMjguMTg0NjM1LDI1IGggLTEzIHYgNTAgaCAxMyIKICAgICBmaWxsPSJub25lIgogICAgIHN0cm9rZT0iI2ZmZmZmZiIKICAgICBzdHJva2Utd2lkdGg9IjgiCiAgICAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogICAgIHN0cm9rZS1saW5lam9pbj0icm91bmQiCiAgICAgaWQ9InBhdGgxIiAvPgogIDwhLS0gUmlnaHQgQXJyYXkgQnJhY2tldCAtLT4KICA8cGF0aAogICAgIGQ9Im0gNzEuMDcxODcxLDI1IGggMTMgdiA1MCBoIC0xMyIKICAgICBmaWxsPSJub25lIgogICAgIHN0cm9rZT0iI2ZmZmZmZiIKICAgICBzdHJva2Utd2lkdGg9IjgiCiAgICAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogICAgIHN0cm9rZS1saW5lam9pbj0icm91bmQiCiAgICAgaWQ9InBhdGgyIiAvPgogIDwhLS0gSG9yaXpvbnRhbCBEb3VibGUgQXJyb3cgLS0+CiAgPHBhdGgKICAgICBkPSJNIDI0LjQ2OTIyNyw1MCAzOS43ODc2OSwzOC40NzMzNTggdiA3LjY4NDQyOCBIIDYwLjIxMjMxIFYgMzguNDczMzU4IEwgNzUuNTMwNzczLDUwIDYwLjIxMjMxLDYxLjUyNjY0MiBWIDUzLjg0MjIxNCBIIDM5Ljc4NzY5IHYgNy42ODQ0MjggeiIKICAgICBmaWxsPSIjZmZmZmZmIgogICAgIGlkPSJwYXRoMyIKICAgICBzdHlsZT0ic3Ryb2tlLXdpZHRoOjIuMjE0NjYiIC8+Cjwvc3ZnPgo=" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return true;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>d8f98517-9a13-4d57-9468-8cde51f3703c</parentFolderId>
+  <order>0</order>
+  <packageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</packageId>
+  <packageName>Intent.Metadata.Domain.Constraints</packageName>
+  <properties>
+    <property id="4c8d4fd3-bfcd-44d7-9b12-7e2dc141fb72">
+      <name>Min Value</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(no minimum)</placeholder>
+      <isRequiredFunction>if ((MinValue == null || MinValue === "") &amp;&amp; (MaxValue == null || MaxValue === "")) {
+    return true;
+}
+
+return false;</isRequiredFunction>
+    </property>
+    <property id="9dad612e-e7ca-4d2e-a1e5-aaf0d4c82d17">
+      <name>Max Value</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(no maximum)</placeholder>
+      <isRequiredFunction>if ((MinValue == null || MinValue === "") &amp;&amp; (MaxValue == null || MaxValue === "")) {
+    return true;
+}
+
+return false;</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

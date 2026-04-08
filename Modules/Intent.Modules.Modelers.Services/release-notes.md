@@ -1,3 +1,7 @@
+### Version 4.0.11
+
+- Improvement: Added AI rules to Diagrams to lay out services and their interactions.
+
 ### Version 4.0.10
 
 - Improvement: Added AI rules to Services and Operations to help AI agents better understand how to effectively create them.
