@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="cb14e47d-672c-4244-8950-7c4ebf8cf8ed" version="3.1.0">
+  <comment>Configures inclusive minimum and/or maximum numeric value restrictions.</comment>
   <name>Numeric Limits</name>
   <targetMode>that-reference</targetMode>
   <targetTypes>

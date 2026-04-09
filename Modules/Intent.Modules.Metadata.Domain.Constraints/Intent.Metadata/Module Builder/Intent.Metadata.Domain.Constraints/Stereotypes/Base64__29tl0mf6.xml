@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="02308621-429c-4af4-9428-2ebb272e53fa" version="3.1.0">
+  <comment>Validates that a text value is Base64 encoded.</comment>
   <name>Base64</name>
   <targetMode>that-reference</targetMode>
   <targetTypes>
