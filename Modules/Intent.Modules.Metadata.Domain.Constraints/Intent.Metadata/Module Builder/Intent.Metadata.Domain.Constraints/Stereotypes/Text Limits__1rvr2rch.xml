@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="13649b19-4dfe-43ec-967f-0b85a5801dd6" version="3.1.0">
+  <comment>Restricts the inclusive length of text values.</comment>
   <name>Text Limits</name>
   <targetMode>that-reference</targetMode>
   <targetTypes>

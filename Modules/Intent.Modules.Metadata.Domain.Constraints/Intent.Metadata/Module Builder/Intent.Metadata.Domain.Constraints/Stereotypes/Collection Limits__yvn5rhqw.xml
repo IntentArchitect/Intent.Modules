@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="06daef0d-5be0-43e0-9cc6-2bb8ea35dc86" version="3.1.0">
+  <comment>Configures inclusive minimum and/or maximum collection size settings, ensuring controlled collection cardinality.</comment>
   <name>Collection Limits</name>
   <targetMode>filter-function</targetMode>
   <targetTypes />

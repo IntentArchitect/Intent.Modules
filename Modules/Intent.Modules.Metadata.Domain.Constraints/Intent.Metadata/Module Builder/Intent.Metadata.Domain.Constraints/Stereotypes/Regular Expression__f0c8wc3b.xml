@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="3dd144bc-374b-4acd-841a-7323210df66d" version="3.1.0">
+  <comment>Validates a text value against a regular expression pattern.</comment>
   <name>Regular Expression</name>
   <targetMode>that-reference</targetMode>
   <targetTypes>
