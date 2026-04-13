@@ -1,3 +1,7 @@
+### Version 1.0.7
+
+- Improvement: Diagrams will now name themselves the same name as their parent and enable editing after loading the diagram.
+
 ### Version 1.0.6
 
 - Improvement: Updated designer ordering to appear after the Services designer.
