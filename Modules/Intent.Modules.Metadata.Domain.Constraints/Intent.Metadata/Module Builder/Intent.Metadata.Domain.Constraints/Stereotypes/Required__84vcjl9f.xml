@@ -18,7 +18,7 @@ Note: Non-nullable fields are implicitly required.</comment>
   <autoAdd>false</autoAdd>
   <allowMultipleApplies>false</allowMultipleApplies>
   <parentFolderId>d8f98517-9a13-4d57-9468-8cde51f3703c</parentFolderId>
-  <order>0</order>
+  <order>-3</order>
   <packageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</packageId>
   <packageName>Intent.Metadata.Domain.Constraints</packageName>
   <properties />
