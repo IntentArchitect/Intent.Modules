@@ -122,7 +122,8 @@ const numericTypes = new Set([
     "short",
     "decimal",
     "float",
-    "double"
+    "double",
+    "byte"
 ]);
 
 if (element.typeReference.getType()?.getName() !== "string") {

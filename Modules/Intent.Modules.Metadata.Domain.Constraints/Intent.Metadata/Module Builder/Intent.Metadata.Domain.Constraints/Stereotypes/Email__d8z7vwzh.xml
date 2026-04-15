@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="9fb8d1b1-39b3-4f16-88e0-34d24a4e9bf6" version="3.1.0">
-  <comment>Validates that a text value is in a valid email address format.</comment>
+  <comment>Domain Constraint that validates whether a text value is in a valid email address format.</comment>
   <name>Email</name>
   <targetMode>that-reference</targetMode>
   <targetTypes>

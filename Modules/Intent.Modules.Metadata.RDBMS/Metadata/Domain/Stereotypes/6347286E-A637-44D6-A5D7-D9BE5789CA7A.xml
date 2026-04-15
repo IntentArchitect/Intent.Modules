@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="6347286E-A637-44D6-A5D7-D9BE5789CA7A" version="3.1.0">
-  <comment>Configures constraints to control the storage format and length of textual data in the database.</comment>
+  <comment>Deprecation Warning: This will be obsolete in the future. Rather make use of Text Limits from Domain Constraints.
+
+Configures constraints to control the storage format and length of textual data in the database.</comment>
   <name>Text Constraints</name>
   <targetMode>that-reference</targetMode>
   <targetTypes>

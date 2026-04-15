@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="1b2dc31a-599f-449b-9646-1a5313d23f91" version="3.1.0">
-  <comment>Validates that a value is in a valid absolute URL format.</comment>
+  <comment>Domain Constraint that validates whether a text value is in a valid absolute URL format.</comment>
   <name>Url</name>
   <targetMode>that-reference</targetMode>
   <targetTypes>

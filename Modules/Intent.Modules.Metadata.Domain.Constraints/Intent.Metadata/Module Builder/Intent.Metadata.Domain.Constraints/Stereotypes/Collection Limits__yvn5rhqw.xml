@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="06daef0d-5be0-43e0-9cc6-2bb8ea35dc86" version="3.1.0">
-  <comment>Configures inclusive minimum and/or maximum collection size settings, ensuring controlled collection cardinality.</comment>
+  <comment>Domain Constraint that validates the number of items in a collection. Individual limits are optional; validation rules are only generated for populated values.</comment>
   <name>Collection Limits</name>
   <targetMode>filter-function</targetMode>
   <targetTypes />
@@ -12,7 +12,7 @@
   <displayIconFunction>return true;</displayIconFunction>
   <displayFunction />
   <displayAsAnnotation>false</displayAsAnnotation>
-  <displayAsText>true</displayAsText>
+  <displayAsText>false</displayAsText>
   <autoAdd>false</autoAdd>
   <allowMultipleApplies>false</allowMultipleApplies>
   <parentFolderId>d8f98517-9a13-4d57-9468-8cde51f3703c</parentFolderId>

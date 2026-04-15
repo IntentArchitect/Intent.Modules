@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="13649b19-4dfe-43ec-967f-0b85a5801dd6" version="3.1.0">
-  <comment>Restricts the inclusive length of text values.</comment>
+  <comment>Domain Constraint that validates string length. 
+Applied by default; rules are only generated if Min or Max length properties are populated.
+Note: Acts as a fallback for physical storage constraints (e.g., column length) when specific persistence configuration is missing. Populated values determine physical limits; otherwise, maximum capacity is assumed.</comment>
   <name>Text Limits</name>
   <targetMode>that-reference</targetMode>
   <targetTypes>

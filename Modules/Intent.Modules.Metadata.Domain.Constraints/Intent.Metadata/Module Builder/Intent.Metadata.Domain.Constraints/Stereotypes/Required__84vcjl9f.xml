@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="14680476-e24a-490f-ba44-75eb8dc6fb46" version="3.1.0">
-  <comment>Ensures a value is present (non-nullable fields are implicitly required).</comment>
+  <comment>Domain Constraint that validates whether a value is present. 
+Note: Non-nullable fields are implicitly required.</comment>
   <name>Required</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
