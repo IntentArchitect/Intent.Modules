@@ -1,3 +1,7 @@
+### Version 3.11.0
+
+- Improvement: Support for AI Agents
+
 ### Version 3.10.0
 
 - Feature: Added support for being able to import code changes from files into designers.
