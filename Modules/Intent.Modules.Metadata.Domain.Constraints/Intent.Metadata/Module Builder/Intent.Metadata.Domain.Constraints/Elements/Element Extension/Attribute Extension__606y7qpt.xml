@@ -530,5 +530,88 @@
         </childElement>
       </childElements>
     </childElement>
+    <childElement id="85e725f6-49e2-42f2-add3-5d9e7c54d3bd" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>b15eeb56-1c04-4062-b82b-9de73eb9b4a6</parentFolderId>
+      <packageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</packageId>
+      <packageName>Intent.Metadata.Domain.Constraints</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="e81112c6-74ea-4684-8934-e74030279128" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Created</name>
+          <display>On Created: Inline Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="d95b3fd0-7938-4175-b3e7-5db4b43a4e15">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>85e725f6-49e2-42f2-add3-5d9e7c54d3bd</parentFolderId>
+          <packageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</packageId>
+          <packageName>Intent.Metadata.Domain.Constraints</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const textLimitsStereotype = &quot;13649b19-4dfe-43ec-967f-0b85a5801dd6&quot;;&#xD;&#xA;if (!element.hasStereotype(textLimitsStereotype)) {&#xD;&#xA;    element.addStereotype(textLimitsStereotype);&#xD;&#xA;}" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="fe7fb7f0-bd96-4947-8b48-ca59fdb1fe41" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Type Changed</name>
+          <display>On Type Changed: Inline Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="66d600a2-e355-4f45-a3d8-cfd92044b06f">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>85e725f6-49e2-42f2-add3-5d9e7c54d3bd</parentFolderId>
+          <packageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</packageId>
+          <packageName>Intent.Metadata.Domain.Constraints</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const base64Stereotype = &quot;02308621-429c-4af4-9428-2ebb272e53fa&quot;;&#xD;&#xA;const collectionsStereotype = &quot;06daef0d-5be0-43e0-9cc6-2bb8ea35dc86&quot;;&#xD;&#xA;const emailStereotype = &quot;9fb8d1b1-39b3-4f16-88e0-34d24a4e9bf6&quot;;&#xD;&#xA;const numericStereotype = &quot;cb14e47d-672c-4244-8950-7c4ebf8cf8ed&quot;;&#xD;&#xA;const regexStereotype = &quot;3dd144bc-374b-4acd-841a-7323210df66d&quot;;&#xD;&#xA;const textLimitsStereotype = &quot;13649b19-4dfe-43ec-967f-0b85a5801dd6&quot;;&#xD;&#xA;const urlStereotype = &quot;1b2dc31a-599f-449b-9646-1a5313d23f91&quot;;&#xD;&#xA;&#xD;&#xA;const stringStereotypes = [&#xD;&#xA;    base64Stereotype,&#xD;&#xA;    emailStereotype,&#xD;&#xA;    regexStereotype,&#xD;&#xA;    textLimitsStereotype,&#xD;&#xA;    urlStereotype&#xD;&#xA;];&#xD;&#xA;&#xD;&#xA;const numericTypes = new Set([&#xD;&#xA;    &quot;int&quot;,&#xD;&#xA;    &quot;long&quot;,&#xD;&#xA;    &quot;short&quot;,&#xD;&#xA;    &quot;decimal&quot;,&#xD;&#xA;    &quot;float&quot;,&#xD;&#xA;    &quot;double&quot;&#xD;&#xA;]);&#xD;&#xA;&#xD;&#xA;if (element.typeReference.getType()?.getName() !== &quot;string&quot;) {&#xD;&#xA;    for (let st of stringStereotypes) {&#xD;&#xA;        if (element.hasStereotype(st)) {&#xD;&#xA;            element.removeStereotype(st);&#xD;&#xA;        }&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;if (element.typeReference.getType() == null || &#xD;&#xA;    !numericTypes.has(element.typeReference.getType().getName())&#xD;&#xA;    ) {&#xD;&#xA;        if (element.hasStereotype(numericStereotype)) {&#xD;&#xA;            element.removeStereotype(numericStereotype);&#xD;&#xA;        }&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;if (!element.typeReference.getIsCollection()) {&#xD;&#xA;    if (element.hasStereotype(collectionsStereotype)) {&#xD;&#xA;        element.removeStereotype(collectionsStereotype);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;if (element.typeReference.getType()?.getName() === &quot;string&quot;) {&#xD;&#xA;    if (!element.hasStereotype(textLimitsStereotype)) {&#xD;&#xA;        element.addStereotype(textLimitsStereotype);&#xD;&#xA;    }&#xD;&#xA;}" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
   </childElements>
 </class>

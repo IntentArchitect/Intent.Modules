@@ -221,14 +221,14 @@ namespace Intent.Metadata.Domain.Constraints.Api
 
             public string Name => _stereotype.Name;
 
-            public string MinValue()
+            public decimal? MinValue()
             {
-                return _stereotype.GetProperty<string>("Min Value");
+                return _stereotype.GetProperty<decimal?>("Min Value");
             }
 
-            public string MaxValue()
+            public decimal? MaxValue()
             {
-                return _stereotype.GetProperty<string>("Max Value");
+                return _stereotype.GetProperty<decimal?>("Max Value");
             }
 
         }

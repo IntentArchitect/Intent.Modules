@@ -181,33 +181,18 @@ if (useDefaultName &amp;&amp; element.getMapping() != null) {
     <elementExtension type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <mappingSettings />
       <macros>
-        <macro trigger="on-created">
-          <script>let relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c"
+        <macro trigger="on-type-changed">
+          <script>const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
+const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
+
 if (!element.getPackage().hasStereotype(relationalDatabaseId)) {
     return;
-}
-if ((element.getParent().specialization == "Class" || element.getParent().specialization == "Value Object") &amp;&amp; 
-    element.typeReference.typeId == "d384db9c-a279-45e1-801e-e4e8099625f2" /* string */) {
-    if (!element.hasStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A")) {
-        element.addStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A"); // Text Contraint
-    }
-} else {
-    element.removeStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A")
 }
 
-</script>
-        </macro>
-        <macro trigger="on-type-changed">
-          <script>let relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c"
-if (!element.getPackage().hasStereotype(relationalDatabaseId)) {
-    return;
-}
-if ((element.getParent().specialization == "Class" || element.getParent().specialization == "Value Object") &amp;&amp; 
-    element.typeReference.typeId == "d384db9c-a279-45e1-801e-e4e8099625f2" /* string */) {
-    if (!element.hasStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A")) {
-        element.addStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A"); // Text Contraint
-    }
-} else {
+if (!(
+        (element.getParent().specialization == "Class" || element.getParent().specialization == "Value Object") &amp;&amp; 
+        element.typeReference.typeId == stringTypeId
+    )) {
     element.removeStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A")
 }
 </script>

@@ -92,6 +92,68 @@ if (!element.hasStereotype(base64StereotypeId)) {
       </contextMenuOptions>
       <typeOrder />
       <mappingSettings />
+      <macros>
+        <macro trigger="on-created">
+          <script>const textLimitsStereotype = "13649b19-4dfe-43ec-967f-0b85a5801dd6";
+if (!element.hasStereotype(textLimitsStereotype)) {
+    element.addStereotype(textLimitsStereotype);
+}</script>
+        </macro>
+        <macro trigger="on-type-changed">
+          <script>const base64Stereotype = "02308621-429c-4af4-9428-2ebb272e53fa";
+const collectionsStereotype = "06daef0d-5be0-43e0-9cc6-2bb8ea35dc86";
+const emailStereotype = "9fb8d1b1-39b3-4f16-88e0-34d24a4e9bf6";
+const numericStereotype = "cb14e47d-672c-4244-8950-7c4ebf8cf8ed";
+const regexStereotype = "3dd144bc-374b-4acd-841a-7323210df66d";
+const textLimitsStereotype = "13649b19-4dfe-43ec-967f-0b85a5801dd6";
+const urlStereotype = "1b2dc31a-599f-449b-9646-1a5313d23f91";
+
+const stringStereotypes = [
+    base64Stereotype,
+    emailStereotype,
+    regexStereotype,
+    textLimitsStereotype,
+    urlStereotype
+];
+
+const numericTypes = new Set([
+    "int",
+    "long",
+    "short",
+    "decimal",
+    "float",
+    "double"
+]);
+
+if (element.typeReference.getType()?.getName() !== "string") {
+    for (let st of stringStereotypes) {
+        if (element.hasStereotype(st)) {
+            element.removeStereotype(st);
+        }
+    }
+}
+
+if (element.typeReference.getType() == null || 
+    !numericTypes.has(element.typeReference.getType().getName())
+    ) {
+        if (element.hasStereotype(numericStereotype)) {
+            element.removeStereotype(numericStereotype);
+        }
+}
+
+if (!element.typeReference.getIsCollection()) {
+    if (element.hasStereotype(collectionsStereotype)) {
+        element.removeStereotype(collectionsStereotype);
+    }
+}
+
+if (element.typeReference.getType()?.getName() === "string") {
+    if (!element.hasStereotype(textLimitsStereotype)) {
+        element.addStereotype(textLimitsStereotype);
+    }
+}</script>
+        </macro>
+      </macros>
     </elementExtension>
   </elementExtensions>
   <associationSettings />

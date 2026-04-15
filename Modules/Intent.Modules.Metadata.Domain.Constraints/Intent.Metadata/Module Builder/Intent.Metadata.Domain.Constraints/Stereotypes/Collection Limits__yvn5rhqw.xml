@@ -25,23 +25,14 @@
       <type>string</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder>(no minimum)</placeholder>
-      <isRequiredFunction>if ((MinLength == null || MinLength === "") &amp;&amp; (MaxLength == null || MaxLength === "")) {
-    return true;
-}
-return false;</isRequiredFunction>
+      <placeholder>(zero)</placeholder>
     </property>
     <property id="466ae5b6-d7e0-40b9-b84b-850a8a77f734">
       <name>Max Length</name>
       <type>string</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
-      <placeholder>(no maximum)</placeholder>
-      <isRequiredFunction>if ((MinLength == null || MinLength === "") &amp;&amp; (MaxLength == null || MaxLength === "")) {
-    return true;
-}
-
-return false;</isRequiredFunction>
+      <placeholder>(maximum)</placeholder>
     </property>
   </properties>
 </stereotypeDefinition>
