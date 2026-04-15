@@ -55,8 +55,7 @@ namespace Intent.Modules.Common.Migrations
 
                     package.AddAnchor(agentsFolder.Id, "AI.Context", AIContextAnchorId);
                     package.AddAnchor(instructionsFolder.Id, "AI.Context.Instructions");
-                    package.AddAnchor(skillsFolder.Id, "AI.Context.SKills");
-
+                    package.AddAnchor(skillsFolder.Id, "AI.Context.Skills");
 
                     package.Save();
                 }
@@ -72,8 +71,7 @@ namespace Intent.Modules.Common.Migrations
 
                     package.AddRole(agentsFolder.Id, "AI.Context", AIContextRoleId);
                     package.AddRole(instructionsFolder.Id, "AI.Context.Instructions");
-                    package.AddRole(skillsFolder.Id, "AI.Context.SKills");
-
+                    package.AddRole(skillsFolder.Id, "AI.Context.Skills");
 
                     package.Save();
                 }
