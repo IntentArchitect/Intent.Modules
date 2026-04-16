@@ -19,12 +19,17 @@
   <interoperability>
     <detect id="Intent.Application.FluentValidation.Dtos">
       <install>
-        <package id="Intent.Application.FluentValidation.Dtos" version="3.12.7" />
+        <package id="Intent.Application.FluentValidation.Dtos" version="3.12.8-pre.0" />
       </install>
     </detect>
     <detect id="Intent.Application.MediatR.FluentValidation">
       <install>
-        <package id="Intent.Application.MediatR.FluentValidation" version="4.10.0" />
+        <package id="Intent.Application.MediatR.FluentValidation" version="4.10.1-pre.0" />
+      </install>
+    </detect>
+    <detect id="Intent.EntityFrameworkCore">
+      <install>
+        <package id="Intent.EntityFrameworkCore" version="5.0.41-pre.0" />
       </install>
     </detect>
   </interoperability>
