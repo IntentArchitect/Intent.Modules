@@ -151,7 +151,7 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="f7a1c8f5-bdc3-4185-ab59-b7c12601df04" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="d096d05a-cb40-4976-b307-b77cb454ebac" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.Application.MediatR.FluentValidation.BypassPipelineValidationInterface</name>
       <display>Intent.Application.MediatR.FluentValidation.BypassPipelineValidationInterface</display>
       <externalReference>Intent.Application.MediatR.FluentValidation</externalReference>
