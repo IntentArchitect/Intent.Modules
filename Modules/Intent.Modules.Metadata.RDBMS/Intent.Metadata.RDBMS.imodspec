@@ -25,13 +25,6 @@
     <install target="Domain" src="modelers/RDBMS Key Automation Extensions.designer.settings" externalReference="ee1b6efd-1cc6-441c-a50e-edc50f5ac6a3" />
     <install target="Domain" src="modelers/RDBMS Convert to Intermediate Entity Automation Extensions.designer.settings" externalReference="1b728352-8249-4290-a08e-cc256f2693e4" />
   </metadata>
-  <interoperability>
-    <detect id="Intent.Metadata.RDBMS">
-      <install>
-        <package id="Intent.Metadata.Domain.Constraints" version="1.0.2-pre.0" />
-      </install>
-    </detect>
-  </interoperability>
   <moduleSettings>
     <group id="ac0a788e-d8b3-4eea-b56d-538608f1ded9" title="Database Settings" externalReference="ac0a788e-d8b3-4eea-b56d-538608f1ded9" type="application-settings">
       <settings>
