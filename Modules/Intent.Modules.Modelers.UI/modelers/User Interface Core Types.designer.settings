@@ -1009,6 +1009,14 @@ vertical-align: center`</style>
         </elementVisualSettings>
         <associationVisualSettings />
       </diagramSettings>
+      <macros>
+        <macro trigger="on-created">
+          <script>element.loadDiagram().then(async () =&gt; {
+    element.setName(element.getParent().getName())
+    await element.enableEditing();
+})</script>
+        </macro>
+      </macros>
     </elementSetting>
     <elementSetting type="Layout" typeId="776a9393-6b23-4a8c-8937-fd7e833fa0ef">
       <comment />

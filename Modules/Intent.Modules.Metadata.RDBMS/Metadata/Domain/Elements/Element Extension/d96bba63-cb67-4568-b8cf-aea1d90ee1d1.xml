@@ -61,40 +61,6 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="31f123de-64fe-4214-ac2a-8c194a68b2e5" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
-          <name>On Created</name>
-          <display>On Created: Inline Script</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="4ad543d1-2441-4b95-8980-a8d53b48d618">
-            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.ModuleBuilder</typePackageName>
-            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>bb47532d-e56f-4613-8f7e-b9453a6e428c</parentFolderId>
-          <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
-          <packageName>Intent.Metadata.RDBMS</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let relationalDatabaseId = &quot;51a7bcf5-0eb9-4c9a-855e-3ead1048729c&quot;&#xD;&#xA;if (!element.getPackage().hasStereotype(relationalDatabaseId)) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;if ((element.getParent().specialization == &quot;Class&quot; || element.getParent().specialization == &quot;Value Object&quot;) &amp;&amp; &#xD;&#xA;    element.typeReference.typeId == &quot;d384db9c-a279-45e1-801e-e4e8099625f2&quot; /* string */) {&#xD;&#xA;    if (!element.hasStereotype(&quot;6347286E-A637-44D6-A5D7-D9BE5789CA7A&quot;)) {&#xD;&#xA;        element.addStereotype(&quot;6347286E-A637-44D6-A5D7-D9BE5789CA7A&quot;); // Text Contraint&#xD;&#xA;    }&#xD;&#xA;} else {&#xD;&#xA;    element.removeStereotype(&quot;6347286E-A637-44D6-A5D7-D9BE5789CA7A&quot;)&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;" isActive="true" />
-                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
         <childElement id="6e1d9416-bd15-461d-9fa9-42765c33390d" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Type Changed</name>
           <display>On Type Changed: Inline Script</display>
@@ -121,7 +87,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let relationalDatabaseId = &quot;51a7bcf5-0eb9-4c9a-855e-3ead1048729c&quot;&#xD;&#xA;if (!element.getPackage().hasStereotype(relationalDatabaseId)) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;if ((element.getParent().specialization == &quot;Class&quot; || element.getParent().specialization == &quot;Value Object&quot;) &amp;&amp; &#xD;&#xA;    element.typeReference.typeId == &quot;d384db9c-a279-45e1-801e-e4e8099625f2&quot; /* string */) {&#xD;&#xA;    if (!element.hasStereotype(&quot;6347286E-A637-44D6-A5D7-D9BE5789CA7A&quot;)) {&#xD;&#xA;        element.addStereotype(&quot;6347286E-A637-44D6-A5D7-D9BE5789CA7A&quot;); // Text Contraint&#xD;&#xA;    }&#xD;&#xA;} else {&#xD;&#xA;    element.removeStereotype(&quot;6347286E-A637-44D6-A5D7-D9BE5789CA7A&quot;)&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const relationalDatabaseId = &quot;51a7bcf5-0eb9-4c9a-855e-3ead1048729c&quot;;&#xD;&#xA;const stringTypeId = &quot;d384db9c-a279-45e1-801e-e4e8099625f2&quot;;&#xD;&#xA;&#xD;&#xA;if (!element.getPackage().hasStereotype(relationalDatabaseId)) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;if (!(&#xD;&#xA;        (element.getParent().specialization == &quot;Class&quot; || element.getParent().specialization == &quot;Value Object&quot;) &amp;&amp; &#xD;&#xA;        element.typeReference.typeId == stringTypeId&#xD;&#xA;    )) {&#xD;&#xA;    element.removeStereotype(&quot;6347286E-A637-44D6-A5D7-D9BE5789CA7A&quot;)&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
                 <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>

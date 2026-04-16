@@ -1,3 +1,7 @@
+### Version 4.0.12
+
+- Improvement: Diagrams will now name themselves the same name as their parent and enable editing after loading the diagram.
+
 ### Version 4.0.11
 
 - Improvement: Added AI rules to Diagrams to lay out services and their interactions.

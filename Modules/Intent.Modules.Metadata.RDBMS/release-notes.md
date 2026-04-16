@@ -1,3 +1,7 @@
+### Version 3.7.14
+
+- Improvement: `Text Constraints` no longer applied automatically in favor of using `Text Limits` from Domain Constraints.
+
 ### Version 3.7.13
 
 - Improvement: Scripts are now stored in the `resources` folder for ease of update and use.

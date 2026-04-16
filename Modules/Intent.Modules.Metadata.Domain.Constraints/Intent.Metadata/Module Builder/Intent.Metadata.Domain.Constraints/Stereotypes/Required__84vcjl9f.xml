@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="14680476-e24a-490f-ba44-75eb8dc6fb46" version="3.1.0">
-  <comment>Ensures a value is present (non-nullable fields are implicitly required).</comment>
+  <comment>Domain Constraint that validates whether a value is present. 
+Note: Non-nullable fields are implicitly required.</comment>
   <name>Required</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
@@ -17,7 +18,7 @@
   <autoAdd>false</autoAdd>
   <allowMultipleApplies>false</allowMultipleApplies>
   <parentFolderId>d8f98517-9a13-4d57-9468-8cde51f3703c</parentFolderId>
-  <order>0</order>
+  <order>-3</order>
   <packageId>f852e12f-1a19-4c8d-8192-8393c6ce59da</packageId>
   <packageName>Intent.Metadata.Domain.Constraints</packageName>
   <properties />

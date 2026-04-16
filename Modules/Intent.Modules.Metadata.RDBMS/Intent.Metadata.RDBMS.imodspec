@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.RDBMS</id>
-  <version>3.7.13</version>
+  <version>3.7.14-pre.0</version>
   <supportedClientVersions>[4.5.18-a, 5.0.0-a)</supportedClientVersions>
   <summary>Support for describing Entities in Relational DB terms.</summary>
   <description>Support for describing Entities in Relational DB terms.</description>
@@ -25,6 +25,13 @@
     <install target="Domain" src="modelers/RDBMS Key Automation Extensions.designer.settings" externalReference="ee1b6efd-1cc6-441c-a50e-edc50f5ac6a3" />
     <install target="Domain" src="modelers/RDBMS Convert to Intermediate Entity Automation Extensions.designer.settings" externalReference="1b728352-8249-4290-a08e-cc256f2693e4" />
   </metadata>
+  <interoperability>
+    <detect id="Intent.Metadata.RDBMS">
+      <install>
+        <package id="Intent.Metadata.Domain.Constraints" version="1.0.2-pre.0" />
+      </install>
+    </detect>
+  </interoperability>
   <moduleSettings>
     <group id="ac0a788e-d8b3-4eea-b56d-538608f1ded9" title="Database Settings" externalReference="ac0a788e-d8b3-4eea-b56d-538608f1ded9" type="application-settings">
       <settings>

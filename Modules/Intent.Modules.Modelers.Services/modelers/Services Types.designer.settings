@@ -407,7 +407,10 @@ return `color: ${(element.isReference() ? theme.isDark ? "#9AD6D9" : "#007D80" :
       </diagramSettings>
       <macros>
         <macro trigger="on-created">
-          <script>element.loadDiagram();</script>
+          <script>element.loadDiagram().then(async () =&gt; {
+    element.setName(element.getParent().getName())
+    await element.enableEditing();
+})</script>
         </macro>
       </macros>
       <rules>- Lay out elements (e.g. services) vertically
