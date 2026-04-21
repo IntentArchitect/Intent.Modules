@@ -1,3 +1,7 @@
+### Version 1.0.2
+
+- Improvement: Updated module dependencies.
+
 ### Version 1.0.1
 
 - Improvement: Updated list of LLM Models.
