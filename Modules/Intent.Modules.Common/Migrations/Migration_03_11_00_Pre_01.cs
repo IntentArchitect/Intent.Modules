@@ -35,11 +35,11 @@ namespace Intent.Modules.Common.Migrations
 
             // first check codebase structure, then check for folder structure designer
             IApplicationDesignerPersistable designer = null;
-            if(application.GetDesigners().Any(d => d.Id == CodebaseStructureDesignerId))
+            if (application.GetDesigners().Any(d => d.Id == CodebaseStructureDesignerId))
             {
                 designer = application.TryGetDesigner(CodebaseStructureDesignerId);
             }
-            if(application.GetDesigners().Any(d => d.Id == FolderStructureDesignerId))
+            if (application.GetDesigners().Any(d => d.Id == FolderStructureDesignerId))
             {
                 designer = application.TryGetDesigner(FolderStructureDesignerId);
             }
