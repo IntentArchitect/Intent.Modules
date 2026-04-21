@@ -26,5 +26,10 @@ namespace Intent.Modules.Constants
         //This seems to be the new standard for these things
         // https://github.com/dotnet/project-system/blob/main/docs/opening-with-new-project-system.md
         public const string SdkCSharpProject = "9A19103F-16F7-4668-BE54-9A1E7A4F7556";
+
+        /// <summary>
+        /// The project type GUID used in the solution file for SDK-style SQL projects (Microsoft.Build.Sql).
+        /// </summary>
+        public const string SdkSqlProject = "42EA0DBD-9CF1-443E-919E-BE9C484E4577";
     }
 }

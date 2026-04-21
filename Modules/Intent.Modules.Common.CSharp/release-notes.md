@@ -1,4 +1,8 @@
-﻿### Version 3.10.4
+﻿### Version 3.10.5
+
+- Improvement: Extended VisualStudioProjectTypeIds with SdkSqlProject.
+
+### Version 3.10.4
 
 - Fixed: Having a `CSharpProperty` have a `Setter` set to `Public` will no longer emit the `public` keyword as it would result in invalid C#. Instead, the accessor / modifier will be removed when you invoke `Public()`.
 
