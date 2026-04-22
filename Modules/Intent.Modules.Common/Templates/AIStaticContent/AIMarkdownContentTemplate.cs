@@ -96,8 +96,7 @@ namespace Intent.Modules.Common.Templates.AIStaticContent
                 fileName: Path.GetFileNameWithoutExtension(_relativeOutputPath),
                 fileExtension: Path.GetExtension(_relativeOutputPath)?.TrimStart('.') ?? string.Empty,
                 relativeLocation: Path.GetDirectoryName(_relativeOutputPath),
-                overwriteBehaviour: _overwriteBehaviour,
-                codeGenType: "JsonMerger");
+                overwriteBehaviour: _overwriteBehaviour);
 
             if (_relativeOutputPathPrefix != null)
             {
