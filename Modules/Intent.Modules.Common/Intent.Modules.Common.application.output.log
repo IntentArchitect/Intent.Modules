@@ -89,6 +89,14 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>0ac377a8-9418-4183-8a17-76a7d143f536</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Migrations.OnInstallMigration#3f7400e3-deb4-438d-b2cb-a7d7b329922c</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Migrations/OnInstallMigration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>OnInstallMigration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>aa8c3509-9638-4e44-961c-38b7e8053699</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.DocumentationTemplate#1207d4e5-3f83-4e84-b513-caa7dc76bbd0</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>

@@ -3,34 +3,28 @@ using Intent.Plugins;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Migrations.OnInstallMigration", Version = "1.0")]
 
 namespace Intent.Modules.Common.Migrations
 {
-    public class Migration_03_11_00_Pre_01 : IModuleMigration
+    public class OnInstallMigration : IModuleOnInstallMigration
     {
         private readonly IPersistenceLoader _persistenceLoader;
 
-        public Migration_03_11_00_Pre_01(IPersistenceLoader persistenceLoader)
+        public OnInstallMigration(IPersistenceLoader persistenceLoader)
         {
             _persistenceLoader = persistenceLoader;
         }
 
         [IntentFully]
         public string ModuleId => "Intent.Common";
-        [IntentFully]
-        public string ModuleVersion => "3.11.0-pre.1";
 
-        public void Up()
+        public void OnInstall()
         {
             var application = _persistenceLoader.LoadCurrentApplication();
 
             AgentsFoldersHelper.AddAgentsFolder(application);
-        }
 
-
-        public void Down()
-        {
         }
     }
 }

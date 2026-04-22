@@ -38,7 +38,7 @@
   </metadata>
   <moduleSettings />
   <moduleSettingsExtensions />
-  <migrations>
+  <migrations has-on-install-migration="true">
     <migration version="3.11.0-pre.1" />
   </migrations>
 </package>
