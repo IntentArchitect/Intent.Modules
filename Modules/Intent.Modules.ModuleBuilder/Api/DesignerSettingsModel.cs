@@ -27,14 +27,14 @@ namespace Intent.ModuleBuilder.Api
 
             _element = element;
 
-            //ElementSettings = element.ChildElements
-            //    .Where(x => x.SpecializationType == Api.ElementSettings.RequiredSpecializationType)
-            //    .Select(x => new ElementSettings(x)).OrderBy(x => x.Name)
-            //    .ToList<IElementSettings>();
-            //AssociationSettings = element.ChildElements
-            //    .Where(x => x.SpecializationType == AssociationSetting.RequiredSpecializationType)
-            //    .Select(x => new AssociationSetting(x)).OrderBy(x => x.SpecializationType)
-            //    .ToList();
+        //ElementSettings = element.ChildElements
+        //    .Where(x => x.SpecializationType == Api.ElementSettings.RequiredSpecializationType)
+        //    .Select(x => new ElementSettings(x)).OrderBy(x => x.Name)
+        //    .ToList<IElementSettings>();
+        //AssociationSettings = element.ChildElements
+        //    .Where(x => x.SpecializationType == AssociationSetting.RequiredSpecializationType)
+        //    .Select(x => new AssociationSetting(x)).OrderBy(x => x.SpecializationType)
+        //    .ToList();
         }
 
         [IntentManaged(Mode.Fully)]
@@ -181,7 +181,8 @@ namespace Intent.ModuleBuilder.Api
                 MappableElementPackages = MappableElementsPackages.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
                 MappableElementPackageExtensions = MappableElementsPackageExtensions.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
                 SuggestionSettings = Suggestions?.Suggestions.OrderBy(x => x.TypeReference.Element.Name).ThenBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList() ?? [],
-                Scripts = ScriptTypes.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList()
+                Scripts = ScriptTypes.OrderBy(x => x.Name).ThenBy(x => x.Id).Select(x => x.ToPersistable()).ToList(),
+                Rules = this.GetAISettings()?.Rules()
             };
             return modelerSettings;
         }

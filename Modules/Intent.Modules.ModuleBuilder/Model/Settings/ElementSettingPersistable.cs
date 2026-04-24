@@ -22,6 +22,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlElement("comment")]
         public string Comment { get; set; }
+        public bool ShouldSerializeComment() => !string.IsNullOrWhiteSpace(Comment);
 
         [XmlArray("implements")]
         [XmlArrayItem("trait", typeof(ImplementedTraitPersistable))]

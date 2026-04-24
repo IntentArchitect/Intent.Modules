@@ -1,0 +1,15 @@
+{
+    "tasks": {
+        "build": {
+            "label": "Build",
+            "command": "dotnet build Intent.Modules.Modelers.Services.csproj",
+            "icon": "fa-cog",
+            "workingDirectory": "Intent.Modules.Modelers.Services",
+            "aiAutoFix": {
+                "enabled": true,
+                "errorParser": "generic",
+                "maxAttempts": 3
+            }
+        }
+    }
+}

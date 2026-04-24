@@ -1464,7 +1464,7 @@ namespace Intent.Modules.Common.Templates
                     .Where(x => x != null)
                     .Select(x => new
                     {
-                        filePath = x!.GetMetadata().GetFullLocationPath(),
+                        filePath = x!.GetMetadata().GetFilePath(),
                         summary = x.GetMetadata().CustomMetadata.TryGetValue("AI Summary", out var aiContext) ? aiContext : null
                     }).ToList()
                 };

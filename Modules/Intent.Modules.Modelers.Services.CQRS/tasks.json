@@ -1,0 +1,15 @@
+{
+    "tasks": {
+        "build": {
+            "label": "Build",
+            "command": "dotnet build Intent.Modules.Modelers.Services.CQRS.csproj",
+            "icon": "fa-cog",
+            "workingDirectory": "Intent.Modules.Modelers.Services.CQRS",
+            "aiAutoFix": {
+                "enabled": true,
+                "errorParser": "generic",
+                "maxAttempts": 3
+            }
+        }
+    }
+}

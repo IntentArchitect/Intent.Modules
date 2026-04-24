@@ -76,7 +76,7 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="- The response of the Command is defined by its type-reference. Default is void (i.e. no response).&#xA;- The Command's properties define its request payload and must be defined when creating Commands." isActive="true" />
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="- The response of the Command is defined by its type-reference. Default is void (i.e. no response).&#xA;- The Command's properties define its request payload and must be defined when creating Commands.&#xA;- Commands are inherently async. Should not return a Task&lt;T&gt;, just the return type or void." isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

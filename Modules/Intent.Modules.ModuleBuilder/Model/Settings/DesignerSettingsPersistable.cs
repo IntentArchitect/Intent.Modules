@@ -1,4 +1,4 @@
-﻿using Intent.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Api;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
@@ -21,6 +21,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlElement("name")]
         public string Name { get; set; }
+
+        [XmlElement("rules")]
+        public string Rules { get; set; }
+        public bool ShouldSerializeRules() => !string.IsNullOrWhiteSpace(Rules);
 
         [XmlArray("designerReferences")]
         [XmlArrayItem("designerReference")]
@@ -125,7 +129,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public override string ToString()
         {
             return $"{nameof(SpecializationType)} = '{SpecializationType}', " +
-                   $"{nameof(DisplayText)} = '{DisplayText}'";
+                $"{nameof(DisplayText)} = '{DisplayText}'";
         }
     }
 
@@ -188,7 +192,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public override string ToString()
         {
             return $"{nameof(SpecializationType)} = '{SpecializationType}', " +
-                   $"{nameof(Text)} = '{Text}'";
+                $"{nameof(Text)} = '{Text}'";
         }
     }
 
@@ -209,7 +213,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public override string ToString()
         {
             return $"{nameof(SpecializationType)} = '{SpecializationType}', " +
-                   $"{nameof(Text)} = '{Text}'";
+                $"{nameof(Text)} = '{Text}'";
         }
     }
 
@@ -254,7 +258,7 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public override string ToString()
         {
             return $"{nameof(SpecializationType)} = '{SpecializationType}', " +
-                   $"{nameof(Text)} = '{Text}'";
+                $"{nameof(Text)} = '{Text}'";
         }
     }
 
