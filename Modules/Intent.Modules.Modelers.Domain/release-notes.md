@@ -1,4 +1,8 @@
-﻿### Version 3.12.15
+﻿### Version 3.13.0
+
+- Improvement: Improved AI Modeling and understanding rules.
+
+### Version 3.12.15
 
 - Improvement: Diagrams will now name themselves the same name as their parent and enable editing after loading the diagram.
 
