@@ -53,6 +53,11 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
             .Select(x => new ApplicationTemplateSettingsConfigurationModel(x))
             .ToList();
 
+        public InstallationSettingsModel InstallationSettings => UnderlyingPackage.ChildElements
+            .GetElementsOfType(InstallationSettingsModel.SpecializationTypeId)
+            .Select(x => new InstallationSettingsModel(x))
+            .SingleOrDefault();
+
 
         [IntentManaged(Mode.Ignore)]
         public TemplateType TemplateType => ConvertToTemplateTypeEnum(this.GetApplicationTemplateSettings().TemplateType().AsEnum());

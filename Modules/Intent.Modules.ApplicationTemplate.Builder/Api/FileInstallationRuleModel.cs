@@ -10,17 +10,17 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ApplicationTemplate.Builder.Api
 {
-    [IntentManaged(Mode.Merge)]
-    public class ContentFolderModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+    [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
+    public class FileInstallationRuleModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
-        public const string SpecializationType = "Content Folder";
-        public const string SpecializationTypeId = "08725da5-d0cf-4ec8-ad65-a58d9927d32f";
+        public const string SpecializationType = "File Installation Rule";
+        public const string SpecializationTypeId = "b7e15e01-5a96-43b5-8545-be765fb5fb39";
         protected readonly IElement _element;
 
-        [IntentManaged(Mode.Ignore)]
-        public ContentFolderModel(IElement element, string requiredType = SpecializationType)
+        [IntentManaged(Mode.Fully)]
+        public FileInstallationRuleModel(IElement element, string requiredType = SpecializationTypeId)
         {
-            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase) && !requiredType.Equals(element.SpecializationTypeId, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
@@ -31,21 +31,18 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 
         public string Name => _element.Name;
 
+        public string Comment => _element.Comment;
+
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         public IElement InternalElement => _element;
-
-        public IList<InstallationSettingsModel> InstallationSettings => _element.ChildElements
-            .GetElementsOfType(InstallationSettingsModel.SpecializationTypeId)
-            .Select(x => new InstallationSettingsModel(x))
-            .ToList();
 
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(ContentFolderModel other)
+        public bool Equals(FileInstallationRuleModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -55,29 +52,27 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ContentFolderModel)obj);
+            return Equals((FileInstallationRuleModel)obj);
         }
 
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
-
-        public string Comment => _element.Comment;
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class ContentFolderModelExtensions
+    public static class FileInstallationRuleModelExtensions
     {
 
-        public static bool IsContentFolderModel(this ICanBeReferencedType type)
+        public static bool IsFileInstallationRuleModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ContentFolderModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == FileInstallationRuleModel.SpecializationTypeId;
         }
 
-        public static ContentFolderModel AsContentFolderModel(this ICanBeReferencedType type)
+        public static FileInstallationRuleModel AsFileInstallationRuleModel(this ICanBeReferencedType type)
         {
-            return type.IsContentFolderModel() ? new ContentFolderModel((IElement)type) : null;
+            return type.IsFileInstallationRuleModel() ? new FileInstallationRuleModel((IElement)type) : null;
         }
     }
 }

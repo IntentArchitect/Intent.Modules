@@ -35,6 +35,11 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 
         public IElement InternalElement => _element;
 
+        public IList<FileInstallationRuleModel> FileInstallationRules => _element.ChildElements
+            .GetElementsOfType(FileInstallationRuleModel.SpecializationTypeId)
+            .Select(x => new FileInstallationRuleModel(x))
+            .ToList();
+
         public override string ToString()
         {
             return _element.ToString();

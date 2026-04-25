@@ -2,9 +2,15 @@
 <settings version="3.1.1">
   <id>6ac83417-e6d5-4699-b88c-aa1d7f894326</id>
   <name>Services CQRS Extension</name>
-  <rules>- On diagrams, lay Commands and Queries out vertically above one another.
-- Commands and Queries should not be treated like DTOs for Service Operation elements. They are independent of Service elements, with their own infrastructure.
-- If applying http endpoints to Commands and Queries, use the fully qualified route (e.g.`api/orders/{orderId}`)</rules>
+  <rules>- Commands and Queries should NOT be treated like DTOs for Service Operation elements. They are independent of Service elements, with their own infrastructure.
+- Commands and Queries describe the payloads. They imply the payload, it's handler and validators. If they are exposed over https, then they represent a DTO for those requests and represent the infrastructure for the http endpoints. They are made up of DTO-Field properties.
+- If applying http endpoints to Commands and Queries, use the fully qualified route (e.g.`api/orders/{orderId}`)
+- Always put Commands and Queries into an appropriate folder (e.g. Orders, Buyers, etc.)
+
+## Diagram Layout Rules:
+- Always lay out newly created Commands and Queries on the current diagram.
+- On diagrams, lay Commands and Queries out vertically above one another with their associations (interactions) to the right of them.
+- Commands and Queries should be placed 100 points apart from one another (e.g. y: 0 for one command, y: 100 for the next, y: 200 for the next, and so on)</rules>
   <designerReferences />
   <packageSettings />
   <packageExtensions>

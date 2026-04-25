@@ -63,8 +63,8 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpec
                 AdditionalImages = Model.AdditionalImages.Select(x => new ApplicationTemplate_Image { Src = x.Url() }).ToList(),
                 ShortDescription = Model.ShortDescription,
                 LongDescription = !string.IsNullOrWhiteSpace(Model.LongDescription)
-                    ? Model.LongDescription
-                    : null,
+                ? Model.LongDescription
+                : null,
                 Authors = Model.Authors,
                 Priority = int.TryParse(Model.Priority, out var priority) ? priority : 0,
                 Icon = new IconModelPersistable()
@@ -160,7 +160,24 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpec
                             Version = m.Value
                         };
                     })
-                    .ToList()
+                    .ToList(),
+                Files = Model.InstallationSettings != null ? Model.InstallationSettings.FileInstallationRules
+                    .Select(f =>
+                    {
+                        var settings = f.GetFileInstallationRuleSettings();
+                        return new ApplicationTemplate_File
+                        {
+                            Src = settings.MatchFiles(),
+                            Target = settings.Target().AsEnum() switch
+                            {
+                            FileInstallationRuleModelStereotypeExtensions.FileInstallationRuleSettings.TargetOptionsEnum.OutputDirectory => ApplicationTemplate_FileTarget.OutputLocation,
+                            FileInstallationRuleModelStereotypeExtensions.FileInstallationRuleSettings.TargetOptionsEnum.ApplicationConfigDirectory => ApplicationTemplate_FileTarget.ApplicationDirectory,
+                            _ => ApplicationTemplate_FileTarget.ApplicationDirectory
+                            },
+                            Destination = settings.RelativeOutputFolder()
+                        };
+                    })
+                    .ToList() : []
             };
 
             if (result.AdditionalSettings.SelectMany(x => x.Settings).GroupBy(x => x.Id.ToLower()).Any(x => x.Count() > 1))

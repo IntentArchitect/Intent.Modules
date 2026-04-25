@@ -106,10 +106,18 @@
     </FileLog>
     <FileLog>
       <ProjectId>b26e86c5-02ad-48c2-ac24-9091f1278430</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#08725da5-d0cf-4ec8-ad65-a58d9927d32f</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b7e15e01-5a96-43b5-8545-be765fb5fb39</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ContentFolderModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ContentFolderModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/FileInstallationRuleModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>FileInstallationRuleModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>b26e86c5-02ad-48c2-ac24-9091f1278430</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#b7e15e01-5a96-43b5-8545-be765fb5fb39</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/FileInstallationRuleModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>FileInstallationRuleModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -230,38 +238,6 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/Templates/IatSpecFile/IatSpecFileTemplateRegistration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/IatSpecFile/IatSpecFileTemplateRegistration.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1374f433-31c5-4ca2-abec-b3d0d72047ec</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed#7e47a281-6adb-41e2-b399-4e9835ecc4f7</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/Templates/InstallationSettingsFile/InstallationSettingsFileTemplate.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/InstallationSettingsFile/InstallationSettingsFileTemplate.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1374f433-31c5-4ca2-abec-b3d0d72047ec</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.FileTemplateT4#7e47a281-6adb-41e2-b399-4e9835ecc4f7</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/Templates/InstallationSettingsFile/InstallationSettingsFileTemplate.tt</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/InstallationSettingsFile/InstallationSettingsFileTemplate.tt</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1374f433-31c5-4ca2-abec-b3d0d72047ec</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#7e47a281-6adb-41e2-b399-4e9835ecc4f7</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/Templates/InstallationSettingsFile/InstallationSettingsFileTemplatePartial.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/InstallationSettingsFile/InstallationSettingsFileTemplatePartial.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>1374f433-31c5-4ca2-abec-b3d0d72047ec</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#7e47a281-6adb-41e2-b399-4e9835ecc4f7</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/Templates/InstallationSettingsFile/InstallationSettingsFileTemplateRegistration.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/InstallationSettingsFile/InstallationSettingsFileTemplateRegistration.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>

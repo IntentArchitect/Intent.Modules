@@ -1,0 +1,15 @@
+{
+    "tasks": {
+        "build": {
+            "label": "Build",
+            "command": "dotnet build Intent.Modules.ApplicationTemplate.Builder.csproj",
+            "icon": "fa-cog",
+            "workingDirectory": "Intent.Modules.ApplicationTemplate.Builder",
+            "aiAutoFix": {
+                "enabled": true,
+                "errorParser": "generic",
+                "maxAttempts": 3
+            }
+        }
+    }
+}

@@ -1,5 +1,6 @@
-﻿#nullable disable
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace Intent.Modules.ApplicationTemplate.Builder.Model
@@ -28,7 +29,6 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Model
         [XmlArray("additionalImages")]
         [XmlArrayItem("image")]
         public List<ApplicationTemplate_Image> AdditionalImages { get; set; } = [];
-
         public bool ShouldSerializeAdditionalImages() => AdditionalImages.Count > 0;
 
         [XmlElement("shortDescription")]
@@ -72,6 +72,11 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Model
         [XmlArrayItem("module")]
         public List<MinimumDependencyVersion> MinimumDependencyVersions { get; set; }
         public bool ShouldSerializeMinimumDependencyVersions() => MinimumDependencyVersions?.Count > 0;
+
+        [XmlArray("files")]
+        [XmlArrayItem("file")]
+        public List<ApplicationTemplate_File> Files { get; set; } = [];
+        public bool ShouldSerializeFiles() => Files?.Count > 0;
     }
 
     public class ApplicationTemplate_Image
@@ -82,6 +87,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Model
         [XmlAttribute("src")]
         public string Src { get; set; } // url of image
     }
+
     public enum TemplateType
     {
         [XmlEnum("application-template")]
@@ -92,4 +98,6 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Model
         SampleSolution = 3,
 
     }
+
+
 }

@@ -24,13 +24,6 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 .ToList();
         }
 
-        public static IList<ContentFolderModel> GetContentFolderModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(ContentFolderModel.SpecializationTypeId)
-                .Select(x => new ContentFolderModel(x))
-                .ToList();
-        }
-
         public static IList<InstallationSettingsModel> GetInstallationSettingsModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(InstallationSettingsModel.SpecializationTypeId)

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="c6ea8570-f40f-4f37-b192-426240926240" version="3.1.0">
+  <name>File Installation Rule Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="b7e15e01-5a96-43b5-8545-be765fb5fb39">File Installation Rule</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>62ad437e-2b3e-4db1-9a0a-c2da4fc211b7</parentFolderId>
+  <order>0</order>
+  <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
+  <packageName>Intent.ApplicationTemplate.Builder</packageName>
+  <properties>
+    <property id="9d719407-b3e3-4b18-9d21-7eea355eae16">
+      <comment>The file(s) relative to the `resources` or `content` folder. Supports GLOB patterns (e.g. docs/**/*)</comment>
+      <name>Match Files</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(e.g. resources/tasks.json)</placeholder>
+      <defaultValue>example.json</defaultValue>
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="42f4b988-69a5-4b48-b3c9-04507fa462d7">
+      <comment>The root output location.</comment>
+      <name>Target</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <defaultValue>Application Config Directory</defaultValue>
+      <valueOptions>
+        <option>Output Directory</option>
+        <option>Application Config Directory</option>
+      </valueOptions>
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="3310226a-87cf-40e7-934a-49bae74c61ce">
+      <comment>The relative location to output the matched files</comment>
+      <name>Relative Output Folder</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+    </property>
+  </properties>
+</stereotypeDefinition>
