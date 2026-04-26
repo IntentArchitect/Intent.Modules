@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Exceptions;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Types.Api;
@@ -44,7 +45,17 @@ To fix this, open and re-save your Services designer. If this warning persists t
 
         public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
 
-        public DTOModel ParentDto => this.Generalizations().Select(x => new DTOModel((IElement)x.Element)).SingleOrDefault();
+        public DTOModel ParentDto
+        {
+            get
+            {
+                if (this.Generalizations().Count() > 1)
+                {
+                    throw new ElementException(InternalElement, "A DTO can only inherit from one parent.");
+                }
+                return this.Generalizations().Select(x => new DTOModel((IElement)x.Element)).SingleOrDefault();
+            }
+        }
 
         public ITypeReference ParentDtoTypeReference => this.Generalizations().SingleOrDefault()?.TypeReference;
 

@@ -1,3 +1,7 @@
+### Version 4.0.13
+
+- Fixed: Opaque error being thrown when a DTO with two generalizations / parents is created. An user friendly `ElementException` is now being thrown.
+
 ### Version 4.0.12
 
 - Improvement: Diagrams will now name themselves the same name as their parent and enable editing after loading the diagram.
