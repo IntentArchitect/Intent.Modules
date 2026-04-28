@@ -1,4 +1,8 @@
-﻿### Version 3.18.4
+﻿### Version 3.18.5
+
+- Improvement: Updates to AI rules across domain and service modules
+
+### Version 3.18.4
 
 - Fixed: `File Extension` on the `File Settings` stereotype would incorrectly show a validation error when not filled in.
 
