@@ -1,3 +1,7 @@
+### Version 6.0.6
+
+- Improvement: Updates to AI rules across domain and service modules
+
 ### Version 6.0.5
 
 - Improvement: Documented standard rules for AI-implemented Service model changes regarding Commands and Queries.
