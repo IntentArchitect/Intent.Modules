@@ -44,8 +44,16 @@ function updateForeignKeys(selectedEnd: MacroApi.Context.IAssociationReadOnlyApi
         const pkAttributesOfSelectedEnd = getPrimaryKeys(theSelectedEndType);
 
         pkAttributesOfSelectedEnd.forEach((primaryKeyOfSelectedEnd, index) => {
-            let fkAttributeOfOtherEnd = theOtherEndType.getChildren().filter(x => x.getMetadata(metadataKey.association) == targetEndId)[index] ??
-                createElement("Attribute", "", theOtherEndType.id);
+            let fkAttributeOfOtherEnd: MacroApi.Context.IElementApi | undefined = theOtherEndType.getChildren().filter(x => x.getMetadata(metadataKey.association) == targetEndId)[index];
+
+            if (fkAttributeOfOtherEnd == null) {
+                const expectedFkName = getForeignKeyName(selectedEnd, theSelectedEndType, primaryKeyOfSelectedEnd, undefined);
+                fkAttributeOfOtherEnd = theOtherEndType.getChildren("Attribute")
+                    .find(x => x.getName().toLocaleLowerCase() === expectedFkName.toLocaleLowerCase()
+                        && !x.getMetadata(metadataKey.association));
+            }
+
+            fkAttributeOfOtherEnd ??= createElement("Attribute", "", theOtherEndType.id);
 
             // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
             let fkNameToUse = getForeignKeyName(

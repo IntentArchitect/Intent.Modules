@@ -1,3 +1,7 @@
+### Version 3.7.15
+
+- Improvement: Designer scripts work better with AI Modeling Agent.
+
 ### Version 3.7.14
 
 - Improvement: `Text Constraints` no longer applied automatically in favor of using `Text Limits` from Domain Constraints.

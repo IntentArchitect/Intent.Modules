@@ -209,8 +209,14 @@ function updateForeignKeys(selectedEnd) {
     function updateForeignKeyAttribute(selectedEnd, theOtherEndType, theSelectedEndType, targetEndId) {
         const pkAttributesOfSelectedEnd = getPrimaryKeys(theSelectedEndType);
         pkAttributesOfSelectedEnd.forEach((primaryKeyOfSelectedEnd, index) => {
-            var _a;
-            let fkAttributeOfOtherEnd = (_a = theOtherEndType.getChildren().filter(x => x.getMetadata(metadataKey.association) == targetEndId)[index]) !== null && _a !== void 0 ? _a : createElement("Attribute", "", theOtherEndType.id);
+            let fkAttributeOfOtherEnd = theOtherEndType.getChildren().filter(x => x.getMetadata(metadataKey.association) == targetEndId)[index];
+            if (fkAttributeOfOtherEnd == null) {
+                const expectedFkName = getForeignKeyName(selectedEnd, theSelectedEndType, primaryKeyOfSelectedEnd, undefined);
+                fkAttributeOfOtherEnd = theOtherEndType.getChildren("Attribute")
+                    .find(x => x.getName().toLocaleLowerCase() === expectedFkName.toLocaleLowerCase()
+                    && !x.getMetadata(metadataKey.association));
+            }
+            fkAttributeOfOtherEnd !== null && fkAttributeOfOtherEnd !== void 0 ? fkAttributeOfOtherEnd : (fkAttributeOfOtherEnd = createElement("Attribute", "", theOtherEndType.id));
             // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
             let fkNameToUse = getForeignKeyName(selectedEnd, theSelectedEndType, primaryKeyOfSelectedEnd, fkAttributeOfOtherEnd.getName() !== "" ? fkAttributeOfOtherEnd : null);
             if (fkAttributeOfOtherEnd.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
