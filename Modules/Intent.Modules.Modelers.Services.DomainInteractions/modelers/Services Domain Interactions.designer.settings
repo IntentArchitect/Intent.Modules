@@ -11279,8 +11279,13 @@ entity.getChildren("Attribute")
     })
 
 function getOrCreatePkField(sourceType, attr, fieldType) {
-    let pkField = sourceType.getChildren(fieldType).find(x =&gt; x.getName().toLowerCase() == attr.getName().toLowerCase()
-    &amp;&amp; x.typeReference.getTypeId() == attr.typeReference.getTypeId())
+    let entityName = attr.getParent().getName();
+    let pkField = sourceType.getChildren(fieldType).find(x =&gt; 
+        (
+            x.getName().toLowerCase() == attr.getName().toLowerCase()
+            || x.getName().toLowerCase() == (entityName + attr.getName()).toLowerCase()
+        )
+        &amp;&amp; x.typeReference.getTypeId() == attr.typeReference.getTypeId())
     if (!pkField) {
         let newField = createElement(fieldType, attr.getName(), sourceType.id);
         newField.typeReference.setType(attr.typeReference.getTypeId());

@@ -1,3 +1,7 @@
+### Version 2.4.2
+
+- Improvement: Designer scripts work better with AI Modeling Agent.
+
 ### Version 2.4.1
 
 - Fixed: Mapping system not correctly handling primary keys when working with inheritance.
