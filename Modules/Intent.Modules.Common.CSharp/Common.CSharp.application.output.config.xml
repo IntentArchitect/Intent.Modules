@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <outputFiles>
   <files>
+    <file relativePath="Intent.Modules.Common.CSharp/content/AIInstructions/readme.txt" state="ignored;once-off-generated" />
     <file relativePath="Intent.Modules.Common.CSharp/Intent.Modules.Common.CSharp.csproj" state="ignored" />
   </files>
 </outputFiles>
