@@ -2,7 +2,7 @@
 <package>
   <id>Intent.TypeScript.Weaving.Decorators</id>
   <version>4.1.0</version>
-  <supportedClientVersions>[4.4.0-a, 5.0.0-a)</supportedClientVersions>
+  <supportedClientVersions>[4.5.3-a, 6.0.0-a)</supportedClientVersions>
   <releaseNotes>release-notes.md</releaseNotes>
   <summary>Provides TypeScript decorators for Intent Architect Code Management</summary>
   <description>Provides TypeScript decorators for Intent Architect Code Management</description>

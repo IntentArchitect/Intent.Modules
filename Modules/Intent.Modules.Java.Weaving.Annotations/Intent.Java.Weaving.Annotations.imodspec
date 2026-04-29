@@ -2,7 +2,7 @@
 <package>
   <id>Intent.Java.Weaving.Annotations</id>
   <version>4.1.0</version>
-  <supportedClientVersions>[4.4.0-a, 5.0.0-a)</supportedClientVersions>
+  <supportedClientVersions>[4.4.0-a, 6.0.0-a)</supportedClientVersions>
   <releaseNotes>release-notes.md</releaseNotes>
   <summary>Annotations instructions Java code-management.</summary>
   <description>Annotations instructions Java code-management.</description>

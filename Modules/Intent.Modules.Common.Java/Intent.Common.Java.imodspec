@@ -2,7 +2,7 @@
 <package>
   <id>Intent.Common.Java</id>
   <version>4.1.2</version>
-  <supportedClientVersions>[4.4.0-a, 5.0.0-a)</supportedClientVersions>
+  <supportedClientVersions>[4.4.0-a, 6.0.0-a)</supportedClientVersions>
   <summary>Common library support in order to help generate code for the Java language.</summary>
   <description>Common library support in order to help generate code for the Java language.</description>
   <authors>Intent Architect</authors>
