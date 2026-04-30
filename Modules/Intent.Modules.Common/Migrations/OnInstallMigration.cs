@@ -23,7 +23,7 @@ namespace Intent.Modules.Common.Migrations
         {
             var application = _persistenceLoader.LoadCurrentApplication();
 
-            AgentsFoldersHelper.AddAgentsFolder(application);
+            AiOutputAnchorsHelper.EnsureExist(application);
 
         }
     }
