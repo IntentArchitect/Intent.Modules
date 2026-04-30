@@ -1,6 +1,7 @@
 ﻿### Version 3.18.5
 
 - Improvement: Updates to AI rules across domain and service modules
+- Improvement: Max supportedClientVersions now defaults to 6.0.0
 
 ### Version 3.18.4
 

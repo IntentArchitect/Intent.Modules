@@ -102,7 +102,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     .Replace("[4.1.0,", "[4.3.0-a,")
                     .Replace("[4.2.3,", "[4.3.0-a,")
                     .Replace("[4.3.0-a,", "[4.4.0-a,")
-                    .Replace("4.0.0)", "5.0.0)"));
+                    .Replace("4.0.0)", "5.0.0)")
+                    .Replace("5.0.0)", "6.0.0)"));
             }
 
             if (ExecutionContext.GetApplicationConfig().Description != null)
@@ -647,7 +648,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 <package>
   {new XElement("id") { Value = ModuleModel.Name }}
   {new XElement("version") { Value = ModuleModel.GetModuleSettings().Version() }}
-  <supportedClientVersions>[4.1.0-beta.21,5.0.0)</supportedClientVersions>
+  <supportedClientVersions>[4.1.0-beta.21,6.0.0)</supportedClientVersions>
   {new XElement("summary") { Value = ExecutionContext.GetApplicationConfig().Description ?? $"A custom module for {OutputTarget.Application.SolutionName}" }}
   {new XElement("description") { Value = ExecutionContext.GetApplicationConfig().Description ?? $"A custom module for {OutputTarget.Application.SolutionName}" }}
   {new XElement("authors") { Value = OutputTarget.Application.SolutionName }}
