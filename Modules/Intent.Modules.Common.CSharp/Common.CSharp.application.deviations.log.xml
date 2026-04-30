@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files />
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.StaticContentTemplateRegistration#ae037d83-83df-4dd9-96e3-e8404f8bd63b</correlationId>
+      <path>Intent.Modules.Common.CSharp/Templates/StaticContentTemplateRegistrations/AIInstructionsStaticContentTemplateRegistration.cs</path>
+      <count>1</count>
+      <updatedByAccountName>joel.turner@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Joel Turner</updatedByDisplayName>
+      <updatedAt>2026-04-29T14:31:31.6051907Z</updatedAt>
+      <deviationsHash>95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B</deviationsHash>
+      <fileHash>DE66C85CC264E01FA7E616891FA8E243345C88B8E346FD9B316D7344929C0D95</fileHash>
+    </file>
+  </files>
 </deviationsLog>

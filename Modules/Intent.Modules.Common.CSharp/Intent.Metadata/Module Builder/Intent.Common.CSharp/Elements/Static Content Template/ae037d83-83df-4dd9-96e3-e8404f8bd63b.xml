@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="ae037d83-83df-4dd9-96e3-e8404f8bd63b" type="Static Content Template" typeId="b795a763-296d-476f-ab0a-1a52710444db">
+  <name>AIInstructionsTemplate</name>
+  <display>AIInstructionsTemplate</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>730e1275-0c32-44f7-991a-9619d07ca68d</parentFolderId>
+  <packageId>730e1275-0c32-44f7-991a-9619d07ca68d</packageId>
+  <packageName>Intent.Common.CSharp</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="1fd8fd68-ff20-437c-8c00-ac77920d7ff0" name="Template Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="a9b100cb-f133-4061-a7be-63fec8159369" display="Content Subfolder" value="AIInstructions" isActive="true" />
+        <property name="52e01775-62a6-4b04-86ee-9d36efe20f70" display="Binary File Globbing Patterns" value="*.jpg&#xA;*.png&#xA;*.xlsx&#xA;*.ico&#xA;*.pdf" isActive="true" />
+        <property name="db0f79b6-2905-4771-9400-ed2bc024d1e1" display="Role" value="AI.Context.Instructions" isActive="true" />
+        <property name="1b9fff50-1498-482a-a64d-11c5b92d0856" display="Default Location" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>
