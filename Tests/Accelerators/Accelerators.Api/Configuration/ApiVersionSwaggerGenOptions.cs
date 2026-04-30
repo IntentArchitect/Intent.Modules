@@ -2,7 +2,7 @@ using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using Intent.RoslynWeaver.Attributes;
 using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]

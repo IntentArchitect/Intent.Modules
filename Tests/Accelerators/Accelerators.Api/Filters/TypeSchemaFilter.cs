@@ -1,6 +1,6 @@
+using System.Text.Json.Nodes;
 using Intent.RoslynWeaver.Attributes;
-using Microsoft.OpenApi.Any;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -10,18 +10,21 @@ namespace Accelerators.Api.Filters
 {
     public class TypeSchemaFilter : ISchemaFilter
     {
-        public void Apply(OpenApiSchema schema, SchemaFilterContext context)
+        public void Apply(IOpenApiSchema schema, SchemaFilterContext context)
         {
-            if (context.Type == typeof(TimeSpan) || context.Type == typeof(TimeSpan?))
+            if (schema is OpenApiSchema concreteSchema)
             {
-                schema.Example = new OpenApiString("00:00:00"); // Set your desired format here
-                schema.Type = "string"; // Override the default representation to be a string
-            }
+                if (context.Type == typeof(TimeSpan) || context.Type == typeof(TimeSpan?))
+                {
+                    concreteSchema.Example = new JsonObject { ["example"] = "00:00:00" };
+                    concreteSchema.Type = JsonSchemaType.String;
+                }
 
-            if (context.Type == typeof(DateOnly) || context.Type == typeof(DateOnly?))
-            {
-                schema.Example = new OpenApiString(DateTime.Today.ToString("yyyy-MM-dd")); // Set your desired format here
-                schema.Type = "string"; // Override the default representation to be a string
+                if (context.Type == typeof(DateOnly) || context.Type == typeof(DateOnly?))
+                {
+                    concreteSchema.Example = new JsonObject { ["example"] = DateTime.Today.ToString("yyyy-MM-dd") };
+                    concreteSchema.Type = JsonSchemaType.String;
+                }
             }
         }
     }
