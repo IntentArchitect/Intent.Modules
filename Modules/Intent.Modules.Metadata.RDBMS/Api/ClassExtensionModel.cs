@@ -19,17 +19,17 @@ namespace Intent.Metadata.RDBMS.Api
         {
         }
 
-        public IList<IndexModel> Indices => _element.ChildElements
-            .GetElementsOfType(IndexModel.SpecializationTypeId)
-            .Select(x => new IndexModel(x))
-            .ToList();
-
         public IList<TriggerModel> Triggers => _element.ChildElements
             .GetElementsOfType(TriggerModel.SpecializationTypeId)
             .Select(x => new TriggerModel(x))
             .ToList();
 
         public IList<IndexModel> Indexes => _element.ChildElements
+            .GetElementsOfType(IndexModel.SpecializationTypeId)
+            .Select(x => new IndexModel(x))
+            .ToList();
+
+        public IList<IndexModel> Indices => _element.ChildElements
             .GetElementsOfType(IndexModel.SpecializationTypeId)
             .Select(x => new IndexModel(x))
             .ToList();
