@@ -95,7 +95,7 @@ namespace Intent.Modules.Common.Migrations
             string anchorTypeId,
             out IElementPersistable anchorElement)
         {
-            anchorElement = package.Classes.FirstOrDefault(x => x.Name == name && x.SpecializationTypeId == anchorTypeId);
+            anchorElement = package.FindChildElements(x => x.Name == name && x.SpecializationTypeId == anchorTypeId).SingleOrDefault();
             if (anchorElement != null)
             {
                 return false;
