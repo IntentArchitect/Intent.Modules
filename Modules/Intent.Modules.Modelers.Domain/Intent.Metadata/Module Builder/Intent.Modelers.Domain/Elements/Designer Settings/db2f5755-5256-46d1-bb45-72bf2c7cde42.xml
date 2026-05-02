@@ -19,6 +19,14 @@
         <property name="fdbbd211-a162-4f29-bcdb-1250309d8aef" display="Extend Designers" isActive="true" />
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="14441454-bfe0-4d5d-8dba-d86d74d33a3b" name="AI Settings">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="### Domain Modeling Workflow&#xA;1. Get and analyze the existing domain&#xA;2. Design and apply changes to meet the users requirements.&#xA;3. Add changes to the current diagram&#xA;4. Verify that the changes are applied as intended and that there are no errors in the designer.&#xA;5. If errors are detected, fix errors and repeat step 4.&#xA;&#xA;### Mandatory precondition for Domain guidance/review: &#xA;- Before providing any guidance or review on a Domain model, the assistant must fetch the Domain Package details and identify whether it is configured for Relational Database or Document DB via applied stereotypes. If it cannot determine this, it must ask for clarification.&#xA;&#xA;### Guidance / Review Rules&#xA;- Do not proactively mention PK/FK attributes in reviews. Only mention PK/FK attributes if (and only if) there is a specific, actionable misalignment/ambiguity that needs to be fixed (e.g., FK type doesn't match PK type, nullability conflicts with multiplicity, multiple FKs create ambiguity, or an FK points to the wrong aggregate).&#xA;- PK/FK attributes may appear in the Domain model. Do not recommend removing or changing PK/FK attributes unless they are misaligned with an association (type, nullability/multiplicity, or naming), or cause ambiguity. The 'never add PK/FK attributes' rule applies only when editing the model.&#xA;- Do not describe PK/FK attributes as 'redundant' or 'optional' in Relational Database reviews; only mention PK/FK changes when you can point to a specific misalignment/ambiguity.&#xA;- This is a business model, modelling technology specifics (e.g. RDBMS concepts) is optional for where there is an impedance mismatch.&#xA;- Do not present FK co-existence as an optional modeling choice in RDBMS models. Assume FK+association is the standard.&#xA;- Aggregate Root = Class with no required-single parent association (no 'owned by exactly one parent')." isActive="true" />
+      </properties>
+    </stereotype>
   </stereotypes>
   <metadata />
   <childElements />

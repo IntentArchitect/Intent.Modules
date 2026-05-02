@@ -19,6 +19,14 @@
         <property name="fdbbd211-a162-4f29-bcdb-1250309d8aef" display="Extend Designers" value="[]" isActive="true" />
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="14441454-bfe0-4d5d-8dba-d86d74d33a3b" name="AI Settings">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="### User Interface Modeling Workflow:&#xA;1. Understand the existing User Interface model.&#xA;2. Discover available Service operations (e.g. Commands, Queries, Service Operations, etc.) that are exposed over Http.&#xA;3. Design and create the Pages and Components needed to achieve the user's requirements&#xA;4. Connect these components to the necessary Service operations on the backend using the `Call Service Operation Action` associations.&#xA;5. Connect pages with `Navigation` associations together where there should be explicit navigations between them (e.g. buttons, links, clickable items, etc.)&#xA;6. Lay out all pages, navigations, and service calls on the diagram. Create the diagram if it does not yet exist, and then lay out the pages.&#xA;&#xA;### User Interface Modeling Rules&#xA;- Aways add `Navigations` between pages where there should be an explicit button, link or interface option that the user will be able to interact with to navigate to the target page.&#xA;- Always express needed interactions with the backend using `Call Service Operation Action`.&#xA;- Ensure that backend service operations are exposed over Http if they are located in a different application to this UI.&#xA;&#xA;### User Interface Diagram Rules&#xA;- Lay Pages out with space between one another, grouping by conceptual overlap and number of navigations.&#xA;- Lay backend operations out to the right of the pages, vertically stacked and 100px apart (vertically).&#xA;- If a `Navigation` between pages can go both ways, simply make the association bidirectional. DO NOT create two unidirectional associations.&#xA;- Lay out Pages with separation in 2-dimensional space so that the associations don't stack on one another." isActive="true" />
+      </properties>
+    </stereotype>
   </stereotypes>
   <metadata />
   <childElements />

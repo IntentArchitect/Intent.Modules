@@ -7,10 +7,12 @@
 - If applying http endpoints to Commands and Queries, use the fully qualified route (e.g.`api/orders/{orderId}`)
 - Always put Commands and Queries into an appropriate folder (e.g. Orders, Buyers, etc.)
 
-## Diagram Layout Rules:
+## Service Diagram Layout Rules:
 - Always lay out newly created Commands and Queries on the current diagram.
-- On diagrams, lay Commands and Queries out vertically above one another with their associations (interactions) to the right of them.
-- Commands and Queries should be placed 100 points apart from one another (e.g. y: 0 for one command, y: 100 for the next, y: 200 for the next, and so on)</rules>
+- Place all Commands and Queries in a single vertical column on the left side of the diagram.
+- Space each Command and Query exactly 100px apart vertically, measured from the top of one node to the top of the next.
+- Place related Domain entities to the right of the Commands/Queries they support, grouped by feature area.
+- Always include and route interaction associations on the diagram so the linked Domain entity is visually aligned with its related operations.</rules>
   <designerReferences />
   <packageSettings />
   <packageExtensions>

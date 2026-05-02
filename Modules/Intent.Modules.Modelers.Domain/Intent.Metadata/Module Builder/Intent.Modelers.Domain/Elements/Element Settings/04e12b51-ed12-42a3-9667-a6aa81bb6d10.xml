@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="04e12b51-ed12-42a3-9667-a6aa81bb6d10" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <comment>Represents a persisted entity type in the domain.</comment>
   <name>Class</name>
   <display>Class</display>
   <isAbstract>false</isAbstract>
@@ -53,7 +54,7 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="- NEVER add primary keys (e.g. Id) or foreign keys (e.g. BuyerId) to Class elements. These are added automatically by the designer.&#xA;- A Class implicitly represents basic data access (i.e. CRUD functions). You do not need to explicitly model these.&#xA;&#xA;When adding new concepts to the model, follow these rules:&#xA;- Add appropriate Attributes, Associations and Enums.&#xA;- Add the new concepts to the current diagram.&#xA;&#xA;Mandatory precondition for Domain guidance/review: Before providing any guidance or review on a Domain model, the assistant must fetch the Domain Package details and identify whether it is configured for Relational Database or Document DB via applied stereotypes. If it cannot determine this, it must ask for clarification or perform the required inspection before proceeding.&#xA;&#xA;guidance/review rules&#xA;- Do not proactively mention PK/FK attributes in reviews. Only mention PK/FK attributes if (and only if) there is a specific, actionable misalignment/ambiguity that needs to be fixed (e.g., FK type doesn�t match PK type, nullability conflicts with multiplicity, multiple FKs create ambiguity, or an FK points to the wrong aggregate).&#xA;- PK/FK attributes may appear in the Domain model. Do not recommend removing or changing PK/FK attributes unless they are misaligned with an association (type, nullability/multiplicity, or naming), or cause ambiguity. The �never add PK/FK attributes� rule applies only when editing the model.&#xA;- Do not describe PK/FK attributes as �redundant� or �optional� in Relational Database reviews; only mention PK/FK changes when you can point to a specific misalignment/ambiguity.&#xA;- This is a business model, modelling technology specifics (e.g. RDBMS concepts) is optional for where there is an impedance mismatch.&#xA;- Do not present FK co-existence as an optional modeling choice in RDBMS models. Assume FK+association is the standard.&#xA;- Aggregate Root = Class with no required-single parent association (no �owned by exactly one parent�)." isActive="true" />
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="### Class Modeling Rules&#xA;- NEVER add primary keys (e.g. Id) or foreign keys (e.g. BuyerId) to Class elements. These are added automatically by the designer.&#xA;- A Class implicitly represents basic data access (i.e. CRUD functions). You do not need to explicitly model these.&#xA;- Add appropriate attributes, associations and enums." isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

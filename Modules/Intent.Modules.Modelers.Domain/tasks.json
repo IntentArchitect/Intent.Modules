@@ -1,0 +1,16 @@
+{
+    // Tasks defined here appear as buttons in the Software Factory toolbar.
+    // Each key under "tasks" is the task name. Supported error parsers: "generic", "dotnet".
+    "tasks": {
+        "build": {
+            "label": "Build",
+            "icon": "fa-cogs",
+            "command": "dotnet build",
+            "workingDirectory": "./Intent.Modules.Modelers.Domain",
+            "aiAutoFix": {
+                "enabled": false,
+                "errorParser": "dotnet"
+            }
+        }
+    }
+}

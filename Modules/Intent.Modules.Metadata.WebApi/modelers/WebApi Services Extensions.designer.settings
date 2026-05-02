@@ -2,6 +2,8 @@
 <settings version="3.1.1">
   <id>35553b8d-e014-46ef-88d4-429dbeba18ed</id>
   <name>WebApi Services Extensions</name>
+  <rules>## Creating Http Endpoints
+- When applying Http Settings to Commands, Queries, or Operations, the Route value must be a valid ASP.NET route template and must not contain ?, &amp;, or =.</rules>
   <designerReferences />
   <packageSettings />
   <packageExtensions />

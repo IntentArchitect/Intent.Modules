@@ -1,0 +1,14 @@
+{
+    "tasks": {
+        "build": {
+            "label": "Build",
+            "icon": "fa-cogs",
+            "command": "dotnet build",
+            "workingDirectory": "./Intent.Modules.Modelers.Services.DomainInteractions",
+            "aiAutoFix": {
+                "enabled": false,
+                "errorParser": "dotnet"
+            }
+        }
+    }
+}

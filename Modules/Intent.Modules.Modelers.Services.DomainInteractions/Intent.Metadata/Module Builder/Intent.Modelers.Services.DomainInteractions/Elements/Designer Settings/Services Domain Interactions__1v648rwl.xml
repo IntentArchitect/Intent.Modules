@@ -19,6 +19,14 @@
         <property name="fdbbd211-a162-4f29-bcdb-1250309d8aef" display="Extend Designers" value="[&quot;81104ae6-2bc5-4bae-b05a-f987b0372d81&quot;]" isActive="true" />
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="14441454-bfe0-4d5d-8dba-d86d74d33a3b" name="AI Settings">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="### Domain Interaction modeling rule (CRITICAL)&#xA;- If a `Command`/`Query`/`Operation` is intended to interact with the persistence of a domain entity, then ALWAYS add the appropriate interaction associations (e.g. `Create Entity Action`, `Query Entity Action`, etc).&#xA;- Always add interaction associations to the diagrams.&#xA;- `Query Entity Action` represents a data-access query through the target Aggregate Root or Entity in the Domain.&#xA;- Do NOT add multiple `Query Entity Action` associations from the same `Command`/`Query`/`Operation` to multiple Domain entities just to express joins/navigation/projection needs.&#xA;- Only model `Query Entity Action` associations for aggregate roots that the handler directly queries via their repository." isActive="true" />
+      </properties>
+    </stereotype>
   </stereotypes>
   <metadata />
   <childElements />

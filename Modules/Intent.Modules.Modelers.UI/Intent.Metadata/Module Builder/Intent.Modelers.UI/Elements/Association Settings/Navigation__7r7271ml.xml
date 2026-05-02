@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="6d2b2070-c1cb-4cd2-88b4-4e5f8414bd9e" type="Association Settings" typeId="16d21684-d5ea-4fde-b648-f88d292fa272">
+  <comment>`Navigation` associations represent explicit navigations (e.g. buttons, links, etc) that the user can initiate (directly or indirectly) between components.</comment>
   <name>Navigation</name>
   <display>Navigation</display>
   <isAbstract>false</isAbstract>

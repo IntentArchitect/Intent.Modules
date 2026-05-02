@@ -1,3 +1,8 @@
+### Version 1.1.0
+
+- Improvement: `Call Service Operation Action` can now be directly connected from `Components`.
+- Improvement: Added AI modeling instructions for better results when AI agents are modeling UI.
+
 ### Version 1.0.7
 
 - Improvement: Diagrams will now name themselves the same name as their parent and enable editing after loading the diagram.
