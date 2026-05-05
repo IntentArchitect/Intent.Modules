@@ -1,6 +1,7 @@
 ﻿### Version 3.10.5
 
 - Improvement: Extended VisualStudioProjectTypeIds with SdkSqlProject.
+- Improvement: Added helper method to format default values to valid C# code for a given type.
 
 ### Version 3.10.4
 

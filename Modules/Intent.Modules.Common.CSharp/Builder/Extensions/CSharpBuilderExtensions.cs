@@ -1,3 +1,6 @@
+using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.Types.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,6 +72,59 @@ public static class CSharpBuilderExtensions
             .ToArray();
 
         return string.Concat(orderedCodeBlocks.Select((s, i) => $"{orderedCodeBlocks.DetermineSeparator(i, s, indentation, separator)}"));
+    }
+
+    /// <summary>
+    /// This method will format the string as an "Initial/Default" value. Used for setting the initial value of a property, for example
+    /// Will perform additional checks and formatting on the string
+    /// </summary>
+    /// <param name="template"></param>
+    /// <param name="value"></param>
+    /// <param name="typeReference"></param>
+    /// <returns></returns>
+    public static string AsFormattedValidTypeValue(this string value, ICSharpFileBuilderTemplate template, ITypeReference typeReference)
+    {
+        var element = typeReference.Element;
+
+        if(value.StartsWith('@'))
+        {
+            return value[1..];
+        }
+
+        if(typeReference.IsCollection)
+        {
+            return value;
+        }
+        
+        // if it is an enum, and the value does not contain the enum name, but is a literal
+        if (element.IsEnumModel() && !value.Contains('.') && element.AsEnumModel().Literals.Any(l => l.Name.Equals(value, StringComparison.OrdinalIgnoreCase)))
+        {
+            return $"{template.GetTypeName(typeReference)}.{value}";
+        }
+
+        // String: wrap in quotes unless it is already quoted, is null/default, or looks like a method call / field reference
+        if (element != null && element.IsStringType()
+            && !value.StartsWith('"')
+            && !value.StartsWith('_')
+            && value != "null"
+            && value != "default"
+            && !value.Contains('(')
+            && !value.Contains('.'))
+        {
+            return $"\"{value}\"";
+        }
+
+        // DateTime / Date / DateTimeOffset: prefix bare identifiers (e.g. "Now") with the C# type name
+        if ((element.IsDateTimeType() || element.IsDateType() || element.IsDateTimeOffsetType())
+            && value != "null"
+            && value != "default"
+            && !value.Contains('.')
+            && !value.Contains('('))
+        {
+            return $"{template.GetTypeName(typeReference)}.{value}";
+        }
+
+        return value;
     }
 
     private static string DetermineSeparator(this IEnumerable<ICodeBlock> codeBlocks, int codeBlockIndex, ICodeBlock currentCodeBlock, string indentation, string separator = "", CodeTextTransformer codeTextTransformer = null)
