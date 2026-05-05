@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.AI</id>
-  <version>1.0.2-pre.0</version>
+  <version>1.0.2</version>
   <supportedClientVersions>[4.5.25-a,6.0.0-a)</supportedClientVersions>
   <summary>Support for accessing LLMs via Semantic Kernel within Intent Architect module tasks.</summary>
   <description>Support for accessing LLMs via Semantic Kernel within Intent Architect module tasks.</description>
