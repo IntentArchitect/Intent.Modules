@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="cb14e47d-672c-4244-8950-7c4ebf8cf8ed" version="3.1.0">
-  <comment>Domain Constraint that validates whether a numeric value meets the defined range. Individual limits are optional; only populated values are enforced.</comment>
+  <comment>Domain Constraint that validates whether a numeric value meets the defined range.
+
+Properties:
+- **Min Value**: Optional lower bound value
+- **Max Value**: Optional upper bound value  
+- **Min Boundary Type**: Specifies if minimum is inclusive (&gt;=) or exclusive (&gt;). Only applies to float, double, decimal. Default: Inclusive
+- **Max Boundary Type**: Specifies if maximum is inclusive (&lt;=) or exclusive (&lt;). Only applies to float, double, decimal. Default: Inclusive
+
+Individual limits and boundary types are optional; only populated values are enforced.</comment>
   <name>Numeric Limits</name>
   <targetMode>that-reference</targetMode>
   <targetTypes>
@@ -48,12 +56,29 @@ return `[${min}, ${max}]`;</displayFunction>
   <packageName>Intent.Metadata.Domain.Constraints</packageName>
   <properties>
     <property id="4c8d4fd3-bfcd-44d7-9b12-7e2dc141fb72">
+      <comment />
       <hint>Decimal numeric value</hint>
       <name>Min Value</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(minimum)</placeholder>
+    </property>
+    <property id="3e3830cd-1a87-47d2-8659-02a269b6e482">
+      <comment />
+      <name>Min Boundary Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <defaultValue>Inclusive</defaultValue>
+      <valueOptions>
+        <option>Inclusive</option>
+        <option>Exclusive</option>
+      </valueOptions>
+      <isActiveFunction>const targetElements = new Set(['decimal', 'float', 'double']);
+
+return targetElements.has(element.typeReference.getType()?.getName());</isActiveFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="9dad612e-e7ca-4d2e-a1e5-aaf0d4c82d17">
       <hint>Decimal numeric value</hint>
@@ -62,6 +87,22 @@ return `[${min}, ${max}]`;</displayFunction>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(maximum)</placeholder>
+    </property>
+    <property id="337335e1-749d-49ec-962d-0b57566bbaeb">
+      <comment />
+      <name>Max Boundary Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <defaultValue>Inclusive</defaultValue>
+      <valueOptions>
+        <option>Inclusive</option>
+        <option>Exclusive</option>
+      </valueOptions>
+      <isActiveFunction>const targetElements = new Set(['decimal', 'float', 'double']);
+
+return targetElements.has(element.typeReference.getType()?.getName());</isActiveFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
     </property>
   </properties>
 </stereotypeDefinition>
