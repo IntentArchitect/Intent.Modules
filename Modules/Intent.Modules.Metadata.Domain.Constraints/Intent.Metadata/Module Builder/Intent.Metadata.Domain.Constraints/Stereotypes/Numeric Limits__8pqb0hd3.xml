@@ -36,16 +36,17 @@ if (!hasMinimum &amp;&amp; !hasMaximum) {
     return "";
 }
 
-let min = minimum;
-if (!hasMinimum) {
-    min = "MIN";
-}
-let max = maximum;
-if (!hasMaximum) {
-    max = "MAX"
-}
+const min = hasMinimum ? minimum : "MIN";
+const max = hasMaximum ? maximum : "MAX";
 
-return `[${min}, ${max}]`;</displayFunction>
+// Check if boundary types exist and are set to "exclusive" (case-insensitive)
+const isMinExclusive = typeof MinBoundaryType !== 'undefined' &amp;&amp; MinBoundaryType?.toString().toLowerCase() === "exclusive";
+const isMaxExclusive = typeof MaxBoundaryType !== 'undefined' &amp;&amp; MaxBoundaryType?.toString().toLowerCase() === "exclusive";
+
+const openBracket = isMinExclusive ? "(" : "[";
+const closeBracket = isMaxExclusive ? ")" : "]";
+
+return `${openBracket}${min}, ${max}${closeBracket}`;</displayFunction>
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>
