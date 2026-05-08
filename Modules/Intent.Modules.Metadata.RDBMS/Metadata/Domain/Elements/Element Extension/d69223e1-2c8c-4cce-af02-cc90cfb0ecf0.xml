@@ -87,7 +87,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let index = createElement(&quot;Index&quot;, 'IX_' + element.getName(), element.id);&#xD;&#xA;await index.launchMappingDialog(&quot;30f4278f-1d74-4e7e-bfdb-39c8e120f24c&quot;);&#xD;&#xA;&#xD;&#xA;if (index.getChildren().length === 0) {&#xD;&#xA;    index.delete();&#xD;&#xA;}" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let index = createElement(&quot;Index&quot;, 'IX_' + element.getName(), element.id);&#xD;&#xA;&#xD;&#xA;try {&#xD;&#xA;    await index.launchMappingDialog(&quot;30f4278f-1d74-4e7e-bfdb-39c8e120f24c&quot;);&#xD;&#xA;} catch (err) {&#xD;&#xA;    if (index.getChildren().length === 0) {&#xD;&#xA;        index.delete();&#xD;&#xA;    }&#xD;&#xA;}" isActive="true" />
                 <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[]" isActive="true" />
               </properties>
             </stereotype>
