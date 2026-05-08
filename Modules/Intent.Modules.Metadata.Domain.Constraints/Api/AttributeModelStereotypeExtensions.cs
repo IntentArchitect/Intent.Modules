@@ -231,6 +231,91 @@ namespace Intent.Metadata.Domain.Constraints.Api
                 return _stereotype.GetProperty<string>("Max Value");
             }
 
+            public MinBoundaryTypeOptions MinBoundaryType()
+            {
+                return new MinBoundaryTypeOptions(_stereotype.GetProperty<string>("Min Boundary Type"));
+            }
+
+            public MaxBoundaryTypeOptions MaxBoundaryType()
+            {
+                return new MaxBoundaryTypeOptions(_stereotype.GetProperty<string>("Max Boundary Type"));
+            }
+
+            public class MinBoundaryTypeOptions
+            {
+                public readonly string Value;
+
+                public MinBoundaryTypeOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public MinBoundaryTypeOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Inclusive":
+                            return MinBoundaryTypeOptionsEnum.Inclusive;
+                        case "Exclusive":
+                            return MinBoundaryTypeOptionsEnum.Exclusive;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsInclusive()
+                {
+                    return Value == "Inclusive";
+                }
+                public bool IsExclusive()
+                {
+                    return Value == "Exclusive";
+                }
+            }
+
+            public enum MinBoundaryTypeOptionsEnum
+            {
+                Inclusive,
+                Exclusive
+            }
+            public class MaxBoundaryTypeOptions
+            {
+                public readonly string Value;
+
+                public MaxBoundaryTypeOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public MaxBoundaryTypeOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Inclusive":
+                            return MaxBoundaryTypeOptionsEnum.Inclusive;
+                        case "Exclusive":
+                            return MaxBoundaryTypeOptionsEnum.Exclusive;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsInclusive()
+                {
+                    return Value == "Inclusive";
+                }
+                public bool IsExclusive()
+                {
+                    return Value == "Exclusive";
+                }
+            }
+
+            public enum MaxBoundaryTypeOptionsEnum
+            {
+                Inclusive,
+                Exclusive
+            }
+
         }
 
         public class RegularExpression

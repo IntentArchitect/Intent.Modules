@@ -225,6 +225,7 @@
                   <childElements />
                 </childElement>
                 <childElement id="f8f3682e-a663-4952-9adf-c3cc536de9e7" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+                  <comment />
                   <name>Add Numeric Limits</name>
                   <display>Add Numeric Limits: Inline Script</display>
                   <isAbstract>false</isAbstract>
@@ -263,7 +264,7 @@
                         <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
                         <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
                         <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
-                        <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="const targetElements = new Set(['int', 'long', 'short', 'decimal', 'float', 'long']);&#xD;&#xA;&#xD;&#xA;return targetElements.has(element.typeReference.getType()?.getName());" isActive="true" />
+                        <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" value="const targetElements = new Set(['int', 'long', 'short', 'decimal', 'float', 'long', 'double', 'byte']);&#xD;&#xA;&#xD;&#xA;return targetElements.has(element.typeReference.getType()?.getName());" isActive="true" />
                         <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
                         <property name="c37d8704-0003-4886-b6c2-4e51aa22a8f9" display="Menu Group" isActive="true" />
                         <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
