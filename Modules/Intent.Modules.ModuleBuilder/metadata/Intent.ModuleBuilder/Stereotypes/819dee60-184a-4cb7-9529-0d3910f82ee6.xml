@@ -25,6 +25,11 @@ if (properties["Templating Method"].value === "Data File Builder" &amp;&amp; dat
     }
 }
 
+if (properties["Templating Method"].value === "Markdown File Builder")
+{
+    return "[.md]"
+}
+
 return `[.${this.properties['File Extension'].value}]`;</displayFunction>
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>
