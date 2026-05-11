@@ -1,9 +1,9 @@
 ---
 name: traditional-service-implementation
 description: implement or revise traditional application service business logic in an existing service file. use when a c# application service class has incomplete or incorrect operation logic and chatgpt should update service methods, add private helper methods, and extend application or domain abstractions such as repositories, read services, or domain services if required, while avoiding direct infrastructure dependencies in the service.
-contentHash: D1579E96CB19574C9CF6EAF41DFC2E565C6AC0C0A244E66ABB7C19D1D260A1F9
+template-id: Intent.Application.ServiceImplementations.ServiceImplementationSkillTemplate
+contentHash: 8C1054C7BD67B2E9115B11D81B885BC173016B467CDC0DC0F3E74FDCFF3EB76E
 ---
-
 # Traditional Service Implementation
 
 Implement business logic inside an existing traditional application service file. Keep service implementations aligned with the modeled domain, nearby service patterns, and application-layer boundaries.
@@ -22,18 +22,17 @@ Implement business logic inside an existing traditional application service file
 - Search the codebase for similar services, repository methods, domain operations, mapping conventions, validation flows, error patterns, and save conventions before introducing a new approach.
 - Add private helper methods inside the service when they improve readability, encapsulate repeated branching logic, or keep the main business flow clear.
 - Keep orchestration in the service and place durable business rules in domain entities, value objects, specifications, or domain/application services when those patterns already exist nearby.
-- Assume there is an ambient unit of work save in place unless nearby code shows otherwise. Explicitly save only when needed by the use case, such as when a surrogate key must be returned before control leaves the operation, or when an existing local convention requires an explicit save.
 
 ## Workflow
 
 1. Inspect the existing service class, interface, operation signatures, DTOs, repositories/read services/domain services, and related domain types.
 2. Search for code usages of:
-   - similar traditional application services
-   - repository, read-service, or domain-service abstractions
-   - domain operations on the target aggregate or entity
-   - DTO mapping conventions
-   - validation, authorization, and error/result patterns
-   - save and unit-of-work conventions in nearby services
+  - similar traditional application services
+  - repository, read-service, or domain-service abstractions
+  - domain operations on the target aggregate or entity
+  - DTO mapping conventions
+  - validation, authorization, and error/result patterns
+  - save and unit-of-work conventions in nearby services
 3. Infer the intended business flow from the operation names, parameters, return types, surrounding domain model, and nearby feature implementations.
 4. Implement the service operation using existing patterns first.
 5. If the service needs missing DAL capabilities, extend the relevant repository/read/application abstraction in an allowed layer instead of introducing infrastructure access into the service.
@@ -84,6 +83,53 @@ When a needed capability is missing:
 - Follow the existing application error/result conventions already used in the solution.
 - Reuse nearby patterns for not found, validation failures, business rule failures, and authorization failures.
 - Do not invent a new exception or result style when the surrounding code already establishes one.
+
+## Unit of Work guidance
+
+- SaveChanges rule (STRICT): Do not call UnitOfWork.SaveChangesAsync(...) / SaveChangesAsync(...) in a handler/service method unless the operation returns a payload that requires DB-generated values, such as a generated Id, surrogate key, RowVersion/concurrency token, DB-generated timestamp, or computed column.
+- If the operation returns Unit, void, Task, or IRequest with no result: do not call SaveChangesAsync.
+- If the operation returns an identifier or DTO that needs generated fields: call SaveChangesAsync before returning.
+- If unsure, omit SaveChangesAsync and assume an outer unit-of-work/pipeline commit.
+- When reviewing code, remove SaveChangesAsync unless there is a clear generated-value or immediate-commit requirement.
+
+## Entity Framework repository guidance
+
+- Repository update rule (STRICT): Do not call repository.Update(...) / repo.Update(...) when using EF repositories.
+- EF tracks loaded entities automatically. Modify the entity properties directly and let the Unit of Work persist the tracked changes.
+- Only call Add/Create/Delete operations when inserting or removing entities.
+- When reviewing code, remove unnecessary Update calls for entities loaded from an EF repository.
+
+## AutoMapper guidance
+
+- Any read/query method, including application services, that returns Application-layer DTOs (*Dto) derived from Domain entities must use AutoMapper.
+  - Do not manually construct DTOs (`new XxxDto { ... }`) on read/query paths.
+- If the required mapping does not exist, create it:
+  - Add an AutoMapper Profile.
+  - Include mapping extension methods in the same file, matching existing conventions.
+- Before using repository `ProjectTo` operations, verify that the required AutoMapper mappings exist.
+- Manual DTO construction is allowed only when the DTO is a non-entity-shaped view model/aggregation and AutoMapper is not reasonable.
+  - This must include an inline code comment explaining why AutoMapper is not reasonable.
+  - “Mapping doesn’t exist yet” is not a valid exception.
+
+**Example:**
+```csharp
+public class CustomerDtoProfile : Profile
+{
+    public CustomerDtoProfile()
+    {
+        CreateMap<Customer, CustomerDto>();
+    }
+}
+
+public static class CustomerDtoMappingExtensions
+{
+    public static CustomerDto MapToCustomerDto(this Customer projectFrom, IMapper mapper) =>
+        mapper.Map<CustomerDto>(projectFrom);
+
+    public static List<CustomerDto> MapToCustomerDtoList(this IEnumerable<Customer> projectFrom, IMapper mapper) =>
+        projectFrom.Select(x => x.MapToCustomerDto(mapper)).ToList();
+}
+```
 
 ## Output expectations
 
