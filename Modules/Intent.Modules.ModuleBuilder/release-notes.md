@@ -1,4 +1,8 @@
-﻿### Version 3.18.5
+﻿### Version 3.18.6
+
+- New Feature: Support for Markdown Builder Templates.
+
+### Version 3.18.5
 
 - Improvement: Updates to AI rules across domain and service modules
 - Improvement: Max supportedClientVersions now defaults to 6.0.0

@@ -1,3 +1,7 @@
+### Version 3.11.1
+
+- New Feature: Support for Markdown Builder Templates.
+
 ### Version 3.11.0
 
 - Improvement: Support for AI Agents
