@@ -126,6 +126,8 @@ namespace Intent.ModuleBuilder.Api
                             return TemplatingMethodOptionsEnum.StringInterpolation;
                         case "T4 Template":
                             return TemplatingMethodOptionsEnum.T4Template;
+                        case "Markdown File Builder":
+                            return TemplatingMethodOptionsEnum.MarkdownFileBuilder;
                         case "Custom":
                             return TemplatingMethodOptionsEnum.Custom;
                         default:
@@ -149,6 +151,10 @@ namespace Intent.ModuleBuilder.Api
                 {
                     return Value == "T4 Template";
                 }
+                public bool IsMarkdownFileBuilder()
+                {
+                    return Value == "Markdown File Builder";
+                }
                 public bool IsCustom()
                 {
                     return Value == "Custom";
@@ -161,6 +167,7 @@ namespace Intent.ModuleBuilder.Api
                 DataFileBuilder,
                 StringInterpolation,
                 T4Template,
+                MarkdownFileBuilder,
                 Custom
             }
             public class DataFileOutputTypeOptions

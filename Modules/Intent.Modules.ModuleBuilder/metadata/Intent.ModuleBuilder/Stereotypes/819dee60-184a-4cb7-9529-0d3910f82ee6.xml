@@ -59,6 +59,7 @@ return `[.${this.properties['File Extension'].value}]`;</displayFunction>
         <option>Data File Builder</option>
         <option>String Interpolation</option>
         <option>T4 Template</option>
+        <option>Markdown File Builder</option>
         <option>Custom</option>
       </valueOptions>
       <isActiveFunction>return OutputFileContent === "Text";</isActiveFunction>
@@ -86,7 +87,7 @@ return `[.${this.properties['File Extension'].value}]`;</displayFunction>
       <optionsSource>n/a</optionsSource>
       <placeholder>(optional)</placeholder>
       <defaultValue>txt</defaultValue>
-      <isActiveFunction>return TemplatingMethod !== "Data File Builder" || DataFileOutputType === "Custom";</isActiveFunction>
+      <isActiveFunction>return (TemplatingMethod !== "Data File Builder" &amp;&amp; TemplatingMethod !== "Markdown File Builder") || DataFileOutputType === "Custom";</isActiveFunction>
       <isRequiredFunction>return false;</isRequiredFunction>
     </property>
   </properties>

@@ -14,6 +14,7 @@ using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using TemplatingMethod = Intent.ModuleBuilder.Api.FileTemplateModelStereotypeExtensions.FileSettings.TemplatingMethodOptionsEnum;
 using DataFileType = Intent.ModuleBuilder.Api.FileTemplateModelStereotypeExtensions.FileSettings.DataFileOutputTypeOptionsEnum;
+using Intent.Modules.Common.FileBuilders.MarkdownFileBuilder;
 
 namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial
 {
@@ -73,6 +74,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial
             {
                 TemplatingMethod.DataFileBuilder => $", {UseType(typeof(IDataFileBuilderTemplate).FullName)}",
                 TemplatingMethod.IndentedFileBuilder => $", {UseType(typeof(IIndentedFileBuilderTemplate).FullName)}",
+                TemplatingMethod.MarkdownFileBuilder => $", {UseType(typeof(IMarkdownFileBuilderTemplate).FullName)}",
                 _ => string.Empty
             };
 
@@ -85,12 +87,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial
 
         private bool IsFileBuilder => Model.GetFileSettings().TemplatingMethod().AsEnum()
             is TemplatingMethod.DataFileBuilder
-            or TemplatingMethod.IndentedFileBuilder;
+            or TemplatingMethod.IndentedFileBuilder
+            or TemplatingMethod.MarkdownFileBuilder;
 
         private string GetBuilderType() => Model.GetFileSettings().TemplatingMethod().AsEnum() switch
         {
             TemplatingMethod.DataFileBuilder => UseType(typeof(DataFile).FullName),
             TemplatingMethod.IndentedFileBuilder => UseType(typeof(IndentedFile).FullName),
+            TemplatingMethod.MarkdownFileBuilder => UseType(typeof(MarkdownFile).FullName),
             _ => throw new InvalidOperationException($"Unknown type: {Model.GetFileSettings().TemplatingMethod().AsEnum()}")
         };
 
@@ -98,6 +102,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial
         {
             TemplatingMethod.DataFileBuilder => "DataFile",
             TemplatingMethod.IndentedFileBuilder => "IndentedFile",
+            TemplatingMethod.MarkdownFileBuilder => "MarkdownFile",
             _ => throw new InvalidOperationException($"Unknown type: {Model.GetFileSettings().TemplatingMethod().AsEnum()}")
         };
 
@@ -108,6 +113,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial
 
         private string GetTemplateBaseClass()
         {
+            if (Model.GetFileSettings().TemplatingMethod().AsEnum() == TemplatingMethod.MarkdownFileBuilder)
+                return "MarkdownBaseTemplate";
             return Model.GetFileSettings().OutputFileContent().IsBinary()
                 ? nameof(IntentBinaryTemplateBase)
                 : nameof(IntentTemplateBase);
@@ -125,6 +132,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial
                 DataFileType.Custom => $".WithWriter(() => new {UseType(typeof(DataFileWriter).FullName)}(), \"{Model.GetFileSettings().FileExtension()}\") // Replace with your own specialization",
                 _ => throw new InvalidOperationException($"Unknown type: {dataFileType}")
             };
+        }
+
+        private string GetRelativeLocation()
+        {
+            if (!string.IsNullOrEmpty(Model.GetTemplateSettings().GetDefaultLocation()))
+            {
+                return $", relativeLocation: \"{Model.GetTemplateSettings().GetDefaultLocation()}\"";
+            }
+            return "";
         }
 
         private string GetDefaultName()

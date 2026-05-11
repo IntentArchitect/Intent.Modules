@@ -55,10 +55,29 @@ namespace <#= Namespace #>
                         .WithValue("fieldName", "fieldValue")
                     ;
                 });
+<#  } else if (Model.GetFileSettings().TemplatingMethod().IsMarkdownFileBuilder()) { #>
+            WithContentHashing = true;
+            <#= GetFilePropertyName() #> = new <#= GetBuilderType() #>($"<#= GetDefaultName() #>"<#= GetRelativeLocation() #>)
+                .FromMarkdown("""
+---
+name: my-markdown-output
+description: what its about.
+---
+
+# My Markdown File
+
+Your Content Here
+""");
 <#  } #>
         }
 
-<#  if (IsFileBuilder) { #>
+<#  if (Model.GetFileSettings().TemplatingMethod().IsMarkdownFileBuilder()) { #>
+        [IntentManaged(Mode.Fully)]
+        public override I<#= GetBuilderType() #> <#= GetFilePropertyName() #> { get; }
+
+        [IntentManaged(Mode.Fully)]
+        public override ITemplateFileConfig GetTemplateFileConfig() => <#= GetFilePropertyName() #>.GetConfig();
+<#  } else if (IsFileBuilder) { #>
         [IntentManaged(Mode.Fully)]
         public I<#= GetBuilderType() #> <#= GetFilePropertyName() #> { get; }
 
@@ -87,6 +106,7 @@ namespace <#= Namespace #>
         {
             throw new NotImplementedException("Implement custom template here");
         }
+<#  } else if (Model.GetFileSettings().TemplatingMethod().IsMarkdownFileBuilder()) { #>
 <#  } else if (IsFileBuilder) { #>
         [IntentManaged(Mode.Fully)]
         public override string TransformText() => <#= GetFilePropertyName() #>.ToString();
