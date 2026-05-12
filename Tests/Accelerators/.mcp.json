@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+      "intent-architect": {
+          "type": "stdio",
+          "command": "D:\\Dev\\Intent\\Intent.IntentArchitect\\IntentArchitect.ElectronClient\\Intent.McpServer\\bin\\Debug\\net10.0\\Intent.McpServer.exe",
+          "args": [],
+          "env": {}
+        }
+    }
+}
