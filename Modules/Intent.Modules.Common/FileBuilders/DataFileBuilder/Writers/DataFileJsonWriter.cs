@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Linq;
+using System.Text.Json;
 
 namespace Intent.Modules.Common.FileBuilders.DataFileBuilder.Writers;
 
@@ -11,6 +12,12 @@ public class DataFileJsonWriter : DataFileWriter
 
     public override void Visit(IDataFileObjectValue @object)
     {
+        if (@object.Count == 0)
+        {
+            StringBuilder.Append("{}");
+            return;
+        }
+
         if (@object.Parent != null)
         {
             PushIndentation();
@@ -64,6 +71,12 @@ public class DataFileJsonWriter : DataFileWriter
 
     public override void Visit(IDataFileArrayValue array)
     {
+        if (array.Count == 0)
+        {
+            StringBuilder.Append("[]");
+            return;
+        }
+
         if (array.Parent != null)
         {
             PushIndentation();
@@ -124,7 +137,7 @@ public class DataFileJsonWriter : DataFileWriter
             ulong castValue => castValue.ToString(CultureInfo.InvariantCulture),
             short castValue => castValue.ToString(CultureInfo.InvariantCulture),
             ushort castValue => castValue.ToString(CultureInfo.InvariantCulture),
-            string castValue => $"\"{castValue}\"",
+            string castValue => JsonSerializer.Serialize(castValue),
             _ => scalar.Value.ToString()
         });
     }

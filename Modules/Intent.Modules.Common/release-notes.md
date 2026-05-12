@@ -1,10 +1,13 @@
 ### Version 3.11.1
 
-- New Feature: Support for Markdown Builder Templates.
+- Feature: Support for Markdown Builder Templates.
+- Feature: Now generates a `.mcp.json` file.
+- Fixed: Empty arrays or objects in the JSON File Builder would be formatted incorrectly.
+- Fixed: String values in the JSON File Builder wouldn't apply escaping of special characters.
 
 ### Version 3.11.0
 
-- Improvement: Support for AI Agents
+- Improvement: Support for AI Agents.
 
 ### Version 3.10.0
 
