@@ -1,6 +1,7 @@
 ﻿### Version 3.10.5
 
 - Improvement: Extended VisualStudioProjectTypeIds with SdkSqlProject.
+- Fixed: Fixed bug on constructor mappings where the type reference wasn't compared on its element but on itself.
 
 ### Version 3.10.4
 

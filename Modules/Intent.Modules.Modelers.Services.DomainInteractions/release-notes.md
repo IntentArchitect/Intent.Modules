@@ -1,6 +1,7 @@
 ### Version 2.4.2
 
 - Improvement: Designer scripts work better with AI Modeling Agent.
+- Improvement: Create CRUD operations from Integration Event Handlers.
 
 ### Version 2.4.1
 

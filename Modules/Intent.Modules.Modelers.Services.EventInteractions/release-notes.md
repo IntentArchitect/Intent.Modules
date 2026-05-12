@@ -1,3 +1,7 @@
+### Version 2.0.7
+
+- Improvement: Create CRUD operations from Integration Event Handlers.
+
 ### Version 2.0.6
 
 - Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
