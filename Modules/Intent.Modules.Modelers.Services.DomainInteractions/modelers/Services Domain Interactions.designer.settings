@@ -10833,6 +10833,8 @@ convertToAdvancedMapping.execute();
             <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
             <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
             <type type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" />
+            <type type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4" />
+            <type type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394" />
             <type type="[Processing Handler]" typeId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
@@ -10930,6 +10932,8 @@ return typeReference.getIsCollection()
             <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
             <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
             <type type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" />
+            <type type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4" />
+            <type type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394" />
             <type type="[Processing Handler]" typeId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
@@ -11051,6 +11055,8 @@ association.typeReference.getType().getChildren("Attribute")
             <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
             <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
             <type type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" />
+            <type type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4" />
+            <type type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394" />
             <type type="[Processing Handler]" typeId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
@@ -11169,6 +11175,8 @@ return null;</validateFunction>
             <type type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" />
             <type type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
             <type type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f" />
+            <type type="Subscribe Integration Event Target End" typeId="16fa2952-79e6-4150-b5ab-45aa4c106de4" />
+            <type type="Subscribe Integration Command Target End" typeId="efa73bdb-69b7-4f52-aa10-15c19874b394" />
             <type type="[Processing Handler]" typeId="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
@@ -11736,6 +11744,8 @@ return model;</overrideTypeReferenceFunction>
             <source id="5a3018a8-38bc-450f-bf82-631e2d9475b3" name="Command" />
             <source id="8a986f57-e0bd-4b81-ac39-cbe0e5b44ac7" name="Service Operation" />
             <source id="5b5676ef-333f-4f52-859d-925ee8c43578" name="Domain Event Handler Association" />
+            <source id="265955ac-b061-484b-9cf8-76789b1f364a" name="Integration Event Handler" />
+            <source id="f5afadc5-6bab-4385-8cb5-9aff339433c8" name="Integration Command Handler" />
           </sources>
           <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
@@ -11758,6 +11768,13 @@ return model;</overrideTypeReferenceFunction>
             <source id="eb1478af-4b69-4d33-826f-3f195ebbed79" name="Collection Field" />
             <source id="ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8" name="Collection Parameter" />
             <source id="d70e0dac-3464-426c-bb01-5c6b1140390e" name="Service Invocation" />
+            <source id="f0dd2ef5-4d08-4b7f-8960-1f7ebb9b521f" name="Property" />
+            <source id="432fd702-af2b-43c0-9d8c-e6f1fef9860d" name="Property" />
+            <source id="f79156cb-9ac7-4224-becc-138355a3767b" name="Message Property" />
+            <source id="678ea51f-f715-4219-82bf-1b42c8e3caad" name="Message Property" />
+            <source id="bbc5cb98-e6ba-4446-879a-3a01af8559d0" name="Eventing DTO Field" />
+            <source id="d622e90a-b247-4960-8e86-c4594521938f" name="Eventing DTO Field" />
+            <source id="4a6afd7d-ae76-4831-9010-39f18999a595" name="Eventing DTO Field" />
           </sources>
           <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
@@ -11941,6 +11958,13 @@ return model;</overrideTypeReferenceFunction>
             <source id="cfe9c4d4-9c26-4f11-a585-f1e3863fb658" name="Invoke Domain Operation" />
             <source id="792374ff-6b97-45df-96de-01acd2488cc0" name="Property" />
             <source id="eb1478af-4b69-4d33-826f-3f195ebbed79" name="Collection Field" />
+            <source id="f0dd2ef5-4d08-4b7f-8960-1f7ebb9b521f" name="Property" />
+            <source id="432fd702-af2b-43c0-9d8c-e6f1fef9860d" name="Property" />
+            <source id="f79156cb-9ac7-4224-becc-138355a3767b" name="Message Property" />
+            <source id="678ea51f-f715-4219-82bf-1b42c8e3caad" name="Message Property" />
+            <source id="bbc5cb98-e6ba-4446-879a-3a01af8559d0" name="Eventing DTO Field" />
+            <source id="d622e90a-b247-4960-8e86-c4594521938f" name="Eventing DTO Field" />
+            <source id="4a6afd7d-ae76-4831-9010-39f18999a595" name="Eventing DTO Field" />
           </sources>
           <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
@@ -11972,6 +11996,8 @@ return model;</overrideTypeReferenceFunction>
             <source id="8a986f57-e0bd-4b81-ac39-cbe0e5b44ac7" name="Service Operation" />
             <source id="ef61ebc7-f442-4b5f-bb5a-2ef68a1e4da8" name="Collection Parameter" />
             <source id="5b5676ef-333f-4f52-859d-925ee8c43578" name="Domain Event Handler Association" />
+            <source id="265955ac-b061-484b-9cf8-76789b1f364a" name="Integration Event Handler" />
+            <source id="f5afadc5-6bab-4385-8cb5-9aff339433c8" name="Integration Command Handler" />
           </sources>
           <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
@@ -11992,6 +12018,13 @@ return model;</overrideTypeReferenceFunction>
             <source id="c0682bc4-2b6a-4638-a35e-39188d253694" name="Association Target End" />
             <source id="cfe9c4d4-9c26-4f11-a585-f1e3863fb658" name="Invoke Domain Operation" />
             <source id="d70e0dac-3464-426c-bb01-5c6b1140390e" name="Service Invocation" />
+            <source id="f0dd2ef5-4d08-4b7f-8960-1f7ebb9b521f" name="Property" />
+            <source id="432fd702-af2b-43c0-9d8c-e6f1fef9860d" name="Property" />
+            <source id="f79156cb-9ac7-4224-becc-138355a3767b" name="Message Property" />
+            <source id="678ea51f-f715-4219-82bf-1b42c8e3caad" name="Message Property" />
+            <source id="bbc5cb98-e6ba-4446-879a-3a01af8559d0" name="Eventing DTO Field" />
+            <source id="d622e90a-b247-4960-8e86-c4594521938f" name="Eventing DTO Field" />
+            <source id="4a6afd7d-ae76-4831-9010-39f18999a595" name="Eventing DTO Field" />
           </sources>
           <sourceArrowFunction>return null</sourceArrowFunction>
           <targets>
