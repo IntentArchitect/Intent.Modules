@@ -9,9 +9,9 @@
   <stereotypes />
   <metadata />
   <childElements>
-    <childElement id="847af17a-756a-49c9-a260-6c6c9ed541c6" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.Modules.Application.ServiceImplementations.Templates.StaticContentTemplateRegistrations.AISkillsStaticContentTemplateRegistration</name>
-      <display>Intent.Modules.Application.ServiceImplementations.Templates.StaticContentTemplateRegistrations.AISkillsStaticContentTemplateRegistration</display>
+    <childElement id="49416915-3e6d-4b59-b64b-2f5cf9f6c0a9" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Application.ServiceImplementations.ServiceImplementationSkillTemplate</name>
+      <display>Intent.Application.ServiceImplementations.ServiceImplementationSkillTemplate</display>
       <externalReference>Intent.Application.ServiceImplementations</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
@@ -23,9 +23,23 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="e65a3320-ca46-46f1-bc3c-c08d1ca7764d" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.Modules.Application.MediatR.Templates.StaticContentTemplateRegistrations.AISkillsStaticContentTemplateRegistration</name>
-      <display>Intent.Modules.Application.MediatR.Templates.StaticContentTemplateRegistrations.AISkillsStaticContentTemplateRegistration</display>
+    <childElement id="9eb4908f-26ab-486c-baa8-07f907cc9be8" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Modules.Application.FluentValidation.Templates.StaticContentTemplateRegistrations.AISkillsStaticContentTemplateRegistration</name>
+      <display>Intent.Modules.Application.FluentValidation.Templates.StaticContentTemplateRegistrations.AISkillsStaticContentTemplateRegistration</display>
+      <externalReference>Intent.Application.FluentValidation</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>7c63174a-b987-4d2e-a81b-5aa72f75c51b</parentFolderId>
+      <stereotypes />
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+    <childElement id="cb43d8fe-ca8c-40d2-b194-5a96a06acf61" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Application.MediatR.CommandHandlerSkillTemplate</name>
+      <display>Intent.Application.MediatR.CommandHandlerSkillTemplate</display>
       <externalReference>Intent.Application.MediatR</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
@@ -37,9 +51,23 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="1d9b8263-123b-48b9-86de-38c00d107f84" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.Modules.Entities.Templates.StaticContentTemplateRegistrations.AISkillsStaticContentTemplateRegistration</name>
-      <display>Intent.Modules.Entities.Templates.StaticContentTemplateRegistrations.AISkillsStaticContentTemplateRegistration</display>
+    <childElement id="d93e296f-535b-473d-ae32-c426b98ddc5c" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Application.MediatR.QueryHandlerSkillTemplate</name>
+      <display>Intent.Application.MediatR.QueryHandlerSkillTemplate</display>
+      <externalReference>Intent.Application.MediatR</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>7c63174a-b987-4d2e-a81b-5aa72f75c51b</parentFolderId>
+      <stereotypes />
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+    <childElement id="8bb14f18-36f5-43a9-8926-6834c878c1f1" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.Entities.DomainEntitySkill</name>
+      <display>Intent.Entities.DomainEntitySkill</display>
       <externalReference>Intent.Entities</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />

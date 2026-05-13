@@ -11,14 +11,6 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>ff0c119f-d894-48ec-a8be-2ca41b83511c</ProjectId>
-      <CorrelationId>Intent.Common.DotMcpDotJsonFile#abeb5100-bcb1-4b60-a91b-99bfdc37e3cc</CorrelationId>
-      <OverwriteBehaviour>once-off</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>../.mcp.json</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>../.mcp.json</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
       <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#bc63fcf0-a127-4c71-ae6f-91eb2a3772ed</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.Tests.sln</ApplicationRelativeFilePath>

@@ -15,7 +15,7 @@
       //      ]
       //  ]
     },
-  "AnotherValue": "The other value\u0027s contents",
+  "AnotherValue": "The other value's contents",
   //"AnotherDictionary": {
   //    "1": "1",
   //    "2": "2"

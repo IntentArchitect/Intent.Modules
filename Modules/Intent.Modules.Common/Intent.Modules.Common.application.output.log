@@ -104,21 +104,5 @@
       <ProjectRelativeFilePath>documentation.json</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
-    <FileLog>
-      <ProjectId>71c4de6e-2734-4cb5-94f4-22e5e8bb0b57</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#8a4c072b-7b12-4b0b-a3af-3e1d7b8d874b</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/DotMcpDotJsonFile/DotMcpDotJsonFileTemplatePartial.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>DotMcpDotJsonFile/DotMcpDotJsonFileTemplatePartial.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>71c4de6e-2734-4cb5-94f4-22e5e8bb0b57</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#8a4c072b-7b12-4b0b-a3af-3e1d7b8d874b</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/DotMcpDotJsonFile/DotMcpDotJsonFileTemplateRegistration.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>DotMcpDotJsonFile/DotMcpDotJsonFileTemplateRegistration.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
   </FileLogs>
 </outputLog>

@@ -1,9 +1,9 @@
 ---
 name: domain-entity
 description: guide coding agents to implement missing c# domain behaviour on a single domain entity or aggregate that lives in a dependency-free clean architecture domain project and may be persisted by a technology like ef core. use when a user shares a c# domain class with missing methods, not implemented exceptions, incomplete constructors, weak invariants, or unclear placement of business logic, and they want help finishing the domain behaviour while keeping persistence concerns secondary.
-contentHash: B1A85F64978296250C25582FF97CD981F2925B5E28FF63325BF82A986BEFCDFB
+template-id: Intent.Entities.DomainEntitySkill
+contentHash: 98935A9A5EDC1FCE6C8DD924AE80524ADD8C97A97891187B1E94290A2C210A2B
 ---
-
 # Domain Entity
 
 Implement or improve business behaviour on a single C# domain class.
@@ -66,7 +66,7 @@ If the intent is still ambiguous, choose the safest low-surprise implementation 
 - Do not convert behaviour into extension methods.
 - Do not expose mutable internals just to make the implementation easier.
 
-## Before finishing, quickly verify that you have:
+## Review checklist
 
 - Kept the business behaviour on the entity, aggregate root, or value object where it belongs.
 - Implemented the missing methods, guards, or constructors that were clearly incomplete.
