@@ -4,6 +4,7 @@
 - Feature: Now generates a `.mcp.json` file.
 - Fixed: Empty arrays or objects in the JSON File Builder would be formatted incorrectly.
 - Fixed: String values in the JSON File Builder wouldn't apply escaping of special characters.
+- Fixed: Added interop for `Intent.VisualStudio.Projects` to ensure version `4.1.0` is installed (if required).
 
 ### Version 3.11.0
 
