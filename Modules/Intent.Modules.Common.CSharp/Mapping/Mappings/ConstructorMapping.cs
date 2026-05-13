@@ -56,7 +56,7 @@ public class ConstructorMapping : CSharpMappingBase
         //This is not ideal and a best effort to realize your mapping
 
         // Implicit constructor (this assumes a 1->1 mapping in the exact order):
-        var init = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null
+        var init = !((IElement)Model).ChildElements.Any() && Model.TypeReference?.Element != null
             ? new CSharpInvocationStatement($"new {_template.GetTypeName((IElement)Model.TypeReference.Element)}").WithoutSemicolon()
             : new CSharpInvocationStatement($"new {_template.GetTypeName((IElement)Model)}").WithoutSemicolon();
 
