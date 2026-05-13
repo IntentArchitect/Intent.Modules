@@ -1,7 +1,10 @@
+### Version 4.0.14
+
+- Fixed: Removed error which wrongfully gets applied when you have two service invocations on the same source element.
+
 ### Version 4.0.13
 
 - Fixed: Opaque error being thrown when a DTO with two generalizations / parents is created. An user friendly `ElementException` is now being thrown.
-- Fixed: Removed error which wrongfully gets applied when you have two service invocations on the same source element.
 
 ### Version 4.0.12
 
