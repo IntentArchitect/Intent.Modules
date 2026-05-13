@@ -106,7 +106,7 @@ namespace Intent.Modules.Common.Templates
     public abstract class IntentTemplateBase : T4TemplateBase, IIntentTemplate, IConfigurableTemplate,
         IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook,
         IAfterTemplateRegistrationExecutionHook,
-        ITemplateBeforeExecutionHook, ITemplateWithAIContext
+        ITemplateBeforeExecutionHook
     {
         /// <summary>
         /// Returns the known template dependencies added for this template.
