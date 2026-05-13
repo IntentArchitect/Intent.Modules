@@ -22,18 +22,22 @@
   <packageName>Intent.Metadata.RDBMS</packageName>
   <properties>
     <property id="3427ad7b-e1a6-4d36-9e12-c5ada14a414b">
+      <comment />
+      <hint>Name of the Index</hint>
       <name>UniqueKey</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
     </property>
     <property id="a8f903d5-e8b6-4d15-aedb-08c6b290b733">
+      <hint>Order on composite  indexes</hint>
       <name>Order</name>
       <type>number</type>
       <controlType>number</controlType>
       <optionsSource>n/a</optionsSource>
     </property>
     <property id="90002464-b824-40e2-9f73-32f306868897">
+      <hint>Is index unique?</hint>
       <name>IsUnique</name>
       <type>boolean</type>
       <controlType>checkbox</controlType>

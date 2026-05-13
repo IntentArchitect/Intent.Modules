@@ -1,3 +1,7 @@
+### Version 3.7.16
+
+- Improvement: Updated stereotype hints to improve AI understanding.
+
 ### Version 3.7.15
 
 - Improvement: Designer scripts work better with AI Modeling Agent.
