@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common</id>
-  <version>3.11.1-pre.3</version>
+  <version>3.11.1</version>
   <supportedClientVersions>[5.0.0-a, 6.0.0-a)</supportedClientVersions>
   <summary>Base Implementation and Helper classes for modules.</summary>
   <description>Base Implementation and Helper classes for modules.</description>
@@ -32,11 +32,11 @@
         <package id="Intent.EntityFrameworkCore" version="5.0.30" />
       </install>
     </detect>
-	<detect id="Intent.VisualStudio.Projects">
-	  <install>
-		<package id="Intent.VisualStudio.Projects" version="4.1.0" />
-	  </install>
-	</detect>
+    <detect id="Intent.VisualStudio.Projects">
+      <install>
+        <package id="Intent.VisualStudio.Projects" version="4.1.0" />
+      </install>
+    </detect>
   </interoperability>
   <metadata>
     <install target="Module Builder" src="Intent.Metadata/Module Builder/Intent.Common/Intent.Common.pkg.config" externalReference="caccdda9-26f4-49bf-8b73-cadc2220de16" />
