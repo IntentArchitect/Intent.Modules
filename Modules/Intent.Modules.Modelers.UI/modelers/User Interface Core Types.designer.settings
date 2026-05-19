@@ -4,16 +4,22 @@
   <name>User Interface Core Types</name>
   <rules>### User Interface Modeling Workflow:
 1. Understand the existing User Interface model.
-2. Discover available Service operations (e.g. Commands, Queries, Service Operations, etc.) that are exposed over Http.
-3. Design and create the Pages and Components needed to achieve the user's requirements
-4. Connect these components to the necessary Service operations on the backend using the `Call Service Operation Action` associations.
-5. Connect pages with `Navigation` associations together where there should be explicit navigations between them (e.g. buttons, links, clickable items, etc.)
-6. Lay out all pages, navigations, and service calls on the diagram. Create the diagram if it does not yet exist, and then lay out the pages.
+2. You MUST discover available Service operations (e.g. Commands, Queries, Service Operations, etc.) that are exposed over Http. 
+3. Available Service operations (e.g. Commands, Queries, Service Operations, etc.) could be available in other applications. You MUST scan all applications. when discovering available Service Operations.
+4. Design and create the Pages and Components needed to achieve the user's requirements
+5. Connect these components to the necessary Service operations on the backend using the `Call Service Operation Action` associations.
+6. Connect pages with `Navigation` associations together where there should be explicit navigations between them (e.g. buttons, links, clickable items, etc.)
+7. Lay out all pages, navigations, and service calls on the diagram. Create the diagram if it does not yet exist, and then lay out the pages.
 
 ### User Interface Modeling Rules
 - Aways add `Navigations` between pages where there should be an explicit button, link or interface option that the user will be able to interact with to navigate to the target page.
 - Always express needed interactions with the backend using `Call Service Operation Action`.
 - Ensure that backend service operations are exposed over Http if they are located in a different application to this UI.
+- For any new routable Page, before you create the page, you MUST 
+(1) discover candidate backend HTTP operations across ALL applications, then 
+(2) create at least one Call Service Operation Action from the page (or a page operation) to the chosen backend operation and place it on the diagram.
+(3) If no suitable backend operation exists, you MUST block and ask the user which backend operation to create/use.
+Do not create the page unless either the backend call is modeled or the user has explicitly confirmed “no backend call needed”.
 
 ### User Interface Diagram Rules
 - Lay Pages out with space between one another, grouping by conceptual overlap and number of navigations.

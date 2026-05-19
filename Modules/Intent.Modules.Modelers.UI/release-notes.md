@@ -1,3 +1,7 @@
+### Version 1.1.1
+
+- Improvement: Enhanceed the AI settings for Pages
+
 ### Version 1.1.0
 
 - Improvement: `Call Service Operation Action` can now be directly connected from `Components`.
