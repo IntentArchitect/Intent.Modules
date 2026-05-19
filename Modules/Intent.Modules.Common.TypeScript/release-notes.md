@@ -1,3 +1,7 @@
+### Version 4.1.6
+
+- Improvement: Added to Typescript File and Constructor builder to easily set Intent Managed decorators.
+
 ### Version 4.1.5
 
 - Improvement: Added entities to be able to add scripts and general entries to the npm package.json.

@@ -24,6 +24,9 @@ public class TypescriptFile : IHasTypescriptStatements
 
     public TypescriptComments Comments { get; } = new();
 
+    // defaults to Fully
+    public string DefaultIntentManaged { get; private set; } = "";
+
     public TypescriptFile(string relativeLocation, ITypescriptFileBuilderTemplate template)
     {
         RelativeLocation = relativeLocation;
@@ -207,6 +210,24 @@ public class TypescriptFile : IHasTypescriptStatements
         return this;
     }
 
+    public TypescriptFile IntentManagedFully()
+    {
+        DefaultIntentManaged = "IntentFullyFile";
+        return this;
+    }
+
+    public TypescriptFile IntentManagedMerge()
+    {
+        DefaultIntentManaged = "IntentMergeFile";
+        return this;
+    }
+
+    public TypescriptFile IntentManagedIgnore()
+    {
+        DefaultIntentManaged = "IntentIgnoreFile";
+        return this;
+    }
+
     public TypeScriptFileConfig GetConfig(string typeName)
     {
         return new TypeScriptFileConfig(
@@ -295,7 +316,12 @@ public class TypescriptFile : IHasTypescriptStatements
 
         sb.AppendLine(Comments.ToString());
 
-        foreach (var value in ImportsBySource.Values)
+        if(!string.IsNullOrWhiteSpace(DefaultIntentManaged))
+        {
+            sb.AppendLine($"// @{DefaultIntentManaged}()");
+        }
+
+        foreach (var value in GetSortedImports())
         {
             sb.AppendLine(value.ToString());
         }
@@ -331,5 +357,48 @@ public class TypescriptFile : IHasTypescriptStatements
         }
 
         return sb.ToString();
+    }
+
+    private IEnumerable<TypescriptImport> GetSortedImports()
+    {
+        var externalImports = new List<TypescriptImport>();
+        var absoluteImports = new List<TypescriptImport>();
+        var relativeImports = new List<TypescriptImport>();
+
+        foreach (var import in ImportsBySource.Values)
+        {
+            if (IsRelativeImport(import.Source))
+            {
+                relativeImports.Add(import);
+            }
+            else if (IsAbsoluteImport(import.Source))
+            {
+                absoluteImports.Add(import);
+            }
+            else
+            {
+                externalImports.Add(import);
+            }
+        }
+
+        // Sort each group alphabetically by source
+        externalImports.Sort((a, b) => a.Source.CompareTo(b.Source));
+        absoluteImports.Sort((a, b) => a.Source.CompareTo(b.Source));
+        relativeImports.Sort((a, b) => a.Source.CompareTo(b.Source));
+
+        // Return imports in order: external, absolute, relative
+        return externalImports.Concat(absoluteImports).Concat(relativeImports);
+    }
+
+    private static bool IsRelativeImport(string source)
+    {
+        return source.StartsWith("./") || source.StartsWith("../");
+    }
+
+    private static bool IsAbsoluteImport(string source)
+    {
+        // Absolute imports typically start with @ or are uppercase paths (path aliases)
+        // They don't start with . or / and are not simple package names
+        return (source.StartsWith("@") || source.StartsWith("/")) && !source.StartsWith("./") && !source.StartsWith("../");
     }
 }

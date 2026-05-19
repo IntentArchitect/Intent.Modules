@@ -13,6 +13,9 @@ public class TypescriptConstructor : TypescriptMember<TypescriptConstructor>
     public IList<TypescriptConstructorParameter> Parameters { get; } = new List<TypescriptConstructorParameter>();
     public List<TypescriptStatement> Statements { get; } = new();
 
+    // defaults to Fully
+    public string DefaultIntentManaged { get; private set; } = "";
+
     public TypescriptConstructor(TypescriptClass @class, TypescriptFile file)
     {
         BeforeSeparator = TypescriptCodeSeparatorType.EmptyLines;
@@ -85,6 +88,24 @@ public class TypescriptConstructor : TypescriptMember<TypescriptConstructor>
         return this;
     }
 
+    public TypescriptConstructor IntentManagedFully()
+    {
+        DefaultIntentManaged = "IntentFully";
+        return this;
+    }
+
+    public TypescriptConstructor IntentManagedMerge()
+    {
+        DefaultIntentManaged = "IntentMerge";
+        return this;
+    }
+
+    public TypescriptConstructor IntentManagedIgnore()
+    {
+        DefaultIntentManaged = "IntentIgnore";
+        return this;
+    }
+
     public override string GetText(string indentation)
     {
         var statements = Statements as IReadOnlyCollection<ICodeBlock>;
@@ -96,7 +117,7 @@ public class TypescriptConstructor : TypescriptMember<TypescriptConstructor>
                 .ToArray();
         }
 
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}constructor({ToStringParameters(indentation)}) {{{statements.ConcatCode($"{indentation}{File.Indentation}")}
+        return $@"{GetComments(indentation)}{GetIntentManaged(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}constructor({ToStringParameters(indentation)}) {{{statements.ConcatCode($"{indentation}{File.Indentation}")}
 {indentation}}}";
     }
 
@@ -107,5 +128,14 @@ public class TypescriptConstructor : TypescriptMember<TypescriptConstructor>
             : ", ";
 
         return string.Join(separator, Parameters.Select(x => x.ToString()));
+    }
+
+    private string GetIntentManaged(string indentation)
+    {
+        if (string.IsNullOrWhiteSpace(DefaultIntentManaged))
+        {
+            return string.Empty;
+        }
+        return $"{indentation}// @{DefaultIntentManaged}{Environment.NewLine}";
     }
 }
