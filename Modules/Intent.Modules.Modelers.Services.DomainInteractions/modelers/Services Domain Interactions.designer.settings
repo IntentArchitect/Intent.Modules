@@ -7,7 +7,9 @@
 - Always add interaction associations to the diagrams.
 - `Query Entity Action` represents a data-access query through the target Aggregate Root or Entity in the Domain.
 - Do NOT add multiple `Query Entity Action` associations from the same `Command`/`Query`/`Operation` to multiple Domain entities just to express joins/navigation/projection needs.
-- Only model `Query Entity Action` associations for aggregate roots that the handler directly queries via their repository.</rules>
+- Only model `Query Entity Action` associations for aggregate roots that the handler directly queries via their repository.
+-Update Entity Action and Delete Entity Action implicitly include: Get/Find by Id of the target aggregate/entity (repository lookup), then Perform the Update/Delete. 
+  Therefore, when you have an Update Entity Action or Delete Entity Action to a Domain entity, do NOT also add a Query Entity Action to that same entity just to represent the “get by id” step.</rules>
   <designerReferences />
   <packageSettings />
   <packageExtensions>
@@ -11002,17 +11004,22 @@ return typeReference.getIsCollection()
       </visualSettings>
       <macros>
         <macro trigger="on-created">
-          <script>let mapping = association.createMapping(association.getOtherEnd().typeReference.getTypeId(), association.typeReference.getTypeId(), "25f25af9-c38b-4053-9474-b0fabe9d7ea7") // Query Entity Mapping
+          <script>let handler = association.getOtherEnd().typeReference.getType();
+let childSpecialization = handler.specialization == "Command" ? "DTO-Field"
+    : handler.specialization == "Operation" ? "Parameter"
+    : null
+if (childSpecialization == null) {
+    return;
+}
+
+if (handler.getChildren(childSpecialization).length &gt; 0){
+    return;
+}
+
+let mapping = association.createMapping(association.getOtherEnd().typeReference.getTypeId(), association.typeReference.getTypeId(), "25f25af9-c38b-4053-9474-b0fabe9d7ea7") // Query Entity Mapping
 association.typeReference.getType().getChildren("Attribute")
     .filter(x =&gt; x.hasStereotype("Primary Key"))
     .forEach(attr =&gt; {
-        let handler = association.getOtherEnd().typeReference.getType();
-        let childSpecialization = handler.specialization == "Command" ? "DTO-Field"
-            : handler.specialization == "Operation" ? "Parameter"
-            : null
-        if (childSpecialization == null) {
-            return;
-        }
         let pkField = handler.getChildren(childSpecialization).find(x =&gt; x.getName().toLowerCase() == attr.getName().toLowerCase()
             &amp;&amp; x.typeReference.getTypeId() == attr.typeReference.getTypeId())
         if (!pkField) {
@@ -11258,6 +11265,18 @@ return typeReference.getIsCollection()
 if (!command) {
     return;
 }
+
+let childSpecialization = command.specialization == "Command" ? "DTO-Field"
+    : command.specialization == "Operation" ? "Parameter"
+    : null
+if (childSpecialization == null) {
+    return;
+}
+
+if (command.getChildren(childSpecialization).length &gt; 0){
+    return;
+}
+
 let mapping = association.createMapping(command.id, association.typeReference.getTypeId(), "25f25af9-c38b-4053-9474-b0fabe9d7ea7") // Query Entity Mapping
 const entity = association.typeReference.getType().specialization == "Class" ? association.typeReference.getType() : association.typeReference.getType().getParent("Class")
 entity.getChildren("Attribute")

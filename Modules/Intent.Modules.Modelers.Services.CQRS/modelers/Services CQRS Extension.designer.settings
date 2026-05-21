@@ -7,6 +7,13 @@
 - If applying http endpoints to Commands and Queries, use the fully qualified route (e.g.`api/orders/{orderId}`)
 - Always put Commands and Queries into an appropriate folder (e.g. Orders, Buyers, etc.)
 
+## Service Modeling Paradigm rule (CRITICAL)
+- For each feature area (e.g. Customers, Orders), use one style only:
+  - CQRS: use Command/Query (expose as endpoints if needed). Do not model Service/Operation for the same use-cases.
+  - Traditional: use Service/Operation. Do not model Command/Query for the same use-cases.
+- Never model both styles for the same use-cases—keep a single source of truth.
+- Default: use CQRS unless explicitly requested otherwise OR there are .
+
 ## Service Diagram Layout Rules:
 - Always lay out newly created Commands and Queries on the current diagram.
 - Place all Commands and Queries in a single vertical column on the left side of the diagram.

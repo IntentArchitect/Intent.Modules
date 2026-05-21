@@ -1,3 +1,8 @@
+### Version 3.7.17
+
+- Improvement: Updated improve AI understanding of `Index` modeling.
+- Improvement: Added designer validation for invalid `Index Column` names.
+
 ### Version 3.7.16
 
 - Improvement: Updated stereotype hints to improve AI understanding.

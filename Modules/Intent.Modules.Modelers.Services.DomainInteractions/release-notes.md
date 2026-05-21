@@ -1,3 +1,7 @@
+### Version 2.4.4
+
+- Improvement: Improved AI context around `Update Entity Action` and `Delete Entity Action`.
+
 ### Version 2.4.3
 
 - Improvement: Create CRUD operations from Integration Event Handlers.

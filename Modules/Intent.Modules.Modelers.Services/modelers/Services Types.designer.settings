@@ -2,6 +2,24 @@
 <settings version="3.1.1">
   <id>55e213e3-1e43-4bb5-abe6-6ff77af23f39</id>
   <name>Services Types</name>
+  <rules>Do not interpret “service” as only the Intent Service element; treat “service” as “endpoint surface”, which may be CQRS or Traditional
+
+## Service Endpoint Distribution / Exposure modeling guidance
+- Exposure is optional. Default to internal application services unless external exposure is explicitly indicated by the user or existing model context.
+- Only apply exposure stereotypes when an endpoint is intended to be externally distributed.
+  - CQRS: apply the appropriate exposure stereotype to the Command/Query.
+  - Traditional Service: apply the appropriate exposure stereotype to the Operation (optionally configure base route on the Service).
+- Never assume the transport. If external exposure is intended but the transport is not stated, ask which (HTTP/REST, gRPC, GraphQL, messaging, etc.) before applying stereotypes.
+- When HTTP/REST is chosen/indicated: apply Http Settings (Verb + Route) to the exposed endpoint element.
+
+## Modeling Endpoints on compositional entities guidance
+- Intent implies Aggregate Roots as follows: Aggregate Root = Class with no required-single parent association (not owned by exactly one parent).
+- If an endpoint/Command’s purpose is to create/update/delete a compositional child, model the Domain Interaction association as Create/Update/Delete Entity Action against the child entity.
+- If an endpoint/Command’s purpose is to create/update/delete an aggregate root, model ONLY a single Entity Action against that aggregate root. Do NOT add additional Entity Actions for compositional/supporting entities (e.g., tokens, audit records, outbox, child rows) that are created/updated/deleted as part of that aggregate operation; these are implied by the aggregate action.
+- Do not model compositional child CRUD as Update Entity Action against the owning aggregate root (even if the handler loads the owner aggregate to perform the change).
+- Mapping: Add&lt;Child&gt; ⇒ Create Entity Action → Child; Update&lt;Child&gt;/SetDefault&lt;Child&gt; ⇒ Update Entity Action → Child; Delete&lt;Child&gt; ⇒ Delete Entity Action → Child.
+- If the child does not have the Repository stereotype: the contract must include the owning aggregate id(s) required to load the owner (e.g., OrderId), plus any child id (e.g., OrderLineId) where applicable.
+- If the child does have the Repository stereotype: model it as acting directly on the child; owner ids are not required purely for loading the owner.</rules>
   <designerReferences />
   <packageSettings>
     <packageSetting type="Services Package" typeId="df45eaf6-9202-4c25-8dd5-677e9ba1e906">

@@ -1,3 +1,7 @@
+### Version 4.0.15
+
+- Improvement: AI Modeling guidance enhancements.
+
 ### Version 4.0.14
 
 - Fixed: Removed error which wrongfully gets applied when you have two service invocations on the same source element.

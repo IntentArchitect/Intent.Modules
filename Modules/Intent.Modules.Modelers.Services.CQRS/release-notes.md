@@ -1,6 +1,10 @@
+### Version 6.0.7
+
+- Improvement: Updates to AI guidance around service modelling.
+
 ### Version 6.0.6
 
-- Improvement: Updates to AI rules across domain and service modules
+- Improvement: Updates to AI rules across domain and service modules.
 
 ### Version 6.0.5
 
