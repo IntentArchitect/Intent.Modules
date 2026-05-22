@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.CodebaseStructure</id>
-  <version>1.0.1-pre.0</version>
+  <version>1.0.1</version>
   <supportedClientVersions>[4.6.0-beta.3, 6.0.0-a)</supportedClientVersions>
   <summary>Designer for configuring application codebase structure.</summary>
   <description>Designer for configuring application codebase structure.</description>
