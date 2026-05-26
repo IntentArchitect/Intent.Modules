@@ -245,7 +245,8 @@ steps:
         Remove-Item -Recurse -Force $toolPath
       }
 
-      dotnet tool install Intent.SoftwareFactory.CLI$nightly --prerelease --tool-path $toolPath
+      # dotnet tool install Intent.SoftwareFactory.CLI$nightly --prerelease --tool-path $toolPath
+      dotnet tool install Intent.SoftwareFactory.CLI --prerelease --tool-path $toolPath
 
 - task: PowerShell@2
   displayName: 'Run SF CLI on modules solution'
