@@ -1,3 +1,7 @@
+### Version 1.1.7
+
+- Fixed: Removed duplicate Designer Settings which would cause issues in some scenarios.
+
 ### Version 1.1.6
 
 - Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.

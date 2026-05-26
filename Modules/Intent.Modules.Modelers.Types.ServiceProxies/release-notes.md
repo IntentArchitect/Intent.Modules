@@ -1,4 +1,8 @@
-﻿### Version 5.5.4
+﻿### Version 5.5.5
+
+- Fixed: Updated interop with ProxyInteractions module.
+
+### Version 5.5.4
 
 - Improvement: `Service Proxies` can now be created on a Service Package level.
 
