@@ -125,13 +125,28 @@ class RestVersionSet {
         return false;
     }
     static create(element) {
+        var _a;
         const apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe";
         let versionSetting = element.getStereotype(apiVersionSettingId);
+        // Operations inherit Api Version Settings from their parent Service when not set on themselves.
+        if (!versionSetting &amp;&amp; element.specialization === "Operation") {
+            let parent = element.getParent();
+            if (parent) {
+                versionSetting = parent.getStereotype(apiVersionSettingId);
+            }
+        }
         if (!versionSetting) {
             return new RestVersionSet(false, []);
         }
-        let versionIds = JSON.parse(versionSetting.getProperty("Applicable Versions").value);
-        return new RestVersionSet(true, versionIds !== null &amp;&amp; versionIds !== void 0 ? versionIds : []);
+        const applicableVersionsValue = (_a = versionSetting.getProperty("Applicable Versions")) === null || _a === void 0 ? void 0 : _a.value;
+        if (!applicableVersionsValue) {
+            return new RestVersionSet(false, []);
+        }
+        let versionIds = JSON.parse(applicableVersionsValue);
+        if (!versionIds || versionIds.length === 0) {
+            return new RestVersionSet(false, []);
+        }
+        return new RestVersionSet(true, versionIds);
     }
 }
 class RestRoute {
@@ -226,7 +241,8 @@ function validateRestRoutesOperation(element) {
     return validateRestRoutes(element);
 }
 //Comment / UnComment below when you publish
-return validateRestRoutesOperation(lookup(id));
+// @ts-ignore
+return validateRestRoutesOperation(element);
 </validateFunctionOverride>
       <contextMenuOptions>
         <runScript group="2" type="run-script">

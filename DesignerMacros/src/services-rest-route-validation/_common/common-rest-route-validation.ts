@@ -139,10 +139,21 @@ class RestVersionSet {
     public static create(element: MacroApi.Context.IElementApi): RestVersionSet {
         const apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe";
         let versionSetting = element.getStereotype(apiVersionSettingId);
+        // Operations inherit Api Version Settings from their parent Service when not set on themselves.
+        if (!versionSetting && element.specialization === "Operation") {
+            let parent = element.getParent();
+            if (parent) {
+                versionSetting = parent.getStereotype(apiVersionSettingId);
+            }
+        }
         if (!versionSetting) { return new RestVersionSet(false, []); }
-        
-        let versionIds = JSON.parse(versionSetting.getProperty("Applicable Versions").value) as string[];
-        return new RestVersionSet(true, versionIds ?? []);
+
+        const applicableVersionsValue = versionSetting.getProperty("Applicable Versions")?.value;
+        if (!applicableVersionsValue) { return new RestVersionSet(false, []); }
+
+        let versionIds = JSON.parse(applicableVersionsValue) as string[];
+        if (!versionIds || versionIds.length === 0) { return new RestVersionSet(false, []); }
+        return new RestVersionSet(true, versionIds);
     }
 }
 
@@ -174,7 +185,7 @@ class RestRoute {
     }
 
     public isDuplicate(possibleDuplicateRoute: RestRoute): boolean {
-        return this.hashedRoute === possibleDuplicateRoute.hashedRoute && 
+        return this.hashedRoute === possibleDuplicateRoute.hashedRoute &&
             this.verb === possibleDuplicateRoute.verb &&
             this.versionSet.matches(possibleDuplicateRoute.versionSet);
     }

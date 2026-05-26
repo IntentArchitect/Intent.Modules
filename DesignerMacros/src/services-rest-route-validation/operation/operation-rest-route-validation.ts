@@ -14,6 +14,6 @@ function validateRestRoutesOperation(element: MacroApi.Context.IElementApi): Str
 }
 
 //Comment / UnComment below when you publish
-validateRestRoutesOperation(element);
-//return validateRestRoutesOperation(lookup(id));
+// @ts-ignore
+return validateRestRoutesOperation(element);
 

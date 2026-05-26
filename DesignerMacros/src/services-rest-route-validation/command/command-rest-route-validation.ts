@@ -7,6 +7,5 @@
  * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-rest-route-validation/command/command-rest-route-validation.ts
  */
 
-//Comment / UnComment below when you publish
-validateRestRoutes(element);
-//return validateRestRoutes(lookup(id));
+// @ts-ignore
+return validateRestRoutes(element);

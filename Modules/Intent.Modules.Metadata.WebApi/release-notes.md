@@ -1,3 +1,8 @@
+### Version 4.7.20
+
+- Fixed: REST route validation now correctly handles API versioning for traditional services (Operations inherit version settings from parent Service).
+- Fixed: Route validation no longer crashes when version settings contain empty or null values.
+
 ### Version 4.7.19
 
 - Improvement: Added Expose as HTTP Patch Endpoint option.
