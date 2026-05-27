@@ -14,7 +14,6 @@
   <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAANpJREFUOE+tk0ESgjAMRX9mdC9cRG4ALPA8ehI8jyzAG8AJHC8A7mUmTklbgRFt1a4IbV9/8hOCWWW3wR1bG6uPNRqkwW3ybxaQjYsuAbic7lOKLKj8AFko0KJl4BsAYF5M/ACnLgLxEUCkJddg2mMX1G4pmFNFKwqyMHl30ey5FVGg8QSoa/UCQKkcHBxR8pWNEQjXIaUhRc6xCGAS6cQVCA1YA4CLBahaLSsYC9U2OqXwcxHFxnxm48Hdxmcrn7WY2K+RDOAPrTyqos8sqHHubRsLZIX60zg/AOCebhHZxIffAAAAAElFTkSuQmCC" />
   <displayIcon>false</displayIcon>
   <displayIconFunction>return true;</displayIconFunction>
-  <displayFunction />
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>

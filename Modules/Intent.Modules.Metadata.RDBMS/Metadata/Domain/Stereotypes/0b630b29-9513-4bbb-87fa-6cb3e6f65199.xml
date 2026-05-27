@@ -40,7 +40,6 @@ return `${name ?? element.getName()}${type ?? ""}`;</displayFunction>
       <optionsSource>n/a</optionsSource>
     </property>
     <property id="bc03d4fc-b9cc-4ac0-8869-b3e2cb18f1ef">
-      <comment />
       <name>Type</name>
       <type>string</type>
       <controlType>text</controlType>

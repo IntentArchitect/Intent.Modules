@@ -1,3 +1,7 @@
+### Version 1.3.8
+
+- Improvement: Updated script to cater for possible null stereotype property value
+
 ### Version 1.3.7
 
 - Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.

@@ -1,3 +1,7 @@
+### Version 3.7.18
+
+- Improvement: Updated script to cater for possible null stereotype property value
+
 ### Version 3.7.17
 
 - Improvement: Updated improve AI understanding of `Index` modeling.

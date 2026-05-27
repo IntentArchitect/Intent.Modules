@@ -1,4 +1,8 @@
-﻿### Version 3.10.6
+﻿### Version 3.10.7
+
+- Improvement: Updated script to cater for possible null stereotype property value
+
+### Version 3.10.6
 
 - Fixed: Fixed bug on constructor mappings where the type reference wasn't compared on its element but on itself.
 

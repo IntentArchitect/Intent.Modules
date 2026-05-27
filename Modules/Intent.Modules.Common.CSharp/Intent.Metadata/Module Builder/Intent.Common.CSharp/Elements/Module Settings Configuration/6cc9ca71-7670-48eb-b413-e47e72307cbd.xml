@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="6cc9ca71-7670-48eb-b413-e47e72307cbd" type="Module Settings Configuration" typeId="37e678f8-370a-4b05-ae44-69bb3d2b39b6">
-  <comment />
   <name>C# Style Configuration</name>
   <display>C# Style Configuration</display>
   <isAbstract>false</isAbstract>
