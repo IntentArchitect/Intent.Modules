@@ -1,3 +1,8 @@
+### Version 1.1.4
+
+- Improvement: Add **Security** `Element` by default.
+- Improvement: Added additional AI guidance for modeling security.
+ 
 ### Version 1.1.3
 
 - Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.

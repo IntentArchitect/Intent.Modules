@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="9bc5f404-170e-4513-9bd8-d8d0abccceec" type="On-Install Migration" typeId="4ba35747-deea-43a9-acd4-26d57edb5bb9">
+  <name>On-Install</name>
+  <display>On-Install</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>d3e9f620-62fe-43c9-bd0b-26893dcc6013</parentFolderId>
+  <packageId>a6fa1088-0064-43e3-a7fc-36c97b2b9285</packageId>
+  <packageName>Intent.Metadata.Security</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

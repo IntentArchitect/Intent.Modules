@@ -5,10 +5,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text.Json;
 using Intent.Engine;
-using Intent.IArchitect.Agent.Persistence.Model;
-using Intent.IArchitect.Agent.Persistence.Model.Common;
+using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Metadata.Security.Models;
+using Intent.Persistence;
 using Intent.Plugins;
 using Intent.RoslynWeaver.Attributes;
 using static Intent.Modules.Metadata.Security.Models.Constants.Stereotypes;
@@ -20,11 +20,11 @@ namespace Intent.Modules.Metadata.Security.Migrations
 {
     public class Migration_01_00_03_Pre_00 : IModuleMigration
     {
-        private readonly IApplicationConfigurationProvider _configurationProvider;
+        private readonly IPersistenceLoader _persistenceLoader;
 
-        public Migration_01_00_03_Pre_00(IApplicationConfigurationProvider configurationProvider)
+        public Migration_01_00_03_Pre_00(IPersistenceLoader persistenceLoader)
         {
-            _configurationProvider = configurationProvider;
+            _persistenceLoader = persistenceLoader;
         }
 
         [IntentFully]
@@ -34,7 +34,7 @@ namespace Intent.Modules.Metadata.Security.Migrations
 
         public void Up()
         {
-            var app = ApplicationPersistable.Load(_configurationProvider.GetApplicationConfig().FilePath);
+            var app = _persistenceLoader.LoadCurrentApplication();
             var designer = app.GetDesigner(ApiMetadataDesignerExtensions.ServicesDesignerId);
             var packages = designer.GetPackages();
 
@@ -57,12 +57,12 @@ namespace Intent.Modules.Metadata.Security.Migrations
                     ConvertElementPoliciesUp(operations);
                 }
 
-                package.Save(true);
+                package.Save();
             }
 
         }
 
-        private static void ConvertPackagePoliciesUp(PackageModelPersistable package)
+        private static void ConvertPackagePoliciesUp(IPackageModelPersistable package)
         {
             // each Secured stereotype
             foreach (var stereo in package.Stereotypes.Where(s => s.DefinitionId == Secured.Id).ToList())
@@ -72,7 +72,7 @@ namespace Intent.Modules.Metadata.Security.Migrations
             }
         }
 
-        private static void ConvertElementPoliciesUp(IReadOnlyCollection<ElementPersistable> elements)
+        private static void ConvertElementPoliciesUp(IEnumerable<IElementPersistable> elements)
         {
             // each command
             foreach (var element in elements.Where(c => c.Stereotypes.Any(s => s.DefinitionId == Secured.Id)))
@@ -88,7 +88,7 @@ namespace Intent.Modules.Metadata.Security.Migrations
 
         //----
 
-        private static void ConvertElementLegacyPoliciesUp(ElementPersistable element, StereotypePersistable stereo)
+        private static void ConvertElementLegacyPoliciesUp(IElementPersistable element, IStereotypePersistable stereo)
         {
             var legacyPolicy = stereo.Properties.FirstOrDefault(p => p.DefinitionId == Secured.Properties.TextPolicy);
 
@@ -105,28 +105,18 @@ namespace Intent.Modules.Metadata.Security.Migrations
             {
                 foreach (var policy in policies.Skip(1))
                 {
-                    element.Stereotypes.Add(new StereotypePersistable
-                    {
-                        DefinitionId = stereo.DefinitionId,
-                        Name = stereo.Name,
-                        DefinitionPackageId = stereo.DefinitionPackageId,
-                        DefinitionPackageName = stereo.DefinitionPackageName,
-                        Properties =
-                        [
-                            new StereotypePropertyPersistable
-                                        {
-                                            Name = legacyPolicy.Name,
-                                            DefinitionId = legacyPolicy.DefinitionId,
-                                            IsActive = legacyPolicy.IsActive,
-                                            Value = policy
-                                        }
-                        ]
-                    });
+                    element.Stereotypes.Add(
+                        stereo.DefinitionId,
+                        stereo.Name,
+                        stereo.DefinitionPackageId,
+                        stereo.DefinitionPackageName,
+                        c => c.Properties.Add(legacyPolicy.DefinitionId, legacyPolicy.Name, policy, x => x.IsActive = legacyPolicy.IsActive)
+                        );
                 }
             }
         }
 
-        private static void ConvertPackageLegacyPoliciesUp(PackageModelPersistable package, StereotypePersistable stereo)
+        private static void ConvertPackageLegacyPoliciesUp(IPackageModelPersistable package, IStereotypePersistable stereo)
         {
             var legacyPolicy = stereo.Properties.FirstOrDefault(p => p.DefinitionId == Secured.Properties.TextPolicy);
 
@@ -143,28 +133,18 @@ namespace Intent.Modules.Metadata.Security.Migrations
             {
                 foreach (var policy in policies.Skip(1))
                 {
-                    package.Stereotypes.Add(new StereotypePersistable
-                    {
-                        DefinitionId = stereo.DefinitionId,
-                        Name = stereo.Name,
-                        DefinitionPackageId = stereo.DefinitionPackageId,
-                        DefinitionPackageName = stereo.DefinitionPackageName,
-                        Properties =
-                        [
-                            new StereotypePropertyPersistable
-                                        {
-                                            Name = legacyPolicy.Name,
-                                            DefinitionId = legacyPolicy.DefinitionId,
-                                            IsActive = legacyPolicy.IsActive,
-                                            Value = policy
-                                        }
-                        ]
-                    });
+                    package.Stereotypes.Add(
+                        stereo.DefinitionId,
+                        stereo.Name,
+                        stereo.DefinitionPackageId,
+                        stereo.DefinitionPackageName,
+                        c => c.Properties.Add(legacyPolicy.DefinitionId, legacyPolicy.Name, policy, x => x.IsActive = legacyPolicy.IsActive)
+                        );
                 }
             }
         }
 
-        private static void ConvertElementSecurityPoliciesUp(ElementPersistable element, StereotypePersistable stereo)
+        private static void ConvertElementSecurityPoliciesUp(IElementPersistable element, IStereotypePersistable stereo)
         {
             var secPoliciesProp = stereo.Properties.FirstOrDefault(p => p.DefinitionId == Secured.Properties.Policies);
 
@@ -183,28 +163,18 @@ namespace Intent.Modules.Metadata.Security.Migrations
             {
                 foreach (var policy in policies.Skip(1))
                 {
-                    element.Stereotypes.Add(new StereotypePersistable
-                    {
-                        DefinitionId = stereo.DefinitionId,
-                        Name = stereo.Name,
-                        DefinitionPackageId = stereo.DefinitionPackageId,
-                        DefinitionPackageName = stereo.DefinitionPackageName,
-                        Properties =
-                        [
-                            new StereotypePropertyPersistable
-                                        {
-                                            Name = secPoliciesProp.Name,
-                                            DefinitionId = secPoliciesProp.DefinitionId,
-                                            IsActive = secPoliciesProp.IsActive,
-                                            Value = policy
-                                        }
-                        ]
-                    });
+                    element.Stereotypes.Add(
+                        stereo.DefinitionId,
+                        stereo.Name,
+                        stereo.DefinitionPackageId,
+                        stereo.DefinitionPackageName,
+                        c => c.Properties.Add(secPoliciesProp.DefinitionId, secPoliciesProp.Name, policy, x => x.IsActive = secPoliciesProp.IsActive)
+                        );
                 }
             }
         }
 
-        private static void ConvertPackageSecurityPoliciesUp(PackageModelPersistable package, StereotypePersistable stereo)
+        private static void ConvertPackageSecurityPoliciesUp(IPackageModelPersistable package, IStereotypePersistable stereo)
         {
             var secPoliciesProp = stereo.Properties.FirstOrDefault(p => p.DefinitionId == Secured.Properties.Policies);
 
@@ -224,30 +194,20 @@ namespace Intent.Modules.Metadata.Security.Migrations
             {
                 foreach (var policy in policies.Skip(1))
                 {
-                    package.Stereotypes.Add(new StereotypePersistable
-                    {
-                        DefinitionId = stereo.DefinitionId,
-                        Name = stereo.Name,
-                        DefinitionPackageId = stereo.DefinitionPackageId,
-                        DefinitionPackageName = stereo.DefinitionPackageName,
-                        Properties =
-                        [
-                            new StereotypePropertyPersistable
-                                        {
-                                            Name = secPoliciesProp.Name,
-                                            DefinitionId = secPoliciesProp.DefinitionId,
-                                            IsActive = secPoliciesProp.IsActive,
-                                            Value = policy
-                                        }
-                        ]
-                    });
+                    package.Stereotypes.Add(
+                        stereo.DefinitionId,
+                        stereo.Name,
+                        stereo.DefinitionPackageId,
+                        stereo.DefinitionPackageName,
+                        c => c.Properties.Add(secPoliciesProp.DefinitionId, secPoliciesProp.Name, policy, x => x.IsActive = secPoliciesProp.IsActive)
+                        );
                 }
             }
         }
 
         public void Down()
         {
-            var app = ApplicationPersistable.Load(_configurationProvider.GetApplicationConfig().FilePath);
+            var app = _persistenceLoader.LoadCurrentApplication();
             var designer = app.GetDesigner(ApiMetadataDesignerExtensions.ServicesDesignerId);
             var packages = designer.GetPackages();
 
@@ -270,12 +230,12 @@ namespace Intent.Modules.Metadata.Security.Migrations
                     ConvertElementPoliciesDown(operations);
                 }
 
-                package.Save(true);
+                package.Save();
             }
 
         }
 
-        private static void ConvertPackagePoliciesDown(PackageModelPersistable package)
+        private static void ConvertPackagePoliciesDown(IPackageModelPersistable package)
         {
             // each Secured stereotype
             foreach (var stereo in package.Stereotypes.Where(s => s.DefinitionId == Secured.Id).ToList())
@@ -284,7 +244,7 @@ namespace Intent.Modules.Metadata.Security.Migrations
             }
         }
 
-        private static void ConvertElementPoliciesDown(IReadOnlyCollection<ElementPersistable> elements)
+        private static void ConvertElementPoliciesDown(IEnumerable<IElementPersistable> elements)
         {
             // each command
             foreach (var element in elements.Where(c => c.Stereotypes.Any(s => s.DefinitionId == Secured.Id)))
@@ -299,7 +259,7 @@ namespace Intent.Modules.Metadata.Security.Migrations
 
         //---
 
-        private static void ConvertElementSecurityPoliciesDown(StereotypePersistable stereo)
+        private static void ConvertElementSecurityPoliciesDown(IStereotypePersistable stereo)
         {
             var secPoliciesProp = stereo.Properties.FirstOrDefault(p => p.DefinitionId == Secured.Properties.Policies);
 
