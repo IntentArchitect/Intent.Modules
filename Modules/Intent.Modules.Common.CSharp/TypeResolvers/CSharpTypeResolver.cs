@@ -320,13 +320,22 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                     var name = typeReference.Element.GetStereotypeProperty("C#", "Type", typeReference.Element.Name);
                     var @namespace = typeReference.Element.GetStereotypeProperty("C#", "Namespace", string.Empty);
 
-                    var lastIndexOfPeriod = (name.Contains('<') ? name[..name.IndexOf('<')] : name).LastIndexOf('.');
+                    // Only search for an embedded namespace in the non-generic prefix.
+                    // e.g. "Some.Namespace.Type<Arg.With.Dots>" → prefix = "Some.Namespace.Type"
+                    var namePrefix = name.Contains('<') ? name[..name.IndexOf('<')] : name;
+                    var lastIndexOfPeriod = namePrefix.LastIndexOf('.');
                     if (lastIndexOfPeriod >= 0)
                     {
                         @namespace = string.IsNullOrWhiteSpace(@namespace)
-                            ? name[..lastIndexOfPeriod]
-                            : $"{@namespace}.{name[..lastIndexOfPeriod]}";
-                        name = name[(lastIndexOfPeriod + 1)..];
+                            ? namePrefix[..lastIndexOfPeriod]
+                            : $"{@namespace}.{namePrefix[..lastIndexOfPeriod]}";
+                        name = namePrefix[(lastIndexOfPeriod + 1)..];
+                    }
+                    else
+                    {
+                        // No embedded namespace prefix, but still strip any inline generic suffix
+                        // so the Name field only holds the bare type name (e.g. "PagedResultDTO").
+                        name = namePrefix;
                     }
 
                     return CSharpResolvedTypeInfo.Create(
