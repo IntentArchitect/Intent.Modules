@@ -122,6 +122,38 @@ namespace Intent.Modules.Common.CSharp.Tests.TypeResolvers
             cSharpResolvedTypeInfo.GetNamespaces().ShouldContain("GenericTypeNamespace");
         }
 
+        [Fact]
+        public void ItShouldNotSplitGenericTypeArgumentsWhenResolvingCSharpStereotypeNamespace()
+        {
+            // Regression test: when the C# stereotype "Type" value contains a generic type like
+            // "PagedResultDTO<Inoxico.MasterData.Application.Contracts.CompanySearchDTO>",
+            // LastIndexOf('.') must only search the non-generic prefix, not inside the generic args.
+            // Before the fix this produced a namespace of
+            // "Inoxico.Common.Contracts.PagedResultDTO<Inoxico.MasterData.Application.Contracts"
+            // and a name of "CompanySearchDTO>".
+
+            // Arrange
+            var project = Substitute.For<ICSharpProject>();
+            var typeResolver = new CSharpTypeResolver(
+                defaultCollectionFormatter: CSharpCollectionFormatter.Create("List<{0}>"),
+                defaultNullableFormatter: CSharpNullableFormatter.Create(project));
+
+            var typeReference = TypeReference.ForTypeDefinition(
+                type: "PagedResultDTO<Inoxico.MasterData.Application.Contracts.CompanySearchDTO>",
+                @namespace: "Inoxico.Common.Contracts");
+
+            // Act
+            var resolvedTypeInfo = typeResolver.Get(typeReference);
+
+            // Assert
+            var cSharpResolvedTypeInfo = resolvedTypeInfo.ShouldBeOfType<CSharpResolvedTypeInfo>();
+            cSharpResolvedTypeInfo.GetNamespaces().ShouldContain("Inoxico.Common.Contracts");
+            cSharpResolvedTypeInfo.GetNamespaces().ShouldNotContain(ns => ns.Contains('<'),
+                "Namespace must not contain generic type parameters");
+            cSharpResolvedTypeInfo.ToString().ShouldNotEndWith(">",
+                "Type name must not be a dangling generic closing bracket");
+        }
+
         private class TypeSource : ITypeSource
         {
             public IResolvedTypeInfo GetType(ITypeReference typeInfo)

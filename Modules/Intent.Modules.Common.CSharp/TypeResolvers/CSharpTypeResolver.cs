@@ -320,7 +320,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                     var name = typeReference.Element.GetStereotypeProperty("C#", "Type", typeReference.Element.Name);
                     var @namespace = typeReference.Element.GetStereotypeProperty("C#", "Namespace", string.Empty);
 
-                    var lastIndexOfPeriod = name.LastIndexOf('.');
+                    var lastIndexOfPeriod = (name.Contains('<') ? name[..name.IndexOf('<')] : name).LastIndexOf('.');
                     if (lastIndexOfPeriod >= 0)
                     {
                         @namespace = string.IsNullOrWhiteSpace(@namespace)
