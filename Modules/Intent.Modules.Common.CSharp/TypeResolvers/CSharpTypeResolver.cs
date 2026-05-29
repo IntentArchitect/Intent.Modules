@@ -322,6 +322,8 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
 
                     // Only search for an embedded namespace in the non-generic prefix.
                     // e.g. "Some.Namespace.Type<Arg.With.Dots>" → prefix = "Some.Namespace.Type"
+                    // The generic suffix (e.g. "<CompanyDTO>") must be preserved in the name.
+                    var genericSuffix = name.Contains('<') ? name[name.IndexOf('<')..] : string.Empty;
                     var namePrefix = name.Contains('<') ? name[..name.IndexOf('<')] : name;
                     var lastIndexOfPeriod = namePrefix.LastIndexOf('.');
                     if (lastIndexOfPeriod >= 0)
@@ -329,13 +331,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                         @namespace = string.IsNullOrWhiteSpace(@namespace)
                             ? namePrefix[..lastIndexOfPeriod]
                             : $"{@namespace}.{namePrefix[..lastIndexOfPeriod]}";
-                        name = namePrefix[(lastIndexOfPeriod + 1)..];
-                    }
-                    else
-                    {
-                        // No embedded namespace prefix, but still strip any inline generic suffix
-                        // so the Name field only holds the bare type name (e.g. "PagedResultDTO").
-                        name = namePrefix;
+                        name = namePrefix[(lastIndexOfPeriod + 1)..] + genericSuffix;
                     }
 
                     return CSharpResolvedTypeInfo.Create(

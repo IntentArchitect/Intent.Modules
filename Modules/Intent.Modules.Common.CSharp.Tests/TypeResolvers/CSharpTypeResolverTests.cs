@@ -122,36 +122,43 @@ namespace Intent.Modules.Common.CSharp.Tests.TypeResolvers
             cSharpResolvedTypeInfo.GetNamespaces().ShouldContain("GenericTypeNamespace");
         }
 
-        [Fact]
-        public void ItShouldNotSplitGenericTypeArgumentsWhenResolvingCSharpStereotypeNamespace()
+        [Theory]
+        // --- no generic ---
+        [InlineData("MyType",                                                          "My.Ns",                    "MyType",                                       "My.Ns")]
+        [InlineData("A.B.C.MyType",                                                   "",                         "MyType",                                       "A.B.C")]
+        [InlineData("Embedded.MyType",                                                 "Root.Ns",                  "MyType",                                       "Root.Ns.Embedded")]
+        // --- generic, no embedded namespace in the prefix ---
+        [InlineData("PagedResultDTO<CompanyDTO>",                                       "Inoxico.Common.Contracts", "PagedResultDTO<CompanyDTO>",                    "Inoxico.Common.Contracts")]
+        [InlineData("PagedResultDTO<Inox.MasterData.Application.Contracts.CompanyDTO>", "Inoxico.Common.Contracts", "PagedResultDTO<Inox.MasterData.Application.Contracts.CompanyDTO>", "Inoxico.Common.Contracts")]
+        [InlineData("MyGeneric<A.B.T1, C.D.T2, E.F.T3>",                              "MyNs",                     "MyGeneric<A.B.T1, C.D.T2, E.F.T3>",            "MyNs")]
+        [InlineData("Dictionary<string, List<int>>",                                   "My.Ns",                    "Dictionary<string, List<int>>",                 "My.Ns")]
+        // --- generic with embedded namespace in the prefix ---
+        [InlineData("Some.Ns.MyType<OtherType>",                                       "Root",                     "MyType<OtherType>",                             "Root.Some.Ns")]
+        [InlineData("Some.Ns.MyType<Other.Ns.OtherType>",                              "Root",                     "MyType<Other.Ns.OtherType>",                    "Root.Some.Ns")]
+        [InlineData("A.B.Container<X.Y.Type1, X.Z.Type2>",                             "Root",                     "Container<X.Y.Type1, X.Z.Type2>",               "Root.A.B")]
+        // --- deeply nested generics ---
+        [InlineData("A.B.Outer<C.D.Inner<E.F.Deep>>",                                  "Root",                     "Outer<C.D.Inner<E.F.Deep>>",                    "Root.A.B")]
+        [InlineData("A.B.Outer<C.D.Inner<E.F.Deep<G.H.Leaf>>>",                        "Root",                     "Outer<C.D.Inner<E.F.Deep<G.H.Leaf>>>",          "Root.A.B")]
+        public void ItShouldExtractNameAndNamespaceCorrectlyFromCSharpStereotype(
+            string type, string @namespace, string expectedName, string expectedNamespace)
         {
-            // Regression test: when the C# stereotype "Type" value contains a generic type like
-            // "PagedResultDTO<Inoxico.MasterData.Application.Contracts.CompanySearchDTO>",
-            // LastIndexOf('.') must only search the non-generic prefix, not inside the generic args.
-            // Before the fix this produced a namespace of
-            // "Inoxico.Common.Contracts.PagedResultDTO<Inoxico.MasterData.Application.Contracts"
-            // and a name of "CompanySearchDTO>".
-
             // Arrange
             var project = Substitute.For<ICSharpProject>();
             var typeResolver = new CSharpTypeResolver(
                 defaultCollectionFormatter: CSharpCollectionFormatter.Create("List<{0}>"),
                 defaultNullableFormatter: CSharpNullableFormatter.Create(project));
 
-            var typeReference = TypeReference.ForTypeDefinition(
-                type: "PagedResultDTO<Inoxico.MasterData.Application.Contracts.CompanySearchDTO>",
-                @namespace: "Inoxico.Common.Contracts");
+            var typeReference = TypeReference.ForTypeDefinition(type: type, @namespace: @namespace);
 
             // Act
             var resolvedTypeInfo = typeResolver.Get(typeReference);
 
             // Assert
-            var cSharpResolvedTypeInfo = resolvedTypeInfo.ShouldBeOfType<CSharpResolvedTypeInfo>();
-            cSharpResolvedTypeInfo.GetNamespaces().ShouldContain("Inoxico.Common.Contracts");
-            cSharpResolvedTypeInfo.GetNamespaces().ShouldNotContain(ns => ns.Contains('<'),
-                "Namespace must not contain generic type parameters");
-            cSharpResolvedTypeInfo.ToString().ShouldNotEndWith(">",
-                "Type name must not be a dangling generic closing bracket");
+            var result = resolvedTypeInfo.ShouldBeOfType<CSharpResolvedTypeInfo>();
+            result.Name.ShouldBe(expectedName);
+            result.Namespace.ShouldBe(expectedNamespace);
+            result.GetNamespaces().ShouldNotContain(ns => ns.Contains('<'),
+                "A namespace must never contain '<' — generic args must not bleed into the namespace");
         }
 
         private class TypeSource : ITypeSource
