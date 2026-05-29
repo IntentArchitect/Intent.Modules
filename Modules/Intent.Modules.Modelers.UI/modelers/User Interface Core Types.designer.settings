@@ -102,10 +102,11 @@ Do not create the page unless either the backend call is modeled or the user has
       <typeOrder>
         <type order="0" type="Component View" typeId="624513a6-cba8-4dde-8ebe-6b19f00f0364" />
         <type order="1" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" />
-        <type order="2" type="Event Emitter" typeId="d6739ffc-30e6-4170-a105-bf28e69aa578" />
-        <type order="3" type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
-        <type order="4" type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" />
-        <type order="5" type="Navigation Target End" typeId="2b191288-ecae-4743-b069-cbdd927ef349" />
+        <type order="2" type="Call Service Operation Action Target End" typeId="475f0810-2b4a-40da-8eb8-697cb62f7dbe" />
+        <type order="3" type="Event Emitter" typeId="d6739ffc-30e6-4170-a105-bf28e69aa578" />
+        <type order="4" type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
+        <type order="5" type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" />
+        <type order="6" type="Navigation Target End" typeId="2b191288-ecae-4743-b069-cbdd927ef349" />
       </typeOrder>
       <contextMenuOptions>
         <createElement type="element">
@@ -126,6 +127,15 @@ Do not create the page unless either the backend call is modeled or the user has
           <defaultName>Model</defaultName>
           <allowMultiple>true</allowMultiple>
         </createElement>
+        <createAssociation type="association">
+          <text>Call Service Operation</text>
+          <shortcut>ctrl + shift + c</shortcut>
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4yLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iRW52ZWxvcGUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTAgNTAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzFfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjI1LjAwNSIgeTE9IjQ0LjA2MiIgeDI9IjI0Ljk5NTIiIHkyPSI4Ljc4OTciIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgMSAwIC0xKSI+DQoJCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM0MDZBQjMiLz4NCgkJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzYyQzZFQiIvPg0KCTwvbGluZWFyR3JhZGllbnQ+DQoJPHBvbHlnb24gZmlsbD0idXJsKCNTVkdJRF8xXykiIHBvaW50cz0iMzQuMSwzNC4xIDMxLjksMzIgMzEuOSwyNi42IDE1LDI2LjYgMTUsMjEuMyA2LjIsMzAgMTUsMzguOCAxNSwzMy43IDI1LDMzLjcgMjUsMzYuOCANCgkJMTguMiwzNi44IDE4LjIsNDIgMTUuOSw0NC4yIDE1LDQzLjMgNCwzMi4zIDEuOCwzMCA0LDI3LjggMTUuOSwxNS45IDE4LjIsMTguMSAxOC4yLDIzLjUgMzUuMSwyMy41IDM1LjEsMjguNyA0My44LDIwIDM1LjEsMTEuMyANCgkJMzUuMSwxNi40IDI1LDE2LjQgMjUsMTMuMyAzMS45LDEzLjMgMzEuOSw4IDM0LjEsNS44IDM1LjEsNi44IDQ2LDE3LjcgNDguMiwyMCAJIi8+DQo8L2c+DQo8L3N2Zz4NCg==" />
+          <specializationType>Call Service Operation Action Target End</specializationType>
+          <specializationTypeId>475f0810-2b4a-40da-8eb8-697cb62f7dbe</specializationTypeId>
+          <defaultName>NewCallServiceOperationActionTargetEnd</defaultName>
+          <allowMultiple>true</allowMultiple>
+        </createAssociation>
         <createElement type="element">
           <text>Add Event Emitter</text>
           <shortcut>ctrl + shift + e</shortcut>

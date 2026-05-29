@@ -21,7 +21,6 @@
   <order>0</order>
   <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
   <packageName>Intent.Modelers.UI</packageName>
-  <onChangedScript />
   <validateFunction>const stereotype = element.getStereotype("Page");
 const routeProperty = stereotype.getProperty("Route");
 let route = routeProperty.getValue();

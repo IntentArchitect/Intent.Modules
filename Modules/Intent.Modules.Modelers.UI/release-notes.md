@@ -1,3 +1,7 @@
+### Version 1.1.2
+
+- Improvement: Added menu item to invoke a service from a page (not just an operation)
+
 ### Version 1.1.1
 
 - Improvement: Enhanceed the AI settings for Pages
