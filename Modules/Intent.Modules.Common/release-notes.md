@@ -1,3 +1,7 @@
+### Version 3.11.2
+
+- Improvement: Updated interoperability to the VisualStudio module to assist with migrations to get the correct .agents folder.
+
 ### Version 3.11.1
 
 - Feature: Support for Markdown Builder Templates.
