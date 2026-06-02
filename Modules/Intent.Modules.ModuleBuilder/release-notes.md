@@ -1,4 +1,8 @@
-﻿### Version 3.18.6
+﻿### Version 3.18.7
+
+- Improvement: Accelerator for Bumping module versions and adding release notes.
+
+### Version 3.18.6
 
 - New Feature: Support for Markdown Builder Templates.
 
