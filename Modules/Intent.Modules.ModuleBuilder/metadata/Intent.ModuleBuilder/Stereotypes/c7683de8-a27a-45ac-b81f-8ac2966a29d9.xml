@@ -92,7 +92,6 @@
       <isRequiredFunction>return true</isRequiredFunction>
     </property>
     <property id="02e7f455-ba13-4e99-ac6c-a46490980134">
-      <hint />
       <name>Auto-sync Type References</name>
       <type>string</type>
       <controlType>checkbox</controlType>

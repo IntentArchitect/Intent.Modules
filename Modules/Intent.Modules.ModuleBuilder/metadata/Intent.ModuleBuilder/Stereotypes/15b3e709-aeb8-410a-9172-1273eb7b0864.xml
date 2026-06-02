@@ -24,7 +24,6 @@
       <comment>Ultimately determines where these settings will be stored:
 * Application Settings - will be stored inline with the application's metadata and therefore will be checked into version control.
 * User Settings - will be stored in a user specific file and can be edited from the user settings.</comment>
-      <hint />
       <name>Settings Type</name>
       <type>string</type>
       <controlType>select</controlType>

@@ -72,7 +72,6 @@ return `[${shortcut}]`;</displayFunction>
       <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
     <property id="e034a0ca-0101-4594-8384-43048b714578">
-      <comment />
       <name>Order</name>
       <type>number</type>
       <controlType>number</controlType>

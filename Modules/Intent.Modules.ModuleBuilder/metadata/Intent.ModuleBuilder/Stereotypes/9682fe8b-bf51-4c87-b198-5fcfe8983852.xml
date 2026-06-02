@@ -47,7 +47,6 @@ return `[${shortcut}]`;</displayFunction>
       <placeholder>(default)</placeholder>
     </property>
     <property id="10f05e81-2da2-403f-9c7d-b712c7d202ba">
-      <comment />
       <name>Default Name</name>
       <type>string</type>
       <controlType>text</controlType>

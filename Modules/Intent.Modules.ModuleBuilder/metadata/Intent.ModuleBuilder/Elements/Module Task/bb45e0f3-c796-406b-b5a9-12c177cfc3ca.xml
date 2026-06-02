@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="bb45e0f3-c796-406b-b5a9-12c177cfc3ca" type="Module Task" typeId="ad38ef37-45b8-4a6a-96de-f8d41da3cfe0">
+  <name>IModSpecChecker</name>
+  <display>IModSpecChecker</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</parentFolderId>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

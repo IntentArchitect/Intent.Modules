@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <settings version="3.1.1">
   <id>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</id>
   <name>Module Builder</name>
@@ -97,6 +97,183 @@
           <defaultName>NewStereotypeDefinition</defaultName>
           <allowMultiple>true</allowMultiple>
         </createStereotype>
+        <runScript group="1" type="run-script">
+          <text>Bump Module Version</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAH1UlEQVR4AewZW2wcV/Wcu2s7tXc3yoMkkJR41wGqFNGPIre8Plq+SH6gKGlJkUCixF5vUoki1KSVwAERUiEQRN61rSA+UKu2bkCgQv8K/NCilEoI+kilxF6nbpvEjqPsrNeNvXNPz5n1rO88dj12nFSVMpoz97zuedw79555KPiIHzcT+LAn8OYMODMwQrHtQ6UvpAulxzoL1h8zA9br6YI13ZkvzQk4eKH0msjSjs6Vu6GfVmXwrslIV75ya6ZQPpaZtMaVxpcA8OcIcB+HthMA1iFii4CDA94uMnB01MvbN1vjnfnyL3Ycr2yDazhWlMCO49bH0gVr2KbqGQJ6lBC3LjcGRbgNkQ5VVfVspmANfnq4tHG5NkR/2QlkCuV9toLT3Hk/Kmzl9ppOsUEAvfM2nu4ctB5YrrHICdw5TC3bC9YJHvGnQMF6vyMisAjhaSDaj6S6Y1XYtD6WaBUQHFDf5chAPyO6/v5Mb0CCpzN5a0h8MR3pjJTAJ4ap/XLV+gsrPxSwSvQej2B2Lp7YUswm943lUidGcx2vnHk4OflqD84LCD6WXXvKkfWt/ZboAtD3NcAZvz0ehJ5LVevP4tMvC6M5pjD2Ik9GY03VOkmIX1vksnugq4Dw40ql8qliX3Lo3R6smPJmuOiO9aV+tzGW2MkzeojhqqmPiLva7JkR8W3yw/AlE5iyywV/8Bz+ed5p7hnLJn924UdbZsIMR+HJ7BT7Uk/ECO4logvePrT7sl0+7uUFqaYJZAbLD7KC57bRRK8pineP96ZeDppbGedsLvWSird0i23TAt+avZ15636T58c5Pj+rRm8dKG2wNf2mRtWuMkpxiO86m2t/u8ZpfuVdpYeL1/7mWjXpaM8t52Lxlt3io8apXXlhF5ptsQ0TaFV4VCEs7s1E71MMvhE1eKnMvOv8lmEgXSh9pRZO86uThIJvetaEgvXzGo806hmagFRY0vRdTydOKOptwxV2S8yG5xCwDRFb2M7ItsFKpGJ3Npv6FwflCZhn5XuNKjbrsnnfSahzUmDqbN4qK+WZX9fpJkht56ARXvhGwLilRdsndxyntiZd66I1G5O/YmKUwTllIKoxnXMI3yWYAD+YAelvm3oczE+j7jbTdnkAEYK3DMLdtrKGTbuN8Df24hwBPOGRo/0g9PPe52ECBBLYPm11c8BbXT3iCjsXS/zBpZu1smhZ3njRKvxO1EU9OzPzlAYosz3nRFC3pjeXPg++I5CA0nCPR0fBX6XweHghRH3Rhsg8LKJIi1pmXJF+weyLgPeatOCBBAjwThG4gJr+4eKNWnPRNtJx+biMRU1K/d3tJ63ti014gQQA6DMicAEh9l9wjvBL+KIN113kRlzUtvb4Rl9sYi+QAGr8uAhciMftMRcPaxsu2jBlkxdhUcdiyuObfLGJuUACXEQSInAhvi5ZcvGwdqwv2cOAfvDr+uUOfSDlrTW+TjifuGKy+AUoadKCBxIQ5kcJAgnwSq9vXZJI9bKVkvbDAGoprzX9EqFl0oIHEiBF74nAhXlNGRe/0a1N2uMbfbFJPIEEAPAtMA+Nd5jkDcVReXzzFu+NjYMJJKCA/sP8+skLJ1A86sLrjCDBV00XSN7YRBZIQAN5CpcmtTvq+6kYXC3Ymb/IuyHuMu0pinkKm8gCCRQvpk5ppAkRCiBCss229gl+I6GCt7BP6nB9koZzo5Ptr7q02wYSgH4uZVo9CcahAR+tVVyDeR1Reezm3fCQ6QIVPAkcG/iOYAKsELdVnl9o5hh1Tlbaccm2HnGIG3Cx49YP+ZEmXXfFb4NVjqlOGwjHZlAL6JmH2yeUwt8vkG5zpCtf+qJLXK82ky99mW+Xn3jsI554+2DHux7eAhGagMjmWvXjmmBKcAGe0jYb4E+Z4dlPCn09QGxrgJOosNWwf2lO0xGD9qANE5h4aO00KjhoaiPiZrs6/zdxZPLDcOdZpy9Zf0YK0zF5YlPb8y+ID5MPBL3vHEhd8vAMomECosOfCp/hvdjzGqgQP6ur86e6BktfEp3VALlt2OYrPMu3m/b4DhgYyyVPmjw/3jQBUV4XTxzkrwLeNyOZCYIXM4XS4Z0jZE63dIkM0pc/uTzGgb7II7/J7MhV9/n0ZOIHJi8MXzIB+fw3F0/uCSQB2MZOjs5Old+U99zNvzxf37PDHJk8KVLSZ3Zq5jTIDw/luef5rsHnq+933P/PfqzCEseSCUh/eSfeEE9+HQGGhPZBhvnDazo6zqfzV56VF/vOgSt3dQ1am2SEBQQXHgfdmy5YI7PYfl76ANDiVrlglGdjoPNix30Tj+DsAqtpEykBsSAzMdqXzBLBA+ykvjuJTIANJQDVXl4zQ6jUv1nnwuxU+aqA4MLjoAdZdw8HHpgtAphk2d7xXPJglJFnXedkv04b+VLMJZ+tEt0GCAV+e/N8Fo9sxFAUG5zgQLVV38Y713OGKBK67ATEqmxr/Gk9V8V4FxEeI9Dej72itARwsTrHKkdtO5aRUZdtm+llnytKwPUykW1/p5hLHOYHwE75hcSP3oc1Av8Mof+Dhml5HBFwcKD/OTKgQ0iquziVSPOIP96owro+lmqvKYG68X7U8gtpNJs6Np5N7ilmU58bO5DcUDyQahNw8L7UHeMi4x8ao/wLCrgPrMKxOgmsQiArNXEzgZWO3Gr1+wAAAP//AJTYKAAAAAZJREFUAwDMojuOZrfywQAAAABJRU5ErkJggg==" />
+          <script>/// &lt;reference path="../../typings/elementmacro.context.api.d.ts" /&gt;
+const MODULE_SETTINGS_STEREOTYPE_ID = "76256322-88f1-4efb-8bd6-7cc4a6c54cb9";
+const VERSION_PROPERTY_NAME = "Version";
+const INCLUDE_RELEASE_NOTES_PROPERTY_NAME = "Include Release Notes";
+function parseVersion(version) {
+    const match = version.trim().match(/^(\d+)\.(\d+)\.(\d+)(?:-pre\.(\d+))?$/);
+    if (!match)
+        return null;
+    return {
+        major: parseInt(match[1], 10),
+        minor: parseInt(match[2], 10),
+        patch: parseInt(match[3], 10),
+        preIndex: match[4] !== undefined ? parseInt(match[4], 10) : null
+    };
+}
+function compareVersions(a, b) {
+    if (a.major !== b.major) return a.major - b.major;
+    if (a.minor !== b.minor) return a.minor - b.minor;
+    if (a.patch !== b.patch) return a.patch - b.patch;
+    if (a.preIndex === null &amp;&amp; b.preIndex === null) return 0;
+    if (a.preIndex === null) return 1;
+    if (b.preIndex === null) return -1;
+    return a.preIndex - b.preIndex;
+}
+function bumpVersion(info, bumpType) {
+    if (info.preIndex !== null &amp;&amp; bumpType === "patch") {
+        // Pre-release patch: just increment the pre index
+        return `${info.major}.${info.minor}.${info.patch}-pre.${info.preIndex + 1}`;
+    }
+    switch (bumpType) {
+        case "patch": return `${info.major}.${info.minor}.${info.patch + 1}-pre.0`;
+        case "minor": return `${info.major}.${info.minor + 1}.0-pre.0`;
+        case "major": return `${info.major + 1}.0.0-pre.0`;
+    }
+}
+function changeTypePrefix(changeType) {
+    switch (changeType) {
+        case "fix":         return "Fixed";
+        case "improvement": return "Improvement";
+        case "feature":     return "New Feature";
+        default:            return changeType;
+    }
+}
+async function bumpModuleVersion(element) {
+    const moduleSettings = element.getStereotype(MODULE_SETTINGS_STEREOTYPE_ID);
+    if (!moduleSettings) {
+        await dialogService.error("Module Settings stereotype not found on this element.\nPlease run this script from an Intent Module package.");
+        return;
+    }
+    const settingsVersionRaw = moduleSettings.getProperty(VERSION_PROPERTY_NAME).getValue();
+    if (!settingsVersionRaw) {
+        await dialogService.error("Version property is empty in Module Settings.");
+        return;
+    }
+    const settingsVersionInfo = parseVersion(settingsVersionRaw);
+    if (!settingsVersionInfo) {
+        await dialogService.error(`Cannot parse Module Settings version: "${settingsVersionRaw}". Expected X.Y.Z or X.Y.Z-pre.N`);
+        return;
+    }
+    // Query the imodspec on disk to get its version
+    const checkerResult = await executeModuleTask("Intent.ModuleBuilder.IModSpecChecker", JSON.stringify({ applicationId: application.id }));
+    let imodspecVersionInfo = null;
+    let imodspecVersionRaw = null;
+    try {
+        const parsed = JSON.parse(checkerResult);
+        if (parsed?.version &amp;&amp; !parsed?.errorMessage) {
+            imodspecVersionRaw = parsed.version;
+            imodspecVersionInfo = parseVersion(imodspecVersionRaw);
+        }
+    }
+    catch (e) { /* fall back to settings version */ }
+    // Use whichever version is higher as the effective current version to bump from
+    let effectiveVersionInfo = settingsVersionInfo;
+    let effectiveVersionRaw = settingsVersionRaw;
+    let versionSource = "Module Settings";
+    if (imodspecVersionInfo &amp;&amp; compareVersions(imodspecVersionInfo, settingsVersionInfo) &gt; 0) {
+        effectiveVersionInfo = imodspecVersionInfo;
+        effectiveVersionRaw = imodspecVersionRaw;
+        versionSource = ".imodspec on disk";
+    }
+    const isPreRelease = effectiveVersionInfo.preIndex !== null;
+    const includeReleaseNotes = moduleSettings.getProperty(INCLUDE_RELEASE_NOTES_PROPERTY_NAME)?.getValue() ?? false;
+    const versionHint = imodspecVersionInfo &amp;&amp; imodspecVersionRaw !== settingsVersionRaw
+        ? `Bumping from ${effectiveVersionRaw} (${versionSource}). Module Settings: ${settingsVersionRaw}, .imodspec: ${imodspecVersionRaw}.`
+        : `Current version: ${effectiveVersionRaw}`;
+    const fields = [
+        {
+            id: "bumpType",
+            fieldType: "select",
+            label: "Version Bump Type",
+            isRequired: true,
+            hint: isPreRelease
+                ? `Currently at pre-release (${effectiveVersionRaw}).`
+                : versionHint,
+            hintType: isPreRelease ? "info" : "primary",
+            value: "patch",
+            selectOptions: [
+                { id: "patch",  description: "Patch — Bug fixes and minor corrections" },
+                { id: "minor",  description: "Minor — New backwards-compatible functionality" },
+                { id: "major",  description: "Major — Breaking changes" }
+            ]
+        }
+    ];
+    if (includeReleaseNotes) {
+        fields.push({
+            id: "changeType",
+            fieldType: "select",
+            label: "Change Type",
+            isRequired: true,
+            value: "improvement",
+            selectOptions: [
+                { id: "fix",         description: "Fix — Bug fix or correction" },
+                { id: "improvement", description: "Improvement — Enhancement to existing functionality" },
+                { id: "feature",     description: "New Feature — Brand new functionality" }
+            ]
+        });
+        fields.push({
+            id: "description",
+            fieldType: "textarea",
+            label: "Description",
+            isRequired: true,
+            placeholder: "Describe the change..."
+        });
+    }
+    const result = await dialogService.openForm({
+        title: "Bump Module Version",
+        submitButtonText: "Bump Version",
+        minWidth: "520px",
+        fields: fields
+    });
+    if (!result)
+        return;
+    const bumpType = result.bumpType;
+    const newVersion = bumpVersion(effectiveVersionInfo, bumpType);
+    const newBaseVersion = newVersion.split("-")[0];
+    // Always update the Module Settings version
+    moduleSettings.getProperty(VERSION_PROPERTY_NAME).setValue(newVersion);
+    if (includeReleaseNotes) {
+        const changeType = result.changeType;
+        const description = result.description?.trim();
+        if (!description) {
+            await dialogService.error("A description is required.");
+            return;
+        }
+        const prefix = changeTypePrefix(changeType);
+        const taskConfig = {
+            applicationId: application.id,
+            version: newBaseVersion,
+            changePrefix: prefix,
+            description: description
+        };
+        const taskResult = await executeModuleTask("Intent.ModuleBuilder.ReleaseNoteUpdater", JSON.stringify(taskConfig));
+        let parsedResult;
+        try { parsedResult = JSON.parse(taskResult); } catch (e) { parsedResult = null; }
+        if (parsedResult?.errorMessage) {
+            await dialogService.error(`Version updated to ${newVersion}, but release-notes.md could not be updated:\n\n${parsedResult.errorMessage}`);
+            return;
+        }
+        await dialogService.info(`Version bumped from ${effectiveVersionRaw} to ${newVersion}.\n\nrelease-notes.md updated with:\n- ${prefix}: ${description}`);
+    }
+    else {
+        await dialogService.info(`Version bumped from ${effectiveVersionRaw} to ${newVersion}.`);
+    }
+}
+/**
+ * Bump Module Version accelerator.
+ * Run from the context menu of an Intent Module package.
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/module-version-bump/module-version-bump.ts
+ */
+await bumpModuleVersion(element);
+</script>
+        </runScript>        
       </contextMenuOptions>
       <creationOptions>
         <option order="-12" type="element">
@@ -188,7 +365,185 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
-      <scriptOptions />
+      <scriptOptions>
+        <option group="1" type="run-script">
+          <text>Bump Module Version</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <script>/// &lt;reference path="../../typings/elementmacro.context.api.d.ts" /&gt;
+const MODULE_SETTINGS_STEREOTYPE_ID = "76256322-88f1-4efb-8bd6-7cc4a6c54cb9";
+const VERSION_PROPERTY_NAME = "Version";
+const INCLUDE_RELEASE_NOTES_PROPERTY_NAME = "Include Release Notes";
+function parseVersion(version) {
+    const match = version.trim().match(/^(\d+)\.(\d+)\.(\d+)(?:-pre\.(\d+))?$/);
+    if (!match)
+        return null;
+    return {
+        major: parseInt(match[1], 10),
+        minor: parseInt(match[2], 10),
+        patch: parseInt(match[3], 10),
+        preIndex: match[4] !== undefined ? parseInt(match[4], 10) : null
+    };
+}
+function compareVersions(a, b) {
+    if (a.major !== b.major) return a.major - b.major;
+    if (a.minor !== b.minor) return a.minor - b.minor;
+    if (a.patch !== b.patch) return a.patch - b.patch;
+    if (a.preIndex === null &amp;&amp; b.preIndex === null) return 0;
+    if (a.preIndex === null) return 1;
+    if (b.preIndex === null) return -1;
+    return a.preIndex - b.preIndex;
+}
+function bumpVersion(info, bumpType) {
+    if (info.preIndex !== null &amp;&amp; bumpType === "patch") {
+        // Pre-release patch: just increment the pre index
+        return `${info.major}.${info.minor}.${info.patch}-pre.${info.preIndex + 1}`;
+    }
+    switch (bumpType) {
+        case "patch": return `${info.major}.${info.minor}.${info.patch + 1}-pre.0`;
+        case "minor": return `${info.major}.${info.minor + 1}.0-pre.0`;
+        case "major": return `${info.major + 1}.0.0-pre.0`;
+    }
+}
+function changeTypePrefix(changeType) {
+    switch (changeType) {
+        case "fix":         return "Fixed";
+        case "improvement": return "Improvement";
+        case "feature":     return "New Feature";
+        default:            return changeType;
+    }
+}
+async function bumpModuleVersion(element) {
+    const moduleSettings = element.getStereotype(MODULE_SETTINGS_STEREOTYPE_ID);
+    if (!moduleSettings) {
+        await dialogService.error("Module Settings stereotype not found on this element.\nPlease run this script from an Intent Module package.");
+        return;
+    }
+    const settingsVersionRaw = moduleSettings.getProperty(VERSION_PROPERTY_NAME).getValue();
+    if (!settingsVersionRaw) {
+        await dialogService.error("Version property is empty in Module Settings.");
+        return;
+    }
+    const settingsVersionInfo = parseVersion(settingsVersionRaw);
+    if (!settingsVersionInfo) {
+        await dialogService.error(`Cannot parse Module Settings version: "${settingsVersionRaw}". Expected X.Y.Z or X.Y.Z-pre.N`);
+        return;
+    }
+    // Query the imodspec on disk to get its version
+    const checkerResult = await executeModuleTask("Intent.ModuleBuilder.IModSpecChecker", JSON.stringify({ applicationId: application.id }));
+    let imodspecVersionInfo = null;
+    let imodspecVersionRaw = null;
+    try {
+        const parsed = JSON.parse(checkerResult);
+        if (parsed?.version &amp;&amp; !parsed?.errorMessage) {
+            imodspecVersionRaw = parsed.version;
+            imodspecVersionInfo = parseVersion(imodspecVersionRaw);
+        }
+    }
+    catch (e) { /* fall back to settings version */ }
+    // Use whichever version is higher as the effective current version to bump from
+    let effectiveVersionInfo = settingsVersionInfo;
+    let effectiveVersionRaw = settingsVersionRaw;
+    let versionSource = "Module Settings";
+    if (imodspecVersionInfo &amp;&amp; compareVersions(imodspecVersionInfo, settingsVersionInfo) &gt; 0) {
+        effectiveVersionInfo = imodspecVersionInfo;
+        effectiveVersionRaw = imodspecVersionRaw;
+        versionSource = ".imodspec on disk";
+    }
+    const isPreRelease = effectiveVersionInfo.preIndex !== null;
+    const includeReleaseNotes = moduleSettings.getProperty(INCLUDE_RELEASE_NOTES_PROPERTY_NAME)?.getValue() ?? false;
+    const versionHint = imodspecVersionInfo &amp;&amp; imodspecVersionRaw !== settingsVersionRaw
+        ? `Bumping from ${effectiveVersionRaw} (${versionSource}). Module Settings: ${settingsVersionRaw}, .imodspec: ${imodspecVersionRaw}.`
+        : `Current version: ${effectiveVersionRaw}`;
+    const fields = [
+        {
+            id: "bumpType",
+            fieldType: "select",
+            label: "Version Bump Type",
+            isRequired: true,
+            hint: isPreRelease
+                ? `Currently at pre-release (${effectiveVersionRaw}).`
+                : versionHint,
+            hintType: isPreRelease ? "info" : "primary",
+            value: "patch",
+            selectOptions: [
+                { id: "patch",  description: "Patch — Bug fixes and minor corrections" },
+                { id: "minor",  description: "Minor — New backwards-compatible functionality" },
+                { id: "major",  description: "Major — Breaking changes" }
+            ]
+        }
+    ];
+    if (includeReleaseNotes) {
+        fields.push({
+            id: "changeType",
+            fieldType: "select",
+            label: "Change Type",
+            isRequired: true,
+            value: "improvement",
+            selectOptions: [
+                { id: "fix",         description: "Fix — Bug fix or correction" },
+                { id: "improvement", description: "Improvement — Enhancement to existing functionality" },
+                { id: "feature",     description: "New Feature — Brand new functionality" }
+            ]
+        });
+        fields.push({
+            id: "description",
+            fieldType: "textarea",
+            label: "Description",
+            isRequired: true,
+            placeholder: "Describe the change..."
+        });
+    }
+    const result = await dialogService.openForm({
+        title: "Bump Module Version",
+        submitButtonText: "Bump Version",
+        minWidth: "520px",
+        fields: fields
+    });
+    if (!result)
+        return;
+    const bumpType = result.bumpType;
+    const newVersion = bumpVersion(effectiveVersionInfo, bumpType);
+    const newBaseVersion = newVersion.split("-")[0];
+    // Always update the Module Settings version
+    moduleSettings.getProperty(VERSION_PROPERTY_NAME).setValue(newVersion);
+    if (includeReleaseNotes) {
+        const changeType = result.changeType;
+        const description = result.description?.trim();
+        if (!description) {
+            await dialogService.error("A description is required.");
+            return;
+        }
+        const prefix = changeTypePrefix(changeType);
+        const taskConfig = {
+            applicationId: application.id,
+            version: newBaseVersion,
+            changePrefix: prefix,
+            description: description
+        };
+        const taskResult = await executeModuleTask("Intent.ModuleBuilder.ReleaseNoteUpdater", JSON.stringify(taskConfig));
+        let parsedResult;
+        try { parsedResult = JSON.parse(taskResult); } catch (e) { parsedResult = null; }
+        if (parsedResult?.errorMessage) {
+            await dialogService.error(`Version updated to ${newVersion}, but release-notes.md could not be updated:\n\n${parsedResult.errorMessage}`);
+            return;
+        }
+        await dialogService.info(`Version bumped from ${effectiveVersionRaw} to ${newVersion}.\n\nrelease-notes.md updated with:\n- ${prefix}: ${description}`);
+    }
+    else {
+        await dialogService.info(`Version bumped from ${effectiveVersionRaw} to ${newVersion}.`);
+    }
+}
+/**
+ * Bump Module Version accelerator.
+ * Run from the context menu of an Intent Module package.
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/module-version-bump/module-version-bump.ts
+ */
+await bumpModuleVersion(element);
+</script>
+        </option>
+      </scriptOptions>
       <typeOrder>
         <type order="-12" type="Module Settings Configuration" typeId="37e678f8-370a-4b05-ae44-69bb3d2b39b6" />
         <type order="-11" type="Module Settings Extension" typeId="72044cdf-1f96-4ad2-86be-8d5468725e67" />

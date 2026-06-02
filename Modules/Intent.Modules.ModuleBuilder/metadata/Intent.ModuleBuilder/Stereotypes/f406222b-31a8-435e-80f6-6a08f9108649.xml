@@ -11,7 +11,6 @@
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
   <displayIconFunction>return false;</displayIconFunction>
-  <displayFunction />
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>
@@ -35,7 +34,6 @@
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="736b1337-6f35-4e38-85a8-69ff5d69fb7d">
-      <hint />
       <name>Icon</name>
       <type>string</type>
       <controlType>icon</controlType>

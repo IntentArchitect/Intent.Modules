@@ -1,9 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>3.18.6</Version>
+    <Version>3.18.7-pre.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
@@ -30,6 +30,7 @@
     <EmbeddedResource Remove="Intent.Metadata\**" />
     <None Remove="Api\Modeler\**" />
     <None Remove="Intent.Metadata\**" />
+    
 
     <None Update="Templates\Api\ApiElementModelPartial\ApiElementModelPartialTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -39,6 +40,11 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiMetadataProviderExtensionsTemplate.cs</LastGenOutput>
     </None>
+    <Compile Update="modelers\Module Builder.designer.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Module Builder.designer.settings</DependentUpon>
+    </Compile>
     <Compile Update="Templates\Api\ApiElementModelPartial\ApiElementModelPartialTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

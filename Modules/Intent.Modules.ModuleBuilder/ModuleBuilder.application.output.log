@@ -1113,6 +1113,22 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>66e155fd-422f-4762-be0a-a96c04cd5deb</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.ModuleTask#bb45e0f3-c796-406b-b5a9-12c177cfc3ca</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Tasks/IModSpecChecker.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>IModSpecChecker.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>66e155fd-422f-4762-be0a-a96c04cd5deb</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.ModuleTask#b9879dc4-6f06-4ea2-82cd-e67b85369742</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Tasks/ReleaseNoteUpdater.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ReleaseNoteUpdater.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>521b3ea0-9e2f-4127-9126-2c396efd7190</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#1bd9fa6b-63b2-42d7-b18c-cd8a4e3109b5</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>

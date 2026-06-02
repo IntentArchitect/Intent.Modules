@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="b9879dc4-6f06-4ea2-82cd-e67b85369742" type="Module Task" typeId="ad38ef37-45b8-4a6a-96de-f8d41da3cfe0">
+  <name>ReleaseNoteUpdater</name>
+  <display>ReleaseNoteUpdater</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</parentFolderId>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>
