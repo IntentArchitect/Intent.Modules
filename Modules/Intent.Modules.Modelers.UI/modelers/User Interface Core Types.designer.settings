@@ -15,6 +15,8 @@
 - Aways add `Navigations` between pages where there should be an explicit button, link or interface option that the user will be able to interact with to navigate to the target page.
 - Always express needed interactions with the backend using `Call Service Operation Action`.
 - Ensure that backend service operations are exposed over Http if they are located in a different application to this UI.
+- Model service calls ONLY with `Call Service Operation Action` directly from the Component/Page.
+- Never create/rename/delete/use Component Operations.
 - For any new routable Page, before you create the page, you MUST 
 (1) discover candidate backend HTTP operations across ALL applications, then 
 (2) create at least one Call Service Operation Action from the page (or a page operation) to the chosen backend operation and place it on the diagram.

@@ -37,7 +37,6 @@
       <metadata />
       <childElements>
         <childElement id="115ab867-0b65-446e-a208-abf323503522" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
-          <comment />
           <name>On Loaded</name>
           <display>On Loaded: Inline Script</display>
           <isAbstract>false</isAbstract>

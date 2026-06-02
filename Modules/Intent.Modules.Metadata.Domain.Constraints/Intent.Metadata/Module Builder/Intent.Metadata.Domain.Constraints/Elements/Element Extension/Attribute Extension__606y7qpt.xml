@@ -225,7 +225,6 @@
                   <childElements />
                 </childElement>
                 <childElement id="f8f3682e-a663-4952-9adf-c3cc536de9e7" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
-                  <comment />
                   <name>Add Numeric Limits</name>
                   <display>Add Numeric Limits: Inline Script</display>
                   <isAbstract>false</isAbstract>
