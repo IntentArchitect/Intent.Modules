@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="96ffceb2-a70a-4b69-869b-0df436c470c3" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <comment>## Modeling guidelines
+
+- Intent will implicitly generate **Repositories** for Entities, so you typically don't need to explicitly model repositories.
+- There are 2 scenarios you would want to model Repositories
+  1. You want a repository which is not related to a specific Entity, maybe it around an aggregation or Projection
+    - In this case ensure the Name of the Repository will not conflict with any implicit repositories
+  2. You want to model extensions a modeled Entities repository
+    - In this case you MUST set the type / type referenes to be the related Entity e.g. `Customer` for `Customer Reposiory`
+    - Add `Operation`s for the Methods you want to add.</comment>
   <name>Repository</name>
   <display>Repository</display>
   <isAbstract>false</isAbstract>
@@ -46,6 +55,14 @@
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
         <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" value="Manually" isActive="true" />
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="14441454-bfe0-4d5d-8dba-d86d74d33a3b" name="AI Settings">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

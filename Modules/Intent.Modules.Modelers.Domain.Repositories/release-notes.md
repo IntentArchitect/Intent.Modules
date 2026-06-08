@@ -1,6 +1,7 @@
 ### Version 3.6.3
 
 - Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
+- Improvement: Enhanced AI guidance around modeling Repositories
 
 ### Version 3.6.2
 
