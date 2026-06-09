@@ -139,8 +139,8 @@ if ($isOnBuildAgent) {
 $index = 1
 foreach ($project in $projects) {
     Write-Host
-    Write-Host "Running dotnet clean for $project ($index of $($projects.length))..."
-    Invoke-Expression "dotnet clean $project --verbosity quiet --nologo"
+    Write-Host "Running dotnet msbuild $project -t:Clean -p:RestoreIgnoreFailedSources=true ($index of $($projects.length))..."
+    Invoke-Expression "dotnet msbuild $project -t:Clean -p:RestoreIgnoreFailedSources=true"
     $index++
 }
 

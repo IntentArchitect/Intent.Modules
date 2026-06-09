@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="55e213e3-1e43-4bb5-abe6-6ff77af23f39" type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
-  <comment />
   <name>Services Types</name>
   <display>Services Types</display>
   <isAbstract>false</isAbstract>

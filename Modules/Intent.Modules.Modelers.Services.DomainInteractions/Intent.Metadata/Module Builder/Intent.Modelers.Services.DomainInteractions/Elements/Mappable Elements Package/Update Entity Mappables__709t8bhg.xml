@@ -143,7 +143,6 @@
           <childElements />
         </childElement>
         <childElement id="8acf7530-30fd-49fc-b082-75e0060c249e" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-          <comment />
           <name>Set Association Target End</name>
           <display>Set Association Target End: Association Target End</display>
           <isAbstract>false</isAbstract>
@@ -197,7 +196,6 @@
           <childElements />
         </childElement>
         <childElement id="49bfbdb3-9697-4d84-9194-df60ee7dfd9a" type="Mappable Element Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-          <comment />
           <name>Set Association Source End</name>
           <display>Set Association Source End: Association Source End</display>
           <isAbstract>false</isAbstract>

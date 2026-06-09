@@ -1,8 +1,8 @@
 ---
 name: mediatr-query-handler
 description: implement or revise mediatR query handler business logic in an existing handler file. use when a c# mediatR query handler has an incomplete or incorrect handle method and chatgpt should update the handle method, add private helper methods, and extend application or domain abstractions such as repositories or read services if required, while avoiding direct infrastructure dependencies in the handler.
-template-id: {TemplateId}
-contentHash: FEE1291099D8574057BF85E91BD582B25C43F970287BD59157E1ADA2FC66767E
+template-id: Intent.Application.MediatR.QueryHandlerSkillTemplate
+contentHash: 34725A3CA37816C4CA0A48B66BCA2095A435B6A950488B0F947751647D8E1D0F
 ---
 # MediatR Query Handler
 
@@ -57,6 +57,14 @@ When a needed read capability is missing:
 - Prefer names such as `GetDetailsAsync`, `ListByCriteriaAsync`, `SearchActive...Async`, or `GetSummaryAsync` over schema-oriented names.
 - Do not explain or encode infrastructure implementation details in the handler.
 - Do not reference EF includes, Dapper SQL, joins, or storage-specific tuning from the handler.
+
+## EF Related Data Loading guidance
+
+- NEVER use `Include` or `ThenInclude` in the Application Layer, these are only available in the Infrastructure layer.
+- Lazy loading with proxies is enabled. 
+- Entities are configured using the `Owns` apis, so compsitional children will be automatically loaded with their parents.
+- You can rely on navigation properties being automatically loaded when accessed.
+- (CRITICAL) If your implementation will cause a lot of Lazy loading consider other alternatives, like moving the data loading into the repository layer.
 
 ## AutoMapper guidance
 

@@ -13,7 +13,6 @@
   <metadata />
   <childElements>
     <childElement id="51b63a1f-2890-4046-8a32-d2d28190c241" type="Suggestion" typeId="0c21ab10-e87b-4e88-ab44-38ea7adf514a">
-      <comment />
       <name>Create CQRS Operation</name>
       <display>Create CQRS Operation: Operation</display>
       <isAbstract>false</isAbstract>
