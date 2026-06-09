@@ -24,7 +24,10 @@ else {
 if ($ClearCachedModules) {
     $folder = [System.IO.Path]::GetDirectoryName($IslnPath)
     $cacheFolder = [System.IO.Path]::Combine($folder, ".intent")
-    Remove-Item -Path $cacheFolder -Recurse -Force
+
+    if (Test-Path -Path $cacheFolder) {
+        Remove-Item -Path $cacheFolder -Recurse -Force
+    }
 }
 
 $params = @(
