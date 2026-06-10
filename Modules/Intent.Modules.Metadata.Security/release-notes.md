@@ -1,3 +1,7 @@
+### Version 1.1.5
+
+- Fixed: Migration would fail if `Services` designer was not installed.
+
 ### Version 1.1.4
 
 - Improvement: Add **Security** `Element` by default.

@@ -28,7 +28,12 @@ namespace Intent.Modules.Metadata.Security.Migrations
         public void OnInstall()
         {
             var app = _persistenceLoader.LoadCurrentApplication();
-            var designer = app.GetDesigner(ApiMetadataDesignerExtensions.ServicesDesignerId);
+            var designer = app.TryGetDesigner(ApiMetadataDesignerExtensions.ServicesDesignerId);
+            if (designer is null)
+            {
+                return;
+            }
+
             var packages = designer.GetPackages();
 
             foreach (var package in packages)
