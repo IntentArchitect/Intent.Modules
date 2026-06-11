@@ -1,3 +1,8 @@
+### Version 1.1.5
+
+- Fixed: Issue when OnInstall Migration causing error on Angular.
+- Fixed: Issue where Security stereotype added to the eventing package.
+
 ### Version 1.1.4
 
 - Improvement: Add **Security** `Element` by default.
