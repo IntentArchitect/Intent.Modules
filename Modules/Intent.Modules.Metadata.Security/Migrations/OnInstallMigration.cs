@@ -30,7 +30,7 @@ namespace Intent.Modules.Metadata.Security.Migrations
         public void OnInstall()
         {
             var app = _persistenceLoader.LoadCurrentApplication();
-            if(!app.GetDesigners().Any(d => d.Id == ApiMetadataDesignerExtensions.ServicesDesignerId))
+            if (!app.GetDesigners().Any(d => d.Id == ApiMetadataDesignerExtensions.ServicesDesignerId))
             {
                 return;
             }
