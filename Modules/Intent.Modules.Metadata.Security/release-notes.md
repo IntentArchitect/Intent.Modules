@@ -1,6 +1,7 @@
 ### Version 1.1.5
 
-- Fixed: Migration would fail if `Services` designer was not installed.
+- Fixed: Issue when OnInstall Migration causing error on Angular.
+- Fixed: Issue where Security stereotype added to the eventing package.
 
 ### Version 1.1.4
 

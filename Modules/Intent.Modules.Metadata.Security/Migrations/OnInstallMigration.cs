@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Security.Api;
@@ -15,6 +16,7 @@ namespace Intent.Modules.Metadata.Security.Migrations
     public class OnInstallMigration : IModuleOnInstallMigration
     {
         private readonly IPersistenceLoader _persistenceLoader;
+        private const string ServicesPackageSpecializationId = "df45eaf6-9202-4c25-8dd5-677e9ba1e906";
 
         public OnInstallMigration(IPersistenceLoader persistenceLoader)
         {
@@ -28,7 +30,13 @@ namespace Intent.Modules.Metadata.Security.Migrations
         public void OnInstall()
         {
             var app = _persistenceLoader.LoadCurrentApplication();
-            var designer = app.TryGetDesigner(ApiMetadataDesignerExtensions.ServicesDesignerId);
+            if (!app.GetDesigners().Any(d => d.Id == ApiMetadataDesignerExtensions.ServicesDesignerId))
+            {
+                return;
+            }
+
+            var designer = app.GetDesigner(ApiMetadataDesignerExtensions.ServicesDesignerId);
+            // should never be null. Extra check
             if (designer is null)
             {
                 return;
@@ -36,7 +44,8 @@ namespace Intent.Modules.Metadata.Security.Migrations
 
             var packages = designer.GetPackages();
 
-            foreach (var package in packages)
+            // only add to services 
+            foreach (var package in packages.Where(p => p.SpecializationTypeId == ServicesPackageSpecializationId))
             {
                 if (!package.GetElementsOfType(SecurityConfigurationModel.SpecializationTypeId).Any())
                 {
