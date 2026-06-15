@@ -1,3 +1,7 @@
+### Version 1.1.6
+
+- Improvement: Enhanced Descriptions so AI guidance is not on the UI.
+
 ### Version 1.1.5
 
 - Fixed: Issue when OnInstall Migration causing error on Angular.

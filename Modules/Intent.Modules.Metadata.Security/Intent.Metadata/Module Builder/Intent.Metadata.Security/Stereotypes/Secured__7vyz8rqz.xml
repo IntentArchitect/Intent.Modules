@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="a9eade71-1d56-4be7-a80c-81046c0c978b" version="3.1.0">
   <comment>Configures security requirements of the endpoint, governing access through role and policy configurations.
+---
 
-(CRITICAL) When `Secured` is applied and `Security Configuration` exists set `Security Roles` (and/or `Security Policies`) only. Never set legacy `Roles` or `Policy`</comment>
+(CRITICAL) When `Secured` is applied and `Security Configuration` exists set `Security Roles` (and/or `Security Policies`) only. Never set legacy properties: `Roles` or `Policy`</comment>
   <name>Secured</name>
   <targetMode>of-type</targetMode>
   <targetTypes>

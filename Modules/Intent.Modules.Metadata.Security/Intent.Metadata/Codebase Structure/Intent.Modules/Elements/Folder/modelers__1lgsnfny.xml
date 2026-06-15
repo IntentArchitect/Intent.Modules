@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="c0e51717-ec20-413f-aa8c-165ed2a07282" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+<class id="c0e51717-ec20-413f-aa8c-165ed2a07282" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
   <name>modelers</name>
   <display>modelers</display>
   <isAbstract>false</isAbstract>
@@ -10,12 +10,12 @@
   <packageId>54faf6e8-7aa1-407d-8455-da539fc355fe</packageId>
   <packageName>Intent.Modules</packageName>
   <stereotypes>
-    <stereotype stereotypeDefinitionId="61132551-825d-4c6e-b9f1-0f95249d08d4" name="Folder Options">
+    <stereotype stereotypeDefinitionId="66fd9e66-42c7-4ef9-a778-b68e009272b9" name="Folder Options">
       <addedByDefault>true</addedByDefault>
-      <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
-      <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
+      <definitionPackageName>Intent.Common.CSharp</definitionPackageName>
+      <definitionPackageId>730e1275-0c32-44f7-991a-9619d07ca68d</definitionPackageId>
       <properties>
-        <property name="4bfbefd0-d22e-4ca0-9723-92ae273feca4" display="Namespace Provider" value="true" isActive="true" />
+        <property name="96df2fa6-7361-4e43-9acf-dbcea23b650a" display="Namespace Provider" value="true" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
