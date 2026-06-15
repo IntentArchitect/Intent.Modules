@@ -193,48 +193,6 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="0087236d-2b1c-44e9-9d1e-6a798ec2c0b0" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
-          <comment>disabled for now</comment>
-          <name>Map Return Type</name>
-          <display>Map Return Type: Map Return Type</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="d9a869de-5c55-44af-b27f-6d52c3f2ed7c">
-            <typeId>b7ae8bf5-f2fd-4a5c-b57e-05410687bfc4</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
-            <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>79675729-f303-4f17-a19f-35d1656f601e</parentFolderId>
-          <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
-          <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="6c209f86-87f6-4fc3-802e-e6e553dfbeca" name="Option Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3" display="Shortcut" value="ctrl + shift + m" isActive="true" />
-                <property name="36d5eeba-2483-450e-b51b-b156836f6d3a" display="Shortcut (macOS)" isActive="true" />
-                <property name="e92b2832-9ed6-4ccb-bf58-8b34975c16dc" display="Trigger On Double-Click" value="false" isActive="true" />
-                <property name="5e97216b-6c99-4fa2-971d-575a27f212cc" display="Icon" isActive="true" />
-                <property name="63039244-aaad-49eb-84bf-0396a6dd0fe9" display="Is Option Visible Function" value="return false &amp;&amp; typeReference?.isTypeFound();" isActive="true" />
-                <property name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Order" isActive="true" />
-                <property name="db48afcc-848b-4c46-82ff-249895203638" display="Menu Group" isActive="true" />
-                <property name="d0b53563-f62e-4989-98d5-69ff87f460f3" display="Top Divider" value="false" isActive="true" />
-                <property name="1bb3ebe0-6015-42e1-b1ca-29b7e53c0d56" display="Bottom Divider" value="false" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
       </childElements>
     </childElement>
   </childElements>

@@ -1,3 +1,7 @@
+### Version 2.4.5
+
+- Improvement: Cleaned up some old modeling which was causing confusion for the AI Assistant
+
 ### Version 2.4.4
 
 - Improvement: Improved AI context around `Update Entity Action` and `Delete Entity Action`.
