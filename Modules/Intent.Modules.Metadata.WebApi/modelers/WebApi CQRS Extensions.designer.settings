@@ -82,6 +82,20 @@ function __findMissingParameters(routeToValidate) {
     if (missingRouteParameters.length != 0) {
         return `Route mismatch: some element's properties/parameters do not match route parameters. Unmatched parameters: ${missingRouteParameters.join(", ")}`;
     }
+    let invalidSourceRouteParams = [];
+    for (let routeParam of routeToValidate.routeParams) {
+        let routeParamName = routeParam.toLowerCase();
+        let matchingChild = elementChildren.find(e =&gt; e.getName().toLowerCase() === routeParamName);
+        if (matchingChild &amp;&amp; matchingChild.hasStereotype("Parameter Settings")) {
+            var paramSource = matchingChild.getStereotype("Parameter Settings").getProperty("Source");
+            if (paramSource &amp;&amp; paramSource.getValue() != "From Route" &amp;&amp; paramSource.getValue() != "Default") {
+                invalidSourceRouteParams.push(routeParam);
+            }
+        }
+    }
+    if (invalidSourceRouteParams.length != 0) {
+        return `Route parameter(s) cannot be resolved: "${invalidSourceRouteParams.join('", "')}" exist(s) in the route but the matching field/parameter "Source" is not set to "From Route".`;
+    }
     if (noMissingParams) {
         return "";
     }
@@ -463,6 +477,20 @@ function __findMissingParameters(routeToValidate) {
     if (missingRouteParameters.length != 0) {
         return `Route mismatch: some element's properties/parameters do not match route parameters. Unmatched parameters: ${missingRouteParameters.join(", ")}`;
     }
+    let invalidSourceRouteParams = [];
+    for (let routeParam of routeToValidate.routeParams) {
+        let routeParamName = routeParam.toLowerCase();
+        let matchingChild = elementChildren.find(e =&gt; e.getName().toLowerCase() === routeParamName);
+        if (matchingChild &amp;&amp; matchingChild.hasStereotype("Parameter Settings")) {
+            var paramSource = matchingChild.getStereotype("Parameter Settings").getProperty("Source");
+            if (paramSource &amp;&amp; paramSource.getValue() != "From Route" &amp;&amp; paramSource.getValue() != "Default") {
+                invalidSourceRouteParams.push(routeParam);
+            }
+        }
+    }
+    if (invalidSourceRouteParams.length != 0) {
+        return `Route parameter(s) cannot be resolved: "${invalidSourceRouteParams.join('", "')}" exist(s) in the route but the matching field/parameter "Source" is not set to "From Route".`;
+    }
     if (noMissingParams) {
         return "";
     }
@@ -838,24 +866,6 @@ function updateRouteParameters(element) {
 
     missingFromRoute.forEach(x =&gt; {
         route = removeSuffix(route, "/") + `/{${toCamelCase(x.getName())}}`
-    });
-
-    let routeExclusions = getRouteRemovalExclusions(element);
-
-    // REMOVE UNBINDABLE ROUTE PARAMETERS;
-    const parametersInRoute = route.split("{").filter(x =&gt; x.indexOf("}") != -1).map(x =&gt; x.split("}")[0]);
-    parametersInRoute.forEach(param =&gt; {
-        const mustRemove = element.getChildren(["DTO-Field", "Parameter"])
-            .every(x =&gt;
-                toCamelCase(x.getName()) != param.split(":")[0] ||
-                (
-                    x.hasStereotype(parameterSettingsStereotypeId) &amp;&amp;
-                    ["From Route", "Default"].every(s =&gt; x.getStereotype(parameterSettingsStereotypeId).getProperty("Source").getValue() != s)
-                )
-            ) &amp;&amp; routeExclusions.indexOf(param) &lt; 0;
-        if (mustRemove) {
-            route = route.replace(`/{${param}}`, ``);
-        }
     });
 
     element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);

@@ -87,6 +87,21 @@ function __findMissingParameters(routeToValidate: RestRoute): string {
         return `Route mismatch: some element's properties/parameters do not match route parameters. Unmatched parameters: ${missingRouteParameters.join(", ")}`;
     }
 
+    let invalidSourceRouteParams: string[] = [];
+    for (let routeParam of routeToValidate.routeParams) {
+        let routeParamName = routeParam.toLowerCase();
+        let matchingChild = elementChildren.find(e => e.getName().toLowerCase() === routeParamName);
+        if (matchingChild && matchingChild.hasStereotype("Parameter Settings")) {
+            var paramSource = matchingChild.getStereotype("Parameter Settings").getProperty("Source");
+            if (paramSource && paramSource.getValue() != "From Route" && paramSource.getValue() != "Default") {
+                invalidSourceRouteParams.push(routeParam);
+            }
+        }
+    }
+    if (invalidSourceRouteParams.length != 0) {
+        return `Route parameter(s) cannot be resolved: "${invalidSourceRouteParams.join('", "')}" exist(s) in the route but the matching field/parameter "Source" is not set to "From Route".`;
+    }
+
     if(noMissingParams){
         return "";
     }
