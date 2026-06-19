@@ -19,6 +19,8 @@ namespace Accelerators.Infrastructure.Persistence
         public DbSet<Block2Level1> Block2Level1s { get; set; }
         public DbSet<ShouldNotSee> ShouldNotSees { get; set; }
 
+        public bool HasDbTransaction() => Database.CurrentTransaction != null;
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
