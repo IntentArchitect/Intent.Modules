@@ -1,3 +1,7 @@
+### Version 1.1.3
+
+- Improvement: Tighten up AI modeling instructions for better results when AI agents are modeling UI
+
 ### Version 1.1.2
 
 - Improvement: Added menu item to invoke a service from a page (not just an operation).

@@ -27,9 +27,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiTraitModel
                 {
                     if (!string.IsNullOrWhiteSpace(Model.Comment))
                     {
+                        var commentText = Model.Comment.Contains("---")
+                            ? Model.Comment[..Model.Comment.IndexOf("---", StringComparison.Ordinal)].TrimEnd()
+                            : Model.Comment;
+
                         @interface.WithComments($"""
                                                  /// <summary>
-                                                 /// {Model.Comment}
+                                                 /// {commentText}
                                                  /// </summary>
                                                  """);
                     }

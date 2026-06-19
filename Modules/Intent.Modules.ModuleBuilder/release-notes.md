@@ -1,4 +1,8 @@
-﻿### Version 3.18.7
+﻿### Version 3.18.8
+
+- Improvement: Strip out AI context text from Comments when generating the ApiTraitModel template.
+
+### Version 3.18.7
 
 - Improvement: Accelerator for Bumping module versions and adding release notes.
 
