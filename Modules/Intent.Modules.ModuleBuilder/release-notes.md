@@ -1,4 +1,8 @@
-﻿### Version 3.18.7
+﻿### Version 3.18.8
+
+- Improvement: AI rules added for working with Stereotype Definitions.
+
+### Version 3.18.7
 
 - Improvement: Accelerator for Bumping module versions and adding release notes.
 
