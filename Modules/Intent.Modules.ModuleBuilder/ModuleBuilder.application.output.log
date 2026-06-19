@@ -3,7 +3,15 @@
   <ApplicationId>a415ef85-982f-4a87-a356-ddcb8ef34446</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#82102275-5703-4063-af56-14ae960258bb</CorrelationId>
+      <ProjectId>2a4b7246-f604-4498-9826-9635896e92ac</ProjectId>
+      <CorrelationId>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration#csharp-guidelines.md</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../.agents/instructions/csharp-guidelines.md</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>csharp-guidelines.md</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#f49083ac-07b4-4fd8-8fb2-256c1ddbc856</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -1046,7 +1054,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Designer Builder.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Designer Builder.designer.settings</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>2b827469-c59a-4981-b034-3591f1380859</ProjectId>
@@ -1054,7 +1062,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Documentation Extension.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Documentation Extension.designer.settings</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>2b827469-c59a-4981-b034-3591f1380859</ProjectId>
@@ -1070,7 +1078,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Module Builder.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Module Builder.designer.settings</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>2b827469-c59a-4981-b034-3591f1380859</ProjectId>
@@ -1078,7 +1086,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Module Migrations Extension.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Module Migrations Extension.designer.settings</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>2b827469-c59a-4981-b034-3591f1380859</ProjectId>
