@@ -3,7 +3,7 @@
   <comment>`Navigation` associations represent explicit navigations (e.g. buttons, links, etc) that the user can initiate (directly or indirectly) between components.
 ---
 Create Navigation associations between pages as bi-directional by default (i.e., set Navigable = true on both ends). Only model a Navigation association as uni-directional when the requirements/instructions explicitly indicate one-way navigation.
-Navigation associations between a page and the MainLayout should NEVER be bi-directional.</comment>
+Navigation associations between a page and the MainLayout MUST NEVER be bi-directional. The navigation should only be from the MainLayout to the page and NEVER the other way.</comment>
   <name>Navigation</name>
   <display>Navigation</display>
   <isAbstract>false</isAbstract>
