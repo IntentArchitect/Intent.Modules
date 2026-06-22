@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="83d1cd6d-e942-43bc-88bd-bf7918f94e38" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+<class id="3cdd3c92-4ad6-4ae5-ba37-97410a879fd7" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
   <name>Settings</name>
   <display>Settings</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>46b84aff-831c-44ec-ac2a-bd09f9e34b84</parentFolderId>
+  <parentFolderId>2f8f380b-1119-494f-84d2-49b5310dc155</parentFolderId>
   <packageId>b7e7581d-9257-4915-8fa7-e37895091bbd</packageId>
   <packageName>Intent.Modules</packageName>
   <stereotypes>
@@ -21,17 +21,26 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="ef78f5a4-c244-4f5a-9487-86c71bf37550" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="feebf029-2c6f-4be7-aea0-c7f63e349f45" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions</name>
       <display>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions</display>
-      <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>83d1cd6d-e942-43bc-88bd-bf7918f94e38</parentFolderId>
+      <parentFolderId>3cdd3c92-4ad6-4ae5-ba37-97410a879fd7</parentFolderId>
       <packageId>b7e7581d-9257-4915-8fa7-e37895091bbd</packageId>
       <packageName>Intent.Modules</packageName>
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
       <metadata>
         <entry key="status" value="assigned" />
       </metadata>
