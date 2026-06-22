@@ -19,6 +19,14 @@
         <property name="fdbbd211-a162-4f29-bcdb-1250309d8aef" display="Extend Designers" value="[]" isActive="true" />
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="14441454-bfe0-4d5d-8dba-d86d74d33a3b" name="AI Settings">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="### Stereotype Definition Rules&#xA;&#xA;You **MUST** call `get_designer_script_api` with `full = true` before working with stereotype definitions — this is the only source of the complete `IStereotypeDefinitionApi` and `IStereotypePropertyDefinitionApi` member lists (properties, setters, and enum values).&#xA;&#xA;High level guidelines:&#xA;&#xA;- Use `addStereotypeDefinition(name)` on a package or element (including folders) to create a definition. `createElementUnder` and `addChild` do **not** work for stereotype definitions — they will not create one. Folders are elements (`IElementApi`); obtain one via `lookupByName` or `getChild`.&#xA;- `setTargetTypes()` and `setTargetReferenceTypes()` accept element-settings type **names** (e.g. `&quot;Class&quot;`, `&quot;Attribute&quot;`) — resolved to IDs automatically. Get valid names from `get_designer_schema`'s &quot;Element types&quot; block." isActive="true" />
+      </properties>
+    </stereotype>
   </stereotypes>
   <metadata />
   <childElements />

@@ -1,6 +1,8 @@
 ﻿### Version 3.18.8
 
 - Improvement: Strip out AI context text from Comments when generating the ApiTraitModel template.
+- Improvement: AI rules added for working with Stereotype Definitions.
+
 
 ### Version 3.18.7
 

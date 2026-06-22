@@ -1,3 +1,7 @@
+### Version 4.7.21
+
+- Improvement: Changed unbound parameters to rather give a validation exception
+
 ### Version 4.7.20
 
 - Fixed: REST route validation now correctly handles API versioning for traditional services (Operations inherit version settings from parent Service).
