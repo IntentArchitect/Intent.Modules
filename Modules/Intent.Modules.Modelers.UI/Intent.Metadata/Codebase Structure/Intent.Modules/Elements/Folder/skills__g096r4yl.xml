@@ -3,10 +3,45 @@
   <name>skills</name>
   <display>skills</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>6ada7485-a4cd-439d-937d-3fd5d5fc168c</parentFolderId>
-  <stereotypes />
+  <packageId>b7e7581d-9257-4915-8fa7-e37895091bbd</packageId>
+  <packageName>Intent.Modules</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="66fd9e66-42c7-4ef9-a778-b68e009272b9" name="Folder Options">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.Common.CSharp</definitionPackageName>
+      <definitionPackageId>730e1275-0c32-44f7-991a-9619d07ca68d</definitionPackageId>
+      <properties>
+        <property name="96df2fa6-7361-4e43-9acf-dbcea23b650a" display="Namespace Provider" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <metadata />
-  <childElements />
+  <childElements>
+    <childElement id="df98e72b-1611-49fb-88f1-ab85f18e1d23" type="Output Anchor" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>AI.Context.Skills</name>
+      <display>AI.Context.Skills</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>aff1b4ca-182f-40db-ace1-6f264d5efc44</parentFolderId>
+      <packageId>b7e7581d-9257-4915-8fa7-e37895091bbd</packageId>
+      <packageName>Intent.Modules</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="a23c7901-31a5-4cbf-b8bf-1be128977e6d" name="Output Anchor Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="8d79a350-96f1-4d50-bb0a-f65a5c53ec62" display="Create Sub-Folders" value="true" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>
