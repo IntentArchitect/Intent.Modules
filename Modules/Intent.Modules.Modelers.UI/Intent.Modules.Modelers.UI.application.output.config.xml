@@ -5,6 +5,7 @@
     <file relativePath="Intent.Modules.Modelers.UI/Api/AutoCompleteModelStereotypeExtensions.cs" state="ignored" />
     <file relativePath="Intent.Modules.Modelers.UI/Api/ButtonModelStereotypeExtensions.cs" state="ignored" />
     <file relativePath="Intent.Modules.Modelers.UI/Api/CheckboxModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.UI/Api/CompositionModelAssociationExtensions.cs" state="ignored" />
     <file relativePath="Intent.Modules.Modelers.UI/Api/ElementExtensionModelStereotypeExtensions.cs" state="ignored" />
     <file relativePath="Intent.Modules.Modelers.UI/Api/ElementSettingsModelStereotypeExtensions.cs" state="ignored" />
     <file relativePath="Intent.Modules.Modelers.UI/Api/LinkModelStereotypeExtensions.cs" state="ignored" />

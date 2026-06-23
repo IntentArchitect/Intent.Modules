@@ -5,7 +5,6 @@
 - Improvement: Added explicit `Dialog` stereotype to align with how the `Page` stereotype works.
 - Improvement: `Show Dialog` context menu will only allow selection of components with the `Dialog` stereotype.
 
-
 ### Version 1.1.2
 
 - Improvement: Added menu item to invoke a service from a page (not just an operation).

@@ -375,6 +375,47 @@
           <metadata />
           <childElements />
         </childElement>
+        <childElement id="30fe9d6a-f6d9-475a-a54b-9479cc649b74" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Add Component</name>
+          <display>Add Component: Composition</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="19a33354-64e7-4f37-87ae-ba0b58c15450">
+            <typeId>503b9ea9-4e8b-41d7-bbc6-92c97666c476</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.UI</typePackageName>
+            <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>1477276d-8293-4b3e-8b5a-25082aa7a00b</parentFolderId>
+          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+          <packageName>Intent.Modelers.UI</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" value="ctrl + shift + k" isActive="true" />
+                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+                <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" value="return true;" isActive="true" />
+                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property name="da4fd235-9d62-4c1d-afb7-17c856a14715" display="Menu Group" isActive="true" />
+                <property name="5ca38df4-1f60-4be6-a1f7-18935a05681a" display="Top Divider" value="false" isActive="true" />
+                <property name="cd37f0a2-3a8f-49f5-8b23-6a4544257935" display="Bottom Divider" value="false" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
         <childElement id="047fcd9d-b4b2-411f-9cc8-f49a3424f962" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
           <name>Manage View Bindings</name>
           <display>Manage View Bindings: View Binding</display>
@@ -457,7 +498,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const pageRoute = element.getStereotype(&quot;Page&quot;)?.getProperty(&quot;Route&quot;);&#xD;&#xA;&#xD;&#xA;let routeProperties = element.getChildren(&quot;Property&quot;).filter(x =&gt; x.hasStereotype(&quot;[Route Parameter]&quot;));&#xD;&#xA;function getPropertyRoute(propertyIndex) {&#xD;&#xA;    if (propertyIndex &gt;= routeProperties.length) {&#xD;&#xA;        return null;&#xD;&#xA;    }&#xD;&#xA;    let property = routeProperties[propertyIndex];&#xD;&#xA;    const type = property.typeReference.getType().getName() == &quot;int&quot; || property.typeReference.getType().getName() == &quot;guid&quot; || property.typeReference.getType().getName() == &quot;long&quot; ?&#xD;&#xA;        &quot;:&quot; + property.typeReference.getType().getName() + (property.typeReference.getIsNullable() ? &quot;?&quot; : &quot;&quot;) : &quot;&quot;;&#xD;&#xA;    return `{${property.getName()}${type}}`&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;if (pageRoute != null) {&#xD;&#xA;    let routeParts = pageRoute.getValue().toString().split(&quot;/&quot;);&#xD;&#xA;&#xD;&#xA;    let propertyIndex = 0;&#xD;&#xA;    let i = 0;&#xD;&#xA;    &#xD;&#xA;    while (i &lt; routeParts.length) {&#xD;&#xA;        let part = routeParts[i];&#xD;&#xA;        let propertyRoute = getPropertyRoute(propertyIndex);&#xD;&#xA;&#xD;&#xA;        if (part.startsWith(&quot;{&quot;)) {&#xD;&#xA;            if (propertyRoute) {&#xD;&#xA;                routeParts.splice(i, 1, propertyRoute);&#xD;&#xA;            } else {&#xD;&#xA;                routeParts.splice(i, 1);&#xD;&#xA;            }&#xD;&#xA;            propertyIndex++;&#xD;&#xA;        }&#xD;&#xA;        i++;&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    while (propertyIndex &lt; routeProperties.length) {&#xD;&#xA;        routeParts.push(getPropertyRoute(propertyIndex));&#xD;&#xA;        propertyIndex++;&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    pageRoute.setValue(routeParts.join(&quot;/&quot;));&#xD;&#xA;}" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const pageId = &quot;ea4adc09-8978-4ede-ba5f-265debb2b60c&quot;;&#xA;const dialogId = &quot;1f4165ee-41a0-4520-a193-9ae4d3413d1f&quot;;&#xA;const composableId = &quot;5a2ba6fc-8512-4801-8b14-9d532c9c2616&quot;;&#xA;const shouldBeComposable = !element.hasStereotype(pageId) &amp;&amp; !element.hasStereotype(dialogId);&#xA;const isComposable = element.hasStereotype(composableId);&#xA;if (shouldBeComposable &amp;&amp; !isComposable) {&#xA;    element.ensureStereotype(composableId);&#xA;} else if (!shouldBeComposable &amp;&amp; isComposable) {&#xA;    element.removeStereotype(composableId);&#xA;}&#xA;&#xA;const pageRoute = element.getStereotype(&quot;Page&quot;)?.getProperty(&quot;Route&quot;);&#xD;&#xA;&#xD;&#xA;let routeProperties = element.getChildren(&quot;Property&quot;).filter(x =&gt; x.hasStereotype(&quot;[Route Parameter]&quot;));&#xD;&#xA;function getPropertyRoute(propertyIndex) {&#xD;&#xA;    if (propertyIndex &gt;= routeProperties.length) {&#xD;&#xA;        return null;&#xD;&#xA;    }&#xD;&#xA;    let property = routeProperties[propertyIndex];&#xD;&#xA;    const type = property.typeReference.getType().getName() == &quot;int&quot; || property.typeReference.getType().getName() == &quot;guid&quot; || property.typeReference.getType().getName() == &quot;long&quot; ?&#xD;&#xA;        &quot;:&quot; + property.typeReference.getType().getName() + (property.typeReference.getIsNullable() ? &quot;?&quot; : &quot;&quot;) : &quot;&quot;;&#xD;&#xA;    return `{${property.getName()}${type}}`&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;if (pageRoute != null) {&#xD;&#xA;    let routeParts = pageRoute.getValue().toString().split(&quot;/&quot;);&#xD;&#xA;&#xD;&#xA;    let propertyIndex = 0;&#xD;&#xA;    let i = 0;&#xD;&#xA;    &#xD;&#xA;    while (i &lt; routeParts.length) {&#xD;&#xA;        let part = routeParts[i];&#xD;&#xA;        let propertyRoute = getPropertyRoute(propertyIndex);&#xD;&#xA;&#xD;&#xA;        if (part.startsWith(&quot;{&quot;)) {&#xD;&#xA;            if (propertyRoute) {&#xD;&#xA;                routeParts.splice(i, 1, propertyRoute);&#xD;&#xA;            } else {&#xD;&#xA;                routeParts.splice(i, 1);&#xD;&#xA;            }&#xD;&#xA;            propertyIndex++;&#xD;&#xA;        }&#xD;&#xA;        i++;&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    while (propertyIndex &lt; routeProperties.length) {&#xD;&#xA;        routeParts.push(getPropertyRoute(propertyIndex));&#xD;&#xA;        propertyIndex++;&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    pageRoute.setValue(routeParts.join(&quot;/&quot;));&#xD;&#xA;}" isActive="true" />
                 <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>
@@ -491,7 +532,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="// createElement(&quot;Component View&quot;, &quot;[view]&quot;, element.id);&#xD;&#xA;element.createAdvancedMapping();" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const pageId = &quot;ea4adc09-8978-4ede-ba5f-265debb2b60c&quot;;&#xA;const dialogId = &quot;1f4165ee-41a0-4520-a193-9ae4d3413d1f&quot;;&#xA;const composableId = &quot;5a2ba6fc-8512-4801-8b14-9d532c9c2616&quot;;&#xA;if (!element.hasStereotype(pageId) &amp;&amp; !element.hasStereotype(dialogId)) {&#xA;    element.ensureStereotype(composableId);&#xA;}&#xA;&#xA;// createElement(&quot;Component View&quot;, &quot;[view]&quot;, element.id);&#xD;&#xA;element.createAdvancedMapping();" isActive="true" />
                 <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>

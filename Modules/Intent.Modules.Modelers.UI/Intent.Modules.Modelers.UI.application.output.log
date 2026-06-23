@@ -98,6 +98,22 @@
     </FileLog>
     <FileLog>
       <ProjectId>b1753956-3903-4822-9673-1c90d13257a0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#503b9ea9-4e8b-41d7-bbc6-92c97666c476</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/CompositionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>CompositionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>b1753956-3903-4822-9673-1c90d13257a0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#503b9ea9-4e8b-41d7-bbc6-92c97666c476</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/CompositionModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>CompositionModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>b1753956-3903-4822-9673-1c90d13257a0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4912c89a-77eb-497e-a3f4-7408b6a20886</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DiagramModel.cs</ApplicationRelativeFilePath>
@@ -158,6 +174,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/IComponentModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>IComponentModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>b1753956-3903-4822-9673-1c90d13257a0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiTraitModel#5a2ba6fc-8512-4801-8b14-9d532c9c2616</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/IComposableModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>IComposableModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -391,6 +415,14 @@
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.UI.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.UI.csproj</ProjectRelativeFilePath>
       <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>becb43bf-4a01-47f5-a23f-a52d942998b8</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration#344fcb9b-13d3-4c1d-ac5c-2a8569c2289a</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Migrations/Migration_01_01_03_Pre_02.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Migration_01_01_03_Pre_02.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>f282b9df-dd59-4c1f-845d-1f13fc75ff65</ProjectId>

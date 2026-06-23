@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="5a2ba6fc-8512-4801-8b14-9d532c9c2616" version="3.1.0">
+  <comment>Auto-managed marker. Applied to Components that are not Pages or Dialogs. Used by Composition target filtering.</comment>
+  <name>Composable</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="b1c481e1-e91e-4c29-9817-00ab9cad4b6b">Component</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <isTrait>true</isTrait>
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>5c4628ec-679e-4f3d-afda-137c978deae0</parentFolderId>
+  <order>0</order>
+  <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+  <packageName>Intent.Modelers.UI</packageName>
+  <properties />
+</stereotypeDefinition>

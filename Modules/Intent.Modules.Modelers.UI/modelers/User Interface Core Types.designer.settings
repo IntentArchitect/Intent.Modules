@@ -110,6 +110,7 @@ return "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLT
         <type order="4" type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
         <type order="5" type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101" />
         <type order="6" type="Navigation Target End" typeId="2b191288-ecae-4743-b069-cbdd927ef349" />
+        <type order="7" type="Composition Target End" typeId="15131ce2-31a6-461a-9889-42ec0f8f980b" />
       </typeOrder>
       <contextMenuOptions>
         <createElement type="element">
@@ -177,6 +178,16 @@ return hasStereotype(pageStereotypeId)</isOptionVisibleFunction>
           <defaultName>NewNavigation</defaultName>
           <allowMultiple>true</allowMultiple>
           <sourceEndDefault isNavigable="true" isNullable="false" isCollection="false" />
+        </createAssociation>
+        <createAssociation type="association">
+          <text>Add Component</text>
+          <shortcut>ctrl + shift + k</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <isOptionVisibleFunction>return true;</isOptionVisibleFunction>
+          <specializationType>Composition Target End</specializationType>
+          <specializationTypeId>15131ce2-31a6-461a-9889-42ec0f8f980b</specializationTypeId>
+          <defaultName>NewComposition</defaultName>
+          <allowMultiple>true</allowMultiple>
         </createAssociation>
         <openMapping type="open-advanced-mapping" mappingType="View Binding" mappingTypeId="c33f86ad-423a-4a6f-a80c-a3206eafe5cd">
           <text>Manage View Bindings</text>
@@ -303,7 +314,18 @@ return (!element.hasStereotype("ea4adc09-8978-4ede-ba5f-265debb2b60c") // Page S
       </visualSettings>
       <macros>
         <macro trigger="on-changed">
-          <script>const pageRoute = element.getStereotype("Page")?.getProperty("Route");
+          <script>const pageId = "ea4adc09-8978-4ede-ba5f-265debb2b60c";
+const dialogId = "1f4165ee-41a0-4520-a193-9ae4d3413d1f";
+const composableId = "5a2ba6fc-8512-4801-8b14-9d532c9c2616";
+const shouldBeComposable = !element.hasStereotype(pageId) &amp;&amp; !element.hasStereotype(dialogId);
+const isComposable = element.hasStereotype(composableId);
+if (shouldBeComposable &amp;&amp; !isComposable) {
+    element.ensureStereotype(composableId);
+} else if (!shouldBeComposable &amp;&amp; isComposable) {
+    element.removeStereotype(composableId);
+}
+
+const pageRoute = element.getStereotype("Page")?.getProperty("Route");
 
 let routeProperties = element.getChildren("Property").filter(x =&gt; x.hasStereotype("[Route Parameter]"));
 function getPropertyRoute(propertyIndex) {
@@ -346,7 +368,14 @@ if (pageRoute != null) {
 }</script>
         </macro>
         <macro trigger="on-created">
-          <script>// createElement("Component View", "[view]", element.id);
+          <script>const pageId = "ea4adc09-8978-4ede-ba5f-265debb2b60c";
+const dialogId = "1f4165ee-41a0-4520-a193-9ae4d3413d1f";
+const composableId = "5a2ba6fc-8512-4801-8b14-9d532c9c2616";
+if (!element.hasStereotype(pageId) &amp;&amp; !element.hasStereotype(dialogId)) {
+    element.ensureStereotype(composableId);
+}
+
+// createElement("Component View", "[view]", element.id);
 element.createAdvancedMapping();</script>
         </macro>
       </macros>
@@ -1618,6 +1647,74 @@ mapping.addMappedEnd("ab447316-1252-49bc-a695-f34cb00a3cdc",
 // }</script>
         </macro>
       </macros>
+    </associationSetting>
+    <associationSetting type="Composition" typeId="503b9ea9-4e8b-41d7-bbc6-92c97666c476">
+      <comment>`Composition` associations model structural UI composition - a page or any component can be composed of one or more other components.</comment>
+      <sourceEnd type="Composition Source End" typeId="e5e22007-149b-499c-b2e9-5c17064b606a">
+        <nameAccessibilityMode>hidden</nameAccessibilityMode>
+        <allowSorting>true</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" />
+          </targetTypes>
+          <allowIsNavigable>true</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>false</allowIsCollection>
+          <isNavigableDefault>false</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </sourceEnd>
+      <targetEnd type="Composition Target End" typeId="15131ce2-31a6-461a-9889-42ec0f8f980b">
+        <implements>
+          <trait id="dc813928-0ce1-4f66-ae31-b5e5d506b4a3" name="[Invokable]" />
+        </implements>
+        <displayFunction>const display = [
+    { text: "[composed of] ", cssClass: "keyword" },
+    { text: `${typeReference.getType()?.getName() ?? "&lt;not-set&gt;"}`, cssClass: "typeref", targetId: typeReference.typeId },
+];
+return display;</displayFunction>
+        <nameAccessibilityMode>hidden</nameAccessibilityMode>
+        <defaultNameFunction>return `ComposedOf${association.typeReference.getType()?.getName() ?? ""}`;</defaultNameFunction>
+        <nameMustBeUnique>true</nameMustBeUnique>
+        <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAG1UlEQVR4AexZTWhUVxQ+581MsnIRQaFVWmjtotoWQrJQi1D/urFQWzBURKFQoqb+rIwitLZQS3XhyqCmW8GCC2ur6X8rlVKLyaKVShFN6cadChIMZsjcft/TM3155j3NfXeGqgnz5d5z553vnPude+fNvBvJY/43LcBjvgBkegVMr4DHXIHGb4E9Lnpqs2vzgcC30fVpmABzt7p1c951g3OvyVitJNd9QN8nt7jz5GqUEA0R4Oktrq9Uk6NlkY6Skwi44Ymo4qSTXORshAjBBXimx60tj0tPuSa3SmhLVWn7p09n+oC+5CAXOZ/d5N4KLUJwAZDoNlRbSiK9w4f10PARubn5rGvzAX3JAb6dgADb/+cCOEW12gGJIvmMyW79VS60lOW6D7afkz/EOY1KcgycDmgXcUreUAi6Ajq6pYzKt0Y1qf7Vp9e6B10FnwMLIifiiRc++FMq5EL1q+Sev0YqoSZPnqACkBBVEoJ9Aolz6XqDHAQ5CfZDIrgAnHAZFbckUTV+HnijzgNOcpsdqg0uAKtEWIJMugiMh5yE2b5t2i+4ADZZC2S2b5vmMTtUG1wAVolggh34F2oLkJMAZdBXcAGs0pal2b6t8fAuQo4FNhCoDS4Aq0RYfky6CIyHnITZodrgAthkLUEGKALjSfPaeNGWuRXlqPtzz7NKhA1a4r6t8ZCTMDtUG1QAJsWJcr+yT9AuArlIFql/kbpjhfsfXABWibAUg90FxmXCN0zjL9pGRQnS/lZtGzfbtzUefrskh9mh2vAC1LBcAUuQSRfB/LtEJXASd81gTVAB+vu1iuU/ip9rlfVvuNkbO7WKpH/z3Qbq5FxXl469vcbNwq/KFnIfP65jwWYPoqACgE+Q9BAmLZVxWU+7e6Uu7F6u6oNNK3QROfS2bCAnVtIg7ZAILkBLTQ5wv+JOsPed19yO7jfdE74J05cc5CInng8e8OXK8gsuwKen9ASe4+3Hcm1F0vuj23J10yrnfEBfcpArqsm+/i/186yJ+I4HF4CJHB5QPsNbjcTPYO+OYBLiBZERiPkTOF4/clp3kTs0GiIAk+wb0JMHv9KlB0/rjIMDql6Ab9/XugwcX5DTB/fzmZIAe3BSs2uVa/MBfe+XjL3Pa31i0Ie+xvMg7QMJ0PuqW7djhRsc/QWnPGM45fEAfXtXuvPkykqM7zUjTjL+fQXYvcL1YS8fxb29A3sxwl6+4QUR+naSi5zJJNjnGN9rdBzGSiJXgPeXubW4//ZE43ILn8I9+Dre9vH3OtMH9CUHucj53vL/TnmaFSc5cevnCoAvHttQbcH9t/ejH/XQJ9/JzVOnXJsP6EuOFpWd5ES166c8zYpjk062mQI4wYnMuLSjWlIp3Tnl+fa0XKioXPcBfH9n4LLKsagmDiuhnTEI9hsdh7EnQ6YA/R1Sxn5sRXWqu3/Qa4M45SmpLPD9Xg/fF8lBLqyoKrk/nC+VZsWZbPIcyxSAb7IqBPsExKg/mPDpk4MgJ8E+wT7BPuHDnfQhB0FOgv0s5AoQ71WcyJhzMohP33jSvGnbhzvpkxXHxpNtrgBUjzAH7+UPAvqiiV/kJGID/9gn0I1fvLYIYhL8IyeBbuYrV4AJlRmSQsufFRJwMBP8uot/G9jDjmbFYew0cgWgerhd1X04iSIwInKS22z2OVa3se0aEcf4k22uABMqA68iy5K+oIhfad60zWuLIA6Cf2leDN3zyhWAlSHMi0u3CIyHnESWXSQGfbN4bTzZ5gvApYiHkeZQZFnSN80zwW5CHIuXbHMF4L4kzKHIsqSv8ZCTyLJ5rS/ol8Vr48k2VwBWjTAH9ovAeLg3yWM2+0Ta5pgPjCcdx8aTba4ArBJhDj7JJH2Mh5xElp308eln8dp4ss0VwIKbA5dXEdR5+NkCZNp4oxFxQHvPK1MAO+md8GmNpE0Un9ail/FwwFZAs+JY7HSbKUDnEE55nIziKVDlm5fc7M6Nd095fEWoyTlyDMxzs1DdFuzP0a6LOtasOOmJm50pAC9A9YdYqdKYxKc8c7p04Zw1ql7o0viUp6UsG8gZ1aR+ytOsOJxTGrkCoEoH4qVek71nnnM7fn7e/5SHvuTAZPeSk9yWDPsc43u8htfae1Nt6UsOcpGT3HkcuQK8cklPYL/GpzwlJ/u1KlfPznPOB/QlB6rfCuxbeknrpzzNijOZELkC0GHJFd2Ji1bjhOYMVB3BJPx+FdZkBBOPT3mWXL73lKdZcTinJDC3pDl5/+XLenLx37p08bDOWHxF1QvwXTSsyxZd1sxTnmbFSc7ygQRIOjxq/WkBHrWKTnU+0ytgqoo9atc/9CugaEH+BQAA//9rjtoiAAAABklEQVQDACKlNeqBBFqAAAAAAElFTkSuQmCC" />
+        <allowSorting>true</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type type="Composable" typeId="5a2ba6fc-8512-4801-8b14-9d532c9c2616" />
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>false</allowIsCollection>
+          <isNavigableDefault>true</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </targetEnd>
+      <visualSettings type="Composition" typeId="503b9ea9-4e8b-41d7-bbc6-92c97666c476">
+        <lineType>Curved</lineType>
+        <lineColor>return '#94A3B8';</lineColor>
+        <sourceEnd>
+          <pointIndicator>
+            <fillColor>return '#000000'</fillColor>
+            <path>return `l 5.0 7.5 l -5.0 7.5 l -5.0 -7.5 Z`</path>
+          </pointIndicator>
+          <navigableIndicator>
+            <lineColor>return theme.isDark ? '#ade8f4' : '#0077b6';</lineColor>
+            <path>return `m 0 15 l 5 10 l -5 -2.5 l -5 2.5 Z`</path>
+          </navigableIndicator>
+        </sourceEnd>
+        <targetEnd>
+          <navigableIndicator>
+            <path>`l 5 10 l -5 -2.5 l -5 2.5 Z`</path>
+          </navigableIndicator>
+        </targetEnd>
+      </visualSettings>
+      <macros />
     </associationSetting>
     <associationSetting type="Navigation" typeId="6d2b2070-c1cb-4cd2-88b4-4e5f8414bd9e">
       <comment>`Navigation` associations represent explicit navigations (e.g. buttons, links, etc) that the user can initiate (directly or indirectly) between components.
