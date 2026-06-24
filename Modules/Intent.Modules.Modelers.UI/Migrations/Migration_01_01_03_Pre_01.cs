@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.Modelers.UI.Migrations
 {
-    public class Migration_01_01_03_Pre_02 : IModuleMigration
+    public class Migration_01_01_03_Pre_01 : IModuleMigration
     {
         private readonly IApplicationConfigurationProvider _configurationProvider;
 
@@ -21,7 +21,7 @@ namespace Intent.Modules.Modelers.UI.Migrations
         private const string DialogStereotypeId = "1f4165ee-41a0-4520-a193-9ae4d3413d1f";
         private const string ComposableStereotypeId = "5a2ba6fc-8512-4801-8b14-9d532c9c2616";
 
-        public Migration_01_01_03_Pre_02(IApplicationConfigurationProvider configurationProvider)
+        public Migration_01_01_03_Pre_01(IApplicationConfigurationProvider configurationProvider)
         {
             _configurationProvider = configurationProvider;
         }
@@ -29,7 +29,7 @@ namespace Intent.Modules.Modelers.UI.Migrations
         [IntentFully]
         public string ModuleId => "Intent.Modelers.UI";
         [IntentFully]
-        public string ModuleVersion => "1.1.3-pre.2";
+        public string ModuleVersion => "1.1.3-pre.1";
 
         public void Up()
         {
