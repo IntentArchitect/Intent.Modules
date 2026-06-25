@@ -2,14 +2,149 @@
 <settings version="3.1.1">
   <id>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</id>
   <name>Module Builder</name>
-  <rules>### Stereotype Definition Rules
+  <rules>### Designer Scripting — Stereotype DEFINITIONS
 
-You **MUST** call `get_designer_script_api` with `full = true` before working with stereotype definitions — this is the only source of the complete `IStereotypeDefinitionApi` and `IStereotypePropertyDefinitionApi` member lists (properties, setters, and enum values).
+This is an ADDENDUM to the `get_designer_script_api` tool response (the `run_designer_script` cheat-sheet),
+covering how to author stereotype definitions (the metamodel). Same rules as the base cheat-sheet: plain
+JavaScript with top-level `await`, hold references in locals, never invent GUIDs, statement order IS operation
+order, the whole script is one undo composite, and you read the scoped `errors[]` after every run. Use exactly
+the members listed here — don't guess; the complete declarations are in `core.context.types.d.ts`
+(`IStereotypeDefinitionApi` / `IStereotypePropertyDefinitionApi`) if you ever need more.
 
-High level guidelines:
+#### Applying vs defining — don't confuse the two
 
-- Use `addStereotypeDefinition(name)` on a package or element (including folders) to create a definition. `createElementUnder` and `addChild` do **not** work for stereotype definitions — they will not create one. Folders are elements (`IElementApi`); obtain one via `lookupByName` or `getChild`.
-- `setTargetTypes()` and `setTargetReferenceTypes()` accept element-settings type **names** (e.g. `"Class"`, `"Attribute"`) — resolved to IDs automatically. Get valid names from `get_designer_schema`'s "Element types" block.</rules>
+The base cheat-sheet's "Stereotypes &amp; associations" section APPLIES an existing stereotype to an element
+(`el.ensureStereotype("Audit").setProperty(...)`). THIS addendum DEFINES the stereotype itself — its name,
+what it can be applied to, and which properties it carries.
+
+#### 1. Where definitions live, and how to read / create them
+
+A stereotype definition is a child of a PACKAGE or an ELEMENT. Both owners expose the SAME four members —
+read with `getStereotypeDefinition(s)` / `hasStereotypeDefinition`, create with `addStereotypeDefinition`:
+
+```js
+pkg.getStereotypeDefinitions()                 // ARRAY of definitions directly under this package/element
+pkg.getStereotypeDefinition("Audit")           // a SINGLE one by name or id (null when none)
+pkg.hasStereotypeDefinition("Audit")
+pkg.addStereotypeDefinition("Audit")           // create + return the new IStereotypeDefinitionApi
+```
+
+(Get a package handle with `lookupPackage(name)` / `getPackages()`; an element handle the usual way.)
+
+DISCOVER existing definitions with the `get_designer_stereotype_definitions` tool before authoring, and get
+the element-settings type NAMES used for targeting from `get_designer_schema`'s "Element types" block.
+
+IDEMPOTENT create idiom — there is no `ensureStereotypeDefinition`, so do it by hand (safe to re-run):
+
+```js
+const def = pkg.getStereotypeDefinition("Audit") ?? pkg.addStereotypeDefinition("Audit");
+```
+
+#### 2. The definition (`IStereotypeDefinitionApi`)
+
+Every readonly field has a matching `setX()`.
+
+```js
+def.setName(v)  def.setComment(v)  def.setHint(v)        // identity / docs
+def.setIcon("fa-shield")                                 // "fa-*", a URL, or a JSON icon model; null clears
+def.setIsTrait(b)  def.setAllowMultipleApplies(b)  def.setOrder(i)
+```
+
+**Targeting** — what the stereotype may be applied to. `setTargetMode` picks the strategy; some modes need a
+companion setter (the values are element-settings type NAMES or ids, resolved from `get_designer_schema`):
+
+```js
+def.setTargetMode("all-elements")                              // anything
+def.setTargetMode("elements-of-type");        def.setTargetTypes(["Class", "Attribute"]);   // these types
+def.setTargetMode("elements-that-reference"); def.setTargetReferenceTypes(["Class"]);        // elements referencing these
+def.setTargetMode("filter-function");         def.setTargetFilterFunction("element =&gt; element.getName().endsWith('Dto')");
+```
+
+**Apply mode** — when it gets applied: `"manually"` (user adds it) | `"on-element-created"` | `"always"`:
+
+```js
+def.setApplyMode("manually")
+```
+
+**Display** on the diagram/tree (all optional):
+
+```js
+def.setDisplayAsText(b)  def.setDisplayAsAnnotation(b)  def.setDisplayTextFunction(js)  def.setDisplayIconFunction(js)
+```
+
+**Lifecycle hooks** — JS run on the applied stereotype (advanced): `setOnAppliedScript` / `setOnChangedScript` /
+`setOnRemovedScript` / `setValidateFunction`.
+
+**Properties:**
+
+```js
+def.getProperties()  def.getProperty("Verb")  def.hasProperty("Verb")
+def.addProperty("Verb")                                  // create + return IStereotypePropertyDefinitionApi
+def.removeProperty("Verb")                               // throws if absent
+def.delete()                                             // remove the whole definition
+```
+
+#### 3. A property (`IStereotypePropertyDefinitionApi`)
+
+`addProperty` returns it; each readonly field has a `setX()`.
+
+```js
+p.setName(v)  p.setComment(v)  p.setHint(v)  p.setDefaultValue("GET")  p.setPlaceholder("e.g. GET")
+p.setIsActiveFunction(js)  p.setIsRequiredFunction(js)  // JS controlling visibility / required-ness
+```
+
+**Control type** — the editor widget. `setControlType` one of:
+`"text-box"` | `"text-area"` | `"checkbox"` | `"number"` | `"decimal"` | `"select"` | `"multi-select"` |
+`"icon"` | `"item-list"` | `"javascript-function"`.
+
+```js
+p.setControlType("text-box")
+```
+
+For `"select"` / `"multi-select"` you ALSO declare where options come from — `setOptionsSource` one of:
+
+- `"options"` (static list) → `p.setValueOptions(["GET","POST","PUT"])`
+- `"lookup-element"` / `"nested-lookup"` → `p.setLookupTypes(["Class"])` (element-settings type names/ids)
+- `"lookup-children"` → `p.setLookupChildrenRootFunction(js returning a root element id)`
+- `"lookup-stereotype"` | `"not-applicable"`
+
+```js
+p.setOptionsSource("options"); p.setValueOptions(["GET", "POST", "PUT", "DELETE"]);
+```
+
+- `"item-list"` → `p.setItemType("&lt;stereotype-def name or id&gt;")` (each item is an instance of that definition)
+- `"javascript-function"` → `p.setApiTypeDefinition("element-macro")` (which API surface the JS gets:
+  `"element-direct"` | `"element-macro"` | `"element-visual"` | `"association-direct"` | `"association-macro"` |
+  `"mapping-element"` | `"mapping-macro"` | `"module-settings"` | `"stereotype-display"`)
+
+```js
+p.delete()
+```
+
+#### 4. Worked recipe
+
+Define an "Http Settings" stereotype on Commands, with a Verb dropdown and a Route text box:
+
+```js
+const pkg = lookupPackage("MyModule");
+const def = pkg.getStereotypeDefinition("Http Settings") ?? pkg.addStereotypeDefinition("Http Settings");
+def.setComment("HTTP routing for a command");
+def.setIcon("fa-globe");
+def.setTargetMode("elements-of-type");
+def.setTargetTypes(["Command"]);
+def.setApplyMode("manually");
+const verb = def.getProperty("Verb") ?? def.addProperty("Verb");
+verb.setControlType("select");
+verb.setOptionsSource("options");
+verb.setValueOptions(["GET", "POST", "PUT", "DELETE"]);
+verb.setDefaultValue("POST");
+const route = def.getProperty("Route") ?? def.addProperty("Route");
+route.setControlType("text-box");
+route.setPlaceholder("e.g. /orders/{id}");
+console.log(`Defined ${def.name} with ${def.getProperties().length} properties`);
+```
+
+After running: inspect the returned `errors[]` (scoped to what you changed) and fix any in a follow-up script.</rules>
   <designerReferences />
   <packageSettings>
     <packageSetting type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">
