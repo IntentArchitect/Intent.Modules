@@ -81,13 +81,16 @@ public class ConstructorMapping : CSharpMappingBase
 
     private CSharpStatement ImplementWithCtor(CSharpConstructor ctor)
     {
-        var inv = new CSharpInvocationStatement($"new {ctor.Name}").WithoutSemicolon();
+        // a contstructor should always have the parent, the class
+        var fullyQualifiedName = _template.GetTypeName(((IElement)Model).ParentElement);
+
+        var inv = new CSharpInvocationStatement($"new {fullyQualifiedName}").WithoutSemicolon();
 
         foreach (var parameter in ctor.Parameters)
         {
             var optional = parameter.DefaultValue != null;
             var child = GetAllChildren().FirstOrDefault(c => c.Model.Name.Equals(parameter.Name, StringComparison.InvariantCultureIgnoreCase));
-            if (child != null)
+            if (child != null && child.Mapping?.SourceElement != null)
             {
                 inv.AddArgument(new CSharpArgument(child.GetSourceStatement()), arg =>
                 {

@@ -1,4 +1,8 @@
-﻿### Version 3.10.7
+﻿### Version 3.10.8
+
+- Improvement: Fully qualified names used when generating constructor mappings to avoid Namespace/class conflicts.
+
+### Version 3.10.7
 
 - Improvement: Updated script to cater for possible null stereotype property value
 - Fixed: `CSharpTypeResolver` incorrectly split generic type names (e.g. `PagedResultDTO<Namespace.Type>`) when resolving the `C#` stereotype "Type" property, causing malformed `using` directives to be generated.
