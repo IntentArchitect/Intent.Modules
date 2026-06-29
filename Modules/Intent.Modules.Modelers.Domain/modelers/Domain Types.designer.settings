@@ -1233,7 +1233,33 @@ getCurrentDiagram().layoutVisuals(result.elementIds, getCurrentDiagram().mousePo
             <allowMultiple>true</allowMultiple>
           </createElement>
         </contextMenuOptions>
-        <elementVisualSettings />
+        <elementVisualSettings>
+          <visualSettings type="Diagram" typeId="4d66fecd-e9b8-436f-aa50-c59040ad0879">
+            <size width="200" height="60" />
+            <position x="${x}" y="${y}" />
+            <display>
+              <drawText>
+                <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+color: ${(element.isReference() ? theme.isDark ? "#9AD6D9" : "#007D80" : "inherit")};
+vertical-align: center`</style>
+                <size width="${w}" height="16" />
+                <position x="${x}" y="${y + 40 + (element.hasStereotype(&quot;Http Settings&quot;) ? 14: 0)}" />
+              </drawText>
+              <drawSvgResource>
+                <path>diagram.svg</path>
+                <size width="${w}" height="36" />
+                <position x="${x}" y="${y + 2}" />
+              </drawSvgResource>
+            </display>
+            <defaultSize width="200" height="60" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+            <childElementVisualSettings />
+          </visualSettings>
+        </elementVisualSettings>
         <associationVisualSettings />
       </diagramSettings>
       <macros>
