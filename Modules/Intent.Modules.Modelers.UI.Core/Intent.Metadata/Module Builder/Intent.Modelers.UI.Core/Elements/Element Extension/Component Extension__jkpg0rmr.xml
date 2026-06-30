@@ -48,6 +48,72 @@
   </stereotypes>
   <metadata />
   <childElements>
+    <childElement id="153cf1fc-e202-44ab-9b21-1ac782f77e32" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>e095c3ef-5bcb-43ff-851d-e2a8fe76dac1</parentFolderId>
+      <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+      <packageName>Intent.Modelers.UI.Core</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="c84fe20a-70e9-4c99-b179-4821d30f6e1c" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Show Dialog</name>
+          <display>Show Dialog: Show Dialog Target End</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="a6025d2b-c9d0-490e-9e24-f13314e3bb59">
+            <typeId>c44a7969-abfa-4073-ab2c-d2d0f1f6bd2f</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.UI.Core</typePackageName>
+            <typePackageId>a2a95421-3e55-43c7-96ad-355610b43c4d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>153cf1fc-e202-44ab-9b21-1ac782f77e32</parentFolderId>
+          <packageId>a2a95421-3e55-43c7-96ad-355610b43c4d</packageId>
+          <packageName>Intent.Modelers.UI.Core</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" value="ctrl + shift + d" isActive="true" />
+                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+                <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
+                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property name="da4fd235-9d62-4c1d-afb7-17c856a14715" display="Menu Group" isActive="true" />
+                <property name="5ca38df4-1f60-4be6-a1f7-18935a05681a" display="Top Divider" value="false" isActive="true" />
+                <property name="cd37f0a2-3a8f-49f5-8b23-6a4544257935" display="Bottom Divider" value="false" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="99511817-15b6-462a-9c3c-449da1b49451" name="Target End Defaults">
+              <addedByDefault>false</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="1588b020-7a75-44bd-9617-509826857f64" display="Is Navigable" value="true" isActive="true" />
+                <property name="8983add9-cbe1-4a05-b3c2-638a17dccc3e" display="Is Nullable" value="false" isActive="true" />
+                <property name="087bc413-4179-40c2-81d2-63b6f757ae0d" display="Is Collection" value="false" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
     <childElement id="47b8e76a-4d1a-431e-8d6b-7abe745254c5" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
       <name>NewElementEventSettings</name>
       <display>[events]</display>
@@ -87,7 +153,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getName().endsWith(&quot;Dialog&quot;)) {&#xD;&#xA;    const view = element.getChild(x =&gt; x.specializationId == &quot;624513a6-cba8-4dde-8ebe-6b19f00f0364&quot;); // View&#xD;&#xA;    createElement(&quot;1260ae89-b0cc-4ae0-b21c-7e26d45f16a5&quot;, &quot;Dialog&quot;, view.id); // Dialog&#xD;&#xA;    if (element.hasStereotype(&quot;ea4adc09-8978-4ede-ba5f-265debb2b60c&quot;)){ // [Page]&#xD;&#xA;        element.removeStereotype(&quot;ea4adc09-8978-4ede-ba5f-265debb2b60c&quot;); // [Page]&#xD;&#xA;    }&#xD;&#xA;}" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getName().endsWith(&quot;Dialog&quot;)) {&#xD;&#xA;    const view = element.getChild(x =&gt; x.specializationId == &quot;624513a6-cba8-4dde-8ebe-6b19f00f0364&quot;); // View&#xD;&#xA;    if(view != null) {&#xD;&#xA;        createElement(&quot;1260ae89-b0cc-4ae0-b21c-7e26d45f16a5&quot;, &quot;Dialog&quot;, view.id); // Dialog&#xD;&#xA;    if (element.hasStereotype(&quot;ea4adc09-8978-4ede-ba5f-265debb2b60c&quot;)){ // [Page]&#xD;&#xA;        element.removeStereotype(&quot;ea4adc09-8978-4ede-ba5f-265debb2b60c&quot;); // [Page]&#xD;&#xA;    }&#xD;&#xA;    }&#xD;&#xA;}" isActive="true" />
                 <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
               </properties>
             </stereotype>

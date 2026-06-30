@@ -126,6 +126,56 @@
           <metadata />
           <childElements />
         </childElement>
+        <childElement id="2b262452-ce56-4d7f-aae8-675941cf8dc7" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>New Dialog</name>
+          <display>New Dialog: Inline Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="941143f9-e8a5-4e0a-bf94-05306cb703eb">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3b41c5dc-f82d-4dac-bfd6-376b1ac9f1ce</parentFolderId>
+          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+          <packageName>Intent.Modelers.UI</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const dialogStereotypeName = &quot;Dialog&quot;;&#xA;&#xA;const dialog = getCurrentDiagram().createElement(&quot;Component&quot;, &quot;NewDialog&quot;);&#xA;dialog.ensureStereotype(dialogStereotypeName);&#xA;dialog.refresh();&#xA;getCurrentDiagram()?.selectVisualsForElements(dialog.id, false);&#xA;await dialog.enableEditing();&#xA;" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[]" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNTAgNTAiPg0KICA8ZGVmcz4NCiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IjNBMDM3NkYyLUIxNDAtNDIyNy04M0UzLTNEMkEyRjM2MjYyMyIgeDE9IjI0LjkiIHkxPSI1LjYiIHgyPSIyNS4xIiB5Mj0iNDQuNyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPg0KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmJiMDQxIi8+DQogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmY2I2NDUiLz4NCiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2Y1N2YyMCIvPg0KICAgIDwvbGluZWFyR3JhZGllbnQ+DQogIDwvZGVmcz4NCiAgPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI4LjcuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDEuMi4wIEJ1aWxkIDE0MikgIC0tPg0KICA8Zz4NCiAgICA8ZyBpZD0iTGF5ZXJfMSI+DQogICAgICA8cGF0aCBkPSJNNDQuOSw1LjhINS4xYy0xLjQsMC0yLjYsMS40LTIuNiwzdjMyLjVjMCwxLjYsMS4yLDMsMi42LDNoMzkuOGMxLjQsMCwyLjYtMS40LDIuNi0zVjguOGMwLTEuNi0xLjItMy0yLjYtM1pNMTksOGMuOSwwLDEuNy44LDEuNywxLjdzLS44LDEuNy0xLjcsMS43LTEuNy0uOC0xLjctMS43LjgtMS43LDEuNy0xLjdaTTE0LjIsOGMuOSwwLDEuNy44LDEuNywxLjdzLS44LDEuNy0xLjcsMS43LTEuNy0uOC0xLjctMS43LjgtMS43LDEuNy0xLjdaTTkuNSw4Yy45LDAsMS43LjgsMS43LDEuN3MtLjgsMS43LTEuNywxLjctMS43LS44LTEuNy0xLjcuOC0xLjcsMS43LTEuN1pNNDQsMzguMmMwLDEuMS0xLDIuMS0yLjIsMi4xSDguMWMtMS4yLDAtMi4yLTEtMi4yLTIuMVYxNS4xYzAtMS4xLDEtMi4xLDIuMi0yLjFoMzMuN2MxLjIsMCwyLjIsMSwyLjIsMi4xdjIzLjFaTTM5LjgsMTl2OC4yYzAsMS4yLS44LDIuMi0xLjksMi4yaC02LjZjLTEsMC0xLjktMS0xLjktMi4ydi04LjJjMC0xLjIuOC0yLjIsMS45LTIuMmg2LjZjMSwwLDEuOSwxLDEuOSwyLjJaTTI2LDE5LjNjMCwuNi0uMiwxLjEtLjYsMS41LS40LjQtLjkuNi0xLjUuNmgtMTMuMWMtMS4yLDAtMi4yLTEtMi4yLTIuMnMuMi0xLjEuNi0xLjVjLjQtLjQuOS0uNiwxLjUtLjZoMTMuMWMxLjIsMCwyLjIsMSwyLjIsMi4yWk0yNiwyN2MwLC42LS4yLDEuMS0uNiwxLjUtLjQuNC0uOS42LTEuNS42aC0xMy4xYy0xLjIsMC0yLjItMS0yLjItMi4ycy4yLTEuMS42LTEuNWMuNC0uNC45LS42LDEuNS0uNmgxMy4xYzEuMiwwLDIuMiwxLDIuMiwyLjJaTTM5LjgsMzQuN2MwLC42LS4yLDEuMS0uNiwxLjUtLjQuNC0uOS42LTEuNS42SDEwLjdjLTEuMiwwLTIuMi0xLTIuMi0yLjJzLjItMS4xLjYtMS41Yy40LS40LjktLjYsMS41LS42aDI2LjljMS4yLDAsMi4yLDEsMi4yLDIuMloiIGZpbGw9InVybCgjM0EwMzc2RjItQjE0MC00MjI3LTgzRTMtM0QyQTJGMzYyNjIzKSIvPg0KICAgIDwvZz4NCiAgPC9nPg0KPC9zdmc+&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="ctrl + shift + d" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" isActive="true" />
+                <property name="c37d8704-0003-4886-b6c2-4e51aa22a8f9" display="Menu Group" isActive="true" />
+                <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="false" isActive="true" />
+                <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
         <childElement id="a81ff155-0e2b-46fd-a20b-495662b9a2f3" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Component</name>
           <display>New Component: Component</display>

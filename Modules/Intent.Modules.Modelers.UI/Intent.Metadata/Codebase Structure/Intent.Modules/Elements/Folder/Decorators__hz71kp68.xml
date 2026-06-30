@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="5851eb16-9f08-40ac-9c3f-4465d8b18558" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+<class id="804e25e7-229b-4860-8ad0-8f68451adae8" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
   <name>Decorators</name>
   <display>Decorators</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>46b84aff-831c-44ec-ac2a-bd09f9e34b84</parentFolderId>
+  <parentFolderId>2f8f380b-1119-494f-84d2-49b5310dc155</parentFolderId>
   <packageId>b7e7581d-9257-4915-8fa7-e37895091bbd</packageId>
   <packageName>Intent.Modules</packageName>
   <stereotypes>
@@ -21,14 +21,13 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="e16472d8-ef54-4d39-bd88-c179eff7ce54" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="6aff72fb-bde0-4247-9e05-e37af9c38abd" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.DecoratorRegistration.Template</name>
       <display>Intent.ModuleBuilder.DecoratorRegistration.Template</display>
-      <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>5851eb16-9f08-40ac-9c3f-4465d8b18558</parentFolderId>
+      <parentFolderId>804e25e7-229b-4860-8ad0-8f68451adae8</parentFolderId>
       <packageId>b7e7581d-9257-4915-8fa7-e37895091bbd</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes>
@@ -47,14 +46,13 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="2523e369-51fe-4891-8672-431fd3daae46" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="7e33ea96-b973-4f38-8ed6-47f705d05d98" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.DecoratorTemplate</name>
       <display>Intent.ModuleBuilder.DecoratorTemplate</display>
-      <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>5851eb16-9f08-40ac-9c3f-4465d8b18558</parentFolderId>
+      <parentFolderId>804e25e7-229b-4860-8ad0-8f68451adae8</parentFolderId>
       <packageId>b7e7581d-9257-4915-8fa7-e37895091bbd</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes>
@@ -73,14 +71,13 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="a73d286a-fc38-4917-9590-a570faa2ea9d" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="4fd600b6-bef6-4a49-9186-3710b589b5ce" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.Templates.TemplateDecorator</name>
       <display>Intent.ModuleBuilder.Templates.TemplateDecorator</display>
-      <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>5851eb16-9f08-40ac-9c3f-4465d8b18558</parentFolderId>
+      <parentFolderId>804e25e7-229b-4860-8ad0-8f68451adae8</parentFolderId>
       <packageId>b7e7581d-9257-4915-8fa7-e37895091bbd</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes>
@@ -99,14 +96,13 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="aaf08e47-0cab-4035-bde2-2261529d650a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="cb4eb229-273a-41ec-9a8c-a4ed651c6960" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.Templates.TemplateDecoratorRegistration</name>
       <display>Intent.ModuleBuilder.Templates.TemplateDecoratorRegistration</display>
-      <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>5851eb16-9f08-40ac-9c3f-4465d8b18558</parentFolderId>
+      <parentFolderId>804e25e7-229b-4860-8ad0-8f68451adae8</parentFolderId>
       <packageId>b7e7581d-9257-4915-8fa7-e37895091bbd</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes>

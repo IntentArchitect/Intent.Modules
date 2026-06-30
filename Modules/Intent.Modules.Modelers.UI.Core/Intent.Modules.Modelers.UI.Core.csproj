@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>1.0.2</Version>
+    <Version>1.0.3-pre.0</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
     <Product>Intent - Modules Services Modeller</Product>
@@ -24,16 +24,24 @@
 
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common" Version="3.7.2" />
+    <PackageReference Include="Intent.Modules.Modelers.UI" Version="1.1.3-pre.1" />
     <PackageReference Include="Intent.Packager" Version="3.6.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="3.0.0" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.7.0" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.11.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Modelers.UI\Intent.Modules.Modelers.UI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="modelers\Common UI Components.designer.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Common UI Components.designer.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

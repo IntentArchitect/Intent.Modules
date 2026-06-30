@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modelers.UI.Api;
+using Intent.Modules.Modelers.UI.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -11,6 +12,14 @@ namespace Intent.Modelers.UI.Core.Api
     public static class ShowDialogModelAssociationExtensions
     {
         [IntentManaged(Mode.Fully)]
+        public static IList<ShowDialogSourceEndModel> ShowDialogSources(this IDialogModel model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.Association.SpecializationType == ShowDialogModel.SpecializationType && x.IsSourceEnd())
+                .Select(x => ShowDialogModel.CreateFromEnd(x).SourceEnd)
+                .ToList();
+        }
+        [IntentManaged(Mode.Fully)]
         public static IList<ShowDialogTargetEndModel> ShowDialogTargets(this ComponentOperationModel model)
         {
             return model.InternalElement.AssociatedElements
@@ -20,11 +29,11 @@ namespace Intent.Modelers.UI.Core.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<ShowDialogSourceEndModel> ShowDialogSources(this ComponentModel model)
+        public static IList<ShowDialogTargetEndModel> ShowDialogTargets(this ComponentModel model)
         {
             return model.InternalElement.AssociatedElements
-                .Where(x => x.Association.SpecializationType == ShowDialogModel.SpecializationType && x.IsSourceEnd())
-                .Select(x => ShowDialogModel.CreateFromEnd(x).SourceEnd)
+                .Where(x => x.Association.SpecializationType == ShowDialogModel.SpecializationType && x.IsTargetEnd())
+                .Select(x => ShowDialogModel.CreateFromEnd(x).TargetEnd)
                 .ToList();
         }
 

@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.UI.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ComponentViewModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+    public class ComponentViewModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
     {
         public const string SpecializationType = "Component View";
         public const string SpecializationTypeId = "624513a6-cba8-4dde-8ebe-6b19f00f0364";
@@ -34,6 +34,8 @@ namespace Intent.Modelers.UI.Api
         public string Comment => _element.Comment;
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        public ITypeReference TypeReference => _element.TypeReference;
 
         public IElement InternalElement => _element;
 

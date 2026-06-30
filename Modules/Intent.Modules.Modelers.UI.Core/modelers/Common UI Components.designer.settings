@@ -586,6 +586,7 @@ createElement("247a4768-7c46-472c-b5ea-565b37194956", "Actions", element.id);</s
           <mappingSettings />
         </childElementSetting>
       </childElementSettings>
+      <rules>When adding menu items to the navigation menu, NEVER try to set the Link-To value.</rules>
     </elementSetting>
     <elementSetting type="Radio Group" typeId="4af9a7f0-ca24-4681-8e32-2a8d3dacb6ed">
       <implements>
@@ -772,14 +773,31 @@ model.typeReference.getType().getChildren().filter(x =&gt; x.specialization == "
   </elementSettings>
   <elementExtensions>
     <elementExtension type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b">
+      <contextMenuOptions>
+        <createAssociation type="association">
+          <text>Show Dialog</text>
+          <shortcut>ctrl + shift + d</shortcut>
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzFfNDM4YjFkMzAtYmVjNS00YTk4LTlkY2EtMTNhNDIxODhmODI2IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjI0LjMiIHkxPSI3NSIgeDI9IjI0LjMiIHkyPSIzMy41IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIDEgMCAtMzApIj4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzRBOTkyNCIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojODZERTMzIi8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzFfNDM4YjFkMzAtYmVjNS00YTk4LTlkY2EtMTNhNDIxODhmODI2KSIgZD0iTTQ1LjksNi4xdjI2LjRoLTMuNFY4YzAtMC42LTAuNS0xLjEtMS4xLTEuMUg3LjJDNi42LDYuOSw2LjEsNy40LDYuMSw4djMyLjRjMCwwLjYsMC41LDEuMSwxLjEsMS4xDQoJCWgyNi4yVjQ1SDUuM2MtMS40LDAtMi42LTEuMi0yLjYtMi42VjYuMWMwLTEuNCwxLjItMi42LDIuNi0yLjZoMzhDNDQuNywzLjUsNDUuOSw0LjcsNDUuOSw2LjF6Ii8+DQoJPGc+DQoJCQ0KCQkJPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDAyNjg4MDgzNDg5MDUxMjAzODA0MDAwMDAwMzM5OTI2MDA1NTQyOTE3MTYzNV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzcuMiIgeTE9Ijc2LjgwMzkiIHgyPSIzNy4yIiB5Mj0iNTYuMzY5MiIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAxIDAgLTMwKSI+DQoJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNEE5OTI0Ii8+DQoJCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojODZERTMzIi8+DQoJCTwvbGluZWFyR3JhZGllbnQ+DQoJCTxwYXRoIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwMjY4ODA4MzQ4OTA1MTIwMzgwNDAwMDAwMDMzOTkyNjAwNTU0MjkxNzE2MzVfKSIgZD0iTTM5LjEsMzQuNHYtOC4yaC0zLjl2OC4ySDI3djMuOWg4LjJ2OC4yaDMuOQ0KCQkJdi04LjJoOC4zdi0zLjlIMzkuMXoiLz4NCgk8L2c+DQo8L2c+DQo8L3N2Zz4NCg==" />
+          <specializationType>Show Dialog Target End</specializationType>
+          <specializationTypeId>c44a7969-abfa-4073-ab2c-d2d0f1f6bd2f</specializationTypeId>
+          <defaultName>NewShowDialogTargetEnd</defaultName>
+          <allowMultiple>true</allowMultiple>
+          <targetEndDefaults isNavigable="true" isNullable="false" isCollection="false" />
+        </createAssociation>
+      </contextMenuOptions>
+      <typeOrder>
+        <type type="Show Dialog Target End" typeId="c44a7969-abfa-4073-ab2c-d2d0f1f6bd2f" />
+      </typeOrder>
       <mappingSettings />
       <macros>
         <macro trigger="on-created">
           <script>if (element.getName().endsWith("Dialog")) {
     const view = element.getChild(x =&gt; x.specializationId == "624513a6-cba8-4dde-8ebe-6b19f00f0364"); // View
-    createElement("1260ae89-b0cc-4ae0-b21c-7e26d45f16a5", "Dialog", view.id); // Dialog
+    if(view != null) {
+        createElement("1260ae89-b0cc-4ae0-b21c-7e26d45f16a5", "Dialog", view.id); // Dialog
     if (element.hasStereotype("ea4adc09-8978-4ede-ba5f-265debb2b60c")){ // [Page]
         element.removeStereotype("ea4adc09-8978-4ede-ba5f-265debb2b60c"); // [Page]
+    }
     }
 }</script>
         </macro>
@@ -825,6 +843,7 @@ model.typeReference.getType().getChildren().filter(x =&gt; x.specialization == "
           <isRequired>true</isRequired>
           <targetTypes>
             <type type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
+            <type type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -848,14 +867,14 @@ model.typeReference.getType().getChildren().filter(x =&gt; x.specialization == "
 return display;
 </displayFunction>
         <nameAccessibilityMode>optional</nameAccessibilityMode>
-        <nameMustBeUnique>true</nameMustBeUnique>
+        <nameMustBeUnique>false</nameMustBeUnique>
         <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxnPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzFfNDM4YjFkMzAtYmVjNS00YTk4LTlkY2EtMTNhNDIxODhmODI2IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjI0LjMiIHkxPSI3NSIgeDI9IjI0LjMiIHkyPSIzMy41IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIDEgMCAtMzApIj4NCgkJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzRBOTkyNCIvPg0KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojODZERTMzIi8+DQoJPC9saW5lYXJHcmFkaWVudD4NCgk8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzFfNDM4YjFkMzAtYmVjNS00YTk4LTlkY2EtMTNhNDIxODhmODI2KSIgZD0iTTQ1LjksNi4xdjI2LjRoLTMuNFY4YzAtMC42LTAuNS0xLjEtMS4xLTEuMUg3LjJDNi42LDYuOSw2LjEsNy40LDYuMSw4djMyLjRjMCwwLjYsMC41LDEuMSwxLjEsMS4xDQoJCWgyNi4yVjQ1SDUuM2MtMS40LDAtMi42LTEuMi0yLjYtMi42VjYuMWMwLTEuNCwxLjItMi42LDIuNi0yLjZoMzhDNDQuNywzLjUsNDUuOSw0LjcsNDUuOSw2LjF6Ii8+DQoJPGc+DQoJCQ0KCQkJPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8wMDAwMDAyNjg4MDgzNDg5MDUxMjAzODA0MDAwMDAwMzM5OTI2MDA1NTQyOTE3MTYzNV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzcuMiIgeTE9Ijc2LjgwMzkiIHgyPSIzNy4yIiB5Mj0iNTYuMzY5MiIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAxIDAgLTMwKSI+DQoJCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNEE5OTI0Ii8+DQoJCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojODZERTMzIi8+DQoJCTwvbGluZWFyR3JhZGllbnQ+DQoJCTxwYXRoIGZpbGw9InVybCgjU1ZHSURfMDAwMDAwMjY4ODA4MzQ4OTA1MTIwMzgwNDAwMDAwMDMzOTkyNjAwNTU0MjkxNzE2MzVfKSIgZD0iTTM5LjEsMzQuNHYtOC4yaC0zLjl2OC4ySDI3djMuOWg4LjJ2OC4yaDMuOQ0KCQkJdi04LjJoOC4zdi0zLjlIMzkuMXoiLz4NCgk8L2c+DQo8L2c+DQo8L3N2Zz4NCg==" />
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" />
+            <type type="Dialog" typeId="1f4165ee-41a0-4520-a193-9ae4d3413d1f" />
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>

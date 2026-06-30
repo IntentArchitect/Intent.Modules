@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="83d1cd6d-e942-43bc-88bd-bf7918f94e38" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-  <name>Settings</name>
-  <display>Settings</display>
+<class id="3723076e-20ea-412c-a255-538b1a512c05" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Tasks</name>
+  <display>Tasks</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>46b84aff-831c-44ec-ac2a-bd09f9e34b84</parentFolderId>
+  <parentFolderId>2f8f380b-1119-494f-84d2-49b5310dc155</parentFolderId>
   <packageId>b7e7581d-9257-4915-8fa7-e37895091bbd</packageId>
   <packageName>Intent.Modules</packageName>
   <stereotypes>
@@ -21,14 +21,13 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="ef78f5a4-c244-4f5a-9487-86c71bf37550" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions</name>
-      <display>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions</display>
-      <externalReference>Intent.ModuleBuilder</externalReference>
+    <childElement id="256e22ac-e593-496b-b6c8-49bdc42df9f9" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.ModuleTask</name>
+      <display>Intent.ModuleBuilder.Templates.ModuleTask</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>83d1cd6d-e942-43bc-88bd-bf7918f94e38</parentFolderId>
+      <parentFolderId>3723076e-20ea-412c-a255-538b1a512c05</parentFolderId>
       <packageId>b7e7581d-9257-4915-8fa7-e37895091bbd</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes>

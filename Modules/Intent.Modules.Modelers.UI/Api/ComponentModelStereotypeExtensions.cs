@@ -12,6 +12,52 @@ namespace Intent.Modelers.UI.Api
 {
     public static class ComponentModelStereotypeExtensions
     {
+        public static Composable GetComposable(this ComponentModel model)
+        {
+            var stereotype = model.GetStereotype(Composable.DefinitionId);
+            return stereotype != null ? new Composable(stereotype) : null;
+        }
+
+
+        public static bool HasComposable(this ComponentModel model)
+        {
+            return model.HasStereotype(Composable.DefinitionId);
+        }
+
+        public static bool TryGetComposable(this ComponentModel model, out Composable stereotype)
+        {
+            if (!HasComposable(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Composable(model.GetStereotype(Composable.DefinitionId));
+            return true;
+        }
+        public static Dialog GetDialog(this ComponentModel model)
+        {
+            var stereotype = model.GetStereotype(Dialog.DefinitionId);
+            return stereotype != null ? new Dialog(stereotype) : null;
+        }
+
+
+        public static bool HasDialog(this ComponentModel model)
+        {
+            return model.HasStereotype(Dialog.DefinitionId);
+        }
+
+        public static bool TryGetDialog(this ComponentModel model, out Dialog stereotype)
+        {
+            if (!HasDialog(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Dialog(model.GetStereotype(Dialog.DefinitionId));
+            return true;
+        }
 
         public static Page GetPage(this ComponentModel model)
         {
@@ -69,6 +115,34 @@ namespace Intent.Modelers.UI.Api
 
             stereotype = new Secured(model.GetStereotype(Secured.DefinitionId));
             return true;
+        }
+
+        public class Composable
+        {
+            private IStereotype _stereotype;
+            public const string DefinitionId = "5a2ba6fc-8512-4801-8b14-9d532c9c2616";
+
+            public Composable(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+        }
+
+        public class Dialog
+        {
+            private IStereotype _stereotype;
+            public const string DefinitionId = "1f4165ee-41a0-4520-a193-9ae4d3413d1f";
+
+            public Dialog(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
         }
 
         public class Page

@@ -61,7 +61,7 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="component.svg" isActive="true" />
-            <property name="6addd9b9-6f48-4054-b74c-f670e3b5f847" display="Condition" value="return (!element.hasStereotype(&quot;ea4adc09-8978-4ede-ba5f-265debb2b60c&quot;) // Page Stereotype&#xD;&#xA;    &amp;&amp; element.getChild(x =&gt; x.specializationId == &quot;624513a6-cba8-4dde-8ebe-6b19f00f0364&quot;) // Component View&#xD;&#xA;        .getChild(x =&gt; x.specializationId == &quot;1260ae89-b0cc-4ae0-b21c-7e26d45f16a5&quot;) == null) // Dialog Component" isActive="true" />
+            <property name="6addd9b9-6f48-4054-b74c-f670e3b5f847" display="Condition" value="// if no page stereotype AND no dialog stereotype AND no dialog on the view (for legacy support)&#xD;&#xA;return (!element.hasStereotype(&quot;ea4adc09-8978-4ede-ba5f-265debb2b60c&quot;) // Page Stereotype&#xD;&#xA;    &amp;&amp; !element.hasStereotype(&quot;1f4165ee-41a0-4520-a193-9ae4d3413d1f&quot;) // Dialog Stereotype&#xD;&#xA;    &amp;&amp; (element.getChildren(x =&gt; x.specializationId == &quot;624513a6-cba8-4dde-8ebe-6b19f00f0364&quot;).length == 0  // No view&#xD;&#xA;    || element.getChildren(x =&gt; x.specializationId == &quot;624513a6-cba8-4dde-8ebe-6b19f00f0364&quot;).length &gt; 0 // there is a view&#xD;&#xA;    &amp;&amp; element.getChild(x =&gt; x.specializationId == &quot;624513a6-cba8-4dde-8ebe-6b19f00f0364&quot;) // and Component View&#xD;&#xA;        .getChild(x =&gt; x.specializationId == &quot;1260ae89-b0cc-4ae0-b21c-7e26d45f16a5&quot;) == null)) // Dialog Component on View&#xD;&#xA;&#xD;&#xA;" isActive="true" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
@@ -95,7 +95,7 @@
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="dialog.svg" isActive="true" />
-            <property name="6addd9b9-6f48-4054-b74c-f670e3b5f847" display="Condition" value="return (!element.getStereotype(&quot;Page&quot;) // Page Stereotype&#xD;&#xA;    &amp;&amp; element.getChildren(&quot;624513a6-cba8-4dde-8ebe-6b19f00f0364&quot;)[0] // Component View&#xD;&#xA;        .getChild(x =&gt; x.specializationId == &quot;1260ae89-b0cc-4ae0-b21c-7e26d45f16a5&quot;, true) != null) // Dialog Component" isActive="true" />
+            <property name="6addd9b9-6f48-4054-b74c-f670e3b5f847" display="Condition" value="return (!element.hasStereotype(&quot;ea4adc09-8978-4ede-ba5f-265debb2b60c&quot;)  // Page Stereotype&#xD;&#xA;    &amp;&amp; ((element.hasStereotype(&quot;1f4165ee-41a0-4520-a193-9ae4d3413d1f&quot;)) // Dialog Stereotype&#xD;&#xA;    || (element.getChildren(&quot;624513a6-cba8-4dde-8ebe-6b19f00f0364&quot;).length &gt; 0 // Component View&#xD;&#xA;        &amp;&amp; element.getChildren(&quot;624513a6-cba8-4dde-8ebe-6b19f00f0364&quot;)[0] // Component View&#xD;&#xA;        .getChild(x =&gt; x.specializationId == &quot;1260ae89-b0cc-4ae0-b21c-7e26d45f16a5&quot;, true) != null))) // Dialog Component&#xD;&#xA;" isActive="true" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
