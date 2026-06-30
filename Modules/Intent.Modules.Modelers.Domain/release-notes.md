@@ -1,4 +1,8 @@
-﻿### Version 3.13.0
+﻿### Version 3.13.1
+
+- Improvement: Can model Diagrams on Diagrams
+
+### Version 3.13.0
 
 - Improvement: Improved AI Modeling and understanding rules.
 

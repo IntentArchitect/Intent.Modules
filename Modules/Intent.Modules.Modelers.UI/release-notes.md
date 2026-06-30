@@ -1,6 +1,6 @@
 ### Version 1.1.4
 
-- Improvement: Can model diagrams on diagrams
+- Improvement: Can model Diagrams on Diagrams
 
 ### Version 1.1.3
 
