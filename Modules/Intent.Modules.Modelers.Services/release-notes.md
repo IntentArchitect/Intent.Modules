@@ -1,3 +1,7 @@
+### Version 4.0.16
+
+- Improvement: Added the ability to have Diagrams on Diagrams
+
 ### Version 4.0.15
 
 - Improvement: AI Modeling guidance enhancements.

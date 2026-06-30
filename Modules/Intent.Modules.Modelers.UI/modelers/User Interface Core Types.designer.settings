@@ -943,6 +943,31 @@ vertical-align: center`</style>
               </childElementVisualSetting>
             </childElementVisualSettings>
           </visualSettings>
+          <visualSettings type="Diagram" typeId="4912c89a-77eb-497e-a3f4-7408b6a20886">
+            <size width="200" height="60" />
+            <position x="${x}" y="${y}" />
+            <display>
+              <drawText>
+                <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+color: ${(element.isReference() ? theme.isDark ? "#9AD6D9" : "#007D80" : "inherit")};
+vertical-align: center`</style>
+                <size width="${w}" height="16" />
+                <position x="${x}" y="${y + 40}" />
+              </drawText>
+              <drawSvgResource>
+                <path>diagram.svg</path>
+                <size width="${w}" height="36" />
+                <position x="${x}" y="${y + 2}" />
+              </drawSvgResource>
+            </display>
+            <defaultSize width="200" height="60" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+            <childElementVisualSettings />
+          </visualSettings>
           <visualSettings type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
             <size width="${w}" height="70" />
             <position x="${x}" y="${y}" />

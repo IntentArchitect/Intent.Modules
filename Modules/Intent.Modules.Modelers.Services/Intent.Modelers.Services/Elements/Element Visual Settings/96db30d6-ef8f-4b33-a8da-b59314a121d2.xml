@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="ceca1df8-700e-4844-983f-81b4d7277174" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
+<class id="96db30d6-ef8f-4b33-a8da-b59314a121d2" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
   <name>[element visual]</name>
   <display>[visual]: Diagram</display>
   <isAbstract>false</isAbstract>
   <sort-children>manually</sort-children>
+  <order>1</order>
   <genericTypes />
-  <typeReference id="76e548e8-b4cf-45ea-84c0-8bbb1486cdd7">
+  <typeReference id="007d0825-56a8-4540-9073-4e77cd334790">
     <typeId>4d66fecd-e9b8-436f-aa50-c59040ad0879</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
@@ -17,9 +18,9 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>176e94c0-e0ab-43dd-806c-30fb38edbc6d</parentFolderId>
-  <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
-  <packageName>Intent.Modelers.Domain</packageName>
+  <parentFolderId>8c90aca5-86f4-47f1-bd58-116fe79f5c55</parentFolderId>
+  <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+  <packageName>Intent.Modelers.Services</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="96a4fa17-6283-4626-835e-a8f013d98b19" name="Settings">
       <addedByDefault>true</addedByDefault>
@@ -44,15 +45,15 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="5a7b930b-a6d6-4896-ae72-c6645f83f146" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+    <childElement id="d002f801-cd3d-45bb-a70f-d78540c96827" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
       <name>Display Label  for Symbol</name>
       <display>[draw text]: Display Label  for Symbol</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>ceca1df8-700e-4844-983f-81b4d7277174</parentFolderId>
-      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
-      <packageName>Intent.Modelers.Domain</packageName>
+      <parentFolderId>96db30d6-ef8f-4b33-a8da-b59314a121d2</parentFolderId>
+      <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+      <packageName>Intent.Modelers.Services</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="1cb12b3c-f000-4331-b3fc-4250a5ced3fa" name="Text Settings">
           <addedByDefault>true</addedByDefault>
@@ -79,15 +80,15 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="d720c7a0-40dd-4013-884c-3e164daaea9d" type="SVG Resource Draw Settings" typeId="b5566ace-3353-4009-9370-475b561451a0">
+    <childElement id="dfd9e048-34ce-4575-84ca-cc8b9b876046" type="SVG Resource Draw Settings" typeId="b5566ace-3353-4009-9370-475b561451a0">
       <name>Symbol</name>
       <display>[draw svg]: Symbol</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>ceca1df8-700e-4844-983f-81b4d7277174</parentFolderId>
-      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
-      <packageName>Intent.Modelers.Domain</packageName>
+      <parentFolderId>96db30d6-ef8f-4b33-a8da-b59314a121d2</parentFolderId>
+      <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+      <packageName>Intent.Modelers.Services</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="5dc1fff8-3fe7-4bb3-be4b-b6a26fa7b082" name="SVG Resource Settings">
           <addedByDefault>true</addedByDefault>

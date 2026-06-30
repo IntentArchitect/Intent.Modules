@@ -1,3 +1,7 @@
+### Version 1.1.4
+
+- Improvement: Can model diagrams on diagrams
+
 ### Version 1.1.3
 
 - Improvement: Tighten up AI modeling instructions for better results when AI agents are modeling UI

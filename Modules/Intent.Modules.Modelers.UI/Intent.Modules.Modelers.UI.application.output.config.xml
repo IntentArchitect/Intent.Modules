@@ -15,5 +15,6 @@
     <file relativePath="Intent.Modules.Modelers.UI/Api/TextInputModelStereotypeExtensions.cs" state="ignored" />
     <file relativePath="Intent.Modules.Modelers.UI/Api/UserInterfacePackageExtensionModel.cs" state="ignored" />
     <file relativePath="Intent.Modules.Modelers.UI/Intent.Modules.Modelers.UI.csproj" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.UI/release-notes.md" state="ignored;once-off-generated" />
   </files>
 </outputFiles>

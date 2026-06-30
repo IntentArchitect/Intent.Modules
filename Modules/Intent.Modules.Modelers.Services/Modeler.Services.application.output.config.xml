@@ -3,5 +3,6 @@
   <files>
     <file relativePath="Intent.Modules.Modelers.Services/Api/Extensions/CommentAssociationModelAssociationExtensions.cs" state="ignored" />
     <file relativePath="Intent.Modules.Modelers.Services/Intent.Modules.Modelers.Services.csproj" state="ignored" />
+    <file relativePath="Intent.Modules.Modelers.Services/release-notes.md" state="ignored;once-off-generated" />
   </files>
 </outputFiles>

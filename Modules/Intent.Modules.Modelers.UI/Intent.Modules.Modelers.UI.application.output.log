@@ -408,5 +408,13 @@
       <ProjectRelativeFilePath>User Interface.designer.config</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
+    <FileLog>
+      <ProjectId>46b84aff-831c-44ec-ac2a-bd09f9e34b84</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.ReleaseNotes#549f7ea2-2a5f-4378-84a3-6946fc12b1fc</CorrelationId>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>release-notes.md</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>release-notes.md</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
   </FileLogs>
 </outputLog>

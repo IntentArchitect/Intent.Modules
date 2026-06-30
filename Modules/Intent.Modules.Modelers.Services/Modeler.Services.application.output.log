@@ -3,7 +3,15 @@
   <ApplicationId>a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#6e118a7e-7636-4d2d-8cdd-0086bd0c6af2</CorrelationId>
+      <ProjectId>2e293cb8-b58a-4285-b803-fb81306242d5</ProjectId>
+      <CorrelationId>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration#csharp-guidelines.md</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../.agents/instructions/csharp-guidelines.md</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>csharp-guidelines.md</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#07b59d2f-1ddc-40f1-a797-2c83743eb959</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -186,7 +194,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>f9128a89-538a-481b-8d69-afcc20f88aa4</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions#29042375-8b80-4e2d-bd58-49207c6d7330</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataDesignerExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
@@ -194,7 +202,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>f9128a89-538a-481b-8d69-afcc20f88aa4</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions#34d8aa26-0f8a-4f1d-99ed-592b66bdb9e1</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataPackageExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
@@ -202,7 +210,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>f9128a89-538a-481b-8d69-afcc20f88aa4</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions#1507341c-ce4d-486d-8014-ad3de28d8a2c</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
@@ -210,7 +218,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>f9128a89-538a-481b-8d69-afcc20f88aa4</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile#dec2fe3c-6131-4f0d-8d5c-3daad06d5d54</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modelers.Services.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modelers.Services.imodspec</ProjectRelativeFilePath>
@@ -263,6 +271,14 @@
       <ApplicationRelativeFilePath>modelers/Services.designer.config</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Services.designer.config</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>f9128a89-538a-481b-8d69-afcc20f88aa4</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.ReleaseNotes#16724526-e7c0-4914-a88b-d7afba235692</CorrelationId>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>release-notes.md</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>release-notes.md</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>984f7c52-077c-4b35-bdb8-b82c7736bb0e</ProjectId>

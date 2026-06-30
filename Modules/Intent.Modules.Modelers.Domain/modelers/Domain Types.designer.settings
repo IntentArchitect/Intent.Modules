@@ -1247,7 +1247,7 @@ white-space: inherit;
 color: ${(element.isReference() ? theme.isDark ? "#9AD6D9" : "#007D80" : "inherit")};
 vertical-align: center`</style>
                 <size width="${w}" height="16" />
-                <position x="${x}" y="${y + 40 + (element.hasStereotype(&quot;Http Settings&quot;) ? 14: 0)}" />
+                <position x="${x}" y="${y + 40}" />
               </drawText>
               <drawSvgResource>
                 <path>diagram.svg</path>
