@@ -449,8 +449,8 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>46b84aff-831c-44ec-ac2a-bd09f9e34b84</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.ReleaseNotes#549f7ea2-2a5f-4378-84a3-6946fc12b1fc</CorrelationId>
+      <ProjectId>2f8f380b-1119-494f-84d2-49b5310dc155</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.ReleaseNotes#efb9ba34-d2b6-4476-b894-43b5d03fc537</CorrelationId>
       <OverwriteBehaviour>once-off</OverwriteBehaviour>
       <ApplicationRelativeFilePath>release-notes.md</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>release-notes.md</ProjectRelativeFilePath>

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -38,10 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="modelers\Common UI Components.designer.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Common UI Components.designer.Designer.cs</LastGenOutput>
-    </None>
+    
   </ItemGroup>
 
 </Project>
