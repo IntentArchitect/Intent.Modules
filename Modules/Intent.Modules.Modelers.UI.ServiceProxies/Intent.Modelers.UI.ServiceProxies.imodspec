@@ -2,7 +2,7 @@
 <package>
   <id>Intent.Modelers.UI.ServiceProxies</id>
   <version>1.0.2-pre.0</version>
-  <supportedClientVersions>[4.4.0-a, 6.0.0-a)</supportedClientVersions>
+  <supportedClientVersions>[4.5.18-a, 6.0.0-a)</supportedClientVersions>
   <summary>Modeller for describing user interface consumers of other Intent Architect services.</summary>
   <description>Modeller for describing user interface consumers of other Intent Architect services.</description>
   <authors>Intent Architect</authors>
