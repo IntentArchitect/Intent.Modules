@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>1.0.3-pre.1</Version>
+    <Version>1.0.3-pre.0</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
     <Product>Intent - Modules Services Modeller</Product>
@@ -35,6 +35,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Modelers.UI\Intent.Modules.Modelers.UI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="modelers\Common UI Components.designer.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Common UI Components.designer.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

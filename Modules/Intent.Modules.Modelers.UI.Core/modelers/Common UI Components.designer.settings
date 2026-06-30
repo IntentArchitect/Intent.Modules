@@ -586,6 +586,7 @@ createElement("247a4768-7c46-472c-b5ea-565b37194956", "Actions", element.id);</s
           <mappingSettings />
         </childElementSetting>
       </childElementSettings>
+      <rules>When adding menu items to the navigation menu, NEVER try to set the Link-To value.</rules>
     </elementSetting>
     <elementSetting type="Radio Group" typeId="4af9a7f0-ca24-4681-8e32-2a8d3dacb6ed">
       <implements>
