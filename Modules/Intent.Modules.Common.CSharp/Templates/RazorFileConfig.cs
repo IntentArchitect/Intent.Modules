@@ -43,6 +43,40 @@ public class RazorFileConfig : CSharpFileConfig, IRazorFileConfig
     }
 
     /// <summary>
+    /// Creates a new instance of <see cref="RazorFileConfig"/>
+    /// </summary>
+    /// <param name="codeGenType"></param>
+    /// <param name="className"></param>
+    /// <param name="namespace"></param>
+    /// <param name="relativeLocation"></param>
+    /// <param name="overwriteBehaviour"></param>
+    /// <param name="fileName"></param>
+    /// <param name="fileExtension"></param>
+    /// <param name="dependsUpon"></param>
+    public RazorFileConfig(
+        string codeGenType,
+        string className,
+        string @namespace,
+        string relativeLocation = "",
+        OverwriteBehaviour overwriteBehaviour = OverwriteBehaviour.Always,
+        string? fileName = null,
+        string fileExtension = "razor",
+        string? dependsUpon = null
+        )
+        : base(
+            codeGenType: codeGenType,
+            className: className,
+            @namespace: @namespace,
+            relativeLocation: relativeLocation,
+            overwriteBehaviour: overwriteBehaviour,
+            fileName: fileName,
+            fileExtension: fileExtension,
+            dependsUpon: dependsUpon)
+    {
+        RazorMergerConfiguration = new RazorMergerConfiguration(this);
+    }
+
+    /// <summary>
     /// Provides an instance <see cref="Templates.RazorMergerConfiguration"/> which is wrapping this instance.
     /// </summary>
     public RazorMergerConfiguration RazorMergerConfiguration { get; }

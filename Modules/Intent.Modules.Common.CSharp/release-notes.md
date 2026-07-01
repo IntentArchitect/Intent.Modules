@@ -1,4 +1,8 @@
-﻿### Version 3.10.8
+﻿### Version 3.10.9
+
+- Improvement: Overloaded contructor for `RazorFileConfig` added, allowing for the `CodeGenType` to be set.
+
+### Version 3.10.8
 
 - Improvement: Fully qualified names used when generating constructor mappings to avoid Namespace/class conflicts.
 
