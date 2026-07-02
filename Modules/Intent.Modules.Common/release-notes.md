@@ -1,3 +1,7 @@
+### Version 3.11.3
+
+- Fixed: Issue where has on markdown files without frontmatter was not calculated correctly.
+
 ### Version 3.11.2
 
 - Improvement: Updated interoperability to the VisualStudio module to assist with migrations to get the correct .agents folder.

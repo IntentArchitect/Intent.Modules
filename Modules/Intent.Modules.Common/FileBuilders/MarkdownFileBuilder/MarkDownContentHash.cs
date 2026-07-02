@@ -13,6 +13,22 @@ namespace Intent.Modules.Common.FileBuilders.MarkdownFileBuilder
     {
         private const string FieldName = "contentHash";
 
+        private static readonly Regex FrontMatterRegex = new(
+            @"\A---(?:\r\n|\n)(.*?)(?:\r\n|\n)---(?:\r\n|\n|$)",
+            RegexOptions.Singleline | RegexOptions.Compiled);
+
+        private static readonly Regex ContentHashFieldRegex = new(
+            @"(?mi)^[ \t]*contentHash[ \t]*:[ \t]*(.+?)[ \t]*$",
+            RegexOptions.Compiled);
+
+        private static readonly Regex ContentHashLineRegex = new(
+            @"(?mi)^[ \t]*contentHash[ \t]*:.*(?:\r\n|\n|$)",
+            RegexOptions.Compiled);
+
+        private static readonly Regex BlankLinesRegex = new(
+            @"\n{3,}",
+            RegexOptions.Compiled);
+
         public static string AddOrUpdateContentHash(string markdown)
         {
             var newline = DetectNewline(markdown);
@@ -85,10 +101,7 @@ namespace Intent.Modules.Common.FileBuilders.MarkdownFileBuilder
             if (string.IsNullOrEmpty(markdown))
                 return false;
 
-            var match = Regex.Match(
-                markdown,
-                @"\A---(?:\r\n|\n)(.*?)(?:\r\n|\n)---(?:\r\n|\n|$)",
-                RegexOptions.Singleline);
+            var match = FrontMatterRegex.Match(markdown);
 
             if (!match.Success)
                 return false;
@@ -103,9 +116,7 @@ namespace Intent.Modules.Common.FileBuilders.MarkdownFileBuilder
 
         private static string? ExtractContentHash(string frontMatter)
         {
-            var match = Regex.Match(
-                frontMatter,
-                @"(?mi)^[ \t]*contentHash[ \t]*:[ \t]*(.+?)[ \t]*$");
+            var match = ContentHashFieldRegex.Match(frontMatter);
 
             return match.Success ? match.Groups[1].Value.Trim() : null;
         }
@@ -115,10 +126,7 @@ namespace Intent.Modules.Common.FileBuilders.MarkdownFileBuilder
             if (string.IsNullOrEmpty(frontMatter))
                 return frontMatter;
 
-            var result = Regex.Replace(
-                frontMatter,
-                @"(?mi)^[ \t]*contentHash[ \t]*:.*(?:\r\n|\n|$)",
-                string.Empty);
+            var result = ContentHashLineRegex.Replace(frontMatter, string.Empty);
 
             result = NormalizeBlankLines(result, newline);
             return result.TrimEnd('\r', '\n', ' ', '\t');
@@ -136,7 +144,7 @@ namespace Intent.Modules.Common.FileBuilders.MarkdownFileBuilder
 
         private static string BuildDocument(string frontMatter, string body, string newline, bool hasFrontMatter)
         {
-            if (!hasFrontMatter && string.IsNullOrEmpty(frontMatter))
+            if (!hasFrontMatter || string.IsNullOrEmpty(frontMatter))
                 return body;
 
             var sb = new StringBuilder();
@@ -162,8 +170,7 @@ namespace Intent.Modules.Common.FileBuilders.MarkdownFileBuilder
         {
             var normalized = NormalizeLineEndings(content);
             var bytes = Encoding.UTF8.GetBytes(normalized);
-            using var sha = SHA256.Create();
-            var hash = sha.ComputeHash(bytes);
+            var hash = SHA256.HashData(bytes);
             return Convert.ToHexString(hash);
         }
 
@@ -180,7 +187,7 @@ namespace Intent.Modules.Common.FileBuilders.MarkdownFileBuilder
         private static string NormalizeBlankLines(string text, string newline)
         {
             var normalized = NormalizeLineEndings(text);
-            normalized = Regex.Replace(normalized, @"\n{3,}", "\n\n");
+            normalized = BlankLinesRegex.Replace(normalized, "\n\n");
             return newline == "\r\n" ? normalized.Replace("\n", "\r\n") : normalized;
         }
     }
