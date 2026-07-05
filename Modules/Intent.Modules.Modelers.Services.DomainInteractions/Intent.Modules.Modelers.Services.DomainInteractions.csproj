@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>2.4.5</Version>
+    <Version>2.4.6</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
     <Product>Intent Architect</Product>
@@ -39,11 +39,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="modelers\Services Domain Interactions.designer.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Services Domain Interactions.designer.settings</DependentUpon>
-    </Compile>
+    
   </ItemGroup>
 
 </Project>
