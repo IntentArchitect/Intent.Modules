@@ -1,4 +1,8 @@
-﻿### Version 3.18.8
+### Version 3.18.9
+
+- Fixed: Fixed issue with custom template not always formatting the TemplateId correctly
+
+### Version 3.18.8
 
 - Improvement: Strip out AI context text from Comments when generating the ApiTraitModel template.
 - Improvement: AI rules added for working with Stereotype Definitions.
