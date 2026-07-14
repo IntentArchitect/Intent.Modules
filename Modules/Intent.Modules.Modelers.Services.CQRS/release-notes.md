@@ -1,6 +1,10 @@
+### Version 6.0.8
+
+- Improvement: Updates to AI guidance around Command and Query naming conventions.
+
 ### Version 6.0.7
 
-- Improvement: Updates to AI guidance around service modelling.
+- Improvement: Updates to AI guidance around service modeling.
 
 ### Version 6.0.6
 

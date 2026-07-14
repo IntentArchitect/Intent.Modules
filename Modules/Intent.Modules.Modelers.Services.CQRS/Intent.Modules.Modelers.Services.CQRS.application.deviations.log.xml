@@ -31,5 +31,25 @@
       <deviationsHash>9C47771DCD60722CAE2E5AED6C15F8AE77A5699601405C05CDE9DBAF429FEBD2</deviationsHash>
       <fileHash>72932C1C571799A5335A8197B104A8C0AF63FB978BE127FE2639B5D2C1FE4991</fileHash>
     </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.IModSpecFile#9fdb3f14-8ac0-49f3-99c1-27df9e33ef7b</correlationId>
+      <path>Intent.Modules.Modelers.Services.CQRS/Intent.Modelers.Services.CQRS.imodspec</path>
+      <count>1</count>
+      <updatedByAccountName>joel.turner@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Joel Turner</updatedByDisplayName>
+      <updatedAt>2026-07-14T13:58:52.9794639Z</updatedAt>
+      <deviationsHash>EBE0B5221849F13277C618A1AD4EC1C7FC5FC491C8CE42FCA98332B300EC286C</deviationsHash>
+      <fileHash>47BF12C16847C9341E0E02BEA9B4998B114EB14F8CE640D9A977F08C66B6AE39</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.VisualStudio.Projects.CSharpProject#eb4185d6-58c5-4e6c-b512-7c121f69cd02</correlationId>
+      <path>Intent.Modules.Modelers.Services.CQRS/Intent.Modules.Modelers.Services.CQRS.csproj</path>
+      <count>1</count>
+      <updatedByAccountName>joel.turner@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Joel Turner</updatedByDisplayName>
+      <updatedAt>2026-07-14T13:58:44.2762187Z</updatedAt>
+      <deviationsHash>23D0CFC336B1D6CA7DCD336AE25DD9BBDD1325E5D3397A98186CEFB58490F621</deviationsHash>
+      <fileHash>3F8576CF5126F7A9A26EEF5F44934E04BF472CAC155A419056062A558DDF7703</fileHash>
+    </file>
   </files>
 </deviationsLog>
