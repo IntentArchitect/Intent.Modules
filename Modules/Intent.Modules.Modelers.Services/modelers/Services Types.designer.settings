@@ -4,6 +4,10 @@
   <name>Services Types</name>
   <rules>Do not interpret “service” as only the Intent Service element; treat “service” as “endpoint surface”, which may be CQRS or Traditional
 
+## Service diagraming guidance
+- Place entities 200px to the right of services (i.e. 200px gap)
+- DTO's cannot be added to diagrams
+
 ## Service Endpoint Distribution / Exposure modeling guidance
 - Exposure is optional. Default to internal application services unless external exposure is explicitly indicated by the user or existing model context.
 - Only apply exposure stereotypes when an endpoint is intended to be externally distributed.

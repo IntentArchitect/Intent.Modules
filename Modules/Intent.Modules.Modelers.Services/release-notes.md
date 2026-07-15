@@ -1,6 +1,7 @@
 ### Version 4.0.16
 
 - Improvement: Added the ability to have Diagrams on Diagrams
+- Improvement: Improved Agent guidance around diagramming
 
 ### Version 4.0.15
 

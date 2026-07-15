@@ -82,6 +82,16 @@
       <fileHash>F555AF501B270575D3F27B67C98DF63621286781E97AEE95CA1B884D2BC96548</fileHash>
     </file>
     <file>
+      <correlationId>Intent.VisualStudio.Projects.CSharpProject#f9128a89-538a-481b-8d69-afcc20f88aa4</correlationId>
+      <path>Intent.Modules.Modelers.Services/Intent.Modules.Modelers.Services.csproj</path>
+      <count>1</count>
+      <updatedByAccountName>joel.turner@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Joel Turner</updatedByDisplayName>
+      <updatedAt>2026-07-15T06:55:06.7618196Z</updatedAt>
+      <deviationsHash>2121AC72CE3781332FCCC45B426B4C354686023446D30EBCE661F5F5432B240B</deviationsHash>
+      <fileHash>EB2909C3C584CC7FB0B36E774D96177E1CCC26EB2262725F44DD5938E408312C</fileHash>
+    </file>
+    <file>
       <correlationId>Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration#bda031ec-5d4e-4e51-b54e-18c3c2215b64</correlationId>
       <path>Intent.Modules.Modelers.Services/Migrations/Migration_03_09_03_Pre_00.cs</path>
       <count>3</count>

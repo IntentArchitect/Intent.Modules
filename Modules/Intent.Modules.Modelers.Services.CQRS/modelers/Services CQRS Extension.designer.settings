@@ -6,7 +6,8 @@
 - Commands and Queries describe the payloads. They imply the payload, it's handler and validators. If they are exposed over https, then they represent a DTO for those requests and represent the infrastructure for the http endpoints. They are made up of DTO-Field properties.
 - If applying http endpoints to Commands and Queries, use the fully qualified route (e.g.`api/orders/{orderId}`)
 - Always put Commands and Queries into an appropriate folder (e.g. Orders, Buyers, etc.)
-- Command and Query names should be suffixed with Command or Query respectivly e.g. `CreateCustomerCommand`
+- Command and Query names should be suffixed with Command or Query respectively e.g. `CreateCustomerCommand`
+- NEVER add mappings to Commands and Querys
 
 ## Service Modeling Paradigm rule (CRITICAL)
 - For each feature area (e.g. Customers, Orders), use one style only:

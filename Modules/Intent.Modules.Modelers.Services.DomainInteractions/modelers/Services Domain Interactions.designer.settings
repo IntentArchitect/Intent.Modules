@@ -9,7 +9,8 @@
 - Do NOT add multiple `Query Entity Action` associations from the same `Command`/`Query`/`Operation` to multiple Domain entities just to express joins/navigation/projection needs.
 - Only model `Query Entity Action` associations for aggregate roots that the handler directly queries via their repository.
 -Update Entity Action and Delete Entity Action implicitly include: Get/Find by Id of the target aggregate/entity (repository lookup), then Perform the Update/Delete. 
-  Therefore, when you have an Update Entity Action or Delete Entity Action to a Domain entity, do NOT also add a Query Entity Action to that same entity just to represent the “get by id” step.</rules>
+  Therefore, when you have an Update Entity Action or Delete Entity Action to a Domain entity, do NOT also add a Query Entity Action to that same entity just to represent the “get by id” step.
+- (CRITCAL)Don’t add Entity Action advanced mappings unless the user asked for mappings. If the user asks for mappings/implementation mappings, then Entity Action advanced mappings are required</rules>
   <designerReferences />
   <packageSettings />
   <packageExtensions>
