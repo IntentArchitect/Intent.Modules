@@ -1,6 +1,7 @@
 ﻿### Version 3.10.9
 
-- Improvement: Overloaded contructor for `RazorFileConfig` added, allowing for the `CodeGenType` to be set.
+- Improvement: Overloaded constructor for `RazorFileConfig` added, allowing for the `CodeGenType` to be set.
+- Improvement: Fixed issue around unspecified language versions causing `NullReferenceException`.
 
 ### Version 3.10.8
 

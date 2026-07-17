@@ -29,6 +29,11 @@ public struct MajorMinorVersion : IComparable<MajorMinorVersion>, IComparable, I
     {
         parsedVersion = default;
 
+        if (version is null)
+        {
+            return false;
+        }
+
         var split = version.Split('.');
         switch (split.Length)
         {

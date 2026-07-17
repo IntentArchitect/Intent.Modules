@@ -144,7 +144,7 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
             {
                 "latest" => LatestLanguageVersion,
                 "preview" => PreviewLanguageVersion,
-                "default" => TargetFrameworks.Select(GetDefaultLanguageVersion).DefaultIfEmpty().Min(),
+                null or "" or "default" => TargetFrameworks.Select(GetDefaultLanguageVersion).DefaultIfEmpty().Min(),
                 _ => MajorMinorVersion.Parse(LanguageVersion)
             };
         }
