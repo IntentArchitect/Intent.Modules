@@ -2,7 +2,6 @@
 
 - Improvement: Overloaded constructor for `RazorFileConfig` added, allowing for the `CodeGenType` to be set.
 - Improvement: Fixed issue around unspecified language versions causing `NullReferenceException`.
-- Improvement: .NET C# Projects with their SDK set to `Microsoft.NET.Sdk.Worker` will now have `Program.cs` files generated for them.
 
 ### Version 3.10.8
 
