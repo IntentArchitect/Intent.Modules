@@ -16,14 +16,12 @@ namespace Accelerators.Api.Filters
             {
                 if (context.Type == typeof(TimeSpan) || context.Type == typeof(TimeSpan?))
                 {
-                    concreteSchema.Example = new JsonObject { ["example"] = "00:00:00" };
-                    concreteSchema.Type = JsonSchemaType.String;
+                    concreteSchema.Example = JsonValue.Create("00:00:00");
                 }
 
                 if (context.Type == typeof(DateOnly) || context.Type == typeof(DateOnly?))
                 {
-                    concreteSchema.Example = new JsonObject { ["example"] = DateTime.Today.ToString("yyyy-MM-dd") };
-                    concreteSchema.Type = JsonSchemaType.String;
+                    concreteSchema.Example = JsonValue.Create(DateTime.Today.ToString("yyyy-MM-dd"));
                 }
             }
         }

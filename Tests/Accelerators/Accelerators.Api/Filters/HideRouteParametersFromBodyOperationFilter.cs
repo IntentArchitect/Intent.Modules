@@ -94,16 +94,27 @@ namespace Accelerators.Api.Filters
                     continue;
                 }
 
-                // Remove matching properties from the schema
+                // Clone the schema before mutating - concreteSchema is cached and shared across every operation that references the same DTO
+                var clonedSchema = (OpenApiSchema)concreteSchema.CreateShallowCopy();
+
+                if (clonedSchema.Properties == null)
+                {
+                    continue;
+                }
+
+                // Remove matching properties from the clone only
                 foreach (var propertyKey in propertyKeysToRemove)
                 {
-                    concreteSchema.Properties.Remove(propertyKey);
+                    clonedSchema.Properties.Remove(propertyKey);
 
-                    if (concreteSchema.Required != null)
+                    if (clonedSchema.Required != null)
                     {
-                        concreteSchema.Required.Remove(propertyKey);
+                        clonedSchema.Required.Remove(propertyKey);
                     }
                 }
+
+                // Point this operation's content at the clone instead of the shared original
+                content.Schema = clonedSchema;
             }
         }
 
