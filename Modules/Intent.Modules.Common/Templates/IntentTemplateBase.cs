@@ -1449,9 +1449,9 @@ namespace Intent.Modules.Common.Templates
         {
             OutputTarget.On<EmitOrPublishEnvelope<T>>(@event =>
             {
-                @event.Data.IsHandled = handler(@event.Data.Event);
+                @event.Data.IsHandled |= handler(@event.Data.Event);
 
-                if (stopPropagation)
+                if (@event.Data.IsHandled && stopPropagation)
                 {
                     @event.StopPropagation();
                 }
