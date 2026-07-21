@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.UI</id>
-  <version>1.1.4-pre.1</version>
+  <version>1.1.4</version>
   <supportedClientVersions>[4.5.18-a, 6.0.0-a)</supportedClientVersions>
   <summary>A designer for describing user interfaces.</summary>
   <description>A designer for describing user interfaces.</description>
@@ -25,7 +25,7 @@
     </detect>
     <detect id="Intent.Modelers.UI.Core">
       <install>
-        <package id="Intent.Modelers.UI.Core" version="1.0.3-pre.0" />
+        <package id="Intent.Modelers.UI.Core" version="1.0.3" />
       </install>
     </detect>
     <detect id="Intent.Modelers.UI.ServiceProxies">
