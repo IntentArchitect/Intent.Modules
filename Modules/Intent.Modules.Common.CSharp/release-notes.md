@@ -1,4 +1,8 @@
-﻿### Version 3.10.9
+﻿### Version 3.10.10
+
+- Improvement: Added `public static bool HasSdk(this ICSharpProject csharpProject, string sdk)` and similar extension methods which can be used to determine the SDK selected in the Codebase Structure designer for a C# project.
+
+### Version 3.10.9
 
 - Improvement: Overloaded constructor for `RazorFileConfig` added, allowing for the `CodeGenType` to be set.
 - Improvement: Fixed issue around unspecified language versions causing `NullReferenceException`.
