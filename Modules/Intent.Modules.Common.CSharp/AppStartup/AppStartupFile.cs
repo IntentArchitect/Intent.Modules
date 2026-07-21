@@ -65,7 +65,7 @@ public class AppStartupFile : IAppStartupFile
         }
 
         var isBuilt = false;
-        template.ExecutionContext.EventDispatcher.Subscribe<ServiceConfigurationRequest>(request =>
+        template.OnEmitOrPublished<ServiceConfigurationRequest>(request =>
         {
             if (isBuilt)
             {
@@ -75,7 +75,7 @@ public class AppStartupFile : IAppStartupFile
             _serviceConfigurationRequests.Add(request);
         });
 
-        template.ExecutionContext.EventDispatcher.Subscribe<ContainerRegistrationRequest>(request =>
+        template.OnEmitOrPublished<ContainerRegistrationRequest>(request =>
         {
             if (isBuilt)
             {
@@ -85,7 +85,7 @@ public class AppStartupFile : IAppStartupFile
             _containerRegistrationRequests.Add(request);
         });
 
-        template.ExecutionContext.EventDispatcher.Subscribe<ApplicationBuilderRegistrationRequest>(request =>
+        template.OnEmitOrPublished<ApplicationBuilderRegistrationRequest>(request =>
         {
             if (isBuilt)
             {
@@ -151,9 +151,9 @@ public class AppStartupFile : IAppStartupFile
                 // handle their subscriptions after this class which will read them all as
                 // unhandled. So we make new subscriptions which we know will process requests
                 // after the other handlers.
-                template.ExecutionContext.EventDispatcher.Subscribe<ServiceConfigurationRequest>(ProcessServiceConfigurationRequest);
-                template.ExecutionContext.EventDispatcher.Subscribe<ContainerRegistrationRequest>(ProcessContainerRegistrationRequest);
-                template.ExecutionContext.EventDispatcher.Subscribe<ApplicationBuilderRegistrationRequest>(ProcessApplicationConfigurationRequest);
+                template.OnEmitOrPublished<ServiceConfigurationRequest>(ProcessServiceConfigurationRequest);
+                template.OnEmitOrPublished<ContainerRegistrationRequest>(ProcessContainerRegistrationRequest);
+                template.OnEmitOrPublished<ApplicationBuilderRegistrationRequest>(ProcessApplicationConfigurationRequest);
             }, int.MinValue / 2);
     }
 
