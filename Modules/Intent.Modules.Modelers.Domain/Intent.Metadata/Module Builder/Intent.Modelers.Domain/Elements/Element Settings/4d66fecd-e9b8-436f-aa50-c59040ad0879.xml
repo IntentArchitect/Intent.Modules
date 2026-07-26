@@ -53,7 +53,7 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="Diagram Rules:&#xA;- Ensure at least 100px spacing between Class elements.&#xA;- Ensure at least 200px spacing between Classes that are associated." isActive="true" />
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="Diagram Guidelines:&#xA;- Layout elements in a &quot;snowflake&quot; pattern, placing the element with the most connections in the middle and those with the least on the outside.&#xA;- Ensure a absolute minimum spacing of 50px between any element.&#xA;- Ensure at least 100px spacing between Class elements.&#xA;- Ensure at least 200px spacing between Classes that are associated.&#xA;- Make the diagram as compact as possible while still adhering to the above rules." isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
