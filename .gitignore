@@ -248,3 +248,7 @@ ModelManifest.xml
 !*.application.output.log
 .intent/
 .idea/
+
+# Intent Architect
+
+.mcp.json

@@ -1270,6 +1270,9 @@ vertical-align: center`</style>
 })</script>
         </macro>
       </macros>
+      <rules>Diagram Rules:
+- Ensure at least 100px spacing between Class elements.
+- Ensure at least 200px spacing between Classes that are associated.</rules>
     </elementSetting>
   </elementSettings>
   <elementExtensions>
