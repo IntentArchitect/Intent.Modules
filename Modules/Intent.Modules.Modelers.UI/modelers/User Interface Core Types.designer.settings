@@ -2,32 +2,54 @@
 <settings version="3.1.1">
   <id>444f582b-b875-4c72-9671-697b47fa367c</id>
   <name>User Interface Core Types</name>
-  <rules>### User Interface Modeling Workflow:
-1. Understand the existing User Interface model.
-2. You MUST discover available Service operations (e.g. Commands, Queries, Service Operations, etc.) that are exposed over Http. 
-3. Available Service operations (e.g. Commands, Queries, Service Operations, etc.) could be available in other applications. You MUST scan all applications. when discovering available Service Operations.
-4. Design and create the Pages and Components needed to achieve the user's requirements
-5. Connect these components to the necessary Service operations on the backend using the `Call Service Operation Action` associations.
-6. Connect pages with `Navigation` associations together where there should be explicit navigations between them (e.g. buttons, links, clickable items, etc.)
-7. Lay out all pages, navigations, and service calls on the diagram. Create the diagram if it does not yet exist, and then lay out the pages.
+  <rules>### User Interface Modeling Workflow
+1. Read the existing User Interface model to understand current Pages, Components, and Diagrams.
+2. Discover candidate Service Operations (Commands, Queries, or other Service Operations) exposed over HTTP.
+   Search across ALL applications in the solution, not just the current one — a qualifying operation
+   may live in a different application than the User Interface package.
+3. Selecting among candidates:
+   - If exactly one operation clearly satisfies the requirement, use it without asking.
+   - If multiple operations could plausibly satisfy the requirement, ASK the user which to use.
+   - If NO operation satisfies the requirement, STOP and ask the user whether to create one,
+     use a different one, or confirm no backend call is needed. Do not create the page until
+     this is resolved.
+4. If the chosen operation lives in a Service Package not yet referenced by the User Interface
+   package, add that package reference before continuing.
+5. Design and create the Pages and Components needed to meet the requirement, placing each into a
+   logically-named folder rather than directly under the root "Pages" folder (see folder rule below).
+6. For each new routable Page (or a Page Operation on it), add a `Call Service Operation Action`
+   to the operation selected in step 3, and place it on the diagram. A Page must not exist without
+   either this action modeled or explicit user confirmation that no backend call is needed.
+7. Add `Navigation` associations between Pages wherever a button, link, or other UI element gives
+   the user an explicit way to move from one Page to another.
+8. Add `Show Dialog` associations wherever a Page or Component explicitly triggers a dialog.
+9. Add `Composition` associations connecting Components to the Pages, dialogs, and other
+   Components that contain them.
+10. Lay out all Pages, Navigations, dialogs, and Service Operation calls on the diagram (creating  the diagram first if it doesn't exist).
+11. If asked to add, model or similar a page, dialog, component, etc, you MUST model it in the UI designer. You should NEVER only code it directly, unless explicitly asked to.
 
 ### User Interface Modeling Rules
-- Aways add `Navigations` between pages where there should be an explicit button, link or interface option that the user will be able to interact with to navigate to the target page.
-- Always express needed interactions with the backend using `Call Service Operation Action`.
-- Ensure that backend service operations are exposed over Http if they are located in a different application to this UI.
-- Model service calls ONLY with `Call Service Operation Action` directly from the Component/Page.
-- Never create/rename/delete/use Component Operations.
-- For any new routable Page, before you create the page, you MUST 
-(1) discover candidate backend HTTP operations across ALL applications, then 
-(2) create at least one Call Service Operation Action from the page (or a page operation) to the chosen backend operation and place it on the diagram.
-(3) If no suitable backend operation exists, you MUST block and ask the user which backend operation to create/use.
-Do not create the page unless either the backend call is modeled or the user has explicitly confirmed “no backend call needed”.
+
+- Model backend interactions ONLY via `Call Service Operation Action`, called directly from a
+  Page or Component. Never create, rename, delete, or otherwise use Component Operations for this.
+- A Service Operation must be exposed over HTTP if it lives in an application other than the
+  current User Interface's application. [If there's a specific tool/attribute that confirms HTTP
+  exposure, name it here.]
+- A bidirectional Navigation between two Pages must be modeled as a single bidirectional
+  association — never as two separate one-directional associations.
+- Do not add new Pages, Components, or dialogs directly under the root "Pages" folder. Group them
+  into logically-named subfolders (e.g. by feature area, workflow, or domain concept) that reflect
+  how they relate to one another. Only place an element at the root if it genuinely doesn't belong
+  to any grouping — this should be the exception, not the default.
 
 ### User Interface Diagram Rules
-- Lay Pages out with space between one another, grouping by conceptual overlap and number of navigations.
-- Lay backend operations out to the right of the pages, vertically stacked and 100px apart (vertically).
-- If a `Navigation` between pages can go both ways, simply make the association bidirectional. DO NOT create two unidirectional associations.
-- Lay out Pages with separation in 2-dimensional space so that the associations don't stack on one another.</rules>
+
+- Space Pages apart, grouping them by conceptual relationship and by how many Navigations connect
+  them, so associations don't overlap.
+- Place Service Operations to the right of the Pages that call them, stacked vertically with
+  100px between each, and at least [Npx] of horizontal space from the Pages column.
+- Route Navigation and Show Dialog associations so they don't overlap Page or Service
+  Operation boxes.</rules>
   <designerReferences />
   <packageSettings />
   <packageExtensions>
@@ -824,6 +846,23 @@ return result;</displayFunction>
           <mappingSettings />
         </childElementSetting>
       </childElementSettings>
+      <rules>## Component modeling rules
+- When the request is to model a component or reusable component, this element is the component that must be modeled.
+- Model the component only.
+- Never add the component to `MainLayout` or to any child of `MainLayout`.
+- Never suggest attaching the component to `MainLayout` or to any child of `MainLayout`.
+- Never create navigation to a component.
+- Only create an association to a page, dialog, or component if the user explicitly requests it.
+- When such an association is requested, use `Composed Of`.
+
+## Component implementation rules
+- The layout and backend of a component are NOT deterministically generated. Only the basic structure (e.g. scaffolded files, minimal method stubs) may be deterministically generated.
+- Full implementation of a component's frontend (e.g. Razor, HTML) and backend (e.g. C#, TS) MUST be done by a coding agent — if asked to implement the component, this WILL and MUST be delegated to a coding subagent, not generated deterministically.
+- You MUST delegate this implementation to a coding subagent, instructing it to search for and use the appropriate skill to implement the component.
+- The subagent may implement the component without a skill only if:
+  - it cannot find an appropriate skill after searching, or
+  - it has been given specific instructions otherwise.
+  In either case, it MUST first check for the existence of a skill before proceeding without one.</rules>
     </elementSetting>
     <elementSetting type="Diagram" typeId="4912c89a-77eb-497e-a3f4-7408b6a20886">
       <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC02NXJqdXNyZjciIHgxPSI0NSIgeTE9IjMyMC40IiB4Mj0iNDUiIHkyPSIzMzAuMyIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0yODcpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwNzBjMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwOWM0ZmYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC0yLTY1cmp1c3JmNyIgeDE9IjM1LjciIHkxPSIzMjQuNiIgeDI9IjQ0LjMiIHkyPSIzMzMuMiIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0yODcpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzEwMmI1MSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxNjNiNzQiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC0zLTY1cmp1c3JmNyIgeDE9IjQxLjkiIHkxPSIyOTUuMyIgeDI9IjQxLjkiIHkyPSIzMDUuMiIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0yODcpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwNzBjMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwOWM0ZmYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC00LTY1cmp1c3JmNyIgeDE9IjMyLjUiIHkxPSIyOTkuNSIgeDI9IjQxLjEiIHkyPSIzMDguMSIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0yODcpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzEwMmI1MSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxNjNiNzQiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC01LTY1cmp1c3JmNyIgeDE9IjQyLjciIHkxPSIyOTYuNCIgeDI9IjQyLjciIHkyPSIzMDYuNCIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0yODcpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwNzBjMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwOWM0ZmYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC02LTY1cmp1c3JmNyIgeDE9IjMzLjQiIHkxPSIzMDAuNiIgeDI9IjQyIiB5Mj0iMzA5LjIiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMjg3KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxMDJiNTEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTYzYjc0Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtNy02NXJqdXNyZjciIHgxPSIyLjUiIHkxPSIzMDkuMSIgeDI9IjQ3LjYiIHkyPSIzMDkuMSIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0yODcpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwNTk5YyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMGMwZjIiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC04LTY1cmp1c3JmNyIgeDE9IjMuNiIgeTE9IjMwNS4zIiB4Mj0iNDguNyIgeTI9IjMwNS4zIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTI4NykiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDA1OTljIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwYzBmMiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTktNjVyanVzcmY3IiB4MT0iMjQuOCIgeTE9IjMyOCIgeDI9IjI0LjkiIHkyPSIyOTYiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMjg3KSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM0MTczYjYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNWNjN2Q2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtMTAtNjVyanVzcmY3IiB4MT0iNy40IiB5MT0iMjY1LjkiIHgyPSI3LjQiIHkyPSIzMDkuNyIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC0yNjMpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzVjYzdkNiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM0MTczYjYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC0xMS02NXJqdXNyZjciIHgxPSI0Mi44IiB5MT0iMjY1LjkiIHgyPSI0Mi44IiB5Mj0iMzA5LjciIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMjYzKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM1Y2M3ZDYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNDE3M2I2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8ZyBkaXNwbGF5PSJub25lIj4KICAgIDxwb2x5Z29uIHBvaW50cz0iNTAgNDAuNCA0Ny4xIDQzLjMgNDQuNyA0MC45IDQ0LjMgNDAuNCA0Mi4yIDM4LjQgNDIuMiAzOC40IDQwIDM2LjIgNDIuOSAzMy40IDUwIDQwLjQiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTY1cmp1c3JmNykiIHN0cm9rZS13aWR0aD0iMCIvPgogICAgPHBvbHlnb24gcG9pbnRzPSI0Ny4xIDQzLjMgNDIuOSA0Ny41IDQyLjcgNDcuMyA0MC41IDQ1LjEgNDAuMSA0NC42IDQyLjIgNDIuNSAzNC44IDQyLjUgMzQuOCAzOC40IDQyLjIgMzguNCA0NC4zIDQwLjQgNDQuNyA0MC45IDQ3LjEgNDMuMyIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQtMi02NXJqdXNyZjcpIiBzdHJva2Utd2lkdGg9IjAiLz4KICA8L2c+CiAgPGcgZGlzcGxheT0ibm9uZSI+CiAgICA8cG9seWdvbiBwb2ludHM9IjQ2LjggMTUuNCA0NCAxOC4zIDQxLjUgMTUuOCA0MS4xIDE1LjQgMzkgMTMuMyAzOS4xIDEzLjMgMzYuOSAxMS4yIDM5LjggOC4zIDQ2LjggMTUuNCIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQtMy02NXJqdXNyZjcpIiBzdHJva2Utd2lkdGg9IjAiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iNDQgMTguMyAzOS44IDIyLjUgMzkuNiAyMi4yIDM3LjMgMjAgMzYuOSAxOS42IDM5LjEgMTcuNCAzMS43IDE3LjQgMzEuNyAxMy4zIDM5IDEzLjMgNDEuMSAxNS40IDQxLjUgMTUuOCA0NCAxOC4zIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC00LTY1cmp1c3JmNykiIHN0cm9rZS13aWR0aD0iMCIvPgogIDwvZz4KICA8ZyBkaXNwbGF5PSJub25lIj4KICAgIDxwb2x5Z29uIHBvaW50cz0iNDcuNyAxNi41IDQ0LjggMTkuNCA0Mi40IDE2LjkgNDEuOSAxNi41IDM5LjkgMTQuNSAzOS45IDE0LjUgMzcuNyAxMi4zIDQwLjYgOS40IDQ3LjcgMTYuNSIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQtNS02NXJqdXNyZjcpIiBzdHJva2Utd2lkdGg9IjAiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iNDQuOCAxOS40IDQwLjYgMjMuNiA0MC40IDIzLjQgMzguMiAyMS4xIDM3LjcgMjAuNyAzOS45IDE4LjUgMzIuNSAxOC41IDMyLjUgMTQuNSAzOS45IDE0LjUgNDEuOSAxNi41IDQyLjQgMTYuOSA0NC44IDE5LjQiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTYtNjVyanVzcmY3KSIgc3Ryb2tlLXdpZHRoPSIwIi8+CiAgPC9nPgogIDxnPgogICAgPHBhdGggZD0iTTM4LjMsMTkuOWMtLjMsMC0uNS0uMy0uNC0uNXYtMS4yYzAtNS44LTQuNy0xMC42LTEwLjYtMTAuNnMtOCwyLjYtOS43LDYuM2MtLjEuMy0uNC40LS43LjMtMS4zLS42LTIuOS0uNy00LjYtLjEtMi40LjgtMy45LDMuMS0zLjgsNS42di41YzAsLjItLjEuNC0uMy41LTMuNCwxLjMtNS44LDQuMi01LjgsNy42czQuNSw4LjQsMTAuMSw4LjRoMjQuNGM1LjgsMCwxMC42LTMuOCwxMC42LTguNHMtNC4xLTcuOS05LjMtOC40aDBaTTM4LjEsMzQuOEgxMS4zYy0yLjQsMC00LjUtMS4yLTUuNi0yLjloMGMtLjgtMS0xLjItMi4yLTEuMi0zLjYsMC0yLjgsMS45LTUuMSw0LjUtNS45LjUtLjEsMS4xLS4yLDEuNy0uMmguNGMtLjUtLjYtLjgtMS40LS44LTIuMnYtLjJjMC0yLjMsMi00LjIsNC40LTQuMnMxLjUuMiwyLjEuNWMuOC40LDEuNCwxLDEuOCwxLjcsMC0uNy4xLTEuNS40LTIuMSwxLjEtMy42LDQuMy02LjIsOC4zLTYuMnM4LjYsMy45LDguNiw4LjYsMCwxLjEtLjIsMS43Yy0uMi45LS41LDEuOC0xLDIuNi43LS4zLDEuNS0uNSwyLjQtLjZoLjljNC4yLDAsNy42LDIuOSw3LjYsNi41cy0zLjMsNi41LTcuNSw2LjVaIiBkaXNwbGF5PSJub25lIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC03LTY1cmp1c3JmNykiIHN0cm9rZS13aWR0aD0iMCIvPgogICAgPHBhdGggZD0iTTQ4LjcsMjQuNWMwLDMuNi0yLjksNi43LTYuOSw3LjktLjkuMi0xLjgtLjQtMS44LTEuNHYtLjJjMC0uNi40LTEsLjktMS4yLDIuNi0uOCw0LjQtMi43LDQuNC00LjlzLTMuMi01LjMtNy4yLTUuMy0uOCwwLTEuMi4xaC0uM2MtLjksMC0xLjctLjctMS43LTEuN3MwLS40LDAtLjVoMGMuMy0uOS40LTEuNy40LTIuNSwwLTQtMy4yLTcuMi03LjItNy4ycy02LjIsMi40LTcsNS41aDBjLS4yLjgtLjgsMS4zLTEuNiwxLjNzLS45LS4yLTEuMi0uNWgwYy0uNi0uNi0xLjUtMS0yLjUtMS0xLjksMC0zLjUsMS41LTMuNSwzLjVzMCwuNi4xLjljLjEuMi4yLjYuMi45LjEuOC0uNiwxLjUtMS4zLDEuNmgwYy0yLjcuNC00LjUsMi43LTQuNSw0LjlzMi4zLDQuNiw1LjUsNS4yYy43LjEsMS4xLjcsMS4xLDEuM2gwYzAsMS0uNywxLjctMS42LDEuNS00LjgtLjYtOC41LTQuMS04LjUtOC4zczIuMi02LDUuNS03LjRjLjEsMCwuMy0uMS40LS4yLDAtLjEuMS0uMS4xLS4zdi0uNWMtLjItMi43LDEuNy01LjIsNC40LTUuOSwxLjUtLjMsMi44LS4yLDQsLjMuMy4xLjUsMCwuNy0uMywxLjktNC4zLDYuNi03LjEsMTEuOC02LjEsNS4xLDEsOC43LDUuNyw4LjUsMTAuOHYuN2MwLC4zLjIuNS40LjUsNS41LjcsOS42LDQuMiw5LjYsOC41WiIgZGlzcGxheT0ibm9uZSIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQtOC02NXJqdXNyZjcpIiBzdHJva2Utd2lkdGg9IjAiLz4KICA8L2c+CiAgPHBhdGggZD0iTTM3LjcsMzMuMXYtOC4yaC0xMS41di02LjdoNS42di05LjJoLTEzLjd2OS4yaDUuN3Y2LjdoLTExLjZ2OC4yaC0zdjcuOWg3Ljh2LTcuOGgtMi41di01LjdoOS4xdjUuN2gtMi42djcuOGg3Ljh2LTcuOGgtMi43di01LjdoOXY1LjdoLTIuNHY3LjhoNy44di03LjhoLTIuOFpNMTQuOCwzNS41djMuNGgtMy40di0zLjRoMy40Wk0yNi42LDM1LjV2My40aC0zLjR2LTMuNGgzLjRaTTIwLjQsMTZ2LTVoOC45djVoLTguOVpNMzguMywzOC45aC0zLjR2LTMuNGgzLjR2My40WiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQtOS02NXJqdXNyZjcpIiBzdHJva2Utd2lkdGg9IjAiLz4KICA8Zz4KICAgIDxwYXRoIGQ9Ik05LjEsMi41aDMuMnYyLjVoLTEuOGMtMi42LDAtNC42LDItNC42LDQuNXYzMWMwLDIuNSwyLjEsNC41LDQuNiw0LjVoMS44djIuNWgtMy4yYy0zLjcsMC02LjYtMi45LTYuNi02LjVWOWMwLTMuNiwyLjktNi41LDYuNi02LjVaIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC0xMC02NXJqdXNyZjcpIiBzdHJva2Utd2lkdGg9IjAiLz4KICAgIDxwYXRoIGQ9Ik00NC4zLDQwLjVWOS41YzAtMi41LTIuMS00LjUtNC42LTQuNWgtMS44di0yLjVoMy4yYzMuNywwLDYuNiwyLjksNi42LDYuNXYzMi4xYzAsMy42LTMsNi41LTYuNiw2LjVoLTMuMnYtMi41aDEuOGMyLjYsMCw0LjYtMi4xLDQuNi00LjZaIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC0xMS02NXJqdXNyZjcpIiBzdHJva2Utd2lkdGg9IjAiLz4KICA8L2c+Cjwvc3ZnPg==" />
@@ -1094,9 +1133,10 @@ vertical-align: center`</style>
         <type order="1" type="Layout Sider" typeId="c505f35f-7148-46a3-a812-d9f53a174490" />
         <type order="2" type="Layout Body" typeId="11636699-8bad-4693-8c15-8141bd66d04f" />
         <type order="3" type="Layout Footer" typeId="5d4fe8e9-2ccf-42ea-af60-04c6970c9ecb" />
-        <type order="4" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" />
-        <type order="5" type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
-        <type order="6" type="Navigation Target End" typeId="2b191288-ecae-4743-b069-cbdd927ef349" />
+        <type order="4" type="Layout Profile Menu" typeId="2362db31-5a1f-4db1-b437-4b3b5a193ea4" />
+        <type order="5" type="Property" typeId="356fbe17-bc63-4e16-b915-feefbc063cbe" />
+        <type order="6" type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
+        <type order="7" type="Navigation Target End" typeId="2b191288-ecae-4743-b069-cbdd927ef349" />
       </typeOrder>
       <contextMenuOptions>
         <createElement type="element">
@@ -1129,6 +1169,14 @@ vertical-align: center`</style>
           <specializationType>Layout Footer</specializationType>
           <specializationTypeId>5d4fe8e9-2ccf-42ea-af60-04c6970c9ecb</specializationTypeId>
           <defaultName>Footer</defaultName>
+          <allowMultiple>false</allowMultiple>
+        </createElement>
+        <createElement type="element">
+          <text>Add Profile Menu</text>
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8yY2JmMzQ3Yy1lMDhlLTQ5M2QtYWFmYS0xZmYxZDU2Y2ViYmUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI2OS43NSIgeDI9IjI1IiB5Mj0iMjguMjUiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgMSAwIC0yNCkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM0QTk5MjQiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojODZERTMzIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggZmlsbD0idXJsKCNTVkdJRF8xXzJjYmYzNDdjLWUwOGUtNDkzZC1hYWZhLTFmZjFkNTZjZWJiZSkiIGQ9Ik00NS44LDExVjcuNmgtMy40VjQuMkgzOXYzLjRIMTFWNC4ySDcuNnYzLjRINC4yVjExaDMuNHYyNy44SDQuMnYzLjRoMy40djMuNUgxMXYtMy41aDI4djMuNWgzLjQNCgl2LTMuNWgzLjR2LTMuNGgtMy40VjExSDQ1Ljh6IE0xMSwzOC44VjExaDI4djI3LjhIMTF6Ii8+DQo8L3N2Zz4NCg==" />
+          <specializationType>Layout Profile Menu</specializationType>
+          <specializationTypeId>2362db31-5a1f-4db1-b437-4b3b5a193ea4</specializationTypeId>
+          <defaultName>Profile</defaultName>
           <allowMultiple>false</allowMultiple>
         </createElement>
         <createElement type="element">
@@ -1256,18 +1304,8 @@ vertical-align: center`</style>
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
-          <typeOrder>
-            <type order="0" type="[Component]" typeId="b407aace-ad14-484e-ac93-4762a3d182d8" />
-          </typeOrder>
-          <contextMenuOptions>
-            <runScript type="run-script">
-              <text>Add Component</text>
-              <shortcut>ctrl + shift + a</shortcut>
-              <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iUGx1cyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9Il94M0NfUGx1c194M0VfIj4NCgkNCgkJPGxpbmVhckdyYWRpZW50IGlkPSJfeDNDX0NpcmNsZV94M0VfXzAwMDAwMTYxNjEyMDcyMDczMjQ2MjA5NTEwMDAwMDA4NjY5NjY2NzcxODg1MzA5ODc5XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzQ5MyIgeDI9IjI1LjIiIHkyPSIyLjUxMjEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGlkPSJfeDNDX0NpcmNsZV94M0VfIiBmaWxsPSJ1cmwoI194M0NfQ2lyY2xlX3gzRV9fMDAwMDAxNjE2MTIwNzIwNzMyNDYyMDk1MTAwMDAwMDg2Njk2NjY3NzE4ODUzMDk4NzlfKSIgZD0iTTI1LjIsMi4zDQoJCWMtMTIuNCwwLTIyLjUsMTAtMjIuNSwyMi41YzAsMTIuNCwxMC4xLDIyLjUsMjIuNSwyMi41czIyLjUtMTAuMSwyMi41LTIyLjVDNDcuNywxMi4zLDM3LjYsMi4zLDI1LjIsMi4zeiBNMjUuMiw0My44DQoJCWMtMTAuNSwwLTE5LTguNS0xOS0xOXM4LjUtMTksMTktMTlzMTksOC41LDE5LDE5QzQ0LjIsMzUuMiwzNS43LDQzLjgsMjUuMiw0My44eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzIxMSIgeDI9IjI1LjIiIHkyPSIyLjQ4MDEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCQ0KCQk8cGF0aCBpZD0iX3gzQ19QbHVzX3gzRV9fMDAwMDAwODE2MzE4NjY4NDEyOTcxNDM5MDAwMDAwMDczMTUyNDQ3Mzk2MDkwODMyNjlfIiBmaWxsPSJ1cmwoI194M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXykiIGQ9Ig0KCQlNMzAuNCwxMi42SDIwdjYuOWgtNi45djEwLjRIMjB2Ni45aDEwLjR2LTYuOWg2LjlWMTkuNmgtNi45VjEyLjZ6IE0zMy44LDIzdjMuNWgtNi45djYuOWgtMy41di02LjloLTYuOVYyM2g2Ljl2LTYuOWgzLjVWMjNIMzMuOHoNCgkJIi8+DQo8L2c+DQo8L3N2Zz4NCg==" />
-              <scriptReference name="Add Component Script" id="f3efb918-4345-49c7-acf9-8aeb9552ed08" />
-            </runScript>
-          </contextMenuOptions>
           <mappingSettings />
+          <rules>- No component should ever be explicitly added to this element.</rules>
         </childElementSetting>
         <childElementSetting type="Layout Footer" typeId="5d4fe8e9-2ccf-42ea-af60-04c6970c9ecb">
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8yY2JmMzQ3Yy1lMDhlLTQ5M2QtYWFmYS0xZmYxZDU2Y2ViYmUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI2OS43NSIgeDI9IjI1IiB5Mj0iMjguMjUiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgMSAwIC0yNCkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM0QTk5MjQiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojODZERTMzIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggZmlsbD0idXJsKCNTVkdJRF8xXzJjYmYzNDdjLWUwOGUtNDkzZC1hYWZhLTFmZjFkNTZjZWJiZSkiIGQ9Ik00NS44LDExVjcuNmgtMy40VjQuMkgzOXYzLjRIMTFWNC4ySDcuNnYzLjRINC4yVjExaDMuNHYyNy44SDQuMnYzLjRoMy40djMuNUgxMXYtMy41aDI4djMuNWgzLjQNCgl2LTMuNWgzLjR2LTMuNGgtMy40VjExSDQ1Ljh6IE0xMSwzOC44VjExaDI4djI3LjhIMTF6Ii8+DQo8L3N2Zz4NCg==" />
@@ -1284,18 +1322,8 @@ vertical-align: center`</style>
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
-          <typeOrder>
-            <type order="0" type="[Component]" typeId="b407aace-ad14-484e-ac93-4762a3d182d8" />
-          </typeOrder>
-          <contextMenuOptions>
-            <runScript type="run-script">
-              <text>Add Component</text>
-              <shortcut>ctrl + shift + a</shortcut>
-              <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iUGx1cyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9Il94M0NfUGx1c194M0VfIj4NCgkNCgkJPGxpbmVhckdyYWRpZW50IGlkPSJfeDNDX0NpcmNsZV94M0VfXzAwMDAwMTYxNjEyMDcyMDczMjQ2MjA5NTEwMDAwMDA4NjY5NjY2NzcxODg1MzA5ODc5XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzQ5MyIgeDI9IjI1LjIiIHkyPSIyLjUxMjEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGlkPSJfeDNDX0NpcmNsZV94M0VfIiBmaWxsPSJ1cmwoI194M0NfQ2lyY2xlX3gzRV9fMDAwMDAxNjE2MTIwNzIwNzMyNDYyMDk1MTAwMDAwMDg2Njk2NjY3NzE4ODUzMDk4NzlfKSIgZD0iTTI1LjIsMi4zDQoJCWMtMTIuNCwwLTIyLjUsMTAtMjIuNSwyMi41YzAsMTIuNCwxMC4xLDIyLjUsMjIuNSwyMi41czIyLjUtMTAuMSwyMi41LTIyLjVDNDcuNywxMi4zLDM3LjYsMi4zLDI1LjIsMi4zeiBNMjUuMiw0My44DQoJCWMtMTAuNSwwLTE5LTguNS0xOS0xOXM4LjUtMTksMTktMTlzMTksOC41LDE5LDE5QzQ0LjIsMzUuMiwzNS43LDQzLjgsMjUuMiw0My44eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzIxMSIgeDI9IjI1LjIiIHkyPSIyLjQ4MDEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCQ0KCQk8cGF0aCBpZD0iX3gzQ19QbHVzX3gzRV9fMDAwMDAwODE2MzE4NjY4NDEyOTcxNDM5MDAwMDAwMDczMTUyNDQ3Mzk2MDkwODMyNjlfIiBmaWxsPSJ1cmwoI194M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXykiIGQ9Ig0KCQlNMzAuNCwxMi42SDIwdjYuOWgtNi45djEwLjRIMjB2Ni45aDEwLjR2LTYuOWg2LjlWMTkuNmgtNi45VjEyLjZ6IE0zMy44LDIzdjMuNWgtNi45djYuOWgtMy41di02LjloLTYuOVYyM2g2Ljl2LTYuOWgzLjVWMjNIMzMuOHoNCgkJIi8+DQo8L2c+DQo8L3N2Zz4NCg==" />
-              <scriptReference name="Add Component Script" id="f3efb918-4345-49c7-acf9-8aeb9552ed08" />
-            </runScript>
-          </contextMenuOptions>
           <mappingSettings />
+          <rules>- No component should ever be explicitly added to this element.</rules>
         </childElementSetting>
         <childElementSetting type="Layout Header" typeId="a6c3a89e-5932-4ab6-a406-75444f05beee">
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8yY2JmMzQ3Yy1lMDhlLTQ5M2QtYWFmYS0xZmYxZDU2Y2ViYmUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI2OS43NSIgeDI9IjI1IiB5Mj0iMjguMjUiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgMSAwIC0yNCkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM0QTk5MjQiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojODZERTMzIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggZmlsbD0idXJsKCNTVkdJRF8xXzJjYmYzNDdjLWUwOGUtNDkzZC1hYWZhLTFmZjFkNTZjZWJiZSkiIGQ9Ik00NS44LDExVjcuNmgtMy40VjQuMkgzOXYzLjRIMTFWNC4ySDcuNnYzLjRINC4yVjExaDMuNHYyNy44SDQuMnYzLjRoMy40djMuNUgxMXYtMy41aDI4djMuNWgzLjQNCgl2LTMuNWgzLjR2LTMuNGgtMy40VjExSDQ1Ljh6IE0xMSwzOC44VjExaDI4djI3LjhIMTF6Ii8+DQo8L3N2Zz4NCg==" />
@@ -1312,18 +1340,26 @@ vertical-align: center`</style>
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
-          <typeOrder>
-            <type order="0" type="[Component]" typeId="b407aace-ad14-484e-ac93-4762a3d182d8" />
-          </typeOrder>
-          <contextMenuOptions>
-            <runScript type="run-script">
-              <text>Add Component</text>
-              <shortcut>ctrl + shift + a</shortcut>
-              <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iUGx1cyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9Il94M0NfUGx1c194M0VfIj4NCgkNCgkJPGxpbmVhckdyYWRpZW50IGlkPSJfeDNDX0NpcmNsZV94M0VfXzAwMDAwMTYxNjEyMDcyMDczMjQ2MjA5NTEwMDAwMDA4NjY5NjY2NzcxODg1MzA5ODc5XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzQ5MyIgeDI9IjI1LjIiIHkyPSIyLjUxMjEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGlkPSJfeDNDX0NpcmNsZV94M0VfIiBmaWxsPSJ1cmwoI194M0NfQ2lyY2xlX3gzRV9fMDAwMDAxNjE2MTIwNzIwNzMyNDYyMDk1MTAwMDAwMDg2Njk2NjY3NzE4ODUzMDk4NzlfKSIgZD0iTTI1LjIsMi4zDQoJCWMtMTIuNCwwLTIyLjUsMTAtMjIuNSwyMi41YzAsMTIuNCwxMC4xLDIyLjUsMjIuNSwyMi41czIyLjUtMTAuMSwyMi41LTIyLjVDNDcuNywxMi4zLDM3LjYsMi4zLDI1LjIsMi4zeiBNMjUuMiw0My44DQoJCWMtMTAuNSwwLTE5LTguNS0xOS0xOXM4LjUtMTksMTktMTlzMTksOC41LDE5LDE5QzQ0LjIsMzUuMiwzNS43LDQzLjgsMjUuMiw0My44eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzIxMSIgeDI9IjI1LjIiIHkyPSIyLjQ4MDEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCQ0KCQk8cGF0aCBpZD0iX3gzQ19QbHVzX3gzRV9fMDAwMDAwODE2MzE4NjY4NDEyOTcxNDM5MDAwMDAwMDczMTUyNDQ3Mzk2MDkwODMyNjlfIiBmaWxsPSJ1cmwoI194M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXykiIGQ9Ig0KCQlNMzAuNCwxMi42SDIwdjYuOWgtNi45djEwLjRIMjB2Ni45aDEwLjR2LTYuOWg2LjlWMTkuNmgtNi45VjEyLjZ6IE0zMy44LDIzdjMuNWgtNi45djYuOWgtMy41di02LjloLTYuOVYyM2g2Ljl2LTYuOWgzLjVWMjNIMzMuOHoNCgkJIi8+DQo8L2c+DQo8L3N2Zz4NCg==" />
-              <scriptReference name="Add Component Script" id="f3efb918-4345-49c7-acf9-8aeb9552ed08" />
-            </runScript>
-          </contextMenuOptions>
           <mappingSettings />
+          <rules>- No component should ever be explicitly added to this element.</rules>
+        </childElementSetting>
+        <childElementSetting type="Layout Profile Menu" typeId="2362db31-5a1f-4db1-b437-4b3b5a193ea4">
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8yY2JmMzQ3Yy1lMDhlLTQ5M2QtYWFmYS0xZmYxZDU2Y2ViYmUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI2OS43NSIgeDI9IjI1IiB5Mj0iMjguMjUiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgMSAwIC0yNCkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM0QTk5MjQiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojODZERTMzIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggZmlsbD0idXJsKCNTVkdJRF8xXzJjYmYzNDdjLWUwOGUtNDkzZC1hYWZhLTFmZjFkNTZjZWJiZSkiIGQ9Ik00NS44LDExVjcuNmgtMy40VjQuMkgzOXYzLjRIMTFWNC4ySDcuNnYzLjRINC4yVjExaDMuNHYyNy44SDQuMnYzLjRoMy40djMuNUgxMXYtMy41aDI4djMuNWgzLjQNCgl2LTMuNWgzLjR2LTMuNGgtMy40VjExSDQ1Ljh6IE0xMSwzOC44VjExaDI4djI3LjhIMTF6Ii8+DQo8L3N2Zz4NCg==" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>false</allowRename>
+          <nameMustBeUnique>false</nameMustBeUnique>
+          <allowAbstract>false</allowAbstract>
+          <allowStatic>false</allowStatic>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <sortChildren>by-type-then-by-name</sortChildren>
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <mappingSettings />
+          <rules>- No component should ever be explicitly added to this element.</rules>
         </childElementSetting>
         <childElementSetting type="Layout Sider" typeId="c505f35f-7148-46a3-a812-d9f53a174490">
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19HbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4Ig0KCSB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9ImxldmVsLTEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC43NSI+DQoJCTxwYXRoIG9wYWNpdHk9IjAuMSIgZmlsbD0iIzY5MzZBQSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAgICAiIGQ9Ik00My45LDEzLjh2MjRMMjUsNDYuNEw2LjEsMzcuOHYtMjRMMjUsMy41TDQzLjksMTMuOHoiLz4NCgkJPHBhdGggZmlsbD0iIzY5MzZBQSIgZD0iTTQ1LjYsMTMuOHYyNGwtMSwxLjZMMjUuNyw0OGgtMS40TDUuNCwzOS40bC0xLTEuNnYtMjRsMC45LTEuNWwwLjEsMy4xbDIuNCwxLjF2MjAuM2wxNS41LDdWMjMuNWwxLDAuNQ0KCQkJaDEuNGwxLTAuNHYyMC4zbDE1LjQtN1YxNi41bDIuNC0xLjFsMC4xLTMuMUw0NS42LDEzLjh6Ii8+DQoJPC9nPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgb3BhY2l0eT0iMC4xIiBmaWxsPSIjNjkzNkFBIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3ICAgICIgZD0iTTQzLjksMTMuOEwyNSwyMi40TDYuMSwxMy44TDI1LDMuNUw0My45LDEzLjgNCgkJeiIvPg0KCTxwYXRoIGRpc3BsYXk9ImlubGluZSIgZmlsbD0iIzY5MzZBQSIgZD0iTTI1LjgsMmgtMS42TDUuMywxMi4zbDAuMSwzLjFMMjQuMywyNGgxLjRsMTguOS04LjZsMC4xLTMuMUwyNS44LDJ6IE0yNSwyMC41bC0xNS02LjkNCgkJbDE1LTguMmwxNSw4LjJMMjUsMjAuNXoiLz4NCjwvZz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8yY2JmMzQ3Yy1lMDhlLTQ5M2QtYWFmYS0xZmYxZDU2Y2ViYmUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI2OS43NSIgeDI9IjI1IiB5Mj0iMjguMjUiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgMSAwIC0yNCkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM0QTk5MjQiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojODZERTMzIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggZmlsbD0idXJsKCNTVkdJRF8xXzJjYmYzNDdjLWUwOGUtNDkzZC1hYWZhLTFmZjFkNTZjZWJiZSkiIGQ9Ik00NS44LDExVjcuNmgtMy40VjQuMkgzOXYzLjRIMTFWNC4ySDcuNnYzLjRINC4yVjExaDMuNHYyNy44SDQuMnYzLjRoMy40djMuNUgxMXYtMy41aDI4djMuNWgzLjQNCgl2LTMuNWgzLjR2LTMuNGgtMy40VjExSDQ1Ljh6IE0xMSwzOC44VjExaDI4djI3LjhIMTF6Ii8+DQo8L3N2Zz4NCg==" />
@@ -1340,20 +1376,14 @@ vertical-align: center`</style>
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
-          <typeOrder>
-            <type order="0" type="[Component]" typeId="b407aace-ad14-484e-ac93-4762a3d182d8" />
-          </typeOrder>
-          <contextMenuOptions>
-            <runScript type="run-script">
-              <text>Add Component</text>
-              <shortcut>ctrl + shift + a</shortcut>
-              <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iUGx1cyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTAgNTAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9Il94M0NfUGx1c194M0VfIj4NCgkNCgkJPGxpbmVhckdyYWRpZW50IGlkPSJfeDNDX0NpcmNsZV94M0VfXzAwMDAwMTYxNjEyMDcyMDczMjQ2MjA5NTEwMDAwMDA4NjY5NjY2NzcxODg1MzA5ODc5XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzQ5MyIgeDI9IjI1LjIiIHkyPSIyLjUxMjEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCTxwYXRoIGlkPSJfeDNDX0NpcmNsZV94M0VfIiBmaWxsPSJ1cmwoI194M0NfQ2lyY2xlX3gzRV9fMDAwMDAxNjE2MTIwNzIwNzMyNDYyMDk1MTAwMDAwMDg2Njk2NjY3NzE4ODUzMDk4NzlfKSIgZD0iTTI1LjIsMi4zDQoJCWMtMTIuNCwwLTIyLjUsMTAtMjIuNSwyMi41YzAsMTIuNCwxMC4xLDIyLjUsMjIuNSwyMi41czIyLjUtMTAuMSwyMi41LTIyLjVDNDcuNywxMi4zLDM3LjYsMi4zLDI1LjIsMi4zeiBNMjUuMiw0My44DQoJCWMtMTAuNSwwLTE5LTguNS0xOS0xOXM4LjUtMTksMTktMTlzMTksOC41LDE5LDE5QzQ0LjIsMzUuMiwzNS43LDQzLjgsMjUuMiw0My44eiIvPg0KCQ0KCQk8bGluZWFyR3JhZGllbnQgaWQ9Il94M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNS4yIiB5MT0iNDcuNzIxMSIgeDI9IjI1LjIiIHkyPSIyLjQ4MDEiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MCkiPg0KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNzJDMDVBIi8+DQoJCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiMzQUI2NjYiLz4NCgk8L2xpbmVhckdyYWRpZW50Pg0KCQ0KCQk8cGF0aCBpZD0iX3gzQ19QbHVzX3gzRV9fMDAwMDAwODE2MzE4NjY4NDEyOTcxNDM5MDAwMDAwMDczMTUyNDQ3Mzk2MDkwODMyNjlfIiBmaWxsPSJ1cmwoI194M0NfUGx1c194M0VfXzAwMDAwMDI3NTk2ODA4MzA0OTU5ODYzNTgwMDAwMDA3NzE1NDI3MDgwMzQ2NjExMTAwXykiIGQ9Ig0KCQlNMzAuNCwxMi42SDIwdjYuOWgtNi45djEwLjRIMjB2Ni45aDEwLjR2LTYuOWg2LjlWMTkuNmgtNi45VjEyLjZ6IE0zMy44LDIzdjMuNWgtNi45djYuOWgtMy41di02LjloLTYuOVYyM2g2Ljl2LTYuOWgzLjVWMjNIMzMuOHoNCgkJIi8+DQo8L2c+DQo8L3N2Zz4NCg==" />
-              <scriptReference name="Add Component Script" id="f3efb918-4345-49c7-acf9-8aeb9552ed08" />
-            </runScript>
-          </contextMenuOptions>
           <mappingSettings />
+          <rules>- No component should ever be explicitly added to this element.</rules>
         </childElementSetting>
       </childElementSettings>
+      <rules>- No component should ever be explicitly added to any of the Header, Sider, Body or Footer layouts.
+- The Layout will may contain `Navigation Target End` associations which represent menu items to be created.
+- The  "Layout Placement" stereotype, "Regions" fields represents which region 9header, sider, footer) the menu item should be placed.
+- After any UI designer change that adds a Page or changes MainLayout navigation, or where the Region on an association changes, the `updating-app-menu` skill MUST be called.</rules>
     </elementSetting>
     <elementSetting type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101">
       <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iUXVlcnkiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTAgNTAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV82MzIyZDU5Mi01NDQ0LTRlZjktOGNiOC00YjRmNDYwMjUxYzIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0NS40Mjg4IiB4Mj0iMjUiIHkyPSI2LjE5ODUiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM2NENDRUYiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNDA2QUIzIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBvbHlnb24gZmlsbD0idXJsKCNTVkdJRF8xXzYzMjJkNTkyLTU0NDQtNGVmOS04Y2I4LTRiNGY0NjAyNTFjMikiIHBvaW50cz0iNDYuNSwzNC44IDM1LjcsNDUuNiAzMC45LDQwLjggMzQsMzcuOCAyMS4zLDM3LjggMjEuMywyMi4zIDIwLjUsMjIuMyAxMiwzMC44IDMuNSwyMi4zIA0KCTIxLjQsNC40IDIxLjUsNC4yIDMwLDEyLjggMjQsMTguOCAzNi4xLDE4LjggNDAuNCwxNC41IDQ1LjIsMTkuMiAzNC40LDMwIDI5LjYsMjUuMyAzMi42LDIyLjMgMjQuOCwyMi4zIDI0LjgsMzQuMyAzNy41LDM0LjMgDQoJNDEuNywzMCAiLz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAxNzA5OTQ0NzU1MTkyMTcxNTU2OTAwMDAwMDMyNDM1NTU2MDYwMDIxNTY0NDhfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjgyLjc4NTciIHkxPSI1MC4wMjM4IiB4Mj0iODIuNzg1NyIgeTI9IjUwLjAyMzgiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MSkiPg0KCTxzdG9wICBvZmZzZXQ9IjUuNjk1MTkzZS0wMiIgc3R5bGU9InN0b3AtY29sb3I6IzQwNkFCMyIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiM2NENDRUYiLz4NCjwvbGluZWFyR3JhZGllbnQ+DQo8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMTcwOTk0NDc1NTE5MjE3MTU1NjkwMDAwMDAzMjQzNTU1NjA2MDAyMTU2NDQ4XykiIGQ9Ik04Mi44LDEiLz4NCjwvc3ZnPg0K" />
@@ -1759,6 +1789,10 @@ return display;</displayFunction>
             <type type="Component" typeId="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" />
             <type type="Component Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb" />
             <type type="Layout" typeId="776a9393-6b23-4a8c-8937-fd7e833fa0ef" />
+            <type type="Layout Header" typeId="a6c3a89e-5932-4ab6-a406-75444f05beee" />
+            <type type="Layout Body" typeId="11636699-8bad-4693-8c15-8141bd66d04f" />
+            <type type="Layout Sider" typeId="c505f35f-7148-46a3-a812-d9f53a174490" />
+            <type type="Layout Footer" typeId="5d4fe8e9-2ccf-42ea-af60-04c6970c9ecb" />
           </targetTypes>
           <allowIsNavigable>true</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -3615,6 +3649,9 @@ function removeOccurrences(str, ...patterns) {
   }
   return result;
 }</script>
+    </script>
+    <script name="Page Management API Script" id="72e4e119-1aaf-4671-83f7-4bf03757112b">
+      <filePath>pageManagementApi.js</filePath>
     </script>
   </scripts>
 </settings>

@@ -61,6 +61,11 @@ namespace Intent.Modelers.UI.Api
             .Select(x => new LayoutFooterModel(x))
             .SingleOrDefault();
 
+        public LayoutProfileMenuModel ProfileMenu => _element.ChildElements
+            .GetElementsOfType(LayoutProfileMenuModel.SpecializationTypeId)
+            .Select(x => new LayoutProfileMenuModel(x))
+            .SingleOrDefault();
+
         public IList<PropertyModel> Properties => _element.ChildElements
             .GetElementsOfType(PropertyModel.SpecializationTypeId)
             .Select(x => new PropertyModel(x))

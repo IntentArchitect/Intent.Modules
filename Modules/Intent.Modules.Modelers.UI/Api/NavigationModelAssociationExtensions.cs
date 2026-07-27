@@ -38,6 +38,42 @@ namespace Intent.Modelers.UI.Api
         }
 
         [IntentManaged(Mode.Fully)]
+        public static IList<NavigationTargetEndModel> NavigateToComponents(this LayoutHeaderModel model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.Association.SpecializationType == NavigationModel.SpecializationType && x.IsTargetEnd())
+                .Select(x => NavigationModel.CreateFromEnd(x).TargetEnd)
+                .ToList();
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public static IList<NavigationTargetEndModel> NavigateToComponents(this LayoutBodyModel model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.Association.SpecializationType == NavigationModel.SpecializationType && x.IsTargetEnd())
+                .Select(x => NavigationModel.CreateFromEnd(x).TargetEnd)
+                .ToList();
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public static IList<NavigationTargetEndModel> NavigateToComponents(this LayoutSiderModel model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.Association.SpecializationType == NavigationModel.SpecializationType && x.IsTargetEnd())
+                .Select(x => NavigationModel.CreateFromEnd(x).TargetEnd)
+                .ToList();
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public static IList<NavigationTargetEndModel> NavigateToComponents(this LayoutFooterModel model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.Association.SpecializationType == NavigationModel.SpecializationType && x.IsTargetEnd())
+                .Select(x => NavigationModel.CreateFromEnd(x).TargetEnd)
+                .ToList();
+        }
+
+        [IntentManaged(Mode.Fully)]
         public static IList<NavigationSourceEndModel> NavigateBackComponents(this IPageModel model)
         {
             return model.InternalElement.AssociatedElements

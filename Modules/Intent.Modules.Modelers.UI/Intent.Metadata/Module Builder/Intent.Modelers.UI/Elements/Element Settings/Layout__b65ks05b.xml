@@ -48,9 +48,30 @@
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="14441454-bfe0-4d5d-8dba-d86d74d33a3b" name="AI Settings">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="- No component should ever be explicitly added to any of the Header, Sider, Body or Footer layouts.&#xA;- The Layout will may contain `Navigation Target End` associations which represent menu items to be created.&#xA;- The  &quot;Layout Placement&quot; stereotype, &quot;Regions&quot; fields represents which region 9header, sider, footer) the menu item should be placed.&#xA;- After any UI designer change that adds a Page or changes MainLayout navigation, or where the Region on an association changes, the `updating-app-menu` skill MUST be called." isActive="true" />
+      </properties>
+    </stereotype>
   </stereotypes>
   <metadata />
   <childElements>
+    <childElement id="4c3d797b-e3c8-431a-9e74-f97a39103a86" type="Accepted Child Types" typeId="7c0e37ab-2f84-46df-ac29-1e5aaa67bf75">
+      <name>[accepted types]</name>
+      <display>[accepted types]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>776a9393-6b23-4a8c-8937-fd7e833fa0ef</parentFolderId>
+      <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+      <packageName>Intent.Modelers.UI</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
     <childElement id="0d81b3d0-c1d7-4afc-9721-e1b55c926c11" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
@@ -219,6 +240,48 @@
                 <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Footer" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="fdea9028-8611-4eb0-b1a5-4d54d267af41" display="Menu Group" isActive="true" />
+                <property name="aeaeff9b-f55b-4888-92e9-5317b5c14016" display="Top Divider" value="false" isActive="true" />
+                <property name="543cc5f5-0b0c-40cc-9df7-3ce45b555dd0" display="Bottom Divider" value="false" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="fecd3d3b-b883-412a-867a-024b3a3e8ad1" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Profile Menu</name>
+          <display>Add Profile Menu: Layout Profile Menu</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="011b9351-fd5e-4e5a-b19a-3dbab6740a53">
+            <typeId>2362db31-5a1f-4db1-b437-4b3b5a193ea4</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.UI</typePackageName>
+            <typePackageId>5c4628ec-679e-4f3d-afda-137c978deae0</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>0d81b3d0-c1d7-4afc-9721-e1b55c926c11</parentFolderId>
+          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+          <packageName>Intent.Modelers.UI</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Profile" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
                 <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />

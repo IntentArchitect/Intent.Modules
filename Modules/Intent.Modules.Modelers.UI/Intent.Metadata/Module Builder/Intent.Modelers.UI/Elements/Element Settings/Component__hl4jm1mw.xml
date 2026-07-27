@@ -57,6 +57,14 @@
       <definitionPackageId>5c4628ec-679e-4f3d-afda-137c978deae0</definitionPackageId>
       <properties />
     </stereotype>
+    <stereotype stereotypeDefinitionId="14441454-bfe0-4d5d-8dba-d86d74d33a3b" name="AI Settings">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="## Component modeling rules&#xA;- When the request is to model a component or reusable component, this element is the component that must be modeled.&#xA;- Model the component only.&#xA;- Never add the component to `MainLayout` or to any child of `MainLayout`.&#xA;- Never suggest attaching the component to `MainLayout` or to any child of `MainLayout`.&#xA;- Never create navigation to a component.&#xA;- Only create an association to a page, dialog, or component if the user explicitly requests it.&#xA;- When such an association is requested, use `Composed Of`.&#xA;&#xA;## Component implementation rules&#xA;- The layout and backend of a component are NOT deterministically generated. Only the basic structure (e.g. scaffolded files, minimal method stubs) may be deterministically generated.&#xA;- Full implementation of a component's frontend (e.g. Razor, HTML) and backend (e.g. C#, TS) MUST be done by a coding agent — if asked to implement the component, this WILL and MUST be delegated to a coding subagent, not generated deterministically.&#xA;- You MUST delegate this implementation to a coding subagent, instructing it to search for and use the appropriate skill to implement the component.&#xA;- The subagent may implement the component without a skill only if:&#xA;  - it cannot find an appropriate skill after searching, or&#xA;  - it has been given specific instructions otherwise.&#xA;  In either case, it MUST first check for the existence of a skill before proceeding without one." isActive="true" />
+      </properties>
+    </stereotype>
   </stereotypes>
   <metadata />
   <childElements>

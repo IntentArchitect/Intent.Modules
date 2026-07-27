@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="78475d50-f0e3-4fc7-96bd-1a6df1e8f71d" version="3.1.0">
+  <comment>The location in the associated Layout in which a menu item will be generated.</comment>
+  <name>Layout Placement</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="2b191288-ecae-4743-b069-cbdd927ef349">Navigation Target End</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAFQ0lEQVR4Aeybz4scRRTHX/XMriBkoxhyNN5MQHIIkoP+AQFBPOeyq6cNiB49efDg3bMnD4K7B/EgkuAGBEE9GvyBYI5iTq75sZksJNnpl/dqt2e7q4vZb213z/aPGupNV3dXv3rfT7/qnzMJxU8lAhFgJXxEEWAEWJFAxc1jBkaAFQlU3DxmYARYkUDFzWMGRoAVCVTcHM/AT/5cHr1/853xta2fl9Zvbi+tb91v0B4sXdt6KsYLNOnv+9+W17eu0gfXn0O5wgBHd/59O9lLvzREb5Dhl8jQ6QZtRQSMxRZZpD9zkYk/H+2Nr6AdwwCTxHwsTk8RM3Xc5sdPdMowfyRaoQIDFG+viQ2iCMALqNAAgCwpLtlHAzCjWjGEMEA59skhjwZjBH5ggENIvJnGlDVfIIQ4QErF4QCG74yiyAVKAEDrueDywpXz9PrVS52286KhICpwJgBgOfvOXT5HZ18922l75fLLgszRprOyFCk4QHXqWDKCDxVILCfSJhkJAkdXSCCyNdicjXYDNh5OMxygPQQqw7z1BVRek63DQysAIAZr9/cdqsOmO3uzDrVeh0/1MXM6r2JwLHhLvQF274M9QextP6E6jJ/oZdN+B1qvw6f62PfofLu6+LBvp2VpFgaoOe1ayVtjC5p17OoKOdrDAJuV0DLvbJQpFBQO0Ka1PcCK42wq1V6UTE9+ignDAcpTtNKJGOuj/a3y3LI6GDUOUB0PhaCZNjCELTxwtwyoGZ6B9knggMiAUgMAyhh2r5fATlrfzNWVpg0MYeHXehC1BQjzC/h9oLxp0RNx0WqL+IQdaXa4hoUED2EjJxHdL3nDumh/q7ymrI5GDQMUfsXk0x3m6WV8ZpnqMLN8GJrW6/CpPjwhe3Q1cieiCJVa3srhPH9xheqw0cp45lzrdfhUHzOnhUpek9YLK+fOHO7muc1kpZ6pZAKXgTTEAWoClqwvlDTrCqaHQkgcDrDgX3zrvEzcsvPDNrXZ3HjtvGpxza44+gsHmIQ8JTu643a3UJpYhDhA608d580u7MFXXlNWx2QFAsScdr5VIz/t4JT1tUjBOk/qQIBeYeTNniwP1h0xgTNQT0uuHeG7M6tdXTqPBg8D3L9cR912vJ3Bn93hAGUA70PMDrI67TioWfiqxbXZyrmVAIDSgRR7eMimc113aGWmJ5sGhI4DLJA7Rk8BQS2+aabnYIq/Vw94Hrh4VSfXIx/zGDg3YjOkO5G5JAorA4awbJe/VtK6LOpFUS15C8gVHCD3AhUoAheLA6SpeJVSOJmA8bS+2fF1wQCNQHBNFvWiuLr0/Q8qDAZYSLxsh3l60fcObTZPyOX7A27iLAwS1PcObTYvQFCbb1s4Azn+yNzHL/RCmsVJ3mS2FyWvSercxBBmIeVYOg2455HN21isBkeXHdFgsPAQJvvTjqLXf366Tf/9dafTphqKqsLmcIB2txR31e3vfqVbX/zYaVMNntOwXtlAJAMAQv4618gbcBO3ckxT2VGSgTwQ85ItL4QzMJHLGM3roVgZlX8JDJDYHP73yu+rN0tljMFaYYCJob9lDAskcU99N/pDhEIFBkhkPjNsJn1nZ1KajIz5lMAPDHBy78VvyaRrzHyLmSXFF5eF2h9zusM8fdCYUfq/PIX5hSh97+Hdu9dBfgG3cjfeejz5avWb3c3VS2JLjzZWzaJM+9vdXDu9u/nuC43ZxtqZycbqm5PNta/pxoeP6weIehxYO3gID4wLLDcChFH5G0aAfi7w0ggQRuVv2EWAfiUntDQCrAg+AowAKxKouPkzAAAA///z5mAgAAAABklEQVQDABTSdApMkh8UAAAAAElFTkSuQmCC" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>5c4628ec-679e-4f3d-afda-137c978deae0</parentFolderId>
+  <order>0</order>
+  <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+  <packageName>Intent.Modelers.UI</packageName>
+  <properties>
+    <property id="c12a5a3f-0026-4eb5-859e-bdd10eaa806d">
+      <name>Regions</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <lookupTypes>
+        <type>c505f35f-7148-46a3-a812-d9f53a174490</type>
+        <type>a6c3a89e-5932-4ab6-a406-75444f05beee</type>
+        <type>5d4fe8e9-2ccf-42ea-af60-04c6970c9ecb</type>
+        <type>2362db31-5a1f-4db1-b437-4b3b5a193ea4</type>
+      </lookupTypes>
+    </property>
+  </properties>
+</stereotypeDefinition>

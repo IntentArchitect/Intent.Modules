@@ -21,5 +21,15 @@
       <deviationsHash>30CFD6A2739F858119A98BF4221E36E4CDB6A745ACAE895B61802C6DEB981231</deviationsHash>
       <fileHash>5AF63EF06322D8B991B8B16EBF1A9994C0ECEE8F0F61B0D0EE9A51916FC3FF76</fileHash>
     </file>
+    <file>
+      <correlationId>Intent.VisualStudio.Projects.CSharpProject#2f8f380b-1119-494f-84d2-49b5310dc155</correlationId>
+      <path>Intent.Modules.Modelers.UI/Intent.Modules.Modelers.UI.csproj</path>
+      <count>1</count>
+      <updatedByAccountName>jp.seini@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>JP Seini</updatedByDisplayName>
+      <updatedAt>2026-07-03T13:08:17.875989Z</updatedAt>
+      <deviationsHash>DAC8E810107B0B73AFBD686B632F60079F4A670B0E9DCF5A518FB6772B03E235</deviationsHash>
+      <fileHash>3908190EFFBCBFA92CEC9115137D8888FCCDA316B6FAEB49BA2CD6BCB9A34A11</fileHash>
+    </file>
   </files>
 </deviationsLog>

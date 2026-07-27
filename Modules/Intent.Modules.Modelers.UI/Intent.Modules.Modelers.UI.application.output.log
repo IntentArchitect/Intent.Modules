@@ -258,6 +258,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>b1753956-3903-4822-9673-1c90d13257a0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#2362db31-5a1f-4db1-b437-4b3b5a193ea4</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/LayoutProfileMenuModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>LayoutProfileMenuModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>b1753956-3903-4822-9673-1c90d13257a0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c505f35f-7148-46a3-a812-d9f53a174490</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/LayoutSiderModel.cs</ApplicationRelativeFilePath>
@@ -302,6 +310,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/NavigationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>NavigationModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>b1753956-3903-4822-9673-1c90d13257a0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#2b191288-ecae-4743-b069-cbdd927ef349</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/NavigationTargetEndModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>NavigationTargetEndModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
