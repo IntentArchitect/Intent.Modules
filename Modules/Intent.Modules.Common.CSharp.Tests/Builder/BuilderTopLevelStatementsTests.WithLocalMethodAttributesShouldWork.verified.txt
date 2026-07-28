@@ -1,0 +1,19 @@
+﻿using System;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+Console.WriteLine("Hello world!");
+
+[Obsolete]
+[Conditional("DEBUG")]
+[Description("Local")]
+static void AddCustomRegistrations(IDistributedApplicationBuilder builder)
+{
+    // Add your custom registrations here
+}
+
+Nested(x =>
+{
+    [Obsolete]
+    int InnerMethod() => 1;
+});

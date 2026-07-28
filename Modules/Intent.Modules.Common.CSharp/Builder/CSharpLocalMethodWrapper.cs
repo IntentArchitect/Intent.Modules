@@ -26,6 +26,17 @@ public class CSharpLocalMethodWrapper(CSharpLocalMethod wrapped) : ICSharpLocalF
     bool ICSharpCodeContext.TryGetReferenceForModel(IMetadataModel model, out IHasCSharpName reference) => wrapped.TryGetReferenceForModel(model, out reference);
     bool ICSharpCodeContext.TryGetReferenceForModel(string modelId, out IHasCSharpName reference) => wrapped.TryGetReferenceForModel(modelId, out reference);
     IHasCSharpStatements ICSharpLocalFunction.Parent => wrapped.Parent;
+    IEnumerable<ICSharpAttribute> ICSharpLocalFunction.Attributes => wrapped.Attributes;
+    ICSharpLocalFunction ICSharpLocalFunction.AddAttribute(string name, Action<ICSharpAttribute>? configure) => wrapped.AddAttribute(name, configure);
+    ICSharpLocalFunction ICSharpLocalFunction.AddAttribute(ICSharpAttribute attribute, Action<ICSharpAttribute>? configure)
+    {
+        if (attribute is not CSharpAttribute concreteAttribute)
+        {
+            throw new Exception($"{nameof(attribute)} is not {nameof(CSharpAttribute)}");
+        }
+
+        return wrapped.AddAttribute(concreteAttribute, configure);
+    }
     ICSharpLocalFunction ICSharpMethod<ICSharpLocalFunction>.AddGenericParameter(string typeName, out ICSharpGenericParameter param)
     {
         var result = wrapped.AddGenericParameter(typeName, out var concrete);

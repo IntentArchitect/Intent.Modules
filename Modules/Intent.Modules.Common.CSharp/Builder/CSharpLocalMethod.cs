@@ -43,6 +43,7 @@ public class CSharpLocalMethod : CSharpStatement, IHasCSharpStatements, ICSharpL
     }
 
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
+    public IList<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
     public bool IsAsync { get; private set; }
     public bool IsStatic { get; private set; }
     public bool HasExpressionBody { get; private set; }
@@ -136,6 +137,18 @@ public class CSharpLocalMethod : CSharpStatement, IHasCSharpStatements, ICSharpL
             type: template.UseType("System.Threading.CancellationToken"),
             name: parameterName,
             configure: parameter => parameter.WithDefaultValue("default"));
+    }
+
+    public CSharpLocalMethod AddAttribute(string name, Action<CSharpAttribute>? configure = null)
+    {
+        return AddAttribute(new CSharpAttribute(name), configure);
+    }
+
+    public CSharpLocalMethod AddAttribute(CSharpAttribute attribute, Action<CSharpAttribute>? configure = null)
+    {
+        Attributes.Add(attribute);
+        configure?.Invoke(attribute);
+        return this;
     }
 
     public CSharpLocalMethod AddGenericParameter(string typeName)
@@ -373,6 +386,9 @@ public class CSharpLocalMethod : CSharpStatement, IHasCSharpStatements, ICSharpL
             sb.Append(genericTypeConstraint);
         }
 
+        // done after the parameter list is calculated so that the attributes don't affect the estimated line length
+        sb.Insert(0, GetAttributes(indentation));
+
         if (HasExpressionBody)
         {
             var expressionBody = Statements.ConcatCode($"{indentation}    ");
@@ -388,6 +404,17 @@ public class CSharpLocalMethod : CSharpStatement, IHasCSharpStatements, ICSharpL
         return $@"{sb}
 {indentation}{{{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
+    }
+
+    private string GetAttributes(string indentation)
+    {
+        if (!Attributes.Any())
+        {
+            return string.Empty;
+        }
+
+        return string.Concat(Attributes.Select(x => $@"{x.GetText(indentation)}
+"));
     }
 
     private string GetParameters(ParameterPlacementOptionsEnum option, int estimatedLength, int maxLineLength, string indentation) =>
@@ -429,6 +456,9 @@ public class CSharpLocalMethod : CSharpStatement, IHasCSharpStatements, ICSharpL
 
     #region ICSharpLocalFunction implementation
 
+    IEnumerable<ICSharpAttribute> ICSharpLocalFunction.Attributes => Attributes;
+    ICSharpLocalFunction ICSharpLocalFunction.AddAttribute(string name, Action<ICSharpAttribute>? configure) => _wrapper.AddAttribute(name, configure);
+    ICSharpLocalFunction ICSharpLocalFunction.AddAttribute(ICSharpAttribute attribute, Action<ICSharpAttribute>? configure) => _wrapper.AddAttribute(attribute, configure);
     ICSharpLocalFunction ICSharpMethod<ICSharpLocalFunction>.AddGenericParameter(string typeName, out ICSharpGenericParameter param) => _wrapper.AddGenericParameter(typeName, out param);
     ICSharpLocalFunction ICSharpMethod<ICSharpLocalFunction>.AddGenericParameter(string typeName) => _wrapper.AddGenericParameter(typeName);
     ICSharpLocalFunction ICSharpMethod<ICSharpLocalFunction>.AddGenericTypeConstraint(string genericParameterName, Action<ICSharpGenericTypeConstraint>? configure) => _wrapper.AddGenericTypeConstraint(genericParameterName, configure);

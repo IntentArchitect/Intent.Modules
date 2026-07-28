@@ -1,6 +1,7 @@
 ﻿### Version 3.10.10
 
 - Improvement: Added `public static bool HasSdk(this ICSharpProject csharpProject, string sdk)` and similar extension methods which can be used to determine the SDK selected in the Codebase Structure designer for a C# project.
+- Improvement: `CSharpLocalMethod` (local functions, e.g. those added with `AddLocalMethod` in top-level statements) now supports attributes through `AddAttribute` and an `Attributes` collection.
 
 ### Version 3.10.9
 
