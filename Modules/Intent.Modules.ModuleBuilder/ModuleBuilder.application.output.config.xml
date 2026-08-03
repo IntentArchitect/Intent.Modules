@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <outputFiles>
   <files>
+    <file relativePath="../ModuleBuilder/Intent.Modules.ModuleBuilder/release-notes.md" state="ignored;once-off-generated" />
+    <file relativePath="../ModuleBuilder/Intent.Modules.ModuleBuilder/Templates/Api/ApiElementModel/ApiElementModelTemplate.cs" state="ignored" />
+    <file relativePath="../ModuleBuilder/Intent.Modules.ModuleBuilder/Templates/Api/ApiElementModel/ApiElementModelTemplate.tt" state="ignored" />
     <file relativePath="Intent.Modules.ModuleBuilder/release-notes.md" state="ignored;once-off-generated" />
     <file relativePath="Intent.Modules.ModuleBuilder/Templates/Api/ApiElementModel/ApiElementModelTemplate.cs" state="ignored" />
     <file relativePath="Intent.Modules.ModuleBuilder/Templates/Api/ApiElementModel/ApiElementModelTemplate.tt" state="ignored" />
+    <file relativePath="release-notes.md" state="ignored;once-off-generated" />
+    <file relativePath="Templates/Api/ApiElementModel/ApiElementModelTemplate.cs" state="ignored" />
+    <file relativePath="Templates/Api/ApiElementModel/ApiElementModelTemplate.tt" state="ignored" />
   </files>
 </outputFiles>

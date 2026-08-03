@@ -3,7 +3,7 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#728ec7bd-3292-413f-bdac-2ebf40e6f47b</correlationId>
-      <path>Intent.Modules.OutputTargets.Folders/Api/FolderExtensionModel.cs</path>
+      <path>Api/FolderExtensionModel.cs</path>
       <count>3</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -13,7 +13,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#8663c9f9-2852-45e7-aaa1-0883a2e6f1da</correlationId>
-      <path>Intent.Modules.OutputTargets.Folders/Api/RoleModel.cs</path>
+      <path>Api/RoleModel.cs</path>
       <count>4</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -23,7 +23,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#fbca4a65-b376-482c-a23d-32da9908cac9</correlationId>
-      <path>Intent.Modules.OutputTargets.Folders/Api/RootLocationPackageModel.cs</path>
+      <path>Api/RootLocationPackageModel.cs</path>
       <count>2</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -33,7 +33,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#09de2192-2507-41a2-8044-286c7ecadec2</correlationId>
-      <path>Intent.Modules.OutputTargets.Folders/Api/TemplateOutputModel.cs</path>
+      <path>Api/TemplateOutputModel.cs</path>
       <count>5</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>

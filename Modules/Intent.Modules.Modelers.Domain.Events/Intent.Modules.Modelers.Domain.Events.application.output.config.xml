@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <outputFiles>
   <files>
+    <file relativePath="../Modelers.Domain.Events/Intent.Modules.Modelers.Domain.Events/Api/ServicesFolderExtensionModel.cs" state="ignored" />
+    <file relativePath="Api/ServicesFolderExtensionModel.cs" state="ignored" />
     <file relativePath="Intent.Modules.Modelers.Domain.Events/Api/ServicesFolderExtensionModel.cs" state="ignored" />
   </files>
 </outputFiles>

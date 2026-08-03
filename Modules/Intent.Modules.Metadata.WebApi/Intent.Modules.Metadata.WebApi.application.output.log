@@ -17,6 +17,31 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Metadata.WebApi/Intent.Modules.Metadata.WebApi/Api/Extensions/ApiGatewayRouteModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Metadata.WebApi/Intent.Modules.Metadata.WebApi/Api/Extensions/AzureFunctionModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Metadata.WebApi/Intent.Modules.Metadata.WebApi/Intent.Metadata.WebApi.imodspec</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Metadata.WebApi/Intent.Modules.Metadata.WebApi/Intent.Modules.Metadata.WebApi.csproj</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Metadata.WebApi/Intent.Modules.Metadata.WebApi/release-notes.md</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0ec760ae-98d8-4e8e-953c-d00691ff7e28</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -142,6 +167,31 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Metadata.WebApi.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Metadata.WebApi.csproj</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Metadata.WebApi/Api/Extensions/ApiGatewayRouteModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Metadata.WebApi/Api/Extensions/AzureFunctionModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Metadata.WebApi/Intent.Metadata.WebApi.imodspec</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Metadata.WebApi/Intent.Modules.Metadata.WebApi.csproj</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Metadata.WebApi/release-notes.md</ApplicationRelativeFilePath>
       <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>

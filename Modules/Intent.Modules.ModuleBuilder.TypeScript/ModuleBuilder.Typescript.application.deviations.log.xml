@@ -3,7 +3,7 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#f3b2cfd1-4214-4dd0-bec6-71cb2f47318c</correlationId>
-      <path>Intent.Modules.ModuleBuilder.TypeScript/Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplatePartial.cs</path>
+      <path>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplatePartial.cs</path>
       <count>2</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -13,7 +13,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#17b9a627-3b97-4cdb-86a2-93686d20150e</correlationId>
-      <path>Intent.Modules.ModuleBuilder.TypeScript/Templates/TypescriptTemplateT4/TypescriptTemplateT4TemplatePartial.cs</path>
+      <path>Templates/TypescriptTemplateT4/TypescriptTemplateT4TemplatePartial.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -23,7 +23,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#17b9a627-3b97-4cdb-86a2-93686d20150e</correlationId>
-      <path>Intent.Modules.ModuleBuilder.TypeScript/Templates/TypescriptTemplateT4/TypescriptTemplateT4TemplateRegistration.cs</path>
+      <path>Templates/TypescriptTemplateT4/TypescriptTemplateT4TemplateRegistration.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>

@@ -1,6 +1,7 @@
 ﻿using Intent.Configuration;
 using Intent.Metadata.Models;
 using Intent.Modelers.CodebaseStructure.Api;
+using Intent.Modules.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,13 @@ namespace Intent.Modelers.CodebaseStructure.OutputTargets
         public string Id => _model.Id;
         public string Type => "Folder";
         public string Name => _model.Name;
-        public string RelativeLocation => "";
+
+        // Owned by Intent.Modules.VisualStudio.Projects' "Root Folder Options" stereotype - read generically
+        // by stereotype name (rather than a package reference, which would invert the dependency direction)
+        // so this Root Folder's own OutputTarget shifts together with everything else that resolves relative
+        // to it (Projects, Solution Folders), instead of staying behind at the unshifted location.
+        public string RelativeLocation => _model.HasStereotype("Root Folder Options") ? _model.GetStereotypeProperty("Root Folder Options", "Relative Location", string.Empty) : string.Empty;
+
         public string ParentId => null;
         public IEnumerable<string> SupportedFrameworks => new string[0];
         public IEnumerable<IOutputTargetRole> Roles => _model.OutputAnchors;

@@ -3,7 +3,7 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions#3d488031-cdd1-4987-8d07-427d7cbc605e</correlationId>
-      <path>Intent.Modules.Common.AI/Settings/ModuleSettingsExtensions.cs</path>
+      <path>../Intent.Modules.Common.AI/Settings/ModuleSettingsExtensions.cs</path>
       <count>1</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>

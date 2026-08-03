@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <outputFiles>
   <files>
+    <file relativePath="../Modelers.Domain/Intent.Modules.Modelers.Domain/Api/Extensions/OperationModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="../Modelers.Domain/Intent.Modules.Modelers.Domain/Api/IStaticConstructorModel.cs" state="ignored" />
+    <file relativePath="Api/Extensions/OperationModelStereotypeExtensions.cs" state="ignored" />
+    <file relativePath="Api/IStaticConstructorModel.cs" state="ignored" />
     <file relativePath="Intent.Modules.Modelers.Domain/Api/Extensions/OperationModelStereotypeExtensions.cs" state="ignored" />
     <file relativePath="Intent.Modules.Modelers.Domain/Api/IStaticConstructorModel.cs" state="ignored" />
   </files>

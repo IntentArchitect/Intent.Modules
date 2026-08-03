@@ -3,12 +3,12 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.FactoryExtension#e2167dd4-7302-418d-be65-bec84384cf3e</correlationId>
-      <path>Intent.Modules.ModuleBuilder.AutoCompile/FactoryExtensions/AutoCompileFactoryExtension.cs</path>
-      <count>2</count>
-      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2025-10-05T05:27:48.9804434Z</updatedAt>
-      <deviationsHash>7714045F6CB6A661DBB1D8DA468EC726A9B30A77C7655519F8A23A6F0AADF869</deviationsHash>
+      <path>FactoryExtensions/AutoCompileFactoryExtension.cs</path>
+      <count>3</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-07-31T14:28:04.4849692Z</updatedAt>
+      <deviationsHash>F8E0CFEF8D458392948DF222FBA0F43B2230D072D840BDDE3D03FF4357E59C6C</deviationsHash>
       <fileHash>69DC6C16176799C39807D414D57D9C01479B15FEB9549EB7AA08C9D358C2C9D2</fileHash>
     </file>
   </files>

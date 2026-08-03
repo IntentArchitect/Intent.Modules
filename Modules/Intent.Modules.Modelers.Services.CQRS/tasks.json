@@ -4,7 +4,7 @@
             "label": "Build",
             "command": "dotnet build Intent.Modules.Modelers.Services.CQRS.csproj",
             "icon": "fa-cog",
-            "workingDirectory": "Intent.Modules.Modelers.Services.CQRS",
+            "workingDirectory": ".",
             "aiAutoFix": {
                 "enabled": true,
                 "errorParser": "generic",

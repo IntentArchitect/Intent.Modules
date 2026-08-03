@@ -3,10 +3,23 @@
   <ApplicationId>765236f6-13a2-40be-90d3-38674e01f4a7</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#435e4d4a-0648-46fb-b0aa-719ad439a343</CorrelationId>
+      <ProjectId>332d0f1d-979b-4a23-9f20-d436da76be74</ProjectId>
+      <CorrelationId>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration#csharp-guidelines.md</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../.agents/instructions/csharp-guidelines.md</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>csharp-guidelines.md</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#e833c41b-c344-4755-9cc1-97b3266d8671</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Metadata.RDBMS/Intent.Modules.Metadata.RDBMS/Api/Extensions/StoredProcedureModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
@@ -89,6 +102,11 @@
       <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/StoredProcedureModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c5ba925d-5c08-4809-a848-585a0cd4ddd3</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -135,6 +153,11 @@
       <ApplicationRelativeFilePath>Intent.Modules.Metadata.RDBMS.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Metadata.RDBMS.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Metadata.RDBMS/Api/Extensions/StoredProcedureModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>2396821a-d166-4e2f-90e8-411c2c4add65</ProjectId>

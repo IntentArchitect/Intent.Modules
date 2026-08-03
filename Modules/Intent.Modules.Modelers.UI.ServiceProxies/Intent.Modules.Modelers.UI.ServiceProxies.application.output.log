@@ -3,10 +3,23 @@
   <ApplicationId>62e3977a-20a5-4637-b195-5dd11b6939bb</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#1e0631db-65af-4d43-aac8-6905976318c5</CorrelationId>
+      <ProjectId>4530909d-270f-497e-8805-68423412ce32</ProjectId>
+      <CorrelationId>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration#csharp-guidelines.md</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../.agents/instructions/csharp-guidelines.md</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>csharp-guidelines.md</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#b833a2c8-3b08-4699-8603-1b014bbf35c9</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Modelers.UI.ServiceProxies/Intent.Modules.Modelers.UI.ServiceProxies/release-notes.md</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>995bbb4e-12c8-409c-88be-5e01173bea92</ProjectId>
@@ -18,7 +31,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>19588b7b-15cd-40ed-b952-9387d93eb7ab</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile#c290d671-f27b-47a4-a54d-34ededd7140e</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modelers.UI.ServiceProxies.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modelers.UI.ServiceProxies.imodspec</ProjectRelativeFilePath>
@@ -33,6 +46,11 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Modelers.UI.ServiceProxies/release-notes.md</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>ebd19fe7-41de-4bb4-bed0-681ef1674aea</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#10144809-6397-4c64-bc01-b83b3d270ebe</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -42,11 +60,16 @@
     </FileLog>
     <FileLog>
       <ProjectId>19588b7b-15cd-40ed-b952-9387d93eb7ab</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.ReleaseNotes</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.ReleaseNotes#540721c9-fae8-4a84-ae74-5cb0e2ccabab</CorrelationId>
       <OverwriteBehaviour>once-off</OverwriteBehaviour>
       <ApplicationRelativeFilePath>release-notes.md</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>release-notes.md</ProjectRelativeFilePath>
       <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>release-notes.md</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>
 </outputLog>

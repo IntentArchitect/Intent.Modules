@@ -3,10 +3,28 @@
   <ApplicationId>a2dcd902-07bf-432f-9bc5-bc31d36d642d</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#7e73fdeb-5cda-4899-a05b-6258fec98580</CorrelationId>
+      <ProjectId>f008d4d8-b6f9-41f5-b7e2-2efea8ae5382</ProjectId>
+      <CorrelationId>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration#csharp-guidelines.md</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../.agents/instructions/csharp-guidelines.md</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>csharp-guidelines.md</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#f9194635-5a9a-4af2-95ff-1c27c0b32a13</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Metadata.ApiGateway/Intent.Modules.Metadata.ApiGateway/Intent.Metadata.ApiGateway.imodspec</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Metadata.ApiGateway/Intent.Modules.Metadata.ApiGateway/release-notes.md</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>a5323694-21df-44d8-8655-07716c30cbf6</ProjectId>
@@ -58,7 +76,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>61eafb82-fcf1-465e-b58c-70c4a26f201a</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions#8b8b5c00-b05b-4eb6-b63e-5bd3988655a9</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
@@ -66,7 +84,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>61eafb82-fcf1-465e-b58c-70c4a26f201a</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile#e6fa514f-35d4-4e30-bbc9-69829ee0f0a8</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Metadata.ApiGateway.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Metadata.ApiGateway.imodspec</ProjectRelativeFilePath>
@@ -81,6 +99,16 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Metadata.ApiGateway/Intent.Metadata.ApiGateway.imodspec</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Metadata.ApiGateway/release-notes.md</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>c152fb37-5218-4b14-9c4b-3e8c15104c5a</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#3f6cd7b9-04a8-4044-8f98-7bf380f7df3d</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -90,7 +118,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>61eafb82-fcf1-465e-b58c-70c4a26f201a</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.ReleaseNotes</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.ReleaseNotes#8c20c712-4b7b-4e42-963f-7d106ac42286</CorrelationId>
       <OverwriteBehaviour>once-off</OverwriteBehaviour>
       <ApplicationRelativeFilePath>release-notes.md</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>release-notes.md</ProjectRelativeFilePath>

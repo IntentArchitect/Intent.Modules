@@ -3,7 +3,15 @@
   <ApplicationId>275030c0-f660-4c46-8156-ce592d267b38</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#7515cbbf-1364-4616-9a0a-0d8330e3b3de</CorrelationId>
+      <ProjectId>c4b18797-c415-4681-8169-7abc54bcab08</ProjectId>
+      <CorrelationId>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration#csharp-guidelines.md</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../.agents/instructions/csharp-guidelines.md</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>csharp-guidelines.md</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#8c8f92ca-3e72-415a-8976-44627738886d</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -34,7 +42,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>2f869ddb-1b65-4cf0-9818-94e872494c0d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions#a875e982-186d-41b9-b6de-b37e7fc42156</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
@@ -42,7 +50,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>2f869ddb-1b65-4cf0-9818-94e872494c0d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile#ec0fe22a-bb43-4349-baa2-105e27d3b838</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.ModuleBuilder.Html.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.ModuleBuilder.Html.imodspec</ProjectRelativeFilePath>
@@ -114,7 +122,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>690f5063-3511-48b5-b753-7fc65be7f4f6</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.TemplateExtensions</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.TemplateExtensions#976b1f78-0c6f-481a-ad80-3d6f676062b2</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/TemplateExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>TemplateExtensions.cs</ProjectRelativeFilePath>

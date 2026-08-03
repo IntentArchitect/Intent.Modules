@@ -3,7 +3,7 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#7c0e37ab-2f84-46df-ac29-1e5aaa67bf75</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/AcceptedChildTypesModel.cs</path>
+      <path>Api/AcceptedChildTypesModel.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -13,7 +13,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#3dcfa78b-17ee-45b6-be03-8407d089ce76</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/AssociationCreationOptionModel.cs</path>
+      <path>Api/AssociationCreationOptionModel.cs</path>
       <count>12</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -23,7 +23,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c4c61fdc-464d-41d2-8e0e-5a734d588302</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/AssociationDestinationEndSettingsModel.cs</path>
+      <path>Api/AssociationDestinationEndSettingsModel.cs</path>
       <count>11</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -33,7 +33,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b59113a4-209c-45d6-b395-352362864fd1</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/AssociationDestinationEndVisualSettingsModel.cs</path>
+      <path>Api/AssociationDestinationEndVisualSettingsModel.cs</path>
       <count>11</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -43,7 +43,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/AssociationEventHandlerModel.cs</path>
+      <path>Api/AssociationEventHandlerModel.cs</path>
       <count>2</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -53,7 +53,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#1bdee938-8569-4fbf-84b4-8522d2cbee32</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/AssociationEventSettingsModel.cs</path>
+      <path>Api/AssociationEventSettingsModel.cs</path>
       <count>2</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -63,7 +63,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#41cb9c1a-063e-4ff4-889a-7501235351eb</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/AssociationExtensionModel.cs</path>
+      <path>Api/AssociationExtensionModel.cs</path>
       <count>2</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -73,7 +73,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#16d21684-d5ea-4fde-b648-f88d292fa272</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/AssociationSettingsModel.cs</path>
+      <path>Api/AssociationSettingsModel.cs</path>
       <count>15</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -83,7 +83,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/AssociationSourceEndExtensionModel.cs</path>
+      <path>Api/AssociationSourceEndExtensionModel.cs</path>
       <count>1</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -93,7 +93,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/AssociationSourceEndSettingsModel.cs</path>
+      <path>Api/AssociationSourceEndSettingsModel.cs</path>
       <count>11</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -103,7 +103,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#77fdd377-950a-46e4-8d25-ab3c962d6105</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/AssociationSourceEndVisualSettingsModel.cs</path>
+      <path>Api/AssociationSourceEndVisualSettingsModel.cs</path>
       <count>11</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -113,7 +113,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#1cc6c731-af5f-41a0-9e82-44486f45b903</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/AssociationTargetEndExtensionModel.cs</path>
+      <path>Api/AssociationTargetEndExtensionModel.cs</path>
       <count>1</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -123,7 +123,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#153a4063-82a1-4515-87f1-44c189004fad</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/AssociationVisualSettingsModel.cs</path>
+      <path>Api/AssociationVisualSettingsModel.cs</path>
       <count>13</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -133,7 +133,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#d45e383d-90ba-4b64-aca7-34ca100cea21</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/ContextMenuModel.cs</path>
+      <path>Api/ContextMenuModel.cs</path>
       <count>16</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -143,7 +143,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#dc79fd61-7e57-44c8-ad40-14a7643b89c8</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/CoreTypeModel.cs</path>
+      <path>Api/CoreTypeModel.cs</path>
       <count>11</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -153,7 +153,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#7f5fcc9f-c721-4a31-bfe2-7909f4289420</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/DesignerModel.cs</path>
+      <path>Api/DesignerModel.cs</path>
       <count>13</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -163,7 +163,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#ace8c966-1a7f-487e-b21b-dd601e57f13f</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/DesignerReferenceModel.cs</path>
+      <path>Api/DesignerReferenceModel.cs</path>
       <count>12</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -173,7 +173,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#7a6411a8-ffef-4209-91c6-8d12755a806a</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/DesignerSettingsModel.cs</path>
+      <path>Api/DesignerSettingsModel.cs</path>
       <count>20</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -183,7 +183,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#dbb71aa5-0db2-4a2a-97a9-501950f36f99</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/DesignersFolderModel.cs</path>
+      <path>Api/DesignersFolderModel.cs</path>
       <count>13</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -193,7 +193,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#67d711dd-3918-4b28-b2a0-4d845884e17a</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/DiagramSettingsModel.cs</path>
+      <path>Api/DiagramSettingsModel.cs</path>
       <count>2</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -203,7 +203,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#5fa12f89-da1e-49c5-b8e9-427b22407f19</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/ElementCreationOptionModel.cs</path>
+      <path>Api/ElementCreationOptionModel.cs</path>
       <count>12</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -213,7 +213,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0ef412e3-d15a-45d3-bcd3-f646165f2eb6</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/ElementEventHandlerModel.cs</path>
+      <path>Api/ElementEventHandlerModel.cs</path>
       <count>6</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -223,7 +223,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#3c628ab0-2407-4fb0-8507-ddde986cff2e</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/ElementEventSettingsModel.cs</path>
+      <path>Api/ElementEventSettingsModel.cs</path>
       <count>13</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -233,7 +233,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#e3c7b1ca-f080-45c1-b56f-8d44226c8e20</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/ElementExtensionModel.cs</path>
+      <path>Api/ElementExtensionModel.cs</path>
       <count>17</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -243,7 +243,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4a16943b-702c-4fb0-bfcc-2afd98b8814c</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/ElementMappingModel.cs</path>
+      <path>Api/ElementMappingModel.cs</path>
       <count>12</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -253,7 +253,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#727577aa-3e07-4b41-be7d-7359bb1e48c8</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/ElementSettingsModel.cs</path>
+      <path>Api/ElementSettingsModel.cs</path>
       <count>18</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -263,7 +263,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#5eea5fba-15df-4971-8541-6f19bad4297d</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/ElementVisualSettingsModel.cs</path>
+      <path>Api/ElementVisualSettingsModel.cs</path>
       <count>16</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -273,7 +273,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#7d008e84-bb28-4b10-ba28-7439202fca76</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/FactoryExtensionModel.cs</path>
+      <path>Api/FactoryExtensionModel.cs</path>
       <count>3</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -283,7 +283,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#43eae4bd-4613-4d15-88ac-52b7e743b7b2</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/FileTemplateModel.cs</path>
+      <path>Api/FileTemplateModel.cs</path>
       <count>6</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -293,7 +293,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#a70631bb-3c32-46e6-bc18-621c5cf527c0</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/FolderExtensionModel.cs</path>
+      <path>Api/FolderExtensionModel.cs</path>
       <count>2</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -303,7 +303,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#d2e543c7-174a-45b4-aebe-a13f9ee90214</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/IntentModuleModel.cs</path>
+      <path>Api/IntentModuleModel.cs</path>
       <count>5</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -313,7 +313,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#f9449923-9173-4347-a3a2-38d1eb66f6b5</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/MappableElementExtensionModel.cs</path>
+      <path>Api/MappableElementExtensionModel.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -323,7 +323,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#62e5b1a9-0d36-4969-9d22-ce748155afbf</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/MappableElementSettingsModel.cs</path>
+      <path>Api/MappableElementSettingsModel.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -333,7 +333,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#bddb69f0-e2c8-4373-b5cb-d701f311f935</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/MappableElementsPackageExtensionModel.cs</path>
+      <path>Api/MappableElementsPackageExtensionModel.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -343,7 +343,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#90892fa1-b0b9-4af9-9f3b-4fdf37db9b05</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/MappableElementsPackageImportModel.cs</path>
+      <path>Api/MappableElementsPackageImportModel.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -353,7 +353,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#aa2eab42-5ffc-4028-b4b6-95ff719705d4</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/MappableElementsPackageModel.cs</path>
+      <path>Api/MappableElementsPackageModel.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -363,7 +363,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#00a1eb98-1fc4-4421-9d1c-8733f6bc2111</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/MappingOptionModel.cs</path>
+      <path>Api/MappingOptionModel.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -373,7 +373,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#178c2f55-9ca1-484d-be43-a91bdd5554dc</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/MappingProjectionSettingsModel.cs</path>
+      <path>Api/MappingProjectionSettingsModel.cs</path>
       <count>12</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -383,7 +383,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#a901c634-6482-4993-ae3c-bd1b637f78d4</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/MappingSettingsModel.cs</path>
+      <path>Api/MappingSettingsModel.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -393,7 +393,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#dd8e8a63-140c-41c8-b812-0dc923012fac</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/MappingTypeSettingsModel.cs</path>
+      <path>Api/MappingTypeSettingsModel.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -403,7 +403,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#37e678f8-370a-4b05-ae44-69bb3d2b39b6</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/ModuleSettingsConfigurationModel.cs</path>
+      <path>Api/ModuleSettingsConfigurationModel.cs</path>
       <count>2</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -413,7 +413,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#88e29cab-1342-40c7-b052-5fcd68ffafec</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/ModuleSettingsFieldConfigurationModel.cs</path>
+      <path>Api/ModuleSettingsFieldConfigurationModel.cs</path>
       <count>2</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -423,7 +423,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#1592709a-89b1-4cb0-9801-ce9d3b94545a</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/ModuleSettingsFieldOptionModel.cs</path>
+      <path>Api/ModuleSettingsFieldOptionModel.cs</path>
       <count>2</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -433,7 +433,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4ba35747-deea-43a9-acd4-26d57edb5bb9</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/OnInstallMigrationModel.cs</path>
+      <path>Api/OnInstallMigrationModel.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -443,7 +443,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#d95b829a-fabc-4f12-b044-b3fa198885aa</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/OnUninstallMigrationModel.cs</path>
+      <path>Api/OnUninstallMigrationModel.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -453,7 +453,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#e59f6c30-69ba-427c-9a73-33d69e44f765</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/PackageEventHandlerModel.cs</path>
+      <path>Api/PackageEventHandlerModel.cs</path>
       <count>1</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -463,7 +463,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#48bcdd5f-690c-425b-8f5e-99097a7188dc</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/PackageEventSettingsModel.cs</path>
+      <path>Api/PackageEventSettingsModel.cs</path>
       <count>13</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -473,7 +473,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#ab4152df-3add-4a08-81b6-0fefc7cbb204</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/PackageExtensionModel.cs</path>
+      <path>Api/PackageExtensionModel.cs</path>
       <count>15</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -483,7 +483,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#89333f72-3960-4159-bf61-9c40d4b65088</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/PackageSettingsModel.cs</path>
+      <path>Api/PackageSettingsModel.cs</path>
       <count>14</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -493,7 +493,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#ac56c1f1-b259-4de8-acc9-ce0030ad4f99</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/PathDrawSettingsModel.cs</path>
+      <path>Api/PathDrawSettingsModel.cs</path>
       <count>11</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -503,7 +503,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#345d46fb-c500-409a-88c7-26720572c9af</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/RunScriptOptionModel.cs</path>
+      <path>Api/RunScriptOptionModel.cs</path>
       <count>2</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -513,7 +513,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#101fd5b6-3159-4810-9490-a103ef323e9c</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/ScriptModel.cs</path>
+      <path>Api/ScriptModel.cs</path>
       <count>11</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -523,7 +523,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#1536425c-35f4-48e1-abe4-1f8f56533545</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/SourceMappableElementsModel.cs</path>
+      <path>Api/SourceMappableElementsModel.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -533,7 +533,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b795a763-296d-476f-ab0a-1a52710444db</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/StaticContentTemplateModel.cs</path>
+      <path>Api/StaticContentTemplateModel.cs</path>
       <count>1</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -543,7 +543,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c776bc38-c0e8-4535-87dd-79cfd33be2ad</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/StaticMappableSettingsModel.cs</path>
+      <path>Api/StaticMappableSettingsModel.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -553,7 +553,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0c721d5d-7721-414c-adaf-4c9f5c5531a9</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/StereotypeDefinitionCreationOptionModel.cs</path>
+      <path>Api/StereotypeDefinitionCreationOptionModel.cs</path>
       <count>12</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -563,7 +563,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#08620c8b-f6d3-472e-86b6-926fe110d526</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/StereotypesVisualSettingsModel.cs</path>
+      <path>Api/StereotypesVisualSettingsModel.cs</path>
       <count>11</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -573,7 +573,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0c21ab10-e87b-4e88-ab44-38ea7adf514a</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/SuggestionModel.cs</path>
+      <path>Api/SuggestionModel.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -583,7 +583,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b5566ace-3353-4009-9370-475b561451a0</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/SVGResourceDrawSettingsModel.cs</path>
+      <path>Api/SVGResourceDrawSettingsModel.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -593,7 +593,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#a812bff7-017a-4692-8ec7-1caad0a1dd88</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/TargetMappableElementsModel.cs</path>
+      <path>Api/TargetMappableElementsModel.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -603,7 +603,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#ac1da322-377e-45cf-a2d9-d147a4d91457</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/TemplateDecoratorContractModel.cs</path>
+      <path>Api/TemplateDecoratorContractModel.cs</path>
       <count>3</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -613,7 +613,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#f0f46278-29ea-42bd-9206-0e7034f623bc</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/TemplateDecoratorModel.cs</path>
+      <path>Api/TemplateDecoratorModel.cs</path>
       <count>3</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -623,7 +623,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#502551f7-c2d7-4d65-ad9f-13bd1e9e96d5</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/TemplateRegistrationModel.cs</path>
+      <path>Api/TemplateRegistrationModel.cs</path>
       <count>13</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -633,7 +633,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0250c934-455b-4bb6-b5d9-077c6e1ce72c</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/TextDrawSettingsModel.cs</path>
+      <path>Api/TextDrawSettingsModel.cs</path>
       <count>11</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -643,7 +643,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#03f24c57-66d8-4868-95a7-6daef900dc7f</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Api/VersionMigrationModel.cs</path>
+      <path>Api/VersionMigrationModel.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -653,7 +653,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#1bd9fa6b-63b2-42d7-b18c-cd8a4e3109b5</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiAssociationModel/ApiAssociationModelTemplatePartial.cs</path>
+      <path>Templates/Api/ApiAssociationModel/ApiAssociationModelTemplatePartial.cs</path>
       <count>3</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -663,7 +663,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#1bd9fa6b-63b2-42d7-b18c-cd8a4e3109b5</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiAssociationModel/ApiAssociationModelTemplateRegistration.cs</path>
+      <path>Templates/Api/ApiAssociationModel/ApiAssociationModelTemplateRegistration.cs</path>
       <count>2</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -673,7 +673,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#d8b63ecf-82cf-466b-8b57-8a70c88c51f6</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiAssociationModelExtensions/ApiAssociationModelExtensionsTemplatePartial.cs</path>
+      <path>Templates/Api/ApiAssociationModelExtensions/ApiAssociationModelExtensionsTemplatePartial.cs</path>
       <count>3</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -683,7 +683,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#d8b63ecf-82cf-466b-8b57-8a70c88c51f6</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiAssociationModelExtensions/ApiAssociationModelExtensionsTemplateRegistration.cs</path>
+      <path>Templates/Api/ApiAssociationModelExtensions/ApiAssociationModelExtensionsTemplateRegistration.cs</path>
       <count>2</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -693,7 +693,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#e1b7ebb7-0dad-47d8-bca2-4493e53a8ee1</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiElementExtensionModel/ApiElementExtensionModelTemplatePartial.cs</path>
+      <path>Templates/Api/ApiElementExtensionModel/ApiElementExtensionModelTemplatePartial.cs</path>
       <count>4</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -703,7 +703,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#f9800e0d-99ea-4d27-850b-4e6d07250ede</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiElementModel/ApiElementModelTemplatePartial.cs</path>
+      <path>Templates/Api/ApiElementModel/ApiElementModelTemplatePartial.cs</path>
       <count>3</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -713,7 +713,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#f9800e0d-99ea-4d27-850b-4e6d07250ede</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiElementModel/ApiElementModelTemplateRegistration.cs</path>
+      <path>Templates/Api/ApiElementModel/ApiElementModelTemplateRegistration.cs</path>
       <count>2</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -723,7 +723,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#3877283b-1f5c-4171-a8da-55595c1905b8</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiElementModelExtensions/ApiElementModelExtensionsTemplatePartial.cs</path>
+      <path>Templates/Api/ApiElementModelExtensions/ApiElementModelExtensionsTemplatePartial.cs</path>
       <count>4</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -733,7 +733,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#3877283b-1f5c-4171-a8da-55595c1905b8</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiElementModelExtensions/ApiElementModelExtensionsTemplateRegistration.cs</path>
+      <path>Templates/Api/ApiElementModelExtensions/ApiElementModelExtensionsTemplateRegistration.cs</path>
       <count>2</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -743,7 +743,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#489694a7-ddf0-40d6-a055-4845826deabd</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiElementModelPartial/ApiElementModelPartialTemplatePartial.cs</path>
+      <path>Templates/Api/ApiElementModelPartial/ApiElementModelPartialTemplatePartial.cs</path>
       <count>3</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -753,7 +753,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#11b1ac64-5537-4301-9a1e-d8de08c2786c</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiMetadataDesignerExtensions/ApiMetadataDesignerExtensionsTemplatePartial.cs</path>
+      <path>Templates/Api/ApiMetadataDesignerExtensions/ApiMetadataDesignerExtensionsTemplatePartial.cs</path>
       <count>3</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -763,7 +763,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel#11b1ac64-5537-4301-9a1e-d8de08c2786c</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiMetadataDesignerExtensions/ApiMetadataDesignerExtensionsTemplateRegistration.cs</path>
+      <path>Templates/Api/ApiMetadataDesignerExtensions/ApiMetadataDesignerExtensionsTemplateRegistration.cs</path>
       <count>2</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -773,7 +773,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#51ff3bbd-74dc-4f6c-996a-c8502814570a</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiMetadataPackageExtensions/ApiMetadataPackageExtensionsTemplatePartial.cs</path>
+      <path>Templates/Api/ApiMetadataPackageExtensions/ApiMetadataPackageExtensionsTemplatePartial.cs</path>
       <count>3</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -783,7 +783,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel#51ff3bbd-74dc-4f6c-996a-c8502814570a</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiMetadataPackageExtensions/ApiMetadataPackageExtensionsTemplateRegistration.cs</path>
+      <path>Templates/Api/ApiMetadataPackageExtensions/ApiMetadataPackageExtensionsTemplateRegistration.cs</path>
       <count>2</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -793,7 +793,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#ff86b4fd-d613-4983-8066-605f97b58581</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiMetadataProviderExtensions/ApiMetadataProviderExtensionsTemplatePartial.cs</path>
+      <path>Templates/Api/ApiMetadataProviderExtensions/ApiMetadataProviderExtensionsTemplatePartial.cs</path>
       <count>3</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -803,7 +803,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel#ff86b4fd-d613-4983-8066-605f97b58581</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiMetadataProviderExtensions/ApiMetadataProviderExtensionsTemplateRegistration.cs</path>
+      <path>Templates/Api/ApiMetadataProviderExtensions/ApiMetadataProviderExtensionsTemplateRegistration.cs</path>
       <count>2</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -813,7 +813,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#5a307c40-0d05-4dac-a83e-6a3a553c5b9e</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiPackageExtensionModel/ApiPackageExtensionModelTemplatePartial.cs</path>
+      <path>Templates/Api/ApiPackageExtensionModel/ApiPackageExtensionModelTemplatePartial.cs</path>
       <count>3</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -823,7 +823,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#12d0509f-a513-4263-9c31-3786f61b44bd</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiPackageModel/ApiPackageModelTemplatePartial.cs</path>
+      <path>Templates/Api/ApiPackageModel/ApiPackageModelTemplatePartial.cs</path>
       <count>3</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -833,7 +833,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#12d0509f-a513-4263-9c31-3786f61b44bd</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Api/ApiPackageModel/ApiPackageModelTemplateRegistration.cs</path>
+      <path>Templates/Api/ApiPackageModel/ApiPackageModelTemplateRegistration.cs</path>
       <count>2</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -843,7 +843,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#8d856f7d-a6e8-45dd-9cba-843d984cb41a</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/FactoryExtension/FactoryExtensionTemplatePartial.cs</path>
+      <path>Templates/FactoryExtension/FactoryExtensionTemplatePartial.cs</path>
       <count>3</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -853,7 +853,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#b33044cb-5352-40c7-97a8-a1109b7dfd59</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/FileTemplateT4/FileTemplateT4TemplatePartial.cs</path>
+      <path>Templates/FileTemplateT4/FileTemplateT4TemplatePartial.cs</path>
       <count>1</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -863,7 +863,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#b6551a9e-4c88-40d1-9b15-bcee1fc6ebb4</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/ReleaseNotes/ReleaseNotesTemplatePartial.cs</path>
+      <path>Templates/ReleaseNotes/ReleaseNotesTemplatePartial.cs</path>
       <count>1</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -873,7 +873,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#af184995-dba3-463f-8b63-7c38190595f0</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Settings/ModuleSettingsExtensions/ModuleSettingsExtensionsTemplatePartial.cs</path>
+      <path>Templates/Settings/ModuleSettingsExtensions/ModuleSettingsExtensionsTemplatePartial.cs</path>
       <count>3</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -883,7 +883,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#af184995-dba3-463f-8b63-7c38190595f0</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/Settings/ModuleSettingsExtensions/ModuleSettingsExtensionsTemplateRegistration.cs</path>
+      <path>Templates/Settings/ModuleSettingsExtensions/ModuleSettingsExtensionsTemplateRegistration.cs</path>
       <count>1</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -893,7 +893,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#ed76c3f8-f5e0-4af2-b71c-8014dbd9fecf</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/StaticContentOutputReadme/StaticContentOutputReadmeTemplatePartial.cs</path>
+      <path>Templates/StaticContentOutputReadme/StaticContentOutputReadmeTemplatePartial.cs</path>
       <count>1</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -903,7 +903,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#b8c74c43-2d73-483f-b938-f20a986f7acf</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/StaticContentTemplateRegistration/StaticContentTemplateRegistrationTemplatePartial.cs</path>
+      <path>Templates/StaticContentTemplateRegistration/StaticContentTemplateRegistrationTemplatePartial.cs</path>
       <count>4</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -913,7 +913,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#f5648642-e1bb-43fa-b522-150cc3878589</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/TemplateDecorator/TemplateDecoratorTemplatePartial.cs</path>
+      <path>Templates/TemplateDecorator/TemplateDecoratorTemplatePartial.cs</path>
       <count>3</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -923,7 +923,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#115b5ff3-8e0f-4712-9384-372eb7c2c168</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/TemplateDecoratorContract/TemplateDecoratorContractTemplatePartial.cs</path>
+      <path>Templates/TemplateDecoratorContract/TemplateDecoratorContractTemplatePartial.cs</path>
       <count>3</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -933,7 +933,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#a1972650-0420-42cf-9e21-54c0c653d5b4</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/TemplateDecoratorRegistration/TemplateDecoratorRegistrationTemplatePartial.cs</path>
+      <path>Templates/TemplateDecoratorRegistration/TemplateDecoratorRegistrationTemplatePartial.cs</path>
       <count>3</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -943,7 +943,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#05e49224-62c1-45ea-a239-e4e9bf64a00b</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/TemplateExtensions/TemplateExtensionsTemplatePartial.cs</path>
+      <path>Templates/TemplateExtensions/TemplateExtensionsTemplatePartial.cs</path>
       <count>3</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -953,7 +953,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#05e49224-62c1-45ea-a239-e4e9bf64a00b</correlationId>
-      <path>Intent.Modules.ModuleBuilder/Templates/TemplateExtensions/TemplateExtensionsTemplateRegistration.cs</path>
+      <path>Templates/TemplateExtensions/TemplateExtensionsTemplateRegistration.cs</path>
       <count>2</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>

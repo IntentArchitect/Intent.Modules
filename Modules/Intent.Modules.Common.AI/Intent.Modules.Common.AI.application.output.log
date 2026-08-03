@@ -3,14 +3,22 @@
   <ApplicationId>372a17c5-5856-470c-b3ae-0ea381a0a3d6</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#73adf50b-6fa1-48c2-8310-d39b5938f708</CorrelationId>
+      <ProjectId>9b6783d9-f7a9-4619-891d-2285e66caecb</ProjectId>
+      <CorrelationId>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration#csharp-guidelines.md</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../.agents/instructions/csharp-guidelines.md</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>csharp-guidelines.md</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#42ca93ee-c1f3-45bc-a773-7a48ed6912fb</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>81ae7f80-ff93-4c7d-8cac-08ff0249991b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile#502fa2a6-d19c-4d50-8c63-0dcd4970147e</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Common.AI.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Common.AI.imodspec</ProjectRelativeFilePath>

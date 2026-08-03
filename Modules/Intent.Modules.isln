@@ -54,4 +54,7 @@
     <application id="fd1d130c-fd95-4fee-b713-02c6641d1287" name="Intent.Modules.Modelers.CodebaseStructure" solutionFolder="Designers" relativePath="Intent.Modules.Modelers.CodebaseStructure/Intent.Modules.Modelers.CodebaseStructure.application.config" />
     <application id="1ea17a56-71e1-4853-9317-1de5180cfba6" name="Intent.Modules.Metadata.Domain.Constraints" solutionFolder="Metadata" relativePath="Intent.Modules.Metadata.Domain.Constraints/Intent.Modules.Metadata.Domain.Constraints.application.config" />
   </applications>
+  <folders>
+    <folder path="." />
+  </folders>
 </solution>

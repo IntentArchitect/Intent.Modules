@@ -3,7 +3,7 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#7a3f0474-3cf8-4249-baac-8c07c49465e0</correlationId>
-      <path>Intent.Modules.Modelers.Services.DomainInteractions/Api/CreateEntityActionModelAssociationExtensions.cs</path>
+      <path>Api/CreateEntityActionModelAssociationExtensions.cs</path>
       <count>2</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -13,7 +13,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#bfc823fb-60ab-451d-ba62-12671fe7e28e</correlationId>
-      <path>Intent.Modules.Modelers.Services.DomainInteractions/Api/DeleteEntityActionModelAssociationExtensions.cs</path>
+      <path>Api/DeleteEntityActionModelAssociationExtensions.cs</path>
       <count>3</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -23,7 +23,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#47ab5888-a258-4bec-a9fc-a83de69eb79d</correlationId>
-      <path>Intent.Modules.Modelers.Services.DomainInteractions/Api/QueryEntityActionModelAssociationExtensions.cs</path>
+      <path>Api/QueryEntityActionModelAssociationExtensions.cs</path>
       <count>3</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -33,7 +33,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#9ea0382a-4617-412a-a8c8-af987bbce226</correlationId>
-      <path>Intent.Modules.Modelers.Services.DomainInteractions/Api/UpdateEntityActionModelAssociationExtensions.cs</path>
+      <path>Api/UpdateEntityActionModelAssociationExtensions.cs</path>
       <count>2</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>

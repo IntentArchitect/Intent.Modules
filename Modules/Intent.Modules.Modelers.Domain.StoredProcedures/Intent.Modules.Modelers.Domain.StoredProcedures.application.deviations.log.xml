@@ -3,7 +3,7 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#adf062ed-c0a4-421f-9940-318a91e9a52c</correlationId>
-      <path>Intent.Modules.Modelers.Domain.StoredProcedures/Api/StoredProcedureInvocationModelAssociationExtensions.cs</path>
+      <path>Api/StoredProcedureInvocationModelAssociationExtensions.cs</path>
       <count>2</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>

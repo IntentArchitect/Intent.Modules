@@ -6,7 +6,7 @@
             "label": "Build",
             "icon": "fa-cogs",
             "command": "dotnet build",
-            "workingDirectory": "./Intent.Modules.Metadata.WebApi",
+            "workingDirectory": ".",
             "aiAutoFix": {
                 "enabled": false,
                 "errorParser": "dotnet"

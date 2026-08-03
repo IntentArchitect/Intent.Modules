@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <outputFiles>
   <files>
+    <file relativePath="../Intent.Modules.sln" state="ignored" />
     <file relativePath="Intent.Modules.sln" state="ignored" />
   </files>
 </outputFiles>

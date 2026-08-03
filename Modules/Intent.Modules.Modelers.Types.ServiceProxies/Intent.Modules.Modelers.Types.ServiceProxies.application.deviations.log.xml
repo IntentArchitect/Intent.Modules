@@ -3,7 +3,7 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#aee6811e-b2f6-4562-a8eb-502029f63bc8</correlationId>
-      <path>Intent.Modules.Modelers.Types.ServiceProxies/Api/OperationModel.cs</path>
+      <path>Api/OperationModel.cs</path>
       <count>7</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -13,7 +13,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#f11273c1-217f-4f42-b690-3d8b488f95a8</correlationId>
-      <path>Intent.Modules.Modelers.Types.ServiceProxies/Api/ParameterModel.cs</path>
+      <path>Api/ParameterModel.cs</path>
       <count>4</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -23,7 +23,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#07d8d1a9-6b9f-4676-b7d3-8db06299e35c</correlationId>
-      <path>Intent.Modules.Modelers.Types.ServiceProxies/Api/ServiceProxyModel.cs</path>
+      <path>Api/ServiceProxyModel.cs</path>
       <count>1</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
