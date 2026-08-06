@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="698a0413-fb1f-4b5a-a110-2b85eafa8a06" type="Application Template Settings Configuration" typeId="69000b7e-8bc8-49d0-80f5-eb65a6f7653a">
+  <name>General Settings</name>
+  <display>General Settings</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>manually</sort-children>
+  <order>4</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>ef8e1212-e8cb-4303-81a0-07ce957f4684</parentFolderId>
+  <packageId>ef8e1212-e8cb-4303-81a0-07ce957f4684</packageId>
+  <packageName>Test Architecture Template</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="065c2ce3-0e7e-40b6-9bb0-ca6d20bd0b87" type="Application Template Settings Field Configuration" typeId="053d28c8-18c9-45b9-b3cb-184ec4b19679">
+      <name>Target Framework</name>
+      <display>Target Framework</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>698a0413-fb1f-4b5a-a110-2b85eafa8a06</parentFolderId>
+      <packageId>ef8e1212-e8cb-4303-81a0-07ce957f4684</packageId>
+      <packageName>Test Architecture Template</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="97f6fe89-5973-447c-93b8-ac18fe446047" name="Settings Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
+          <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
+          <properties>
+            <property name="ad6b372c-58e6-4fe0-b6fe-aa7d70f95ebc" display="Control Type" value="Select" isActive="true" />
+            <property name="f0689c97-cb23-4ae1-8bb1-8b6af69b1504" display="Is Required" value="true" isActive="true" />
+            <property name="95738255-b024-4b7f-b789-26eb8c30665f" display="Hint" value="The .NET target framework moniker to generate projects against." isActive="true" />
+            <property name="980bae71-ac8a-4a52-9888-9bac41f126ba" display="Default Value" value="net9.0" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="a9b33983-d4e6-4313-afa1-b846c37a6f81" type="Application Template Settings Field Option" typeId="7194651e-45da-4a0c-b1ab-0351a5c08fc8">
+          <name>net8.0</name>
+          <display>net8.0</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>065c2ce3-0e7e-40b6-9bb0-ca6d20bd0b87</parentFolderId>
+          <packageId>ef8e1212-e8cb-4303-81a0-07ce957f4684</packageId>
+          <packageName>Test Architecture Template</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="65a7ae9b-a1ed-4925-8e69-94d20c827ffa" type="Application Template Settings Field Option" typeId="7194651e-45da-4a0c-b1ab-0351a5c08fc8">
+          <name>net9.0</name>
+          <display>net9.0</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>065c2ce3-0e7e-40b6-9bb0-ca6d20bd0b87</parentFolderId>
+          <packageId>ef8e1212-e8cb-4303-81a0-07ce957f4684</packageId>
+          <packageName>Test Architecture Template</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

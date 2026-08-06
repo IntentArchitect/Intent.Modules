@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<applicationTemplate type="application-template">
+  <id>Test Architecture Template</id>
+  <version>1.0.0</version>
+  <supportedClientVersions>[3.0.0,5.0.0)</supportedClientVersions>
+  <displayName>Test Architecture Template</displayName>
+  <shortDescription>A minimal architecture template used to validate the App Templates designer end-to-end.</shortDescription>
+  <longDescription>Installs Visual Studio project structure, a Domain model, and Web API Services (optionally with CQRS) via Component Modules. Used as a regression test fixture for the Intent Application Template Builder.</longDescription>
+  <authors>Intent Architect</authors>
+  <priority>0</priority>
+  <icon type="UrlImagePath" source="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNkQ0QUZGIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0yNCA0IEw0MiAxMyBMMjQgMjIgTDYgMTMgWiIgZmlsbD0iIzhCNkJGRiIvPgogICAgPHBhdGggZD0iTTYgMTMgTDYgMzEgTDI0IDQwIEwyNCAyMiBaIiBmaWxsPSIjNkQ0QUZGIi8+CiAgICA8cGF0aCBkPSJNNDIgMTMgTDQyIDMxIEwyNCA0MCBMMjQgMjIgWiIgZmlsbD0iIzU2MzZENiIvPgogIDwvZz4KPC9zdmc+Cg==" />
+  <defaults>
+    <name>TestArchitectureApp</name>
+    <relativeOutputLocation>${application.name}</relativeOutputLocation>
+    <placeInSameDirectory>false</placeInSameDirectory>
+    <separateIntentFiles>true</separateIntentFiles>
+    <setGitIgnoreEntries>true</setGitIgnoreEntries>
+    <createFolderForSolution>true</createFolderForSolution>
+  </defaults>
+  <componentGroups>
+    <group name="Project Structure">
+      <selectionMode>allow-single-only</selectionMode>
+      <components>
+        <component id="52bb613c-8749-4874-b47f-50805cdd91f7" name="Visual Studio Projects" included="true" required="true">
+          <description>Sets up the Visual Studio solution and project layout.</description>
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+CiAgPHBhdGggZD0iTTQgMTIgQzQgOS44IDUuOCA4IDggOCBIMTggTDIyIDEyIEg0MCBDNDIuMiAxMiA0NCAxMy44IDQ0IDE2IFYzNiBDNDQgMzguMiA0Mi4yIDQwIDQwIDQwIEg4IEM1LjggNDAgNCAzOC4yIDQgMzYgWiIgZmlsbD0iIzFFODhFNSIvPgogIDxnIHN0cm9rZT0iI0UzRjJGRCIgc3Ryb2tlLXdpZHRoPSIyLjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgZmlsbD0ibm9uZSI+CiAgICA8cGF0aCBkPSJNMTQgMjIgVjMyIEgyNCIvPgogICAgPHBhdGggZD0iTTE0IDI3IEgyMCIvPgogICAgPGNpcmNsZSBjeD0iMTQiIGN5PSIyMiIgcj0iMS42IiBmaWxsPSIjRTNGMkZEIiBzdHJva2U9Im5vbmUiLz4KICAgIDxjaXJjbGUgY3g9IjI0IiBjeT0iMzIiIHI9IjEuNiIgZmlsbD0iI0UzRjJGRCIgc3Ryb2tlPSJub25lIi8+CiAgICA8Y2lyY2xlIGN4PSIyMCIgY3k9IjI3IiByPSIxLjYiIGZpbGw9IiNFM0YyRkQiIHN0cm9rZT0ibm9uZSIvPgogIDwvZz4KPC9zdmc+Cg==" />
+          <modules>
+            <module id="Intent.VisualStudio.Projects" version="4.1.7">
+              <includedByDefault>true</includedByDefault>
+              <required>true</required>
+            </module>
+          </modules>
+          <dependencies />
+        </component>
+      </components>
+    </group>
+    <group name="Domain Modeling">
+      <selectionMode>allow-single-only</selectionMode>
+      <components>
+        <component id="9766c736-9286-4e8f-a6fa-87ac538f5a6f" name="Domain Model" included="true" required="true">
+          <description>Adds the Domain designer for modeling entities and relationships.</description>
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+CiAgPGcgc3Ryb2tlPSIjMDBBMzg5IiBzdHJva2Utd2lkdGg9IjIuNCIgZmlsbD0ibm9uZSI+CiAgICA8cGF0aCBkPSJNMTYgMTIgTDMyIDEyIi8+CiAgICA8cGF0aCBkPSJNMTIgMTYgTDEyIDMyIi8+CiAgICA8cGF0aCBkPSJNMzYgMTYgTDM2IDMyIi8+CiAgICA8cGF0aCBkPSJNMTYgMzYgTDMyIDM2Ii8+CiAgPC9nPgogIDxnIGZpbGw9IiMwMEM5QTciIHN0cm9rZT0iIzAwQTM4OSIgc3Ryb2tlLXdpZHRoPSIyIj4KICAgIDxyZWN0IHg9IjgiIHk9IjYiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMCIgcng9IjIuNSIvPgogICAgPHJlY3QgeD0iMjgiIHk9IjYiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMCIgcng9IjIuNSIvPgogICAgPHJlY3QgeD0iMTgiIHk9IjMyIiB3aWR0aD0iMTIiIGhlaWdodD0iMTAiIHJ4PSIyLjUiLz4KICA8L2c+Cjwvc3ZnPgo=" />
+          <modules>
+            <module id="Intent.Modelers.Domain" version="3.13.2">
+              <includedByDefault>true</includedByDefault>
+              <required>true</required>
+            </module>
+          </modules>
+          <dependencies />
+        </component>
+      </components>
+    </group>
+    <group name="Services">
+      <selectionMode>allow-multiple</selectionMode>
+      <components>
+        <component id="03ea73e1-276c-47e9-93f4-6a971108e330" name="Web API Services" included="true" required="false">
+          <description>Adds the Services designer for describing an application's web services.</description>
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+CiAgPGcgc3Ryb2tlPSIjRkY3QTAwIiBzdHJva2Utd2lkdGg9IjIuNCIgZmlsbD0ibm9uZSI+CiAgICA8cGF0aCBkPSJNMjQgMjQgTDkgMTUiLz4KICAgIDxwYXRoIGQ9Ik0yNCAyNCBMMzkgMTUiLz4KICAgIDxwYXRoIGQ9Ik0yNCAyNCBMMjQgNDEiLz4KICA8L2c+CiAgPGNpcmNsZSBjeD0iMjQiIGN5PSIxMiIgcj0iNyIgZmlsbD0iI0ZGQTk0RCIgc3Ryb2tlPSIjRkY3QTAwIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8Y2lyY2xlIGN4PSI5IiBjeT0iMTgiIHI9IjUuNSIgZmlsbD0iI0ZGOTY0MCIgc3Ryb2tlPSIjRkY3QTAwIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8Y2lyY2xlIGN4PSIzOSIgY3k9IjE4IiByPSI1LjUiIGZpbGw9IiNGRjk2NDAiIHN0cm9rZT0iI0ZGN0EwMCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPGNpcmNsZSBjeD0iMjQiIGN5PSI0MSIgcj0iNS41IiBmaWxsPSIjRkY5NjQwIiBzdHJva2U9IiNGRjdBMDAiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4K" />
+          <modules>
+            <module id="Intent.Modelers.Services" version="4.0.16">
+              <includedByDefault>true</includedByDefault>
+              <required>true</required>
+            </module>
+            <module id="Intent.Modelers.Services.CQRS" version="6.0.8">
+              <includedByDefault>true</includedByDefault>
+              <required>false</required>
+            </module>
+          </modules>
+          <dependencies />
+        </component>
+      </components>
+    </group>
+  </componentGroups>
+  <additionalSettings>
+    <group id="698a0413-fb1f-4b5a-a110-2b85eafa8a06" title="General Settings">
+      <settings>
+        <setting id="Target Framework" title="Target Framework" type="select">
+          <hint>The .NET target framework moniker to generate projects against.</hint>
+          <defaultValue>net9.0</defaultValue>
+          <isRequired>true</isRequired>
+          <options>
+            <option value="net8.0" description="net8.0" />
+            <option value="net9.0" description="net9.0" />
+          </options>
+        </setting>
+      </settings>
+    </group>
+  </additionalSettings>
+</applicationTemplate>

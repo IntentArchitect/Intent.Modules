@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="103ac9af-92ac-49d1-abc2-c61d99a44842" type="Installation Settings" typeId="76db4fe8-5c95-4240-8f25-48b8079fa4ae">
+  <name>[installation settings]</name>
+  <display>[installation settings]</display>
+  <isAbstract>false</isAbstract>
+  <order>5</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>ef8e1212-e8cb-4303-81a0-07ce957f4684</parentFolderId>
+  <packageId>ef8e1212-e8cb-4303-81a0-07ce957f4684</packageId>
+  <packageName>Test Architecture Template</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>
