@@ -109,7 +109,7 @@
     <FileLog>
       <OverwriteBehaviour>once-off</OverwriteBehaviour>
       <ApplicationRelativeFilePath>release-notes.md</ApplicationRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>38accd33-dceb-4a1c-82c1-d74ae14bfed5</ProjectId>

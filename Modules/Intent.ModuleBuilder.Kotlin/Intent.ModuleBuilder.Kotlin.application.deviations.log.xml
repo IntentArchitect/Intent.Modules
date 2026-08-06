@@ -3,7 +3,7 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#097b3c52-e056-43ca-b3a7-1708a558d09a</correlationId>
-      <path>Api/FolderExtensionModel.cs</path>
+      <path>../Intent.Modules.ModuleBuilder.Kotlin/Api/FolderExtensionModel.cs</path>
       <count>2</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -13,7 +13,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#fd5375d4-5380-4a04-b164-0617a8d64624</correlationId>
-      <path>Api/KotlinFileTemplateModel.cs</path>
+      <path>../Intent.Modules.ModuleBuilder.Kotlin/Api/KotlinFileTemplateModel.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -23,7 +23,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#dd6c7fe3-cfd5-4bc1-8ea8-1f09e206147e</correlationId>
-      <path>Templates/KotlinFile/KotlinFileTemplatePartial.cs</path>
+      <path>../Intent.Modules.ModuleBuilder.Kotlin/Templates/KotlinFile/KotlinFileTemplatePartial.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -33,7 +33,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#dd6c7fe3-cfd5-4bc1-8ea8-1f09e206147e</correlationId>
-      <path>Templates/KotlinFile/KotlinFileTemplateRegistration.cs</path>
+      <path>../Intent.Modules.ModuleBuilder.Kotlin/Templates/KotlinFile/KotlinFileTemplateRegistration.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -43,7 +43,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#d7e8356d-8cfc-45da-928d-437c9a25627f</correlationId>
-      <path>Templates/KotlinFileTemplatePartial/KotlinFileTemplatePartialTemplatePartial.cs</path>
+      <path>../Intent.Modules.ModuleBuilder.Kotlin/Templates/KotlinFileTemplatePartial/KotlinFileTemplatePartialTemplatePartial.cs</path>
       <count>4</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -53,7 +53,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#d7e8356d-8cfc-45da-928d-437c9a25627f</correlationId>
-      <path>Templates/KotlinFileTemplatePartial/KotlinFileTemplatePartialTemplateRegistration.cs</path>
+      <path>../Intent.Modules.ModuleBuilder.Kotlin/Templates/KotlinFileTemplatePartial/KotlinFileTemplatePartialTemplateRegistration.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -63,7 +63,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.TemplateExtensions#698395ec-6e35-46ce-a7d8-259d3a08091f</correlationId>
-      <path>Templates/TemplateExtensions.cs</path>
+      <path>../Intent.Modules.ModuleBuilder.Kotlin/Templates/TemplateExtensions.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>

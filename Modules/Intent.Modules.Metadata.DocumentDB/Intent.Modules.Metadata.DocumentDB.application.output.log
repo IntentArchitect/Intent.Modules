@@ -75,22 +75,12 @@
       <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/FolderExtensionsModel.cs</ApplicationRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
       <ProjectId>44057e52-d484-47f2-a541-707bb9df48a9</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#f6730f7a-4ff0-49e4-a334-d7ade76b7ab1</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ModuleBuilderExtensionsModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ModuleBuilderExtensionsModel.cs</ProjectRelativeFilePath>
       <IsIgnored>true</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ModuleBuilderExtensionsModel.cs</ApplicationRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>4209fd9c-6643-44c9-9c45-e115ab394ee0</ProjectId>

@@ -3,7 +3,7 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4215f417-25d2-4509-9309-5076a1452eaa</correlationId>
-      <path>../Intent.Modules.Common.Types/Api/EnumLiteralModel.cs</path>
+      <path>Api/EnumLiteralModel.cs</path>
       <count>2</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -13,7 +13,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#85fba0e9-9161-4c85-a603-a229ef312beb</correlationId>
-      <path>../Intent.Modules.Common.Types/Api/EnumModel.cs</path>
+      <path>Api/EnumModel.cs</path>
       <count>2</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -23,7 +23,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4d95d53a-8855-4f35-aa82-e312643f5c5f</correlationId>
-      <path>../Intent.Modules.Common.Types/Api/FolderModel.cs</path>
+      <path>Api/FolderModel.cs</path>
       <count>4</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
@@ -33,7 +33,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</correlationId>
-      <path>../Intent.Modules.Common.Types/Api/TypeDefinitionModel.cs</path>
+      <path>Api/TypeDefinitionModel.cs</path>
       <count>12</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>

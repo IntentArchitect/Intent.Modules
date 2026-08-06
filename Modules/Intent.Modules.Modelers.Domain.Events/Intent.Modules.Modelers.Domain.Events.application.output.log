@@ -126,11 +126,6 @@
       <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ServicesFolderExtensionModel.cs</ApplicationRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
       <ProjectId>55c69ac3-6f7c-41bc-9704-ecf667f3df39</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions#2a5f86bb-5e09-4237-9d1c-5a841e6309a5</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
