@@ -1,4 +1,4 @@
-﻿#nullable enable
+#nullable enable
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 #pragma warning disable IDE0130
 using System;
@@ -55,7 +55,7 @@ namespace Intent.Modules.Common.VisualStudio
             ((HashSet<string>)outputTarget.Metadata[IMPLICIT_USINGS]).Add(@namespace);
         }
 
-        public static IEnumerable<string> ImplicitUsings(this IOutputTarget outputTarget)
+        public static IList<string> ImplicitUsings(this IOutputTarget outputTarget)
         {
             return ((HashSet<string>)outputTarget.Metadata[IMPLICIT_USINGS]).OrderBy(x => x).ToArray();
         }
