@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.2.11415.280 d18.0
+VisualStudioVersion = 18.2.11415.280
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Constants", "Intent.Modules.Constants\Intent.Modules.Constants.csproj", "{DBADFA28-E995-4E75-9933-215A51E7B580}"
 EndProject
@@ -123,6 +123,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.CodebaseStructure", "Intent.Modules.Modelers.CodebaseStructure\Intent.Modules.Modelers.CodebaseStructure.csproj", "{9425B6B8-038F-4670-B2F6-26D5AD46687C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Metadata.Domain.Constraints", "Intent.Modules.Metadata.Domain.Constraints\Intent.Modules.Metadata.Domain.Constraints.csproj", "{722C6899-4791-4EE9-B567-BAE1F7443A32}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.AI.Skills", "Intent.Modules.ModuleBuilder.AI.Skills\Intent.Modules.ModuleBuilder.AI.Skills.csproj", "{87793E2E-623D-4E9F-95D5-9D6151E9DEFC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module Builder", "Module Builder", "{129454F9-5D44-4467-A14F-5BCEF05AAFDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -338,6 +342,10 @@ Global
 		{722C6899-4791-4EE9-B567-BAE1F7443A32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{722C6899-4791-4EE9-B567-BAE1F7443A32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{722C6899-4791-4EE9-B567-BAE1F7443A32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87793E2E-623D-4E9F-95D5-9D6151E9DEFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87793E2E-623D-4E9F-95D5-9D6151E9DEFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87793E2E-623D-4E9F-95D5-9D6151E9DEFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87793E2E-623D-4E9F-95D5-9D6151E9DEFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -400,6 +408,7 @@ Global
 		{A3325076-134A-4014-AADC-800E96C6F980} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{9425B6B8-038F-4670-B2F6-26D5AD46687C} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{722C6899-4791-4EE9-B567-BAE1F7443A32} = {E684E1EF-92C6-4A31-B7AF-DC0AA39C95C4}
+		{87793E2E-623D-4E9F-95D5-9D6151E9DEFC} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}
