@@ -742,6 +742,17 @@ namespace Intent.Modules.Common.CSharp.Templates
             }
         }
 
+        /// <summary>
+        /// Registers <paramref name="namespace"/> as implicitly available for the project this
+        /// template outputs into (e.g. because a referenced NuGet package or the SDK provides it as
+        /// a conditional or unconditional implicit/global using), so the Roslyn weaver can treat a
+        /// matching explicit <c>using</c> directive as redundant.
+        /// </summary>
+        public void AddImplicitUsing(string @namespace)
+        {
+            OutputTarget.GetProject().AddImplicitUsing(@namespace);
+        }
+
 
         /// <summary>
         /// Registers that a <c>.csproj</c> containing a Role named <paramref name="roleName"/>
