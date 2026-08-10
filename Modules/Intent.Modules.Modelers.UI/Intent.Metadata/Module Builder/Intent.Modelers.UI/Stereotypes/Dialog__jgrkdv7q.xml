@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="1f4165ee-41a0-4520-a193-9ae4d3413d1f" version="3.1.0">
-  <comment>Marks the component as a dialog (modal) opened from other UI, not via routing.</comment>
+  <comment>Marks the component as a dialog (modal) opened from other UI, not via routing.
+---
+When modeling a Dialog, suffix the page with "Dialog" unless specifically instructed not to (e.g. ProductEditDialog, AddOrderDialog)</comment>
   <name>Dialog</name>
   <targetMode>of-type</targetMode>
   <targetTypes>

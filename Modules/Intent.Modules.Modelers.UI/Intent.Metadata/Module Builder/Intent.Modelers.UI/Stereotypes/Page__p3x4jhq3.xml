@@ -2,6 +2,7 @@
 <stereotypeDefinition id="ea4adc09-8978-4ede-ba5f-265debb2b60c" version="3.1.0">
   <comment>Marks the component as a routable page within the application.
 ---
+When modeling a Page, suffix the page with "Page" unless specifically instructed not to (e.g. ProductListPage, AddOrderPage)
 When setting a Pages Route, ensure it is globally unique across all pages (including parameterized patterns) and does not overlap or conflict with any existing route template, so requests resolve to exactly one distinct page.
 Never explicitly add route or query parameters to the Page Route property (e.g., avoid customers/{id} or customers?id={id} patterns). The Route must remain a clean, static path segment only.
 If a page requires route/query input values, model them as Page properties instead, and apply the appropriate Route Parameter or Query Parameter stereotype to those properties.
