@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="8e5fc8d3-c91f-4413-90d6-224bbb1469a2" type="File Template" typeId="43eae4bd-4613-4d15-88ac-52b7e743b7b2">
-  <name>PrinciplesMd</name>
-  <display>PrinciplesMd: Single File</display>
+<class id="9b3ed63c-7f0d-4451-ab59-5017f8613a91" type="File Template" typeId="43eae4bd-4613-4d15-88ac-52b7e743b7b2">
+  <name>ExceptionGuidelinesMd</name>
+  <display>ExceptionGuidelinesMd: Single File</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
-  <typeReference id="1b45af51-98e4-4840-beb7-22c7716a4f1a">
+  <typeReference id="fc7f0c14-2dee-4985-acd3-f8ea93216348">
     <typeId>f65d2904-88c9-4501-873a-a4eec8303b1d</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
@@ -41,7 +41,7 @@
         <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" isActive="true" />
         <property name="d1e89313-0647-48bd-81da-b04b644db475" display="Model Name" value="object" isActive="false" />
         <property name="f1d88e59-1ca6-426e-b52d-42f3467e6bd5" display="Role" value="AI.Context.Instructions" isActive="true" />
-        <property name="1ac0fa39-ecea-48f8-92e4-41616a639586" display="Default Location" value="" isActive="true" />
+        <property name="1ac0fa39-ecea-48f8-92e4-41616a639586" display="Default Location" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
   <files />
+  <customFiles>
+    <customFile>
+      <path>Tests/ModuleBuilderSkills/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-10T13:26:13.6624376Z</approvedAt>
+    </customFile>
+  </customFiles>
 </deviationsLog>

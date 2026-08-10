@@ -11,17 +11,17 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.RootPrinciples.PrinciplesMd
+namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.RootPrinciples.KnownBuildGotchasMd
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class PrinciplesMdTemplateRegistration : SingleFileTemplateRegistration
+    public class KnownBuildGotchasMdTemplateRegistration : SingleFileTemplateRegistration
     {
-        public override string TemplateId => PrinciplesMdTemplate.TemplateId;
+        public override string TemplateId => KnownBuildGotchasMdTemplate.TemplateId;
 
         [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget)
         {
-            return new PrinciplesMdTemplate(outputTarget);
+            return new KnownBuildGotchasMdTemplate(outputTarget);
         }
     }
 }
