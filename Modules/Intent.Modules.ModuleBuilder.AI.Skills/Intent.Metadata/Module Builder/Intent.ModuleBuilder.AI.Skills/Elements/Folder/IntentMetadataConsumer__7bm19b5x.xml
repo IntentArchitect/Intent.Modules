@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="8cf93c6a-15a3-431a-9ad8-45f9be502128" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <comment>Read Intent Architect metadata (stereotypes, attributes, models) to drive code generation.</comment>
   <name>IntentMetadataConsumer</name>
   <display>IntentMetadataConsumer</display>
   <isAbstract>false</isAbstract>

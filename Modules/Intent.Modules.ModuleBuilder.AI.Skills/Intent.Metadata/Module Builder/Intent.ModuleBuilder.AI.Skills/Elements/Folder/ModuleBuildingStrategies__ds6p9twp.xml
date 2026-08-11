@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="6faeeeb8-8c63-4a73-891b-cb171207c613" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <comment>The accumulated strategic playbook for building Intent Architect modules — the judgment calls a veteran module builder makes, distinct from the mechanical process. Covers module decomposition, template vs factory-extension choice, file cardinality, managed modes, and design-time configuration.</comment>
   <name>ModuleBuildingStrategies</name>
   <display>ModuleBuildingStrategies</display>
   <isAbstract>false</isAbstract>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="7c28965e-3b52-40fa-9a2d-0f7cc5a311a5" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <comment>Container for the bundled AI agent skills; one subfolder per skill, each producing a SKILL.md plus any resources/ files.</comment>
   <name>Skills</name>
   <display>Skills</display>
   <isAbstract>false</isAbstract>

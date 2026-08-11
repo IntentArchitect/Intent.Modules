@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="4b8b5391-bdda-44dd-a010-8428affe55d7" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <comment>Complete the release documentation for an Intent Architect module — release-notes.md, docs/README.md, and .imodspec metadata — when the maintainer wants to follow this format.</comment>
   <name>ModuleDocs</name>
   <display>ModuleDocs</display>
   <isAbstract>false</isAbstract>

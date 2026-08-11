@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="5eb87549-9406-40d0-adf2-0b11434963f6" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <comment>Translate designer-defined advanced mappings into recursive C# Builder statements.</comment>
   <name>IntentMappingArchitect</name>
   <display>IntentMappingArchitect</display>
   <isAbstract>false</isAbstract>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="282b135f-1eb4-4256-8196-34013fa0ab0f" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <comment>Convert C# template files to Fluent CSharpFile builder API.</comment>
   <name>FileBuilderExpert</name>
   <display>FileBuilderExpert</display>
   <isAbstract>false</isAbstract>

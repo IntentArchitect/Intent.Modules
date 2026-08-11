@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="44dc6d04-55d2-4af3-8574-7bac133113c6" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <comment>Repo-wide instruction files copied to .agents/instructions/ — always-loaded guidance rather than opt-in skills.</comment>
   <name>RootPrinciples</name>
   <display>RootPrinciples</display>
   <isAbstract>false</isAbstract>

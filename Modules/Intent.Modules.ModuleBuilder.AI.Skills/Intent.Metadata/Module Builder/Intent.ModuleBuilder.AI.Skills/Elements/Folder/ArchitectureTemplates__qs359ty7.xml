@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="0e9ea10a-c596-4d8e-b556-90c75894f767" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <comment>How to build an Intent Architect Architecture Template (formerly "Application Template") — the component/module menu shown when creating a new application — including its companion metadata application used to pre-seed designer content into every newly created application.</comment>
   <name>ArchitectureTemplates</name>
   <display>ArchitectureTemplates</display>
   <isAbstract>false</isAbstract>

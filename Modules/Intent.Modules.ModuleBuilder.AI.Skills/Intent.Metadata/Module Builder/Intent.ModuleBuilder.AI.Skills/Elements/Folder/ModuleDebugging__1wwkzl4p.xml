@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="3a8f7c1b-f4f1-45d7-b310-8f4f251423b6" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <comment>How to inspect runtime values while building Intent Architect modules — inserting temporary log statements into designer scripts and C# template/factory-extension code, and where to find the resulting output.</comment>
   <name>ModuleDebugging</name>
   <display>ModuleDebugging</display>
   <isAbstract>false</isAbstract>

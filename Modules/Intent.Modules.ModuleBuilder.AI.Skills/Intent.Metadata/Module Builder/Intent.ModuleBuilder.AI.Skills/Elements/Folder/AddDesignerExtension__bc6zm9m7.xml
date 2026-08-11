@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="b24dee95-a373-4480-8633-9e7aca6e4496" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <comment>Add a context menu item, new element, or association creation option to a foreign package, element, or association end. Covers packageExtension and elementExtension patterns.</comment>
   <name>AddDesignerExtension</name>
   <display>AddDesignerExtension</display>
   <isAbstract>false</isAbstract>

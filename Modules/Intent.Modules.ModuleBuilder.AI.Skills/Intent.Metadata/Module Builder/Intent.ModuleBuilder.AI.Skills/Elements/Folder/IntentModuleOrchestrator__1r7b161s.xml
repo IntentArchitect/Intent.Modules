@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="c5885019-3f36-4e06-bb71-a44b110bac55" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <comment>Wire cross-module logic, DI/appsettings events, priority bands, and template lookups.</comment>
   <name>IntentModuleOrchestrator</name>
   <display>IntentModuleOrchestrator</display>
   <isAbstract>false</isAbstract>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="c8037161-5fd0-4f06-94d2-16722f352205" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <comment>Translate modelled designer interactions into C# handler bodies.</comment>
   <name>IntentDomainInteractionsExpert</name>
   <display>IntentDomainInteractionsExpert</display>
   <isAbstract>false</isAbstract>

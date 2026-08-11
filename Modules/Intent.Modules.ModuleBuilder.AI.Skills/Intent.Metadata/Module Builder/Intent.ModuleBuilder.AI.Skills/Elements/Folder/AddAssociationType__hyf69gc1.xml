@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="e688c5e6-8991-4aec-925f-18291f63968c" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <comment>Define a new association type (source and target ends, target types, display functions, navigability, traits, mapping options) in the Module Builder designer.</comment>
   <name>AddAssociationType</name>
   <display>AddAssociationType</display>
   <isAbstract>false</isAbstract>
