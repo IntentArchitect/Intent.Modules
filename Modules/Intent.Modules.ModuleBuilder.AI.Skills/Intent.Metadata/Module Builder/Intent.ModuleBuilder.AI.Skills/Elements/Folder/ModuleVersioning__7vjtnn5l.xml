@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="9eb7aa03-8f7e-405d-aaff-d41220922957" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <comment>How to set an Intent Architect module's version — where it actually lives, why hand-editing .imodspec is silently discarded, and how to propagate the change to dependents (architecture templates, other modules).</comment>
   <name>ModuleVersioning</name>
   <display>ModuleVersioning</display>
   <isAbstract>false</isAbstract>
