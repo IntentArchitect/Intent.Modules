@@ -59,5 +59,7 @@
   <file path="Templates/Skills/ModuleDebugging/SkillMd_Agents/SkillMd_AgentsTemplateRegistration.cs" />
   <file path="Templates/Skills/ModuleDocs/SkillMd_Agents/SkillMd_AgentsTemplatePartial.cs" />
   <file path="Templates/Skills/ModuleDocs/SkillMd_Agents/SkillMd_AgentsTemplateRegistration.cs" />
+  <file path="Templates/Skills/ModuleVersioning/SkillMd_Agents/SkillMd_AgentsTemplatePartial.cs" />
+  <file path="Templates/Skills/ModuleVersioning/SkillMd_Agents/SkillMd_AgentsTemplateRegistration.cs" />
   <file path="release-notes.md" />
 </managedFiles>

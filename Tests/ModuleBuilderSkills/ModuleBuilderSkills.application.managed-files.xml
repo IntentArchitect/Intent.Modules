@@ -3,7 +3,6 @@
   <file path=".agents/instructions/csharp-guidelines.md" />
   <file path=".agents/instructions/exception-guidelines.instructions.md" />
   <file path=".agents/instructions/known-build-gotchas.instructions.md" />
-  <file path=".agents/instructions/readme.txt" />
   <file path=".agents/skills/add-association-type/SKILL.md" />
   <file path=".agents/skills/add-association-type/resources/association-type-workflow.md" />
   <file path=".agents/skills/add-designer-extension/SKILL.md" />
@@ -28,4 +27,5 @@
   <file path=".agents/skills/module-building-strategies/SKILL.md" />
   <file path=".agents/skills/module-debugging/SKILL.md" />
   <file path=".agents/skills/module-docs/SKILL.md" />
+  <file path=".agents/skills/module-versioning/SKILL.md" />
 </managedFiles>

@@ -10,8 +10,8 @@ model dependency — every file it writes is always overwritten on install/updat
 - `.agents/skills/<skill-name>/SKILL.md` — one per bundled skill (`file-builder-expert`,
   `intent-mapping-architect`, `intent-metadata-consumer`, `intent-domain-interactions-expert`,
   `intent-module-orchestrator`, `add-association-type`, `add-designer-extension`,
-  `architecture-templates`, `module-building-strategies`, `module-debugging`, `module-docs`),
-  plus each skill's `resources/` files where present.
+  `architecture-templates`, `module-building-strategies`, `module-debugging`, `module-docs`,
+  `module-versioning`), plus each skill's `resources/` files where present.
 - `.agents/instructions/exception-guidelines.instructions.md` — how to choose the right
   exception type (`FriendlyException`, `ElementException`, or a plain developer exception) when
   writing module code.
