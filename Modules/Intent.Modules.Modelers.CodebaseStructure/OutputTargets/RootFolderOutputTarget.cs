@@ -28,7 +28,7 @@ namespace Intent.Modelers.CodebaseStructure.OutputTargets
         // by stereotype name (rather than a package reference, which would invert the dependency direction)
         // so this Root Folder's own OutputTarget shifts together with everything else that resolves relative
         // to it (Projects, Solution Folders), instead of staying behind at the unshifted location.
-        public string RelativeLocation => _model.HasStereotype("Root Folder Options") ? _model.GetStereotypeProperty("Root Folder Options", "Relative Location", string.Empty) : string.Empty;
+        public string RelativeLocation => _model.HasRootFolderOptions() ? _model.GetRootFolderOptions()?.RelativeLocation() : string.Empty;
 
         public string ParentId => null;
         public IEnumerable<string> SupportedFrameworks => new string[0];
