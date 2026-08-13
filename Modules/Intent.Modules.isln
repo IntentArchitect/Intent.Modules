@@ -7,7 +7,7 @@
   <iconType>UrlImagePath</iconType>
   <metadataRelativePath>Intent.Metadata</metadataRelativePath>
   <modulesCacheRelativePath>.intent/modules</modulesCacheRelativePath>
-  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.EmptyVisualStudioSolution" version="4.2.10" />
+  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.ModuleBuilderAiSkills" version="1.0.0-pre.2" />
   <applications>
     <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" solutionFolder="Module Builder" relativePath="Intent.Modules.ModuleBuilder/ModuleBuilder.application.config" />
     <application id="89b15292-077f-46aa-8f8b-76072be30ccc" solutionFolder="Module Builder" relativePath="Intent.Modules.ModuleBuilder.CSharp/ModuleBuilder.CSharp.application.config" />
@@ -54,6 +54,7 @@
     <application id="fd1d130c-fd95-4fee-b713-02c6641d1287" name="Intent.Modules.Modelers.CodebaseStructure" solutionFolder="Designers" relativePath="Intent.Modules.Modelers.CodebaseStructure/Intent.Modules.Modelers.CodebaseStructure.application.config" />
     <application id="1ea17a56-71e1-4853-9317-1de5180cfba6" name="Intent.Modules.Metadata.Domain.Constraints" solutionFolder="Metadata" relativePath="Intent.Modules.Metadata.Domain.Constraints/Intent.Modules.Metadata.Domain.Constraints.application.config" />
     <application id="1d074d2f-3b07-4f9d-89e4-f236a68278bd" name="Intent.Modules.ModuleBuilder.AI.Skills" solutionFolder="Module Builder" relativePath="Intent.Modules.ModuleBuilder.AI.Skills/Intent.Modules.ModuleBuilder.AI.Skills.application.config" />
+    <application id="56c42b2b-0973-424b-ae40-2b32c7aa840c" name="ModuleBuilderAiSkills" solutionFolder="AI Skills" relativePath="ModuleBuilderAiSkills/ModuleBuilderAiSkills.application.config" />
   </applications>
   <folders>
     <folder path="." />

@@ -1,0 +1,5 @@
+# Intent Architect
+
+**/.intent/*
+!*.application.output.log
+.mcp.json

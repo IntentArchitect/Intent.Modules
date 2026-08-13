@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="8e479019-0c0d-4614-8b3a-a7f827093856" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>module-docs</name>
+  <display>module-docs</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>d76f79e6-a77b-40d6-88a7-73516cd385e8</parentFolderId>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="94031ac5-6bc1-44f2-a095-9ad2a9e5e4b8" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Skills.Skills.ModuleDocs.SkillMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Skills.Skills.ModuleDocs.SkillMd_Agents</display>
+      <externalReference>Intent.ModuleBuilder.AI.Skills</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>8e479019-0c0d-4614-8b3a-a7f827093856</parentFolderId>
+      <stereotypes />
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+  </childElements>
+</class>
