@@ -157,7 +157,7 @@ namespace Intent.Modules.Common.Templates.StaticContent
         /// <inheritdoc />
         public override string GetCorrelationId()
         {
-            return $"{Id}#{_relativeOutputPath}";
+            return $"{Id}#{OutputTarget.Id}#{_relativeOutputPath}";
         }
     }
 }
