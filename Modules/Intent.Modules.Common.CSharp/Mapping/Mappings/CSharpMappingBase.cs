@@ -92,9 +92,10 @@ public abstract partial class CSharpMappingBase : ICSharpMapping
     protected virtual IList<IElementMappingPathTarget> GetSourcePath()
     {
         // NOTE: This logic is now duplicated in the MappingModel class:
+        // SourcePath is null (not empty) for a manually-set expression mapping with no source element.
         if (Mapping != null)
         {
-            return Mapping.SourcePath;
+            return Mapping.SourcePath ?? Array.Empty<IElementMappingPathTarget>();
         }
 
         var childMappings = GetAllChildren().Where(c => c.Mapping != null).ToList();
@@ -331,13 +332,16 @@ public abstract partial class CSharpMappingBase : ICSharpMapping
         // Only go for Target Elements that are Nullable and that have children whose source mappings have a Map path length that is beyond the root Element.
         // e.g. We won't target "request.FieldName" (flat mappings pose problems) but rather "request.NavProp.FieldName" for source elements.
         if (model is IElement { TypeReference: { IsNullable: true, IsCollection: false } } &&
-            CheckChildrenRecursive(children, c => c.Mapping != null && c.Mapping.SourcePath.SkipLast(1).Count() > 1) &&
-            GetSourcePath().Last().Element.TypeReference.IsNullable)
+            CheckChildrenRecursive(children, c => c.Mapping?.SourcePath != null && c.Mapping.SourcePath.Count > 2))
         {
             // GCB - this code (now commented out) was seriously hacky and broke in a simple use case of assigning a DTO to a Model (UI)
             //var child = children.First();
             //var accessPath = child.Mapping.SourcePath.SkipLast(1).Select(s => child.TryGetSourceReplacement(s.Element, out var a) ? a : s.Name).ToArray();
-            return new CSharpConditionalExpressionStatement($"{GetSourcePathText(GetSourcePath(), true)} is not null", instantiationStatement, "null");
+            var sourcePath = GetSourcePath();
+            if (sourcePath.Count > 0 && sourcePath[^1].Element.TypeReference.IsNullable)
+            {
+                return new CSharpConditionalExpressionStatement($"{GetSourcePathText(sourcePath, true)} is not null", instantiationStatement, "null");
+            }
         }
 
         return instantiationStatement;
