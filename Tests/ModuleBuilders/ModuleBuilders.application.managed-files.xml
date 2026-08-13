@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="7c157446-328d-42e6-9233-f62d633cb7ff">
+  <file path=".agents/instructions/csharp-guidelines.md" />
+  <file path="Intent.Modules.Tests.sln" />
+  <file path="ModuleBuilders/Api/NewAssociationTypeModel.cs" />
+  <file path="ModuleBuilders/Api/NewAssociationTypeModelAssociationExtensions.cs" />
+  <file path="ModuleBuilders/Api/TestElementModel.cs" />
+  <file path="ModuleBuilders/ApiMetadataProviderExtensions.cs" />
+  <file path="ModuleBuilders/ModuleBuilders.csproj" />
+  <file path="ModuleBuilders/ModuleBuilders.imodspec" />
+  <file path="ModuleBuilders/Settings/ModuleSettingsExtensions.cs" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpCustomBuilder/CSharpCustomBuilderTemplatePartial.cs" deviationsHash="2FAB932D71BAB27AC039F7CDDBC322C286337051E2929272240572096DFE776E" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpCustomBuilder/CSharpCustomBuilderTemplateRegistration.cs" deviationsHash="C04D32FEDF2747F78DD17E455BB3024991B0CA84750E1C1FE03C1A035537557F" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpCustomCustom/CSharpCustomCustomTemplatePartial.cs" deviationsHash="EDCD55571ADEEC6092C317EE04C7CBE342903129718C54334EBC03460DF30761" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpCustomCustom/CSharpCustomCustomTemplateRegistration.cs" deviationsHash="538047A82AC22178275650440A772D7AC3AC4A612BC4CD8E08ABF0B6172865BE" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpCustomStringInter/CSharpCustomStringInterTemplate.cs" deviationsHash="C908939451BD95002F50F267F6F115469AFB01CD6D98BA1739520DBA64BE58E2" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpCustomStringInter/CSharpCustomStringInterTemplatePartial.cs" deviationsHash="3A22929B051CE33781D9317E5AB260B9AB70805BA47D198D476304D56F686B20" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpCustomStringInter/CSharpCustomStringInterTemplateRegistration.cs" deviationsHash="E02C41E3823EA8817786C08CB73E917BC7CEB3E7177E4D72154B105F428D4444" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpCustomT4/CSharpCustomT4Template.cs" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpCustomT4/CSharpCustomT4Template.tt" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpCustomT4/CSharpCustomT4TemplatePartial.cs" deviationsHash="BCBAD2926200AEAFCBD3D84408029059C279EC5859DCA028B57C9607B73B658D" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpCustomT4/CSharpCustomT4TemplateRegistration.cs" deviationsHash="AA2C6D39BB21926F54182EEB521F966DD85116F7213912532889D2D183D1C10D" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpFilePerModelBuilder/CSharpFilePerModelBuilderTemplatePartial.cs" deviationsHash="20886FEDFBBDDEE727F874DF5DBF455C5F7DD9B7C4E3D8F1DD110960DBE040D5" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpFilePerModelBuilder/CSharpFilePerModelBuilderTemplateRegistration.cs" deviationsHash="4DD0351B9FBB23CEC3AB5FCC607BB4B7D8B0CE7F968E5A1399C43D3E0E5B0CA9" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpFilePerModelCustom/CSharpFilePerModelCustomTemplatePartial.cs" deviationsHash="9F9CF11C66148572719BA813FE988F1379773DE2784EC54003E65344DDD887E1" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpFilePerModelCustom/CSharpFilePerModelCustomTemplateRegistration.cs" deviationsHash="77ED52F55323EE6B3F9B5EDDF3243C3FE3A8071C9904830C0DB86483E2AD0678" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpFilePerModelStringInter/CSharpFilePerModelStringInterTemplate.cs" deviationsHash="91C5FEA1FB04F34F1A39FF4433908034F7A1D3432F9652287481C6373E4A21D2" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpFilePerModelStringInter/CSharpFilePerModelStringInterTemplatePartial.cs" deviationsHash="0171E6E9485A1E13A53C787BE6FA7D169C7D4DC32B5DF64DB81B3F3DD599BB54" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpFilePerModelStringInter/CSharpFilePerModelStringInterTemplateRegistration.cs" deviationsHash="2A819F931986B1A1095A3E148A953092CC0E036EA5920CF5A833668D531454C5" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpFilePerModelT4/CSharpFilePerModelT4Template.cs" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpFilePerModelT4/CSharpFilePerModelT4Template.tt" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpFilePerModelT4/CSharpFilePerModelT4TemplatePartial.cs" deviationsHash="A1DC969D5A380421A5DB578F5A40196A8C02334571E438375C18491F96CA7AAE" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpFilePerModelT4/CSharpFilePerModelT4TemplateRegistration.cs" deviationsHash="293B0780872A4178CF7F4C9520DB68A4E25A456AE727C252FBA0DD86A59FB73C" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpSingleFileBuilder/CSharpSingleFileBuilderTemplatePartial.cs" deviationsHash="446383BE54CF5D3DB3C5C4D5E9DF23E8A2DBD2740E0078BDE8C1F20176AD150B" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpSingleFileBuilder/CSharpSingleFileBuilderTemplateRegistration.cs" deviationsHash="8420CC46235CB60CBE9E42BC3D2BECF56B6B5311D103F5C6F69A42229C823328" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpSingleFileCustom/CSharpSingleFileCustomTemplatePartial.cs" deviationsHash="2E931EC37CDEFF00E51AB9E01861E818D545FB455EB3C8B22CCD3CA532DA2B2D" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpSingleFileCustom/CSharpSingleFileCustomTemplateRegistration.cs" deviationsHash="8420CC46235CB60CBE9E42BC3D2BECF56B6B5311D103F5C6F69A42229C823328" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpSingleFileStringInter/CSharpSingleFileStringInterTemplate.cs" deviationsHash="35E899AE80610C3DF45EEE3C85B84BC6485425D67D341DD89372B2881C0D8DA5" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpSingleFileStringInter/CSharpSingleFileStringInterTemplatePartial.cs" deviationsHash="258649C1D61790EE12A76370981DC42542CB951EB3715B261B937B73C89DEE68" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpSingleFileStringInter/CSharpSingleFileStringInterTemplateRegistration.cs" deviationsHash="8420CC46235CB60CBE9E42BC3D2BECF56B6B5311D103F5C6F69A42229C823328" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpSingleFileT4/CSharpSingleFileT4Template.cs" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpSingleFileT4/CSharpSingleFileT4Template.tt" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpSingleFileT4/CSharpSingleFileT4TemplatePartial.cs" deviationsHash="9692D04A08C1F612B4B498B3AD84E810AAB21416B01C7C214989C574A4AD5071" />
+  <file path="ModuleBuilders/Templates/CSharp/CSharpSingleFileT4/CSharpSingleFileT4TemplateRegistration.cs" deviationsHash="8420CC46235CB60CBE9E42BC3D2BECF56B6B5311D103F5C6F69A42229C823328" />
+  <file path="ModuleBuilders/Templates/Dart/DartCustomCustom/DartCustomCustomTemplatePartial.cs" deviationsHash="808705F393D2C1C55630A2494014E31FBB0028A6D56F30B613006C030DF58443" />
+  <file path="ModuleBuilders/Templates/Dart/DartCustomCustom/DartCustomCustomTemplateRegistration.cs" deviationsHash="E541F30B3BA7FD5335EB89E02C97E6C98266A0BC8B87AED63899BC6937C32E2C" />
+  <file path="ModuleBuilders/Templates/Dart/DartCustomStringInter/DartCustomStringInterTemplate.cs" deviationsHash="A5772CA28791362CF752D64B45FBFF75E732725DCC01AD413817B463BFE56AA6" />
+  <file path="ModuleBuilders/Templates/Dart/DartCustomStringInter/DartCustomStringInterTemplatePartial.cs" deviationsHash="256495E61BDE94FCA75AFFDE98D24ABC1A978A5191533AEF3467DED04C5E4117" />
+  <file path="ModuleBuilders/Templates/Dart/DartCustomStringInter/DartCustomStringInterTemplateRegistration.cs" deviationsHash="663BC9440FABD2BDE4A6FEFF9A8301084DC1A94C518F28AE9F67828B51F2335C" />
+  <file path="ModuleBuilders/Templates/Dart/DartCustomT4/DartCustomT4Template.cs" />
+  <file path="ModuleBuilders/Templates/Dart/DartCustomT4/DartCustomT4Template.tt" />
+  <file path="ModuleBuilders/Templates/Dart/DartCustomT4/DartCustomT4TemplatePartial.cs" deviationsHash="90CFF6235A996805EFE2044ED2F5500F9DC49E2A70AA93023B097F56063C4EE6" />
+  <file path="ModuleBuilders/Templates/Dart/DartCustomT4/DartCustomT4TemplateRegistration.cs" deviationsHash="2842EC0253936028105B2E650B937C154C88BF977EA5DFA75071663C97375296" />
+  <file path="ModuleBuilders/Templates/Dart/DartFilePerModelCustom/DartFilePerModelCustomTemplatePartial.cs" deviationsHash="DC873E234FF6C3F8538D4874AED1079D98F7F3DAB43D546B9DF08AE2789C349E" />
+  <file path="ModuleBuilders/Templates/Dart/DartFilePerModelCustom/DartFilePerModelCustomTemplateRegistration.cs" deviationsHash="64AC724062E48990846825C786F6B9636937B8A2493858D5ED0B3CBE57387364" />
+  <file path="ModuleBuilders/Templates/Dart/DartFilePerModelStringInter/DartFilePerModelStringInterTemplate.cs" deviationsHash="C7E36116A3CA600FFD4EB686E93BD1FCA31ABB6971E0571C26F46CDD2AF0BF74" />
+  <file path="ModuleBuilders/Templates/Dart/DartFilePerModelStringInter/DartFilePerModelStringInterTemplatePartial.cs" deviationsHash="8072449AEF70D3AA7347C2E5F07626DF1262BF9886D1ACD5BA273156003117FD" />
+  <file path="ModuleBuilders/Templates/Dart/DartFilePerModelStringInter/DartFilePerModelStringInterTemplateRegistration.cs" deviationsHash="554A11C534BDD01826EB3CCC47AC2B1AD99603E49E0ACFEDEBD2ABEF14A4EF7A" />
+  <file path="ModuleBuilders/Templates/Dart/DartFilePerModelT4/DartFilePerModelT4Template.cs" />
+  <file path="ModuleBuilders/Templates/Dart/DartFilePerModelT4/DartFilePerModelT4Template.tt" />
+  <file path="ModuleBuilders/Templates/Dart/DartFilePerModelT4/DartFilePerModelT4TemplatePartial.cs" deviationsHash="E838C7EB481CA0C361EC329BCEBD5117E3B8211352E5DDE35AC75C123E6CF882" />
+  <file path="ModuleBuilders/Templates/Dart/DartFilePerModelT4/DartFilePerModelT4TemplateRegistration.cs" deviationsHash="ABD851679F79D43E83A06213EF4A1F66D069EB740E84CDDD7605E8DE74268A0D" />
+  <file path="ModuleBuilders/Templates/Dart/DartSingleFileCustom/DartSingleFileCustomTemplatePartial.cs" deviationsHash="BA89D7FC0D4D01D257F684E36B2AA4A131E028E474800890D4A0998DB88DC66F" />
+  <file path="ModuleBuilders/Templates/Dart/DartSingleFileCustom/DartSingleFileCustomTemplateRegistration.cs" deviationsHash="3AB8067DCFF6297D4F1D1A886DAAF74D0BA0048AF9777FAB61D6FE25D12B5D4C" />
+  <file path="ModuleBuilders/Templates/Dart/DartSingleFileStringInter/DartSingleFileStringInterTemplate.cs" deviationsHash="E1A1C10F0321CDDE7A93C65CE961F9E388CF64D46BE173B89814442F2E771786" />
+  <file path="ModuleBuilders/Templates/Dart/DartSingleFileStringInter/DartSingleFileStringInterTemplatePartial.cs" deviationsHash="69581299C50CCC41B68C6FD729C5F7365CDDDA1672F03A8E190D967D525D24B5" />
+  <file path="ModuleBuilders/Templates/Dart/DartSingleFileStringInter/DartSingleFileStringInterTemplateRegistration.cs" deviationsHash="429C09F963598F9B2F4F3685152EB979A895256799D0F703CB2EAFB3ED1FBD43" />
+  <file path="ModuleBuilders/Templates/Dart/DartSingleFileT4/DartSingleFileT4Template.cs" />
+  <file path="ModuleBuilders/Templates/Dart/DartSingleFileT4/DartSingleFileT4Template.tt" />
+  <file path="ModuleBuilders/Templates/Dart/DartSingleFileT4/DartSingleFileT4TemplatePartial.cs" deviationsHash="F31B4458EE0B22F44EF3CB9D7B0D2CE54A3E1742287CE82F091046A8D7C69F50" />
+  <file path="ModuleBuilders/Templates/Dart/DartSingleFileT4/DartSingleFileT4TemplateRegistration.cs" deviationsHash="AD555A55CA7FF1DE1FECB11850105CDD85DB472997C8F157E28385BB4150E855" />
+  <file path="ModuleBuilders/Templates/File/DataFileBuilderFilePerModelJson/DataFileBuilderFilePerModelJsonTemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/File/DataFileBuilderFilePerModelJson/DataFileBuilderFilePerModelJsonTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/File/DataFileBuilderFilePerModelOcl/DataFileBuilderFilePerModelOclTemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/File/DataFileBuilderFilePerModelOcl/DataFileBuilderFilePerModelOclTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/File/DataFileBuilderFilePerModelYaml/DataFileBuilderFilePerModelYamlTemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/File/DataFileBuilderFilePerModelYaml/DataFileBuilderFilePerModelYamlTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/File/DataFileBuilderSingleJson/DataFileBuilderSingleJsonTemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/File/DataFileBuilderSingleJson/DataFileBuilderSingleJsonTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/File/DataFileBuilderSingleOcl/DataFileBuilderSingleOclTemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/File/DataFileBuilderSingleOcl/DataFileBuilderSingleOclTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/File/DataFileBuilderSingleYaml/DataFileBuilderSingleYamlTemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/File/DataFileBuilderSingleYaml/DataFileBuilderSingleYamlTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/File/FileCustomCustom/FileCustomCustomTemplatePartial.cs" deviationsHash="0EEF92381447C63CE05A55E0B38D230B548A56D5BBF919DAFD56F4D760C78012" />
+  <file path="ModuleBuilders/Templates/File/FileCustomCustom/FileCustomCustomTemplateRegistration.cs" deviationsHash="1382F4A0C3A6F166BDA4D6B8ACA0656CDDFD92C592319D0DEC392E04469A5263" />
+  <file path="ModuleBuilders/Templates/File/FileCustomStringInter/FileCustomStringInterTemplate.cs" deviationsHash="8420CC46235CB60CBE9E42BC3D2BECF56B6B5311D103F5C6F69A42229C823328" />
+  <file path="ModuleBuilders/Templates/File/FileCustomStringInter/FileCustomStringInterTemplatePartial.cs" deviationsHash="E8C7B158E9EDB802E3D8E9BF61CB61D12657FF0FCA455DCDB4E9E02EEEB26C26" />
+  <file path="ModuleBuilders/Templates/File/FileCustomStringInter/FileCustomStringInterTemplateRegistration.cs" deviationsHash="E9A35066675DC59592FD893B20FC3A6A2F0A15DAF7E05DE59606738E624BE02E" />
+  <file path="ModuleBuilders/Templates/File/FileCustomT4/FileCustomT4Template.cs" />
+  <file path="ModuleBuilders/Templates/File/FileCustomT4/FileCustomT4Template.tt" />
+  <file path="ModuleBuilders/Templates/File/FileCustomT4/FileCustomT4TemplatePartial.cs" deviationsHash="13BBBA8567A4D4D80A3C30603DB29FE3058EE4BA8AE00328F75674CDFF489A74" />
+  <file path="ModuleBuilders/Templates/File/FileCustomT4/FileCustomT4TemplateRegistration.cs" deviationsHash="FA975DD96900860998B2A0DBC237BC3A4363BD659217A4591724E0D59FA9B63D" />
+  <file path="ModuleBuilders/Templates/File/FileFilePerModelCustom/FileFilePerModelCustomTemplatePartial.cs" deviationsHash="748678142A9F2F9A847A7F2F9F96A2B130143D2EF01DF8578780DD3F3970226D" />
+  <file path="ModuleBuilders/Templates/File/FileFilePerModelCustom/FileFilePerModelCustomTemplateRegistration.cs" deviationsHash="534C040518E8011A65EA45095DAC91227170657D1888826471E713368FAA4D3D" />
+  <file path="ModuleBuilders/Templates/File/FileFilePerModelStringInter/FileFilePerModelStringInterTemplate.cs" deviationsHash="8420CC46235CB60CBE9E42BC3D2BECF56B6B5311D103F5C6F69A42229C823328" />
+  <file path="ModuleBuilders/Templates/File/FileFilePerModelStringInter/FileFilePerModelStringInterTemplatePartial.cs" deviationsHash="7BA4A7B4B1DCBAE3C6180C0A61A61D4E9AC26B00636904AD24844012E4078511" />
+  <file path="ModuleBuilders/Templates/File/FileFilePerModelStringInter/FileFilePerModelStringInterTemplateRegistration.cs" deviationsHash="8420CC46235CB60CBE9E42BC3D2BECF56B6B5311D103F5C6F69A42229C823328" />
+  <file path="ModuleBuilders/Templates/File/FileFilePerModelT4/FileFilePerModelT4Template.cs" />
+  <file path="ModuleBuilders/Templates/File/FileFilePerModelT4/FileFilePerModelT4Template.tt" />
+  <file path="ModuleBuilders/Templates/File/FileFilePerModelT4/FileFilePerModelT4TemplatePartial.cs" deviationsHash="EA3131D51A31F603B2AA6C1D2EFA257C48BA3A3DD503254A0C52F1685CE79404" />
+  <file path="ModuleBuilders/Templates/File/FileFilePerModelT4/FileFilePerModelT4TemplateRegistration.cs" deviationsHash="57FA592118CA08F0499DCBD3879CDAB0D9A7ECF529B3E81C5B49D8EC23A044FD" />
+  <file path="ModuleBuilders/Templates/File/FileSingleFileCustom/FileSingleFileCustomTemplatePartial.cs" deviationsHash="351F3881A946211D2735CAEA0F33D7A3B8122A2997D099AF490B9AB61FD87BEC" />
+  <file path="ModuleBuilders/Templates/File/FileSingleFileCustom/FileSingleFileCustomTemplateRegistration.cs" deviationsHash="8420CC46235CB60CBE9E42BC3D2BECF56B6B5311D103F5C6F69A42229C823328" />
+  <file path="ModuleBuilders/Templates/File/FileSingleFileStringInter/FileSingleFileStringInterTemplate.cs" deviationsHash="8420CC46235CB60CBE9E42BC3D2BECF56B6B5311D103F5C6F69A42229C823328" />
+  <file path="ModuleBuilders/Templates/File/FileSingleFileStringInter/FileSingleFileStringInterTemplatePartial.cs" deviationsHash="C3ADA0B3AE12DB403747E0BD25BD82B00D74C8AC5D8BAC36B1F836F01EE8574C" />
+  <file path="ModuleBuilders/Templates/File/FileSingleFileStringInter/FileSingleFileStringInterTemplateRegistration.cs" deviationsHash="8420CC46235CB60CBE9E42BC3D2BECF56B6B5311D103F5C6F69A42229C823328" />
+  <file path="ModuleBuilders/Templates/File/FileSingleFileT4/FileSingleFileT4Template.cs" />
+  <file path="ModuleBuilders/Templates/File/FileSingleFileT4/FileSingleFileT4Template.tt" />
+  <file path="ModuleBuilders/Templates/File/FileSingleFileT4/FileSingleFileT4TemplatePartial.cs" deviationsHash="1084BD51E00E4589E1397603EF2C3D24046AB1B89585286D9E614F908FEE0BC0" />
+  <file path="ModuleBuilders/Templates/File/FileSingleFileT4/FileSingleFileT4TemplateRegistration.cs" deviationsHash="8420CC46235CB60CBE9E42BC3D2BECF56B6B5311D103F5C6F69A42229C823328" />
+  <file path="ModuleBuilders/Templates/File/IndentedFileBuilderFilePerModel/IndentedFileBuilderFilePerModelTemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/File/IndentedFileBuilderFilePerModel/IndentedFileBuilderFilePerModelTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/File/IndentedFileBuilderSingle/IndentedFileBuilderSingleTemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/File/IndentedFileBuilderSingle/IndentedFileBuilderSingleTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/Html/HtmlCustom/HtmlCustomTemplate.cs" />
+  <file path="ModuleBuilders/Templates/Html/HtmlCustom/HtmlCustomTemplate.tt" />
+  <file path="ModuleBuilders/Templates/Html/HtmlCustom/HtmlCustomTemplatePartial.cs" deviationsHash="EC9EC4379373630CD947B39B86FE3B810EF7F282E833CE031454A9773002A1BE" />
+  <file path="ModuleBuilders/Templates/Html/HtmlCustom/HtmlCustomTemplateRegistration.cs" deviationsHash="C12C0318DCB892974CBF34F130FDA8B396B708D77931E312BD73F7EE89C72C47" />
+  <file path="ModuleBuilders/Templates/Html/HtmlFilePerModel/HtmlFilePerModelTemplate.cs" />
+  <file path="ModuleBuilders/Templates/Html/HtmlFilePerModel/HtmlFilePerModelTemplate.tt" />
+  <file path="ModuleBuilders/Templates/Html/HtmlFilePerModel/HtmlFilePerModelTemplatePartial.cs" deviationsHash="2BCED4EE822C7FF10ABCBE93FB1EBE7F2E6C5AA35EA9C2A8F3844F6A2A560951" />
+  <file path="ModuleBuilders/Templates/Html/HtmlFilePerModel/HtmlFilePerModelTemplateRegistration.cs" deviationsHash="6D3715A1EF3B7A5298918561BED0B15FE9370E8DBD0C3C56242519172448ADE1" />
+  <file path="ModuleBuilders/Templates/Html/HtmlSingleFile/HtmlSingleFileTemplate.cs" />
+  <file path="ModuleBuilders/Templates/Html/HtmlSingleFile/HtmlSingleFileTemplate.tt" />
+  <file path="ModuleBuilders/Templates/Html/HtmlSingleFile/HtmlSingleFileTemplatePartial.cs" deviationsHash="8186A4CD5F15F8A597D05062D376FF986EF821AC01C1F37772735ED126A4A487" />
+  <file path="ModuleBuilders/Templates/Html/HtmlSingleFile/HtmlSingleFileTemplateRegistration.cs" deviationsHash="1646405DC0EF14F6A5A1A0F1B7079AA7B9FE0DAF0C409226CC62F8EF72A9531C" />
+  <file path="ModuleBuilders/Templates/Java/JavaCustomBuilder/JavaCustomBuilderTemplatePartial.cs" deviationsHash="D0EEB51E45252854B5FE9A8047FF12AFB553D4885A698285465E5DD289530AAE" />
+  <file path="ModuleBuilders/Templates/Java/JavaCustomBuilder/JavaCustomBuilderTemplateRegistration.cs" deviationsHash="9CAB70332DD85E2EDD6967950218C45228835B788314242C6788C278D12758A7" />
+  <file path="ModuleBuilders/Templates/Java/JavaCustomCustom/JavaCustomCustomTemplatePartial.cs" deviationsHash="41BF2C74469547F80696BA92C0E04B2FD9D45CDD7082B5F5BDAF0272FCB0F16B" />
+  <file path="ModuleBuilders/Templates/Java/JavaCustomCustom/JavaCustomCustomTemplateRegistration.cs" deviationsHash="1EA97A9EE0522F0057FC60A8132F9191C03826E9D090BE4D4D0EEF0491E756C2" />
+  <file path="ModuleBuilders/Templates/Java/JavaCustomStringInter/JavaCustomStringInterTemplate.cs" deviationsHash="F71E87033CC3C6468F29471B6F8B4D0B96B24F311F20A5B605225328713223C1" />
+  <file path="ModuleBuilders/Templates/Java/JavaCustomStringInter/JavaCustomStringInterTemplatePartial.cs" deviationsHash="8B4A617F53DD75996FDEB6344272EE8BCED1E2767F24AA233C29C34F4379B672" />
+  <file path="ModuleBuilders/Templates/Java/JavaCustomStringInter/JavaCustomStringInterTemplateRegistration.cs" deviationsHash="819AD28E722188FF62F785362FACFE6C7F4E98F7EBB5B961C0B3E87194EE2172" />
+  <file path="ModuleBuilders/Templates/Java/JavaCustomT4/JavaCustomT4Template.cs" />
+  <file path="ModuleBuilders/Templates/Java/JavaCustomT4/JavaCustomT4Template.tt" />
+  <file path="ModuleBuilders/Templates/Java/JavaCustomT4/JavaCustomT4TemplatePartial.cs" deviationsHash="DA54B501A1CA14087396A39A2CEDA1B75CCBB49CE2D87420636FFFCD3521A6F4" />
+  <file path="ModuleBuilders/Templates/Java/JavaCustomT4/JavaCustomT4TemplateRegistration.cs" deviationsHash="8B82FE01AE7D240F1B9C68C5D01960DE3EA07C2FAB35856138EA508D381EA001" />
+  <file path="ModuleBuilders/Templates/Java/JavaFilePerModelBuilder/JavaFilePerModelBuilderTemplatePartial.cs" deviationsHash="FE26727E2D22658E21B1A130F8467BD439938B68A346ECF5101A4E7E0A2C498B" />
+  <file path="ModuleBuilders/Templates/Java/JavaFilePerModelBuilder/JavaFilePerModelBuilderTemplateRegistration.cs" deviationsHash="F7605803E932CF38CC78AAB5CF6E851795EE299F9B94440AED974DA73A2514CE" />
+  <file path="ModuleBuilders/Templates/Java/JavaFilePerModelCustom/JavaFilePerModelCustomTemplatePartial.cs" deviationsHash="56A202AD21B8F9EF85C9B2D082204C1854CBC01B040DCC15C919769B6A2F5798" />
+  <file path="ModuleBuilders/Templates/Java/JavaFilePerModelCustom/JavaFilePerModelCustomTemplateRegistration.cs" deviationsHash="A84A4B7A8916947EBB4F0031A8C1340DF1C98D3E9586274222F35026754BA01C" />
+  <file path="ModuleBuilders/Templates/Java/JavaFilePerModelStringInter/JavaFilePerModelStringInterTemplate.cs" deviationsHash="D698C383AD4730E4297D4BA7EB1F5DB0F9F86FFB4332A10E94BA238691891155" />
+  <file path="ModuleBuilders/Templates/Java/JavaFilePerModelStringInter/JavaFilePerModelStringInterTemplatePartial.cs" deviationsHash="96D893BBFBD5D7AA1D738ECCE90E797E0671757BCEBC1519418EAD9D4C3DA597" />
+  <file path="ModuleBuilders/Templates/Java/JavaFilePerModelStringInter/JavaFilePerModelStringInterTemplateRegistration.cs" deviationsHash="B97BD23950B467B537D0AC54EFB1D979869C07AFA0503F034073CF91598DC9A3" />
+  <file path="ModuleBuilders/Templates/Java/JavaFilePerModelT4/JavaFilePerModelT4Template.cs" />
+  <file path="ModuleBuilders/Templates/Java/JavaFilePerModelT4/JavaFilePerModelT4Template.tt" />
+  <file path="ModuleBuilders/Templates/Java/JavaFilePerModelT4/JavaFilePerModelT4TemplatePartial.cs" deviationsHash="0ADB03120A1E4ABB6AD2A7B7FF7EE91C089C8A1660DFEDB9266F995F931CBA23" />
+  <file path="ModuleBuilders/Templates/Java/JavaFilePerModelT4/JavaFilePerModelT4TemplateRegistration.cs" deviationsHash="4FDCFEE2EE91992629DA21D36EFA18A6FE76343948B84ECFA070861F6A3652D6" />
+  <file path="ModuleBuilders/Templates/Java/JavaSingleFileBuilder/JavaSingleFileBuilderTemplatePartial.cs" deviationsHash="898EA25B46FE633C59EDF689DF5D58671C865F5F33BC9795A08CD6B99CB5F4AE" />
+  <file path="ModuleBuilders/Templates/Java/JavaSingleFileBuilder/JavaSingleFileBuilderTemplateRegistration.cs" deviationsHash="8420CC46235CB60CBE9E42BC3D2BECF56B6B5311D103F5C6F69A42229C823328" />
+  <file path="ModuleBuilders/Templates/Java/JavaSingleFileCustom/JavaSingleFileCustomTemplatePartial.cs" deviationsHash="3B0214DE4B2A8C2BF38AB200ACD2E6B57D8B19BD5A7E3510B19187DBF83AB5B4" />
+  <file path="ModuleBuilders/Templates/Java/JavaSingleFileCustom/JavaSingleFileCustomTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/Java/JavaSingleFileStringInter/JavaSingleFileStringInterTemplate.cs" deviationsHash="CF0498EC34F1A7C913A221861D73469BADB882E11A93BCAA4CCE07DC60739B44" />
+  <file path="ModuleBuilders/Templates/Java/JavaSingleFileStringInter/JavaSingleFileStringInterTemplatePartial.cs" deviationsHash="6A74D9A62214E6F32FDCE56235E31DED57565DB5DA10D9862ACE4720CAA8BAF6" />
+  <file path="ModuleBuilders/Templates/Java/JavaSingleFileStringInter/JavaSingleFileStringInterTemplateRegistration.cs" deviationsHash="8420CC46235CB60CBE9E42BC3D2BECF56B6B5311D103F5C6F69A42229C823328" />
+  <file path="ModuleBuilders/Templates/Java/JavaSingleFileT4/JavaSingleFileT4Template.cs" />
+  <file path="ModuleBuilders/Templates/Java/JavaSingleFileT4/JavaSingleFileT4Template.tt" />
+  <file path="ModuleBuilders/Templates/Java/JavaSingleFileT4/JavaSingleFileT4TemplatePartial.cs" deviationsHash="AB13F2BD85F15B99586064F14465C4E3D8FFCDA584EEB5EF1F53B13A2748F381" />
+  <file path="ModuleBuilders/Templates/Java/JavaSingleFileT4/JavaSingleFileT4TemplateRegistration.cs" deviationsHash="8420CC46235CB60CBE9E42BC3D2BECF56B6B5311D103F5C6F69A42229C823328" />
+  <file path="ModuleBuilders/Templates/Kotlin/KotlinCustom/KotlinCustomTemplate.cs" />
+  <file path="ModuleBuilders/Templates/Kotlin/KotlinCustom/KotlinCustomTemplate.tt" />
+  <file path="ModuleBuilders/Templates/Kotlin/KotlinCustom/KotlinCustomTemplatePartial.cs" deviationsHash="60E425CCC34BA1198A5947E76E10A3DF263E6A586AA5C3F235807B439A6B00F9" />
+  <file path="ModuleBuilders/Templates/Kotlin/KotlinCustom/KotlinCustomTemplateRegistration.cs" deviationsHash="01E9A18EFE24FDAFACA46EC822AB4FA0D9C9496099A1A4D9DDFA57455124925F" />
+  <file path="ModuleBuilders/Templates/Kotlin/KotlinFilePerModel/KotlinFilePerModelTemplate.cs" />
+  <file path="ModuleBuilders/Templates/Kotlin/KotlinFilePerModel/KotlinFilePerModelTemplate.tt" />
+  <file path="ModuleBuilders/Templates/Kotlin/KotlinFilePerModel/KotlinFilePerModelTemplatePartial.cs" deviationsHash="B3399B5CE33653D3DFCE30B5DE1E29097DFF51131C45013A647996B4BB647E6C" />
+  <file path="ModuleBuilders/Templates/Kotlin/KotlinFilePerModel/KotlinFilePerModelTemplateRegistration.cs" deviationsHash="95598AE967DFFBC3CF7E97BABB8C75178CEC99940E0F3938355EF50BC4522856" />
+  <file path="ModuleBuilders/Templates/Kotlin/KotlinSingleFile/KotlinSingleFileTemplate.cs" />
+  <file path="ModuleBuilders/Templates/Kotlin/KotlinSingleFile/KotlinSingleFileTemplate.tt" />
+  <file path="ModuleBuilders/Templates/Kotlin/KotlinSingleFile/KotlinSingleFileTemplatePartial.cs" deviationsHash="7BFB0319773486F18E3CC9B0291357E1DEA5B95DA0012F881A89C3464029B4BE" />
+  <file path="ModuleBuilders/Templates/Kotlin/KotlinSingleFile/KotlinSingleFileTemplateRegistration.cs" deviationsHash="81302BF7A5EF3F096A72C69C675EE4211547A9851B7A647178505C4167C1BCC8" />
+  <file path="ModuleBuilders/Templates/Sql/SqlCustom/SqlCustomTemplate.cs" />
+  <file path="ModuleBuilders/Templates/Sql/SqlCustom/SqlCustomTemplate.tt" />
+  <file path="ModuleBuilders/Templates/Sql/SqlCustom/SqlCustomTemplatePartial.cs" deviationsHash="8FF022BDEFE3B6B2621ADBD8DBF5C72242F022A537434D1D5ACDB93237DA7379" />
+  <file path="ModuleBuilders/Templates/Sql/SqlCustom/SqlCustomTemplateRegistration.cs" deviationsHash="BAE2A86423E3D33ED18AEE8EF8E351A3D5DB5565AB3C2E15216AA08ECDCFDFDC" />
+  <file path="ModuleBuilders/Templates/Sql/SqlFilePerModel/SqlFilePerModelTemplate.cs" />
+  <file path="ModuleBuilders/Templates/Sql/SqlFilePerModel/SqlFilePerModelTemplate.tt" />
+  <file path="ModuleBuilders/Templates/Sql/SqlFilePerModel/SqlFilePerModelTemplatePartial.cs" deviationsHash="CE404691E6BDF7D1AF7423ECD5A712FE954367D86A5637DF50F94600311A04DA" />
+  <file path="ModuleBuilders/Templates/Sql/SqlFilePerModel/SqlFilePerModelTemplateRegistration.cs" deviationsHash="C5C2F196D479A58F4AA49B471D15FEB70DEA5A08361349E4B2406B68418BE48B" />
+  <file path="ModuleBuilders/Templates/Sql/SqlSingleFile/SqlSingleFileTemplate.cs" />
+  <file path="ModuleBuilders/Templates/Sql/SqlSingleFile/SqlSingleFileTemplate.tt" />
+  <file path="ModuleBuilders/Templates/Sql/SqlSingleFile/SqlSingleFileTemplatePartial.cs" deviationsHash="94599E3DF2E8AEDE24606A9541BC7922DBB077E9A8A8C697FE24E13F7DD8CA36" />
+  <file path="ModuleBuilders/Templates/Sql/SqlSingleFile/SqlSingleFileTemplateRegistration.cs" deviationsHash="447D119565B148E7ECCCE8244ADBF02830F437F620C3D019E1B4D6756356D70B" />
+  <file path="ModuleBuilders/Templates/StaticContent/StaticContentTemplateRegistrations/StaticContentTextStaticContentTemplateRegistration.cs" deviationsHash="81953916D7FDDE68CED905D2E00D757350BE6B78CA61599A3F41FE4711855359" />
+  <file path="ModuleBuilders/Templates/TemplateExtensions.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomBuilder/TypeScriptCustomBuilderTemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomBuilder/TypeScriptCustomBuilderTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomCustom/TypeScriptCustomCustomTemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomCustom/TypeScriptCustomCustomTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomStringInter/TypeScriptCustomStringInterTemplate.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomStringInter/TypeScriptCustomStringInterTemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomStringInter/TypeScriptCustomStringInterTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomT4/TypeScriptCustomT4Template.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomT4/TypeScriptCustomT4Template.tt" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomT4/TypeScriptCustomT4TemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomT4/TypeScriptCustomT4TemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelBuilder/TypeScriptFilePerModelBuilderTemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelBuilder/TypeScriptFilePerModelBuilderTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelCustom/TypeScriptFilePerModelCustomTemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelCustom/TypeScriptFilePerModelCustomTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelStringInter/TypeScriptFilePerModelStringInterTemplate.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelStringInter/TypeScriptFilePerModelStringInterTemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelStringInter/TypeScriptFilePerModelStringInterTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelT4/TypeScriptFilePerModelT4Template.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelT4/TypeScriptFilePerModelT4Template.tt" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelT4/TypeScriptFilePerModelT4TemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelT4/TypeScriptFilePerModelT4TemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileBuilder/TypeScriptSingleFileBuilderTemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileBuilder/TypeScriptSingleFileBuilderTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileCustom/TypeScriptSingleFileCustomTemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileCustom/TypeScriptSingleFileCustomTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileStringInter/TypeScriptSingleFileStringInterTemplate.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileStringInter/TypeScriptSingleFileStringInterTemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileStringInter/TypeScriptSingleFileStringInterTemplateRegistration.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileT4/TypeScriptSingleFileT4Template.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileT4/TypeScriptSingleFileT4Template.tt" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileT4/TypeScriptSingleFileT4TemplatePartial.cs" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileT4/TypeScriptSingleFileT4TemplateRegistration.cs" />
+  <file path="ModuleBuilders/content/readme.txt" />
+  <file path="ModuleBuilders/modelers/Domain Extensions.designer.settings" />
+</managedFiles>

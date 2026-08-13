@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="39af18aa-c4fc-463c-bbb0-cbee9de9b686">
+  <file path=".agents/instructions/csharp-guidelines.md" />
+  <file path="ArchitectureBuilder/ArchitectureBuilder.csproj" />
+  <file path="ArchitectureBuilder/Test Architecture Template/metadata.iatspec" />
+  <file path="Intent.Modules.Tests.sln" />
+</managedFiles>
