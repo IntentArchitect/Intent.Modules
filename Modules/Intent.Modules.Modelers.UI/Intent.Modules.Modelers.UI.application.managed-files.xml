@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="ceb815c5-d710-40ef-b963-541979dc5597">
+  <file path=".agents/instructions/csharp-guidelines.md" />
+  <file path="Intent.Modules.Modelers.UI/Api/AssociationDestinationEndSettingsModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/AutoCompleteModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/ButtonModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/CallServiceOperationActionModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/CallServiceOperationActionModelAssociationExtensions.cs" deviationsHash="95AB2835E13F632CAA2E426C797ABB59F62D265E38246CAF7B13296304CDABAE" />
+  <file path="Intent.Modules.Modelers.UI/Api/CheckboxModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/ComponentModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/ComponentModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/ComponentOperationModel.cs" deviationsHash="30CFD6A2739F858119A98BF4221E36E4CDB6A745ACAE895B61802C6DEB981231" />
+  <file path="Intent.Modules.Modelers.UI/Api/ComponentViewModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/CompositionModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/CompositionModelAssociationExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/DiagramModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/DisplayComponentModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/ElementExtensionModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/ElementSettingsModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/EventEmitterModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/EventEmitterModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/FolderExtensionModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/IComponentModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/IComposableModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/IDialogModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/IInvokableModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/IInvokableServiceOperationModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/IPageModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/InvocationModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/LayoutBodyModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/LayoutFooterModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/LayoutHeaderModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/LayoutModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/LayoutProfileMenuModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/LayoutSiderModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/LinkModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/MenuItemModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/ModelDefinitionModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/NavigationModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/NavigationModelAssociationExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/PropertyModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/PropertyModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/RadioGroupModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/ReturnModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/SelectModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/TableModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/TextInputModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/UserInterfacePackageExtensionModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/Api/UserInterfacePackageModel.cs" />
+  <file path="Intent.Modules.Modelers.UI/ApiMetadataDesignerExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/ApiMetadataPackageExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/ApiMetadataProviderExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI/Intent.Modelers.UI.imodspec" />
+  <file path="Intent.Modules.Modelers.UI/Intent.Modules.Modelers.UI.csproj" deviationsHash="DAC8E810107B0B73AFBD686B632F60079F4A670B0E9DCF5A518FB6772B03E235" />
+  <file path="Intent.Modules.Modelers.UI/Migrations/Migration_01_01_03_Pre_01.cs" />
+  <file path="Intent.Modules.Modelers.UI/modelers/User Interface Core Types.designer.settings" />
+  <file path="Intent.Modules.Modelers.UI/modelers/User Interface Packages.designer.settings" />
+  <file path="Intent.Modules.Modelers.UI/modelers/User Interface.designer.config" />
+  <file path="Intent.Modules.Modelers.UI/release-notes.md" />
+  <file path="Intent.Modules.sln" />
+</managedFiles>

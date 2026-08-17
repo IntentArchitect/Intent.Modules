@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="854cb9ab-83bb-4cfa-8468-e72690f40c6b">
+  <file path="Intent.Modules.Modelers.UI.Core/Api/AutoCompleteModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/AutoCompleteModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/ButtonModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/ButtonModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/CardActionsModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/CardContentModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/CardHeaderModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/CardModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/CheckboxModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/CheckboxModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/ColumnModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/ComponentModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/ContainerModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/DatePickerModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/DatePickerModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/DialogActionsModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/DialogContentModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/DialogModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/DialogTitleModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/FormModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/FormModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/IconModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/ImageModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/LinkModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/LinkModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/MenuItemModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/MenuItemModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/NavigationMenuModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/RadioGroupModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/RadioGroupModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/SelectModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/SelectModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/ShowDialogModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/ShowDialogModelAssociationExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/TableModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/TableModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/TextInputModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/TextInputModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Api/TextModel.cs" />
+  <file path="Intent.Modules.Modelers.UI.Core/Intent.Modelers.UI.Core.imodspec" />
+  <file path="Intent.Modules.Modelers.UI.Core/Intent.Modules.Modelers.UI.Core.csproj" />
+  <file path="Intent.Modules.Modelers.UI.Core/modelers/Common UI Components.designer.settings" />
+  <file path="Intent.Modules.sln" />
+</managedFiles>

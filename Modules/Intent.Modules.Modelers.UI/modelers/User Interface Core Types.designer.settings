@@ -1400,7 +1400,50 @@ vertical-align: center`</style>
       <rules>- No component should ever be explicitly added to any of the Header, Sider, Body or Footer layouts.
 - The Layout may contain `Navigation Target End` associations which represent menu items to be created.
 - Which region (Header, Sider, Footer, Profile) a menu item should be placed in is stated in the association's own Comment (e.g. "Navigate to the product list page from the sider menu"), not a stereotype. If the comment doesn't state a region, it defaults to Sider.
-- After any UI designer change that adds a Page or changes MainLayout navigation, or where the placement comment on an association changes, the `updating-app-menu` skill MUST be called.</rules>
+
+---
+# App Menu Updates
+
+When a page is modeled with a Navigation Target pointing at a Layout, or when an existing Navigation Target End's placement comment is added/changed/removed, route the app-menu update into the project's stack-specific `*-app-menu` skill (e.g. `blazor-app-menu`). Never author menu markup directly — that's the stack-specific skill's responsibility.
+
+## Process
+
+### 1. Identify the affected Layout
+Determine which Layout (e.g. `MainLayout`) owns the navigation target(s) that were just added/changed, and confirm its project location.
+
+### 2. Identify the Layout's menu-surface files
+Software Factory scaffolds one file per menu region the Layout defines (commonly Header/Sider/Footer/Profile). These follow a `{LayoutName}{RegionElementName}` naming pattern (e.g. `MainLayoutHeader`, `MainLayoutSider`, `MainLayoutFooter`, `MainLayoutProfile`). Confirm what's actually present next to the Layout rather than assuming.
+
+### 3. Locate the project's `*-app-menu` skill
+Search for a `SKILL.md` matching `*-app-menu`. A Blazor project might have `blazor-app-menu` or a MudBlazor variant — exactly one should exist (they're mutually exclusive). If none exists, stop and tell the user. If multiple exist, it indicates misconfiguration — stop and tell the user rather than guessing.
+
+### 4. Gather the consolidated context (CRITICAL)
+The Layout's own file (e.g. `MainLayout.razor`) carries a single consolidated context describing every Navigation Target End modeled against it, typically as:
+
+&gt; "This Layout's navigation consists of the following:
+&gt; - a navigation link to the product list page with route `/product-list` (placement comment: "Navigate to the product list page from the sider menu")
+&gt; - a navigation link to the order list page with route `/order-list` which requires roles `Admin` or `Write` (placement comment: "Show in the header")"
+
+**This is the sole source of truth for menu intent.** Read it directly from the Layout's file — do not re-derive it from the model, chat prose, or existing region files. It is not pre-scoped to regions; which item goes where is resolved by the stack-specific skill from each item's placement comment.
+
+### 5. Dispatch to the stack-specific skill
+Pass to a coding sub-agent:
+- The Layout name and project/solution location
+- The exact list of currently-existing menu-surface files (with paths)
+- The consolidated context from the Layout's file, verbatim and in full
+- The name and location of the `*-app-menu` skill
+
+Instruct the sub-agent to invoke and run that skill end-to-end — reading files, following steps, achieving its Definition of Done — rather than inventing its own menu markup approach.
+
+### 6. Report back
+Tell the user: which Layout and regions were affected, the context gathered, and the sub-agent's summary of what changed. Surface any unresolved issues (missing files, ambiguous context, regions left untouched).
+
+## Key constraints
+
+- This is stack-agnostic intake only — the stack-specific skill owns the markup translation.
+- Never hand-edit menu-surface files yourself in this step.
+- Do not pre-filter or split context before handing it off.
+- If just performed a modeling action that triggers this, run immediately without waiting to be asked.</rules>
     </elementSetting>
     <elementSetting type="Model Definition" typeId="bd3941b5-e3b3-4a40-96e6-b9c87cea0101">
       <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyOC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iUXVlcnkiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTAgNTAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV82MzIyZDU5Mi01NDQ0LTRlZjktOGNiOC00YjRmNDYwMjUxYzIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMjUiIHkxPSI0NS40Mjg4IiB4Mj0iMjUiIHkyPSI2LjE5ODUiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM2NENDRUYiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNDA2QUIzIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBvbHlnb24gZmlsbD0idXJsKCNTVkdJRF8xXzYzMjJkNTkyLTU0NDQtNGVmOS04Y2I4LTRiNGY0NjAyNTFjMikiIHBvaW50cz0iNDYuNSwzNC44IDM1LjcsNDUuNiAzMC45LDQwLjggMzQsMzcuOCAyMS4zLDM3LjggMjEuMywyMi4zIDIwLjUsMjIuMyAxMiwzMC44IDMuNSwyMi4zIA0KCTIxLjQsNC40IDIxLjUsNC4yIDMwLDEyLjggMjQsMTguOCAzNi4xLDE4LjggNDAuNCwxNC41IDQ1LjIsMTkuMiAzNC40LDMwIDI5LjYsMjUuMyAzMi42LDIyLjMgMjQuOCwyMi4zIDI0LjgsMzQuMyAzNy41LDM0LjMgDQoJNDEuNywzMCAiLz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMDAwMDAxNzA5OTQ0NzU1MTkyMTcxNTU2OTAwMDAwMDMyNDM1NTU2MDYwMDIxNTY0NDhfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjgyLjc4NTciIHkxPSI1MC4wMjM4IiB4Mj0iODIuNzg1NyIgeTI9IjUwLjAyMzgiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCA1MSkiPg0KCTxzdG9wICBvZmZzZXQ9IjUuNjk1MTkzZS0wMiIgc3R5bGU9InN0b3AtY29sb3I6IzQwNkFCMyIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiM2NENDRUYiLz4NCjwvbGluZWFyR3JhZGllbnQ+DQo8cGF0aCBmaWxsPSJ1cmwoI1NWR0lEXzAwMDAwMTcwOTk0NDc1NTE5MjE3MTU1NjkwMDAwMDAzMjQzNTU1NjA2MDAyMTU2NDQ4XykiIGQ9Ik04Mi44LDEiLz4NCjwvc3ZnPg0K" />

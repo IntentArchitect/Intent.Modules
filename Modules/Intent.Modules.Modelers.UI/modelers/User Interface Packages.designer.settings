@@ -19,6 +19,15 @@
           <defaultName>NewFolder</defaultName>
           <allowMultiple>true</allowMultiple>
         </createElement>
+        <runScript order="10" type="run-script">
+          <text>Connect to Service(s)</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAE7ElEQVR4AexYTUwbRxT+3tgGYzA4/MWQqk3aEBJK06hqFFHBuYoUceqhTRSph7RVhKnSS6WeELeql6bFbSSUQ9Uf1ENPKFXUa4kUoipSFBQooKRJ1fAPBWyIwfZOZ+xdsePsArYpayTW+3bevHnz/L7Zndlvh2GPH/sAnL6B+3dg/w6IETg7Pl7cOjbzcdvI7GDr6GxUitTbxmY6ZZtwsT0df4RaRucORZOBO8TpKzCcIaBUitTB6euVZGBQ+tghcBSAHF0357+C8LpdgpxwysP5Delr5cOsjLtli/CKjzZL3shDgohqBz4w6ubSUQDQ+AVzMvEEN1cVnaApvkajswCINRmJLMcS+OOvBTxdjBkmpdRAzYpBrzgLQE8iFtcwPLGMJOd4NBPF+HQUXPz05lRBnGspJePiLACuDSc1jgci+XhiI7+ppRiWVuNKqkQYVgx6xVkAoL4/pyJYXUvo6aSLF6t8CPiK0hX9ysF+0lWlYEptlytN7VVH15YTa+a/rfEX46Uqn9kE4rg3H6/qVYx6xTEAoXreWRRhoXc+O7JcqrEUCH+JB8eCfj21dCGTjxOdG26m9bRFvToCIBTkZ8Uc/VKm4v/XU3Ox4yheGwrcbwqW3hXPelQspmIW89sAdc4lqs/cbqx+Cptj1wF0BnmTWGz6RD4uIanTlWTrrd8GL95prnvzVmONX8rA8dq3Bhqrw3Yjn+ooLpsCkK/vXEmWiP3c+WE9r9YY+okhgI0jCQ3nr/1D9zdM29dsAUgCFU3mTrIyU3j/MPcWaSJ5jlfMbeKRufLNNN0w27LRLQHIkc+XZKlJcCp9husgtJjtgnVe75mgsNmWrW4JIGJJsp4PvRnJMnuH6tFFDBfMNnD8VjmJy4oth4olgEySZcQdGJtDptwbWfgiVMf5ZiKS7TJi6OWI24t3u0HqG0xvzKawBmAiWVsFW3FrJVv5KO0c85oL7Vcf06Jiz7FiDSCLYAQxvln477SrNQBBsrb7R74Es+a/dgEIVSyJ/iuHuXkptfPe0m4JgBj9aNWz7Vg1MuXUicpPw5NEm4lYfboz4p1IxPBzF7gbeR6WAMpoqVdykK1iSx87kmXuG55At2DzKpskvL1Qh2tmv1x0SwA3GxrWJIGSCdoFlW3SZ6tXfbo/8ZUSXBKzRfCbtEVeOXCps56HpJ6rWAKQwSSBkkQKglAR+KD4s6gU8O2RLGQc3z2m2DpDu3h3PDQ3CV50teMgP2e2ZaPbApBB5OhKQvV7Y22LJFhStkuyZP9M6Z2gOaYJEBrMS6gLDH2XX+AnkcPBcuiTV5eeKRoW/Oe8CJIUkjo1t+a51TH1w+mhybtyV05KQe/MhafopliZPpHZRw7EZ78PP6Kh5sWTo9Mrb4hHam/szIUnqGfdr4V/+fxJ+QpLFEswy8/iGBPfyFI3RMyZwt2Ze9C/8LDYz1LJGwnPRtbwZH7VqKZKCSJaiDtzBO294+Ib2Fesvs/+FgAWV9VPYOGrstkUNIj5ryuOFII0uhjh1fpyeNwb60mwwosKn0dJSSvknTmvh6FJgHCJ5enl2jI0HCwTc5wUAAW7M2dkWe514/SRShwKeA2TUgpshbczl0kaPW511M0IeCHuzO0EadyYOWa4u6TvBGn8fwBkMQD5kkbHAUis+ZDGggAgQeQq+wByHbmd6rfn78B/AAAA//8M7K2hAAAABklEQVQDAG5OKH+KeImTAAAAAElFTkSuQmCC" />
+          <topDivider>true</topDivider>
+          <dependencies>
+            <dependency name="Connect to Services Script" id="282c83f2-714a-4010-9901-8a04a837b4e8" />
+          </dependencies>
+          <script>await connectToServices(element);</script>
+        </runScript>
       </contextMenuOptions>
       <creationOptions>
         <option order="0" type="element">
@@ -31,7 +40,17 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
-      <scriptOptions />
+      <scriptOptions>
+        <option order="10" type="run-script">
+          <text>Connect to Service(s)</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAE7ElEQVR4AexYTUwbRxT+3tgGYzA4/MWQqk3aEBJK06hqFFHBuYoUceqhTRSph7RVhKnSS6WeELeql6bFbSSUQ9Uf1ENPKFXUa4kUoipSFBQooKRJ1fAPBWyIwfZOZ+xdsePsArYpayTW+3bevHnz/L7Zndlvh2GPH/sAnL6B+3dg/w6IETg7Pl7cOjbzcdvI7GDr6GxUitTbxmY6ZZtwsT0df4RaRucORZOBO8TpKzCcIaBUitTB6euVZGBQ+tghcBSAHF0357+C8LpdgpxwysP5Delr5cOsjLtli/CKjzZL3shDgohqBz4w6ubSUQDQ+AVzMvEEN1cVnaApvkajswCINRmJLMcS+OOvBTxdjBkmpdRAzYpBrzgLQE8iFtcwPLGMJOd4NBPF+HQUXPz05lRBnGspJePiLACuDSc1jgci+XhiI7+ppRiWVuNKqkQYVgx6xVkAoL4/pyJYXUvo6aSLF6t8CPiK0hX9ysF+0lWlYEptlytN7VVH15YTa+a/rfEX46Uqn9kE4rg3H6/qVYx6xTEAoXreWRRhoXc+O7JcqrEUCH+JB8eCfj21dCGTjxOdG26m9bRFvToCIBTkZ8Uc/VKm4v/XU3Ox4yheGwrcbwqW3hXPelQspmIW89sAdc4lqs/cbqx+Cptj1wF0BnmTWGz6RD4uIanTlWTrrd8GL95prnvzVmONX8rA8dq3Bhqrw3Yjn+ooLpsCkK/vXEmWiP3c+WE9r9YY+okhgI0jCQ3nr/1D9zdM29dsAUgCFU3mTrIyU3j/MPcWaSJ5jlfMbeKRufLNNN0w27LRLQHIkc+XZKlJcCp9husgtJjtgnVe75mgsNmWrW4JIGJJsp4PvRnJMnuH6tFFDBfMNnD8VjmJy4oth4olgEySZcQdGJtDptwbWfgiVMf5ZiKS7TJi6OWI24t3u0HqG0xvzKawBmAiWVsFW3FrJVv5KO0c85oL7Vcf06Jiz7FiDSCLYAQxvln477SrNQBBsrb7R74Es+a/dgEIVSyJ/iuHuXkptfPe0m4JgBj9aNWz7Vg1MuXUicpPw5NEm4lYfboz4p1IxPBzF7gbeR6WAMpoqVdykK1iSx87kmXuG55At2DzKpskvL1Qh2tmv1x0SwA3GxrWJIGSCdoFlW3SZ6tXfbo/8ZUSXBKzRfCbtEVeOXCps56HpJ6rWAKQwSSBkkQKglAR+KD4s6gU8O2RLGQc3z2m2DpDu3h3PDQ3CV50teMgP2e2ZaPbApBB5OhKQvV7Y22LJFhStkuyZP9M6Z2gOaYJEBrMS6gLDH2XX+AnkcPBcuiTV5eeKRoW/Oe8CJIUkjo1t+a51TH1w+mhybtyV05KQe/MhafopliZPpHZRw7EZ78PP6Kh5sWTo9Mrb4hHam/szIUnqGfdr4V/+fxJ+QpLFEswy8/iGBPfyFI3RMyZwt2Ze9C/8LDYz1LJGwnPRtbwZH7VqKZKCSJaiDtzBO294+Ib2Fesvs/+FgAWV9VPYOGrstkUNIj5ryuOFII0uhjh1fpyeNwb60mwwosKn0dJSSvknTmvh6FJgHCJ5enl2jI0HCwTc5wUAAW7M2dkWe514/SRShwKeA2TUgpshbczl0kaPW511M0IeCHuzO0EadyYOWa4u6TvBGn8fwBkMQD5kkbHAUis+ZDGggAgQeQq+wByHbmd6rfn78B/AAAA//8M7K2hAAAABklEQVQDAG5OKH+KeImTAAAAAElFTkSuQmCC" />
+          <topDivider>true</topDivider>
+          <dependencies>
+            <dependency name="Connect to Services Script" id="282c83f2-714a-4010-9901-8a04a837b4e8" />
+          </dependencies>
+          <script>await connectToServices(element);</script>
+        </option>
+      </scriptOptions>
       <typeOrder>
         <type order="0" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f" />
       </typeOrder>
@@ -45,5 +64,69 @@
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
-  <scripts />
+  <scripts>
+    <script name="Connect to Services Script" id="282c83f2-714a-4010-9901-8a04a837b4e8">
+      <script>async function connectToServices(packageElement) {
+    const candidates = await getAvailablePackageReferences();
+    const servicePackages = candidates.filter(c =&gt; c.packageType === "Services Package");
+    const domainPackages = candidates.filter(c =&gt; c.packageType === "Domain Package");
+
+    if (servicePackages.length === 0) {
+        await dialogService.info("No connectable service packages found.");
+        return;
+    }
+
+    const nameCounts = {};
+    for (const c of candidates) {
+        nameCounts[c.name] = (nameCounts[c.name] || 0) + 1;
+    }
+    const describe = c =&gt; nameCounts[c.name] &gt; 1 ? (c.name + " (" + c.source + ")") : c.name;
+
+    let selection;
+    try {
+        selection = await dialogService.openForm({
+            title: "Connect to Services(s)",
+            submitButtonText: "Done",
+            minWidth: "600px",
+            maxWidth: "80%",
+            fields: [
+                {
+                    id: "packages",
+                    fieldType: "multi-select",
+                    label: "Services Packages",
+                    isRequired: true,
+                    selectOptions: servicePackages.map(c =&gt; ({ id: c.packageId, description: describe(c) }))
+                }
+            ]
+        });
+    } catch (e) {
+        selection = null;
+    }
+
+    const selectedServiceIds = selection &amp;&amp; selection.packages;
+    if (!selectedServiceIds || selectedServiceIds.length === 0) {
+        return;
+    }
+
+    const selected = servicePackages.filter(c =&gt; selectedServiceIds.includes(c.packageId));
+    const addedSourceKeys = new Set();
+    for (const candidate of selected) {
+        packageElement.addReference(candidate.absolutePath, candidate.sourceType === "module" ? candidate.source : undefined);
+        addedSourceKeys.add(candidate.sourceType + "|" + candidate.source);
+    }
+
+    const seenDomainIds = new Set();
+    for (const candidate of domainPackages) {
+        if (seenDomainIds.has(candidate.packageId)) {
+            continue;
+        }
+        seenDomainIds.add(candidate.packageId);
+
+        if (addedSourceKeys.has(candidate.sourceType + "|" + candidate.source)) {
+            packageElement.addReference(candidate.absolutePath, candidate.sourceType === "module" ? candidate.source : undefined);
+        }
+    }
+}</script>
+    </script>
+  </scripts>
 </settings>

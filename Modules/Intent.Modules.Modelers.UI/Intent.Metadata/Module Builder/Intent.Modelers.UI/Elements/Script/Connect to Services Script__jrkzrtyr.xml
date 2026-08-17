@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="282c83f2-714a-4010-9901-8a04a837b4e8" type="Script" typeId="101fd5b6-3159-4810-9490-a103ef323e9c">
+  <name>Connect to Services Script</name>
+  <display>Connect to Services Script</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>93058b8a-4d1d-4f88-ac14-332c87666418</parentFolderId>
+  <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+  <packageName>Intent.Modelers.UI</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="da7d632f-b07f-4c83-ab01-bc6175006aa5" name="Script Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="4708b6ef-0671-4ea1-a920-ccec2c9eb3ea" display="Type" value="Inline Script" isActive="true" />
+        <property name="3256efdd-5d71-46f3-bd51-ef08a8d95526" display="Script" value="async function connectToServices(packageElement) {&#xA;    const candidates = await getAvailablePackageReferences();&#xA;    const servicePackages = candidates.filter(c =&gt; c.packageType === &quot;Services Package&quot;);&#xA;    const domainPackages = candidates.filter(c =&gt; c.packageType === &quot;Domain Package&quot;);&#xA;&#xA;    if (servicePackages.length === 0) {&#xA;        await dialogService.info(&quot;No connectable service packages found.&quot;);&#xA;        return;&#xA;    }&#xA;&#xA;    const nameCounts = {};&#xA;    for (const c of candidates) {&#xA;        nameCounts[c.name] = (nameCounts[c.name] || 0) + 1;&#xA;    }&#xA;    const describe = c =&gt; nameCounts[c.name] &gt; 1 ? (c.name + &quot; (&quot; + c.source + &quot;)&quot;) : c.name;&#xA;&#xA;    let selection;&#xA;    try {&#xA;        selection = await dialogService.openForm({&#xA;            title: &quot;Connect to Services(s)&quot;,&#xA;            submitButtonText: &quot;Done&quot;,&#xA;            minWidth: &quot;600px&quot;,&#xA;            maxWidth: &quot;80%&quot;,&#xA;            fields: [&#xA;                {&#xA;                    id: &quot;packages&quot;,&#xA;                    fieldType: &quot;multi-select&quot;,&#xA;                    label: &quot;Services Packages&quot;,&#xA;                    isRequired: true,&#xA;                    selectOptions: servicePackages.map(c =&gt; ({ id: c.packageId, description: describe(c) }))&#xA;                }&#xA;            ]&#xA;        });&#xA;    } catch (e) {&#xA;        selection = null;&#xA;    }&#xA;&#xA;    const selectedServiceIds = selection &amp;&amp; selection.packages;&#xA;    if (!selectedServiceIds || selectedServiceIds.length === 0) {&#xA;        return;&#xA;    }&#xA;&#xA;    const selected = servicePackages.filter(c =&gt; selectedServiceIds.includes(c.packageId));&#xA;    const addedSourceKeys = new Set();&#xA;    for (const candidate of selected) {&#xA;        packageElement.addReference(candidate.absolutePath, candidate.sourceType === &quot;module&quot; ? candidate.source : undefined);&#xA;        addedSourceKeys.add(candidate.sourceType + &quot;|&quot; + candidate.source);&#xA;    }&#xA;&#xA;    const seenDomainIds = new Set();&#xA;    for (const candidate of domainPackages) {&#xA;        if (seenDomainIds.has(candidate.packageId)) {&#xA;            continue;&#xA;        }&#xA;        seenDomainIds.add(candidate.packageId);&#xA;&#xA;        if (addedSourceKeys.has(candidate.sourceType + &quot;|&quot; + candidate.source)) {&#xA;            packageElement.addReference(candidate.absolutePath, candidate.sourceType === &quot;module&quot; ? candidate.source : undefined);&#xA;        }&#xA;    }&#xA;}" isActive="true" />
+        <property name="41cc0d56-3141-40fe-ae97-c024866d441e" display="File Path" isActive="false" />
+        <property name="540780ad-f54e-4bd5-95f3-20a58fd59105" display="Dependencies" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>

@@ -78,6 +78,56 @@
           <metadata />
           <childElements />
         </childElement>
+        <childElement id="a2ffa3f2-c931-41fb-8bd9-0eeb808edad9" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>Connect to Service(s)</name>
+          <display>Connect to Service(s): Inline Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="6b120436-b6b7-4e2a-96f7-9dd734c0c2e8">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>e2eed931-fb1a-4b32-971e-8fb7b2bb45b7</parentFolderId>
+          <packageId>5c4628ec-679e-4f3d-afda-137c978deae0</packageId>
+          <packageName>Intent.Modelers.UI</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="await connectToServices(element);" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[&quot;282c83f2-714a-4010-9901-8a04a837b4e8&quot;]" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAE7ElEQVR4AexYTUwbRxT+3tgGYzA4/MWQqk3aEBJK06hqFFHBuYoUceqhTRSph7RVhKnSS6WeELeql6bFbSSUQ9Uf1ENPKFXUa4kUoipSFBQooKRJ1fAPBWyIwfZOZ+xdsePsArYpayTW+3bevHnz/L7Zndlvh2GPH/sAnL6B+3dg/w6IETg7Pl7cOjbzcdvI7GDr6GxUitTbxmY6ZZtwsT0df4RaRucORZOBO8TpKzCcIaBUitTB6euVZGBQ+tghcBSAHF0357+C8LpdgpxwysP5Delr5cOsjLtli/CKjzZL3shDgohqBz4w6ubSUQDQ+AVzMvEEN1cVnaApvkajswCINRmJLMcS+OOvBTxdjBkmpdRAzYpBrzgLQE8iFtcwPLGMJOd4NBPF+HQUXPz05lRBnGspJePiLACuDSc1jgci+XhiI7+ppRiWVuNKqkQYVgx6xVkAoL4/pyJYXUvo6aSLF6t8CPiK0hX9ysF+0lWlYEptlytN7VVH15YTa+a/rfEX46Uqn9kE4rg3H6/qVYx6xTEAoXreWRRhoXc+O7JcqrEUCH+JB8eCfj21dCGTjxOdG26m9bRFvToCIBTkZ8Uc/VKm4v/XU3Ox4yheGwrcbwqW3hXPelQspmIW89sAdc4lqs/cbqx+Cptj1wF0BnmTWGz6RD4uIanTlWTrrd8GL95prnvzVmONX8rA8dq3Bhqrw3Yjn+ooLpsCkK/vXEmWiP3c+WE9r9YY+okhgI0jCQ3nr/1D9zdM29dsAUgCFU3mTrIyU3j/MPcWaSJ5jlfMbeKRufLNNN0w27LRLQHIkc+XZKlJcCp9husgtJjtgnVe75mgsNmWrW4JIGJJsp4PvRnJMnuH6tFFDBfMNnD8VjmJy4oth4olgEySZcQdGJtDptwbWfgiVMf5ZiKS7TJi6OWI24t3u0HqG0xvzKawBmAiWVsFW3FrJVv5KO0c85oL7Vcf06Jiz7FiDSCLYAQxvln477SrNQBBsrb7R74Es+a/dgEIVSyJ/iuHuXkptfPe0m4JgBj9aNWz7Vg1MuXUicpPw5NEm4lYfboz4p1IxPBzF7gbeR6WAMpoqVdykK1iSx87kmXuG55At2DzKpskvL1Qh2tmv1x0SwA3GxrWJIGSCdoFlW3SZ6tXfbo/8ZUSXBKzRfCbtEVeOXCps56HpJ6rWAKQwSSBkkQKglAR+KD4s6gU8O2RLGQc3z2m2DpDu3h3PDQ3CV50teMgP2e2ZaPbApBB5OhKQvV7Y22LJFhStkuyZP9M6Z2gOaYJEBrMS6gLDH2XX+AnkcPBcuiTV5eeKRoW/Oe8CJIUkjo1t+a51TH1w+mhybtyV05KQe/MhafopliZPpHZRw7EZ78PP6Kh5sWTo9Mrb4hHam/szIUnqGfdr4V/+fxJ+QpLFEswy8/iGBPfyFI3RMyZwt2Ze9C/8LDYz1LJGwnPRtbwZH7VqKZKCSJaiDtzBO294+Ib2Fesvs/+FgAWV9VPYOGrstkUNIj5ryuOFII0uhjh1fpyeNwb60mwwosKn0dJSSvknTmvh6FJgHCJ5enl2jI0HCwTc5wUAAW7M2dkWe514/SRShwKeA2TUgpshbczl0kaPW511M0IeCHuzO0EadyYOWa4u6TvBGn8fwBkMQD5kkbHAUis+ZDGggAgQeQq+wByHbmd6rfn78B/AAAA//8M7K2hAAAABklEQVQDAG5OKH+KeImTAAAAAElFTkSuQmCC&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="6087e660-9599-47fb-9ff4-1ad901ce2a00" display="Trigger On Double-Click" value="false" isActive="true" />
+                <property name="c03841e5-a1e9-4e95-b699-5a466dde7d7d" display="Is Option Visible Function" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Order" value="10" isActive="true" />
+                <property name="c37d8704-0003-4886-b6c2-4e51aa22a8f9" display="Menu Group" isActive="true" />
+                <property name="3e93529e-2110-414e-aec1-2656e1a99b22" display="Top Divider" value="true" isActive="true" />
+                <property name="d2572c08-f02e-40b2-8a06-4d5251bb3352" display="Bottom Divider" value="false" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
       </childElements>
     </childElement>
   </childElements>

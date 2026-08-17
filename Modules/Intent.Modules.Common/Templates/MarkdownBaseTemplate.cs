@@ -1,4 +1,4 @@
-﻿using Intent.Engine;
+using Intent.Engine;
 using Intent.Modules.Common.FileBuilders.MarkdownFileBuilder;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Intent.Modules.Common.Templates
 {
-    public abstract class MarkdownBaseTemplate<T> : IntentTemplateBase<T>
+    public abstract class MarkdownBaseTemplate<T> : IntentTemplateBase<T>, IMarkdownFileBuilderTemplate
     {
         private string? _currentContent;
         private bool _dontOverrideContent = false;
@@ -24,6 +24,8 @@ namespace Intent.Modules.Common.Templates
             get => _withContentHashing;
             set => _withContentHashing = value;
         }
+
+        public bool ContentHashMatchesDisk => !_dontOverrideContent;
 
         public override void AfterTemplateRegistration()
         {

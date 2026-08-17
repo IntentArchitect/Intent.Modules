@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="0211c9aa-70a9-49ee-94fb-1c537c72ed79">
+  <file path="Intent.Modules.Common/Api/AssociationDestinationEndSettingsModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Common/Api/ElementExtensionModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Common/Api/ElementSettingsModelStereotypeExtensions.cs" />
+  <file path="Intent.Modules.Common/Intent.Common.imodspec" />
+  <file path="Intent.Modules.Common/Intent.Modules.Common.csproj" />
+  <file path="Intent.Modules.Common/Metadata/IAllowCommentModel.cs" />
+  <file path="Intent.Modules.Common/Metadata/IInvokableModel.cs" />
+  <file path="Intent.Modules.Common/Metadata/IProcessingActionModel.cs" />
+  <file path="Intent.Modules.Common/Metadata/IProcessingHandlerModel.cs" />
+  <file path="Intent.Modules.Common/Migrations/Migration_03_11_00_Pre_01.cs" />
+  <file path="Intent.Modules.Common/Migrations/OnInstallMigration.cs" />
+  <file path="Intent.Modules.Common/resources/documentation.json" />
+  <file path="Intent.Modules.sln" />
+</managedFiles>

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="7936f4ce-2243-4fb1-ad9e-5af331a0f1d2" version="3.1.0">
-  <comment>Defines a shared layout where components are rendered, providing consistent structure across pages.</comment>
+  <comment>Defines a shared layout where components are rendered, providing consistent structure across pages.
+---
+
+</comment>
   <name>Layout</name>
   <targetMode>filter-function</targetMode>
   <targetTypes />
