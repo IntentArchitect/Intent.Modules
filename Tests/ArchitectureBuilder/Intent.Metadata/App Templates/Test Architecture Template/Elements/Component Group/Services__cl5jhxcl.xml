@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="ad34a5a7-82e3-4fe0-ae65-6ed247c7ec9a" type="Component Group" typeId="027f8bb9-9b28-4c1d-a516-8c3daa70e46d">
+  <name>Services</name>
+  <display>Services (1)</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <order>3</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>ef8e1212-e8cb-4303-81a0-07ce957f4684</parentFolderId>
+  <packageId>ef8e1212-e8cb-4303-81a0-07ce957f4684</packageId>
+  <packageName>Test Architecture Template</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="08b4c68f-3654-44cc-b3a1-87de79c23936" name="Component Group Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
+      <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
+      <properties>
+        <property name="54b29a03-082b-407a-b42e-cbacbcfa7fd7" display="Selection Mode" value="Allow Multiple" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="03ea73e1-276c-47e9-93f4-6a971108e330" type="Component" typeId="47064ef1-2295-4287-8301-c446910a1b1e">
+      <name>Web API Services</name>
+      <display>Web API Services (2)</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>ad34a5a7-82e3-4fe0-ae65-6ed247c7ec9a</parentFolderId>
+      <packageId>ef8e1212-e8cb-4303-81a0-07ce957f4684</packageId>
+      <packageName>Test Architecture Template</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="78da9b5b-428f-4b1e-a5e5-120c7b3d87d3" name="Component Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
+          <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
+          <properties>
+            <property name="004dc68b-f2c0-4859-9f03-fb2e29505437" display="Icon" value="{&quot;type&quot;:&quot;UrlImagePath&quot;,&quot;source&quot;:&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+CiAgPGcgc3Ryb2tlPSIjRkY3QTAwIiBzdHJva2Utd2lkdGg9IjIuNCIgZmlsbD0ibm9uZSI+CiAgICA8cGF0aCBkPSJNMjQgMjQgTDkgMTUiLz4KICAgIDxwYXRoIGQ9Ik0yNCAyNCBMMzkgMTUiLz4KICAgIDxwYXRoIGQ9Ik0yNCAyNCBMMjQgNDEiLz4KICA8L2c+CiAgPGNpcmNsZSBjeD0iMjQiIGN5PSIxMiIgcj0iNyIgZmlsbD0iI0ZGQTk0RCIgc3Ryb2tlPSIjRkY3QTAwIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8Y2lyY2xlIGN4PSI5IiBjeT0iMTgiIHI9IjUuNSIgZmlsbD0iI0ZGOTY0MCIgc3Ryb2tlPSIjRkY3QTAwIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8Y2lyY2xlIGN4PSIzOSIgY3k9IjE4IiByPSI1LjUiIGZpbGw9IiNGRjk2NDAiIHN0cm9rZT0iI0ZGN0EwMCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPGNpcmNsZSBjeD0iMjQiIGN5PSI0MSIgcj0iNS41IiBmaWxsPSIjRkY5NjQwIiBzdHJva2U9IiNGRjdBMDAiIHN0cm9rZS13aWR0aD0iMiIvPgo8L3N2Zz4K&quot;}" isActive="true" />
+            <property name="476744d2-a4bc-4750-a9db-7022edf576c5" display="Description" value="Adds the Services designer for describing an application's web services." isActive="true" />
+            <property name="b928f640-5dfd-4676-b8c9-4aadac826d18" display="Include by Default" value="true" isActive="true" />
+            <property name="07af017d-20a4-4e73-978f-ca4a59351f70" display="Is Required" value="false" isActive="true" />
+            <property name="aafd8156-fffe-471f-96da-813239f1982a" display="Is New" value="false" isActive="true" />
+            <property name="ed4d09bb-52e7-43dc-91db-6244d5390e53" display="Dependencies" isActive="true" />
+            <property name="ab4e67f3-24c9-47c3-8a27-0589c9c6656f" display="Incompatibilities" isActive="true" />
+            <property name="dc6f3968-ed14-40d5-b5c5-7c722b93b4cc" display="Required License" value="None" isActive="true" />
+            <property name="25e2d8a3-0158-4823-842d-60773ff85edc" display="Documentation Url" isActive="true" />
+            <property name="8d427d1f-985c-47e7-b925-719dbcbc485c" display="Tags" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="9dfc00d5-74bf-44a7-8f25-44bc8b6f6477" type="Component Module" typeId="ef75f8f0-520c-4ab8-814f-5e75f4877dd7">
+          <name>Intent.Modelers.Services</name>
+          <display>Intent.Modelers.Services</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>03ea73e1-276c-47e9-93f4-6a971108e330</parentFolderId>
+          <packageId>ef8e1212-e8cb-4303-81a0-07ce957f4684</packageId>
+          <packageName>Test Architecture Template</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="7033e6f4-2a22-4357-bd65-f0ec06c516d5" name="Module Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
+              <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
+              <properties>
+                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="4.0.16" isActive="true" />
+                <property name="860a2a3a-9812-4fff-acc6-b342ddb23f96" display="Include By Default" value="true" isActive="true" />
+                <property name="42e43cfe-4073-4f7f-8a7e-ef79c150c8c7" display="Is Required" value="true" isActive="true" />
+                <property name="4bdd0a51-5a47-4119-b0bb-cd1240ac7850" display="Include Assets" value="All" isActive="true" />
+                <property name="478326e2-5290-428e-aef9-10f2c67f24c2" display="Included Assets" value="[]" isActive="false" />
+                <property name="406cbf38-4267-4260-8abc-4842116639d3" display="Is New" value="false" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="a180d6c1-40d8-4306-a44c-d941acaa3f33" type="Component Module" typeId="ef75f8f0-520c-4ab8-814f-5e75f4877dd7">
+          <name>Intent.Modelers.Services.CQRS</name>
+          <display>Intent.Modelers.Services.CQRS</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>03ea73e1-276c-47e9-93f4-6a971108e330</parentFolderId>
+          <packageId>ef8e1212-e8cb-4303-81a0-07ce957f4684</packageId>
+          <packageName>Test Architecture Template</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="7033e6f4-2a22-4357-bd65-f0ec06c516d5" name="Module Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
+              <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
+              <properties>
+                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="6.0.8" isActive="true" />
+                <property name="860a2a3a-9812-4fff-acc6-b342ddb23f96" display="Include By Default" value="true" isActive="true" />
+                <property name="42e43cfe-4073-4f7f-8a7e-ef79c150c8c7" display="Is Required" value="false" isActive="true" />
+                <property name="4bdd0a51-5a47-4119-b0bb-cd1240ac7850" display="Include Assets" value="All" isActive="true" />
+                <property name="478326e2-5290-428e-aef9-10f2c67f24c2" display="Included Assets" value="[]" isActive="false" />
+                <property name="406cbf38-4267-4260-8abc-4842116639d3" display="Is New" value="false" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

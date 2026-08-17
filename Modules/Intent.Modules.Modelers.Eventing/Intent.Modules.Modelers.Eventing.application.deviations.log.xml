@@ -3,7 +3,7 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#544f1d57-27ce-4985-a4ec-cc01568d72b0</correlationId>
-      <path>Intent.Modules.Modelers.Eventing/Api/EventingDTOModel.cs</path>
+      <path>Api/EventingDTOModel.cs</path>
       <count>3</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -13,7 +13,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#df96d537-7bb5-4c49-811f-973fa6e95beb</correlationId>
-      <path>Intent.Modules.Modelers.Eventing/Api/EventingPackageModel.cs</path>
+      <path>Api/EventingPackageModel.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -23,7 +23,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#1a3ec0dd-bbfc-4922-ae61-607b00610ffd</correlationId>
-      <path>Intent.Modules.Modelers.Eventing/Api/FolderExtensionModel.cs</path>
+      <path>Api/FolderExtensionModel.cs</path>
       <count>2</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -33,7 +33,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#cbe970af-5bad-4d92-a3ed-a24b9fdaa23e</correlationId>
-      <path>Intent.Modules.Modelers.Eventing/Api/MessageModel.cs</path>
+      <path>Api/MessageModel.cs</path>
       <count>2</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -43,7 +43,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#bde29850-5fb9-4f47-9941-b9e182fd9bdc</correlationId>
-      <path>Intent.Modules.Modelers.Eventing/Api/PropertyModel.cs</path>
+      <path>Api/PropertyModel.cs</path>
       <count>2</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>

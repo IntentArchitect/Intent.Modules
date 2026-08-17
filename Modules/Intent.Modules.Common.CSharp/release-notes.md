@@ -1,6 +1,19 @@
-﻿### Version 3.10.9
+﻿### Version 3.10.11
 
-- Improvement: Overloaded contructor for `RazorFileConfig` added, allowing for the `CodeGenType` to be set.
+- New Feature: `AddImplicitUsing` extension method (plus a `CSharpTemplateBase` convenience method) lets templates register a namespace as implicit for a project, so the Roslyn weaver treats matching `using` directives as redundant.
+- Fixed: The `AI.Context.Instructions` static content (C# AI coding-agent guidelines) was misplaced under `resources/AIInstructions` instead of `content/AIInstructions`, so a placeholder `readme.txt` was being output to consuming applications' `.agents/instructions` folder instead of the intended `csharp-guidelines.md` guidance.
+- Fixed: Capturing a manual expression against a mapping target whose type is constructed (e.g. a nullable Value Object) had no effect - the expression was discarded and the type was constructed from its constructor instead (`new Money(net: default, vat: default)`). `ConstructorMapping` now honours a terminal mapped end (one which is not a one-to-one source path and which has no child mappings) and renders the captured expression verbatim.
+- Fixed: A mapped end with a manually captured expression has no source element, and the resulting null `SourcePath` caused `ArgumentNullException: Value cannot be null. (Parameter 'source')` during code generation.
+
+### Version 3.10.10
+
+- Improvement: Added `public static bool HasSdk(this ICSharpProject csharpProject, string sdk)` and similar extension methods which can be used to determine the SDK selected in the Codebase Structure designer for a C# project.
+- Improvement: `CSharpLocalMethod` (local functions, e.g. those added with `AddLocalMethod` in top-level statements) now supports attributes through `AddAttribute` and an `Attributes` collection.
+
+### Version 3.10.9
+
+- Improvement: Overloaded constructor for `RazorFileConfig` added, allowing for the `CodeGenType` to be set.
+- Improvement: Fixed issue around unspecified language versions causing `NullReferenceException`.
 
 ### Version 3.10.8
 

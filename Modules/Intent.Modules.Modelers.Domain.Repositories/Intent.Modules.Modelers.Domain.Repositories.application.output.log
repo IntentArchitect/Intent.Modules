@@ -17,6 +17,11 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Modelers.Domain.Repositories/Intent.Modules.Modelers.Domain.Repositories/release-notes.md</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>b62f476a-6929-4c1a-8ea1-127593e18731</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#a81ce420-c177-4035-9d07-31bae2308a36</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -65,6 +70,11 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Modelers.Domain.Repositories/release-notes.md</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>8e03e014-4b05-4bdc-998a-70ca718b6f48</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration#b594a9bb-972c-41c0-83bf-1a74299d5a3d</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -86,7 +96,12 @@
       <OverwriteBehaviour>once-off</OverwriteBehaviour>
       <ApplicationRelativeFilePath>release-notes.md</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>release-notes.md</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>release-notes.md</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>aabe27ca-0e9f-47f0-98e9-f55da1a17805</ProjectId>

@@ -1432,18 +1432,32 @@ namespace Intent.Modules.Common.Templates
         /// <param name="stopPropagation">Whether <see cref="IOutputTargetEvent{TEventData}.StopPropagation"/> should be called.</param>
         public void OnEmitOrPublished<T>(Action<T> handler, bool stopPropagation = true)
         {
+            OnEmitOrPublished<T>(@event =>
+            {
+                handler(@event);
+                return true;
+            }, stopPropagation);
+        }
+
+        /// <summary>
+        /// Subscribe to events published through <see cref="EmitOrPublish{T}"/>.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="handler">Handler which returns whether it handled the event.</param>
+        /// <param name="stopPropagation">Whether <see cref="IOutputTargetEvent{TEventData}.StopPropagation"/> should be called.</param>
+        public void OnEmitOrPublished<T>(Func<T, bool> handler, bool stopPropagation = true)
+        {
             OutputTarget.On<EmitOrPublishEnvelope<T>>(@event =>
             {
-                @event.Data.IsHandled = true;
-                handler(@event.Data.Event);
+                @event.Data.IsHandled |= handler(@event.Data.Event);
 
-                if (stopPropagation)
+                if (@event.Data.IsHandled && stopPropagation)
                 {
                     @event.StopPropagation();
                 }
             });
 
-            ExecutionContext.EventDispatcher.Subscribe(handler);
+            ExecutionContext.EventDispatcher.Subscribe<T>(@event => handler(@event));
         }
 
         /// <inheritdoc cref="object.ToString" />

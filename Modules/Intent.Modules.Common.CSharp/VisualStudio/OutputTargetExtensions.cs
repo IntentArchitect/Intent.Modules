@@ -62,5 +62,35 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
             var collection = csharpProject.NugetPackageInstalls();
             collection.AddRange(packages);
         }
+
+        private const string NetSettingsStereotypeId = "a490a23f-5397-40a1-a3cb-6da7e0b467c0";
+
+        /// <summary>
+        /// Whether the <paramref name="csharpProject"/> has its <c>SDK</c> set to the provided
+        /// <paramref name="sdk"/>.
+        /// </summary>
+        public static bool HasSdk(this ICSharpProject csharpProject, string sdk)
+        {
+            var stereotype = csharpProject?.InternalElement.GetStereotype(NetSettingsStereotypeId);
+            if (stereotype == null)
+            {
+                return false;
+            }
+
+            return stereotype.TryGetProperty("SDK", out var property) &&
+                   property.Value == sdk;
+        }
+
+        /// <summary>
+        /// Whether the <paramref name="csharpProject"/> has its <c>SDK</c> set to
+        /// <c>Microsoft.NET.Sdk.Web</c>.
+        /// </summary>
+        public static bool HasMicrosoftNetSdkWeb(this ICSharpProject csharpProject) => csharpProject.HasSdk("Microsoft.NET.Sdk.Web");
+
+        /// <summary>
+        /// Whether the <paramref name="csharpProject"/> has its <c>SDK</c> set to
+        /// <c>Microsoft.NET.Sdk.Worker</c>.
+        /// </summary>
+        public static bool HasMicrosoftNetSdkWorker(this ICSharpProject csharpProject) => csharpProject.HasSdk("Microsoft.NET.Sdk.Worker");
     }
 }

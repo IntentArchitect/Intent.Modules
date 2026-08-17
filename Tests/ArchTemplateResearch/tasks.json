@@ -1,0 +1,30 @@
+{
+    "tasks": {
+        "build": {
+            "label": "Build",
+            "command": "dotnet build",
+            "icon": "fa-hourglass-end",
+            "workingDirectory": ".",
+            "aiAutoFix": {
+                "enabled": true,
+                "errorParser": "dotnet"
+            }
+        },
+        "test": {
+            "label": "Test",
+            "command": "dotnet test",
+            "icon": "fa-flask",
+            "workingDirectory": ".",
+            "aiAutoFix": {
+                "enabled": true,
+                "errorParser": "dotnet"
+            }
+        },
+        "run": {
+            "label": "Run",
+            "command": "dotnet watch run --no-build --project ArchTemplateResearch.Api.csproj",
+            "icon": "fa-play",
+            "workingDirectory": "ArchTemplateResearch.Api"
+        }
+    }
+}

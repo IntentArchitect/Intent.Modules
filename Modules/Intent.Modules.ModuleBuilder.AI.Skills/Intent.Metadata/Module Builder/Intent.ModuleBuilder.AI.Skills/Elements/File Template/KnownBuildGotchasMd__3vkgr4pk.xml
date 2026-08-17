@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="d653ce37-a599-4f21-8935-1695d9f17ea2" type="File Template" typeId="43eae4bd-4613-4d15-88ac-52b7e743b7b2">
+  <comment>Recurring template-authoring pitfalls (NuGet dependency registration, SingleFileListModel filename stability, naming conflicts, package version drift) and how to avoid them.</comment>
+  <name>KnownBuildGotchasMd</name>
+  <display>KnownBuildGotchasMd: Single File</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="153e4129-9b24-4007-b039-6eacc618ff5b">
+    <typeId>f65d2904-88c9-4501-873a-a4eec8303b1d</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.ModuleBuilder</typePackageName>
+    <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>44dc6d04-55d2-4af3-8574-7bac133113c6</parentFolderId>
+  <packageId>5e4dd87c-858a-4159-9e96-d9fc135a5195</packageId>
+  <packageName>Intent.ModuleBuilder.AI.Skills</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="819dee60-184a-4cb7-9529-0d3910f82ee6" name="File Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="db83691e-fc21-467b-a004-427b23f9ed9b" display="Output File Content" value="Text" isActive="true" />
+        <property name="c22d63a0-a3ad-4fe0-a956-7ac74bb6c2fe" display="Templating Method" value="Markdown File Builder" isActive="true" />
+        <property name="add2c4a0-5e44-4b93-9851-be809230751c" display="Data File Output Type" value="JSON" isActive="false" />
+        <property name="329d0550-b81b-4db6-a99b-05d90360d432" display="File Extension" value="txt" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="a9de6cf5-6d4f-4ae1-aa60-5ca85e458709" display="Source" value="Lookup Type" isActive="true" />
+        <property name="00d3537c-f71f-4450-8cc8-d9e87c12baee" display="Designer" isActive="true" />
+        <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" isActive="true" />
+        <property name="d1e89313-0647-48bd-81da-b04b644db475" display="Model Name" value="object" isActive="false" />
+        <property name="f1d88e59-1ca6-426e-b52d-42f3467e6bd5" display="Role" value="AI.Context.Instructions" isActive="true" />
+        <property name="1ac0fa39-ecea-48f8-92e4-41616a639586" display="Default Location" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>

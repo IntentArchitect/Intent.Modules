@@ -1,4 +1,8 @@
-﻿### Version 3.13.1
+### Version 3.13.2
+
+- Improvement: Added basic steering for how to lay out domain diagrams.
+
+### Version 3.13.1
 
 - Improvement: Can model Diagrams on Diagrams
 

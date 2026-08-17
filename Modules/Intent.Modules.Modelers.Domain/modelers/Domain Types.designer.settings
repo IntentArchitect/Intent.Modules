@@ -1270,6 +1270,12 @@ vertical-align: center`</style>
 })</script>
         </macro>
       </macros>
+      <rules>Diagram Guidelines:
+- Layout elements in a "snowflake" pattern, placing the element with the most connections in the middle and those with the least on the outside.
+- Ensure a absolute minimum spacing of 50px between any element.
+- Ensure at least 100px spacing between Class elements.
+- Ensure at least 200px spacing between Classes that are associated.
+- Make the diagram as compact as possible while still adhering to the above rules.</rules>
     </elementSetting>
   </elementSettings>
   <elementExtensions>

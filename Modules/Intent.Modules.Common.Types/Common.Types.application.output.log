@@ -3,7 +3,15 @@
   <ApplicationId>ff3070c6-4626-4a8b-85ab-7d56887a1445</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#eae2d6bc-9572-4814-8feb-43953ea41f6a</CorrelationId>
+      <ProjectId>7bef6eee-0359-48d8-9695-88036348acc3</ProjectId>
+      <CorrelationId>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration#csharp-guidelines.md</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../.agents/instructions/csharp-guidelines.md</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>csharp-guidelines.md</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#33e93e1b-64b5-4646-96c8-89313423792b</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -82,7 +90,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>09cef534-d0ce-4f22-94e0-8898bec2fc4d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions#6223f110-6e12-410f-9200-f9fdf50a4c8b</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
@@ -90,7 +98,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>09cef534-d0ce-4f22-94e0-8898bec2fc4d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile#026c3a9e-0fe3-4b69-9da6-1a7d780cf40b</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Common.Types.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Common.Types.imodspec</ProjectRelativeFilePath>

@@ -3,7 +3,7 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</correlationId>
-      <path>Intent.Modules.Metadata.WebApi/Api/Extensions/CommandModelStereotypeExtensions.cs</path>
+      <path>Api/Extensions/CommandModelStereotypeExtensions.cs</path>
       <count>9</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -13,7 +13,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#e030c97a-e066-40a7-8188-808c275df3cb</correlationId>
-      <path>Intent.Modules.Metadata.WebApi/Api/Extensions/OperationModelStereotypeExtensions.cs</path>
+      <path>Api/Extensions/OperationModelStereotypeExtensions.cs</path>
       <count>9</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -23,7 +23,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#e71b0662-e29d-4db2-868b-8a12464b25d0</correlationId>
-      <path>Intent.Modules.Metadata.WebApi/Api/Extensions/QueryModelStereotypeExtensions.cs</path>
+      <path>Api/Extensions/QueryModelStereotypeExtensions.cs</path>
       <count>9</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -33,7 +33,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#b16578a5-27b1-4047-a8df-f0b783d706bd</correlationId>
-      <path>Intent.Modules.Metadata.WebApi/Api/Extensions/ServiceModelStereotypeExtensions.cs</path>
+      <path>Api/Extensions/ServiceModelStereotypeExtensions.cs</path>
       <count>9</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
@@ -43,7 +43,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#95f4362b-8193-41cb-bd65-c17d6be3f96b</correlationId>
-      <path>Intent.Modules.Metadata.WebApi/Api/VersionModel.cs</path>
+      <path>Api/VersionModel.cs</path>
       <count>1</count>
       <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Gareth Baars</updatedByDisplayName>

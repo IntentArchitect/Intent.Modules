@@ -1,4 +1,4 @@
-﻿#nullable enable
+#nullable enable
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 #pragma warning disable IDE0130
 using System;
@@ -21,6 +21,7 @@ namespace Intent.Modules.Common.VisualStudio
         private const string NUGET_PACKAGE_INSTALLS = "VS.NugetPackageInstalls";
         private const string REFERENCES = "VS.References";
         private const string FRAMEWORK_DEPENDENCY = "VS.FrameworkReferences";
+        private const string IMPLICIT_USINGS = "VS.ImplicitUsings";
         // ReSharper restore InconsistentNaming
 
         public static void InitializeVSMetadata(this IOutputTarget outputTarget)
@@ -30,6 +31,7 @@ namespace Intent.Modules.Common.VisualStudio
             outputTarget.Metadata[DEPENDENCIES] = new List<IOutputTarget>();
             outputTarget.Metadata[REFERENCES] = new List<IAssemblyReference>();
             outputTarget.Metadata[FRAMEWORK_DEPENDENCY] = new HashSet<string>();
+            outputTarget.Metadata[IMPLICIT_USINGS] = new HashSet<string>();
         }
 
         public static void AddFrameworkDependency(this IOutputTarget outputTarget, string frameworkDependency)
@@ -40,6 +42,22 @@ namespace Intent.Modules.Common.VisualStudio
         public static IEnumerable<string> FrameworkDependencies(this IOutputTarget outputTarget)
         {
             return ((HashSet<string>)outputTarget.Metadata[FRAMEWORK_DEPENDENCY]).OrderBy(x => x).ToArray();
+        }
+
+        /// <summary>
+        /// Registers <paramref name="namespace"/> as implicitly available for <paramref name="outputTarget"/>
+        /// (e.g. because a referenced NuGet package or the SDK provides it as an implicit/global using), so
+        /// the Roslyn weaver can treat any matching explicit <c>using</c> directive in files generated for
+        /// that output target as redundant.
+        /// </summary>
+        public static void AddImplicitUsing(this IOutputTarget outputTarget, string @namespace)
+        {
+            ((HashSet<string>)outputTarget.Metadata[IMPLICIT_USINGS]).Add(@namespace);
+        }
+
+        public static IList<string> ImplicitUsings(this IOutputTarget outputTarget)
+        {
+            return ((HashSet<string>)outputTarget.Metadata[IMPLICIT_USINGS]).OrderBy(x => x).ToArray();
         }
 
         public static IList<IOutputTarget> Dependencies(this IOutputTarget outputTarget)

@@ -1,3 +1,11 @@
+### Version 3.11.5
+
+- Fixed: Static content templates would fail when assigned to more than one output location.
+
+### Version 3.11.4
+
+- Improvement: Added `IntentTemplateBase.OnEmitOrPublished` overload which takes a delegate which returns whether the event was handled allowing emitted events to carry on propagating if desired.
+
 ### Version 3.11.3
 
 - Fixed: Issue where has on markdown files without frontmatter was not calculated correctly.

@@ -3,7 +3,7 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#60d2ff39-e280-40ff-8ea3-92ec525d2786</correlationId>
-      <path>Intent.Modules.ModuleBuilder.Dart/Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplatePartial.cs</path>
+      <path>Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplatePartial.cs</path>
       <count>2</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -13,7 +13,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#60d2ff39-e280-40ff-8ea3-92ec525d2786</correlationId>
-      <path>Intent.Modules.ModuleBuilder.Dart/Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplateRegistration.cs</path>
+      <path>Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplateRegistration.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -23,7 +23,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#7e2ccb52-9065-40d5-9984-baa774e308f4</correlationId>
-      <path>Intent.Modules.ModuleBuilder.Dart/Templates/DartFileTemplateT4/DartFileTemplateT4TemplatePartial.cs</path>
+      <path>Templates/DartFileTemplateT4/DartFileTemplateT4TemplatePartial.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="fd1d130c-fd95-4fee-b713-02c6641d1287">
+  <file path="../.agents/instructions/csharp-guidelines.md" />
+  <file path="../.agents/instructions/readme.txt" />
+  <file path="../Intent.Modules.sln" />
+  <file path="Api/FolderExtensionModel.cs" />
+  <file path="Api/OutputAnchorModel.cs" deviationsHash="684B1F515B1AB1036F7DF9EB9C507F4EC0057F5994BD71FE4F67045BE1AB3939" />
+  <file path="Api/OutputAnchorModelStereotypeExtensions.cs" />
+  <file path="Api/RootFolderModel.cs" />
+  <file path="Api/RootFolderModelStereotypeExtensions.cs" />
+  <file path="Api/TemplateOutputModel.cs" deviationsHash="D8A3E40D472A5C9ABD73FB05AD15B374762297A8C20542F0F5BEA23920673C18" />
+  <file path="Api/TemplateOutputModelStereotypeExtensions.cs" />
+  <file path="ApiMetadataDesignerExtensions.cs" />
+  <file path="ApiMetadataPackageExtensions.cs" />
+  <file path="Intent.Modelers.CodebaseStructure.imodspec" />
+  <file path="Intent.Modules.Modelers.CodebaseStructure.csproj" />
+  <file path="modelers/Codebase Structure Types.designer.settings" />
+  <file path="modelers/Codebase Structure.designer.config" />
+  <file path="release-notes.md" />
+  <file path="resources/documentation.json" />
+</managedFiles>

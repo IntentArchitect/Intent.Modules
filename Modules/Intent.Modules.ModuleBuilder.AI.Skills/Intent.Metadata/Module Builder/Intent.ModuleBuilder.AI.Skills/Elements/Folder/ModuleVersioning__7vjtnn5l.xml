@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="9eb7aa03-8f7e-405d-aaff-d41220922957" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <comment>How to set an Intent Architect module's version — where it actually lives, why hand-editing .imodspec is silently discarded, and how to propagate the change to dependents (architecture templates, other modules).</comment>
+  <name>ModuleVersioning</name>
+  <display>ModuleVersioning</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>7c28965e-3b52-40fa-9a2d-0f7cc5a311a5</parentFolderId>
+  <packageId>5e4dd87c-858a-4159-9e96-d9fc135a5195</packageId>
+  <packageName>Intent.ModuleBuilder.AI.Skills</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="66fd9e66-42c7-4ef9-a778-b68e009272b9" name="Folder Options">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.Common.CSharp</definitionPackageName>
+      <definitionPackageId>730e1275-0c32-44f7-991a-9619d07ca68d</definitionPackageId>
+      <properties>
+        <property name="96df2fa6-7361-4e43-9acf-dbcea23b650a" display="Namespace Provider" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>

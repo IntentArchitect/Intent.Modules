@@ -35,6 +35,14 @@ public class ConstructorMapping : CSharpMappingBase
 
     public override CSharpStatement GetSourceStatement(bool? withNullConditionalOperators = default)
     {
+        // Terminal Mapping: this node's mapped end is not a plain one-to-one source path (i.e. the developer
+        // captured their own expression against it) and it has no deeper child mappings - render that
+        // expression verbatim instead of discarding it and constructing the type via its constructor.
+        if (Mapping != null && !Mapping.IsOneToOne() && Children.Count == 0)
+        {
+            return GetSourcePathText(withNullConditionalOperators ?? Mapping.TargetElement.TypeReference?.IsNullable == true);
+        }
+
         if (_options.CtorToUse != null)
         {
             return ImplementWithCtor(_options.CtorToUse);

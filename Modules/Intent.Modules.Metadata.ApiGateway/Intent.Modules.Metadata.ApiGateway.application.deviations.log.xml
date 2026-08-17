@@ -3,7 +3,7 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b09d7684-5dde-4d4b-9cb5-0707bfd8578f</correlationId>
-      <path>Intent.Modules.Metadata.ApiGateway/Api/ApiGatewayRouteModel.cs</path>
+      <path>Api/ApiGatewayRouteModel.cs</path>
       <count>3</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>

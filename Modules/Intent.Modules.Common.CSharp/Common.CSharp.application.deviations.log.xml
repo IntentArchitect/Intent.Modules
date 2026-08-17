@@ -3,7 +3,7 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.StaticContentTemplateRegistration#ae037d83-83df-4dd9-96e3-e8404f8bd63b</correlationId>
-      <path>Intent.Modules.Common.CSharp/Templates/StaticContentTemplateRegistrations/AIInstructionsStaticContentTemplateRegistration.cs</path>
+      <path>../Intent.Modules.Common.CSharp/Templates/StaticContentTemplateRegistrations/AIInstructionsStaticContentTemplateRegistration.cs</path>
       <count>1</count>
       <updatedByAccountName>joel.turner@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Joel Turner</updatedByDisplayName>

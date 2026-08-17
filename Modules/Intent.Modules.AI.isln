@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<solution id="8ef090b6-9ab9-4c16-8c47-9cda475ee89b">
+  <name>Intent.Modules.AI</name>
+  <version>3.3.0</version>
+  <icon>./img/logo-blue.svg</icon>
+  <iconType>UrlImagePath</iconType>
+  <metadataRelativePath>Intent.Metadata</metadataRelativePath>
+  <modulesCacheRelativePath>.cache/modules</modulesCacheRelativePath>
+  <applications>
+    <application id="1d074d2f-3b07-4f9d-89e4-f236a68278bd" name="ModuleBuilder.AI.Skills" solutionFolder="Modules" relativePath="Intent.Modules.ModuleBuilder.AI.Skills/Intent.Modules.ModuleBuilder.AI.Skills.application.config" />
+    <application id="fcb00a56-0c79-4c8f-b1ed-558727e509fe" name="ModuleBuilderSkills" solutionFolder="Tests" relativePath="../Tests/ModuleBuilderSkills/ModuleBuilderSkills.application.config" />
+    <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" name="ModuleBuilder" solutionFolder="Modules" relativePath="Intent.Modules.ModuleBuilder/ModuleBuilder.application.config" />
+  </applications>
+</solution>

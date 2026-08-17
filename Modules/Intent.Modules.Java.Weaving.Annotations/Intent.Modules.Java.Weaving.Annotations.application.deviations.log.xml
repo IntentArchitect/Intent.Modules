@@ -3,7 +3,7 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#89933aaf-7faa-483b-b027-13b2944b4662</correlationId>
-      <path>Intent.Modules.Java.Weaving.Annotations/Templates/IntentCanAdd/IntentCanAddTemplateRegistration.cs</path>
+      <path>Templates/IntentCanAdd/IntentCanAddTemplateRegistration.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -13,7 +13,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#834ca01f-9c60-4b63-a349-8725dbc6c050</correlationId>
-      <path>Intent.Modules.Java.Weaving.Annotations/Templates/IntentCanRemove/IntentCanRemoveTemplateRegistration.cs</path>
+      <path>Templates/IntentCanRemove/IntentCanRemoveTemplateRegistration.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -23,7 +23,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#7a9d3e63-370b-4252-86c5-b7f4db3eee30</correlationId>
-      <path>Intent.Modules.Java.Weaving.Annotations/Templates/IntentCanUpdate/IntentCanUpdateTemplateRegistration.cs</path>
+      <path>Templates/IntentCanUpdate/IntentCanUpdateTemplateRegistration.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -33,7 +33,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#382d6e66-ff63-4b28-a528-f252ff145032</correlationId>
-      <path>Intent.Modules.Java.Weaving.Annotations/Templates/IntentIgnore/IntentIgnoreTemplateRegistration.cs</path>
+      <path>Templates/IntentIgnore/IntentIgnoreTemplateRegistration.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -43,7 +43,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#c0a50037-3948-4076-a7e0-27cfc15e548a</correlationId>
-      <path>Intent.Modules.Java.Weaving.Annotations/Templates/IntentIgnoreBody/IntentIgnoreBodyTemplateRegistration.cs</path>
+      <path>Templates/IntentIgnoreBody/IntentIgnoreBodyTemplateRegistration.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -53,7 +53,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#e88d9b1f-b493-435e-97b6-e2a122d0e2fb</correlationId>
-      <path>Intent.Modules.Java.Weaving.Annotations/Templates/IntentManage/IntentManageTemplateRegistration.cs</path>
+      <path>Templates/IntentManage/IntentManageTemplateRegistration.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -63,7 +63,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Java.Templates.JavaFileTemplatePartial#f1c2d62b-7d01-4e9c-967e-4377a2efc4b1</correlationId>
-      <path>Intent.Modules.Java.Weaving.Annotations/Templates/IntentManageClass/IntentManageClassTemplatePartial.cs</path>
+      <path>Templates/IntentManageClass/IntentManageClassTemplatePartial.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -73,7 +73,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#f1c2d62b-7d01-4e9c-967e-4377a2efc4b1</correlationId>
-      <path>Intent.Modules.Java.Weaving.Annotations/Templates/IntentManageClass/IntentManageClassTemplateRegistration.cs</path>
+      <path>Templates/IntentManageClass/IntentManageClassTemplateRegistration.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -83,7 +83,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#7ac43274-c88a-406b-8cce-8a4900a47faf</correlationId>
-      <path>Intent.Modules.Java.Weaving.Annotations/Templates/IntentMerge/IntentMergeTemplateRegistration.cs</path>
+      <path>Templates/IntentMerge/IntentMergeTemplateRegistration.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -93,7 +93,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Java.Templates.JavaFileTemplatePartial#d65432d9-673e-4fc6-87c4-f9d481c706bd</correlationId>
-      <path>Intent.Modules.Java.Weaving.Annotations/Templates/ModeEnum/ModeEnumTemplatePartial.cs</path>
+      <path>Templates/ModeEnum/ModeEnumTemplatePartial.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -103,7 +103,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#d65432d9-673e-4fc6-87c4-f9d481c706bd</correlationId>
-      <path>Intent.Modules.Java.Weaving.Annotations/Templates/ModeEnum/ModeEnumTemplateRegistration.cs</path>
+      <path>Templates/ModeEnum/ModeEnumTemplateRegistration.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -113,7 +113,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.TemplateExtensions#16dcf909-1ccc-4125-b16e-d88e772bfb07</correlationId>
-      <path>Intent.Modules.Java.Weaving.Annotations/Templates/TemplateExtensions.cs</path>
+      <path>Templates/TemplateExtensions.cs</path>
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>

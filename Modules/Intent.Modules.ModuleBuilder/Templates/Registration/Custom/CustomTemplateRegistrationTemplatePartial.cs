@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.ModuleBuilder.Api;
@@ -25,6 +25,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
             }
         }
 
+        public string TemplateName => $"{Model.Name.Replace("Registrations", "Template").ToCSharpIdentifier().RemoveSuffix("Template")}Template";
+
         public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name.ToCSharpIdentifier().RemoveSuffix("Template") }).ToList();
         public string FolderPath => string.Join("/", OutputFolder);
         public string FolderNamespace => string.Join(".", OutputFolder);
@@ -32,14 +34,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(
-                className: $"{Model.Name.RemoveSuffix("Template")}TemplateRegistration",
+                className: $"{TemplateName}Registration",
                 @namespace: $"{OutputTarget.GetNamespace()}.{FolderNamespace}",
                 relativeLocation: $"{FolderPath}");
         }
 
         private string GetTemplateNameForTemplateId()
         {
-            return $"{Model.Name.Replace("Registrations", "Template").RemoveSuffix("Template")}Template";
+            return TemplateName;
         }
+
     }
 }

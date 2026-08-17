@@ -3,10 +3,38 @@
   <ApplicationId>cadb9a6b-2e9a-487f-8711-e756d006b63c</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#54faf6e8-7aa1-407d-8455-da539fc355fe</CorrelationId>
+      <ProjectId>d3c3d7e2-3d57-4777-b020-b7d72a2e3d47</ProjectId>
+      <CorrelationId>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration#csharp-guidelines.md</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../.agents/instructions/csharp-guidelines.md</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>csharp-guidelines.md</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#1238f5a6-26d2-42a7-a7fb-3dc5a6c7acea</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Metadata.Security/Intent.Modules.Metadata.Security/Api/DomainPackageExtensionModel.cs</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Metadata.Security/Intent.Modules.Metadata.Security/Intent.Metadata.Security.imodspec</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Metadata.Security/Intent.Modules.Metadata.Security/Intent.Modules.Metadata.Security.csproj</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Metadata.Security/Intent.Modules.Metadata.Security/release-notes.md</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>3e7c3578-2dc0-4da4-bb53-596dbf3dec06</ProjectId>
@@ -90,7 +118,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>f105be41-3d25-4ecc-919c-0088afd099a4</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions#7dc08f2f-812e-41ce-8065-3b2b0632315b</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
@@ -98,7 +126,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>f105be41-3d25-4ecc-919c-0088afd099a4</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile#ac1e5773-118d-42ff-8fa5-8b9edb797fa0</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Metadata.Security.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Metadata.Security.imodspec</ProjectRelativeFilePath>
@@ -110,6 +138,26 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Metadata.Security.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Metadata.Security.csproj</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Metadata.Security/Api/DomainPackageExtensionModel.cs</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Metadata.Security/Intent.Metadata.Security.imodspec</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Metadata.Security/Intent.Modules.Metadata.Security.csproj</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Metadata.Security/release-notes.md</ApplicationRelativeFilePath>
       <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
@@ -143,6 +191,14 @@
       <ApplicationRelativeFilePath>modelers/Security Options Extensions.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Security Options Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>f105be41-3d25-4ecc-919c-0088afd099a4</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.ReleaseNotes#4fce2c19-cc66-4bae-ad5f-a0a705605cd4</CorrelationId>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>release-notes.md</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>release-notes.md</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
   </FileLogs>
 </outputLog>

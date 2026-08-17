@@ -1,4 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files />
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4215f417-25d2-4509-9309-5076a1452eaa</correlationId>
+      <path>Api/EnumLiteralModel.cs</path>
+      <count>2</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-07-31T14:26:22.3580222Z</updatedAt>
+      <deviationsHash>171895FC9E414293792847EE90A64AB534C7B93A7BF539E73A5F5DB1152B99D0</deviationsHash>
+      <fileHash>E3C5DC7E06430404E0AADF61E36B736BCC9529CB30464284AB65952D97119019</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#85fba0e9-9161-4c85-a603-a229ef312beb</correlationId>
+      <path>Api/EnumModel.cs</path>
+      <count>2</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-07-31T14:26:22.3579991Z</updatedAt>
+      <deviationsHash>13658464432AA531A401C7C3451D97A751D63142560F2A93D4EAEEE700BEF1D4</deviationsHash>
+      <fileHash>A39839715342D5E48CC3857642CC0D64744A41BCBF6BFCCC74999E7FC41BA59E</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4d95d53a-8855-4f35-aa82-e312643f5c5f</correlationId>
+      <path>Api/FolderModel.cs</path>
+      <count>4</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-07-31T14:26:22.3580439Z</updatedAt>
+      <deviationsHash>2EB6D5173E369E544B24B6FE3674352F89B8E678A51559AB30D529C10D556E73</deviationsHash>
+      <fileHash>490270BE64FA0021009CA4E6F9F8DF33A248FF6A6645D7A62FC740802BEB5F78</fileHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</correlationId>
+      <path>Api/TypeDefinitionModel.cs</path>
+      <count>12</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-07-31T14:26:22.3581058Z</updatedAt>
+      <deviationsHash>8E52DF1AC55887BD880851CB1E49925D05F16258823D70E49C7EA021F6E94FB2</deviationsHash>
+      <fileHash>BFD037D168E789ADD3937C2C92A2B7771568D7F16199352F4BC86A1776AE93A8</fileHash>
+    </file>
+  </files>
 </deviationsLog>

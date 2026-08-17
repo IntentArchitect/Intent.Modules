@@ -3,6 +3,14 @@
   <ApplicationId>a951e417-89e5-4185-a5aa-730640fcebef</ApplicationId>
   <FileLogs>
     <FileLog>
+      <ProjectId>c5875879-6f63-4b53-a439-50f16d2d8dd4</ProjectId>
+      <CorrelationId>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration#csharp-guidelines.md</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../.agents/instructions/csharp-guidelines.md</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>csharp-guidelines.md</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>4ff6c570-24e4-4fae-b906-d486c554cf61</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#097b3c52-e056-43ca-b3a7-1708a558d09a</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -115,7 +123,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#8bf30047-22ff-4a7e-a629-72747dc92a4a</CorrelationId>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#ee3d51d1-55bd-439b-b6a0-69fc7dd0037f</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>

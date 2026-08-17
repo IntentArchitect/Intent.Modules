@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <outputFiles>
   <files>
+    <file relativePath="../Metadata.DocumentDB/Intent.Modules.Metadata.DocumentDB/Api/FolderExtensionsModel.cs" state="ignored" />
+    <file relativePath="../Metadata.DocumentDB/Intent.Modules.Metadata.DocumentDB/Api/ModuleBuilderExtensionsModel.cs" state="ignored" />
+    <file relativePath="Api/FolderExtensionsModel.cs" state="ignored" />
+    <file relativePath="Api/ModuleBuilderExtensionsModel.cs" state="ignored" />
     <file relativePath="Intent.Modules.Metadata.DocumentDB/Api/FolderExtensionsModel.cs" state="ignored" />
     <file relativePath="Intent.Modules.Metadata.DocumentDB/Api/ModuleBuilderExtensionsModel.cs" state="ignored" />
   </files>

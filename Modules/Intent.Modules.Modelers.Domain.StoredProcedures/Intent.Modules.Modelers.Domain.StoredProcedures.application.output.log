@@ -3,10 +3,23 @@
   <ApplicationId>0961b73a-4137-44db-98a8-530e1dbe2528</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#bbf70e2e-c85c-4165-a5c7-fe6be3cfc787</CorrelationId>
+      <ProjectId>451ec767-e452-4486-88f4-078d7bebf1af</ProjectId>
+      <CorrelationId>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration#csharp-guidelines.md</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../.agents/instructions/csharp-guidelines.md</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>csharp-guidelines.md</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#f2e8f63e-815c-4701-a6e9-b0a481267386</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Modelers.Domain.StoredProcedures/Intent.Modules.Modelers.Domain.StoredProcedures/release-notes.md</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>42e4db05-30c9-4c92-9b49-4df0e660875e</ProjectId>
@@ -66,11 +79,16 @@
     </FileLog>
     <FileLog>
       <ProjectId>9db519cc-52b4-4875-9a8f-1aaea9ad450b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile#5434e062-0cee-42e5-8480-aab49cf9fd74</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.Domain.StoredProcedures.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Domain.StoredProcedures.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Modelers.Domain.StoredProcedures/release-notes.md</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>4907bbc9-4561-4b73-972e-d1efc0da41d0</ProjectId>
@@ -82,10 +100,15 @@
     </FileLog>
     <FileLog>
       <ProjectId>9db519cc-52b4-4875-9a8f-1aaea9ad450b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.ReleaseNotes</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.ReleaseNotes#a26801df-03c8-4ded-9253-c30bc189f602</CorrelationId>
       <OverwriteBehaviour>once-off</OverwriteBehaviour>
       <ApplicationRelativeFilePath>release-notes.md</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>release-notes.md</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>release-notes.md</ApplicationRelativeFilePath>
       <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>

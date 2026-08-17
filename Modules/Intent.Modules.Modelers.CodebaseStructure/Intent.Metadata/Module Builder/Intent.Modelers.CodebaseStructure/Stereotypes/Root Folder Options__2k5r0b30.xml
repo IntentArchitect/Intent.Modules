@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="d99df524-886f-40f6-a22a-f591a1746295" version="3.1.0">
+  <comment>Shifts this app's absolute output root so the shared .sln/.slnx/.gitignore/Directory.Packages.props can be recovered at the container level.</comment>
+  <name>Root Folder Options</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="07e7b690-a59d-4b72-8440-4308a121d32c">Root Folder</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJSb290Rm9sZGVyT3B0aW9ucyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMCAwIDUwIDUwIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MCA1MCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxsaW5lYXJHcmFkaWVudCBpZD0iUm9vdEZvbGRlck9wdGlvbnNHcmFkaWVudCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNSIgeTE9IjQyIiB4Mj0iMjUiIHkyPSIxMSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDUxKSI+Cgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojQTk4OEJGIi8+Cgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNzg1NEEzIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxyZWN0IHg9IjYiIHk9IjExIiB3aWR0aD0iMTciIGhlaWdodD0iOCIgcng9IjIiIGZpbGw9InVybCgjUm9vdEZvbGRlck9wdGlvbnNHcmFkaWVudCkiLz4KPHJlY3QgeD0iNiIgeT0iMTYiIHdpZHRoPSIzOCIgaGVpZ2h0PSIyNiIgcng9IjMiIGZpbGw9InVybCgjUm9vdEZvbGRlck9wdGlvbnNHcmFkaWVudCkiLz4KPGNpcmNsZSBjeD0iMzciIGN5PSIzNSIgcj0iMTAiIGZpbGw9IiNGRkZGRkYiLz4KPHBhdGggZD0iTTMyLDM5IEwzOSwzMiBNMzksMzIgTDMzLDMyIE0zOSwzMiBMMzksMzgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzc4NTRBMyIgc3Ryb2tlLXdpZHRoPSIyLjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>6537e6dd-d401-4065-a843-627fe0c89efb</parentFolderId>
+  <order>0</order>
+  <packageId>525868ff-adc0-4ab6-a90e-352288da941f</packageId>
+  <packageName>Intent.Modelers.CodebaseStructure</packageName>
+  <properties>
+    <property id="2302bf7e-69ff-4621-94a4-0ac3551a34b7">
+      <hint>OutputRootDirectory is the base. Adjust the VS Solution relative to the base.</hint>
+      <name>Relative Location</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+    </property>
+  </properties>
+</stereotypeDefinition>

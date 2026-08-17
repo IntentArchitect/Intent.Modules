@@ -3,10 +3,28 @@
   <ApplicationId>ec72e814-e39a-47e3-9570-17eab35420ce</ApplicationId>
   <FileLogs>
     <FileLog>
-      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#cb37d4f3-6ce3-4f58-b35a-dce55d321b48</CorrelationId>
+      <ProjectId>62529074-997b-43f3-9f8a-73624b9489b9</ProjectId>
+      <CorrelationId>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration#csharp-guidelines.md</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../.agents/instructions/csharp-guidelines.md</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>csharp-guidelines.md</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudioSolution#46e81b5b-a61f-4f95-854c-6532cf7a1d0c</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Modelers.Services.EventInteractions/Intent.Modules.Modelers.Services.EventInteractions/Intent.Modules.Modelers.Services.EventInteractions.csproj</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../Modelers.Services.EventInteractions/Intent.Modules.Modelers.Services.EventInteractions/release-notes.md</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>d13b7ff1-3a04-45f3-b0d6-765c365ccae3</ProjectId>
@@ -118,6 +136,16 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.Services.EventInteractions.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Services.EventInteractions.csproj</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Modelers.Services.EventInteractions/Intent.Modules.Modelers.Services.EventInteractions.csproj</ApplicationRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Intent.Modules.Modelers.Services.EventInteractions/release-notes.md</ApplicationRelativeFilePath>
       <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>

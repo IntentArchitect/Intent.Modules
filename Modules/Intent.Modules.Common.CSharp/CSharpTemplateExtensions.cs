@@ -176,7 +176,7 @@ namespace Intent.Modules.Common.Templates
                 runtimeEnvironment: runtimeEnvironment,
                 forProjectWithRole: forProjectWithRole);
 
-            template.OutputTarget.ExecutionContext.EventDispatcher.Publish(request);
+            template.EmitOrPublish(request);
 
             if (!request.WasHandled)
             {

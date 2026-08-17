@@ -4,7 +4,7 @@
             "label": "Build",
             "command": "dotnet build Intent.Modules.ModuleBuilder.csproj",
             "icon": "fa-cog",
-            "workingDirectory": "Intent.Modules.ModuleBuilder",
+            "workingDirectory": ".",
             "aiAutoFix": {
                 "enabled": true,
                 "errorParser": "generic",

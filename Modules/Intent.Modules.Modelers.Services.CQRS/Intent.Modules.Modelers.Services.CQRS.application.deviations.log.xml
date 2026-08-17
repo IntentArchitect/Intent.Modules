@@ -3,7 +3,7 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</correlationId>
-      <path>Intent.Modules.Modelers.Services.CQRS/Api/CommandModel.cs</path>
+      <path>Api/CommandModel.cs</path>
       <count>5</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -13,7 +13,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#efbd1131-2db2-4eb7-8ef6-3b5a32f5267d</correlationId>
-      <path>Intent.Modules.Modelers.Services.CQRS/Api/FolderExtensionModel.cs</path>
+      <path>Api/FolderExtensionModel.cs</path>
       <count>2</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -23,7 +23,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#e71b0662-e29d-4db2-868b-8a12464b25d0</correlationId>
-      <path>Intent.Modules.Modelers.Services.CQRS/Api/QueryModel.cs</path>
+      <path>Api/QueryModel.cs</path>
       <count>3</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>

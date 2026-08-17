@@ -1,3 +1,11 @@
+### Version 2.4.7
+
+- Improvement: Added guidance to not automatically model Entity Action mappings
+
+### Version 2.4.6
+
+- Fixed: Issue with the advanced mapping screen which would occur in v5 of the client, where the PK on child entities was not mappable on updates.
+
 ### Version 2.4.5
 
 - Improvement: Cleaned up some old modeling which was causing confusion for the AI Assistant

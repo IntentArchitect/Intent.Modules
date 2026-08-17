@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <outputFiles>
   <files>
+    <file relativePath="../Metadata.Security/Intent.Modules.Metadata.Security/Api/DomainPackageExtensionModel.cs" state="ignored" />
+    <file relativePath="../Metadata.Security/Intent.Modules.Metadata.Security/Intent.Metadata.Security.imodspec" state="ignored" />
+    <file relativePath="../Metadata.Security/Intent.Modules.Metadata.Security/Intent.Modules.Metadata.Security.csproj" state="ignored" />
+    <file relativePath="../Metadata.Security/Intent.Modules.Metadata.Security/release-notes.md" state="ignored;once-off-generated" />
+    <file relativePath="Api/DomainPackageExtensionModel.cs" state="ignored" />
+    <file relativePath="Intent.Metadata.Security.imodspec" state="ignored" />
+    <file relativePath="Intent.Modules.Metadata.Security.csproj" state="ignored" />
     <file relativePath="Intent.Modules.Metadata.Security/Api/DomainPackageExtensionModel.cs" state="ignored" />
     <file relativePath="Intent.Modules.Metadata.Security/Intent.Metadata.Security.imodspec" state="ignored" />
     <file relativePath="Intent.Modules.Metadata.Security/Intent.Modules.Metadata.Security.csproj" state="ignored" />
+    <file relativePath="Intent.Modules.Metadata.Security/release-notes.md" state="ignored;once-off-generated" />
+    <file relativePath="release-notes.md" state="ignored;once-off-generated" />
   </files>
 </outputFiles>

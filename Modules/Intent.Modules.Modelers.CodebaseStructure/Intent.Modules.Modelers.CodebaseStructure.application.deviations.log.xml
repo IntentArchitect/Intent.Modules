@@ -3,7 +3,7 @@
   <files>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#025e933b-b602-4b6d-95ab-0ec36ae940da</correlationId>
-      <path>Intent.Modules.Modelers.CodebaseStructure/Api/OutputAnchorModel.cs</path>
+      <path>Api/OutputAnchorModel.cs</path>
       <count>3</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
@@ -13,7 +13,7 @@
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#d421c322-7a51-4094-89fa-e5d8a0a97b27</correlationId>
-      <path>Intent.Modules.Modelers.CodebaseStructure/Api/TemplateOutputModel.cs</path>
+      <path>Api/TemplateOutputModel.cs</path>
       <count>4</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
