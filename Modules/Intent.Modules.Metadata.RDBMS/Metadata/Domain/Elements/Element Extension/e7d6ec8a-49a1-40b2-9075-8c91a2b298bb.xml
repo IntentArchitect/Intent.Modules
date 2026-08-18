@@ -45,6 +45,14 @@
         <property name="996ed45f-2318-4587-9618-73db3d7cfed0" display="Validate Function" value="" isActive="true" />
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="14441454-bfe0-4d5d-8dba-d86d74d33a3b" name="AI Settings">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="## Missing expected Foreign Key on this Class&#xA;Primary/Foreign Keys on this Class are auto-managed based on its associations (when `Key Creation Mode` is Explicit). If an expected FK attribute is missing for a 1-to-1 style association, it is very likely because the association was authored in the direction that doesn't qualify for automatic FK generation — see the AI guidance on the `Association` type for the exact rule — rather than a designer defect." isActive="true" />
+      </properties>
+    </stereotype>
   </stereotypes>
   <metadata />
   <childElements>

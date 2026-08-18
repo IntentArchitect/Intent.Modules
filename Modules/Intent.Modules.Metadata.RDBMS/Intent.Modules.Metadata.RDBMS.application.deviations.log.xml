@@ -82,4 +82,12 @@
       <fileHash>8C55502763200C5810466F7626EDDB24FB2D19F18598AD19667BF15DC4794594</fileHash>
     </file>
   </files>
+  <customFiles>
+    <customFile>
+      <path>Modules/Intent.Modules.Metadata.RDBMS/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-18T09:00:50.7218293Z</approvedAt>
+    </customFile>
+  </customFiles>
 </deviationsLog>
