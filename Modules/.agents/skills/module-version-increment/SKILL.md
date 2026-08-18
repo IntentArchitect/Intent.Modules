@@ -2,7 +2,7 @@
 name: module-version-increment
 description: "Increment the versions of the modules a task will change, before implementing, and keep the version consistent everywhere it appears. Use as soon as the modules in scope are known, and again at close-out to confirm and move dependents."
 keywords: [version, increment, release, bump, dependents, publish]
-contentHash: 15CE3D14AA199405F57FD8AEFDBEE1B508639FE700D9F2B468278269C641A9E9
+contentHash: 2F73E9CAAEBADC89439CFA517198AC7E7187F87CE493D92A3387027B4CA685BA
 ---
 # Skill: module-version-increment
 
@@ -53,11 +53,9 @@ mistake — consumers upgrade expecting a compatibility they do not get.
 
 | Situation | Rule |
 |---|---|
-| Brand-new module | Start at `1.0.0` |
-| Any subsequent change | Move the component matching the impact above |
-
-Versions are published as you set them — there is no separate prerelease stage in this workflow, so
-do not append a `-pre` suffix.
+| Brand-new module | Start at `1.0.0-pre.0` |
+| Already on a prerelease | Move the **prerelease component only** |
+| Released (non-prerelease) version being changed | Move per impact, then add `-pre.0` |
 State the impact and the reasoning before applying it — *"minor, because it adds a setting without
 changing existing output"* — so the choice is reviewable rather than asserted.
 
@@ -131,6 +129,14 @@ will not carry your changes.
 > reads from. From then on the search reports that version as existing, whether or not it was ever
 > published. Treat an "exists" result as inconclusive rather than as proof — and keep in mind another
 > branch may have published the same number first.
+
+## Iterating A Version That Is Already Published
+
+Rebuilding at a version that has already been published is shadowed — the published copy is served
+and the rebuild is silently ignored. Move the prerelease component forward so the new build is picked
+up, and note that you have done so. This is the one case where a module's version legitimately moves
+more than once in a task, because each iteration needs its own build to be installable. Consolidate
+to the final release version when the work is done.
 
 ## Supported Client Version Range
 
