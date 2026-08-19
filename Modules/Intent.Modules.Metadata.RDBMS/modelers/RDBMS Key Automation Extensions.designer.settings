@@ -39,6 +39,8 @@
           <script>executeAttributeOnDeleted(element);</script>
         </macro>
       </macros>
+      <rules>## Foreign Key attributes are auto-managed
+When `Key Creation Mode` is Explicit, Foreign Key attributes for this Class are created/removed automatically based on its associations. Do not manually add or delete a Foreign Key attribute unless `Key Creation Mode` is set to "Manually add PKs and FKs" — otherwise it will be silently reverted. See the AI guidance on the `Association` type for when automatic FK generation does and doesn't trigger for 1-to-1 style associations.</rules>
     </elementExtension>
     <elementExtension type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
       <contextMenuOptions>
@@ -67,10 +69,44 @@
           <script>executeClassOnCreated(element);</script>
         </macro>
       </macros>
+      <rules>## Missing expected Foreign Key on this Class
+Primary/Foreign Keys on this Class are auto-managed based on its associations (when `Key Creation Mode` is Explicit). If an expected FK attribute is missing for a 1-to-1 style association, it is very likely because the association was authored in the direction that doesn't qualify for automatic FK generation — see the AI guidance on the `Association` type for the exact rule — rather than a designer defect.</rules>
     </elementExtension>
   </elementExtensions>
   <associationSettings />
-  <associationExtensions />
+  <associationExtensions>
+    <associationExtension type="Association" typeId="eaf9ed4e-0b61-4ac1-ba88-09f912c12087">
+      <sourceEndExtension>
+        <typeOrder />
+        <typeReferenceExtension>
+          <isRequired>true</isRequired>
+          <targetTypes />
+          <allowIsNavigable>inherit</allowIsNavigable>
+          <allowIsNullable>inherit</allowIsNullable>
+          <allowIsCollection>inherit</allowIsCollection>
+        </typeReferenceExtension>
+      </sourceEndExtension>
+      <targetEndExtension>
+        <typeReferenceExtension>
+          <isRequired>true</isRequired>
+          <targetTypes />
+          <allowIsNavigable>inherit</allowIsNavigable>
+          <allowIsNullable>inherit</allowIsNullable>
+          <allowIsCollection>inherit</allowIsCollection>
+        </typeReferenceExtension>
+      </targetEndExtension>
+      <macros />
+      <rules>## Foreign Key Generation for 1-1 (non-collection) Associations
+
+When `Key Creation Mode` is `Explicit` (the default), a Foreign Key attribute is only generated automatically for a non-collection (1-to-1 style) association when the association's **source** end multiplicity is `0..1`. The target end's multiplicity only controls whether the generated FK is nullable — it does NOT determine whether an FK gets created at all.
+
+This means direction matters: whether an FK attribute appears is decided by which class you modeled as the association's *source*, not just by which end looks "optional". To get an FK on a specific class, create the association FROM that class TO the class it references, with that class's own (source) end set to `0..1`.
+
+If you author the association the other way around (source end `1`, target end `0..1` or `1`), NO Foreign Key attribute will be created on either class — and no validation error or warning will indicate this. This is easy to fall into: e.g. modeling "Customer has zero-or-one Passport; Passport requires exactly one Customer" the natural way (Customer as source/`1`, Passport as target/`0..1`) produces no FK anywhere.
+
+If you need the FK on the "wrong" side per this rule, or both ends must be mandatory (`1` -&gt; `1`), the automatic rule cannot produce it. In that case, switch the `Key Creation Mode` application setting to "Manually add PKs and FKs", then add the Attribute yourself and apply the `Foreign Key` stereotype (setting its `Association` property to the correct association end). Note: while `Key Creation Mode` remains `Explicit`, a manually-added attribute for a non-qualifying association will be silently deleted the next time the class is modified, because the automatic rule still does not recognize it as required.</rules>
+    </associationExtension>
+  </associationExtensions>
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />

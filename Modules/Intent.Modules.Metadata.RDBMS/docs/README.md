@@ -41,7 +41,7 @@ It can be applied hierarchically: for example, if applied to a `Package`, all ta
 
 The "closest" `Schema` stereotype to the `Class` will be applied to the class.
 
-> [!NOTE]  
+> [!NOTE]\
 > If a `Table` or `View` stereotype has a schema defined, it will override the "Closest" `Schema` stereotype. If the schema is not filled in on these stereotypes, the schema name will fall back to the "Closest" `Schema` stereotype.
 
 Once applied, the following properties can be set:
@@ -99,7 +99,7 @@ The following properties can be configured for the trigger:
 
 - **Name**: Defines the name of the trigger.
 
-> [!NOTE]  
+> [!NOTE]\
 > The actual `trigger` implementation is not modeled in the `Domain Designer`. The `trigger` stereotype is used only to mark to the underlying provider (specifically, Entity Framework Core) that the table has an existing trigger. This allows Entity Framework to correctly generate the appropriate SQL statements.
 
 ### Create Join Table Constraint
@@ -133,7 +133,7 @@ This action will:
 
 This is useful when you need explicit control over the join table structure, such as adding additional columns, indexes, or constraints to the join table.
 
-> [!NOTE]  
+> [!NOTE]\
 > This will mean that if you remove an instance of either original entities you will need to explicitly remove the appropriate Intermediate Entity instance first.
 
 ## Configure SQL Column specifics
@@ -173,6 +173,14 @@ The `Foreign Key` stereotype indicates an attribute has been introduced to a `Cl
 
 ![Foreign Key](images/foreign-key.png)
 
+#### Foreign Key generation for 1-to-1 (non-collection) associations
+
+For a non-collection (1-to-1 style) association, an FK is only generated automatically when the association's **source** end multiplicity is `0..1`. The target end's multiplicity only controls whether the generated FK is nullable — it does not decide whether one gets created at all.
+
+This means direction matters: to get an FK on a specific `Class`, create the association **from** that `Class` **to** the `Class` it references, with that class's own (source) end set to `0..1`. Modeling it the other way around (source `1`, target `0..1` or `1`) produces no FK attribute on either class, with no validation error to flag it.
+
+If both ends must be mandatory (`1` -> `1`), or you need the FK on the side that doesn't qualify under this rule, switch `Key Creation Mode` to **Manually add PKs and FKs** and add the attribute plus the `Foreign Key` stereotype yourself. While `Key Creation Mode` remains **Explicit**, a manually-added FK attribute for a non-qualifying association is silently deleted the next time the class is modified.
+
 ### Create a Column Index
 
 To create an index on a column, apply the `Index` stereotype to the relevant `Class Attribute`.
@@ -209,7 +217,7 @@ The following properties can be set:
 
 ![Decimal Precision](images/column-precision.png)
 
-> [!NOTE]  
+> [!NOTE]\
 > The decimal precision can also be set globally (for all entities) using the `Decimal Precision and Scale` setting on the application `Settings` screen. If set, this value will automatically be applied to any decimal attribute modeled in the `Domain Designer`.
 
 ### Create a Column Default Constraint

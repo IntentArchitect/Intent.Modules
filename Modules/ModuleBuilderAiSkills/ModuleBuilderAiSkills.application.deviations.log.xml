@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
   <files />
+  <customFiles>
+    <customFile>
+      <path>Modules/.agents/agents/build-module-sdd.agent.md</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-19T10:32:25.592387Z</approvedAt>
+    </customFile>
+  </customFiles>
 </deviationsLog>

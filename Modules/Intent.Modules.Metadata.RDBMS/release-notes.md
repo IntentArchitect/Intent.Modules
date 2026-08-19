@@ -1,3 +1,7 @@
+### Version 3.7.19
+
+- Improvement: Added AI guidance clarifying how Foreign Key generation for 1-to-1 (non-collection) associations depends on the association's source end multiplicity, to prevent confusion when modeling zero-or-one-to-one relationships.
+
 ### Version 3.7.18
 
 - Improvement: Updated script to cater for possible null stereotype property value

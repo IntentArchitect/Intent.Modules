@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.CodebaseStructure</id>
-  <version>1.0.2-pre.1</version>
+  <version>1.0.2</version>
   <supportedClientVersions>[4.6.0-beta.3, 6.0.0-a)</supportedClientVersions>
   <summary>Designer for configuring application codebase structure.</summary>
   <description>Designer for configuring application codebase structure.</description>
@@ -21,7 +21,7 @@
     <!-- Minimum Compatible Versions -->
     <detect id="Intent.VisualStudio.Projects">
       <install>
-        <package id="Intent.VisualStudio.Projects" version="4.1.8-pre.1" />
+        <package id="Intent.VisualStudio.Projects" version="4.1.8" />
       </install>
     </detect>
     <!-- /Minimum Compatible Versions -->

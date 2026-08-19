@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="1d074d2f-3b07-4f9d-89e4-f236a68278bd">
   <file path="../.agents/instructions/csharp-guidelines.md" />
+  <file path="../.agents/instructions/readme.txt" />
   <file path="../Intent.Modules.sln" />
   <file path="Intent.ModuleBuilder.AI.Skills.imodspec" />
   <file path="Intent.Modules.ModuleBuilder.AI.Skills.csproj" />
@@ -59,6 +60,8 @@
   <file path="Templates/Skills/ModuleDebugging/SkillMd_Agents/SkillMd_AgentsTemplateRegistration.cs" />
   <file path="Templates/Skills/ModuleDocs/SkillMd_Agents/SkillMd_AgentsTemplatePartial.cs" />
   <file path="Templates/Skills/ModuleDocs/SkillMd_Agents/SkillMd_AgentsTemplateRegistration.cs" />
+  <file path="Templates/Skills/ModuleSvgIcon/SkillMd_Agents/SkillMd_AgentsTemplatePartial.cs" />
+  <file path="Templates/Skills/ModuleSvgIcon/SkillMd_Agents/SkillMd_AgentsTemplateRegistration.cs" />
   <file path="Templates/Skills/ModuleVersioning/SkillMd_Agents/SkillMd_AgentsTemplatePartial.cs" />
   <file path="Templates/Skills/ModuleVersioning/SkillMd_Agents/SkillMd_AgentsTemplateRegistration.cs" />
   <file path="release-notes.md" />
