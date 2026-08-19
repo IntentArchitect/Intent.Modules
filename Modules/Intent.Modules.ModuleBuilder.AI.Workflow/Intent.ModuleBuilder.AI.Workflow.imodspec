@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.AI.Workflow</id>
-  <version>1.0.0-pre.1</version>
+  <version>1.0.0-pre.2</version>
   <supportedClientVersions>[5.1.0-a,6.0.0)</supportedClientVersions>
   <summary>Bundles AI agent workflow skills and instructions for versioning, documenting, and capturing context on Intent Architect modules.</summary>
   <description>Bundles AI agent workflow skills and instructions for versioning, documenting, and capturing context on Intent Architect modules.</description>
@@ -28,7 +28,7 @@
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
   <moduleSettings>
-    <group id="3467f2ef-cc10-476d-bc26-4948976b4083" title="AI Workflow Skills" type="application-settings" externalReference="3467f2ef-cc10-476d-bc26-4948976b4083">
+    <group id="3467f2ef-cc10-476d-bc26-4948976b4083" title="AI Workflow Settings" type="application-settings" externalReference="3467f2ef-cc10-476d-bc26-4948976b4083">
       <settings>
         <setting id="8b2a8402-0d7b-4273-96ae-4d857fcc16fb" title="Use Pre-release Versions" type="switch">
           <hint>Use -pre versions while iterating, instead of releasing directly.</hint>
@@ -37,6 +37,9 @@
         <setting id="a1bd5e9f-5d24-49fe-91cd-8e823ed42535" title="Maintain Module README" type="switch">
           <hint>Create and keep a docs/README.md per module.</hint>
           <defaultValue>false</defaultValue>
+        </setting>
+        <setting id="a4bdd803-c925-4711-aa99-f0fb218e4c7d" title="Maintain Module Icon" type="switch">
+          <hint>Create a module's SVG icon when it has none.</hint>
         </setting>
       </settings>
     </group>

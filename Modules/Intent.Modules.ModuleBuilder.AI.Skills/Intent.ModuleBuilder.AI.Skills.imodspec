@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.AI.Skills</id>
-  <version>1.0.0</version>
+  <version>1.0.1-pre.0</version>
   <supportedClientVersions>[5.1.0-a,6.0.0-a)</supportedClientVersions>
   <summary>Bundles AI agent skills and instructions for building Intent Architect modules.</summary>
   <description>Bundles AI agent skills and instructions for building Intent Architect modules.</description>
@@ -111,6 +111,10 @@
     <template id="Intent.ModuleBuilder.AI.Skills.Skills.ModuleDocs.SkillMd_Agents" externalReference="01a3710a-8195-4ff1-a316-ac2d1f1b0ebe">
       <role>AI.Context.Skills</role>
       <location>module-docs</location>
+    </template>
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon.SkillMd_Agents" externalReference="dc151fc9-a548-4e3a-8fbb-8dc349dc22d8">
+      <role>AI.Context.Skills</role>
+      <location>module-svg-icon</location>
     </template>
     <template id="Intent.ModuleBuilder.AI.Skills.Skills.ModuleVersioning.SkillMd_Agents" externalReference="3f29299a-98e5-4874-923f-d9431db3eec9">
       <role>AI.Context.Skills</role>

@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleVersio
             // Fully qualified on purpose: everything outside this constructor body is template-managed,
             // so a `using` for the Settings namespace would not survive regeneration.
             var usePreRelease = Intent.Modules.ModuleBuilder.AI.Workflow.Settings.ModuleSettingsExtensions
-                .GetAIWorkflowSkills(ExecutionContext.Settings)
+                .GetAIWorkflowSettings(ExecutionContext.Settings)
                 .UsePreReleaseVersions();
 
             var incrementRules = usePreRelease
@@ -101,22 +101,41 @@ Act only in these cases:
 
 ## Deciding The Increment
 
-Judge the impact on **consumers of the module's generated output**, not on the module's own source.
+Judge the impact on **consumers of the module's generated output and modelling experience**, not on
+the module's own source.
 
 | Impact | What it looks like | Move |
 |---|---|---|
-| **Patch** | Bug fix; generated output corrected with no change in shape | third component |
-| **Minor** | New capability, setting, or generated file; existing output stays valid | second component |
-| **Major** | Existing output changes shape or disappears; a setting or stereotype is removed or repurposed | first component |
+| **Patch** | Small improvement or fix with little to no impact — a bug fix, one more setting affecting a small portion of the module, or an addition alongside an already-established set that changes nothing already generated | third component |
+| **Minor** | A new capability that adds a meaningfully new dimension to the module's behavior or experience, without breaking anything already there | second component |
+| **Major** | A structural addition that changes how users already interact with the module — even without a hard technical break | first component |
 
 When the impact is genuinely ambiguous, take the **higher** of the two. Under-stating is the expensive
 mistake — consumers upgrade expecting a compatibility they do not get.
 
+### Judging Impact — Minor vs Patch
+
+This is a magnitude judgment, not a checklist. A single setting that affects a small portion of the
+module is Patch — even if it's a wholly new setting, its impact is narrow. Minor is reserved for
+something that materially expands the experience: for example, a module gaining the ability to
+generate templates tailored to a specific AI harness (Claude Code vs. another agent) is Minor —
+that's a new dimension of capability, not an incremental item alongside an existing set.
+
+### Judging Impact — Minor vs Major
+
+Major isn't only "this breaks a build." It's **"this changes how users already work with the
+module."** For example, adding a whole new designer to the module: even if nothing that existed
+before stops working, users now have a new way to interact with the module that can change
+established habits or expectations, and that alone is enough to warrant the first component moving.
+Reserve Minor for additions that expand the module without touching how it's already used.
+
 ### Apply the rule
 
 {{incrementRules}}
-State the impact and the reasoning before applying it — *"minor, because it adds a setting without
-changing existing output"* — so the choice is reviewable rather than asserted.
+State the impact and the reasoning before applying it — *"patch, because this setting only affects a
+small portion of the module's behavior"* / *"minor, because this is a genuinely new capability
+dimension, not breaking anything"* / *"major, because this changes how users already interact with
+the module"* — so the choice is reviewable rather than asserted.
 
 ## Ad-hoc Changes — Check Before You Move
 

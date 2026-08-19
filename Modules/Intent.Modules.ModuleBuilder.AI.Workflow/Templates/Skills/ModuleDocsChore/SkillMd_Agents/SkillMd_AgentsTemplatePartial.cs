@@ -28,12 +28,22 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
             // Fully qualified on purpose: everything outside this constructor body is template-managed,
             // so a `using` for the Settings namespace would not survive regeneration.
             var maintainReadme = Intent.Modules.ModuleBuilder.AI.Workflow.Settings.ModuleSettingsExtensions
-                .GetAIWorkflowSkills(ExecutionContext.Settings)
+                .GetAIWorkflowSettings(ExecutionContext.Settings)
                 .MaintainModuleREADME();
+
+            var maintainIcon = Intent.Modules.ModuleBuilder.AI.Workflow.Settings.ModuleSettingsExtensions
+                .GetAIWorkflowSettings(ExecutionContext.Settings)
+                .MaintainModuleIcon();
 
             var readmeRow = maintainReadme
                 ? """
 | `docs/README.md` | The section the change affects — a settings table, a generated-output example, a feature description. **Create it if the module does not have one.** |
+"""
+                : "";
+
+            var iconRow = maintainIcon
+                ? """
+| Module icon | Created only if the module has none yet — see "The Icon" below. An existing icon is never overwritten. |
 """
                 : "";
 
@@ -58,9 +68,41 @@ leave it alone unless the developer asks for it — do not create one, and do no
 something to fix.
 """;
 
+            var iconSection = maintainIcon
+                ? """
+
+## The Icon
+
+Create a module's SVG icon **when it has none** — never overwrite one that already exists, even if
+it looks dated. An existing icon is a deliberate choice by whoever set it, not something this chore
+corrects.
+
+Source the description to craft from; do not invent one:
+- The module's own `.imodspec` `<summary>` and `<tags>` — the same material already kept current
+  elsewhere in this chore.
+- Its `CONTEXT.md` "Purpose" section, if one exists.
+
+If the `module-svg-icon` skill is available in your environment, use it with that description to
+craft and apply the icon. If it is not available, this chore has no icon-crafting mechanism of its
+own — leave the module without an icon rather than improvising a substitute.
+"""
+                : """
+
+## The Icon
+
+Module icons are not maintained in this environment. Leave an existing icon alone, and do not create
+one — its absence is not something to fix.
+""";
+
             var readmeChecklistItem = maintainReadme
                 ? """
 - [ ] `docs/README.md` reflects the change — created if the module had none
+"""
+                : "";
+
+            var iconChecklistItem = maintainIcon
+                ? """
+- [ ] Module icon created if missing, described from `.imodspec`/`CONTEXT.md` — existing icons left untouched
 """
                 : "";
 
@@ -69,7 +111,7 @@ something to fix.
 ---
 name: module-docs-chore
 description: "Update a module's documentation in the same turn as the change that affects it. Use whenever a module change alters anything a consumer can observe."
-keywords: [documentation, release-notes, readme, imodspec, chore, upkeep]
+keywords: [documentation, release-notes, readme, imodspec, icon, chore, upkeep]
 ---
 
 # Skill: module-docs-chore
@@ -97,6 +139,7 @@ generated output needs nothing.
 | Module metadata — summary, description, tags | Kept accurate as a matter of course. These are what a consumer sees before installing anything. |
 | `release-notes.md` | One bullet under the current version — **only if the file already exists** |
 {{readmeRow}}
+{{iconRow}}
 ## Release Notes Are Maintained, Never Introduced
 
 If a module has a `release-notes.md`, add an entry for the change: a single bullet under the current
@@ -163,6 +206,7 @@ platform it targets — and never carry a value across from a different reposito
 under the wrong name is worse than one published under none, because it misattributes ownership to
 someone who never agreed to it.
 {{readmeSection}}
+{{iconSection}}
 ## Cover The Whole Version Line
 
 Before writing today's entry, check what else has landed under the current unreleased version —
@@ -178,6 +222,7 @@ entries account for everything in it, not that there is an entry per change.
 - [ ] `release-notes.md` updated **if present** — and not created if absent
 - [ ] Entries are one line each, grouped by capability rather than listed per change
 {{readmeChecklistItem}}
+{{iconChecklistItem}}
 - [ ] Earlier undocumented changes in the same version line covered
 """""");
         }
