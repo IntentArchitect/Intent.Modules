@@ -1,3 +1,7 @@
+### Version 1.0.4
+
+- Improvement: Updated Dialog relationship creation
+
 ### Version 1.0.3
 
 - Improvement: Cleanup modelled elements by removed `View Layout` as a default for all components.

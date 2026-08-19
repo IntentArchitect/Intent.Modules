@@ -1,3 +1,8 @@
+### Version 1.1.5
+
+- Improvement: Improved context for AI modeling instructions for better results when AI agents are modeling UI.
+- Improvement: Added PaymentManagement API script to handle modelling of Authentication (or any) pages
+
 ### Version 1.1.4
 
 - Improvement: Can model Diagrams on Diagrams

@@ -1,3 +1,7 @@
+### Version 3.11.6
+
+- Improvement: Added ability to determine after template registration if a `MarkdownBaseTemplate` hash matches what's on disk or not.
+
 ### Version 3.11.5
 
 - Fixed: Static content templates would fail when assigned to more than one output location.
