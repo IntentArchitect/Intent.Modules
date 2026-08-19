@@ -32,4 +32,12 @@
       <fileHash>4FA8A3626F723AB2BCED7FE2989D6787C7519860452A48F32A4DE37C317FC6EB</fileHash>
     </file>
   </files>
+  <customFiles>
+    <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.Dart/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-19T16:46:19.8131571Z</approvedAt>
+    </customFile>
+  </customFiles>
 </deviationsLog>

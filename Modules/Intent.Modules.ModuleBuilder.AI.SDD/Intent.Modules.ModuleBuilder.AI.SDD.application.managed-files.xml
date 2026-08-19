@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="4a83ad82-f5c3-4456-80a0-996e1b0423e2">
+  <file path="../.agents/instructions/csharp-guidelines.md" />
+  <file path="../Intent.Modules.sln" />
+  <file path="Intent.ModuleBuilder.AI.SDD.imodspec" />
+  <file path="Intent.Modules.ModuleBuilder.AI.SDD.csproj" />
+  <file path="Templates/Agents/BuildModuleSddMd_Agents/BuildModuleSddMd_AgentsTemplatePartial.cs" />
+  <file path="Templates/Agents/BuildModuleSddMd_Agents/BuildModuleSddMd_AgentsTemplateRegistration.cs" />
+  <file path="release-notes.md" />
+</managedFiles>

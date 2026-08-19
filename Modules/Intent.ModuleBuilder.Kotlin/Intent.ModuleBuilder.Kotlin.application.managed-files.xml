@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="a951e417-89e5-4185-a5aa-730640fcebef">
+  <file path="../.agents/instructions/csharp-guidelines.md" />
+  <file path="../Intent.Modules.ModuleBuilder.Kotlin/Api/FolderExtensionModel.cs" deviationsHash="293D35CE05B204B67A844243ED481139AF37FFA0069D785A2217D68584323341" />
+  <file path="../Intent.Modules.ModuleBuilder.Kotlin/Api/IntentModuleExtensionModel.cs" />
+  <file path="../Intent.Modules.ModuleBuilder.Kotlin/Api/KotlinFileTemplateModel.cs" deviationsHash="51A2CF4A7379117F682B262220D7BA41F27CCB9F3D566F078285BA64746685F6" />
+  <file path="../Intent.Modules.ModuleBuilder.Kotlin/ApiMetadataProviderExtensions.cs" />
+  <file path="../Intent.Modules.ModuleBuilder.Kotlin/Intent.ModuleBuilder.Kotlin.imodspec" />
+  <file path="../Intent.Modules.ModuleBuilder.Kotlin/Intent.Modules.ModuleBuilder.Kotlin.csproj" />
+  <file path="../Intent.Modules.ModuleBuilder.Kotlin/Templates/KotlinFile/KotlinFileTemplatePartial.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" />
+  <file path="../Intent.Modules.ModuleBuilder.Kotlin/Templates/KotlinFile/KotlinFileTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" />
+  <file path="../Intent.Modules.ModuleBuilder.Kotlin/Templates/KotlinFileTemplatePartial/KotlinFileTemplatePartialTemplate.cs" />
+  <file path="../Intent.Modules.ModuleBuilder.Kotlin/Templates/KotlinFileTemplatePartial/KotlinFileTemplatePartialTemplate.tt" />
+  <file path="../Intent.Modules.ModuleBuilder.Kotlin/Templates/KotlinFileTemplatePartial/KotlinFileTemplatePartialTemplatePartial.cs" deviationsHash="765EE0352CC3D03ACD227C4DF7BD16DA81102EDFF0F14D206353704112520913" />
+  <file path="../Intent.Modules.ModuleBuilder.Kotlin/Templates/KotlinFileTemplatePartial/KotlinFileTemplatePartialTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" />
+  <file path="../Intent.Modules.ModuleBuilder.Kotlin/Templates/TemplateExtensions.cs" deviationsHash="B7203BFB9686F060DB0ACAA7C53E52041597E3DB8BC78F5BAE12E1FBA6835020" />
+  <file path="../Intent.Modules.ModuleBuilder.Kotlin/modelers/Kotlin Types.designer.settings" />
+  <file path="../Intent.Modules.sln" />
+</managedFiles>

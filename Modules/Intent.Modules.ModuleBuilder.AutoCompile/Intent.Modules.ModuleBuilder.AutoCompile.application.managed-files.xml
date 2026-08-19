@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="7f521a90-df6d-409e-b3a4-ff4dc8ef9c45">
+  <file path="../.agents/instructions/csharp-guidelines.md" />
+  <file path="../Intent.Modules.sln" />
+  <file path="FactoryExtensions/AutoCompileFactoryExtension.cs" deviationsHash="F8E0CFEF8D458392948DF222FBA0F43B2230D072D840BDDE3D03FF4357E59C6C" />
+  <file path="Intent.ModuleBuilder.AutoCompile.imodspec" />
+  <file path="Intent.Modules.ModuleBuilder.AutoCompile.csproj" />
+</managedFiles>

@@ -4,7 +4,7 @@
   <FileLogs>
     <FileLog>
       <ProjectId>c4b18797-c415-4681-8169-7abc54bcab08</ProjectId>
-      <CorrelationId>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration#csharp-guidelines.md</CorrelationId>
+      <CorrelationId>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration#c4b18797-c415-4681-8169-7abc54bcab08#csharp-guidelines.md</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../.agents/instructions/csharp-guidelines.md</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>csharp-guidelines.md</ProjectRelativeFilePath>

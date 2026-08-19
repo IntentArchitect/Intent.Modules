@@ -4,10 +4,18 @@
   <FileLogs>
     <FileLog>
       <ProjectId>42317c90-af5c-4041-aa8d-fe6e855564d0</ProjectId>
-      <CorrelationId>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration#csharp-guidelines.md</CorrelationId>
+      <CorrelationId>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration#42317c90-af5c-4041-aa8d-fe6e855564d0#csharp-guidelines.md</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../.agents/instructions/csharp-guidelines.md</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>csharp-guidelines.md</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>42317c90-af5c-4041-aa8d-fe6e855564d0</ProjectId>
+      <CorrelationId>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration#readme.txt</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>../.agents/instructions/readme.txt</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>readme.txt</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

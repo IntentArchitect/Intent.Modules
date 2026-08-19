@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="4e2487dd-3fec-4611-95fb-d49687929743">
+  <file path="../.agents/instructions/csharp-guidelines.md" />
+  <file path="../Intent.Modules.sln" />
+  <file path="Api/Extensions/TypescriptFileTemplateModelStereotypeExtensions.cs" />
+  <file path="Api/FolderExtensionModel.cs" />
+  <file path="Api/PackageExtensionModel.cs" />
+  <file path="Api/TypescriptFileTemplateModel.cs" />
+  <file path="ApiMetadataProviderExtensions.cs" />
+  <file path="Intent.ModuleBuilder.TypeScript.imodspec" />
+  <file path="Intent.Modules.ModuleBuilder.TypeScript.csproj" />
+  <file path="Templates/TemplateExtensions.cs" />
+  <file path="Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplatePartial.cs" deviationsHash="3EE1C71C2BD1D0600BF918A6080078F5C2F0AB683880C7E8C95BCB1DF31355BC" />
+  <file path="Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplateRegistration.cs" />
+  <file path="Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplate.cs" />
+  <file path="Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplatePartial.cs" />
+  <file path="Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplateRegistration.cs" />
+  <file path="Templates/TypescriptTemplateT4/TypescriptTemplateT4TemplatePartial.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" />
+  <file path="Templates/TypescriptTemplateT4/TypescriptTemplateT4TemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" />
+  <file path="modelers/Typescript.designer.settings" />
+</managedFiles>

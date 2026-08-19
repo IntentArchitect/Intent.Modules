@@ -2,9 +2,6 @@
 <managedFiles version="1" applicationId="a415ef85-982f-4a87-a356-ddcb8ef34446">
   <file path="../.agents/instructions/csharp-guidelines.md" />
   <file path="../Intent.Modules.sln" />
-  <file path="../ModuleBuilder/Intent.Modules.ModuleBuilder/Templates/Api/ApiElementModel/ApiElementModelTemplate.cs" />
-  <file path="../ModuleBuilder/Intent.Modules.ModuleBuilder/Templates/Api/ApiElementModel/ApiElementModelTemplate.tt" />
-  <file path="../ModuleBuilder/Intent.Modules.ModuleBuilder/release-notes.md" />
   <file path="Api/AcceptedChildTypesModel.cs" deviationsHash="352A27B929021F19CAEBCCBDBA8971CB6A18F3E8D8B2E93800677FEC7F356AC5" />
   <file path="Api/AcceptedTraitsModel.cs" />
   <file path="Api/AcceptedTypeModel.cs" />
@@ -134,9 +131,6 @@
   <file path="FactoryExtensions/CheckSdkClientVersionRequirement.cs" />
   <file path="Intent.ModuleBuilder.imodspec" />
   <file path="Intent.Modules.ModuleBuilder.csproj" />
-  <file path="Intent.Modules.ModuleBuilder/Templates/Api/ApiElementModel/ApiElementModelTemplate.cs" />
-  <file path="Intent.Modules.ModuleBuilder/Templates/Api/ApiElementModel/ApiElementModelTemplate.tt" />
-  <file path="Intent.Modules.ModuleBuilder/release-notes.md" />
   <file path="Settings/ModuleSettingsExtensions.cs" />
   <file path="Tasks/IModSpecChecker.cs" />
   <file path="Tasks/ReleaseNoteUpdater.cs" />

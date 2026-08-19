@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deviationsLog>
+  <files />
+  <customFiles>
+    <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.AI.SDD/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-19T16:46:19.7053863Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.AI.SDD/.gitignore</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-19T16:46:19.719999Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.AI.SDD/CONTEXT.md</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-19T16:46:19.7291575Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.AI.SDD/docs/README.md</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-19T16:46:19.7411207Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.AI.SDD/Intent.Metadata/Codebase Structure/Codebase Structure.designer.config</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-19T16:46:19.7538421Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.AI.SDD/Intent.Metadata/Module Builder/Module Builder.designer.config</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-19T16:46:19.7643287Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.AI.SDD/tasks.json</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-19T16:46:19.7781727Z</approvedAt>
+    </customFile>
+  </customFiles>
+</deviationsLog>

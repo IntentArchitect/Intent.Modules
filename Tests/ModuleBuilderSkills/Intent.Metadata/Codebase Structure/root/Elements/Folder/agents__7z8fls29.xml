@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="45d96973-ff59-41c7-acd9-b71e1cccdeb5" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>agents</name>
+  <display>agents</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>2f047ddb-1e21-489e-b875-b42f9e275aa3</parentFolderId>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="63584938-190a-479a-8203-2870f9f00286" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.SDD.Agents.BuildModuleSddMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.SDD.Agents.BuildModuleSddMd_Agents</display>
+      <externalReference>Intent.ModuleBuilder.AI.SDD</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>45d96973-ff59-41c7-acd9-b71e1cccdeb5</parentFolderId>
+      <stereotypes />
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

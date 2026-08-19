@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="355da3b4-406d-43fb-9d84-cc49aad1fec8">
+  <file path="../.agents/instructions/csharp-guidelines.md" />
   <file path="../Intent.Modules.sln" />
-  <file path=".agents/instructions/csharp-guidelines.md" />
-  <file path=".agents/instructions/readme.txt" />
   <file path="Intent.ModuleBuilder.AI.Workflow.imodspec" />
   <file path="Intent.Modules.ModuleBuilder.AI.Workflow.csproj" />
   <file path="Settings/ModuleSettingsExtensions.cs" />

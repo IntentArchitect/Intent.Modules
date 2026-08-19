@@ -7,7 +7,7 @@
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>a5c7f2eb-b764-411a-9a36-f3120b246a26</parentFolderId>
+  <parentFolderId>e7e85d16-a918-4f40-a034-fd084dba00e7</parentFolderId>
   <packageId>78bde30c-efb1-40e3-80ff-180158c4f29a</packageId>
   <packageName>root</packageName>
   <stereotypes>
@@ -24,7 +24,7 @@
         <property name="9da51e12-529a-4592-9119-491d7bc9d5d5" display="Azure Functions Version" isActive="true" />
         <property name="e1cab7e9-28f1-4e82-8c02-bfb9e460d9e0" display="Target Multiple Frameworks" value="false" isActive="true" />
         <property name="d53ab03c-90cf-4b6a-b733-73b6983ab603" display="Target Framework" value="f8b1618d-1e64-4c2c-9787-e0725c3633a1" isActive="true" />
-        <property name="b9685057-b337-42d8-9536-d0185ea69b73" display="Target Frameworks" value="" isActive="false" />
+        <property name="b9685057-b337-42d8-9536-d0185ea69b73" display="Target Frameworks" value="null" isActive="false" />
         <property name="c9fc7052-9557-4485-a759-fa33363472b3" display="Configurations" isActive="true" />
         <property name="c27f8813-bee4-4289-81e5-570e755a8f30" display="Root Namespace" isActive="true" />
         <property name="a6660df2-6016-40c6-8453-8e5993f407c9" display="User Secrets Id" isActive="true" />

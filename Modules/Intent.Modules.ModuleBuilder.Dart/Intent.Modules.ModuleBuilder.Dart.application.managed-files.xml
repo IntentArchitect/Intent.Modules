@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="9d8529f0-1571-4889-aeba-df2b4497716b">
+  <file path="../.agents/instructions/csharp-guidelines.md" />
+  <file path="../Intent.Modules.sln" />
+  <file path="Api/DartFileTemplateModel.cs" />
+  <file path="Api/DartFileTemplateModelStereotypeExtensions.cs" />
+  <file path="Api/FolderExtensionModel.cs" />
+  <file path="Api/PackageExtensionModel.cs" />
+  <file path="ApiMetadataProviderExtensions.cs" />
+  <file path="Intent.ModuleBuilder.Dart.imodspec" />
+  <file path="Intent.Modules.ModuleBuilder.Dart.csproj" />
+  <file path="Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplate.cs" />
+  <file path="Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplate.tt" />
+  <file path="Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplatePartial.cs" />
+  <file path="Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplateRegistration.cs" />
+  <file path="Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplate.cs" />
+  <file path="Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplate.tt" />
+  <file path="Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplatePartial.cs" deviationsHash="60C764D157DE6351633AC5B6183CB86D84971A8A9FE0498F1A17BE8CAAE3317F" />
+  <file path="Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" />
+  <file path="Templates/DartFileTemplateT4/DartFileTemplateT4TemplatePartial.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" />
+  <file path="Templates/DartFileTemplateT4/DartFileTemplateT4TemplateRegistration.cs" />
+  <file path="Templates/TemplateExtensions.cs" />
+  <file path="modelers/Dart.designer.settings" />
+</managedFiles>

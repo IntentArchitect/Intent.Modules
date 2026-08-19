@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="c5d9d6eb-8953-4b30-8e4d-a8d2890d31b4">
+  <file path="../.agents/instructions/csharp-guidelines.md" />
+  <file path="../Intent.Modules.sln" />
+  <file path="Api/FolderExtensionModel.cs" deviationsHash="293D35CE05B204B67A844243ED481139AF37FFA0069D785A2217D68584323341" />
+  <file path="Api/IntentModuleExtensionModel.cs" />
+  <file path="Api/SqlTemplateModel.cs" deviationsHash="063BE197FB7ED026CBC092169796D8C127BEA8900EA7B5B920E0A194E8BCF9D3" />
+  <file path="ApiMetadataProviderExtensions.cs" />
+  <file path="Intent.ModuleBuilder.Sql.imodspec" />
+  <file path="Intent.Modules.ModuleBuilder.Sql.csproj" />
+  <file path="Templates/SqlFile/SqlFileTemplatePartial.cs" deviationsHash="C122702DECAF4237BA83B4D9E0C22FA9E0D107112DAADDF3FC26C019D78EB4A8" />
+  <file path="Templates/SqlFile/SqlFileTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" />
+  <file path="Templates/SqlFileTemplatePartial/SqlFileTemplatePartialTemplate.cs" />
+  <file path="Templates/SqlFileTemplatePartial/SqlFileTemplatePartialTemplate.tt" />
+  <file path="Templates/SqlFileTemplatePartial/SqlFileTemplatePartialTemplatePartial.cs" deviationsHash="310F1AD173A8F75D34686B4D0C0D4B206E855BCA3AD0FAAB0DB4091E1D39130E" />
+  <file path="Templates/SqlFileTemplatePartial/SqlFileTemplatePartialTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" />
+  <file path="Templates/TemplateExtensions.cs" deviationsHash="B7203BFB9686F060DB0ACAA7C53E52041597E3DB8BC78F5BAE12E1FBA6835020" />
+  <file path="modelers/Sql Extension.designer.settings" />
+</managedFiles>

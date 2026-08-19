@@ -72,4 +72,12 @@
       <fileHash>B7326D28F1EF549DA9E85FEC2DEBC29DDE6D0B527C5010431147F95242DD64AF</fileHash>
     </file>
   </files>
+  <customFiles>
+    <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.Html/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-19T16:46:19.8246556Z</approvedAt>
+    </customFile>
+  </customFiles>
 </deviationsLog>
