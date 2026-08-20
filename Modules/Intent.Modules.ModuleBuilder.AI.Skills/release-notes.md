@@ -8,6 +8,8 @@
 - Improvement: `file-builder-expert` now frames metadata as having two uses — your own cross-step state, and reading the designer model the host template already attached — instead of only the former.
 - Improvement: Every skill's `description` frontmatter rewritten to a strict Capability / `USE ONLY WHEN` / `DO NOT USE FOR` / `REQUIRES` contract, so an AI harness can route to the right skill from that line alone, without opening its body.
 - Fixed: `module-docs` and `module-svg-icon` used a `description` value spanning multiple physical lines, which this project's frontmatter parser silently drops to an empty value — both rewritten as single-line quoted strings.
+- New Feature: Added `add-module-migration` skill for authoring Version, On-Install, and On-Uninstall migrations that programmatically update a consumer's already-installed metadata.
+- Fixed: Bundled skill files now generate flat under `Skills/` instead of a `Skills/{SkillName}/` subfolder; a Version Migration bundled with this update moves already-installed applications onto the flat layout, including ones with multiple root folders (e.g. `.agents`, `.claude`).
 
 ### Version 1.0.0
 
