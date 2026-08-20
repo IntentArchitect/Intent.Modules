@@ -37,6 +37,14 @@ model dependency for consumers, and no settings gating which skills are included
   for it) keeps output consistent with the existing module gallery instead of reinventing a style
   per module.
 
+- **Never edit a `...TemplatePartial.cs` markdown raw string with Intent's `patch_file`.** The tool
+  auto-adjusts indentation to the surrounding C#, and because the markdown lives inside a raw string
+  literal at column 0 it re-indents the *entire* string to the constructor's nesting level and
+  flattens the relative indentation inside every fenced code sample. The damage is whole-file, not
+  local to the patch, and it is silent — the tool reports success and only a non-zero `indentDelta`
+  in the result hints at it. Use a plain text editor that does no reformatting. This was hit and
+  reverted while adding the cross-module-integration content in 1.0.1-pre.1.
+
 ## Invariants & Constraints
 
 - Every skill folder under `Skills/` is a `Folder` (`Folder Options` stereotype, Namespace

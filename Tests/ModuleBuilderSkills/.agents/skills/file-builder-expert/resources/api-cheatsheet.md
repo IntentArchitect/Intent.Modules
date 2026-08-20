@@ -1,5 +1,5 @@
 ---
-contentHash: EE5A9373034A2A30D661325586FFD3EE89730E93B9CD5B25E832623A39BB8102
+contentHash: 1FEFA966CD90A56FB06214EE65316BF44CFA9D06AE386CEB29EDC94C948CF30F
 ---
 # File Builder API Cheatsheet
 
@@ -319,7 +319,14 @@ method.AddParameter("string", "x", p => p.WithXmlDocComment("The x value."));
 @class.Static(); @class.Abstract(); @class.Partial();
 method.Virtual(); method.Override(); method.Abstract();
 
-// METADATA (guard all reads — never call GetMetadata without HasMetadata / TryGetMetadata):
-node.AddMetadata("key", value);
+// METADATA — TWO uses (guard all reads; never GetMetadata without HasMetadata / TryGetMetadata):
+// 1. YOUR OWN cross-step state — set in one callback, read back in a later one:
+node.AddMetadata("key", value);              // throws if that key is already present
 if (node.TryGetMetadata<bool>("key", out var v) && v) { /* use v */ }
+// 2. THE DESIGNER MODEL the host template already attached — a node generated from a
+//    modelled element is stamped with that element under the well-known key "model":
+if (method.TryGetMetadata<IOperationModel>("model", out var op)) { /* op = designer element */ }
+// Classes, methods, properties and parameters each carry their own. This is how you tell
+// which designer element a generated member came from — never match on names.
+// See intent-module-orchestrator § "The Model Bridge".
 ```

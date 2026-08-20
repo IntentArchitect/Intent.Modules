@@ -56,6 +56,7 @@ argument-hint: "[source file] [target template name]"
     method.AddStatement($"// TODO: Implement {method.Name} ({@class.Name}) functionality");
     method.AddStatement("""throw new NotImplementedException("Your implementation here...");""");
     ```
+12. **Metadata has two uses — know both.** (a) **Your own cross-step state:** `node.AddMetadata("key", value)` in one callback, read back in a later one. (b) **Reading the designer model the host template already attached:** a node generated from a modelled element is stamped with that element under the well-known key `"model"`, so `method.TryGetMetadata<TModel>("model", out var m)` tells you which designer element a generated member came from — classes, methods, properties and parameters each carry their own. Guard every read (`GetMetadata` throws on an absent key; `AddMetadata` throws on a duplicate one). See `intent-module-orchestrator` § "The Model Bridge".
 
 ## Must Nots
 1. Never emit structural C# as raw strings outside the fluent API.

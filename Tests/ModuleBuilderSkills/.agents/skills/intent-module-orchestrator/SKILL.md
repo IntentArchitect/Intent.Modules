@@ -2,7 +2,7 @@
 name: intent-module-orchestrator
 description: Wire cross-module logic, DI/appsettings events, priority bands, and template lookups.
 argument-hint: "[event type | factory extension scenario] [target template role or id]"
-contentHash: 737F5CB160613DA4B1276723597487FDEB73D4CFDDF886E1B72224FD8F542C4E
+contentHash: BF95BFB251F70B7C4DB653E06E61727869FA4864FAB8A3EA2DBEDD75E57EB1B0
 ---
 # Intent Module Orchestrator
 
@@ -13,17 +13,22 @@ contentHash: 737F5CB160613DA4B1276723597487FDEB73D4CFDDF886E1B72224FD8F542C4E
 
 ## Musts
 
-1. **Safe Resolution:** Prefer Role-based lookup via `TemplateRoles.*`. Guard templates (use `?.` or check null) before accessing `CSharpFile`.
+1. **Safe Resolution:** Prefer Role-based lookup via `TemplateRoles.*`. Guard templates (use `?.` or check null) before accessing `CSharpFile`. For an **optional** integration — enrich only if another module happens to be installed — resolve its type with `TryGetTypeName(templateId, out var typeName)` and skip silently when it returns `false`. `GetTypeName(...)` is the non-optional form and presumes the target is present.
 2. **Callbacks:** Use `TryGetModel<T>` to verify model shape; use `TryGetTemplate(...)` for multi-fallback chains.
-3. **DI/Config Events:** Publish `ContainerRegistrationRequest` / `AppSettingRegistrationRequest` from `OnBeforeTemplateExecution` (never from `OnAfterTemplateRegistrations`).
-4. **Dependencies:** Declare with `.HasDependency(...)`. Set `ForConcern` for specific startup target files.
-5. **Priority Bands:** Pass explicit priorities to `AfterBuild` (e.g. 0=Core, 100=Enrichment, 500=Extension, 1000=Final).
-6. **Startup DSL:** Use `IAppStartupFile` DSL (e.g., `AddServiceConfiguration`) over manual `FindMethod` edits.
-7. **Broker Filter:** Filter event subscriptions using `.FilterMessagesForThisMessageBroker(ExecutionContext, ...)` (pass `ExecutionContext`).
-8. **NuGet Packaging:** Dispatch modules do not need to install target NuGets if the core module already does.
+3. **Shape vs Wire:** Use **FileBuilder mutation** when shaping a generated type; use **request-publishing** when wiring into host infrastructure (DI, startup, app settings, connection strings). Request-publishing is not legacy — the host template owns lifetime mapping, `using` injection and de-duplication, and only it knows which startup shape it is generating.
+4. **DI/Config Events:** Publish `ContainerRegistrationRequest` (register a type), `ServiceConfigurationRequest` (a `Services.AddX()` call), `ApplicationBuilderRegistrationRequest` (an `app.UseX()` middleware call), `AppSettingRegistrationRequest` and `ConnectionStringRegistrationRequest` from `OnBeforeTemplateExecution` (never from `OnAfterTemplateRegistrations`).
+5. **The Model Bridge:** To answer *"which designer element is this generated node?"*, read the model the host template stamped onto it — `node.TryGetMetadata<TModel>("model", out var model)`. Methods, parameters and properties each carry their own. Always `TryGetMetadata`, never `GetMetadata` — the key is a host-template convention, not a framework guarantee.
+6. **Dependencies:** Declare with `.HasDependency(...)`. Set `ForConcern` for specific startup target files.
+7. **Two-Tier Module Dependency:** Role-string lookup through a generic interface (`ICSharpFileBuilderTemplate`) needs **no** dependency on the target module in your `.imodspec`. Reading that module's **typed model interfaces** does — declare it and accept the version coupling. Decide which tier you need before you start.
+8. **Priority Bands:** Pass explicit priorities to `AfterBuild` (e.g. 0=Core, 100=Enrichment, 500=Extension, 1000=Final).
+9. **Startup DSL:** Use `IAppStartupFile` DSL (e.g., `AddServiceConfiguration`) over manual `FindMethod` edits.
+10. **Broker Filter:** Filter event subscriptions using `.FilterMessagesForThisMessageBroker(ExecutionContext, ...)` (pass `ExecutionContext`).
+11. **NuGet Packaging:** Dispatch modules do not need to install target NuGets if the core module already does.
 
 ## Must Nots
 
 1. Never use Regex to modify `Program.cs` or `appsettings.json`.
 2. Never publish registration requests from `OnAfterTemplateRegistrations`.
 3. Never call `AddAppConfigurationLambda("UseEndpoints", ...)`; use `AddUseEndpointsStatement` instead.
+4. Never correlate a generated member with a designer element by **matching names**. It is fragile — names are transformed, de-duplicated and overloaded — and unnecessary; read the `"model"` metadata instead.
+5. Never take a hard module dependency purely to enrich another module's output. If role-string lookup gets you there, stay at Tier 1.
