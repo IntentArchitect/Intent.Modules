@@ -10,5 +10,8 @@
     <application id="1d074d2f-3b07-4f9d-89e4-f236a68278bd" name="ModuleBuilder.AI.Skills" solutionFolder="Modules" relativePath="Intent.Modules.ModuleBuilder.AI.Skills/Intent.Modules.ModuleBuilder.AI.Skills.application.config" />
     <application id="fcb00a56-0c79-4c8f-b1ed-558727e509fe" name="ModuleBuilderSkills" solutionFolder="Tests" relativePath="../Tests/ModuleBuilderSkills/ModuleBuilderSkills.application.config" />
     <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" name="ModuleBuilder" solutionFolder="Modules" relativePath="Intent.Modules.ModuleBuilder/ModuleBuilder.application.config" />
+    <application id="355da3b4-406d-43fb-9d84-cc49aad1fec8" name="ModuleBuilder.AI.Workflow" solutionFolder="Modules" relativePath="Intent.Modules.ModuleBuilder.AI.Workflow/Intent.Modules.ModuleBuilder.AI.Workflow.application.config" />
+    <application id="4a83ad82-f5c3-4456-80a0-996e1b0423e2" name="ModuleBuilder.AI.SDD" solutionFolder="Modules" relativePath="Intent.Modules.ModuleBuilder.AI.SDD/Intent.Modules.ModuleBuilder.AI.SDD.application.config" />
+    <application id="56c42b2b-0973-424b-ae40-2b32c7aa840c" name="ModuleBuilderAiSkills" solutionFolder="AI Skills" relativePath="ModuleBuilderAiSkills/ModuleBuilderAiSkills.application.config" />
   </applications>
 </solution>
