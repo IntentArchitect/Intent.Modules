@@ -1,6 +1,6 @@
 ---
 name: add-module-skill-template
-description: "Build and maintain a module whose purpose is to distribute skill files (skills, instructions, or an agent definition) to a consuming solution through Intent Architect's normal code-generation pipeline, instead of hand-copying files into a repo. Covers the shared plumbing (Folder+FileTemplate shape, MarkdownFileBuilder, Mode.Ignore, Role/anchor routing), scaffolding a brand-new module, and the ongoing lifecycle of editing, renaming, or removing already-shipped files. Use before creating such a module, adding a new file to distribute, or changing/removing one already shipped."
+description: "Set up the MD template (Folder+File Template, MarkdownFileBuilder, frontmatter) for a new instruction or skill file to be generated and distributed by an Intent Architect module, or maintain one already shipped this way. USE ONLY WHEN adding, editing, renaming, or removing an instruction/skill file distributed by a ModuleBuilder.AI.* module. DO NOT USE FOR any other skill implementation — only for skills/instructions generated via an Intent module's code-generation pipeline, never one authored directly in a consumer's .agents folder, and never for an unrelated module change such as a version bump (see module-versioning). REQUIRES the target ModuleBuilder.AI.* module's Module Builder designer already open."
 keywords: [skill-files, code-generation, module-builder, distribution, anchors, mode-ignore, frontmatter]
 ---
 # Skill: add-module-skill-template
@@ -71,6 +71,56 @@ module, adding a new file to an existing one, and maintaining files that are alr
      `---` may be real frontmatter delimiters — any other horizontal rule in the body **must** use
      `===` (or another non-`---` marker), or the content between them is silently dropped.
 
+## Writing the Skill's `description` Frontmatter
+
+When the file being distributed is itself a **skill** (`Role=AI.Context.Skills`), its `description`
+is a **semantic router**, not a summary: it's the *only* thing a consuming AI harness reads before
+deciding whether to load the skill at all — the body isn't consulted until that decision is already
+made. Its job is to prevent false-positive invocations, not to read well. Get it right before
+shipping — once a consumer has adopted the skill on the strength of its description, tightening it
+later is a version bump, not a free edit.
+
+Every `description` **must** contain these four parts, in order, and nothing else:
+
+- **Capability** — an objective, third-person statement of the exact action the skill performs.
+  Not a category label ("Skill for module distribution") — the actual deliverable.
+- **`USE ONLY WHEN`** — the precise triggers, requests, or contexts that call for this skill.
+- **`DO NOT USE FOR`** — the adjacent or easily-confused tasks that must bypass it instead (e.g.
+  distinguishing read-only analysis from a mutation, or a broad question from this specific
+  workflow). Name the real neighboring skill/tool if one exists.
+- **`REQUIRES`** — mandatory inputs, context, or tools that must already be in place before this
+  skill runs. Omit this part entirely if there is genuinely no prerequisite — don't write a
+  placeholder just to keep the shape.
+
+Forbidden, no exceptions: first-person phrasing ("I can help you..."), vague verbs ("assists
+with", "supercharges", "handles"), and open-ended catch-alls. Write only what changes the routing
+decision — nothing added for polish, and nothing restating the skill's name or body.
+
+**Parser constraint — this determines the physical shape, read before drafting.** Mechanism step 7
+above already documents that this project's frontmatter parser only understands flat, single-line
+`key: value` pairs; anything spanning multiple physical lines (a YAML list, or a `>`/`|` block
+scalar) silently parses to an empty value with no error. So the four parts go on **one physical
+line inside a single quoted string** — not the multi-line block-scalar shape a generic YAML
+contract might suggest:
+
+```yaml
+description: "[Capability, 3rd-person]. USE ONLY WHEN [explicit triggers]. DO NOT USE FOR [adjacent/out-of-scope tasks]. REQUIRES [mandatory inputs — omit this sentence if there are none]."
+```
+
+If a distributed file's frontmatter genuinely needs a multi-line value, don't hand-write it into
+the raw string — apply the same workaround as the `tools:` list trap: let `.FromMarkdown(...)`
+parse normally, then overwrite with `.WithFrontMatter(fm => fm.Set("description", "...\n..."))`
+after the fact.
+
+Good vs. bad, for a skill that adds validation rules to a designer element:
+
+- Bad: `"Assists with validation stuff for modules."` — vague verb, no triggers, no boundary.
+- Good: `"Add or change a validation rule attached to a Module Builder element so it surfaces as a
+  designer error before code generation. USE ONLY WHEN a property or association needs a required,
+  uniqueness, or format check enforced at design time. DO NOT USE FOR runtime/business-rule
+  validation in generated application code — that's modelled separately per target framework.
+  REQUIRES the target element to already exist in the designer."`
+
 ## Creating a New Distributed File
 
 Whether it's a whole new module or one more file distributed from an existing one:
@@ -89,6 +139,10 @@ Whether it's a whole new module or one more file distributed from an existing on
       inserting an underscore) — treat the post-apply name as canonical; don't fight it by renaming
       back.
 - [ ] Content authored directly in the constructor as a raw string, with `Body = Mode.Ignore`.
+- [ ] **If distributing a skill** (`Role=AI.Context.Skills`): its `description` written to the
+      four-part contract in [Writing the Skill's `description` Frontmatter](#writing-the-skills-description-frontmatter)
+      (Capability / `USE ONLY WHEN` / `DO NOT USE FOR` / `REQUIRES`) — checked against the good/bad
+      example there, not just drafted and left.
 
 ## Maintaining an Already-Shipped File
 
