@@ -20,17 +20,20 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleVersioni
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.AI.Skills.Skills.ModuleVersioning_SkillMd_Agents";
 
+        internal const string SkillName = "module-versioning";
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public ModuleVersioning_SkillMd_AgentsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             WithContentHashing = true;
-            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: "module-versioning")
-                .FromMarkdown(""""""
+            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
+                .FromMarkdown($$""""""
                     ---
-                    name: module-versioning
+                    name: {{SkillName}}
                     description: "Set an Intent Architect module's version correctly via the Module Builder model property (never by hand-editing .imodspec), then propagate it to dependents (architecture templates, other modules). USE ONLY WHEN asked to set, release, publish, or bump a module to a specific, already-decided version string. DO NOT USE FOR deciding whether or when a task should bump a version, or which component to bump (see module-version-increment) — this skill only executes a version already supplied. REQUIRES the target version string supplied by the caller; it does not decide or validate what it should be."
                     argument-hint: "[new version, e.g. 1.3.0 or 1.3.0-pre.1]"
                     keywords: [version, versioning, release, imodspec, module settings]
+                    template-id: {{TemplateId}}
                     ---
 
                     # Skill: module-versioning

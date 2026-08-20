@@ -2,7 +2,8 @@
 applyTo: '**'
 description: "Phase-by-phase workflow for any task that builds or changes an Intent Architect module, and which workflow skill each phase calls for."
 keywords: [workflow, module building, phases, version, documentation, context]
-contentHash: 7860303D955962A4F487DADF4FCA365825B7F2BCBC615DFFA13BDF5815A93081
+template-id: Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd
+contentHash: E13644555A473F285B8DA63F96ADE288A30A361C216043D45BD9D0B555A690BD
 ---
 # Module Building Workflow
 
@@ -38,7 +39,7 @@ Load the skill named for the phase you are in.
 | `module-version-increment` | Phase 2 (increment up front) and Phase 4 (confirm) |
 | `module-docs-chore`        | Phase 3 and Phase 4                                |
 
-- --
+===
 
 ## Phase 1 — Understand The Task And What It Touches
 
@@ -60,7 +61,7 @@ resolved by you.
 
 task.
 
-- --
+===
 
 ## Phase 2 — Classify And Plan
 
@@ -116,7 +117,7 @@ Two things will not always go to plan, and neither is a failure:
 
 expect to change has already been incremented.
 
-- --
+===
 
 ## Phase 3 — Implement
 
@@ -156,7 +157,7 @@ later costs far more than writing it at the time.
 
 inspected rather than assumed.
 
-- --
+===
 
 ## Phase 4 — Close Out
 
@@ -186,7 +187,8 @@ Version comes first because the documentation refers to it.
 - [ ] Documentation reflects what shipped
 - [ ] `CONTEXT.md` updated with this change's durable knowledge
 - [ ] Build exits 0, and regenerated output was inspected
-- --
+
+===
 
 ## If A Phase Cannot Be Completed
 

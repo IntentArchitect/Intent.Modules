@@ -26,7 +26,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
       WithContentHashing = true;
       MarkdownFile = new MarkdownFile("designer-extensions-reference", relativeLocation: "add-designer-extension/resources")
         .FromMarkdown(""""""
-          ===
+          ---
           applyTo: '**'
           description: >
           Reference for authoring Intent Architect Module Builder designer extensions:
@@ -35,7 +35,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
           context menu options, JavaScript function contracts, how to find type IDs,
           and the MCP tool sequence for any extension task.
           keywords: [intent architect, module builder, designer extension, element extension, package extension, association, context menu, stereotype, mapping, type id]
-          ===
+          ---
 
           # Module Builder Designer Extensions — Reference
 

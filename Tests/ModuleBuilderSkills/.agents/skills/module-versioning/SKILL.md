@@ -3,7 +3,8 @@ name: module-versioning
 description: "Set an Intent Architect module's version correctly via the Module Builder model property (never by hand-editing .imodspec), then propagate it to dependents (architecture templates, other modules). USE ONLY WHEN asked to set, release, publish, or bump a module to a specific, already-decided version string. DO NOT USE FOR deciding whether or when a task should bump a version, or which component to bump (see module-version-increment) — this skill only executes a version already supplied. REQUIRES the target version string supplied by the caller; it does not decide or validate what it should be."
 argument-hint: "[new version, e.g. 1.3.0 or 1.3.0-pre.1]"
 keywords: [version, versioning, release, imodspec, module settings]
-contentHash: 31368CA2DDA5B2A74248EE8355FE8B8AAD8BE0D171FCE0D13E9AEF1247667318
+template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleVersioning_SkillMd_Agents
+contentHash: EEB88287536B99E4A584FB3D841DC6E3CBE53BE37FA555BA7D1DF1646072CB42
 ---
 # Skill: module-versioning
 
@@ -16,6 +17,7 @@ Factory run. Hand-editing `.imodspec` directly is silently reverted on the next 
 
 1. On the module's package, in the Module Builder designer:
 
+   
    `pkg.ensureStereotype("Module Settings").setProperty("Version", "<supplied version>")`
    (or the designer UI) — never the `.imodspec` file. Use the version exactly as supplied.
 
@@ -32,7 +34,7 @@ Factory run. Hand-editing `.imodspec` directly is silently reverted on the next 
 - **Other modules depending on it** — update their `<dependency id="..." version="...">` entry.
 - **NuGet package alignment** — keep `.csproj` package versions in step with the module version
 
-  to avoid `NU1605` (see known-build-gotchas).
+to avoid `NU1605` (see known-build-gotchas).
 
 ## After Setting the Version
 

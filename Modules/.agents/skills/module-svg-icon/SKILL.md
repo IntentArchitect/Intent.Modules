@@ -3,7 +3,8 @@ name: module-svg-icon
 description: "Craft a house-style SVG icon for a module from a supplied description and apply it as the module's package icon. USE ONLY WHEN asked to create, set, or refresh a module's icon. DO NOT USE FOR deciding or sourcing what the icon should represent — it takes that description exactly as supplied, never invents one. REQUIRES the icon's intended visual description already supplied by the caller."
 argument-hint: "[description of what the icon should visually represent]"
 keywords: [icon, svg, branding, application.config, imodspec, package]
-contentHash: 89B7288141B5DDE842C58776BF5B59E2DB1F02B98105DE272809D8667DA19A10
+template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon_SkillMd_Agents
+contentHash: 7F9DCAAE11B10915604193D004810CB48CAE6FAFB175E4B683143B25058F8B53
 ---
 # Skill: module-svg-icon
 

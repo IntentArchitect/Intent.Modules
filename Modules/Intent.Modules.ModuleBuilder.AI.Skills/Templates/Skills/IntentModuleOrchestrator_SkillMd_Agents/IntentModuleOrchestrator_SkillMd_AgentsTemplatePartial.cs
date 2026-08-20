@@ -20,16 +20,19 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.AI.Skills.Skills.IntentModuleOrchestrator_SkillMd_Agents";
 
+        internal const string SkillName = "intent-module-orchestrator";
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public IntentModuleOrchestrator_SkillMd_AgentsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             WithContentHashing = true;
-            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: "intent-module-orchestrator")
-                .FromMarkdown(""""""
+            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
+                .FromMarkdown($$""""""
                     ---
-                    name: intent-module-orchestrator
+                    name: {{SkillName}}
                     description: "Wire a module's cross-module integration logic — DI/config registration requests, startup DSL calls, priority-banded callbacks, and template Role/TemplateId lookups across module boundaries. USE ONLY WHEN one module's template needs to enrich, depend on, or register infrastructure (DI, appsettings, startup) owned by another module's generated output. DO NOT USE FOR authoring a single template's own C# builder statements (see file-builder-expert) or reading designer metadata off a model (see intent-metadata-consumer). REQUIRES the target module/template's Role or TemplateId already identified."
                     argument-hint: "[event type | factory extension scenario] [target template role or id]"
+                    template-id: {{TemplateId}}
                     ---
 
                     # Intent Module Orchestrator

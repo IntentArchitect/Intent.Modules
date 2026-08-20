@@ -13,6 +13,174 @@
       <approvedAt>2026-08-20T15:59:16.565854Z</approvedAt>
       <deviationsHash>2D4B1947570D0D4481D522C88CF5F9DF75CC99B00461300D6B79CFA785903D9F</deviationsHash>
     </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#8881b920-757a-47c1-a8a5-2204013c3566</correlationId>
+      <path>Templates/Skills/AddAssociationType_SkillMd_Agents/AddAssociationType_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-20T16:25:39.482188Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-20T16:42:12.5616699Z</approvedAt>
+      <deviationsHash>B8E2673BC16357314A9C8C3B9DA5BD585B57CFF30ED8D4593CA18882EAC37138</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#8d62331c-0bad-4bd0-a532-9db22d88a526</correlationId>
+      <path>Templates/Skills/AddDesignerExtension_SkillMd_Agents/AddDesignerExtension_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-20T16:25:39.4822376Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-20T16:42:12.5689293Z</approvedAt>
+      <deviationsHash>B1F693B65F42E44C52BFAFE980D45446ACD92780BE6AFFA98EECEB0A1CFD0E47</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#5cbf547f-bb30-4c65-a795-d15a797cd8d5</correlationId>
+      <path>Templates/Skills/AddModuleMigration_SkillMd_Agents/AddModuleMigration_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-20T16:29:32.1814752Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-20T16:42:12.583495Z</approvedAt>
+      <deviationsHash>79F00D5EABF7BA5B1F340CFB2F9EDD7E5F1267E4001216FBBBC1E3BD845BD0A6</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#b3e99fdd-91d3-4039-ae0b-6b6f24a4902f</correlationId>
+      <path>Templates/Skills/ArchitectureTemplates_SkillMd_Agents/ArchitectureTemplates_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-20T16:25:39.4822592Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-20T16:42:12.5944615Z</approvedAt>
+      <deviationsHash>1707F60C35A6DB44C42AEE01218C521728B362B230B1841EB75C0427485C42E1</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#6674d4fb-1caf-40f8-9f5d-9597b7b03369</correlationId>
+      <path>Templates/Skills/FileBuilderExpert_SkillMd_Agents/FileBuilderExpert_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-20T16:25:39.4823266Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-20T16:42:12.6024612Z</approvedAt>
+      <deviationsHash>09917E800149FA49339C9FC2CB41736ACA42DF6293F4FEBDA4A5D95647F867CA</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#c03952af-f3b9-43a9-9b8a-0f8a06948579</correlationId>
+      <path>Templates/Skills/IntentDomainInteractionsExpert_SkillMd_Agents/IntentDomainInteractionsExpert_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-20T16:25:39.4823466Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-20T16:42:12.6136143Z</approvedAt>
+      <deviationsHash>92B7F85738E621D955152A9985E6DD929EFE72CA264851707DE03C3A122A6F7C</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#049cd7d7-79ff-4298-8631-e360c6acd187</correlationId>
+      <path>Templates/Skills/IntentMappingArchitect_SkillMd_Agents/IntentMappingArchitect_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-20T16:25:39.4823655Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-20T16:42:12.6243125Z</approvedAt>
+      <deviationsHash>EA20255105F82B1BD26C6156A0E51000A8D4F82961A1E8E9F2C786DD82033843</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#fdd04c46-e556-4d52-a179-0a62bf695ba7</correlationId>
+      <path>Templates/Skills/IntentMetadataConsumer_SkillMd_Agents/IntentMetadataConsumer_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-20T16:25:39.4823883Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-20T16:42:12.6329412Z</approvedAt>
+      <deviationsHash>078CAB8777A9A8B455DA250C02521CB5801B4B0A08720E83D87C484D3ECB0645</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#cdce47dc-b039-4b8d-adfe-8717897ef220</correlationId>
+      <path>Templates/Skills/IntentModuleOrchestrator_SkillMd_Agents/IntentModuleOrchestrator_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-20T16:25:39.4824113Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-20T16:42:12.6469447Z</approvedAt>
+      <deviationsHash>E39642965B89027B7834C453FE0256FE7A8C8EC60BB412F1A566AEEE3CF404CA</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#a6e43b6a-d6ba-47c1-996f-09e99d6d45c0</correlationId>
+      <path>Templates/Skills/ModuleBuildingStrategies_SkillMd_Agents/ModuleBuildingStrategies_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-20T16:25:39.4824332Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-20T16:42:12.6618567Z</approvedAt>
+      <deviationsHash>95049F380B82596BE51CF55DC8C7D6C0E079A331879321C20325759367367364</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#0e48d622-5e89-436a-874d-9db4668b34bb</correlationId>
+      <path>Templates/Skills/ModuleDebugging_SkillMd_Agents/ModuleDebugging_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-20T16:25:39.4824463Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-20T16:42:12.6712418Z</approvedAt>
+      <deviationsHash>1487F717CEFF47B527B8679AF58BA92DD59D918477601D0E0F52E6CD1F98F954</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#01a3710a-8195-4ff1-a316-ac2d1f1b0ebe</correlationId>
+      <path>Templates/Skills/ModuleDocs_SkillMd_Agents/ModuleDocs_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-20T16:25:39.482454Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-20T16:42:12.6822447Z</approvedAt>
+      <deviationsHash>942EA5C3A262167D88D66644A28AA418F5030CE96A5326A415E79222205C2575</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#dc151fc9-a548-4e3a-8fbb-8dc349dc22d8</correlationId>
+      <path>Templates/Skills/ModuleSvgIcon_SkillMd_Agents/ModuleSvgIcon_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-20T16:25:39.4824655Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-20T16:42:12.6974899Z</approvedAt>
+      <deviationsHash>2B2C72DBAD4E743EC1C4A2618B478179C9E5CAC3D2227C8F56A5956B92D80752</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#3f29299a-98e5-4874-923f-d9431db3eec9</correlationId>
+      <path>Templates/Skills/ModuleVersioning_SkillMd_Agents/ModuleVersioning_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-20T16:25:39.4824731Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-20T16:42:12.7152101Z</approvedAt>
+      <deviationsHash>87D4E05DB838F3095F0541B7E5B600567CC0A6EB53FEC9CEE1F046CC6FF55A44</deviationsHash>
+    </file>
   </files>
   <customFiles>
     <customFile>

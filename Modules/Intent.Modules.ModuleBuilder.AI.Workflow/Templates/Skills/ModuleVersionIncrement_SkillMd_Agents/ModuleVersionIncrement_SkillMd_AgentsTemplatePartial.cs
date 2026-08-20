@@ -20,6 +20,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleVersio
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.AI.Workflow.Skills.ModuleVersionIncrement_SkillMd_Agents";
 
+        internal const string SkillName = "module-version-increment";
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public ModuleVersionIncrement_SkillMd_AgentsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
@@ -62,12 +64,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleVersio
                 """
                 : "";
 
-            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: "module-version-increment")
+            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
                 .FromMarkdown($$""""""
                     ---
-                    name: module-version-increment
+                    name: {{SkillName}}
                     description: "Increment a module's version (choosing the right component) before implementing a change that touches it, then confirm and propagate to dependents at close-out. USE ONLY WHEN the modules a task will change are known — as soon as that's decided, and again at close-out. DO NOT USE FOR writing the change's documentation (see module-docs-chore) or recording design rationale (see module-context-capture). REQUIRES the set of modules the task will touch already identified."
                     keywords: [version, increment, release, bump, dependents, publish]
+                    template-id: {{TemplateId}}
                     ---
 
                     # Skill: module-version-increment

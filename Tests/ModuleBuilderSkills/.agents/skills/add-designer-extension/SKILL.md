@@ -2,7 +2,8 @@
 name: add-designer-extension
 description: "Add a context-menu-driven element, association-creation, or mapping option to a foreign package, element, or association end via a packageExtension/elementExtension. USE ONLY WHEN extending an element/package/association end owned by another module, not one you own. DO NOT USE FOR defining a brand-new association type from scratch (see add-association-type) or building an architecture template's component picker (see architecture-templates). REQUIRES the foreign target's typeId and designer GUID already identified."
 argument-hint: "[target element/package type name and what to add]"
-contentHash: FF233B6D5329D87F80DF3435337E882C799E3357DF01238EE0555DDCE3A18979
+template-id: Intent.ModuleBuilder.AI.Skills.Skills.AddDesignerExtension_SkillMd_Agents
+contentHash: 59EA8D5CB2C6E78B3D5A43BAAA9EAD7BAA20F8B48796DA9085409FF3F6037D6B
 ---
 # Add Designer Extension
 

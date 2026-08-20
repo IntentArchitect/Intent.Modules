@@ -20,16 +20,19 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentDomainIn
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.AI.Skills.Skills.IntentDomainInteractionsExpert_SkillMd_Agents";
 
+        internal const string SkillName = "intent-domain-interactions-expert";
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public IntentDomainInteractionsExpert_SkillMd_AgentsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             WithContentHashing = true;
-            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: "intent-domain-interactions-expert")
-                .FromMarkdown(""""""
+            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
+                .FromMarkdown($$""""""
                     ---
-                    name: intent-domain-interactions-expert
+                    name: {{SkillName}}
                     description: "Implement an IInteractionStrategy that turns a designer-modelled interaction into its generated C# handler body. USE ONLY WHEN a modelled interaction (e.g. a command/event handler action) needs its C# implementation generated via a matched strategy. DO NOT USE FOR translating a Mapping element specifically (see intent-mapping-architect) or cross-module DI wiring (see intent-module-orchestrator). REQUIRES the strategy registered in a factory extension's OnBeforeTemplateRegistrations, never a template constructor."
                     argument-hint: "[handler template id or role] [interaction kind]"
+                    template-id: {{TemplateId}}
                     ---
 
                     # Intent Domain Interactions Expert

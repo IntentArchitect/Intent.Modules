@@ -3,7 +3,7 @@ applyTo: '**'
 description: >
 Reference for authoring Intent Architect Module Builder designer extensions: 
 keywords: [intent architect, module builder, designer extension, element extension, package extension, association, context menu, stereotype, mapping, type id]
-contentHash: 970EAC985F837D137E431D5D13DB55C44670FAFBA0E444D7A460E0EFA5A86888
+contentHash: 8EDD85C2223C680569BF6322BF83C068A84AA42E4B8B7BF748F907AE6771A2B9
 ---
 # Module Builder Designer Extensions — Reference
 
@@ -18,7 +18,7 @@ Every designer extension lives in two places:
 
 Run the Software Factory on the module to regenerate `.designer.settings` from the model. Direct edits to `.designer.settings` are overwritten on the next SF run.
 
-- --
+===
 
 ## How a Module "Plugs In" to a Foreign Designer
 
@@ -33,7 +33,7 @@ Key foreign designer IDs:
 
 One module can extend multiple foreign designers by having multiple `Designer Settings` nodes, each with a different `Extend Designers` value (e.g., `Domain.Events` extends both Domain and Services in two separate `Designer Settings` nodes).
 
-- --
+===
 
 ## Three Extension Entry Points
 
@@ -60,7 +60,8 @@ Adds context menu options to the **source end** or **target end** of an existing
 Use when: you need new actions available when a user right-clicks a specific end of an association they didn't create — e.g., adding "Publish Integration Event" to the target end of a `Domain Event Handler Association`.
 
 - *Important:** the context menu is placed on the *end* (source/target extension child), not on the association itself.
-- --
+
+===
 
 ## Defining New Types
 
@@ -70,32 +71,32 @@ Creates a brand-new element specialization within your module. Required when you
 
 Key configuration via the `Settings` stereotype:
 
-- `Save Mode` — usually `Default`
-- `Icon` — base64 SVG/PNG
-- `Display Text Function` — JavaScript; controls rendered label (see below)
-- `Allow Rename`, `Name Must Be Unique`, `Allow Sorting`
+  - `Save Mode` — usually `Default`
+  - `Icon` — base64 SVG/PNG
+  - `Display Text Function` — JavaScript; controls rendered label (see below)
+  - `Allow Rename`, `Name Must Be Unique`, `Allow Sorting`
 
 Key configuration via the `Type Reference Settings` stereotype:
 
-- `Mode` — `Disabled` (no type reference), `Required`, `Optional`
-- `Target Types` — array of element type GUIDs this element can reference
+  - `Mode` — `Disabled` (no type reference), `Required`, `Optional`
+  - `Target Types` — array of element type GUIDs this element can reference
 
 ### Association Settings
 
 Creates a new association type with a `Source End` and `Target End`. Each end has its own `Settings` stereotype:
 
-- `Target Types` — array of type GUIDs the end can connect to
-- `Api Property Name` — C# property name on the generated model
-- `Display Text Function` — JavaScript
-- `Name Accessibility` — `Hidden` / `Visible` / `ReadOnly`
-- `Is Navigable/Nullable/Collection Default` — default multiplicity
-- `Allow Multiple` — whether multiple associations of this type are permitted
+  - `Target Types` — array of type GUIDs the end can connect to
+  - `Api Property Name` — C# property name on the generated model
+  - `Display Text Function` — JavaScript
+  - `Name Accessibility` — `Hidden` / `Visible` / `ReadOnly`
+  - `Is Navigable/Nullable/Collection Default` — default multiplicity
+  - `Allow Multiple` — whether multiple associations of this type are permitted
 
 Traits are applied as stereotypes on the target end — e.g., `[Processing Action]`, `[Processing Handler]`. These are how the mapping system and runtime identify the role of each end.
 
 Add a `[context menu]` child under the target end's settings to give users mapping or creation options directly from the association end.
 
-- --
+===
 
 ## Context Menu Options
 
@@ -109,12 +110,13 @@ Inside any context menu (on a package extension, element extension, element sett
 
 All three share these `Option Settings` properties:
 
-- `Shortcut` — keyboard shortcut (e.g., `ctrl + shift + i`)
-- `Default Name` — initial name for the created element
-- `Allow Multiple` — whether more than one can be created
-- `Menu Group` — integer; options with the same group number are visually grouped with a separator between groups
-- `Is Option Visible Function` — JavaScript returning `true`/`false` to conditionally hide the option
-- --
+  - `Shortcut` — keyboard shortcut (e.g., `ctrl + shift + i`)
+  - `Default Name` — initial name for the created element
+  - `Allow Multiple` — whether more than one can be created
+  - `Menu Group` — integer; options with the same group number are visually grouped with a separator between groups
+  - `Is Option Visible Function` — JavaScript returning `true`/`false` to conditionally hide the option
+
+===
 
 ## JavaScript Function Contracts
 
@@ -153,22 +155,24 @@ return element.getAssociations(myAssocTypeId).length == 0;
 ```
 
 - *Element Event Handler scripts** — Lifecycle hooks: `On Created`, `On Name Changed`, `On Property Changed`. Access settings via `application.getSettings(...)`.
-- --
+
+===
 
 ## Mapping Settings
 
 Used to configure how elements from one designer map to elements in another. The top-level `Mapping Settings` node carries:
 
-- `defaultModeler` — target designer GUID
-- `optionsSource` — usually `elements-of-type`
-- `autoSyncTypeReferences` — whether mapped type references stay in sync
+  - `defaultModeler` — target designer GUID
+  - `optionsSource` — usually `elements-of-type`
+  - `autoSyncTypeReferences` — whether mapped type references stay in sync
 
 Child `mapping` nodes describe how each source element type maps to a target type:
 
-- `criteria` — filter by specialization type, whether it has children, a type reference, etc.
-- `mapTo` with `childMappingMode` — `traverse` (walk into children) or `map-to-child` (project to a specific child type)
-- `filterFunction` — optional JavaScript to further restrict mappable elements
-- --
+  - `criteria` — filter by specialization type, whether it has children, a type reference, etc.
+  - `mapTo` with `childMappingMode` — `traverse` (walk into children) or `map-to-child` (project to a specific child type)
+  - `filterFunction` — optional JavaScript to further restrict mappable elements
+
+===
 
 ## Finding Type IDs of Foreign Elements
 
@@ -180,7 +184,7 @@ The most critical prerequisite for any extension is knowing the `typeId` of the 
 
 Never hardcode IDs from memory. Always read them from the live model or generated code.
 
-- --
+===
 
 ## C# API Layer (Generated by Software Factory)
 
@@ -195,7 +199,7 @@ Every new element/association type in your module generates corresponding C# in 
 
 Element and association *extensions* (not definitions) do not generate a dedicated model class — they appear only in `.designer.settings`.
 
-- --
+===
 
 ## MCP Tool Sequence for Any Extension Task
 

@@ -2,7 +2,8 @@
 name: module-version-increment
 description: "Increment a module's version (choosing the right component) before implementing a change that touches it, then confirm and propagate to dependents at close-out. USE ONLY WHEN the modules a task will change are known — as soon as that's decided, and again at close-out. DO NOT USE FOR writing the change's documentation (see module-docs-chore) or recording design rationale (see module-context-capture). REQUIRES the set of modules the task will touch already identified."
 keywords: [version, increment, release, bump, dependents, publish]
-contentHash: 764090D191FD770F0C12F3FE038C13F68B6625B642064FD09437E4DEA373F95B
+template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleVersionIncrement_SkillMd_Agents
+contentHash: 24AE7E4A09ED82E2DA06B55789177390695046A588A7CF4C6F07B9F7A593E0BF
 ---
 # Skill: module-version-increment
 
@@ -32,7 +33,7 @@ Act only in these cases:
 - **A module was changed that you did not anticipate** — increment it now.
 - **The impact turned out larger than assumed** — a change planned as minor breaks existing output.
 
-  Raise the component. Correcting a version that has not been published is not a second increment.
+Raise the component. Correcting a version that has not been published is not a second increment.
 
 - **A dependent needs to move** — see *Move The Dependents Too* below.
 
@@ -89,21 +90,21 @@ Work down this list and stop at the first step that answers:
 
 1. **The task's own notes or plan.** If they record that this module was already incremented for this
 
-   work, it is done. Leave it.
+work, it is done. Leave it.
 
 2. **Version control.** Compare the module's current version against the same file where the branch
 
-   diverged. If the version has already changed in this branch or working tree, it has already been
-   moved for this work.
+diverged. If the version has already changed in this branch or working tree, it has already been
+moved for this work.
 
 3. **The module's release notes.** If the module keeps them and there is already an entry for the
 
-   current version, that version is in flight and already accounts for your change.
+current version, that version is in flight and already accounts for your change.
 
 4. **Ask.** If nothing above answers it, ask the developer whether the current version has been
 
-   published. Take the answer as given, note it with the task's working notes, and do not ask again for
-   that module during this task.
+published. Take the answer as given, note it with the task's working notes, and do not ask again for
+that module during this task.
 
 Once you have moved it, record that you did — that record is step 1 for whoever comes next.
 
@@ -124,20 +125,20 @@ An increment is incomplete if the modules that depend on the change stay behind.
 
 - **Every module whose template or extension code changed needs its own increment** — even when the
 
-  change is "only" narrowing an existing query. To a consumer, a same-version code change is
-  indistinguishable from no change at all.
+change is "only" narrowing an existing query. To a consumer, a same-version code change is
+indistinguishable from no change at all.
 
 - **Shared contracts move together.** When several modules cooperate through a shared string contract
 
-  — a template role name, a well-known key — changing that contract requires a synchronised increment
-  on **every** module that reads *or* writes it, not just the one that motivated the change. A
-  consumer left behind silently stops matching, which is worse than the behaviour before the change.
+— a template role name, a well-known key — changing that contract requires a synchronised increment
+on **every** module that reads *or* writes it, not just the one that motivated the change. A
+consumer left behind silently stops matching, which is worse than the behaviour before the change.
 
 - **Modules that pin this one** need their dependency entry updated.
 - **Consumers that depend on the change's *effect*** are best handled declaratively, by declaring a
 
-  minimum-version floor in the module's own metadata, rather than by reinstalling into each
-  application you happen to know about — that only ever fixes the ones you thought of.
+minimum-version floor in the module's own metadata, rather than by reinstalling into each
+application you happen to know about — that only ever fixes the ones you thought of.
 
 ## Confirm It Is Actually Ahead
 
@@ -164,7 +165,7 @@ is the **higher** of two floors:
 
 1. **The SDK floor** — the minimum client version required by the SDK packages the module references.
 
-   A regeneration failure states this one outright.
+A regeneration failure states this one outright.
 
 2. **The dependency floor** — the highest lower bound across the modules this one depends on.
 

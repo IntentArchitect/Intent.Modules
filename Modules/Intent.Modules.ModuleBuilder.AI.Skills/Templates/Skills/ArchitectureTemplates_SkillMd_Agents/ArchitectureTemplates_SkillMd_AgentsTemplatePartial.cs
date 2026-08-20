@@ -20,15 +20,18 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ArchitectureTe
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.AI.Skills.Skills.ArchitectureTemplates_SkillMd_Agents";
 
+        internal const string SkillName = "architecture-templates";
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public ArchitectureTemplates_SkillMd_AgentsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             WithContentHashing = true;
-            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: "architecture-templates")
-                .FromMarkdown(""""""
+            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
+                .FromMarkdown($$""""""
                     ---
-                    name: architecture-templates
+                    name: {{SkillName}}
                     description: "Build or extend an Architecture Template — the component/module picker shown when creating a new application — and its companion metadata application that pre-seeds new applications with designer content (packages, folders, Output Anchors). USE ONLY WHEN asked to create, extend, or fix an architecture template, or to seed default designer metadata for one. DO NOT USE FOR a 'Module Building' template (a different Template Type that scaffolds a module project, not an app) or day-to-day module development itself (see module-building-strategies). REQUIRES the Intent Application Template Builder designer, in a new Package."
+                    template-id: {{TemplateId}}
                     ---
 
                     # Architecture Templates

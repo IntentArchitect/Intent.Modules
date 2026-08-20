@@ -20,16 +20,19 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_SkillMd_Agents";
 
+        internal const string SkillName = "file-builder-expert";
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public FileBuilderExpert_SkillMd_AgentsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             WithContentHashing = true;
-            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: "file-builder-expert")
-                .FromMarkdown(""""""
+            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
+                .FromMarkdown($$""""""
                     ---
-                    name: file-builder-expert
+                    name: {{SkillName}}
                     description: "Author or fix a C# code-generation template using the Fluent CSharpFile builder API — constructor structure, callback priorities, type resolution, and DI parameter injection. USE ONLY WHEN writing, reviewing, or converting a *TemplatePartial.cs that emits C# via CSharpFile. DO NOT USE FOR templates that build Markdown/text output (see add-module-skill-template) or for designer-model/script changes. REQUIRES the target template's model shape (single-file vs file-per-model) already decided."
                     argument-hint: "[source file] [target template name]"
+                    template-id: {{TemplateId}}
                     ---
 
                     # File Builder Expert

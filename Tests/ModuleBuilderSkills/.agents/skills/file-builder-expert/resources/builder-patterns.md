@@ -1,5 +1,5 @@
 ---
-contentHash: 41D36F83037489FCD87DFD7F63DDA854595344CD1DDC58DDB31183E2594B1D4A
+contentHash: 6DEED1BDAE5C95C7C188E0500DD7458050F64ABD9560BE9556598EE719CDBB21
 ---
 # C# File Builder Cheat Sheet & Patterns
 
@@ -16,14 +16,14 @@ public partial class SampleTemplate : CSharpTemplateBase<object>, ICSharpFileBui
         : base(TemplateId, outputTarget, model)
     {
         CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath(), this)
-            .AddUsing("System")
-            .AddClass("Sample", @class =>
-            {
-                @class.AddConstructor(ctor =>
-                    ctor.AddParameter("string", "value", p => p.IntroduceReadonlyField()));
-                @class.AddMethod("void", "DoWork", method =>
-                    method.AddStatement("// TODO"));
-            });
+        .AddUsing("System")
+        .AddClass("Sample", @class =>
+        {
+            @class.AddConstructor(ctor =>
+                ctor.AddParameter("string", "value", p => p.IntroduceReadonlyField()));
+            @class.AddMethod("void", "DoWork", method =>
+                method.AddStatement("// TODO"));
+        });
     }
 
     [IntentManaged(Mode.Fully)] public CSharpFile CSharpFile { get; }
@@ -56,9 +56,9 @@ CSharpFile = new CSharpFile(...)
     {
         // Single-file template: find the instance, take its namespace
         var handlerInterface = ExecutionContext.FindTemplateInstance<IClassProvider>(
-            "Intent.Eventing.Contracts.IntegrationEventHandlerInterface");
+        "Intent.Eventing.Contracts.IntegrationEventHandlerInterface");
         if (handlerInterface != null)
-            file.AddUsing(handlerInterface.Namespace);
+        file.AddUsing(handlerInterface.Namespace);
 
         // Now safe to use "IIntegrationEventHandler" as a raw type name in statements
     }, 0);
@@ -95,14 +95,14 @@ The key behaviour of `Mode.Ignore` on a **generated output method**:
     var configure = file.Classes.First().FindMethod("Configure");
     foreach (var handler in Model)
     {
-        foreach (var sub in handler.IntegrationEventSubscriptions())
-        {
-            var eventType = GetTypeName("Intent.Eventing.Contracts.IntegrationEventMessage",
-                sub.TypeReference.Element.AsMessageModel()!);
-            configure.AddStatement(
-                $"builder.Event<{eventType}>(\"{handler.Name}\")" +
-                $".HandledBy<OrchestratorEventConsumer<IIntegrationEventHandler<{eventType}>, {eventType}>>();");
-        }
+    foreach (var sub in handler.IntegrationEventSubscriptions())
+    {
+    var eventType = GetTypeName("Intent.Eventing.Contracts.IntegrationEventMessage",
+    sub.TypeReference.Element.AsMessageModel()!);
+    configure.AddStatement(
+    $"builder.Event<{eventType}>(\"{handler.Name}\")" +
+    $".HandledBy<OrchestratorEventConsumer<IIntegrationEventHandler<{eventType}>, {eventType}>>();");
+    }
     }
 }, 0);
 ```
@@ -125,7 +125,7 @@ foreach (var templateDependency in @event.TemplateDependencies)
     var template = GetTemplate<IClassProvider>(templateDependency);
     if (template != null)
     {
-        AddUsing(template.Namespace);
+    AddUsing(template.Namespace);
     }
 }
 

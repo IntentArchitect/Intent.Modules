@@ -1,5 +1,5 @@
 ---
-contentHash: 63482D0C1192A6F7C0779EC11BD174D1C97B834C269295CD55CEFAD66BF3A172
+contentHash: 4970BE9AF2CC691FC9F29882A16538E3552214ABC5E7C1579DAC9AE1DA9D7C46
 ---
 # Intent Metadata Consumer Cheatsheet
 
@@ -17,7 +17,7 @@ contentHash: 63482D0C1192A6F7C0779EC11BD174D1C97B834C269295CD55CEFAD66BF3A172
 | **Enum boolean** | `model.GetXxx().TemplatingMethod().IsT4Template()` | Single-branch guard | `if (model.GetFileSettings().TemplatingMethod().IsT4Template()) { ... }` |
 | **IElement ref** | `model.GetXxx().Provider()` | Type-resolve + conditional code branch | `var providerEl = pkg.GetDocumentDatabase().Provider(); // branch per element SpecializationType` |
 
-- --
+===
 
 ## Strongly-Typed Extension Anatomy
 
@@ -39,7 +39,7 @@ public static bool TryGetComponentSettings(
     this ComponentModel model, out ComponentSettings stereotype) { ... }
 ```
 
-- --
+===
 
 ## Consuming Enum Options
 
@@ -62,7 +62,7 @@ switch (model.GetFileSettings().TemplatingMethod().AsEnum())
 }
 ```
 
-- --
+===
 
 ## Filtering Model Collections
 
@@ -83,7 +83,7 @@ var repositoryTargets = _metadataManager.Domain(application).GetClassModels()
     .ToArray();
 ```
 
-- --
+===
 
 ## Intent Model Wrapper Hierarchy
 
@@ -109,7 +109,7 @@ Every designer element in Intent Architect is surfaced to code generation as a *
 | `OperationModel` | `IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference` | `Parameters` |
 | `AssociationEndModel` | `ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper` | Directly IS a `ITypeReference` |
 
-- --
+===
 
 ## Creating a Missing Typed Extension
 
@@ -149,7 +149,7 @@ public static class ClassModelStereotypeExtensions
 }
 ```
 
-- --
+===
 
 ## Shared Vocabulary Layer (`Intent.Modules.Common.Types`)
 

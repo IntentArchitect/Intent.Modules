@@ -20,6 +20,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
     [IntentManaged(Mode.Fully)]
     public const string TemplateId = "Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDocsChore_SkillMd_Agents";
 
+    internal const string SkillName = "module-docs-chore";
+
     [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
     public ModuleDocsChore_SkillMd_AgentsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
     {
@@ -106,12 +108,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
         """
         : "";
 
-      MarkdownFile = new MarkdownFile("SKILL", relativeLocation: "module-docs-chore")
+      MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
         .FromMarkdown($$""""""
           ---
-          name: module-docs-chore
+          name: {{SkillName}}
           description: "Update a module's release-notes, README, .imodspec metadata, and icon to reflect a change a consumer can observe, in the same turn as that change. USE ONLY WHEN a module change alters anything observable — a new/removed template, setting, stereotype, config default, or behavioural fix. DO NOT USE FOR internal refactors with no observable effect, or for bumping the module's version number itself (see module-version-increment). REQUIRES the observable change already implemented or decided."
           keywords: [documentation, release-notes, readme, imodspec, icon, chore, upkeep]
+          template-id: {{TemplateId}}
           ---
 
           # Skill: module-docs-chore

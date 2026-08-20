@@ -2,7 +2,8 @@
 name: intent-domain-interactions-expert
 description: "Implement an IInteractionStrategy that turns a designer-modelled interaction into its generated C# handler body. USE ONLY WHEN a modelled interaction (e.g. a command/event handler action) needs its C# implementation generated via a matched strategy. DO NOT USE FOR translating a Mapping element specifically (see intent-mapping-architect) or cross-module DI wiring (see intent-module-orchestrator). REQUIRES the strategy registered in a factory extension's OnBeforeTemplateRegistrations, never a template constructor."
 argument-hint: "[handler template id or role] [interaction kind]"
-contentHash: A7349210F58A11B581B0139AAEC066DDF2EF731575F2D6381361AECC4CBD74A7
+template-id: Intent.ModuleBuilder.AI.Skills.Skills.IntentDomainInteractionsExpert_SkillMd_Agents
+contentHash: 8C0A5CEA0627F45211FE169B8D6C1BB5B9B3FBF15E42DC8FAA3BCD02C61AF9E8
 ---
 # Intent Domain Interactions Expert
 

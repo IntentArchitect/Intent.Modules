@@ -20,17 +20,20 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleSvgIcon_
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon_SkillMd_Agents";
 
+        internal const string SkillName = "module-svg-icon";
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public ModuleSvgIcon_SkillMd_AgentsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             WithContentHashing = true;
-            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: "module-svg-icon")
-                .FromMarkdown(""""""
+            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
+                .FromMarkdown($$""""""
                     ---
-                    name: module-svg-icon
+                    name: {{SkillName}}
                     description: "Craft a house-style SVG icon for a module from a supplied description and apply it as the module's package icon. USE ONLY WHEN asked to create, set, or refresh a module's icon. DO NOT USE FOR deciding or sourcing what the icon should represent — it takes that description exactly as supplied, never invents one. REQUIRES the icon's intended visual description already supplied by the caller."
                     argument-hint: "[description of what the icon should visually represent]"
                     keywords: [icon, svg, branding, application.config, imodspec, package]
+                    template-id: {{TemplateId}}
                     ---
 
                     # Skill: module-svg-icon

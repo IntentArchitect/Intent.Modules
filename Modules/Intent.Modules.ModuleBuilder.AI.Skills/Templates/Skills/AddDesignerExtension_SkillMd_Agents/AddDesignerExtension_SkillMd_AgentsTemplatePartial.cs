@@ -20,16 +20,19 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.AI.Skills.Skills.AddDesignerExtension_SkillMd_Agents";
 
+        internal const string SkillName = "add-designer-extension";
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public AddDesignerExtension_SkillMd_AgentsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             WithContentHashing = true;
-            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: "add-designer-extension")
-                .FromMarkdown(""""""
+            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
+                .FromMarkdown($$""""""
                     ---
-                    name: add-designer-extension
+                    name: {{SkillName}}
                     description: "Add a context-menu-driven element, association-creation, or mapping option to a foreign package, element, or association end via a packageExtension/elementExtension. USE ONLY WHEN extending an element/package/association end owned by another module, not one you own. DO NOT USE FOR defining a brand-new association type from scratch (see add-association-type) or building an architecture template's component picker (see architecture-templates). REQUIRES the foreign target's typeId and designer GUID already identified."
                     argument-hint: "[target element/package type name and what to add]"
+                    template-id: {{TemplateId}}
                     ---
 
                     # Add Designer Extension

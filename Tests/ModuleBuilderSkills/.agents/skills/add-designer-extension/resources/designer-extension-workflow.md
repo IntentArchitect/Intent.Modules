@@ -1,5 +1,5 @@
 ---
-contentHash: 91715DEFAFFD93F9553B82CD5CB7C0F42BBAAF7245BC086A5A23C08AB2BC2A0B
+contentHash: 2933927CAAC2A485C83F8C02FE5708852B9734411F779F2A73227EA1558AB566
 ---
 # Add Designer Extension — Workflow & Details
 
@@ -11,7 +11,7 @@ contentHash: 91715DEFAFFD93F9553B82CD5CB7C0F42BBAAF7245BC086A5A23C08AB2BC2A0B
 | An **element** (Class, Command, Query, etc.) | `Element Extension` |
 | The end of an existing **association** | `Association Extension` — target or source end extension child |
 
-- --
+===
 
 ## Workflow
 
@@ -103,7 +103,8 @@ apply_staged_file_changes(applicationId = <your module's app ID>)
 1. Check `get_designer_validation_errors` — resolve any errors before continuing.
 2. Confirm the `.designer.settings` file shows the new `<packageExtension>` or `<elementExtension>` block with the correct `typeId`.
 3. If the extension adds a new element type (not just a menu option to an existing one), verify `Api/<NewType>Model.cs` was generated with the correct `SpecializationTypeId`.
-- --
+
+===
 
 ## Common Mistakes
 

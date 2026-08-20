@@ -20,16 +20,19 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleContex
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.AI.Workflow.Skills.ModuleContextCapture_SkillMd_Agents";
 
+        internal const string SkillName = "module-context-capture";
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public ModuleContextCapture_SkillMd_AgentsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             WithContentHashing = true;
-            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: "module-context-capture")
-                .FromMarkdown(""""""
+            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
+                .FromMarkdown($$""""""
                     ---
-                    name: module-context-capture
+                    name: {{SkillName}}
                     description: "Read and maintain a module's CONTEXT.md — the durable why behind its design decisions, invariants, and cross-module relationships, kept in the module's project folder. USE ONLY WHEN a design decision is made or a module change concludes (write it), or before modifying any module (read it first). DO NOT USE FOR the change's user-facing docs (see module-docs-chore) or its version bump (see module-version-increment). REQUIRES the module's project folder to already exist."
                     keywords: [context, decisions, architecture, invariants, cross-module, durable]
+                    template-id: {{TemplateId}}
                     ---
 
                     # Skill: module-context-capture

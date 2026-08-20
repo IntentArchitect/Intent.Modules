@@ -20,16 +20,19 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMetadata
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.AI.Skills.Skills.IntentMetadataConsumer_SkillMd_Agents";
 
+        internal const string SkillName = "intent-metadata-consumer";
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public IntentMetadataConsumer_SkillMd_AgentsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             WithContentHashing = true;
-            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: "intent-metadata-consumer")
-                .FromMarkdown(""""""
+            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
+                .FromMarkdown($$""""""
                     ---
-                    name: intent-metadata-consumer
+                    name: {{SkillName}}
                     description: "Read Intent Architect designer metadata — stereotypes, properties, models — inside a template or factory extension using generated typed accessors, never raw string lookups. USE ONLY WHEN a template needs to branch on or read a stereotype/property/model value to drive its generated output. DO NOT USE FOR emitting the C# builder statements themselves (see file-builder-expert) or cross-module DI/wiring (see intent-module-orchestrator). REQUIRES the relevant typed extension methods (*StereotypeExtensions.cs) already generated for the stereotype in question."
                     argument-hint: "[model type] [stereotype name] [target builder action]"
+                    template-id: {{TemplateId}}
                     ---
 
                     # Intent Metadata Consumer

@@ -20,16 +20,19 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleBuilding
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.AI.Skills.Skills.ModuleBuildingStrategies_SkillMd_Agents";
 
+        internal const string SkillName = "module-building-strategies";
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public ModuleBuildingStrategies_SkillMd_AgentsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             WithContentHashing = true;
-            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: "module-building-strategies")
-                .FromMarkdown(""""""
-                    ===
-                    name: module-building-strategies
+            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
+                .FromMarkdown($$""""""
+                    ---
+                    name: {{SkillName}}
                     description: "The accumulated strategic playbook of judgment calls for designing an Intent Architect module — decomposition (root/bridging/common), template vs factory-extension choice, file cardinality, managed modes, setting-vs-stereotype, convention-vs-explicit, and two-phase verification. USE ONLY WHEN facing a design decision point while building or extending a module. DO NOT USE FOR the mechanical how-to of a specific construct (see add-module-skill-template, add-designer-extension, add-association-type) — this is the judgment layer above those."
-                    ===
+                    template-id: {{TemplateId}}
+                    ---
 
                     # Module Building Strategies
 

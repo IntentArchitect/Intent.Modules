@@ -65,6 +65,13 @@ module, adding a new file to an existing one, and maintaining files that are alr
    - **Never add a new anchor role to shared/common infrastructure without the developer's
      explicit sign-off** — it's a version bump to a foundational package every module depends on.
      Route through the existing base anchor with a custom `relativeLocation` instead.
+   - **A resource file distributed alongside a skill must live physically adjacent to it, one
+     folder deeper.** If the skill's `relativeLocation` is `"my-skill"`, its resource templates use
+     `relativeLocation: "my-skill/resources"` (or `"my-skill/resources/<name>"` for a nested file)
+     — never a sibling top-level path. This keeps the skill's own folder self-contained on disk,
+     matching how `.agents/skills/<name>/` is structured, and is why a skill's `resources/*.md`
+     templates live in their own `..._Resources<Name>Md_Agents` File Template elements right next to
+     the skill's own `..._SkillMd_Agents` one.
 7. **Two silent-failure frontmatter traps — they bite on a one-line edit just as easily as on a
    brand-new file:**
    - The parser only understands flat `key: value` lines. A multi-line YAML list (e.g. `tools:`
@@ -76,6 +83,26 @@ module, adding a new file to an existing one, and maintaining files that are alr
    - Every standalone `---` line toggles frontmatter-parsing mode on/off. Only the first and last
      `---` may be real frontmatter delimiters — any other horizontal rule in the body **must** use
      `===` (or another non-`---` marker), or the content between them is silently dropped.
+8. **Derive `name:` from a constant, and expose `template-id:` too — don't hand-type either.** Add
+   `internal const string SkillName = "<relativeLocation>";` next to `TemplateId`, and use it in
+   both places that need to agree with it: `relativeLocation: SkillName` in the `MarkdownFile`
+   constructor, and `name: {{SkillName}}` in the frontmatter. The name shown in the file can then
+   never drift out of sync with where it actually lands on disk. Also add `template-id:
+   {{TemplateId}}` to the frontmatter — it costs nothing (the constant already exists) and lets
+   anyone reading the distributed file, human or AI, see at a glance that it's generated and which
+   template is responsible for it.
+   - This requires switching `.FromMarkdown(...)` to an **interpolated** raw string literal —
+     `$$""""""..."""""" ` (double `$`), not the plain, non-interpolated `""""""..."""""" ` most
+     existing templates use.
+   - **Use double `$`, not single.** This project's skill/cheatsheet content is full of code
+     samples containing literal single `{` `}` (JSON objects, JS callbacks, C# blocks) — a
+     single-`$` interpolated raw string treats every one of those as an interpolation hole and
+     either fails to compile or silently mangles the sample. `$$` raises the bar to a doubled
+     `{{...}}` before interpolation kicks in, so single braces in code samples stay untouched and
+     only deliberate `{{SkillName}}` / `{{TemplateId}}` (or other computed `{{variable}}` holes,
+     e.g. settings-driven sections — see the Shape Picker below) are substituted.
+   - The closing delimiter stays plain `"""""");` — only the *opening* delimiter carries the `$$`
+     interpolation-count prefix.
 
 ## Writing the Skill's `description` Frontmatter
 
@@ -147,6 +174,9 @@ Whether it's a whole new module or one more file distributed from an existing on
       inserting an underscore) — treat the post-apply name as canonical; don't fight it by renaming
       back.
 - [ ] Content authored directly in the constructor as a raw string, with `Body = Mode.Ignore`.
+- [ ] `SkillName` constant added and used for both `relativeLocation` and the frontmatter `name:`;
+      `template-id:` added referencing `TemplateId` — both via an interpolated `$$""""""..."""""" `
+      raw string (see mechanism step 8), not hand-duplicated literals.
 - [ ] **If distributing a skill** (`Role=AI.Context.Skills`): its `description` written to the
       four-part contract in [Writing the Skill's `description` Frontmatter](#writing-the-skills-description-frontmatter)
       (Capability / `USE ONLY WHEN` / `DO NOT USE FOR` / `REQUIRES`) — checked against the good/bad
@@ -164,9 +194,12 @@ at all:
       every generation (see mechanism step 5) and is what tells Intent whether a consumer's copy is
       still untouched (safe to overwrite) or was hand-edited (leave alone). Setting it yourself
       breaks that check in one direction or the other.
-- [ ] **Renaming** the file (its frontmatter `name:`) is an identity change, not a wording tweak —
-      change it and the constructor's `relativeLocation` argument together, deliberately, since
-      other files/tooling may reference the old name.
+- [ ] **Renaming** the file (its frontmatter `name:`) is an identity change, not a wording tweak.
+      If the template already uses the `SkillName` constant pattern (mechanism step 8), it drives
+      both `relativeLocation` and `name:` from one place — change that constant deliberately, since
+      other files/tooling may reference the old name. If the template predates that pattern, change
+      the literal `name:` and the constructor's `relativeLocation` argument together instead (and
+      consider adopting the constant while you're in there).
 - [ ] **Removing** a file means deleting the Folder+File Template model element. The next Software
       Factory run on a consumer will propose **deleting** the previously generated file — this
       surfaces as a destructive change; confirm it's intended before applying, don't wave it

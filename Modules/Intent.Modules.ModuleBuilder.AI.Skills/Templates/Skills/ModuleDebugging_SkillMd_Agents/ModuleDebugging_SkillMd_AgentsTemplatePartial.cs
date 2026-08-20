@@ -20,15 +20,18 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleDebuggin
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.AI.Skills.Skills.ModuleDebugging_SkillMd_Agents";
 
+        internal const string SkillName = "module-debugging";
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public ModuleDebugging_SkillMd_AgentsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             WithContentHashing = true;
-            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: "module-debugging")
-                .FromMarkdown(""""""
+            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
+                .FromMarkdown($$""""""
                     ---
-                    name: module-debugging
+                    name: {{SkillName}}
                     description: "Insert temporary log statements into a designer script (console.log) or module C# code (templates, factory extensions) to see actual runtime values, then locate the resulting output. USE ONLY WHEN a designer script or a generated template isn't behaving as expected and the actual value is unknown, not guessed. DO NOT USE FOR permanent logging left in shipped module code — remove the temporary statements once the value is confirmed. REQUIRES the specific script or template already identified as the source of the unexpected behaviour."
+                    template-id: {{TemplateId}}
                     ---
 
                     # Module Debugging

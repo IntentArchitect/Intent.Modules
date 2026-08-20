@@ -20,17 +20,20 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleDocs_Ski
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.AI.Skills.Skills.ModuleDocs_SkillMd_Agents";
 
+        internal const string SkillName = "module-docs";
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public ModuleDocs_SkillMd_AgentsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             WithContentHashing = true;
-            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: "module-docs")
-                .FromMarkdown(""""""
-                    ===
-                    name: module-docs
+            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
+                .FromMarkdown($$""""""
+                    ---
+                    name: {{SkillName}}
                     description: "Complete or refresh a module's release-notes.md, docs/README.md, and .imodspec metadata to a canonical format, touching only what already exists or what the maintainer explicitly supplies. USE ONLY WHEN a maintainer explicitly asks for documentation to be completed or brought up to this format. DO NOT USE FOR the automatic same-turn doc update after an observable change (see module-docs-chore) — this is an opt-in pass, and it must never introduce release-notes.md or fabricate a projectUrl unprompted. REQUIRES the target module's .imodspec (and any existing release-notes.md/docs/README.md) already present to read from."
                     keywords: [release-notes, readme, imodspec, documentation, module]
-                    ===
+                    template-id: {{TemplateId}}
+                    ---
 
                     # Skill: module-docs
 

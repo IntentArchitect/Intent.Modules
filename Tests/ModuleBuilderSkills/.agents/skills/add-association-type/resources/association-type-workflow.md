@@ -1,5 +1,5 @@
 ---
-contentHash: D625585E86A3B7ACD7D2A66D52AE876483838E3955EA2E568FE71C17BB7700A2
+contentHash: F8E524265FA5C313FBB68B1E8B70DB7119B33A0AC45ECC6B903E055144404E1D
 ---
 # Add Association Type — Workflow & Details
 
@@ -13,11 +13,11 @@ You need the `typeId` of every element type that either end of the association c
 
 ```json
 find_designer_elements(
-  applicationId   = <target module's app ID>,
-  designerId      = <target module's Module Builder designer ID>,
-  query           = "<element name>",
-  fields          = ["name"],
-  specializations = ["Element Settings"]
+    applicationId   = <target module's app ID>,
+    designerId      = <target module's Module Builder designer ID>,
+    query           = "<element name>",
+    fields          = ["name"],
+    specializations = ["Element Settings"]
 )
 ```
 

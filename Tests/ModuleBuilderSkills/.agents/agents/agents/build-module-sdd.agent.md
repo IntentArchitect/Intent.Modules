@@ -6,7 +6,8 @@ context: modeling
 maxIterations: 50
 userInvocable: true     # show this agent in the picker (default true)
 modelInvocable: true    # allow other agents to dispatch this as a sub-agent (default true)
-tools: 
+loopOnToolCalls: true
+tools:   
   - get_designer_schema
   - get_designer_model_structure
   - get_designer_element_details
@@ -58,8 +59,7 @@ tools:
   - read_spec
   - record_spec_traceability
   - complete_spec_task
-loopOnToolCalls: true
-contentHash: D5475DA382CCB1FE9A3E8C9320430FE512B6A174AE7E814B19E5B9AD756E7785
+contentHash: AA13E1676EC32E799982D0F4B90016608AF87E18160E795A1A33EF0192E5A913
 ---
 # Intent Architect SDD Module Builder Agent
 
@@ -96,17 +96,17 @@ Before invoking the SDD pipeline, classify the task:
 
 ```
 [1. Scoping]       ──> /sdd-requirements (Dual Scope: Reference Architecture + Module DX)
-        │
+│
 [2. Design]        ──> /sdd-design       (Section A: Target C# | Section B: Metamodel & Templates)
-        │
+│
 [3. Decomposition] ──> /sdd-tasks        (Wave 0 Spike -> Wave 1 Metamodel -> Wave 2 Templates -> Wave 3 Dogfood)
-        │
+│
 [4. Orchestration] ──> /sdd-implement    (Sequences waves via todo_update & dispatches sub-agents)
-                            │
-                       [Wave 0: Reference Spike & Tests] ──> [Waves 1..N: Module Artifacts]
-        │
+│
+[Wave 0: Reference Spike & Tests] ──> [Waves 1..N: Module Artifacts]
+│
 [5. Verification]  ──> /sdd-verify       (Assert SF Output == Wave 0 Baseline)
-        │
+│
 [6. Remediation]   ──> /sdd-heal         (Fix CSharpFileBuilder / Template diffs)
 ```
 
@@ -127,9 +127,9 @@ Ensure `design.md` partitions the solution clearly:
 
 - **Section A (The Golden Sample):** Full concrete C# signatures, DI registrations, interfaces, and expected file locations.
 - **Section B (Intent Realization & Metamodel):**
-  - Designer element types and stereotypes (`.ispec` / designer metadata).
-  - Template definitions inheriting from `CSharpTemplateBase<TModel>` or leveraging `ICSharpFileBuilderTemplate`.
-  - Factory Extensions and decorators.
+- Designer element types and stereotypes (`.ispec` / designer metadata).
+- Template definitions inheriting from `CSharpTemplateBase<TModel>` or leveraging `ICSharpFileBuilderTemplate`.
+- Factory Extensions and decorators.
 - **Traceability Matrix:** Explicitly link every C# class/file from Section A to its corresponding Template/Builder in Section B.
 
 ===
@@ -165,9 +165,9 @@ Enforce the following non-negotiable wave structure in the generated task depend
 ### Phase 5: 🔍 Verification & Healing (`/sdd-verify` & `/sdd-heal`)
 
 - Invoke `/sdd-verify` once the orchestrator marks all waves completed:
-  - Model element validity and stereotype availability in the designer.
-  - Generated C# code matches the Golden Sample produced in Wave 0.
-  - Clean Roslyn syntax tree hygiene (proper `AddUsing`, namespaces, code formatting).
+- Model element validity and stereotype availability in the designer.
+- Generated C# code matches the Golden Sample produced in Wave 0.
+- Clean Roslyn syntax tree hygiene (proper `AddUsing`, namespaces, code formatting).
 - If generated code diverges from the reference baseline, invoke `/sdd-heal` to adjust `CSharpFileBuilder` methods or template configurations (do not alter the reference baseline).
 
 ===

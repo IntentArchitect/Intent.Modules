@@ -1,7 +1,8 @@
 ---
 name: module-building-strategies
 description: "The accumulated strategic playbook of judgment calls for designing an Intent Architect module — decomposition (root/bridging/common), template vs factory-extension choice, file cardinality, managed modes, setting-vs-stereotype, convention-vs-explicit, and two-phase verification. USE ONLY WHEN facing a design decision point while building or extending a module. DO NOT USE FOR the mechanical how-to of a specific construct (see add-module-skill-template, add-designer-extension, add-association-type) — this is the judgment layer above those."
-contentHash: 74C505B80FB9E0608EE7253A1BE3A16814190BDA337F300A0536E8E42D0F30D3
+template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleBuildingStrategies_SkillMd_Agents
+contentHash: D2E9CF2B96C06C9259A0C7CFD0DAC47E2378190674D0951C4A03C3A2D60DC745
 ---
 # Module Building Strategies
 
@@ -9,7 +10,7 @@ This skill captures *the judgment* — the strategic instincts behind building I
 
 > **Governing philosophy:** Intent does not dictate how things should work. It gives the developer maximum flexibility to accomplish what's needed, **built on top of industry best practices**. Every strategy below serves that philosophy.
 
-- --
+===
 
 ## Discover Before You Decide — Module Reconnaissance
 
@@ -35,7 +36,7 @@ Reconnaissance and research are context-heavy and read-only — ideal to **deleg
 
 When two modules **disagree** about how a stereotype (or property) is used — one reads it correctly, another (often a legacy or copied module) reads the wrong property — do **not** arbitrate by copying whichever sibling "looks right." Trace back to the **authoritative source: the stereotype's *definition*** (where it is declared), and let that decide which usage is correct. That trace is also what exposes the real culprit — the discrepancy usually points at a bug in a *different* module than the one you were changing. (This is why blind sibling-mimicry is unreliable: the sibling may be the one that's wrong.)
 
-- --
+===
 
 ## 1. Module Architecture & Decomposition
 
@@ -51,9 +52,9 @@ Cut a slice so it is **independently valuable and independently testable** — i
 
 This is the foundational rule. A module must only carry the code and NuGet dependencies it genuinely needs.
 
-- **Root modules** are stand-alone technologies that work by themselves — ASP.NET Core, EF Core, MediatR. A root module must **never force a specific technology onto another root module** (ASP.NET Core must never drag in MediatR).
-- If two modules can interoperate through **generic / shared interfaces** with no new dependency → keep it as is, **no split needed**.
-- The moment integrating them would require a module to take on a **dependency it doesn't otherwise need** → extract that dependency into a **bridging module**.
+    - **Root modules** are stand-alone technologies that work by themselves — ASP.NET Core, EF Core, MediatR. A root module must **never force a specific technology onto another root module** (ASP.NET Core must never drag in MediatR).
+    - If two modules can interoperate through **generic / shared interfaces** with no new dependency → keep it as is, **no split needed**.
+    - The moment integrating them would require a module to take on a **dependency it doesn't otherwise need** → extract that dependency into a **bridging module**.
 
 ### Bridging modules
 
@@ -77,8 +78,8 @@ So common modules aren't just tidier — they prevent a real DLL-skew hazard. **
 `.shproj` / `.projitems` shared projects were a **cost-avoidance workaround**, not a principled choice. Standing up a real module carried overhead — technical *and* user/maintenance overhead — so shared projects let the team share code while avoiding that cost (and, as a side effect, let shared APIs mature before committing to a module contract).
 
 - *AI changes the economics.** When AI can create and maintain modules, that overhead largely dissolves and the justification falls away. Therefore:
-- **Discourage new shared projects.** Prefer a referenced `.csproj` with `PrivateAssets="All"`, or a common module.
-- **Existing shared-project code is a migration candidate.** The HTTP client family (the typical HttpClient module, the Dapper client, Blazor's HttpClient, gRPC) shares substantial infrastructure via shared projects and is the canonical case that should graduate into a **common module** (not yet extracted).
+    - **Discourage new shared projects.** Prefer a referenced `.csproj` with `PrivateAssets="All"`, or a common module.
+    - **Existing shared-project code is a migration candidate.** The HTTP client family (the typical HttpClient module, the Dapper client, Blazor's HttpClient, gRPC) shares substantial infrastructure via shared projects and is the canonical case that should graduate into a **common module** (not yet extracted).
 
 > **Meta-principle:** Strategies that exist only as *pre-AI cost compromises* should be re-evaluated under AI maintenance. The cheap option changes when the overhead changes.
 
@@ -86,21 +87,21 @@ So common modules aren't just tidier — they prevent a real DLL-skew hazard. **
 
 When an integration style recurs across modules, **encapsulate it abstractly in the Common C# module as a broadcast → handle mechanism** rather than wiring modules together directly. A module *broadcasts* a request; whichever module is responsible *handles* it. Current examples:
 
-- **DI registration** — `ContainerRegistrationRequest`
-- **App settings** — `AppSettingRegistrationRequest`
-- **Infrastructure resource registration** — broadcast resources other modules consume; especially useful for **health checks**
+    - **DI registration** — `ContainerRegistrationRequest`
+    - **App settings** — `AppSettingRegistrationRequest`
+    - **Infrastructure resource registration** — broadcast resources other modules consume; especially useful for **health checks**
 
 The heuristic: **don't couple — broadcast.** (Mechanism details for the registration requests live in `intent-module-orchestrator`.)
 
-- --
+===
 
 ## 2. Template Mechanics
 
 ### Template vs factory extension — mechanical, not a judgment call
 
-- A **template's sole purpose is to generate a file.** If the concern produces a new output file → it's a template.
-- A **factory extension cannot generate its own files.** It only extends other templates or wires up capabilities. If the concern *modifies another module's output* or wires behavior without emitting a file → it's a factory extension.
-- A template *can* be made to also do factory-extension-like work, but this is **rare and reserved for specific nuanced reasons** — never the default.
+    - A **template's sole purpose is to generate a file.** If the concern produces a new output file → it's a template.
+    - A **factory extension cannot generate its own files.** It only extends other templates or wires up capabilities. If the concern *modifies another module's output* or wires behavior without emitting a file → it's a factory extension.
+    - A template *can* be made to also do factory-extension-like work, but this is **rare and reserved for specific nuanced reasons** — never the default.
 
 ### File cardinality
 
@@ -114,11 +115,12 @@ The choice is purely: how many files, and does one file need to see many models 
 
 ### Managed modes
 
-- **`Mode.Fully`** — Intent fully manages the file; Intent owns it end-to-end.
-- **`Mode.Merge`** — Intent and the developer **coexist** in that space. Intent generates initial code and opens it for the developer; on later changes, Intent re-detects the regions *it* authored and re-mutates only those, leaving developer code intact. Typical example: command/query handler **bodies**.
-- **`Mode.Ignore`** — **opts out of code automation entirely**; the developer owns and is responsible for that space. It is **not** a generation strategy for module-authored output.
+    - **`Mode.Fully`** — Intent fully manages the file; Intent owns it end-to-end.
+    - **`Mode.Merge`** — Intent and the developer **coexist** in that space. Intent generates initial code and opens it for the developer; on later changes, Intent re-detects the regions *it* authored and re-mutates only those, leaving developer code intact. Typical example: command/query handler **bodies**.
+    - **`Mode.Ignore`** — **opts out of code automation entirely**; the developer owns and is responsible for that space. It is **not** a generation strategy for module-authored output.
 - *Decision rule:** anticipate the developer will want to make changes in a space → **merge**. Otherwise → **fully**. **Ignore is off the table** for module output — choosing it means giving up automation.
-- --
+
+===
 
 ## 3. Design-Time Configuration
 
@@ -126,9 +128,9 @@ The choice is purely: how many files, and does one file need to see many models 
 
 ### Setting vs stereotype vs association
 
-- **Module setting** → **application-wide** behavior/rule. Its scope is the whole app, regardless of how anything is modeled.
-- **Stereotype** → **fine-grained, element-level** configuration, often used to **override or specialize a global setting** on specific elements. (Configuration is only one use of stereotypes, not their whole purpose.)
-- **Associations have nothing to do with configuration** — they are a structural modeling mechanism. Never reach for an association to capture a setting.
+    - **Module setting** → **application-wide** behavior/rule. Its scope is the whole app, regardless of how anything is modeled.
+    - **Stereotype** → **fine-grained, element-level** configuration, often used to **override or specialize a global setting** on specific elements. (Configuration is only one use of stereotypes, not their whole purpose.)
+    - **Associations have nothing to do with configuration** — they are a structural modeling mechanism. Never reach for an association to capture a setting.
 
 The common shape is **global default (setting) + per-element override (stereotype)**. Canonical example — **multitenancy**: a *module setting* picks the global isolation level (database-level = one DB per tenant, app-wide; vs entity-level = one shared DB); when entity-level, a *stereotype* on each entity marks it multitenant and gives it a discriminator.
 
@@ -142,7 +144,7 @@ When a module needs information to generate correctly, decide in this order:
 
 So: convention by default when the industry provides one; explicit capture when the technology can't honor it; debate when the tech is free-form.
 
-- --
+===
 
 ## 4. Verification Strategy
 

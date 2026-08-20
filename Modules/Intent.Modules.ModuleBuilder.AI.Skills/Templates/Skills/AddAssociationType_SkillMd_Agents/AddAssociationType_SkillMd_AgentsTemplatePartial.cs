@@ -20,16 +20,19 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddAssociation
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_SkillMd_Agents";
 
+        internal const string SkillName = "add-association-type";
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public AddAssociationType_SkillMd_AgentsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             WithContentHashing = true;
-            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: "add-association-type")
-                .FromMarkdown(""""""
+            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
+                .FromMarkdown($$""""""
                     ---
-                    name: add-association-type
+                    name: {{SkillName}}
                     description: "Define a brand-new Association Settings type — source/target ends, target types, navigability, traits, mapping options — in the Module Builder designer. USE ONLY WHEN a new kind of association must be drawable between two element types that no existing association type covers. DO NOT USE FOR adding a context-menu extension to an existing foreign element or association (see add-designer-extension). REQUIRES the target element type GUIDs (typeId) for both ends already identified."
                     argument-hint: "[association name, source element type, target element type]"
+                    template-id: {{TemplateId}}
                     ---
 
                     # Add Association Type
@@ -60,6 +63,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddAssociation
                     4. Never edit `.designer.settings` directly (always use the Module Builder model).
 
                     """""");
+
         }
 
         [IntentManaged(Mode.Fully)]

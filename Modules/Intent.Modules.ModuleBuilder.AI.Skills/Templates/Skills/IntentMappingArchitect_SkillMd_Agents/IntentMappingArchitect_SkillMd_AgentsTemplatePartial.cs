@@ -20,16 +20,19 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMappingA
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.AI.Skills.Skills.IntentMappingArchitect_SkillMd_Agents";
 
+        internal const string SkillName = "intent-mapping-architect";
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public IntentMappingArchitect_SkillMd_AgentsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             WithContentHashing = true;
-            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: "intent-mapping-architect")
-                .FromMarkdown(""""""
+            MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
+                .FromMarkdown($$""""""
                     ---
-                    name: intent-mapping-architect
+                    name: {{SkillName}}
                     description: "Translate a designer-modelled advanced Mapping (Terminal or Object, with replacements and MappingOptions) into recursive C# via the MappingManager API. USE ONLY WHEN a template must generate the assignment/traversal statements for a designer-defined mapping between two models. DO NOT USE FOR hardcoded property-to-property assignments, or handler bodies for a modelled interaction that isn't a Mapping (see intent-domain-interactions-expert). REQUIRES the mapping already modelled in the designer and the template inheriting CSharpMappingBase."
                     argument-hint: "[mapping type] [source model] [target model]"
+                    template-id: {{TemplateId}}
                     ---
 
                     # Intent Mapping Architect

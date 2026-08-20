@@ -1,5 +1,5 @@
 ---
-contentHash: 61C747D0DD543AC2BCD0710BF3586537666472D267B78933BDDEE4DF52D47CE5
+contentHash: 7730D6220FE6F61518AA4EF29F61284F2DE2E093975C27FB53286DA0C64A55CF
 ---
 # Intent Domain Interactions Expert Cheatsheet
 
@@ -7,13 +7,13 @@ contentHash: 61C747D0DD543AC2BCD0710BF3586537666472D267B78933BDDEE4DF52D47CE5
 
 ```
 Designer model:                                          Generated code (handler body):
-  Operation "PlaceOrder"                                 ┌─ var customer = _customers.FindByIdAsync(...);
-    ├─ QueryEntity → Customer            ──ImplementInteractions──►
-    ├─ CreateEntity → Order                                ├─ _orders.Add(order);
-    ├─ Publish → OrderPlacedEvent                          └─ _bus.Publish(new OrderPlacedEvent(...));
+Operation "PlaceOrder"                                 ┌─ var customer = _customers.FindByIdAsync(...);
+├─ QueryEntity → Customer            ──ImplementInteractions──►
+├─ CreateEntity → Order                                ├─ _orders.Add(order);
+├─ Publish → OrderPlacedEvent                          └─ _bus.Publish(new OrderPlacedEvent(...));
 ```
 
-- --
+===
 
 ## Strategy Roles
 
@@ -43,7 +43,7 @@ Designer model:                                          Generated code (handler
 └──────────────────────────────────┘
 ```
 
-- --
+===
 
 ## Strategy Skeleton
 
@@ -56,7 +56,7 @@ public class MyInteractionStrategy : IInteractionStrategy
             return false;
 
         var action = interaction.AsMyInteractionKindTargetEndModel();
-        return action?.TypeReference?.Element != null && action.Mappings.Any();
+            return action?.TypeReference?.Element != null && action.Mappings.Any();
     }
 
     public void ImplementInteraction(ICSharpClassMethodDeclaration method, IElement interactionElement)
@@ -85,7 +85,7 @@ public class MyInteractionStrategy : IInteractionStrategy
 }
 ```
 
-- --
+===
 
 ## Built-in Strategies
 
@@ -99,16 +99,16 @@ public class MyInteractionStrategy : IInteractionStrategy
 | `CallEntityServiceInteractionStrategy` | `Application.DomainInteractions` | `IsCallEntityServiceActionTargetEndModel` | Call an instance method on a previously-queried entity |
 | `PublishIntegrationMessageInteractionStrategy` | `Eventing.Contracts` | `IsPublishIntegrationEventTargetEndModel` OR `IsSendIntegrationCommandTargetEndModel` | Map source → new message, then publish/send |
 
-- --
+===
 
 ## Handler Discovery in a Factory Extension
 
 ```csharp
 protected override void OnBeforeTemplateExecution(IApplication application)
 {
-    var templates = application
-        .FindTemplateInstances<ITemplate>(TemplateRoles.Application.Eventing.EventHandler)
-        .OfType<ICSharpFileBuilderTemplate>();
+var templates = application
+    .FindTemplateInstances<ITemplate>(TemplateRoles.Application.Eventing.EventHandler)
+    .OfType<ICSharpFileBuilderTemplate>();
 
     foreach (var template in templates)
     {
@@ -129,7 +129,7 @@ protected override void OnBeforeTemplateExecution(IApplication application)
 }
 ```
 
-- --
+===
 
 ## Execution Phases
 

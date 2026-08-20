@@ -1,7 +1,8 @@
 ---
 name: architecture-templates
 description: "Build or extend an Architecture Template — the component/module picker shown when creating a new application — and its companion metadata application that pre-seeds new applications with designer content (packages, folders, Output Anchors). USE ONLY WHEN asked to create, extend, or fix an architecture template, or to seed default designer metadata for one. DO NOT USE FOR a 'Module Building' template (a different Template Type that scaffolds a module project, not an app) or day-to-day module development itself (see module-building-strategies). REQUIRES the Intent Application Template Builder designer, in a new Package."
-contentHash: 3FE0BEC046092D084AE8CA23C1A4A460C2BE19FE32787A1A267B30EE580FD819
+template-id: Intent.ModuleBuilder.AI.Skills.Skills.ArchitectureTemplates_SkillMd_Agents
+contentHash: FDA2BE13598EB16A593075E55855365851BBDFB7023A45800D0B21A56696A68D
 ---
 # Architecture Templates
 

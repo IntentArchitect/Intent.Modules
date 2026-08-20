@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="fcb00a56-0c79-4c8f-b1ed-558727e509fe">
-  <file path=".agents/agents/build-module-sdd.agent.md" />
+  <file path=".agents/agents/agents/build-module-sdd.agent.md" />
   <file path=".agents/instructions/csharp-guidelines.md" />
   <file path=".agents/instructions/exception-guidelines.instructions.md" />
   <file path=".agents/instructions/known-build-gotchas.instructions.md" />
@@ -10,6 +10,7 @@
   <file path=".agents/skills/add-designer-extension/SKILL.md" />
   <file path=".agents/skills/add-designer-extension/resources/designer-extension-workflow.md" />
   <file path=".agents/skills/add-designer-extension/resources/designer-extensions-reference.md" />
+  <file path=".agents/skills/add-module-migration/SKILL.md" />
   <file path=".agents/skills/architecture-templates/SKILL.md" />
   <file path=".agents/skills/file-builder-expert/SKILL.md" />
   <file path=".agents/skills/file-builder-expert/resources/api-cheatsheet.md" />

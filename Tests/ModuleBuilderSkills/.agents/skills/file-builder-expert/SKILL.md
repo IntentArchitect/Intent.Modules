@@ -2,7 +2,8 @@
 name: file-builder-expert
 description: "Author or fix a C# code-generation template using the Fluent CSharpFile builder API — constructor structure, callback priorities, type resolution, and DI parameter injection. USE ONLY WHEN writing, reviewing, or converting a *TemplatePartial.cs that emits C# via CSharpFile. DO NOT USE FOR templates that build Markdown/text output (see add-module-skill-template) or for designer-model/script changes. REQUIRES the target template's model shape (single-file vs file-per-model) already decided."
 argument-hint: "[source file] [target template name]"
-contentHash: A85B9EBC5966332949C49704FBB8A9B69520E2F956EE3080F90D385B19DA82E2
+template-id: Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_SkillMd_Agents
+contentHash: 64D5C139FA2CA97AF33EDB2A776BAB1402EC8C89839186729D0CA4B6C6019A31
 ---
 # File Builder Expert
 

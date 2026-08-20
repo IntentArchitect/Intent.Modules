@@ -2,7 +2,8 @@
 name: module-docs-chore
 description: "Update a module's release-notes, README, .imodspec metadata, and icon to reflect a change a consumer can observe, in the same turn as that change. USE ONLY WHEN a module change alters anything observable — a new/removed template, setting, stereotype, config default, or behavioural fix. DO NOT USE FOR internal refactors with no observable effect, or for bumping the module's version number itself (see module-version-increment). REQUIRES the observable change already implemented or decided."
 keywords: [documentation, release-notes, readme, imodspec, icon, chore, upkeep]
-contentHash: 8AA8C0616FFCA4130ED8C933974C881E0236C3D8C7587E2327A8AAB19BCF9EF7
+template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDocsChore_SkillMd_Agents
+contentHash: 1C2696E637D47E8FE6564D0A0CC879ADA79F96E7F98CC75F6416389439D6A16F
 ---
 # Skill: module-docs-chore
 
@@ -46,15 +47,15 @@ built. Write for that reader.
 
 - **One line per entry.** If a bullet needs a second sentence to explain itself, that detail belongs in
 
-  the module's documentation, not here.
+the module's documentation, not here.
 
 - **Group related changes into one entry.** Work that added four templates, two settings and an
 
-  instruction file is *one* entry describing the capability — not seven describing its parts.
+instruction file is *one* entry describing the capability — not seven describing its parts.
 
 - **Split only when a consumer would act on each differently.** Two independent changes affecting
 
-  different people are two entries. Two halves of one change are one entry.
+different people are two entries. Two halves of one change are one entry.
 
 Fewer, higher-altitude entries scan better and age better. A reader months later wants to know what
 changed about the module, not which files were touched to do it.
@@ -124,7 +125,7 @@ Source the description to craft from; do not invent one:
 
 - The module's own `.imodspec` `<summary>` and `<tags>` — the same material already kept current
 
-  elsewhere in this chore.
+elsewhere in this chore.
 
 - Its `CONTEXT.md` "Purpose" section, if one exists.
 

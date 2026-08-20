@@ -1,7 +1,8 @@
 ---
 name: module-debugging
 description: "Insert temporary log statements into a designer script (console.log) or module C# code (templates, factory extensions) to see actual runtime values, then locate the resulting output. USE ONLY WHEN a designer script or a generated template isn't behaving as expected and the actual value is unknown, not guessed. DO NOT USE FOR permanent logging left in shipped module code — remove the temporary statements once the value is confirmed. REQUIRES the specific script or template already identified as the source of the unexpected behaviour."
-contentHash: ECF9CEE30C6C08AB86CF9BA1CD7A0FA2718D31390A5869064EC93884523E1075
+template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleDebugging_SkillMd_Agents
+contentHash: 73BF4808F7DCABC1B1E558DD6BBB0B904EC941A24FCACE2F0F3CD97CD44CD1DC
 ---
 # Module Debugging
 

@@ -25,12 +25,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.RootPrinciples.Modu
         {
             WithContentHashing = true;
             MarkdownFile = new MarkdownFile("module-building-workflow.instructions", relativeLocation: "")
-                .FromMarkdown(""""""
-===
+                .FromMarkdown($$""""""
+---
 applyTo: '**'
 description: "Phase-by-phase workflow for any task that builds or changes an Intent Architect module, and which workflow skill each phase calls for."
 keywords: [workflow, module building, phases, version, documentation, context]
-===
+template-id: {{TemplateId}}
+---
 
 # Module Building Workflow
 
@@ -58,7 +59,7 @@ shape everything below:
 Load the skill named for the phase you are in.
 
 | Skill                      | Phase                                              |
-| ========================-- | ================================================-- |
+| -------------------------- | -------------------------------------------------- |
 | `module-context-capture`   | Phase 1 (read it) and Phase 4 (write it)           |
 | `module-version-increment` | Phase 2 (increment up front) and Phase 4 (confirm) |
 | `module-docs-chore`        | Phase 3 and Phase 4                                |
@@ -90,7 +91,7 @@ task.
 ### Classify the change
 
 | Change                                          | What it obliges                                                                                           |
-| =============================================-- | ========================================================================================================= |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | **New module**                                  | The full sequence, starting from no existing context                                                      |
 | **Change that affects generated output**        | Capture the current generated output *before* changing anything, so the difference is provable afterwards |
 | **Designer or metadata only, no output impact** | No output capture — but still a version increment, and documentation if the modelling experience changed  |

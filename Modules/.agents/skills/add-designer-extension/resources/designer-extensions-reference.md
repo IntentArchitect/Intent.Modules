@@ -1,5 +1,9 @@
 ---
-contentHash: 6E666A949CBADAA14D5A6406360660073D2215547319B9D6379AF138CABF0A97
+applyTo: '**'
+description: >
+Reference for authoring Intent Architect Module Builder designer extensions: 
+keywords: [intent architect, module builder, designer extension, element extension, package extension, association, context menu, stereotype, mapping, type id]
+contentHash: 8EDD85C2223C680569BF6322BF83C068A84AA42E4B8B7BF748F907AE6771A2B9
 ---
 # Module Builder Designer Extensions — Reference
 

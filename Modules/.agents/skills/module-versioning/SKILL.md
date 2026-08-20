@@ -3,7 +3,8 @@ name: module-versioning
 description: "Set an Intent Architect module's version correctly via the Module Builder model property (never by hand-editing .imodspec), then propagate it to dependents (architecture templates, other modules). USE ONLY WHEN asked to set, release, publish, or bump a module to a specific, already-decided version string. DO NOT USE FOR deciding whether or when a task should bump a version, or which component to bump (see module-version-increment) — this skill only executes a version already supplied. REQUIRES the target version string supplied by the caller; it does not decide or validate what it should be."
 argument-hint: "[new version, e.g. 1.3.0 or 1.3.0-pre.1]"
 keywords: [version, versioning, release, imodspec, module settings]
-contentHash: D603EAF4B3E47FEE7057F18E7FDBCB874E541CEB45932CA2F1433CCCDAF2935A
+template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleVersioning_SkillMd_Agents
+contentHash: EEB88287536B99E4A584FB3D841DC6E3CBE53BE37FA555BA7D1DF1646072CB42
 ---
 # Skill: module-versioning
 

@@ -36,6 +36,10 @@
       <role>AI.Context.Skills</role>
       <location></location>
     </template>
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.AddModuleMigration_SkillMd_Agents" externalReference="5cbf547f-bb30-4c65-a795-d15a797cd8d5">
+      <role>AI.Context.Skills</role>
+      <location></location>
+    </template>
     <template id="Intent.ModuleBuilder.AI.Skills.Skills.ArchitectureTemplates_SkillMd_Agents" externalReference="b3e99fdd-91d3-4039-ae0b-6b6f24a4902f">
       <role>AI.Context.Skills</role>
       <location></location>
