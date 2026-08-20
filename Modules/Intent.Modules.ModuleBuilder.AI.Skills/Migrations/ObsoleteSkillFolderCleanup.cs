@@ -38,34 +38,41 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Migrations
             var application = persistenceLoader.LoadCurrentApplication();
             var designer = application.GetDesigners().SingleOrDefault(d => d.Id == CodebaseStructureDesignerId);
             var package = designer?.GetPackages(false, false).FirstOrDefault();
-            var skillsAnchor = package?.FindChildElements(x => x.Name == "AI.Context.Skills" && x.SpecializationType == "Output Anchor").SingleOrDefault();
 
-            if (package == null || skillsAnchor == null)
+            // A consumer's Codebase Structure can carry more than one root folder (".agents", ".claude",
+            // and others), each with its own "skills" folder and its own "AI.Context.Skills" anchor, so
+            // every match must be cleaned up rather than assuming there is exactly one.
+            var skillsAnchors = package?.FindChildElements(x => x.Name == "AI.Context.Skills" && x.SpecializationType == "Output Anchor").ToList();
+
+            if (package == null || skillsAnchors == null || skillsAnchors.Count == 0)
             {
                 return;
             }
 
             var removedAny = false;
 
-            foreach (var skillName in ObsoleteSkillFolderNames)
+            foreach (var skillsAnchor in skillsAnchors)
             {
-                // 1. Identify the folder which used to house the template.
-                var folder = package.Classes.FirstOrDefault(x =>
-                    x.SpecializationTypeId == FolderTypeId &&
-                    x.Name == skillName &&
-                    x.ParentFolderId == skillsAnchor.ParentFolderId);
-
-                if (folder == null)
+                foreach (var skillName in ObsoleteSkillFolderNames)
                 {
-                    continue;
+                    // 1. Identify the folder which used to house the template.
+                    var folder = package.Classes.FirstOrDefault(x =>
+                        x.SpecializationTypeId == FolderTypeId &&
+                        x.Name == skillName &&
+                        x.ParentFolderId == skillsAnchor.ParentFolderId);
+
+                    if (folder == null)
+                    {
+                        continue;
+                    }
+
+                    // 2. Remove its nested folders.
+                    RemoveNestedFolders(package, folder);
+
+                    // 3. Remove the folder itself.
+                    package.Classes.Remove(folder);
+                    removedAny = true;
                 }
-
-                // 2. Remove its nested folders.
-                RemoveNestedFolders(package, folder);
-
-                // 3. Remove the folder itself.
-                package.Classes.Remove(folder);
-                removedAny = true;
             }
 
             if (removedAny)
