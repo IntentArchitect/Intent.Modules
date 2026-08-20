@@ -12,17 +12,17 @@
       <role>AI.Context.Instructions</role>
       <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleContextCapture.SkillMd_Agents" externalReference="397ea30f-1ff0-4356-a10f-f47052036047">
+    <template id="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleContextCapture_SkillMd_Agents" externalReference="397ea30f-1ff0-4356-a10f-f47052036047">
       <role>AI.Context.Skills</role>
-      <location>module-context-capture</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDocsChore.SkillMd_Agents" externalReference="744e419d-235b-46ab-b6d2-dd2f15d7e905">
+    <template id="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDocsChore_SkillMd_Agents" externalReference="744e419d-235b-46ab-b6d2-dd2f15d7e905">
       <role>AI.Context.Skills</role>
-      <location>module-docs-chore</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleVersionIncrement.SkillMd_Agents" externalReference="51059f0f-aced-410b-9822-9645b9754bb6">
+    <template id="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleVersionIncrement_SkillMd_Agents" externalReference="51059f0f-aced-410b-9822-9645b9754bb6">
       <role>AI.Context.Skills</role>
-      <location>module-version-increment</location>
+      <location></location>
     </template>
   </templates>
   <decorators></decorators>

@@ -16,109 +16,109 @@
       <role>AI.Context.Instructions</role>
       <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType.ResourcesAssociationTypeWorkflowMd_Agents" externalReference="eeac4f36-9eb0-43da-a6e7-7c24c9bcfb11">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_ResourcesAssociationTypeWorkflowMd_Agents" externalReference="eeac4f36-9eb0-43da-a6e7-7c24c9bcfb11">
       <role>AI.Context.Skills</role>
-      <location>add-association-type/resources</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType.SkillMd_Agents" externalReference="8881b920-757a-47c1-a8a5-2204013c3566">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_SkillMd_Agents" externalReference="8881b920-757a-47c1-a8a5-2204013c3566">
       <role>AI.Context.Skills</role>
-      <location>add-association-type</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.AddDesignerExtension.ResourcesDesignerExtensionsReferenceMd_Agents" externalReference="f5a2a1de-ad4b-4520-8ff9-f64bcf34e42d">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.AddDesignerExtension_ResourcesDesignerExtensionsReferenceMd_Agents" externalReference="f5a2a1de-ad4b-4520-8ff9-f64bcf34e42d">
       <role>AI.Context.Skills</role>
-      <location>add-designer-extension/resources</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.AddDesignerExtension.ResourcesDesignerExtensionWorkflowMd_Agents" externalReference="d0d00c24-888e-4114-b417-346d177953d9">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.AddDesignerExtension_ResourcesDesignerExtensionWorkflowMd_Agents" externalReference="d0d00c24-888e-4114-b417-346d177953d9">
       <role>AI.Context.Skills</role>
-      <location>add-designer-extension/resources</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.AddDesignerExtension.SkillMd_Agents" externalReference="8d62331c-0bad-4bd0-a532-9db22d88a526">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.AddDesignerExtension_SkillMd_Agents" externalReference="8d62331c-0bad-4bd0-a532-9db22d88a526">
       <role>AI.Context.Skills</role>
-      <location>add-designer-extension</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.ArchitectureTemplates.SkillMd_Agents" externalReference="b3e99fdd-91d3-4039-ae0b-6b6f24a4902f">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.ArchitectureTemplates_SkillMd_Agents" externalReference="b3e99fdd-91d3-4039-ae0b-6b6f24a4902f">
       <role>AI.Context.Skills</role>
-      <location>architecture-templates</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert.FileBuilderExpertSkillMd_Agents" externalReference="6674d4fb-1caf-40f8-9f5d-9597b7b03369">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesApiCheatsheetMd_Agents" externalReference="22a6593f-5576-4247-ba95-06c1e11b8f14">
       <role>AI.Context.Skills</role>
-      <location>file-builder-expert</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert.ResourcesApiCheatsheetMd_Agents" externalReference="22a6593f-5576-4247-ba95-06c1e11b8f14">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesBuilderPatternsMd_Agents" externalReference="904ad36a-be00-4cca-8c81-520e9ac62b08">
       <role>AI.Context.Skills</role>
-      <location>file-builder-expert/resources</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert.ResourcesBuilderPatternsMd_Agents" externalReference="904ad36a-be00-4cca-8c81-520e9ac62b08">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_Agents" externalReference="e6ab4e90-eb45-46a0-98ab-b445dead54bb">
       <role>AI.Context.Skills</role>
-      <location>file-builder-expert/resources</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert.ResourcesPatternsAdvancedTypesCs_Agents" externalReference="e6ab4e90-eb45-46a0-98ab-b445dead54bb">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesPatternsControlFlowCs_Agents" externalReference="1999a902-f72b-4929-be6e-bfe99ef527f2">
       <role>AI.Context.Skills</role>
-      <location>file-builder-expert/resources/patterns</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert.ResourcesPatternsControlFlowCs_Agents" externalReference="1999a902-f72b-4929-be6e-bfe99ef527f2">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesPatternsLifecycleHooksCs_Agents" externalReference="226bff72-d02a-4eeb-ad3b-32c2f6148338">
       <role>AI.Context.Skills</role>
-      <location>file-builder-expert/resources/patterns</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert.ResourcesPatternsLifecycleHooksCs_Agents" externalReference="226bff72-d02a-4eeb-ad3b-32c2f6148338">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesTroubleshootingMd_Agents" externalReference="49bbfcba-ec86-41bc-88ba-9cc97c83d2a6">
       <role>AI.Context.Skills</role>
-      <location>file-builder-expert/resources/patterns</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert.ResourcesTroubleshootingMd_Agents" externalReference="49bbfcba-ec86-41bc-88ba-9cc97c83d2a6">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_SkillMd_Agents" externalReference="6674d4fb-1caf-40f8-9f5d-9597b7b03369">
       <role>AI.Context.Skills</role>
-      <location>file-builder-expert/resources</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentDomainInteractionsExpert.ResourcesInteractionsCheatsheetMd_Agents" externalReference="9b09be68-e766-4344-ba06-7c035a4fc292">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentDomainInteractionsExpert_ResourcesInteractionsCheatsheetMd_Agents" externalReference="9b09be68-e766-4344-ba06-7c035a4fc292">
       <role>AI.Context.Skills</role>
-      <location>intent-domain-interactions-expert/resources</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentDomainInteractionsExpert.SkillMd_Agents" externalReference="c03952af-f3b9-43a9-9b8a-0f8a06948579">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentDomainInteractionsExpert_SkillMd_Agents" externalReference="c03952af-f3b9-43a9-9b8a-0f8a06948579">
       <role>AI.Context.Skills</role>
-      <location>intent-domain-interactions-expert</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentMappingArchitect.ResourcesMappingCheatsheetMd_Agents" externalReference="265d0086-28ae-457a-ba8b-5e9db2f8a312">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentMappingArchitect_ResourcesMappingCheatsheetMd_Agents" externalReference="265d0086-28ae-457a-ba8b-5e9db2f8a312">
       <role>AI.Context.Skills</role>
-      <location>intent-mapping-architect/resources</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentMappingArchitect.SkillMd_Agents" externalReference="049cd7d7-79ff-4298-8631-e360c6acd187">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentMappingArchitect_SkillMd_Agents" externalReference="049cd7d7-79ff-4298-8631-e360c6acd187">
       <role>AI.Context.Skills</role>
-      <location>intent-mapping-architect</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentMetadataConsumer.ResourcesMetadataCheatsheetMd_Agents" externalReference="833ca567-51c4-4aac-bb48-2c0137beefa9">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentMetadataConsumer_ResourcesMetadataCheatsheetMd_Agents" externalReference="833ca567-51c4-4aac-bb48-2c0137beefa9">
       <role>AI.Context.Skills</role>
-      <location>intent-metadata-consumer/resources</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentMetadataConsumer.SkillMd_Agents" externalReference="fdd04c46-e556-4d52-a179-0a62bf695ba7">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentMetadataConsumer_SkillMd_Agents" externalReference="fdd04c46-e556-4d52-a179-0a62bf695ba7">
       <role>AI.Context.Skills</role>
-      <location>intent-metadata-consumer</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentModuleOrchestrator.ResourcesOrchestrationCheatsheetMd_Agents" externalReference="0f995b17-0394-484a-8b26-86bd3e291e15">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentModuleOrchestrator_ResourcesOrchestrationCheatsheetMd_Agents" externalReference="0f995b17-0394-484a-8b26-86bd3e291e15">
       <role>AI.Context.Skills</role>
-      <location>intent-module-orchestrator/resources</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentModuleOrchestrator.SkillMd_Agents" externalReference="cdce47dc-b039-4b8d-adfe-8717897ef220">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentModuleOrchestrator_SkillMd_Agents" externalReference="cdce47dc-b039-4b8d-adfe-8717897ef220">
       <role>AI.Context.Skills</role>
-      <location>intent-module-orchestrator</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.ModuleBuildingStrategies.SkillMd_Agents" externalReference="a6e43b6a-d6ba-47c1-996f-09e99d6d45c0">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.ModuleBuildingStrategies_SkillMd_Agents" externalReference="a6e43b6a-d6ba-47c1-996f-09e99d6d45c0">
       <role>AI.Context.Skills</role>
-      <location>module-building-strategies</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.ModuleDebugging.SkillMd_Agents" externalReference="0e48d622-5e89-436a-874d-9db4668b34bb">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.ModuleDebugging_SkillMd_Agents" externalReference="0e48d622-5e89-436a-874d-9db4668b34bb">
       <role>AI.Context.Skills</role>
-      <location>module-debugging</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.ModuleDocs.SkillMd_Agents" externalReference="01a3710a-8195-4ff1-a316-ac2d1f1b0ebe">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.ModuleDocs_SkillMd_Agents" externalReference="01a3710a-8195-4ff1-a316-ac2d1f1b0ebe">
       <role>AI.Context.Skills</role>
-      <location>module-docs</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon.SkillMd_Agents" externalReference="dc151fc9-a548-4e3a-8fbb-8dc349dc22d8">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon_SkillMd_Agents" externalReference="dc151fc9-a548-4e3a-8fbb-8dc349dc22d8">
       <role>AI.Context.Skills</role>
-      <location>module-svg-icon</location>
+      <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.ModuleVersioning.SkillMd_Agents" externalReference="3f29299a-98e5-4874-923f-d9431db3eec9">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.ModuleVersioning_SkillMd_Agents" externalReference="3f29299a-98e5-4874-923f-d9431db3eec9">
       <role>AI.Context.Skills</role>
-      <location>module-versioning</location>
+      <location></location>
     </template>
   </templates>
   <decorators></decorators>

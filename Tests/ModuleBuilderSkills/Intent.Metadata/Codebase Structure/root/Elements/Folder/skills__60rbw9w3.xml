@@ -43,5 +43,47 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="48bbfa96-d7fd-4f73-a379-e49a3a67cbf4" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Workflow.Skills.ModuleContextCapture_SkillMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Workflow.Skills.ModuleContextCapture_SkillMd_Agents</display>
+      <externalReference>Intent.ModuleBuilder.AI.Workflow</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>7b9c2a57-3e6e-45a4-8451-8cb8a52f63cc</parentFolderId>
+      <stereotypes />
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+    <childElement id="835f07cb-aa49-4ece-926e-182378ab089f" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDocsChore_SkillMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDocsChore_SkillMd_Agents</display>
+      <externalReference>Intent.ModuleBuilder.AI.Workflow</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>7b9c2a57-3e6e-45a4-8451-8cb8a52f63cc</parentFolderId>
+      <stereotypes />
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+    <childElement id="8de9dcc5-6ad4-437f-8d3e-5be471856e4d" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Workflow.Skills.ModuleVersionIncrement_SkillMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Workflow.Skills.ModuleVersionIncrement_SkillMd_Agents</display>
+      <externalReference>Intent.ModuleBuilder.AI.Workflow</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>7b9c2a57-3e6e-45a4-8451-8cb8a52f63cc</parentFolderId>
+      <stereotypes />
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
   </childElements>
 </class>

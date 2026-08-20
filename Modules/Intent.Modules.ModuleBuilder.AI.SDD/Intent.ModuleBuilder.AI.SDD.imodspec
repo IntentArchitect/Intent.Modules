@@ -10,7 +10,7 @@
   <templates>
     <template id="Intent.ModuleBuilder.AI.SDD.Agents.BuildModuleSddMd_Agents" externalReference="9688e4fa-253c-4b35-ba31-7bd4d3e08f31">
       <role>AI.Context</role>
-      <location>agents</location>
+      <location></location>
     </template>
   </templates>
   <decorators></decorators>

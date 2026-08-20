@@ -47,18 +47,24 @@ module, adding a new file to an existing one, and maintaining files that are alr
      Builder's own scaffolding; the content hash protects the *consumer's installed copy* from
      being silently overwritten by a routine module update. Never hand-set the `contentHash` value
      yourself — it's only ever meaningful as something the mechanism recomputes.
-6. **Where the generated file lands in the consuming solution is a `Template Settings.Role`, not a
-   hardcoded path.** A shared anchor-resolution helper resolves `Role` to a real folder in the
-   consumer's repo. Three anchors exist today — pick the narrowest one that fits:
-   - `AI.Context.Skills` → `.agents/skills/<Default Location>/SKILL.md` — use for a skill file.
-   - `AI.Context.Instructions` → `.agents/instructions/<Default Location>` — use for a standing
+6. **Where the generated file lands in the consuming solution is a `Template Settings.Role` plus the
+   `MarkdownFile` constructor's `relativeLocation` argument — never the `Default Location` template
+   setting.** A shared anchor-resolution helper resolves `Role` to a real folder in the consumer's
+   repo, and `relativeLocation` (the constructor's second argument, e.g. `new MarkdownFile("SKILL",
+   relativeLocation: "add-module-skill-template")`) is appended to it. `Default Location` only ever
+   seeds that argument's value at the moment the File Template element is first created — after that
+   the constructor's `Body = Mode.Ignore` means the model setting is never read again, so leaving it
+   set is misleading (it looks live but does nothing). Leave it unset and bake the path straight into
+   the constructor instead. Three anchors exist today — pick the narrowest one that fits:
+   - `AI.Context.Skills` → `.agents/skills/<relativeLocation>/SKILL.md` — use for a skill file.
+   - `AI.Context.Instructions` → `.agents/instructions/<relativeLocation>` — use for a standing
      instruction/guideline file.
-   - `AI.Context` (the base anchor, `.agents/` itself) → `.agents/<Default Location>/...` — use
-     for anything that doesn't fit either specific role (e.g. an agent definition would set
-     `Default Location=agents` to land at `.agents/agents/...`).
+   - `AI.Context` (the base anchor, `.agents/` itself) → `.agents/<relativeLocation>/...` — use
+     for anything that doesn't fit either specific role (e.g. an agent definition would pass
+     `relativeLocation: "agents"` to land at `.agents/agents/...`).
    - **Never add a new anchor role to shared/common infrastructure without the developer's
      explicit sign-off** — it's a version bump to a foundational package every module depends on.
-     Route through the existing base anchor with a custom `Default Location` instead.
+     Route through the existing base anchor with a custom `relativeLocation` instead.
 7. **Two silent-failure frontmatter traps — they bite on a one-line edit just as easily as on a
    brand-new file:**
    - The parser only understands flat `key: value` lines. A multi-line YAML list (e.g. `tools:`
@@ -130,11 +136,13 @@ Whether it's a whole new module or one more file distributed from an existing on
       to stale versions that predate them and won't compile until bumped.
 - [ ] Folder + File Template created, `File Settings(Output File Content=Text, Templating Method=
       Markdown File Builder)`.
-- [ ] `Template Settings(Source=Lookup Type, Role=<see mechanism step 6>, Default Location=<name>)`
-      set explicitly — a freshly scaffolded File Template defaults to different (wrong) values here;
-      fix before authoring content.
-- [ ] `MarkdownFile` constructor's output-path arguments left at their defaults — the real output
-      path comes from `Default Location` above, not these arguments.
+- [ ] `Template Settings(Source=Lookup Type, Role=<see mechanism step 6>)` set explicitly — a
+      freshly scaffolded File Template defaults to a different (wrong) `Role` here; fix before
+      authoring content. Leave `Default Location` unset — it has no effect on the generated output
+      path (see mechanism step 6).
+- [ ] `MarkdownFile` constructor's `relativeLocation` argument set explicitly to the target path
+      (e.g. `relativeLocation: "add-module-skill-template"`) — this is the real output path, not
+      the model setting.
 - [ ] After the first apply, the Software Factory may rename the File Template element (e.g.
       inserting an underscore) — treat the post-apply name as canonical; don't fight it by renaming
       back.
@@ -157,8 +165,8 @@ at all:
       still untouched (safe to overwrite) or was hand-edited (leave alone). Setting it yourself
       breaks that check in one direction or the other.
 - [ ] **Renaming** the file (its frontmatter `name:`) is an identity change, not a wording tweak —
-      change it and `Template Settings.Default Location` together, deliberately, since other
-      files/tooling may reference the old name.
+      change it and the constructor's `relativeLocation` argument together, deliberately, since
+      other files/tooling may reference the old name.
 - [ ] **Removing** a file means deleting the Folder+File Template model element. The next Software
       Factory run on a consumer will propose **deleting** the previously generated file — this
       surfaces as a destructive change; confirm it's intended before applying, don't wave it
@@ -179,4 +187,4 @@ notes, even for a wording-only fix — without that, installed consumers never s
 |---|---|
 | **Unconditional file** | The content is a reference/mechanics doc — always identical for every installer, no settings involved. |
 | **Settings-driven file** | The content's presence or wording depends on a module setting (e.g. a boolean) — read the setting in the template and adapt what's emitted. |
-| **Single hand-authored file, no model** | One bespoke artifact with no per-consumer variation and no natural fit under a more specific role — route through the base anchor with a custom `Default Location`. |
+| **Single hand-authored file, no model** | One bespoke artifact with no per-consumer variation and no natural fit under a more specific role — route through the base anchor with a custom `relativeLocation` argument in the constructor. |

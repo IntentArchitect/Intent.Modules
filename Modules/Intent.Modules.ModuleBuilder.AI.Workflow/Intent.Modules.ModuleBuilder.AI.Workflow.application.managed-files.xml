@@ -7,11 +7,11 @@
   <file path="Settings/ModuleSettingsExtensions.cs" />
   <file path="Templates/RootPrinciples/ModuleBuildingWorkflowMd/ModuleBuildingWorkflowMdTemplatePartial.cs" />
   <file path="Templates/RootPrinciples/ModuleBuildingWorkflowMd/ModuleBuildingWorkflowMdTemplateRegistration.cs" />
-  <file path="Templates/Skills/ModuleContextCapture/SkillMd_Agents/SkillMd_AgentsTemplatePartial.cs" />
-  <file path="Templates/Skills/ModuleContextCapture/SkillMd_Agents/SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/ModuleDocsChore/SkillMd_Agents/SkillMd_AgentsTemplatePartial.cs" />
-  <file path="Templates/Skills/ModuleDocsChore/SkillMd_Agents/SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/ModuleVersionIncrement/SkillMd_Agents/SkillMd_AgentsTemplatePartial.cs" />
-  <file path="Templates/Skills/ModuleVersionIncrement/SkillMd_Agents/SkillMd_AgentsTemplateRegistration.cs" />
+  <file path="Templates/Skills/ModuleContextCapture_SkillMd_Agents/ModuleContextCapture_SkillMd_AgentsTemplatePartial.cs" />
+  <file path="Templates/Skills/ModuleContextCapture_SkillMd_Agents/ModuleContextCapture_SkillMd_AgentsTemplateRegistration.cs" />
+  <file path="Templates/Skills/ModuleDocsChore_SkillMd_Agents/ModuleDocsChore_SkillMd_AgentsTemplatePartial.cs" />
+  <file path="Templates/Skills/ModuleDocsChore_SkillMd_Agents/ModuleDocsChore_SkillMd_AgentsTemplateRegistration.cs" />
+  <file path="Templates/Skills/ModuleVersionIncrement_SkillMd_Agents/ModuleVersionIncrement_SkillMd_AgentsTemplatePartial.cs" />
+  <file path="Templates/Skills/ModuleVersionIncrement_SkillMd_Agents/ModuleVersionIncrement_SkillMd_AgentsTemplateRegistration.cs" />
   <file path="release-notes.md" />
 </managedFiles>

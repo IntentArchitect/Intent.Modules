@@ -9,9 +9,9 @@
   <stereotypes />
   <metadata />
   <childElements>
-    <childElement id="4445fe81-7cc9-4517-8a16-33679681b7ac" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon.SkillMd_Agents</name>
-      <display>Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon.SkillMd_Agents</display>
+    <childElement id="00e7baf4-ec75-47cc-b8e9-d971befbc024" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon_SkillMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon_SkillMd_Agents</display>
       <externalReference>Intent.ModuleBuilder.AI.Skills</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
