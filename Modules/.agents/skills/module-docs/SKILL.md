@@ -1,8 +1,5 @@
 ---
-name: module-docs
-description: "Complete or refresh a module's release-notes.md, docs/README.md, and .imodspec metadata to a canonical format, touching only what already exists or what the maintainer explicitly supplies. USE ONLY WHEN a maintainer explicitly asks for documentation to be completed or brought up to this format. DO NOT USE FOR the automatic same-turn doc update after an observable change (see module-docs-chore) — this is an opt-in pass, and it must never introduce release-notes.md or fabricate a projectUrl unprompted. REQUIRES the target module's .imodspec (and any existing release-notes.md/docs/README.md) already present to read from."
-keywords: [release-notes, readme, imodspec, documentation, module]
-contentHash: 6ED6AD187D2273E41A7532D608311F5149736A330DC219B98148935D68A4965A
+contentHash: BE6E6A8FFB6ACEF7451EB8200D3C54945570A4AD5A8FC83EF75CBD9D2689545B
 ---
 # Skill: module-docs
 
@@ -13,7 +10,8 @@ Use this when a module maintainer wants documentation completed or updated to th
 - **`release-notes.md`** — only complete/maintain an entry if the file already exists, or the maintainer explicitly asks for one to be created. Never introduce it unprompted.
 - **`docs/README.md`** — feature/usage documentation; fill gaps in an existing one, or write one if asked
 - **`*.imodspec`** — metadata fields consumed by the module registry (summary, description, tags, releaseNotes, and `projectUrl` only if the maintainer supplies one)
-- --
+
+===
 
 ## Step 1 — Gather Source Material
 
@@ -28,7 +26,7 @@ Before writing anything, read these files from the target module directory:
 | Factory extension `*FactoryExtension.cs` files | What cross-cutting concerns they add (DI registrations, appsettings, template modifications) |
 | `NugetPackages.cs` | NuGet packages the module introduces — informs tags and README dependency callouts |
 
-- --
+===
 
 ## Artifact 1: `release-notes.md`
 
@@ -74,7 +72,7 @@ Before writing anything, read these files from the target module directory:
 - New Feature: Added support for SQL Persistence outbox pattern when `OutboxPattern` is set to `EntityFramework` on the application settings.
 ```
 
-- --
+===
 
 ## Artifact 2: `docs/README.md`
 
@@ -131,7 +129,7 @@ Before writing anything, read these files from the target module directory:
 | `ContainerRegistrationRequest` / `HasDependency` targets | `Related Modules` hints |
 | NuGet packages introduced | Callout in relevant feature section or `External Resources` |
 
-- --
+===
 
 ## Artifact 3: `.imodspec` Fields
 
@@ -166,7 +164,7 @@ Edit the `*.imodspec` file in the module directory directly. Do not edit files i
 <tags>nservicebus messaging eventing infrastructure csharp dotnet</tags>
 ```
 
-- --
+===
 
 ## Verification Checklist
 

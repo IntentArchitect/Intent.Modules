@@ -74,10 +74,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ArchitectureTe
                     3. Open the relevant designer, create a package, and model the desired starting state using **template strings** directly as element names — `${application.name}`, `${solution.name}`, etc. (see the reference table below). Using these instead of literal names means the exported metadata needs no manual "correction" afterward.
                     4. Press the designer's own **Export** button (toolbar) — copies an XML representation of everything in the designer (even unsaved content) to the clipboard. **There is currently no MCP-tool equivalent of this** — it's a manual, UI-only action, so ask the user to do this step and paste you the result rather than trying to script around it.
                     5. Paste the clipboard content into a new file:
-                    - Application Template → `resources/<designer-name>.installation.config`
-                    - Plain Module → `content/<designer-name>.installation.config` (different folder — easy to get wrong)
+                      - Application Template → `resources/<designer-name>.installation.config`
+                      - Plain Module → `content/<designer-name>.installation.config` (different folder — easy to get wrong)
 
-                    Name the file after the designer it targets (`domain.installation.config`, `services.installation.config`, `visual-studio-projects.installation.config`, …) — this is convention, not enforced, but every real template follows it.
+                       Name the file after the designer it targets (`domain.installation.config`, `services.installation.config`, `visual-studio-projects.installation.config`, …) — this is convention, not enforced, but every real template follows it.
+
                     6. Rebuild. Confirm the build log shows the file being packaged (`Added resources/....installation.config` / `Added content/....installation.config`).
 
                     ### Metadata merging (what happens on install)

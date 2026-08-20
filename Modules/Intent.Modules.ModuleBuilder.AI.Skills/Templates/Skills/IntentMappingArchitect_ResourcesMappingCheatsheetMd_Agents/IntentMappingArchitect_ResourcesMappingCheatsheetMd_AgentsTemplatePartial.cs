@@ -43,24 +43,24 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMappingA
                     // Conceptual loop: some APIs expose ChildMappings; in the current C# engine this is represented as Children.
                     IEnumerable<CSharpStatement> BuildStatements(MappingNode mapping)
                     {
-                    // Object mapping / traversal node
-                    if (mapping.Mapping == null)
-                    {
-                    foreach (var child in mapping.ChildMappings) // alias to engine-level children collection
-                    {
-                    foreach (var statement in BuildStatements(child))
-                    {
-                    yield return statement;
-                    }
-                    }
+                        // Object mapping / traversal node
+                        if (mapping.Mapping == null)
+                        {
+                            foreach (var child in mapping.ChildMappings) // alias to engine-level children collection
+                            {
+                                foreach (var statement in BuildStatements(child))
+                                {
+                                    yield return statement;
+                                }
+                            }
 
-                    yield break;
-                    }
+                            yield break;
+                        }
 
-                    // Terminal mapping / leaf assignment
-                    yield return new CSharpAssignmentStatement(
-                    mapping.GetTargetStatement(),
-                    mapping.GetSourceStatement());
+                        // Terminal mapping / leaf assignment
+                        yield return new CSharpAssignmentStatement(
+                            mapping.GetTargetStatement(),
+                            mapping.GetSourceStatement());
                     }
                     ```
 
@@ -78,7 +78,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMappingA
                     var updateMapping = updateAction.Mappings.GetUpdateEntityMapping();
                     if (updateMapping == null)
                     {
-                    return;
+                        return;
                     }
 
                     var manager = new CSharpClassMappingManager(template);
@@ -94,8 +94,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMappingA
 
                     ```csharp
                     var assignment = new CSharpAssignmentStatement(
-                    mapping.GetTargetStatement(),
-                    mapping.GetSourceStatement());
+                        mapping.GetTargetStatement(),
+                        mapping.GetSourceStatement());
                     ```
 
                     ## 3. Recursive Patterns
@@ -128,8 +128,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMappingA
 
                     ```csharp
                     yield return new CSharpAssignmentStatement(
-                    GetTargetStatement(),
-                    $"{updateHelperType}.CreateOrUpdateCollection({GetTargetPathText()}, {GetSourcePathText()}, (e, d) => {GetPrimaryKeyComparisonMappings()}, CreateOrUpdate{elementName})");
+                        GetTargetStatement(),
+                        $"{updateHelperType}.CreateOrUpdateCollection({GetTargetPathText()}, {GetSourcePathText()}, (e, d) => {GetPrimaryKeyComparisonMappings()}, CreateOrUpdate{elementName})");
                     ```
 
                     ### D. Null-Safe and Validate All (MappingOptions)
@@ -145,28 +145,28 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMappingA
                     ```csharp
                     public class CustomUpdateResolver : IMappingTypeResolver
                     {
-                    private readonly ICSharpFileBuilderTemplate _template;
+                        private readonly ICSharpFileBuilderTemplate _template;
 
-                    public CustomUpdateResolver(ICSharpFileBuilderTemplate template)
-                    {
-                    _template = template;
-                    }
+                        public CustomUpdateResolver(ICSharpFileBuilderTemplate template)
+                        {
+                            _template = template;
+                        }
 
-                    public ICSharpMapping? ResolveMappings(MappingModel mappingModel)
-                    {
-                    if (mappingModel.Mapping == null)
-                    {
-                    return null;
-                    }
+                        public ICSharpMapping? ResolveMappings(MappingModel mappingModel)
+                        {
+                            if (mappingModel.Mapping == null)
+                            {
+                                return null;
+                            }
 
-                    // Match your mapping type/specialization here.
-                    if (mappingModel.Mapping.Type == "Update Entity Mapping")
-                    {
-                    return new ObjectUpdateMapping(mappingModel, _template);
-                    }
+                            // Match your mapping type/specialization here.
+                            if (mappingModel.Mapping.Type == "Update Entity Mapping")
+                            {
+                                return new ObjectUpdateMapping(mappingModel, _template);
+                            }
 
-                    return null; // Delegate to next resolver in pipeline.
-                    }
+                            return null; // Delegate to next resolver in pipeline.
+                        }
                     }
                     ```
 
@@ -199,23 +199,23 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMappingA
                     ```csharp
                     public class CustomObjectMapping : CSharpMappingBase
                     {
-                    public CustomObjectMapping(MappingModel model, ICSharpTemplate template)
-                    : base(model, template)
-                    {
-                    }
+                        public CustomObjectMapping(MappingModel model, ICSharpTemplate template)
+                            : base(model, template)
+                        {
+                        }
 
-                    public override IEnumerable<CSharpStatement> GetMappingStatements()
-                    {
-                    if (Mapping == null)
-                    {
-                    return Children.SelectMany(x => x.GetMappingStatements()).ToList();
-                    }
+                        public override IEnumerable<CSharpStatement> GetMappingStatements()
+                        {
+                            if (Mapping == null)
+                            {
+                                return Children.SelectMany(x => x.GetMappingStatements()).ToList();
+                            }
 
-                    return new[]
-                    {
-                    new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement())
-                    };
-                    }
+                            return new[]
+                            {
+                                new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement())
+                            };
+                        }
                     }
                     ```
 
@@ -241,8 +241,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMappingA
                     ```csharp
                     // Build a predicate from query mapping ends:
                     var predicate = string.Join(" && ", queryMapping.MappedEnds
-                    .Where(x => x.SourceElement != null)
-                    .Select(x => $"x.{x.TargetElement.Name} == {mappingManager.GenerateSourceStatementForMapping(queryMapping, x)}"));
+                        .Where(x => x.SourceElement != null)
+                        .Select(x => $"x.{x.TargetElement.Name} == {mappingManager.GenerateSourceStatementForMapping(queryMapping, x)}"));
                     // Result: "x => x.CustomerId == request.CustomerId && x.Status == request.Status"
                     ```
 
@@ -251,8 +251,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMappingA
                     ```csharp
                     foreach (var end in updateMapping.MappedEnds.Where(me => me.TargetElement.IsOperationModel()))
                     {
-                    var operationName = ((IElement)end.TargetElement).Name;
-                    // post-process the generated invocation statement
+                        var operationName = ((IElement)end.TargetElement).Name;
+                        // post-process the generated invocation statement
                     }
                     ```
 
@@ -275,24 +275,24 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMappingA
                     ```csharp
                     public ICSharpMapping? ResolveMappings(MappingModel mappingModel)
                     {
-                    var model = mappingModel.Model;
+                        var model = mappingModel.Model;
 
-                    // Navigation to a single entity or entity collection
-                    if (model.SpecializationType == "Association Target End"
-                    && model.TypeReference?.Element?.SpecializationType == "Class")
-                    {
-                    return new ObjectUpdateMapping(mappingModel, _template);
-                    }
+                        // Navigation to a single entity or entity collection
+                        if (model.SpecializationType == "Association Target End"
+                            && model.TypeReference?.Element?.SpecializationType == "Class")
+                        {
+                            return new ObjectUpdateMapping(mappingModel, _template);
+                        }
 
-                    // Navigation to a collection of value objects
-                    if (model.SpecializationType == "Association Target End"
-                    && model.TypeReference?.Element?.SpecializationType == "Value Object"
-                    && model.TypeReference.IsCollection)
-                    {
-                    return new ValueObjectCollectionUpdateMapping(mappingModel, _template);
-                    }
+                        // Navigation to a collection of value objects
+                        if (model.SpecializationType == "Association Target End"
+                            && model.TypeReference?.Element?.SpecializationType == "Value Object"
+                            && model.TypeReference.IsCollection)
+                        {
+                            return new ValueObjectCollectionUpdateMapping(mappingModel, _template);
+                        }
 
-                    return null;
+                        return null;
                     }
                     ```
 

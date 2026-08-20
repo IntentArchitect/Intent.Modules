@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files />
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration#cee20d15-d64b-426c-8f31-80d385d82156</correlationId>
+      <path>Migrations/Migration_01_00_01_Pre_01.cs</path>
+      <count>3</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-20T13:55:45.0731775Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-20T15:59:16.565854Z</approvedAt>
+      <deviationsHash>2D4B1947570D0D4481D522C88CF5F9DF75CC99B00461300D6B79CFA785903D9F</deviationsHash>
+    </file>
+  </files>
   <customFiles>
     <customFile>
       <path>Modules/Intent.Modules.ModuleBuilder.AI.Skills/.gitattributes</path>
@@ -13,6 +26,12 @@
       <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
       <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
       <approvedAt>2026-08-19T10:32:20.4762238Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.AI.Skills/Migrations/ObsoleteSkillFolderCleanup.cs</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-20T15:59:17.5929532Z</approvedAt>
     </customFile>
   </customFiles>
 </deviationsLog>

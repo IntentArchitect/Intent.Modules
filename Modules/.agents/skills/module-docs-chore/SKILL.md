@@ -2,7 +2,7 @@
 name: module-docs-chore
 description: "Update a module's release-notes, README, .imodspec metadata, and icon to reflect a change a consumer can observe, in the same turn as that change. USE ONLY WHEN a module change alters anything observable — a new/removed template, setting, stereotype, config default, or behavioural fix. DO NOT USE FOR internal refactors with no observable effect, or for bumping the module's version number itself (see module-version-increment). REQUIRES the observable change already implemented or decided."
 keywords: [documentation, release-notes, readme, imodspec, icon, chore, upkeep]
-contentHash: 8AA8C0616FFCA4130ED8C933974C881E0236C3D8C7587E2327A8AAB19BCF9EF7
+contentHash: C9407FD75BB0F238CCEA687DA6A8C03D970458E7380513825C4F62F94B06B33B
 ---
 # Skill: module-docs-chore
 
@@ -30,8 +30,6 @@ generated output needs nothing.
 |---|---|
 | Module metadata — summary, description, tags | Kept accurate as a matter of course. These are what a consumer sees before installing anything. |
 | `release-notes.md` | One bullet under the current version — **only if the file already exists** |
-| `docs/README.md` | The section the change affects — a settings table, a generated-output example, a feature description. **Create it if the module does not have one.** |
-| Module icon | Created only if the module has none yet — see "The Icon" below. An existing icon is never overwritten. |
 
 ## Release Notes Are Maintained, Never Introduced
 
@@ -46,15 +44,15 @@ built. Write for that reader.
 
 - **One line per entry.** If a bullet needs a second sentence to explain itself, that detail belongs in
 
-  the module's documentation, not here.
+the module's documentation, not here.
 
 - **Group related changes into one entry.** Work that added four templates, two settings and an
 
-  instruction file is *one* entry describing the capability — not seven describing its parts.
+instruction file is *one* entry describing the capability — not seven describing its parts.
 
 - **Split only when a consumer would act on each differently.** Two independent changes affecting
 
-  different people are two entries. Two halves of one change are one entry.
+different people are two entries. Two halves of one change are one entry.
 
 Fewer, higher-altitude entries scan better and age better. A reader months later wants to know what
 changed about the module, not which files were touched to do it.
@@ -107,30 +105,14 @@ someone who never agreed to it.
 
 ## The README
 
-Every module should have a `docs/README.md` explaining what it generates and how it is configured.
-Unlike the release notes, this one **is** created when missing — a module with no README leaves a
-consumer with nothing to read at all.
-
-Keep it describing the module's current behaviour rather than its history. When a change makes a
-section wrong, correct that section; do not append a note saying it changed.
+Module READMEs are not maintained in this environment. If a module already has a `docs/README.md`,
+leave it alone unless the developer asks for it — do not create one, and do not treat its absence as
+something to fix.
 
 ## The Icon
 
-Create a module's SVG icon **when it has none** — never overwrite one that already exists, even if
-it looks dated. An existing icon is a deliberate choice by whoever set it, not something this chore
-corrects.
-
-Source the description to craft from; do not invent one:
-
-- The module's own `.imodspec` `<summary>` and `<tags>` — the same material already kept current
-
-  elsewhere in this chore.
-
-- Its `CONTEXT.md` "Purpose" section, if one exists.
-
-If the `module-svg-icon` skill is available in your environment, use it with that description to
-craft and apply the icon. If it is not available, this chore has no icon-crafting mechanism of its
-own — leave the module without an icon rather than improvising a substitute.
+Module icons are not maintained in this environment. Leave an existing icon alone, and do not create
+one — its absence is not something to fix.
 
 ## Cover The Whole Version Line
 
@@ -146,6 +128,4 @@ entries account for everything in it, not that there is an entry per change.
 - [ ] Author matches what sibling modules use — copied or asked for, never invented
 - [ ] `release-notes.md` updated **if present** — and not created if absent
 - [ ] Entries are one line each, grouped by capability rather than listed per change
-- [ ] `docs/README.md` reflects the change — created if the module had none
-- [ ] Module icon created if missing, described from `.imodspec`/`CONTEXT.md` — existing icons left untouched
 - [ ] Earlier undocumented changes in the same version line covered

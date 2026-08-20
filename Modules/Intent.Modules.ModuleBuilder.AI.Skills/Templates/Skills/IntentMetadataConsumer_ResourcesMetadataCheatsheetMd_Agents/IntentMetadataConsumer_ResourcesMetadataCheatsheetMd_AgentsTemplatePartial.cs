@@ -42,7 +42,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMetadata
                     | **Enum boolean** | `model.GetXxx().TemplatingMethod().IsT4Template()` | Single-branch guard | `if (model.GetFileSettings().TemplatingMethod().IsT4Template()) { ... }` |
                     | **IElement ref** | `model.GetXxx().Provider()` | Type-resolve + conditional code branch | `var providerEl = pkg.GetDocumentDatabase().Provider(); // branch per element SpecializationType` |
 
-                    ---
+                    ===
 
                     ## Strongly-Typed Extension Anatomy
 
@@ -55,16 +55,16 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMetadata
                     // Tier 2 — typed accessor (returns wrapper or null)
                     public static ComponentSettings GetComponentSettings(this ComponentModel model)
                     {
-                    var stereotype = model.GetStereotype(ComponentSettings.DefinitionId);
-                    return stereotype != null ? new ComponentSettings(stereotype) : null;
+                        var stereotype = model.GetStereotype(ComponentSettings.DefinitionId);
+                        return stereotype != null ? new ComponentSettings(stereotype) : null;
                     }
 
                     // Tier 3 — TryGet pattern (preferred when consuming inside loops)
                     public static bool TryGetComponentSettings(
-                    this ComponentModel model, out ComponentSettings stereotype) { ... }
+                        this ComponentModel model, out ComponentSettings stereotype) { ... }
                     ```
 
-                    ---
+                    ===
 
                     ## Consuming Enum Options
 
@@ -78,35 +78,35 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMetadata
                     // DO — discriminated switch on full enum
                     switch (model.GetFileSettings().TemplatingMethod().AsEnum())
                     {
-                    case TemplatingMethodOptionsEnum.T4Template:
-                    // generate T4 registration
-                    break;
-                    case TemplatingMethodOptionsEnum.CSharpFileBuilder:
-                    // generate CSharpFile registration
-                    break;
+                        case TemplatingMethodOptionsEnum.T4Template:
+                            // generate T4 registration
+                            break;
+                        case TemplatingMethodOptionsEnum.CSharpFileBuilder:
+                            // generate CSharpFile registration
+                            break;
                     }
                     ```
 
-                    ---
+                    ===
 
                     ## Filtering Model Collections
 
                     ### Simple flag (use typed IsXxx where available)
                     ```csharp
                     var aggregates = domain.GetClassModels()
-                    .Where(x => x.IsAggregateRoot())
-                    .ToArray();
+                        .Where(x => x.IsAggregateRoot())
+                        .ToArray();
                     ```
 
                     ### Composite condition
                     ```csharp
                     var repositoryTargets = _metadataManager.Domain(application).GetClassModels()
-                    .Where(x => (x.IsAggregateRoot() && (!x.IsAbstract || x.HasStereotype("Table")))
-                    || x.HasRepository())
-                    .ToArray();
+                        .Where(x => (x.IsAggregateRoot() && (!x.IsAbstract || x.HasStereotype("Table")))
+                                    || x.HasRepository())
+                        .ToArray();
                     ```
 
-                    ---
+                    ===
 
                     ## Intent Model Wrapper Hierarchy
 
@@ -132,7 +132,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMetadata
                     | `OperationModel` | `IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference` | `Parameters` |
                     | `AssociationEndModel` | `ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper` | Directly IS a `ITypeReference` |
 
-                    ---
+                    ===
 
                     ## Creating a Missing Typed Extension
 
@@ -150,27 +150,27 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMetadata
 
                     public static class ClassModelStereotypeExtensions
                     {
-                    public static bool HasMyStereotype(this ClassModel model)
-                    => model.HasStereotype(MyStereotype.DefinitionId);
+                        public static bool HasMyStereotype(this ClassModel model)
+                            => model.HasStereotype(MyStereotype.DefinitionId);
 
-                    public static MyStereotype GetMyStereotype(this ClassModel model)
-                    {
-                    var stereotype = model.GetStereotype(MyStereotype.DefinitionId);
-                    return stereotype != null ? new MyStereotype(stereotype) : null;
-                    }
+                        public static MyStereotype GetMyStereotype(this ClassModel model)
+                        {
+                            var stereotype = model.GetStereotype(MyStereotype.DefinitionId);
+                            return stereotype != null ? new MyStereotype(stereotype) : null;
+                        }
 
-                    public class MyStereotype
-                    {
-                    private readonly IStereotype _stereotype;
-                    public const string DefinitionId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+                        public class MyStereotype
+                        {
+                            private readonly IStereotype _stereotype;
+                            public const string DefinitionId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 
-                    public MyStereotype(IStereotype stereotype) => _stereotype = stereotype;
-                    public bool IsEnabled() => _stereotype.GetProperty<bool>("Is Enabled");
-                    }
+                            public MyStereotype(IStereotype stereotype) => _stereotype = stereotype;
+                            public bool IsEnabled() => _stereotype.GetProperty<bool>("Is Enabled");
+                        }
                     }
                     ```
 
-                    ---
+                    ===
 
                     ## Shared Vocabulary Layer (`Intent.Modules.Common.Types`)
 

@@ -26,11 +26,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleDocs_Ski
             WithContentHashing = true;
             MarkdownFile = new MarkdownFile("SKILL", relativeLocation: "module-docs")
                 .FromMarkdown(""""""
-                    ---
+                    ===
                     name: module-docs
                     description: "Complete or refresh a module's release-notes.md, docs/README.md, and .imodspec metadata to a canonical format, touching only what already exists or what the maintainer explicitly supplies. USE ONLY WHEN a maintainer explicitly asks for documentation to be completed or brought up to this format. DO NOT USE FOR the automatic same-turn doc update after an observable change (see module-docs-chore) — this is an opt-in pass, and it must never introduce release-notes.md or fabricate a projectUrl unprompted. REQUIRES the target module's .imodspec (and any existing release-notes.md/docs/README.md) already present to read from."
                     keywords: [release-notes, readme, imodspec, documentation, module]
-                    ---
+                    ===
 
                     # Skill: module-docs
 
@@ -40,7 +40,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleDocs_Ski
                     - **`docs/README.md`** — feature/usage documentation; fill gaps in an existing one, or write one if asked
                     - **`*.imodspec`** — metadata fields consumed by the module registry (summary, description, tags, releaseNotes, and `projectUrl` only if the maintainer supplies one)
 
-                    ---
+                    ===
 
                     ## Step 1 — Gather Source Material
 
@@ -55,7 +55,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleDocs_Ski
                     | Factory extension `*FactoryExtension.cs` files | What cross-cutting concerns they add (DI registrations, appsettings, template modifications) |
                     | `NugetPackages.cs` | NuGet packages the module introduces — informs tags and README dependency callouts |
 
-                    ---
+                    ===
 
                     ## Artifact 1: `release-notes.md`
 
@@ -97,7 +97,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleDocs_Ski
                     - New Feature: Added support for SQL Persistence outbox pattern when `OutboxPattern` is set to `EntityFramework` on the application settings.
                     ```
 
-                    ---
+                    ===
 
                     ## Artifact 2: `docs/README.md`
 
@@ -151,7 +151,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleDocs_Ski
                     | `ContainerRegistrationRequest` / `HasDependency` targets | `Related Modules` hints |
                     | NuGet packages introduced | Callout in relevant feature section or `External Resources` |
 
-                    ---
+                    ===
 
                     ## Artifact 3: `.imodspec` Fields
 
@@ -185,7 +185,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleDocs_Ski
                     <tags>nservicebus messaging eventing infrastructure csharp dotnet</tags>
                     ```
 
-                    ---
+                    ===
 
                     ## Verification Checklist
 

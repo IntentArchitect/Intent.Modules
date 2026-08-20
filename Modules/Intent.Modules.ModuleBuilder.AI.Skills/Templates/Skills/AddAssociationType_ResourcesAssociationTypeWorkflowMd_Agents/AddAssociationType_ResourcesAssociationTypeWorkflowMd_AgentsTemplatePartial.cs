@@ -37,11 +37,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddAssociation
           **MCP lookup per type:**
           ```json
           find_designer_elements(
-          applicationId   = <target module's app ID>,
-          designerId      = <target module's Module Builder designer ID>,
-          query           = "<element name>",
-          fields          = ["name"],
-          specializations = ["Element Settings"]
+              applicationId   = <target module's app ID>,
+              designerId      = <target module's Module Builder designer ID>,
+              query           = "<element name>",
+              fields          = ["name"],
+              specializations = ["Element Settings"]
           )
           ```
 

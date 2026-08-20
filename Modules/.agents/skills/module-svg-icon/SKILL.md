@@ -3,7 +3,7 @@ name: module-svg-icon
 description: "Craft a house-style SVG icon for a module from a supplied description and apply it as the module's package icon. USE ONLY WHEN asked to create, set, or refresh a module's icon. DO NOT USE FOR deciding or sourcing what the icon should represent — it takes that description exactly as supplied, never invents one. REQUIRES the icon's intended visual description already supplied by the caller."
 argument-hint: "[description of what the icon should visually represent]"
 keywords: [icon, svg, branding, application.config, imodspec, package]
-contentHash: 2EBA0C8C12F47908C8893FF54F7455B41657A705DAE1AA9DB4B6A3CC1F8D4DB0
+contentHash: 89B7288141B5DDE842C58776BF5B59E2DB1F02B98105DE272809D8667DA19A10
 ---
 # Skill: module-svg-icon
 
@@ -67,13 +67,13 @@ through your own output:
 
 2. Build the data URI: `data:image/svg+xml;base64,<computed>`.
 3. In the module's `.application.config`, replace only:
-- the attribute-less root `<icon>...</icon>` element — not any `<icon type="..." source="...">` entry
-- the sibling `<iconType>...</iconType>` element (should read `UrlImagePath`; set it if absent)
-1. Before writing, assert **exactly one** match was found for each element. Abort rather than guess
+    - the attribute-less root `<icon>...</icon>` element — not any `<icon type="..." source="...">` entry
+    - the sibling `<iconType>...</iconType>` element (should read `UrlImagePath`; set it if absent)
+4. Before writing, assert **exactly one** match was found for each element. Abort rather than guess
 
 if the count is zero or more than one.
 
-2. Delete the temp SVG file once the config has been updated.
+5. Delete the temp SVG file once the config has been updated.
 
 ## Step 3 — Regenerate
 

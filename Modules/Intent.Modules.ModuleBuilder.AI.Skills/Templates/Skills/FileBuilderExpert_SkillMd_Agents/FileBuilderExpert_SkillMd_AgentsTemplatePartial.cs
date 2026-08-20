@@ -51,11 +51,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     9. For generated type declarations, put the final class/interface name on the template model/provider (for example `IHasName.Name`) and use the same model when resolving references via `GetTypeName(templateId, model)`; handle name collisions before `AddClass(...)`.
                     10. Inject DI parameters using `param.IntroduceReadonlyField()`.
                     11. For not-implemented handlers/method bodies, use:
-                    ```csharp
-                    method.AddStatement("// IntentInitialGen");
-                    method.AddStatement($"// TODO: Implement {method.Name} ({@class.Name}) functionality");
-                    method.AddStatement("""throw new NotImplementedException("Your implementation here...");""");
-                    ```
+                        ```csharp
+                        method.AddStatement("// IntentInitialGen");
+                        method.AddStatement($"// TODO: Implement {method.Name} ({@class.Name}) functionality");
+                        method.AddStatement("""throw new NotImplementedException("Your implementation here...");""");
+                        ```
                     12. **Metadata has two uses — know both.** (a) **Your own cross-step state:** `node.AddMetadata("key", value)` in one callback, read back in a later one. (b) **Reading the designer model the host template already attached:** a node generated from a modelled element is stamped with that element under the well-known key `"model"`, so `method.TryGetMetadata<TModel>("model", out var m)` tells you which designer element a generated member came from — classes, methods, properties and parameters each carry their own. Guard every read (`GetMetadata` throws on an absent key; `AddMetadata` throws on a duplicate one). See `intent-module-orchestrator` § "The Model Bridge".
 
                     ## Must Nots

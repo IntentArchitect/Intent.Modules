@@ -34,26 +34,26 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     [IntentManaged(Mode.Fully, Body = Mode.Merge)]
                     public partial class SampleTemplate : CSharpTemplateBase<object>, ICSharpFileBuilderTemplate
                     {
-                    public const string TemplateId = "My.Module.SampleTemplate";
+                        public const string TemplateId = "My.Module.SampleTemplate";
 
-                    [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
-                    public SampleTemplate(IOutputTarget outputTarget, object model = null)
-                    : base(TemplateId, outputTarget, model)
-                    {
-                    CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath(), this)
-                    .AddUsing("System")
-                    .AddClass("Sample", @class =>
-                    {
-                    @class.AddConstructor(ctor =>
-                    ctor.AddParameter("string", "value", p => p.IntroduceReadonlyField()));
-                    @class.AddMethod("void", "DoWork", method =>
-                    method.AddStatement("// TODO"));
-                    });
-                    }
+                        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+                        public SampleTemplate(IOutputTarget outputTarget, object model = null)
+                            : base(TemplateId, outputTarget, model)
+                        {
+                            CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath(), this)
+                            .AddUsing("System")
+                            .AddClass("Sample", @class =>
+                            {
+                                @class.AddConstructor(ctor =>
+                                    ctor.AddParameter("string", "value", p => p.IntroduceReadonlyField()));
+                                @class.AddMethod("void", "DoWork", method =>
+                                    method.AddStatement("// TODO"));
+                            });
+                        }
 
-                    [IntentManaged(Mode.Fully)] public CSharpFile CSharpFile { get; }
-                    [IntentManaged(Mode.Fully)] protected override CSharpFileConfig DefineFileConfig() => CSharpFile.GetConfig();
-                    [IntentManaged(Mode.Fully)] public override string TransformText() => CSharpFile.ToString();
+                        [IntentManaged(Mode.Fully)] public CSharpFile CSharpFile { get; }
+                        [IntentManaged(Mode.Fully)] protected override CSharpFileConfig DefineFileConfig() => CSharpFile.GetConfig();
+                        [IntentManaged(Mode.Fully)] public override string TransformText() => CSharpFile.ToString();
                     }
                     ```
 
@@ -63,7 +63,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     var configTemplate = application.FindTemplateInstance<IClassProvider>(NServiceBusConfigurationTemplate.TemplateId);
                     if (configTemplate != null)
                     {
-                    file.AddUsing(configTemplate.Namespace);
+                        file.AddUsing(configTemplate.Namespace);
                     }
                     ```
 
@@ -77,16 +77,16 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     // AddTypeSource("Intent.Eventing.Contracts.IntegrationEventHandlerInterface");  // ← won't inject using
 
                     CSharpFile = new CSharpFile(...)
-                    .OnBuild(file =>
-                    {
-                    // Single-file template: find the instance, take its namespace
-                    var handlerInterface = ExecutionContext.FindTemplateInstance<IClassProvider>(
-                    "Intent.Eventing.Contracts.IntegrationEventHandlerInterface");
-                    if (handlerInterface != null)
-                    file.AddUsing(handlerInterface.Namespace);
+                        .OnBuild(file =>
+                        {
+                            // Single-file template: find the instance, take its namespace
+                            var handlerInterface = ExecutionContext.FindTemplateInstance<IClassProvider>(
+                            "Intent.Eventing.Contracts.IntegrationEventHandlerInterface");
+                            if (handlerInterface != null)
+                            file.AddUsing(handlerInterface.Namespace);
 
-                    // Now safe to use "IIntegrationEventHandler" as a raw type name in statements
-                    }, 0);
+                            // Now safe to use "IIntegrationEventHandler" as a raw type name in statements
+                        }, 0);
                     ```
 
                     `IClassProvider` is from `Intent.Modules.Common.Templates` — already available in most template files.
@@ -105,29 +105,29 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     // In the template constructor:
                     @class.AddMethod("void", "Configure", method =>
                     {
-                    method.Override();
-                    method.AddParameter("MessageProcessingBuilder", "builder");
+                        method.Override();
+                        method.AddParameter("MessageProcessingBuilder", "builder");
 
-                    // Mark Mode.Ignore so developer customisations survive regeneration.
-                    // The body below is only written on the FIRST SF run for this file.
-                    method.AddAttribute("IntentManaged", attr => attr.AddArgument("Mode.Ignore"));
+                        // Mark Mode.Ignore so developer customisations survive regeneration.
+                        // The body below is only written on the FIRST SF run for this file.
+                        method.AddAttribute("IntentManaged", attr => attr.AddArgument("Mode.Ignore"));
                     });
 
                     // Populate the initial body in OnBuild — it becomes the developer's starting point:
                     .OnBuild(file =>
                     {
-                    var configure = file.Classes.First().FindMethod("Configure");
-                    foreach (var handler in Model)
-                    {
-                    foreach (var sub in handler.IntegrationEventSubscriptions())
-                    {
-                    var eventType = GetTypeName("Intent.Eventing.Contracts.IntegrationEventMessage",
-                    sub.TypeReference.Element.AsMessageModel()!);
-                    configure.AddStatement(
-                    $"builder.Event<{eventType}>(\"{handler.Name}\")" +
-                    $".HandledBy<OrchestratorEventConsumer<IIntegrationEventHandler<{eventType}>, {eventType}>>();");
-                    }
-                    }
+                        var configure = file.Classes.First().FindMethod("Configure");
+                        foreach (var handler in Model)
+                        {
+                        foreach (var sub in handler.IntegrationEventSubscriptions())
+                        {
+                        var eventType = GetTypeName("Intent.Eventing.Contracts.IntegrationEventMessage",
+                        sub.TypeReference.Element.AsMessageModel()!);
+                        configure.AddStatement(
+                        $"builder.Event<{eventType}>(\"{handler.Name}\")" +
+                        $".HandledBy<OrchestratorEventConsumer<IIntegrationEventHandler<{eventType}>, {eventType}>>();");
+                        }
+                        }
                     }, 0);
                     ```
 
@@ -142,23 +142,23 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     // Branch-based:
                     if (useTopLevelStatements)
                     {
-                    CSharpFile.AddUsing(this.GetNamespace());
+                        CSharpFile.AddUsing(this.GetNamespace());
                     }
 
                     // Dependency-driven:
                     foreach (var templateDependency in @event.TemplateDependencies)
                     {
-                    var template = GetTemplate<IClassProvider>(templateDependency);
-                    if (template != null)
-                    {
-                    AddUsing(template.Namespace);
-                    }
+                        var template = GetTemplate<IClassProvider>(templateDependency);
+                        if (template != null)
+                        {
+                        AddUsing(template.Namespace);
+                        }
                     }
 
                     // Namespace collection:
                     foreach (var ns in @event.RequiredNamespaces)
                     {
-                    AddUsing(ns);
+                        AddUsing(ns);
                     }
 
                     // Only introduce the namespace when this exact type is needed:

@@ -1,5 +1,5 @@
 ---
-contentHash: 2E6B53DA3CFFD7CAA9B6013C8E7A5816CD93CDF4040B9ACF213DEB81807732AC
+contentHash: CA78B49531E49CFBEAE2CF73F2344C186BB4AF36056E42C3CDE7F33D3B72C9D0
 ---
 # Orchestration Cheatsheet
 
@@ -8,7 +8,7 @@ Source of truth: <https://github.com/IntentArchitect/Intent.Modules>
 
 > **Strategy — broadcast over direct coupling.** Recurring cross-module integration is done by *broadcasting* a request that a responsible module *handles* — never by wiring modules together directly. DI registration (`ContainerRegistrationRequest`) and app settings (`AppSettingRegistrationRequest`) below are the documented examples. **Infrastructure-resource registration** (resources other modules consume — e.g. for health checks) follows the same broadcast pattern; confirm the exact request type via `search_docs` before use rather than assuming. See `module-building-strategies` §1.
 
-- --
+===
 
 ## §DI Registration — ContainerRegistrationRequest
 
@@ -23,8 +23,8 @@ ExecutionContext.EventDispatcher.Publish(
 // Concrete + interface + concern + lifetime
 ExecutionContext.EventDispatcher.Publish(
     ContainerRegistrationRequest
-        .ToRegister(this)                            // IClassProvider: uses FullTypeName()
-        .ForInterface(interfaceTemplate)             // resolves via IClassProvider or string
+        .ToRegister(this)                           // IClassProvider: uses FullTypeName()
+        .ForInterface(interfaceTemplate)            // resolves via IClassProvider or string
         .ForConcern("Application")                  // targets Application startup file
         .WithPerServiceCallLifeTime()               // Transient | PerServiceCall | Singleton
         .HasDependency(this));                      // declares template ordering dependency
@@ -53,12 +53,12 @@ container uses. That mapping is the host's business, not yours — which is exac
 request instead of writing the call yourself.
 
 | Constant | Meaning | Typical host mapping |
-|---|---|---|
+|===|===|===|
 | `LifeTime.Transient` | Created on every resolution | `AddTransient` |
 | `LifeTime.PerServiceCall` | Scoped to one request/unit-of-work | `AddScoped` |
 | `LifeTime.Singleton` | Single instance for application lifetime | `AddSingleton` |
 
-- --
+===
 
 ## §AppSettings — AppSettingRegistrationRequest
 
@@ -98,7 +98,7 @@ ExecutionContext.EventDispatcher.Publish(
         forProjectWithRole: "AzureFunctions"));
 ```
 
-- --
+===
 
 ## §Host Wiring — ServiceConfigurationRequest & Siblings
 
@@ -160,7 +160,7 @@ run. Publishing a request hands all of that to the host template that owns the f
 host templates listen for these requests and each maps them onto its own startup shape — which is
 precisely the knowledge you avoid having to encode.
 
-- --
+===
 
 ## §Resolution — FindTemplateInstance & Safe Guards
 
@@ -177,7 +177,7 @@ diTemplate.CSharpFile.AfterBuild(file =>
 {
     var method = file.Classes.First().FindMethod("AddApplication");
     method?.AddInvocationStatement("services.AddAutoMapper",
-        stmt => stmt.AddArgument("Assembly.GetExecutingAssembly()"));
+    stmt => stmt.AddArgument("Assembly.GetExecutingAssembly()"));
 }, 500);                                 // ← MUST: explicit priority (Extension band)
 ```
 
@@ -282,11 +282,11 @@ IA may load each module's assembly in an isolated `AssemblyLoadContext`. When it
 ```csharp
 // ❌ Wrong — returns null when called from a different module's factory extension
 var t = application.FindTemplateInstance<WolverineConfigurationTemplate>(
-    WolverineConfigurationTemplate.TemplateId);
+WolverineConfigurationTemplate.TemplateId);
 
 // ✅ Correct — interface types from shared packages cross ALC boundaries safely
 var t = application.FindTemplateInstance<ICSharpFileBuilderTemplate>(
-    WolverineConfigurationTemplate.TemplateId);
+WolverineConfigurationTemplate.TemplateId);
 ```
 
 | Scenario | Interface to use |
@@ -304,7 +304,7 @@ application
     ?.CSharpFile.AfterBuild(file => { /* enrich if present */ }, 500);
 ```
 
-- --
+===
 
 ## §The Model Bridge — reading the designer model off a generated node
 
@@ -325,7 +325,7 @@ foreach (var template in templates)
 {
     // Narrow to templates whose own model is the shape you expect.
     if (!template.TryGetModel<IHandlerModel>(out var handlerModel))
-        continue;
+    continue;
 
     template.CSharpFile.OnBuild(file =>
     {
@@ -358,19 +358,9 @@ foreach (var template in templates)
 ```
 
 - *Rules for the bridge**
-1. **Always `TryGetMetadata`, never `GetMetadata`.** `"model"` is a convention host templates opt
-
-   into, not a framework guarantee — a node with no model, or one built by a different template
-   version, simply won't have it. `GetMetadata` on an absent key throws.
-
-2. **Type the read.** `TryGetMetadata<T>` returns `false` on a type mismatch as well as on an absent
-
-   key, so a wrong `T` degrades to "skip" rather than to a cast exception.
-
-3. **Every node level carries its own.** Classes, methods, properties and parameters are stamped
-
-   independently — read the one on the node you are actually enriching.
-
+1. **Always `TryGetMetadata`, never `GetMetadata`.** `"model"` is a convention host templates opt into, not a framework guarantee — a node with no model, or one built by a different template version, simply won't have it. `GetMetadata` on an absent key throws.
+2. **Type the read.** `TryGetMetadata<T>` returns `false` on a type mismatch as well as on an absent key, so a wrong `T` degrades to "skip" rather than to a cast exception.
+3. **Every node level carries its own.** Classes, methods, properties and parameters are stamped independently — read the one on the node you are actually enriching.
 4. **Guard every mutation for idempotency.** These callbacks re-run on every execution.
 
 > **Setting vs reading.** Metadata has two distinct uses, and the second is easy to miss:
@@ -378,7 +368,7 @@ foreach (var template in templates)
 > later one), **and** reading the designer model the host template already attached. `"model"` is
 > the second kind. See `file-builder-expert` for the metadata API itself.
 
-- --
+===
 
 ## §Two-Tier Module Dependency
 
@@ -398,7 +388,7 @@ assembly**. Referencing them means compiling against it, which means declaring i
 ```xml
 <!-- In your .imodspec — required only for Tier 2 -->
 <dependencies>
-  <dependency id="MyEcosystem.Application.Handlers" version="1.2.0" />
+<dependency id="MyEcosystem.Application.Handlers" version="1.2.0" />
 </dependencies>
 ```
 
@@ -410,7 +400,7 @@ dependency: when the target module's model interfaces change, your module has to
 Start at Tier 1. Move to Tier 2 when you actually need to read the model, not before — and see the
 Cross-Module Boundary Rule above, which still applies at both tiers.
 
-- --
+===
 
 ## §Factory Extension — Full FactoryExtensionBase Skeleton
 
@@ -452,7 +442,7 @@ public class MyModuleFactoryExtension : FactoryExtensionBase
 }
 ```
 
-- --
+===
 
 ## §Priority Bands Reference
 
@@ -468,7 +458,7 @@ csharpFile
     {
         // Band 100 — Enrichment: same-module additions (e.g., add an attribute).
         file.Classes.First().FindMethod("Execute")
-            ?.AddAttribute("LogExecutionTime");
+        ?.AddAttribute("LogExecutionTime");
     }, 100)
     .AfterBuild(file =>
     {
@@ -490,7 +480,8 @@ csharpFile
 ```
 
 - *The Find Rule:** Template B must use a **strictly higher priority** than Template A when B calls `FindMethod`/`FindClass` on elements A created. If B's priority ≤ A's, A may not have run yet.
-- --
+
+===
 
 ## §Resolution & Consumption — Stereotype-Driven AfterBuild
 
@@ -501,7 +492,7 @@ Bridges the two skills: resolve the template (orchestrator), then consume the st
 protected override void OnAfterTemplateRegistrations(IApplication application)
 {
     var templates = application.FindTemplateInstances<ICSharpFileBuilderTemplate>(
-        TemplateDependency.OnTemplate(TemplateRoles.Domain.Entity.Primary));
+    TemplateDependency.OnTemplate(TemplateRoles.Domain.Entity.Primary));
 
     foreach (var template in templates)
     {
@@ -539,14 +530,14 @@ protected override void OnAfterTemplateRegistrations(IApplication application)
             {
                 case TemplatingMethodOptionsEnum.CSharpFileBuilder:
                     cls.AddAttribute("CSharpFileBuilderManaged");
-                    break;
+                break;
             }
         }, 500);                         // Extension band
     }
 }
 ```
 
-- --
+===
 
 ## §Startup & Service Configuration — IAppStartupFile DSL
 
@@ -609,7 +600,7 @@ startup.StartupFile.AddServiceConfigurationLambda(
         // context     — carries .Services, .Configuration, and .Parameters
         // context.Parameters[0] — the lambda variable name: "opt"
         lambda.AddStatement(
-            $"{context.Parameters[0]}.Filters.Add<{template.GetExceptionFilterName()}>();");
+        $"{context.Parameters[0]}.Filters.Add<{template.GetExceptionFilterName()}>();");
 
         // Attach metadata so other modules can locate this statement later
         statement.AddMetadata("configure-services-controllers", "generic");
@@ -672,8 +663,8 @@ startup.StartupFile.ConfigureEndpoints((statements, ctx) =>
     if (statements.Statements.All(x => !x.ToString()!.Contains(".MapRazorPages")))
     {
         statements
-            .Single(x => x.ToString()!.Contains(".MapControllers("))
-            .InsertBelow(new CSharpInvocationStatement($"{ctx.Endpoints}.MapRazorPages"));
+        .Single(x => x.ToString()!.Contains(".MapControllers("))
+        .InsertBelow(new CSharpInvocationStatement($"{ctx.Endpoints}.MapRazorPages"));
     }
 });
 ```
@@ -724,7 +715,7 @@ startup.StartupFile.ConfigureApp((block, ctx) =>
 
 > ⚠️ `AddAppConfigurationLambda("UseEndpoints", ...)` throws — use `AddUseEndpointsStatement` instead.
 
-- --
+===
 
 ## TemplateDependency Quick Ref
 

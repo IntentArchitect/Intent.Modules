@@ -30,7 +30,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
 
                     Indexed failure modes for CSharpFile-based templates.
 
-                    ---
+                    ===
 
                     ## 1. `ToString` Before Build Completion
 
@@ -38,7 +38,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     **Cause:** `TransformText()` was called before the builder lifecycle ran. Usually means `ICSharpFileBuilderTemplate` is not implemented, so the framework never triggers `Build()`.  
                     **Fix:** Implement `ICSharpFileBuilderTemplate` on the template class. Keep `TransformText` as `return CSharpFile.ToString();` only.
 
-                    ---
+                    ===
 
                     ## 2. Empty Structural Output
 
@@ -46,7 +46,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     **Cause:** `CSharpFile` was constructed but no class, interface, record, enum, or top-level statements were added before `Build()` ran.  
                     **Fix:** Add at least one structural declaration (e.g. `.AddClass(...)`) in the constructor or in an `OnBuild` callback.
 
-                    ---
+                    ===
 
                     ## 3. Invalid `OnBuild` Timing
 
@@ -54,7 +54,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     **Cause:** `OnBuild(...)` was called after the build lifecycle had already completed — for example, inside an `AfterBuild` callback or in a post-construction hook.  
                     **Fix:** Register all `OnBuild` callbacks during constructor setup. Never queue new `OnBuild` callbacks from within an `AfterBuild` handler.
 
-                    ---
+                    ===
 
                     ## 4. Invalid `AfterBuild` Timing
 
@@ -62,7 +62,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     **Cause:** `AfterBuild(...)` was registered after the lifecycle already completed the `AfterBuild` phase.  
                     **Fix:** Register all `AfterBuild` callbacks during constructor setup or from within an `OnBuild` callback that runs while the phase is still open.
 
-                    ---
+                    ===
 
                     ## 5. Pending Configuration Delegates
 
@@ -70,7 +70,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     **Cause:** Build lifecycle was interrupted, or callbacks were collected into a queue but never flushed. Can happen when the `CSharpFile` constructor lambda throws before completing.  
                     **Fix:** Ensure constructor lambdas are deterministic and do not throw. Avoid conditional queue mutations inside `AddClass` / `AddMethod` lambdas where an exception would leave the builder in a half-configured state.
 
-                    ---
+                    ===
 
                     ## 6. Metadata-Resolution Failures
 
@@ -85,11 +85,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     // Safe:
                     if (method.TryGetMetadata<bool>("my-key", out var flag) && flag)
                     {
-                    // use flag
+                        // use flag
                     }
                     ```
 
-                    ---
+                    ===
 
                     ## 7. Mismatched `TemplateId`
 
@@ -104,11 +104,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     // Registration:
                     public class MyTemplateRegistration : SingleFileTemplateRegistration<MyTemplate>
                     {
-                    public override string TemplateId => MyTemplate.TemplateId;  // reference the constant
+                        public override string TemplateId => MyTemplate.TemplateId;  // reference the constant
                     }
                     ```
 
-                    ---
+                    ===
 
                     ## 8. Wrong Registration Type
 
@@ -122,17 +122,16 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     | One file per model element | `FilePerModelTemplateRegistration<TModel>` — must also override `GetModels` |
                     | Event/pipeline-driven | `ITemplateRegistration` directly |
 
-                    ---
+                    ===
 
                     ## 9. Usings don't follow members relocated to another file
 
                     **Principle:** usings belong to the **file that emits the member**, and the builder only adds them for type references it can *track* — i.e. ones resolved through the type system (`UseType` / `GetTypeName`) against **that file's** template. So whenever generated members are emitted into a file other than the current template's own (code-behind, an aggregating/partial file, a sibling template, a file authored via `OnBuild`/`FindClass` on another template), the relevant usings only follow if you resolve types against the *destination* template.
-
                     **Symptom:** A relocated/extracted member fails to compile — types or attributes (`Task`, `[SupplyParameterFromForm]`, `[Required]`, `IEnumerable<>`, …) not found — even though the same code compiled in its original file.
                     **Cause:** (a) members were added with **raw type strings** the builder can't track; and/or (b) the destination file doesn't inherit the source's implicit imports (e.g. a plain `.cs` gets none of Razor's `_Imports`; global usings differ per project); and/or (c) the type was resolved against the **wrong** template, so the using landed on the source file, not the destination.
                     **Fix:** Resolve every type/return/attribute through the **destination block's** template — `targetBlock.Template.UseType("Namespace.Type")` (e.g. `code.Template.UseType(...)` where `code` is the destination class) — so the using lands on the file that holds the members. Add `.RemoveSuffix("Attribute")` for attribute names. Ensure the destination template exposes the right context, e.g. `public override ICSharpCodeContext RootCodeContext => CSharpFile.Classes.Single();`. Types referenced only inside **raw statement/expression strings** are never tracked — interpolate a `UseType(...)` into the string, or add the namespace explicitly with `CSharpFile.AddUsing(...)`. See *Split-file / code-behind usings* in `SKILL.md`.
 
-                    ---
+                    ===
 
                     ## 10. `FindMethod` Returns Only the First Overload
 
@@ -148,11 +147,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     var methods = cls.Methods.Where(m => m.Name == "HandleAsync");
                     foreach (var method in methods)
                     {
-                    // apply changes to each overload
+                        // apply changes to each overload
                     }
                     ```
 
-                    ---
+                    ===
 
                     ## 11. Double semicolon from `AddReturn` wrapping a statement-type expression
 

@@ -36,7 +36,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
                     | An **element** (Class, Command, Query, etc.) | `Element Extension` |
                     | The end of an existing **association** | `Association Extension` — target or source end extension child |
 
-                    ---
+                    ===
 
                     ## Workflow
 
@@ -47,11 +47,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
                     **Option A — MCP lookup:**
                     ```json
                     find_designer_elements(
-                    applicationId = <target module's application ID>,
-                    designerId    = <target module's Module Builder designer ID>,
-                    query         = "<element name>",
-                    fields        = ["name"],
-                    specializations = ["Element Settings"]  // or "Package Settings"
+                      applicationId = <target module's application ID>,
+                      designerId    = <target module's Module Builder designer ID>,
+                      query         = "<element name>",
+                      fields        = ["name"],
+                      specializations = ["Element Settings"]  // or "Package Settings"
                     )
                     ```
                     The result's `id` field is the typeId.
@@ -65,8 +65,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
 
                     1. Create a `Designer Settings` node under your module's `designers/` folder.
                     2. Set its `Extend Designers` field to the foreign designer's GUID.
-                    - Domain Designer: `6ab29b31-27af-4f56-a67c-986d82097d63`
-                    - Services Designer: `81104ae6-2bc5-4bae-b05a-f987b0372d81`
+                      - Domain Designer: `6ab29b31-27af-4f56-a67c-986d82097d63`
+                      - Services Designer: `81104ae6-2bc5-4bae-b05a-f987b0372d81`
 
                     ### Step 3 — Create the Extension Element
 
@@ -79,9 +79,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
                     Create an `Element Extension` element under the `Designer Settings` node. Set its type reference to the foreign element type ID found in Step 1.
 
                     Apply two stereotypes (required):
+
                     - `Type Reference Extension Settings` with `Mode = Inherit`
                     - `Extension Settings`
-
                     **For an Association Extension:**
 
                     Create an `Association Extension` element. Under it, create either `Association Source End Extension` or `Association Target End Extension` children (whichever end needs the menu). Apply `Association End Extension Settings` to each end.
@@ -93,10 +93,10 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
                     **Element Creation Option** — when the option creates a child element:
                     - Set type reference to the new element's specialization type ID
                     - Apply `Option Settings` stereotype:
-                    - `Default Name` — e.g., `NewMyElement`
-                    - `Allow Multiple` — `true` / `false`
-                    - `Shortcut` — e.g., `ctrl + shift + m` (optional)
-                    - `Menu Group` — integer; same number = visually grouped together
+                      - `Default Name` — e.g., `NewMyElement`
+                      - `Allow Multiple` — `true` / `false`
+                      - `Shortcut` — e.g., `ctrl + shift + m` (optional)
+                      - `Menu Group` — integer; same number = visually grouped together
 
                     **Association Creation Option** — when the option draws an association:
                     - Set type reference to the **target end** of the new association type
@@ -128,15 +128,15 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
                     2. Confirm the `.designer.settings` file shows the new `<packageExtension>` or `<elementExtension>` block with the correct `typeId`.
                     3. If the extension adds a new element type (not just a menu option to an existing one), verify `Api/<NewType>Model.cs` was generated with the correct `SpecializationTypeId`.
 
-                    ---
+                    ===
 
                     ## Common Mistakes
 
-                    * **Wrong typeId** — using the extension's own ID instead of the foreign type's ID in the type reference. The type reference on an `Element Extension` must point to the element you are *extending*, not to the element you are *creating*.
-                    * **Missing `Extend Designers`** — creating the extension elements without linking the `Designer Settings` node to the foreign designer. The extensions are invisible until this GUID is set.
-                    * **Skipping `Type Reference Extension Settings` stereotype** — without `Mode = Inherit` on an Element Extension, type reference behaviour is undefined and the designer may misbehave.
-                    * **Adding context menu to the extension directly instead of the `[context menu]` child** — the menu options must live inside a `[context menu]` element, not directly on the extension element.
-                    * **Editing `.designer.settings` directly** — this file is regenerated on every SF run. Always make changes in the Module Builder designer model.
+                    - **Wrong typeId** — using the extension's own ID instead of the foreign type's ID in the type reference. The type reference on an `Element Extension` must point to the element you are *extending*, not to the element you are *creating*.
+                    - **Missing `Extend Designers`** — creating the extension elements without linking the `Designer Settings` node to the foreign designer. The extensions are invisible until this GUID is set.
+                    - **Skipping `Type Reference Extension Settings` stereotype** — without `Mode = Inherit` on an Element Extension, type reference behaviour is undefined and the designer may misbehave.
+                    - **Adding context menu to the extension directly instead of the `[context menu]` child** — the menu options must live inside a `[context menu]` element, not directly on the extension element.
+                    - **Editing `.designer.settings` directly** — this file is regenerated on every SF run. Always make changes in the Module Builder designer model.
 
                     """""");
         }

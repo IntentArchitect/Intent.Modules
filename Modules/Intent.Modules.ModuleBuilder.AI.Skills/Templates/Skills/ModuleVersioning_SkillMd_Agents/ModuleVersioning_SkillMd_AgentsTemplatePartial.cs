@@ -41,15 +41,19 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleVersioni
 
                     ## How to Set It
                     1. On the module's package, in the Module Builder designer:
-                    `pkg.ensureStereotype("Module Settings").setProperty("Version", "<supplied version>")`
-                    (or the designer UI) — never the `.imodspec` file. Use the version exactly as supplied.
+                       
+                       `pkg.ensureStereotype("Module Settings").setProperty("Version", "<supplied version>")`
+                       (or the designer UI) — never the `.imodspec` file. Use the version exactly as supplied.
+
                     2. Run the Software Factory to regenerate `.imodspec`'s `<version>`.
                     3. Confirm via `get_file_diffs` that only the version line changed.
 
                     ## Propagating the Change
                     - **Architecture Templates** referencing this module — update the `Component Module`'s
-                    `Version` in `metadata.iatspec`, only once the new version is actually published (confirm via
-                    `search_available_modules`, never guess).
+                    
+                      `Version` in `metadata.iatspec`, only once the new version is actually published (confirm via
+                      `search_available_modules`, never guess).
+                    
                     - **Other modules depending on it** — update their `<dependency id="..." version="...">` entry.
                     - **NuGet package alignment** — keep `.csproj` package versions in step with the module version
                     to avoid `NU1605` (see known-build-gotchas).

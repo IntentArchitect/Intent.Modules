@@ -90,8 +90,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleSvgIcon_
                     `base64`).
                     2. Build the data URI: `data:image/svg+xml;base64,<computed>`.
                     3. In the module's `.application.config`, replace only:
-                    - the attribute-less root `<icon>...</icon>` element — not any `<icon type="..." source="...">` entry
-                    - the sibling `<iconType>...</iconType>` element (should read `UrlImagePath`; set it if absent)
+                        - the attribute-less root `<icon>...</icon>` element — not any `<icon type="..." source="...">` entry
+                        - the sibling `<iconType>...</iconType>` element (should read `UrlImagePath`; set it if absent)
                     4. Before writing, assert **exactly one** match was found for each element. Abort rather than guess
                     if the count is zero or more than one.
                     5. Delete the temp SVG file once the config has been updated.

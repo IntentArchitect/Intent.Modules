@@ -4,6 +4,7 @@
   <file path="../Intent.Modules.sln" />
   <file path="Intent.ModuleBuilder.AI.Skills.imodspec" />
   <file path="Intent.Modules.ModuleBuilder.AI.Skills.csproj" />
+  <file path="Migrations/Migration_01_00_01_Pre_01.cs" deviationsHash="2D4B1947570D0D4481D522C88CF5F9DF75CC99B00461300D6B79CFA785903D9F" />
   <file path="Templates/RootPrinciples/ExceptionGuidelinesMd/ExceptionGuidelinesMdTemplatePartial.cs" />
   <file path="Templates/RootPrinciples/ExceptionGuidelinesMd/ExceptionGuidelinesMdTemplateRegistration.cs" />
   <file path="Templates/RootPrinciples/KnownBuildGotchasMd/KnownBuildGotchasMdTemplatePartial.cs" />

@@ -65,18 +65,18 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
 
           if (useTopLevelStatements)
           {
-          CSharpFile.AddUsing(this.GetNamespace());
+            CSharpFile.AddUsing(this.GetNamespace());
           }
 
           var template = GetTemplate<IClassProvider>(templateDependency);
           if (template != null)
           {
-          AddUsing(template.Namespace);
+            AddUsing(template.Namespace);
           }
 
           foreach (var ns in requiredNamespaces)
           {
-          AddUsing(ns);
+            AddUsing(ns);
           }
           ```
 
@@ -103,13 +103,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
           ```csharp
           // Constructor with auto-field:
           @class.AddConstructor(ctor =>
-          ctor.AddParameter("string", "value", p => p.IntroduceReadonlyField()));
+            ctor.AddParameter("string", "value", p => p.IntroduceReadonlyField()));
 
           // Method:
           @class.AddMethod("void", "DoWork", method =>
           {
-          method.AddParameter("int", "count");
-          method.AddStatement("return;");
+            method.AddParameter("int", "count");
+            method.AddStatement("return;");
           });
 
           // Interface method (async):
@@ -130,53 +130,51 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
           AddTypeSource(TemplateRoles.Domain.Enum);
 
           CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath(), this)
-          .AddClass(Model.Name, @class =>
-          {
-          // 2) Attribute -> Property mapping (model-driven):
-          foreach (var attribute in Model.Attributes)
-          {
-          var propertyType = GetTypeName(attribute);
-          @class.AddProperty(propertyType, attribute.Name.ToPascalCase(), prop =>
-          {
-          prop.RepresentsModel(attribute);
+              .AddClass(Model.Name, @class =>
+              {
+                  // 2) Attribute -> Property mapping (model-driven):
+                  foreach (var attribute in Model.Attributes)
+                  {
+                      var propertyType = GetTypeName(attribute);
+                      @class.AddProperty(propertyType, attribute.Name.ToPascalCase(), prop =>
+                      {
+                          prop.RepresentsModel(attribute);
+          
+                          // Static only when model semantics require it.
+                          // prop.Static();
+          
+                          // If the target member API exposes WithOptional(bool), map from model optionality.
+                          // For CSharpProperty in this repo, optionality is represented via resolved type/nullability
+                          // (and explicit modifiers such as Required()) rather than WithOptional(...).
+                      });
+                  }
 
-          // Static only when model semantics require it.
-          // prop.Static();
+                  // 3) Operation -> Method mapping (model-driven):
+                  foreach (var operation in Model.Operations)
+                  {
+                      @class.AddMethod(GetTypeName(operation), operation.Name.ToPascalCase(), method =>
+                      {
+                          method.RepresentsModel(operation);
 
-          // If the target member API exposes WithOptional(bool), map from model optionality.
-          // For CSharpProperty in this repo, optionality is represented via resolved type/nullability
-          // (and explicit modifiers such as Required()) rather than WithOptional(...).
-          });
-          }
+                          foreach (var parameter in operation.Parameters)
+                          {
+                            method.AddParameter(GetTypeName(parameter), parameter.Name.ToParameterName(), p => p.WithDefaultValue(parameter.Value));
+                          }
 
-          // 3) Operation -> Method mapping (model-driven):
-          foreach (var operation in Model.Operations)
-          {
-          @class.AddMethod(GetTypeName(operation), operation.Name.ToPascalCase(), method =>
-          {
-          method.RepresentsModel(operation);
+                          // If operation behavior is async / returns Task, mark the method async.
+                          if (operation.IsAsync())
+                          {
+                            method.Async();
+                            method.AddParameter(UseType("System.Threading.CancellationToken"), "cancellationToken", p => p.WithDefaultValue("default"));
+                          }
+                      });
+                  }
 
-          foreach (var parameter in operation.Parameters)
-          {
-          method.AddParameter(GetTypeName(parameter), parameter.Name.ToParameterName(),
-          p => p.WithDefaultValue(parameter.Value));
-          }
-
-          // If operation behavior is async / returns Task, mark the method async.
-          if (operation.IsAsync())
-          {
-          method.Async();
-          method.AddParameter(UseType("System.Threading.CancellationToken"), "cancellationToken",
-          p => p.WithDefaultValue("default"));
-          }
-          });
-          }
-
-          // 4) Constructor DI parameters should become private readonly fields.
-          @class.AddConstructor(ctor =>
-          ctor.AddParameter(UseType("Microsoft.Extensions.Logging.ILogger<" + Model.Name + ">"), "logger",
-          p => p.IntroduceReadonlyField()));
-          });
+                  // 4) Constructor DI parameters should become private readonly fields.
+                  @class.AddConstructor(ctor =>
+                  ctor.AddParameter(UseType("Microsoft.Extensions.Logging.ILogger<" + Model.Name + ">"), "logger",
+                  p => p.IntroduceReadonlyField()));
+              });
 
           // 5) TemplateId-based type resolution:
           var dtoType = GetTypeName(MyDtoTemplate.TemplateId, Model)
@@ -193,27 +191,27 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
           ```csharp
           // LAMBDAS: use CSharpLambdaBlock for LINQ and scoped logic. Do not handcraft => strings.
           method.AddInvocationStatement("items.Where", where => where
-          .AddArgument(new CSharpLambdaBlock("x")
-          .WithExpressionBody(new CSharpStatement("x.IsActive"))));
+            .AddArgument(new CSharpLambdaBlock("x")
+                .WithExpressionBody(new CSharpStatement("x.IsActive"))));
 
           method.AddInvocationStatement("items.Select", select => select
-          .AddArgument(new CSharpLambdaBlock("x")
-          .WithExpressionBody(new CSharpStatement("x.Name"))));
+            .AddArgument(new CSharpLambdaBlock("x")
+                .WithExpressionBody(new CSharpStatement("x.Name"))));
 
           // OBJECT INITIALIZERS: use CSharpObjectInitializerBlock with AddInitStatement, never raw { ... } strings.
           method.AddStatement(new CSharpAssignmentStatement(
-          new CSharpVariableDeclaration("var dto"),
-          new CSharpObjectInitializerBlock("new MyDto")
-          .AddInitStatement("Id", "entity.Id")
-          .AddInitStatement("Name", "entity.Name")
-          .AddInitStatement("IsActive", "entity.IsActive")
-          .WithSemicolon()));
+            new CSharpVariableDeclaration("var dto"),
+            new CSharpObjectInitializerBlock("new MyDto")
+                .AddInitStatement("Id", "entity.Id")
+                .AddInitStatement("Name", "entity.Name")
+                .AddInitStatement("IsActive", "entity.IsActive")
+                .WithSemicolon()));
 
           // MODERN CHAINING: use AddInvocation + OnNewLine for readable fluent chains.
           method.AddStatement(new CSharpStatement("services")
-          .AddInvocation("AddOptions")
-          .AddInvocation("AddLogging", x => x.OnNewLine())
-          .AddInvocation("AddHealthChecks", x => x.OnNewLine()));
+            .AddInvocation("AddOptions")
+            .AddInvocation("AddLogging", x => x.OnNewLine())
+            .AddInvocation("AddHealthChecks", x => x.OnNewLine()));
 
           // FORBIDDEN / OBSOLETE:
           // CSharpMethodChainStatement is [Obsolete] and must not be used.
@@ -226,15 +224,15 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
           ```csharp
           .OnBuild(file =>
           {
-          // Structural composition — runs during build, before AfterBuild.
-          // Priority defaults to 0 (lowest number = runs first).
-          file.Classes.First().AddMethod("void", "Generated");
+            // Structural composition — runs during build, before AfterBuild.
+            // Priority defaults to 0 (lowest number = runs first).
+            file.Classes.First().AddMethod("void", "Generated");
           })
           .AfterBuild(file =>
           {
-          // Final reconciliation — runs after ALL OnBuild delegates across all templates.
-          // Use for cross-template wiring or late enrichment.
-          file.Classes.First().FindMethod("Generated")?.AddStatement("// reconciled");
+            // Final reconciliation — runs after ALL OnBuild delegates across all templates.
+            // Use for cross-template wiring or late enrichment.
+            file.Classes.First().FindMethod("Generated")?.AddStatement("// reconciled");
           }, 1000)  // explicit priority — use consistent bands: 0 / 100 / 500 / 1000
           ```
 
@@ -247,19 +245,19 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
           ```csharp
           // File-level top-level statements with local methods.
           var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
-          .AddUsing("System")
-          .AddTopLevelStatements(tls =>
-          {
-          tls.AddStatement("Console.WriteLine(\"Hello world!\");");
-          tls.AddLocalMethod("Task", "LocalMethod", localMethod =>
-          {
-          localMethod.AddParameter("object", "parameter");
-          localMethod.Static().Async();
-          localMethod.AddStatement("var variable = new object();");
-          });
-          })
-          .AddClass("Class")
-          .CompleteBuild();
+            .AddUsing("System")
+            .AddTopLevelStatements(tls =>
+            {
+                tls.AddStatement("Console.WriteLine(\"Hello world!\");");
+                tls.AddLocalMethod("Task", "LocalMethod", localMethod =>
+                {
+                    localMethod.AddParameter("object", "parameter");
+                    localMethod.Static().Async();
+                    localMethod.AddStatement("var variable = new object();");
+                });
+            })
+            .AddClass("Class")
+            .CompleteBuild();
           ```
 
           ---
@@ -309,9 +307,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
 
           // FLUENT CHAIN — .OnNewLine() forces each call to a new indented line:
           method.AddStatement(new CSharpStatement("builder")
-          .AddInvocation("StepOne")
-          .AddInvocation("StepTwo", s => s.OnNewLine())
-          .AddInvocation("StepThree", s => s.OnNewLine()));
+            .AddInvocation("StepOne")
+            .AddInvocation("StepTwo", s => s.OnNewLine())
+            .AddInvocation("StepThree", s => s.OnNewLine()));
 
           // ASSIGNMENT:
           method.AddAssignmentStatement("var result", new CSharpStatement("await svc.GetAsync()"));
@@ -348,6 +346,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
           // 1. YOUR OWN cross-step state — set in one callback, read back in a later one:
           node.AddMetadata("key", value);              // throws if that key is already present
           if (node.TryGetMetadata<bool>("key", out var v) && v) { /* use v */ }
+
           // 2. THE DESIGNER MODEL the host template already attached — a node generated from a
           //    modelled element is stamped with that element under the well-known key "model":
           if (method.TryGetMetadata<IOperationModel>("model", out var op)) { /* op = designer element */ }

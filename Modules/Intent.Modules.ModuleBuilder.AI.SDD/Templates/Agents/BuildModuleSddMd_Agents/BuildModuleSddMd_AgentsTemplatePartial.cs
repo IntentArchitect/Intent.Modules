@@ -34,58 +34,6 @@ namespace Intent.Modules.ModuleBuilder.AI.SDD.Templates.Agents.BuildModuleSddMd_
                     maxIterations: 50
                     userInvocable: true     # show this agent in the picker (default true)
                     modelInvocable: true    # allow other agents to dispatch this as a sub-agent (default true)
-                    tools:
-                    - get_designer_schema
-                    - get_designer_model_structure
-                    - get_designer_element_details
-                    - get_designer_validation_errors
-                    - get_designer_stereotype_definitions
-                    - get_designer_diagram_snapshot
-                    - apply_change_diagram_layout
-                    - get_designer_script_api
-                    - run_designer_script
-                    - find_designer_elements
-                    - execute_designer_element_action
-                    - get_designer_package_references
-                    - list_available_package_references
-                    - save_script
-                    - get_scripts
-                    - get_script
-                    - get_applications
-                    - create_application
-                    - get_architecture_details
-                    - search_architectures
-                    - get_project_overview
-                    - get_application_settings
-                    - update_application_settings
-                    - run_software_factory
-                    - get_file_diffs
-                    - apply_staged_file_changes
-                    - read_file
-                    - write_file
-                    - patch_file
-                    - delete_code_file
-                    - list_directory
-                    - grep
-                    - glob
-                    - import_code
-                    - run_task
-                    - search_available_modules
-                    - list_installed_modules
-                    - install_or_update_modules
-                    - uninstall_modules
-                    - search_docs
-                    - create_sub_agent
-                    - create_ai_task
-                    - todo_update
-                    - ask_user_question
-                    - write_plan
-                    - implement_plan
-                    - implement_plan
-                    - write_spec
-                    - read_spec
-                    - record_spec_traceability
-                    - complete_spec_task
                     loopOnToolCalls: true
                     ---
 
@@ -109,14 +57,14 @@ namespace Intent.Modules.ModuleBuilder.AI.SDD.Templates.Agents.BuildModuleSddMd_
                     Before invoking the SDD pipeline, classify the task:
 
                     1. **Greenfield Module / Major Feature:**
-                    - Follow the complete SDD cycle: `/sdd-requirements` → `/sdd-design` → `/sdd-tasks` → `/sdd-implement` → `/sdd-verify`.
-                    - **Enforce Wave 0:** The reference architecture spike in Wave 0 must compile and pass tests before module building starts.
+                      - Follow the complete SDD cycle: `/sdd-requirements` → `/sdd-design` → `/sdd-tasks` → `/sdd-implement` → `/sdd-verify`.
+                      - **Enforce Wave 0:** The reference architecture spike in Wave 0 must compile and pass tests before module building starts.
                     2. **Bug Fix / Minor Enhancement (Output Affecting):**
-                    - Reproduce the issue in the target reference application first.
-                    - Run `/sdd-design` and `/sdd-tasks` scoped strictly to the delta.
-                    - Use `/sdd-implement` (or `/sdd-heal`) to align module templates to the fixed reference output.
+                      - Reproduce the issue in the target reference application first.
+                      - Run `/sdd-design` and `/sdd-tasks` scoped strictly to the delta.
+                      - Use `/sdd-implement` (or `/sdd-heal`) to align module templates to the fixed reference output.
                     3. **Designer-Only / Metadata Fix (No Code Generation Impact):**
-                    - Execute a lightweight SDD flow skipping Wave 0 reference code validation.
+                      - Execute a lightweight SDD flow skipping Wave 0 reference code validation.
 
                     ===
 
@@ -179,14 +127,14 @@ namespace Intent.Modules.ModuleBuilder.AI.SDD.Templates.Agents.BuildModuleSddMd_
 
                     * Invoke `/sdd-implement` to orchestrate execution.
                     * **Orchestrator Operation:**
-                    - The orchestrator loads `tasks.md`, creates a wave-level todo list with `todo_update`, and dispatches sub-agents sequentially via `create_sub_agent`.
-                    - Sub-agents invoke `/sdd-implement-wave` to execute work in strict internal phase order: **Phase 0** (Prerequisites) → **Phase 1** (`[model]` tasks) → **Phase 2** (Single SF persistence run) → **Phase 3** (`[code]` sub-agents) → **Phase 4** (`build | test`).
-                    - The orchestrator carries forward context (types created, file paths, conventions) from Wave 0 into subsequent wave sub-agent dispatches.
+                      - The orchestrator loads `tasks.md`, creates a wave-level todo list with `todo_update`, and dispatches sub-agents sequentially via `create_sub_agent`.
+                      - Sub-agents invoke `/sdd-implement-wave` to execute work in strict internal phase order: **Phase 0** (Prerequisites) → **Phase 1** (`[model]` tasks) → **Phase 2** (Single SF persistence run) → **Phase 3** (`[code]` sub-agents) → **Phase 4** (`build | test`).
+                      - The orchestrator carries forward context (types created, file paths, conventions) from Wave 0 into subsequent wave sub-agent dispatches.
                     * **Traceability & Completion Gate:**
-                    - Tasks are only ticked (`complete_spec_task`) after `record_spec_traceability` returns zero failures and the Software Factory has persisted changes to disk.
+                      - Tasks are only ticked (`complete_spec_task`) after `record_spec_traceability` returns zero failures and the Software Factory has persisted changes to disk.
                     * **Wave 0 Failure Guard:**
-                    - If Wave 0 fails compilation or tests, the wave agent will escalate via `ask_user_question`.
-                    - If Wave 0 remains unresolved, the orchestrator halts execution before dispatching Wave 1.
+                      - If Wave 0 fails compilation or tests, the wave agent will escalate via `ask_user_question`.
+                      - If Wave 0 remains unresolved, the orchestrator halts execution before dispatching Wave 1.
 
                     ===
 
@@ -221,60 +169,62 @@ namespace Intent.Modules.ModuleBuilder.AI.SDD.Templates.Agents.BuildModuleSddMd_
                     3. Software Factory executes against the target test app with **zero unexpected diffs** against the Wave 0 Golden Sample.
                     4. `/sdd-verify` returns **PASS** on all acceptance requirements.
                     """""")
-                .WithFrontMatter(fm => fm.Set("tools", """
-
-                    - get_designer_schema
-                    - get_designer_model_structure
-                    - get_designer_element_details
-                    - get_designer_validation_errors
-                    - get_designer_stereotype_definitions
-                    - get_designer_diagram_snapshot
-                    - apply_change_diagram_layout
-                    - get_designer_script_api
-                    - run_designer_script
-                    - find_designer_elements
-                    - execute_designer_element_action
-                    - get_designer_package_references
-                    - list_available_package_references
-                    - save_script
-                    - get_scripts
-                    - get_script
-                    - get_applications
-                    - create_application
-                    - get_architecture_details
-                    - search_architectures
-                    - get_project_overview
-                    - get_application_settings
-                    - update_application_settings
-                    - run_software_factory
-                    - get_file_diffs
-                    - apply_staged_file_changes
-                    - read_file
-                    - write_file
-                    - patch_file
-                    - delete_code_file
-                    - list_directory
-                    - grep
-                    - glob
-                    - import_code
-                    - run_task
-                    - search_available_modules
-                    - list_installed_modules
-                    - install_or_update_modules
-                    - uninstall_modules
-                    - search_docs
-                    - create_sub_agent
-                    - create_ai_task
-                    - todo_update
-                    - ask_user_question
-                    - write_plan
-                    - implement_plan
-                    - implement_plan
-                    - write_spec
-                    - read_spec
-                    - record_spec_traceability
-                    - complete_spec_task
-                    """));
+                .WithFrontMatter(cfg => cfg.Set("tools",
+                    """
+                      
+                      - get_designer_schema
+                      - get_designer_model_structure
+                      - get_designer_element_details
+                      - get_designer_validation_errors
+                      - get_designer_stereotype_definitions
+                      - get_designer_diagram_snapshot
+                      - apply_change_diagram_layout
+                      - get_designer_script_api
+                      - run_designer_script
+                      - find_designer_elements
+                      - execute_designer_element_action
+                      - get_designer_package_references
+                      - list_available_package_references
+                      - save_script
+                      - get_scripts
+                      - get_script
+                      - get_applications
+                      - create_application
+                      - get_architecture_details
+                      - search_architectures
+                      - get_project_overview
+                      - get_application_settings
+                      - update_application_settings
+                      - run_software_factory
+                      - get_file_diffs
+                      - apply_staged_file_changes
+                      - read_file
+                      - write_file
+                      - patch_file
+                      - delete_code_file
+                      - list_directory
+                      - grep
+                      - glob
+                      - import_code
+                      - run_task
+                      - search_available_modules
+                      - list_installed_modules
+                      - install_or_update_modules
+                      - uninstall_modules
+                      - search_docs
+                      - create_sub_agent
+                      - create_ai_task
+                      - todo_update
+                      - ask_user_question
+                      - write_plan
+                      - implement_plan
+                      - implement_plan
+                      - write_spec
+                      - read_spec
+                      - record_spec_traceability
+                      - complete_spec_task
+                    """
+                ));
         }
 
         [IntentManaged(Mode.Fully)]

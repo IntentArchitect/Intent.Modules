@@ -26,7 +26,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
       WithContentHashing = true;
       MarkdownFile = new MarkdownFile("designer-extensions-reference", relativeLocation: "add-designer-extension/resources")
         .FromMarkdown(""""""
-          ---
+          ===
           applyTo: '**'
           description: >
           Reference for authoring Intent Architect Module Builder designer extensions:
@@ -35,7 +35,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
           context menu options, JavaScript function contracts, how to find type IDs,
           and the MCP tool sequence for any extension task.
           keywords: [intent architect, module builder, designer extension, element extension, package extension, association, context menu, stereotype, mapping, type id]
-          ---
+          ===
 
           # Module Builder Designer Extensions — Reference
 
@@ -50,7 +50,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
 
           Run the Software Factory on the module to regenerate `.designer.settings` from the model. Direct edits to `.designer.settings` are overwritten on the next SF run.
 
-          ---
+          ===
 
           ## How a Module "Plugs In" to a Foreign Designer
 
@@ -65,7 +65,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
 
           One module can extend multiple foreign designers by having multiple `Designer Settings` nodes, each with a different `Extend Designers` value (e.g., `Domain.Events` extends both Domain and Services in two separate `Designer Settings` nodes).
 
-          ---
+          ===
 
           ## Three Extension Entry Points
 
@@ -93,7 +93,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
 
           **Important:** the context menu is placed on the *end* (source/target extension child), not on the association itself.
 
-          ---
+          ===
 
           ## Defining New Types
 
@@ -102,30 +102,30 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
           Creates a brand-new element specialization within your module. Required when your module introduces a new concept (e.g., `Integration Event Handler`, `Domain Event`).
 
           Key configuration via the `Settings` stereotype:
-          - `Save Mode` — usually `Default`
-          - `Icon` — base64 SVG/PNG
-          - `Display Text Function` — JavaScript; controls rendered label (see below)
-          - `Allow Rename`, `Name Must Be Unique`, `Allow Sorting`
+            - `Save Mode` — usually `Default`
+            - `Icon` — base64 SVG/PNG
+            - `Display Text Function` — JavaScript; controls rendered label (see below)
+            - `Allow Rename`, `Name Must Be Unique`, `Allow Sorting`
 
           Key configuration via the `Type Reference Settings` stereotype:
-          - `Mode` — `Disabled` (no type reference), `Required`, `Optional`
-          - `Target Types` — array of element type GUIDs this element can reference
+            - `Mode` — `Disabled` (no type reference), `Required`, `Optional`
+            - `Target Types` — array of element type GUIDs this element can reference
 
           ### Association Settings
 
           Creates a new association type with a `Source End` and `Target End`. Each end has its own `Settings` stereotype:
-          - `Target Types` — array of type GUIDs the end can connect to
-          - `Api Property Name` — C# property name on the generated model
-          - `Display Text Function` — JavaScript
-          - `Name Accessibility` — `Hidden` / `Visible` / `ReadOnly`
-          - `Is Navigable/Nullable/Collection Default` — default multiplicity
-          - `Allow Multiple` — whether multiple associations of this type are permitted
+            - `Target Types` — array of type GUIDs the end can connect to
+            - `Api Property Name` — C# property name on the generated model
+            - `Display Text Function` — JavaScript
+            - `Name Accessibility` — `Hidden` / `Visible` / `ReadOnly`
+            - `Is Navigable/Nullable/Collection Default` — default multiplicity
+            - `Allow Multiple` — whether multiple associations of this type are permitted
 
           Traits are applied as stereotypes on the target end — e.g., `[Processing Action]`, `[Processing Handler]`. These are how the mapping system and runtime identify the role of each end.
 
           Add a `[context menu]` child under the target end's settings to give users mapping or creation options directly from the association end.
 
-          ---
+          ===
 
           ## Context Menu Options
 
@@ -138,13 +138,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
           | **Mapping Option** | Opens the mapping dialog for a configured Mapping Settings |
 
           All three share these `Option Settings` properties:
-          - `Shortcut` — keyboard shortcut (e.g., `ctrl + shift + i`)
-          - `Default Name` — initial name for the created element
-          - `Allow Multiple` — whether more than one can be created
-          - `Menu Group` — integer; options with the same group number are visually grouped with a separator between groups
-          - `Is Option Visible Function` — JavaScript returning `true`/`false` to conditionally hide the option
+            - `Shortcut` — keyboard shortcut (e.g., `ctrl + shift + i`)
+            - `Default Name` — initial name for the created element
+            - `Allow Multiple` — whether more than one can be created
+            - `Menu Group` — integer; options with the same group number are visually grouped with a separator between groups
+            - `Is Option Visible Function` — JavaScript returning `true`/`false` to conditionally hide the option
 
-          ---
+          ===
 
           ## JavaScript Function Contracts
 
@@ -168,8 +168,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
           const assoc = getAssociations("fa57ec52-...").filter(x => x.isTargetEnd())[0];
           const result = [{ text: `${name}${genericTypes}` }];
           if (assoc != null) {
-          result.push({ text: " : ", cssClass: "annotation" });
-          result.push({ text: assoc.typeReference.display, cssClass: "typeref", targetId: assoc.typeReference.typeId });
+              result.push({ text: " : ", cssClass: "annotation" });
+              result.push({ text: assoc.typeReference.display, cssClass: "typeref", targetId: assoc.typeReference.typeId });
           }
           return result;
           ```
@@ -184,21 +184,21 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
 
           **Element Event Handler scripts** — Lifecycle hooks: `On Created`, `On Name Changed`, `On Property Changed`. Access settings via `application.getSettings(...)`.
 
-          ---
+          ===
 
           ## Mapping Settings
 
           Used to configure how elements from one designer map to elements in another. The top-level `Mapping Settings` node carries:
-          - `defaultModeler` — target designer GUID
-          - `optionsSource` — usually `elements-of-type`
-          - `autoSyncTypeReferences` — whether mapped type references stay in sync
+            - `defaultModeler` — target designer GUID
+            - `optionsSource` — usually `elements-of-type`
+            - `autoSyncTypeReferences` — whether mapped type references stay in sync
 
           Child `mapping` nodes describe how each source element type maps to a target type:
-          - `criteria` — filter by specialization type, whether it has children, a type reference, etc.
-          - `mapTo` with `childMappingMode` — `traverse` (walk into children) or `map-to-child` (project to a specific child type)
-          - `filterFunction` — optional JavaScript to further restrict mappable elements
+            - `criteria` — filter by specialization type, whether it has children, a type reference, etc.
+            - `mapTo` with `childMappingMode` — `traverse` (walk into children) or `map-to-child` (project to a specific child type)
+            - `filterFunction` — optional JavaScript to further restrict mappable elements
 
-          ---
+          ===
 
           ## Finding Type IDs of Foreign Elements
 
@@ -210,7 +210,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
 
           Never hardcode IDs from memory. Always read them from the live model or generated code.
 
-          ---
+          ===
 
           ## C# API Layer (Generated by Software Factory)
 
@@ -225,7 +225,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
 
           Element and association *extensions* (not definitions) do not generate a dedicated model class — they appear only in `.designer.settings`.
 
-          ---
+          ===
 
           ## MCP Tool Sequence for Any Extension Task
 
@@ -236,7 +236,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
           4. get_designer_model_structure(...)        → overview of existing extensions
           5. find_designer_elements(query, ...)       → locate target element by name/type
           6. get_designer_element_details(element)    → full detail: stereotypes, members,
-          codeFiles, type IDs
+                                                        codeFiles, type IDs
           7. [make model changes via MCP tools]
           8. run_software_factory(...)
           9. get_staged_file_diffs(...)

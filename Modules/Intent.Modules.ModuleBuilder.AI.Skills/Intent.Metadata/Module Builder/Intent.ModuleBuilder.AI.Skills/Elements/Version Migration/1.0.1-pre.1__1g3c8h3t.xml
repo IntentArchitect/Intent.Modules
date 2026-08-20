@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="cee20d15-d64b-426c-8f31-80d385d82156" type="Version Migration" typeId="03f24c57-66d8-4868-95a7-6daef900dc7f">
+  <name>1.0.1-pre.1</name>
+  <display>1.0.1-pre.1</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>0445104b-3984-4b1f-9b20-c222d906ff36</parentFolderId>
+  <packageId>5e4dd87c-858a-4159-9e96-d9fc135a5195</packageId>
+  <packageName>Intent.ModuleBuilder.AI.Skills</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>
