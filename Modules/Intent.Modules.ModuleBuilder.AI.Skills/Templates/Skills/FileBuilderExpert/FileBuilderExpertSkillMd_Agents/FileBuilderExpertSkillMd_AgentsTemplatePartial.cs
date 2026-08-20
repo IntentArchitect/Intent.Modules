@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                 .FromMarkdown(""""""
 ---
 name: file-builder-expert
-description: Convert C# template files to Fluent CSharpFile builder API.
+description: "Author or fix a C# code-generation template using the Fluent CSharpFile builder API — constructor structure, callback priorities, type resolution, and DI parameter injection. USE ONLY WHEN writing, reviewing, or converting a *TemplatePartial.cs that emits C# via CSharpFile. DO NOT USE FOR templates that build Markdown/text output (see add-module-skill-template) or for designer-model/script changes. REQUIRES the target template's model shape (single-file vs file-per-model) already decided."
 argument-hint: "[source file] [target template name]"
 ---
 

@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMetadata
                 .FromMarkdown(""""""
 ---
 name: intent-metadata-consumer
-description: "Read Intent Architect metadata (stereotypes, attributes, models) to drive code generation."
+description: "Read Intent Architect designer metadata — stereotypes, properties, models — inside a template or factory extension using generated typed accessors, never raw string lookups. USE ONLY WHEN a template needs to branch on or read a stereotype/property/model value to drive its generated output. DO NOT USE FOR emitting the C# builder statements themselves (see file-builder-expert) or cross-module DI/wiring (see intent-module-orchestrator). REQUIRES the relevant typed extension methods (*StereotypeExtensions.cs) already generated for the stereotype in question."
 argument-hint: "[model type] [stereotype name] [target builder action]"
 ---
 

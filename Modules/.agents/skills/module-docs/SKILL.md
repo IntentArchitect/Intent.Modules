@@ -1,8 +1,8 @@
 ---
 name: module-docs
-description: >
+description: "Complete or refresh a module's release-notes.md, docs/README.md, and .imodspec metadata to a canonical format, touching only what already exists or what the maintainer explicitly supplies. USE ONLY WHEN a maintainer explicitly asks for documentation to be completed or brought up to this format. DO NOT USE FOR the automatic same-turn doc update after an observable change (see module-docs-chore) — this is an opt-in pass, and it must never introduce release-notes.md or fabricate a projectUrl unprompted. REQUIRES the target module's .imodspec (and any existing release-notes.md/docs/README.md) already present to read from."
 keywords: [release-notes, readme, imodspec, documentation, module]
-contentHash: B6DE78247A75C10232806DCF0AAA97ABA325D08285A9908F6D78F9D5F2B9B96F
+contentHash: 6ED6AD187D2273E41A7532D608311F5149736A330DC219B98148935D68A4965A
 ---
 # Skill: module-docs
 

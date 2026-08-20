@@ -1,8 +1,8 @@
 ---
 name: file-builder-expert
-description: Convert C# template files to Fluent CSharpFile builder API.
+description: "Author or fix a C# code-generation template using the Fluent CSharpFile builder API — constructor structure, callback priorities, type resolution, and DI parameter injection. USE ONLY WHEN writing, reviewing, or converting a *TemplatePartial.cs that emits C# via CSharpFile. DO NOT USE FOR templates that build Markdown/text output (see add-module-skill-template) or for designer-model/script changes. REQUIRES the target template's model shape (single-file vs file-per-model) already decided."
 argument-hint: "[source file] [target template name]"
-contentHash: A3BDFC8C39D77EA7799AB287DC42F366010061776242A76083650C2E4481AFEC
+contentHash: A85B9EBC5966332949C49704FBB8A9B69520E2F956EE3080F90D385B19DA82E2
 ---
 # File Builder Expert
 

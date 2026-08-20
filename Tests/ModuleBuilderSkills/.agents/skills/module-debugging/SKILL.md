@@ -1,7 +1,7 @@
 ---
 name: module-debugging
-description: How to inspect runtime values while building Intent Architect modules — inserting temporary log statements into designer scripts and into C# template/factory-extension code, and where to find the resulting output. Use when a designer script or a generated template isn't behaving as expected and you need to see actual values, not guess at them.
-contentHash: 37C56B05013125857A98C4A3441E4167ED87DB243E09EBC4977A404F6C1ED884
+description: "Insert temporary log statements into a designer script (console.log) or module C# code (templates, factory extensions) to see actual runtime values, then locate the resulting output. USE ONLY WHEN a designer script or a generated template isn't behaving as expected and the actual value is unknown, not guessed. DO NOT USE FOR permanent logging left in shipped module code — remove the temporary statements once the value is confirmed. REQUIRES the specific script or template already identified as the source of the unexpected behaviour."
+contentHash: ECF9CEE30C6C08AB86CF9BA1CD7A0FA2718D31390A5869064EC93884523E1075
 ---
 # Module Debugging
 

@@ -28,11 +28,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleVersioni
                 .FromMarkdown(""""""
 ---
 name: module-versioning
-description: How to set an Intent Architect module's version correctly — where the version
-  actually lives, why hand-editing .imodspec is silently discarded, and which dependents
-  (architecture templates, other modules) need the new version propagated to them. Use when
-  asked to set, release, publish, or bump the version of a module. Takes the target version
-  string exactly as supplied — this skill does not decide or validate what it should be.
+description: "Set an Intent Architect module's version correctly via the Module Builder model property (never by hand-editing .imodspec), then propagate it to dependents (architecture templates, other modules). USE ONLY WHEN asked to set, release, publish, or bump a module to a specific, already-decided version string. DO NOT USE FOR deciding whether or when a task should bump a version, or which component to bump (see module-version-increment) — this skill only executes a version already supplied. REQUIRES the target version string supplied by the caller; it does not decide or validate what it should be."
 argument-hint: "[new version, e.g. 1.3.0 or 1.3.0-pre.1]"
 keywords: [version, versioning, release, imodspec, module settings]
 ---

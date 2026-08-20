@@ -1,8 +1,8 @@
 ---
 name: module-docs-chore
-description: "Update a module's documentation in the same turn as the change that affects it. Use whenever a module change alters anything a consumer can observe."
+description: "Update a module's release-notes, README, .imodspec metadata, and icon to reflect a change a consumer can observe, in the same turn as that change. USE ONLY WHEN a module change alters anything observable — a new/removed template, setting, stereotype, config default, or behavioural fix. DO NOT USE FOR internal refactors with no observable effect, or for bumping the module's version number itself (see module-version-increment). REQUIRES the observable change already implemented or decided."
 keywords: [documentation, release-notes, readme, imodspec, icon, chore, upkeep]
-contentHash: D3E82907992752BE87FC7F8DDBB17ECA58DB8125663C323ED087D218AA320410
+contentHash: 8AA8C0616FFCA4130ED8C933974C881E0236C3D8C7587E2327A8AAB19BCF9EF7
 ---
 # Skill: module-docs-chore
 

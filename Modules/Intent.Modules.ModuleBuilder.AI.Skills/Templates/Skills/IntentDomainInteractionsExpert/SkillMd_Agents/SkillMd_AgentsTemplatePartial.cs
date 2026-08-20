@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentDomainIn
                 .FromMarkdown(""""""
 ---
 name: intent-domain-interactions-expert
-description: Translate modelled designer interactions into C# handler bodies.
+description: "Implement an IInteractionStrategy that turns a designer-modelled interaction into its generated C# handler body. USE ONLY WHEN a modelled interaction (e.g. a command/event handler action) needs its C# implementation generated via a matched strategy. DO NOT USE FOR translating a Mapping element specifically (see intent-mapping-architect) or cross-module DI wiring (see intent-module-orchestrator). REQUIRES the strategy registered in a factory extension's OnBeforeTemplateRegistrations, never a template constructor."
 argument-hint: "[handler template id or role] [interaction kind]"
 ---
 

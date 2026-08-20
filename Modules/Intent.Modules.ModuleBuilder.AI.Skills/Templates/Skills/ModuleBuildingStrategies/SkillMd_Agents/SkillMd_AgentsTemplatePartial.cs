@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleBuilding
                 .FromMarkdown(""""""
 ---
 name: module-building-strategies
-description: "The accumulated strategic playbook for building Intent Architect modules — the judgment calls a veteran module builder makes, distinct from the mechanical process. Covers module decomposition (root/bridging/common), template vs factory-extension choice, file cardinality, managed modes, design-time configuration (setting vs stereotype), convention-vs-explicit, and two-phase verification. Load this at every design decision point."
+description: "The accumulated strategic playbook of judgment calls for designing an Intent Architect module — decomposition (root/bridging/common), template vs factory-extension choice, file cardinality, managed modes, setting-vs-stereotype, convention-vs-explicit, and two-phase verification. USE ONLY WHEN facing a design decision point while building or extending a module. DO NOT USE FOR the mechanical how-to of a specific construct (see add-module-skill-template, add-designer-extension, add-association-type) — this is the judgment layer above those."
 ---
 
 # Module Building Strategies

@@ -1,9 +1,9 @@
 ---
 name: module-svg-icon
-description: Craft a house-style SVG icon for a module from a supplied description and apply
+description: "Craft a house-style SVG icon for a module from a supplied description and apply it as the module's package icon. USE ONLY WHEN asked to create, set, or refresh a module's icon. DO NOT USE FOR deciding or sourcing what the icon should represent — it takes that description exactly as supplied, never invents one. REQUIRES the icon's intended visual description already supplied by the caller."
 argument-hint: "[description of what the icon should visually represent]"
 keywords: [icon, svg, branding, application.config, imodspec, package]
-contentHash: D70C3E8455B544CDD7D62D076C19418EB7899C02FF8B16B83CF120626AE91714
+contentHash: 2EBA0C8C12F47908C8893FF54F7455B41657A705DAE1AA9DB4B6A3CC1F8D4DB0
 ---
 # Skill: module-svg-icon
 

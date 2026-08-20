@@ -1,8 +1,8 @@
 ---
 name: intent-metadata-consumer
-description: "Read Intent Architect metadata (stereotypes, attributes, models) to drive code generation."
+description: "Read Intent Architect designer metadata — stereotypes, properties, models — inside a template or factory extension using generated typed accessors, never raw string lookups. USE ONLY WHEN a template needs to branch on or read a stereotype/property/model value to drive its generated output. DO NOT USE FOR emitting the C# builder statements themselves (see file-builder-expert) or cross-module DI/wiring (see intent-module-orchestrator). REQUIRES the relevant typed extension methods (*StereotypeExtensions.cs) already generated for the stereotype in question."
 argument-hint: "[model type] [stereotype name] [target builder action]"
-contentHash: 4CEAF043CAB760F33FD106F327C12E34BBE66D69274E450FF39E5781E4DB50D8
+contentHash: 6EDECC014CA6EB7491F90AD524770F36A10F7AE7D13747617BE5D30D94BDD78F
 ---
 # Intent Metadata Consumer
 

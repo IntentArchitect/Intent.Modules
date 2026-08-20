@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ArchitectureTe
                 .FromMarkdown(""""""
 ---
 name: architecture-templates
-description: How to build an Intent Architect Architecture Template (formerly "Application Template") — the component/module menu shown when creating a new application — including its companion metadata application used to pre-seed designer content (packages, folders, Output Anchors) into every newly created application. Use when asked to create, extend, or fix an architecture template, or to seed default designer metadata for one.
+description: "Build or extend an Architecture Template — the component/module picker shown when creating a new application — and its companion metadata application that pre-seeds new applications with designer content (packages, folders, Output Anchors). USE ONLY WHEN asked to create, extend, or fix an architecture template, or to seed default designer metadata for one. DO NOT USE FOR a 'Module Building' template (a different Template Type that scaffolds a module project, not an app) or day-to-day module development itself (see module-building-strategies). REQUIRES the Intent Application Template Builder designer, in a new Package."
 ---
 
 # Architecture Templates

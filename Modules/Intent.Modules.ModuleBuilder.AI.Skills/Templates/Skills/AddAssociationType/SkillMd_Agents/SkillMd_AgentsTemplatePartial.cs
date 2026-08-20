@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddAssociation
                 .FromMarkdown(""""""
 ---
 name: add-association-type
-description: "Define a new association type (source and target ends, target types, display functions, navigability, traits, mapping options) in the Module Builder designer."
+description: "Define a brand-new Association Settings type — source/target ends, target types, navigability, traits, mapping options — in the Module Builder designer. USE ONLY WHEN a new kind of association must be drawable between two element types that no existing association type covers. DO NOT USE FOR adding a context-menu extension to an existing foreign element or association (see add-designer-extension). REQUIRES the target element type GUIDs (typeId) for both ends already identified."
 argument-hint: "[association name, source element type, target element type]"
 ---
 

@@ -1,7 +1,7 @@
 ---
 name: architecture-templates
-description: How to build an Intent Architect Architecture Template (formerly "Application Template") — the component/module menu shown when creating a new application — including its companion metadata application used to pre-seed designer content (packages, folders, Output Anchors) into every newly created application. Use when asked to create, extend, or fix an architecture template, or to seed default designer metadata for one.
-contentHash: C3EA23F24B5320308708C2EA84874EA71417E4CF58413EF88D616698B33B2ECC
+description: "Build or extend an Architecture Template — the component/module picker shown when creating a new application — and its companion metadata application that pre-seeds new applications with designer content (packages, folders, Output Anchors). USE ONLY WHEN asked to create, extend, or fix an architecture template, or to seed default designer metadata for one. DO NOT USE FOR a 'Module Building' template (a different Template Type that scaffolds a module project, not an app) or day-to-day module development itself (see module-building-strategies). REQUIRES the Intent Application Template Builder designer, in a new Package."
+contentHash: 3FE0BEC046092D084AE8CA23C1A4A460C2BE19FE32787A1A267B30EE580FD819
 ---
 # Architecture Templates
 

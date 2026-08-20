@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleDebuggin
                 .FromMarkdown(""""""
 ---
 name: module-debugging
-description: How to inspect runtime values while building Intent Architect modules — inserting temporary log statements into designer scripts and into C# template/factory-extension code, and where to find the resulting output. Use when a designer script or a generated template isn't behaving as expected and you need to see actual values, not guess at them.
+description: "Insert temporary log statements into a designer script (console.log) or module C# code (templates, factory extensions) to see actual runtime values, then locate the resulting output. USE ONLY WHEN a designer script or a generated template isn't behaving as expected and the actual value is unknown, not guessed. DO NOT USE FOR permanent logging left in shipped module code — remove the temporary statements once the value is confirmed. REQUIRES the specific script or template already identified as the source of the unexpected behaviour."
 ---
 
 # Module Debugging

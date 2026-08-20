@@ -1,8 +1,8 @@
 ---
 name: module-version-increment
-description: "Increment the versions of the modules a task will change, before implementing, and keep the version consistent everywhere it appears. Use as soon as the modules in scope are known, and again at close-out to confirm and move dependents."
+description: "Increment a module's version (choosing the right component) before implementing a change that touches it, then confirm and propagate to dependents at close-out. USE ONLY WHEN the modules a task will change are known — as soon as that's decided, and again at close-out. DO NOT USE FOR writing the change's documentation (see module-docs-chore) or recording design rationale (see module-context-capture). REQUIRES the set of modules the task will touch already identified."
 keywords: [version, increment, release, bump, dependents, publish]
-contentHash: 4DD4A0E902898E46B3FD32EAACCC9A36C35B16FDEB822FC60E1DCF75F95DE0E5
+contentHash: 764090D191FD770F0C12F3FE038C13F68B6625B642064FD09437E4DEA373F95B
 ---
 # Skill: module-version-increment
 

@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                 .FromMarkdown(""""""
 ---
 name: intent-module-orchestrator
-description: Wire cross-module logic, DI/appsettings events, priority bands, and template lookups.
+description: "Wire a module's cross-module integration logic — DI/config registration requests, startup DSL calls, priority-banded callbacks, and template Role/TemplateId lookups across module boundaries. USE ONLY WHEN one module's template needs to enrich, depend on, or register infrastructure (DI, appsettings, startup) owned by another module's generated output. DO NOT USE FOR authoring a single template's own C# builder statements (see file-builder-expert) or reading designer metadata off a model (see intent-metadata-consumer). REQUIRES the target module/template's Role or TemplateId already identified."
 argument-hint: "[event type | factory extension scenario] [target template role or id]"
 ---
 

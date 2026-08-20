@@ -28,10 +28,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleSvgIcon.
                 .FromMarkdown(""""""
                     ---
                     name: module-svg-icon
-                    description: Craft a house-style SVG icon for a module from a supplied description and apply
-                    it to the module's package icon. Takes the description of what the icon should represent
-                    exactly as supplied — this skill does not decide or source that description itself. Use when
-                    asked to create, set, or refresh a module's icon.
+                    description: "Craft a house-style SVG icon for a module from a supplied description and apply it as the module's package icon. USE ONLY WHEN asked to create, set, or refresh a module's icon. DO NOT USE FOR deciding or sourcing what the icon should represent — it takes that description exactly as supplied, never invents one. REQUIRES the icon's intended visual description already supplied by the caller."
                     argument-hint: "[description of what the icon should visually represent]"
                     keywords: [icon, svg, branding, application.config, imodspec, package]
                     ---
