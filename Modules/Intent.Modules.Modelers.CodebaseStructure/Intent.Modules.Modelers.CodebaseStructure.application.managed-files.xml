@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="fd1d130c-fd95-4fee-b713-02c6641d1287">
   <file path="../.agents/instructions/csharp-guidelines.md" />
-  <file path="../.agents/instructions/readme.txt" />
   <file path="../Intent.Modules.sln" />
   <file path="Api/FolderExtensionModel.cs" />
+  <file path="Api/FolderModelStereotypeExtensions.cs" />
   <file path="Api/OutputAnchorModel.cs" deviationsHash="684B1F515B1AB1036F7DF9EB9C507F4EC0057F5994BD71FE4F67045BE1AB3939" />
   <file path="Api/OutputAnchorModelStereotypeExtensions.cs" />
   <file path="Api/RootFolderModel.cs" />

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="98cff892-b03e-4d9c-b1dc-031cb0c900ee" version="3.1.0">
+  <comment>Classifies a template's generated output by classification and severity. Stamped onto a Template Output element by module install/update (ApplicationDesignerPersistable.UpdateTemplateOutputs) when a module's .imodspec template entry supplies both &lt;classification&gt; and &lt;severity&gt;; removed again if either is withdrawn. Not normally added by hand, but doing so is harmless.</comment>
+  <name>Output Classification</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="d421c322-7a51-4094-89fa-e5d8a0a97b27">Template Output</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImlhT3V0cHV0Q2xhc3NpZmljYXRpb25SYW1wIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzA5YzRmZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMDcwYzAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDcuNTg0MyAwKSBzY2FsZSgxLjEyMzU5NTUpIj4KICAgIDxwYXRoIGZpbGw9InVybCgjaWFPdXRwdXRDbGFzc2lmaWNhdGlvblJhbXApIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiCiAgICAgICAgICBkPSJNMCAwaDE4LjZMMzEgMTIuNFY0MWEzLjUgMy41IDAgMCAxLTMuNSAzLjVoLTI0QTMuNSAzLjUgMCAwIDEgMCA0MVoKICAgICAgICAgICAgIE04LjkgMjAuNWgxMC4xbDYuNSA2LjUtNi41IDYuNUg4LjlhMy40IDMuNCAwIDAgMS0zLjQtMy40di02LjJhMy40IDMuNCAwIDAgMSAzLjQtMy40WgogICAgICAgICAgICAgTTEwLjYgMjQuM2EyLjcgMi43IDAgMSAwIDAgNS40IDIuNyAyLjcgMCAwIDAgMC01LjRaIi8+CiAgPC9nPgo8L3N2Zz4K" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>6537e6dd-d401-4065-a843-627fe0c89efb</parentFolderId>
+  <order>0</order>
+  <packageId>525868ff-adc0-4ab6-a90e-352288da941f</packageId>
+  <packageName>Intent.Modelers.CodebaseStructure</packageName>
+  <properties>
+    <property id="1b1a9d3e-8c3a-4277-b404-11c71128d4f1">
+      <hint>Free-text classification, e.g. security, infrastructure.</hint>
+      <name>Classification</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+    </property>
+    <property id="b710908c-f121-4d27-8dd3-b0b8b1ae97a2">
+      <hint>Severity level. Always stored as the lower-case option name, never a number.</hint>
+      <name>Severity</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <valueOptions>
+        <option>low</option>
+        <option>medium</option>
+        <option>high</option>
+        <option>critical</option>
+      </valueOptions>
+    </property>
+  </properties>
+</stereotypeDefinition>

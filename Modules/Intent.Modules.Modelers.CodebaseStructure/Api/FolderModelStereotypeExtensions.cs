@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -10,61 +11,48 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modelers.CodebaseStructure.Api
 {
-    public static class TemplateOutputModelStereotypeExtensions
+    public static class FolderModelStereotypeExtensions
     {
-        public static OutputClassification GetOutputClassification(this TemplateOutputModel model)
+        public static CustomFileClassification GetCustomFileClassification(this FolderModel model)
         {
-            var stereotype = model.GetStereotype(OutputClassification.DefinitionId);
-            return stereotype != null ? new OutputClassification(stereotype) : null;
+            var stereotype = model.GetStereotype(CustomFileClassification.DefinitionId);
+            return stereotype != null ? new CustomFileClassification(stereotype) : null;
+        }
+
+        public static IReadOnlyCollection<CustomFileClassification> GetCustomFileClassifications(this FolderModel model)
+        {
+            var stereotypes = model
+                .GetStereotypes(CustomFileClassification.DefinitionId)
+                .Select(stereotype => new CustomFileClassification(stereotype))
+                .ToArray();
+
+            return stereotypes;
         }
 
 
-        public static bool HasOutputClassification(this TemplateOutputModel model)
+        public static bool HasCustomFileClassification(this FolderModel model)
         {
-            return model.HasStereotype(OutputClassification.DefinitionId);
+            return model.HasStereotype(CustomFileClassification.DefinitionId);
         }
 
-        public static bool TryGetOutputClassification(this TemplateOutputModel model, out OutputClassification stereotype)
+        public static bool TryGetCustomFileClassification(this FolderModel model, out CustomFileClassification stereotype)
         {
-            if (!HasOutputClassification(model))
+            if (!HasCustomFileClassification(model))
             {
                 stereotype = null;
                 return false;
             }
 
-            stereotype = new OutputClassification(model.GetStereotype(OutputClassification.DefinitionId));
-            return true;
-        }
-        public static TemplateOutputSettings GetTemplateOutputSettings(this TemplateOutputModel model)
-        {
-            var stereotype = model.GetStereotype(TemplateOutputSettings.DefinitionId);
-            return stereotype != null ? new TemplateOutputSettings(stereotype) : null;
-        }
-
-
-        public static bool HasTemplateOutputSettings(this TemplateOutputModel model)
-        {
-            return model.HasStereotype(TemplateOutputSettings.DefinitionId);
-        }
-
-        public static bool TryGetTemplateOutputSettings(this TemplateOutputModel model, out TemplateOutputSettings stereotype)
-        {
-            if (!HasTemplateOutputSettings(model))
-            {
-                stereotype = null;
-                return false;
-            }
-
-            stereotype = new TemplateOutputSettings(model.GetStereotype(TemplateOutputSettings.DefinitionId));
+            stereotype = new CustomFileClassification(model.GetStereotype(CustomFileClassification.DefinitionId));
             return true;
         }
 
-        public class OutputClassification
+        public class CustomFileClassification
         {
             private IStereotype _stereotype;
-            public const string DefinitionId = "98cff892-b03e-4d9c-b1dc-031cb0c900ee";
+            public const string DefinitionId = "1a5d919b-7ca2-4f2f-8a0d-0995aa6b02ac";
 
-            public OutputClassification(IStereotype stereotype)
+            public CustomFileClassification(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }
@@ -79,6 +67,11 @@ namespace Intent.Modelers.CodebaseStructure.Api
             public SeverityOptions Severity()
             {
                 return new SeverityOptions(_stereotype.GetProperty<string>("Severity"));
+            }
+
+            public string Glob()
+            {
+                return _stereotype.GetProperty<string>("Glob");
             }
 
             public class SeverityOptions
@@ -132,30 +125,6 @@ namespace Intent.Modelers.CodebaseStructure.Api
                 High,
                 Critical
             }
-        }
-
-        public class TemplateOutputSettings
-        {
-            private IStereotype _stereotype;
-            public const string DefinitionId = "967ae6f6-cc06-4b67-a391-44ed1aac1959";
-
-            public TemplateOutputSettings(IStereotype stereotype)
-            {
-                _stereotype = stereotype;
-            }
-
-            public string Name => _stereotype.Name;
-
-            public bool IsEnabled()
-            {
-                return _stereotype.GetProperty<bool>("Is Enabled");
-            }
-
-            public string RegistrationFilter()
-            {
-                return _stereotype.GetProperty<string>("Registration Filter");
-            }
-
         }
 
     }

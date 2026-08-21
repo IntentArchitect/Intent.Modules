@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="1a5d919b-7ca2-4f2f-8a0d-0995aa6b02ac" version="3.1.0">
+  <comment>Classifies custom (non-generated) files under a folder or project by classification and severity, scoped by a glob. Applied manually by users; the same stereotype may be applied multiple times to the same folder/project to classify different subsets of its custom files. Only ever consulted for files with no output-log entry - generated files are classified via their template's Output Classification instead.</comment>
+  <name>Custom File Classification</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="07e7b690-a59d-4b72-8440-4308a121d32c">Root Folder</type>
+    <type id="4d95d53a-8855-4f35-aa82-e312643f5c5f">Folder</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImlhQ3VzdG9tRmlsZUNsYXNzaWZpY2F0aW9uUmFtcCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMwOWM0ZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDA3MGMwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDUuODgyNCkgc2NhbGUoMS4xNzY0NzA2KSI+CiAgICA8cGF0aCBmaWxsPSJ1cmwoI2lhQ3VzdG9tRmlsZUNsYXNzaWZpY2F0aW9uUmFtcCkiIGZpbGwtcnVsZT0iZXZlbm9kZCIKICAgICAgICAgIGQ9Ik0zLjUgMGgxMC45bDUuMiA1LjJIMzlhMy41IDMuNSAwIDAgMSAzLjUgMy41VjI5YTMuNSAzLjUgMCAwIDEtMy41IDMuNUgzLjVBMy41IDMuNSAwIDAgMSAwIDI5VjMuNUEzLjUgMy41IDAgMCAxIDMuNSAwWgogICAgICAgICAgICAgTTE0LjQgMTIuNWgxMS4xbDYuNSA2LjUtNi41IDYuNUgxNC40YTMuNCAzLjQgMCAwIDEtMy40LTMuNHYtNi4yYTMuNCAzLjQgMCAwIDEgMy40LTMuNFoKICAgICAgICAgICAgIE0xNi4xIDE2LjNhMi43IDIuNyAwIDEgMCAwIDUuNCAyLjcgMi43IDAgMCAwIDAtNS40WiIvPgogIDwvZz4KPC9zdmc+Cg==" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>true</allowMultipleApplies>
+  <parentFolderId>6537e6dd-d401-4065-a843-627fe0c89efb</parentFolderId>
+  <order>0</order>
+  <packageId>525868ff-adc0-4ab6-a90e-352288da941f</packageId>
+  <packageName>Intent.Modelers.CodebaseStructure</packageName>
+  <properties>
+    <property id="bc57e41f-e7cb-4e84-b64c-42f3a4f23c8b">
+      <hint>Free-text classification, e.g. security, infrastructure.</hint>
+      <name>Classification</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+    </property>
+    <property id="1f903649-4ed0-4c2b-b288-34dedacdff05">
+      <hint>Severity level. Always stored as the lower-case option name, never a number.</hint>
+      <name>Severity</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <valueOptions>
+        <option>low</option>
+        <option>medium</option>
+        <option>high</option>
+        <option>critical</option>
+      </valueOptions>
+    </property>
+    <property id="14dd36e5-eee3-4b8f-9868-99b965703d23">
+      <hint>Glob evaluated against a file's path relative to the folder/project this is applied to (e.g. **/*.sql, Migrations/**). Empty means **/*.</hint>
+      <name>Glob</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+    </property>
+  </properties>
+</stereotypeDefinition>
