@@ -20,6 +20,9 @@
   <parentFolderId>ba6abc27-ed11-4aae-a405-13fe7491636b</parentFolderId>
   <packageId>525868ff-adc0-4ab6-a90e-352288da941f</packageId>
   <packageName>Intent.Modelers.CodebaseStructure</packageName>
+  <traits>
+    <trait id="60fd85c8-5de8-45b6-9ba7-570cc701c3ab" name="Allows Custom File Classification" />
+  </traits>
   <stereotypes>
     <stereotype stereotypeDefinitionId="159cbc8e-a910-40f7-8e45-3edadbb863c2" name="Type Reference Extension Settings">
       <addedByDefault>true</addedByDefault>
@@ -44,6 +47,12 @@
         <property name="8c964307-9d03-4a14-9fd3-40ea2607955a" display="Display Text Function" isActive="true" />
         <property name="996ed45f-2318-4587-9618-73db3d7cfed0" display="Validate Function" isActive="true" />
       </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="60fd85c8-5de8-45b6-9ba7-570cc701c3ab" name="Allows Custom File Classification">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+      <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+      <properties />
     </stereotype>
   </stereotypes>
   <metadata />

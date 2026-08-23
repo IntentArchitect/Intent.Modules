@@ -145,6 +145,9 @@ if (element.getParent().specialization == "Visual Studio Solution") {
   </elementSettings>
   <elementExtensions>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+      <implements>
+        <trait id="60fd85c8-5de8-45b6-9ba7-570cc701c3ab" name="Allows Custom File Classification" />
+      </implements>
       <contextMenuOptions>
         <createElement type="element">
           <text>New Folder</text>

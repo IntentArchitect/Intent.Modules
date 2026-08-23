@@ -21,5 +21,14 @@
       <deviationsHash>D8A3E40D472A5C9ABD73FB05AD15B374762297A8C20542F0F5BEA23920673C18</deviationsHash>
       <fileHash>183F0DD4E7E3F12AC4EE053C427304BACB4C09136C6CCA992E64B4CC57AFABC5</fileHash>
     </file>
+    <file>
+      <correlationId>Intent.VisualStudio.Projects.CSharpProject#9425b6b8-038f-4670-b2f6-26d5ad46687c</correlationId>
+      <path>Intent.Modules.Modelers.CodebaseStructure.csproj</path>
+      <count>1</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2026-08-23T13:52:12.8978975Z</updatedAt>
+      <deviationsHash>28B4E7C8D36CCB2AFBB519DBC1BD8095E9E4236B8AF5ED447F080E79270A8F89</deviationsHash>
+    </file>
   </files>
 </deviationsLog>

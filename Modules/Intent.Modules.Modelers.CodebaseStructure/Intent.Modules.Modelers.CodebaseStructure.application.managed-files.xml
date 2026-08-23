@@ -3,7 +3,7 @@
   <file path="../.agents/instructions/csharp-guidelines.md" />
   <file path="../Intent.Modules.sln" />
   <file path="Api/FolderExtensionModel.cs" />
-  <file path="Api/FolderModelStereotypeExtensions.cs" />
+  <file path="Api/IAllowsCustomFileClassificationModel.cs" />
   <file path="Api/OutputAnchorModel.cs" deviationsHash="684B1F515B1AB1036F7DF9EB9C507F4EC0057F5994BD71FE4F67045BE1AB3939" />
   <file path="Api/OutputAnchorModelStereotypeExtensions.cs" />
   <file path="Api/RootFolderModel.cs" />
@@ -13,7 +13,7 @@
   <file path="ApiMetadataDesignerExtensions.cs" />
   <file path="ApiMetadataPackageExtensions.cs" />
   <file path="Intent.Modelers.CodebaseStructure.imodspec" />
-  <file path="Intent.Modules.Modelers.CodebaseStructure.csproj" />
+  <file path="Intent.Modules.Modelers.CodebaseStructure.csproj" deviationsHash="28B4E7C8D36CCB2AFBB519DBC1BD8095E9E4236B8AF5ED447F080E79270A8F89" />
   <file path="modelers/Codebase Structure Types.designer.settings" />
   <file path="modelers/Codebase Structure.designer.config" />
   <file path="release-notes.md" />
