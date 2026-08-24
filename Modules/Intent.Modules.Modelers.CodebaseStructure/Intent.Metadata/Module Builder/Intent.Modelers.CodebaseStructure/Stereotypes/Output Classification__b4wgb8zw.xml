@@ -20,25 +20,27 @@
   <packageId>525868ff-adc0-4ab6-a90e-352288da941f</packageId>
   <packageName>Intent.Modelers.CodebaseStructure</packageName>
   <properties>
-    <property id="1b1a9d3e-8c3a-4277-b404-11c71128d4f1">
-      <hint>Free-text classification, e.g. security, infrastructure.</hint>
-      <name>Classification</name>
-      <type>string</type>
-      <controlType>text</controlType>
-      <optionsSource>n/a</optionsSource>
-    </property>
-    <property id="b710908c-f121-4d27-8dd3-b0b8b1ae97a2">
+    <property id="277dec79-e6f2-4e4a-ab8e-1849990889a1">
       <hint>Severity level. Always stored as the lower-case option name, never a number.</hint>
       <name>Severity</name>
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
       <valueOptions>
-        <option>low</option>
-        <option>medium</option>
-        <option>high</option>
-        <option>critical</option>
+        <option>0 - None</option>
+        <option>1 - Low</option>
+        <option>2 - Medium</option>
+        <option>3 - High</option>
       </valueOptions>
+    </property>
+    <property id="0acdff86-3981-4950-921c-f5642a3e2374">
+      <name>Classification</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <lookupTypes>
+        <type>86490efd-d823-44cf-bb67-283231ae95f3</type>
+      </lookupTypes>
     </property>
   </properties>
 </stereotypeDefinition>

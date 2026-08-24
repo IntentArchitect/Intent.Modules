@@ -34,6 +34,11 @@ namespace Intent.Modelers.CodebaseStructure.Api
         public IEnumerable<IStereotype> Stereotypes => UnderlyingPackage.Stereotypes;
         public string FileLocation => UnderlyingPackage.FileLocation;
 
+        public FileClassificationsModel FileClassifications => UnderlyingPackage.ChildElements
+    .GetElementsOfType(FileClassificationsModel.SpecializationTypeId)
+    .Select(x => new FileClassificationsModel(x))
+    .SingleOrDefault();
+
         public IList<FolderModel> Folders => UnderlyingPackage.ChildElements
             .GetElementsOfType(FolderModel.SpecializationTypeId)
             .Select(x => new FolderModel(x))

@@ -21,13 +21,6 @@ return element.hasTrait("60fd85c8-5de8-45b6-9ba7-570cc701c3ab");</targetFilterFu
   <packageId>525868ff-adc0-4ab6-a90e-352288da941f</packageId>
   <packageName>Intent.Modelers.CodebaseStructure</packageName>
   <properties>
-    <property id="bc57e41f-e7cb-4e84-b64c-42f3a4f23c8b">
-      <hint>Free-text classification, e.g. security, infrastructure.</hint>
-      <name>Classification</name>
-      <type>string</type>
-      <controlType>text</controlType>
-      <optionsSource>n/a</optionsSource>
-    </property>
     <property id="1f903649-4ed0-4c2b-b288-34dedacdff05">
       <hint>Severity level. Always stored as the lower-case option name, never a number.</hint>
       <name>Severity</name>
@@ -35,18 +28,27 @@ return element.hasTrait("60fd85c8-5de8-45b6-9ba7-570cc701c3ab");</targetFilterFu
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
       <valueOptions>
-        <option>low</option>
-        <option>medium</option>
-        <option>high</option>
-        <option>critical</option>
+        <option>0 - None</option>
+        <option>1 - Low</option>
+        <option>2 - Medium</option>
+        <option>3 - High</option>
       </valueOptions>
     </property>
     <property id="14dd36e5-eee3-4b8f-9868-99b965703d23">
-      <hint>Glob evaluated against a file's path relative to the folder/project this is applied to (e.g. **/*.sql, Migrations/**). Empty means **/*.</hint>
+      <hint>Glob items evaluated against a file's path relative to the folder/project this is applied to. Negation using `!` supported.</hint>
       <name>Glob</name>
       <type>string</type>
-      <controlType>text</controlType>
+      <controlType>textarea</controlType>
       <optionsSource>n/a</optionsSource>
+    </property>
+    <property id="c42e8c3a-962a-4e85-b890-e3234eb6534d">
+      <name>Classification</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <lookupTypes>
+        <type>86490efd-d823-44cf-bb67-283231ae95f3</type>
+      </lookupTypes>
     </property>
   </properties>
 </stereotypeDefinition>

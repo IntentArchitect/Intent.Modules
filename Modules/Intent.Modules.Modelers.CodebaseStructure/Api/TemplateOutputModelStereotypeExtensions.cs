@@ -71,9 +71,9 @@ namespace Intent.Modelers.CodebaseStructure.Api
 
             public string Name => _stereotype.Name;
 
-            public string Classification()
+            public IElement[] Classification()
             {
-                return _stereotype.GetProperty<string>("Classification");
+                return _stereotype.GetProperty<IElement[]>("Classification") ?? new IElement[0];
             }
 
             public SeverityOptions Severity()
@@ -94,43 +94,43 @@ namespace Intent.Modelers.CodebaseStructure.Api
                 {
                     switch (Value)
                     {
-                        case "low":
-                            return SeverityOptionsEnum.Low;
-                        case "medium":
-                            return SeverityOptionsEnum.Medium;
-                        case "high":
-                            return SeverityOptionsEnum.High;
-                        case "critical":
-                            return SeverityOptionsEnum.Critical;
+                        case "0 - None":
+                            return SeverityOptionsEnum._0None;
+                        case "1 - Low":
+                            return SeverityOptionsEnum._1Low;
+                        case "2 - Medium":
+                            return SeverityOptionsEnum._2Medium;
+                        case "3 - High":
+                            return SeverityOptionsEnum._3High;
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
                 }
 
-                public bool IsLow()
+                public bool Is0None()
                 {
-                    return Value == "low";
+                    return Value == "0 - None";
                 }
-                public bool IsMedium()
+                public bool Is1Low()
                 {
-                    return Value == "medium";
+                    return Value == "1 - Low";
                 }
-                public bool IsHigh()
+                public bool Is2Medium()
                 {
-                    return Value == "high";
+                    return Value == "2 - Medium";
                 }
-                public bool IsCritical()
+                public bool Is3High()
                 {
-                    return Value == "critical";
+                    return Value == "3 - High";
                 }
             }
 
             public enum SeverityOptionsEnum
             {
-                Low,
-                Medium,
-                High,
-                Critical
+                _0None,
+                _1Low,
+                _2Medium,
+                _3High
             }
         }
 
