@@ -2,6 +2,7 @@
 
 - Improvement: Improved context for AI modeling instructions for better results when AI agents are modeling UI.
 - Improvement: Added PaymentManagement API script to handle modelling of Authentication (or any) pages
+- Improvement: Renamed the `Add to Sider Menu` context menu item to `Add to Menu` to better reflect the fact that it can be added to any menu, not just a sider menu.
 
 ### Version 1.1.4
 
