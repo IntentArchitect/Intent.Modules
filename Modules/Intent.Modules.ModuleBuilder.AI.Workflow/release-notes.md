@@ -1,5 +1,6 @@
 ### Version 1.0.0
 
+- Fixed: `module-version-increment` and `module-docs-chore` now document two gotchas found from a real session going wrong — the Software Factory's silent no-op when a version change regresses below what's on disk (the "downgrade guard"), and the rule that a release-notes heading drops the `-pre.#` suffix even when the module's own version keeps it.
 - New Feature: Bundles workflow skills and instructions for the module-building lifecycle — context capture, version increments and documentation upkeep — into the consuming repo's agent skills folder.
 - New Feature: Adds settings to control prerelease versioning and README maintenance in the generated skills.
 - New Feature: Added a `MaintainModuleIcon` setting and icon-creation guidance to `module-docs-chore` — creates a module's SVG icon when missing (via the `module-svg-icon` skill, if available in the environment) and never overwrites an existing one.

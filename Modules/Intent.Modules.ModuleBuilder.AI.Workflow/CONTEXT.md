@@ -47,6 +47,15 @@ its generated content accordingly.
   does not by itself make something Patch (`module-svg-icon` had no setting at all and was still
   Patch). Reasoning must be stated at the point of choosing, same as before.
 
+- **Two gotchas were added to `module-version-increment`/`module-docs-chore` after a real consuming
+  session tripped on both.** With `UsePreReleaseVersions` on, a developer corrected a module from
+  `1.1.0` down to `1.0.3-pre.0`; the Software Factory silently reported nothing staged because
+  `-pre.#` sorts *below* the same `X.Y.Z` with no suffix — a downgrade by semver precedence, distinct
+  from the already-documented local-compile trap. The same session then carried the `-pre.#` suffix
+  into a `release-notes.md` heading, because the rule to strip it lived only in the opt-in
+  `module-docs` skill, never in the routine `module-docs-chore` path that actually fires during
+  ordinary work. Both gotchas are now documented where the routine path will actually see them.
+
 ## Invariants & Constraints
 
 - `AIWorkflowSettings` accessors (`UsePreReleaseVersions`, `MaintainModuleREADME`,

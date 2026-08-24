@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="0b967c83-061a-4526-84ca-6aa6afab4426" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-  <name>Agents</name>
-  <display>Agents</display>
+<class id="684a4353-c415-4501-91b7-5f061395e0bc" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Skills</name>
+  <display>Skills</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />

@@ -197,6 +197,16 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleVersio
                     > reads from. From then on the search reports that version as existing, whether or not it was ever
                     > published. Treat an "exists" result as inconclusive rather than as proof — and keep in mind another
                     > branch may have published the same number first.
+
+                    > **The downgrade guard.** The Software Factory silently refuses to regenerate `.imodspec` if the
+                    > version you just set compares as *lower*, by semver precedence, than the `<version>` already on
+                    > disk — regeneration reports nothing staged, with no error or warning. A `-pre.#` suffix sorts
+                    > *below* the same `X.Y.Z` with no suffix, so correcting `1.1.0` down to `1.0.3-pre.0` trips this
+                    > guard even though the intent is a fix. If a version change reports zero diff when you expected
+                    > one, suspect this before anything else — check the `.imodspec`'s current `<version>` and compare
+                    > precedence. Workaround: temporarily set only the `<version>` line down to a safe value (confirm
+                    > via `git diff`/`git status` that the file is uncommitted first), then reapply your intended
+                    > version and regenerate forward.
                     {{preReleaseSection}}
                     ## Supported Client Version Range
 

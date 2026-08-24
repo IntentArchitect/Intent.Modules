@@ -1,5 +1,7 @@
 ### Version 1.0.1
 
+- Improvement: `known-build-gotchas` now covers why a template change can appear to have no effect: building a module compiles its `.csproj` and the `.imod` packaging step runs off that compilation, so a change to non-C# files may not trigger it and no new `.imod` is produced. Use `dotnet build --no-incremental` to force it.
+
 - New Feature: Added `module-svg-icon` skill that crafts a house-style SVG icon for a module from a supplied description and applies it via the module's `.application.config`, regenerated into `.imodspec` by the Software Factory.
 - Improvement: `intent-module-orchestrator` now documents the `"model"` metadata bridge — how to read the originating designer element off a generated node instead of matching member names — along with the idempotency and typed-read rules that go with it.
 - Improvement: `intent-module-orchestrator` now covers `TryGetTypeName` for optional, graceful-degradation integration with a module that may not be installed, contrasted with the non-optional `GetTypeName`.

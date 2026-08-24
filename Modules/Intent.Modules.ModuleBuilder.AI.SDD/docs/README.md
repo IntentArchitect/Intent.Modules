@@ -1,6 +1,6 @@
 # Intent.ModuleBuilder.AI.SDD
 
-This module does not generate application code. It drops a single AI agent definition file into the repo it is installed in — an Intent Architect custom agent, selectable from Intent Architect's agent picker, that steers module-building work through the native Spec-Driven Development (SDD) lifecycle (`/sdd-requirements` → `/sdd-design` → `/sdd-tasks` → `/sdd-implement` → `/sdd-verify`). Its job spans both sides of that work: the module's own metamodel and templates, and the sample application used to build and validate them, so an agent working through SDD doesn't let one drift out of sync with the other. It generates no C# and has no designer model dependency — the file it writes is always overwritten on install/update.
+This module does not generate application code. It drops two AI context files into the repo it is installed in, which together describe and enforce the module-building experience over Intent Architect's native Spec-Driven Development (SDD) lifecycle (`/sdd-requirements` → `/sdd-design` → `/sdd-tasks` → `/sdd-implement` → `/sdd-verify`) — with a golden sample, built or documented before any spec exists, as the one prerequisite. It generates no C# and has no designer model dependency — the files it writes are always overwritten on install/update.
 
 > [!NOTE]
 >
@@ -8,11 +8,14 @@ This module does not generate application code. It drops a single AI agent defin
 
 ## What This Module Generates
 
-- `.agents/agents/build-module-sdd.agent.md` — an Intent Architect agent definition ("Module Building SDD Agent") that enforces a Golden Sample (Reference Architecture) discipline over the built-in SDD skills: a mandatory Wave 0 spike that builds or updates a working sample application before any metamodel/template work starts, a metamodel-then-templates-then-dogfood wave structure, and a verify/heal loop that checks the module's generated output against that sample.
+- `.agents/skills/sdd-build-module/SKILL.md` — the module-building experience end to end. Routes on "do you have a reference golden sample?"; a missing sample is built in a planning session (a prepared prompt hands the developer into `/plan`, the plan is co-owned and explicitly approved, and it finishes in **Golden Sample Reference** form — the document the spec phases derive from). Requirements start only once the Reference exists; the developer stipulates the module's surface; extrapolation beyond the sample is flagged in plain language; variations are proven by generated test applications, never by growing the sample.
+- `.agents/instructions/sdd-wave-evidence.instructions.md` — the obligations that must reach implementation sessions automatically (instruction files are injected into every session, including wave sub-agents and external ACP agents): the wave evidence contract, the find-the-Reference-first step, and the `GOLDEN-SAMPLE:` marker sweep.
 
-## Bundled Agent Output
+Why a skill plus an instruction file, and no agent definition: skills follow the user across agents and modes — including Plan mode, where the experience starts, and ACP sessions, whose system prompts receive the solution's skill manifest — while an agent definition is only loaded while that agent is selected. The instruction file carries the pieces that must arrive even in sessions where nobody invoked anything.
 
-The agent definition is bundled once, in this module's own source, and always overwritten on every install or update. Local edits to the bundled content are not a supported use case — standardization across consuming repos is the goal, not per-repo customization.
+## Bundled Output
+
+The content is bundled once, in this module's own source, and always overwritten on every install or update. Local edits to the bundled content are not a supported use case — standardization across consuming repos is the goal, not per-repo customization.
 
 ## Related Modules
 

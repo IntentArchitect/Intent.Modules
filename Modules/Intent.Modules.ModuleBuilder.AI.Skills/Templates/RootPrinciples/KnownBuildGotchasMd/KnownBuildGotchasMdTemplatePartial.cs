@@ -104,6 +104,18 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.RootPrinciples.KnownB
           You may encounter SDK package versions after an SF run, triggering `NU1605` downgrade errors. When this happens, manually correct the affected package versions in the `.csproj`. The root cause is NuGet versions drifting out of sync with the corresponding Intent module version — keep them aligned to avoid recurrence.
 
           Packages most commonly affected: `Intent.Modules.Common`, `Intent.Modules.Common.CSharp`, `Intent.SoftwareFactory.SDK`.
+
+          ===
+
+          ### Template Changes Not Taking Effect
+
+          Building a module compiles the `.csproj` that represents it, and the step that packages the `.imod` runs off that compilation. If your changes were to non-C# files, the compilation may not trigger, the package step is skipped, and no new `.imod` is produced — the templates then keep generating from the previously packaged content, with nothing reported.
+
+          To force it:
+
+          ```
+          dotnet build --no-incremental
+          ```
           """"""");
     }
 

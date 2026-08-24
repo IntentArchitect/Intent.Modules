@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="45d96973-ff59-41c7-acd9-b71e1cccdeb5" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-  <name>agents</name>
-  <display>agents</display>
+<class id="1d5ffef0-296f-448c-aec9-7fc398f87f41" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>RootPrinciples</name>
+  <display>RootPrinciples</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>2f047ddb-1e21-489e-b875-b42f9e275aa3</parentFolderId>
-  <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
-  <packageName>root</packageName>
+  <parentFolderId>de6d1f5d-4afe-4327-9bf5-05602efefefa</parentFolderId>
+  <packageId>de6d1f5d-4afe-4327-9bf5-05602efefefa</packageId>
+  <packageName>Intent.ModuleBuilder.AI.SDD</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="66fd9e66-42c7-4ef9-a778-b68e009272b9" name="Folder Options">
       <addedByDefault>true</addedByDefault>

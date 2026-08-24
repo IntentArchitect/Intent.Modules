@@ -7,11 +7,11 @@
   <file path="Settings/ModuleSettingsExtensions.cs" />
   <file path="Templates/RootPrinciples/ModuleBuildingWorkflowMd/ModuleBuildingWorkflowMdTemplatePartial.cs" />
   <file path="Templates/RootPrinciples/ModuleBuildingWorkflowMd/ModuleBuildingWorkflowMdTemplateRegistration.cs" />
-  <file path="Templates/Skills/ModuleContextCapture_SkillMd_Agents/ModuleContextCapture_SkillMd_AgentsTemplatePartial.cs" />
+  <file path="Templates/Skills/ModuleContextCapture_SkillMd_Agents/ModuleContextCapture_SkillMd_AgentsTemplatePartial.cs" deviationsHash="5F79D3CE03D7DD63CAF45FF6A57DDA582BF4143C1FB2CE81C650BDBB54CD5DB8" />
   <file path="Templates/Skills/ModuleContextCapture_SkillMd_Agents/ModuleContextCapture_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/ModuleDocsChore_SkillMd_Agents/ModuleDocsChore_SkillMd_AgentsTemplatePartial.cs" />
+  <file path="Templates/Skills/ModuleDocsChore_SkillMd_Agents/ModuleDocsChore_SkillMd_AgentsTemplatePartial.cs" deviationsHash="04FCEFB419FFF6C13A314052B6449795B672A3B57325711E9C3517AFE3214794" />
   <file path="Templates/Skills/ModuleDocsChore_SkillMd_Agents/ModuleDocsChore_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/ModuleVersionIncrement_SkillMd_Agents/ModuleVersionIncrement_SkillMd_AgentsTemplatePartial.cs" />
+  <file path="Templates/Skills/ModuleVersionIncrement_SkillMd_Agents/ModuleVersionIncrement_SkillMd_AgentsTemplatePartial.cs" deviationsHash="E04CACB33F5D9E4060EE9107200E5EEA76730CF4244528811CC323834D5F0F46" />
   <file path="Templates/Skills/ModuleVersionIncrement_SkillMd_Agents/ModuleVersionIncrement_SkillMd_AgentsTemplateRegistration.cs" />
   <file path="release-notes.md" />
 </managedFiles>

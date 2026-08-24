@@ -3,7 +3,7 @@ name: module-docs-chore
 description: "Update a module's release-notes, README, .imodspec metadata, and icon to reflect a change a consumer can observe, in the same turn as that change. USE ONLY WHEN a module change alters anything observable — a new/removed template, setting, stereotype, config default, or behavioural fix. DO NOT USE FOR internal refactors with no observable effect, or for bumping the module's version number itself (see module-version-increment). REQUIRES the observable change already implemented or decided."
 keywords: [documentation, release-notes, readme, imodspec, icon, chore, upkeep]
 template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDocsChore_SkillMd_Agents
-contentHash: 0A232A025820395608B7B18F23F250D491C06B66D440DB432739577E3529B272
+contentHash: B3ACFEF9B92513E67B4FBE4AA94AC9654A157FB5EE8C6D460F98F49218FE0C74
 ---
 # Skill: module-docs-chore
 
@@ -31,12 +31,19 @@ generated output needs nothing.
 |---|---|
 | Module metadata — summary, description, tags | Kept accurate as a matter of course. These are what a consumer sees before installing anything. |
 | `release-notes.md` | One bullet under the current version — **only if the file already exists** |
+| `docs/README.md` | The section the change affects — a settings table, a generated-output example, a feature description. **Create it if the module does not have one.** |
+| Module icon | Created only if the module has none yet — see "The Icon" below. An existing icon is never overwritten. |
 
 ## Release Notes Are Maintained, Never Introduced
 
 If a module has a `release-notes.md`, add an entry for the change: a single bullet under the current
 version, prefixed to say whether it is a new feature, an improvement, or a fix. A fix entry is more
 useful when it names the scenario that triggered the bug rather than just the symptom.
+
+When the module's in-development version carries a `-pre.#` suffix (see `module-version-increment`),
+write the heading under the **plain** version with the suffix stripped — `.imodspec` version
+`1.0.3-pre.0` becomes `### Version 1.0.3`. The suffix marks the package as not yet released;
+release notes describe the release the change ships under once promoted.
 
 ### Keep Entries Short, And Group Them
 
@@ -106,14 +113,30 @@ someone who never agreed to it.
 
 ## The README
 
-Module READMEs are not maintained in this environment. If a module already has a `docs/README.md`,
-leave it alone unless the developer asks for it — do not create one, and do not treat its absence as
-something to fix.
+Every module should have a `docs/README.md` explaining what it generates and how it is configured.
+Unlike the release notes, this one **is** created when missing — a module with no README leaves a
+consumer with nothing to read at all.
+
+Keep it describing the module's current behaviour rather than its history. When a change makes a
+section wrong, correct that section; do not append a note saying it changed.
 
 ## The Icon
 
-Module icons are not maintained in this environment. Leave an existing icon alone, and do not create
-one — its absence is not something to fix.
+Create a module's SVG icon **when it has none** — never overwrite one that already exists, even if
+it looks dated. An existing icon is a deliberate choice by whoever set it, not something this chore
+corrects.
+
+Source the description to craft from; do not invent one:
+
+- The module's own `.imodspec` `<summary>` and `<tags>` — the same material already kept current
+
+elsewhere in this chore.
+
+- Its `CONTEXT.md` "Purpose" section, if one exists.
+
+If the `module-svg-icon` skill is available in your environment, use it with that description to
+craft and apply the icon. If it is not available, this chore has no icon-crafting mechanism of its
+own — leave the module without an icon rather than improvising a substitute.
 
 ## Cover The Whole Version Line
 
@@ -129,4 +152,6 @@ entries account for everything in it, not that there is an entry per change.
 - [ ] Author matches what sibling modules use — copied or asked for, never invented
 - [ ] `release-notes.md` updated **if present** — and not created if absent
 - [ ] Entries are one line each, grouped by capability rather than listed per change
+- [ ] `docs/README.md` reflects the change — created if the module had none
+- [ ] Module icon created if missing, described from `.imodspec`/`CONTEXT.md` — existing icons left untouched
 - [ ] Earlier undocumented changes in the same version line covered

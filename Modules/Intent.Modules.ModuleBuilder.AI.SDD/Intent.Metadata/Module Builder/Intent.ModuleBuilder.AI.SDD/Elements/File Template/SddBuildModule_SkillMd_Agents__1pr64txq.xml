@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="9688e4fa-253c-4b35-ba31-7bd4d3e08f31" type="File Template" typeId="43eae4bd-4613-4d15-88ac-52b7e743b7b2">
-  <name>BuildModuleSddMd_Agents</name>
-  <display>BuildModuleSddMd_Agents: Single File</display>
+<class id="7ebf9e18-7ef6-44b9-89ef-c57c610fd562" type="File Template" typeId="43eae4bd-4613-4d15-88ac-52b7e743b7b2">
+  <name>SddBuildModule_SkillMd_Agents</name>
+  <display>SddBuildModule_SkillMd_Agents: Single File</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
-  <typeReference id="68f3f4f1-42bf-4ee1-ac61-eaa23758b062">
+  <typeReference id="2bae2094-a864-4a60-bab3-fbbd415044c8">
     <typeId>f65d2904-88c9-4501-873a-a4eec8303b1d</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
@@ -16,7 +16,7 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>0b967c83-061a-4526-84ca-6aa6afab4426</parentFolderId>
+  <parentFolderId>684a4353-c415-4501-91b7-5f061395e0bc</parentFolderId>
   <packageId>de6d1f5d-4afe-4327-9bf5-05602efefefa</packageId>
   <packageName>Intent.ModuleBuilder.AI.SDD</packageName>
   <stereotypes>
@@ -40,8 +40,8 @@
         <property name="00d3537c-f71f-4450-8cc8-d9e87c12baee" display="Designer" isActive="true" />
         <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" isActive="true" />
         <property name="d1e89313-0647-48bd-81da-b04b644db475" display="Model Name" value="object" isActive="false" />
-        <property name="f1d88e59-1ca6-426e-b52d-42f3467e6bd5" display="Role" value="AI.Context" isActive="true" />
-        <property name="1ac0fa39-ecea-48f8-92e4-41616a639586" display="Default Location" value="" isActive="true" />
+        <property name="f1d88e59-1ca6-426e-b52d-42f3467e6bd5" display="Role" value="AI.Context.Skills" isActive="true" />
+        <property name="1ac0fa39-ecea-48f8-92e4-41616a639586" display="Default Location" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

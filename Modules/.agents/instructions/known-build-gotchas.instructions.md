@@ -3,7 +3,7 @@ applyTo: '**/*.cs'
 description: >
 Template authoring pitfalls and solutions: NuGet dependency registration,
 keywords: [intent architect, template authoring, nuget, build, gotchas, constants]
-contentHash: AF173B71F61335B40C616F9788490C87D8BF73B6EE2BD0D22663B1E1005B233D
+contentHash: F19E6242A956CC55B58BD89DC322D76288392A26EEC8DD86D8FEFE78C313402D
 ---
 ## Known Build Gotchas
 
@@ -74,3 +74,15 @@ using NServiceBusConstants = Intent.Modules.Eventing.NServiceBus.Templates.Const
 You may encounter SDK package versions after an SF run, triggering `NU1605` downgrade errors. When this happens, manually correct the affected package versions in the `.csproj`. The root cause is NuGet versions drifting out of sync with the corresponding Intent module version — keep them aligned to avoid recurrence.
 
 Packages most commonly affected: `Intent.Modules.Common`, `Intent.Modules.Common.CSharp`, `Intent.SoftwareFactory.SDK`.
+
+===
+
+### Template Changes Not Taking Effect
+
+Building a module compiles the `.csproj` that represents it, and the step that packages the `.imod` runs off that compilation. If your changes were to non-C# files, the compilation may not trigger, the package step is skipped, and no new `.imod` is produced — the templates then keep generating from the previously packaged content, with nothing reported.
+
+To force it:
+
+```
+dotnet build --no-incremental
+```

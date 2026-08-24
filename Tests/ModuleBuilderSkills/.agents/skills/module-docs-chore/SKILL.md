@@ -3,7 +3,7 @@ name: module-docs-chore
 description: "Update a module's release-notes, README, .imodspec metadata, and icon to reflect a change a consumer can observe, in the same turn as that change. USE ONLY WHEN a module change alters anything observable — a new/removed template, setting, stereotype, config default, or behavioural fix. DO NOT USE FOR internal refactors with no observable effect, or for bumping the module's version number itself (see module-version-increment). REQUIRES the observable change already implemented or decided."
 keywords: [documentation, release-notes, readme, imodspec, icon, chore, upkeep]
 template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDocsChore_SkillMd_Agents
-contentHash: 1C2696E637D47E8FE6564D0A0CC879ADA79F96E7F98CC75F6416389439D6A16F
+contentHash: B3ACFEF9B92513E67B4FBE4AA94AC9654A157FB5EE8C6D460F98F49218FE0C74
 ---
 # Skill: module-docs-chore
 
@@ -39,6 +39,11 @@ generated output needs nothing.
 If a module has a `release-notes.md`, add an entry for the change: a single bullet under the current
 version, prefixed to say whether it is a new feature, an improvement, or a fix. A fix entry is more
 useful when it names the scenario that triggered the bug rather than just the symptom.
+
+When the module's in-development version carries a `-pre.#` suffix (see `module-version-increment`),
+write the heading under the **plain** version with the suffix stripped — `.imodspec` version
+`1.0.3-pre.0` becomes `### Version 1.0.3`. The suffix marks the package as not yet released;
+release notes describe the release the change ships under once promoted.
 
 ### Keep Entries Short, And Group Them
 

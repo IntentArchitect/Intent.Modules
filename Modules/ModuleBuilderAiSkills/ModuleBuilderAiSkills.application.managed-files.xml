@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="56c42b2b-0973-424b-ae40-2b32c7aa840c">
-  <file path=".agents/agents/build-module-sdd.agent.md" />
   <file path=".agents/instructions/csharp-guidelines.md" />
   <file path=".agents/instructions/exception-guidelines.instructions.md" />
   <file path=".agents/instructions/known-build-gotchas.instructions.md" />
   <file path=".agents/instructions/module-building-workflow.instructions.md" />
+  <file path=".agents/instructions/sdd-wave-evidence.instructions.md" />
   <file path=".agents/skills/add-association-type/SKILL.md" />
   <file path=".agents/skills/add-association-type/resources/association-type-workflow.md" />
   <file path=".agents/skills/add-designer-extension/SKILL.md" />
@@ -35,4 +35,5 @@
   <file path=".agents/skills/module-svg-icon/SKILL.md" />
   <file path=".agents/skills/module-version-increment/SKILL.md" />
   <file path=".agents/skills/module-versioning/SKILL.md" />
+  <file path=".agents/skills/sdd-build-module/SKILL.md" />
 </managedFiles>

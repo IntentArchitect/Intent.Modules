@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files />
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#397ea30f-1ff0-4356-a10f-f47052036047</correlationId>
+      <path>Templates/Skills/ModuleContextCapture_SkillMd_Agents/ModuleContextCapture_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-24T12:21:09.1674106Z</updatedAt>
+      <deviationsHash>5F79D3CE03D7DD63CAF45FF6A57DDA582BF4143C1FB2CE81C650BDBB54CD5DB8</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#744e419d-235b-46ab-b6d2-dd2f15d7e905</correlationId>
+      <path>Templates/Skills/ModuleDocsChore_SkillMd_Agents/ModuleDocsChore_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-24T12:21:09.167418Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-24T20:27:07.1144656Z</approvedAt>
+      <deviationsHash>04FCEFB419FFF6C13A314052B6449795B672A3B57325711E9C3517AFE3214794</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#51059f0f-aced-410b-9822-9645b9754bb6</correlationId>
+      <path>Templates/Skills/ModuleVersionIncrement_SkillMd_Agents/ModuleVersionIncrement_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-24T12:21:09.1674248Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-24T20:27:10.1264398Z</approvedAt>
+      <deviationsHash>E04CACB33F5D9E4060EE9107200E5EEA76730CF4244528811CC323834D5F0F46</deviationsHash>
+    </file>
+  </files>
   <customFiles>
     <customFile>
       <path>Modules/Intent.Modules.ModuleBuilder.AI.Workflow/.gitattributes</path>

@@ -37,6 +37,19 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
         .GetAIWorkflowSettings(ExecutionContext.Settings)
         .MaintainModuleIcon();
 
+      var usePreRelease = Intent.Modules.ModuleBuilder.AI.Workflow.Settings.ModuleSettingsExtensions
+        .GetAIWorkflowSettings(ExecutionContext.Settings)
+        .UsePreReleaseVersions();
+
+      var preReleaseHeadingNote = usePreRelease
+        ? "\n" + """
+        When the module's in-development version carries a `-pre.#` suffix (see `module-version-increment`),
+        write the heading under the **plain** version with the suffix stripped — `.imodspec` version
+        `1.0.3-pre.0` becomes `### Version 1.0.3`. The suffix marks the package as not yet released;
+        release notes describe the release the change ships under once promoted.
+        """
+        : "";
+
       var readmeRow = maintainReadme
         ? """
         | `docs/README.md` | The section the change affects — a settings table, a generated-output example, a feature description. **Create it if the module does not have one.** |
@@ -148,6 +161,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
           If a module has a `release-notes.md`, add an entry for the change: a single bullet under the current
           version, prefixed to say whether it is a new feature, an improvement, or a fix. A fix entry is more
           useful when it names the scenario that triggered the bug rather than just the symptom.
+          {{preReleaseHeadingNote}}
 
           ### Keep Entries Short, And Group Them
 

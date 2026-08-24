@@ -19,6 +19,20 @@ Bundles a fixed set of AI agent skills and instruction files for building Intent
 - **Flattened `Skills/{SkillName}/` into `Skills/` directly (1.0.1-pre.3).** The per-skill subfolder existed only to disambiguate the repeated `SkillMd_Agents` name across skills — the `Skills/` folder already provided that grouping, so the extra nesting was pure ceremony. Flattening, plus renaming each template with its former folder name as a prefix, removes the redundant folder while keeping every element name unique. Also caught mid-flatten: the Software Factory's rename-detection is not reliable across a simultaneous namespace + physical-path change — on at least one sibling module it silently reset a hand-authored `TemplatePartial.cs` body to placeholder content instead of preserving it (`get_file_diffs` caught it before it was applied). Treat every such rename's `get_file_diffs` output as unverified until read, not just "rename" vs "create" in the change summary.
 - **`Default Location` replaced by the `MarkdownFile` constructor's `relativeLocation` argument (1.0.1-pre.3).** Discovered that `Default Location` only seeds the constructor's output-path argument at the moment a File Template element is first created; afterward the constructor's `Body = Mode.Ignore` means the model setting is never read again, so it looked live but did nothing on every subsequent regeneration. Baking the value directly into the constructor removes that dead, misleading setting. Existing consuming applications that installed an earlier version still show the old nested `Skills/{SkillName}/` shape in their own `Codebase Structure` designer until they update through the `Version Migration` added alongside this change.
 
+- **The no-new-`.imod` diagnosis is filed as a build gotcha.** Building a module compiles its
+  `.csproj`, and the packaging step that produces the `.imod` runs off that compilation — so a
+  change confined to non-C# files may not trigger it, leaving templates generating from previously
+  packaged content with nothing reported. `dotnet build --no-incremental` forces it. It belongs in
+  `known-build-gotchas` rather than a versioning skill because it reaches every session through an
+  `applyTo: '**'` instruction file, and because it is the diagnosis behind `AI.Workflow`'s "a
+  version number is not a debugging tool" rule rather than a versioning decision itself.
+- **Editing these raw-string templates: the closing delimiter's indentation is load-bearing.**
+  `KnownBuildGotchasMd` indents its content 10 spaces and closes at the same indent, which is what
+  de-indents the emitted markdown. A programmatic splice that leaves the closing delimiter at
+  column 0 compiles and packages perfectly while generating an effectively empty document — caught
+  only by reading the staged diff before applying (it showed every section being deleted). Always
+  diff before apply on these templates.
+
 ## Invariants & Constraints
 
 - Every skill's `File Template` (type `Single File`) sits directly under the `Skills/` folder, named `<SkillName>_SkillMd_Agents` (and `<SkillName>_Resources...` for resource files) — there is no per-skill subfolder. `File Settings(Output File Content=Text, Templating Method=Markdown File

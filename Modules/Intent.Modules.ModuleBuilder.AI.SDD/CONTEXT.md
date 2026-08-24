@@ -2,84 +2,129 @@
 
 ## Purpose
 
-Bundles a single Intent Architect custom agent definition (`build-module-sdd.agent.md`), selectable
-from Intent Architect's agent picker, that steers Intent Architect's built-in Spec-Driven Development
-(SDD) skills (`/sdd-requirements`, `/sdd-design`, `/sdd-tasks`, `/sdd-implement`, `/sdd-verify`,
-`/sdd-heal`) toward building/modifying Intent Architect modules specifically. It covers both sides of
-that work — the module's own metamodel/templates, and the sample application used to build and
-validate them — via a Golden Sample (Reference Architecture) discipline: a mandatory Wave 0 spike
-that builds or updates the sample application before any metamodel/template work starts, and a
-metamodel → templates → dogfood wave structure that keeps the module's generated output verified
-against that sample.
+Bundles two Intent Architect AI context files that describe and enforce the module-building
+experience over the built-in Spec-Driven Development (SDD) skills (`/sdd-requirements`,
+`/sdd-design`, `/sdd-tasks`, `/sdd-implement`, `/sdd-verify`, `/sdd-heal`):
+
+- `sdd-build-module/SKILL.md` — the experience end to end: golden sample first (built in a
+  planning session when none exists), a Golden Sample Reference as the artifact the spec derives
+  from, then the normal SDD lifecycle shaped by it.
+- `sdd-wave-evidence.instructions.md` — the obligations that must reach implementation sessions
+  automatically: the wave evidence contract, find-the-Reference-first, and the `GOLDEN-SAMPLE:`
+  marker sweep.
 
 ## Architectural Decisions
 
-- **The agent file's `Role` is the base `AI.Context` anchor (`.agents`), with `Default Location` set
-  to `agents`** — landing the file at `.agents/agents/build-module-sdd.agent.md`. This deliberately
-  reuses the anchor `Intent.Modules.Common` already provisions in every consuming application, rather
-  than adding a new `AI.Context.Agents` anchor to that shared package. A dedicated anchor was tried
-  first and reverted — see "Superseded" below — because it required a version bump to a foundational
-  package every other module depends on, which is out of scope for a single new module's needs.
-- **The File Template element name ends up as `BuildModuleSdd_AgentMd`, not the
-  `BuildModuleSddAgentMd` it was created with.** Intent Architect's Software Factory renamed it
-  (inserting the underscore) the first time `apply_staged_file_changes` ran. This looks like an
-  engine-side naming convention tied to the `AI.Context` family in general (mirroring
-  `SkillMd_Agents` in `AI.Skills`/`AI.Workflow`) rather than anything specific to a particular Role
-  value — it also applied when the Role was still `AI.Context.Agents`, and persisted after switching
-  to the base `AI.Context` anchor. Do not fight it by renaming back; treat the post-apply name as
-  canonical and keep the model and generated folder/class names in agreement.
-- **The bundled content is verbatim, hand-authored into the generated `TemplatePartial.cs`'s
-  constructor body** (`Body = Mode.Ignore`, so the Software Factory never touches it again), exactly
-  like `AI.Workflow`'s `ModuleBuildingWorkflowMdTemplatePartial.cs`. There is no per-consumer
-  parameterization — every installing application gets the identical agent definition.
-- **Body-level horizontal rules use `===`, not `---`.** `Intent.Modules.Common`'s
-  `MarkdownFileParser.ParseFrontMatter` treats *every* standalone `---` line as a frontmatter
-  delimiter, not just the first pair — additional `---` lines used as section separators in the body
-  toggle it in and out of "frontmatter mode" and silently swallow whole sections. Only the two real
-  frontmatter delimiters (first and last) may be `---`; any other horizontal rule in the body must be
-  `===` (or another non-`---` marker) or content between them gets dropped on generation.
-- **The `tools:` YAML list is injected via `.WithFrontMatter(fm => fm.Set("tools", ...))` after
-  `.FromMarkdown(...)`, not left inline in the raw markdown.** `MarkdownFrontMatter`'s parser only
-  understands single-line `key: value` pairs — a multi-line YAML block list (`tools:` followed by
-  `- item` lines) parses as `tools: ""` and every item line is silently discarded (no error). The
-  workaround: let `.FromMarkdown(...)` parse the frontmatter as usual (the inline `tools:` block in
-  the raw content is effectively decorative at that point), then overwrite the `tools` entry
-  afterwards with the correctly-formed multi-line value via `Set`, exploiting the fact that
-  `MarkdownFrontMatter.ToString()` naively concatenates `$"{key}: {value}"` for each entry — a
-  `value` containing embedded `\n  - item` lines round-trips correctly even though the parser can't
-  read it back in. This is a workaround for a real limitation in `Intent.Modules.Common`'s Markdown
-  file builder (it does not support list-valued frontmatter properties at all), fixed here rather
-  than in that shared package per the same "no changes to `Intent.Modules.Common` without sign-off"
-  constraint above. If another module ever needs a list-valued frontmatter property, copy this
-  pattern rather than re-discovering it.
+- **The golden sample comes before the spec.** A spec authored ahead of the sample can only
+  predict the generated code, and its predictions get approved before anything can falsify them —
+  requirements/design/tasks are read-only toward the model ("mutation starts at implementation"),
+  so the sample cannot live inside them. Evidenced by the Wolverine eventing module (Aug 2026):
+  ~1,200 lines of approved spec, 11 named assumptions, six design→requirements bounces in one day,
+  one approved-but-unimplementable criterion, then four assumptions breaking within ~45 minutes of
+  the first wave meeting the compiler. The spec phase list is hard-coded in the client and
+  `advance_spec_phase` refuses jumps, so "before the spec" is the only sanctioned seam.
+- **The experience ships as a skill plus an instruction file; the agent definition was retired.**
+  Loading scope decided this, not taste: the experience *starts in Plan mode*, where a custom
+  agent definition is never loaded (it exists only while its agent is selected, and never reaches
+  dispatched sub-agents), whereas the `use_skill` tool is injected into every agent — including
+  `plan` — and ACP sessions receive the solution's skill manifest in their system prompt
+  (`AcpTurnExecutor.BuildEffectiveSystemPrompt`) plus always-applicable instruction files in
+  `<instructions>` blocks. Retiring the agent also retired its frontmatter `tools:` list, a whole
+  class of bug (it once omitted `advance_spec_phase`/`record_spec_verdict`, making phase gates
+  literally uncallable). Session handoffs are **prepared prompts the developer pastes**, not
+  spawned sessions: plan-mode entry is a frontend gesture (`/plan`), and `create_ai_task` proved
+  not reliably available in real sessions.
+- **The Golden Sample Reference is the real artifact; the sample is its evidence.** The primary
+  document is the plan file itself (`intent/.plans/`), finished in Reference form; it may
+  reference adjacent supporting files placed next to it, and anything not referenced from it does
+  not exist. Variations are *explored* by adjusting the sample into a condition, capturing the
+  snippet and verification into the Reference, then reverting — knowledge accumulates in the
+  document while the codebase stays one clean skeleton. Discovery route for later sessions: the
+  requirements document records the Reference's path; the instruction file tells implementing
+  agents to read it before touching anything. This replaced a `GOLDEN-SAMPLE.md` dossier
+  specification — one artifact, referenced from the spec, beats a second copy that can diverge.
+- **The sample settles the core shape once; the module proves the variants.** Requiring the sample
+  (or probes) to cover every capability the design cites turns each new requirement into more
+  sample work and never terminates — a sample per transport × persistence mode × policy is not
+  buildable, and generating that coverage is the module's whole job. Variants are declared in the
+  design as test applications generated from the module (how this repository already proves
+  transports and retry policies). The anti-hallucination residue that survives: never emit an API
+  with neither a sample citation nor a source (docs / reflected signature / committed probe).
+- **Interpolation from the sample is expected, not policed.** Requirements derive ideas from the
+  Reference, but the developer stipulates the module's surface — including things the sample never
+  touched. The control is prose, not machinery: extrapolations are flagged in plain language
+  ("the sample shows RabbitMQ; SQS is inferred from documentation") and a large delta gets caught
+  by a human reading that sentence at requirements or design review. This deliberately replaced an
+  "empty assumption ledger" rule and an 11-criterion gate — see Superseded.
+- **The pre-module delta is inventory AND a durability obligation, and its protection is
+  self-retiring.** Before the module exists, the Software Factory strips the sample's hand-written
+  wiring by definition — that itemised diff is the enumeration of what the module must generate
+  (it becomes design Scope A), not a defect. Each such line is protected by a code-management
+  directive (merge-style preferred: a missed cleanup then fails loudly as a duplicate, not
+  silently as suppressed output) and tagged with a `GOLDEN-SAMPLE:` marker *inside* the protected
+  region, naming why it exists. During implementation's parity wave, removing the marker and
+  directive and confirming the template reproduces that exact line is the per-line parity proof; a
+  directive left in place makes parity pass while proving nothing. `grep -rn "GOLDEN-SAMPLE:"`
+  returning nothing is a done condition.
 
-## Invariants & Constraints
+## Authoring Traps (Markdown file builder)
 
-- This module's own `.csproj` `PackageReference`s (`Intent.Modules.Common`, `Intent.SoftwareFactory.SDK`)
-  must track the same versions its siblings (`AI.Skills`, `AI.Workflow`) use — the module was
-  originally scaffolded with stale defaults (`Intent.Modules.Common` 3.7.2) that predate the
-  `MarkdownFileBuilder`/`MarkdownBaseTemplate` APIs this module's template depends on, and would not
-  compile until bumped to match.
-- This module makes **no changes to `Intent.Modules.Common`** and depends only on the `AI.Context`
-  anchor that package has always provisioned. Do not reach for a new dedicated anchor there without
-  the developer's explicit sign-off first — that is a change to shared, foundational infrastructure
-  every module depends on, not a decision scoped to this module alone.
+- Body horizontal rules must be `===`, never `---` — every standalone `---` toggles
+  frontmatter-parsing and silently swallows sections.
+- A line beginning with `**bold**` is corrupted into a broken `- *text**` list item. Keep bold off
+  line-start. Verify generated output with `grep -n '^- \*[^ *]'`.
+- A numbered list nested *inside* a bullet has its numbers silently stripped (observed in the
+  retired agent definition's Phase 0). Top-level ordered lists survive; don't nest them.
+- Multi-line frontmatter values (e.g. lists) parse to empty — inject via
+  `.WithFrontMatter(fm => fm.Set(...))` after `.FromMarkdown(...)`.
+- Never hand-set `contentHash`; never use Intent's `patch_file` on these raw strings (re-indents
+  and flattens fences).
+- **Content correctness cannot be confirmed from a successful build.** The only real check: build
+  the module, install into the dogfooding application, run the Software Factory, read the
+  generated files, and re-run until regeneration stages zero changes. Every trap above was
+  invisible until that step.
+
+## Build & Versioning
+
+- `dotnet build --no-incremental` is required to repack the `.imod` when no C# changed —
+  incremental builds skip the packaging step.
+- A same-version rebuild is served stale by a running Intent Architect: the `.imod` version is the
+  cache key (extracted under `.cache/modules/`) and loaded assemblies cannot unload. Bump `-pre.N`
+  per template iteration, clear the cache folder, restart IA when a diff looks stale. The version
+  guard also silently ignores lower-precedence versions.
+- This module's `.csproj` `PackageReference`s must track its siblings (`AI.Skills`, `AI.Workflow`)
+  — it was originally scaffolded with stale defaults that predate the `MarkdownFileBuilder` APIs.
+- No changes to `Intent.Modules.Common` without explicit sign-off; both outputs route through the
+  existing `AI.Context.Skills` / `AI.Context.Instructions` anchors.
 
 ## Module Interactions
 
-- **Intent.Modules.Common** — provisions the base `AI.Context` anchor (`.agents`) this module's
-  template routes through, via `AiOutputAnchorsHelper`. No other dependency.
-- **Intent.ModuleBuilder.AI.Skills / Intent.ModuleBuilder.AI.Workflow** — sibling modules in the same
-  `AI.*` family, generating skills/instructions into the same `.agents/` tree via the same base
-  anchor mechanism (their own `Role` values point at the more specific `AI.Context.Instructions` /
-  `AI.Context.Skills` anchors those two modules were already built against). No package dependency
-  between them (each installs independently).
+- **Intent.Modules.Common** — provisions the anchors (`AiOutputAnchorsHelper`). No other dependency.
+- **Intent.ModuleBuilder.AI.Skills / AI.Workflow** — siblings generating into the same `.agents/`
+  tree. Complementary content: `AI.Workflow`'s workflow instructions state the general "compiling
+  is not working" discipline that this module's evidence contract makes enforceable for SDD waves.
+
+## Escalation Not Yet Taken
+
+- **Shadowing `/sdd-implement` with a solution-local skill.** The built-in orchestrator treats wave
+  reports as authoritative, which is what let fabricated reports propagate. The evidence contract
+  works inside the built-in's own "no usable report → retry once" provision instead. If fabricated
+  reports recur under the contract, a solution-local `.agents/skills/sdd-implement/SKILL.md`
+  shadowing the built-in is the next step; rejected initially because shadows silently fork as the
+  built-in evolves.
 
 ## Superseded
 
-- **A dedicated `AI.Context.Agents` anchor in `Intent.Modules.Common`.** First attempt: extended
-  `AiOutputAnchorsHelper` with a third anchor mirroring Instructions/Skills, bumped
-  `Intent.Modules.Common` to `3.11.6-pre.0`, added a version migration. Reverted at the developer's
-  explicit request — an unreviewed version bump to a foundational shared package was not something
-  they'd asked for. Replaced with the `Role=AI.Context` + `Default Location=agents` approach above,
-  which needs no change outside this module.
+- **A dedicated `AI.Context.Agents` anchor in `Intent.Modules.Common`** — reverted at the
+  developer's request; an unreviewed version bump to a foundational shared package. (Historical:
+  from when this module shipped an agent definition.)
+- **The agent definition (`build-module-sdd.agent.md`) and the gate skill (`sdd-golden-sample`).**
+  Three generations in one pre-release line: (1) an agent md enforcing a Golden Sample as "Wave 0"
+  inside implementation — failed in the Wolverine run because the spec above it was still theory;
+  (2) the sample moved pre-spec behind an 11-criterion gate skill with tiers, tripwires, an
+  assumption ledger and a dossier — machinery that generated friction faster than safety (it
+  blocked requirements on variant coverage, which is infeasible and defeats the point of a
+  generator); (3) the current shape — the gate collapsed to "the Reference exists" once the sample
+  moved in front of the spec and Plan mode became the co-owned build vehicle. Lesson recorded: the
+  heaviness was scar tissue from forcing the sample *into* SDD; once relocated, the policing
+  machinery had nothing left to police.

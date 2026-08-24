@@ -3,7 +3,7 @@ name: module-version-increment
 description: "Increment a module's version (choosing the right component) before implementing a change that touches it, then confirm and propagate to dependents at close-out. USE ONLY WHEN the modules a task will change are known — as soon as that's decided, and again at close-out. DO NOT USE FOR writing the change's documentation (see module-docs-chore) or recording design rationale (see module-context-capture). REQUIRES the set of modules the task will touch already identified."
 keywords: [version, increment, release, bump, dependents, publish]
 template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleVersionIncrement_SkillMd_Agents
-contentHash: 13E130C7A6FA592B94838203684AA12939559C0D8608CEF5AD070F19F4181A27
+contentHash: 85F20CDC2B73D7741344B5CD168880B21FCBBB22ED773A9206A24C55A43CD01C
 ---
 # Skill: module-version-increment
 
@@ -71,11 +71,9 @@ Reserve Minor for additions that expand the module without touching how it's alr
 
 | Situation | Rule |
 |---|---|
-| Brand-new module | Start at `1.0.0` |
-| Any subsequent change | Move the component matching the impact above |
-
-Versions are published as you set them — there is no separate prerelease stage in this workflow, so
-do not append a `-pre` suffix.
+| Brand-new module | Start at `1.0.0-pre.0` |
+| Already on a prerelease | Move the **prerelease component only** |
+| Released (non-prerelease) version being changed | Move per impact, then add `-pre.0` |
 State the impact and the reasoning before applying it — *"patch, because this setting only affects a
 small portion of the module's behavior"* / *"minor, because this is a genuinely new capability
 dimension, not breaking anything"* / *"major, because this changes how users already interact with
@@ -151,6 +149,24 @@ will not carry your changes.
 > reads from. From then on the search reports that version as existing, whether or not it was ever
 > published. Treat an "exists" result as inconclusive rather than as proof — and keep in mind another
 > branch may have published the same number first.
+
+> **The downgrade guard.** The Software Factory silently refuses to regenerate `.imodspec` if the
+> version you just set compares as *lower*, by semver precedence, than the `<version>` already on
+> disk — regeneration reports nothing staged, with no error or warning. A `-pre.#` suffix sorts
+> *below* the same `X.Y.Z` with no suffix, so correcting `1.1.0` down to `1.0.3-pre.0` trips this
+> guard even though the intent is a fix. If a version change reports zero diff when you expected
+> one, suspect this before anything else — check the `.imodspec`'s current `<version>` and compare
+> precedence. Workaround: temporarily set only the `<version>` line down to a safe value (confirm
+> via `git diff`/`git status` that the file is uncommitted first), then reapply your intended
+> version and regenerate forward.
+
+## Iterating A Version That Is Already Published
+
+Rebuilding at a version that has already been published is shadowed — the published copy is served
+and the rebuild is silently ignored. Move the prerelease component forward so the new build is picked
+up, and note that you have done so. This is the one case where a module's version legitimately moves
+more than once in a task, because each iteration needs its own build to be installable. Consolidate
+to the final release version when the work is done.
 
 ## Supported Client Version Range
 

@@ -3,7 +3,7 @@ name: module-version-increment
 description: "Increment a module's version (choosing the right component) before implementing a change that touches it, then confirm and propagate to dependents at close-out. USE ONLY WHEN the modules a task will change are known — as soon as that's decided, and again at close-out. DO NOT USE FOR writing the change's documentation (see module-docs-chore) or recording design rationale (see module-context-capture). REQUIRES the set of modules the task will touch already identified."
 keywords: [version, increment, release, bump, dependents, publish]
 template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleVersionIncrement_SkillMd_Agents
-contentHash: 24AE7E4A09ED82E2DA06B55789177390695046A588A7CF4C6F07B9F7A593E0BF
+contentHash: 85F20CDC2B73D7741344B5CD168880B21FCBBB22ED773A9206A24C55A43CD01C
 ---
 # Skill: module-version-increment
 
@@ -149,6 +149,16 @@ will not carry your changes.
 > reads from. From then on the search reports that version as existing, whether or not it was ever
 > published. Treat an "exists" result as inconclusive rather than as proof — and keep in mind another
 > branch may have published the same number first.
+
+> **The downgrade guard.** The Software Factory silently refuses to regenerate `.imodspec` if the
+> version you just set compares as *lower*, by semver precedence, than the `<version>` already on
+> disk — regeneration reports nothing staged, with no error or warning. A `-pre.#` suffix sorts
+> *below* the same `X.Y.Z` with no suffix, so correcting `1.1.0` down to `1.0.3-pre.0` trips this
+> guard even though the intent is a fix. If a version change reports zero diff when you expected
+> one, suspect this before anything else — check the `.imodspec`'s current `<version>` and compare
+> precedence. Workaround: temporarily set only the `<version>` line down to a safe value (confirm
+> via `git diff`/`git status` that the file is uncommitted first), then reapply your intended
+> version and regenerate forward.
 
 ## Iterating A Version That Is Already Published
 

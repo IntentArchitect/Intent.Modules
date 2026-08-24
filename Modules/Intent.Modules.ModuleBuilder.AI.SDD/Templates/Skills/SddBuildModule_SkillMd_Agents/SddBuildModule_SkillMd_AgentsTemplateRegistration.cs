@@ -11,17 +11,17 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.AI.SDD.Templates.Agents.BuildModuleSddMd_Agents
+namespace Intent.Modules.ModuleBuilder.AI.SDD.Templates.Skills.SddBuildModule_SkillMd_Agents
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class BuildModuleSddMd_AgentsTemplateRegistration : SingleFileTemplateRegistration
+    public class SddBuildModule_SkillMd_AgentsTemplateRegistration : SingleFileTemplateRegistration
     {
-        public override string TemplateId => BuildModuleSddMd_AgentsTemplate.TemplateId;
+        public override string TemplateId => SddBuildModule_SkillMd_AgentsTemplate.TemplateId;
 
         [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget)
         {
-            return new BuildModuleSddMd_AgentsTemplate(outputTarget);
+            return new SddBuildModule_SkillMd_AgentsTemplate(outputTarget);
         }
     }
 }
