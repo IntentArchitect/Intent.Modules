@@ -75,7 +75,7 @@ function PrintError {
 }
 
 Write-Host "Scanning $ModulesFolder..."
-$moduleSpecificationFilePaths = (Get-ChildItem -Recurse -File "./$ModulesFolder" -Filter "*.imodspec").Where{ -not $_.DirectoryName.Replace("\", "/").Contains("/.intent/") }
+$moduleSpecificationFilePaths = (Get-ChildItem -Recurse -File "./$ModulesFolder" -Filter "*.imodspec").Where{ -not $_.DirectoryName.Replace("\", "/").Contains("/.intent/") -and -not $_.DirectoryName.Replace("\", "/").Contains("/.cache/") }
 $moduleSpecifications = $moduleSpecificationFilePaths | ForEach-Object { [ModuleSpecification]::new($_) }
 $moduleSpecificationsById = @{};
 foreach ($item in $moduleSpecifications) {
