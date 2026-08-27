@@ -48,14 +48,14 @@ namespace Intent.Modelers.CodebaseStructure.Api
 
             public string Name => _stereotype.Name;
 
-            public string Colour()
+            public string Color()
             {
-                return _stereotype.GetProperty<string>("Colour");
+                return _stereotype.GetProperty<string>("Color");
             }
 
-            public string ColourDarkMode()
+            public string ColorDarkMode()
             {
-                return _stereotype.GetProperty<string>("Colour (Dark Mode)");
+                return _stereotype.GetProperty<string>("Color (Dark Mode)");
             }
 
         }

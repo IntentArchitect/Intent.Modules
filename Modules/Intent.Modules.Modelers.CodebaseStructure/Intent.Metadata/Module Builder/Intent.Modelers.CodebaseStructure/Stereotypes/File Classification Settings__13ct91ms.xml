@@ -20,16 +20,22 @@
   <packageName>Intent.Modelers.CodebaseStructure</packageName>
   <properties>
     <property id="cf22e22d-a014-444e-8dc9-2b5e8f5462d2">
-      <name>Colour</name>
+      <comment>The color of the pill in the Review Changes screen, if unspecified will use the `Color (Dark Mode)` property's value if present, otherwise an automatically chosen color is used.</comment>
+      <hint>Falls back to `Color (Dark Mode)`, otherwise auto-chosen.</hint>
+      <name>Color</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
+      <placeholder>e.g. #000000</placeholder>
     </property>
     <property id="26749dad-2b9b-4dd0-85ab-7445ebf547df">
-      <name>Colour (Dark Mode)</name>
+      <comment>The color of the pill in the Review Changes screen, if unspecified will use the `Color` property's value if present, otherwise an automatically chosen color is used.</comment>
+      <hint>Falls back to `Color`, otherwise auto-chosen.</hint>
+      <name>Color (Dark Mode)</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
+      <placeholder>e.g. #000000</placeholder>
     </property>
   </properties>
 </stereotypeDefinition>

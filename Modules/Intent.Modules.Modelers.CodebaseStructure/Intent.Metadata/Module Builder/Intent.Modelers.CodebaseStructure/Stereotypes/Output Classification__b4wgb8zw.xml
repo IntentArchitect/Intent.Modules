@@ -34,6 +34,7 @@
       </valueOptions>
     </property>
     <property id="0acdff86-3981-4950-921c-f5642a3e2374">
+      <hint>Created `File Classification` element types can be chosen here.</hint>
       <name>Classification</name>
       <type>string</type>
       <controlType>multi-select</controlType>

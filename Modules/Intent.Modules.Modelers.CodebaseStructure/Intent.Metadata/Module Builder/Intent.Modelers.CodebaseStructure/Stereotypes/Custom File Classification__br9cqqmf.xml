@@ -42,6 +42,7 @@ return element.hasTrait("60fd85c8-5de8-45b6-9ba7-570cc701c3ab");</targetFilterFu
       <optionsSource>n/a</optionsSource>
     </property>
     <property id="c42e8c3a-962a-4e85-b890-e3234eb6534d">
+      <hint>Created `File Classification` element types can be chosen here.</hint>
       <name>Classification</name>
       <type>string</type>
       <controlType>multi-select</controlType>
