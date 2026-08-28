@@ -6,7 +6,7 @@
   <file path="Intent.Modules.ModuleBuilder.AI.SDD.csproj" />
   <file path="Templates/RootPrinciples/SddWaveEvidenceMd/SddWaveEvidenceMdTemplatePartial.cs" />
   <file path="Templates/RootPrinciples/SddWaveEvidenceMd/SddWaveEvidenceMdTemplateRegistration.cs" />
-  <file path="Templates/Skills/SddBuildModule_SkillMd_Agents/SddBuildModule_SkillMd_AgentsTemplatePartial.cs" />
+  <file path="Templates/Skills/SddBuildModule_SkillMd_Agents/SddBuildModule_SkillMd_AgentsTemplatePartial.cs" deviationsHash="F52FFABCD957B49A21E34BFEE5D6764D1CECF697C0EE633F756685D02108BB3D" />
   <file path="Templates/Skills/SddBuildModule_SkillMd_Agents/SddBuildModule_SkillMd_AgentsTemplateRegistration.cs" />
   <file path="release-notes.md" />
 </managedFiles>

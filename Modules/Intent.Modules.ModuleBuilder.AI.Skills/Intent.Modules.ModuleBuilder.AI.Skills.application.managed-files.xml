@@ -62,7 +62,7 @@
   <file path="Templates/Skills/ModuleDebugging_SkillMd_Agents/ModuleDebugging_SkillMd_AgentsTemplateRegistration.cs" />
   <file path="Templates/Skills/ModuleDocs_SkillMd_Agents/ModuleDocs_SkillMd_AgentsTemplatePartial.cs" deviationsHash="942EA5C3A262167D88D66644A28AA418F5030CE96A5326A415E79222205C2575" />
   <file path="Templates/Skills/ModuleDocs_SkillMd_Agents/ModuleDocs_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/ModuleElementIcons_SkillMd_Agents/ModuleElementIcons_SkillMd_AgentsTemplatePartial.cs" />
+  <file path="Templates/Skills/ModuleElementIcons_SkillMd_Agents/ModuleElementIcons_SkillMd_AgentsTemplatePartial.cs" deviationsHash="29FF067032B9B9F8816D01CB978CD4D8EE72EF034DB4C090A5014980BD99B134" />
   <file path="Templates/Skills/ModuleElementIcons_SkillMd_Agents/ModuleElementIcons_SkillMd_AgentsTemplateRegistration.cs" />
   <file path="Templates/Skills/ModuleSvgIcon_SkillMd_Agents/ModuleSvgIcon_SkillMd_AgentsTemplatePartial.cs" deviationsHash="2B2C72DBAD4E743EC1C4A2618B478179C9E5CAC3D2227C8F56A5956B92D80752" />
   <file path="Templates/Skills/ModuleSvgIcon_SkillMd_Agents/ModuleSvgIcon_SkillMd_AgentsTemplateRegistration.cs" />

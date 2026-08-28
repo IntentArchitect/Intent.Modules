@@ -9,7 +9,7 @@
   <file path="Templates/RootPrinciples/ModuleBuildingWorkflowMd/ModuleBuildingWorkflowMdTemplateRegistration.cs" />
   <file path="Templates/Skills/ModuleContextCapture_SkillMd_Agents/ModuleContextCapture_SkillMd_AgentsTemplatePartial.cs" deviationsHash="5F79D3CE03D7DD63CAF45FF6A57DDA582BF4143C1FB2CE81C650BDBB54CD5DB8" />
   <file path="Templates/Skills/ModuleContextCapture_SkillMd_Agents/ModuleContextCapture_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/ModuleDependencyAudit_SkillMd_Agents/ModuleDependencyAudit_SkillMd_AgentsTemplatePartial.cs" />
+  <file path="Templates/Skills/ModuleDependencyAudit_SkillMd_Agents/ModuleDependencyAudit_SkillMd_AgentsTemplatePartial.cs" deviationsHash="2F7BDEE506509B3FC9C7AEEA20368A0D909A8BFAEEE144322CD7EFF92AEF1839" />
   <file path="Templates/Skills/ModuleDependencyAudit_SkillMd_Agents/ModuleDependencyAudit_SkillMd_AgentsTemplateRegistration.cs" />
   <file path="Templates/Skills/ModuleDocsChore_SkillMd_Agents/ModuleDocsChore_SkillMd_AgentsTemplatePartial.cs" deviationsHash="04FCEFB419FFF6C13A314052B6449795B672A3B57325711E9C3517AFE3214794" />
   <file path="Templates/Skills/ModuleDocsChore_SkillMd_Agents/ModuleDocsChore_SkillMd_AgentsTemplateRegistration.cs" />

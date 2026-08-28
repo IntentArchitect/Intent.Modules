@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files />
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#7ebf9e18-7ef6-44b9-89ef-c57c610fd562</correlationId>
+      <path>Templates/Skills/SddBuildModule_SkillMd_Agents/SddBuildModule_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-28T10:20:01.0841353Z</updatedAt>
+      <deviationsHash>F52FFABCD957B49A21E34BFEE5D6764D1CECF697C0EE633F756685D02108BB3D</deviationsHash>
+    </file>
+  </files>
   <customFiles>
     <customFile>
       <path>Modules/Intent.Modules.ModuleBuilder.AI.SDD/.gitattributes</path>

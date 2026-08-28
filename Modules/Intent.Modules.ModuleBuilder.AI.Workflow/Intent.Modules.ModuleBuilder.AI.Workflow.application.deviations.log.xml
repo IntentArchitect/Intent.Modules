@@ -11,6 +11,15 @@
       <deviationsHash>5F79D3CE03D7DD63CAF45FF6A57DDA582BF4143C1FB2CE81C650BDBB54CD5DB8</deviationsHash>
     </file>
     <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#e7785270-7e8d-40e6-9f0f-4456da86210c</correlationId>
+      <path>Templates/Skills/ModuleDependencyAudit_SkillMd_Agents/ModuleDependencyAudit_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-28T10:20:01.2328533Z</updatedAt>
+      <deviationsHash>2F7BDEE506509B3FC9C7AEEA20368A0D909A8BFAEEE144322CD7EFF92AEF1839</deviationsHash>
+    </file>
+    <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#744e419d-235b-46ab-b6d2-dd2f15d7e905</correlationId>
       <path>Templates/Skills/ModuleDocsChore_SkillMd_Agents/ModuleDocsChore_SkillMd_AgentsTemplatePartial.cs</path>
       <count>1</count>
