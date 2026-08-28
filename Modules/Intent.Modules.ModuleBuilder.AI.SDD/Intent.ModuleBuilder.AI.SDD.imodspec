@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.AI.SDD</id>
-  <version>1.0.0-pre.1</version>
+  <version>1.0.0-pre.2</version>
   <supportedClientVersions>[5.1.0-a,6.0.0)</supportedClientVersions>
   <summary>Bundles an Intent Architect AI agent definition that orchestrates module development using the native Spec-Driven Development (SDD) lifecycle.</summary>
   <description>Bundles an Intent Architect AI agent definition that orchestrates module development using the native Spec-Driven Development (SDD) lifecycle.</description>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.AI.Workflow</id>
-  <version>1.1.0-pre.0</version>
+  <version>1.0.0-pre.5</version>
   <supportedClientVersions>[5.1.0-a,6.0.0)</supportedClientVersions>
   <summary>Bundles AI agent workflow skills and instructions for versioning, documenting, and capturing context on Intent Architect modules.</summary>
   <description>Bundles AI agent workflow skills and instructions for versioning, documenting, and capturing context on Intent Architect modules.</description>
