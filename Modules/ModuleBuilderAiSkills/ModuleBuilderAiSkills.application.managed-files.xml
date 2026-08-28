@@ -39,6 +39,7 @@
   <file path=".agents/skills/module-dependency-audit/SKILL.md" />
   <file path=".agents/skills/module-docs-chore/SKILL.md" />
   <file path=".agents/skills/module-docs/SKILL.md" />
+  <file path=".agents/skills/module-element-icons/SKILL.md" />
   <file path=".agents/skills/module-svg-icon/SKILL.md" />
   <file path=".agents/skills/module-version-increment/SKILL.md" />
   <file path=".agents/skills/module-versioning/SKILL.md" />
