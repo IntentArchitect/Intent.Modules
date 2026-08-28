@@ -64,6 +64,12 @@
       <approvedAt>2026-08-19T11:52:04.4466966Z</approvedAt>
     </customFile>
     <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.AI.Workflow/docs/README.md</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-28T10:47:50.5725181Z</approvedAt>
+    </customFile>
+    <customFile>
       <path>Modules/Intent.Modules.ModuleBuilder.AI.Workflow/Intent.Metadata/Codebase Structure/Codebase Structure.designer.config</path>
       <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
       <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>

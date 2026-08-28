@@ -8,7 +8,7 @@ This module does not generate application code. It drops a fixed set of AI agent
 
 ## What This Module Generates
 
-- `.agents/skills/<skill-name>/SKILL.md` — one per bundled skill (`file-builder-expert`, `intent-mapping-architect`, `intent-metadata-consumer`, `intent-domain-interactions-expert`, `intent-module-orchestrator`, `add-association-type`, `add-designer-extension`, `architecture-templates`, `module-building-strategies`, `module-debugging`, `module-docs`, `module-versioning`, `module-svg-icon`), plus each skill's `resources/` files where present.
+- `.agents/skills/<skill-name>/SKILL.md` — one per bundled skill (`file-builder-expert`, `intent-mapping-architect`, `intent-metadata-consumer`, `intent-domain-interactions-expert`, `intent-module-orchestrator`, `add-association-type`, `add-designer-extension`, `add-module-migration`, `architecture-templates`, `module-building-strategies`, `module-debugging`, `module-docs`, `module-versioning`, `module-svg-icon`, `module-element-icons`), plus each skill's `resources/` files where present.
 - `.agents/instructions/exception-guidelines.instructions.md` — how to choose the right exception type (`FriendlyException`, `ElementException`, or a plain developer exception) when writing module code.
 - `.agents/instructions/known-build-gotchas.instructions.md` — recurring template-authoring pitfalls (NuGet dependency registration, `SingleFileListModel` filename stability, naming conflicts, package version drift) and how to avoid them.
 

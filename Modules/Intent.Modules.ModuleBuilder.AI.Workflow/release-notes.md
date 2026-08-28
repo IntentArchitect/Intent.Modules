@@ -9,4 +9,6 @@
 - New Feature: Added `module-dependency-audit` as a fourth workflow skill, run at Phase 4 step 2, because a missing `.imodspec` dependency compiles cleanly and only fails once a consumer installs the module.
 - New Feature: Added a `Maintain Module Context` setting — off by default, keeping the existing read-and-maintain behaviour; on, `module-context-capture` also creates a `CONTEXT.md` for a module that has none once its first durable decision lands.
 - Improvement: `module-docs-chore` now checks `Module Settings → Include Release Notes` before touching release notes, and reports a ticked-but-missing file rather than silently creating one.
+- Fixed: the `Intent.Common` dependency floor was 3.7.2 while the module compiles against 3.11.4 — a gap that would only surface when a consumer's install resolved the lower version.
+- Improvement: Added `docs/README.md`, covering the four-phase workflow, the four module settings and how they widen the generated guidance.
 - Fixed: `module-docs-chore` did not say where a module's summary and description are edited, so edits went to `.imodspec` and were silently reverted — it now names the Application Settings page and that one string fills both fields.

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.AI.Modelers</id>
-  <version>1.0.0-pre.0</version>
+  <version>1.0.0-pre.1</version>
   <supportedClientVersions>[5.1.0-a,6.0.0-a)</supportedClientVersions>
   <summary>Bundles an Intent Architect AI agent skill documenting how to integrate a module with Intent's built-in Domain, Services, Eventing, and User Interface designers.</summary>
   <description>Bundles an Intent Architect AI agent skill documenting how to integrate a module with Intent's built-in Domain, Services, Eventing, and User Interface designers.</description>
@@ -44,7 +44,7 @@
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
   </files>
-  <tags>Intent Module Builder AI Modelers</tags>
+  <tags>intent module-builder ai designers modelers</tags>
   <releaseNotes>release-notes.md</releaseNotes>
   <moduleSettingsExtensions />
   <metadata>

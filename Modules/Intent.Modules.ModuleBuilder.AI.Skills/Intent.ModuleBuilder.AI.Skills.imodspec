@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.AI.Skills</id>
-  <version>1.0.1-pre.3</version>
+  <version>1.0.1-pre.4</version>
   <supportedClientVersions>[5.1.0-a,6.0.0-a)</supportedClientVersions>
   <summary>Bundles AI agent skills and instructions for building Intent Architect modules.</summary>
   <description>Bundles AI agent skills and instructions for building Intent Architect modules.</description>
@@ -140,7 +140,7 @@
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
   </files>
-  <tags>Intent Module Builder AI Skills</tags>
+  <tags>intent module-builder ai skills</tags>
   <releaseNotes>release-notes.md</releaseNotes>
   <moduleSettingsExtensions />
   <metadata>

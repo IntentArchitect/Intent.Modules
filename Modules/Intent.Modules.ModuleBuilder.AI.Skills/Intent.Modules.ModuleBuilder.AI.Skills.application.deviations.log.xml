@@ -202,6 +202,12 @@
       <approvedAt>2026-08-19T10:32:20.4762238Z</approvedAt>
     </customFile>
     <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.AI.Skills/docs/README.md</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-28T10:47:50.5619862Z</approvedAt>
+    </customFile>
+    <customFile>
       <path>Modules/Intent.Modules.ModuleBuilder.AI.Skills/Migrations/ObsoleteSkillFolderCleanup.cs</path>
       <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
       <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
