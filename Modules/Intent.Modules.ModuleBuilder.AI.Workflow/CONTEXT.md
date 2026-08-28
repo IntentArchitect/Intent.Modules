@@ -56,6 +56,9 @@ its generated content accordingly.
   `module-docs` skill, never in the routine `module-docs-chore` path that actually fires during
   ordinary work. Both gotchas are now documented where the routine path will actually see them.
 
+- **The dependency audit is a close-out gate, not an opt-in pass.** A missing `.imodspec` dependency compiles cleanly and fails at *install*, in a consumer nobody can see — the exact failure class the workflow's "compiling is not working" rule exists for, and one no earlier phase can catch. So `module-dependency-audit` became the **fourth workflow skill**, wired into `module-building-workflow` at Phase 4 step 2: after Version (documentation refers to it) and before Documentation (a dependency fix is itself an observable change that then needs describing).
+- **`Maintain Module Context` defaults to false, and false is exactly today's behaviour.** Off, `module-context-capture` only reads and maintains a `CONTEXT.md` that already exists — byte-identical to what shipped before the setting existed, so no consumer sees an unrequested change. On, it also creates one for a module that has none, but deliberately *not on arrival*: at the moment the first durable decision lands, because a `CONTEXT.md` of empty headings teaches the next session to skip the file.
+- **Release-notes maintenance now consults `Module Settings → Include Release Notes` first.** Previously `module-docs-chore` decided purely on whether the file existed on disk, ignoring the checkbox that both states the maintainer's intent and drives `<releaseNotes>` in the manifest. Unticked means leave them alone; ticked-but-missing is reported as the inconsistency it is rather than silently fixed by creating the file.
 ## Invariants & Constraints
 
 - `AIWorkflowSettings` accessors (`UsePreReleaseVersions`, `MaintainModuleREADME`,

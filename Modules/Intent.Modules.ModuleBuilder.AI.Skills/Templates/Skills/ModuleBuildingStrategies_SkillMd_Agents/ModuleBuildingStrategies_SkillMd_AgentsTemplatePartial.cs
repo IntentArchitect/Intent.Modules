@@ -166,6 +166,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleBuilding
 
                     The common shape is **global default (setting) + per-element override (stereotype)**. Canonical example — **multitenancy**: a *module setting* picks the global isolation level (database-level = one DB per tenant, app-wide; vs entity-level = one shared DB); when entity-level, a *stereotype* on each entity marks it multitenant and gives it a discriminator.
 
+                    > **Choosing a stereotype has a packaging consequence.** A stereotype only reaches consumers if its
+                    > owning package is marked `Include in Module` in that package's `Module Settings`. Tick it as you define
+                    > the stereotype — otherwise the package emits no `<install>` entry, the stereotype ships nowhere, and the
+                    > only signal is a Software Factory warning you have to notice. See `add-designer-extension` for the
+                    > companion `Reference in Designer` rule when the package also carries designer elements.
+
                     ### Convention vs explicit — the three lenses
 
                     When a module needs information to generate correctly, decide in this order:

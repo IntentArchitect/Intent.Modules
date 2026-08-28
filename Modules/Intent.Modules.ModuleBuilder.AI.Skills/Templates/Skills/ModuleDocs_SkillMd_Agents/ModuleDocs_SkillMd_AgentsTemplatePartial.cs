@@ -41,7 +41,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleDocs_Ski
                     Use this when a module maintainer wants documentation completed or updated to this format — it is optional, not an automatic step of every build.
                     - **`release-notes.md`** — only complete/maintain an entry if the file already exists, or the maintainer explicitly asks for one to be created. Never introduce it unprompted.
                     - **`docs/README.md`** — feature/usage documentation; fill gaps in an existing one, or write one if asked
-                    - **`*.imodspec`** — metadata fields consumed by the module registry (summary, description, tags, releaseNotes, and `projectUrl` only if the maintainer supplies one)
+                    - **Module metadata** — the summary/description shown in the module registry (set on the **Application Settings page**), plus the `*.imodspec` fields the Software Factory does not own: `tags`, `authors`, `releaseNotes`, and `projectUrl` only if the maintainer supplies one
 
                     ===
 
@@ -51,7 +51,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleDocs_Ski
 
                     | File | What to extract |
                     |---|---|
-                    | `*.imodspec` | Current `<version>` (or version in filename), existing `<summary>`, `<description>`, `<tags>`, `<projectUrl>` (if present), `<releaseNotes>` |
+                    | `*.imodspec` | Current `<version>` (or version in filename), existing `<tags>`, `<authors>`, `<projectUrl>` (if present), `<releaseNotes>`; and `<summary>`/`<description>` to read the current wording — but change those on the Application Settings page |
                     | `release-notes.md` | Existing version entries — determine what's already documented to avoid duplication |
                     | `docs/README.md` | Existing sections — fill gaps only, never overwrite sections that already have content |
                     | Template `*TemplatePartial.cs` files | Class names and roles — becomes the "What This Module Generates" list |
@@ -156,20 +156,37 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleDocs_Ski
 
                     ===
 
-                    ## Artifact 3: `.imodspec` Fields
+                    ## Artifact 3: Module Metadata
 
-                    Edit the `*.imodspec` file in the module directory directly. Do not edit files inside `.intent/` folders.
+                    **Two of these fields are not edited in `.imodspec` at all.** The Software Factory overwrites
+                    `<summary>`, `<description>` and `<iconUrl>` on every run, so an edit made in that file is discarded
+                    silently — it reports no error and the value simply reverts. Set each field where it is actually owned:
 
-                    ### Fields to set
-
-                    | Field | Rule |
+                    | Field | Where to set it |
                     |---|---|
-                    | `<summary>` | 5–15 words; name the technology and what it does. Specific, not generic. |
-                    | `<description>` | Mirror `<summary>` exactly. Only expand (max 2 sentences) if the module is complex enough to warrant it. |
-                    | `<tags>` | 3–7 space-separated lowercase keywords (see tag guide below) |
-                    | `<projectUrl>` | Only set this if the maintainer supplies a URL (e.g. the module's repo or README link). Never guess or fabricate one — omit the field entirely when none is given. |
-                    | `<releaseNotes>` | Copy `release-notes.md` content verbatim — the imodspec embeds the same history |
-                    | `<authors>` | Your organization or publisher name — whoever maintains this module |
+                    | `<summary>` **and** `<description>` | The **Application Settings page** in Intent Architect — not the `.imodspec`, and not `.application.config` by hand |
+                    | `<tags>` | Directly in `*.imodspec` — the template never writes it |
+                    | `<authors>` | Directly in `*.imodspec` — written once at creation, yours thereafter |
+                    | `<projectUrl>` | Directly in `*.imodspec`. Only if the maintainer supplies a URL — never guess or fabricate one; omit the field entirely when none is given. |
+                    | `<releaseNotes>` | Directly in `*.imodspec` — the filename `release-notes.md`, not the notes themselves |
+
+                    Never edit files inside `.intent/` folders.
+
+                    ### One String Fills Both Summary And Description
+
+                    The application description reaches `<summary>` and `<description>` as **the same single value**. They
+                    cannot differ, so there is no long-form field to expand into — write one line that works as both.
+
+                    **5–15 words. Name the technology and what it does.** Say what the module *is*, at the altitude a
+                    consumer reads before deciding to install it. Implementation mechanics, rationale and invariants are
+                    `CONTEXT.md` material — putting them here crowds out the one sentence that had to be legible.
+
+                    | | |
+                    |---|---|
+                    | ❌ | *"Owns the single, shared `builder.Host.UseWolverine(...)` registration for an application's ASP.NET host, so multiple Wolverine-based modules can contribute to it without overwriting or stranding each other's handlers."* |
+                    | ✅ | *"Shared Wolverine host registration for ASP.NET applications."* |
+
+                    The rejected text is not worthless — it is a good `CONTEXT.md` entry that landed in a shop window.
 
                     ### Tag selection guide
                     **Include:**
@@ -196,7 +213,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleDocs_Ski
 
                     - [ ] `release-notes.md` — entry exists for current module version (stripped); uses only `New Feature:` / `Improvement:` / `Fixed:` prefixes; reverse chronological
                     - [ ] `docs/README.md` — H1, opening paragraph, `What This Module Generates`, at least one feature section, `Module Settings` (if applicable), `Related Modules` all present; no placeholder text
-                    - [ ] `.imodspec` — `<summary>` is specific (not generic); `<tags>` has 3–7 keywords; `<projectUrl>` is set only if the maintainer supplied one (never fabricated); `<releaseNotes>` matches `release-notes.md`
+                    - [ ] Summary/description set via the **Application Settings page** (not `.imodspec`), specific and 5–15 words; `.imodspec` `<tags>` has 3–7 keywords; `<projectUrl>` is set only if the maintainer supplied one (never fabricated); `<releaseNotes>` matches `release-notes.md`
 
                     """""");
         }

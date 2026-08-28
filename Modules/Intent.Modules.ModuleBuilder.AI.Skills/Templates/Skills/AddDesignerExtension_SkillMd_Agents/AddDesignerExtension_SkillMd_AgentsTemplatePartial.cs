@@ -55,6 +55,21 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
                     5. Set type reference of `Association Creation Option` to target end of association settings.
                     6. Verify via `get_designer_validation_errors` and generated `.designer.settings` file.
 
+                    **Package settings are the companion step to linking `Designer Settings`.** Linking the extension to a
+                    foreign designer says *what* you are extending; two properties on the owning package's `Module Settings`
+                    decide whether any of it actually ships, and where it lands:
+
+                    | When the package gains… | Set on that package's `Module Settings` |
+                    |---|---|
+                    | a **stereotype** | `Include in Module` = true — without it the package produces no `<install>` entry and the stereotype ships nowhere |
+                    | a **new or extension designer element** | `Reference in Designer` = the target designer(s), or `Reference in` = *All Designers* — this drives the `<install target=…>` so the element lands in the right designer |
+
+                    Set them as you add the element, not in a later sweep. The Software Factory warns when a package has
+                    stereotype definitions and is not included — this gets ahead of that warning rather than waiting for it.
+
+                    If the new element type should carry its own icon, that is optional craft rather than an obligation — see
+                    `module-element-icons`.
+
                     ## Must Nots
                     1. Never guess or hardcode a type GUID from memory.
                     2. Never skip `Mode = Inherit` on `Type Reference Extension Settings` for element extensions.

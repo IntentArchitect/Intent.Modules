@@ -3,7 +3,7 @@ name: module-docs-chore
 description: "Update a module's release-notes, README, .imodspec metadata, and icon to reflect a change a consumer can observe, in the same turn as that change. USE ONLY WHEN a module change alters anything observable — a new/removed template, setting, stereotype, config default, or behavioural fix. DO NOT USE FOR internal refactors with no observable effect, or for bumping the module's version number itself (see module-version-increment). REQUIRES the observable change already implemented or decided."
 keywords: [documentation, release-notes, readme, imodspec, icon, chore, upkeep]
 template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDocsChore_SkillMd_Agents
-contentHash: B3ACFEF9B92513E67B4FBE4AA94AC9654A157FB5EE8C6D460F98F49218FE0C74
+contentHash: 200213EBD085BEB89F81DED26C80E506B32FD1AD48ED3066B48E92A073345A1E
 ---
 # Skill: module-docs-chore
 
@@ -30,11 +30,25 @@ generated output needs nothing.
 | Artifact | What goes in |
 |---|---|
 | Module metadata — summary, description, tags | Kept accurate as a matter of course. These are what a consumer sees before installing anything. |
-| `release-notes.md` | One bullet under the current version — **only if the file already exists** |
+| `release-notes.md` | One bullet under the current version — **only if `Include Release Notes` is ticked and the file already exists** |
 | `docs/README.md` | The section the change affects — a settings table, a generated-output example, a feature description. **Create it if the module does not have one.** |
 | Module icon | Created only if the module has none yet — see "The Icon" below. An existing icon is never overwritten. |
 
 ## Release Notes Are Maintained, Never Introduced
+
+- *Check whether the module wants them before touching them.** On the module's package in the Module
+
+Builder designer, `Module Settings` carries an **`Include Release Notes`** checkbox. That box is the
+maintainer's stated intent, and it is what puts `<releaseNotes>` into the manifest — so read it first:
+
+- **Unticked** — the module has opted out. Leave release notes alone entirely; do not start a file, and
+
+do not add an entry to one that happens to exist.
+
+- **Ticked, file present** — maintain it, as below.
+- **Ticked, file missing** — say so. The manifest is advertising a `release-notes.md` that is not there,
+
+which is a real inconsistency rather than something to silently paper over by creating the file.
 
 If a module has a `release-notes.md`, add an entry for the change: a single bullet under the current
 version, prefixed to say whether it is a new feature, an improvement, or a fix. A fix entry is more
@@ -75,6 +89,15 @@ module to a history nobody agreed to keep, and a half-kept changelog is worse th
 The module's own summary, description, and tags are maintained regardless of which other artifacts a
 module keeps. They are the module's shopfront — the only thing a consumer reads while deciding
 whether to install it — so they should describe what the module actually does now.
+
+- *Change the summary and description on the Application Settings page**, not in `.imodspec` and not
+
+in `.application.config`. The Software Factory overwrites both `<summary>` and `<description>` from
+that one value on every run, so an edit made in the manifest is discarded without an error. It also
+means the two fields **cannot differ** — one line has to serve as both, which is why it stays short
+and says what the module *is*. Mechanism and rationale belong in `CONTEXT.md`.
+
+`<tags>` is different — the Software Factory never writes it, so edit that directly in `*.imodspec`.
 
 Modules scaffolded from a template often keep placeholder metadata long after they have stopped being
 placeholders. When you notice generic filler in a summary or description, or an empty tag list,
@@ -147,10 +170,11 @@ entries account for everything in it, not that there is an entry per change.
 
 ## Checklist
 
-- [ ] Module summary, description, and tags describe current behaviour
+- [ ] Module summary and description describe current behaviour — changed on the **Application Settings page**, not in `.imodspec`
+- [ ] Tags describe current behaviour — edited directly in `*.imodspec`
 - [ ] Tags are lowercase, space-separated, hyphenated within a compound term
 - [ ] Author matches what sibling modules use — copied or asked for, never invented
-- [ ] `release-notes.md` updated **if present** — and not created if absent
+- [ ] `Include Release Notes` checked first; `release-notes.md` updated only when ticked **and** present — never created, and a ticked-but-missing file reported
 - [ ] Entries are one line each, grouped by capability rather than listed per change
 - [ ] `docs/README.md` reflects the change — created if the module had none
 - [ ] Module icon created if missing, described from `.imodspec`/`CONTEXT.md` — existing icons left untouched

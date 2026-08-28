@@ -207,7 +207,17 @@ The `Model Type` property on a C# Template's `C# Template Settings` stereotype i
 
 ### `.imodspec` Templates Are Generated — Register via the Designer
 
-A module's `.imodspec` `<template>`/factory-extension entries come from the Module Builder designer. Never hand-author them: a template `.cs` file added by hand compiles and runs via reflection, but with no `C# Template` element it never gets a manifest entry, and consuming apps fail SF with "Unable to find output target for template […] with role []" — no reinstall fixes it, since install reads the same incomplete manifest. Register the element via `run_designer_script`, run SF on the module, let it regenerate the manifest. Cross-check: every `*TemplateRegistration.cs` with a `TemplateId` should have a matching `<template>` entry.
+A module's `.imodspec` `<template>`/factory-extension entries come from the Module Builder designer. Do not hand-author one to paper over a missing designer element: a template `.cs` file added by hand compiles and runs via reflection, but with no `C# Template` element it never gets a manifest entry, and consuming apps fail SF with "Unable to find output target for template […] with role []" — no reinstall fixes it, since install reads the same incomplete manifest. Register the element via `run_designer_script`, run SF on the module, let it regenerate the manifest. Cross-check: every `*TemplateRegistration.cs` with a `TemplateId` should have a matching `<template>` entry.
+
+**The one carve-out.** The prune loops only delete entries the template itself stamped — an entry with no `externalReference` attribute is preserved indefinitely (`Intent.Common.imodspec` relies on this for factory extensions that have no designer element type). Sanctioned, but discouraged: reach for a designer element first, and use an unstamped entry only when no element type fits. It is a fallback that needs a reason, not a shortcut around modelling.
+
+### `.imodspec` Is Merged, Not Regenerated
+
+The Software Factory reads the existing `.imodspec`, rewrites a fixed set of elements, and leaves everything else untouched — so "never hand-edit `.imodspec`" is wrong. It owns six things: `<id>`, `<summary>`, `<description>`, `<iconUrl>`, `<migrations>`, and the bodies of `<moduleSettings>`/`<groupExtension>`. Edit one of those and the next run discards it silently. Everything else — `<tags>`, `<authors>`, `<files>`, `<dependency>` entries, `<interoperability>` — the template never writes, so hand-editing is the only way to set them and the edit survives.
+
+### `.application.config` — Use the Application Settings Page
+
+That file is off-limits to hand-editing: it is large, mostly generated, and the values you are meant to change have a UI. The module's description is set on the **Application Settings page**, and flows from there into the `.imodspec`'s `<summary>` and `<description>` — both receive the same single string, so they cannot differ. Though the icon can be set via an mcp tool it may represent a very large base-64 string which will overwhelm the LLM agent. Rather use tools to directly manipulate the icon element to prevent the AI from getting overwhelmed.
 
 ### Exposing External Element Types — Install the Module, Not a `pkg.config` Edit
 

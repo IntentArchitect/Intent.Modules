@@ -3,7 +3,7 @@ applyTo: '**'
 description: "Phase-by-phase workflow for any task that builds or changes an Intent Architect module, and which workflow skill each phase calls for."
 keywords: [workflow, module building, phases, version, documentation, context]
 template-id: Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd
-contentHash: E13644555A473F285B8DA63F96ADE288A30A361C216043D45BD9D0B555A690BD
+contentHash: 97215752CFA514347C56FC4CBA993AE5224BAEA56FB7460224C5C948522FEF38
 ---
 # Module Building Workflow
 
@@ -29,7 +29,7 @@ shape everything below:
   applications decide whether to take your change, and its documentation is the only explanation
   they get. Neither is optional paperwork.
 
-## The Three Workflow Skills
+## The Four Workflow Skills
 
 Load the skill named for the phase you are in.
 
@@ -38,6 +38,7 @@ Load the skill named for the phase you are in.
 | `module-context-capture`   | Phase 1 (read it) and Phase 4 (write it)           |
 | `module-version-increment` | Phase 2 (increment up front) and Phase 4 (confirm) |
 | `module-docs-chore`        | Phase 3 and Phase 4                                |
+| `module-dependency-audit`  | Phase 4 (verify)                                   |
 
 ===
 
@@ -168,22 +169,29 @@ In this order:
    you did not anticipate. Raise the component if the impact turned out larger than planned, and move
    any dependent modules that need to move. → `module-version-increment`
 
-2. **Documentation** — confirm what shipped is described, including anything from earlier in the same
+2. **Dependencies** — verify the module's `.imodspec` dependencies match what it actually references,
+
+   and supply any the Software Factory did not detect. A missing one compiles cleanly and fails at
+   install, so nothing earlier catches it. → `module-dependency-audit`
+
+3. **Documentation** — confirm what shipped is described, including anything from earlier in the same
 
    version line that was never written up. → `module-docs-chore`
 
-3. **Context** — consolidate the durable knowledge from this change: decisions taken, invariants
+4. **Context** — consolidate the durable knowledge from this change: decisions taken, invariants
 
    established, anything a future session would otherwise rediscover the hard way.
    → `module-context-capture`
 
-Version comes first because the documentation refers to it.
+Version comes first because the documentation refers to it. Dependencies come before documentation
+because a fix made there is itself an observable change the documentation step then has to describe.
 
 - *Exit condition:** every box below is ticked.
 - [ ] Change was classified, and output-affecting changes were captured before being modified
 - [ ] `CONTEXT.md` was read for every module touched, and any conflict was surfaced
 - [ ] Decisions were recorded as they were made
 - [ ] Every changed module was incremented up front, impact re-checked, and dependents moved
+- [ ] `.imodspec` dependencies verified against what the module actually references
 - [ ] Documentation reflects what shipped
 - [ ] `CONTEXT.md` updated with this change's durable knowledge
 - [ ] Build exits 0, and regenerated output was inspected

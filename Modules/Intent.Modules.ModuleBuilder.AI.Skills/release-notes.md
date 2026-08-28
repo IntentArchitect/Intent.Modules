@@ -1,3 +1,11 @@
+### Version 1.1.0
+
+- Fixed: `module-svg-icon` justified its script-only approach as "there is no other way to set the package icon", which is not true — the icon can be set through the MCP. The real reason is that the base64 payload would pass through the agent's context, so the guidance now says to use a tool that manipulates the icon element directly.
+- New Feature: Added `module-element-icons`, covering icons on stereotype definitions and on custom element types — distinct from the module's own package icon, which `module-svg-icon` continues to own.
+- Fixed: `module-versioning` no longer says "never hand-edit `.imodspec`". The manifest is merged rather than regenerated, so only six elements are Software-Factory-owned and the rest are hand-authored by design; the skill now states what is owned and where to set each value instead.
+- Fixed: `module-docs` routed `<summary>`/`<description>` edits to `.imodspec`, where they are silently discarded on the next run. Both now point at the Application Settings page, and the unachievable "expand the description to two sentences" option is gone — one string fills both fields.
+- Improvement: `add-designer-extension`, `add-association-type` and `module-building-strategies` now carry the `Include in Module` and `Reference in Designer` rules inline, at the point a stereotype or designer element is introduced, instead of leaving them undocumented.
+
 ### Version 1.0.1
 
 - Improvement: `known-build-gotchas` now covers why a template change can appear to have no effect: building a module compiles its `.csproj` and the `.imod` packaging step runs off that compilation, so a change to non-C# files may not trigger it and no new `.imod` is produced. Use `dotnet build --no-incremental` to force it.

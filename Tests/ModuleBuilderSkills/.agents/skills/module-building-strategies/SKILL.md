@@ -2,7 +2,7 @@
 name: module-building-strategies
 description: "The accumulated strategic playbook of judgment calls for designing an Intent Architect module — decomposition (root/bridging/common), template vs factory-extension choice, file cardinality, managed modes, setting-vs-stereotype, convention-vs-explicit, and two-phase verification. USE ONLY WHEN facing a design decision point while building or extending a module. DO NOT USE FOR the mechanical how-to of a specific construct (see add-module-skill-template, add-designer-extension, add-association-type) — this is the judgment layer above those."
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleBuildingStrategies_SkillMd_Agents
-contentHash: D2E9CF2B96C06C9259A0C7CFD0DAC47E2378190674D0951C4A03C3A2D60DC745
+contentHash: 960129F037EFC6E83054B056786977D4C58620CE1C01B3325AA29C0C781E0403
 ---
 # Module Building Strategies
 
@@ -133,6 +133,12 @@ The choice is purely: how many files, and does one file need to see many models 
     - **Associations have nothing to do with configuration** — they are a structural modeling mechanism. Never reach for an association to capture a setting.
 
 The common shape is **global default (setting) + per-element override (stereotype)**. Canonical example — **multitenancy**: a *module setting* picks the global isolation level (database-level = one DB per tenant, app-wide; vs entity-level = one shared DB); when entity-level, a *stereotype* on each entity marks it multitenant and gives it a discriminator.
+
+> **Choosing a stereotype has a packaging consequence.** A stereotype only reaches consumers if its
+> owning package is marked `Include in Module` in that package's `Module Settings`. Tick it as you define
+> the stereotype — otherwise the package emits no `<install>` entry, the stereotype ships nowhere, and the
+> only signal is a Software Factory warning you have to notice. See `add-designer-extension` for the
+> companion `Reference in Designer` rule when the package also carries designer elements.
 
 ### Convention vs explicit — the three lenses
 

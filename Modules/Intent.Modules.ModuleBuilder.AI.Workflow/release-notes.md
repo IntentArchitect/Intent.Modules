@@ -1,3 +1,10 @@
+### Version 1.1.0
+
+- New Feature: Added `module-dependency-audit` and wired it into `module-building-workflow` as the fourth workflow skill, run at Phase 4 step 2. A missing `.imodspec` dependency compiles cleanly and only fails when a consumer installs the module, so a green build never catches it.
+- New Feature: Added a `Maintain Module Context` setting. Off (the default) keeps today's behaviour of only maintaining an existing `CONTEXT.md`; on, `module-context-capture` also creates one for a module that has none, once its first durable decision lands.
+- Improvement: `module-docs-chore` now checks `Module Settings → Include Release Notes` before touching release notes, and reports a ticked-but-missing file rather than silently creating one.
+- Fixed: `module-docs-chore` did not say where a module's summary and description are edited, so the change was made in `.imodspec` and silently reverted. It now names the Application Settings page, and explains that one string fills both fields.
+
 ### Version 1.0.0
 
 - Fixed: `module-version-increment` and `module-docs-chore` now document two gotchas found from a real session going wrong — the Software Factory's silent no-op when a version change regresses below what's on disk (the "downgrade guard"), and the rule that a release-notes heading drops the `-pre.#` suffix even when the module's own version keeps it.

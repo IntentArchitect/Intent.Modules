@@ -3,7 +3,7 @@ name: module-context-capture
 description: "Read and maintain a module's CONTEXT.md — the durable why behind its design decisions, invariants, and cross-module relationships, kept in the module's project folder. USE ONLY WHEN a design decision is made or a module change concludes (write it), or before modifying any module (read it first). DO NOT USE FOR the change's user-facing docs (see module-docs-chore) or its version bump (see module-version-increment). REQUIRES the module's project folder to already exist."
 keywords: [context, decisions, architecture, invariants, cross-module, durable]
 template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleContextCapture_SkillMd_Agents
-contentHash: 9E664BF685972800147D847BD005F703E294789627B35B5BC52FABF1AC24ADB8
+contentHash: 2D122E6A11BC35763144027ACC1E71E3DF31C0BAB22C0E4B1D2FB5A42679C88F
 ---
 # Skill: module-context-capture
 
@@ -18,6 +18,13 @@ Inside the **module project folder** — e.g. `Modules/Intent.Modules.X/CONTEXT.
 - Never at the repository root — there is no global `CONTEXT.md`.
 - Never in a transient or build-state folder — those get cleared; this must survive.
 - Never inside an `intent` / `.intent` metadata folder.
+
+## When A Module Has No CONTEXT.md
+
+Leave it. Read and maintain a `CONTEXT.md` that already exists; do not introduce one where there
+is none. Its absence is a decision about how that module is maintained, not a gap to fill.
+
+If a module clearly needs one, say so and let the developer decide.
 
 ## Read It Before You Modify
 
@@ -81,6 +88,7 @@ A confidently wrong `CONTEXT.md` is worse than none, because the next session tr
 ## Checklist
 
 - [ ] `CONTEXT.md` exists in the module project folder — not the repo root, not a transient folder
+- [ ] No `CONTEXT.md` was introduced where the module had none
 - [ ] Every module modified by this change had its `CONTEXT.md` read first
 - [ ] New decisions recorded with reasoning, including rejected alternatives
 - [ ] Superseded entries updated or removed — no stale claims left standing

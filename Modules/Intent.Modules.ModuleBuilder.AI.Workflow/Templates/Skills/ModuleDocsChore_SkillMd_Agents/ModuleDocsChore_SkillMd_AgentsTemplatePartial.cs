@@ -153,10 +153,20 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
           | Artifact | What goes in |
           |---|---|
           | Module metadata — summary, description, tags | Kept accurate as a matter of course. These are what a consumer sees before installing anything. |
-          | `release-notes.md` | One bullet under the current version — **only if the file already exists** |
+          | `release-notes.md` | One bullet under the current version — **only if `Include Release Notes` is ticked and the file already exists** |
           {{readmeRow}}
           {{iconRow}}
           ## Release Notes Are Maintained, Never Introduced
+
+          **Check whether the module wants them before touching them.** On the module's package in the Module
+          Builder designer, `Module Settings` carries an **`Include Release Notes`** checkbox. That box is the
+          maintainer's stated intent, and it is what puts `<releaseNotes>` into the manifest — so read it first:
+
+          - **Unticked** — the module has opted out. Leave release notes alone entirely; do not start a file, and
+          do not add an entry to one that happens to exist.
+          - **Ticked, file present** — maintain it, as below.
+          - **Ticked, file missing** — say so. The manifest is advertising a `release-notes.md` that is not there,
+          which is a real inconsistency rather than something to silently paper over by creating the file.
 
           If a module has a `release-notes.md`, add an entry for the change: a single bullet under the current
           version, prefixed to say whether it is a new feature, an improvement, or a fix. A fix entry is more
@@ -187,6 +197,14 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
           The module's own summary, description, and tags are maintained regardless of which other artifacts a
           module keeps. They are the module's shopfront — the only thing a consumer reads while deciding
           whether to install it — so they should describe what the module actually does now.
+
+          **Change the summary and description on the Application Settings page**, not in `.imodspec` and not
+          in `.application.config`. The Software Factory overwrites both `<summary>` and `<description>` from
+          that one value on every run, so an edit made in the manifest is discarded without an error. It also
+          means the two fields **cannot differ** — one line has to serve as both, which is why it stays short
+          and says what the module *is*. Mechanism and rationale belong in `CONTEXT.md`.
+
+          `<tags>` is different — the Software Factory never writes it, so edit that directly in `*.imodspec`.
 
           Modules scaffolded from a template often keep placeholder metadata long after they have stopped being
           placeholders. When you notice generic filler in a summary or description, or an empty tag list,
@@ -233,10 +251,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
 
           ## Checklist
 
-          - [ ] Module summary, description, and tags describe current behaviour
+          - [ ] Module summary and description describe current behaviour — changed on the **Application Settings page**, not in `.imodspec`
+          - [ ] Tags describe current behaviour — edited directly in `*.imodspec`
           - [ ] Tags are lowercase, space-separated, hyphenated within a compound term
           - [ ] Author matches what sibling modules use — copied or asked for, never invented
-          - [ ] `release-notes.md` updated **if present** — and not created if absent
+          - [ ] `Include Release Notes` checked first; `release-notes.md` updated only when ticked **and** present — never created, and a ticked-but-missing file reported
           - [ ] Entries are one line each, grouped by capability rather than listed per change
           {{readmeChecklistItem}}
           {{iconChecklistItem}}

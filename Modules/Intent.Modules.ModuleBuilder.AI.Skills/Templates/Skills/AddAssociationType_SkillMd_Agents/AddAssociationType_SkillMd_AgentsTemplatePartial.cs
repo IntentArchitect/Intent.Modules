@@ -56,6 +56,21 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddAssociation
                     6. Wire creation option to source element/package extension context menu.
                     7. Run Software Factory and verify generated C# models compile.
 
+                    **Package settings are the companion step to linking `Designer Settings`.** Linking the extension to a
+                    foreign designer says *what* you are extending; two properties on the owning package's `Module Settings`
+                    decide whether any of it actually ships, and where it lands:
+
+                    | When the package gains… | Set on that package's `Module Settings` |
+                    |---|---|
+                    | a **stereotype** | `Include in Module` = true — without it the package produces no `<install>` entry and the stereotype ships nowhere |
+                    | a **new or extension designer element** | `Reference in Designer` = the target designer(s), or `Reference in` = *All Designers* — this drives the `<install target=…>` so the element lands in the right designer |
+
+                    Set them as you add the element, not in a later sweep. The Software Factory warns when a package has
+                    stereotype definitions and is not included — this gets ahead of that warning rather than waiting for it.
+
+                    If the new element type should carry its own icon, that is optional craft rather than an obligation — see
+                    `module-element-icons`.
+
                     ## Must Nots
                     1. Never swap source and target ends (source = origin element, target = destination).
                     2. Never set `Is Navigable Default = true` on source end for directed associations.

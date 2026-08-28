@@ -26,6 +26,36 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleContex
         public ModuleContextCapture_SkillMd_AgentsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             WithContentHashing = true;
+
+            // Fully qualified on purpose: everything outside this constructor body is template-managed,
+            // so a `using` for the Settings namespace would not survive regeneration.
+            var maintainContext = Intent.Modules.ModuleBuilder.AI.Workflow.Settings.ModuleSettingsExtensions
+              .GetAIWorkflowSettings(ExecutionContext.Settings)
+              .MaintainModuleContext();
+
+            var absentSection = maintainContext
+              ? """
+            ## When A Module Has No CONTEXT.md
+
+            Create one, but not on arrival. A `CONTEXT.md` written before there is anything to record is a
+            template with headings and no content, and the next session learns to skip it.
+
+            Write the file at the moment the first durable decision actually lands — a design choice with a
+            rejected alternative, an invariant something else now depends on, a constraint discovered the hard
+            way. Start with the Purpose section and that one entry. Let it grow from there.
+            """
+              : """
+            ## When A Module Has No CONTEXT.md
+
+            Leave it. Read and maintain a `CONTEXT.md` that already exists; do not introduce one where there
+            is none. Its absence is a decision about how that module is maintained, not a gap to fill.
+
+            If a module clearly needs one, say so and let the developer decide.
+            """;
+
+            var absentChecklistItem = maintainContext
+              ? "- [ ] A module with no `CONTEXT.md` had one created once its first durable decision landed"
+              : "- [ ] No `CONTEXT.md` was introduced where the module had none";
             MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
                 .FromMarkdown($$""""""
                     ---
@@ -48,6 +78,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleContex
                     - Never at the repository root — there is no global `CONTEXT.md`.
                     - Never in a transient or build-state folder — those get cleared; this must survive.
                     - Never inside an `intent` / `.intent` metadata folder.
+
+                    {{absentSection}}
 
                     ## Read It Before You Modify
 
@@ -110,6 +142,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleContex
                     ## Checklist
 
                     - [ ] `CONTEXT.md` exists in the module project folder — not the repo root, not a transient folder
+                    {{absentChecklistItem}}
                     - [ ] Every module modified by this change had its `CONTEXT.md` read first
                     - [ ] New decisions recorded with reasoning, including rejected alternatives
                     - [ ] Superseded entries updated or removed — no stale claims left standing

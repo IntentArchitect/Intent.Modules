@@ -44,5 +44,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Settings
         public bool MaintainModuleREADME() => bool.TryParse(_groupSettings.GetSetting("a1bd5e9f-5d24-49fe-91cd-8e823ed42535")?.Value.ToPascalCase(), out var result) && result;
 
         public bool MaintainModuleIcon() => bool.TryParse(_groupSettings.GetSetting("a4bdd803-c925-4711-aa99-f0fb218e4c7d")?.Value.ToPascalCase(), out var result) && result;
+
+        public bool MaintainModuleContext() => bool.TryParse(_groupSettings.GetSetting("e7cf062a-7f1d-464d-aa9c-4795a1a99bbb")?.Value.ToPascalCase(), out var result) && result;
     }
 }

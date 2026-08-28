@@ -14,5 +14,11 @@
       <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
       <approvedAt>2026-08-19T16:46:19.8860904Z</approvedAt>
     </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.sln</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-28T09:40:24.5148724Z</approvedAt>
+    </customFile>
   </customFiles>
 </deviationsLog>

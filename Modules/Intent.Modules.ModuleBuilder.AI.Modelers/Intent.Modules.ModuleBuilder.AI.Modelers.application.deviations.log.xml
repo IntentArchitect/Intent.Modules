@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deviationsLog>
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#441ae093-b332-4906-8884-f604d9e98b2e</correlationId>
+      <path>Templates/Skills/IntentModelersIntegration_SkillMd_Agents/IntentModelersIntegration_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-08-26T15:28:38.2163335Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-28T09:40:24.5081638Z</approvedAt>
+      <deviationsHash>03FF452D907378E3C87E7DE02DF9BCB0CBE16BA8478AE410BF3F87E7A504708B</deviationsHash>
+    </file>
+  </files>
+  <customFiles>
+    <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.AI.Modelers/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-28T09:40:24.4345149Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.AI.Modelers/.gitignore</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-28T09:40:24.4502136Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.AI.Modelers/CONTEXT.md</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-28T09:40:24.4646778Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.AI.Modelers/docs/README.md</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-28T09:40:24.4740284Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.AI.Modelers/Intent.Metadata/Codebase Structure/Codebase Structure.designer.config</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-28T09:40:24.4802253Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.AI.Modelers/Intent.Metadata/Module Builder/Module Builder.designer.config</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-28T09:40:24.4905147Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.ModuleBuilder.AI.Modelers/tasks.json</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-08-28T09:40:24.4964406Z</approvedAt>
+    </customFile>
+  </customFiles>
+</deviationsLog>

@@ -4,7 +4,7 @@ description: "Craft a house-style SVG icon for a module from a supplied descript
 argument-hint: "[description of what the icon should visually represent]"
 keywords: [icon, svg, branding, application.config, imodspec, package]
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon_SkillMd_Agents
-contentHash: 7F9DCAAE11B10915604193D004810CB48CAE6FAFB175E4B683143B25058F8B53
+contentHash: 63CC43F1E8CBD1E47D757ADAAC67EAAEE1B298EBFAE0E1621597A980043DD39E
 ---
 # Skill: module-svg-icon
 
@@ -26,18 +26,26 @@ discarded on the next run.
 
 ## Why A Script, Not Direct File Edits
 
-`.application.config` is normally off-limits to hand-editing — it is a large, mostly generated file.
-This skill is a narrow, deliberate exception, scoped to **exactly** the root `<icon>` /
+`.application.config` is off-limits to hand-editing — it is large, mostly generated, and the values in it
+that you are meant to change have a UI. The module's description, for instance, is set on the
+
+- *Application Settings page**, not in this file.
+
+The package icon is the exception, and **not because no other mechanism exists** — it can be set through
+the MCP. The reason to go around that is the payload: the value is a base64 data URI that routinely runs
+to tens of thousands of characters, and putting it through an agent's context is wasteful at best and a
+silent transcription corruption at worst. Use a tool that manipulates the icon element directly, so the
+encoded string never passes through you.
+
+So this skill is a narrow, deliberate exception, scoped to **exactly** the root `<icon>` /
 `<iconType>` pair. Nowhere else in that file should be touched — in particular, leave the many
 other `<icon type="..." source="...">` entries elsewhere in the file alone; those configure
-per-designer-element icons and are unrelated to the module's own package icon.
+per-designer-element icons and are unrelated to the module's own package icon. **To set an icon on a
+stereotype or a custom element type, use `module-element-icons`** — different mechanism, different file.
 
-There is a second, non-functional reason to go through a script rather than `read_file` /
-`patch_file`: the icon is a base64-encoded data URI that commonly runs into tens of thousands of
-characters. Reading or patching that through your own context window is wasteful, and hand-copying
-it risks a silent transcription error that corrupts the icon. **Never read or reproduce the base64
-value yourself** — a script computes it and writes it directly; you only ever see the small SVG
-source you authored.
+Concretely: **never read or reproduce the base64 value yourself.** A script computes it and writes it
+directly; you only ever see the small SVG source you authored. This is the whole reason the mechanism is
+a script rather than `read_file` / `patch_file`.
 
 ## Step 1 — Craft The SVG
 

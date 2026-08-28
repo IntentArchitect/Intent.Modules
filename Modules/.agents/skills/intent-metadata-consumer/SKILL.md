@@ -1,9 +1,9 @@
 ---
 name: intent-metadata-consumer
-description: "Read Intent Architect designer metadata — stereotypes, properties, models — inside a template or factory extension using generated typed accessors, never raw string lookups. USE ONLY WHEN a template needs to branch on or read a stereotype/property/model value to drive its generated output. DO NOT USE FOR emitting the C# builder statements themselves (see file-builder-expert) or cross-module DI/wiring (see intent-module-orchestrator). REQUIRES the relevant typed extension methods (*StereotypeExtensions.cs) already generated for the stereotype in question."
+description: "Read Intent Architect designer metadata — stereotypes, properties, models — inside a template or factory extension using generated typed accessors, never raw string lookups. USE ONLY WHEN a template needs to branch on or read a stereotype/property/model value to drive its generated output. DO NOT USE FOR emitting the C# builder statements themselves (see file-builder-expert), cross-module DI/wiring (see intent-module-orchestrator), or finding out how to install/reference a designer module and reach its models in the first place (see intent-modelers-integration, if available in your environment). REQUIRES the relevant typed extension methods (*StereotypeExtensions.cs) already generated for the stereotype in question."
 argument-hint: "[model type] [stereotype name] [target builder action]"
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.IntentMetadataConsumer_SkillMd_Agents
-contentHash: 38CDAA088D358924BC08E568407F0E6F3BDDACBA2A4B944F5B7916C56CAFDB31
+contentHash: 4DCDD7766B89CF44CFA65E1FBA77E1A8CAF1E3AA1D538346947E2697549ED236
 ---
 # Intent Metadata Consumer
 
