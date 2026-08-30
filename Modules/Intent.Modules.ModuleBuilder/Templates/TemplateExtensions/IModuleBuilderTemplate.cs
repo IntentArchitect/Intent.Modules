@@ -10,5 +10,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
         string GetRole();
         string TemplateType();
         string GetDefaultLocation();
+        string GetSeverity() => null;
+        string GetClassification() => null;
     }
 }

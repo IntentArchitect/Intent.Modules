@@ -53,7 +53,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial
                 templateId: GetTemplateId(),
                 templateType: "File Template",
                 role: GetRole(),
-                location: Model.GetLocation()));
+                location: Model.GetLocation(),
+                severity: Model.GetSeverity(),
+                classification: Model.GetClassification()));
 
             if (Model.GetModelType() != null)
             {

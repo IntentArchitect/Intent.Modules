@@ -1,3 +1,4 @@
+using System;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
@@ -91,6 +92,68 @@ namespace Intent.ModuleBuilder.Api
             public string GetDefaultLocation()
             {
                 return _stereotype.GetProperty<string>("Default Location");
+            }
+
+            public SeverityOptions Severity()
+            {
+                return new SeverityOptions(_stereotype.GetProperty<string>("Severity"));
+            }
+
+            public string Classification()
+            {
+                return _stereotype.GetProperty<string>("Classification");
+            }
+
+            public class SeverityOptions
+            {
+                public readonly string Value;
+
+                public SeverityOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public SeverityOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "0 - None":
+                            return SeverityOptionsEnum._0None;
+                        case "1 - Low":
+                            return SeverityOptionsEnum._1Low;
+                        case "2 - Medium":
+                            return SeverityOptionsEnum._2Medium;
+                        case "3 - High":
+                            return SeverityOptionsEnum._3High;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool Is0None()
+                {
+                    return Value == "0 - None";
+                }
+                public bool Is1Low()
+                {
+                    return Value == "1 - Low";
+                }
+                public bool Is2Medium()
+                {
+                    return Value == "2 - Medium";
+                }
+                public bool Is3High()
+                {
+                    return Value == "3 - High";
+                }
+            }
+
+            public enum SeverityOptionsEnum
+            {
+                _0None,
+                _1Low,
+                _2Medium,
+                _3High
             }
         }
     }

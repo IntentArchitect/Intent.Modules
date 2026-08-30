@@ -1,3 +1,7 @@
+### Version 3.19.0
+
+- Feature: Added `Severity` and `Classification` to `Template Settings`, so a template's generated output can be flagged for downstream Change Review tooling.
+
 ### Version 3.18.10
 
 - Improvement: Extended the `imodspec` migration logic so modules with an older minimum `supportedClientVersions` are automatically upgraded through to `5.1.0-a`.

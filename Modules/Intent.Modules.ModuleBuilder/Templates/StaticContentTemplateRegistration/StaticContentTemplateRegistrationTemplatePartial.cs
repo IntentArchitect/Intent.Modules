@@ -64,5 +64,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.StaticContentTemplateRegistrati
         public string TemplateType() => "Static Content Template";
 
         public string GetDefaultLocation() => Model.GetTemplateSettings().DefaultLocation();
+
+        public string GetSeverity() => Model.GetTemplateSettings().Severity().Value;
+
+        public string GetClassification() => Model.GetTemplateSettings().Classification();
     }
 }

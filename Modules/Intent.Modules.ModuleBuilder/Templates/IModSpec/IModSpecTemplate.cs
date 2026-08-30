@@ -173,10 +173,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     if (template.TemplateType == "C# Template")
                     {
                         specificTemplate.Add(XElement.Parse(@"
-      <config>
-        <add key=""ClassName"" description=""Class name formula override (e.g. '${Model.Name}')"" />
-        <add key=""Namespace"" description=""Class namespace formula override (e.g. '${Project.Name}'"" />
-      </config>"));
+                            <config>
+                            <add key=""ClassName"" description=""Class name formula override (e.g. '${Model.Name}')"" />
+                            <add key=""Namespace"" description=""Class namespace formula override (e.g. '${Project.Name}'"" />
+                            </config>"));
                     }
 
                     templatesElement.Add(specificTemplate);
@@ -190,6 +190,25 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
                 specificTemplate.SetElementValue("role", template.Role ?? string.Empty);
                 specificTemplate.SetElementValue("location", template.Location ?? string.Empty);
+
+                var severityToken = GetSeverityToken(template.Severity);
+                if (!string.IsNullOrWhiteSpace(severityToken))
+                {
+                    specificTemplate.SetElementValue("severity", severityToken);
+                }
+                else
+                {
+                    specificTemplate.Element("severity")?.Remove();
+                }
+
+                if (!string.IsNullOrWhiteSpace(template.Classification))
+                {
+                    specificTemplate.SetElementValue("classifications", template.Classification);
+                }
+                else
+                {
+                    specificTemplate.Element("classifications")?.Remove();
+                }
             }
 
             SortChildElementsByAttribute(templatesElement, "id");
@@ -265,9 +284,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 if (string.IsNullOrWhiteSpace(existing.Attribute("version").Value) ||
                     ExecutionContext.Settings.GetModuleBuilderSettings()?.DependencyVersionOverwriteBehavior()?.IsAlways() == true ||
                     (
-                        (ExecutionContext.Settings.GetModuleBuilderSettings()?.DependencyVersionOverwriteBehavior() == null ||
-                         ExecutionContext.Settings.GetModuleBuilderSettings().DependencyVersionOverwriteBehavior().IsIfNewer()) &&
-                        NuGetVersion.TryParse(existing.Attribute("version").Value, out var version) && version < NuGetVersion.Parse(moduleDependency.ModuleVersion)
+                    (ExecutionContext.Settings.GetModuleBuilderSettings()?.DependencyVersionOverwriteBehavior() == null ||
+                    ExecutionContext.Settings.GetModuleBuilderSettings().DependencyVersionOverwriteBehavior().IsIfNewer()) &&
+                    NuGetVersion.TryParse(existing.Attribute("version").Value, out var version) && version < NuGetVersion.Parse(moduleDependency.ModuleVersion)
                     ))
                 {
                     existing.SetAttributeValue("version", moduleDependency.ModuleVersion);
@@ -506,7 +525,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             foreach (var metadataRegistration in _metadataToRegister)
             {
                 var existing = doc.XPathSelectElement($"package/metadata/install[@src=\"{metadataRegistration.Path}\"]") ??
-                               doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{metadataRegistration.Id}\"]");
+                    doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{metadataRegistration.Id}\"]");
                 if (existing == null)
                 {
                     existing = new XElement("install");
@@ -524,7 +543,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             var notIncludedModules = _metadataManager.ModuleBuilder(OutputTarget.Application).StereotypeDefinitions
                 .Where(x => x.Package.SpecializationTypeId == IntentModuleModel.SpecializationTypeId &&
-                            !new IntentModuleModel(x.Package).GetModuleSettings().IncludeInModule())
+                    !new IntentModuleModel(x.Package).GetModuleSettings().IncludeInModule())
                 .Select(x => new IntentModuleModel(x.Package))
                 .ToList();
             foreach (var notIncludedModule in notIncludedModules)
@@ -547,7 +566,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
                 var path = PathHelper.GetRelativePath(GetMetadata().GetFullLocationPath(), package.FileLocation).NormalizePath();
                 var existing = doc.XPathSelectElement($"package/metadata/install[@src=\"{path}\"]") ??
-                               doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{package.Id}\"]");
+                    doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{package.Id}\"]");
                 if (existing == null)
                 {
                     existing = new XElement("install");
@@ -608,6 +627,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             return doc.ToStringUTF8();
         }
 
+        private static string GetSeverityToken(string severity)
+        {
+            return severity switch
+            {
+                "1 - Low" => "low",
+                "2 - Medium" => "medium",
+                "3 - High" => "high",
+                _ => null // "0 - None", unset, or unrecognized
+            };
+        }
+
         private string ConvertToSettingGroupType(ModuleSettingsConfigurationModelStereotypeExtensions.Configuration.SettingsTypeOptionsEnum? asEnum)
         {
             if (asEnum == null)
@@ -650,24 +680,24 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         private string CreateImodSpecFile()
         {
             return $@"<?xml version=""1.0"" encoding=""utf-8"" ?>
-<package>
-  {new XElement("id") { Value = ModuleModel.Name }}
-  {new XElement("version") { Value = ModuleModel.GetModuleSettings().Version() }}
-  <supportedClientVersions>[4.1.0-beta.21,6.0.0)</supportedClientVersions>
-  {new XElement("summary") { Value = ExecutionContext.GetApplicationConfig().Description ?? $"A custom module for {OutputTarget.Application.SolutionName}" }}
-  {new XElement("description") { Value = ExecutionContext.GetApplicationConfig().Description ?? $"A custom module for {OutputTarget.Application.SolutionName}" }}
-  {new XElement("authors") { Value = OutputTarget.Application.SolutionName }}
-  <iconUrl></iconUrl>
-  <templates></templates>
-  <decorators></decorators>
-  <factoryExtensions></factoryExtensions>
-  <moduleSettings></moduleSettings>
-  <dependencies></dependencies>
-  <files>
-    <file src=""$outDir$/$id$.dll"" />
-    <file src=""$outDir$/$id$.pdb"" />
-  </files>
-</package>";
+                <package>
+            {new XElement("id") { Value = ModuleModel.Name }}
+            {new XElement("version") { Value = ModuleModel.GetModuleSettings().Version() }}
+                <supportedClientVersions>[4.1.0-beta.21,6.0.0)</supportedClientVersions>
+            {new XElement("summary") { Value = ExecutionContext.GetApplicationConfig().Description ?? $"A custom module for {OutputTarget.Application.SolutionName}" }}
+            {new XElement("description") { Value = ExecutionContext.GetApplicationConfig().Description ?? $"A custom module for {OutputTarget.Application.SolutionName}" }}
+            {new XElement("authors") { Value = OutputTarget.Application.SolutionName }}
+                <iconUrl></iconUrl>
+                <templates></templates>
+                <decorators></decorators>
+                <factoryExtensions></factoryExtensions>
+                <moduleSettings></moduleSettings>
+                <dependencies></dependencies>
+                <files>
+                <file src=""$outDir$/$id$.dll"" />
+                <file src=""$outDir$/$id$.pdb"" />
+                </files>
+                </package>";
         }
 
         public IEnumerable<INugetPackageInfo> GetNugetDependencies()

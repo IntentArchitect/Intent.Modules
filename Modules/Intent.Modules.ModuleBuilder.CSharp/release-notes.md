@@ -1,3 +1,7 @@
+### Version 3.8.0
+
+- Feature: C# and Razor templates now carry their `Severity`/`Classification` `Template Settings` through into the generated `.imodspec`.
+
 ### Version 3.7.6
 
 - Improvement: Added support to NuGet package synchronization for .NET 10.

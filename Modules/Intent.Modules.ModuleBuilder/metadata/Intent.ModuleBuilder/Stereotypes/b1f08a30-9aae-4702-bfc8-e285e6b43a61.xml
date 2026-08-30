@@ -98,5 +98,25 @@
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
     </property>
+    <property id="2358e2a0-7a0b-41bd-94cd-dfe56dd49d9f">
+      <name>Severity</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <defaultValue>0 - None</defaultValue>
+      <valueOptions>
+        <option>0 - None</option>
+        <option>1 - Low</option>
+        <option>2 - Medium</option>
+        <option>3 - High</option>
+      </valueOptions>
+    </property>
+    <property id="3fa91ea8-0b2a-423f-b347-432924a4ec2f">
+      <name>Classification</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(optional, semicolon-separated)</placeholder>
+    </property>
   </properties>
 </stereotypeDefinition>

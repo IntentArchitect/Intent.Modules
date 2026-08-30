@@ -97,6 +97,16 @@ namespace Intent.ModuleBuilder.Api
             return this.GetTemplateSettings().GetDefaultLocation();
         }
 
+        public string GetSeverity()
+        {
+            return this.GetTemplateSettings().Severity().Value;
+        }
+
+        public string GetClassification()
+        {
+            return this.GetTemplateSettings().Classification();
+        }
+
         public FolderModel Folder { get; }
 
         public bool IsSingleFileTemplateRegistration()

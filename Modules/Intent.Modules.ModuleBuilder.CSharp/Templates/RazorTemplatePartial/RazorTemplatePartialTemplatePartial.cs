@@ -102,6 +102,10 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.RazorTemplatePartial
 
         string IModuleBuilderTemplate.GetDefaultLocation() => Model.GetLocation();
 
+        string IModuleBuilderTemplate.GetSeverity() => Model.GetSeverity();
+
+        string IModuleBuilderTemplate.GetClassification() => Model.GetClassification();
+
         public string GetTemplateId() => $"{Model.GetModule().Name}.{string.Join(".", Model.GetParentFolderNames().Append(Model.Name))}";
     }
 }

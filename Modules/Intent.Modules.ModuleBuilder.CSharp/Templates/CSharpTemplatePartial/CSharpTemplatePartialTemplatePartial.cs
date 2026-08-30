@@ -98,6 +98,16 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
             return Model.GetLocation();
         }
 
+        public string GetSeverity()
+        {
+            return Model.GetSeverity();
+        }
+
+        public string GetClassification()
+        {
+            return Model.GetClassification();
+        }
+
         private string GetRole()
         {
             return Model.GetRole();

@@ -10,7 +10,6 @@
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
   <displayIconFunction>return false;</displayIconFunction>
-  <displayFunction />
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>
@@ -21,7 +20,6 @@
   <packageName>Intent.ModuleBuilder.CSharp</packageName>
   <properties>
     <property id="4de9cc21-d4fb-4d52-8dfd-2eb6cf267a9a">
-      <hint />
       <name>Friendly Name</name>
       <type>string</type>
       <controlType>text</controlType>

@@ -47,9 +47,8 @@
       <count>4</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2025-10-03T20:26:54.6690325Z</updatedAt>
+      <updatedAt>2026-08-30T19:11:23.8017743Z</updatedAt>
       <deviationsHash>B6FADAEA3E6E134ADB687C97E8F3EDA6B146051FB8B01D593101596CEA866C72</deviationsHash>
-      <fileHash>61B79654289D963D0AE689B05E23F1909623E2EA8F2241AFE45396839D0FB2B3</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#9aec9ff4-b28f-4865-87aa-5d6e31d91afd</correlationId>
@@ -67,9 +66,8 @@
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2024-07-04T06:15:45.8509063Z</updatedAt>
+      <updatedAt>2026-08-30T19:11:23.8017853Z</updatedAt>
       <deviationsHash>7CF06F405E49236A5CE508108EA6DCB3C4CEBA9E82217B91C65AF90362770B79</deviationsHash>
-      <fileHash>90DFD4416847D427C381999801EA3B8E1F60F1601E9917D9E747EB04127054D8</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#5c00ad31-0eef-4539-a3e4-fa339cae2b10</correlationId>
@@ -77,19 +75,17 @@
       <count>1</count>
       <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2024-07-04T06:15:45.8509284Z</updatedAt>
+      <updatedAt>2026-08-30T19:11:23.8017905Z</updatedAt>
       <deviationsHash>98A37264BDFF9E87B8E5A6D52C9B1ACC246C6369091F182803A5BC2A9FEE360E</deviationsHash>
-      <fileHash>20619D2439F233DA835B42DB1A79B35C828C1AEF72AD7EE028068BB0AF2592EB</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.TemplateExtensions#7f6373f6-0296-420d-9644-081712d3a7e9</correlationId>
       <path>Templates/TemplateExtensions.cs</path>
       <count>1</count>
-      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-07-31T14:28:08.3024906Z</updatedAt>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2026-08-30T19:11:23.8018366Z</updatedAt>
       <deviationsHash>B7203BFB9686F060DB0ACAA7C53E52041597E3DB8BC78F5BAE12E1FBA6835020</deviationsHash>
-      <fileHash>935E07954E5240C993F00BF4E2952D4B100C6A39FFDAC8B2A16B3F605A351EB6</fileHash>
     </file>
   </files>
   <customFiles>
