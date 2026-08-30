@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="39af18aa-c4fc-463c-bbb0-cbee9de9b686">
-  <file path=".agents/instructions/csharp-guidelines.md" />
-  <file path="ArchitectureBuilder/ArchitectureBuilder.csproj" />
-  <file path="ArchitectureBuilder/Test Architecture Template/metadata.iatspec" />
-  <file path="Intent.Modules.Tests.sln" />
+  <file path=".agents/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="ArchitectureBuilder/ArchitectureBuilder.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="ArchitectureBuilder/Test Architecture Template/metadata.iatspec" templateId="Intent.ApplicationTemplate.Builder.Templates.IatSpecFile" />
+  <file path="Intent.Modules.Tests.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
 </managedFiles>

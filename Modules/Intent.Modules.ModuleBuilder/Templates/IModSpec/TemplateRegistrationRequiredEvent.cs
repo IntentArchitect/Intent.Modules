@@ -5,6 +5,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 {
     public class TemplateRegistrationRequiredEvent
     {
+        public TemplateRegistrationRequiredEvent(string modelId, string templateId, string templateType, string role, string location)
+            : this(modelId, templateId, templateType, role, location, null, null)
+        {
+        }
+
         public TemplateRegistrationRequiredEvent(string modelId, string templateId, string templateType, string role, string location, string severity, string classification)
         {
             ModelId = modelId;
