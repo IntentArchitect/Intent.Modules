@@ -2,12 +2,24 @@
 <deviationsLog>
   <files>
     <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#bfa0e23c-5808-4563-aeae-c558bb292cf2</correlationId>
+      <path>Templates/RootPrinciples/ModuleBuildingWorkflowMd/ModuleBuildingWorkflowMdTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-09-01T22:23:19.5645734Z</updatedAt>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-01T22:26:17.4562826Z</approvedAt>
+      <deviationsHash>5ABE2834A74DDB431F6F8DD345B063F74CA72659F1A8E7365BBF44CECBC310E2</deviationsHash>
+    </file>
+    <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#397ea30f-1ff0-4356-a10f-f47052036047</correlationId>
       <path>Templates/Skills/ModuleContextCapture_SkillMd_Agents/ModuleContextCapture_SkillMd_AgentsTemplatePartial.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-08-24T12:21:09.1674106Z</updatedAt>
+      <updatedAt>2026-09-01T22:17:56.8570965Z</updatedAt>
       <deviationsHash>5F79D3CE03D7DD63CAF45FF6A57DDA582BF4143C1FB2CE81C650BDBB54CD5DB8</deviationsHash>
     </file>
     <file>
@@ -37,11 +49,11 @@
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-08-24T12:21:09.1674248Z</updatedAt>
+      <updatedAt>2026-09-01T22:23:38.7670632Z</updatedAt>
       <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
       <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
-      <approvedAt>2026-08-24T20:27:10.1264398Z</approvedAt>
-      <deviationsHash>E04CACB33F5D9E4060EE9107200E5EEA76730CF4244528811CC323834D5F0F46</deviationsHash>
+      <approvedAt>2026-09-01T22:26:17.464136Z</approvedAt>
+      <deviationsHash>E48CA32DCC99CA1709F17F4A71432AA9A3B1C51D17C17CFFC0D7D51BD1AF3AE0</deviationsHash>
     </file>
   </files>
   <customFiles>

@@ -1,82 +1,45 @@
 # Context: Intent.ModuleBuilder.AI.Workflow
 
 ## Purpose
-Bundles conditional, process-shaped AI agent workflow skills for the module-building lifecycle —
-when to increment a version, when and how to keep documentation current, when to capture durable
-context — into the consuming repo's `.agents/` folder. Unlike `Intent.ModuleBuilder.AI.Skills`
-(unconditional reference skills), every bundled skill here reads its own settings group and adapts
-its generated content accordingly.
+
+Bundles conditional, process-shaped AI agent workflow skills for the module-building lifecycle — when to increment a version, when and how to keep documentation current, when to capture durable context — into the consuming repo's `.agents/` folder. Unlike `Intent.ModuleBuilder.AI.Skills` (unconditional reference skills), every bundled skill here reads its own settings group and adapts its generated content accordingly.
 
 ## Architectural Decisions
 
-- **No package dependency on `Intent.ModuleBuilder.AI.Skills`, by deliberate choice.** The two
-  modules cover adjacent but decoupled ground (see that module's own `CONTEXT.md` for the mirror of
-  this decision). Installing AI.Workflow must not pull in AI.Skills' whole bundle as a side effect.
+- **No package dependency on `Intent.ModuleBuilder.AI.Skills`, by deliberate choice.** The two modules cover adjacent but decoupled ground (see that module's own `CONTEXT.md` for the mirror of this decision). Installing AI.Workflow must not pull in AI.Skills' whole bundle as a side effect.
 
-- **`module-docs-chore` references `module-svg-icon` by name, but only as a soft, conditional
-  pointer** ("if the `module-svg-icon` skill is available in your environment, use it") — never as a
-  hard requirement. This is the first case where AI.Workflow content names an AI.Skills skill at
-  all; it was a deliberate exception granted for this feature specifically, not a reversal of the
-  no-dependency stance above. If AI.Skills isn't installed, the generated chore skill explicitly
-  says to leave the module without an icon rather than improvising a substitute.
+- **`module-docs-chore` references `module-svg-icon` by name, but only as a soft, conditional pointer** ("if the `module-svg-icon` skill is available in your environment, use it") — never as a hard requirement. This is the first case where AI.Workflow content names an AI.Skills skill at all; it was a deliberate exception granted for this feature specifically, not a reversal of the no-dependency stance above. If AI.Skills isn't installed, the generated chore skill explicitly says to leave the module without an icon rather than improvising a substitute.
 
-- **Icon creation is create-when-missing only — never a refresh.** An existing icon (however dated)
-  is treated as a deliberate choice by whoever set it, mirroring how `docs/README.md` is created
-  when absent but never forcibly rewritten wholesale. This is a narrower stance than release notes
-  ("maintained, never introduced") and deliberately so: an icon is a visual asset a maintainer might
-  hand-pick, unlike prose that this chore is expected to keep in sync with behaviour.
+- **Icon creation is create-when-missing only — never a refresh.** An existing icon (however dated) is treated as a deliberate choice by whoever set it, mirroring how `docs/README.md` is created when absent but never forcibly rewritten wholesale. This is a narrower stance than release notes ("maintained, never introduced") and deliberately so: an icon is a visual asset a maintainer might hand-pick, unlike prose that this chore is expected to keep in sync with behaviour.
 
-- **`MaintainModuleIcon` is a plain boolean, mirroring `MaintainModuleREADME` exactly** (`Switch`
-  control, same accessor shape in `ModuleSettingsExtensions.cs`). No richer tri-state was added —
-  off means "never touch icons," on means "create when missing."
+- **`MaintainModuleIcon` is a plain boolean, mirroring `MaintainModuleREADME` exactly** (`Switch` control, same accessor shape in `ModuleSettingsExtensions.cs`). No richer tri-state was added — off means "never touch icons," on means "create when missing."
 
-- **`module-version-increment`'s major/minor/patch rubric judges impact on the user's experience,
-  not a generic semver textbook rule.** The original table treated "new capability, setting, or
-  generated file" as automatically Minor; Dandré rejected that after two changes that fit that
-  description (`module-svg-icon`, `MaintainModuleIcon`) were both actually Patch. The replacement
-  axis:
-  - **Patch** — narrow impact (a setting affecting a small portion of the module, an addition
-    alongside an already-established similar set), regardless of whether it's technically "new."
-  - **Minor** — a genuinely new capability *dimension* (Dandré's example: a module gaining the
-    ability to generate templates tailored to a specific AI harness) — high impact, not breaking.
-  - **Major** — changes how users already interact with the module (Dandré's example: adding a
-    whole new designer to the module) — even with zero hard technical break, established habits or
-    expectations can shift enough to need developer attention.
+- **`module-version-increment`'s major/minor/patch rubric judges impact on the user's experience, not a generic semver textbook rule.** The original table treated "new capability, setting, or generated file" as automatically Minor; Dandré rejected that after two changes that fit that description (`module-svg-icon`, `MaintainModuleIcon`) were both actually Patch. The replacement axis:
+  - **Patch** — narrow impact (a setting affecting a small portion of the module, an addition alongside an already-established similar set), regardless of whether it's technically "new."
+  - **Minor** — a genuinely new capability _dimension_ (Dandré's example: a module gaining the ability to generate templates tailored to a specific AI harness) — high impact, not breaking.
+  - **Major** — changes how users already interact with the module (Dandré's example: adding a whole new designer to the module) — even with zero hard technical break, established habits or expectations can shift enough to need developer attention.
 
-  Minor vs Patch is explicitly a magnitude judgment, not a checklist — being opt-in/off-by-default
-  does not by itself make something Patch (`module-svg-icon` had no setting at all and was still
-  Patch). Reasoning must be stated at the point of choosing, same as before.
+  Minor vs Patch is explicitly a magnitude judgment, not a checklist — being opt-in/off-by-default does not by itself make something Patch (`module-svg-icon` had no setting at all and was still Patch). Reasoning must be stated at the point of choosing, same as before.
 
-- **Two gotchas were added to `module-version-increment`/`module-docs-chore` after a real consuming
-  session tripped on both.** With `UsePreReleaseVersions` on, a developer corrected a module from
-  `1.1.0` down to `1.0.3-pre.0`; the Software Factory silently reported nothing staged because
-  `-pre.#` sorts *below* the same `X.Y.Z` with no suffix — a downgrade by semver precedence, distinct
-  from the already-documented local-compile trap. The same session then carried the `-pre.#` suffix
-  into a `release-notes.md` heading, because the rule to strip it lived only in the opt-in
-  `module-docs` skill, never in the routine `module-docs-chore` path that actually fires during
-  ordinary work. Both gotchas are now documented where the routine path will actually see them.
+- **Two gotchas were added to `module-version-increment`/`module-docs-chore` after a real consuming session tripped on both.** With `UsePreReleaseVersions` on, a developer corrected a module from `1.1.0` down to `1.0.3-pre.0`; the Software Factory silently reported nothing staged because `-pre.#` sorts _below_ the same `X.Y.Z` with no suffix — a downgrade by semver precedence, distinct from the already-documented local-compile trap. The same session then carried the `-pre.#` suffix into a `release-notes.md` heading, because the rule to strip it lived only in the opt-in `module-docs` skill, never in the routine `module-docs-chore` path that actually fires during ordinary work. Both gotchas are now documented where the routine path will actually see them.
 
-- **The dependency audit is a close-out gate, not an opt-in pass.** A missing `.imodspec` dependency compiles cleanly and fails at *install*, in a consumer nobody can see — the exact failure class the workflow's "compiling is not working" rule exists for, and one no earlier phase can catch. So `module-dependency-audit` became the **fourth workflow skill**, wired into `module-building-workflow` at Phase 4 step 2: after Version (documentation refers to it) and before Documentation (a dependency fix is itself an observable change that then needs describing).
-- **`Maintain Module Context` defaults to false, and false is exactly today's behaviour.** Off, `module-context-capture` only reads and maintains a `CONTEXT.md` that already exists — byte-identical to what shipped before the setting existed, so no consumer sees an unrequested change. On, it also creates one for a module that has none, but deliberately *not on arrival*: at the moment the first durable decision lands, because a `CONTEXT.md` of empty headings teaches the next session to skip the file.
+- **The dependency audit is a close-out gate, not an opt-in pass.** A missing `.imodspec` dependency compiles cleanly and fails at _install_, in a consumer nobody can see — the exact failure class the workflow's "compiling is not working" rule exists for, and one no earlier phase can catch. So `module-dependency-audit` became the **fourth workflow skill**, wired into `module-building-workflow` at Phase 4 step 2: after Version (documentation refers to it) and before Documentation (a dependency fix is itself an observable change that then needs describing).
+- **`Maintain Module Context` defaults to false, and false is exactly today's behaviour.** Off, `module-context-capture` only reads and maintains a `CONTEXT.md` that already exists — byte-identical to what shipped before the setting existed, so no consumer sees an unrequested change. On, it also creates one for a module that has none, but deliberately _not on arrival_: at the moment the first durable decision lands, because a `CONTEXT.md` of empty headings teaches the next session to skip the file.
 - **Release-notes maintenance now consults `Module Settings → Include Release Notes` first.** Previously `module-docs-chore` decided purely on whether the file existed on disk, ignoring the checkbox that both states the maintainer's intent and drives `<releaseNotes>` in the manifest. Unticked means leave them alone; ticked-but-missing is reported as the inconsistency it is rather than silently fixed by creating the file.
-- **This module's `Intent.Common` dependency floor is hand-set to match its compile-time reference, and that is expected to stay hand-set.** `IModSpecTemplate` seeds a fixed `Intent.Common` 3.7.2 baseline, so the Software Factory will never raise it on its own even though the `.csproj` compiles against `Intent.Modules.Common` 3.11.4 — a gap that compiles cleanly and would only surface when a consumer's install resolved the lower floor. Raised to 3.11.4 to match the `.csproj` and the sibling AI modules. It survives regeneration because dependency versions are only ever bumped *upward*: with the on-disk value higher than the computed one, the template leaves it alone. Verified by a no-op Software Factory run immediately after the edit.
+- **This module's `Intent.Common` dependency floor is hand-set to match its compile-time reference, and that is expected to stay hand-set.** `IModSpecTemplate` seeds a fixed `Intent.Common` 3.7.2 baseline, so the Software Factory will never raise it on its own even though the `.csproj` compiles against `Intent.Modules.Common` 3.11.4 — a gap that compiles cleanly and would only surface when a consumer's install resolved the lower floor. Raised to 3.11.4 to match the `.csproj` and the sibling AI modules. It survives regeneration because dependency versions are only ever bumped _upward_: with the on-disk value higher than the computed one, the template leaves it alone. Verified by a no-op Software Factory run immediately after the edit.
+- **The already-moved check is now a universal gate keyed on semver precedence, not an ad-hoc-only heuristic, and not a base-vs-exact split.** The prior `module-version-increment` had two disconnected paths: an up-front "just increment" step, and a separate "Ad-hoc Changes — Check Before You Move" section with a 4-step heuristic (task notes, version control, release notes, ask) scoped to changes that arrived already edited. Agents complied with "increment before you implement" on every new instruction and never reached the ad-hoc section, producing phantom prerelease bumps (`pre.4` → `pre.5` → `pre.6` …) for work still unpublished. Replaced both with a single `Is This Version Already In Flight?` section: a version moves only when a published version already exists **at or beyond it, by semver precedence** — checked via feed search with prereleases included, classifying the result's repository as a genuine sharing mechanism (URL, UNC, mapped drive, sync folder) versus the machine-local build-output one — with ask-the-developer as the sole fallback. An earlier draft of this rule stripped `-pre.#` and compared only the "base" version, on the theory that a prerelease line "consolidates" into its eventual final release; Dandré caught that this conflates two separate, independently-published version numbers (`1.0.1-pre.4` and `1.0.1` are not "the same," publishing one doesn't publish the other) — corrected to a single semver-precedence comparison with no base/exact split. Both `module-version-increment`'s own up-front step and `module-building-workflow`'s Phase 2/4 now reference this one gate, so every bump path runs the same test regardless of which document an agent read first.
 
 ## Invariants & Constraints
 
-- `AIWorkflowSettings` accessors (`UsePreReleaseVersions`, `MaintainModuleREADME`,
-  `MaintainModuleIcon`) are generated from `Module Settings Field Configuration` children of the
-  `AI Workflow Settings` element — never hand-edit `Settings/ModuleSettingsExtensions.cs`; add the
-  field in the designer and regenerate.
-- `module-docs-chore`'s conditional sections (`readme*`, `icon*` variable pairs) all follow the same
-  three-part shape: a table row, a full section, a checklist item, each toggled by the same boolean.
-  A new conditional artifact should follow this exact shape rather than inventing a different one.
+- Raw-string markdown content in `ModuleVersionIncrement_SkillMd_AgentsTemplatePartial.cs` and `ModuleBuildingWorkflowMdTemplatePartial.cs` must never have a line — including a soft-wrap continuation mid-paragraph — that starts with a bare `*` or `**`. The environment's own patch/write auto-formatter reproducibly mangles such a line into a spurious list marker (`**Text**` becomes `- *Text**`, `*Text*` becomes `- Text*`). Use a blockquote (`>`) for a callout that would otherwise open a bare-bold paragraph, and reflow wrapped prose so no line happens to start with `*`.
+- Separately, a source line consisting only of a bare `{{expr}}` interpolation (e.g. `{{incrementRules}}`, `{{preReleaseSection}}` in `ModuleVersionIncrement_SkillMd_AgentsTemplatePartial.cs`) is reproducibly under-indented by the same auto-formatter to less than the raw string's closing delimiter — a hard compile error (CS8999), not just a cosmetic issue. `write_file` reproduces it too, not only `patch_file`. After any edit to either file, run `dotnet build` on the module project before trusting the result; if CS8999 appears, fix the reported line's indentation directly (a plain text edit bypassing the auto-formatter is what actually holds — patching the same spot again just reintroduces the bug).
+
+- `AIWorkflowSettings` accessors (`UsePreReleaseVersions`, `MaintainModuleREADME`, `MaintainModuleIcon`) are generated from `Module Settings Field Configuration` children of the `AI Workflow Settings` element — never hand-edit `Settings/ModuleSettingsExtensions.cs`; add the field in the designer and regenerate.
+- `module-docs-chore`'s conditional sections (`readme*`, `icon*` variable pairs) all follow the same three-part shape: a table row, a full section, a checklist item, each toggled by the same boolean. A new conditional artifact should follow this exact shape rather than inventing a different one.
 
 ## Module Interactions
 
-- **Intent.ModuleBuilder.AI.Skills** — see the "No package dependency" and soft-reference decisions
-  above. `module-svg-icon` there owns the actual SVG-crafting mechanics; this module only decides
-  *when* to invoke it and *where to source its input description* (the module's own `.imodspec`
-  summary/tags or `CONTEXT.md` Purpose section) — it does not duplicate the crafting guidance.
+- **Intent.ModuleBuilder.AI.Skills** — see the "No package dependency" and soft-reference decisions above. `module-svg-icon` there owns the actual SVG-crafting mechanics; this module only decides _when_ to invoke it and _where to source its input description_ (the module's own `.imodspec` summary/tags or `CONTEXT.md` Purpose section) — it does not duplicate the crafting guidance.
 
 ## Superseded
 

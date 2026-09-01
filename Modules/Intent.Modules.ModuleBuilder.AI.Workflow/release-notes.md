@@ -12,3 +12,4 @@
 - Fixed: the `Intent.Common` dependency floor was 3.7.2 while the module compiles against 3.11.4 — a gap that would only surface when a consumer's install resolved the lower version.
 - Improvement: Added `docs/README.md`, covering the four-phase workflow, the four module settings and how they widen the generated guidance.
 - Fixed: `module-docs-chore` did not say where a module's summary and description are edited, so edits went to `.imodspec` and were silently reverted — it now names the Application Settings page and that one string fills both fields.
+- Fixed: `module-version-increment`'s already-moved check applied only to ad-hoc changes, so the up-front path never consulted it and agents phantom-bumped the version on every follow-up instruction — it's now a universal gate (published-vs-local-only classification, feed-search query mechanism) that `module-building-workflow`'s Phase 2 and Phase 4 both route through.

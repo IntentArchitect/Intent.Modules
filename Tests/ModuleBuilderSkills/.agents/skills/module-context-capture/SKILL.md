@@ -3,7 +3,7 @@ name: module-context-capture
 description: "Read and maintain a module's CONTEXT.md — the durable why behind its design decisions, invariants, and cross-module relationships, kept in the module's project folder. USE ONLY WHEN a design decision is made or a module change concludes (write it), or before modifying any module (read it first). DO NOT USE FOR the change's user-facing docs (see module-docs-chore) or its version bump (see module-version-increment). REQUIRES the module's project folder to already exist."
 keywords: [context, decisions, architecture, invariants, cross-module, durable]
 template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleContextCapture_SkillMd_Agents
-contentHash: B47B0EFA8272B7DA657DA3F35403D89D3BB03F9A58099FC2F992453FD8BFFE89
+contentHash: D70278C1CD6F887D9F3A26159EBBEB6F5F92B5A91F71EB4EBB4FCDD386058CBB
 ---
 # Skill: module-context-capture
 
@@ -34,11 +34,10 @@ Before changing a module, read the `CONTEXT.md` of **every** module you are abou
 tells you which constraints are deliberate, and which code is load-bearing for reasons the code
 itself does not explain.
 
-- *If your intended change conflicts with `CONTEXT.md`, stop and flag the conflict.** Do not
-
-silently "improve" a design that was chosen on purpose. Either the context is stale — in which case
-update it deliberately, as part of this change — or the change is wrong. Both need a decision, not
-an assumption.
+> **If your intended change conflicts with `CONTEXT.md`, stop and flag the conflict.** Do not
+> silently "improve" a design that was chosen on purpose. Either the context is stale — in which case
+> update it deliberately, as part of this change — or the change is wrong. Both need a decision, not
+> an assumption.
 
 ## What Goes In
 
@@ -48,6 +47,7 @@ an assumption.
 | Invariants and constraints | This template must stay transport-agnostic; it may not reference X |
 | Technology constraints | The library cannot do Y in environment Z, so the module generates W instead |
 | Accepted patterns | How this module's templates resolve types across layers |
+| Setting/condition-driven wiring | A setting or condition changes which concrete class or mechanism gets generated, not just a parameter on the same shape — e.g. enabling a transactional outbox switches the generated consumer to a base class sharing the persistence layer's own transaction, instead of the plain consumer used otherwise |
 | Cross-module relationships | Which modules this one affects, what it broadcasts, what it expects others to handle |
 | Decisions taken during implementation | Options considered and **rejected**, and why |
 

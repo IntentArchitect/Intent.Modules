@@ -65,7 +65,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleVersio
                 : "";
 
             MarkdownFile = new MarkdownFile("SKILL", relativeLocation: SkillName)
-                .FromMarkdown($$""""""
+                .FromMarkdown($$"""""" 
                     ---
                     name: {{SkillName}}
                     description: "Increment a module's version (choosing the right component) before implementing a change that touches it, then confirm and propagate to dependents at close-out. USE ONLY WHEN the modules a task will change are known — as soon as that's decided, and again at close-out. DO NOT USE FOR writing the change's documentation (see module-docs-chore) or recording design rationale (see module-context-capture). REQUIRES the set of modules the task will touch already identified."
@@ -89,12 +89,16 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleVersio
                     | **Before implementing** | Increment every module the task is expected to change |
                     | **At close-out** | Confirm each changed module was incremented, correct the component if the impact grew, and move dependents |
 
+                    Both paths run through the same test first — *Is This Version Already In Flight?* below — before the
+                    version actually moves.
+
                     Incrementing first is what makes the change testable at all: a module rebuilt at an already-published
                     version is ignored in favour of the published copy, so work done before the version moves can be
                     verified against the old behaviour without any sign that it was. It also removes the question of
                     whether a module has already been moved for this task — you moved it, deliberately, at the start.
 
-                    **At close-out the normal outcome is that there is nothing to do.** Confirm the version moved and stop.
+                    > **At close-out the normal outcome is that there is nothing to do.** Confirm the version moved and stop.
+
                     Act only in these cases:
 
                     - **A module was changed that you did not anticipate** — increment it now.
@@ -140,31 +144,58 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleVersio
                     dimension, not breaking anything"* / *"major, because this changes how users already interact with
                     the module"* — so the choice is reviewable rather than asserted.
 
-                    ## Ad-hoc Changes — Check Before You Move
+                    ## Is This Version Already In Flight?
 
-                    Sometimes a change reaches you without the up-front step: an edit was already made, and the version has
-                    to move for it to be installable. Here the risk returns — **double-incrementing**, moving a version
-                    that was already moved for this same work and has not been published yet. That leaves a version nobody
-                    asked for and a gap in whatever history the module keeps.
+                    A version moves **only** when a published version already exists **at or beyond it**, by semver
+                    precedence (a `-pre.#` suffix sorts below the same `X.Y.Z` with no suffix). `1.0.1-pre.4` and `1.0.1`
+                    are separate, independently-published version numbers — publishing one never implies the other was
+                    published too. What matters is precedence, not whether one looks like a "final" form of the other:
+                    if nothing at or beyond your current version is published, you are in flight regardless of how close
+                    a related number might be.
 
-                    Work down this list and stop at the first step that answers:
+                    If nothing at or beyond your current version is published, it is **in flight**: leave it alone, no
+                    matter how many instructions arrive for this line of work. The only mid-flight adjustment permitted
+                    is correcting the component — *patch → minor/major* — when the impact assessment changes; see *Deciding
+                    The Increment* above. If something at or beyond your current version turns out to already
+                    be published without you having published it, flag it — someone else published ahead of you.
 
-                    1. **The task's own notes or plan.** If they record that this module was already incremented for this
-                    work, it is done. Leave it.
-                    2. **Version control.** Compare the module's current version against the same file where the branch
-                    diverged. If the version has already changed in this branch or working tree, it has already been
-                    moved for this work.
-                    3. **The module's release notes.** If the module keeps them and there is already an entry for the
-                    current version, that version is in flight and already accounts for your change.
-                    4. **Ask.** If nothing above answers it, ask the developer whether the current version has been
-                    published. Take the answer as given, note it with the task's working notes, and do not ask again for
-                    that module during this task.
+                    > **A version moves once per line of work.** This is the gate for every bump — the up-front step and
+                    > any change that reaches you after the fact go through the same test. Running it again for the next
+                    > instruction on work already gated is what produces phantom bumps (`pre.4` → `pre.5` → `pre.6` … for
+                    > work that is still unpublished).
+
+                    ### Classification Ladder
+
+                    A version is *published* only when it is discoverable on a repository that is a **sharing mechanism** —
+                    never the machine-local build-output repository.
+
+                    | Repository address | Classification | Published? |
+                    |---|---|---|
+                    | `https://…` URL (a module feed) | Online | Yes |
+                    | `\\server\share` UNC | SMB share | Yes |
+                    | Drive-letter path on a mapped/remote drive | Mapped share | Yes |
+                    | Under a OneDrive / Dropbox sync folder | Sync-shared | Yes |
+                    | Drive-letter path on a local fixed drive (own builds land here) | Purely local | No |
+
+                    Tiebreaker: the machine-local repository is the one your own builds land in — compiling the module
+                    registers it there whether or not it was ever shared. Anything else is a distribution point.
+
+                    ### Query Mechanisms
+
+                    1. **Primary — feed search.** Search the module's configured feeds with prereleases included — the flag
+                    is **mandatory**, prereleases are hidden without it, so an unflagged search can misreport a published
+                    prerelease as absent. Compare every result against your current version by semver precedence, not
+                    exact-string equality — anything at or beyond it counts as published. Ignore any result whose
+                    repository address is the machine-local build-output path per the ladder above.
+                    2. **Fallback — ask the developer.** If the feed can't be reached, state the current version, the
+                    version you believe it should become, and why, then ask how to proceed. Take the answer as given and do
+                    not ask again for that module during this task.
 
                     Once you have moved it, record that you did — that record is step 1 for whoever comes next.
 
-                    **Never change a version number to resolve a build or regeneration failure.** A version expresses
-                    intent about compatibility; it is not a troubleshooting lever. If a change is not being picked up,
-                    diagnose that instead.
+                    > **Never change a version number to resolve a build or regeneration failure.** A version expresses
+                    > intent about compatibility; it is not a troubleshooting lever. If a change is not being picked up,
+                    > diagnose that instead.
 
                     ## Keep The Version Consistent Everywhere
 
@@ -190,13 +221,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleVersio
 
                     ## Confirm It Is Actually Ahead
 
-                    Before releasing, confirm the new version is ahead of what is already published. A release that is not
-                    will not carry your changes.
-
-                    > **The local-compile trap.** Compiling a module registers it in the same location a module search
-                    > reads from. From then on the search reports that version as existing, whether or not it was ever
-                    > published. Treat an "exists" result as inconclusive rather than as proof — and keep in mind another
-                    > branch may have published the same number first.
+                    Run the gate above — *Is This Version Already In Flight?* — one more time immediately before releasing.
+                    If the query mechanisms there still report nothing at or beyond your version as published, you're
+                    clear; if something now is, someone published ahead of you and you need to move further.
 
                     > **The downgrade guard.** The Software Factory silently refuses to regenerate `.imodspec` if the
                     > version you just set compares as *lower*, by semver precedence, than the `<version>` already on
@@ -224,14 +251,14 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleVersio
                     ## Checklist
 
                     - [ ] Every module the task was expected to change was incremented before implementation started
+                    - [ ] Before bumping, ran the gate — confirmed nothing at or beyond the current version was actually published, not just locally compiled
                     - [ ] Impact assessed for each, with the reasoning stated
                     - [ ] Any module changed but not anticipated has since been incremented
-                    - [ ] Impact re-checked at close-out, and the component raised if the change grew
-                    - [ ] For an ad-hoc change: checked the module had not already been moved before moving it
+                    - [ ] Impact re-checked at close-out, and the component raised if the change grew — never a second bump for the same line of work
                     - [ ] Version consistent across manifest, project file, and designer settings
                     - [ ] Every module whose code changed for this work moved, shared-contract participants included
                     - [ ] Dependents' pinned versions and minimum-version floors updated
-                    - [ ] New version confirmed ahead of what is published, allowing for the local-compile trap
+                    - [ ] New version confirmed ahead of what is published via the gate (feed search with prereleases included, allowing for the local-compile trap)
                     - [ ] Supported client version range still correct
                     """""");
         }
