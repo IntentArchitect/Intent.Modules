@@ -2,18 +2,6 @@
 <deviationsLog>
   <files>
     <file>
-      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#bfa0e23c-5808-4563-aeae-c558bb292cf2</correlationId>
-      <path>Templates/RootPrinciples/ModuleBuildingWorkflowMd/ModuleBuildingWorkflowMdTemplatePartial.cs</path>
-      <count>1</count>
-      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-09-01T22:23:19.5645734Z</updatedAt>
-      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
-      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
-      <approvedAt>2026-09-01T22:26:17.4562826Z</approvedAt>
-      <deviationsHash>5ABE2834A74DDB431F6F8DD345B063F74CA72659F1A8E7365BBF44CECBC310E2</deviationsHash>
-    </file>
-    <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#397ea30f-1ff0-4356-a10f-f47052036047</correlationId>
       <path>Templates/Skills/ModuleContextCapture_SkillMd_Agents/ModuleContextCapture_SkillMd_AgentsTemplatePartial.cs</path>
       <count>1</count>
@@ -49,11 +37,8 @@
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-09-01T22:23:38.7670632Z</updatedAt>
-      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
-      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
-      <approvedAt>2026-09-01T22:26:17.464136Z</approvedAt>
-      <deviationsHash>E48CA32DCC99CA1709F17F4A71432AA9A3B1C51D17C17CFFC0D7D51BD1AF3AE0</deviationsHash>
+      <updatedAt>2026-09-02T09:46:18.827384Z</updatedAt>
+      <deviationsHash>E04CACB33F5D9E4060EE9107200E5EEA76730CF4244528811CC323834D5F0F46</deviationsHash>
     </file>
   </files>
   <customFiles>

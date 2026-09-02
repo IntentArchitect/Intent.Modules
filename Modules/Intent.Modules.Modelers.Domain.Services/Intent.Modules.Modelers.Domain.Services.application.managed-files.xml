@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="8091eea0-0ab6-48c1-9aef-0ec7ae2b5b0c">
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Api/DomainPackageExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel" />
+  <file path="Api/DomainServiceModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/FolderExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" />
+  <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
+  <file path="Intent.Modelers.Domain.Services.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.Modelers.Domain.Services.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="modelers/Domain Service Types.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+</managedFiles>

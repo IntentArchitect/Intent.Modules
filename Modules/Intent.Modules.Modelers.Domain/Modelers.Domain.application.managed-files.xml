@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="b980295a-75ce-48ac-9ef8-0368f8a1a174">
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Api/AssociationModel.cs" deviationsHash="3D7E0EEEBC1359A18EE8E7BF81A0191E933E0AA3A9DB4EED36D74EFC406D015A" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/AttributeModel.cs" deviationsHash="EDF09F4EF6C11678DDE5E5CC4124A1441896290EB6C29B6B51EF5DA656BEA001" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ClassConstructorModel.cs" deviationsHash="23540ED796F53C29192B58A54D663EB73001B517E2929ED62528AEA7BABA6320" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ClassModel.cs" deviationsHash="239D5FE756B92BC286AAA67D11F48E5C5B82F03D524301DA566705F277A36FC2" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/CommentAssociationModel.cs" deviationsHash="7A866D16E5514EA7EDE97E4E5FA388798D63B58BD8C6E0B4A8820F3529776B03" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/CommentModel.cs" deviationsHash="9CA63A06E33057474B23CF520F42D0D77C87BFF6E4B6751FF8F0E2EC46B30D2A" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/DataContractGeneralizationModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/DataContractModel.cs" deviationsHash="581E94291778F2EAA7F39E2FF6E4EFCC4F5730A911436F0684C2168C1C762FB0" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/DiagramModel.cs" deviationsHash="78AE0D3E14582E355D44649536AF5CB615EAA7D2B88A61D2F2857A5AA9E93C06" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/DomainPackageModel.cs" deviationsHash="EB60DBDCFB8372BCB7D14E3BDED3178FCD371027F528F81C726CC312C7F2D3A2" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageModel" />
+  <file path="Api/Extensions/AssociationModelAssociationExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/Extensions/CommentAssociationModelAssociationExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/Extensions/DataContractGeneralizationModelAssociationExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/Extensions/GeneralizationModelAssociationExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/Extensions/OperationModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/FolderExtensionModel.cs" deviationsHash="293D35CE05B204B67A844243ED481139AF37FFA0069D785A2217D68584323341" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" />
+  <file path="Api/GeneralizationModel.cs" deviationsHash="9A7A6BC770C0FAE9CEDCAB21E1BF87DC39694EA34AD8B0839CCE1D21A773EAB4" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/IStaticConstructorModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiTraitModel" />
+  <file path="Api/OperationModel.cs" deviationsHash="FB94D4DE849D1A8D379B01CB802F1D64DFA4A926B024376E6166221C74E51B13" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ParameterModel.cs" deviationsHash="EC44457DD22F5E2BFDD59920ED6605D3D88D377928961714DA14024C87A42084" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="ApiMetadataDesignerExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions" />
+  <file path="ApiMetadataPackageExtensions.cs" deviationsHash="BF57DDA59FA2C56591E5C181F52CD376CFEE77D09BE010D0FAD39D86BCF4E8C7" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions" />
+  <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
+  <file path="Intent.Modelers.Domain.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.Modelers.Domain.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Migrations/Migration_03_12_02_Pre_01.cs" deviationsHash="5AEB22B40755AE1B1F458BE13F443F65EB4BE2F6440048EA4B65E8E31B54053F" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
+  <file path="Migrations/OnInstallMigration.cs" deviationsHash="60B15F4438A329EF376A24573421236B612DF7AA4C8D71059A913DF6C1A1F6DD" templateId="Intent.ModuleBuilder.Templates.Migrations.OnInstallMigration" />
+  <file path="Settings/ModuleSettingsExtensions.cs" deviationsHash="39B9D6CBFE243BFAF4DDBD78A9223AE6D2A1A8A82BC2114209CAD3A692EF1E53" templateId="Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions" />
+  <file path="modelers/Domain Types.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+  <file path="modelers/Domain.designer.config" templateId="Intent.ModuleBuilder.DesignerConfig" />
+  <file path="resources/documentation.json" templateId="Intent.ModuleBuilder.Templates.DocumentationTemplate" />
+</managedFiles>

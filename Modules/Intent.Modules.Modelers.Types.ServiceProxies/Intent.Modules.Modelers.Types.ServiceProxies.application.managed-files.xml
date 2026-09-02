@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="13414c87-2aee-4d87-b8cb-2da2cd9625d9">
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Api/FolderExtensionsModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" />
+  <file path="Api/OperationModel.cs" deviationsHash="4A71A2ABA598A1716DA91661D44CEC3D0514CFA4CA08FB06F668273B6A88F949" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ParameterModel.cs" deviationsHash="C6B92A38F1182280942FDB4A4DE0AC84B52BFB10A920B5BA4B50FC007B5A10F6" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ServiceProxiesPackageModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageModel" />
+  <file path="Api/ServiceProxyModel.cs" deviationsHash="D1279D61559D2F03D4A91E847411DB97BF338BAB6FDAC573AD3826A3E5D63550" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="ApiMetadataPackageExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions" />
+  <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
+  <file path="Intent.Modelers.Types.ServiceProxies.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.Modelers.Types.ServiceProxies.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="ServicesPackageExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel" />
+  <file path="modelers/Service Proxy Services Extension.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+  <file path="modelers/Service Proxy Types.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+</managedFiles>

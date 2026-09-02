@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="42317c90-af5c-4041-aa8d-fe6e855564d0" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-  <name>instructions</name>
-  <display>instructions</display>
+  <name>rules</name>
+  <display>rules</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />

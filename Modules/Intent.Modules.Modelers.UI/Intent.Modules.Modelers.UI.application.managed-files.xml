@@ -1,61 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="ceb815c5-d710-40ef-b963-541979dc5597">
-  <file path="../.agents/instructions/csharp-guidelines.md" />
-  <file path="../Intent.Modules.sln" />
-  <file path="Api/AssociationDestinationEndSettingsModelStereotypeExtensions.cs" />
-  <file path="Api/AutoCompleteModelStereotypeExtensions.cs" />
-  <file path="Api/ButtonModelStereotypeExtensions.cs" />
-  <file path="Api/CallServiceOperationActionModel.cs" />
-  <file path="Api/CallServiceOperationActionModelAssociationExtensions.cs" deviationsHash="95AB2835E13F632CAA2E426C797ABB59F62D265E38246CAF7B13296304CDABAE" />
-  <file path="Api/CheckboxModelStereotypeExtensions.cs" />
-  <file path="Api/ComponentModel.cs" />
-  <file path="Api/ComponentModelStereotypeExtensions.cs" />
-  <file path="Api/ComponentOperationModel.cs" deviationsHash="30CFD6A2739F858119A98BF4221E36E4CDB6A745ACAE895B61802C6DEB981231" />
-  <file path="Api/ComponentViewModel.cs" />
-  <file path="Api/CompositionModel.cs" />
-  <file path="Api/CompositionModelAssociationExtensions.cs" />
-  <file path="Api/DiagramModel.cs" />
-  <file path="Api/DisplayComponentModel.cs" />
-  <file path="Api/ElementExtensionModelStereotypeExtensions.cs" />
-  <file path="Api/ElementSettingsModelStereotypeExtensions.cs" />
-  <file path="Api/EventEmitterModel.cs" />
-  <file path="Api/EventEmitterModelStereotypeExtensions.cs" />
-  <file path="Api/FolderExtensionModel.cs" />
-  <file path="Api/IComponentModel.cs" />
-  <file path="Api/IComposableModel.cs" />
-  <file path="Api/IDialogModel.cs" />
-  <file path="Api/IInvokableModel.cs" />
-  <file path="Api/IInvokableServiceOperationModel.cs" />
-  <file path="Api/IPageModel.cs" />
-  <file path="Api/InvocationModel.cs" />
-  <file path="Api/LayoutBodyModel.cs" />
-  <file path="Api/LayoutFooterModel.cs" />
-  <file path="Api/LayoutHeaderModel.cs" />
-  <file path="Api/LayoutModel.cs" />
-  <file path="Api/LayoutProfileMenuModel.cs" />
-  <file path="Api/LayoutSiderModel.cs" />
-  <file path="Api/LinkModelStereotypeExtensions.cs" />
-  <file path="Api/MenuItemModelStereotypeExtensions.cs" />
-  <file path="Api/ModelDefinitionModel.cs" />
-  <file path="Api/NavigationModel.cs" />
-  <file path="Api/NavigationModelAssociationExtensions.cs" />
-  <file path="Api/PropertyModel.cs" />
-  <file path="Api/PropertyModelStereotypeExtensions.cs" />
-  <file path="Api/RadioGroupModelStereotypeExtensions.cs" />
-  <file path="Api/ReturnModel.cs" />
-  <file path="Api/SelectModelStereotypeExtensions.cs" />
-  <file path="Api/TableModelStereotypeExtensions.cs" />
-  <file path="Api/TextInputModelStereotypeExtensions.cs" />
-  <file path="Api/UserInterfacePackageExtensionModel.cs" />
-  <file path="Api/UserInterfacePackageModel.cs" />
-  <file path="ApiMetadataDesignerExtensions.cs" />
-  <file path="ApiMetadataPackageExtensions.cs" />
-  <file path="ApiMetadataProviderExtensions.cs" />
-  <file path="Intent.Modelers.UI.imodspec" />
-  <file path="Intent.Modules.Modelers.UI.csproj" />
-  <file path="Migrations/Migration_01_01_03_Pre_01.cs" />
-  <file path="modelers/User Interface Core Types.designer.settings" />
-  <file path="modelers/User Interface Packages.designer.settings" />
-  <file path="modelers/User Interface.designer.config" />
-  <file path="release-notes.md" />
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Api/AssociationDestinationEndSettingsModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/AutoCompleteModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/ButtonModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/CallServiceOperationActionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/CallServiceOperationActionModelAssociationExtensions.cs" deviationsHash="95AB2835E13F632CAA2E426C797ABB59F62D265E38246CAF7B13296304CDABAE" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/CheckboxModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/ComponentModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ComponentModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/ComponentOperationModel.cs" deviationsHash="30CFD6A2739F858119A98BF4221E36E4CDB6A745ACAE895B61802C6DEB981231" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ComponentViewModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/CompositionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/CompositionModelAssociationExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/DiagramModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/DisplayComponentModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ElementExtensionModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/ElementSettingsModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/EventEmitterModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/EventEmitterModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/FolderExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" />
+  <file path="Api/IComponentModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiTraitModel" />
+  <file path="Api/IComposableModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiTraitModel" />
+  <file path="Api/IDialogModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiTraitModel" />
+  <file path="Api/IInvokableModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiTraitModel" />
+  <file path="Api/IInvokableServiceOperationModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiTraitModel" />
+  <file path="Api/IPageModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiTraitModel" />
+  <file path="Api/InvocationModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/LayoutBodyModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/LayoutFooterModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/LayoutHeaderModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/LayoutModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/LayoutProfileMenuModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/LayoutSiderModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/LinkModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/MenuItemModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/ModelDefinitionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/NavigationModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/NavigationModelAssociationExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/PropertyModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/PropertyModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/RadioGroupModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/ReturnModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/SelectModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/TableModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/TextInputModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/UserInterfacePackageExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel" />
+  <file path="Api/UserInterfacePackageModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageModel" />
+  <file path="ApiMetadataDesignerExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions" />
+  <file path="ApiMetadataPackageExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions" />
+  <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
+  <file path="Intent.Modelers.UI.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.Modelers.UI.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Migrations/Migration_01_01_03_Pre_01.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
+  <file path="modelers/User Interface Core Types.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+  <file path="modelers/User Interface Packages.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+  <file path="modelers/User Interface.designer.config" templateId="Intent.ModuleBuilder.DesignerConfig" />
+  <file path="release-notes.md" templateId="Intent.ModuleBuilder.Templates.ReleaseNotes" />
 </managedFiles>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="ff3070c6-4626-4a8b-85ab-7d56887a1445">
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Api/AttributeModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ConstructorModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/EnumLiteralModel.cs" deviationsHash="171895FC9E414293792847EE90A64AB534C7B93A7BF539E73A5F5DB1152B99D0" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/EnumModel.cs" deviationsHash="13658464432AA531A401C7C3451D97A751D63142560F2A93D4EAEEE700BEF1D4" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/FolderModel.cs" deviationsHash="2EB6D5173E369E544B24B6FE3674352F89B8E678A51559AB30D529C10D556E73" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/OperationModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ParameterModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/TypeDefinitionExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" />
+  <file path="Api/TypeDefinitionModel.cs" deviationsHash="8E52DF1AC55887BD880851CB1E49925D05F16258823D70E49C7EA021F6E94FB2" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
+  <file path="Intent.Common.Types.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.Common.Types.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="modelers/Common Types Extensions.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+  <file path="modelers/Common Types.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+  <file path="resources/documentation.json" templateId="Intent.ModuleBuilder.Templates.DocumentationTemplate" />
+</managedFiles>

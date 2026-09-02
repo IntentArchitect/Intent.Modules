@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="355da3b4-406d-43fb-9d84-cc49aad1fec8">
-  <file path="../.agents/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
   <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
   <file path="Intent.ModuleBuilder.AI.Workflow.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
   <file path="Intent.Modules.ModuleBuilder.AI.Workflow.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
   <file path="Settings/ModuleSettingsExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions" />
-  <file path="Templates/RootPrinciples/ModuleBuildingWorkflowMd/ModuleBuildingWorkflowMdTemplatePartial.cs" deviationsHash="5ABE2834A74DDB431F6F8DD345B063F74CA72659F1A8E7365BBF44CECBC310E2" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/RootPrinciples/ModuleBuildingWorkflowMd/ModuleBuildingWorkflowMdTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
   <file path="Templates/RootPrinciples/ModuleBuildingWorkflowMd/ModuleBuildingWorkflowMdTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
   <file path="Templates/Skills/ModuleContextCapture_SkillMd_Agents/ModuleContextCapture_SkillMd_AgentsTemplatePartial.cs" deviationsHash="5F79D3CE03D7DD63CAF45FF6A57DDA582BF4143C1FB2CE81C650BDBB54CD5DB8" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
   <file path="Templates/Skills/ModuleContextCapture_SkillMd_Agents/ModuleContextCapture_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
@@ -13,7 +14,7 @@
   <file path="Templates/Skills/ModuleDependencyAudit_SkillMd_Agents/ModuleDependencyAudit_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
   <file path="Templates/Skills/ModuleDocsChore_SkillMd_Agents/ModuleDocsChore_SkillMd_AgentsTemplatePartial.cs" deviationsHash="04FCEFB419FFF6C13A314052B6449795B672A3B57325711E9C3517AFE3214794" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
   <file path="Templates/Skills/ModuleDocsChore_SkillMd_Agents/ModuleDocsChore_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
-  <file path="Templates/Skills/ModuleVersionIncrement_SkillMd_Agents/ModuleVersionIncrement_SkillMd_AgentsTemplatePartial.cs" deviationsHash="E48CA32DCC99CA1709F17F4A71432AA9A3B1C51D17C17CFFC0D7D51BD1AF3AE0" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/ModuleVersionIncrement_SkillMd_Agents/ModuleVersionIncrement_SkillMd_AgentsTemplatePartial.cs" deviationsHash="E04CACB33F5D9E4060EE9107200E5EEA76730CF4244528811CC323834D5F0F46" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
   <file path="Templates/Skills/ModuleVersionIncrement_SkillMd_Agents/ModuleVersionIncrement_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
   <file path="release-notes.md" templateId="Intent.ModuleBuilder.Templates.ReleaseNotes" />
 </managedFiles>

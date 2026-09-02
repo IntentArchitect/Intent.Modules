@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="4a83ad82-f5c3-4456-80a0-996e1b0423e2">
-  <file path="../.agents/instructions/csharp-guidelines.md" />
-  <file path="../Intent.Modules.sln" />
-  <file path="Intent.ModuleBuilder.AI.SDD.imodspec" />
-  <file path="Intent.Modules.ModuleBuilder.AI.SDD.csproj" />
-  <file path="Templates/RootPrinciples/SddWaveEvidenceMd/SddWaveEvidenceMdTemplatePartial.cs" />
-  <file path="Templates/RootPrinciples/SddWaveEvidenceMd/SddWaveEvidenceMdTemplateRegistration.cs" />
-  <file path="Templates/Skills/SddBuildModule_SkillMd_Agents/SddBuildModule_SkillMd_AgentsTemplatePartial.cs" deviationsHash="F52FFABCD957B49A21E34BFEE5D6764D1CECF697C0EE633F756685D02108BB3D" />
-  <file path="Templates/Skills/SddBuildModule_SkillMd_Agents/SddBuildModule_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="release-notes.md" />
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Intent.ModuleBuilder.AI.SDD.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.ModuleBuilder.AI.SDD.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Templates/RootPrinciples/SddWaveEvidenceMd/SddWaveEvidenceMdTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/RootPrinciples/SddWaveEvidenceMd/SddWaveEvidenceMdTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/SddBuildModule_SkillMd_Agents/SddBuildModule_SkillMd_AgentsTemplatePartial.cs" deviationsHash="F52FFABCD957B49A21E34BFEE5D6764D1CECF697C0EE633F756685D02108BB3D" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/SddBuildModule_SkillMd_Agents/SddBuildModule_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="release-notes.md" templateId="Intent.ModuleBuilder.Templates.ReleaseNotes" />
 </managedFiles>

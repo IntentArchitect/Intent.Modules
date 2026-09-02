@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="d80e91fc-ff6c-4960-b18c-7fb30c4e81e3">
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Api/ApplicationTemplateModel.cs" deviationsHash="8DD689BFF3F2609D9E6E373D93FD1939FB4CF880E4E7767B4E24EBED26F1CE5F" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageModel" />
+  <file path="Api/ApplicationTemplateModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/ApplicationTemplateSettingsConfigurationModel.cs" deviationsHash="5E7F8182309FA0AC659ED967564B3E6BBE1E685FE3AB86ED081E92558B279B7A" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ApplicationTemplateSettingsFieldConfigurationModel.cs" deviationsHash="E46A558498B186F9153C7EEAFEBE47A4F8CCE1418F8EA912575F7F73D0964247" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/ApplicationTemplateSettingsFieldOptionModel.cs" deviationsHash="70D04D487DCE6B4B23D5FE2EE0A168C39312015D9ADDAB79CA9B02D1D82F5CB5" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ComponentGroupModel.cs" deviationsHash="B5AC41DD703FF6D24524E5BA3C5BA9FB9633AFCB3F94636055C64E1C218D5E2C" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ComponentGroupModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/ComponentModel.cs" deviationsHash="37A31613609193ACF50CE8BCD9D35E1C3045A0DACDCC0ADA29FDF16CF0E342ED" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ComponentModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/ComponentModuleModel.cs" deviationsHash="4FF58E47CB15AF11ACE113B746B798166E9DF12C7B61659DDB7B0E3E4DF9F6FE" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ComponentModuleModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/FileInstallationRuleModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/FileInstallationRuleModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/InstallationSettingsModel.cs" deviationsHash="2668D77516D6FD84212B790569C2CCDED488EED64B7F27C30DA7E4755751E74F" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/MinimumDependencyVersionsModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ModuleModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="ApiMetadataDesignerExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions" />
+  <file path="ApiMetadataPackageExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions" />
+  <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
+  <file path="Intent.ApplicationTemplate.Builder.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.ApplicationTemplate.Builder.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Migrations/Migration_03_04_08_Pre_00.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
+  <file path="Migrations/Migration_03_05_00_Pre_00.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
+  <file path="Migrations/Migration_03_05_00_Pre_01.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
+  <file path="Templates/Templates/IatSpecFile/IatSpecFileTemplatePartial.cs" deviationsHash="B9AA3D04A07F6B74B4B2DB1FFA398C373DB67998E799DCFFA870A1871A0FC64D" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Templates/IatSpecFile/IatSpecFileTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
+  <file path="modelers/App Templates.designer.config" templateId="Intent.ModuleBuilder.DesignerConfig" />
+  <file path="modelers/Application Template Builder.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+</managedFiles>

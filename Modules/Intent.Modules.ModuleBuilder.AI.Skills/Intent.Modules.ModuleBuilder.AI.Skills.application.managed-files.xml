@@ -1,72 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="1d074d2f-3b07-4f9d-89e4-f236a68278bd">
-  <file path="../.agents/instructions/csharp-guidelines.md" />
-  <file path="../Intent.Modules.sln" />
-  <file path="Intent.ModuleBuilder.AI.Skills.imodspec" />
-  <file path="Intent.Modules.ModuleBuilder.AI.Skills.csproj" />
-  <file path="Migrations/Migration_01_00_01_Pre_01.cs" deviationsHash="2D4B1947570D0D4481D522C88CF5F9DF75CC99B00461300D6B79CFA785903D9F" />
-  <file path="Templates/RootPrinciples/ExceptionGuidelinesMd/ExceptionGuidelinesMdTemplatePartial.cs" />
-  <file path="Templates/RootPrinciples/ExceptionGuidelinesMd/ExceptionGuidelinesMdTemplateRegistration.cs" />
-  <file path="Templates/RootPrinciples/KnownBuildGotchasMd/KnownBuildGotchasMdTemplatePartial.cs" />
-  <file path="Templates/RootPrinciples/KnownBuildGotchasMd/KnownBuildGotchasMdTemplateRegistration.cs" />
-  <file path="Templates/Skills/AddAssociationType_ResourcesAssociationTypeWorkflowMd_Agents/AddAssociationType_ResourcesAssociationTypeWorkflowMd_AgentsTemplatePartial.cs" />
-  <file path="Templates/Skills/AddAssociationType_ResourcesAssociationTypeWorkflowMd_Agents/AddAssociationType_ResourcesAssociationTypeWorkflowMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/AddAssociationType_SkillMd_Agents/AddAssociationType_SkillMd_AgentsTemplatePartial.cs" deviationsHash="B8E2673BC16357314A9C8C3B9DA5BD585B57CFF30ED8D4593CA18882EAC37138" />
-  <file path="Templates/Skills/AddAssociationType_SkillMd_Agents/AddAssociationType_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/AddDesignerExtension_ResourcesDesignerExtensionWorkflowMd_Agents/AddDesignerExtension_ResourcesDesignerExtensionWorkflowMd_AgentsTemplatePartial.cs" />
-  <file path="Templates/Skills/AddDesignerExtension_ResourcesDesignerExtensionWorkflowMd_Agents/AddDesignerExtension_ResourcesDesignerExtensionWorkflowMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/AddDesignerExtension_ResourcesDesignerExtensionsReferenceMd_Agents/AddDesignerExtension_ResourcesDesignerExtensionsReferenceMd_AgentsTemplatePartial.cs" />
-  <file path="Templates/Skills/AddDesignerExtension_ResourcesDesignerExtensionsReferenceMd_Agents/AddDesignerExtension_ResourcesDesignerExtensionsReferenceMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/AddDesignerExtension_SkillMd_Agents/AddDesignerExtension_SkillMd_AgentsTemplatePartial.cs" deviationsHash="B1F693B65F42E44C52BFAFE980D45446ACD92780BE6AFFA98EECEB0A1CFD0E47" />
-  <file path="Templates/Skills/AddDesignerExtension_SkillMd_Agents/AddDesignerExtension_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/AddModuleMigration_SkillMd_Agents/AddModuleMigration_SkillMd_AgentsTemplatePartial.cs" deviationsHash="79F00D5EABF7BA5B1F340CFB2F9EDD7E5F1267E4001216FBBBC1E3BD845BD0A6" />
-  <file path="Templates/Skills/AddModuleMigration_SkillMd_Agents/AddModuleMigration_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/ArchitectureTemplates_SkillMd_Agents/ArchitectureTemplates_SkillMd_AgentsTemplatePartial.cs" deviationsHash="1707F60C35A6DB44C42AEE01218C521728B362B230B1841EB75C0427485C42E1" />
-  <file path="Templates/Skills/ArchitectureTemplates_SkillMd_Agents/ArchitectureTemplates_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/FileBuilderExpert_ResourcesApiCheatsheetMd_Agents/FileBuilderExpert_ResourcesApiCheatsheetMd_AgentsTemplatePartial.cs" />
-  <file path="Templates/Skills/FileBuilderExpert_ResourcesApiCheatsheetMd_Agents/FileBuilderExpert_ResourcesApiCheatsheetMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/FileBuilderExpert_ResourcesBuilderPatternsMd_Agents/FileBuilderExpert_ResourcesBuilderPatternsMd_AgentsTemplatePartial.cs" />
-  <file path="Templates/Skills/FileBuilderExpert_ResourcesBuilderPatternsMd_Agents/FileBuilderExpert_ResourcesBuilderPatternsMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_Agents/FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_AgentsTemplate.cs" />
-  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_Agents/FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_AgentsTemplatePartial.cs" />
-  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_Agents/FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsControlFlowCs_Agents/FileBuilderExpert_ResourcesPatternsControlFlowCs_AgentsTemplate.cs" />
-  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsControlFlowCs_Agents/FileBuilderExpert_ResourcesPatternsControlFlowCs_AgentsTemplatePartial.cs" />
-  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsControlFlowCs_Agents/FileBuilderExpert_ResourcesPatternsControlFlowCs_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsLifecycleHooksCs_Agents/FileBuilderExpert_ResourcesPatternsLifecycleHooksCs_AgentsTemplate.cs" />
-  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsLifecycleHooksCs_Agents/FileBuilderExpert_ResourcesPatternsLifecycleHooksCs_AgentsTemplatePartial.cs" />
-  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsLifecycleHooksCs_Agents/FileBuilderExpert_ResourcesPatternsLifecycleHooksCs_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/FileBuilderExpert_ResourcesTroubleshootingMd_Agents/FileBuilderExpert_ResourcesTroubleshootingMd_AgentsTemplatePartial.cs" />
-  <file path="Templates/Skills/FileBuilderExpert_ResourcesTroubleshootingMd_Agents/FileBuilderExpert_ResourcesTroubleshootingMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/FileBuilderExpert_SkillMd_Agents/FileBuilderExpert_SkillMd_AgentsTemplatePartial.cs" deviationsHash="09917E800149FA49339C9FC2CB41736ACA42DF6293F4FEBDA4A5D95647F867CA" />
-  <file path="Templates/Skills/FileBuilderExpert_SkillMd_Agents/FileBuilderExpert_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/IntentDomainInteractionsExpert_ResourcesInteractionsCheatsheetMd_Agents/IntentDomainInteractionsExpert_ResourcesInteractionsCheatsheetMd_AgentsTemplatePartial.cs" />
-  <file path="Templates/Skills/IntentDomainInteractionsExpert_ResourcesInteractionsCheatsheetMd_Agents/IntentDomainInteractionsExpert_ResourcesInteractionsCheatsheetMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/IntentDomainInteractionsExpert_SkillMd_Agents/IntentDomainInteractionsExpert_SkillMd_AgentsTemplatePartial.cs" deviationsHash="92B7F85738E621D955152A9985E6DD929EFE72CA264851707DE03C3A122A6F7C" />
-  <file path="Templates/Skills/IntentDomainInteractionsExpert_SkillMd_Agents/IntentDomainInteractionsExpert_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/IntentMappingArchitect_ResourcesMappingCheatsheetMd_Agents/IntentMappingArchitect_ResourcesMappingCheatsheetMd_AgentsTemplatePartial.cs" />
-  <file path="Templates/Skills/IntentMappingArchitect_ResourcesMappingCheatsheetMd_Agents/IntentMappingArchitect_ResourcesMappingCheatsheetMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/IntentMappingArchitect_SkillMd_Agents/IntentMappingArchitect_SkillMd_AgentsTemplatePartial.cs" deviationsHash="EA20255105F82B1BD26C6156A0E51000A8D4F82961A1E8E9F2C786DD82033843" />
-  <file path="Templates/Skills/IntentMappingArchitect_SkillMd_Agents/IntentMappingArchitect_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/IntentMetadataConsumer_ResourcesMetadataCheatsheetMd_Agents/IntentMetadataConsumer_ResourcesMetadataCheatsheetMd_AgentsTemplatePartial.cs" />
-  <file path="Templates/Skills/IntentMetadataConsumer_ResourcesMetadataCheatsheetMd_Agents/IntentMetadataConsumer_ResourcesMetadataCheatsheetMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/IntentMetadataConsumer_SkillMd_Agents/IntentMetadataConsumer_SkillMd_AgentsTemplatePartial.cs" deviationsHash="078CAB8777A9A8B455DA250C02521CB5801B4B0A08720E83D87C484D3ECB0645" />
-  <file path="Templates/Skills/IntentMetadataConsumer_SkillMd_Agents/IntentMetadataConsumer_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/IntentModuleOrchestrator_ResourcesOrchestrationCheatsheetMd_Agents/IntentModuleOrchestrator_ResourcesOrchestrationCheatsheetMd_AgentsTemplatePartial.cs" />
-  <file path="Templates/Skills/IntentModuleOrchestrator_ResourcesOrchestrationCheatsheetMd_Agents/IntentModuleOrchestrator_ResourcesOrchestrationCheatsheetMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/IntentModuleOrchestrator_SkillMd_Agents/IntentModuleOrchestrator_SkillMd_AgentsTemplatePartial.cs" deviationsHash="E39642965B89027B7834C453FE0256FE7A8C8EC60BB412F1A566AEEE3CF404CA" />
-  <file path="Templates/Skills/IntentModuleOrchestrator_SkillMd_Agents/IntentModuleOrchestrator_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/ModuleBuildingStrategies_SkillMd_Agents/ModuleBuildingStrategies_SkillMd_AgentsTemplatePartial.cs" deviationsHash="95049F380B82596BE51CF55DC8C7D6C0E079A331879321C20325759367367364" />
-  <file path="Templates/Skills/ModuleBuildingStrategies_SkillMd_Agents/ModuleBuildingStrategies_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/ModuleDebugging_SkillMd_Agents/ModuleDebugging_SkillMd_AgentsTemplatePartial.cs" deviationsHash="1487F717CEFF47B527B8679AF58BA92DD59D918477601D0E0F52E6CD1F98F954" />
-  <file path="Templates/Skills/ModuleDebugging_SkillMd_Agents/ModuleDebugging_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/ModuleDocs_SkillMd_Agents/ModuleDocs_SkillMd_AgentsTemplatePartial.cs" deviationsHash="942EA5C3A262167D88D66644A28AA418F5030CE96A5326A415E79222205C2575" />
-  <file path="Templates/Skills/ModuleDocs_SkillMd_Agents/ModuleDocs_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/ModuleElementIcons_SkillMd_Agents/ModuleElementIcons_SkillMd_AgentsTemplatePartial.cs" deviationsHash="29FF067032B9B9F8816D01CB978CD4D8EE72EF034DB4C090A5014980BD99B134" />
-  <file path="Templates/Skills/ModuleElementIcons_SkillMd_Agents/ModuleElementIcons_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/ModuleSvgIcon_SkillMd_Agents/ModuleSvgIcon_SkillMd_AgentsTemplatePartial.cs" deviationsHash="2B2C72DBAD4E743EC1C4A2618B478179C9E5CAC3D2227C8F56A5956B92D80752" />
-  <file path="Templates/Skills/ModuleSvgIcon_SkillMd_Agents/ModuleSvgIcon_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="Templates/Skills/ModuleVersioning_SkillMd_Agents/ModuleVersioning_SkillMd_AgentsTemplatePartial.cs" deviationsHash="87D4E05DB838F3095F0541B7E5B600567CC0A6EB53FEC9CEE1F046CC6FF55A44" />
-  <file path="Templates/Skills/ModuleVersioning_SkillMd_Agents/ModuleVersioning_SkillMd_AgentsTemplateRegistration.cs" />
-  <file path="release-notes.md" />
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Intent.ModuleBuilder.AI.Skills.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.ModuleBuilder.AI.Skills.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Migrations/Migration_01_00_01_Pre_01.cs" deviationsHash="2D4B1947570D0D4481D522C88CF5F9DF75CC99B00461300D6B79CFA785903D9F" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
+  <file path="Templates/RootPrinciples/ExceptionGuidelinesMd/ExceptionGuidelinesMdTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/RootPrinciples/ExceptionGuidelinesMd/ExceptionGuidelinesMdTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/RootPrinciples/KnownBuildGotchasMd/KnownBuildGotchasMdTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/RootPrinciples/KnownBuildGotchasMd/KnownBuildGotchasMdTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/AddAssociationType_ResourcesAssociationTypeWorkflowMd_Agents/AddAssociationType_ResourcesAssociationTypeWorkflowMd_AgentsTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/AddAssociationType_ResourcesAssociationTypeWorkflowMd_Agents/AddAssociationType_ResourcesAssociationTypeWorkflowMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/AddAssociationType_SkillMd_Agents/AddAssociationType_SkillMd_AgentsTemplatePartial.cs" deviationsHash="B8E2673BC16357314A9C8C3B9DA5BD585B57CFF30ED8D4593CA18882EAC37138" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/AddAssociationType_SkillMd_Agents/AddAssociationType_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/AddDesignerExtension_ResourcesDesignerExtensionWorkflowMd_Agents/AddDesignerExtension_ResourcesDesignerExtensionWorkflowMd_AgentsTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/AddDesignerExtension_ResourcesDesignerExtensionWorkflowMd_Agents/AddDesignerExtension_ResourcesDesignerExtensionWorkflowMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/AddDesignerExtension_ResourcesDesignerExtensionsReferenceMd_Agents/AddDesignerExtension_ResourcesDesignerExtensionsReferenceMd_AgentsTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/AddDesignerExtension_ResourcesDesignerExtensionsReferenceMd_Agents/AddDesignerExtension_ResourcesDesignerExtensionsReferenceMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/AddDesignerExtension_SkillMd_Agents/AddDesignerExtension_SkillMd_AgentsTemplatePartial.cs" deviationsHash="B1F693B65F42E44C52BFAFE980D45446ACD92780BE6AFFA98EECEB0A1CFD0E47" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/AddDesignerExtension_SkillMd_Agents/AddDesignerExtension_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/AddModuleMigration_SkillMd_Agents/AddModuleMigration_SkillMd_AgentsTemplatePartial.cs" deviationsHash="79F00D5EABF7BA5B1F340CFB2F9EDD7E5F1267E4001216FBBBC1E3BD845BD0A6" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/AddModuleMigration_SkillMd_Agents/AddModuleMigration_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/ArchitectureTemplates_SkillMd_Agents/ArchitectureTemplates_SkillMd_AgentsTemplatePartial.cs" deviationsHash="1707F60C35A6DB44C42AEE01218C521728B362B230B1841EB75C0427485C42E1" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/ArchitectureTemplates_SkillMd_Agents/ArchitectureTemplates_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/FileBuilderExpert_ResourcesApiCheatsheetMd_Agents/FileBuilderExpert_ResourcesApiCheatsheetMd_AgentsTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/FileBuilderExpert_ResourcesApiCheatsheetMd_Agents/FileBuilderExpert_ResourcesApiCheatsheetMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/FileBuilderExpert_ResourcesBuilderPatternsMd_Agents/FileBuilderExpert_ResourcesBuilderPatternsMd_AgentsTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/FileBuilderExpert_ResourcesBuilderPatternsMd_Agents/FileBuilderExpert_ResourcesBuilderPatternsMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_Agents/FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_AgentsTemplate.cs" templateId="Intent.ModuleBuilder.Templates.FileTemplateStringInterpolation" />
+  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_Agents/FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_AgentsTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_Agents/FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsControlFlowCs_Agents/FileBuilderExpert_ResourcesPatternsControlFlowCs_AgentsTemplate.cs" templateId="Intent.ModuleBuilder.Templates.FileTemplateStringInterpolation" />
+  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsControlFlowCs_Agents/FileBuilderExpert_ResourcesPatternsControlFlowCs_AgentsTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsControlFlowCs_Agents/FileBuilderExpert_ResourcesPatternsControlFlowCs_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsLifecycleHooksCs_Agents/FileBuilderExpert_ResourcesPatternsLifecycleHooksCs_AgentsTemplate.cs" templateId="Intent.ModuleBuilder.Templates.FileTemplateStringInterpolation" />
+  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsLifecycleHooksCs_Agents/FileBuilderExpert_ResourcesPatternsLifecycleHooksCs_AgentsTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/FileBuilderExpert_ResourcesPatternsLifecycleHooksCs_Agents/FileBuilderExpert_ResourcesPatternsLifecycleHooksCs_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/FileBuilderExpert_ResourcesTroubleshootingMd_Agents/FileBuilderExpert_ResourcesTroubleshootingMd_AgentsTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/FileBuilderExpert_ResourcesTroubleshootingMd_Agents/FileBuilderExpert_ResourcesTroubleshootingMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/FileBuilderExpert_SkillMd_Agents/FileBuilderExpert_SkillMd_AgentsTemplatePartial.cs" deviationsHash="09917E800149FA49339C9FC2CB41736ACA42DF6293F4FEBDA4A5D95647F867CA" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/FileBuilderExpert_SkillMd_Agents/FileBuilderExpert_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/IntentDomainInteractionsExpert_ResourcesInteractionsCheatsheetMd_Agents/IntentDomainInteractionsExpert_ResourcesInteractionsCheatsheetMd_AgentsTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/IntentDomainInteractionsExpert_ResourcesInteractionsCheatsheetMd_Agents/IntentDomainInteractionsExpert_ResourcesInteractionsCheatsheetMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/IntentDomainInteractionsExpert_SkillMd_Agents/IntentDomainInteractionsExpert_SkillMd_AgentsTemplatePartial.cs" deviationsHash="92B7F85738E621D955152A9985E6DD929EFE72CA264851707DE03C3A122A6F7C" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/IntentDomainInteractionsExpert_SkillMd_Agents/IntentDomainInteractionsExpert_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/IntentMappingArchitect_ResourcesMappingCheatsheetMd_Agents/IntentMappingArchitect_ResourcesMappingCheatsheetMd_AgentsTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/IntentMappingArchitect_ResourcesMappingCheatsheetMd_Agents/IntentMappingArchitect_ResourcesMappingCheatsheetMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/IntentMappingArchitect_SkillMd_Agents/IntentMappingArchitect_SkillMd_AgentsTemplatePartial.cs" deviationsHash="EA20255105F82B1BD26C6156A0E51000A8D4F82961A1E8E9F2C786DD82033843" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/IntentMappingArchitect_SkillMd_Agents/IntentMappingArchitect_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/IntentMetadataConsumer_ResourcesMetadataCheatsheetMd_Agents/IntentMetadataConsumer_ResourcesMetadataCheatsheetMd_AgentsTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/IntentMetadataConsumer_ResourcesMetadataCheatsheetMd_Agents/IntentMetadataConsumer_ResourcesMetadataCheatsheetMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/IntentMetadataConsumer_SkillMd_Agents/IntentMetadataConsumer_SkillMd_AgentsTemplatePartial.cs" deviationsHash="078CAB8777A9A8B455DA250C02521CB5801B4B0A08720E83D87C484D3ECB0645" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/IntentMetadataConsumer_SkillMd_Agents/IntentMetadataConsumer_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/IntentModuleOrchestrator_ResourcesOrchestrationCheatsheetMd_Agents/IntentModuleOrchestrator_ResourcesOrchestrationCheatsheetMd_AgentsTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/IntentModuleOrchestrator_ResourcesOrchestrationCheatsheetMd_Agents/IntentModuleOrchestrator_ResourcesOrchestrationCheatsheetMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/IntentModuleOrchestrator_SkillMd_Agents/IntentModuleOrchestrator_SkillMd_AgentsTemplatePartial.cs" deviationsHash="E39642965B89027B7834C453FE0256FE7A8C8EC60BB412F1A566AEEE3CF404CA" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/IntentModuleOrchestrator_SkillMd_Agents/IntentModuleOrchestrator_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/ModuleBuildingStrategies_SkillMd_Agents/ModuleBuildingStrategies_SkillMd_AgentsTemplatePartial.cs" deviationsHash="95049F380B82596BE51CF55DC8C7D6C0E079A331879321C20325759367367364" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/ModuleBuildingStrategies_SkillMd_Agents/ModuleBuildingStrategies_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/ModuleDebugging_SkillMd_Agents/ModuleDebugging_SkillMd_AgentsTemplatePartial.cs" deviationsHash="1487F717CEFF47B527B8679AF58BA92DD59D918477601D0E0F52E6CD1F98F954" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/ModuleDebugging_SkillMd_Agents/ModuleDebugging_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/ModuleDocs_SkillMd_Agents/ModuleDocs_SkillMd_AgentsTemplatePartial.cs" deviationsHash="942EA5C3A262167D88D66644A28AA418F5030CE96A5326A415E79222205C2575" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/ModuleDocs_SkillMd_Agents/ModuleDocs_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/ModuleElementIcons_SkillMd_Agents/ModuleElementIcons_SkillMd_AgentsTemplatePartial.cs" deviationsHash="29FF067032B9B9F8816D01CB978CD4D8EE72EF034DB4C090A5014980BD99B134" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/ModuleElementIcons_SkillMd_Agents/ModuleElementIcons_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/ModuleSvgIcon_SkillMd_Agents/ModuleSvgIcon_SkillMd_AgentsTemplatePartial.cs" deviationsHash="2B2C72DBAD4E743EC1C4A2618B478179C9E5CAC3D2227C8F56A5956B92D80752" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/ModuleSvgIcon_SkillMd_Agents/ModuleSvgIcon_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Skills/ModuleVersioning_SkillMd_Agents/ModuleVersioning_SkillMd_AgentsTemplatePartial.cs" deviationsHash="87D4E05DB838F3095F0541B7E5B600567CC0A6EB53FEC9CEE1F046CC6FF55A44" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Skills/ModuleVersioning_SkillMd_Agents/ModuleVersioning_SkillMd_AgentsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="release-notes.md" templateId="Intent.ModuleBuilder.Templates.ReleaseNotes" />
 </managedFiles>

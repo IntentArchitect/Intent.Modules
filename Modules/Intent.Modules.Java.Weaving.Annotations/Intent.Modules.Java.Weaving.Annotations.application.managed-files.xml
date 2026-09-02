@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="34ab81e4-7133-42aa-a9ac-72dc515be606">
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Intent.Java.Weaving.Annotations.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.Java.Weaving.Annotations.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Templates/IntentCanAdd/IntentCanAddTemplate.cs" templateId="Intent.ModuleBuilder.Java.Templates.JavaTemplate.PreProcessT4" />
+  <file path="Templates/IntentCanAdd/IntentCanAddTemplate.tt" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileT4Template" />
+  <file path="Templates/IntentCanAdd/IntentCanAddTemplatePartial.cs" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileTemplatePartial" />
+  <file path="Templates/IntentCanAdd/IntentCanAddTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/IntentCanRemove/IntentCanRemoveTemplate.cs" templateId="Intent.ModuleBuilder.Java.Templates.JavaTemplate.PreProcessT4" />
+  <file path="Templates/IntentCanRemove/IntentCanRemoveTemplate.tt" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileT4Template" />
+  <file path="Templates/IntentCanRemove/IntentCanRemoveTemplatePartial.cs" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileTemplatePartial" />
+  <file path="Templates/IntentCanRemove/IntentCanRemoveTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/IntentCanUpdate/IntentCanUpdateTemplate.cs" templateId="Intent.ModuleBuilder.Java.Templates.JavaTemplate.PreProcessT4" />
+  <file path="Templates/IntentCanUpdate/IntentCanUpdateTemplate.tt" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileT4Template" />
+  <file path="Templates/IntentCanUpdate/IntentCanUpdateTemplatePartial.cs" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileTemplatePartial" />
+  <file path="Templates/IntentCanUpdate/IntentCanUpdateTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/IntentIgnore/IntentIgnoreTemplate.cs" templateId="Intent.ModuleBuilder.Java.Templates.JavaTemplate.PreProcessT4" />
+  <file path="Templates/IntentIgnore/IntentIgnoreTemplate.tt" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileT4Template" />
+  <file path="Templates/IntentIgnore/IntentIgnoreTemplatePartial.cs" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileTemplatePartial" />
+  <file path="Templates/IntentIgnore/IntentIgnoreTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/IntentIgnoreBody/IntentIgnoreBodyTemplate.cs" templateId="Intent.ModuleBuilder.Java.Templates.JavaTemplate.PreProcessT4" />
+  <file path="Templates/IntentIgnoreBody/IntentIgnoreBodyTemplate.tt" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileT4Template" />
+  <file path="Templates/IntentIgnoreBody/IntentIgnoreBodyTemplatePartial.cs" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileTemplatePartial" />
+  <file path="Templates/IntentIgnoreBody/IntentIgnoreBodyTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/IntentManage/IntentManageTemplate.cs" templateId="Intent.ModuleBuilder.Java.Templates.JavaTemplate.PreProcessT4" />
+  <file path="Templates/IntentManage/IntentManageTemplate.tt" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileT4Template" />
+  <file path="Templates/IntentManage/IntentManageTemplatePartial.cs" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileTemplatePartial" />
+  <file path="Templates/IntentManage/IntentManageTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/IntentManageClass/IntentManageClassTemplate.cs" templateId="Intent.ModuleBuilder.Java.Templates.JavaTemplate.PreProcessT4" />
+  <file path="Templates/IntentManageClass/IntentManageClassTemplate.tt" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileT4Template" />
+  <file path="Templates/IntentManageClass/IntentManageClassTemplatePartial.cs" deviationsHash="EDD458267E92CCE41C844BFFC7A8510843BC36C0F973456844F27885C0547524" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileTemplatePartial" />
+  <file path="Templates/IntentManageClass/IntentManageClassTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/IntentMerge/IntentMergeTemplate.cs" templateId="Intent.ModuleBuilder.Java.Templates.JavaTemplate.PreProcessT4" />
+  <file path="Templates/IntentMerge/IntentMergeTemplate.tt" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileT4Template" />
+  <file path="Templates/IntentMerge/IntentMergeTemplatePartial.cs" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileTemplatePartial" />
+  <file path="Templates/IntentMerge/IntentMergeTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/ModeEnum/ModeEnumTemplate.cs" templateId="Intent.ModuleBuilder.Java.Templates.JavaTemplate.PreProcessT4" />
+  <file path="Templates/ModeEnum/ModeEnumTemplate.tt" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileT4Template" />
+  <file path="Templates/ModeEnum/ModeEnumTemplatePartial.cs" deviationsHash="A82364A7179AE62B223478F82B3381BB9F22972BB92428BCD7AD0A5E6AAB94A6" templateId="Intent.ModuleBuilder.Java.Templates.JavaFileTemplatePartial" />
+  <file path="Templates/ModeEnum/ModeEnumTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/TemplateExtensions.cs" deviationsHash="B7203BFB9686F060DB0ACAA7C53E52041597E3DB8BC78F5BAE12E1FBA6835020" templateId="Intent.ModuleBuilder.Templates.TemplateExtensions" />
+</managedFiles>

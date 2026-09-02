@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="b12d90e1-8c8f-4fd8-9c47-0e165ce28161">
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Api/CommandModel.cs" deviationsHash="C323F1186CBB2E6BA239851EF5EAEEAAC181A82961632410CB51C5B2CD44BB3C" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/FolderExtensionModel.cs" deviationsHash="62AA69250561AD1466B2DD5DA9CF536960214680E998A5B780D627FE16404378" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" />
+  <file path="Api/QueryModel.cs" deviationsHash="9C47771DCD60722CAE2E5AED6C15F8AE77A5699601405C05CDE9DBAF429FEBD2" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
+  <file path="Intent.Modelers.Services.CQRS.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.Modelers.Services.CQRS.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="ServicesPackageExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel" />
+  <file path="modelers/Services CQRS Extension.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+  <file path="modelers/Services CQRS Interactions.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+  <file path="resources/documentation.json" templateId="Intent.ModuleBuilder.Templates.DocumentationTemplate" />
+</managedFiles>

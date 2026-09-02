@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="be31373a-86a5-41f4-8bf4-468cc0c481d0">
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Api/DomainEventAssociationModel.cs" deviationsHash="5AF01A16844071C22FE6065E6D5615B23787BC00BB7624DC077F555ABA9828B6" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/DomainEventGeneralizationModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/DomainEventHandlerAssociationModel.cs" deviationsHash="71A376E02561894ECF1AD8292C7219CD87135D120000FEA0431B84E7CD417EEF" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/DomainEventHandlerModel.cs" deviationsHash="93A7D353E4206737917755050BC19AFDE10A3616D2BF09CEA233A8D861E020F5" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/DomainEventModel.cs" deviationsHash="CC7C26613FAA81CB82A858232A530C042268D3917AFCFBB8EC4CC77554DA6DBE" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/DomainEventOriginAssociationModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/Extensions/DomainEventAssociationModelAssociationExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/Extensions/DomainEventGeneralizationModelAssociationExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/Extensions/DomainEventHandlerAssociationModelAssociationExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/Extensions/DomainEventOriginAssociationModelAssociationExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/FolderExtensionModel.cs" deviationsHash="293D35CE05B204B67A844243ED481139AF37FFA0069D785A2217D68584323341" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" />
+  <file path="Api/PropertyModel.cs" deviationsHash="679240A618DE1F579DF5DC6148B2924D616FFD6BA7994FA995B3CB031CF0A07F" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ServicesFolderExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" />
+  <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
+  <file path="DomainPackageExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel" />
+  <file path="Intent.Modelers.Domain.Events.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.Modelers.Domain.Events.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="ServicesPackageExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel" />
+  <file path="modelers/Domain Event Types.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+  <file path="modelers/Domain Events Services Extension.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+</managedFiles>

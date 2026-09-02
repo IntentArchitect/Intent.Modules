@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="7f521a90-df6d-409e-b3a4-ff4dc8ef9c45">
-  <file path="../.agents/instructions/csharp-guidelines.md" />
-  <file path="../Intent.Modules.sln" />
-  <file path="FactoryExtensions/AutoCompileFactoryExtension.cs" deviationsHash="F8E0CFEF8D458392948DF222FBA0F43B2230D072D840BDDE3D03FF4357E59C6C" />
-  <file path="Intent.ModuleBuilder.AutoCompile.imodspec" />
-  <file path="Intent.Modules.ModuleBuilder.AutoCompile.csproj" />
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="FactoryExtensions/AutoCompileFactoryExtension.cs" deviationsHash="F8E0CFEF8D458392948DF222FBA0F43B2230D072D840BDDE3D03FF4357E59C6C" templateId="Intent.ModuleBuilder.Templates.FactoryExtension" />
+  <file path="Intent.ModuleBuilder.AutoCompile.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.ModuleBuilder.AutoCompile.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
 </managedFiles>

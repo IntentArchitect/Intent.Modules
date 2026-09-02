@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="f7f12dd9-7193-4407-be08-2f7b7d232af3">
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Api/EventingDTOFieldModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/EventingDTOModel.cs" deviationsHash="03D597001A9EF5DFC06CF05F0C4B8F708F5CA5FBBDEA93FC5DE2CCEA11573079" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/EventingPackageModel.cs" deviationsHash="68859AB30CCAC701E5C1AE03278081647851E3670F63C98EA76E8BB52BB877CC" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageModel" />
+  <file path="Api/FolderExtensionModel.cs" deviationsHash="62AA69250561AD1466B2DD5DA9CF536960214680E998A5B780D627FE16404378" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" />
+  <file path="Api/GeneralizationModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/GeneralizationModelAssociationExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/IntegrationCommandModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/MessageModel.cs" deviationsHash="563B25438E6AFABA48F0BB217E69719B00044CF689B1A8C83671216E14F93AA4" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/PropertyModel.cs" deviationsHash="A78F83D5D06839DFFC116C83AAEBB0E8772DCBDF6B8EFB44A36980C93785A13F" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="ApiMetadataPackageExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions" />
+  <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
+  <file path="Intent.Modelers.Eventing.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.Modelers.Eventing.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Migrations/Migration_06_00_00_Pre_02.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
+  <file path="modelers/Core Eventing Types.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+  <file path="resources/documentation.json" templateId="Intent.ModuleBuilder.Templates.DocumentationTemplate" />
+</managedFiles>

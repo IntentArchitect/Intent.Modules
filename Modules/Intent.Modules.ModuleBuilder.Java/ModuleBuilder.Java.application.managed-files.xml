@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="fbb9e269-8250-4831-a2ec-f73b68658e77">
-  <file path="../.agents/instructions/csharp-guidelines.md" />
-  <file path="../Intent.Modules.sln" />
-  <file path="Api/Extensions/JavaFileTemplateModelStereotypeExtensions.cs" />
-  <file path="Api/FolderExtensionModel.cs" deviationsHash="293D35CE05B204B67A844243ED481139AF37FFA0069D785A2217D68584323341" />
-  <file path="Api/IntentModuleExtensionModel.cs" />
-  <file path="Api/JavaFileTemplateModel.cs" deviationsHash="47B3D32EE6C12A601ABB8E8D36E3F4E7A33E87ADC4F9B1A12C1CF7D64FF24050" />
-  <file path="ApiMetadataProviderExtensions.cs" />
-  <file path="Intent.ModuleBuilder.Java.imodspec" />
-  <file path="Intent.Modules.ModuleBuilder.Java.csproj" />
-  <file path="Templates/JavaFileStringInterpolation/JavaFileStringInterpolationTemplate.cs" />
-  <file path="Templates/JavaFileStringInterpolation/JavaFileStringInterpolationTemplate.tt" />
-  <file path="Templates/JavaFileStringInterpolation/JavaFileStringInterpolationTemplatePartial.cs" />
-  <file path="Templates/JavaFileStringInterpolation/JavaFileStringInterpolationTemplateRegistration.cs" />
-  <file path="Templates/JavaFileT4/JavaFileT4TemplatePartial.cs" deviationsHash="2A9B49EA4CF939F4E0A549B5E9DDD938C012805371F620090279F7C7EE65F2E0" />
-  <file path="Templates/JavaFileT4/JavaFileT4TemplateRegistration.cs" />
-  <file path="Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplate.cs" />
-  <file path="Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplate.tt" />
-  <file path="Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplatePartial.cs" deviationsHash="3E9956541D6594893F565F1BFBB706B46DFC2BCB2D76ABC56FFD2E1157AF3DB2" />
-  <file path="Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" />
-  <file path="Templates/TemplateExtensions.cs" deviationsHash="B7203BFB9686F060DB0ACAA7C53E52041597E3DB8BC78F5BAE12E1FBA6835020" />
-  <file path="modelers/Java Types.designer.settings" />
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Api/Extensions/JavaFileTemplateModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/FolderExtensionModel.cs" deviationsHash="293D35CE05B204B67A844243ED481139AF37FFA0069D785A2217D68584323341" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" />
+  <file path="Api/IntentModuleExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel" />
+  <file path="Api/JavaFileTemplateModel.cs" deviationsHash="47B3D32EE6C12A601ABB8E8D36E3F4E7A33E87ADC4F9B1A12C1CF7D64FF24050" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
+  <file path="Intent.ModuleBuilder.Java.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.ModuleBuilder.Java.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Templates/JavaFileStringInterpolation/JavaFileStringInterpolationTemplate.cs" templateId="Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed" />
+  <file path="Templates/JavaFileStringInterpolation/JavaFileStringInterpolationTemplate.tt" templateId="Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template" />
+  <file path="Templates/JavaFileStringInterpolation/JavaFileStringInterpolationTemplatePartial.cs" templateId="Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial" />
+  <file path="Templates/JavaFileStringInterpolation/JavaFileStringInterpolationTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
+  <file path="Templates/JavaFileT4/JavaFileT4TemplatePartial.cs" deviationsHash="2A9B49EA4CF939F4E0A549B5E9DDD938C012805371F620090279F7C7EE65F2E0" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/JavaFileT4/JavaFileT4TemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
+  <file path="Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplate.cs" templateId="Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed" />
+  <file path="Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplate.tt" templateId="Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template" />
+  <file path="Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplatePartial.cs" deviationsHash="3E9956541D6594893F565F1BFBB706B46DFC2BCB2D76ABC56FFD2E1157AF3DB2" templateId="Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial" />
+  <file path="Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
+  <file path="Templates/TemplateExtensions.cs" deviationsHash="B7203BFB9686F060DB0ACAA7C53E52041597E3DB8BC78F5BAE12E1FBA6835020" templateId="Intent.ModuleBuilder.Templates.TemplateExtensions" />
+  <file path="modelers/Java Types.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
 </managedFiles>

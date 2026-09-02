@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="3517d53b-f6f7-4d96-8315-efcc6d5622ec">
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Api/EnumLiteralModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="FactoryExtensions/CSharpStyleSettingsLoaderExtension.cs" templateId="Intent.ModuleBuilder.Templates.FactoryExtension" />
+  <file path="FactoryExtensions/NugetRegistryLoaderExtension.cs" templateId="Intent.ModuleBuilder.Templates.FactoryExtension" />
+  <file path="Intent.Common.CSharp.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.Common.CSharp.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Migrations/Migration_03_06_00_Pre_08.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
+  <file path="Settings/ModuleSettingsExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions" />
+  <file path="Templates/StaticContentTemplateRegistrations/AIInstructionsStaticContentTemplateRegistration.cs" templateId="Intent.ModuleBuilder.Templates.StaticContentTemplateRegistration" />
+  <file path="content/AIInstructions/readme.txt" templateId="Intent.ModuleBuilder.Templates.StaticContentOutputReadme" />
+</managedFiles>

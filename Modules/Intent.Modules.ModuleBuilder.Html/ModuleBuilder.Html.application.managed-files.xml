@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="275030c0-f660-4c46-8156-ce592d267b38">
-  <file path="../.agents/instructions/csharp-guidelines.md" />
-  <file path="../Intent.Modules.sln" />
-  <file path="Api/FolderExtensionsModel.cs" deviationsHash="380B4E36D0E83BD566916BB1C8C3D8EDB9DBAA3B087820FBC8457B0E497AFB24" />
-  <file path="Api/HtmlFileTemplateModel.cs" deviationsHash="D98B9FA6BE0CC3CC2E2F31C5610396E501065BFEE32D4C1204766EF451F036D3" />
-  <file path="Api/IntentModuleExtensionModel.cs" />
-  <file path="ApiMetadataProviderExtensions.cs" />
-  <file path="Intent.ModuleBuilder.Html.imodspec" />
-  <file path="Intent.Modules.ModuleBuilder.Html.csproj" />
-  <file path="Templates/HtmlFile/HtmlFileTemplatePartial.cs" deviationsHash="7D56A599D28317B2DA0501BFBDDE33B02A4830697A85162EA15F5C4BFB52EC63" />
-  <file path="Templates/HtmlFile/HtmlFileTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" />
-  <file path="Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplate.cs" />
-  <file path="Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplate.tt" />
-  <file path="Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplatePartial.cs" deviationsHash="8F93534070F5C56677658799F0784B3B9F6748E7670115A49CC9409A1A2FE878" />
-  <file path="Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" />
-  <file path="Templates/TemplateExtensions.cs" deviationsHash="B7203BFB9686F060DB0ACAA7C53E52041597E3DB8BC78F5BAE12E1FBA6835020" />
-  <file path="modelers/Html Types.designer.settings" />
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Api/FolderExtensionsModel.cs" deviationsHash="380B4E36D0E83BD566916BB1C8C3D8EDB9DBAA3B087820FBC8457B0E497AFB24" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" />
+  <file path="Api/HtmlFileTemplateModel.cs" deviationsHash="D98B9FA6BE0CC3CC2E2F31C5610396E501065BFEE32D4C1204766EF451F036D3" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/IntentModuleExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel" />
+  <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
+  <file path="Intent.ModuleBuilder.Html.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.ModuleBuilder.Html.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Templates/HtmlFile/HtmlFileTemplatePartial.cs" deviationsHash="7D56A599D28317B2DA0501BFBDDE33B02A4830697A85162EA15F5C4BFB52EC63" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/HtmlFile/HtmlFileTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
+  <file path="Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplate.cs" templateId="Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed" />
+  <file path="Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplate.tt" templateId="Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template" />
+  <file path="Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplatePartial.cs" deviationsHash="8F93534070F5C56677658799F0784B3B9F6748E7670115A49CC9409A1A2FE878" templateId="Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial" />
+  <file path="Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
+  <file path="Templates/TemplateExtensions.cs" deviationsHash="B7203BFB9686F060DB0ACAA7C53E52041597E3DB8BC78F5BAE12E1FBA6835020" templateId="Intent.ModuleBuilder.Templates.TemplateExtensions" />
+  <file path="modelers/Html Types.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
 </managedFiles>

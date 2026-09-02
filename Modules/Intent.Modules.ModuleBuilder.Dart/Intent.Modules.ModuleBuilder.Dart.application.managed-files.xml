@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="9d8529f0-1571-4889-aeba-df2b4497716b">
-  <file path="../.agents/instructions/csharp-guidelines.md" />
-  <file path="../Intent.Modules.sln" />
-  <file path="Api/DartFileTemplateModel.cs" />
-  <file path="Api/DartFileTemplateModelStereotypeExtensions.cs" />
-  <file path="Api/FolderExtensionModel.cs" />
-  <file path="Api/PackageExtensionModel.cs" />
-  <file path="ApiMetadataProviderExtensions.cs" />
-  <file path="Intent.ModuleBuilder.Dart.imodspec" />
-  <file path="Intent.Modules.ModuleBuilder.Dart.csproj" />
-  <file path="Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplate.cs" />
-  <file path="Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplate.tt" />
-  <file path="Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplatePartial.cs" />
-  <file path="Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplateRegistration.cs" />
-  <file path="Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplate.cs" />
-  <file path="Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplate.tt" />
-  <file path="Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplatePartial.cs" deviationsHash="60C764D157DE6351633AC5B6183CB86D84971A8A9FE0498F1A17BE8CAAE3317F" />
-  <file path="Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" />
-  <file path="Templates/DartFileTemplateT4/DartFileTemplateT4TemplatePartial.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" />
-  <file path="Templates/DartFileTemplateT4/DartFileTemplateT4TemplateRegistration.cs" />
-  <file path="Templates/TemplateExtensions.cs" />
-  <file path="modelers/Dart.designer.settings" />
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Api/DartFileTemplateModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/DartFileTemplateModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/FolderExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" />
+  <file path="Api/PackageExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel" />
+  <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
+  <file path="Intent.ModuleBuilder.Dart.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.ModuleBuilder.Dart.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplate.cs" templateId="Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed" />
+  <file path="Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplate.tt" templateId="Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template" />
+  <file path="Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplatePartial.cs" templateId="Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial" />
+  <file path="Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
+  <file path="Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplate.cs" templateId="Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed" />
+  <file path="Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplate.tt" templateId="Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template" />
+  <file path="Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplatePartial.cs" deviationsHash="60C764D157DE6351633AC5B6183CB86D84971A8A9FE0498F1A17BE8CAAE3317F" templateId="Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial" />
+  <file path="Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
+  <file path="Templates/DartFileTemplateT4/DartFileTemplateT4TemplatePartial.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/DartFileTemplateT4/DartFileTemplateT4TemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
+  <file path="Templates/TemplateExtensions.cs" templateId="Intent.ModuleBuilder.Templates.TemplateExtensions" />
+  <file path="modelers/Dart.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
 </managedFiles>

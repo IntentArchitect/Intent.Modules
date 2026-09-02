@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="298790da-18e6-4f3a-9b63-1edaa8606bc8">
-  <file path="../.agents/instructions/csharp-guidelines.md" />
-  <file path="../Intent.Modules.sln" />
-  <file path="Api/CommandExtensionModel.cs" />
-  <file path="Api/CreateEntityActionModel.cs" />
-  <file path="Api/CreateEntityActionModelAssociationExtensions.cs" deviationsHash="94831BD9F9755DEFFE59ACE5BE5E476FBE55355347EA213104A7D440A3BDE550" />
-  <file path="Api/DeleteEntityActionModel.cs" />
-  <file path="Api/DeleteEntityActionModelAssociationExtensions.cs" deviationsHash="FF0861EB88C964AB49EAB910CB76A2AD2C24924046E0064783991156CD7DC520" />
-  <file path="Api/OperationExtensionModel.cs" />
-  <file path="Api/ProcessingActionModel.cs" />
-  <file path="Api/QueryEntityActionModel.cs" />
-  <file path="Api/QueryEntityActionModelAssociationExtensions.cs" deviationsHash="6B946EB21A132C7E211F763A7423CBC59BD0E7BB728370579A96375C35BD2CB6" />
-  <file path="Api/UpdateEntityActionModel.cs" />
-  <file path="Api/UpdateEntityActionModelAssociationExtensions.cs" deviationsHash="8AD699DB044E3FF2199ABF806DE7441C33461BA215EF2C53B86B35BB4118E13A" />
-  <file path="Intent.Modelers.Services.DomainInteractions.imodspec" />
-  <file path="Intent.Modules.Modelers.Services.DomainInteractions.csproj" />
-  <file path="Migrations/Migration_02_01_04_Pre_00.cs" />
-  <file path="Migrations/Migration_02_02_00_Alpha_00.cs" />
-  <file path="Settings/ModuleSettingsExtensions.cs" />
-  <file path="modelers/Domain Extensions.designer.settings" />
-  <file path="modelers/Services Domain Interactions.designer.settings" />
-  <file path="release-notes.md" />
-  <file path="resources/documentation.json" />
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Api/CommandExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" />
+  <file path="Api/CreateEntityActionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/CreateEntityActionModelAssociationExtensions.cs" deviationsHash="94831BD9F9755DEFFE59ACE5BE5E476FBE55355347EA213104A7D440A3BDE550" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/DeleteEntityActionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/DeleteEntityActionModelAssociationExtensions.cs" deviationsHash="FF0861EB88C964AB49EAB910CB76A2AD2C24924046E0064783991156CD7DC520" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/OperationExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" />
+  <file path="Api/ProcessingActionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/QueryEntityActionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/QueryEntityActionModelAssociationExtensions.cs" deviationsHash="6B946EB21A132C7E211F763A7423CBC59BD0E7BB728370579A96375C35BD2CB6" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/UpdateEntityActionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/UpdateEntityActionModelAssociationExtensions.cs" deviationsHash="8AD699DB044E3FF2199ABF806DE7441C33461BA215EF2C53B86B35BB4118E13A" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Intent.Modelers.Services.DomainInteractions.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.Modelers.Services.DomainInteractions.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Migrations/Migration_02_01_04_Pre_00.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
+  <file path="Migrations/Migration_02_02_00_Alpha_00.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
+  <file path="Settings/ModuleSettingsExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions" />
+  <file path="modelers/Domain Extensions.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+  <file path="modelers/Services Domain Interactions.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+  <file path="release-notes.md" templateId="Intent.ModuleBuilder.Templates.ReleaseNotes" />
+  <file path="resources/documentation.json" templateId="Intent.ModuleBuilder.Templates.DocumentationTemplate" />
 </managedFiles>

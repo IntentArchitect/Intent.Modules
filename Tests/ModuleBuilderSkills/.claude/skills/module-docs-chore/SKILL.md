@@ -1,0 +1,181 @@
+---
+name: module-docs-chore
+description: "Update a module's release-notes, README, .imodspec metadata, and icon to reflect a change a consumer can observe, in the same turn as that change. USE ONLY WHEN a module change alters anything observable — a new/removed template, setting, stereotype, config default, or behavioural fix. DO NOT USE FOR internal refactors with no observable effect, or for bumping the module's version number itself (see module-version-increment). REQUIRES the observable change already implemented or decided."
+keywords: [documentation, release-notes, readme, imodspec, icon, chore, upkeep]
+template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDocsChore_SkillMd_Agents
+contentHash: 200213EBD085BEB89F81DED26C80E506B32FD1AD48ED3066B48E92A073345A1E
+---
+# Skill: module-docs-chore
+
+Documentation is part of the change, not a follow-up task. This skill covers **when** to write and
+
+- *which artifact** carries what. Where a canonical format exists for an artifact in your environment,
+
+follow it for structure and wording.
+
+## What Triggers An Update
+
+Anything a consumer of the module can observe:
+
+- A new or removed template, or a change in the shape of generated output
+- A new module setting, stereotype, or designer element
+- A new configuration option, or a changed default
+- A behavioural fix that changes what the module produces
+
+Write it **in the same turn as the change**. Internal refactoring with no observable effect on
+generated output needs nothing.
+
+## Which Artifact Carries What
+
+| Artifact | What goes in |
+|---|---|
+| Module metadata — summary, description, tags | Kept accurate as a matter of course. These are what a consumer sees before installing anything. |
+| `release-notes.md` | One bullet under the current version — **only if `Include Release Notes` is ticked and the file already exists** |
+| `docs/README.md` | The section the change affects — a settings table, a generated-output example, a feature description. **Create it if the module does not have one.** |
+| Module icon | Created only if the module has none yet — see "The Icon" below. An existing icon is never overwritten. |
+
+## Release Notes Are Maintained, Never Introduced
+
+- *Check whether the module wants them before touching them.** On the module's package in the Module
+
+Builder designer, `Module Settings` carries an **`Include Release Notes`** checkbox. That box is the
+maintainer's stated intent, and it is what puts `<releaseNotes>` into the manifest — so read it first:
+
+- **Unticked** — the module has opted out. Leave release notes alone entirely; do not start a file, and
+
+do not add an entry to one that happens to exist.
+
+- **Ticked, file present** — maintain it, as below.
+- **Ticked, file missing** — say so. The manifest is advertising a `release-notes.md` that is not there,
+
+which is a real inconsistency rather than something to silently paper over by creating the file.
+
+If a module has a `release-notes.md`, add an entry for the change: a single bullet under the current
+version, prefixed to say whether it is a new feature, an improvement, or a fix. A fix entry is more
+useful when it names the scenario that triggered the bug rather than just the symptom.
+
+When the module's in-development version carries a `-pre.#` suffix (see `module-version-increment`),
+write the heading under the **plain** version with the suffix stripped — `.imodspec` version
+`1.0.3-pre.0` becomes `### Version 1.0.3`. The suffix marks the package as not yet released;
+release notes describe the release the change ships under once promoted.
+
+### Keep Entries Short, And Group Them
+
+Release notes are read by someone deciding whether a release affects them — not auditing what was
+built. Write for that reader.
+
+- **One line per entry.** If a bullet needs a second sentence to explain itself, that detail belongs in
+
+the module's documentation, not here.
+
+- **Group related changes into one entry.** Work that added four templates, two settings and an
+
+instruction file is *one* entry describing the capability — not seven describing its parts.
+
+- **Split only when a consumer would act on each differently.** Two independent changes affecting
+
+different people are two entries. Two halves of one change are one entry.
+
+Fewer, higher-altitude entries scan better and age better. A reader months later wants to know what
+changed about the module, not which files were touched to do it.
+
+- *If a module has no `release-notes.md`, do not create one.** Its absence is a deliberate choice
+
+about how that module is maintained, not an oversight to correct. Introducing the file commits the
+module to a history nobody agreed to keep, and a half-kept changelog is worse than none.
+
+## Module Metadata Is Always Kept Current
+
+The module's own summary, description, and tags are maintained regardless of which other artifacts a
+module keeps. They are the module's shopfront — the only thing a consumer reads while deciding
+whether to install it — so they should describe what the module actually does now.
+
+- *Change the summary and description on the Application Settings page**, not in `.imodspec` and not
+
+in `.application.config`. The Software Factory overwrites both `<summary>` and `<description>` from
+that one value on every run, so an edit made in the manifest is discarded without an error. It also
+means the two fields **cannot differ** — one line has to serve as both, which is why it stays short
+and says what the module *is*. Mechanism and rationale belong in `CONTEXT.md`.
+
+`<tags>` is different — the Software Factory never writes it, so edit that directly in `*.imodspec`.
+
+Modules scaffolded from a template often keep placeholder metadata long after they have stopped being
+placeholders. When you notice generic filler in a summary or description, or an empty tag list,
+replace it. This is upkeep to do in passing, not an inspection to complete before moving on.
+
+### Tag Format
+
+Tags are **lowercase** and **separated by spaces**. Where a single concept spans more than one word,
+join it with a hyphen so it stays one tag rather than splitting into two meaningless ones:
+
+```
+intent module-builder ai workflow
+entity-framework persistence csharp dotnet
+azure-service-bus messaging eventing infrastructure
+```
+
+`module-builder` is one tag; `module builder` is two, and neither half means anything on its own.
+
+Aim for a handful — enough to place the module, not an exhaustive list. Between them the tags should
+cover the technology it integrates, the concern or pattern it addresses, and the stack it targets.
+Skip words that would describe every module equally: `module`, `common`, `helper`, `base`.
+
+### Authorship Is Copied, Never Invented
+
+The module's author or publisher field identifies **who publishes the module**, and it is not yours to
+choose. Take it from the other modules in the same repository: read their manifests and use the value
+they already carry, or the most common one if they disagree.
+
+If no sibling module has it set, or there are no siblings to look at, **ask the developer** who
+publishes these modules and use their answer.
+
+Never infer a publisher from the module's name, its namespace, the tooling it is built with, or the
+platform it targets — and never carry a value across from a different repository. A module published
+under the wrong name is worse than one published under none, because it misattributes ownership to
+someone who never agreed to it.
+
+## The README
+
+Every module should have a `docs/README.md` explaining what it generates and how it is configured.
+Unlike the release notes, this one **is** created when missing — a module with no README leaves a
+consumer with nothing to read at all.
+
+Keep it describing the module's current behaviour rather than its history. When a change makes a
+section wrong, correct that section; do not append a note saying it changed.
+
+## The Icon
+
+Create a module's SVG icon **when it has none** — never overwrite one that already exists, even if
+it looks dated. An existing icon is a deliberate choice by whoever set it, not something this chore
+corrects.
+
+Source the description to craft from; do not invent one:
+
+- The module's own `.imodspec` `<summary>` and `<tags>` — the same material already kept current
+
+elsewhere in this chore.
+
+- Its `CONTEXT.md` "Purpose" section, if one exists.
+
+If the `module-svg-icon` skill is available in your environment, use it with that description to
+craft and apply the icon. If it is not available, this chore has no icon-crafting mechanism of its
+own — leave the module without an icon rather than improvising a substitute.
+
+## Cover The Whole Version Line
+
+Before writing today's entry, check what else has landed under the current unreleased version —
+earlier changes in the same version line often went undocumented. Cover them, but **fold them into the
+entry they belong with** rather than appending a bullet per change. The aim is that the version's
+entries account for everything in it, not that there is an entry per change.
+
+## Checklist
+
+- [ ] Module summary and description describe current behaviour — changed on the **Application Settings page**, not in `.imodspec`
+- [ ] Tags describe current behaviour — edited directly in `*.imodspec`
+- [ ] Tags are lowercase, space-separated, hyphenated within a compound term
+- [ ] Author matches what sibling modules use — copied or asked for, never invented
+- [ ] `Include Release Notes` checked first; `release-notes.md` updated only when ticked **and** present — never created, and a ticked-but-missing file reported
+- [ ] Entries are one line each, grouped by capability rather than listed per change
+- [ ] `docs/README.md` reflects the change — created if the module had none
+- [ ] Module icon created if missing, described from `.imodspec`/`CONTEXT.md` — existing icons left untouched
+- [ ] Earlier undocumented changes in the same version line covered

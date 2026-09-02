@@ -15,10 +15,256 @@
       <approvedAt>2026-08-19T16:46:19.8860904Z</approvedAt>
     </customFile>
     <customFile>
+      <path>Modules/.claude/rules/readme.txt</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.6382654Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/.opencode/instructions/readme.txt</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.661971Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.ApplicationTemplate.Builder/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.6736574Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Common.CSharp/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.6885958Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Common.Java/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.7087952Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Common.Types/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.7253929Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Common.Types/resources/documentation.json</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.7425894Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Common.TypeScript/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.7597079Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Java.Weaving.Annotations/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.7865408Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Metadata.ApiGateway/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.8058195Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Metadata.DocumentDB/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.8217637Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Metadata.DocumentDB/resources/documentation.json</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.8446912Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Metadata.Domain.Constraints/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.8783763Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Metadata.Domain.Constraints/resources/documentation.json</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.8908617Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Metadata.RDBMS/resources/documentation.json</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.9079742Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Metadata.Security/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.9263326Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Metadata.WebApi/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.9521595Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.CodebaseStructure/resources/documentation.json</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.9697922Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Domain.Events/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.9893092Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Domain.Repositories/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:18.9995261Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Domain.Services/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.0074421Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Domain.StoredProcedures/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.023925Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Domain.StoredProcedures/resources/documentation.json</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.0535901Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Domain.ValueObjects/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.0843693Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Domain/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.1027375Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Domain/resources/documentation.json</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.1208447Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Eventing/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.1394032Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Eventing/resources/documentation.json</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.1543172Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.ServiceProxies/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.1719286Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Services.CQRS/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.1909753Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Services.CQRS/resources/documentation.json</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.1998311Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Services.EventInteractions/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.208241Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Services.EventInteractions/resources/documentation.json</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.2257416Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Services.GraphQL/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.2430143Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Services.ProxyInteractions/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.2574488Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Services.ProxyInteractions/resources/documentation.json</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.274568Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Services/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.2912817Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Types.ServiceProxies/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.3079426Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.UI.ServiceProxies/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.3284876Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.OutputTargets.Folders/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.3590469Z</approvedAt>
+    </customFile>
+    <customFile>
       <path>Modules/Intent.Modules.sln</path>
       <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
       <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
       <approvedAt>2026-08-28T09:40:24.5148724Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.TypeScript.Weaving.Decorators/.gitattributes</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-02T10:03:19.3875244Z</approvedAt>
     </customFile>
   </customFiles>
 </deviationsLog>

@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="765236f6-13a2-40be-90d3-38674e01f4a7">
-  <file path="../.agents/instructions/csharp-guidelines.md" />
-  <file path="../Intent.Modules.sln" />
-  <file path="Api/ClassExtensionModel.cs" deviationsHash="1F5AC3F118D4660F2662AF30984B7BD46F26C69593F9318498DD1F89192B1A67" />
-  <file path="Api/Extensions/AssociationSourceEndModelStereotypeExtensions.cs" deviationsHash="603F3400B323B12A49D6594E85E4FA53DA104011ABDC96A74E25F33A655BB104" />
-  <file path="Api/Extensions/AssociationTargetEndModelStereotypeExtensions.cs" deviationsHash="50BC21EED3B08A70A030E62973D3FE7C59339184B358037B4203BCEA7D9581D0" />
-  <file path="Api/Extensions/AttributeModelStereotypeExtensions.cs" deviationsHash="51E654B205E693DA56848EAEC503BCD7A77B2D61CF070A0B21DC18B8FD339FDA" />
-  <file path="Api/Extensions/ClassModelStereotypeExtensions.cs" deviationsHash="086DC0D8A7F7A37700704D08B9B8F2CF2EBD6DD9ED2CEAFFA8458703B6545600" />
-  <file path="Api/Extensions/DomainPackageModelStereotypeExtensions.cs" />
-  <file path="Api/Extensions/FolderModelStereotypeExtensions.cs" />
-  <file path="Api/Extensions/IndexColumnModelStereotypeExtensions.cs" />
-  <file path="Api/Extensions/IndexModelStereotypeExtensions.cs" />
-  <file path="Api/Extensions/StoredProcedureModelStereotypeExtensions.cs" />
-  <file path="Api/IndexColumnModel.cs" deviationsHash="2E0146040F0E25661EFFD3B4E9A2424A698264255864490E3B7F7F2D38232520" />
-  <file path="Api/IndexModel.cs" deviationsHash="419AFC385056138A65859E40AA4EC49181B3E9D88EFE80CB140C01161284E2A8" />
-  <file path="Api/TriggerModel.cs" />
-  <file path="ApiMetadataProviderExtensions.cs" />
-  <file path="Intent.Metadata.RDBMS.imodspec" />
-  <file path="Intent.Modules.Metadata.RDBMS.csproj" />
-  <file path="Migrations/Migration_03_07_01_Pre_01.cs" />
-  <file path="Migrations/Migration_03_07_06_Pre_00.cs" />
-  <file path="Settings/ModuleSettingsExtensions.cs" deviationsHash="7D2507F2200384639F2D8A5599DB9914ECFB75E9F1A4D6FCBB02394B4DEF3AF1" />
-  <file path="modelers/RDBMS Convert to Intermediate Entity Automation Extensions.designer.settings" />
-  <file path="modelers/RDBMS Key Automation Extensions.designer.settings" />
-  <file path="modelers/RDBMS Types.designer.settings" />
-  <file path="resources/documentation.json" />
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Api/ClassExtensionModel.cs" deviationsHash="1F5AC3F118D4660F2662AF30984B7BD46F26C69593F9318498DD1F89192B1A67" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" />
+  <file path="Api/Extensions/AssociationSourceEndModelStereotypeExtensions.cs" deviationsHash="603F3400B323B12A49D6594E85E4FA53DA104011ABDC96A74E25F33A655BB104" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/Extensions/AssociationTargetEndModelStereotypeExtensions.cs" deviationsHash="50BC21EED3B08A70A030E62973D3FE7C59339184B358037B4203BCEA7D9581D0" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/Extensions/AttributeModelStereotypeExtensions.cs" deviationsHash="51E654B205E693DA56848EAEC503BCD7A77B2D61CF070A0B21DC18B8FD339FDA" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/Extensions/ClassModelStereotypeExtensions.cs" deviationsHash="086DC0D8A7F7A37700704D08B9B8F2CF2EBD6DD9ED2CEAFFA8458703B6545600" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/Extensions/DomainPackageModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/Extensions/FolderModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/Extensions/IndexColumnModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/Extensions/IndexModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/Extensions/StoredProcedureModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
+  <file path="Api/IndexColumnModel.cs" deviationsHash="2E0146040F0E25661EFFD3B4E9A2424A698264255864490E3B7F7F2D38232520" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/IndexModel.cs" deviationsHash="419AFC385056138A65859E40AA4EC49181B3E9D88EFE80CB140C01161284E2A8" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/TriggerModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
+  <file path="Intent.Metadata.RDBMS.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.Metadata.RDBMS.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Migrations/Migration_03_07_01_Pre_01.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
+  <file path="Migrations/Migration_03_07_06_Pre_00.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
+  <file path="Settings/ModuleSettingsExtensions.cs" deviationsHash="7D2507F2200384639F2D8A5599DB9914ECFB75E9F1A4D6FCBB02394B4DEF3AF1" templateId="Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions" />
+  <file path="modelers/RDBMS Convert to Intermediate Entity Automation Extensions.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+  <file path="modelers/RDBMS Key Automation Extensions.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+  <file path="modelers/RDBMS Types.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+  <file path="resources/documentation.json" templateId="Intent.ModuleBuilder.Templates.DocumentationTemplate" />
 </managedFiles>

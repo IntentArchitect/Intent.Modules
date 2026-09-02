@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles version="1" applicationId="ec72e814-e39a-47e3-9570-17eab35420ce">
+  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
+  <file path="Api/FolderExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" />
+  <file path="Api/IntegrationEventHandlerModel.cs" deviationsHash="E9AEA875565A3994645E48F5184E9E9A204EA20BE5B6BDE8EE6EEC7F51FD363E" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/PublishIntegrationEventModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/PublishIntegrationEventModelAssociationExtensions.cs" deviationsHash="473EF60C7A1985368EB251616FA1CF0A88326DFCEA1BB46243AAB8DF31328BCC" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/SendIntegrationCommandModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/SendIntegrationCommandModelAssociationExtensions.cs" deviationsHash="4099B133FDC581D5FA8BB76670E67FD0B8AD53D0D4934FFB02BACDE36681A985" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/ServicesPackageExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel" />
+  <file path="Api/SubscribeIntegrationCommandModel.cs" deviationsHash="39B4054B9DEF2B023E51E691D6F560D29E351CC5D3EAD7A5AB0337D84FA5D632" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/SubscribeIntegrationCommandModelAssociationExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/SubscribeIntegrationEventModel.cs" deviationsHash="4C02CBB23E618EDD46E954439F6A9D3702B112F615D7B261EEC1BCFDA0EC5D03" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/SubscribeIntegrationEventModelAssociationExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
+  <file path="Intent.Modelers.Services.EventInteractions.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.Modelers.Services.EventInteractions.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Migrations/Migration_02_00_00_Alpha_00.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
+  <file path="modelers/Services Event Interactions.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
+  <file path="release-notes.md" templateId="Intent.ModuleBuilder.Templates.ReleaseNotes" />
+  <file path="resources/documentation.json" templateId="Intent.ModuleBuilder.Templates.DocumentationTemplate" />
+</managedFiles>

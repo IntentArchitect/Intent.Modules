@@ -2,9 +2,9 @@
 <outputFiles>
   <files>
     <file relativePath="content/AIInstructions/csharp-guidelines.md" state="ignored;once-off-generated" />
-    <file relativePath="content/AIInstructions/readme.txt" state="once-off-generated" />
+    <file relativePath="content/AIInstructions/readme.txt" state="ignored;once-off-generated" />
     <file relativePath="Intent.Modules.Common.CSharp.csproj" state="ignored" />
     <file relativePath="Intent.Modules.Common.CSharp/content/AIInstructions/csharp-guidelines.md" state="ignored;once-off-generated" />
-    <file relativePath="Intent.Modules.Common.CSharp/content/AIInstructions/readme.txt" state="once-off-generated" />
+    <file relativePath="Intent.Modules.Common.CSharp/content/AIInstructions/readme.txt" state="ignored;once-off-generated" />
   </files>
 </outputFiles>
