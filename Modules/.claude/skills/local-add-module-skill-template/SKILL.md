@@ -1,9 +1,9 @@
 ---
-name: add-module-skill-template
+name: local-add-module-skill-template
 description: "Set up the MD template (Folder+File Template, MarkdownFileBuilder, frontmatter) for a new instruction or skill file to be generated and distributed by an Intent Architect module, or maintain one already shipped this way. USE ONLY WHEN adding, editing, renaming, or removing an instruction/skill file distributed by a ModuleBuilder.AI.* module. DO NOT USE FOR any other skill implementation — only for skills/instructions generated via an Intent module's code-generation pipeline, never one authored directly in a consumer's .agents folder, and never for an unrelated module change such as a version bump (see module-versioning). REQUIRES the target ModuleBuilder.AI.* module's Module Builder designer already open."
 keywords: [skill-files, code-generation, module-builder, distribution, anchors, mode-ignore, frontmatter]
 ---
-# Skill: add-module-skill-template
+# Skill: local-add-module-skill-template
 
 Some modules generate no application code at all — their entire purpose is to **distribute skill
 files** (skills, instructions, an agent definition) to a consuming solution, using Intent
@@ -51,7 +51,7 @@ module, adding a new file to an existing one, and maintaining files that are alr
    `MarkdownFile` constructor's `relativeLocation` argument — never the `Default Location` template
    setting.** A shared anchor-resolution helper resolves `Role` to a real folder in the consumer's
    repo, and `relativeLocation` (the constructor's second argument, e.g. `new MarkdownFile("SKILL",
-   relativeLocation: "add-module-skill-template")`) is appended to it. `Default Location` only ever
+   relativeLocation: "local-add-module-skill-template")`) is appended to it. `Default Location` only ever
    seeds that argument's value at the moment the File Template element is first created — after that
    the constructor's `Body = Mode.Ignore` means the model setting is never read again, so leaving it
    set is misleading (it looks live but does nothing). Leave it unset and bake the path straight into
@@ -168,7 +168,7 @@ Whether it's a whole new module or one more file distributed from an existing on
       authoring content. Leave `Default Location` unset — it has no effect on the generated output
       path (see mechanism step 6).
 - [ ] `MarkdownFile` constructor's `relativeLocation` argument set explicitly to the target path
-      (e.g. `relativeLocation: "add-module-skill-template"`) — this is the real output path, not
+      (e.g. `relativeLocation: "local-add-module-skill-template"`) — this is the real output path, not
       the model setting.
 - [ ] After the first apply, the Software Factory may rename the File Template element (e.g.
       inserting an underscore) — treat the post-apply name as canonical; don't fight it by renaming
