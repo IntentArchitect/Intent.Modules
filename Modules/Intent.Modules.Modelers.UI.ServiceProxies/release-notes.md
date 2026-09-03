@@ -1,3 +1,7 @@
+### Version 1.0.3
+
+- Fixed: Creating a `Service Proxy` programmatically (for example from an AI agent) no longer stalls on a mapping dialog with nobody to answer it.
+
 ### Version 1.0.2
 
 - Improvement: Updated nuget reference.

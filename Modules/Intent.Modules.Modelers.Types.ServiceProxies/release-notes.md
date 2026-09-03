@@ -1,4 +1,8 @@
-﻿### Version 5.5.5
+﻿### Version 5.5.6
+
+- Fixed: Creating a `Service Proxy` programmatically (for example from an AI agent) no longer stalls on a mapping dialog with nobody to answer it.
+
+### Version 5.5.5
 
 - Fixed: Updated interop with ProxyInteractions module.
 

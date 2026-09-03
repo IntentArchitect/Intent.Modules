@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.UI.ServiceProxies</id>
-  <version>1.0.2</version>
+  <version>1.0.3-pre.0</version>
   <supportedClientVersions>[4.5.18-a, 6.0.0-a)</supportedClientVersions>
   <summary>Modeller for describing user interface consumers of other Intent Architect services.</summary>
   <description>Modeller for describing user interface consumers of other Intent Architect services.</description>
@@ -18,7 +18,7 @@
     <dependency id="Intent.Common.Types" version="4.1.2" />
     <dependency id="Intent.Modelers.Services" version="4.0.3" />
     <dependency id="Intent.Modelers.Services.CQRS" version="4.2.0" />
-    <dependency id="Intent.Modelers.Types.ServiceProxies" version="5.5.1" />
+    <dependency id="Intent.Modelers.Types.ServiceProxies" version="5.5.6-pre.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
