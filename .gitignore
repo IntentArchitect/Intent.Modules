@@ -273,6 +273,7 @@ ModelManifest.xml
 .claude/skills/sdd-verify/
 .claude/skills/using-code-tools/
 .claude/skills/working-with-modules/
+.claude/skills/managing-tasks/
 
 .github/skills/authoring-rich-documents/
 .github/skills/changing-the-model/
@@ -293,6 +294,7 @@ ModelManifest.xml
 .github/skills/sdd-verify/
 .github/skills/using-code-tools/
 .github/skills/working-with-modules/
+.github/skills/managing-tasks/
 
 .opencode/skills/authoring-rich-documents/
 .opencode/skills/changing-the-model/
@@ -313,3 +315,4 @@ ModelManifest.xml
 .opencode/skills/sdd-verify/
 .opencode/skills/using-code-tools/
 .opencode/skills/working-with-modules/
+.opencode/skills/managing-tasks/

@@ -1,3 +1,11 @@
+### Version 1.0.2
+
+- Improvement: `known-build-gotchas` now carries an ordered diagnostic ladder for a module change that does not reach generated output — rule out protected output, confirm the build reached the cache, force a re-install of the same version, force a rewrite — ending in "report what you ruled out" rather than renumbering to force it.
+- New Feature: `known-build-gotchas` covers module discoverability for install, naming `intent.repositories.config` and the global Asset Repositories settings as the two places a locally-built `.imod` can be found, and directing the agent to inform the user rather than configure either.
+- Fixed: `known-build-gotchas`'s frontmatter `description` spanned multiple physical lines, which this project's parser silently drops — the file had been shipping with its description truncated to its first line. Rewritten as a single-line quoted string.
+- Fixed: Two headings in the new sections began with `**bold**`, which the generator rewrites into a `- *` list marker. Reworded so the bold sits inside the sentence.
+- Improvement: `known-build-gotchas` condensed throughout — the five pre-existing gotchas tightened and their correct/wrong example pairs reduced to the correct form, keeping the file's always-on cost down now that it also carries the diagnostic ladder.
+
 ### Version 1.0.1
 
 - Improvement: `known-build-gotchas` now covers why a template change can appear to have no effect — `.imod` packaging runs off the `.csproj` compilation, so a non-C# change may not trigger it; use `dotnet build --no-incremental` to force it.

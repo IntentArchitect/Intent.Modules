@@ -38,6 +38,31 @@ Bundles a fixed set of AI agent skills and instruction files for building Intent
 - **Package settings are trigger rules folded into their trigger skills, not a skill of their own.** `Include in Module` (when a stereotype is introduced) and `Reference in Designer` (when a designer element is introduced) live inline in `add-designer-extension`, `add-association-type` and `module-building-strategies`. A separate skill would have to be *remembered and loaded* exactly when the agent is busy doing the thing that creates the obligation. The general principle: **an obligation goes inline at its trigger point; a craft gets its own skill.** `module-element-icons` stays separate on the other side of that line — optional, and with a real technique to teach.
 - **The package icon goes through a script because of payload size, not because no other mechanism exists.** Corrected during 1.1.0-pre.0 after this was written up the wrong way round: the icon *can* be set through the MCP, but its value is a base64 data URI running to tens of thousands of characters, so routing it through an agent's context is wasteful and risks a silent transcription corruption. The rule is "use a tool that manipulates the icon element directly", not "hand-edit `.application.config` because there is nowhere else to set it". The distinction matters because the wrong version reads as a licence to hand-edit that file more generally.
 
+- **A generated frontmatter `description` must be a single-line quoted string.** A value spanning
+  multiple physical lines is silently truncated to its first line by this project's frontmatter
+  parser — and if the folded `>` form is used with no text on the same line, the value is dropped
+  entirely. `known-build-gotchas` had been shipping with a three-line description reduced to its
+  first line since it was written, with nothing reporting it; a two-line rewrite in 1.0.2-pre.0
+  produced an empty value. Caught only by reading the staged diff, where the `-`/`+` sides showed
+  the truncation directly. The same defect was fixed for `module-docs`/`module-svg-icon` in 1.0.1 —
+  it is a property of the parser, so it applies to every generated frontmatter block, not those
+  skills specifically.
+- **Never begin a generated markdown line with `**bold**`.** The emitted line comes out as
+  `- *bold**` — the leading `**` is rewritten into a list marker plus a stray asterisk, and the
+  emphasis is lost. This is why several shipped instruction files (`exception-guidelines`,
+  `module-building-workflow`) carry stray `- **` line openings mid-paragraph. Put the bold inside
+  the sentence (`Your job is to **tell the user, not configure it**.`) rather than leading with it.
+  Bold is safe anywhere that is not the first characters of a line, including after a list marker
+  (`1. **Regenerate**`) — those are unaffected.
+- **Promoting a module to final by hand-editing `.imodspec` strands the designer, permanently.**
+  `<version>` is written only when the designer's value sorts strictly higher than the one on disk,
+  so a hand-promotion that sets the manifest without moving the model leaves the designer on a
+  value that can never be written again — silently, with no error on any subsequent run. Found in
+  1.0.2-pre.0: the manifest read `1.0.1` while the designer still read `1.0.1-pre.4`. Clearing it
+  requires the sanctioned inverse — drop `<version>` by hand to a value below the target, set the
+  designer to the version you actually want, then regenerate forward. Expect the next Software
+  Factory run to flag that as a destructive change; it is overwriting the hand-edit on purpose.
+
 ## Invariants & Constraints
 
 - Every skill's `File Template` (type `Single File`) sits directly under the `Skills/` folder, named `<SkillName>_SkillMd_Agents` (and `<SkillName>_Resources...` for resource files) — there is no per-skill subfolder. `File Settings(Output File Content=Text, Templating Method=Markdown File
@@ -45,6 +70,13 @@ Bundles a fixed set of AI agent skills and instruction files for building Intent
 - The `MarkdownFile` constructor's `relativeLocation` argument carries the real output path directly — e.g. `new MarkdownFile("SKILL", relativeLocation: "module-versioning")` — never the `Template
   Settings.Default Location` model setting. `Default Location` only ever seeds that argument's value at the moment a File Template is first created; the constructor's `Body = Mode.Ignore` means the model setting is never read again afterward, so leaving it set is misleading. See the `add-module-skill-template` skill's mechanism step 6 for the full anchor-resolution rules.
 - This module has no `Module Settings Configuration`/settings of its own — every bundled skill is unconditional. Gating by setting belongs to `Intent.ModuleBuilder.AI.Workflow`, not here.
+
+- `release-notes.md` headings track the **eventual released version, never the in-flight pre-release
+  version**. Work done across `1.0.2-pre.0`, `-pre.1`, … accumulates under a single
+  `### Version 1.0.2` heading. Confirmed by the file's own history: the `### Version 1.0.1` section
+  absorbed work `CONTEXT.md` attributes to `1.0.1-pre.1`, `1.0.1-pre.3` and even `1.1.0-pre.0`, and
+  no `-pre.N` heading has ever appeared. The module's `<version>` genuinely is the pre-release string
+  while in flight — the heading is the exception, not a mirror of it.
 
 ## Module Interactions
 

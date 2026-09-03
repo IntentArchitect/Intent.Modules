@@ -1,67 +1,45 @@
 ---
 applyTo: '**/*.cs'
-description: >
-Template authoring pitfalls and solutions: NuGet dependency registration,
-keywords: [intent architect, template authoring, nuget, build, gotchas, constants]
-contentHash: F19E6242A956CC55B58BD89DC322D76288392A26EEC8DD86D8FEFE78C313402D
+description: "Intent Architect module build and template-authoring gotchas, and diagnosing a module change that never reaches generated output."
+keywords: [intent architect, template authoring, nuget, build, gotchas, intent ignore, asset repositories]
+contentHash: 2CD16FD529846C9548EEEE16D70045BE8957FE698B3C0A815075807113140677
 ---
 ## Known Build Gotchas
 
 ### NuGet Dependencies — Not Inside `OnBuild`
 
-Declare NuGet dependencies in the **template constructor**, not inside `OnBuild` or `AfterBuild` lambdas. Ideally declare them at the top of the constructor, but conditional registration based on model state is valid mid-constructor. The rule is strictly: never inside a build callback.
+Declare NuGet dependencies in the **template constructor**, **never** inside an `OnBuild`/`AfterBuild` callback — registration there does not work reliably. Conditional registration mid-constructor is fine.
 
 ```csharp
-// Correct — constructor body
-public MyTemplate(...)
-{
-AddNugetDependency(NuGetPackages.SomePackage);
-if (model.NeedsExtra()) AddNugetDependency(NuGetPackages.ExtraPackage);
-
-CSharpFile = new CSharpFile(...);
-}
-
-// Wrong — inside OnBuild
-OnBuild(file =>
-{
-AddNugetDependency(...); // ❌ will not work reliably
-});
+AddNugetDependency(NuGetPackages.SomePackage); // constructor body, never a build callback
 ```
 
 ===
 
 ### `SingleFileListModel` — Filename Instability
 
-When a template uses `SingleFileListModel` and generates multiple classes via `foreach`, `CSharpFile` derives its filename from the **first class added**. If that order is non-deterministic, the filename changes between SF runs.
-
-The anchor-class approach (adding a dummy first class) is awkward and not recommended. For exceptional cases, use:
+When a template generates multiple classes via `foreach`, `CSharpFile` takes its filename from the **first class added** — so a non-deterministic order changes the filename between SF runs. The normal pattern is one class per template output (a dummy anchor class is not the answer). For genuinely exceptional multi-class files, hardcode it behind `// IntentIgnore`, which stops the Software Factory overwriting that line:
 
 ```csharp
 // IntentIgnore
 CSharpFile = new CSharpFile("DesiredFileName", folderPath)
 ```
 
-`// IntentIgnore` prevents SF from overwriting that line, letting you hardcode the filename directly. Reserve this for genuinely exceptional multi-class single-file scenarios — the normal pattern is one class per template output.
-
 ===
 
 ### `FilterMessagesForThisMessageBroker` — Pass `ExecutionContext`, Not `this`
 
-The three-argument overload requires an `ISoftwareFactoryExecutionContext`. Passing `this` (the template instance) compiles but fails silently at runtime — the filter returns incorrect results.
+The three-argument overload needs an `ISoftwareFactoryExecutionContext`. Passing the template instance compiles but silently returns wrong results.
 
 ```csharp
-// Correct
-FilterMessagesForThisMessageBroker(messages, selector, ExecutionContext);
-
-// Wrong
-FilterMessagesForThisMessageBroker(messages, selector, this); // ❌
+FilterMessagesForThisMessageBroker(messages, selector, ExecutionContext); // never `this`
 ```
 
 ===
 
 ### `Constants` Class Name Conflict
 
-If your module defines a `Constants` class, it conflicts with `Intent.Modules.Constants` from the SDK. Use an alias:
+A module-defined `Constants` class conflicts with `Intent.Modules.Constants` from the SDK. Alias it:
 
 ```csharp
 using NServiceBusConstants = Intent.Modules.Eventing.NServiceBus.Templates.Constants;
@@ -71,18 +49,39 @@ using NServiceBusConstants = Intent.Modules.Eventing.NServiceBus.Templates.Const
 
 ### NuGet Package Downgrade Errors (NU1605)
 
-You may encounter SDK package versions after an SF run, triggering `NU1605` downgrade errors. When this happens, manually correct the affected package versions in the `.csproj`. The root cause is NuGet versions drifting out of sync with the corresponding Intent module version — keep them aligned to avoid recurrence.
-
-Packages most commonly affected: `Intent.Modules.Common`, `Intent.Modules.Common.CSharp`, `Intent.SoftwareFactory.SDK`.
+An SF run can leave SDK package versions that trigger `NU1605`. Correct them in the `.csproj`. The cause is NuGet versions drifting out of sync with the Intent module version — keep them aligned. Most affected: `Intent.Modules.Common`, `Intent.Modules.Common.CSharp`, `Intent.SoftwareFactory.SDK`.
 
 ===
 
 ### Template Changes Not Taking Effect
 
-Building a module compiles the `.csproj` that represents it, and the step that packages the `.imod` runs off that compilation. If your changes were to non-C# files, the compilation may not trigger, the package step is skipped, and no new `.imod` is produced — the templates then keep generating from the previously packaged content, with nothing reported.
-
-To force it:
+Packaging the `.imod` runs off the module's `.csproj` compilation. Changes to non-C# files may not trigger that compilation, so no new `.imod` is produced and templates keep generating from the previously packaged content — silently. Force it:
 
 ```
 dotnet build --no-incremental
 ```
+
+That is normally enough: an **already-installed** module is re-detected and re-installed once repackaged, so neither a version bump nor an explicit `install_or_update_modules` belongs in the routine fix.
+
+===
+
+### When A Module Change Still Does Not Appear
+
+A clean regeneration proves nothing on its own — output that could not be rewritten reports no change either way. Work in order; skipping a step makes a later result meaningless.
+
+1. **Regenerate** and read the result.
+2. **Rule out protected output** — file-level ignore (`list_ignored_files` / `unignore_file`), `[IntentManaged(Body = Mode.Ignore)]` or `Mode.Merge` on a member, or `// IntentIgnore` on the line. If protected, the templates are fine; decide whether the protection is still wanted.
+3. **Check the build reached the cache** — `<solutionFolder>\.cache\modules\<ModuleId>.<Version>\lib\`. The folder is named from the `.imodspec`, the assembly from the `.csproj`, so they differ: `Intent.Common.3.11.2\lib\` holds `Intent.Modules.Common.dll`. Match on the folder.
+4. **Force a re-install** of the same version.
+5. **Force a rewrite** — perturb the output and regenerate. Back with your change: the pipeline is live. Back unchanged: the change is not reaching the generator. **Never delete ignored or protected output** — Intent will not recreate it. (Unrelated to a Software Factory *destructive change*, which is a hazard to resolve, not a probe.)
+6. **Stop and report what you ruled out.** **Do not renumber to force it** — see *"A version number is not a debugging tool"* in the module-building workflow instructions. A bump only takes effect once the application's install moves to it; if an authorised bump changes nothing, the fault is the template's logic.
+
+===
+
+### Module Not Discoverable For Install (Asset Repositories)
+
+Narrow trigger: use this **only** when you cannot install or update the module *at all* — typically a first install. A change not appearing is the ladder above.
+
+A locally-built `.imod` is only found if a repository entry points at where the packager drops it: the solution's `intent.repositories.config`, or the user's global **Asset Repositories** settings. Often neither needs touching. But if neither matches the path the build reports — `Successfully created module '<path>\<Module>.<Version>.imod'` — the build succeeds with 0 errors while the `.imod` lands where Intent never looks.
+
+Your job is to **tell the user, not configure it**. Report the path and note an entry may be missing — adding one is their call. If they add one and it still does not surface, ask them to restart Intent Architect, then re-check.
