@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="56c42b2b-0973-424b-ae40-2b32c7aa840c">
-  <file path=".agents/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
   <file path=".agents/instructions/exception-guidelines.instructions.md" templateId="Intent.ModuleBuilder.AI.Skills.RootPrinciples.ExceptionGuidelinesMd" />
   <file path=".agents/instructions/known-build-gotchas.instructions.md" templateId="Intent.ModuleBuilder.AI.Skills.RootPrinciples.KnownBuildGotchasMd" />
   <file path=".agents/instructions/module-building-workflow.instructions.md" templateId="Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd" />
