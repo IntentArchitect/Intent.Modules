@@ -1,5 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="fcb00a56-0c79-4c8f-b1ed-558727e509fe">
+  <file path=".agents/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path=".agents/instructions/exception-guidelines.instructions.md" templateId="Intent.ModuleBuilder.AI.Skills.RootPrinciples.ExceptionGuidelinesMd" />
+  <file path=".agents/instructions/known-build-gotchas.instructions.md" templateId="Intent.ModuleBuilder.AI.Skills.RootPrinciples.KnownBuildGotchasMd" />
+  <file path=".agents/instructions/module-building-workflow.instructions.md" templateId="Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd" />
+  <file path=".agents/instructions/sdd-wave-evidence.instructions.md" templateId="Intent.ModuleBuilder.AI.SDD.RootPrinciples.SddWaveEvidenceMd" />
+  <file path=".agents/skills/add-association-type/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_SkillMd_Agents" />
+  <file path=".agents/skills/add-association-type/resources/association-type-workflow.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_ResourcesAssociationTypeWorkflowMd_Agents" />
+  <file path=".agents/skills/add-designer-extension/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddDesignerExtension_SkillMd_Agents" />
+  <file path=".agents/skills/add-designer-extension/resources/designer-extension-workflow.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddDesignerExtension_ResourcesDesignerExtensionWorkflowMd_Agents" />
+  <file path=".agents/skills/add-designer-extension/resources/designer-extensions-reference.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddDesignerExtension_ResourcesDesignerExtensionsReferenceMd_Agents" />
+  <file path=".agents/skills/add-module-migration/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddModuleMigration_SkillMd_Agents" />
+  <file path=".agents/skills/architecture-templates/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.ArchitectureTemplates_SkillMd_Agents" />
+  <file path=".agents/skills/file-builder-expert/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_SkillMd_Agents" />
+  <file path=".agents/skills/file-builder-expert/resources/api-cheatsheet.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesApiCheatsheetMd_Agents" />
+  <file path=".agents/skills/file-builder-expert/resources/builder-patterns.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesBuilderPatternsMd_Agents" />
+  <file path=".agents/skills/file-builder-expert/resources/patterns/advanced-types.cs" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_Agents" />
+  <file path=".agents/skills/file-builder-expert/resources/patterns/control-flow.cs" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesPatternsControlFlowCs_Agents" />
+  <file path=".agents/skills/file-builder-expert/resources/patterns/lifecycle-hooks.cs" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesPatternsLifecycleHooksCs_Agents" />
+  <file path=".agents/skills/file-builder-expert/resources/troubleshooting.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesTroubleshootingMd_Agents" />
+  <file path=".agents/skills/intent-domain-interactions-expert/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentDomainInteractionsExpert_SkillMd_Agents" />
+  <file path=".agents/skills/intent-domain-interactions-expert/resources/interactions-cheatsheet.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentDomainInteractionsExpert_ResourcesInteractionsCheatsheetMd_Agents" />
+  <file path=".agents/skills/intent-mapping-architect/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentMappingArchitect_SkillMd_Agents" />
+  <file path=".agents/skills/intent-mapping-architect/resources/mapping-cheatsheet.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentMappingArchitect_ResourcesMappingCheatsheetMd_Agents" />
+  <file path=".agents/skills/intent-metadata-consumer/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentMetadataConsumer_SkillMd_Agents" />
+  <file path=".agents/skills/intent-metadata-consumer/resources/metadata-cheatsheet.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentMetadataConsumer_ResourcesMetadataCheatsheetMd_Agents" />
+  <file path=".agents/skills/intent-modelers-integration/SKILL.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_SkillMd_Agents" />
+  <file path=".agents/skills/intent-modelers-integration/resources/domain.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesDomainMd_Agents" />
+  <file path=".agents/skills/intent-modelers-integration/resources/eventing.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesEventingMd_Agents" />
+  <file path=".agents/skills/intent-modelers-integration/resources/integration-recipe.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesIntegrationRecipeMd_Agents" />
+  <file path=".agents/skills/intent-modelers-integration/resources/services.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesServicesMd_Agents" />
+  <file path=".agents/skills/intent-modelers-integration/resources/user-interface.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesUserInterfaceMd_Agents" />
+  <file path=".agents/skills/intent-module-orchestrator/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentModuleOrchestrator_SkillMd_Agents" />
+  <file path=".agents/skills/intent-module-orchestrator/resources/orchestration-cheatsheet.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentModuleOrchestrator_ResourcesOrchestrationCheatsheetMd_Agents" />
+  <file path=".agents/skills/module-building-strategies/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.ModuleBuildingStrategies_SkillMd_Agents" />
+  <file path=".agents/skills/module-context-capture/SKILL.md" templateId="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleContextCapture_SkillMd_Agents" />
+  <file path=".agents/skills/module-debugging/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.ModuleDebugging_SkillMd_Agents" />
+  <file path=".agents/skills/module-dependency-audit/SKILL.md" templateId="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDependencyAudit_SkillMd_Agents" />
+  <file path=".agents/skills/module-docs-chore/SKILL.md" templateId="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDocsChore_SkillMd_Agents" />
+  <file path=".agents/skills/module-docs/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.ModuleDocs_SkillMd_Agents" />
+  <file path=".agents/skills/module-element-icons/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.ModuleElementIcons_SkillMd_Agents" />
+  <file path=".agents/skills/module-svg-icon/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon_SkillMd_Agents" />
+  <file path=".agents/skills/module-version-increment/SKILL.md" templateId="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleVersionIncrement_SkillMd_Agents" />
+  <file path=".agents/skills/module-versioning/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.ModuleVersioning_SkillMd_Agents" />
+  <file path=".agents/skills/sdd-build-module/SKILL.md" templateId="Intent.ModuleBuilder.AI.SDD.Skills.SddBuildModule_SkillMd_Agents" />
   <file path=".claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
   <file path=".claude/rules/exception-guidelines.instructions.md" templateId="Intent.ModuleBuilder.AI.Skills.RootPrinciples.ExceptionGuidelinesMd" />
   <file path=".claude/rules/known-build-gotchas.instructions.md" templateId="Intent.ModuleBuilder.AI.Skills.RootPrinciples.KnownBuildGotchasMd" />

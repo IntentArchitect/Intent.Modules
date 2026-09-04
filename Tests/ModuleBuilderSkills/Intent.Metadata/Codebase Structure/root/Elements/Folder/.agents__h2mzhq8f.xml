@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="b27bafa1-62c8-487a-8280-6d4a98652987" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-  <name>.claude</name>
-  <display>.claude</display>
-  <externalReference>653975f1-4ef5-4392-897f-c2162b68bc09</externalReference>
+<class id="958445da-bc21-4b32-8a3e-c1f28863ffda" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>.agents</name>
+  <display>.agents</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>ac762d24-69c3-4f33-93f8-45686062a10b</parentFolderId>
-  <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
+  <parentFolderId>9cd015c8-8969-47be-be3f-0d7df6c15c86</parentFolderId>
+  <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
   <packageName>root</packageName>
   <traits>
     <trait id="60fd85c8-5de8-45b6-9ba7-570cc701c3ab" name="Allows Custom File Classification" />
@@ -25,15 +24,14 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="7884f9f7-6dd5-44f7-812e-41122b97a54e" type="Output Anchor" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+    <childElement id="4ddbfc7e-f02e-4bf5-bdfa-881f7488bd66" type="Output Anchor" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
       <name>AI.Context</name>
       <display>AI.Context</display>
-      <externalReference>7aa43cbe-4b48-4774-a77a-ba4e1161c13c</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>b27bafa1-62c8-487a-8280-6d4a98652987</parentFolderId>
-      <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
+      <parentFolderId>958445da-bc21-4b32-8a3e-c1f28863ffda</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
       <packageName>root</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="a23c7901-31a5-4cbf-b8bf-1be128977e6d" name="Output Anchor Settings">

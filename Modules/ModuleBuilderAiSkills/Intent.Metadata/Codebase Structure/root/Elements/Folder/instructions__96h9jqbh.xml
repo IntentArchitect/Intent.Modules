@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="39a69bd7-67d4-4a1b-80b1-ffe020395c05" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+<class id="c9d54085-cbd0-4f4d-b0ef-77d8d33611db" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
   <name>instructions</name>
   <display>instructions</display>
-  <externalReference>89d76f6e-2a3e-4b83-beef-9022591c90a7</externalReference>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>1f113641-171f-4136-ab56-7d3e35b38382</parentFolderId>
+  <parentFolderId>82257c11-5bf0-4991-8872-8bf80bfd678e</parentFolderId>
   <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
   <packageName>root</packageName>
   <traits>
@@ -25,14 +24,13 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="8763895d-a1f8-4141-94d3-2bef7ba877df" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="1ea37a25-2142-4d7b-84e2-bbdbf2f2fee0" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.AI.SDD.RootPrinciples.SddWaveEvidenceMd</name>
       <display>Intent.ModuleBuilder.AI.SDD.RootPrinciples.SddWaveEvidenceMd</display>
-      <externalReference>Intent.ModuleBuilder.AI.SDD</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>39a69bd7-67d4-4a1b-80b1-ffe020395c05</parentFolderId>
+      <parentFolderId>c9d54085-cbd0-4f4d-b0ef-77d8d33611db</parentFolderId>
       <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
       <packageName>root</packageName>
       <stereotypes>
@@ -51,14 +49,13 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="d89c2a58-0c9b-4f51-b164-6f6a9e37562f" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="ce1831b0-f9a9-4800-8ce9-daab1db5c14a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.AI.Skills.RootPrinciples.ExceptionGuidelinesMd</name>
       <display>Intent.ModuleBuilder.AI.Skills.RootPrinciples.ExceptionGuidelinesMd</display>
-      <externalReference>Intent.ModuleBuilder.AI.Skills</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>39a69bd7-67d4-4a1b-80b1-ffe020395c05</parentFolderId>
+      <parentFolderId>c9d54085-cbd0-4f4d-b0ef-77d8d33611db</parentFolderId>
       <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
       <packageName>root</packageName>
       <stereotypes>
@@ -77,14 +74,13 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="4dbf50e4-50b2-4dcc-a9e5-60574d6d27dc" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="9626b2b3-adeb-4005-a6e5-3605eb45e4c2" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.AI.Skills.RootPrinciples.KnownBuildGotchasMd</name>
       <display>Intent.ModuleBuilder.AI.Skills.RootPrinciples.KnownBuildGotchasMd</display>
-      <externalReference>Intent.ModuleBuilder.AI.Skills</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>39a69bd7-67d4-4a1b-80b1-ffe020395c05</parentFolderId>
+      <parentFolderId>c9d54085-cbd0-4f4d-b0ef-77d8d33611db</parentFolderId>
       <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
       <packageName>root</packageName>
       <stereotypes>
@@ -103,14 +99,13 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="97075d73-322d-4254-9452-14cc45cc320a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="c9956b3a-041a-4dff-8144-b63dab6b95c4" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd</name>
       <display>Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd</display>
-      <externalReference>Intent.ModuleBuilder.AI.Workflow</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>39a69bd7-67d4-4a1b-80b1-ffe020395c05</parentFolderId>
+      <parentFolderId>c9d54085-cbd0-4f4d-b0ef-77d8d33611db</parentFolderId>
       <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
       <packageName>root</packageName>
       <stereotypes>
@@ -129,14 +124,13 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="167f4dc8-8dce-4b84-976b-c2112a7ee3d7" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="087d5ab0-94ce-4f54-8cb4-d661bcc3df7d" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration</name>
       <display>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration</display>
-      <externalReference>Intent.Common.CSharp</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>39a69bd7-67d4-4a1b-80b1-ffe020395c05</parentFolderId>
+      <parentFolderId>c9d54085-cbd0-4f4d-b0ef-77d8d33611db</parentFolderId>
       <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
       <packageName>root</packageName>
       <stereotypes>
@@ -155,14 +149,13 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="7bd49c1e-30f2-44f6-b321-7f1c14036669" type="Output Anchor" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+    <childElement id="97daa59e-079d-4a1f-ad4d-7c1490e88cc3" type="Output Anchor" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
       <name>AI.Context.Instructions</name>
       <display>AI.Context.Instructions</display>
-      <externalReference>59c5ad55-d828-4c51-8edd-1d01f7537c36</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>39a69bd7-67d4-4a1b-80b1-ffe020395c05</parentFolderId>
+      <parentFolderId>c9d54085-cbd0-4f4d-b0ef-77d8d33611db</parentFolderId>
       <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
       <packageName>root</packageName>
       <stereotypes>

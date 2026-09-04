@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="b27bafa1-62c8-487a-8280-6d4a98652987" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-  <name>.claude</name>
-  <display>.claude</display>
-  <externalReference>653975f1-4ef5-4392-897f-c2162b68bc09</externalReference>
+<class id="82257c11-5bf0-4991-8872-8bf80bfd678e" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>.agents</name>
+  <display>.agents</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
@@ -25,14 +24,13 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="7884f9f7-6dd5-44f7-812e-41122b97a54e" type="Output Anchor" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+    <childElement id="ac537023-4cb5-4500-b562-8b37dc566c60" type="Output Anchor" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
       <name>AI.Context</name>
       <display>AI.Context</display>
-      <externalReference>7aa43cbe-4b48-4774-a77a-ba4e1161c13c</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>b27bafa1-62c8-487a-8280-6d4a98652987</parentFolderId>
+      <parentFolderId>82257c11-5bf0-4991-8872-8bf80bfd678e</parentFolderId>
       <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
       <packageName>root</packageName>
       <stereotypes>

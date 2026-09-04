@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="39a69bd7-67d4-4a1b-80b1-ffe020395c05" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+<class id="723da8b7-7592-4c44-8997-e85bc131fac4" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
   <name>instructions</name>
   <display>instructions</display>
-  <externalReference>89d76f6e-2a3e-4b83-beef-9022591c90a7</externalReference>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>1f113641-171f-4136-ab56-7d3e35b38382</parentFolderId>
-  <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
+  <parentFolderId>958445da-bc21-4b32-8a3e-c1f28863ffda</parentFolderId>
+  <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
   <packageName>root</packageName>
   <traits>
     <trait id="60fd85c8-5de8-45b6-9ba7-570cc701c3ab" name="Allows Custom File Classification" />
@@ -25,15 +24,14 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="8763895d-a1f8-4141-94d3-2bef7ba877df" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="ef286610-99a8-49d5-8075-7a414ab3fb12" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.AI.SDD.RootPrinciples.SddWaveEvidenceMd</name>
       <display>Intent.ModuleBuilder.AI.SDD.RootPrinciples.SddWaveEvidenceMd</display>
-      <externalReference>Intent.ModuleBuilder.AI.SDD</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>39a69bd7-67d4-4a1b-80b1-ffe020395c05</parentFolderId>
-      <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
+      <parentFolderId>723da8b7-7592-4c44-8997-e85bc131fac4</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
       <packageName>root</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
@@ -51,15 +49,14 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="d89c2a58-0c9b-4f51-b164-6f6a9e37562f" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="5d216eaf-1243-4975-aa70-306bc151d513" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.AI.Skills.RootPrinciples.ExceptionGuidelinesMd</name>
       <display>Intent.ModuleBuilder.AI.Skills.RootPrinciples.ExceptionGuidelinesMd</display>
-      <externalReference>Intent.ModuleBuilder.AI.Skills</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>39a69bd7-67d4-4a1b-80b1-ffe020395c05</parentFolderId>
-      <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
+      <parentFolderId>723da8b7-7592-4c44-8997-e85bc131fac4</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
       <packageName>root</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
@@ -77,15 +74,14 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="4dbf50e4-50b2-4dcc-a9e5-60574d6d27dc" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="aeb80450-0dbf-468e-bfc6-e517b2af6f6d" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.AI.Skills.RootPrinciples.KnownBuildGotchasMd</name>
       <display>Intent.ModuleBuilder.AI.Skills.RootPrinciples.KnownBuildGotchasMd</display>
-      <externalReference>Intent.ModuleBuilder.AI.Skills</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>39a69bd7-67d4-4a1b-80b1-ffe020395c05</parentFolderId>
-      <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
+      <parentFolderId>723da8b7-7592-4c44-8997-e85bc131fac4</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
       <packageName>root</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
@@ -103,15 +99,14 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="97075d73-322d-4254-9452-14cc45cc320a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="5bcdf564-6cd1-4511-b2ff-b71de4b1e867" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd</name>
       <display>Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd</display>
-      <externalReference>Intent.ModuleBuilder.AI.Workflow</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>39a69bd7-67d4-4a1b-80b1-ffe020395c05</parentFolderId>
-      <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
+      <parentFolderId>723da8b7-7592-4c44-8997-e85bc131fac4</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
       <packageName>root</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
@@ -129,15 +124,14 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="167f4dc8-8dce-4b84-976b-c2112a7ee3d7" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="3db1c32b-3f1f-4d2a-ae34-94ea4fc96072" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration</name>
       <display>Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration</display>
-      <externalReference>Intent.Common.CSharp</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>39a69bd7-67d4-4a1b-80b1-ffe020395c05</parentFolderId>
-      <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
+      <parentFolderId>723da8b7-7592-4c44-8997-e85bc131fac4</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
       <packageName>root</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
@@ -155,15 +149,14 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="7bd49c1e-30f2-44f6-b321-7f1c14036669" type="Output Anchor" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+    <childElement id="00cc145c-9754-499a-9f44-e5683ff66d57" type="Output Anchor" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
       <name>AI.Context.Instructions</name>
       <display>AI.Context.Instructions</display>
-      <externalReference>59c5ad55-d828-4c51-8edd-1d01f7537c36</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>39a69bd7-67d4-4a1b-80b1-ffe020395c05</parentFolderId>
-      <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
+      <parentFolderId>723da8b7-7592-4c44-8997-e85bc131fac4</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
       <packageName>root</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="a23c7901-31a5-4cbf-b8bf-1be128977e6d" name="Output Anchor Settings">

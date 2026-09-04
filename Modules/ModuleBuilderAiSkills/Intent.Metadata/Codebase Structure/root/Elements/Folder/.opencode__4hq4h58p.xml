@@ -10,6 +10,9 @@
   <parentFolderId>ac762d24-69c3-4f33-93f8-45686062a10b</parentFolderId>
   <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
   <packageName>root</packageName>
+  <traits>
+    <trait id="60fd85c8-5de8-45b6-9ba7-570cc701c3ab" name="Allows Custom File Classification" />
+  </traits>
   <stereotypes>
     <stereotype stereotypeDefinitionId="66fd9e66-42c7-4ef9-a778-b68e009272b9" name="Folder Options">
       <addedByDefault>true</addedByDefault>
