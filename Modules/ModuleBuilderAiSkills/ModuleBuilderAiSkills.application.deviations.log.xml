@@ -15,6 +15,12 @@
       <approvedAt>2026-08-19T16:46:19.8860904Z</approvedAt>
     </customFile>
     <customFile>
+      <path>Modules/.agents/skills/local-add-module-skill-template/SKILL.md</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-04T17:47:47.9734973Z</approvedAt>
+    </customFile>
+    <customFile>
       <path>Modules/.claude/rules/readme.txt</path>
       <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
       <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>

@@ -62,18 +62,6 @@
       <deviationsHash>1707F60C35A6DB44C42AEE01218C521728B362B230B1841EB75C0427485C42E1</deviationsHash>
     </file>
     <file>
-      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#6674d4fb-1caf-40f8-9f5d-9597b7b03369</correlationId>
-      <path>Templates/Skills/FileBuilderExpert_SkillMd_Agents/FileBuilderExpert_SkillMd_AgentsTemplatePartial.cs</path>
-      <count>1</count>
-      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-08-20T16:25:39.4823266Z</updatedAt>
-      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
-      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
-      <approvedAt>2026-08-20T16:42:12.6024612Z</approvedAt>
-      <deviationsHash>09917E800149FA49339C9FC2CB41736ACA42DF6293F4FEBDA4A5D95647F867CA</deviationsHash>
-    </file>
-    <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#c03952af-f3b9-43a9-9b8a-0f8a06948579</correlationId>
       <path>Templates/Skills/IntentDomainInteractionsExpert_SkillMd_Agents/IntentDomainInteractionsExpert_SkillMd_AgentsTemplatePartial.cs</path>
       <count>1</count>
@@ -117,18 +105,6 @@
       <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
       <approvedAt>2026-08-20T16:42:12.6469447Z</approvedAt>
       <deviationsHash>E39642965B89027B7834C453FE0256FE7A8C8EC60BB412F1A566AEEE3CF404CA</deviationsHash>
-    </file>
-    <file>
-      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#a6e43b6a-d6ba-47c1-996f-09e99d6d45c0</correlationId>
-      <path>Templates/Skills/ModuleBuildingStrategies_SkillMd_Agents/ModuleBuildingStrategies_SkillMd_AgentsTemplatePartial.cs</path>
-      <count>1</count>
-      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-08-20T16:25:39.4824332Z</updatedAt>
-      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
-      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
-      <approvedAt>2026-08-20T16:42:12.6618567Z</approvedAt>
-      <deviationsHash>95049F380B82596BE51CF55DC8C7D6C0E079A331879321C20325759367367364</deviationsHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#0e48d622-5e89-436a-874d-9db4668b34bb</correlationId>
