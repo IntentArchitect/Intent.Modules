@@ -19,6 +19,14 @@
         <property name="fdbbd211-a162-4f29-bcdb-1250309d8aef" display="Extend Designers" value="[&quot;81104ae6-2bc5-4bae-b05a-f987b0372d81&quot;,&quot;a1c3dd87-352e-4353-853b-c79853debecb&quot;]" isActive="true" />
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="14441454-bfe0-4d5d-8dba-d86d74d33a3b" name="AI Settings">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="### Core rule (CRITICAL)&#xA;- Model a message (`Message`/`Integration Command`) ONCE, in one `Eventing Package`, in one application. Other applications add a Package Reference and reuse it - never remodel it.&#xA;- Search the WHOLE solution first for an existing element before creating one.&#xA;- `Eventing Package` name = C# namespace, so a same-named message modeled separately in another app is a different, unrelated type.&#xA;- SAVE the designer you just modeled in before switching to another designer to reference it (a Software Factory run also persists pending changes, as a fallback). Unsaved changes are invisible to other designer sessions.&#xA;&#xA;### Workflow&#xA;1. Search all applications for an existing `Message`/`Integration Command`/`Domain Event` with this name/intent.&#xA;2. If found in another app's `Eventing Package`: save that designer (or run SF) first, then add a Package Reference and reuse it.&#xA;3. If not found: create it in the owning application (see ownership rules below) inside an `Eventing Package`. Save (or run SF) before switching designers.&#xA;4. Wire publish/subscribe via Intent.Modelers.Services.EventInteractions (`Publish Integration Event`/`Send Integration Command`/`Subscribe Integration Event`/`Subscribe Integration Command`) - see that module's own AI Context for mapping and attach-point rules.&#xA;&#xA;### Anti-patterns&#xA;- Creating a duplicate because &quot;it isn't visible yet&quot; without checking for an unsaved change or missing Package Reference.&#xA;- Same event/command modeled differently in two apps.&#xA;- Modeling a message in a Services Package instead of an `Eventing Package` (unreferenceable)." isActive="true" />
+      </properties>
+    </stereotype>
   </stereotypes>
   <metadata />
   <childElements />

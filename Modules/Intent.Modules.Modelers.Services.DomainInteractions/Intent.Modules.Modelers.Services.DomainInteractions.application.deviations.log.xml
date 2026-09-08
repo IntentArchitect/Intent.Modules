@@ -42,4 +42,12 @@
       <fileHash>4661166BD9C05DFA1EF04A9FB7AA87C1107CB64AD9FD53AFC7512B751CFCEA79</fileHash>
     </file>
   </files>
+  <customFiles>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Services.DomainInteractions/CONTEXT.md</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-08T19:48:24.6693553Z</approvedAt>
+    </customFile>
+  </customFiles>
 </deviationsLog>

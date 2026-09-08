@@ -1,3 +1,7 @@
+### Version 2.4.8
+
+- Improvement: Added AI guidance to `Create Entity Action`/`Update Entity Action`: by default wire only the minimum needed for validation and `// IntentIgnore` + hand-write the rest; only do full field mapping if explicitly requested, and avoid `mapExpression` for strings.
+
 ### Version 2.4.7
 
 - Improvement: Added guidance to not automatically model Entity Action mappings

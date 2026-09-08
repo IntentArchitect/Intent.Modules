@@ -48,6 +48,14 @@
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="14441454-bfe0-4d5d-8dba-d86d74d33a3b" name="AI Settings">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="### Ownership (CRITICAL - opposite of quick-create default)&#xA;- Owned by the RECEIVING application, not the sender - it defines the accepted contract.&#xA;- Opposite of the &quot;Publish Integration Command&quot; quick-create, which creates it in the sender's app. Ask if ownership is unclear - expensive to reverse.&#xA;- Sender adds a Package Reference and wires via existing &quot;Publish Integration Command&quot; - never creates its own copy." isActive="true" />
+      </properties>
+    </stereotype>
   </stereotypes>
   <metadata />
   <childElements>
@@ -97,6 +105,7 @@
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
                 <property name="77a9993c-40ba-47a9-a2a4-0974548a3f27" display="Is Option Visible Function" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="fdea9028-8611-4eb0-b1a5-4d54d267af41" display="Menu Group" isActive="true" />
                 <property name="aeaeff9b-f55b-4888-92e9-5317b5c14016" display="Top Divider" value="false" isActive="true" />
                 <property name="543cc5f5-0b0c-40cc-9df7-3ce45b555dd0" display="Bottom Divider" value="false" isActive="true" />
               </properties>

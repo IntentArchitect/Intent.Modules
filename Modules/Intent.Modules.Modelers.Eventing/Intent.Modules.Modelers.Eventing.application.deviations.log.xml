@@ -52,4 +52,18 @@
       <fileHash>4E9DE3C16E8F9DB7A9443324AB96056E0F9297CCDA93EAC727831E2224C38940</fileHash>
     </file>
   </files>
+  <customFiles>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Eventing/CONTEXT.md</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-08T19:48:24.4713588Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Eventing/release-notes.md</path>
+      <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
+      <approvedAt>2026-09-08T19:48:24.6597365Z</approvedAt>
+    </customFile>
+  </customFiles>
 </deviationsLog>

@@ -9,7 +9,16 @@
   <parentFolderId>bcc2079b-d8d7-4d7a-a3b5-79ebd687a02e</parentFolderId>
   <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
   <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="14441454-bfe0-4d5d-8dba-d86d74d33a3b" name="AI Settings">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="### Attach point&#xA;- Chain a domain interaction (Create/Query/Update/Delete Entity Action) from THIS association's Target End node, not the Integration Event Handler element (requires Intent.Modelers.Services.DomainInteractions)." isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <metadata />
   <childElements>
     <childElement id="5d8f5c33-f9c9-4629-b637-fad9b0096894" type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">

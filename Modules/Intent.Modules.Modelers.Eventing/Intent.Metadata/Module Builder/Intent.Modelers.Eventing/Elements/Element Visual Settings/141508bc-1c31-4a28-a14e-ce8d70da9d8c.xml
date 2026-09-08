@@ -12,7 +12,6 @@
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
-    <comment />
     <typePackageName>Intent.Modelers.Eventing</typePackageName>
     <typePackageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</typePackageId>
     <stereotypes />

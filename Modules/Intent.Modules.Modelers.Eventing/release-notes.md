@@ -1,4 +1,8 @@
-﻿### Version 6.0.4
+﻿### Version 6.0.5
+
+- Improvement: Added AI Context (`Rules`) to the eventing designer settings, `Message`, `Integration Command`, and `Eventing Package` types, guiding AI modeling agents on ownership, cross-application saving, and to wire only the minimum for validation (`// IntentIgnore` + hand-write the rest) unless the user explicitly asks for full field mapping.
+
+### Version 6.0.4
 
 - Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
 

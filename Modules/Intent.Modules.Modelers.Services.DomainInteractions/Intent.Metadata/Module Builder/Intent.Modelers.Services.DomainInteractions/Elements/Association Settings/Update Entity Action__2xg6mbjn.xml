@@ -9,7 +9,16 @@
   <parentFolderId>f36cb21a-faf9-46ff-85e7-41f38345253d</parentFolderId>
   <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
   <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="14441454-bfe0-4d5d-8dba-d86d74d33a3b" name="AI Settings">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="### Advanced mapping&#xA;- Default: wire only the minimum needed to satisfy designer validation (the `Invocation Mapping` mapped end). Skip field Data Mappings/`mapExpression` unless the user explicitly asks for full mapping - instead mark the generated method body `// IntentIgnore` and hand-write the field logic in code.&#xA;- If full mapping IS requested: wire Data Mappings per field too; avoid `mapExpression` for strings - use a method reference instead." isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <metadata />
   <childElements>
     <childElement id="6bc95978-6def-4d0c-a4f5-25bdeda8a9f6" type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">

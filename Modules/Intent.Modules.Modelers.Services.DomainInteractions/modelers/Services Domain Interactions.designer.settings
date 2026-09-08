@@ -10880,6 +10880,9 @@ return typeReference.getIsCollection()
           </pointIndicator>
         </targetEnd>
       </visualSettings>
+      <rules>### Advanced mapping
+- Default: wire only the minimum needed to satisfy designer validation (the `Invocation Mapping` mapped end). Skip field Data Mappings/`mapExpression` unless the user explicitly asks for full mapping - instead mark the generated method body `// IntentIgnore` and hand-write the field logic in code.
+- If full mapping IS requested: wire Data Mappings per field too; avoid `mapExpression` for strings - use a method reference instead.</rules>
     </associationSetting>
     <associationSetting type="Delete Entity Action" typeId="bfc823fb-60ab-451d-ba62-12671fe7e28e">
       <sourceEnd type="Delete Entity Action Source End" typeId="8c2d9fed-bd14-44b2-9f98-8a801aaf157e">
@@ -11283,6 +11286,9 @@ function getOrCreatePkField(sourceType, attr, fieldType) {
 }</script>
         </macro>
       </macros>
+      <rules>### Advanced mapping
+- Default: wire only the minimum needed to satisfy designer validation (the `Invocation Mapping` mapped end). Skip field Data Mappings/`mapExpression` unless the user explicitly asks for full mapping - instead mark the generated method body `// IntentIgnore` and hand-write the field logic in code.
+- If full mapping IS requested: wire Data Mappings per field too; avoid `mapExpression` for strings - use a method reference instead.</rules>
     </associationSetting>
   </associationSettings>
   <associationExtensions>

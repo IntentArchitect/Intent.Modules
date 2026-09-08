@@ -413,6 +413,9 @@ vertical-align: center`</style>
           </pointIndicator>
         </targetEnd>
       </visualSettings>
+      <rules>### Mapping
+- Don't map to the message unless the user explicitly asks for mapping. Wire only the association, then `// IntentIgnore` the publish call and hand-write field assignment in code.
+- If mapping IS requested: use `Publish Message Mapping`; avoid `mapExpression` for strings - prefer a method reference.</rules>
     </associationSetting>
     <associationSetting type="Send Integration Command" typeId="389a7478-a8f1-4acc-adff-a73ce4aa7e6d">
       <sourceEnd type="Send Integration Command Source End" typeId="c5f4f98f-e464-48de-b202-c0724bacebb7">
@@ -494,6 +497,9 @@ vertical-align: center`</style>
           </pointIndicator>
         </targetEnd>
       </visualSettings>
+      <rules>### Mapping
+- Don't map to the message unless the user explicitly asks for mapping. Wire only the association, then `// IntentIgnore` the publish call and hand-write field assignment in code.
+- If mapping IS requested: use `Publish Message Mapping`; avoid `mapExpression` for strings - prefer a method reference.</rules>
     </associationSetting>
     <associationSetting type="Subscribe Integration Command" typeId="f485e4aa-a032-4b9a-aa85-5d2c62d75799">
       <sourceEnd type="Subscribe Integration Command Source End" typeId="cdc0ae0a-1199-4450-8e21-2da80e03bc26">
@@ -647,6 +653,8 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
 </script>
         </macro>
       </macros>
+      <rules>### Attach point
+- Chain a domain interaction (Create/Query/Update/Delete Entity Action) from THIS association's Target End node, not the Integration Event Handler element (requires Intent.Modelers.Services.DomainInteractions).</rules>
     </associationSetting>
     <associationSetting type="Subscribe Integration Event" typeId="80aa7f6d-64e5-4d24-a81e-6bc212925ca7">
       <sourceEnd type="Subscribe Integration Event Source End" typeId="5d8f5c33-f9c9-4629-b637-fad9b0096894">
@@ -800,6 +808,8 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
 </script>
         </macro>
       </macros>
+      <rules>### Attach point
+- Chain a domain interaction (Create/Query/Update/Delete Entity Action) from THIS association's Target End node, not the Integration Event Handler element (requires Intent.Modelers.Services.DomainInteractions).</rules>
     </associationSetting>
   </associationSettings>
   <associationExtensions>

@@ -1,3 +1,7 @@
+### Version 2.0.8
+
+- Improvement: Added AI guidance to `Subscribe Integration Event`/`Subscribe Integration Command` (chain domain interactions from the association's Target End, not the handler) and to `Publish Integration Event`/`Send Integration Command` (skip mapping unless explicitly requested; `// IntentIgnore` + hand-write otherwise; avoid `mapExpression` for strings).
+
 ### Version 2.0.7
 
 - Improvement: Create CRUD operations from Integration Event Handlers.
