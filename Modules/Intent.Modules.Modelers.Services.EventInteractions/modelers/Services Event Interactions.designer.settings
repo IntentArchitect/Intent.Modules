@@ -654,7 +654,10 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
         </macro>
       </macros>
       <rules>### Attach point
-- Chain a domain interaction (Create/Query/Update/Delete Entity Action) from THIS association's Target End node, not the Integration Event Handler element (requires Intent.Modelers.Services.DomainInteractions).</rules>
+- Chain a domain interaction (Create/Query/Update/Delete Entity Action) from THIS association's Target End node, not the Integration Event Handler element (requires Intent.Modelers.Services.DomainInteractions).
+
+### Diagram layout
+- After wiring, place the message/handler node AND this association's Target End node in ONE `apply_change_diagram_layout` call, routing the edge there too - placing them in separate calls fails because an edge can't route to an endpoint not yet present in that call's snapshot.</rules>
     </associationSetting>
     <associationSetting type="Subscribe Integration Event" typeId="80aa7f6d-64e5-4d24-a81e-6bc212925ca7">
       <sourceEnd type="Subscribe Integration Event Source End" typeId="5d8f5c33-f9c9-4629-b637-fad9b0096894">
@@ -809,7 +812,10 @@ if (handler.getAssociations("Subscribe Integration Event").length == 0 &amp;&amp
         </macro>
       </macros>
       <rules>### Attach point
-- Chain a domain interaction (Create/Query/Update/Delete Entity Action) from THIS association's Target End node, not the Integration Event Handler element (requires Intent.Modelers.Services.DomainInteractions).</rules>
+- Chain a domain interaction (Create/Query/Update/Delete Entity Action) from THIS association's Target End node, not the Integration Event Handler element (requires Intent.Modelers.Services.DomainInteractions).
+
+### Diagram layout
+- After wiring, place the message/handler node AND this association's Target End node in ONE `apply_change_diagram_layout` call, routing the edge there too - placing them in separate calls fails because an edge can't route to an endpoint not yet present in that call's snapshot.</rules>
     </associationSetting>
   </associationSettings>
   <associationExtensions>

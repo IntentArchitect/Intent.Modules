@@ -15,7 +15,7 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="### Attach point&#xA;- Chain a domain interaction (Create/Query/Update/Delete Entity Action) from THIS association's Target End node, not the Integration Event Handler element (requires Intent.Modelers.Services.DomainInteractions)." isActive="true" />
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="### Attach point&#xA;- Chain a domain interaction (Create/Query/Update/Delete Entity Action) from THIS association's Target End node, not the Integration Event Handler element (requires Intent.Modelers.Services.DomainInteractions).&#xA;&#xA;### Diagram layout&#xA;- After wiring, place the message/handler node AND this association's Target End node in ONE `apply_change_diagram_layout` call, routing the edge there too - placing them in separate calls fails because an edge can't route to an endpoint not yet present in that call's snapshot." isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
