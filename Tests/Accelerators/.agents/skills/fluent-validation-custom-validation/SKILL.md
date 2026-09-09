@@ -1,8 +1,8 @@
 ---
 name: fluent-validation-custom-validation
-description: implement or revise fluent validation custom async method logic in an existing validator file. use when a c# fluent validation validator has an incomplete or incorrect custom async validation method and the agent should update the method body, add private helper methods, and extend application or domain abstractions such as repositories or services if required, while avoiding direct infrastructure dependencies in the validator.
+description: Implements custom and async FluentValidation rules. MUST load before creating or editing any validator e.g. *Validator.cs.
 template-id: Intent.Application.FluentValidation.CustomValidationSkillTemplate
-contentHash: 40B5DE04A23E86965C2B06AAABE3833178B39E6AE8FB452F4271AA99C393609E
+contentHash: 5BAB82C76F0A1BAC24EFB434DC0B80C9BB11EA6495A11332F36FACE449EB814A
 ---
 # Fluent Validation Custom Async Method
 

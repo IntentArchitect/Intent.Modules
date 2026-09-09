@@ -16,6 +16,7 @@ namespace Accelerators.Application.Block2Level1s
             ConfigureValidationRules(provider);
         }
 
+        [IntentManaged(Mode.Merge)]
         private void ConfigureValidationRules(IValidatorProvider provider)
         {
             RuleFor(v => v.Name)

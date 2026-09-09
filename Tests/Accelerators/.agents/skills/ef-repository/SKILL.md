@@ -1,8 +1,8 @@
 ---
 name: ef-repository
-description: Guidance for extending Entity Framework Repositories. Use when a wanting to modify or extend existing Entity Framework repository functionality (Interfaces or Concretes).
+description: Extends EF repository contracts and implementations with new query or persistence methods. MUST load before creating or editing any I*Repository.cs or its Infrastructure implementation.
 template-id: Intent.EntityFrameworkCore.Repositories.EFRepositorySkillTemplate
-contentHash: 3B0F58FB54A1CC987D0B314637B7BCED3B64E8BFC2060D53AD5B50C980F29A81
+contentHash: FC1FA73E0BAD6BF8D08450482469AC12E5C47798B8891B12CF6F1A01F52D15BB
 ---
 # EF Repository Extension
 

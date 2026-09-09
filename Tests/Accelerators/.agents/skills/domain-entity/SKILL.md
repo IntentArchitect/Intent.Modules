@@ -1,8 +1,8 @@
 ---
 name: domain-entity
-description: guide coding agents to implement missing c# domain behaviour on a single domain entity or aggregate that lives in a dependency-free clean architecture domain project and may be persisted by a technology like ef core. use when a user shares a c# domain class with missing methods, not implemented exceptions, incomplete constructors, weak invariants, or unclear placement of business logic, and they want help finishing the domain behaviour while keeping persistence concerns secondary.
+description: Implements domain behaviour, invariants, and constructors on entities and aggregates. MUST load before creating or editing any entity, aggregate, or value object.
 template-id: Intent.Entities.DomainEntitySkill
-contentHash: 98935A9A5EDC1FCE6C8DD924AE80524ADD8C97A97891187B1E94290A2C210A2B
+contentHash: 7F5C3293C86D55F16DEDCB2BEC23AD6417E7E18A502431D1B3FF1E106FC775BA
 ---
 # Domain Entity
 

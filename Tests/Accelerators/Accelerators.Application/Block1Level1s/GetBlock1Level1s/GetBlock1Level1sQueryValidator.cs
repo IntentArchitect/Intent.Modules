@@ -15,6 +15,7 @@ namespace Accelerators.Application.Block1Level1s.GetBlock1Level1s
             ConfigureValidationRules();
         }
 
+        [IntentManaged(Mode.Merge)]
         private void ConfigureValidationRules()
         {
             // Implement custom validation logic here if required

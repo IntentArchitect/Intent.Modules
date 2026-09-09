@@ -187,7 +187,7 @@
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomBuilder/TypeScriptCustomBuilderTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.Custom" />
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomCustom/TypeScriptCustomCustomTemplatePartial.cs" templateId="Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial" />
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomCustom/TypeScriptCustomCustomTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.Custom" />
-  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomStringInter/TypeScriptCustomStringInterTemplate.cs" templateId="Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplateStringInterpolation" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomStringInter/TypeScriptCustomStringInterTemplate.cs" deviationsHash="49BA6345B7F7319A5711F11B2CAC9277933E250FB250DFCFEDE94D5B0E2D52C5" templateId="Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplateStringInterpolation" />
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomStringInter/TypeScriptCustomStringInterTemplatePartial.cs" templateId="Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial" />
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomStringInter/TypeScriptCustomStringInterTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.Custom" />
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptCustomT4/TypeScriptCustomT4Template.cs" templateId="ModuleBuilder.Typescript.Templates.TypescriptTemplate.PreProcessT4" />
@@ -198,7 +198,7 @@
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelBuilder/TypeScriptFilePerModelBuilderTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelCustom/TypeScriptFilePerModelCustomTemplatePartial.cs" templateId="Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial" />
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelCustom/TypeScriptFilePerModelCustomTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
-  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelStringInter/TypeScriptFilePerModelStringInterTemplate.cs" templateId="Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplateStringInterpolation" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelStringInter/TypeScriptFilePerModelStringInterTemplate.cs" deviationsHash="801644BBD6D85DC275646CD166275456800D9AF73917B1712AE20CC31B86D95A" templateId="Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplateStringInterpolation" />
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelStringInter/TypeScriptFilePerModelStringInterTemplatePartial.cs" templateId="Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial" />
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelStringInter/TypeScriptFilePerModelStringInterTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelT4/TypeScriptFilePerModelT4Template.cs" templateId="ModuleBuilder.Typescript.Templates.TypescriptTemplate.PreProcessT4" />
@@ -209,7 +209,7 @@
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileBuilder/TypeScriptSingleFileBuilderTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileCustom/TypeScriptSingleFileCustomTemplatePartial.cs" templateId="Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial" />
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileCustom/TypeScriptSingleFileCustomTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
-  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileStringInter/TypeScriptSingleFileStringInterTemplate.cs" templateId="Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplateStringInterpolation" />
+  <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileStringInter/TypeScriptSingleFileStringInterTemplate.cs" deviationsHash="721EEBE4C7B204E9CA2167D276ADDA806F725D451B8D37952F06DBA9F70E06DC" templateId="Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplateStringInterpolation" />
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileStringInter/TypeScriptSingleFileStringInterTemplatePartial.cs" templateId="Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial" />
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileStringInter/TypeScriptSingleFileStringInterTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
   <file path="ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileT4/TypeScriptSingleFileT4Template.cs" templateId="ModuleBuilder.Typescript.Templates.TypescriptTemplate.PreProcessT4" />

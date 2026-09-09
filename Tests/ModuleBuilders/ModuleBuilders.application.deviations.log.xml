@@ -1483,5 +1483,32 @@
       <deviationsHash>81953916D7FDDE68CED905D2E00D757350BE6B78CA61599A3F41FE4711855359</deviationsHash>
       <fileHash>A6F52B91774043A99AB6877CFB0607D684E56CEAC6FC1C22A9A1BF379B92716A</fileHash>
     </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplateStringInterpolation#a71896c7-2929-4de4-b680-9bb10d72ec7d</correlationId>
+      <path>ModuleBuilders/Templates/TypeScript/TypeScriptCustomStringInter/TypeScriptCustomStringInterTemplate.cs</path>
+      <count>1</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2026-09-09T10:26:34.7709909Z</updatedAt>
+      <deviationsHash>49BA6345B7F7319A5711F11B2CAC9277933E250FB250DFCFEDE94D5B0E2D52C5</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplateStringInterpolation#a75a4a4d-1b1e-4bcd-abd3-b8d628cadcd1</correlationId>
+      <path>ModuleBuilders/Templates/TypeScript/TypeScriptFilePerModelStringInter/TypeScriptFilePerModelStringInterTemplate.cs</path>
+      <count>1</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2026-09-09T10:26:34.7709978Z</updatedAt>
+      <deviationsHash>801644BBD6D85DC275646CD166275456800D9AF73917B1712AE20CC31B86D95A</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplateStringInterpolation#b623adf6-78e9-422d-b5ed-5270d9fe92de</correlationId>
+      <path>ModuleBuilders/Templates/TypeScript/TypeScriptSingleFileStringInter/TypeScriptSingleFileStringInterTemplate.cs</path>
+      <count>1</count>
+      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
+      <updatedAt>2026-09-09T10:26:34.7710042Z</updatedAt>
+      <deviationsHash>721EEBE4C7B204E9CA2167D276ADDA806F725D451B8D37952F06DBA9F70E06DC</deviationsHash>
+    </file>
   </files>
 </deviationsLog>

@@ -15,6 +15,7 @@ namespace Accelerators.Application.Block1Level1s
             ConfigureValidationRules();
         }
 
+        [IntentManaged(Mode.Merge)]
         private void ConfigureValidationRules()
         {
             RuleFor(v => v.Name)
