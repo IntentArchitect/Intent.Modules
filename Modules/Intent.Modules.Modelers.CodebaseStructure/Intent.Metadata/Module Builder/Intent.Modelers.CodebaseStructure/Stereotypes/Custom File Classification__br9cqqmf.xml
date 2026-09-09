@@ -15,41 +15,18 @@ return element.hasTrait("60fd85c8-5de8-45b6-9ba7-570cc701c3ab");</targetFilterFu
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>
-  <allowMultipleApplies>true</allowMultipleApplies>
+  <allowMultipleApplies>false</allowMultipleApplies>
   <parentFolderId>6537e6dd-d401-4065-a843-627fe0c89efb</parentFolderId>
   <order>0</order>
   <packageId>525868ff-adc0-4ab6-a90e-352288da941f</packageId>
   <packageName>Intent.Modelers.CodebaseStructure</packageName>
   <properties>
-    <property id="1f903649-4ed0-4c2b-b288-34dedacdff05">
-      <hint>Severity level. Always stored as the lower-case option name, never a number.</hint>
-      <name>Severity</name>
+    <property id="3e552682-b2c7-450a-acb6-be006206cf97">
+      <name>Entries</name>
       <type>string</type>
-      <controlType>select</controlType>
-      <optionsSource>options</optionsSource>
-      <valueOptions>
-        <option>0 - None</option>
-        <option>1 - Low</option>
-        <option>2 - Medium</option>
-        <option>3 - High</option>
-      </valueOptions>
-    </property>
-    <property id="14dd36e5-eee3-4b8f-9868-99b965703d23">
-      <hint>Glob items evaluated against a file's path relative to the folder/project this is applied to. Negation using `!` supported.</hint>
-      <name>Glob</name>
-      <type>string</type>
-      <controlType>textarea</controlType>
+      <controlType>item-list</controlType>
       <optionsSource>n/a</optionsSource>
-    </property>
-    <property id="c42e8c3a-962a-4e85-b890-e3234eb6534d">
-      <hint>Created `File Classification` element types can be chosen here.</hint>
-      <name>Classification</name>
-      <type>string</type>
-      <controlType>multi-select</controlType>
-      <optionsSource>lookup-element</optionsSource>
-      <lookupTypes>
-        <type>86490efd-d823-44cf-bb67-283231ae95f3</type>
-      </lookupTypes>
+      <itemTypeId>14476d2c-c5fb-4aea-ad8c-55d1b00a8203</itemTypeId>
     </property>
   </properties>
 </stereotypeDefinition>

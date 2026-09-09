@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="14476d2c-c5fb-4aea-ad8c-55d1b00a8203" version="3.1.0">
+  <name>Custom File Classification Entry</name>
+  <targetMode>filter-function</targetMode>
+  <targetTypes />
+  <targetReferenceTypes />
+  <targetFilterFunction>return false;</targetFilterFunction>
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction>const globItems = (properties["Glob"].value || "")
+    .split(/\r?\n/)
+    .map(line =&gt; line.trim())
+    .filter(line =&gt; line.length &gt; 0);
+
+const classificationIds = JSON.parse(properties["Classification"].value || "[]");
+const classificationNames = classificationIds
+    .map(id =&gt; lookup(id)?.getName())
+    .filter(name =&gt; !!name);
+
+const parts = [
+    ...globItems,
+    properties["Severity"].value,
+    ...classificationNames
+].filter(part =&gt; !!part);
+
+return parts.join(", ");</displayFunction>
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>6537e6dd-d401-4065-a843-627fe0c89efb</parentFolderId>
+  <order>0</order>
+  <packageId>525868ff-adc0-4ab6-a90e-352288da941f</packageId>
+  <packageName>Intent.Modelers.CodebaseStructure</packageName>
+  <properties>
+    <property id="14dd36e5-eee3-4b8f-9868-99b965703d23">
+      <hint>Glob items evaluated against a file's path relative to the folder/project this is applied to. Negation using `!` supported.</hint>
+      <name>Glob</name>
+      <type>string</type>
+      <controlType>textarea</controlType>
+      <optionsSource>n/a</optionsSource>
+    </property>
+    <property id="1f903649-4ed0-4c2b-b288-34dedacdff05">
+      <hint>Severity level. Always stored as the lower-case option name, never a number.</hint>
+      <name>Severity</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <valueOptions>
+        <option>0 - None</option>
+        <option>1 - Low</option>
+        <option>2 - Medium</option>
+        <option>3 - High</option>
+      </valueOptions>
+    </property>
+    <property id="c42e8c3a-962a-4e85-b890-e3234eb6534d">
+      <hint>Created `File Classification` element types can be chosen here.</hint>
+      <name>Classification</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <lookupTypes>
+        <type>86490efd-d823-44cf-bb67-283231ae95f3</type>
+      </lookupTypes>
+    </property>
+  </properties>
+</stereotypeDefinition>
