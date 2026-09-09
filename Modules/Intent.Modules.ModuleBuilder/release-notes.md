@@ -1,3 +1,7 @@
+### Version 3.19.1
+
+- Improvement: Bumped the pinned `Intent.Packager` dependency version referenced by scaffolded module projects.
+
 ### Version 3.19.0
 
 - Feature: Added `Severity` and `Classification` to `Template Settings`, so a template's generated output can be flagged for downstream Change Review tooling.
