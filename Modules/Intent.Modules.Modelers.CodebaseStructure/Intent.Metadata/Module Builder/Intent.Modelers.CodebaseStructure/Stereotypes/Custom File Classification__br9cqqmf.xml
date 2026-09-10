@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="1a5d919b-7ca2-4f2f-8a0d-0995aa6b02ac" version="3.1.0">
-  <comment>Classifies custom (non-generated) files under a folder or project by classification and severity, scoped by a glob. Applied manually by users; the same stereotype may be applied multiple times to the same folder/project to classify different subsets of its custom files. Only ever consulted for files with no output-log entry - generated files are classified via their template's Output Classification instead.</comment>
+  <comment>Classifies custom (non-generated) files under a folder or project by classification and severity, scoped by a glob. Multiple items can be added to `Entries` property to classify different subsets of its custom files. Only ever consulted for files with no output-log entry - generated files are classified via their template's Output Classification instead.</comment>
   <name>Custom File Classification</name>
   <targetMode>filter-function</targetMode>
   <targetTypes />

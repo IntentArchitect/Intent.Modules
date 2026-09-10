@@ -1,6 +1,7 @@
 ### Version 1.1.1
 
 - Improvement: `Custom File Classification` stereotype now has an "Entries" property which allows multiple values instead of the stereotype needing to be applied multiple times.
+- Improvement: The `Allows Custom File Classification` is now stored packages to reduce git commit noise.
 
 ### Version 1.1.0
 
