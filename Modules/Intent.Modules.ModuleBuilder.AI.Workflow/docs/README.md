@@ -8,6 +8,7 @@ Unlike the skills module, some of this module's content is settings-driven: the 
 
 - `.agents/instructions/module-building-workflow.instructions.md` — the standing four-phase workflow every module task moves through, naming which skill to load in each phase.
 - `.agents/skills/<skill-name>/SKILL.md` — one per bundled skill: `module-context-capture`, `module-version-increment`, `module-docs-chore`, `module-dependency-audit`.
+- `.agents/hooks/*.cs`, `.agents/hooks/Directory.Build.props`, `.agents/hooks/CLAUDE_SETUP.md`, and per-harness hook configs (`.codex/hooks.json`, `.kiro/hooks/intent-agent-gate.json`, `.cursor/hooks.json`) — only when `Install Agent Gate Hooks` is on. The gate is a dependency-free .NET 10 file-based app (`dotnet run gate.cs`, no install step, no dotnet-tool manifest) that denies edits to Software-Factory-owned generated files, `modules.config`, and non-`<tags>`/`<dependency>`/downgrade `.imodspec` edits; denies an illegal module version change before it is written; and warns — without blocking — when a module's version, tags, `docs/README.md`, `CONTEXT.md`, or release-notes heading fall behind a change. Every harness blocks via exit code 2 and allows via 0. Claude Code needs one manual step: `.claude/settings.json` is a shared file this module does not safely auto-merge into, so `CLAUDE_SETUP.md` documents the one-time block to paste in instead.
 
 ## The Four-Phase Workflow
 
@@ -30,6 +31,7 @@ Phase 4 runs dependencies before documentation deliberately: a dependency fix is
 | Maintain Module README   | Off     | When on, `module-docs-chore` treats `docs/README.md` as an artifact to create and maintain.                                                                                      |
 | Maintain Module Icon     | Off     | When on, `module-docs-chore` creates a module's SVG icon when it has none. An existing icon is never overwritten.                                                                |
 | Maintain Module Context  | Off     | When on, `module-context-capture` also creates a `CONTEXT.md` for a module that has none, once its first durable decision lands. Off keeps the read-and-maintain-only behaviour. |
+| Install Agent Gate Hooks | Off    | Generates the gate scripts (`.agents/hooks/*.cs`) plus a hook config for each harness folder already present in the repo (`.codex`, `.kiro`, `.cursor`) and `CLAUDE_SETUP.md`'s manual-paste instructions for Claude Code. Off means none of it is generated. |
 
 Each setting only ever widens what the generated guidance covers. Left at their defaults, the skills maintain what already exists and introduce nothing.
 

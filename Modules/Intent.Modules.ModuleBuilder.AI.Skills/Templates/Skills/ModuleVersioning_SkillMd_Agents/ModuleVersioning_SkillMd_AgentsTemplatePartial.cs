@@ -61,11 +61,16 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleVersioni
 
                     ## How to Set It
                     1. On the module's package, in the Module Builder designer:
-                       
-                       `pkg.ensureStereotype("Module Settings").setProperty("Version", "<supplied version>")`
-                       (or the designer UI). Use the version exactly as supplied.
 
-                    2. Run the Software Factory to regenerate `.imodspec`'s `<version>`.
+                       `pkg.ensureStereotype("Module Settings").setProperty("Version", "<supplied version>")`
+                       (or the designer UI). Use the version exactly as supplied. Persist it with `saveOnSuccess`
+                       (or the designer's own save) so the change survives immediately — but this writes only the
+                       designer model, not `.imodspec`.
+
+                    2. Run the Software Factory to regenerate `.imodspec`'s `<version>`. `saveOnSuccess` never
+                       substitutes for this step: `<version>` is generated output, and only a Software Factory run
+                       produces it — the model and the manifest are two different files, and only one of the two
+                       write paths reaches the manifest.
                     3. Confirm via `get_file_diffs` that only the version line changed.
 
                     > **`<version>` is written only when the designer's value sorts strictly higher than the one on disk.**

@@ -4,7 +4,7 @@ description: "Set an Intent Architect module's version via the Module Builder mo
 argument-hint: "[new version, e.g. 1.3.0 or 1.3.0-pre.1]"
 keywords: [version, versioning, release, imodspec, module settings]
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleVersioning_SkillMd_Agents
-contentHash: EC050EAE6B08B8A1CB1ED48F017F6E08F28E0CC4BCFDE27C965F1F2D4AADF2A9
+contentHash: 019917A772FB63C56BD17BB7F87DC1AEF4D433AB728FF1A16B65A36F26CD6E9F
 ---
 # Skill: module-versioning
 
@@ -33,11 +33,17 @@ template never writes a value for, so hand-editing is the *only* way to set them
 
 1. On the module's package, in the Module Builder designer:
 
-   
    `pkg.ensureStereotype("Module Settings").setProperty("Version", "<supplied version>")`
-   (or the designer UI). Use the version exactly as supplied.
+   (or the designer UI). Use the version exactly as supplied. Persist it with `saveOnSuccess`
+   (or the designer's own save) so the change survives immediately — but this writes only the
+   designer model, not `.imodspec`.
 
-2. Run the Software Factory to regenerate `.imodspec`'s `<version>`.
+2. Run the Software Factory to regenerate `.imodspec`'s `<version>`. `saveOnSuccess` never
+
+   substitutes for this step: `<version>` is generated output, and only a Software Factory run
+   produces it — the model and the manifest are two different files, and only one of the two
+   write paths reaches the manifest.
+
 3. Confirm via `get_file_diffs` that only the version line changed.
 
 > **`<version>` is written only when the designer's value sorts strictly higher than the one on disk.**

@@ -3,7 +3,7 @@ name: module-docs
 description: "Complete or refresh a module's release-notes.md, docs/README.md, and .imodspec metadata to a canonical format, touching only what already exists or what the maintainer explicitly supplies. USE ONLY WHEN a maintainer explicitly asks for documentation to be completed or brought up to this format. DO NOT USE FOR the automatic same-turn doc update after an observable change (see module-docs-chore) — this is an opt-in pass, and it must never introduce release-notes.md or fabricate a projectUrl unprompted. REQUIRES the target module's .imodspec (and any existing release-notes.md/docs/README.md) already present to read from."
 keywords: [release-notes, readme, imodspec, documentation, module]
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleDocs_SkillMd_Agents
-contentHash: 753867AE6084F0FC5F79FA620B065C45E31BE093D9A41D39BA84942866B9DC6E
+contentHash: 9159B74FBE1D85C704F0D7E4B0EA0B5EAEAA0699210D9E7F3E0E6D3660D80AE7
 ---
 # Skill: module-docs
 
@@ -11,7 +11,7 @@ contentHash: 753867AE6084F0FC5F79FA620B065C45E31BE093D9A41D39BA84942866B9DC6E
 
 Use this when a module maintainer wants documentation completed or updated to this format — it is optional, not an automatic step of every build.
 
-- **`release-notes.md`** — only complete/maintain an entry if the file already exists, or the maintainer explicitly asks for one to be created. Never introduce it unprompted.
+- **`release-notes.md`** — only complete/maintain an entry if the file already exists. The Software Factory is what creates this file — it does so once `Module Settings → Include Release Notes` is ticked and the Software Factory runs — never the agent by hand. If a maintainer asks for one to be created and it isn't there yet, point them at that setting and regenerate; don't write the file yourself.
 - **`docs/README.md`** — feature/usage documentation; fill gaps in an existing one, or write one if asked
 - **Module metadata** — the summary/description shown in the module registry (set on the **Application Settings page**), plus the `*.imodspec` fields the Software Factory does not own: `tags`, `authors`, `releaseNotes`, and `projectUrl` only if the maintainer supplies one
 
