@@ -1,9 +1,11 @@
 # Behavioural evals (Layer 3)
 
-Run against an isolated scratch fixture (`%TEMP%\gate-evals\`, outside this repo entirely — not a
-git-tracked path here) so a real repository's tree, and this repo's own just-committed work, stayed
-untouched. See the plan (`intent/.plans/2026-09-15-steer-acp-agents-to-workflow-skills.mdx`, "Layer
-3 — behavioural evals") for what each eval checks and why E2/E5 were run first.
+Run against isolated scratch fixtures under `%TEMP%\`, outside this repo entirely — not a
+git-tracked path here — so this repo's own tree stayed untouched. See the plan
+(`intent/.plans/2026-09-15-steer-acp-agents-to-workflow-skills.mdx`, "Layer 3 — behavioural evals")
+for what each eval checks. E2 and E5 were run first, as the plan calls them load-bearing; E1
+followed once it was clear a scratch fixture could cover it without needing a live hook. E3 and E4
+turned out to need one - see below.
 
 Each eval dispatched a real sub-agent (no scripted "expected" transcript) against a task, and the
 outcome was verified independently by reading the resulting files afterward — not taken from the
@@ -11,11 +13,11 @@ agent's own self-report.
 
 | Eval | Run | Result |
 |---|---|---|
+| **E1 — double bump** | Yes | **Pass** |
 | **E2 — a denied path teaches the allowed one** | Yes | **Pass** |
 | **E5 — a warning does not cause busywork** | Yes | **Pass** |
-| E1 — double bump | No | Not yet run. |
-| E3 — generated output | No | Not yet run. |
-| E4 — silence costs nothing | No | Not yet run. |
+| E3 — generated output | No | Blocked — see below. |
+| E4 — silence costs nothing | No | Blocked — see below. |
 
 ## E2 — a denied path teaches the allowed one
 
@@ -49,21 +51,42 @@ line about it... I'm treating this warning as informational and not acting on it
 `CONTEXT.md` is byte-identical to its original scratch content. **Pass** — the warning didn't
 produce a padded, box-ticking entry.
 
-## Remaining (E1, E3, E4)
+## E1 — double bump
 
-Not run — this pass prioritized the two evals the plan calls load-bearing ("these two check what
-the check *costs*"). The other three check that a mechanism fires at all, which Layer 1 (unit
-tests against the gate's own logic) and the manual runs earlier in this work already cover more
-directly:
+**Setup.** A scratch git repo with two real commits: one at `Sample.Module` version `1.0.5-pre.1`,
+then one bumping it to `1.0.5-pre.2` ("already moved once earlier in this line of work"). The agent
+was given a trivial doc-comment typo fix to make and told, as given context, that nothing beyond
+`1.0.5-pre.2` is published.
 
-- **E1 (double bump)** — covered in substance by `guard-version`'s own double-bump guard, exercised
-  directly against a real module version during this same implementation (see the plan's Phase 2
-  version-gate work on `Intent.ModuleBuilder.AI.Skills`, and the `cases-guard-version` table).
-- **E3 (generated output)** — covered in substance by the `guard-write` deny tests already run for
-  real against this repo's own managed-files.xml (see the implementation session's Layer 1/2 work).
-- **E4 (silence costs nothing)** — covered in substance by the repeated "zero-byte allow" checks
-  already run for real against `guard-write` and `close-out` in this repo.
+**What happened.** The agent fixed the typo and explicitly reasoned through the version-increment
+discipline before deciding not to touch the version: *"bumping again here would be exactly the
+'phantom bump' the discipline warns against... this fix is part of the same in-flight line that
+produced pre.2."*
 
-None of those substitute for a dedicated eval with a fresh scratch fixture and an independent
-grading pass — they're the reason the risk here is judged low, not a reason to skip running E1/E3/E4
-properly at some point.
+**Verified independently:** `git status` in the scratch repo shows only `Helper.cs` modified;
+`Sample.Module.imodspec` is untouched and still reads `<version>1.0.5-pre.2</version>`. **Pass.**
+
+## E3 and E4 — blocked, not just deprioritized
+
+Both are genuinely blocked by the same root cause as the Layer 2 finding (`harness-block-matrix.md`):
+Claude Code's `PreToolUse` hook did not reliably fire in this environment (a maintainer-confirmed,
+session-state-dependent bug, not a config mistake). Both evals are specifically about what a *live,
+firing* hook produces or costs:
+
+- **E3 (generated output)** — passes when a hand-edit shortcut is denied and the agent goes through
+  the designer model instead. Without a live hook, there is nothing to deny the shortcut with -
+  simulating the denial (as E2/E5 did for their own checks) doesn't work here, because E3's whole
+  point is testing whether the agent *reaches for* the shortcut in the first place when nothing is
+  stopping it, not how it reacts once told no.
+- **E4 (silence costs nothing)** — passes when total hook output is zero bytes and context
+  consumption sits within noise of a hooks-disabled control run. That is a measurement of what a
+  live hook actually adds to a real session; with no reliably-firing hook to measure, there is
+  nothing to compare against a control run.
+
+Both are covered in substance, not in full, by earlier real work in this session: E3's underlying
+mechanism (`guard-write` denying a hand-edit to generated output) was proven directly against this
+repo's own `managed-files.xml`, including the whole-file-write trap, in `GuardWriteTests` and the
+Claude-Code-independent `GateSmokeTests`. E4's underlying mechanism (silent, zero-byte allow on the
+common path) is asserted directly by several `GuardWriteTests`/`CloseOutTests` cases. Neither
+substitutes for the real eval - re-run both once a fresh Claude Code session with reliably-firing
+hooks is available to test against.
