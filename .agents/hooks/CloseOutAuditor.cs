@@ -159,8 +159,12 @@ public static class CloseOutAuditor
             return;
         }
 
-        if (releaseNotes.Contains($"Version {version}", StringComparison.OrdinalIgnoreCase) &&
-            !releaseNotes.Contains($"Version {plainVersion}", StringComparison.OrdinalIgnoreCase))
+        // Checking only "does the full -pre string appear" is deliberate: a naive
+        // "and the plain heading is absent" second condition is always false here,
+        // because a version like "1.0.3-pre.0" textually contains its own plain form
+        // "1.0.3" as a substring - "Version 1.0.3-pre.0" already "contains"
+        // "Version 1.0.3". Found by a failing test, not by inspection.
+        if (releaseNotes.Contains($"Version {version}", StringComparison.OrdinalIgnoreCase))
         {
             findings.Add(new CloseOutFinding(moduleName,
                 $"release-notes.md heading reads 'Version {version}' - the -pre suffix belongs stripped in the " +

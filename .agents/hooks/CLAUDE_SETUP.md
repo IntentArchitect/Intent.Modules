@@ -19,20 +19,20 @@ one yet), merging it with whatever is already there rather than replacing the fi
       {
         "matcher": "Write|Edit",
         "hooks": [
-          { "type": "command", "command": "dotnet run \"$CLAUDE_PROJECT_DIR/.agents/hooks/gate.cs\" --no-build -- guard-write --harness claude" }
+          { "type": "command", "command": "dotnet run \"$CLAUDE_PROJECT_DIR/.agents/hooks/gate.cs\" --no-build -- guard-write --harness claude; test $? -eq 0 && exit 0 || exit 2" }
         ]
       },
       {
         "matcher": ".*run_designer_script.*",
         "hooks": [
-          { "type": "command", "command": "dotnet run \"$CLAUDE_PROJECT_DIR/.agents/hooks/gate.cs\" --no-build -- guard-version --harness claude" }
+          { "type": "command", "command": "dotnet run \"$CLAUDE_PROJECT_DIR/.agents/hooks/gate.cs\" --no-build -- guard-version --harness claude; test $? -eq 0 && exit 0 || exit 2" }
         ]
       }
     ],
     "Stop": [
       {
         "hooks": [
-          { "type": "command", "command": "dotnet run \"$CLAUDE_PROJECT_DIR/.agents/hooks/gate.cs\" --no-build -- close-out --harness claude" }
+          { "type": "command", "command": "dotnet run \"$CLAUDE_PROJECT_DIR/.agents/hooks/gate.cs\" --no-build -- close-out --harness claude; test $? -eq 0 && exit 0 || exit 2" }
         ]
       }
     ]

@@ -55,20 +55,20 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.HooksJson
                           {
                             "matcher": "Write|Edit|ApplyPatch",
                             "hooks": [
-                              { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- guard-write --harness codex" }
+                              { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- guard-write --harness codex; test $? -eq 0 && exit 0 || exit 2" }
                             ]
                           },
                           {
                             "matcher": ".*run_designer_script.*",
                             "hooks": [
-                              { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- guard-version --harness codex" }
+                              { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- guard-version --harness codex; test $? -eq 0 && exit 0 || exit 2" }
                             ]
                           }
                         ],
                         "Stop": [
                           {
                             "hooks": [
-                              { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- close-out --harness codex" }
+                              { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- close-out --harness codex; test $? -eq 0 && exit 0 || exit 2" }
                             ]
                           }
                         ]
@@ -88,18 +88,18 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.HooksJson
                           "name": "intent-agent-gate-guard-write",
                           "trigger": "PreToolUse",
                           "matcher": "Write|Edit|ApplyPatch",
-                          "action": { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- guard-write --harness kiro" }
+                          "action": { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- guard-write --harness kiro; test $? -eq 0 && exit 0 || exit 2" }
                         },
                         {
                           "name": "intent-agent-gate-guard-version",
                           "trigger": "PreToolUse",
                           "matcher": ".*run_designer_script.*",
-                          "action": { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- guard-version --harness kiro" }
+                          "action": { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- guard-version --harness kiro; test $? -eq 0 && exit 0 || exit 2" }
                         },
                         {
                           "name": "intent-agent-gate-close-out",
                           "trigger": "Stop",
-                          "action": { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- close-out --harness kiro" }
+                          "action": { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- close-out --harness kiro; test $? -eq 0 && exit 0 || exit 2" }
                         }
                       ]
                     }
@@ -112,13 +112,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.HooksJson
                           { "command": "dotnet run .agents/hooks/gate.cs -- warm" }
                         ],
                         "afterFileEdit": [
-                          { "command": "dotnet run .agents/hooks/gate.cs --no-build -- guard-write --harness cursor" }
+                          { "command": "dotnet run .agents/hooks/gate.cs --no-build -- guard-write --harness cursor; test $? -eq 0 && exit 0 || exit 2" }
                         ],
                         "beforeMCPExecution": [
-                          { "command": "dotnet run .agents/hooks/gate.cs --no-build -- guard-version --harness cursor", "matcher": ".*run_designer_script.*" }
+                          { "command": "dotnet run .agents/hooks/gate.cs --no-build -- guard-version --harness cursor; test $? -eq 0 && exit 0 || exit 2", "matcher": ".*run_designer_script.*" }
                         ],
                         "stop": [
-                          { "command": "dotnet run .agents/hooks/gate.cs --no-build -- close-out --harness cursor" }
+                          { "command": "dotnet run .agents/hooks/gate.cs --no-build -- close-out --harness cursor; test $? -eq 0 && exit 0 || exit 2" }
                         ]
                       }
                     }

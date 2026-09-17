@@ -80,20 +80,20 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                   {
                     "matcher": "Write|Edit",
                     "hooks": [
-                      { "type": "command", "command": "dotnet run \"$CLAUDE_PROJECT_DIR/.agents/hooks/gate.cs\" --no-build -- guard-write --harness claude" }
+                      { "type": "command", "command": "dotnet run \"$CLAUDE_PROJECT_DIR/.agents/hooks/gate.cs\" --no-build -- guard-write --harness claude; test $? -eq 0 && exit 0 || exit 2" }
                     ]
                   },
                   {
                     "matcher": ".*run_designer_script.*",
                     "hooks": [
-                      { "type": "command", "command": "dotnet run \"$CLAUDE_PROJECT_DIR/.agents/hooks/gate.cs\" --no-build -- guard-version --harness claude" }
+                      { "type": "command", "command": "dotnet run \"$CLAUDE_PROJECT_DIR/.agents/hooks/gate.cs\" --no-build -- guard-version --harness claude; test $? -eq 0 && exit 0 || exit 2" }
                     ]
                   }
                 ],
                 "Stop": [
                   {
                     "hooks": [
-                      { "type": "command", "command": "dotnet run \"$CLAUDE_PROJECT_DIR/.agents/hooks/gate.cs\" --no-build -- close-out --harness claude" }
+                      { "type": "command", "command": "dotnet run \"$CLAUDE_PROJECT_DIR/.agents/hooks/gate.cs\" --no-build -- close-out --harness claude; test $? -eq 0 && exit 0 || exit 2" }
                     ]
                   }
                 ]
@@ -539,6 +539,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
             """;
 
         private const string ManagedFilesGuardContent = """
+            using System.Linq;
             using System.Xml.Linq;
 
             namespace Intent.Agent.Gate;
@@ -551,10 +552,14 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
 
             /// <summary>
             /// Checks whether a file path is listed as generated output in any module's
-            /// "*.application.managed-files.xml". Each entry's "path" attribute is relative to the
-            /// directory containing that xml file (which may itself walk upward with "../", e.g. to
-            /// reach a shared "Modules/.claude/rules/..." file emitted by several modules' static
-            /// content templates).
+            /// "*.application.managed-files.xml". Each entry's "path" attribute is relative to that
+            /// APPLICATION'S OWN OUTPUT ROOT - not necessarily the directory the xml file itself sits
+            /// in. Those are the same directory for an ordinary module (its own "location" attribute
+            /// on the sibling "*.application.config" is "."), but not for an app whose output root is
+            /// elsewhere - e.g. a dogfooding app whose metadata lives under "Modules/AppName/" while
+            /// its "location" attribute reads "../.." to reach the repo root it actually outputs to.
+            /// Found by a failing smoke test, not by inspection: a path that is genuinely managed
+            /// output was silently allowed because "location" was never consulted.
             /// </summary>
             public static class ManagedFilesGuard
             {
@@ -593,7 +598,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                         return null;
                     }
 
-                    var baseDir = Path.GetDirectoryName(xmlPath)!;
+                    var baseDir = ResolveApplicationOutputRoot(xmlPath);
 
                     foreach (var fileElement in document.Descendants("file"))
                     {
@@ -621,6 +626,29 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                     }
 
                     return null;
+                }
+
+                private static string ResolveApplicationOutputRoot(string managedFilesXmlPath)
+                {
+                    var metadataDir = Path.GetDirectoryName(managedFilesXmlPath)!;
+
+                    var configPath = Directory.EnumerateFiles(metadataDir, "*.application.config", SearchOption.TopDirectoryOnly).FirstOrDefault();
+                    if (configPath is null)
+                    {
+                        return metadataDir;
+                    }
+
+                    try
+                    {
+                        var location = (string?)XDocument.Load(configPath).Root?.Attribute("location");
+                        return string.IsNullOrWhiteSpace(location)
+                            ? metadataDir
+                            : Path.GetFullPath(Path.Combine(metadataDir, location));
+                    }
+                    catch (Exception)
+                    {
+                        return metadataDir;
+                    }
                 }
             }
             """;
@@ -894,8 +922,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                         return;
                     }
 
-                    if (releaseNotes.Contains($"Version {version}", StringComparison.OrdinalIgnoreCase) &&
-                        !releaseNotes.Contains($"Version {plainVersion}", StringComparison.OrdinalIgnoreCase))
+                    // Checking only "does the full -pre string appear" is deliberate: a naive
+                    // "and the plain heading is absent" second condition is always false here,
+                    // because a version like "1.0.3-pre.0" textually contains its own plain form
+                    // "1.0.3" as a substring - "Version 1.0.3-pre.0" already "contains"
+                    // "Version 1.0.3". Found by a failing test, not by inspection.
+                    if (releaseNotes.Contains($"Version {version}", StringComparison.OrdinalIgnoreCase))
                     {
                         findings.Add(new CloseOutFinding(moduleName,
                             $"release-notes.md heading reads 'Version {version}' - the -pre suffix belongs stripped in the " +

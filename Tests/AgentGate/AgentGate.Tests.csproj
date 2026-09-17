@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="10.0.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" />
+    <PackageReference Include="xunit.v3" Version="3.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--
+      Links the module's actual generated output directly - the same files a consuming repo gets
+      at ".agents/hooks/" - rather than a parallel copy kept beside the tests, so this suite can
+      only ever drift out of sync with what ships by failing to compile. "gate.cs" is excluded
+      because it holds top-level statements, which cannot compile into a test assembly; its own
+      behaviour (argument parsing, exit codes) is exercised by GateSmokeTests instead, which shells
+      out to the real file-based app.
+    -->
+    <Compile Include="..\..\.agents\hooks\*.cs" Exclude="..\..\.agents\hooks\gate.cs" LinkBase="GeneratedGateSources" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Fixtures\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

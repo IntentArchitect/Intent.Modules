@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Xml.Linq;
 
 namespace Intent.Agent.Gate;
@@ -10,10 +11,14 @@ public sealed record ManagedFileMatch(string ManagedFilesXmlPath, string Templat
 
 /// <summary>
 /// Checks whether a file path is listed as generated output in any module's
-/// "*.application.managed-files.xml". Each entry's "path" attribute is relative to the
-/// directory containing that xml file (which may itself walk upward with "../", e.g. to
-/// reach a shared "Modules/.claude/rules/..." file emitted by several modules' static
-/// content templates).
+/// "*.application.managed-files.xml". Each entry's "path" attribute is relative to that
+/// APPLICATION'S OWN OUTPUT ROOT - not necessarily the directory the xml file itself sits
+/// in. Those are the same directory for an ordinary module (its own "location" attribute
+/// on the sibling "*.application.config" is "."), but not for an app whose output root is
+/// elsewhere - e.g. a dogfooding app whose metadata lives under "Modules/AppName/" while
+/// its "location" attribute reads "../.." to reach the repo root it actually outputs to.
+/// Found by a failing smoke test, not by inspection: a path that is genuinely managed
+/// output was silently allowed because "location" was never consulted.
 /// </summary>
 public static class ManagedFilesGuard
 {
@@ -52,7 +57,7 @@ public static class ManagedFilesGuard
             return null;
         }
 
-        var baseDir = Path.GetDirectoryName(xmlPath)!;
+        var baseDir = ResolveApplicationOutputRoot(xmlPath);
 
         foreach (var fileElement in document.Descendants("file"))
         {
@@ -80,5 +85,28 @@ public static class ManagedFilesGuard
         }
 
         return null;
+    }
+
+    private static string ResolveApplicationOutputRoot(string managedFilesXmlPath)
+    {
+        var metadataDir = Path.GetDirectoryName(managedFilesXmlPath)!;
+
+        var configPath = Directory.EnumerateFiles(metadataDir, "*.application.config", SearchOption.TopDirectoryOnly).FirstOrDefault();
+        if (configPath is null)
+        {
+            return metadataDir;
+        }
+
+        try
+        {
+            var location = (string?)XDocument.Load(configPath).Root?.Attribute("location");
+            return string.IsNullOrWhiteSpace(location)
+                ? metadataDir
+                : Path.GetFullPath(Path.Combine(metadataDir, location));
+        }
+        catch (Exception)
+        {
+            return metadataDir;
+        }
     }
 }

@@ -309,6 +309,14 @@ Mitigations: `PublishAot=false`, pre-build at `SessionStart`, then `--no-build` 
 
 </Callout>
 
+<Callout id="fail-closed-build-failure" tone="risk" title="A build failure exits 1, not 2 — the gate cannot fix this from inside its own code">
+
+Found while writing the test suite, not by inspection: `dotnet run` itself returns **exit 1** on a build failure (a missing `#:include`, a syntax error, the wrong SDK) — never 2. Cursor's own docs confirm any exit code other than exactly 0 or 2 is treated as an **allow**. So a bare `dotnet run gate.cs -- <command>` hook command would silently stop protecting anything the moment the gate's own source broke — the opposite of "fail closed" — and `Cli.cs`'s own top-level try/catch cannot fix this, because it never runs until *after* the build already succeeded.
+
+The fix has to live in the hook command itself, not the C# it runs: every generated command is suffixed with `; test $? -eq 0 && exit 0 || exit 2`, collapsing any non-zero `dotnet run` exit code into the universal block signal. Verified against both a broken and a healthy gate, and locked in by `GateSmokeTests`. On Windows this relies on Claude Code's documented default of running hook commands through Git Bash when it's present (true for any repo installing this module, since git is already required) — not independently verified for Codex, Kiro or Cursor's own Windows shell behaviour specifically, only inferred by their commands already relying on POSIX substitution (`$(git rev-parse --show-toplevel)`) elsewhere.
+
+</Callout>
+
 ## Model changes
 
 <ModelChanges id="model-changes" caption="Intent.ModuleBuilder.AI.Workflow — Module Builder designer" changes={[
@@ -558,10 +566,16 @@ The others check that a check fires. These two check what the check *costs*.
   id="test-files"
   title="Test and evidence artifacts"
   entries={[
-    { path: "Tests/ModuleBuilderSkills/GateLogicTests.cs", change: "added", note: "Layer 1 — links the generated sources, drives `Cli.Run` against fixtures" },
-    { path: "Tests/ModuleBuilderSkills/GateSmokeTests.cs", change: "added", note: "Shells out to `dotnet run gate.cs` — proves it runs, not merely that it compiles" },
-    { path: "Tests/ModuleBuilderSkills/Fixtures/", change: "added", note: "Module folders with known `.imodspec`, `managed-files.xml` and git state" },
-    { path: "intent/.plans/evidence/harness-block-matrix.md", change: "added", note: "Layer 2 — observed per-harness enforcement, filled in before shipping" }
+    { path: "Tests/AgentGate/", change: "added", note: "Not `Tests/ModuleBuilderSkills/` as first planned — that name collides with a pre-existing consuming application used to test AI.Skills/AI.Workflow installation, discovered while building this" },
+    { path: "Tests/AgentGate/SemVerTests.cs", change: "added", note: "The precedence traps directly" },
+    { path: "Tests/AgentGate/GuardVersionTests.cs", change: "added", note: "Layer 1 — the `cases-guard-version` table, one test per row" },
+    { path: "Tests/AgentGate/GuardWriteTests.cs", change: "added", note: "Layer 1 — the `cases-guard-write` table; three icon rows are `Skip`-documented, not implemented" },
+    { path: "Tests/AgentGate/CloseOutTests.cs", change: "added", note: "Layer 1 — the `cases-close-out` table; two rows are `Skip`-documented, not implemented" },
+    { path: "Tests/AgentGate/FailClosedTests.cs", change: "added", note: "A throwing `IGitChangeProvider`, an unknown command, no arguments — all must exit 2, never crash" },
+    { path: "Tests/AgentGate/GateSmokeTests.cs", change: "added", note: "Shells out to `dotnet run gate.cs` for real, including the build-failure-exits-1 finding and its shell-wrapper fix" },
+    { path: "Tests/AgentGate/TestSupport/", change: "added", note: "`FakeGitChangeProvider`, `TempDirectory`, `RepoRootLocator`, `GateTestHarness` — no fixture git repos; git-dependent behaviour goes through the fake" },
+    { path: "intent/.plans/evidence/harness-block-matrix.md", change: "added", note: "Layer 2 — Claude Code inconclusive (a known Claude Code bug); Codex/Kiro/Cursor/OpenCode untested, need a human with those tools" },
+    { path: "intent/.plans/evidence/evals.md", change: "added", note: "Layer 3 — E2 and E5 run for real against an isolated scratch fixture and passed; E1/E3/E4 not run as dedicated evals" }
   ]}
 />
 
@@ -599,13 +613,13 @@ The case tables above are the unit suite. These are the things no unit test reac
 <Checklist
   id="verify"
   items={[
-    { id: "v1", label: "**Tests link the generated files** — the suite compiles `.agents/hooks/*.cs` from where the module installed them, not from a copy kept beside the tests" },
-    { id: "v2", label: "**One test runs the real command** — `dotnet run gate.cs` executes and returns the expected exit code" },
-    { id: "v3", label: "**Fail-closed works, and build contention does not** — a deleted script blocks; concurrent invocations of the same app do not" },
-    { id: "v4", label: "**Defaults are quiet** — with `Install Agent Gate Hooks` off, nothing is emitted for any harness" },
-    { id: "v5", label: "**Regeneration is idempotent** — a second Software Factory run stages nothing, and hand-edited content in `.claude/settings.json` survives it" },
-    { id: "v6", label: "**The harness matrix is filled in and committed** — every row an observed result, none inferred from documentation", note: "This is where the two upstream deny-enforcement issues get settled" },
-    { id: "v7", label: "**All five evals have been run at least once and their outcomes recorded**, including any that failed and what changed in response" }
+    { id: "v1", label: "**Tests link the generated files** — the suite compiles `.agents/hooks/*.cs` from where the module installed them, not from a copy kept beside the tests", note: "Done — `Tests/AgentGate/AgentGate.Tests.csproj` links `.agents/hooks/*.cs` directly (excluding `gate.cs`)" },
+    { id: "v2", label: "**One test runs the real command** — `dotnet run gate.cs` executes and returns the expected exit code", note: "Done — `GateSmokeTests`, several cases, including a real deny against this repo's own managed-files.xml" },
+    { id: "v3", label: "**Fail-closed works, and build contention does not** — a deleted script blocks; concurrent invocations of the same app do not", note: "Done, and a real gap found and fixed along the way: a build failure alone exits 1 (an allow on Cursor), not 2 — see `fail-closed-build-failure`. The shell-wrapper fix is what actually makes this row true, not `Cli.cs`'s own exception handling" },
+    { id: "v4", label: "**Defaults are quiet** — with `Install Agent Gate Hooks` off, nothing is emitted for any harness", note: "The setting-gated half (no files generated when the switch is off) verified manually against the real repo. The CLI-level half — silent, zero-byte stdout on every allow/pass path — is directly asserted by several `GuardWriteTests`/`CloseOutTests` cases" },
+    { id: "v5", label: "**Regeneration is idempotent** — a second Software Factory run stages nothing, and hand-edited content in `.claude/settings.json` survives it", note: "Regeneration idempotency observed repeatedly during this work (re-running the Software Factory after no source change stages nothing); the `.claude/settings.json` half is moot — that file is no longer generated at all, see `claude-merge`" },
+    { id: "v6", label: "**The harness matrix is filled in and committed** — every row an observed result, none inferred from documentation", note: "Filled in, but not fully satisfied — see `intent/.plans/evidence/harness-block-matrix.md`: Claude Code is inconclusive (a known Claude Code bug, not a config error), Codex/Kiro/Cursor/OpenCode are untested. The two upstream deny-enforcement issues remain unresolved" },
+    { id: "v7", label: "**All five evals have been run at least once and their outcomes recorded**, including any that failed and what changed in response", note: "2 of 5 (E2, E5 — the load-bearing pair) run for real and passed; see `intent/.plans/evidence/evals.md`. E1/E3/E4 not run as dedicated evals, though substantively covered by the Layer 1/2 work" }
   ]}
 />
 
