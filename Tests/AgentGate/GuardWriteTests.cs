@@ -87,6 +87,21 @@ public class GuardWriteTests
     }
 
     [Fact]
+    public void Denies_editing_summary_in_imodspec_via_opencodes_camelcase_newstring_field()
+    {
+        // OpenCode's own "edit" tool uses "newString" (camelCase), not "new_string" - confirmed by
+        // directly probing a real opencode run's tool.execute.before payload, not assumed.
+        using var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+        var imodspecPath = repo.CreateFile("Modules/Sample.Module/Sample.Module.imodspec", ImodspecXml(version: "1.0.0"));
+
+        var stdin = """{"tool_input":{"file_path":"REPLACED","newString":"<summary>A different summary</summary>"}}""".Replace("REPLACED", imodspecPath.Replace("\\", "\\\\"));
+        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-write", "--harness", "codex");
+
+        Assert.Equal(2, result.ExitCode);
+    }
+
+    [Fact]
     public void Denies_editing_summary_in_imodspec()
     {
         using var repo = new TempDirectory();

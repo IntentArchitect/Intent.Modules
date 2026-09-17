@@ -7,9 +7,11 @@
   <file path="Intent.Modules.ModuleBuilder.AI.Workflow.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
   <file path="Settings/ModuleSettingsExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions" />
   <file path="Templates/Hooks/GateScripts/GateScriptsTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
-  <file path="Templates/Hooks/GateScripts/GateScriptsTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
+  <file path="Templates/Hooks/GateScripts/GateScriptsTemplateRegistration.cs" deviationsHash="7F441FF008D9C358BC8918B4B90CAB758BF37BFEC0677FFD13257415B502BC99" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
   <file path="Templates/Hooks/HooksJson/HooksJsonTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
   <file path="Templates/Hooks/HooksJson/HooksJsonTemplateRegistration.cs" deviationsHash="2C64191232EA51340EFFB67C6596C9B45E8DEABA55F48D03E1B8276536714E30" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
+  <file path="Templates/Hooks/OpenCodePlugin/OpenCodePluginTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Hooks/OpenCodePlugin/OpenCodePluginTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel" />
   <file path="Templates/RootPrinciples/ModuleBuildingWorkflowMd/ModuleBuildingWorkflowMdTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
   <file path="Templates/RootPrinciples/ModuleBuildingWorkflowMd/ModuleBuildingWorkflowMdTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
   <file path="Templates/Skills/ModuleContextCapture_SkillMd_Agents/ModuleContextCapture_SkillMd_AgentsTemplatePartial.cs" deviationsHash="5F79D3CE03D7DD63CAF45FF6A57DDA582BF4143C1FB2CE81C650BDBB54CD5DB8" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />

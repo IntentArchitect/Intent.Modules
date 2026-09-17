@@ -16,6 +16,10 @@
       <role>AI.Context</role>
       <location></location>
     </template>
+    <template id="Intent.ModuleBuilder.AI.Workflow.Hooks.OpenCodePlugin" externalReference="3a408a84-8e00-46cc-8833-22ad37e64091">
+      <role>AI.Context</role>
+      <location></location>
+    </template>
     <template id="Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd" externalReference="bfa0e23c-5808-4563-aeae-c558bb292cf2">
       <role>AI.Context.Instructions</role>
       <location></location>

@@ -11,7 +11,7 @@ enforcement") for what this is checking and why it can't be settled by reading v
 | **Codex** | No | — | No interactive Codex CLI access from this environment. |
 | **Kiro** | No | — | No interactive Kiro access from this environment. |
 | **Cursor** | No | — | No interactive Cursor access from this environment. |
-| **OpenCode** | No | — | No interactive OpenCode access from this environment. |
+| **OpenCode** | Yes | **Pass** | See below. |
 
 ## Claude Code — what was actually done
 
@@ -67,8 +67,21 @@ registered for some other reason.
   (`openai/codex` #27833, `anthropics/claude-code` #43407) remain unresolved too — #47810 is an
   additional, distinct failure mode on Claude Code, not a resolution of either.
 
+## OpenCode — genuinely confirmed, real CLI, real model
+
+The plan's own model-changes table called for an `OpenCodePlugin` (`.opencode/plugins/intent-agent-gate.ts`) that was never actually built during the main implementation pass — found and fixed as part of running this probe, not before it.
+
+**What was built.** A `tool.execute.before` plugin using Node's `spawnSync` (not the `$` shell API, to avoid any shell-quoting risk) to invoke the real gate, throwing on any non-zero exit — which naturally covers the fail-closed case too, since a build failure and a deny both produce a non-zero exit and both throw. Confirmed empirically (not assumed from docs) via a diagnostic plugin logging real `tool.execute.before` payloads: `input.tool` is `"write"`/`"edit"`, `output.args.filePath`, `output.args.content` (write), `output.args.oldString`/`newString` (edit) — **camelCase `newString`, not Claude Code's `new_string`**. The gate's own `StdinEditExtractor` only checked the snake_case form; fixed to check both, with a unit test locking it in.
+
+**What was actually run.** Real `opencode run` CLI, real model (`openrouter/z-ai/glm-5.2`, confirmed against the user's own working screenshot), `--agent build --auto`, against an isolated scratch project (copied real `.agents/hooks/*` and the real generated plugin, not a reduced re-implementation):
+
+- **Illegal action** — told to directly hand-edit a file listed in a real `managed-files.xml`. The `Write` call failed with exactly the gate's deny message; the agent reported it couldn't do it and named the correct path (edit the model, regenerate). Verified independently: file byte-identical afterward, `git status` clean.
+- **Legal action** — told to edit a plain, unmanaged `README.md`. Succeeded normally, verified independently by reading the file's final content.
+
+This is the one row in this matrix backed by an actual harness run end to end, not documentation or a partial/broken hook.
+
 ## Still to do
 
 - Re-run the Claude Code probe in a fresh session.
-- Run the Codex, Kiro, Cursor and OpenCode probes — needs a human with those tools installed and
-  configured; nothing here can substitute for actually running them.
+- Run the Codex, Kiro and Cursor probes — needs a human with those tools installed and configured;
+  nothing here can substitute for actually running them.

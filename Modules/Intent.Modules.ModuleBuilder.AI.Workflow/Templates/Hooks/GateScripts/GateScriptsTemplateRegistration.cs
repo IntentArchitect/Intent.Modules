@@ -1053,7 +1053,10 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                         }
 
                         var wholeFile = TryGetString(toolInput, "content");
-                        var newString = TryGetString(toolInput, "new_string");
+                        // "new_string" (Claude Code / Codex convention) and "newString" (OpenCode's
+                        // own edit tool - confirmed by probing it directly) are the same concept
+                        // under two different naming conventions.
+                        var newString = TryGetString(toolInput, "new_string") ?? TryGetString(toolInput, "newString");
                         return new EditPayload(wholeFile, newString);
                     }
                     catch (JsonException)
