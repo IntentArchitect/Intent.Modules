@@ -23,7 +23,7 @@
       behaviour (argument parsing, exit codes) is exercised by GateSmokeTests instead, which shells
       out to the real file-based app.
     -->
-    <Compile Include="..\..\.agents\hooks\*.cs" Exclude="..\..\.agents\hooks\gate.cs" LinkBase="GeneratedGateSources" />
+    <Compile Include="..\..\.agents\hooks\gate\*.cs" Exclude="..\..\.agents\hooks\gate\gate.cs" LinkBase="GeneratedGateSources" />
   </ItemGroup>
 
   <ItemGroup>

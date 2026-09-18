@@ -3,7 +3,7 @@ name: module-docs
 description: "Complete or refresh a module's release-notes.md, docs/README.md, and .imodspec metadata to a canonical format, touching only what already exists or what the maintainer explicitly supplies. USE ONLY WHEN a maintainer explicitly asks for documentation to be completed or brought up to this format. DO NOT USE FOR the automatic same-turn doc update after an observable change (see module-docs-chore) — this is an opt-in pass, and it must never introduce release-notes.md or fabricate a projectUrl unprompted. REQUIRES the target module's .imodspec (and any existing release-notes.md/docs/README.md) already present to read from."
 keywords: [release-notes, readme, imodspec, documentation, module]
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleDocs_SkillMd_Agents
-contentHash: 753867AE6084F0FC5F79FA620B065C45E31BE093D9A41D39BA84942866B9DC6E
+contentHash: 40487058E9A99A003D15A64E50B3C9B7DCEC1F8AB7133B96DF18531012EC8474
 ---
 # Skill: module-docs
 
@@ -11,7 +11,7 @@ contentHash: 753867AE6084F0FC5F79FA620B065C45E31BE093D9A41D39BA84942866B9DC6E
 
 Use this when a module maintainer wants documentation completed or updated to this format — it is optional, not an automatic step of every build.
 
-- **`release-notes.md`** — only complete/maintain an entry if the file already exists, or the maintainer explicitly asks for one to be created. Never introduce it unprompted.
+- **`release-notes.md`** — only complete/maintain an entry if the file already exists. The Software Factory is what creates this file — it does so once `Module Settings → Include Release Notes` is ticked and the Software Factory runs — never the agent by hand. If a maintainer asks for one to be created and it isn't there yet, point them at that setting and regenerate; don't write the file yourself.
 - **`docs/README.md`** — feature/usage documentation; fill gaps in an existing one, or write one if asked
 - **Module metadata** — the summary/description shown in the module registry (set on the **Application Settings page**), plus the `*.imodspec` fields the Software Factory does not own: `tags`, `authors`, `releaseNotes`, and `projectUrl` only if the maintainer supplies one
 
@@ -137,8 +137,7 @@ Before writing anything, read these files from the target module directory:
 
 ## Artifact 3: Module Metadata
 
-- *Two of these fields are not edited in `.imodspec` at all.** The Software Factory overwrites
-
+**Two of these fields are not edited in `.imodspec` at all.** The Software Factory overwrites
 `<summary>`, `<description>` and `<iconUrl>` on every run, so an edit made in that file is discarded
 silently — it reports no error and the value simply reverts. Set each field where it is actually owned:
 
@@ -157,8 +156,7 @@ Never edit files inside `.intent/` folders.
 The application description reaches `<summary>` and `<description>` as **the same single value**. They
 cannot differ, so there is no long-form field to expand into — write one line that works as both.
 
-- *5–15 words. Name the technology and what it does.** Say what the module *is*, at the altitude a
-
+**5–15 words. Name the technology and what it does.** Say what the module *is*, at the altitude a
 consumer reads before deciding to install it. Implementation mechanics, rationale and invariants are
 `CONTEXT.md` material — putting them here crowds out the one sentence that had to be legible.
 
@@ -171,13 +169,15 @@ The rejected text is not worthless — it is a good `CONTEXT.md` entry that land
 
 ### Tag selection guide
 
-- *Include:**
+**Include:**
+
 - Technology name: `nservicebus`, `masstransit`, `entityframework`, `serilog`, etc.
 - Architectural pattern: `eventing`, `messaging`, `outbox`, `cqrs`, `ddd`, `persistence`
 - Layer: `infrastructure`, `application`
 - Stack: `csharp`, `dotnet`
 - Transport (if applicable): `rabbitmq`, `azureservicebus`, `amazonsqs`
-- *Avoid:** generic words like `module`, `common`, `helper`, `base` unless the module is genuinely a base/utility module.
+
+**Avoid:** generic words like `module`, `common`, `helper`, `base` unless the module is genuinely a base/utility module.
 
 ### Example
 

@@ -24,5 +24,10 @@ public static class RepoRootLocator
         throw new InvalidOperationException($"Could not locate the repository root by walking up from '{AppContext.BaseDirectory}'.");
     }
 
-    public static string FindGateEntryPoint() => Path.Combine(Find(), ".agents", "hooks", "gate.cs");
+    /// <summary>
+    /// Each harness folder carries its own self-contained copy under "&lt;harness&gt;/hooks/gate". The
+    /// tests deliberately use the ".agents" one: it is the neutral folder, always generated, and not
+    /// owned by any single harness.
+    /// </summary>
+    public static string FindGateEntryPoint() => Path.Combine(Find(), ".agents", "hooks", "gate", "gate.cs");
 }

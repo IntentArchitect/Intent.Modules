@@ -50,64 +50,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
             yield return new GateSourceFileModel("GuardVersionSupport", "cs", GuardVersionSupportContent);
             yield return new GateSourceFileModel("Cli", "cs", CliContent);
             yield return new GateSourceFileModel("gate", "cs", GateEntryPointContent);
-            yield return new GateSourceFileModel("CLAUDE_SETUP", "md", ClaudeSetupContent);
         }
-
-        // Claude Code reads ".claude/settings.json", a file shared with unrelated permissions, env,
-        // and hooks a developer already has - safely upserting into it needs a real JSON-merge
-        // template, which is the one part of this design not yet built (see the module's plan
-        // document, "claude-merge"). Rather than ship an unverified merge against a file a bug could
-        // corrupt, this documents the one-time manual step instead - the sanctioned fallback.
-        private const string ClaudeSetupContent = """
-            # Wiring the agent gate into Claude Code
-
-            Claude Code reads hooks from `.claude/settings.json` - a file this module does not generate,
-            because it is shared with permissions, environment variables, and hooks you already have.
-            Add the block below under your existing `"hooks"` key (or create the file if you don't have
-            one yet), merging it with whatever is already there rather than replacing the file.
-
-            ```json
-            {
-              "hooks": {
-                "SessionStart": [
-                  {
-                    "hooks": [
-                      { "type": "command", "command": "dotnet run \"$CLAUDE_PROJECT_DIR/.agents/hooks/gate.cs\" -- warm" }
-                    ]
-                  }
-                ],
-                "PreToolUse": [
-                  {
-                    "matcher": "Write|Edit",
-                    "hooks": [
-                      { "type": "command", "command": "dotnet run \"$CLAUDE_PROJECT_DIR/.agents/hooks/gate.cs\" --no-build -- guard-write --harness claude; test $? -eq 0 && exit 0 || exit 2" }
-                    ]
-                  },
-                  {
-                    "matcher": ".*run_designer_script.*",
-                    "hooks": [
-                      { "type": "command", "command": "dotnet run \"$CLAUDE_PROJECT_DIR/.agents/hooks/gate.cs\" --no-build -- guard-version --harness claude; test $? -eq 0 && exit 0 || exit 2" }
-                    ]
-                  }
-                ],
-                "Stop": [
-                  {
-                    "hooks": [
-                      { "type": "command", "command": "dotnet run \"$CLAUDE_PROJECT_DIR/.agents/hooks/gate.cs\" --no-build -- close-out --harness claude; test $? -eq 0 && exit 0 || exit 2" }
-                    ]
-                  }
-                ]
-              }
-            }
-            ```
-
-            `$CLAUDE_PROJECT_DIR` is Claude Code's own project-root variable - never a bare relative path,
-            which breaks the moment a session's working directory moves into a subdirectory.
-
-            This is a one-time step per repository. Re-running the Software Factory does not touch
-            `.claude/settings.json` and will not repeat this instruction once you've done it - it is not
-            tracked as done anywhere, so if you reinstall this module elsewhere, do it again there too.
-            """;
 
         // Shields the file-based app from the consuming repo's own root Directory.Build.props,
         // which would otherwise apply here too (Microsoft's own documented mitigation).

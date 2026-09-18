@@ -3,7 +3,7 @@ name: add-module-migration
 description: "Add a Version Migration (or On-Install/On-Uninstall Migration) that programmatically edits an already-installed consumer application's own persisted metadata during install/update. USE ONLY WHEN a module's own restructuring, rename, or model/stereotype shape change needs applications that installed an earlier version to converge onto the shape a fresh install already gets. DO NOT USE FOR generating code into a consumer via the module's own templates (see file-builder-expert) or for bumping the module's own version number (see module-version-increment). REQUIRES the target module's Module Builder designer already open, and its version already incremented for the change being migrated."
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.AddModuleMigration_SkillMd_Agents
 keywords: [migration, version-migration, on-install, on-uninstall, persistence, consumer-metadata, module-update]
-contentHash: 1D6929DD25E0DD7B981FE14F19149C0629151E86574EEB17799AB9CD6E59D2E1
+contentHash: 051183EE5CE378418D5510337248206B9795EA4E54CD2E4BEEFE2CC128F1ABCE
 ---
 # Skill: add-module-migration
 
@@ -26,16 +26,15 @@ Add as many as the module has migrated versions.
 
 - **`On-Install Migration`** — runs once, on every fresh install (at most one).
 - **`On-Uninstall Migration`** — runs once, on uninstall (at most one).
-- *The `Version Migration` element's name must be the exact semver string it targets** — e.g. `1.0.1-pre.3`,
 
+**The `Version Migration` element's name must be the exact semver string it targets** — e.g. `1.0.1-pre.3`,
 not a descriptive name like `FlattenSkillsFolders`. Confirmed against a real shipped module's Migrations
 tree (`Intent.Modules.VisualStudio.Projects`): `On-Install`, `3.8.10-pre.2`, `3.9.2-pre.0`, `4.0.0-pre.0`,
 … one entry per version that ever needed a migration. The generated class name derives directly from the
 element name (dots/hyphens become underscores — `1.0.1-pre.3` → `Migration_01_00_01_Pre_03`), and its
 `ModuleVersion` property is set to that same string — both `[IntentFully]`, never hand-edit them.
 
-- *Increment the module's version first, then create the Version Migration element.** The Software Factory
-
+**Increment the module's version first, then create the Version Migration element.** The Software Factory
 captures whatever the module's current version is at generation time into the element's generated class -
 creating the migration before bumping the version bakes in the wrong version.
 
@@ -115,8 +114,8 @@ anchor element's `ParentFolderId`), not by assuming anything about its current c
 subfolders (a skill's `resources/` folder, or a deeper `resources/patterns/`).
 
 3. **Remove the folder itself**, then `package.Save()` if anything was removed.
-- *Don't gate the removal on "is this folder currently empty."** That was tried and is fragile: whether a
 
+**Don't gate the removal on "is this folder currently empty."** That was tried and is fragile: whether a
 Version Migration runs before or after the Software Factory has relocated a template's output isn't
 something the migration can rely on, so a "skip if it still has children" guard can skip forever. Since a
 Version Migration only ever runs for a consumer transitioning off the exact old shape it targets, it is

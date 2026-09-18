@@ -27,7 +27,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new TemplateFileConfig(fileName: Model.Name, fileExtension: Model.Extension, relativeLocation: "../.agents/hooks");
+            // Nested inside whichever AI.Context anchor this instance landed in - ".agents/hooks/gate",
+            // ".claude/hooks/gate", and so on - so each harness carries its own self-contained copy.
+            // Deliberately NOT escaped with "../": an escaped path resolves identically from every
+            // anchor, so more than one anchor collapses to a single output and the Software Factory
+            // refuses to run (DuplicateOutputPathException). Staying inside the anchor makes that
+            // impossible by construction.
+            return new TemplateFileConfig(fileName: Model.Name, fileExtension: Model.Extension, relativeLocation: "hooks/gate");
         }
 
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
