@@ -4,7 +4,7 @@ description: "Set an Intent Architect module's version via the Module Builder mo
 argument-hint: "[new version, e.g. 1.3.0 or 1.3.0-pre.1]"
 keywords: [version, versioning, release, imodspec, module settings]
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleVersioning_SkillMd_Agents
-contentHash: 019917A772FB63C56BD17BB7F87DC1AEF4D433AB728FF1A16B65A36F26CD6E9F
+contentHash: 34B3284F5B8B60B973289592235777E5524B91545060A952FA87B214FE86A551
 ---
 # Skill: module-versioning
 
@@ -14,7 +14,7 @@ contentHash: 019917A772FB63C56BD17BB7F87DC1AEF4D433AB728FF1A16B65A36F26CD6E9F
 set of named elements, and leaves everything else exactly as it found it. So "never hand-edit
 `.imodspec`" is wrong — most of that file is hand-authored by design.
 
-- *The Software Factory owns these six. Everything else in the file is yours, permanently.**
+**The Software Factory owns these six. Everything else in the file is yours, permanently.**
 
 | Element | Where to set it instead |
 |---|---|

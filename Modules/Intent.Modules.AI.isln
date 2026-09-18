@@ -14,5 +14,7 @@
     <application id="4a83ad82-f5c3-4456-80a0-996e1b0423e2" name="ModuleBuilder.AI.SDD" solutionFolder="Modules" relativePath="Intent.Modules.ModuleBuilder.AI.SDD/Intent.Modules.ModuleBuilder.AI.SDD.application.config" />
     <application id="56c42b2b-0973-424b-ae40-2b32c7aa840c" name="ModuleBuilderAiSkills" solutionFolder="AI Skills" relativePath="ModuleBuilderAiSkills/ModuleBuilderAiSkills.application.config" />
     <application id="eea3aaaf-e684-4faa-80ea-fd7d74f68d47" name="Intent.Modules.ModuleBuilder.AI.Modelers" solutionFolder="Modules" relativePath="Intent.Modules.ModuleBuilder.AI.Modelers/Intent.Modules.ModuleBuilder.AI.Modelers.application.config" />
+    <application id="0211c9aa-70a9-49ee-94fb-1c537c72ed79" name="Common" solutionFolder="Modules" relativePath="Intent.Modules.Common/Intent.Modules.Common.application.config" />
+    <application id="3517d53b-f6f7-4d96-8315-efcc6d5622ec" name="Common.CSharp" solutionFolder="Modules" relativePath="Intent.Modules.Common.CSharp/Common.CSharp.application.config" />
   </applications>
 </solution>

@@ -3,7 +3,7 @@ applyTo: '**'
 description: >
 Reference for authoring Intent Architect Module Builder designer extensions: 
 keywords: [intent architect, module builder, designer extension, element extension, package extension, association, context menu, stereotype, mapping, type id]
-contentHash: 8EDD85C2223C680569BF6322BF83C068A84AA42E4B8B7BF748F907AE6771A2B9
+contentHash: A03AC59ECC33F05696E5433845ADB96FD3AD3DD9ADBD3062EA376F34132A1E79
 ---
 # Module Builder Designer Extensions — Reference
 
@@ -43,7 +43,7 @@ Adds context menu options and new element types to an existing **package** type 
 
 Use when: your module needs to allow users to create new top-level elements inside another module's package (e.g., adding "New Integration Event Handler" to a Services Package).
 
-- *Target identification:** set the type/typeId to the foreign package specialization.
+**Target identification:** set the type/typeId to the foreign package specialization.
 
 ### 2. `elementExtension` — Extend an Existing Element
 
@@ -51,7 +51,7 @@ Adds context menu options to an existing **element** type from another module.
 
 Use when: you need to attach new behaviour (usually new association creation options) to an element type you don't own — e.g., adding "Publish Integration Event" to a `Command`.
 
-- *Key insight:** `elementExtension` only adds context menu options; it does not change the element's own properties. Use a `Stereotype Definition` if you need to add new properties to the element.
+**Key insight:** `elementExtension` only adds context menu options; it does not change the element's own properties. Use a `Stereotype Definition` if you need to add new properties to the element.
 
 ### 3. `associationExtension` — Extend an Existing Association's Ends
 
@@ -59,7 +59,7 @@ Adds context menu options to the **source end** or **target end** of an existing
 
 Use when: you need new actions available when a user right-clicks a specific end of an association they didn't create — e.g., adding "Publish Integration Event" to the target end of a `Domain Event Handler Association`.
 
-- *Important:** the context menu is placed on the *end* (source/target extension child), not on the association itself.
+**Important:** the context menu is placed on the *end* (source/target extension child), not on the association itself.
 
 ===
 
@@ -130,7 +130,7 @@ All functions run in a sandboxed context scoped to the current element. Availabl
 | `getAssociations(typeId)` | function | Returns associations of the given type |
 | `theme` | object | `theme.isDark` boolean for dark/light theming |
 
-- *`displayFunction`** — Controls how an element renders its label. Returns an array of text segment objects:
+**`displayFunction`** — Controls how an element renders its label. Returns an array of text segment objects:
 
 ```javascript
 // Simple example
@@ -146,7 +146,7 @@ if (assoc != null) {
 return result;
 ```
 
-- *`filterFunction`** — Controls visibility of mapping elements or menu options. Returns boolean:
+**`filterFunction`** — Controls visibility of mapping elements or menu options. Returns boolean:
 
 ```javascript
 // Only show if no existing association of this type
@@ -154,7 +154,7 @@ let myAssocTypeId = "4c0cc50b-...";
 return element.getAssociations(myAssocTypeId).length == 0;
 ```
 
-- *Element Event Handler scripts** — Lifecycle hooks: `On Created`, `On Name Changed`, `On Property Changed`. Access settings via `application.getSettings(...)`.
+**Element Event Handler scripts** — Lifecycle hooks: `On Created`, `On Name Changed`, `On Property Changed`. Access settings via `application.getSettings(...)`.
 
 ===
 
@@ -218,4 +218,4 @@ Element and association *extensions* (not definitions) do not generate a dedicat
 11. [verify compilation]
 ```
 
-- *Never call Intent Architect MCP tools in parallel.** Each call must complete before the next begins.
+**Never call Intent Architect MCP tools in parallel.** Each call must complete before the next begins.

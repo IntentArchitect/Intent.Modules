@@ -1,5 +1,5 @@
 ---
-contentHash: 074FBCEC8F5C3E1F874695DD7978FE61E228D5D1EE3E5A5CC245F9B11FB1ADCA
+contentHash: E62F48B9C99B47EF3B0DA1CF1E222A719C804220613A8A7F7F7F7DA88D26FB9E
 ---
 # Services Designer (`Intent.Modules.Modelers.Services`)
 
@@ -16,8 +16,7 @@ contract surface — e.g. a controller generator turning `ServiceModel`/`Operati
 endpoints, a client generator turning `DTOModel` into request/response classes, or a validation
 module inspecting `ParameterModel` types.
 
-- *What it is not:** it does not model the domain/entity model (that's Domain). It does not define
-
+**What it is not:** it does not model the domain/entity model (that's Domain). It does not define
 mapping behaviour itself — mapping between DTOs/Commands/Queries and domain entities is added by
 the `.DomainInteractions` extension module (§7/§8), not the base designer. It defines no
 stereotypes of its own (§6) — HTTP/versioning/security metadata come from separate
@@ -103,9 +102,7 @@ its `Api/`. All stereotypes on `ServiceModel`/`OperationModel`/`DTOModel`/etc. c
 ## 7. Mappings
 
 Mapping is **not** part of the base Services designer. `DTOModel` only carries the mapping
-
-- pointer* (`IsMapped`, `Mapping`, and the `HasMapFromDomainMapping`/`HasProjectToDomainMapping`/
-
+*pointer* (`IsMapped`, `Mapping`, and the `HasMapFromDomainMapping`/`HasProjectToDomainMapping`/
 `HasMapToDomainOperationMapping` helpers) — the actual mapping construction/traversal API belongs
 to the `.DomainInteractions` extension module below.
 
@@ -119,14 +116,12 @@ to the `.DomainInteractions` extension module below.
 | ProxyInteractions | `Intent.Modules.Modelers.Services.ProxyInteractions` | `Intent.Modelers.Services.ProxyInteractions` | — **ships no `Api/` folder at all** | Nothing — validation-only factory extension (validates Service Proxy references), adds no element types |
 | GraphQL | `Intent.Modules.Modelers.Services.GraphQL` | `Intent.Modelers.Services.GraphQL` | `Intent.Modelers.Services.GraphQL.Api` | `DTOExtensionModel`, `GraphQLEventMessageModel`, `GraphQLMutationModel`, `GraphQLMutationTypeModel`, `GraphQLParameterModel`, `GraphQLQueryTypeModel`, `GraphQLSchemaFieldModel`, `GraphQLServicesPackageModel`, `GraphQLSubscriptionModel`, `GraphQLSubscriptionTypeModel` |
 
-- *CQRS namespace — confirmed, not a trap today.** `CommandModel`/`QueryModel` are declared in their
-
+**CQRS namespace — confirmed, not a trap today.** `CommandModel`/`QueryModel` are declared in their
 own `Intent.Modelers.Services.CQRS.Api` namespace, matching their own module id — they do **not**
 leak into the parent `Services.Api` namespace. Do not assume this holds for every extension module
 of every designer, though — check each one (Must #6 in `SKILL.md`).
 
-- *Version drift — real, and worth checking before copying a number from here.** At the time this
-
+**Version drift — real, and worth checking before copying a number from here.** At the time this
 was written, `.DomainInteractions`' `.csproj` `PackageReference` for the base `Services` module
 trailed its own `.imodspec` dependency floor (`4.0.5` compiled against vs. `4.0.14` declared as the
 install-time minimum, while the base module itself had moved on to `4.0.16`). The same shape

@@ -1,5 +1,5 @@
 ---
-contentHash: 6DEED1BDAE5C95C7C188E0500DD7458050F64ABD9560BE9556598EE719CDBB21
+contentHash: F1C310DE0DF6C59F64008D276AE3D08A2B04C21247614774340E5DBDFF6D1D1C
 ---
 # C# File Builder Cheat Sheet & Patterns
 
@@ -66,7 +66,7 @@ CSharpFile = new CSharpFile(...)
 
 `IClassProvider` is from `Intent.Modules.Common.Templates` — already available in most template files.
 
-- --
+---
 
 ## Initial Scaffold with `[IntentManaged(Mode.Ignore)]`
 
@@ -107,8 +107,9 @@ The key behaviour of `Mode.Ignore` on a **generated output method**:
 }, 0);
 ```
 
-- *When to use:** The method body has a meaningful generated starting point AND the developer will need to add bespoke logic (e.g. upcast chains, custom publish config) that must survive future SF runs. Compare with `Mode.Merge` (template continuously regenerates on every run) and `Mode.Fully` (template owns the body completely).
-- *Caution:** Once the developer has customised the body, the template's model-driven generation no longer fires for that file. If the model changes (e.g. a new event subscription is added in the designer), the developer must update Configure manually.
+**When to use:** The method body has a meaningful generated starting point AND the developer will need to add bespoke logic (e.g. upcast chains, custom publish config) that must survive future SF runs. Compare with `Mode.Merge` (template continuously regenerates on every run) and `Mode.Fully` (template owns the body completely).
+
+**Caution:** Once the developer has customised the body, the template's model-driven generation no longer fires for that file. If the model changes (e.g. a new event subscription is added in the designer), the developer must update Configure manually.
 
 ## Conditional AddUsing Patterns
 

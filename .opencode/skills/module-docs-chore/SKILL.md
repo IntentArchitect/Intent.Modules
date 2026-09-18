@@ -3,14 +3,12 @@ name: module-docs-chore
 description: "Update a module's release-notes, README, .imodspec metadata, and icon to reflect a change a consumer can observe, in the same turn as that change. USE ONLY WHEN a module change alters anything observable — a new/removed template, setting, stereotype, config default, or behavioural fix. DO NOT USE FOR internal refactors with no observable effect, or for bumping the module's version number itself (see module-version-increment). REQUIRES the observable change already implemented or decided."
 keywords: [documentation, release-notes, readme, imodspec, icon, chore, upkeep]
 template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDocsChore_SkillMd_Agents
-contentHash: 200213EBD085BEB89F81DED26C80E506B32FD1AD48ED3066B48E92A073345A1E
+contentHash: 5D22EDECF03CC4679AAE171DB536287A9C32E5F83D522B0579A6435E1004C3CE
 ---
 # Skill: module-docs-chore
 
 Documentation is part of the change, not a follow-up task. This skill covers **when** to write and
-
-- *which artifact** carries what. Where a canonical format exists for an artifact in your environment,
-
+**which artifact** carries what. Where a canonical format exists for an artifact in your environment,
 follow it for structure and wording.
 
 ## What Triggers An Update
@@ -36,8 +34,7 @@ generated output needs nothing.
 
 ## Release Notes Are Maintained, Never Introduced
 
-- *Check whether the module wants them before touching them.** On the module's package in the Module
-
+**Check whether the module wants them before touching them.** On the module's package in the Module
 Builder designer, `Module Settings` carries an **`Include Release Notes`** checkbox. That box is the
 maintainer's stated intent, and it is what puts `<releaseNotes>` into the manifest — so read it first:
 
@@ -79,8 +76,7 @@ different people are two entries. Two halves of one change are one entry.
 Fewer, higher-altitude entries scan better and age better. A reader months later wants to know what
 changed about the module, not which files were touched to do it.
 
-- *If a module has no `release-notes.md`, do not create one.** Its absence is a deliberate choice
-
+**If a module has no `release-notes.md`, do not create one.** Its absence is a deliberate choice
 about how that module is maintained, not an oversight to correct. Introducing the file commits the
 module to a history nobody agreed to keep, and a half-kept changelog is worse than none.
 
@@ -90,8 +86,7 @@ The module's own summary, description, and tags are maintained regardless of whi
 module keeps. They are the module's shopfront — the only thing a consumer reads while deciding
 whether to install it — so they should describe what the module actually does now.
 
-- *Change the summary and description on the Application Settings page**, not in `.imodspec` and not
-
+**Change the summary and description on the Application Settings page**, not in `.imodspec` and not
 in `.application.config`. The Software Factory overwrites both `<summary>` and `<description>` from
 that one value on every run, so an edit made in the manifest is discarded without an error. It also
 means the two fields **cannot differ** — one line has to serve as both, which is why it stays short

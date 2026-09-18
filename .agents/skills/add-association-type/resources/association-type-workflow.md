@@ -1,5 +1,5 @@
 ---
-contentHash: F8E524265FA5C313FBB68B1E8B70DB7119B33A0AC45ECC6B903E055144404E1D
+contentHash: AE81027648E3DD08086744421565F668863C8D7BBAFA980CF61AA3D99BDAD055
 ---
 # Add Association Type — Workflow & Details
 
@@ -9,7 +9,7 @@ contentHash: F8E524265FA5C313FBB68B1E8B70DB7119B33A0AC45ECC6B903E055144404E1D
 
 You need the `typeId` of every element type that either end of the association can connect to. Collect these before making any model changes.
 
-- *MCP lookup per type:**
+**MCP lookup per type:**
 
 ```json
 find_designer_elements(
@@ -66,7 +66,7 @@ Select the `Association Destination End Settings` child and apply the `Settings`
 | `Allow Multiple` | Whether multiple target-end connections are permitted |
 | `Allow Sorting` | `true` if ordering matters |
 
-- *Applying traits:**
+**Applying traits:**
 
 If this association end has a semantic role (e.g., it is a "processing action" that can be mapped), apply a trait stereotype:
 
@@ -75,7 +75,7 @@ If this association end has a semantic role (e.g., it is a "processing action" t
 
 Traits are how mapping settings and runtime template code identify which ends are mappable.
 
-- *Adding a Mapping Option to the target end:**
+**Adding a Mapping Option to the target end:**
 
 If users should be able to open a mapping dialog from this association end:
 
@@ -127,7 +127,8 @@ apply_staged_file_changes(applicationId = <your module's app ID>)
 2. Confirm the generated `*Model.cs` has `SpecializationTypeId` matching the element's GUID.
 3. Confirm `SourceEnd` and `TargetEnd` model properties exist with the correct `ApiPropertyName` values.
 4. Build the module project to confirm compilation.
-- --
+
+---
 
 ## Common Mistakes
 

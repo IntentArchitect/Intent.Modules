@@ -1,5 +1,5 @@
 ---
-contentHash: 9172311527E391CEE3A9793D248DEF793B2CDE9946EE7F2D60CAF76C7119A5C0
+contentHash: 8F2318A3BBD100E3D1143FF97CC50B91944E2F5B68980481E53806B81C47F3AA
 ---
 # Eventing Designer (`Intent.Modules.Modelers.Eventing`)
 
@@ -14,8 +14,7 @@ Consume this designer when you need to turn a `MessageModel`/`IntegrationCommand
 serializable integration event/command classes, message-bus publishers/subscribers, contract
 schema files, or client SDKs for other applications.
 
-- *What it is not:** it is not Domain (no aggregates/persistence). It is not Services' in-process
-
+**What it is not:** it is not Domain (no aggregates/persistence). It is not Services' in-process
 CQRS modelling — the `.Eventing(...)` accessor actually detects a legacy `Application` element
 inside the *Services* designer and throws, telling the caller to migrate to this designer's
 message-based modelling instead. It does not itself define transport/broker configuration — only
@@ -130,8 +129,7 @@ associations.
 
 ## 8. Extension modules
 
-- *None.** No genuine sibling module extends the Eventing designer's element types. (A
-
+**None.** No genuine sibling module extends the Eventing designer's element types. (A
 `Intent.Modules.Modelers.Eventing.Metadata` folder exists but is a test/sample application
 harness — no `.csproj`/`.imodspec` — not an extension module.)
 

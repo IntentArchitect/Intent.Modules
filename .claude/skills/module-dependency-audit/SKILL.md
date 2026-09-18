@@ -3,14 +3,13 @@ name: module-dependency-audit
 description: "Verify a module's .imodspec dependencies match what its code and templates actually reference, and supply the ones the Software Factory did not detect. USE ONLY WHEN closing out a module change — this is Phase 4 step 2 of the module-building workflow, run after the version is confirmed and before documentation. DO NOT USE FOR bumping the module's own version (see module-version-increment), or for editing modules.config, which is never hand-edited. REQUIRES the module's implementation complete and its build green."
 keywords: [dependencies, imodspec, install, close-out, verification, module]
 template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDependencyAudit_SkillMd_Agents
-contentHash: B492F6811AE81EFDFA3CC7D14757BE3E7764F7D30CAE4A10341B3D1D1DEB5C1E
+contentHash: 57D216487F6BCBF377AA6B2ADDC1E52706F85B73EA6233C10F758AAD67A8DCA0
 ---
 # Skill: module-dependency-audit
 
 ## Why This Is A Gate, Not An Errand
 
-- *A missing dependency compiles perfectly and fails at install** — in a consumer's application, not yours.
-
+**A missing dependency compiles perfectly and fails at install** — in a consumer's application, not yours.
 The module builds, the Software Factory runs, the templates emit what you expected, and nothing goes wrong
 until someone else installs it and the type it needs is not there.
 
@@ -23,8 +22,7 @@ is not evidence here, so no earlier phase catches it. This check is why the mani
 has installed, the dependency events templates raise while generating, and a small fixed set every module
 needs. For the ordinary case it is right, and you should not be second-guessing it entry by entry.
 
-- *It is a heuristic, and the source acknowledges as much.** It infers from what is *installed* rather than
-
+**It is a heuristic, and the source acknowledges as much.** It infers from what is *installed* rather than
 from what the code actually *references*, so the gap is systematic rather than random:
 
 - A type reached through a transitively-available assembly — present at compile time because something else
@@ -53,14 +51,12 @@ event-raised dependency; leave it unless you can show nothing needs it.
 
 ## Fixing What You Find
 
-- *Fix it at the source first.** A dependency missing from the manifest is normally missing because the
-
+**Fix it at the source first.** A dependency missing from the manifest is normally missing because the
 module reference itself is missing or metadata-only in a way that hides it. Correct the reference — install
 the module properly, add the `PackageReference` — and regenerate; the manifest then computes correctly and
 stays correct on the next run.
 
-- *A hand-added `<dependency>` is legitimate when the source fix does not reach it.** Unlike most of the
-
+**A hand-added `<dependency>` is legitimate when the source fix does not reach it.** Unlike most of the
 manifest, dependency entries are *added if absent and never pruned* — so an entry you add by hand survives
 regeneration indefinitely. This is a supported outcome, not a hack. Use it when a genuinely required
 dependency still does not appear after the reference is correct and the module has been regenerated.

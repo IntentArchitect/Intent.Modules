@@ -1,5 +1,5 @@
 ---
-contentHash: 29DA188658061327DDF216C805EDE85B1848AF9616AF90302FBE6C1BD953A0CA
+contentHash: AF8A8FF87B349655263FA6EF1A33F7E2F1F7BAC57F1F98C87C707C9FAE4EF01C
 ---
 # Integration Recipe — Wiring A Module Against A Modelers Designer
 
@@ -24,8 +24,7 @@ compiles against, and what gives you `using Intent.Modelers.Domain.Api;`.
 <dependency id="Intent.Modelers.Domain" version="3.11.1" />
 ```
 
-- *Note the different id string** — no `Modules.` segment. This is the identity the Intent Architect
-
+**Note the different id string** — no `Modules.` segment. This is the identity the Intent Architect
 installer resolves when your module is installed into a consuming application; get it wrong and the
 install fails, not the compile, so the mistake surfaces much later than the `.csproj` one would.
 
@@ -35,8 +34,7 @@ install fails, not the compile, so the mistake surfaces much later than the `.cs
 <module moduleId="Intent.Modelers.Domain" version="3.11.1" includeAssets="none" supportedClientVersions="[4.3.0-a, 5.0.0-a)" />
 ```
 
-- *You do not write this entry — you install it.** `modules.config` records what is actually installed
-
+**You do not write this entry — you install it.** `modules.config` records what is actually installed
 in the application; hand-editing it corrupts that record. Install the designer module into your
 module-building application instead, and in the Installation Settings dialog tick **`Install Designer
 Metadata` and nothing else**:

@@ -1,5 +1,5 @@
 ---
-contentHash: AB715300C18B3CB643145FA97512EBE6F8EC943626E799104C1AC403888DF28E
+contentHash: 1B06E1F04080DE4149591C5A7352A81F98E1FBA617ECE8FEFBD589C8DA006673
 ---
 # Domain Designer (`Intent.Modules.Modelers.Domain`)
 
@@ -16,8 +16,7 @@ Consume this designer when your module needs to read or react to the shape of th
 entities — e.g. to generate EF Core entity classes, repository interfaces, DTOs, database
 mappings, or any code that mirrors "the domain model" itself.
 
-- *What it is not:** it has no mapping canvas of its own — the `IsMapped`/`Mapping` properties seen
-
+**What it is not:** it has no mapping canvas of its own — the `IsMapped`/`Mapping` properties seen
 on some of its elements only report that some *other* designer has mapped onto them; Domain is the
 mapping target, never the mapping author. It also defines no stereotypes of its own — persistence
 concerns (RDBMS columns/keys/indexes, Document DB providers) and validation constraints are added
@@ -96,9 +95,7 @@ association pointing at it is treated as an Aggregate Root.
 
 Each `AssociationModel` end carries `IsNullable`/`IsCollection`, from which `Multiplicity`
 (`ZeroToOne`/`One`/`Many`) is computed. `AssociationModel.AssociationType` is likewise
-
-- *computed, not stored**: a non-nullable, non-collection source end is treated as `Composition`,
-
+**computed, not stored**: a non-nullable, non-collection source end is treated as `Composition`,
 otherwise `Aggregation`.
 
 Navigation extensions live in **`Api/Extensions/`** (not directly under `Api/`):

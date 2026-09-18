@@ -1,5 +1,5 @@
 ---
-contentHash: 9895D7A26BC7D8A98C0DBE4BACA1B7DB4412CF489223D74D035BD4C0243DA22F
+contentHash: 2C6F7F742B20D814017F7C63BE3273DE73273B3EE2F142ED49430F388860A198
 ---
 # User Interface Designer (`Intent.Modules.Modelers.UI`)
 
@@ -19,8 +19,7 @@ The base module ships **no templates itself** — `<templates></templates>` is e
 client-stack modules (Blazor/Angular/React/etc.) that read this designer's model through the `Api`
 classes described below.
 
-- *What it is not:** it is not a widget library — the base module defines no concrete widgets
-
+**What it is not:** it is not a widget library — the base module defines no concrete widgets
 (no Button, Form, Table); those are added by the `.Core` extension module (§8). It is not a
 domain/service designer — it has its own `Model Definition` (a lightweight DTO-shaped view model)
 rather than reusing Domain's `ClassModel`, and its own `Call Service Operation Action` association
@@ -114,8 +113,7 @@ All six live in `Intent.Modules.Modelers.UI.Api` (⚠️ different from the conc
 | `IInvokableModel` | Directly callable | ✅ Yes — every association target end that represents a call target (`CompositionTargetEndModel`, `NavigationTargetEndModel`, `CallServiceOperationActionTargetEndModel`, `.Core`'s `ShowDialogTargetEndModel`), plus `InvocationModel`. **Safe to bind to** |
 | `IInvokableServiceOperationModel` | A directly callable operation | ❌ No implementer — `ComponentOperationModel` implements `IProcessingHandlerModel` instead |
 
-- *Practical guidance:** only `IComponentModel` and `IInvokableModel` are safe to code against. For
-
+**Practical guidance:** only `IComponentModel` and `IInvokableModel` are safe to code against. For
 "give me all pages", use `ui.GetComponentModels().Where(c => c.HasPage())` against the concrete
 `ComponentModel` — don't try to obtain an `IPageModel`, nothing produces one.
 
@@ -161,30 +159,24 @@ No bespoke mapping element types — UI plugs into the shared `IElementToElement
 The widget library — every concrete, renderable UI control, all implementing `IComponentModel`
 unless noted:
 
-- *Field/input:** `AutoCompleteModel` (`ff1ddb80-...`), `ButtonModel` (`4474d808-...`),
-
+**Field/input:** `AutoCompleteModel` (`ff1ddb80-...`), `ButtonModel` (`4474d808-...`),
 `CheckboxModel` (`be9ecdbd-...`), `DatePickerModel` (`9451fcdc-...`), `LinkModel` (`a274918b-...`),
 `RadioGroupModel` (`4af9a7f0-...`), `SelectModel` (`78e0bdf7-...`), `TextInputModel` (`4803bf60-...`).
 
-- *Display/layout:** `TextModel` (`922150d2-...`), `IconModel` (`3c5f8ea8-...`), `ImageModel`
-
+**Display/layout:** `TextModel` (`922150d2-...`), `IconModel` (`3c5f8ea8-...`), `ImageModel`
 (`329f635b-...`), `ContainerModel` (`b97ea181-...`).
 
-- *Data:** `TableModel` (`eee93c29-...`, has `Columns`), `ColumnModel` (`d372c640-...`, **not**
-
+**Data:** `TableModel` (`eee93c29-...`, has `Columns`), `ColumnModel` (`d372c640-...`, **not**
 `IComponentModel` — a column descriptor, not a widget), `FormModel` (`1cfd2d9d-...`).
 
-- *Navigation:** `NavigationMenuModel` (`d7282bf2-...`, has `MenuItems`), `MenuItemModel`
-
+**Navigation:** `NavigationMenuModel` (`d7282bf2-...`, has `MenuItems`), `MenuItemModel`
 (`adbf2fa8-...`, **not** `IComponentModel`; self-recursive via `NavigationItems`).
 
-- *Card family** (`CardModel` `dfe420aa-...` + `Header`/`Content`/`Actions` singular optional part
-
+**Card family** (`CardModel` `dfe420aa-...` + `Header`/`Content`/`Actions` singular optional part
 models `CardHeaderModel`/`CardContentModel`/`CardActionsModel` — part models excluded from
 `IComponentModel`).
 
-- *Dialog family** (`DialogModel` `1260ae89-...`, implements `IComponentModel` but **not**
-
+**Dialog family** (`DialogModel` `1260ae89-...`, implements `IComponentModel` but **not**
 `IDialogModel` — see §4 gap — + `TitleContainer`/`ContentContainer`/`ActionsContainer` part models
 `DialogTitleModel`/`DialogContentModel`/`DialogActionsModel`).
 
@@ -193,8 +185,7 @@ A **fourth association**, owned by `.Core` (also directly under `Api/`): `ShowDi
 `ShowDialogSources(this IDialogModel)` is unreachable (see §4); `ShowDialogTargets(...)` overloads
 on `ComponentOperationModel`/`ComponentModel` do work.
 
-- *Stereotype extensions** (one file per widget, `Get*`/`Has*`/`TryGet*` pattern, most also
-
+**Stereotype extensions** (one file per widget, `Get*`/`Has*`/`TryGet*` pattern, most also
 re-exposing `Secured`): `AutoCompleteModelStereotypeExtensions` (`Interaction`, `LabelAddon`),
 `ButtonModelStereotypeExtensions` (`Interaction`: `Type`/`Form`/`OnClick`/`LinkTo`/`Disabled`),
 `CheckboxModelStereotypeExtensions`, `DatePickerModelStereotypeExtensions`,

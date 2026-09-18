@@ -3,7 +3,7 @@ name: module-element-icons
 description: "Set the icon on a stereotype definition or on a custom element type in a designer you own. USE ONLY WHEN a stereotype or element type you define should show a distinct icon in the Intent Architect UI. DO NOT USE FOR a module's own package icon (see module-svg-icon) — different file, different mechanism, and the two are routinely confused. REQUIRES the stereotype definition or element type already modelled in the Module Builder designer."
 keywords: [icon, stereotype, element type, designer, module builder, ui]
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleElementIcons_SkillMd_Agents
-contentHash: 7AF1437F472ED8D1ED1BAF2659611C188CE7029A70327ED2DE2EC2D0EF53151D
+contentHash: 0B737F60EDB6925C931F6B04EC8144C8DC5CE770441B70B5702A63233D005466
 ---
 # Skill: module-element-icons
 
@@ -80,8 +80,7 @@ house style is more jarring than a generic built-in one.
 
 ### 2. Encode and apply without reading the payload
 
-- *Never read, echo or copy the base64 string yourself.** A modest SVG encodes to well over a thousand
-
+**Never read, echo or copy the base64 string yourself.** A modest SVG encodes to well over a thousand
 characters; passing it through your own output wastes context and risks a silent transcription corruption
 that renders as a blank icon with no error at all.
 

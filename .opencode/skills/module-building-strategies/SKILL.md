@@ -2,7 +2,7 @@
 name: module-building-strategies
 description: "The accumulated strategic playbook of judgment calls for designing an Intent Architect module — decomposition (root/bridging/common), template vs factory-extension choice, file cardinality, managed modes, setting-vs-stereotype, convention-vs-explicit, and two-phase verification. USE ONLY WHEN facing a design decision point while building or extending a module. DO NOT USE FOR the mechanical how-to of a specific construct — this is the judgment layer above those."
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleBuildingStrategies_SkillMd_Agents
-contentHash: 8874507035C428DCE50C1D1C939A0A128CFA1A594B750C157940595CF800475C
+contentHash: CFEDA150CD87F0338C92F1BEEEF0A74FE1D500DCF989B5D670E29E3D25FC5BD6
 ---
 # Module Building Strategies
 
@@ -16,7 +16,7 @@ This skill captures *the judgment* — the strategic instincts behind building I
 
 This skill holds the **WHY** (strategy/judgment). It deliberately does **not** enumerate per-module **WHAT** — which base class the MassTransit consumer uses, what `Intent.Common.CSharp` offers, which request types exist, what version of a package to use. Those facts are **discoverable and volatile**: documenting them here would rot, and the code/platform already hold the current truth.
 
-- *Rule: never assume a per-module fact from memory or from a skill. Discover it fresh each build, then interpret it through the strategy below** (code shows *what* a module does, rarely *why*).
+**Rule: never assume a per-module fact from memory or from a skill. Discover it fresh each build, then interpret it through the strategy below** (code shows *what* a module does, rarely *why*).
 
 Read order — cheapest and most authoritative first:
 
@@ -77,7 +77,8 @@ So common modules aren't just tidier — they prevent a real DLL-skew hazard. **
 
 `.shproj` / `.projitems` shared projects were a **cost-avoidance workaround**, not a principled choice. Standing up a real module carried overhead — technical *and* user/maintenance overhead — so shared projects let the team share code while avoiding that cost (and, as a side effect, let shared APIs mature before committing to a module contract).
 
-- *AI changes the economics.** When AI can create and maintain modules, that overhead largely dissolves and the justification falls away. Therefore:
+**AI changes the economics.** When AI can create and maintain modules, that overhead largely dissolves and the justification falls away. Therefore:
+
     - **Discourage new shared projects.** Prefer a referenced `.csproj` with `PrivateAssets="All"`, or a common module.
     - **Existing shared-project code is a migration candidate.** The HTTP client family (the typical HttpClient module, the Dapper client, Blazor's HttpClient, gRPC) shares substantial infrastructure via shared projects and is the canonical case that should graduate into a **common module** (not yet extracted).
 
@@ -118,7 +119,8 @@ The choice is purely: how many files, and does one file need to see many models 
     - **`Mode.Fully`** — Intent fully manages the file; Intent owns it end-to-end.
     - **`Mode.Merge`** — Intent and the developer **coexist** in that space. Intent generates initial code and opens it for the developer; on later changes, Intent re-detects the regions *it* authored and re-mutates only those, leaving developer code intact. Typical example: command/query handler **bodies**.
     - **`Mode.Ignore`** — **opts out of code automation entirely**; the developer owns and is responsible for that space. It is **not** a generation strategy for module-authored output.
-- *Decision rule:** anticipate the developer will want to make changes in a space → **merge**. Otherwise → **fully**. **Ignore is off the table** for module output — choosing it means giving up automation.
+
+**Decision rule:** anticipate the developer will want to make changes in a space → **merge**. Otherwise → **fully**. **Ignore is off the table** for module output — choosing it means giving up automation.
 
 ===
 
@@ -158,8 +160,9 @@ So: convention by default when the industry provides one; explicit capture when 
 
 Verifying a module is two phases, **in sequence** — not either/or:
 
-- *Phase 1 — reproduce on the reference app.** The reference app first proves the *architecture* works before you automate it. Then install the module *on top of that same reference architecture* and confirm the module outputs **exactly what the hand-written code already has**. This validates that the templates reproduce the proven output.
-- *Phase 2 — from-scratch test (mandatory, the gap-exposer).** Once Phase 1 is 100% confirmed, build a **brand-new app**, install the module **with no code pre-written**, and confirm Intent generates everything correctly and fully wired. This is the **only** test that exposes a forgotten wiring step — as a compile error, a runtime error, or "the code just looks wrong." Phase 1 *cannot* catch this because the code was already there.
+**Phase 1 — reproduce on the reference app.** The reference app first proves the *architecture* works before you automate it. Then install the module *on top of that same reference architecture* and confirm the module outputs **exactly what the hand-written code already has**. This validates that the templates reproduce the proven output.
+
+**Phase 2 — from-scratch test (mandatory, the gap-exposer).** Once Phase 1 is 100% confirmed, build a **brand-new app**, install the module **with no code pre-written**, and confirm Intent generates everything correctly and fully wired. This is the **only** test that exposes a forgotten wiring step — as a compile error, a runtime error, or "the code just looks wrong." Phase 1 *cannot* catch this because the code was already there.
 
 > This is exactly why "SF shows 0 changes" on the reference app proves nothing on its own — the code was already present. The from-scratch run is the real proof.
 
