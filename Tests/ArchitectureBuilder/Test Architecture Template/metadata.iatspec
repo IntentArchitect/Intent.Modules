@@ -13,9 +13,7 @@
     <name>TestArchitectureApp</name>
     <relativeOutputLocation>${application.name}</relativeOutputLocation>
     <placeInSameDirectory>false</placeInSameDirectory>
-    <separateIntentFiles>true</separateIntentFiles>
     <setGitIgnoreEntries>true</setGitIgnoreEntries>
-    <createFolderForSolution>true</createFolderForSolution>
   </defaults>
   <componentGroups>
     <group name="Project Structure">

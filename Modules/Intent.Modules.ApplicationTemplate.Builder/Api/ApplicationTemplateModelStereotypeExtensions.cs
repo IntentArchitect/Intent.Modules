@@ -105,19 +105,9 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 return _stereotype.GetProperty<string>("Relative Output Location");
             }
 
-            public bool PlaceSolutionAndApplicationInTheSameDirectory()
+            public bool MetadataInSubfolder()
             {
-                return _stereotype.GetProperty<bool>("Place solution and application in the same directory");
-            }
-
-            public bool CreateFolderForSolution()
-            {
-                return _stereotype.GetProperty<bool>("Create folder for solution");
-            }
-
-            public bool StoreIntentArchitectFilesSeparateToCodebase()
-            {
-                return _stereotype.GetProperty<bool>("Store Intent Architect files separate to codebase");
+                return _stereotype.GetProperty<bool>("Metadata in Subfolder");
             }
 
             public bool SetGitignoreEntries()

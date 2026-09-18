@@ -123,13 +123,9 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 
             public string RelativeOutputLocation => _model.GetApplicationTemplateDefaults()?.RelativeOutputLocation() ?? string.Empty;
 
-            public bool PlaceSolutionAndApplicationInTheSameDirectory => _model.GetApplicationTemplateDefaults()?.PlaceSolutionAndApplicationInTheSameDirectory() ?? false;
-
-            public bool StoreIntentArchitectFilesSeparateToCodebase => _model.GetApplicationTemplateDefaults()?.StoreIntentArchitectFilesSeparateToCodebase() ?? true;
+            public bool MetadataInSubfolder => _model.GetApplicationTemplateDefaults()?.MetadataInSubfolder() ?? false;
 
             public bool SetGitIgnoreEntries => _model.GetApplicationTemplateDefaults()?.SetGitignoreEntries() ?? true;
-
-            public bool CreateFolderForSolution => _model.GetApplicationTemplateDefaults()?.CreateFolderForSolution() ?? true;
         }
     }
 }
