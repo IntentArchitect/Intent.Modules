@@ -29,7 +29,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.ClaudeSetting
         }
 
         private const string SettingsFileName = "settings.json";
-        private const string GatePath = ".claude/hooks/gate/gate.cs";
+        private const string HarnessFolder = ".claude";
+        private static readonly string GatePath = GateCommands.GatePath(HarnessFolder);
 
         /// <summary>
         /// Claude Code is the one harness whose hook config lives in a file it does not own. Every
@@ -90,7 +91,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.ClaudeSetting
         {
             var hooks = EnsureObject(root, "hooks");
 
-            EnsureHook(hooks, "SessionStart", matcher: null, command: $"dotnet run {GatePath} -- warm");
+            EnsureHook(hooks, "SessionStart", matcher: null, command: GateCommands.Warm(HarnessFolder));
             EnsureHook(hooks, "PreToolUse", matcher: "Write|Edit", command: GateCommand("guard-write"));
             EnsureHook(hooks, "PreToolUse", matcher: ".*run_designer_script.*", command: GateCommand("guard-version"));
             EnsureHook(hooks, "Stop", matcher: null, command: GateCommand("close-out"));
@@ -105,8 +106,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.ClaudeSetting
             });
         }
 
-        private static string GateCommand(string command) =>
-            $"dotnet run {GatePath} --no-build -- {command} --harness claude; test $? -eq 0 && exit 0 || exit 2";
+        private static string GateCommand(string command) => GateCommands.Guard(HarnessFolder, command);
 
         private static JsonObject EnsureObject(JsonObject parent, string key)
         {

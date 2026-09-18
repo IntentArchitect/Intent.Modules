@@ -12,11 +12,19 @@
       <role>AI.Context</role>
       <location></location>
     </template>
+    <template id="Intent.ModuleBuilder.AI.Workflow.Hooks.CursorHooks" externalReference="690a8ec8-88af-4aec-8792-d43a50c840df">
+      <role>AI.Context</role>
+      <location></location>
+    </template>
     <template id="Intent.ModuleBuilder.AI.Workflow.Hooks.GateScripts" externalReference="16162d11-1340-41a5-8a55-6a458f2f575f">
       <role>AI.Context</role>
       <location></location>
     </template>
     <template id="Intent.ModuleBuilder.AI.Workflow.Hooks.HooksJson" externalReference="f08ee439-d1d7-4285-b2b6-ba18cba0e12a">
+      <role>AI.Context</role>
+      <location></location>
+    </template>
+    <template id="Intent.ModuleBuilder.AI.Workflow.Hooks.KiroHooks" externalReference="b4841485-e878-4898-894b-a64657accec1">
       <role>AI.Context</role>
       <location></location>
     </template>

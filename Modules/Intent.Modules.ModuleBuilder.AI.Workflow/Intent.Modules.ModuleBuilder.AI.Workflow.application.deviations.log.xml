@@ -7,8 +7,8 @@
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-09-18T12:12:15.0937723Z</updatedAt>
-      <deviationsHash>C98CE20BF56FADA31A12945A97AEE827D494CD25AA6EE2D8C0D80ED59603D445</deviationsHash>
+      <updatedAt>2026-09-18T12:29:50.825039Z</updatedAt>
+      <deviationsHash>470FB634296BDD7E53CA8B11BA2BEED8FB19C24A0F97060891CCB42D3AE3C70F</deviationsHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#9d2797c5-3a67-4662-9d1a-5c667031fb00</correlationId>
@@ -18,6 +18,24 @@
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
       <updatedAt>2026-09-18T12:12:15.0942697Z</updatedAt>
       <deviationsHash>85453F8DC08200BBA1196AC699663CAB7D00867AEBC9787696FFAF4242CFF60F</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#690a8ec8-88af-4aec-8792-d43a50c840df</correlationId>
+      <path>Templates/Hooks/CursorHooks/CursorHooksTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-09-18T12:29:50.8250507Z</updatedAt>
+      <deviationsHash>608C9C323B70BC3200E203CA50201D1B289411D3CBC5DAC6E7B369AF5CC0889B</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#690a8ec8-88af-4aec-8792-d43a50c840df</correlationId>
+      <path>Templates/Hooks/CursorHooks/CursorHooksTemplateRegistration.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-09-18T12:29:50.8252331Z</updatedAt>
+      <deviationsHash>B8A6F6648C2B24FFB78E28CEE1290DD0E5D924E730C2A7EF51BE77AD534207BA</deviationsHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#16162d11-1340-41a5-8a55-6a458f2f575f</correlationId>
@@ -34,8 +52,26 @@
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-09-18T11:54:53.927272Z</updatedAt>
-      <deviationsHash>8CE5BCEBF4EE99690BB08EA3185B4DEEAEAC3FB4574599422EA89CA5A546E4D8</deviationsHash>
+      <updatedAt>2026-09-18T12:29:50.8250641Z</updatedAt>
+      <deviationsHash>901B0C66F9BA9BA1687288E92D1F812293D71E0F34CB5E7D6B20B4307F7ADA8B</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#b4841485-e878-4898-894b-a64657accec1</correlationId>
+      <path>Templates/Hooks/KiroHooks/KiroHooksTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-09-18T12:29:50.8250742Z</updatedAt>
+      <deviationsHash>C78731E01A6CC9CFE8EC57467584E87C703A296C0706FD6DB59DD244651E8DF2</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#b4841485-e878-4898-894b-a64657accec1</correlationId>
+      <path>Templates/Hooks/KiroHooks/KiroHooksTemplateRegistration.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-09-18T12:29:50.8252423Z</updatedAt>
+      <deviationsHash>B6AB0406677200F9E2DCFDAC4689812F6532E77B6F71BE742F4C11A9D86703A3</deviationsHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#3a408a84-8e00-46cc-8833-22ad37e64091</correlationId>

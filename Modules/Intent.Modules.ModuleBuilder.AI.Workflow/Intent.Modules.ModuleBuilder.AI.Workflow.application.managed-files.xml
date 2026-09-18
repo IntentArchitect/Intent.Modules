@@ -6,12 +6,16 @@
   <file path="Intent.ModuleBuilder.AI.Workflow.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
   <file path="Intent.Modules.ModuleBuilder.AI.Workflow.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
   <file path="Settings/ModuleSettingsExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions" />
-  <file path="Templates/Hooks/ClaudeSettings/ClaudeSettingsTemplatePartial.cs" deviationsHash="C98CE20BF56FADA31A12945A97AEE827D494CD25AA6EE2D8C0D80ED59603D445" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Hooks/ClaudeSettings/ClaudeSettingsTemplatePartial.cs" deviationsHash="470FB634296BDD7E53CA8B11BA2BEED8FB19C24A0F97060891CCB42D3AE3C70F" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
   <file path="Templates/Hooks/ClaudeSettings/ClaudeSettingsTemplateRegistration.cs" deviationsHash="85453F8DC08200BBA1196AC699663CAB7D00867AEBC9787696FFAF4242CFF60F" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
+  <file path="Templates/Hooks/CursorHooks/CursorHooksTemplatePartial.cs" deviationsHash="608C9C323B70BC3200E203CA50201D1B289411D3CBC5DAC6E7B369AF5CC0889B" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Hooks/CursorHooks/CursorHooksTemplateRegistration.cs" deviationsHash="B8A6F6648C2B24FFB78E28CEE1290DD0E5D924E730C2A7EF51BE77AD534207BA" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
   <file path="Templates/Hooks/GateScripts/GateScriptsTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
   <file path="Templates/Hooks/GateScripts/GateScriptsTemplateRegistration.cs" deviationsHash="8AEC1D113FE3750CC4D65E0C09505786457D8F3E902D5509ABF65667CEC9CB87" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
-  <file path="Templates/Hooks/HooksJson/HooksJsonTemplatePartial.cs" deviationsHash="8CE5BCEBF4EE99690BB08EA3185B4DEEAEAC3FB4574599422EA89CA5A546E4D8" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Hooks/HooksJson/HooksJsonTemplatePartial.cs" deviationsHash="901B0C66F9BA9BA1687288E92D1F812293D71E0F34CB5E7D6B20B4307F7ADA8B" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
   <file path="Templates/Hooks/HooksJson/HooksJsonTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
+  <file path="Templates/Hooks/KiroHooks/KiroHooksTemplatePartial.cs" deviationsHash="C78731E01A6CC9CFE8EC57467584E87C703A296C0706FD6DB59DD244651E8DF2" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Hooks/KiroHooks/KiroHooksTemplateRegistration.cs" deviationsHash="B6AB0406677200F9E2DCFDAC4689812F6532E77B6F71BE742F4C11A9D86703A3" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
   <file path="Templates/Hooks/OpenCodePlugin/OpenCodePluginTemplatePartial.cs" deviationsHash="C9FF056EB64C3C76370B07598CC951C0E94B9F67F4542024643E0A1963755F15" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
   <file path="Templates/Hooks/OpenCodePlugin/OpenCodePluginTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel" />
   <file path="Templates/RootPrinciples/ModuleBuildingWorkflowMd/ModuleBuildingWorkflowMdTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />

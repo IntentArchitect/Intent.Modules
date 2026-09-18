@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="8d6e2d61-40ba-4801-881d-8a28a1f7c22e" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-  <name>.opencode</name>
-  <display>.opencode</display>
+<class id="cdb9f879-2e6e-4da4-bb1d-55e507fada68" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>.kiro</name>
+  <display>.kiro</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
@@ -21,14 +21,13 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="a77ea9cd-f617-4dd0-8bb2-aba133a48e49" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="1e3ff613-dc8d-4826-9ecd-7b9e074e0db9" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.AI.Workflow.Hooks.ClaudeSettings</name>
       <display>Intent.ModuleBuilder.AI.Workflow.Hooks.ClaudeSettings</display>
-      <externalReference>Intent.ModuleBuilder.AI.Workflow</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>8d6e2d61-40ba-4801-881d-8a28a1f7c22e</parentFolderId>
+      <parentFolderId>cdb9f879-2e6e-4da4-bb1d-55e507fada68</parentFolderId>
       <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
       <packageName>root</packageName>
       <stereotypes>
@@ -47,14 +46,13 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="453679db-ab11-4b2d-b429-8cc174837424" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="5ca66dd2-6982-45da-bc3d-f8e66eeef62d" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.AI.Workflow.Hooks.CursorHooks</name>
       <display>Intent.ModuleBuilder.AI.Workflow.Hooks.CursorHooks</display>
-      <externalReference>Intent.ModuleBuilder.AI.Workflow</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>8d6e2d61-40ba-4801-881d-8a28a1f7c22e</parentFolderId>
+      <parentFolderId>cdb9f879-2e6e-4da4-bb1d-55e507fada68</parentFolderId>
       <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
       <packageName>root</packageName>
       <stereotypes>
@@ -73,13 +71,13 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="22bab6a2-ef5c-480a-bc45-4908ef135e9a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="199a8eb6-55d6-444a-bba1-d21544521aa0" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.AI.Workflow.Hooks.GateScripts</name>
       <display>Intent.ModuleBuilder.AI.Workflow.Hooks.GateScripts</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>8d6e2d61-40ba-4801-881d-8a28a1f7c22e</parentFolderId>
+      <parentFolderId>cdb9f879-2e6e-4da4-bb1d-55e507fada68</parentFolderId>
       <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
       <packageName>root</packageName>
       <stereotypes>
@@ -98,13 +96,13 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="3d4765b6-e2fc-4a90-8240-ee3112dd2f34" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="65fc97b2-1298-4e1e-af38-d4f29e825dd3" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.AI.Workflow.Hooks.HooksJson</name>
       <display>Intent.ModuleBuilder.AI.Workflow.Hooks.HooksJson</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>8d6e2d61-40ba-4801-881d-8a28a1f7c22e</parentFolderId>
+      <parentFolderId>cdb9f879-2e6e-4da4-bb1d-55e507fada68</parentFolderId>
       <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
       <packageName>root</packageName>
       <stereotypes>
@@ -123,14 +121,13 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="53420ca3-7dee-45d1-bffb-fc561fe8a0bc" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="c3d24292-87f4-4504-a9d4-a6ee9b49d6d9" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.AI.Workflow.Hooks.KiroHooks</name>
       <display>Intent.ModuleBuilder.AI.Workflow.Hooks.KiroHooks</display>
-      <externalReference>Intent.ModuleBuilder.AI.Workflow</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>8d6e2d61-40ba-4801-881d-8a28a1f7c22e</parentFolderId>
+      <parentFolderId>cdb9f879-2e6e-4da4-bb1d-55e507fada68</parentFolderId>
       <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
       <packageName>root</packageName>
       <stereotypes>
@@ -149,14 +146,13 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="4d536799-2e6a-4262-842a-3f0614642ca2" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="206ea4a4-9f54-48a8-a836-b00674a219b5" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.AI.Workflow.Hooks.OpenCodePlugin</name>
       <display>Intent.ModuleBuilder.AI.Workflow.Hooks.OpenCodePlugin</display>
-      <externalReference>Intent.ModuleBuilder.AI.Workflow</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>8d6e2d61-40ba-4801-881d-8a28a1f7c22e</parentFolderId>
+      <parentFolderId>cdb9f879-2e6e-4da4-bb1d-55e507fada68</parentFolderId>
       <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
       <packageName>root</packageName>
       <stereotypes>
@@ -175,13 +171,13 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="1cc1f1c6-6112-44d4-b216-16ec6a12951e" type="Output Anchor" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+    <childElement id="281e2fa8-898e-4a03-848c-fe35f5e2b4a4" type="Output Anchor" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
       <name>AI.Context</name>
       <display>AI.Context</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>8d6e2d61-40ba-4801-881d-8a28a1f7c22e</parentFolderId>
+      <parentFolderId>cdb9f879-2e6e-4da4-bb1d-55e507fada68</parentFolderId>
       <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
       <packageName>root</packageName>
       <stereotypes>

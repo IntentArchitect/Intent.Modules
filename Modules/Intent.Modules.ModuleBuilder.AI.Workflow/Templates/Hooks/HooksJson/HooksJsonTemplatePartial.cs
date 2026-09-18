@@ -26,14 +26,21 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.HooksJson
         }
 
         /// <summary>
-        /// Claude Code and OpenCode are deliberately absent from the switches below, not overlooked.
-        /// Claude's config lives in ".claude/settings.json", a file shared with the developer's own
-        /// permissions and environment, so it has to be merged rather than owned outright - see
-        /// ClaudeSettings. OpenCode enforces through a TypeScript plugin - see OpenCodePlugin.
+        /// The generic template, for harnesses that follow the "hooks.json" convention: a trigger-keyed
+        /// object of matcher/hooks entries, written at the root of the harness's own folder. A new
+        /// harness that follows it is added here; one that does not gets its own template.
         /// </summary>
+        /// <remarks>
+        /// Four harnesses are deliberately absent, not overlooked. Claude Code's config lives in
+        /// ".claude/settings.json", shared with the developer's own permissions and environment, so it
+        /// is merged rather than owned - see ClaudeSettings. OpenCode enforces through a TypeScript
+        /// plugin - see OpenCodePlugin. Kiro and Cursor each have their own schema - see KiroHooks and
+        /// CursorHooks. Keeping those as arms of a switch here meant one template owning four unrelated
+        /// file shapes, and hid a real bug: Cursor's arm used a hook that cannot block.
+        /// </remarks>
         public override bool CanRunTemplate()
         {
-            return base.CanRunTemplate() && HarnessFolder is ".codex" or ".kiro" or ".cursor";
+            return base.CanRunTemplate() && HarnessFolder is ".codex";
         }
 
         /// <summary>
@@ -43,49 +50,30 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.HooksJson
         /// </summary>
         private string HarnessFolder => OutputTarget.Name;
 
-        /// <summary>
-        /// Each harness reads its hook config from its own folder, and runs the copy of the gate
-        /// that sits beside it, so nothing reaches across into another harness's folder. The path
-        /// is relative to the project root because that is the directory every one of these
-        /// harnesses runs a hook command from - and unlike an absolute git-root path, it stays
-        /// correct for an application nested below the repository root, such as a test app.
-        /// </summary>
-        private string GateCommand(string command) =>
-            $"dotnet run {HarnessFolder}/hooks/gate/gate.cs --no-build -- {command} --harness {HarnessId}"
-            + "; test $? -eq 0 && exit 0 || exit 2";
+        private string GateCommand(string command) => GateCommands.Guard(HarnessFolder, command);
 
-        private string WarmCommand() => $"dotnet run {HarnessFolder}/hooks/gate/gate.cs -- warm";
-
-        private string HarnessId => HarnessFolder.TrimStart('.');
+        private string WarmCommand() => GateCommands.Warm(HarnessFolder);
 
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
             // Written INSIDE the anchor, never escaping with "../" - an escaped path resolves the
             // same from every anchor, which is what previously collapsed three instances onto one
-            // file and stopped the Software Factory dead. CanRunTemplate has already filtered out
-            // anything not listed here; the fallback arm exists only so it can never throw.
-            return HarnessFolder switch
-            {
-                ".codex" => new TemplateFileConfig(fileName: "hooks", fileExtension: "json", relativeLocation: ""),
-                ".kiro" => new TemplateFileConfig(fileName: "intent-agent-gate", fileExtension: "json", relativeLocation: "hooks"),
-                ".cursor" => new TemplateFileConfig(fileName: "hooks", fileExtension: "json", relativeLocation: ""),
-                _ => new TemplateFileConfig(fileName: "hooks", fileExtension: "json", relativeLocation: ""),
-            };
+            // file and stopped the Software Factory dead.
+            return new TemplateFileConfig(fileName: "hooks", fileExtension: "json", relativeLocation: "");
         }
 
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
             // Each harness matches PreToolUse against its OWN internal tool names - there is no
-            // shared vocabulary between them. Kiro's is "fs_write" per its hooks reference (grounded
-            // in documentation, not observed: its CLI does not execute hook files yet). Codex's is
-            // unverified and is the next to confirm. A wrong matcher fails silently and OPEN - the
-            // config looks right and simply never matches - so these are the highest-value thing to
-            // check the moment a harness will actually run a hook.
-            return HarnessFolder switch
-            {
-                ".codex" => $$"""
+            // shared vocabulary between them. Codex's are UNVERIFIED: "Write|Edit|ApplyPatch" are
+            // Claude Code's names, carried over on the assumption that a harness following the
+            // hooks.json convention follows its tool naming too. A wrong matcher fails silently and
+            // OPEN - the config looks right and simply never matches - so this is the first thing to
+            // confirm when Codex is actually probed. Codex also has --dangerously-bypass-hook-trust,
+            // so it gates hook execution behind a trust model that can produce a false negative.
+            return $$"""
                     {
                       "hooks": {
                         "SessionStart": [
@@ -106,57 +94,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.HooksJson
                         ]
                       }
                     }
-                    """,
-                ".kiro" => $$"""
-                    {
-                      "version": "v1",
-                      "hooks": [
-                        {
-                          "name": "intent-agent-gate-warm",
-                          "trigger": "SessionStart",
-                          "action": { "type": "command", "command": "{{WarmCommand()}}" }
-                        },
-                        {
-                          "name": "intent-agent-gate-guard-write",
-                          "trigger": "PreToolUse",
-                          "matcher": "fs_write",
-                          "action": { "type": "command", "command": "{{GateCommand("guard-write")}}" }
-                        },
-                        {
-                          "name": "intent-agent-gate-guard-version",
-                          "trigger": "PreToolUse",
-                          "matcher": ".*run_designer_script.*",
-                          "action": { "type": "command", "command": "{{GateCommand("guard-version")}}" }
-                        },
-                        {
-                          "name": "intent-agent-gate-close-out",
-                          "trigger": "Stop",
-                          "action": { "type": "command", "command": "{{GateCommand("close-out")}}" }
-                        }
-                      ]
-                    }
-                    """,
-                ".cursor" => $$"""
-                    {
-                      "version": 1,
-                      "hooks": {
-                        "sessionStart": [
-                          { "command": "{{WarmCommand()}}" }
-                        ],
-                        "afterFileEdit": [
-                          { "command": "{{GateCommand("guard-write")}}" }
-                        ],
-                        "beforeMCPExecution": [
-                          { "command": "{{GateCommand("guard-version")}}", "matcher": ".*run_designer_script.*" }
-                        ],
-                        "stop": [
-                          { "command": "{{GateCommand("close-out")}}" }
-                        ]
-                      }
-                    }
-                    """,
-                _ => "{}",
-            };
+                    """;
         }
     }
 }
