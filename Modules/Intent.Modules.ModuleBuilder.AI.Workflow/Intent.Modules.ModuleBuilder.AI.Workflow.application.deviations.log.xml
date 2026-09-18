@@ -7,8 +7,8 @@
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-09-18T08:32:29.8217807Z</updatedAt>
-      <deviationsHash>7F441FF008D9C358BC8918B4B90CAB758BF37BFEC0677FFD13257415B502BC99</deviationsHash>
+      <updatedAt>2026-09-18T11:59:14.788808Z</updatedAt>
+      <deviationsHash>8AEC1D113FE3750CC4D65E0C09505786457D8F3E902D5509ABF65667CEC9CB87</deviationsHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#f08ee439-d1d7-4285-b2b6-ba18cba0e12a</correlationId>
@@ -16,8 +16,8 @@
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-09-18T08:32:29.8202653Z</updatedAt>
-      <deviationsHash>0162BF1401CAB14A92588E17F54373E2B3D1E4BD358A87993C6985723F029BD6</deviationsHash>
+      <updatedAt>2026-09-18T11:54:53.927272Z</updatedAt>
+      <deviationsHash>8CE5BCEBF4EE99690BB08EA3185B4DEEAEAC3FB4574599422EA89CA5A546E4D8</deviationsHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#f08ee439-d1d7-4285-b2b6-ba18cba0e12a</correlationId>
@@ -27,6 +27,15 @@
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
       <updatedAt>2026-09-18T08:32:29.8218008Z</updatedAt>
       <deviationsHash>2C64191232EA51340EFFB67C6596C9B45E8DEABA55F48D03E1B8276536714E30</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#3a408a84-8e00-46cc-8833-22ad37e64091</correlationId>
+      <path>Templates/Hooks/OpenCodePlugin/OpenCodePluginTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-09-18T11:54:53.9273895Z</updatedAt>
+      <deviationsHash>C9FF056EB64C3C76370B07598CC951C0E94B9F67F4542024643E0A1963755F15</deviationsHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#397ea30f-1ff0-4356-a10f-f47052036047</correlationId>

@@ -58,6 +58,54 @@ public class GuardWriteTests
     }
 
     [Fact]
+    public void Allows_editing_a_template_file_the_Software_Factory_only_scaffolds()
+    {
+        // "*TemplatePartial.cs" is emitted once by the Module Builder and then hand-authored: its
+        // template logic lives in bodies marked Body = Mode.Ignore. Denying edits here made module
+        // development impossible under the gate - it blocked authoring the very templates that
+        // generate the gate. Found by the gate blocking this project's own work, not by inspection.
+        using var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+        var templatePath = repo.CreateFile("Modules/Sample.Module/Templates/Thing/ThingTemplatePartial.cs", "// template logic");
+        repo.CreateFile("Modules/Sample.Module/Sample.Module.application.managed-files.xml", """
+            <?xml version="1.0" encoding="utf-8"?>
+            <files>
+              <file path="Templates/Thing/ThingTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+            </files>
+            """);
+
+        var stdin = ToolInput(filePath: templatePath, newString: "// authored by hand");
+        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-write", "--harness", "codex");
+
+        Assert.Equal(0, result.ExitCode);
+    }
+
+    [Fact]
+    public void Allows_editing_claude_settings_because_the_module_merges_into_it_rather_than_owning_it()
+    {
+        // ".claude/settings.json" also carries the developer's permissions, env and unrelated hooks.
+        // The module adds only what is missing, so the file stays theirs to edit.
+        using var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+        var settingsPath = repo.CreateFile(".claude/settings.json", "{}");
+        repo.CreateFile("Modules/Sample.Module/Sample.Module.application.config", """
+            <?xml version="1.0" encoding="utf-8"?>
+            <application id="x" name="Sample" location="..\.." />
+            """);
+        repo.CreateFile("Modules/Sample.Module/Sample.Module.application.managed-files.xml", """
+            <?xml version="1.0" encoding="utf-8"?>
+            <files>
+              <file path=".claude/settings.json" templateId="Intent.ModuleBuilder.AI.Workflow.Hooks.ClaudeSettings" />
+            </files>
+            """);
+
+        var stdin = ToolInput(filePath: settingsPath, newString: "{ \"permissions\": {} }");
+        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-write", "--harness", "claude");
+
+        Assert.Equal(0, result.ExitCode);
+    }
+
+    [Fact]
     public void Ignores_manifests_inside_skipped_directories()
     {
         // Scanning from the repo root must not wander into dependencies or build output - for speed,
