@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      { "type": "command", "command": "dotnet run .cursor/hooks/gate/gate.cs -- warm" }
+    ],
+    "preToolUse": [
+      {
+        "type": "command",
+        "command": "dotnet run .cursor/hooks/gate/gate.cs --no-build -- guard-write --harness cursor; test $? -eq 0 && exit 0 || exit 2",
+        "matcher": "Write|Delete",
+        "failClosed": true
+      }
+    ],
+    "beforeMCPExecution": [
+      {
+        "type": "command",
+        "command": "dotnet run .cursor/hooks/gate/gate.cs --no-build -- guard-version --harness cursor; test $? -eq 0 && exit 0 || exit 2",
+        "matcher": ".*run_designer_script.*",
+        "failClosed": true
+      }
+    ],
+    "stop": [
+      { "type": "command", "command": "dotnet run .cursor/hooks/gate/gate.cs --no-build -- close-out --harness cursor; test $? -eq 0 && exit 0 || exit 2" }
+    ]
+  }
+}

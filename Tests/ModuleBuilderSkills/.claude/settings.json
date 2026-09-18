@@ -1,0 +1,44 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dotnet run .claude/hooks/gate/gate.cs -- warm"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dotnet run .claude/hooks/gate/gate.cs --no-build -- guard-write --harness claude; test $? -eq 0 && exit 0 || exit 2"
+          }
+        ]
+      },
+      {
+        "matcher": ".*run_designer_script.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dotnet run .claude/hooks/gate/gate.cs --no-build -- guard-version --harness claude; test $? -eq 0 && exit 0 || exit 2"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dotnet run .claude/hooks/gate/gate.cs --no-build -- close-out --harness claude; test $? -eq 0 && exit 0 || exit 2"
+          }
+        ]
+      }
+    ]
+  }
+}

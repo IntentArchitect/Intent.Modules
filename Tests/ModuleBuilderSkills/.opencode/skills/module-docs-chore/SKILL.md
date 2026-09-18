@@ -3,7 +3,7 @@ name: module-docs-chore
 description: "Update a module's release-notes, README, .imodspec metadata, and icon to reflect a change a consumer can observe, in the same turn as that change. USE ONLY WHEN a module change alters anything observable — a new/removed template, setting, stereotype, config default, or behavioural fix. DO NOT USE FOR internal refactors with no observable effect, or for bumping the module's version number itself (see module-version-increment). REQUIRES the observable change already implemented or decided."
 keywords: [documentation, release-notes, readme, imodspec, icon, chore, upkeep]
 template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDocsChore_SkillMd_Agents
-contentHash: 5D22EDECF03CC4679AAE171DB536287A9C32E5F83D522B0579A6435E1004C3CE
+contentHash: DA250B9841D1ABD756E3AC008BBE997951F965E6F19C940B8EF4B4798BC91680
 ---
 # Skill: module-docs-chore
 
@@ -28,11 +28,11 @@ generated output needs nothing.
 | Artifact | What goes in |
 |---|---|
 | Module metadata — summary, description, tags | Kept accurate as a matter of course. These are what a consumer sees before installing anything. |
-| `release-notes.md` | One bullet under the current version — **only if `Include Release Notes` is ticked and the file already exists** |
+| `release-notes.md` | One bullet under the current version — **whenever `Include Release Notes` is ticked**, creating the file if it is missing |
 | `docs/README.md` | The section the change affects — a settings table, a generated-output example, a feature description. **Create it if the module does not have one.** |
 | Module icon | Created only if the module has none yet — see "The Icon" below. An existing icon is never overwritten. |
 
-## Release Notes Are Maintained, Never Introduced
+## Release Notes Are Maintained, And Created When Asked For
 
 **Check whether the module wants them before touching them.** On the module's package in the Module
 Builder designer, `Module Settings` carries an **`Include Release Notes`** checkbox. That box is the
@@ -43,9 +43,7 @@ maintainer's stated intent, and it is what puts `<releaseNotes>` into the manife
 do not add an entry to one that happens to exist.
 
 - **Ticked, file present** — maintain it, as below.
-- **Ticked, file missing** — say so. The manifest is advertising a `release-notes.md` that is not there,
-
-which is a real inconsistency rather than something to silently paper over by creating the file.
+- **Ticked, file missing** — create it, and add this change's entry to it. The manifest is already advertising a `release-notes.md`, so supplying the file resolves that inconsistency rather than merely reporting it.
 
 If a module has a `release-notes.md`, add an entry for the change: a single bullet under the current
 version, prefixed to say whether it is a new feature, an improvement, or a fix. A fix entry is more
@@ -76,9 +74,7 @@ different people are two entries. Two halves of one change are one entry.
 Fewer, higher-altitude entries scan better and age better. A reader months later wants to know what
 changed about the module, not which files were touched to do it.
 
-**If a module has no `release-notes.md`, do not create one.** Its absence is a deliberate choice
-about how that module is maintained, not an oversight to correct. Introducing the file commits the
-module to a history nobody agreed to keep, and a half-kept changelog is worse than none.
+A module whose `Include Release Notes` is unticked still gets nothing. That checkbox — not this setting — decides whether a module keeps release notes at all. This setting only governs whether an absent file gets created for a module that has already asked for one.
 
 ## Module Metadata Is Always Kept Current
 
@@ -169,7 +165,7 @@ entries account for everything in it, not that there is an entry per change.
 - [ ] Tags describe current behaviour — edited directly in `*.imodspec`
 - [ ] Tags are lowercase, space-separated, hyphenated within a compound term
 - [ ] Author matches what sibling modules use — copied or asked for, never invented
-- [ ] `Include Release Notes` checked first; `release-notes.md` updated only when ticked **and** present — never created, and a ticked-but-missing file reported
+- [ ] `Include Release Notes` checked first; `release-notes.md` updated when ticked, and created if ticked but missing
 - [ ] Entries are one line each, grouped by capability rather than listed per change
 - [ ] `docs/README.md` reflects the change — created if the module had none
 - [ ] Module icon created if missing, described from `.imodspec`/`CONTEXT.md` — existing icons left untouched
