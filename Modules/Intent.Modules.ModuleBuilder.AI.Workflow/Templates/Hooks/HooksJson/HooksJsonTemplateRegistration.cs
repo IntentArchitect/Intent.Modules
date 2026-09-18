@@ -43,6 +43,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.HooksJson
             return new HooksJsonTemplate(outputTarget, model);
         }
 
+        /// <summary>
+        /// Exactly one model, not one per harness. Multiplicity comes from the AI.Context anchors -
+        /// this template is instantiated once per anchor, and each instance decides from the folder
+        /// it landed in whether it has anything to emit. Probing the disk for harness folders here
+        /// would double-count against that, and was how the same file ended up being generated from
+        /// three anchors at once.
+        /// </summary>
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<HarnessFolderModel> GetModels(IApplication application)
         {
@@ -52,19 +59,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.HooksJson
                 yield break;
             }
 
-            var root = application.OutputTargets.FirstOrDefault(t => t.Parent == null)?.Location;
-            if (string.IsNullOrEmpty(root))
-            {
-                yield break;
-            }
-
-            foreach (var (folderName, harness) in SupportedHarnessFolders)
-            {
-                if (Directory.Exists(Path.Combine(root, folderName)))
-                {
-                    yield return new HarnessFolderModel(harness, folderName);
-                }
-            }
+            yield return new HarnessFolderModel();
         }
     }
 }

@@ -26,138 +26,131 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.HooksJson
         }
 
         /// <summary>
-        /// Claude Code and OpenCode are deliberately absent from the harness switches below, not
-        /// overlooked. Claude Code's ".claude/settings.json" is shared with the developer's own
-        /// permissions and environment, so it needs merge-aware generation this module does not
-        /// do - it ships as manual-paste instructions in CLAUDE_SETUP.md instead. OpenCode
-        /// enforces through a TypeScript plugin (see OpenCodePlugin), not a JSON hook config.
-        /// An unrecognised harness is skipped with a warning rather than an exception: a harness
-        /// this module has never heard of must never fail a consumer's Software Factory run.
+        /// Claude Code and OpenCode are deliberately absent from the switches below, not overlooked.
+        /// Claude's config lives in ".claude/settings.json", a file shared with the developer's own
+        /// permissions and environment, so it has to be merged rather than owned outright - see
+        /// ClaudeSettings. OpenCode enforces through a TypeScript plugin - see OpenCodePlugin.
         /// </summary>
         public override bool CanRunTemplate()
         {
-            if (!base.CanRunTemplate())
-            {
-                return false;
-            }
-
-            if (Model.Harness is "codex" or "kiro" or "cursor")
-            {
-                return true;
-            }
-
-            Logging.Log.Warning(
-                $"{TemplateId}: no hook-config shape is known for harness '{Model.Harness}', so no hook " +
-                "config was generated for it. That harness is left unguarded by the agent gate; every " +
-                "other harness in this repository is unaffected.");
-            return false;
+            return base.CanRunTemplate() && HarnessFolder is ".codex" or ".kiro" or ".cursor";
         }
+
+        /// <summary>
+        /// The anchor folder this instance landed in, and therefore which harness it is generating
+        /// for. Every template is offered every AI.Context anchor, so landing somewhere this one
+        /// does not serve is the normal case rather than an error - it declines silently.
+        /// </summary>
+        private string HarnessFolder => OutputTarget.Name;
+
+        /// <summary>
+        /// Each harness reads its hook config from its own folder, and runs the copy of the gate
+        /// that sits beside it, so nothing reaches across into another harness's folder. The path
+        /// is relative to the project root because that is the directory every one of these
+        /// harnesses runs a hook command from - and unlike an absolute git-root path, it stays
+        /// correct for an application nested below the repository root, such as a test app.
+        /// </summary>
+        private string GateCommand(string command) =>
+            $"dotnet run {HarnessFolder}/hooks/gate/gate.cs --no-build -- {command} --harness {HarnessId}"
+            + "; test $? -eq 0 && exit 0 || exit 2";
+
+        private string WarmCommand() => $"dotnet run {HarnessFolder}/hooks/gate/gate.cs -- warm";
+
+        private string HarnessId => HarnessFolder.TrimStart('.');
 
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            // CanRunTemplate has already filtered out anything not listed here, so the fallback
-            // arm is unreachable - it exists only so an unknown harness can never throw.
-            return Model.Harness switch
+            // Written INSIDE the anchor, never escaping with "../" - an escaped path resolves the
+            // same from every anchor, which is what previously collapsed three instances onto one
+            // file and stopped the Software Factory dead. CanRunTemplate has already filtered out
+            // anything not listed here; the fallback arm exists only so it can never throw.
+            return HarnessFolder switch
             {
-                "codex" => new TemplateFileConfig(fileName: "hooks", fileExtension: "json", relativeLocation: $"../{Model.FolderName}"),
-                "kiro" => new TemplateFileConfig(fileName: "intent-agent-gate", fileExtension: "json", relativeLocation: $"../{Model.FolderName}/hooks"),
-                "cursor" => new TemplateFileConfig(fileName: "hooks", fileExtension: "json", relativeLocation: $"../{Model.FolderName}"),
-                _ => new TemplateFileConfig(fileName: "hooks", fileExtension: "json", relativeLocation: $"../{Model.FolderName}"),
+                ".codex" => new TemplateFileConfig(fileName: "hooks", fileExtension: "json", relativeLocation: ""),
+                ".kiro" => new TemplateFileConfig(fileName: "intent-agent-gate", fileExtension: "json", relativeLocation: "hooks"),
+                ".cursor" => new TemplateFileConfig(fileName: "hooks", fileExtension: "json", relativeLocation: ""),
+                _ => new TemplateFileConfig(fileName: "hooks", fileExtension: "json", relativeLocation: ""),
             };
         }
 
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
-            // PreToolUse matchers are matched against each harness's OWN internal tool names, which
-            // differ per harness - there is no shared vocabulary. Kiro's is "fs_write" per its hooks
-            // reference; it previously carried Claude Code's "Write|Edit|ApplyPatch", which could
-            // never have matched. Kiro's build does not execute hooks yet, so this is grounded in
-            // their documentation rather than observed, and wants confirming once it does.
-            // Codex's arm below is unverified for the same reason and is the next one to check.
-            //
-            // As above: unreachable, and inert rather than fatal if it ever is reached.
-            return Model.Harness switch
+            // Each harness matches PreToolUse against its OWN internal tool names - there is no
+            // shared vocabulary between them. Kiro's is "fs_write" per its hooks reference (grounded
+            // in documentation, not observed: its CLI does not execute hook files yet). Codex's is
+            // unverified and is the next to confirm. A wrong matcher fails silently and OPEN - the
+            // config looks right and simply never matches - so these are the highest-value thing to
+            // check the moment a harness will actually run a hook.
+            return HarnessFolder switch
             {
-                "codex" => """
+                ".codex" => $$"""
                     {
                       "hooks": {
                         "SessionStart": [
-                          {
-                            "hooks": [
-                              { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" -- warm" }
-                            ]
-                          }
+                          { "hooks": [ { "type": "command", "command": "{{WarmCommand()}}" } ] }
                         ],
                         "PreToolUse": [
                           {
                             "matcher": "Write|Edit|ApplyPatch",
-                            "hooks": [
-                              { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- guard-write --harness codex; test $? -eq 0 && exit 0 || exit 2" }
-                            ]
+                            "hooks": [ { "type": "command", "command": "{{GateCommand("guard-write")}}" } ]
                           },
                           {
                             "matcher": ".*run_designer_script.*",
-                            "hooks": [
-                              { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- guard-version --harness codex; test $? -eq 0 && exit 0 || exit 2" }
-                            ]
+                            "hooks": [ { "type": "command", "command": "{{GateCommand("guard-version")}}" } ]
                           }
                         ],
                         "Stop": [
-                          {
-                            "hooks": [
-                              { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- close-out --harness codex; test $? -eq 0 && exit 0 || exit 2" }
-                            ]
-                          }
+                          { "hooks": [ { "type": "command", "command": "{{GateCommand("close-out")}}" } ] }
                         ]
                       }
                     }
                     """,
-                "kiro" => """
+                ".kiro" => $$"""
                     {
                       "version": "v1",
                       "hooks": [
                         {
                           "name": "intent-agent-gate-warm",
                           "trigger": "SessionStart",
-                          "action": { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" -- warm" }
+                          "action": { "type": "command", "command": "{{WarmCommand()}}" }
                         },
                         {
                           "name": "intent-agent-gate-guard-write",
                           "trigger": "PreToolUse",
                           "matcher": "fs_write",
-                          "action": { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- guard-write --harness kiro; test $? -eq 0 && exit 0 || exit 2" }
+                          "action": { "type": "command", "command": "{{GateCommand("guard-write")}}" }
                         },
                         {
                           "name": "intent-agent-gate-guard-version",
                           "trigger": "PreToolUse",
                           "matcher": ".*run_designer_script.*",
-                          "action": { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- guard-version --harness kiro; test $? -eq 0 && exit 0 || exit 2" }
+                          "action": { "type": "command", "command": "{{GateCommand("guard-version")}}" }
                         },
                         {
                           "name": "intent-agent-gate-close-out",
                           "trigger": "Stop",
-                          "action": { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- close-out --harness kiro; test $? -eq 0 && exit 0 || exit 2" }
+                          "action": { "type": "command", "command": "{{GateCommand("close-out")}}" }
                         }
                       ]
                     }
                     """,
-                "cursor" => """
+                ".cursor" => $$"""
                     {
                       "version": 1,
                       "hooks": {
                         "sessionStart": [
-                          { "command": "dotnet run .agents/hooks/gate.cs -- warm" }
+                          { "command": "{{WarmCommand()}}" }
                         ],
                         "afterFileEdit": [
-                          { "command": "dotnet run .agents/hooks/gate.cs --no-build -- guard-write --harness cursor; test $? -eq 0 && exit 0 || exit 2" }
+                          { "command": "{{GateCommand("guard-write")}}" }
                         ],
                         "beforeMCPExecution": [
-                          { "command": "dotnet run .agents/hooks/gate.cs --no-build -- guard-version --harness cursor; test $? -eq 0 && exit 0 || exit 2", "matcher": ".*run_designer_script.*" }
+                          { "command": "{{GateCommand("guard-version")}}", "matcher": ".*run_designer_script.*" }
                         ],
                         "stop": [
-                          { "command": "dotnet run .agents/hooks/gate.cs --no-build -- close-out --harness cursor; test $? -eq 0 && exit 0 || exit 2" }
+                          { "command": "{{GateCommand("close-out")}}" }
                         ]
                       }
                     }

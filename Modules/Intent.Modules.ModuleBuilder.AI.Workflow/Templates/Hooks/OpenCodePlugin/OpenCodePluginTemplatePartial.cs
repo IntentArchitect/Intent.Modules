@@ -24,10 +24,21 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.OpenCodePlugi
         {
         }
 
+        /// <summary>
+        /// Only generates inside ".opencode". Every template is offered every AI.Context anchor, so
+        /// landing anywhere else is the normal case and declines silently.
+        /// </summary>
+        public override bool CanRunTemplate()
+        {
+            return base.CanRunTemplate() && OutputTarget.Name == ".opencode";
+        }
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new TemplateFileConfig(fileName: "intent-agent-gate", fileExtension: "ts", relativeLocation: "../.opencode/plugins");
+            // Nested inside the anchor rather than escaping with "../" - see GateScripts for why an
+            // escaped path collapses every anchor onto one file.
+            return new TemplateFileConfig(fileName: "intent-agent-gate", fileExtension: "ts", relativeLocation: "plugins");
         }
 
         // OpenCode's own tool.execute.before hook receives raw tool args directly (no JSON stdin
@@ -50,7 +61,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.OpenCodePlugi
                 import { spawnSync } from "child_process";
 
                 function runGate(command: string, extraArgs: string[], stdinPayload: unknown): void {
-                  const gatePath = `${process.cwd()}/.agents/hooks/gate.cs`;
+                  const gatePath = `${process.cwd()}/.opencode/hooks/gate/gate.cs`;
                   const result = spawnSync(
                     "dotnet",
                     ["run", gatePath, "--", command, "--harness", "opencode", ...extraArgs],

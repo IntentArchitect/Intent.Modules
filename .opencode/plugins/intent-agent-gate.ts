@@ -1,7 +1,7 @@
 import { spawnSync } from "child_process";
 
 function runGate(command: string, extraArgs: string[], stdinPayload: unknown): void {
-  const gatePath = `${process.cwd()}/.agents/hooks/gate.cs`;
+  const gatePath = `${process.cwd()}/.opencode/hooks/gate/gate.cs`;
   const result = spawnSync(
     "dotnet",
     ["run", gatePath, "--", command, "--harness", "opencode", ...extraArgs],

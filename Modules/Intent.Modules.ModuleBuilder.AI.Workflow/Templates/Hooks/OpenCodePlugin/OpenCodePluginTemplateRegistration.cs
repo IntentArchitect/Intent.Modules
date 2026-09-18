@@ -44,12 +44,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.OpenCodePlugi
                 return [];
             }
 
-            var root = application.OutputTargets.FirstOrDefault(t => t.Parent == null)?.Location;
-            if (string.IsNullOrEmpty(root) || !Directory.Exists(Path.Combine(root, ".opencode")))
-            {
-                return [];
-            }
-
+            // No disk probing for ".opencode" - the anchor decides. This template is instantiated
+            // once per AI.Context anchor and CanRunTemplate declines anywhere but ".opencode".
             return [new object()];
         }
     }
