@@ -117,6 +117,55 @@ public class ClaudeSettingsMergeTests
     }
 
     [Fact]
+    public void Upgrades_a_command_this_module_generated_before_the_gate_path_was_anchored()
+    {
+        // The merge can only ADD absent entries, so without this a correction to the command itself
+        // would reach new installs only - every repository that already had a settings.json would
+        // keep the unanchored path, and the cwd fix would silently never arrive.
+        var result = Merge($$"""
+            {
+              "hooks": {
+                "PreToolUse": [
+                  { "matcher": "Write|Edit", "hooks": [ { "type": "command", "command": "{{SupersededCommand("guard-write")}}" } ] }
+                ]
+              }
+            }
+            """);
+
+        var entries = result["hooks"]!["PreToolUse"]!.AsArray()
+            .Where(e => e!["matcher"]!.GetValue<string>() == "Write|Edit")
+            .ToList();
+
+        Assert.Single(entries);
+        Assert.Contains("CLAUDE_PROJECT_DIR", entries[0]!["hooks"]![0]!["command"]!.GetValue<string>());
+    }
+
+    [Fact]
+    public void Upgrading_never_touches_a_command_the_developer_adjusted()
+    {
+        // The counterpart to the test above, and the reason the superseded list is exact-match: a
+        // command mentioning our gate path but not matching anything we generated is theirs. It must
+        // survive the upgrade untouched, and must not gain a near-duplicate beside it either.
+        var theirs = $"dotnet run {GatePath} -- guard-write --my-tweak";
+        var result = Merge($$"""
+            {
+              "hooks": {
+                "PreToolUse": [
+                  { "matcher": "Write|Edit", "hooks": [ { "type": "command", "command": "{{theirs}}" } ] }
+                ]
+              }
+            }
+            """);
+
+        var entries = result["hooks"]!["PreToolUse"]!.AsArray()
+            .Where(e => e!["matcher"]!.GetValue<string>() == "Write|Edit")
+            .ToList();
+
+        Assert.Single(entries);
+        Assert.Equal(theirs, entries[0]!["hooks"]![0]!["command"]!.GetValue<string>());
+    }
+
+    [Fact]
     public void Malformed_json_is_detected_rather_than_parsed()
     {
         var malformed = "{ \"hooks\": { ";
@@ -136,18 +185,31 @@ public class ClaudeSettingsMergeTests
             root["hooks"] = hooks;
         }
 
-        EnsureHook(hooks, "SessionStart", null, $"dotnet run {GatePath} -- warm");
-        EnsureHook(hooks, "PreToolUse", "Write|Edit", GateCommand("guard-write"));
-        EnsureHook(hooks, "PreToolUse", ".*run_designer_script.*", GateCommand("guard-version"));
-        EnsureHook(hooks, "Stop", null, GateCommand("close-out"));
+        EnsureHook(hooks, "SessionStart", null, WarmCommand, [SupersededWarmCommand]);
+        EnsureHook(hooks, "PreToolUse", "Write|Edit", GateCommand("guard-write"), [SupersededCommand("guard-write")]);
+        EnsureHook(hooks, "PreToolUse", ".*run_designer_script.*", GateCommand("guard-version"), [SupersededCommand("guard-version")]);
+        EnsureHook(hooks, "Stop", null, GateCommand("close-out"), [SupersededCommand("close-out")]);
 
         return root;
     }
 
+    // The gate path is anchored to Claude Code's project-root variable, because hook commands do not
+    // run in a guaranteed project root - the docs describe the cwd as "the new directory after Claude
+    // runs cd", so a bare relative path stops resolving once the agent moves into a subdirectory.
+    private const string AnchoredGatePath = $"\"${{CLAUDE_PROJECT_DIR}}/{GatePath}\"";
+
+    private static string WarmCommand => $"dotnet run {AnchoredGatePath} -- warm";
+
     private static string GateCommand(string command) =>
+        $"dotnet run {AnchoredGatePath} --no-build -- {command} --harness claude; test $? -eq 0 && exit 0 || exit 2";
+
+    // What this module generated BEFORE the path was anchored.
+    private const string SupersededWarmCommand = $"dotnet run {GatePath} -- warm";
+
+    private static string SupersededCommand(string command) =>
         $"dotnet run {GatePath} --no-build -- {command} --harness claude; test $? -eq 0 && exit 0 || exit 2";
 
-    private static void EnsureHook(JsonObject hooks, string eventName, string? matcher, string command)
+    private static void EnsureHook(JsonObject hooks, string eventName, string? matcher, string command, string[] superseded)
     {
         if (hooks[eventName] is not JsonArray entries)
         {
@@ -162,9 +224,21 @@ public class ClaudeSettingsMergeTests
                 continue;
             }
 
-            var alreadyWired = entry["hooks"] is JsonArray inner
-                               && inner.OfType<JsonObject>().Any(h =>
-                                   h["command"]?.GetValue<string>()?.Contains(GatePath, StringComparison.Ordinal) == true);
+            if (entry["hooks"] is not JsonArray inner)
+            {
+                continue;
+            }
+
+            var ours = inner.OfType<JsonObject>().FirstOrDefault(h =>
+                superseded.Contains(h["command"]?.GetValue<string>(), StringComparer.Ordinal));
+            if (ours is not null)
+            {
+                ours["command"] = command;
+                return;
+            }
+
+            var alreadyWired = inner.OfType<JsonObject>().Any(h =>
+                h["command"]?.GetValue<string>()?.Contains(GatePath, StringComparison.Ordinal) == true);
             if (alreadyWired)
             {
                 return;

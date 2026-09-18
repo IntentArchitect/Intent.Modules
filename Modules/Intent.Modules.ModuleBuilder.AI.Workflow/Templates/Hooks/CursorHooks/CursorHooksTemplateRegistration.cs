@@ -27,8 +27,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.CursorHooks
         /// </summary>
         protected override void Register(ITemplateInstanceRegistry registry, IApplication application)
         {
-            var settings = Intent.Modules.ModuleBuilder.AI.Workflow.Settings.ModuleSettingsExtensions.GetAIWorkflowSettings(application.Settings);
-            if (!settings.InstallAgentGateHooks())
+            if (!AgentGateSwitch.IsOn(application))
             {
                 return;
             }

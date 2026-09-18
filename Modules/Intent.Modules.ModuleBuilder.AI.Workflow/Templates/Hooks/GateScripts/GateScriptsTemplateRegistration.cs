@@ -35,8 +35,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<GateSourceFileModel> GetModels(IApplication application)
         {
-            var settings = Intent.Modules.ModuleBuilder.AI.Workflow.Settings.ModuleSettingsExtensions.GetAIWorkflowSettings(application.Settings);
-            if (!settings.InstallAgentGateHooks())
+            if (!AgentGateSwitch.IsOn(application))
             {
                 yield break;
             }

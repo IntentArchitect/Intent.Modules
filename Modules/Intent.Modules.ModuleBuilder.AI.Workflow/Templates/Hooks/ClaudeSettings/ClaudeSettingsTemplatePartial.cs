@@ -91,10 +91,14 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.ClaudeSetting
         {
             var hooks = EnsureObject(root, "hooks");
 
-            EnsureHook(hooks, "SessionStart", matcher: null, command: GateCommands.Warm(HarnessFolder));
-            EnsureHook(hooks, "PreToolUse", matcher: "Write|Edit", command: GateCommand("guard-write"));
-            EnsureHook(hooks, "PreToolUse", matcher: ".*run_designer_script.*", command: GateCommand("guard-version"));
-            EnsureHook(hooks, "Stop", matcher: null, command: GateCommand("close-out"));
+            EnsureHook(hooks, "SessionStart", matcher: null, command: GateCommands.Warm(HarnessFolder),
+                superseded: GateCommands.SupersededWarm(HarnessFolder));
+            EnsureHook(hooks, "PreToolUse", matcher: "Write|Edit", command: GateCommand("guard-write"),
+                superseded: GateCommands.Superseded(HarnessFolder, "guard-write"));
+            EnsureHook(hooks, "PreToolUse", matcher: ".*run_designer_script.*", command: GateCommand("guard-version"),
+                superseded: GateCommands.Superseded(HarnessFolder, "guard-version"));
+            EnsureHook(hooks, "Stop", matcher: null, command: GateCommand("close-out"),
+                superseded: GateCommands.Superseded(HarnessFolder, "close-out"));
 
             // UnsafeRelaxedJsonEscaping only because the default HTML-safe encoder renders the
             // fail-closed wrapper's "&&" as an escape sequence. Both parse identically, but a
@@ -121,12 +125,25 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.ClaudeSetting
         }
 
         /// <summary>
-        /// Adds the entry only when an equivalent one is absent. "Equivalent" is judged on the gate
-        /// path appearing in the command, not on an exact string match, so a developer who has
-        /// adjusted our command - or an earlier install that wrote a different gate location - is
-        /// left alone rather than having a near-duplicate appended beside it on every regeneration.
+        /// Adds the entry only when an equivalent one is absent, and upgrades one this module wrote
+        /// itself in an earlier version.
         /// </summary>
-        private static void EnsureHook(JsonObject hooks, string eventName, string matcher, string command)
+        /// <remarks>
+        /// Three cases, and the distinction between the last two is the whole point:
+        /// <list type="bullet">
+        /// <item>No entry for this matcher mentions our gate path - add ours.</item>
+        /// <item>An entry carries a command EXACTLY matching one we generated before (<paramref name="superseded"/>)
+        /// - rewrite it in place. Without this the merge could only ever add, so a correction to the
+        /// command itself would reach new installs only, and every existing one would keep the broken
+        /// form indefinitely.</item>
+        /// <item>An entry mentions our gate path but matches nothing we generated - the developer has
+        /// adjusted it. Leave it completely alone; do not rewrite it and do not append a near-duplicate
+        /// beside it on every regeneration.</item>
+        /// </list>
+        /// The superseded list is exact-match for exactly this reason: "any command mentioning our
+        /// gate path" would swallow the developer's version too.
+        /// </remarks>
+        private static void EnsureHook(JsonObject hooks, string eventName, string matcher, string command, string[] superseded)
         {
             if (hooks[eventName] is not JsonArray entries)
             {
@@ -142,9 +159,21 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.ClaudeSetting
                     continue;
                 }
 
-                var alreadyWired = entry["hooks"] is JsonArray inner
-                                   && inner.OfType<JsonObject>().Any(h =>
-                                       h["command"]?.GetValue<string>()?.Contains(GatePath, StringComparison.Ordinal) == true);
+                if (entry["hooks"] is not JsonArray inner)
+                {
+                    continue;
+                }
+
+                var ours = inner.OfType<JsonObject>().FirstOrDefault(h =>
+                    superseded.Contains(h["command"]?.GetValue<string>(), StringComparer.Ordinal));
+                if (ours is not null)
+                {
+                    ours["command"] = command;
+                    return;
+                }
+
+                var alreadyWired = inner.OfType<JsonObject>().Any(h =>
+                    h["command"]?.GetValue<string>()?.Contains(GatePath, StringComparison.Ordinal) == true);
                 if (alreadyWired)
                 {
                     return;

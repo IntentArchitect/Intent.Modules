@@ -7,6 +7,9 @@
 - New Feature: Generates hook configuration for Claude Code, Codex, Cursor, Kiro and OpenCode, each in that harness's own native format and wired to the gate copy beside it.
 - New Feature: `.claude/settings.json` is merged rather than owned — missing entries are added, existing ones are never overwritten, and a file that does not parse is left untouched with a warning.
 - New Feature: Adds `Install Agent Gate Hooks`, `Use Pre-Release Versions`, `Maintain Module README`, `Maintain Module Icon`, `Maintain Module Context` and `Maintain Release Notes` settings.
+- Fixed: Claude Code's hook commands anchor the gate to `${CLAUDE_PROJECT_DIR}`, so they keep working once the agent's working directory moves into a subdirectory — a plain build inside a module folder previously locked the agent out of editing entirely.
+- Fixed: `.claude/settings.json` now upgrades a hook command this module generated in an earlier version, instead of only ever adding absent entries — without it, a correction to the command itself reached new installs only. A command the developer has adjusted is still never touched.
+- Improvement: When `Install Agent Gate Hooks` is off but the application has AI harness folders, the Software Factory logs a warning once, rather than generating nothing and reporting nothing.
 - Fixed: Cursor's write guard runs on `preToolUse`, which can deny the write, instead of `afterFileEdit`, which fires once the write has already landed and so could never block anything.
 - Fixed: The gate no longer denies edits to `release-notes.md`, which the Software Factory seeds once and never rewrites — it was blocking the documentation chore this module itself mandates.
 - Fixed: The gate no longer denies edits to a scaffolded `*TemplatePartial.cs`/`*TemplateRegistration.cs`, where hand-authoring the ignored method bodies is the only way to write a template at all.
