@@ -61,6 +61,10 @@
           <hint>Create a CONTEXT.md for a module that has none.</hint>
           <defaultValue>false</defaultValue>
         </setting>
+        <setting id="6c9e2127-cc91-4719-bb0d-e5c162318686" title="Maintain Release Notes" type="switch">
+          <hint>Create a module's release-notes.md when it asked for one but has none.</hint>
+          <defaultValue>false</defaultValue>
+        </setting>
         <setting id="2ac65dde-288c-43dc-ba46-d0681bc3ac6c" title="Install Agent Gate Hooks" type="switch">
           <hint>Install hook configs that call the intent-agent-gate CLI to enforce module-building rules deterministically.</hint>
           <defaultValue>false</defaultValue>

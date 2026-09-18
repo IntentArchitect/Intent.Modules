@@ -2,6 +2,33 @@
 <deviationsLog>
   <files>
     <file>
+      <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#16162d11-1340-41a5-8a55-6a458f2f575f</correlationId>
+      <path>Templates/Hooks/GateScripts/GateScriptsTemplateRegistration.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-09-18T08:32:29.8217807Z</updatedAt>
+      <deviationsHash>7F441FF008D9C358BC8918B4B90CAB758BF37BFEC0677FFD13257415B502BC99</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#f08ee439-d1d7-4285-b2b6-ba18cba0e12a</correlationId>
+      <path>Templates/Hooks/HooksJson/HooksJsonTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-09-18T08:32:29.8202653Z</updatedAt>
+      <deviationsHash>0162BF1401CAB14A92588E17F54373E2B3D1E4BD358A87993C6985723F029BD6</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#f08ee439-d1d7-4285-b2b6-ba18cba0e12a</correlationId>
+      <path>Templates/Hooks/HooksJson/HooksJsonTemplateRegistration.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-09-18T08:32:29.8218008Z</updatedAt>
+      <deviationsHash>2C64191232EA51340EFFB67C6596C9B45E8DEABA55F48D03E1B8276536714E30</deviationsHash>
+    </file>
+    <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#397ea30f-1ff0-4356-a10f-f47052036047</correlationId>
       <path>Templates/Skills/ModuleContextCapture_SkillMd_Agents/ModuleContextCapture_SkillMd_AgentsTemplatePartial.cs</path>
       <count>1</count>

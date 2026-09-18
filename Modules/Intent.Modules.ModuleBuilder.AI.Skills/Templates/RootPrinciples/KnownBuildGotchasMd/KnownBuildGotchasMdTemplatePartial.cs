@@ -34,6 +34,24 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.RootPrinciples.KnownB
 
           ## Known Build Gotchas
 
+          ### A Scaffolded Template File Is Part Designer-Owned, Part Yours
+
+          `*TemplatePartial.cs` and `*TemplateRegistration.cs` are scaffolded from the Module Builder designer and then **co-owned**. The `[IntentManaged(...)]` attributes say which half is which, member by member:
+
+          - `[IntentManaged(Mode.Fully)]` — **designer-owned**. A hand edit is overwritten on the next Software Factory run.
+          - `Body = Mode.Ignore`, or `Mode.Merge` — **yours**. Template logic is authored here, and regeneration preserves it.
+
+          The member that catches people is `TemplateId`:
+
+          ```csharp
+          [IntentManaged(Mode.Fully)]
+          public const string TemplateId = "Intent.ModuleBuilder.AI.Workflow.Skills.ModuleContextCapture_SkillMd_Agents";
+          ```
+
+          It is **derived, not authored** — `{PackageName}.{FolderPath}.{ElementName}`, from the File Template element's own name and where it sits in the designer's folder tree. To change it, rename or move that element in the **Module Builder designer**, then regenerate. Editing the constant achieves nothing durable: the next run restores it, and until then every `Role` or template-id lookup resolving against the real id silently stops matching — which shows up as a template that mysteriously no longer participates, not as an error.
+
+          ===
+
           ### NuGet Dependencies — Not Inside `OnBuild`
 
           Declare NuGet dependencies in the **template constructor**, **never** inside an `OnBuild`/`AfterBuild` callback — registration there does not work reliably. Conditional registration mid-constructor is fine.
@@ -89,7 +107,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.RootPrinciples.KnownB
           dotnet build --no-incremental
           ```
 
-          That is normally enough: an **already-installed** module is re-detected and re-installed once repackaged, so neither a version bump nor an explicit `install_or_update_modules` belongs in the routine fix.
+          Expect that to be enough on its own: an **already-installed** module is normally re-detected and re-installed once repackaged, and a version bump is never part of the routine fix.
+
+          Anticipate that re-installation, but **confirm it rather than assuming it** — check your change is actually present in the generated output. If it is not, re-install that module yourself at its current version with `install_or_update_modules`, then regenerate. Whether the automatic pickup happens is environment-dependent, and there is no reliable way to interrogate it from inside a session, so treat the check as routine rather than exceptional.
+
+          Re-install **one module at a time** — one module per call, one call at a time, never several in parallel — so a failed pickup stays attributable to the module you just touched.
+
+          From there the ladder below applies as normal.
 
           ===
 

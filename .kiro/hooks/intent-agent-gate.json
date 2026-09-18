@@ -1,0 +1,27 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "intent-agent-gate-warm",
+      "trigger": "SessionStart",
+      "action": { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" -- warm" }
+    },
+    {
+      "name": "intent-agent-gate-guard-write",
+      "trigger": "PreToolUse",
+      "matcher": "Write|Edit|ApplyPatch",
+      "action": { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- guard-write --harness kiro; test $? -eq 0 && exit 0 || exit 2" }
+    },
+    {
+      "name": "intent-agent-gate-guard-version",
+      "trigger": "PreToolUse",
+      "matcher": ".*run_designer_script.*",
+      "action": { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- guard-version --harness kiro; test $? -eq 0 && exit 0 || exit 2" }
+    },
+    {
+      "name": "intent-agent-gate-close-out",
+      "trigger": "Stop",
+      "action": { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- close-out --harness kiro; test $? -eq 0 && exit 0 || exit 2" }
+    }
+  ]
+}

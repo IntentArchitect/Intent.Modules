@@ -92,6 +92,7 @@
   <file path=".opencode/instructions/known-build-gotchas.instructions.md" templateId="Intent.ModuleBuilder.AI.Skills.RootPrinciples.KnownBuildGotchasMd" />
   <file path=".opencode/instructions/module-building-workflow.instructions.md" templateId="Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd" />
   <file path=".opencode/instructions/sdd-wave-evidence.instructions.md" templateId="Intent.ModuleBuilder.AI.SDD.RootPrinciples.SddWaveEvidenceMd" />
+  <file path=".opencode/plugins/intent-agent-gate.ts" templateId="Intent.ModuleBuilder.AI.Workflow.Hooks.OpenCodePlugin" />
   <file path=".opencode/skills/add-association-type/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_SkillMd_Agents" />
   <file path=".opencode/skills/add-association-type/resources/association-type-workflow.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_ResourcesAssociationTypeWorkflowMd_Agents" />
   <file path=".opencode/skills/add-designer-extension/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddDesignerExtension_SkillMd_Agents" />

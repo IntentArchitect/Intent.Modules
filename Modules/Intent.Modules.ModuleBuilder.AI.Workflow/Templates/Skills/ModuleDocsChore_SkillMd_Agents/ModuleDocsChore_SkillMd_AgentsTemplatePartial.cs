@@ -41,6 +41,45 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
         .GetAIWorkflowSettings(ExecutionContext.Settings)
         .UsePreReleaseVersions();
 
+      var maintainReleaseNotes = Intent.Modules.ModuleBuilder.AI.Workflow.Settings.ModuleSettingsExtensions
+        .GetAIWorkflowSettings(ExecutionContext.Settings)
+        .MaintainReleaseNotes();
+
+      var releaseNotesRow = maintainReleaseNotes
+        ? """
+        | `release-notes.md` | One bullet under the current version — **whenever `Include Release Notes` is ticked**, creating the file if it is missing |
+        """
+        : """
+        | `release-notes.md` | One bullet under the current version — **only if `Include Release Notes` is ticked and the file already exists** |
+        """;
+
+      var releaseNotesHeading = maintainReleaseNotes
+        ? "## Release Notes Are Maintained, And Created When Asked For"
+        : "## Release Notes Are Maintained, Never Introduced";
+
+      var releaseNotesMissingBullet = maintainReleaseNotes
+        ? """
+        - **Ticked, file missing** — create it, and add this change's entry to it. The manifest is already advertising a `release-notes.md`, so supplying the file resolves that inconsistency rather than merely reporting it.
+        """
+        : """
+        - **Ticked, file missing** — say so. The manifest is advertising a `release-notes.md` that is not there,
+        which is a real inconsistency rather than something to silently paper over by creating the file.
+        """;
+
+      var releaseNotesChecklistItem = maintainReleaseNotes
+        ? "- [ ] `Include Release Notes` checked first; `release-notes.md` updated when ticked, and created if ticked but missing"
+        : "- [ ] `Include Release Notes` checked first; `release-notes.md` updated only when ticked **and** present — never created, and a ticked-but-missing file reported";
+
+      var releaseNotesClosing = maintainReleaseNotes
+        ? """
+        A module whose `Include Release Notes` is unticked still gets nothing. That checkbox — not this setting — decides whether a module keeps release notes at all. This setting only governs whether an absent file gets created for a module that has already asked for one.
+        """
+        : """
+        **If a module has no `release-notes.md`, do not create one.** Its absence is a deliberate choice
+        about how that module is maintained, not an oversight to correct. Introducing the file commits the
+        module to a history nobody agreed to keep, and a half-kept changelog is worse than none.
+        """;
+
       var preReleaseHeadingNote = usePreRelease
         ? "\n" + """
         When the module's in-development version carries a `-pre.#` suffix (see `module-version-increment`),
@@ -153,10 +192,10 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
           | Artifact | What goes in |
           |---|---|
           | Module metadata — summary, description, tags | Kept accurate as a matter of course. These are what a consumer sees before installing anything. |
-          | `release-notes.md` | One bullet under the current version — **only if `Include Release Notes` is ticked and the file already exists** |
+          {{releaseNotesRow}}
           {{readmeRow}}
           {{iconRow}}
-          ## Release Notes Are Maintained, Never Introduced
+          {{releaseNotesHeading}}
 
           **Check whether the module wants them before touching them.** On the module's package in the Module
           Builder designer, `Module Settings` carries an **`Include Release Notes`** checkbox. That box is the
@@ -165,8 +204,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
           - **Unticked** — the module has opted out. Leave release notes alone entirely; do not start a file, and
           do not add an entry to one that happens to exist.
           - **Ticked, file present** — maintain it, as below.
-          - **Ticked, file missing** — say so. The manifest is advertising a `release-notes.md` that is not there,
-          which is a real inconsistency rather than something to silently paper over by creating the file.
+          {{releaseNotesMissingBullet}}
 
           If a module has a `release-notes.md`, add an entry for the change: a single bullet under the current
           version, prefixed to say whether it is a new feature, an improvement, or a fix. A fix entry is more
@@ -188,9 +226,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
           Fewer, higher-altitude entries scan better and age better. A reader months later wants to know what
           changed about the module, not which files were touched to do it.
 
-          **If a module has no `release-notes.md`, do not create one.** Its absence is a deliberate choice
-          about how that module is maintained, not an oversight to correct. Introducing the file commits the
-          module to a history nobody agreed to keep, and a half-kept changelog is worse than none.
+          {{releaseNotesClosing}}
 
           ## Module Metadata Is Always Kept Current
 
@@ -255,7 +291,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
           - [ ] Tags describe current behaviour — edited directly in `*.imodspec`
           - [ ] Tags are lowercase, space-separated, hyphenated within a compound term
           - [ ] Author matches what sibling modules use — copied or asked for, never invented
-          - [ ] `Include Release Notes` checked first; `release-notes.md` updated only when ticked **and** present — never created, and a ticked-but-missing file reported
+          {{releaseNotesChecklistItem}}
           - [ ] Entries are one line each, grouped by capability rather than listed per change
           {{readmeChecklistItem}}
           {{iconChecklistItem}}

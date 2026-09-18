@@ -8,7 +8,7 @@
   <file path="Settings/ModuleSettingsExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions" />
   <file path="Templates/Hooks/GateScripts/GateScriptsTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
   <file path="Templates/Hooks/GateScripts/GateScriptsTemplateRegistration.cs" deviationsHash="7F441FF008D9C358BC8918B4B90CAB758BF37BFEC0677FFD13257415B502BC99" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
-  <file path="Templates/Hooks/HooksJson/HooksJsonTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/Hooks/HooksJson/HooksJsonTemplatePartial.cs" deviationsHash="0162BF1401CAB14A92588E17F54373E2B3D1E4BD358A87993C6985723F029BD6" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
   <file path="Templates/Hooks/HooksJson/HooksJsonTemplateRegistration.cs" deviationsHash="2C64191232EA51340EFFB67C6596C9B45E8DEABA55F48D03E1B8276536714E30" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
   <file path="Templates/Hooks/OpenCodePlugin/OpenCodePluginTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
   <file path="Templates/Hooks/OpenCodePlugin/OpenCodePluginTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel" />

@@ -62,6 +62,15 @@
       <deviationsHash>1707F60C35A6DB44C42AEE01218C521728B362B230B1841EB75C0427485C42E1</deviationsHash>
     </file>
     <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#6674d4fb-1caf-40f8-9f5d-9597b7b03369</correlationId>
+      <path>Templates/Skills/FileBuilderExpert_SkillMd_Agents/FileBuilderExpert_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-09-18T08:32:27.5802516Z</updatedAt>
+      <deviationsHash>09917E800149FA49339C9FC2CB41736ACA42DF6293F4FEBDA4A5D95647F867CA</deviationsHash>
+    </file>
+    <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#c03952af-f3b9-43a9-9b8a-0f8a06948579</correlationId>
       <path>Templates/Skills/IntentDomainInteractionsExpert_SkillMd_Agents/IntentDomainInteractionsExpert_SkillMd_AgentsTemplatePartial.cs</path>
       <count>1</count>
@@ -128,6 +137,15 @@
       <deviationsHash>1487F717CEFF47B527B8679AF58BA92DD59D918477601D0E0F52E6CD1F98F954</deviationsHash>
     </file>
     <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#01a3710a-8195-4ff1-a316-ac2d1f1b0ebe</correlationId>
+      <path>Templates/Skills/ModuleDocs_SkillMd_Agents/ModuleDocs_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-09-18T08:32:27.5803388Z</updatedAt>
+      <deviationsHash>942EA5C3A262167D88D66644A28AA418F5030CE96A5326A415E79222205C2575</deviationsHash>
+    </file>
+    <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#aef13285-de34-4ed7-935a-d4d3bf554ed8</correlationId>
       <path>Templates/Skills/ModuleElementIcons_SkillMd_Agents/ModuleElementIcons_SkillMd_AgentsTemplatePartial.cs</path>
       <count>1</count>
@@ -147,6 +165,15 @@
       <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>
       <approvedAt>2026-08-20T16:42:12.6974899Z</approvedAt>
       <deviationsHash>2B2C72DBAD4E743EC1C4A2618B478179C9E5CAC3D2227C8F56A5956B92D80752</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#3f29299a-98e5-4874-923f-d9431db3eec9</correlationId>
+      <path>Templates/Skills/ModuleVersioning_SkillMd_Agents/ModuleVersioning_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-09-18T08:32:27.5803611Z</updatedAt>
+      <deviationsHash>87D4E05DB838F3095F0541B7E5B600567CC0A6EB53FEC9CEE1F046CC6FF55A44</deviationsHash>
     </file>
   </files>
   <customFiles>

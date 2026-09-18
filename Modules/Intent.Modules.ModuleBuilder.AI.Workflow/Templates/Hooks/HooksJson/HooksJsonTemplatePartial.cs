@@ -7,6 +7,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+using Intent.Utils;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
@@ -24,21 +25,52 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.HooksJson
         {
         }
 
+        /// <summary>
+        /// Claude Code and OpenCode are deliberately absent from the harness switches below, not
+        /// overlooked. Claude Code's ".claude/settings.json" is shared with the developer's own
+        /// permissions and environment, so it needs merge-aware generation this module does not
+        /// do - it ships as manual-paste instructions in CLAUDE_SETUP.md instead. OpenCode
+        /// enforces through a TypeScript plugin (see OpenCodePlugin), not a JSON hook config.
+        /// An unrecognised harness is skipped with a warning rather than an exception: a harness
+        /// this module has never heard of must never fail a consumer's Software Factory run.
+        /// </summary>
+        public override bool CanRunTemplate()
+        {
+            if (!base.CanRunTemplate())
+            {
+                return false;
+            }
+
+            if (Model.Harness is "codex" or "kiro" or "cursor")
+            {
+                return true;
+            }
+
+            Logging.Log.Warning(
+                $"{TemplateId}: no hook-config shape is known for harness '{Model.Harness}', so no hook " +
+                "config was generated for it. That harness is left unguarded by the agent gate; every " +
+                "other harness in this repository is unaffected.");
+            return false;
+        }
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
+            // CanRunTemplate has already filtered out anything not listed here, so the fallback
+            // arm is unreachable - it exists only so an unknown harness can never throw.
             return Model.Harness switch
             {
                 "codex" => new TemplateFileConfig(fileName: "hooks", fileExtension: "json", relativeLocation: $"../{Model.FolderName}"),
                 "kiro" => new TemplateFileConfig(fileName: "intent-agent-gate", fileExtension: "json", relativeLocation: $"../{Model.FolderName}/hooks"),
                 "cursor" => new TemplateFileConfig(fileName: "hooks", fileExtension: "json", relativeLocation: $"../{Model.FolderName}"),
-                _ => throw new InvalidOperationException($"Unsupported harness: {Model.Harness}"),
+                _ => new TemplateFileConfig(fileName: "hooks", fileExtension: "json", relativeLocation: $"../{Model.FolderName}"),
             };
         }
 
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
+            // As above: unreachable, and inert rather than fatal if it ever is reached.
             return Model.Harness switch
             {
                 "codex" => """
@@ -123,7 +155,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.HooksJson
                       }
                     }
                     """,
-                _ => throw new InvalidOperationException($"Unsupported harness: {Model.Harness}"),
+                _ => "{}",
             };
         }
     }

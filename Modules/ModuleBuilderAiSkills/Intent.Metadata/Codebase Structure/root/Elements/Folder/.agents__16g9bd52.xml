@@ -24,7 +24,7 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="60ba1bde-90fd-4efa-9119-fc09ca561781" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="3b73602d-ff7e-4f70-b0b3-cdfe486f6340" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.AI.Workflow.Hooks.GateScripts</name>
       <display>Intent.ModuleBuilder.AI.Workflow.Hooks.GateScripts</display>
       <externalReference>Intent.ModuleBuilder.AI.Workflow</externalReference>
@@ -50,7 +50,7 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="3fe67a9f-b502-4758-ad8a-467bf6a766c3" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="ec432811-059f-4494-b7c8-66cd10c38787" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.AI.Workflow.Hooks.HooksJson</name>
       <display>Intent.ModuleBuilder.AI.Workflow.Hooks.HooksJson</display>
       <externalReference>Intent.ModuleBuilder.AI.Workflow</externalReference>
