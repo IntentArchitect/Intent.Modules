@@ -117,27 +117,39 @@ public class ClaudeSettingsMergeTests
     }
 
     [Fact]
-    public void Upgrades_a_command_this_module_generated_before_the_gate_path_was_anchored()
+    public void Upgrades_a_command_this_module_generated_in_an_earlier_version()
     {
-        // The merge can only ADD absent entries, so without this a correction to the command itself
+        // The merge can only ADD absent entries, so without this any change to the command itself
         // would reach new installs only - every repository that already had a settings.json would
-        // keep the unanchored path, and the cwd fix would silently never arrive.
-        var result = Merge($$"""
+        // keep the old form indefinitely. Here that carries the removal of the "${CLAUDE_PROJECT_DIR}"
+        // anchoring back out to installs that already received it.
+        // Built as a JsonObject rather than interpolated into a raw string: the superseded command
+        // contains literal double quotes, which would break the fixture's own JSON.
+        var existing = new JsonObject
+        {
+            ["hooks"] = new JsonObject
             {
-              "hooks": {
-                "PreToolUse": [
-                  { "matcher": "Write|Edit", "hooks": [ { "type": "command", "command": "{{SupersededCommand("guard-write")}}" } ] }
-                ]
-              }
-            }
-            """);
+                ["PreToolUse"] = new JsonArray(new JsonObject
+                {
+                    ["matcher"] = "Write|Edit",
+                    ["hooks"] = new JsonArray(new JsonObject
+                    {
+                        ["type"] = "command",
+                        ["command"] = SupersededCommand("guard-write"),
+                    }),
+                }),
+            },
+        };
+
+        var result = Merge(existing.ToJsonString());
 
         var entries = result["hooks"]!["PreToolUse"]!.AsArray()
             .Where(e => e!["matcher"]!.GetValue<string>() == "Write|Edit")
             .ToList();
 
         Assert.Single(entries);
-        Assert.Contains("CLAUDE_PROJECT_DIR", entries[0]!["hooks"]![0]!["command"]!.GetValue<string>());
+        Assert.DoesNotContain("CLAUDE_PROJECT_DIR", entries[0]!["hooks"]![0]!["command"]!.GetValue<string>());
+        Assert.Equal(GateCommand("guard-write"), entries[0]!["hooks"]![0]!["command"]!.GetValue<string>());
     }
 
     [Fact]
@@ -193,21 +205,21 @@ public class ClaudeSettingsMergeTests
         return root;
     }
 
-    // The gate path is anchored to Claude Code's project-root variable, because hook commands do not
-    // run in a guaranteed project root - the docs describe the cwd as "the new directory after Claude
-    // runs cd", so a bare relative path stops resolving once the agent moves into a subdirectory.
-    private const string AnchoredGatePath = $"\"${{CLAUDE_PROJECT_DIR}}/{GatePath}\"";
-
-    private static string WarmCommand => $"dotnet run {AnchoredGatePath} -- warm";
+    // A plain project-root-relative path, spelled identically for every harness - which is what each
+    // harness's own documentation uses for its hook commands.
+    private static string WarmCommand => $"dotnet run {GatePath} -- warm";
 
     private static string GateCommand(string command) =>
-        $"dotnet run {AnchoredGatePath} --no-build -- {command} --harness claude; test $? -eq 0 && exit 0 || exit 2";
+        $"dotnet run {GatePath} --no-build -- {command} --harness claude; test $? -eq 0 && exit 0 || exit 2";
 
-    // What this module generated BEFORE the path was anchored.
-    private const string SupersededWarmCommand = $"dotnet run {GatePath} -- warm";
+    // What this module generated while the path was briefly anchored to Claude Code's project-root
+    // placeholder. Listed so existing installs are carried back off it.
+    private const string AnchoredGatePath = $"\"${{CLAUDE_PROJECT_DIR}}/{GatePath}\"";
+
+    private const string SupersededWarmCommand = $"dotnet run {AnchoredGatePath} -- warm";
 
     private static string SupersededCommand(string command) =>
-        $"dotnet run {GatePath} --no-build -- {command} --harness claude; test $? -eq 0 && exit 0 || exit 2";
+        $"dotnet run {AnchoredGatePath} --no-build -- {command} --harness claude; test $? -eq 0 && exit 0 || exit 2";
 
     private static void EnsureHook(JsonObject hooks, string eventName, string? matcher, string command, string[] superseded)
     {
