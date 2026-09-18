@@ -11,7 +11,7 @@
   <file path="Templates/Hooks/CursorHooks/CursorHooksTemplatePartial.cs" deviationsHash="608C9C323B70BC3200E203CA50201D1B289411D3CBC5DAC6E7B369AF5CC0889B" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
   <file path="Templates/Hooks/CursorHooks/CursorHooksTemplateRegistration.cs" deviationsHash="B8A6F6648C2B24FFB78E28CEE1290DD0E5D924E730C2A7EF51BE77AD534207BA" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
   <file path="Templates/Hooks/GateScripts/GateScriptsTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
-  <file path="Templates/Hooks/GateScripts/GateScriptsTemplateRegistration.cs" deviationsHash="8AEC1D113FE3750CC4D65E0C09505786457D8F3E902D5509ABF65667CEC9CB87" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
+  <file path="Templates/Hooks/GateScripts/GateScriptsTemplateRegistration.cs" deviationsHash="4A9F8BAB03A5F23DEA1A5C3BF152D97203F5DE3CFD6D35558E7389B07EBAE1CE" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
   <file path="Templates/Hooks/HooksJson/HooksJsonTemplatePartial.cs" deviationsHash="901B0C66F9BA9BA1687288E92D1F812293D71E0F34CB5E7D6B20B4307F7ADA8B" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
   <file path="Templates/Hooks/HooksJson/HooksJsonTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.FilePerModel" />
   <file path="Templates/Hooks/KiroHooks/KiroHooksTemplatePartial.cs" deviationsHash="C78731E01A6CC9CFE8EC57467584E87C703A296C0706FD6DB59DD244651E8DF2" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />

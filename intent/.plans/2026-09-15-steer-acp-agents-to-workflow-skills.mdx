@@ -821,6 +821,37 @@ The fix is to anchor the command rather than rely on cwd — Claude Code exposes
 
 </Callout>
 
+<Callout id="silent-switch" tone="risk" title="With the switch off, the module generates nothing and says nothing — the most expensive failure of the session">
+
+`InstallAgentGateHooks()` is `bool.TryParse(...) && result`, so an absent or unparseable setting yields **false**. Nothing is generated, and nothing is reported: no warning, no log line, no entry in the Software Factory result.
+
+Diagnosing this in `Tests/ModuleBuilderSkills` consumed most of a session. Every inference from outside was contradicted by one template that *had* generated earlier and whose output had not needed to change since — and **a template that stopped running is indistinguishable from one that runs and produces identical output**, given only the SF result. It was settled by bypassing the gate in a throwaway build and watching six files appear.
+
+The fix is not to the switch but to the silence: when the switch is off *and* harness anchor folders exist, the registration should say so once. Not yet implemented.
+
+</Callout>
+
+<Callout id="gate-overblocks" tone="risk" title="The gate blocks two more files it should not — one fixed, one still open">
+
+Both were found the same way: the gate obstructing this module's own development, not by inspection.
+
+- **`release-notes.md` — fixed.** Declared `OverwriteBehaviour.OnceOff`, so the Software Factory seeds it once and never rewrites it; every line after that is hand-written by definition. The gate was denying `module-docs-chore`, the documentation chore this module itself ships and mandates. Exempted via `SeededOnceTemplateIds`, with a test.
+- **`.csproj` — still blocked.** The repo's own `known-build-gotchas` instruction says NuGet versions are *"corrected in the `.csproj`"*, and a hand edit was confirmed to survive regeneration untouched. But the file is genuinely part-generated, and the gate matches on paths, not on which element an edit touches — so it cannot tell a `PackageReference` version fix from a wholesale rewrite. Exempting the whole file is worse than the current false positive, so this is left open rather than patched.
+
+The general shape: `managed-files.xml` records only path and templateId, never overwrite behaviour, so the gate cannot infer merge-owned, scaffold-owned or seed-once files and has to name each one.
+
+</Callout>
+
+<Callout id="markdown-floor" tone="warning" title="The markdown fix needs a dependency floor, and three sibling modules still lack it">
+
+The parser fix ships in `Intent.Common` 3.11.7-pre.0. A consumer whose install resolves an earlier version regenerates the corrupted bold, so every module generating markdown needs its floor raised — the declarative fix, rather than reinstalling into applications one happens to know about.
+
+`Intent.ModuleBuilder.AI.Workflow` is done (`3.11.4` → `3.11.7-pre.0`). The floor lives in the `.imodspec` `<dependency>` entry and is **hand-maintained** — the packager does not derive it from the `.csproj` `PackageReference`, so both had to move.
+
+Still stale, and each needs the version gate run before it can move: **AI.Skills** (`3.11.4`), **AI.Modelers** (`3.11.4`), and **AI.SDD** (`3.7.2`, and published at exactly its local `1.0.0-pre.2`, so it needs a version bump first).
+
+</Callout>
+
 ## Open risks
 
 No open design questions remain. These risks carry into implementation:

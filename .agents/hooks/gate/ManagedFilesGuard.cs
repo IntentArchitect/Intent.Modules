@@ -58,9 +58,27 @@ public static class ManagedFilesGuard
         "Intent.ModuleBuilder.TemplateRegistration.",
     };
 
+    /// <summary>
+    /// Templates that SEED a file once and never rewrite it - declared with
+    /// "OverwriteBehaviour.OnceOff". The file is listed in managed-files.xml exactly like
+    /// owned output, but the Software Factory will not touch it again, so every line after
+    /// the first generation is hand-written by definition.
+    ///
+    /// "release-notes.md" is the case that proves it: module-docs-chore REQUIRES an entry
+    /// per observable change, and the gate was denying the very chore this module ships.
+    /// The manifest records only path and templateId - not overwrite behaviour - so the
+    /// gate cannot infer this and has to name the templates.
+    /// </summary>
+    private static readonly string[] SeededOnceTemplateIds =
+    {
+        "Intent.ModuleBuilder.Templates.ReleaseNotes",
+    };
+
     private static bool IsCoOwnedScaffold(string templateId) =>
         CoOwnedScaffoldTemplateIdPrefixes.Any(prefix =>
-            templateId.StartsWith(prefix, StringComparison.OrdinalIgnoreCase));
+            templateId.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
+        || SeededOnceTemplateIds.Any(id =>
+            templateId.Equals(id, StringComparison.OrdinalIgnoreCase));
 
     public static ManagedFileMatch? FindMatch(string repoRoot, string targetPath)
     {

@@ -81,6 +81,30 @@ public class GuardWriteTests
     }
 
     [Fact]
+    public void Allows_editing_release_notes_because_the_Software_Factory_seeds_it_once_and_never_rewrites_it()
+    {
+        // "release-notes.md" is declared OverwriteBehaviour.OnceOff, so the Software Factory creates
+        // it and then never touches it again - every line after that is hand-written by definition.
+        // It is still listed in managed-files.xml exactly like owned output, which is why the gate
+        // denied it. Found by the gate blocking module-docs-chore, the chore this module itself
+        // ships and mandates.
+        using var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+        var notesPath = repo.CreateFile("Modules/Sample.Module/release-notes.md", "### Version 1.0.0\n");
+        repo.CreateFile("Modules/Sample.Module/Sample.Module.application.managed-files.xml", """
+            <?xml version="1.0" encoding="utf-8"?>
+            <files>
+              <file path="release-notes.md" templateId="Intent.ModuleBuilder.Templates.ReleaseNotes" />
+            </files>
+            """);
+
+        var stdin = ToolInput(filePath: notesPath, newString: "- Fixed: something a consumer can observe.");
+        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-write", "--harness", "codex");
+
+        Assert.Equal(0, result.ExitCode);
+    }
+
+    [Fact]
     public void Allows_editing_claude_settings_because_the_module_merges_into_it_rather_than_owning_it()
     {
         // ".claude/settings.json" also carries the developer's permissions, env and unrelated hooks.

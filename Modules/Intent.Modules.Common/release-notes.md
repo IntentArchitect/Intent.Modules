@@ -1,3 +1,7 @@
+### Version 3.11.7
+
+- Fixed: A paragraph opening with emphasis — `**Note** that ...` or `*pointer* is ...` — was re-emitted by `MarkdownFileParser` as a mangled list item (`- *Note** that ...`), because its unordered-list pattern allowed zero whitespace between the bullet character and the text, so a leading `*` was consumed as a bullet marker.
+
 ### Version 3.11.6
 
 - Improvement: Added ability to determine after template registration if a `MarkdownBaseTemplate` hash matches what's on disk or not.

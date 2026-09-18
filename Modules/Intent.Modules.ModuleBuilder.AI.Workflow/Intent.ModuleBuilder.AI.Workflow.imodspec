@@ -85,7 +85,7 @@
     </group>
   </moduleSettings>
   <dependencies>
-    <dependency id="Intent.Common" version="3.11.4" />
+    <dependency id="Intent.Common" version="3.11.7-pre.0" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
   </dependencies>
   <files>
