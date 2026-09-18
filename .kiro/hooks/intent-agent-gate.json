@@ -9,7 +9,7 @@
     {
       "name": "intent-agent-gate-guard-write",
       "trigger": "PreToolUse",
-      "matcher": "Write|Edit|ApplyPatch",
+      "matcher": "fs_write",
       "action": { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- guard-write --harness kiro; test $? -eq 0 && exit 0 || exit 2" }
     },
     {

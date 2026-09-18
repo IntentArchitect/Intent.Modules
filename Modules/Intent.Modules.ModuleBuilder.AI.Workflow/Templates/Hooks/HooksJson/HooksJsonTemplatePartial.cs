@@ -70,6 +70,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.HooksJson
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
+            // PreToolUse matchers are matched against each harness's OWN internal tool names, which
+            // differ per harness - there is no shared vocabulary. Kiro's is "fs_write" per its hooks
+            // reference; it previously carried Claude Code's "Write|Edit|ApplyPatch", which could
+            // never have matched. Kiro's build does not execute hooks yet, so this is grounded in
+            // their documentation rather than observed, and wants confirming once it does.
+            // Codex's arm below is unverified for the same reason and is the next one to check.
+            //
             // As above: unreachable, and inert rather than fatal if it ever is reached.
             return Model.Harness switch
             {
@@ -119,7 +126,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.HooksJson
                         {
                           "name": "intent-agent-gate-guard-write",
                           "trigger": "PreToolUse",
-                          "matcher": "Write|Edit|ApplyPatch",
+                          "matcher": "fs_write",
                           "action": { "type": "command", "command": "dotnet run \"$(git rev-parse --show-toplevel)/.agents/hooks/gate.cs\" --no-build -- guard-write --harness kiro; test $? -eq 0 && exit 0 || exit 2" }
                         },
                         {

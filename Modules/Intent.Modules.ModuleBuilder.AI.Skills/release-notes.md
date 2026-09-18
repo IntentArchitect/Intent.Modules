@@ -1,3 +1,8 @@
+### Version 1.0.3
+
+- New Feature: `known-build-gotchas` now explains that a scaffolded template file is part designer-owned and part hand-authored — `[IntentManaged(Mode.Fully)]` members are rewritten on every regeneration while `Mode.Ignore`/`Mode.Merge` bodies are preserved — and that `TemplateId` is derived from the File Template element's own name and folder, so editing the constant achieves nothing while silently breaking every lookup that resolves against the real id.
+- Fixed: `known-build-gotchas` stated that an explicit `install_or_update_modules` never belongs in the routine fix for a template change that is not taking effect. A rebuilt module is not always re-detected, so an agent following that advice would see stale output and start correcting a template that was already right — the guidance now says to confirm the change actually reached the generated output and to re-install the module by hand when it did not, one module at a time.
+
 ### Version 1.0.2
 
 - Improvement: `known-build-gotchas` now carries an ordered diagnostic ladder for a module change that does not reach generated output — rule out protected output, confirm the build reached the cache, force a re-install of the same version, force a rewrite — ending in "report what you ruled out" rather than renumbering to force it.

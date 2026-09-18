@@ -31,11 +31,12 @@ Phase 4 runs dependencies before documentation deliberately: a dependency fix is
 | Maintain Module README   | Off     | When on, `module-docs-chore` treats `docs/README.md` as an artifact to create and maintain.                                                                                      |
 | Maintain Module Icon     | Off     | When on, `module-docs-chore` creates a module's SVG icon when it has none. An existing icon is never overwritten.                                                                |
 | Maintain Module Context  | Off     | When on, `module-context-capture` also creates a `CONTEXT.md` for a module that has none, once its first durable decision lands. Off keeps the read-and-maintain-only behaviour. |
+| Maintain Release Notes   | Off     | When on, `module-docs-chore` creates a `release-notes.md` for a module whose `Include Release Notes` is ticked but whose file is missing. Off reports that mismatch instead of fixing it. |
 | Install Agent Gate Hooks | Off    | Generates the gate scripts (`.agents/hooks/*.cs`) plus a hook config for each harness folder already present in the repo (`.codex`, `.kiro`, `.cursor`) and `CLAUDE_SETUP.md`'s manual-paste instructions for Claude Code. Off means none of it is generated. |
 
 Each setting only ever widens what the generated guidance covers. Left at their defaults, the skills maintain what already exists and introduce nothing.
 
-Release-notes maintenance is not settings-gated. It is governed per module by the `Include Release Notes` checkbox on that module's own `Module Settings` in the Module Builder designer.
+Release notes are governed by two things, and both apply. Whether a module keeps them at all is decided per module by the `Include Release Notes` checkbox on that module's own `Module Settings` in the Module Builder designer — no application setting overrides it. `Maintain Release Notes` only decides what happens to a module that has ticked that box but has no `release-notes.md`: off reports the mismatch, on creates the file.
 
 ## Bundled Skill Output
 

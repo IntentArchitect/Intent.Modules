@@ -22,17 +22,16 @@ public sealed record ManagedFileMatch(string ManagedFilesXmlPath, string Templat
 /// </summary>
 public static class ManagedFilesGuard
 {
+    private static readonly string[] SkipDirectories =
+    {
+        ".git", ".vs", ".cache", ".intent", "node_modules", "bin", "obj", "nuget-packages",
+    };
+
     public static ManagedFileMatch? FindMatch(string repoRoot, string targetPath)
     {
         var targetFull = Path.GetFullPath(targetPath, repoRoot);
 
-        var modulesDir = Path.Combine(repoRoot, "Modules");
-        if (!Directory.Exists(modulesDir))
-        {
-            return null;
-        }
-
-        foreach (var xmlPath in Directory.EnumerateFiles(modulesDir, "*.application.managed-files.xml", SearchOption.AllDirectories))
+        foreach (var xmlPath in EnumerateManifests(repoRoot))
         {
             var match = CheckFile(xmlPath, targetFull);
             if (match is not null)
@@ -42,6 +41,51 @@ public static class ManagedFilesGuard
         }
 
         return null;
+    }
+
+    /// <summary>
+    /// Applications do not all live under "Modules/". A solution's test and sample
+    /// applications commonly sit under "Tests/" instead - and those are exactly the ones
+    /// an agent harness gets pointed at. Anchoring the scan on "Modules/" meant such an
+    /// application's generated output matched nothing and every edit to it was allowed,
+    /// which reads as a passing test while protecting nothing at all.
+    /// </summary>
+    private static IEnumerable<string> EnumerateManifests(string repoRoot)
+    {
+        var pending = new Stack<string>();
+        pending.Push(repoRoot);
+
+        while (pending.Count > 0)
+        {
+            var directory = pending.Pop();
+
+            string[] files;
+            string[] subDirectories;
+            try
+            {
+                files = Directory.GetFiles(directory, "*.application.managed-files.xml");
+                subDirectories = Directory.GetDirectories(directory);
+            }
+            catch (Exception)
+            {
+                // An unreadable directory must not take the whole gate down.
+                continue;
+            }
+
+            foreach (var file in files)
+            {
+                yield return file;
+            }
+
+            foreach (var subDirectory in subDirectories)
+            {
+                var name = Path.GetFileName(subDirectory);
+                if (!SkipDirectories.Contains(name, StringComparer.OrdinalIgnoreCase))
+                {
+                    pending.Push(subDirectory);
+                }
+            }
+        }
     }
 
     private static ManagedFileMatch? CheckFile(string xmlPath, string targetFull)

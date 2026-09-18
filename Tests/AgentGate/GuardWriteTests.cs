@@ -34,6 +34,51 @@ public class GuardWriteTests
     }
 
     [Fact]
+    public void Denies_a_managed_path_for_an_application_outside_the_Modules_folder()
+    {
+        // Test and sample applications commonly live under "Tests/" rather than "Modules/", and
+        // those are exactly the ones an agent harness gets pointed at. The scan used to be anchored
+        // on "Modules/", so such an application's generated output matched nothing and every edit to
+        // it was allowed - which reads as a passing harness probe while protecting nothing at all.
+        using var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+        var generatedPath = repo.CreateFile("Tests/SampleApp/Generated.cs", "// generated");
+        repo.CreateFile("Tests/SampleApp/SampleApp.application.managed-files.xml", """
+            <?xml version="1.0" encoding="utf-8"?>
+            <files>
+              <file path="Generated.cs" templateId="SampleApp.Templates.GeneratedTemplate" />
+            </files>
+            """);
+
+        var stdin = ToolInput(filePath: generatedPath, newString: "// hand-edited");
+        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-write", "--harness", "codex");
+
+        Assert.Equal(2, result.ExitCode);
+        Assert.Contains("SampleApp.Templates.GeneratedTemplate", result.Stdout);
+    }
+
+    [Fact]
+    public void Ignores_manifests_inside_skipped_directories()
+    {
+        // Scanning from the repo root must not wander into dependencies or build output - for speed,
+        // and because a stale manifest copied in there would otherwise deny edits to a live file.
+        using var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+        var handWrittenPath = repo.CreateFile("src/Hand.cs", "// hand-written");
+        repo.CreateFile("node_modules/stale/Stale.application.managed-files.xml", """
+            <?xml version="1.0" encoding="utf-8"?>
+            <files>
+              <file path="../../src/Hand.cs" templateId="Stale.Template" />
+            </files>
+            """);
+
+        var stdin = ToolInput(filePath: handWrittenPath, newString: "// still editable");
+        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-write", "--harness", "codex");
+
+        Assert.Equal(0, result.ExitCode);
+    }
+
+    [Fact]
     public void Denies_modules_config_unconditionally()
     {
         using var repo = new TempDirectory();
