@@ -44,7 +44,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
             yield return new GateSourceFileModel("SemVer", "cs", SemVerContent);
             yield return new GateSourceFileModel("HarnessProtocol", "cs", HarnessProtocolContent);
             yield return new GateSourceFileModel("GitSupport", "cs", GitSupportContent);
-            yield return new GateSourceFileModel("ManagedFilesGuard", "cs", ManagedFilesGuardContent);
+            yield return new GateSourceFileModel("IntentMetadataGuard", "cs", IntentMetadataGuardContent);
             yield return new GateSourceFileModel("ModuleVersionAuditor", "cs", ModuleVersionAuditorContent);
             yield return new GateSourceFileModel("CloseOutAuditor", "cs", CloseOutAuditorContent);
             yield return new GateSourceFileModel("GuardVersionSupport", "cs", GuardVersionSupportContent);
@@ -66,7 +66,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
             #:include SemVer.cs
             #:include HarnessProtocol.cs
             #:include GitSupport.cs
-            #:include ManagedFilesGuard.cs
+            #:include IntentMetadataGuard.cs
             #:include ModuleVersionAuditor.cs
             #:include CloseOutAuditor.cs
             #:include GuardVersionSupport.cs
@@ -481,224 +481,87 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
             }
             """;
 
-        private const string ManagedFilesGuardContent = """
-            using System.Linq;
-            using System.Xml.Linq;
-
+        private const string IntentMetadataGuardContent = """
             namespace Intent.Agent.Gate;
 
             /// <summary>
-            /// A path that was found listed as Software-Factory-owned generated output in a module's
-            /// "*.application.managed-files.xml".
+            /// Intent Architect's own METADATA: the designer model, an application's configuration, and
+            /// the record of what it generated and installed. None of it is hand-edited.
             /// </summary>
-            public sealed record ManagedFileMatch(string ManagedFilesXmlPath, string TemplateId, string ResolvedPath);
-
-            /// <summary>
-            /// Checks whether a file path is listed as generated output in any module's
-            /// "*.application.managed-files.xml". Each entry's "path" attribute is relative to that
-            /// APPLICATION'S OWN OUTPUT ROOT - not necessarily the directory the xml file itself sits
-            /// in. Those are the same directory for an ordinary module (its own "location" attribute
-            /// on the sibling "*.application.config" is "."), but not for an app whose output root is
-            /// elsewhere - e.g. a dogfooding app whose metadata lives under "Modules/AppName/" while
-            /// its "location" attribute reads "../.." to reach the repo root it actually outputs to.
-            /// Found by a failing smoke test, not by inspection: a path that is genuinely managed
-            /// output was silently allowed because "location" was never consulted.
-            /// </summary>
-            public static class ManagedFilesGuard
+            /// <remarks>
+            /// This is a different category from generated OUTPUT, and the distinction is the whole
+            /// point of the guard. Editing generated output is usually merely futile - the next run
+            /// overwrites it. Editing metadata CORRUPTS state the Software Factory depends on, and no
+            /// regeneration puts it right.
+            /// <para>
+            /// It is also high precision by construction: every legitimate change here has a proper
+            /// mechanism - the Intent MCP server, or a skill that drives it - so a denial can always
+            /// say where to go instead of merely saying no. An earlier version of this guard blocked
+            /// generated output instead, and in real use produced false positive after false positive:
+            /// authoring a scaffolded template, writing release notes and correcting a csproj package
+            /// version are all intended workflows, and all were denied.
+            /// </para>
+            /// </remarks>
+            public static class IntentMetadataGuard
             {
-                private static readonly string[] SkipDirectories =
+                /// <summary>Records what is installed; a bad edit corrupts the application's module state.</summary>
+                private const string ModulesConfig = "modules.config";
+
+                /// <summary>
+                /// Matched as suffixes rather than exact names, because each is prefixed with the
+                /// owning application's name - "MyApp.application.config", and so on.
+                /// </summary>
+                private static readonly string[] ProtectedSuffixes =
                 {
-                    ".git", ".vs", ".cache", ".intent", "node_modules", "bin", "obj", "nuget-packages",
+                    ".application.config",
+                    ".application.managed-files.xml",
+                    ".application.output.config.xml",
+                    ".application.deviations.log.xml",
+                };
+
+                /// <summary>Any file anywhere beneath one of these is designer-owned model content.</summary>
+                private static readonly string[] ProtectedDirectories =
+                {
+                    "Intent.Metadata",
+                    ".intent",
                 };
 
                 /// <summary>
-                /// Files the Software Factory MERGES into rather than owns outright. They appear in
-                /// managed-files.xml like any other generated output, but the developer co-owns them
-                /// and edits them routinely - ".claude/settings.json" also carries their permissions,
-                /// environment and unrelated hooks. Denying edits to those would make the gate
-                /// actively obstructive, so they are exempt: regeneration adds only what is missing
-                /// and never overwrites what is already there.
+                /// The reason this path must not be hand-edited, or null when it is not Intent metadata.
                 /// </summary>
-                private static readonly string[] MergeOwnedSuffixes =
+                public static string? DescribeViolation(string path)
                 {
-                    Path.Combine(".claude", "settings.json"),
-                };
+                    var fileName = Path.GetFileName(path);
 
-                /// <summary>
-                /// Templates that SCAFFOLD a file rather than own its contents. The Module Builder
-                /// emits a "*TemplatePartial.cs"/"*TemplateRegistration.cs" pair once and then the
-                /// developer writes the template's actual logic into method bodies marked
-                /// "Body = Mode.Ignore" or "Mode.Merge" - hand-editing those is the ONLY way to author
-                /// a template, so denying it makes module development impossible under the gate.
-                ///
-                /// Members the designer does own (a "Mode.Fully" TemplateId, for instance) are still
-                /// rewritten on the next run; that is covered by guidance in known-build-gotchas
-                /// rather than by blocking the whole file, because the gate matches on paths and
-                /// cannot see which member an edit touches.
-                /// </summary>
-                private static readonly string[] CoOwnedScaffoldTemplateIdPrefixes =
-                {
-                    "Intent.ModuleBuilder.ProjectItemTemplate.",
-                    "Intent.ModuleBuilder.TemplateRegistration.",
-                };
-
-                /// <summary>
-                /// Templates that SEED a file once and never rewrite it - declared with
-                /// "OverwriteBehaviour.OnceOff". The file is listed in managed-files.xml exactly like
-                /// owned output, but the Software Factory will not touch it again, so every line after
-                /// the first generation is hand-written by definition.
-                ///
-                /// "release-notes.md" is the case that proves it: module-docs-chore REQUIRES an entry
-                /// per observable change, and the gate was denying the very chore this module ships.
-                /// The manifest records only path and templateId - not overwrite behaviour - so the
-                /// gate cannot infer this and has to name the templates.
-                /// </summary>
-                private static readonly string[] SeededOnceTemplateIds =
-                {
-                    "Intent.ModuleBuilder.Templates.ReleaseNotes",
-                };
-
-                private static bool IsCoOwnedScaffold(string templateId) =>
-                    CoOwnedScaffoldTemplateIdPrefixes.Any(prefix =>
-                        templateId.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
-                    || SeededOnceTemplateIds.Any(id =>
-                        templateId.Equals(id, StringComparison.OrdinalIgnoreCase));
-
-                public static ManagedFileMatch? FindMatch(string repoRoot, string targetPath)
-                {
-                    var targetFull = Path.GetFullPath(targetPath, repoRoot);
-
-                    if (MergeOwnedSuffixes.Any(suffix => targetFull.EndsWith(suffix, StringComparison.OrdinalIgnoreCase)))
+                    if (string.Equals(fileName, ModulesConfig, StringComparison.OrdinalIgnoreCase))
                     {
-                        return null;
+                        return "modules.config records what is installed and is never hand-edited. Install or "
+                             + "update the module through Intent Architect instead - the Intent MCP server's "
+                             + "install_or_update_modules, or the equivalent action in the UI.";
                     }
 
-                    foreach (var xmlPath in EnumerateManifests(repoRoot))
+                    foreach (var suffix in ProtectedSuffixes)
                     {
-                        var match = CheckFile(xmlPath, targetFull);
-                        if (match is not null)
+                        if (fileName.EndsWith(suffix, StringComparison.OrdinalIgnoreCase))
                         {
-                            return match;
+                            return $"'{fileName}' is Intent Architect application metadata, owned by the designers "
+                                 + "and the Software Factory. Hand-editing it corrupts state that no regeneration "
+                                 + "puts right. Change it through the Intent MCP server, or a skill that drives it.";
+                        }
+                    }
+
+                    var segments = path.Replace('\\', '/').Split('/', StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var directory in ProtectedDirectories)
+                    {
+                        if (Array.Exists(segments, segment => string.Equals(segment, directory, StringComparison.OrdinalIgnoreCase)))
+                        {
+                            return $"This path is inside '{directory}', which holds Intent Architect's designer "
+                                 + "model. It is never edited directly. Use the Intent MCP server - "
+                                 + "run_designer_script to change the model - or a skill that drives it.";
                         }
                     }
 
                     return null;
-                }
-
-                /// <summary>
-                /// Applications do not all live under "Modules/". A solution's test and sample
-                /// applications commonly sit under "Tests/" instead - and those are exactly the ones
-                /// an agent harness gets pointed at. Anchoring the scan on "Modules/" meant such an
-                /// application's generated output matched nothing and every edit to it was allowed,
-                /// which reads as a passing test while protecting nothing at all.
-                /// </summary>
-                private static IEnumerable<string> EnumerateManifests(string repoRoot)
-                {
-                    var pending = new Stack<string>();
-                    pending.Push(repoRoot);
-
-                    while (pending.Count > 0)
-                    {
-                        var directory = pending.Pop();
-
-                        string[] files;
-                        string[] subDirectories;
-                        try
-                        {
-                            files = Directory.GetFiles(directory, "*.application.managed-files.xml");
-                            subDirectories = Directory.GetDirectories(directory);
-                        }
-                        catch (Exception)
-                        {
-                            // An unreadable directory must not take the whole gate down.
-                            continue;
-                        }
-
-                        foreach (var file in files)
-                        {
-                            yield return file;
-                        }
-
-                        foreach (var subDirectory in subDirectories)
-                        {
-                            var name = Path.GetFileName(subDirectory);
-                            if (!SkipDirectories.Contains(name, StringComparer.OrdinalIgnoreCase))
-                            {
-                                pending.Push(subDirectory);
-                            }
-                        }
-                    }
-                }
-
-                private static ManagedFileMatch? CheckFile(string xmlPath, string targetFull)
-                {
-                    XDocument document;
-                    try
-                    {
-                        document = XDocument.Load(xmlPath);
-                    }
-                    catch (Exception)
-                    {
-                        // A malformed managed-files.xml should not crash the gate - treat as no match.
-                        return null;
-                    }
-
-                    var baseDir = ResolveApplicationOutputRoot(xmlPath);
-
-                    foreach (var fileElement in document.Descendants("file"))
-                    {
-                        var relativePath = (string?)fileElement.Attribute("path");
-                        if (string.IsNullOrWhiteSpace(relativePath))
-                        {
-                            continue;
-                        }
-
-                        string resolved;
-                        try
-                        {
-                            resolved = Path.GetFullPath(Path.Combine(baseDir, relativePath));
-                        }
-                        catch (Exception)
-                        {
-                            continue;
-                        }
-
-                        if (string.Equals(resolved, targetFull, StringComparison.OrdinalIgnoreCase))
-                        {
-                            var templateId = (string?)fileElement.Attribute("templateId") ?? "(unknown template)";
-                            if (IsCoOwnedScaffold(templateId))
-                            {
-                                continue;
-                            }
-
-                            return new ManagedFileMatch(xmlPath, templateId, resolved);
-                        }
-                    }
-
-                    return null;
-                }
-
-                private static string ResolveApplicationOutputRoot(string managedFilesXmlPath)
-                {
-                    var metadataDir = Path.GetDirectoryName(managedFilesXmlPath)!;
-
-                    var configPath = Directory.EnumerateFiles(metadataDir, "*.application.config", SearchOption.TopDirectoryOnly).FirstOrDefault();
-                    if (configPath is null)
-                    {
-                        return metadataDir;
-                    }
-
-                    try
-                    {
-                        var location = (string?)XDocument.Load(configPath).Root?.Attribute("location");
-                        return string.IsNullOrWhiteSpace(location)
-                            ? metadataDir
-                            : Path.GetFullPath(Path.Combine(metadataDir, location));
-                    }
-                    catch (Exception)
-                    {
-                        return metadataDir;
-                    }
                 }
             }
             """;
@@ -1328,13 +1191,16 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                             : "intent-agent-gate: could not determine a target file path from stdin or arguments; no opinion.");
                     }
 
-                    // Never hand-edited, for any reason - it records what is installed, and a bad
-                    // edit corrupts the application's module state.
-                    if (string.Equals(Path.GetFileName(path), "modules.config", StringComparison.OrdinalIgnoreCase))
+                    // Intent's OWN metadata - the designer model, an application's configuration, and
+                    // the record of what it generated and installed. This is the whole of what
+                    // guard-write protects. Generated OUTPUT is deliberately NOT covered: hand-editing
+                    // it is frequently the intended workflow - authoring a scaffolded template, writing
+                    // release notes, correcting a csproj package version - and blocking it produced
+                    // false positives and nothing else in real use.
+                    var metadataViolation = IntentMetadataGuard.DescribeViolation(path);
+                    if (metadataViolation is not null)
                     {
-                        return Deny(harness, stdout, stderr,
-                            "modules.config is never hand-edited. It records what is installed; change it by installing " +
-                            "or updating through Intent Architect, not by editing the file.");
+                        return Deny(harness, stdout, stderr, metadataViolation);
                     }
 
                     // ".imodspec" is field-scoped, not file-scoped: <tags>, <dependency> and a version
@@ -1375,19 +1241,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                             "<tags>, <dependency> entries and a version downgrade remain fine to hand-edit.");
                     }
 
-                    var match = ManagedFilesGuard.FindMatch(repoRoot, path);
-                    if (match is null)
-                    {
-                        // The overwhelming common case - stay completely silent, zero tokens.
-                        return Allow(harness, stdout);
-                    }
-
-                    var relativeManagedFiles = Path.GetRelativePath(repoRoot, match.ManagedFilesXmlPath).Replace('\\', '/');
-                    var reason =
-                        "Never edit generated output to make a regeneration look correct. This path is Software-Factory-owned " +
-                        $"output generated by template '{match.TemplateId}' (listed in {relativeManagedFiles}). Change the " +
-                        "designer model and regenerate instead.";
-                    return Deny(harness, stdout, stderr, reason);
+                    // Everything else, including every file the Software Factory generates, is allowed
+                    // and stays completely silent - zero tokens for the overwhelming common case.
+                    return Allow(harness, stdout);
                 }
 
                 private static int RunGuardVersion(string[] rest, TextReader stdin, TextWriter stdout, TextWriter stderr, string? repoRoot, IGitChangeProvider gitChangeProvider)

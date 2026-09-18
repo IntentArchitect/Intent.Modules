@@ -2,7 +2,7 @@
 #:include SemVer.cs
 #:include HarnessProtocol.cs
 #:include GitSupport.cs
-#:include ManagedFilesGuard.cs
+#:include IntentMetadataGuard.cs
 #:include ModuleVersionAuditor.cs
 #:include CloseOutAuditor.cs
 #:include GuardVersionSupport.cs

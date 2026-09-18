@@ -5,147 +5,137 @@ using Xunit;
 namespace AgentGate.Tests;
 
 /// <summary>
-/// The `cases-guard-write` table from the plan: path and edit content, one case per row. Three
-/// rows (module icon overwrite) are marked <see cref="Assert.Skip"/> - see the comment on each -
-/// because that check was never implemented; the plan's own "coverage-honesty" principle applies
-/// to the test suite too, not just the shipped behaviour.
+/// What guard-write protects: Intent Architect's own METADATA - the designer model, an application's
+/// configuration, and the record of what it generated and installed.
 /// </summary>
+/// <remarks>
+/// An earlier version protected the files LISTED in managed-files.xml, which was a misreading of
+/// "managed-files.xml must not be touched": that meant the manifest itself, not its contents. The
+/// difference is not academic - in real use the old scope produced false positive after false
+/// positive and not one true positive, because authoring a scaffolded template, writing release
+/// notes and correcting a csproj package version are all intended workflows. Several tests here
+/// assert the inversion directly, so the misreading cannot return quietly.
+/// <para>
+/// Three rows (module icon overwrite) remain <see cref="Assert.Skip"/> - that check was never
+/// implemented, and the plan's "coverage-honesty" principle applies to the suite as much as to the
+/// shipped behaviour.
+/// </para>
+/// </remarks>
 public class GuardWriteTests
 {
     [Fact]
-    public void Denies_a_path_listed_in_managed_files_xml_naming_the_owning_template()
+    public void Denies_editing_an_applications_managed_files_manifest()
+    {
+        // managed-files.xml is Intent's own record of what it generated. Note what this test does NOT
+        // say: the files LISTED inside it are not protected. That misreading is what the guard used to
+        // enforce, and it produced only false positives - authoring a scaffolded template, writing
+        // release notes and correcting a csproj package version are all intended workflows.
+        using var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+        var manifest = repo.CreateFile("Modules/Sample.Module/Sample.Module.application.managed-files.xml", "<files />");
+
+        var result = GateTestHarness.Run(repo.Path, ToolInput(filePath: manifest, content: "<files />"), gitChangeProvider: null, "guard-write", "--harness", "codex");
+
+        Assert.Equal(2, result.ExitCode);
+        Assert.Contains("Intent MCP", result.Stdout + result.Stderr);
+    }
+
+    [Fact]
+    public void Denies_editing_an_application_config()
     {
         using var repo = new TempDirectory();
         repo.MarkAsRepoRoot();
-        var generatedPath = repo.CreateFile("Modules/Sample.Module/Generated.cs", "// generated");
+        var config = repo.CreateFile("Modules/Sample.Module/Sample.Module.application.config", "<application />");
+
+        var result = GateTestHarness.Run(repo.Path, ToolInput(filePath: config, content: "<application />"), gitChangeProvider: null, "guard-write", "--harness", "codex");
+
+        Assert.Equal(2, result.ExitCode);
+    }
+
+    [Fact]
+    public void Denies_editing_designer_model_xml_under_Intent_Metadata()
+    {
+        // The designer model. Changed through run_designer_script, never by editing the XML.
+        using var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+        var element = repo.CreateFile("Modules/Sample.Module/Intent.Metadata/Module Builder/Elements/Thing__abc123.xml", "<element />");
+
+        var result = GateTestHarness.Run(repo.Path, ToolInput(filePath: element, content: "<element />"), gitChangeProvider: null, "guard-write", "--harness", "codex");
+
+        Assert.Equal(2, result.ExitCode);
+        Assert.Contains("run_designer_script", result.Stdout + result.Stderr);
+    }
+
+    [Fact]
+    public void Denies_editing_anything_under_a_dot_intent_folder()
+    {
+        using var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+        var file = repo.CreateFile(".intent/something.json", "{}");
+
+        var result = GateTestHarness.Run(repo.Path, ToolInput(filePath: file, content: "{}"), gitChangeProvider: null, "guard-write", "--harness", "codex");
+
+        Assert.Equal(2, result.ExitCode);
+    }
+
+    [Fact]
+    public void Allows_editing_generated_output_because_that_is_not_metadata()
+    {
+        // The inversion, stated outright. A generated skill file is Software-Factory OUTPUT: editing it
+        // is usually futile because the next run overwrites it, but it corrupts nothing and it is not
+        // this guard's business. Guidance covers it; a hook blocking it only ever got in the way.
+        using var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+        var generated = repo.CreateFile("Modules/Sample.Module/.agents/skills/some-skill/SKILL.md", "# Skill");
         repo.CreateFile("Modules/Sample.Module/Sample.Module.application.managed-files.xml", """
             <?xml version="1.0" encoding="utf-8"?>
             <files>
-              <file path="Generated.cs" templateId="Sample.Module.Templates.GeneratedTemplate" />
+              <file path=".agents/skills/some-skill/SKILL.md" templateId="Sample.Templates.SkillMd" />
             </files>
             """);
 
-        var stdin = ToolInput(filePath: generatedPath, newString: "// hand-edited");
-        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-write", "--harness", "codex");
+        var result = GateTestHarness.Run(repo.Path, ToolInput(filePath: generated, newString: "# Edited"), gitChangeProvider: null, "guard-write", "--harness", "codex");
 
-        Assert.Equal(2, result.ExitCode);
-        Assert.Contains("Sample.Module.Templates.GeneratedTemplate", result.Stdout);
-        Assert.Contains("Never edit generated output", result.Stderr);
+        Assert.Equal(0, result.ExitCode);
     }
 
     [Fact]
-    public void Denies_a_managed_path_for_an_application_outside_the_Modules_folder()
+    public void Allows_editing_a_scaffolded_template_partial()
     {
-        // Test and sample applications commonly live under "Tests/" rather than "Modules/", and
-        // those are exactly the ones an agent harness gets pointed at. The scan used to be anchored
-        // on "Modules/", so such an application's generated output matched nothing and every edit to
-        // it was allowed - which reads as a passing harness probe while protecting nothing at all.
-        using var repo = new TempDirectory();
-        repo.MarkAsRepoRoot();
-        var generatedPath = repo.CreateFile("Tests/SampleApp/Generated.cs", "// generated");
-        repo.CreateFile("Tests/SampleApp/SampleApp.application.managed-files.xml", """
-            <?xml version="1.0" encoding="utf-8"?>
-            <files>
-              <file path="Generated.cs" templateId="SampleApp.Templates.GeneratedTemplate" />
-            </files>
-            """);
-
-        var stdin = ToolInput(filePath: generatedPath, newString: "// hand-edited");
-        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-write", "--harness", "codex");
-
-        Assert.Equal(2, result.ExitCode);
-        Assert.Contains("SampleApp.Templates.GeneratedTemplate", result.Stdout);
-    }
-
-    [Fact]
-    public void Allows_editing_a_template_file_the_Software_Factory_only_scaffolds()
-    {
-        // "*TemplatePartial.cs" is emitted once by the Module Builder and then hand-authored: its
-        // template logic lives in bodies marked Body = Mode.Ignore. Denying edits here made module
-        // development impossible under the gate - it blocked authoring the very templates that
-        // generate the gate. Found by the gate blocking this project's own work, not by inspection.
+        // Hand-authoring the ignored method bodies is the only way to write a template at all. This
+        // needed a named exemption under the old scope; under the new one it is simply not metadata.
         using var repo = new TempDirectory();
         repo.MarkAsRepoRoot();
         var templatePath = repo.CreateFile("Modules/Sample.Module/Templates/Thing/ThingTemplatePartial.cs", "// template logic");
-        repo.CreateFile("Modules/Sample.Module/Sample.Module.application.managed-files.xml", """
-            <?xml version="1.0" encoding="utf-8"?>
-            <files>
-              <file path="Templates/Thing/ThingTemplatePartial.cs" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
-            </files>
-            """);
 
-        var stdin = ToolInput(filePath: templatePath, newString: "// authored by hand");
-        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-write", "--harness", "codex");
+        var result = GateTestHarness.Run(repo.Path, ToolInput(filePath: templatePath, newString: "// authored by hand"), gitChangeProvider: null, "guard-write", "--harness", "codex");
 
         Assert.Equal(0, result.ExitCode);
     }
 
     [Fact]
-    public void Allows_editing_release_notes_because_the_Software_Factory_seeds_it_once_and_never_rewrites_it()
+    public void Allows_editing_release_notes_and_the_csproj()
     {
-        // "release-notes.md" is declared OverwriteBehaviour.OnceOff, so the Software Factory creates
-        // it and then never touches it again - every line after that is hand-written by definition.
-        // It is still listed in managed-files.xml exactly like owned output, which is why the gate
-        // denied it. Found by the gate blocking module-docs-chore, the chore this module itself
-        // ships and mandates.
+        // Both were denied under the old scope, and both denials blocked real work: release notes are
+        // the documentation chore this module mandates, and the repo's own known-build-gotchas says
+        // NuGet package versions are corrected in the csproj.
         using var repo = new TempDirectory();
         repo.MarkAsRepoRoot();
-        var notesPath = repo.CreateFile("Modules/Sample.Module/release-notes.md", "### Version 1.0.0\n");
-        repo.CreateFile("Modules/Sample.Module/Sample.Module.application.managed-files.xml", """
-            <?xml version="1.0" encoding="utf-8"?>
-            <files>
-              <file path="release-notes.md" templateId="Intent.ModuleBuilder.Templates.ReleaseNotes" />
-            </files>
-            """);
+        var notes = repo.CreateFile("Modules/Sample.Module/release-notes.md", "### Version 1.0.0");
+        var csproj = repo.CreateFile("Modules/Sample.Module/Sample.Module.csproj", "<Project />");
 
-        var stdin = ToolInput(filePath: notesPath, newString: "- Fixed: something a consumer can observe.");
-        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-write", "--harness", "codex");
-
-        Assert.Equal(0, result.ExitCode);
+        Assert.Equal(0, GateTestHarness.Run(repo.Path, ToolInput(filePath: notes, newString: "- Fixed: something."), gitChangeProvider: null, "guard-write", "--harness", "codex").ExitCode);
+        Assert.Equal(0, GateTestHarness.Run(repo.Path, ToolInput(filePath: csproj, newString: "<PackageReference />"), gitChangeProvider: null, "guard-write", "--harness", "codex").ExitCode);
     }
 
     [Fact]
-    public void Allows_editing_claude_settings_because_the_module_merges_into_it_rather_than_owning_it()
+    public void Allows_editing_claude_settings()
     {
-        // ".claude/settings.json" also carries the developer's permissions, env and unrelated hooks.
-        // The module adds only what is missing, so the file stays theirs to edit.
         using var repo = new TempDirectory();
         repo.MarkAsRepoRoot();
         var settingsPath = repo.CreateFile(".claude/settings.json", "{}");
-        repo.CreateFile("Modules/Sample.Module/Sample.Module.application.config", """
-            <?xml version="1.0" encoding="utf-8"?>
-            <application id="x" name="Sample" location="..\.." />
-            """);
-        repo.CreateFile("Modules/Sample.Module/Sample.Module.application.managed-files.xml", """
-            <?xml version="1.0" encoding="utf-8"?>
-            <files>
-              <file path=".claude/settings.json" templateId="Intent.ModuleBuilder.AI.Workflow.Hooks.ClaudeSettings" />
-            </files>
-            """);
 
-        var stdin = ToolInput(filePath: settingsPath, newString: "{ \"permissions\": {} }");
-        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-write", "--harness", "claude");
-
-        Assert.Equal(0, result.ExitCode);
-    }
-
-    [Fact]
-    public void Ignores_manifests_inside_skipped_directories()
-    {
-        // Scanning from the repo root must not wander into dependencies or build output - for speed,
-        // and because a stale manifest copied in there would otherwise deny edits to a live file.
-        using var repo = new TempDirectory();
-        repo.MarkAsRepoRoot();
-        var handWrittenPath = repo.CreateFile("src/Hand.cs", "// hand-written");
-        repo.CreateFile("node_modules/stale/Stale.application.managed-files.xml", """
-            <?xml version="1.0" encoding="utf-8"?>
-            <files>
-              <file path="../../src/Hand.cs" templateId="Stale.Template" />
-            </files>
-            """);
-
-        var stdin = ToolInput(filePath: handWrittenPath, newString: "// still editable");
-        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-write", "--harness", "codex");
+        var result = GateTestHarness.Run(repo.Path, ToolInput(filePath: settingsPath, newString: "{}"), gitChangeProvider: null, "guard-write", "--harness", "codex");
 
         Assert.Equal(0, result.ExitCode);
     }
@@ -274,37 +264,6 @@ public class GuardWriteTests
         var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-write", "--harness", "codex");
 
         Assert.Equal(2, result.ExitCode);
-    }
-
-    [Fact]
-    public void Denies_a_managed_path_when_the_owning_apps_output_root_is_not_its_metadata_folder()
-    {
-        // A real, previously-unverified bug: for an app whose ".application.config" has
-        // location=".." (its metadata sits in a subfolder while its actual output lands
-        // elsewhere - e.g. a dogfooding app outputting to the repo root), managed-files.xml
-        // entries are relative to that OUTPUT root, not to the folder the xml file itself sits
-        // in. Resolving relative to the xml's own directory alone silently allows a genuinely
-        // managed path through.
-        using var repo = new TempDirectory();
-        repo.MarkAsRepoRoot();
-        var generatedPath = repo.CreateFile("SomeApp/OutputRoot/generated.md", "generated content");
-        repo.CreateFile("Modules/DogfoodApp/DogfoodApp.application.config", """
-            <?xml version="1.0" encoding="utf-8"?>
-            <application id="11111111-1111-1111-1111-111111111111" name="DogfoodApp" version="1.0.0" location="..\..\SomeApp\OutputRoot" metadataNamingConvention="use-element-name">
-            </application>
-            """);
-        repo.CreateFile("Modules/DogfoodApp/DogfoodApp.application.managed-files.xml", """
-            <?xml version="1.0" encoding="utf-8"?>
-            <files>
-              <file path="generated.md" templateId="Some.Module.Templates.GeneratedMd" />
-            </files>
-            """);
-
-        var stdin = ToolInput(filePath: generatedPath, newString: "hand-edited content");
-        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-write", "--harness", "codex");
-
-        Assert.Equal(2, result.ExitCode);
-        Assert.Contains("Some.Module.Templates.GeneratedMd", result.Stdout);
     }
 
     [Fact]

@@ -852,6 +852,36 @@ Still stale, and each needs the version gate run before it can move: **AI.Skills
 
 </Callout>
 
+<Callout id="guard-scope-inverted" tone="risk" title="guard-write was aimed at the wrong file set entirely — close to the inverse of the rule">
+
+The instruction was that **`managed-files.xml` must not be touched**, and more broadly that all `intent/**` metadata is changed through the Intent MCP server or a skill, never by hand. It was implemented as *"nothing listed in `managed-files.xml` may be touched"* — the manifest read as an index of protected paths, rather than as a protected file.
+
+Measured against the real rule, the old guard **permitted every file it should have denied**:
+
+| Path | Should be | Old behaviour |
+|---|---|---|
+| `*.application.managed-files.xml` | deny | **allow** |
+| `*.application.config` | deny | **allow** |
+| `Intent.Metadata/**` designer XML | deny | **allow** |
+| `modules.config` | deny | deny |
+| generated output, scaffolds, release notes, `.csproj` | allow | **deny** |
+
+Across a full session of real use it produced **five false positives and not one true positive**. Every exemption list it accumulated — `MergeOwnedSuffixes`, `CoOwnedScaffoldTemplateIdPrefixes`, `SeededOnceTemplateIds` — was discovered by the gate blocking real work, which is the signal that a rule is aimed at the wrong thing rather than merely tuned too tightly.
+
+Rescoped to metadata, which is high precision by construction: every legitimate change there has a proper mechanism, so a denial can always say where to go instead of only saying no. `ManagedFilesGuard` and all three lists are deleted; `IntentMetadataGuard` replaces them. Verified end to end against the real gate — metadata denies with 2, generated output and `.csproj` allow with 0 — and the inversion is asserted directly in the tests so it cannot return quietly.
+
+</Callout>
+
+<Callout id="copilot-shipped" tone="success" title="GitHub Copilot is the sixth harness, and the first whose anchor this module does not own">
+
+`.github/hooks/intent-agent-gate.json`, per Copilot CLI's own hooks reference. Its schema differs again: the command lives in `bash` and/or `powershell` fields rather than one `command`, there is **no matcher** (so `preToolUse` fires for every tool and the gate self-filters, allowing silently when no file path is present), and the end-of-turn event is `agentStop`. Both shell forms are generated, the PowerShell one spelling the fail-closed wrapper with `$LASTEXITCODE` since `test $?` is not PowerShell.
+
+`.github` is unlike every other anchor: it is **not** a Copilot-owned folder — most repositories already keep workflows, issue templates and CODEOWNERS there. So the template owns `.github/hooks/` and nothing above it, and names its file `intent-agent-gate.json` rather than `hooks.json` because Copilot treats every `*.json` in that folder as a hook file.
+
+**Unverified:** how Copilot signals a denial is not stated in its documentation. Exit 2 is assumed for consistency with the other harnesses. If Copilot instead treats a non-zero exit as advisory, this guard reports without blocking — the same silent-and-open failure the matcher work guards against elsewhere, and the first thing to confirm when Copilot is actually driven.
+
+</Callout>
+
 ## Open risks
 
 No open design questions remain. These risks carry into implementation:
@@ -862,4 +892,5 @@ No open design questions remain. These risks carry into implementation:
 4. **Per-harness tool-name matchers are largely unverified.** Each harness matches on its own internal tool names and there is no shared vocabulary. Kiro's was wrong and is now documentation-grounded but unobserved; Codex's is unchecked. A wrong matcher fails *silently and open* — the hook config looks right and simply never matches.
 5. **Kiro cannot currently be tested at all** — its CLI does not execute hook files. Every Kiro claim rests on documentation until a build ships that runs them.
 6. ~~**The gate is cwd-dependent**~~ — **fixed for Claude Code** by anchoring the command to `${CLAUDE_PROJECT_DIR}`, proven with a control from a subdirectory. Still open for Codex, Cursor and Kiro: no equivalent project-root variable has been confirmed for them, and guessing one would expand to nothing and break the hook outright. Confirming those three is outstanding.
-7. **`.claude/settings.json` merge rules are duplicated in the tests** — see the seam noted in `claude-settings-shipped`. Until the template is reachable from the test project, the two can drift apart silently.
+7. **A same-version module reinstall does not create Template Outputs for templates added since.** Adding CopilotHooks made the Software Factory fail outright — *"Unable to find output target ... with role [AI.Context]"* — in an application that had no Template Output for it. A hard stop, not a silent skip, so a consumer updating within a version line hits it too.
+8. **`.claude/settings.json` merge rules are duplicated in the tests** — see the seam noted in `claude-settings-shipped`. Until the template is reachable from the test project, the two can drift apart silently.

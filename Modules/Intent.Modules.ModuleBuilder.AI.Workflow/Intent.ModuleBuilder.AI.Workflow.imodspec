@@ -12,6 +12,10 @@
       <role>AI.Context</role>
       <location></location>
     </template>
+    <template id="Intent.ModuleBuilder.AI.Workflow.Hooks.CopilotHooks" externalReference="02abd772-3fe4-4c04-ac45-40e14cfced00">
+      <role>AI.Context</role>
+      <location></location>
+    </template>
     <template id="Intent.ModuleBuilder.AI.Workflow.Hooks.CursorHooks" externalReference="690a8ec8-88af-4aec-8792-d43a50c840df">
       <role>AI.Context</role>
       <location></location>

@@ -38,20 +38,38 @@ public class GateSmokeTests
     }
 
     [Fact]
-    public void Dotnet_run_guard_write_denies_a_real_managed_file_in_this_repo()
+    public void Dotnet_run_guard_write_denies_real_intent_metadata_in_this_repo()
     {
-        // Uses this repo's own real managed-files.xml rather than a fixture, so the assertion is
-        // that the shipped, generated gate denies a real path in the real repo it was built for.
+        // Targets a real metadata file in the real repo, so the assertion is about the shipped,
+        // generated gate rather than a fixture.
         var repoRoot = RepoRootLocator.Find();
-        var realManagedFile = Path.Combine(repoRoot, ".agents", "instructions", "module-building-workflow.instructions.md");
-        Assert.True(File.Exists(realManagedFile), "Expected a known managed-output path to exist for this smoke test to target.");
+        var realMetadata = Path.Combine(repoRoot, "Tests", "ModuleBuilderSkills", "ModuleBuilderSkills.application.config");
+        Assert.True(File.Exists(realMetadata), "Expected a known Intent metadata path to exist for this smoke test to target.");
 
-        var escapedPath = realManagedFile.Replace("\\", "\\\\");
+        var escapedPath = realMetadata.Replace("\\", "\\\\");
         var stdin = "{\"tool_input\":{\"file_path\":\"" + escapedPath + "\"}}";
         var result = RunDotnet(["run", GatePath, "--no-build", "--", "guard-write", "--harness", "codex"], stdin);
 
         Assert.Equal(2, result.ExitCode);
-        Assert.Contains("Never edit generated output", result.Stderr);
+        Assert.Contains("Intent MCP", result.Stderr);
+    }
+
+    [Fact]
+    public void Dotnet_run_guard_write_allows_real_generated_output_in_this_repo()
+    {
+        // The counterpart, and the one that would have caught the original misreading. This file is
+        // genuinely Software-Factory output listed in a managed-files.xml, and the gate must allow it:
+        // generated output is not metadata. Editing it is usually futile rather than harmful, and
+        // blocking it produced nothing but false positives in real use.
+        var repoRoot = RepoRootLocator.Find();
+        var realGenerated = Path.Combine(repoRoot, "Tests", "ModuleBuilderSkills", ".agents", "instructions", "module-building-workflow.instructions.md");
+        Assert.True(File.Exists(realGenerated), "Expected a known generated-output path to exist for this smoke test to target.");
+
+        var escapedPath = realGenerated.Replace("\\", "\\\\");
+        var stdin = "{\"tool_input\":{\"file_path\":\"" + escapedPath + "\"}}";
+        var result = RunDotnet(["run", GatePath, "--no-build", "--", "guard-write", "--harness", "codex"], stdin);
+
+        Assert.Equal(0, result.ExitCode);
     }
 
     [Fact]
