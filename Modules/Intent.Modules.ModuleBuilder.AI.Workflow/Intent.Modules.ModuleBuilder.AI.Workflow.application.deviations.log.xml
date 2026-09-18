@@ -2,12 +2,30 @@
 <deviationsLog>
   <files>
     <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#9d2797c5-3a67-4662-9d1a-5c667031fb00</correlationId>
+      <path>Templates/Hooks/ClaudeSettings/ClaudeSettingsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-09-18T12:12:15.0937723Z</updatedAt>
+      <deviationsHash>C98CE20BF56FADA31A12945A97AEE827D494CD25AA6EE2D8C0D80ED59603D445</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#9d2797c5-3a67-4662-9d1a-5c667031fb00</correlationId>
+      <path>Templates/Hooks/ClaudeSettings/ClaudeSettingsTemplateRegistration.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-09-18T12:12:15.0942697Z</updatedAt>
+      <deviationsHash>85453F8DC08200BBA1196AC699663CAB7D00867AEBC9787696FFAF4242CFF60F</deviationsHash>
+    </file>
+    <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#16162d11-1340-41a5-8a55-6a458f2f575f</correlationId>
       <path>Templates/Hooks/GateScripts/GateScriptsTemplateRegistration.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-09-18T11:59:14.788808Z</updatedAt>
+      <updatedAt>2026-09-18T12:16:33.6015145Z</updatedAt>
       <deviationsHash>8AEC1D113FE3750CC4D65E0C09505786457D8F3E902D5509ABF65667CEC9CB87</deviationsHash>
     </file>
     <file>
@@ -20,21 +38,12 @@
       <deviationsHash>8CE5BCEBF4EE99690BB08EA3185B4DEEAEAC3FB4574599422EA89CA5A546E4D8</deviationsHash>
     </file>
     <file>
-      <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#f08ee439-d1d7-4285-b2b6-ba18cba0e12a</correlationId>
-      <path>Templates/Hooks/HooksJson/HooksJsonTemplateRegistration.cs</path>
-      <count>1</count>
-      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-09-18T08:32:29.8218008Z</updatedAt>
-      <deviationsHash>2C64191232EA51340EFFB67C6596C9B45E8DEABA55F48D03E1B8276536714E30</deviationsHash>
-    </file>
-    <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#3a408a84-8e00-46cc-8833-22ad37e64091</correlationId>
       <path>Templates/Hooks/OpenCodePlugin/OpenCodePluginTemplatePartial.cs</path>
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-09-18T11:54:53.9273895Z</updatedAt>
+      <updatedAt>2026-09-18T12:15:14.8681664Z</updatedAt>
       <deviationsHash>C9FF056EB64C3C76370B07598CC951C0E94B9F67F4542024643E0A1963755F15</deviationsHash>
     </file>
     <file>

@@ -41,19 +41,22 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.OpenCodePlugi
             return new TemplateFileConfig(fileName: "intent-agent-gate", fileExtension: "ts", relativeLocation: "plugins");
         }
 
-        // OpenCode's own tool.execute.before hook receives raw tool args directly (no JSON stdin
-        // parsing needed on the gate's side beyond what it already tolerates) - confirmed by
-        // directly probing a real opencode run rather than assumed from docs: "write"/"edit" for
-        // the built-in file tools, args.filePath, args.content (write), args.oldString/newString
-        // (edit, camelCase - not Claude Code's snake_case "new_string").
-        //
-        // Unlike the JSON-configured harnesses, this plugin controls process invocation directly
-        // via Node's child_process, so it checks the exit code itself rather than needing the
-        // shell-wrapper fail-closed trick HooksJson's commands rely on: any non-zero exit -
-        // including a build failure - already throws here.
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
+            // OpenCode's own tool.execute.before hook receives raw tool args directly (no JSON stdin
+            // parsing needed on the gate's side beyond what it already tolerates) - confirmed by
+            // directly probing a real opencode run rather than assumed from docs: "write"/"edit" for
+            // the built-in file tools, args.filePath, args.content (write), args.oldString/newString
+            // (edit, camelCase - not Claude Code's snake_case "new_string").
+            //
+            // Unlike the JSON-configured harnesses, this plugin controls process invocation directly
+            // via Node's child_process, so it checks the exit code itself rather than needing the
+            // shell-wrapper fail-closed trick HooksJson's commands rely on: any non-zero exit -
+            // including a build failure - already throws here.
+            //
+            // Kept inside the body deliberately: this member's signature is Mode.Fully, so a comment
+            // above it is stripped on every regeneration. Body = Mode.Ignore is what protects it.
             var settings = Intent.Modules.ModuleBuilder.AI.Workflow.Settings.ModuleSettingsExtensions.GetAIWorkflowSettings(ExecutionContext.Settings);
             var scheme = settings.UsePreReleaseVersions() ? "pre" : "final";
 

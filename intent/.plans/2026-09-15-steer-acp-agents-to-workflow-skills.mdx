@@ -779,12 +779,56 @@ Now walks from the repo root, skipping `.git`, `node_modules`, `bin`, `obj` and 
 
 </Callout>
 
+<Callout id="claude-settings-shipped" tone="success" title="ClaudeSettings shipped — merge-not-own, and it proved itself by blocking its own author">
+
+`.claude/settings.json` is the one hook config this module writes into rather than owns, because it also carries the developer's permissions, environment and unrelated hooks. Behaviour, all covered by tests: **absent** → write a default; **present** → parse, add only entries that are missing, never overwrite; **invalid JSON** → return the content byte-for-byte and log a warning. Throwing would fail the consumer's whole Software Factory run over a file this module does not own.
+
+`System.Text.Json`, not Newtonsoft — the earlier plan to use Newtonsoft was premised on preserving comments, but Claude Code's own docs state settings files are strict JSON where a `//` comment or trailing comma is a syntax error. There are no comments to preserve, so the dependency buys nothing. `UnsafeRelaxedJsonEscaping` is set only so the fail-closed wrapper's `&&` renders as typed rather than as `&&`.
+
+**The template's own generation locked its author out.** The moment `settings.json` was written, the hook went live in the authoring session and denied editing `ClaudeSettingsTemplatePartial.cs` — whose `TransformText` is `Body = Mode.Ignore`, so hand-editing is the only way to author it. Fixed by exempting scaffold template-id prefixes (`Intent.ModuleBuilder.ProjectItemTemplate.`, `Intent.ModuleBuilder.TemplateRegistration.`) alongside the merge-owned `.claude/settings.json` suffix. The over-blocking risk flagged earlier in this document is therefore no longer theoretical — it was demonstrated.
+
+**Known seam:** the merge tests re-state the template's rules rather than linking them, because the template lives in the module assembly and cannot be referenced from the test project. A change to one that is not mirrored in the other goes uncaught.
+
+</Callout>
+
+<Callout id="comment-stripping" tone="risk" title="Regeneration strips hand-written comments above designer-owned members — and truncates rather than deletes">
+
+Three files lost hand-written comments to a single regeneration, and the pattern is exact: **a comment sitting immediately above a member whose signature is `Mode.Fully` is not protected**, even when the member's *body* is `Mode.Ignore`. Lost were the anchor-multiplicity root cause on `HooksJsonTemplateRegistration.GetModels`, and the OpenCode probe findings (`args.filePath`, camelCase `oldString` vs Claude Code's snake_case `new_string`) — knowledge that cost a real CLI run to obtain.
+
+The dangerous case is `OpenCodePluginTemplateRegistration`: a three-line comment lost lines 2–3 only, leaving `// A single-element list is "generate the file"; empty is "generate nothing" - this` dangling mid-sentence. It does not merely delete — it **truncates into something that still reads as intentional**.
+
+The same diff carried its own fix: `GetTemplateFileConfig`'s comment *inside* its body survived untouched. So the rule is **put durable commentary inside the method body, never above the member** — the existing `Body = Mode.Ignore` is what protects it, and no new directive is needed. All three were moved inside and a follow-up run staged nothing, which is a real idempotency proof rather than a vacuous clean run: the same files were rewritable moments earlier.
+
+</Callout>
+
+<Callout id="scaffold-using" tone="warning" title="The FilePerModel scaffold emits a using this module cannot resolve, and re-adds it every run">
+
+The `FilePerModel` and `SingleFileListModel` registration scaffolds emit `using Intent.ModuleBuilder.Api;` unconditionally. Every other registration in the repo takes a model type that genuinely lives there (`FileTemplateModel`, `CSharpTemplateModel`, `ElementSettingsModel`). This module's three are the abnormal case — local marker classes (`HarnessFolderModel`, `GateSourceFileModel`) and plain `object` — so the namespace is never used, and with no package supplying it the module **fails to compile**. Removing the using by hand does not hold: the next run re-adds it.
+
+Notable because this change was flagged `destructive: "no"` — it was the only one of four not scrutinised, and the only one that broke the build. **The destructive flag tracks deletion, not harm.**
+
+Resolved by declaring the namespace empty in `ScaffoldCompatibility.cs`. The alternative — referencing `Intent.Modules.ModuleBuilder`, which actually provides it — would force every consumer of this module to install the entire Module Builder module to satisfy a using nothing consumes. The shim costs nothing and is deletable the day the scaffold emits that using conditionally.
+
+</Callout>
+
+<Callout id="gate-cwd" tone="risk" title="The gate's hook command is cwd-relative, so leaving the repo root locks the agent out">
+
+Every generated hook command invokes the gate by a repo-root-relative path (`dotnet run .claude/hooks/gate/gate.cs ...`). When the agent's working directory moves into a subdirectory — a plain `dotnet build` inside a module folder is enough — the path no longer resolves, `dotnet run` binds to whatever project *is* there, and the hook errors out.
+
+It fails **closed**, which is the correct direction and not a security hole. But the practical effect is a total editing lockout with an error message about `OutputType` that names neither the gate nor the real cause. Observed live during this session.
+
+The fix is to anchor the command rather than rely on cwd — Claude Code exposes `$CLAUDE_PROJECT_DIR` for exactly this, and the other harnesses have equivalents. **Not yet implemented; it affects every harness template, not just Claude's.**
+
+</Callout>
+
 ## Open risks
 
-No open design questions remain. Three risks carry into implementation:
+No open design questions remain. These risks carry into implementation:
 
 1. **The upstream deny-enforcement issues** — verify before promising enforcement on Codex or Claude Code. Claude Code is now confirmed passing; Codex remains unverified, and its hook-trust flag suggests a further way for a probe to silently pass while enforcing nothing.
 2. ~~**Merge-aware generation** for `.claude/settings.json`~~ — **no longer deferred.** Being built as `ClaudeSettings`; see the `claude-merge` callout for the reversal and the test list it must satisfy.
 3. **Uninstall/reinstall strips Template Output assignments** — now understood rather than merely observed: the installer recreates a Template Output for every anchor whose Role matches, so the cross-product returns on every reinstall. The per-harness layout removes the *consequence* (a cross-product of distinct paths is harmless), but the churn remains. `installTemplateOutputs: false` is **not** a mitigation — it deletes.
 4. **Per-harness tool-name matchers are largely unverified.** Each harness matches on its own internal tool names and there is no shared vocabulary. Kiro's was wrong and is now documentation-grounded but unobserved; Codex's is unchecked. A wrong matcher fails *silently and open* — the hook config looks right and simply never matches.
 5. **Kiro cannot currently be tested at all** — its CLI does not execute hook files. Every Kiro claim rests on documentation until a build ships that runs them.
+6. **The gate is cwd-dependent** — see the `gate-cwd` callout. It fails closed, so it is a usability fault rather than an enforcement hole, but it locks the agent out of all editing with a misleading error, and it affects every harness template.
+7. **`.claude/settings.json` merge rules are duplicated in the tests** — see the seam noted in `claude-settings-shipped`. Until the template is reachable from the test project, the two can drift apart silently.
