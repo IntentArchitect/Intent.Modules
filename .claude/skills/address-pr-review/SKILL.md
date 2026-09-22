@@ -2,6 +2,7 @@
 description: Work through a pull request's unresolved review comments — fix what should be fixed, commit them as one commit, and stage a reply per thread into the pending review. Use when asked to address, action or respond to review feedback on a pull request.
 short-description: Work through a pull request's unresolved review comments — fix, commit once, and reply per thread.
 argument-hint: The pull request — a number, the path identifying its repository, and the head SHA to work at
+intent-updates: automatic
 requiredTools:
   - get_pull_request_review_threads
   - get_change_review

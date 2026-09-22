@@ -9,23 +9,22 @@
   <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
   <displayIcon>false</displayIcon>
   <displayIconFunction>return false;</displayIconFunction>
-  <displayFunction>const globItems = (properties["Glob"].value || "")
+  <displayFunction>const globs = (properties["Glob"].value || "")
     .split(/\r?\n/)
     .map(line =&gt; line.trim())
-    .filter(line =&gt; line.length &gt; 0);
+    .filter(line =&gt; line.length &gt; 0)
+    .join(", ");
 
-const classificationIds = JSON.parse(properties["Classification"].value || "[]");
-const classificationNames = classificationIds
+const severity = (properties["Severity"].value || "").replace(/^\d+\s*-\s*/, "");
+
+const classifications = JSON.parse(properties["Classification"].value || "[]")
     .map(id =&gt; lookup(id)?.getName())
-    .filter(name =&gt; !!name);
+    .filter(name =&gt; !!name)
+    .join(", ");
 
-const parts = [
-    ...globItems,
-    properties["Severity"].value,
-    ...classificationNames
-].filter(part =&gt; !!part);
+const header = [severity, classifications].filter(part =&gt; !!part).join(" - ");
 
-return parts.join(", ");</displayFunction>
+return `[${header}] ${globs}`.trim();</displayFunction>
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>
