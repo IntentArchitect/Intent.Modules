@@ -1,4 +1,9 @@
-﻿### Version 3.8.0
+### Version 3.8.1
+
+- Improvement: The `Application Template Defaults` `Place solution and application in the same directory` setting has been renamed to `Metadata in Subfolder`, which controls whether the `.application.config` and other application metadata is in a subfolder relative to the `.isln`. It is persisted as the inverse of the existing `placeInSameDirectory` element in the `.iatspec` file.
+- Improvement: The `Create folder for solution` and `Store Intent Architect files separate to codebase` settings have been removed and are no longer written to the `.iatspec` file as these are no longer applicable in recent versions of Intent Architect.
+
+### Version 3.8.0
 
 - Improvement: Enhanced to support File Installation Rules so that "architecture" templates can install files into the various part of the new application.
 
