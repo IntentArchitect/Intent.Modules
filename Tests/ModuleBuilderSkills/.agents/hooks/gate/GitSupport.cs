@@ -189,7 +189,9 @@ public static class ModuleDiscovery
     /// than an unbounded recursive search - an application whose output root is an
     /// ancestor of many unrelated modules (e.g. this repo's own dogfood app, whose
     /// output root is the repository root) must correctly report "not a module" rather
-    /// than picking up an arbitrary descendant's imodspec.
+    /// than picking up an arbitrary descendant's imodspec. A subfolder carrying its own
+    /// ".application.config" is a different application, so its imodspec is never
+    /// attributed to this one.
     /// </summary>
     public static string? FindImodspecUnder(string outputRoot)
     {
@@ -208,6 +210,11 @@ public static class ModuleDiscovery
         {
             var name = Path.GetFileName(subDirectory);
             if (Array.Exists(SkippedDirectoryNames, skip => string.Equals(skip, name, StringComparison.OrdinalIgnoreCase)))
+            {
+                continue;
+            }
+
+            if (Directory.EnumerateFiles(subDirectory, "*.application.config", SearchOption.TopDirectoryOnly).Any())
             {
                 continue;
             }

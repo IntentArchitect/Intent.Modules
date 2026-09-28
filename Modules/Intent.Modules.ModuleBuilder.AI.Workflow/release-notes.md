@@ -14,6 +14,8 @@
 - Fixed: The gate no longer denies edits to generated output. It previously protected every file listed in `managed-files.xml`, which blocked authoring a scaffolded template, writing release notes and correcting a `.csproj` package version - all intended workflows.
 - New Feature: Generates GitHub Copilot CLI hook configuration at `.github/hooks/intent-agent-gate.json`, supplying both the `bash` and `powershell` command forms Copilot expects.
 - Fixed: Every generated hook command wraps `dotnet run` so a build failure in the gate's own source still blocks — `dotnet run` exits 1 on a broken build rather than 2, and Cursor treats any code other than exactly 0 or 2 as an allow.
+- Fixed: The gate's version and close-out checks now find modules that don't sit under a `Modules/` folder, or whose `.imodspec` isn't beside their `.application.config` — they follow each application's `location`, and fall back to scanning the folder when git isn't available.
+- Fixed: `Use Pre-Release Versions` is now enforced by the gate under every harness — previously only OpenCode's hook passed the scheme through, so the others let a bare release version through.
 - Fixed: A harness folder the module does not recognise no longer throws out of hook-config generation and fails the consumer's whole Software Factory run.
 - Fixed: The `Intent.Common` dependency floor was 3.7.2 while the module compiles against 3.11.4 — a gap that would only surface once a consumer's install resolved the lower version.
 - Fixed: `module-version-increment`'s already-moved check is now a universal gate that both Phase 2 and Phase 4 route through, ending the phantom version bump on every follow-up instruction.

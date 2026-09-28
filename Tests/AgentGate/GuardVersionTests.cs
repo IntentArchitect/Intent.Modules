@@ -58,6 +58,18 @@ public class GuardVersionTests
     }
 
     [Fact]
+    public void Uses_the_generated_default_scheme_when_no_scheme_flag_is_passed()
+    {
+        // No harness's hook command passes --scheme; the default is baked into the generated Cli.cs
+        // from "Use Pre-release Versions", which is switched on in the ModuleBuilderSkills test app
+        // these sources are generated into.
+        var result = Run(currentVersion: "1.0.0", proposedVersion: "1.0.1", scheme: null);
+
+        Assert.Equal(2, result.ExitCode);
+        Assert.Contains("1.0.1-pre.0", result.Stderr);
+    }
+
+    [Fact]
     public void Allows_a_bare_release_version_under_final_scheme()
     {
         var result = Run(currentVersion: "1.0.0", proposedVersion: "1.0.1", scheme: "final");
@@ -148,7 +160,7 @@ public class GuardVersionTests
         Assert.Empty(result.Stdout);
     }
 
-    private static GateResult Run(string currentVersion, string proposedVersion, string scheme)
+    private static GateResult Run(string currentVersion, string proposedVersion, string? scheme)
     {
         using var repo = new TempDirectory();
         repo.MarkAsRepoRoot();
@@ -157,7 +169,9 @@ public class GuardVersionTests
 
         var stdin = DesignerScriptInput(proposedVersion);
 
-        return GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-version", "--harness", "codex", "--scheme", scheme);
+        return scheme is null
+            ? GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-version", "--harness", "codex")
+            : GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-version", "--harness", "codex", "--scheme", scheme);
     }
 
     private static string DesignerScriptInput(string proposedVersion) => JsonSerializer.Serialize(new Dictionary<string, object?>

@@ -146,6 +146,32 @@ public class CloseOutTests
     }
 
     [Fact]
+    public void Does_not_treat_an_ancestor_application_as_the_module_beneath_it()
+    {
+        // "Area" is an application whose output root is an ancestor folder holding another
+        // application's module one level down. That imodspec belongs to "Child", which has its own
+        // .application.config - a change elsewhere under "area/" must not be reported as a change to
+        // a module called "area".
+        using var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+        repo.CreateFile("metadata/Area/Area.application.config", """
+            <?xml version="1.0" encoding="utf-8"?>
+            <application id="22222222-2222-2222-2222-222222222222" name="Area" location="../../area" />
+            """);
+        repo.CreateFile("area/Child/Child.application.config", """
+            <?xml version="1.0" encoding="utf-8"?>
+            <application id="33333333-3333-3333-3333-333333333333" name="Child" location="." />
+            """);
+        repo.CreateFile("area/Child/Child.imodspec", WellFormedImodspec());
+        var gitProvider = new FakeGitChangeProvider().WithChangedFiles("area/Other/SomeTest.cs");
+
+        var result = GateTestHarness.Run(repo.Path, string.Empty, gitProvider, "close-out", "--harness", "codex");
+
+        Assert.Equal(0, result.ExitCode);
+        Assert.Empty(result.Stdout);
+    }
+
+    [Fact]
     public void Silent_when_everything_is_in_order()
     {
         using var repo = new TempDirectory();

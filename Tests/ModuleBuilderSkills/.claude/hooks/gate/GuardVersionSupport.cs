@@ -174,56 +174,22 @@ public static class ImodspecFieldGuard
 }
 
 /// <summary>
-/// Resolves an applicationId to the module folder it lives in, and reads that module's
-/// version, by scanning "Modules/*/*.application.config" for a matching root "id" attribute.
+/// Resolves an applicationId to the module's real OUTPUT root (via
+/// <see cref="ModuleDiscovery"/> - not assumed to be the folder its
+/// ".application.config" sits in, and not assumed to live under any particular
+/// top-level folder name), and reads that module's version.
 /// </summary>
 public static class ModuleResolver
 {
     public static string? FindModuleFolderByApplicationId(string repoRoot, string applicationId)
     {
-        var modulesDir = Path.Combine(repoRoot, "Modules");
-        if (!Directory.Exists(modulesDir))
-        {
-            return null;
-        }
+        var match = ModuleDiscovery.FindAll(repoRoot)
+            .FirstOrDefault(application => string.Equals(application.ApplicationId, applicationId, StringComparison.OrdinalIgnoreCase));
 
-        foreach (var configPath in Directory.EnumerateFiles(modulesDir, "*.application.config", SearchOption.AllDirectories))
-        {
-            string content;
-            try
-            {
-                content = File.ReadAllText(configPath);
-            }
-            catch (IOException)
-            {
-                continue;
-            }
-
-            if (!content.Contains(applicationId, StringComparison.OrdinalIgnoreCase))
-            {
-                continue;
-            }
-
-            try
-            {
-                var document = XDocument.Load(configPath);
-                var idAttribute = (string?)document.Root?.Attribute("id");
-                if (string.Equals(idAttribute, applicationId, StringComparison.OrdinalIgnoreCase))
-                {
-                    return Path.GetDirectoryName(configPath);
-                }
-            }
-            catch (Exception)
-            {
-                // A malformed application.config should not crash the gate - keep looking.
-            }
-        }
-
-        return null;
+        return match?.OutputRoot;
     }
 
-    public static string? FindImodspec(string moduleFolder) =>
-        Directory.EnumerateFiles(moduleFolder, "*.imodspec", SearchOption.TopDirectoryOnly).FirstOrDefault();
+    public static string? FindImodspec(string moduleFolder) => ModuleDiscovery.FindImodspecUnder(moduleFolder);
 
     public static string? ReadVersionFromImodspecFile(string imodspecPath)
     {

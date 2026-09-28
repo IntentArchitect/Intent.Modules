@@ -48,8 +48,27 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
             yield return new GateSourceFileModel("ModuleVersionAuditor", "cs", ModuleVersionAuditorContent);
             yield return new GateSourceFileModel("CloseOutAuditor", "cs", CloseOutAuditorContent);
             yield return new GateSourceFileModel("GuardVersionSupport", "cs", GuardVersionSupportContent);
-            yield return new GateSourceFileModel("Cli", "cs", CliContent);
+            yield return new GateSourceFileModel("Cli", "cs", WithDefaultScheme(CliContent, application));
             yield return new GateSourceFileModel("gate", "cs", GateEntryPointContent);
+        }
+
+        private const string DefaultSchemeLine = "private const VersionScheme DefaultScheme = VersionScheme.Final;";
+
+        /// <summary>
+        /// Bakes the "Use Pre-release Versions" setting into the gate's default scheme, rather than
+        /// relying on every harness's hook command to pass "--scheme" - only one of six ever did.
+        /// </summary>
+        private static string WithDefaultScheme(string cliContent, IApplication application)
+        {
+            if (!cliContent.Contains(DefaultSchemeLine))
+            {
+                throw new InvalidOperationException($"Cli.cs content no longer contains '{DefaultSchemeLine}'; update {nameof(WithDefaultScheme)} to match.");
+            }
+
+            var settings = Settings.ModuleSettingsExtensions.GetAIWorkflowSettings(application.Settings);
+            return settings.UsePreReleaseVersions()
+                ? cliContent.Replace(DefaultSchemeLine, "private const VersionScheme DefaultScheme = VersionScheme.PreRelease;")
+                : cliContent;
         }
 
         // Shields the file-based app from the consuming repo's own root Directory.Build.props,
@@ -468,7 +487,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                 /// than an unbounded recursive search - an application whose output root is an
                 /// ancestor of many unrelated modules (e.g. this repo's own dogfood app, whose
                 /// output root is the repository root) must correctly report "not a module" rather
-                /// than picking up an arbitrary descendant's imodspec.
+                /// than picking up an arbitrary descendant's imodspec. A subfolder carrying its own
+                /// ".application.config" is a different application, so its imodspec is never
+                /// attributed to this one.
                 /// </summary>
                 public static string? FindImodspecUnder(string outputRoot)
                 {
@@ -487,6 +508,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                     {
                         var name = Path.GetFileName(subDirectory);
                         if (Array.Exists(SkippedDirectoryNames, skip => string.Equals(skip, name, StringComparison.OrdinalIgnoreCase)))
+                        {
+                            continue;
+                        }
+
+                        if (Directory.EnumerateFiles(subDirectory, "*.application.config", SearchOption.TopDirectoryOnly).Any())
                         {
                             continue;
                         }
@@ -1534,16 +1560,26 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                     return (HarnessProtocol.Parse(harnessValue), positional);
                 }
 
+                // Written by the Software Factory from the "Use Pre-release Versions" setting, so every
+                // harness's hook command can stay identical and still enforce the configured scheme.
+                // An explicit --scheme flag overrides it.
+                private const VersionScheme DefaultScheme = VersionScheme.Final;
+
                 private static (Harness Harness, VersionScheme Scheme) ParseGuardVersionArgs(string[] rest)
                 {
                     var (harness, _) = ParseArgs(rest);
 
-                    var scheme = VersionScheme.Final;
+                    var scheme = DefaultScheme;
                     for (var i = 0; i < rest.Length; i++)
                     {
-                        if (rest[i] == "--scheme" && i + 1 < rest.Length && rest[i + 1] == "pre")
+                        if (rest[i] == "--scheme" && i + 1 < rest.Length)
                         {
-                            scheme = VersionScheme.PreRelease;
+                            scheme = rest[i + 1] switch
+                            {
+                                "pre" => VersionScheme.PreRelease,
+                                "final" => VersionScheme.Final,
+                                _ => scheme,
+                            };
                         }
                     }
 

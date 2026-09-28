@@ -292,16 +292,26 @@ public static class Cli
         return (HarnessProtocol.Parse(harnessValue), positional);
     }
 
+    // Written by the Software Factory from the "Use Pre-release Versions" setting, so every
+    // harness's hook command can stay identical and still enforce the configured scheme.
+    // An explicit --scheme flag overrides it.
+    private const VersionScheme DefaultScheme = VersionScheme.PreRelease;
+
     private static (Harness Harness, VersionScheme Scheme) ParseGuardVersionArgs(string[] rest)
     {
         var (harness, _) = ParseArgs(rest);
 
-        var scheme = VersionScheme.Final;
+        var scheme = DefaultScheme;
         for (var i = 0; i < rest.Length; i++)
         {
-            if (rest[i] == "--scheme" && i + 1 < rest.Length && rest[i + 1] == "pre")
+            if (rest[i] == "--scheme" && i + 1 < rest.Length)
             {
-                scheme = VersionScheme.PreRelease;
+                scheme = rest[i + 1] switch
+                {
+                    "pre" => VersionScheme.PreRelease,
+                    "final" => VersionScheme.Final,
+                    _ => scheme,
+                };
             }
         }
 

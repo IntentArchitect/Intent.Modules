@@ -55,11 +55,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.OpenCodePlugi
             // shell-wrapper fail-closed trick HooksJson's commands rely on: any non-zero exit -
             // including a build failure - already throws here.
             //
+            // No "--scheme" is passed: the "Use Pre-release Versions" setting is baked into the gate's
+            // own Cli.cs, so this command is spelled the same as every other harness's.
+            //
             // Kept inside the body deliberately: this member's signature is Mode.Fully, so a comment
             // above it is stripped on every regeneration. Body = Mode.Ignore is what protects it.
-            var settings = Intent.Modules.ModuleBuilder.AI.Workflow.Settings.ModuleSettingsExtensions.GetAIWorkflowSettings(ExecutionContext.Settings);
-            var scheme = settings.UsePreReleaseVersions() ? "pre" : "final";
-
             return $$"""
                 import { spawnSync } from "child_process";
 
@@ -89,7 +89,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.OpenCodePlugi
                       }
 
                       if (input.tool.includes("run_designer_script")) {
-                        runGate("guard-version", ["--scheme", "{{scheme}}"], { tool_input: output.args });
+                        runGate("guard-version", [], { tool_input: output.args });
                       }
                     },
                   };

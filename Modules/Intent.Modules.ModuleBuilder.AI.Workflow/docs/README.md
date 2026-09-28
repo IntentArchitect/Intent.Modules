@@ -50,7 +50,7 @@ Phase 4 runs dependencies before documentation deliberately: a dependency fix is
 
 | Setting                  | Default | Effect                                                                                                                                                                           |
 | ------------------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Use Pre-release Versions | Off     | Switches `module-version-increment` between standard semantic versions and `-pre.#` iteration.                                                                                   |
+| Use Pre-release Versions | Off     | Switches `module-version-increment` between standard semantic versions and `-pre.#` iteration. With the agent gate installed, the gate also denies moving to a new version without a `-pre.#` suffix (promoting a pre-release to its own final version stays allowed). |
 | Maintain Module README   | Off     | When on, `module-docs-chore` treats `docs/README.md` as an artifact to create and maintain.                                                                                      |
 | Maintain Module Icon     | Off     | When on, `module-docs-chore` creates a module's SVG icon when it has none. An existing icon is never overwritten.                                                                |
 | Maintain Module Context  | Off     | When on, `module-context-capture` also creates a `CONTEXT.md` for a module that has none, once its first durable decision lands. Off keeps the read-and-maintain-only behaviour. |
@@ -68,4 +68,4 @@ Each skill's content is bundled in this module's own source and always overwritt
 ## Related Modules
 
 - **`Intent.ModuleBuilder.AI.Skills`** — the craft half of the same pairing. Deliberately **not** a package dependency: each bundle must stay independently installable, so where these skills reference one of its skills they do so by name only, degrading gracefully when it is absent.
-- **`Intent.ModuleBuilder.AI.Modelers`** and **`Intent.ModuleBuilder.AI.SDD`** — sibling bundles, likewise with no dependency in either direction.
+- **`Intent.ModuleBuilder.AI.Modelers`** — a sibling bundle, likewise with no dependency in either direction.

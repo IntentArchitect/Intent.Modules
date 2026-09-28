@@ -19,86 +19,47 @@ public static class ModuleVersionAuditor
 {
     public static ModuleVersionAuditResult Audit(string repoRoot, IReadOnlyList<string> changedFiles)
     {
-        var normalizedChanged = changedFiles
-            .Select(Normalize)
-            .ToHashSet(StringComparer.OrdinalIgnoreCase);
-
-        var modulesTouched = new SortedSet<string>(StringComparer.OrdinalIgnoreCase);
-        foreach (var file in normalizedChanged)
-        {
-            var moduleName = TryGetModuleName(file);
-            if (moduleName is not null)
-            {
-                modulesTouched.Add(moduleName);
-            }
-        }
+        var normalizedChanged = changedFiles.Select(Normalize).ToList();
+        var byApplication = ModuleDiscovery.GroupChangedFilesByApplication(repoRoot, normalizedChanged);
 
         var violations = new List<ModuleVersionViolation>();
-        var modulesDir = Path.Combine(repoRoot, "Modules");
 
-        foreach (var moduleName in modulesTouched)
+        foreach (var (application, files) in byApplication)
         {
-            var moduleDir = Path.Combine(modulesDir, moduleName);
-            if (!Directory.Exists(moduleDir))
+            var imodspecPath = ModuleDiscovery.FindImodspecUnder(application.OutputRoot);
+            if (imodspecPath is null)
             {
+                // Not a module in its own right (e.g. a plain consuming application, or
+                // one whose output root merely contains other applications' modules as
+                // descendants) - nothing to verify a version against.
                 continue;
             }
 
-            var imodspecFiles = Directory.EnumerateFiles(moduleDir, "*.imodspec", SearchOption.AllDirectories).ToList();
-            if (imodspecFiles.Count == 0)
-            {
-                // Not an Intent module (e.g. a shared non-module folder like "Modules/.claude")
-                // - nothing to verify a version against.
-                continue;
-            }
-
-            var imodspecRelativePaths = imodspecFiles
-                .Select(spec => Normalize(Path.GetRelativePath(repoRoot, spec)))
-                .ToHashSet(StringComparer.OrdinalIgnoreCase);
-
-            var hasNonImodspecChange = normalizedChanged.Any(f =>
-                IsUnderModule(f, moduleName) && !imodspecRelativePaths.Contains(f));
-
+            var imodspecRelative = Normalize(Path.GetRelativePath(repoRoot, imodspecPath));
+            var hasNonImodspecChange = files.Any(f => !string.Equals(f, imodspecRelative, StringComparison.OrdinalIgnoreCase));
             if (!hasNonImodspecChange)
             {
                 continue;
             }
 
-            var imodspecChanged = imodspecRelativePaths.Overlaps(normalizedChanged);
+            var imodspecChanged = files.Contains(imodspecRelative, StringComparer.OrdinalIgnoreCase);
             if (!imodspecChanged)
             {
-                violations.Add(new ModuleVersionViolation(moduleName, imodspecRelativePaths.First()));
+                var moduleName = ModuleLabel(application.OutputRoot);
+                violations.Add(new ModuleVersionViolation(moduleName, imodspecRelative));
             }
         }
 
         return new ModuleVersionAuditResult(violations.Count == 0, violations);
     }
 
-    private static bool IsUnderModule(string normalizedRelativePath, string moduleName)
-    {
-        var prefix = $"Modules/{moduleName}/";
-        return normalizedRelativePath.StartsWith(prefix, StringComparison.OrdinalIgnoreCase);
-    }
-
-    private static string? TryGetModuleName(string normalizedRelativePath)
-    {
-        const string prefix = "Modules/";
-        if (!normalizedRelativePath.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
-        {
-            return null;
-        }
-
-        var remainder = normalizedRelativePath[prefix.Length..];
-        var slashIndex = remainder.IndexOf('/');
-        if (slashIndex <= 0)
-        {
-            // A file directly under "Modules/" (not inside a module subfolder) is not
-            // itself a module.
-            return null;
-        }
-
-        return remainder[..slashIndex];
-    }
+    /// <summary>
+    /// A human-readable label for messages - the output root's own folder name, matching
+    /// what earlier versions of this check reported before module resolution moved off a
+    /// hardcoded "Modules/{name}/" path assumption.
+    /// </summary>
+    internal static string ModuleLabel(string outputRoot) =>
+        Path.GetFileName(outputRoot.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar));
 
     private static string Normalize(string path) => path.Replace('\\', '/');
 }

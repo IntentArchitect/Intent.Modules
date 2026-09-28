@@ -16,23 +16,19 @@ public static class CloseOutAuditor
     {
         var normalizedChanged = changedFiles.Select(Normalize).ToHashSet(StringComparer.OrdinalIgnoreCase);
         var findings = new List<CloseOutFinding>();
-        var modulesDir = Path.Combine(repoRoot, "Modules");
+        var byApplication = ModuleDiscovery.GroupChangedFilesByApplication(repoRoot, changedFiles.Select(Normalize).ToList());
 
-        foreach (var moduleName in TouchedModules(normalizedChanged))
+        foreach (var application in byApplication.Keys)
         {
-            var moduleDir = Path.Combine(modulesDir, moduleName);
-            if (!Directory.Exists(moduleDir))
-            {
-                continue;
-            }
-
-            var imodspecPath = Directory.EnumerateFiles(moduleDir, "*.imodspec", SearchOption.AllDirectories).FirstOrDefault();
+            var moduleDir = application.OutputRoot;
+            var imodspecPath = ModuleDiscovery.FindImodspecUnder(moduleDir);
             if (imodspecPath is null)
             {
-                // Not an Intent module - nothing here to check.
+                // Not a module in its own right - nothing here to check.
                 continue;
             }
 
+            var moduleName = ModuleVersionAuditor.ModuleLabel(moduleDir);
             var imodspecContent = TryRead(imodspecPath);
 
             CheckTags(moduleName, imodspecContent, findings);
@@ -42,28 +38,6 @@ public static class CloseOutAuditor
         }
 
         return findings;
-    }
-
-    private static IEnumerable<string> TouchedModules(IReadOnlySet<string> normalizedChanged)
-    {
-        var modules = new SortedSet<string>(StringComparer.OrdinalIgnoreCase);
-        foreach (var file in normalizedChanged)
-        {
-            const string prefix = "Modules/";
-            if (!file.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
-            {
-                continue;
-            }
-
-            var remainder = file[prefix.Length..];
-            var slashIndex = remainder.IndexOf('/');
-            if (slashIndex > 0)
-            {
-                modules.Add(remainder[..slashIndex]);
-            }
-        }
-
-        return modules;
     }
 
     private static void CheckTags(string moduleName, string? imodspecContent, List<CloseOutFinding> findings)

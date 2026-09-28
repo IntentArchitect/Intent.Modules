@@ -26,7 +26,7 @@ export const IntentAgentGatePlugin = async () => {
       }
 
       if (input.tool.includes("run_designer_script")) {
-        runGate("guard-version", ["--scheme", "pre"], { tool_input: output.args });
+        runGate("guard-version", [], { tool_input: output.args });
       }
     },
   };
