@@ -4,7 +4,6 @@
   <file path=".agents/instructions/exception-guidelines.instructions.md" templateId="Intent.ModuleBuilder.AI.Skills.RootPrinciples.ExceptionGuidelinesMd" />
   <file path=".agents/instructions/known-build-gotchas.instructions.md" templateId="Intent.ModuleBuilder.AI.Skills.RootPrinciples.KnownBuildGotchasMd" />
   <file path=".agents/instructions/module-building-workflow.instructions.md" templateId="Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd" />
-  <file path=".agents/instructions/sdd-wave-evidence.instructions.md" templateId="Intent.ModuleBuilder.AI.SDD.RootPrinciples.SddWaveEvidenceMd" />
   <file path=".agents/skills/add-association-type/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_SkillMd_Agents" />
   <file path=".agents/skills/add-association-type/resources/association-type-workflow.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_ResourcesAssociationTypeWorkflowMd_Agents" />
   <file path=".agents/skills/add-designer-extension/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddDesignerExtension_SkillMd_Agents" />
@@ -43,12 +42,10 @@
   <file path=".agents/skills/module-svg-icon/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon_SkillMd_Agents" />
   <file path=".agents/skills/module-version-increment/SKILL.md" templateId="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleVersionIncrement_SkillMd_Agents" />
   <file path=".agents/skills/module-versioning/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.ModuleVersioning_SkillMd_Agents" />
-  <file path=".agents/skills/sdd-build-module/SKILL.md" templateId="Intent.ModuleBuilder.AI.SDD.Skills.SddBuildModule_SkillMd_Agents" />
   <file path=".claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
   <file path=".claude/rules/exception-guidelines.instructions.md" templateId="Intent.ModuleBuilder.AI.Skills.RootPrinciples.ExceptionGuidelinesMd" />
   <file path=".claude/rules/known-build-gotchas.instructions.md" templateId="Intent.ModuleBuilder.AI.Skills.RootPrinciples.KnownBuildGotchasMd" />
   <file path=".claude/rules/module-building-workflow.instructions.md" templateId="Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd" />
-  <file path=".claude/rules/sdd-wave-evidence.instructions.md" templateId="Intent.ModuleBuilder.AI.SDD.RootPrinciples.SddWaveEvidenceMd" />
   <file path=".claude/settings.json" templateId="Intent.ModuleBuilder.AI.Workflow.Hooks.ClaudeSettings" />
   <file path=".claude/skills/add-association-type/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_SkillMd_Agents" />
   <file path=".claude/skills/add-association-type/resources/association-type-workflow.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_ResourcesAssociationTypeWorkflowMd_Agents" />
@@ -88,7 +85,6 @@
   <file path=".claude/skills/module-svg-icon/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon_SkillMd_Agents" />
   <file path=".claude/skills/module-version-increment/SKILL.md" templateId="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleVersionIncrement_SkillMd_Agents" />
   <file path=".claude/skills/module-versioning/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.ModuleVersioning_SkillMd_Agents" />
-  <file path=".claude/skills/sdd-build-module/SKILL.md" templateId="Intent.ModuleBuilder.AI.SDD.Skills.SddBuildModule_SkillMd_Agents" />
   <file path=".cursor/hooks.json" templateId="Intent.ModuleBuilder.AI.Workflow.Hooks.CursorHooks" />
   <file path=".github/hooks/intent-agent-gate.json" templateId="Intent.ModuleBuilder.AI.Workflow.Hooks.CopilotHooks" />
   <file path=".kiro/hooks/intent-agent-gate.json" templateId="Intent.ModuleBuilder.AI.Workflow.Hooks.KiroHooks" />
@@ -96,7 +92,6 @@
   <file path=".opencode/instructions/exception-guidelines.instructions.md" templateId="Intent.ModuleBuilder.AI.Skills.RootPrinciples.ExceptionGuidelinesMd" />
   <file path=".opencode/instructions/known-build-gotchas.instructions.md" templateId="Intent.ModuleBuilder.AI.Skills.RootPrinciples.KnownBuildGotchasMd" />
   <file path=".opencode/instructions/module-building-workflow.instructions.md" templateId="Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd" />
-  <file path=".opencode/instructions/sdd-wave-evidence.instructions.md" templateId="Intent.ModuleBuilder.AI.SDD.RootPrinciples.SddWaveEvidenceMd" />
   <file path=".opencode/plugins/intent-agent-gate.ts" templateId="Intent.ModuleBuilder.AI.Workflow.Hooks.OpenCodePlugin" />
   <file path=".opencode/skills/add-association-type/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_SkillMd_Agents" />
   <file path=".opencode/skills/add-association-type/resources/association-type-workflow.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_ResourcesAssociationTypeWorkflowMd_Agents" />
@@ -136,5 +131,4 @@
   <file path=".opencode/skills/module-svg-icon/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon_SkillMd_Agents" />
   <file path=".opencode/skills/module-version-increment/SKILL.md" templateId="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleVersionIncrement_SkillMd_Agents" />
   <file path=".opencode/skills/module-versioning/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.ModuleVersioning_SkillMd_Agents" />
-  <file path=".opencode/skills/sdd-build-module/SKILL.md" templateId="Intent.ModuleBuilder.AI.SDD.Skills.SddBuildModule_SkillMd_Agents" />
 </managedFiles>
