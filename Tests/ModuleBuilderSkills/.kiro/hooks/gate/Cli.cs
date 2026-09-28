@@ -36,7 +36,12 @@ public static class Cli
 
             var command = args[0];
             var rest = args[1..];
-            var repoRoot = GitRepoLocator.FindRepoRoot(currentDirectory);
+            // Outside a git repository, fall back to the folder the hook runs from - the
+            // project root. Giving up instead would switch off every guard in a folder
+            // that simply hasn't been "git init"-ed yet. Only what genuinely needs git
+            // degrades: close-out has no change list, and the double-bump check has no
+            // HEAD to compare against.
+            var repoRoot = GitRepoLocator.FindRepoRoot(currentDirectory) ?? currentDirectory;
 
             return command switch
             {
@@ -57,17 +62,15 @@ public static class Cli
         }
     }
 
-    private static int RunGuardWrite(string[] rest, TextReader stdin, TextWriter stdout, TextWriter stderr, string? repoRoot)
+    private static int RunGuardWrite(string[] rest, TextReader stdin, TextWriter stdout, TextWriter stderr, string repoRoot)
     {
         var (harness, positional) = ParseArgs(rest);
         var input = stdin.ReadToEnd();
         var path = StdinPathExtractor.Extract(input, positional);
 
-        if (repoRoot is null || path is null)
+        if (path is null)
         {
-            return Allow(harness, stdout, repoRoot is null
-                ? "intent-agent-gate: could not locate the git repository root; no opinion."
-                : "intent-agent-gate: could not determine a target file path from stdin or arguments; no opinion.");
+            return Allow(harness, stdout, "intent-agent-gate: could not determine a target file path from stdin or arguments; no opinion.");
         }
 
         // Intent's OWN metadata - the designer model, an application's configuration, and
@@ -125,7 +128,7 @@ public static class Cli
         return Allow(harness, stdout);
     }
 
-    private static int RunGuardVersion(string[] rest, TextReader stdin, TextWriter stdout, TextWriter stderr, string? repoRoot, IGitChangeProvider gitChangeProvider)
+    private static int RunGuardVersion(string[] rest, TextReader stdin, TextWriter stdout, TextWriter stderr, string repoRoot, IGitChangeProvider gitChangeProvider)
     {
         var (harness, scheme) = ParseGuardVersionArgs(rest);
         var input = stdin.ReadToEnd();
@@ -137,7 +140,7 @@ public static class Cli
             return Allow(harness, stdout);
         }
 
-        if (repoRoot is null || invocation.ApplicationId is null)
+        if (invocation.ApplicationId is null)
         {
             return Allow(harness, stdout, "intent-agent-gate: could not resolve the target module; no opinion.");
         }
@@ -200,16 +203,12 @@ public static class Cli
         return Allow(harness, stdout);
     }
 
-    private static int RunCloseOut(string[] rest, TextWriter stdout, string? repoRoot, IGitChangeProvider gitChangeProvider)
+    private static int RunCloseOut(string[] rest, TextWriter stdout, string repoRoot, IGitChangeProvider gitChangeProvider)
     {
         var (harness, _) = ParseArgs(rest);
 
-        if (repoRoot is null)
-        {
-            // Nothing to check outside a git repository - silent, not an error.
-            return 0;
-        }
-
+        // Outside a git repository git reports nothing, so this finds no changes and
+        // stays silent - there is no other record of what this session changed.
         var changedFiles = gitChangeProvider.GetChangedFiles(repoRoot);
         var versionResult = ModuleVersionAuditor.Audit(repoRoot, changedFiles);
         var otherFindings = CloseOutAuditor.Audit(repoRoot, changedFiles);

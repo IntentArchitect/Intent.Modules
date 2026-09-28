@@ -141,6 +141,23 @@ public class GuardVersionTests
     }
 
     [Fact]
+    public void Denies_a_downgrade_outside_a_git_repository()
+    {
+        // No ".git" anywhere above, and the real git process provider: git fails, so module
+        // discovery must fall back to walking the filesystem from the folder the hook runs in.
+        using var repo = new TempDirectory();
+        Assert.Null(Intent.Agent.Gate.GitRepoLocator.FindRepoRoot(repo.Path));
+        repo.CreateFile("metadata/Sample.Module/Sample.Module.application.config", ApplicationConfig(location: "../../output/Sample.Module"));
+        repo.CreateFile("output/Sample.Module/Sample.Module.imodspec", Imodspec("1.1.0"));
+
+        var stdin = DesignerScriptInput("1.0.3-pre.0");
+        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-version", "--harness", "codex", "--scheme", "pre");
+
+        Assert.Equal(2, result.ExitCode);
+        Assert.Contains("does not sort strictly higher", result.Stderr);
+    }
+
+    [Fact]
     public void Allows_silently_and_writes_nothing_when_the_script_does_not_set_version()
     {
         using var repo = new TempDirectory();

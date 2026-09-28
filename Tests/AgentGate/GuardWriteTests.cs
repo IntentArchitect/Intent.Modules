@@ -41,6 +41,20 @@ public class GuardWriteTests
     }
 
     [Fact]
+    public void Denies_editing_an_application_config_outside_a_git_repository()
+    {
+        // A folder that hasn't been "git init"-ed yet must still be protected - the guard falls
+        // back to the folder the hook runs from rather than giving up.
+        using var repo = new TempDirectory();
+        Assert.Null(Intent.Agent.Gate.GitRepoLocator.FindRepoRoot(repo.Path));
+        var config = repo.CreateFile("Modules/Sample.Module/Sample.Module.application.config", "<application />");
+
+        var result = GateTestHarness.Run(repo.Path, ToolInput(filePath: config, content: "<application />"), gitChangeProvider: null, "guard-write", "--harness", "codex");
+
+        Assert.Equal(2, result.ExitCode);
+    }
+
+    [Fact]
     public void Denies_editing_an_application_config()
     {
         using var repo = new TempDirectory();
