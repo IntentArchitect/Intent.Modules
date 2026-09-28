@@ -92,6 +92,43 @@ public class GuardVersionTests
     }
 
     [Fact]
+    public void Resolves_a_module_that_does_not_live_under_a_Modules_folder()
+    {
+        // Module resolution must not assume any particular top-level folder name - a consumer
+        // laid out differently (here, "packages/" instead of "Modules/") still has its version
+        // checked correctly.
+        using var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+        repo.CreateFile("packages/Sample.Module/Sample.Module.imodspec", Imodspec("1.1.0"));
+        repo.CreateFile("packages/Sample.Module/Sample.Module.application.config", ApplicationConfig());
+
+        var stdin = DesignerScriptInput("1.0.3-pre.0");
+        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-version", "--harness", "codex", "--scheme", "pre");
+
+        Assert.Equal(2, result.ExitCode);
+        Assert.Contains("does not sort strictly higher", result.Stderr);
+    }
+
+    [Fact]
+    public void Resolves_a_module_whose_imodspec_is_not_beside_its_application_config()
+    {
+        // A solution whose workspace root differs from its metadata folder (e.g. one scaffolded
+        // via the Application Template Builder) splits ".application.config" from the
+        // application's real generated output - "location" must be followed to find the real
+        // ".imodspec", not assumed to sit in the same folder as the config.
+        using var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+        repo.CreateFile("metadata/Sample.Module/Sample.Module.application.config", ApplicationConfig(location: "../../output/Sample.Module"));
+        repo.CreateFile("output/Sample.Module/Sample.Module.imodspec", Imodspec("1.1.0"));
+
+        var stdin = DesignerScriptInput("1.0.3-pre.0");
+        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-version", "--harness", "codex", "--scheme", "pre");
+
+        Assert.Equal(2, result.ExitCode);
+        Assert.Contains("does not sort strictly higher", result.Stderr);
+    }
+
+    [Fact]
     public void Allows_silently_and_writes_nothing_when_the_script_does_not_set_version()
     {
         using var repo = new TempDirectory();
@@ -132,9 +169,9 @@ public class GuardVersionTests
         },
     });
 
-    private static string ApplicationConfig() => $"""
+    private static string ApplicationConfig(string location = ".") => $"""
         <?xml version="1.0" encoding="utf-8"?>
-        <application id="{ApplicationId}" name="Sample.Module" version="1.0.0" location="." metadataNamingConvention="use-element-name">
+        <application id="{ApplicationId}" name="Sample.Module" version="1.0.0" location="{location}" metadataNamingConvention="use-element-name">
         </application>
         """;
 

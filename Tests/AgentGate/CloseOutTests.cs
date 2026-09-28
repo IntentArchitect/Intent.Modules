@@ -14,6 +14,17 @@ public class CloseOutTests
 {
     private const string ModuleName = "Sample.Module";
     private const string ImodspecRelativePath = "Modules/Sample.Module/Sample.Module.imodspec";
+    private const string ApplicationConfigRelativePath = "Modules/Sample.Module/Sample.Module.application.config";
+
+    /// <summary>
+    /// Module discovery finds a module via its ".application.config" (id + location), not by
+    /// scanning for a bare "Modules/{name}/" folder - so every fixture that wants to be found
+    /// needs one of these alongside its ".imodspec", exactly as a real module does.
+    /// </summary>
+    private static string WellFormedApplicationConfig() => """
+        <?xml version="1.0" encoding="utf-8"?>
+        <application id="11111111-1111-1111-1111-111111111111" name="Sample.Module" location="." />
+        """;
 
     [Fact]
     public void Silent_when_nothing_changed()
@@ -34,6 +45,7 @@ public class CloseOutTests
         using var repo = new TempDirectory();
         repo.MarkAsRepoRoot();
         repo.CreateFile(ImodspecRelativePath, WellFormedImodspec());
+        repo.CreateFile(ApplicationConfigRelativePath, WellFormedApplicationConfig());
         repo.CreateFile("Modules/Sample.Module/docs/README.md", "# Sample.Module\n");
         repo.CreateFile("Modules/Sample.Module/CONTEXT.md", "# Context\n");
         var gitProvider = new FakeGitChangeProvider()
@@ -62,6 +74,7 @@ public class CloseOutTests
         using var repo = new TempDirectory();
         repo.MarkAsRepoRoot();
         repo.CreateFile(ImodspecRelativePath, WellFormedImodspec(version: "1.0.3-pre.0"));
+        repo.CreateFile(ApplicationConfigRelativePath, WellFormedApplicationConfig());
         repo.CreateFile("Modules/Sample.Module/docs/README.md", "# Sample.Module\n");
         repo.CreateFile("Modules/Sample.Module/CONTEXT.md", "# Context\n");
         repo.CreateFile("Modules/Sample.Module/release-notes.md", "### Version 1.0.3-pre.0\n\n- New Feature: something.\n");
@@ -80,6 +93,7 @@ public class CloseOutTests
         using var repo = new TempDirectory();
         repo.MarkAsRepoRoot();
         repo.CreateFile(ImodspecRelativePath, WellFormedImodspec());
+        repo.CreateFile(ApplicationConfigRelativePath, WellFormedApplicationConfig());
         repo.CreateFile("Modules/Sample.Module/docs/README.md", "# Sample.Module\n");
         repo.CreateFile("Modules/Sample.Module/CONTEXT.md", "# Context\n");
         var gitProvider = new FakeGitChangeProvider()
@@ -97,6 +111,7 @@ public class CloseOutTests
         using var repo = new TempDirectory();
         repo.MarkAsRepoRoot();
         repo.CreateFile(ImodspecRelativePath, WellFormedImodspec());
+        repo.CreateFile(ApplicationConfigRelativePath, WellFormedApplicationConfig());
         repo.CreateFile("Modules/Sample.Module/CONTEXT.md", "# Context\n");
         var gitProvider = new FakeGitChangeProvider()
             .WithChangedFiles(ImodspecRelativePath, "Modules/Sample.Module/CONTEXT.md");
@@ -113,6 +128,7 @@ public class CloseOutTests
         using var repo = new TempDirectory();
         repo.MarkAsRepoRoot();
         repo.CreateFile(ImodspecRelativePath, WellFormedImodspec(tags: "Module Builder"));
+        repo.CreateFile(ApplicationConfigRelativePath, WellFormedApplicationConfig());
         repo.CreateFile("Modules/Sample.Module/docs/README.md", "# Sample.Module\n");
         repo.CreateFile("Modules/Sample.Module/CONTEXT.md", "# Context\n");
         var gitProvider = new FakeGitChangeProvider()
@@ -135,6 +151,7 @@ public class CloseOutTests
         using var repo = new TempDirectory();
         repo.MarkAsRepoRoot();
         repo.CreateFile(ImodspecRelativePath, WellFormedImodspec(version: "1.0.0"));
+        repo.CreateFile(ApplicationConfigRelativePath, WellFormedApplicationConfig());
         repo.CreateFile("Modules/Sample.Module/docs/README.md", "# Sample.Module\n");
         repo.CreateFile("Modules/Sample.Module/CONTEXT.md", "# Context\n");
         repo.CreateFile("Modules/Sample.Module/release-notes.md", "### Version 1.0.0\n\n- New Feature: something.\n");
