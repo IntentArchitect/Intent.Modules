@@ -172,6 +172,23 @@ public class CloseOutTests
     }
 
     [Fact]
+    public void Finishes_silently_outside_a_git_repository()
+    {
+        // Real git process, no ".git" anywhere above. "git diff HEAD" outside a repository writes a
+        // multi-kilobyte usage dump to stderr; if that stream is redirected but never read, the pipe
+        // fills and close-out hangs forever, which blocks the agent. Bounded, so a regression fails
+        // instead of hanging the suite.
+        using var repo = new TempDirectory();
+        Assert.Null(Intent.Agent.Gate.GitRepoLocator.FindRepoRoot(repo.Path));
+
+        var run = Task.Run(() => GateTestHarness.Run(repo.Path, string.Empty, gitChangeProvider: null, "close-out", "--harness", "codex"));
+
+        Assert.True(run.Wait(TimeSpan.FromSeconds(30)), "close-out did not finish outside a git repository.");
+        Assert.Equal(0, run.Result.ExitCode);
+        Assert.Empty(run.Result.Stdout);
+    }
+
+    [Fact]
     public void Silent_when_everything_is_in_order()
     {
         using var repo = new TempDirectory();

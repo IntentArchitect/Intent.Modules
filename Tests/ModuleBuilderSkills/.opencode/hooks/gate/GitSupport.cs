@@ -108,8 +108,16 @@ internal static class GitProcess
                 return null;
             }
 
+            // Stderr is redirected so git's own messages never leak into the hook's
+            // stderr (which harnesses show to the agent as the block reason) - but a
+            // redirected stream MUST be drained. Outside a repository "git diff HEAD"
+            // writes a multi-kilobyte usage dump there; left unread, the pipe fills,
+            // git blocks writing it, and this blocks waiting for git - a hook that
+            // never returns.
+            var error = process.StandardError.ReadToEndAsync();
             var output = process.StandardOutput.ReadToEnd();
             process.WaitForExit();
+            error.Wait();
 
             // A non-zero exit (e.g. "show HEAD:path" for a path that did not exist at
             // HEAD, or git not being a recognised command at all) means no content to
