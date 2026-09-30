@@ -6,8 +6,9 @@ This repository contains the source code for Intent Architect modules which prov
 
 ## What is Intent Architect?
 
-[Intent Architect](http://intentarchitect.com/) is a non-prescriptive, integrated, architecture-design platform that combines together the power of
-visual modeling, code-management and pattern-reuse to help software development teams build enterprise-grade, scalable applications at lightning speed.
+[Intent Architect](http://intentarchitect.com/) the first control plane for fully agentic .NET software development - the platform that turns AI into a well-governed, repeatable, and enterprise-scale software delivery system.
+
+Intent Architect gives teams reliable architectural guardrails, authoritative design blueprints, advanced validation tools, and comprehensive spec-based traceability - adding the control they need to go fully agentic quickly, safely and reliably.
 
 ## What are modules?
 
