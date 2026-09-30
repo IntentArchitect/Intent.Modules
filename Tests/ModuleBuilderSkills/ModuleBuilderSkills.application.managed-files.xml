@@ -25,10 +25,13 @@
   <file path=".agents/skills/intent-metadata-consumer/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentMetadataConsumer_SkillMd_Agents" />
   <file path=".agents/skills/intent-metadata-consumer/resources/metadata-cheatsheet.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentMetadataConsumer_ResourcesMetadataCheatsheetMd_Agents" />
   <file path=".agents/skills/intent-modelers-integration/SKILL.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_SkillMd_Agents" />
+  <file path=".agents/skills/intent-modelers-integration/resources/domain-extensions.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesDomainExtensionsMd_Agents" />
   <file path=".agents/skills/intent-modelers-integration/resources/domain.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesDomainMd_Agents" />
   <file path=".agents/skills/intent-modelers-integration/resources/eventing.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesEventingMd_Agents" />
   <file path=".agents/skills/intent-modelers-integration/resources/integration-recipe.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesIntegrationRecipeMd_Agents" />
+  <file path=".agents/skills/intent-modelers-integration/resources/services-extensions.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesServicesExtensionsMd_Agents" />
   <file path=".agents/skills/intent-modelers-integration/resources/services.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesServicesMd_Agents" />
+  <file path=".agents/skills/intent-modelers-integration/resources/user-interface-extensions.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesUserInterfaceExtensionsMd_Agents" />
   <file path=".agents/skills/intent-modelers-integration/resources/user-interface.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesUserInterfaceMd_Agents" />
   <file path=".agents/skills/intent-module-orchestrator/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentModuleOrchestrator_SkillMd_Agents" />
   <file path=".agents/skills/intent-module-orchestrator/resources/orchestration-cheatsheet.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentModuleOrchestrator_ResourcesOrchestrationCheatsheetMd_Agents" />
@@ -68,10 +71,13 @@
   <file path=".claude/skills/intent-metadata-consumer/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentMetadataConsumer_SkillMd_Agents" />
   <file path=".claude/skills/intent-metadata-consumer/resources/metadata-cheatsheet.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentMetadataConsumer_ResourcesMetadataCheatsheetMd_Agents" />
   <file path=".claude/skills/intent-modelers-integration/SKILL.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_SkillMd_Agents" />
+  <file path=".claude/skills/intent-modelers-integration/resources/domain-extensions.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesDomainExtensionsMd_Agents" />
   <file path=".claude/skills/intent-modelers-integration/resources/domain.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesDomainMd_Agents" />
   <file path=".claude/skills/intent-modelers-integration/resources/eventing.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesEventingMd_Agents" />
   <file path=".claude/skills/intent-modelers-integration/resources/integration-recipe.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesIntegrationRecipeMd_Agents" />
+  <file path=".claude/skills/intent-modelers-integration/resources/services-extensions.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesServicesExtensionsMd_Agents" />
   <file path=".claude/skills/intent-modelers-integration/resources/services.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesServicesMd_Agents" />
+  <file path=".claude/skills/intent-modelers-integration/resources/user-interface-extensions.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesUserInterfaceExtensionsMd_Agents" />
   <file path=".claude/skills/intent-modelers-integration/resources/user-interface.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesUserInterfaceMd_Agents" />
   <file path=".claude/skills/intent-module-orchestrator/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentModuleOrchestrator_SkillMd_Agents" />
   <file path=".claude/skills/intent-module-orchestrator/resources/orchestration-cheatsheet.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentModuleOrchestrator_ResourcesOrchestrationCheatsheetMd_Agents" />
@@ -114,10 +120,13 @@
   <file path=".opencode/skills/intent-metadata-consumer/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentMetadataConsumer_SkillMd_Agents" />
   <file path=".opencode/skills/intent-metadata-consumer/resources/metadata-cheatsheet.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentMetadataConsumer_ResourcesMetadataCheatsheetMd_Agents" />
   <file path=".opencode/skills/intent-modelers-integration/SKILL.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_SkillMd_Agents" />
+  <file path=".opencode/skills/intent-modelers-integration/resources/domain-extensions.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesDomainExtensionsMd_Agents" />
   <file path=".opencode/skills/intent-modelers-integration/resources/domain.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesDomainMd_Agents" />
   <file path=".opencode/skills/intent-modelers-integration/resources/eventing.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesEventingMd_Agents" />
   <file path=".opencode/skills/intent-modelers-integration/resources/integration-recipe.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesIntegrationRecipeMd_Agents" />
+  <file path=".opencode/skills/intent-modelers-integration/resources/services-extensions.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesServicesExtensionsMd_Agents" />
   <file path=".opencode/skills/intent-modelers-integration/resources/services.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesServicesMd_Agents" />
+  <file path=".opencode/skills/intent-modelers-integration/resources/user-interface-extensions.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesUserInterfaceExtensionsMd_Agents" />
   <file path=".opencode/skills/intent-modelers-integration/resources/user-interface.md" templateId="Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesUserInterfaceMd_Agents" />
   <file path=".opencode/skills/intent-module-orchestrator/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentModuleOrchestrator_SkillMd_Agents" />
   <file path=".opencode/skills/intent-module-orchestrator/resources/orchestration-cheatsheet.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.IntentModuleOrchestrator_ResourcesOrchestrationCheatsheetMd_Agents" />

@@ -1,5 +1,5 @@
 ---
-contentHash: 2C6F7F742B20D814017F7C63BE3273DE73273B3EE2F142ED49430F388860A198
+contentHash: 4520A76882114C94634C727B250BA14553BD5A7BAFDF56FD365D1D256529EC14
 ---
 # User Interface Designer (`Intent.Modules.Modelers.UI`)
 
@@ -20,13 +20,21 @@ client-stack modules (Blazor/Angular/React/etc.) that read this designer's model
 classes described below.
 
 **What it is not:** it is not a widget library — the base module defines no concrete widgets
-(no Button, Form, Table); those are added by the `.Core` extension module (§8). It is not a
+(no Button, Form, Table); those are added by the `.Core` extension module (`user-interface-extensions.md`). It is not a
 domain/service designer — it has its own `Model Definition` (a lightweight DTO-shaped view model)
 rather than reusing Domain's `ClassModel`, and its own `Call Service Operation Action` association
 rather than reusing Services' invocation model. The base module's own `.csproj` deliberately
 excludes a `PackageReference` to `.Core` (commented out, with the comment "we don't want this
 dependency — that module is the base for Component modules") — the dependency direction is
 `.Core` → base, never the reverse.
+
+**Extension modules — read `user-interface-extensions.md` for these.** Each is installed separately, and
+its install identity and full model API are in that file, not this one: `.Core`, the widget library
+(`ButtonModel`, `FormModel`, `TableModel`/`ColumnModel`, `TextInputModel`, `SelectModel`, `CheckboxModel`,
+`RadioGroupModel`, `AutoCompleteModel`, `DatePickerModel`, `DialogModel`, `CardModel`, `NavigationMenuModel`/
+`MenuItemModel`, `ContainerModel`, `TextModel`, `IconModel`, `ImageModel`, `LinkModel`, plus the
+`ShowDialogModel` association), and `.ServiceProxies` (`UserInterfacePackageExtensionModel`, which exposes the
+package's `ServiceProxies`).
 
 ## 2. Install identity
 
@@ -146,70 +154,7 @@ No bespoke mapping element types — UI plugs into the shared `IElementToElement
 `GetMapResponseMapping()` typed helpers), and `ModelDefinitionModel.Mapping`
 (`GetMapFromDTOMapping()`, keyed on `31b3d3a7-...`).
 
-## 8. Extension modules
-
-### `.Core`
-
-| Item | Value |
-|---|---|
-| NuGet PackageId | `Intent.Modules.Modelers.UI.Core` |
-| Intent module id | `Intent.Modelers.UI.Core` |
-| API namespace | `Intent.Modelers.UI.Core.Api` |
-
-The widget library — every concrete, renderable UI control, all implementing `IComponentModel`
-unless noted:
-
-**Field/input:** `AutoCompleteModel` (`ff1ddb80-...`), `ButtonModel` (`4474d808-...`),
-`CheckboxModel` (`be9ecdbd-...`), `DatePickerModel` (`9451fcdc-...`), `LinkModel` (`a274918b-...`),
-`RadioGroupModel` (`4af9a7f0-...`), `SelectModel` (`78e0bdf7-...`), `TextInputModel` (`4803bf60-...`).
-
-**Display/layout:** `TextModel` (`922150d2-...`), `IconModel` (`3c5f8ea8-...`), `ImageModel`
-(`329f635b-...`), `ContainerModel` (`b97ea181-...`).
-
-**Data:** `TableModel` (`eee93c29-...`, has `Columns`), `ColumnModel` (`d372c640-...`, **not**
-`IComponentModel` — a column descriptor, not a widget), `FormModel` (`1cfd2d9d-...`).
-
-**Navigation:** `NavigationMenuModel` (`d7282bf2-...`, has `MenuItems`), `MenuItemModel`
-(`adbf2fa8-...`, **not** `IComponentModel`; self-recursive via `NavigationItems`).
-
-**Card family** (`CardModel` `dfe420aa-...` + `Header`/`Content`/`Actions` singular optional part
-models `CardHeaderModel`/`CardContentModel`/`CardActionsModel` — part models excluded from
-`IComponentModel`).
-
-**Dialog family** (`DialogModel` `1260ae89-...`, implements `IComponentModel` but **not**
-`IDialogModel` — see §4 gap — + `TitleContainer`/`ContentContainer`/`ActionsContainer` part models
-`DialogTitleModel`/`DialogContentModel`/`DialogActionsModel`).
-
-A **fourth association**, owned by `.Core` (also directly under `Api/`): `ShowDialogModel`
-(`Show Dialog`, `2a309fb2-...`) — target end `IInvokableModel`, exposes `Mappings`.
-`ShowDialogSources(this IDialogModel)` is unreachable (see §4); `ShowDialogTargets(...)` overloads
-on `ComponentOperationModel`/`ComponentModel` do work.
-
-**Stereotype extensions** (one file per widget, `Get*`/`Has*`/`TryGet*` pattern, most also
-re-exposing `Secured`): `AutoCompleteModelStereotypeExtensions` (`Interaction`, `LabelAddon`),
-`ButtonModelStereotypeExtensions` (`Interaction`: `Type`/`Form`/`OnClick`/`LinkTo`/`Disabled`),
-`CheckboxModelStereotypeExtensions`, `DatePickerModelStereotypeExtensions`,
-`LinkModelStereotypeExtensions`, `RadioGroupModelStereotypeExtensions`,
-`SelectModelStereotypeExtensions` (adds `Options`/`Key`/`Value`/`OnSelected`),
-`TextInputModelStereotypeExtensions`, `FormModelStereotypeExtensions` (`OnSubmit`),
-`TableModelStereotypeExtensions` (`Interaction`: `OnRowClick`; `Pagination`),
-`MenuItemModelStereotypeExtensions` (`Secured` only).
-
-### `.ServiceProxies`
-
-| Item | Value |
-|---|---|
-| NuGet PackageId | `Intent.Modules.Modelers.UI.ServiceProxies` |
-| Intent module id | `Intent.Modelers.UI.ServiceProxies` |
-| API namespace | `Intent.Modelers.UI.ServiceProxies.Api` |
-| Depends on | `Intent.Modelers.Services`, `Intent.Modelers.Services.CQRS`, `Intent.Modelers.Types.ServiceProxies` |
-
-Thin by design — a single `UserInterfacePackageExtensionModel : UserInterfacePackageModel` adding
-a `ServiceProxies: IList<ServiceProxyModel>` accessor (from
-`Intent.Modelers.Types.ServiceProxies.Api`), so `CallServiceOperationActionModel` (§5) has
-something concrete to target.
-
-## 9. Worked snippet
+## 8. Worked snippet
 
 Registration binds the concrete, enumerable root type — `ComponentModel` — since there is no
 `GetIComponentModels()` provider; `IComponentModel` is a capability check, not an enumeration
@@ -261,5 +206,396 @@ namespace MyModule.FactoryExtensions
           var uiPackages = ui.GetUserInterfacePackageModels();
       }
   }
+}
+```
+
+## 9. Model API reference
+
+Every public type and member that this designer ships — extracted
+mechanically from source, not sampled. **Prefer this to reflecting over the assembly**
+(`Assembly.LoadFrom`, `GetProperties()`, decompiling the NuGet DLL): if a member is not listed here,
+it is not part of the version shown. If you are pinned to a different version and something seems
+missing, check that package's own XML docs or `Api/` source rather than guessing a member name.
+
+**How to read the stubs.** C#-style declarations; every member listed is `public`. A
+`// "Name" · guid` line above a type is its `SpecializationType` · `SpecializationTypeId` pair. Three
+things are stated once here instead of on every type:
+
+- **`// + common element members`** = `string Id`, `string Name`, `string Comment`, `IEnumerable<IStereotype> Stereotypes`, and `IElement InternalElement` — the raw SDK element, the escape hatch for anything not surfaced as a typed property. Also present on every model: `ToString()`, value equality over the wrapped element (`==`, `!=`, `Equals`, `GetHashCode`), the `SpecializationType`/`SpecializationTypeId` consts, and a constructor taking `(IElement element, ...)`.
+- **`Is<X>Model()` / `As<X>Model()`** — every element model `<X>Model` has `bool Is<X>Model(this ICanBeReferencedType)` and `<X>Model As<X>Model(this ICanBeReferencedType)` (returns `null` on a type mismatch) in a static `<X>ModelExtensions` class. They are omitted below unless that class holds more than these two. This is how you turn a raw reference into a typed model — `attribute.TypeReference.Element.AsClassModel()`. Prefer it to `new <X>Model(element)`: generated constructors throw on a specialization mismatch.
+- **`// + common association-end members`** = the `ITypeReference` surface (`Element` — the element this end points at — plus `IsNullable`, `IsCollection`, `GenericTypeParameters`, `Stereotypes`), and `string Id`, `Name`, `Comment`, `SpecializationType`, `SpecializationTypeId`, `bool IsNavigable`, `ITypeReference TypeReference` (the end itself), `IPackage Package`, `IElement InternalElement`, `IAssociationEnd InternalAssociationEnd`, `IAssociation InternalAssociation`, the owning association model as `Association`, `OtherEnd()`, `IsSourceEnd()`, `IsTargetEnd()` and `static Create(IAssociationEnd)`.
+
+`FolderModel`, `EnumModel`, `EnumLiteralModel` and `TypeDefinitionModel` come from
+`Intent.Modules.Common.Types.Api`, not from this designer. They, and the SDK interfaces every model
+returns (`IElement`, `ITypeReference`, `IStereotype`, `IElementMapping`, `IElementToElementMapping`,
+`IDesigner`), are listed once in `integration-recipe.md` §6.
+
+### 9.1 UI — `Intent.Modules.Modelers.UI` (source at `1.1.5`)
+
+```csharp
+namespace Intent.Modelers.UI.Api;
+
+public static class ApiMetadataDesignerExtensions
+{
+    const string UserInterfaceDesignerId = "f492faed-0665-4513-9853-5a230721786f";
+    static IDesigner UserInterface(this IMetadataManager metadataManager, IApplication application);
+    static IDesigner UserInterface(this IMetadataManager metadataManager, string applicationId);
+}
+
+public static class ApiMetadataPackageExtensions
+{
+    static IList<UserInterfacePackageModel> GetUserInterfacePackageModels(this IDesigner designer);
+    static bool IsUserInterfacePackageModel(this IPackage package);
+}
+
+public static class ApiMetadataProviderExtensions
+{
+    static IList<ComponentModel> GetComponentModels(this IDesigner designer);
+    static IList<ComponentViewModel> GetComponentViewModels(this IDesigner designer);
+    static IList<DiagramModel> GetDiagramModels(this IDesigner designer);
+    static IList<LayoutModel> GetLayoutModels(this IDesigner designer);
+    static IList<ModelDefinitionModel> GetModelDefinitionModels(this IDesigner designer);
+}
+
+// "Call Service Operation Action" · fe5a5cd8-aabd-472f-8d42-f5c233e658dc
+public class CallServiceOperationActionModel : IMetadataModel
+{
+    static CallServiceOperationActionModel CreateFromEnd(IAssociationEnd associationEnd);
+    string Id { get; }
+    CallServiceOperationActionSourceEndModel SourceEnd { get; }
+    CallServiceOperationActionTargetEndModel TargetEnd { get; }
+    IAssociation InternalAssociation { get; }
+}
+
+// "Call Service Operation Action Source End" · 936e090c-8408-429d-b2f6-2eb8deecc428
+public class CallServiceOperationActionSourceEndModel : CallServiceOperationActionEndModel { /* common association-end members */ }
+
+// "Call Service Operation Action Target End" · 475f0810-2b4a-40da-8eb8-697cb62f7dbe
+public class CallServiceOperationActionTargetEndModel : CallServiceOperationActionEndModel, IInvokableModel
+{
+    // + common association-end members
+    IEnumerable<IElementToElementMapping> Mappings { get; }
+}
+
+public class CallServiceOperationActionEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper { /* common association-end members */ }
+
+public static class CallServiceOperationActionModelAssociationExtensions
+{
+    static IList<CallServiceOperationActionTargetEndModel> CallServiceOperationActionTargets(this IProcessingHandlerModel model);
+    static IElementToElementMapping GetMapInvocationMapping(this CallServiceOperationActionTargetEndModel model);
+    static IElementToElementMapping GetMapResponseMapping(this CallServiceOperationActionTargetEndModel model);
+}
+
+// "Component" · b1c481e1-e91e-4c29-9817-00ab9cad4b6b
+public class ComponentModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IComponentModel, IHasFolder
+{
+    // + common element members
+    FolderModel Folder { get; }
+    IList<PropertyModel> Properties { get; }
+    IList<EventEmitterModel> EventEmitters { get; }
+    IList<ComponentOperationModel> Operations { get; }
+    ComponentViewModel View { get; }
+    IList<ModelDefinitionModel> ModelDefinitions { get; }
+}
+
+public static class ComponentModelStereotypeExtensions
+{
+    static Composable GetComposable(this ComponentModel model);
+    static bool HasComposable(this ComponentModel model);
+    static bool TryGetComposable(this ComponentModel model, out Composable stereotype);
+    static Dialog GetDialog(this ComponentModel model);
+    static bool HasDialog(this ComponentModel model);
+    static bool TryGetDialog(this ComponentModel model, out Dialog stereotype);
+    static Page GetPage(this ComponentModel model);
+    static bool HasPage(this ComponentModel model);
+    static bool TryGetPage(this ComponentModel model, out Page stereotype);
+    static Secured GetSecured(this ComponentModel model);
+    static IReadOnlyCollection<Secured> GetSecureds(this ComponentModel model);
+    static bool HasSecured(this ComponentModel model);
+    static bool TryGetSecured(this ComponentModel model, out Secured stereotype);
+    public class Composable
+    {
+        const string DefinitionId = "5a2ba6fc-8512-4801-8b14-9d532c9c2616";
+        string Name { get; }
+    }
+    public class Dialog
+    {
+        const string DefinitionId = "1f4165ee-41a0-4520-a193-9ae4d3413d1f";
+        string Name { get; }
+    }
+    public class Page
+    {
+        const string DefinitionId = "ea4adc09-8978-4ede-ba5f-265debb2b60c";
+        string Name { get; }
+        string Route();
+        string Title();
+    }
+    public class Secured
+    {
+        const string DefinitionId = "012f5173-6419-4006-a9a8-ab5c20b8a42e";
+        string Name { get; }
+        string Roles();
+        string Policy();
+    }
+}
+
+// "Component Operation" · e030c97a-e066-40a7-8188-808c275df3cb
+public class ComponentOperationModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference, IProcessingHandlerModel
+{
+    // + common element members
+    IEnumerable<string> GenericTypes { get; }
+    ITypeReference TypeReference { get; }
+    ITypeReference ReturnType { get; }
+    IList<ParameterModel> Parameters { get; }
+    IList<InvocationModel> Invocations { get; }
+    ReturnModel Return { get; }
+}
+
+// "Component View" · 624513a6-cba8-4dde-8ebe-6b19f00f0364
+public class ComponentViewModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+{
+    // + common element members
+    ITypeReference TypeReference { get; }
+}
+
+// "Composition" · 503b9ea9-4e8b-41d7-bbc6-92c97666c476
+public class CompositionModel : IMetadataModel
+{
+    static CompositionModel CreateFromEnd(IAssociationEnd associationEnd);
+    string Id { get; }
+    CompositionSourceEndModel SourceEnd { get; }
+    CompositionTargetEndModel TargetEnd { get; }
+    IAssociation InternalAssociation { get; }
+}
+
+// "Composition Source End" · e5e22007-149b-499c-b2e9-5c17064b606a
+public class CompositionSourceEndModel : CompositionEndModel { /* common association-end members */ }
+
+// "Composition Target End" · 15131ce2-31a6-461a-9889-42ec0f8f980b
+public class CompositionTargetEndModel : CompositionEndModel, IInvokableModel { /* common association-end members */ }
+
+public class CompositionEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper { /* common association-end members */ }
+
+// "Diagram" · 4912c89a-77eb-497e-a3f4-7408b6a20886
+public class DiagramModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
+{
+    // + common element members
+    FolderModel Folder { get; }
+}
+
+// "Display Component" · 866a90f7-4044-43b9-bb05-7270c7889796
+public class DisplayComponentModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IComponentModel, IHasTypeReference
+{
+    // + common element members
+    ITypeReference TypeReference { get; }
+}
+
+// "Event Emitter" · d6739ffc-30e6-4170-a105-bf28e69aa578
+public class EventEmitterModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+{
+    // + common element members
+    ITypeReference TypeReference { get; }
+    IList<ParameterModel> Parameters { get; }
+}
+
+public static class EventEmitterModelStereotypeExtensions
+{
+    static Bindable GetBindable(this EventEmitterModel model);
+    static bool HasBindable(this EventEmitterModel model);
+    static bool TryGetBindable(this EventEmitterModel model, out Bindable stereotype);
+    public class Bindable
+    {
+        const string DefinitionId = "12ba7bea-ceb9-44d4-8819-835fe36af7b3";
+        string Name { get; }
+    }
+}
+
+public class FolderExtensionModel : FolderModel
+{
+    // + everything inherited from FolderModel
+    IList<ComponentModel> Components { get; }
+    IList<LayoutModel> Layouts { get; }
+    IList<ModelDefinitionModel> ModelDefinitions { get; }
+    IList<DiagramModel> Diagrams { get; }
+    IList<TypeDefinitionModel> TypeDefinitions { get; }
+}
+
+namespace Intent.Modules.Modelers.UI.Api;
+
+// Marks the element as a reusable UI component, representing a piece of the user interface with its own logic, parameters, and rendering behavior.
+public interface IComponentModel : IElementWrapper, IMetadataModel { }
+
+// Auto-managed marker. Applied to Components that are not Pages or Dialogs. Used by Composition target filtering.
+public interface IComposableModel : IElementWrapper, IMetadataModel { }
+
+// Marks the component as a dialog (modal) opened from other UI, not via routing.
+public interface IDialogModel : IElementWrapper, IMetadataModel { }
+
+// Marks the element as directly callable.
+public interface IInvokableModel : IElementWrapper, IMetadataModel { }
+
+// Marks the operation as directly callable.
+public interface IInvokableServiceOperationModel : IElementWrapper, IMetadataModel { }
+
+// Marks the component as a routable page within the application.
+public interface IPageModel : IElementWrapper, IMetadataModel { }
+
+namespace Intent.Modelers.UI.Api;
+
+// "Invocation" · 18f87cd6-d8d8-4518-8931-58653d537467
+public class InvocationModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IInvokableModel, IHasTypeReference
+{
+    // + common element members
+    ITypeReference TypeReference { get; }
+    ITypeReference ResponseType { get; }
+}
+
+// "Layout Body" · 11636699-8bad-4693-8c15-8141bd66d04f
+public class LayoutBodyModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+{
+    // + common element members
+}
+
+// "Layout Footer" · 5d4fe8e9-2ccf-42ea-af60-04c6970c9ecb
+public class LayoutFooterModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+{
+    // + common element members
+}
+
+// "Layout Header" · a6c3a89e-5932-4ab6-a406-75444f05beee
+public class LayoutHeaderModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+{
+    // + common element members
+}
+
+// "Layout" · 776a9393-6b23-4a8c-8937-fd7e833fa0ef
+public class LayoutModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
+{
+    // + common element members
+    FolderModel Folder { get; }
+    LayoutHeaderModel Header { get; }
+    LayoutSiderModel Sider { get; }
+    LayoutBodyModel Body { get; }
+    LayoutFooterModel Footer { get; }
+    LayoutProfileMenuModel ProfileMenu { get; }
+    IList<PropertyModel> Properties { get; }
+    IList<ComponentOperationModel> Operations { get; }
+}
+
+// "Layout Profile Menu" · 2362db31-5a1f-4db1-b437-4b3b5a193ea4
+public class LayoutProfileMenuModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+{
+    // + common element members
+}
+
+// "Layout Sider" · c505f35f-7148-46a3-a812-d9f53a174490
+public class LayoutSiderModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+{
+    // + common element members
+}
+
+// "Model Definition" · bd3941b5-e3b3-4a40-96e6-b9c87cea0101
+public class ModelDefinitionModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
+{
+    // + common element members
+    FolderModel Folder { get; }
+    IEnumerable<string> GenericTypes { get; }
+    bool IsMapped { get; }
+    IElementMapping Mapping { get; }
+    IList<ConstructorModel> Constructors { get; }
+    IList<PropertyModel> Properties { get; }
+    IList<OperationModel> Operations { get; }
+}
+
+public static class ModelDefinitionModelExtensions
+{
+    static bool HasMapFromDTOMapping(this ModelDefinitionModel type);
+    static IElementMapping GetMapFromDTOMapping(this ModelDefinitionModel type);
+}
+
+// "Navigation" · 6d2b2070-c1cb-4cd2-88b4-4e5f8414bd9e
+public class NavigationModel : IMetadataModel
+{
+    static NavigationModel CreateFromEnd(IAssociationEnd associationEnd);
+    string Id { get; }
+    NavigationSourceEndModel SourceEnd { get; }
+    NavigationTargetEndModel TargetEnd { get; }
+    IAssociation InternalAssociation { get; }
+}
+
+// "Navigation Source End" · 97a3de8a-c9bf-4cf2-bc0a-b8692b02211b
+public class NavigationSourceEndModel : NavigationEndModel { /* common association-end members */ }
+
+// "Navigation Target End" · 2b191288-ecae-4743-b069-cbdd927ef349
+public class NavigationTargetEndModel : NavigationEndModel, IInvokableModel
+{
+    // + common association-end members
+    IList<ParameterModel> Parameters { get; }
+    IEnumerable<IElementToElementMapping> Mappings { get; }
+}
+
+public class NavigationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper { /* common association-end members */ }
+
+public static class NavigationModelAssociationExtensions
+{
+    static IList<NavigationTargetEndModel> NavigateToComponents(this ComponentModel model);
+    static IList<NavigationTargetEndModel> NavigateToComponents(this ComponentOperationModel model);
+    static IList<NavigationTargetEndModel> NavigateToComponents(this LayoutModel model);
+    static IList<NavigationTargetEndModel> NavigateToComponents(this LayoutHeaderModel model);
+    static IList<NavigationTargetEndModel> NavigateToComponents(this LayoutBodyModel model);
+    static IList<NavigationTargetEndModel> NavigateToComponents(this LayoutSiderModel model);
+    static IList<NavigationTargetEndModel> NavigateToComponents(this LayoutFooterModel model);
+    static IList<NavigationSourceEndModel> NavigateBackComponents(this IPageModel model);
+}
+
+// "Property" · 356fbe17-bc63-4e16-b915-feefbc063cbe
+public class PropertyModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+{
+    // + common element members
+    string Value { get; }
+    ITypeReference TypeReference { get; }
+}
+
+public static class PropertyModelStereotypeExtensions
+{
+    static Bindable GetBindable(this PropertyModel model);
+    static bool HasBindable(this PropertyModel model);
+    static bool TryGetBindable(this PropertyModel model, out Bindable stereotype);
+    static RouteParameter GetRouteParameter(this PropertyModel model);
+    static bool HasRouteParameter(this PropertyModel model);
+    static bool TryGetRouteParameter(this PropertyModel model, out RouteParameter stereotype);
+    static QueryParameter GetQueryParameter(this PropertyModel model);
+    static bool HasQueryParameter(this PropertyModel model);
+    static bool TryGetQueryParameter(this PropertyModel model, out QueryParameter stereotype);
+    public class Bindable
+    {
+        const string DefinitionId = "12ba7bea-ceb9-44d4-8819-835fe36af7b3";
+        string Name { get; }
+    }
+    public class RouteParameter
+    {
+        const string DefinitionId = "f324c4ea-bac2-450d-b1b1-cc7f09ca3472";
+        string Name { get; }
+    }
+    public class QueryParameter
+    {
+        const string DefinitionId = "5c99275d-be5b-4bc9-849a-a283cdb80b75";
+        string Name { get; }
+    }
+}
+
+// "Return" · 415ffab7-9865-4200-89a0-b592d24919dd
+public class ReturnModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+{
+    // + common element members
+}
+
+// "User Interface Package" · 911c35b4-4ba3-404c-a0c6-e5258e53333a
+public class UserInterfacePackageModel : IHasStereotypes, IMetadataModel
+{
+    // + Id, Name, Stereotypes
+    IPackage UnderlyingPackage { get; }
+    string FileLocation { get; }
+    IList<FolderModel> Folders { get; }
 }
 ```

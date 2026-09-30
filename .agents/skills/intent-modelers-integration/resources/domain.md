@@ -1,5 +1,5 @@
 ---
-contentHash: 1B06E1F04080DE4149591C5A7352A81F98E1FBA617ECE8FEFBD589C8DA006673
+contentHash: AFCDCD3DB80D3169106807E6902A4E6DDC277A3362F6BE7223E19AEA25D0A612
 ---
 # Domain Designer (`Intent.Modules.Modelers.Domain`)
 
@@ -22,8 +22,14 @@ mapping target, never the mapping author. It also defines no stereotypes of its 
 concerns (RDBMS columns/keys/indexes, Document DB providers) and validation constraints are added
 by separate `Intent.Metadata.*` modules layered on top (§6). Domain Events, Value Objects,
 Repositories, Domain Services and Stored Procedures are separate sibling modules that *extend*
-Domain's `FolderModel`/`DomainPackageModel` with their own element types (§8) — they are not part
+Domain's `FolderModel`/`DomainPackageModel` with their own element types (`domain-extensions.md`) — they are not part
 of the base designer.
+
+**Extension modules — read `domain-extensions.md` for these.** Each is installed separately, and its
+install identity and full model API are in that file, not this one: Domain Events (`DomainEventModel`,
+`DomainEventHandlerModel`), Repositories (`RepositoryModel`), Domain Services (`DomainServiceModel`),
+Stored Procedures (`StoredProcedureModel`, `StoredProcedureParameterModel`, `StoredProcedureInvocationModel`)
+and Value Objects (`ValueObjectModel`).
 
 ## 2. Install identity
 
@@ -129,21 +135,7 @@ Domain has no mapping/interaction designer surface of its own — no mapping can
 mapping element types. Domain is always the mapping **target**, never a mapping **author**; that
 role belongs to whichever designer maps onto it (e.g. Services' `.DomainInteractions`).
 
-## 8. Extension modules
-
-| Extension | NuGet PackageId | Intent module id | API namespace | Adds |
-|---|---|---|---|---|
-| Domain Events | `Intent.Modules.Modelers.Domain.Events` | `Intent.Modelers.Domain.Events` | `Intent.Modelers.Domain.Events.Api` | `DomainEventModel` (`0814e459-...`), `DomainEventHandlerModel` (`d80e61c5-...`, implements `IProcessingHandlerModel`), `PropertyModel` (`b4d69073-...`), plus four association families: `DomainEventAssociationModel`, `DomainEventHandlerAssociationModel`, `DomainEventGeneralizationModel`, `DomainEventOriginAssociationModel` |
-| Repositories | `Intent.Modules.Modelers.Domain.Repositories` | `Intent.Modelers.Domain.Repositories` | `Intent.Modelers.Domain.Repositories.Api` | `RepositoryModel` (`96ffceb2-...`, reuses Domain's own `OperationModel`), `PackageExtensionsModel`, `FolderExtensionsModel` |
-| Value Objects | `Intent.Modules.Modelers.Domain.ValueObjects` | `Intent.Modelers.Domain.ValueObjects` | `Intent.Modelers.Domain.ValueObjects.Api` | `ValueObjectModel` (`5fe6bb0a-...`, reuses Domain's own `AttributeModel`), `DomainPackageExtensionModel`, `FolderExtensionModel`. **Also defines its own stereotype**: `ValueObjectModelStereotypeExtensions.SerializationSettings` (`4ced3df6-...`) |
-| Domain Services | `Intent.Modelers.Domain.Services` ⚠️ **no `Modules.` segment** | `Intent.Modelers.Domain.Services` | `Intent.Modelers.Domain.Services.Api` | `DomainServiceModel` (`07f936ea-...`, reuses Domain's own `OperationModel`), `DomainPackageExtensionModel`, `FolderExtensionModel` |
-| Stored Procedures | `Intent.Modules.Modelers.Domain.StoredProcedures` | `Intent.Modules.Modelers.Domain.StoredProcedures` ⚠️ **keeps `Modules.` in BOTH module id and namespace, unlike all four siblings above** | `Intent.Modules.Modelers.Domain.StoredProcedures.Api` | `StoredProcedureModel` (`575edd35-...`, implements `IInvokableModel`), `StoredProcedureParameterModel`, `PackageExtensionModel`, `FolderElementExtensionModel`, plus association `StoredProcedureInvocationModel` (navigation directly under `Api/`, not `Api/Extensions/`) |
-
-This table is exactly why `SKILL.md`'s Must #6 / Must Not #5 exist: five sibling extension modules
-of the *same* designer, and no two of them are guaranteed to follow the same `Modules.`-segment
-convention. Always check the specific module's own `.csproj`/`.imodspec`.
-
-## 9. Worked snippet
+## 8. Worked snippet
 
 ```csharp
 using System.Collections.Generic;
@@ -203,3 +195,349 @@ namespace MyModule.FactoryExtensions
   }
 }
 ```
+
+## 9. Model API reference
+
+Every public type and member that this designer ships — extracted
+mechanically from source, not sampled. **Prefer this to reflecting over the assembly**
+(`Assembly.LoadFrom`, `GetProperties()`, decompiling the NuGet DLL): if a member is not listed here,
+it is not part of the version shown. If you are pinned to a different version and something seems
+missing, check that package's own XML docs or `Api/` source rather than guessing a member name.
+
+**How to read the stubs.** C#-style declarations; every member listed is `public`. A
+`// "Name" · guid` line above a type is its `SpecializationType` · `SpecializationTypeId` pair. Three
+things are stated once here instead of on every type:
+
+- **`// + common element members`** = `string Id`, `string Name`, `string Comment`, `IEnumerable<IStereotype> Stereotypes`, and `IElement InternalElement` — the raw SDK element, the escape hatch for anything not surfaced as a typed property. Also present on every model: `ToString()`, value equality over the wrapped element (`==`, `!=`, `Equals`, `GetHashCode`), the `SpecializationType`/`SpecializationTypeId` consts, and a constructor taking `(IElement element, ...)`.
+- **`Is<X>Model()` / `As<X>Model()`** — every element model `<X>Model` has `bool Is<X>Model(this ICanBeReferencedType)` and `<X>Model As<X>Model(this ICanBeReferencedType)` (returns `null` on a type mismatch) in a static `<X>ModelExtensions` class. They are omitted below unless that class holds more than these two. This is how you turn a raw reference into a typed model — `attribute.TypeReference.Element.AsClassModel()`. Prefer it to `new <X>Model(element)`: generated constructors throw on a specialization mismatch.
+- **`// + common association-end members`** = the `ITypeReference` surface (`Element` — the element this end points at — plus `IsNullable`, `IsCollection`, `GenericTypeParameters`, `Stereotypes`), and `string Id`, `Name`, `Comment`, `SpecializationType`, `SpecializationTypeId`, `bool IsNavigable`, `ITypeReference TypeReference` (the end itself), `IPackage Package`, `IElement InternalElement`, `IAssociationEnd InternalAssociationEnd`, `IAssociation InternalAssociation`, the owning association model as `Association`, `OtherEnd()`, `IsSourceEnd()`, `IsTargetEnd()` and `static Create(IAssociationEnd)`.
+
+`FolderModel`, `EnumModel`, `EnumLiteralModel` and `TypeDefinitionModel` come from
+`Intent.Modules.Common.Types.Api`, not from this designer. They, and the SDK interfaces every model
+returns (`IElement`, `ITypeReference`, `IStereotype`, `IElementMapping`, `IElementToElementMapping`,
+`IDesigner`), are listed once in `integration-recipe.md` §6.
+
+### 9.1 Domain — `Intent.Modules.Modelers.Domain` (source at `3.13.2`)
+
+```csharp
+namespace Intent.Modelers.Domain.Api;
+
+public static class ApiMetadataDesignerExtensions
+{
+    const string DomainDesignerId = "6ab29b31-27af-4f56-a67c-986d82097d63";
+    static IDesigner Domain(this IMetadataManager metadataManager, IApplication application);
+    static IDesigner Domain(this IMetadataManager metadataManager, string applicationId);
+}
+
+public static class ApiMetadataPackageExtensions
+{
+    static IList<DomainPackageModel> GetDomainPackageModels(this IDesigner designer);
+    static bool IsDomainPackageModel(this IPackage package);
+    static DomainPackageModel AsDomainPackageModel(this IPackage package);
+}
+
+public static class ApiMetadataProviderExtensions
+{
+    static IList<ClassModel> GetClassModels(this IDesigner designer);
+    static IList<CommentModel> GetCommentModels(this IDesigner designer);
+    static IList<DataContractModel> GetDataContractModels(this IDesigner designer);
+    static IList<DiagramModel> GetDiagramModels(this IDesigner designer);
+}
+
+namespace Intent.Modules.Modelers.Domain.Settings;
+
+public static class ModuleSettingsExtensions
+{
+    static DomainSettings GetDomainSettings(this IApplicationSettingsProvider settings);
+}
+
+public class DomainSettings : IGroupSettings
+{
+    string Id { get; }
+    string Title { get; set; }
+    ISetting GetSetting(string settingId);
+    AttributeNamingConventionOptions AttributeNamingConvention();
+    public class AttributeNamingConventionOptions
+    {
+        AttributeNamingConventionOptionsEnum AsEnum();
+        bool IsManual();
+        bool IsPascalCase();
+        bool IsCamelCase();
+    }
+    public enum AttributeNamingConventionOptionsEnum { Manual, PascalCase, CamelCase }
+    EntityNamingConventionOptions EntityNamingConvention();
+    public class EntityNamingConventionOptions
+    {
+        EntityNamingConventionOptionsEnum AsEnum();
+        bool IsManual();
+        bool IsPascalCase();
+        bool IsCamelCase();
+    }
+    public enum EntityNamingConventionOptionsEnum { Manual, PascalCase, CamelCase }
+    OperationNamingConventionOptions OperationNamingConvention();
+    public class OperationNamingConventionOptions
+    {
+        OperationNamingConventionOptionsEnum AsEnum();
+        bool IsManual();
+        bool IsPascalCase();
+        bool IsCamelCase();
+    }
+    public enum OperationNamingConventionOptionsEnum { Manual, PascalCase, CamelCase }
+}
+
+namespace Intent.Modelers.Domain.Api;
+
+// "Association" · eaf9ed4e-0b61-4ac1-ba88-09f912c12087
+public class AssociationModel : IMetadataModel
+{
+    static AssociationModel CreateFromEnd(IAssociationEnd associationEnd);
+    string Id { get; }
+    AssociationSourceEndModel SourceEnd { get; }
+    AssociationTargetEndModel TargetEnd { get; }
+    IAssociation InternalAssociation { get; }
+    AssociationType AssociationType { get; }
+}
+
+public class AssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
+{
+    // + common association-end members
+    string Value { get; }
+    ClassModel Class { get; }
+    Multiplicity Multiplicity { get; }
+}
+
+// "Association Source End" · 8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58
+public class AssociationSourceEndModel : AssociationEndModel { /* common association-end members */ }
+
+// "Association Target End" · 0a66489f-30aa-417b-a75d-b945863366fd
+public class AssociationTargetEndModel : AssociationEndModel { /* common association-end members */ }
+
+public enum AssociationType { Association, Aggregation, Composition, Generalization }
+
+// "Attribute" · 0090fb93-483e-41af-a11d-5ad2dc796adf
+public class AttributeModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+{
+    // + common element members
+    string Value { get; }
+    ITypeReference TypeReference { get; }
+    ITypeReference Type { get; }
+    ClassModel Class { get; }
+}
+
+// "Class Constructor" · dec2bd12-4699-4f45-8ec9-3b62dc692d2b
+public class ClassConstructorModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
+{
+    // + common element members
+    ClassModel ParentClass { get; }
+    IList<ParameterModel> Parameters { get; }
+    bool IsMapped { get; }
+    IElementMapping Mapping { get; }
+}
+
+public static class ClassConstructorModelExtensions
+{
+    static bool HasMapConstructorMapping(this ClassConstructorModel type);
+    static IElementMapping GetMapConstructorMapping(this ClassConstructorModel type);
+}
+
+// "Class" · 04e12b51-ed12-42a3-9667-a6aa81bb6d10
+public class ClassModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasFolder<IFolder>, IHasName, IElementWrapper
+{
+    // + common element members
+    string UniqueKey { get; }
+    FolderModel Folder { get; }
+    bool IsAbstract { get; }
+    IEnumerable<string> GenericTypes { get; }
+    ClassModel ParentClass { get; }
+    ITypeReference ParentClassTypeReference { get; }
+    IEnumerable<ClassModel> ChildClasses { get; }
+    IElementApplication Application { get; }
+    IList<ClassConstructorModel> Constructors { get; }
+    IList<AttributeModel> Attributes { get; }
+    IList<OperationModel> Operations { get; }
+    bool IsSubclassOf(ClassModel @class);
+    bool IsSuperclassOf(ClassModel @class);
+    IEnumerable<ClassModel> GetTypesInHierarchy();
+    IEnumerable<AssociationEndModel> AssociatedClasses { get; set; }
+}
+
+// "Comment Association" · 5264c135-e856-468d-8bd7-154b75842256
+public class CommentAssociationModel : IMetadataModel
+{
+    static CommentAssociationModel CreateFromEnd(IAssociationEnd associationEnd);
+    string Id { get; }
+    CommentSourceEndModel SourceEnd { get; }
+    CommentTargetEndModel TargetEnd { get; }
+    IAssociation InternalAssociation { get; }
+}
+
+public class CommentAssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper { /* common association-end members */ }
+
+// "Comment Source End" · 7e98213c-4a9c-4d6f-98fc-f185948cc9e8
+public class CommentSourceEndModel : CommentAssociationEndModel { /* common association-end members */ }
+
+// "Comment Target End" · b7edce45-ccf0-47ed-b79f-86d5145c9f62
+public class CommentTargetEndModel : CommentAssociationEndModel { /* common association-end members */ }
+
+// "Comment" · c4c0c77f-720b-4e91-9c48-b58d2164d30a
+public class CommentModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasName, IElementWrapper
+{
+    // + common element members
+    FolderModel Folder { get; }
+}
+
+// "Data Contract Generalization" · 4199ae15-0ecc-4086-82f3-bfa885c9d3e8
+public class DataContractGeneralizationModel : IMetadataModel
+{
+    static DataContractGeneralizationModel CreateFromEnd(IAssociationEnd associationEnd);
+    string Id { get; }
+    DataContractGeneralizationSourceEndModel SourceEnd { get; }
+    DataContractGeneralizationTargetEndModel TargetEnd { get; }
+    IAssociation InternalAssociation { get; }
+}
+
+// "Data Contract Generalization Source End" · 12c2ffdc-9a54-4e99-9e09-a441fa260bef
+public class DataContractGeneralizationSourceEndModel : DataContractGeneralizationEndModel { /* common association-end members */ }
+
+// "Data Contract Generalization Target End" · 4ea029c6-e963-46c7-8d2f-e4ea73e05a07
+public class DataContractGeneralizationTargetEndModel : DataContractGeneralizationEndModel { /* common association-end members */ }
+
+public class DataContractGeneralizationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper { /* common association-end members */ }
+
+// "Data Contract" · 4464fabe-c59e-4d90-81fc-c9245bdd1afd
+public class DataContractModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
+{
+    // + common element members
+    FolderModel Folder { get; }
+    IEnumerable<string> GenericTypes { get; }
+    ITypeReference TypeReference { get; }
+    ITypeReference BaseType { get; }
+    DataContractModel BaseDataContract { get; }
+    IList<AttributeModel> Attributes { get; }
+}
+
+// "Diagram" · 4d66fecd-e9b8-436f-aa50-c59040ad0879
+public class DiagramModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
+{
+    // + common element members
+    FolderModel Folder { get; }
+}
+
+// "Domain Package" · 1a824508-4623-45d9-accc-f572091ade5a
+public class DomainPackageModel : IHasStereotypes, IMetadataModel
+{
+    // + Id, Name, Stereotypes
+    IPackage UnderlyingPackage { get; }
+    string FileLocation { get; }
+    IList<ClassModel> Classes { get; }
+    IList<CommentModel> Comments { get; }
+    IList<DiagramModel> Diagrams { get; }
+    IList<EnumModel> Enums { get; }
+    IList<FolderModel> Folders { get; }
+    IList<DataContractModel> DomainContracts { get; }
+    IList<DataContractModel> DomainObjects { get; }
+    IList<TypeDefinitionModel> Types { get; }
+}
+
+public static class AssociationModelAssociationExtensions
+{
+    static IList<AssociationTargetEndModel> AssociatedToClasses(this ClassModel model);
+    static IList<AssociationSourceEndModel> AssociatedFromClasses(this ClassModel model);
+    static IList<AssociationEndModel> AssociationEnds(this ClassModel model);
+}
+
+public static class ClassModelAssociationExtensions
+{
+    static bool IsAggregateRoot(this ClassModel classModel);  // Is the ClassModel an Aggregate Root? An Aggregate Root is owned by nothing and can be instantiated.
+}
+
+public static class CommentAssociationModelAssociationExtensions
+{
+    static IList<CommentTargetEndModel> CommentedClasses(this CommentModel model);
+    static IList<CommentSourceEndModel> AssociatedComments(this ClassModel model);
+    static IList<CommentSourceEndModel> AssociatedComments(this CommentModel model);
+    static IList<CommentAssociationEndModel> CommentAssociationEnds(this CommentModel model);
+}
+
+public static class DataContractGeneralizationModelAssociationExtensions
+{
+    static IList<DataContractGeneralizationTargetEndModel> Generalizations(this DataContractModel model);
+    static IList<DataContractGeneralizationSourceEndModel> Specializations(this DataContractModel model);
+    static IList<DataContractGeneralizationEndModel> DataContractGeneralizationEnds(this DataContractModel model);
+}
+
+public static class GeneralizationModelAssociationExtensions
+{
+    static IList<GeneralizationTargetEndModel> Generalizations(this ClassModel model);
+    static IList<GeneralizationSourceEndModel> Specializations(this ClassModel model);
+    static IList<GeneralizationEndModel> GeneralizationEnds(this ClassModel model);
+}
+
+public class FolderExtensionModel : FolderModel
+{
+    // + everything inherited from FolderModel
+    IList<ClassModel> Classes { get; }
+    IList<TypeDefinitionModel> Types { get; }
+    IList<EnumModel> Enums { get; }
+    IList<CommentModel> Comments { get; }
+    IList<DiagramModel> Diagrams { get; }
+    IList<DataContractModel> DomainContracts { get; }
+}
+
+// "Generalization" · 5de35973-3ac7-4e65-b48c-385605aec561
+public class GeneralizationModel : IMetadataModel
+{
+    static GeneralizationModel CreateFromEnd(IAssociationEnd associationEnd);
+    string Id { get; }
+    GeneralizationSourceEndModel SourceEnd { get; }
+    GeneralizationTargetEndModel TargetEnd { get; }
+    IAssociation InternalAssociation { get; }
+}
+
+public class GeneralizationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper { /* common association-end members */ }
+
+// "Generalization Source End" · 8190bf43-222c-4b53-8a44-14626efe3574
+public class GeneralizationSourceEndModel : GeneralizationEndModel { /* common association-end members */ }
+
+// "Generalization Target End" · 4686cc1d-b4d8-4b99-b45b-f77bd5496946
+public class GeneralizationTargetEndModel : GeneralizationEndModel { /* common association-end members */ }
+
+public interface IStaticConstructorModel : IElementWrapper, IMetadataModel { }
+
+public enum Multiplicity { ZeroToOne, One, Many }
+
+// "Operation" · e042bb67-a1df-480c-9935-b26210f78591
+public class OperationModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+{
+    // + common element members
+    ITypeReference TypeReference { get; }
+    bool IsMapped { get; }
+    IElementMapping Mapping { get; }
+    ITypeReference ReturnType { get; }
+    bool IsAbstract { get; }
+    bool IsStatic { get; }
+    ClassModel ParentClass { get; }
+    IList<ParameterModel> Parameters { get; }
+    IEnumerable<string> GenericTypes { get; }
+}
+
+public static class OperationModelExtensions
+{
+    static bool HasMapOperationMapping(this OperationModel type);
+    static IElementMapping GetMapOperationMapping(this OperationModel type);
+}
+
+// "Parameter" · c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b
+public class ParameterModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+{
+    // + common element members
+    string Value { get; }
+    ITypeReference TypeReference { get; }
+    ITypeReference Type { get; }
+    IEnumerable<string> GenericTypes { get; }
+}
+```
+
+### Name collisions to alias
+
+- **`AttributeModel`, `OperationModel` and `ParameterModel` exist in both `Intent.Modelers.Domain.Api` and `Intent.Modules.Common.Types.Api`, with the same `SpecializationTypeId`s.** Importing both namespaces makes the type names *and* their `As…Model()` extensions ambiguous. Import only the one you mean, or alias one of them.
