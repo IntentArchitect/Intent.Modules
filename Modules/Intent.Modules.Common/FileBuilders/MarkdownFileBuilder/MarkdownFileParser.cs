@@ -8,7 +8,10 @@ internal static partial class MarkdownFileParser
     [GeneratedRegex(@"^(#{1,6})\s+(.+)$")]
     private static partial Regex HeadingRegex();
 
-    [GeneratedRegex(@"^(\s*)([-*+])\s*(.+)$")]
+    // The whitespace after the bullet is REQUIRED (\s+, not \s*). With \s* a paragraph opening
+    // with emphasis - "**Note** that ..." or "*pointer* is ..." - matches, the leading asterisk is
+    // consumed as the bullet marker, and the line is re-emitted as "- *Note** that ...".
+    [GeneratedRegex(@"^(\s*)([-*+])\s+(.+)$")]
     private static partial Regex UnorderedListRegex();
 
     [GeneratedRegex(@"^(\s*)\d+\.\s+(.+)$")]

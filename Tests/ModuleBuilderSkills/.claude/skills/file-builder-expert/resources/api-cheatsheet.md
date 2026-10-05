@@ -1,5 +1,5 @@
 ---
-contentHash: F37D47E397E887DAA95574D78A5010C2040FE0B8B6DBF27BD9D35F753A55B46C
+contentHash: 068351468D7344C124B9E3E8D0B73D8F185A12734F0E26F45E179984F2C7849B
 ---
 # File Builder API Cheatsheet
 
@@ -21,7 +21,8 @@ For full patterns with rules, read the files in `resources/patterns/` before gen
 - [Template Contract](#template-contract)
 - [Control Flow](#control-flow)
 - [Advanced Types](#advanced-types)
-- --
+
+---
 
 ## File Setup
 
@@ -30,7 +31,7 @@ For full patterns with rules, read the files in `resources/patterns/` before gen
 CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath(), this)
 ```
 
-- --
+---
 
 ## Namespaces
 
@@ -60,7 +61,7 @@ Prefer `UseType("Namespace.Type")` when the namespace should only be introduced 
 
 > **Builder inference rule**: `UseType(...)` works because the builder tracks the type reference and auto-introduces the namespace. Raw strings are opaque, including return/parameter type strings.
 
-- --
+---
 
 ## Type Declarations
 
@@ -71,7 +72,7 @@ Prefer `UseType("Namespace.Type")` when the namespace should only be introduced 
 .AddEnum("MyEnum", @enum => { @enum.AddLiteral("Active"); })
 ```
 
-- --
+---
 
 ## Members
 
@@ -95,7 +96,7 @@ Prefer `UseType("Namespace.Type")` when the namespace should only be introduced 
 @class.AddProperty("ILogger", "_logger", p => p.PrivateReadOnly());
 ```
 
-- --
+---
 
 ## Model & Type Integration
 
@@ -159,7 +160,7 @@ var dtoType = GetTypeName(MyDtoTemplate.TemplateId, Model)
 var cancellationTokenType = UseType("System.Threading.CancellationToken");
 ```
 
-- --
+---
 
 ## Advanced Expressions
 
@@ -192,7 +193,7 @@ method.AddStatement(new CSharpStatement("services")
 // CSharpMethodChainStatement is [Obsolete] and must not be used.
 ```
 
-- --
+---
 
 ## Build Lifecycle Hooks
 
@@ -213,7 +214,7 @@ method.AddStatement(new CSharpStatement("services")
 
 > See `resources/patterns/lifecycle-hooks.cs` for priority bands, factory extension patterns, and FindMethod usage.
 
-- --
+---
 
 ## Top-Level Statements
 
@@ -235,7 +236,7 @@ var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
   .CompleteBuild();
 ```
 
-- --
+---
 
 ## Template Contract
 
@@ -251,7 +252,7 @@ protected override CSharpFileConfig DefineFileConfig() => CSharpFile.GetConfig()
 public override string TransformText() => CSharpFile.ToString();
 ```
 
-- --
+---
 
 ## Control Flow
 
@@ -290,7 +291,7 @@ method.AddStatement(new CSharpStatement("builder")
 method.AddAssignmentStatement("var result", new CSharpStatement("await svc.GetAsync()"));
 ```
 
-- --
+---
 
 ## Advanced Types
 

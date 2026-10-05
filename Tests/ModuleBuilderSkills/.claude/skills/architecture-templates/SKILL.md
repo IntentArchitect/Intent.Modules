@@ -2,7 +2,7 @@
 name: architecture-templates
 description: "Build or extend an Architecture Template — the component/module picker shown when creating a new application — and its companion metadata application that pre-seeds new applications with designer content (packages, folders, Output Anchors). USE ONLY WHEN asked to create, extend, or fix an architecture template, or to seed default designer metadata for one. DO NOT USE FOR a 'Module Building' template (a different Template Type that scaffolds a module project, not an app) or day-to-day module development itself (see module-building-strategies). REQUIRES the Intent Application Template Builder designer, in a new Package."
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.ArchitectureTemplates_SkillMd_Agents
-contentHash: FDA2BE13598EB16A593075E55855365851BBDFB7023A45800D0B21A56696A68D
+contentHash: 58DC358DC27282EFB569E90F70C8C7DEFFEFCB21B046FDB7DF4A753868A741EC
 ---
 # Architecture Templates
 
@@ -58,7 +58,7 @@ The template above only decides *which modules* install. To make a freshly creat
 
 Intent Architect avoids duplicating elements: for each element in the `.installation.config`, it first tries to match an existing element by `id`/`externalReference`, then falls back to matching by name + folder path; on a match it merges child elements recursively using the same logic. Every installed element gets a **new** id, with the source id preserved in `externalReference` so this correlation keeps working across installs.
 
-- *For a plain Module** (not an architecture template), metadata installation only happens on **first install** — never on upgrade or reinstall — so a user who deleted the seeded metadata doesn't get it forced back.
+**For a plain Module** (not an architecture template), metadata installation only happens on **first install** — never on upgrade or reinstall — so a user who deleted the seeded metadata doesn't get it forced back.
 
 ### What not to export
 

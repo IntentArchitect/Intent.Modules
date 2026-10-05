@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "type": "command",
+        "bash": "dotnet run .github/hooks/gate/gate.cs -- warm",
+        "powershell": "dotnet run .github/hooks/gate/gate.cs -- warm"
+      }
+    ],
+    "preToolUse": [
+      {
+        "type": "command",
+        "bash": "dotnet run .github/hooks/gate/gate.cs --no-build -- guard-write --harness github; test $? -eq 0 && exit 0 || exit 2",
+        "powershell": "dotnet run .github/hooks/gate/gate.cs --no-build -- guard-write --harness github; if ($LASTEXITCODE -ne 0) { exit 2 }"
+      }
+    ],
+    "agentStop": [
+      {
+        "type": "command",
+        "bash": "dotnet run .github/hooks/gate/gate.cs --no-build -- close-out --harness github; test $? -eq 0 && exit 0 || exit 2",
+        "powershell": "dotnet run .github/hooks/gate/gate.cs --no-build -- close-out --harness github; if ($LASTEXITCODE -ne 0) { exit 2 }"
+      }
+    ]
+  }
+}

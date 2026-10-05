@@ -2,7 +2,6 @@ using System.Reflection;
 using Accelerators.Api.Filters;
 using Accelerators.Application;
 using Accelerators.Domain.Common.Exceptions;
-using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using Intent.RoslynWeaver.Attributes;
 using Microsoft.Extensions.Options;

@@ -1,5 +1,5 @@
 ---
-contentHash: 2933927CAAC2A485C83F8C02FE5708852B9734411F779F2A73227EA1558AB566
+contentHash: FA62358193DEC5C8E3A35AD7C1D0C33566D670A0C0B09CFC65FD7AD57271D62F
 ---
 # Add Designer Extension — Workflow & Details
 
@@ -19,7 +19,7 @@ contentHash: 2933927CAAC2A485C83F8C02FE5708852B9734411F779F2A73227EA1558AB566
 
 You need the `typeId` of the element or package you are extending. Never guess.
 
-- *Option A — MCP lookup:**
+**Option A — MCP lookup:**
 
 ```json
 find_designer_elements(
@@ -33,8 +33,7 @@ find_designer_elements(
 
 The result's `id` field is the typeId.
 
-- *Option B — Generated C# constant:**
-
+**Option B — Generated C# constant:**
 Open `Api/<TypeName>Model.cs` in the target module and read `SpecializationTypeId`.
 
 ### Step 2 — Find or Create the Designer Settings Node
@@ -48,11 +47,11 @@ In your module's Module Builder designer, find the `Designer Settings` node that
 
 ### Step 3 — Create the Extension Element
 
-- *For a Package Extension:**
+**For a Package Extension:**
 
 Create a `Package Extension` element under the `Designer Settings` node. Set its type reference to the foreign package type ID found in Step 1.
 
-- *For an Element Extension:**
+**For an Element Extension:**
 
 Create an `Element Extension` element under the `Designer Settings` node. Set its type reference to the foreign element type ID found in Step 1.
 
@@ -60,7 +59,8 @@ Apply two stereotypes (required):
 
 - `Type Reference Extension Settings` with `Mode = Inherit`
 - `Extension Settings`
-- *For an Association Extension:**
+
+**For an Association Extension:**
 
 Create an `Association Extension` element. Under it, create either `Association Source End Extension` or `Association Target End Extension` children (whichever end needs the menu). Apply `Association End Extension Settings` to each end.
 
@@ -68,17 +68,22 @@ Create an `Association Extension` element. Under it, create either `Association 
 
 Under the extension element (or under the association end extension), create a `[context menu]` child, then under it:
 
-- *Element Creation Option** — when the option creates a child element:
+**Element Creation Option** — when the option creates a child element:
+
 - Set type reference to the new element's specialization type ID
 - Apply `Option Settings` stereotype:
   - `Default Name` — e.g., `NewMyElement`
   - `Allow Multiple` — `true` / `false`
   - `Shortcut` — e.g., `ctrl + shift + m` (optional)
   - `Menu Group` — integer; same number = visually grouped together
-- *Association Creation Option** — when the option draws an association:
+
+**Association Creation Option** — when the option draws an association:
+
 - Set type reference to the **target end** of the new association type
 - Apply `Option Settings` stereotype with same fields as above
-- *Mapping Option** — when the option opens a mapping dialog:
+
+**Mapping Option** — when the option opens a mapping dialog:
+
 - Set type reference to the `Mapping Settings` definition
 - Apply `Option Settings` with `Shortcut`
 

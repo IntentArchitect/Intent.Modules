@@ -3,7 +3,7 @@ name: add-association-type
 description: "Define a brand-new Association Settings type — source/target ends, target types, navigability, traits, mapping options — in the Module Builder designer. USE ONLY WHEN a new kind of association must be drawable between two element types that no existing association type covers. DO NOT USE FOR adding a context-menu extension to an existing foreign element or association (see add-designer-extension). REQUIRES the target element type GUIDs (typeId) for both ends already identified."
 argument-hint: "[association name, source element type, target element type]"
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_SkillMd_Agents
-contentHash: 7F0741B3C029361C22B4010A0201B198E1169D1067FDEC116FC9622A816B280A
+contentHash: 317753B6A3C85BFB6DD77C6E2B03CC0E799D363E904DBE7266A44FA619195A52
 ---
 # Add Association Type
 
@@ -26,8 +26,8 @@ Create a new `Association Settings` definition in the Module Builder designer, c
 5. Apply traits (`[Processing Action]` / `[Processing Handler]`) on target end if needed for mappings.
 6. Wire creation option to source element/package extension context menu.
 7. Run Software Factory and verify generated C# models compile.
-- *Package settings are the companion step to linking `Designer Settings`.** Linking the extension to a
 
+**Package settings are the companion step to linking `Designer Settings`.** Linking the extension to a
 foreign designer says *what* you are extending; two properties on the owning package's `Module Settings`
 decide whether any of it actually ships, and where it lands:
 

@@ -36,7 +36,6 @@ return "";</displayFunction>
       <optionsSource>n/a</optionsSource>
     </property>
     <property id="b928f640-5dfd-4676-b8c9-4aadac826d18">
-      <comment />
       <name>Include by Default</name>
       <type>string</type>
       <controlType>checkbox</controlType>

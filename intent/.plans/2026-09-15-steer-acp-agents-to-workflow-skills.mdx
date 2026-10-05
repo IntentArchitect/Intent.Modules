@@ -1,0 +1,810 @@
+# The agent gate — making module-building agents follow the workflow skills
+
+## What this is
+
+`Intent.ModuleBuilder.AI.Workflow` bundles four process skills — `module-context-capture`,
+`module-version-increment`, `module-docs-chore`, `module-dependency-audit` — plus the always-on
+`module-building-workflow.instructions.md`. The content is good. Agents read it and skip it anyway.
+
+This document records the **agent gate** built to fix that: what it does, why each decision went the
+way it did, what is proven versus assumed, and what remains open. It began as a plan and is now a
+record of what shipped — where a decision was reversed during implementation, the final position is
+stated directly rather than narrated as history, except where the reversal itself is the durable
+lesson.
+
+<Callout id="discovery-solved" tone="success" title="The discovery half was already solved separately">
+
+The original diagnosis was lazy skill discovery: the bundle was emitted to
+`Modules/.agents|.claude|.opencode/`, one level below the repository root, so nested skills only
+loaded *after* the agent touched a file under `Modules/` — by which point the turn-one decisions
+they govern were already made.
+
+Fixed by relocating the bundle to the repository root (commit `fe055426d`). Skills now appear in the
+startup manifest. Everything below is the harder half: the agent *has* the instructions and still
+does not follow them.
+
+</Callout>
+
+<Table
+  id="failures"
+  caption="Observed failures — all silent, none caught by a green build"
+  columns={["Failure", "Why nothing catches it"]}
+  rows={[
+    ["Version not incremented", "A module rebuilt at an already-published version is ignored in favour of the published copy — work gets verified against the old behaviour with no sign it did"],
+    ["Version incremented twice", "Phantom bumps (`pre.4` → `pre.5` → `pre.6`) for one line of work"],
+    ["Wrong version scheme", "Pre-release configured, but a plain `1.0.1` set instead of `1.0.1-pre.0`"],
+    ["Intent metadata hand-edited", "Corrupts state the Software Factory depends on; no regeneration puts it right"],
+    ["`modules.config` hand-edited", "Corrupts the application's module state"],
+    ["Dependencies wrong or missing", "Compiles perfectly, fails at install — in a consumer's application, not yours"],
+    ["Docs / `CONTEXT.md` left behind", "Nothing observes it at all"],
+    ["Icon missing, or the font-awesome shortcut taken", "Nothing observes it"]
+  ]}
+/>
+
+## Why hooks, and why deterministic ones
+
+Anthropic's own memory documentation states the thesis plainly:
+
+> "Claude treats them as context, **not enforced configuration**. To block an action regardless of
+> what Claude decides, use a PreToolUse hook instead."
+
+The checks that matter here are answerable from files already on disk — no model, no network.
+*Did the version move? Is this path Intent's own metadata? Does the manifest declare what the code
+references?* Those are facts, not judgments.
+
+<Callout id="no-nagging" tone="decision" title="The governing constraint: a hook must never nag">
+
+The rejected design was a check on every file edit asking whether the agent had loaded the relevant
+skill. Verbatim from the review: *"Definitely don't want a ton of fine-grain events that will ask the
+AI (did you load the skill… did you load the skill…) that will cause huge token waste and will just
+fill the context window up and cause the AI to do stupid stuff."*
+
+What makes the current design compatible with that is a documented Claude Code behaviour: **an
+`allow` decision's reason is never injected into the model's context.** A silent pass costs zero
+tokens. The cost is per-*complaint*, not per-invocation.
+
+So no hook here ever asks "did you check the skill?" Each one either stays completely silent or
+states the specific thing that is wrong.
+
+</Callout>
+
+## The design
+
+### Three commands, three moments
+
+<Table
+  id="commands"
+  caption="Each fires at the one moment it can reach a verdict"
+  columns={["Command", "Fires", "Decides"]}
+  rows={[
+    ["`guard-write`", "Before any Write/Edit", "Is this path Intent's own metadata?"],
+    ["`guard-version`", "Before a designer script sets `Version`", "Is this specific version change legal?"],
+    ["`close-out`", "End of turn", "Which Phase 4 chores were skipped?"]
+  ]}
+/>
+
+### `guard-write` protects metadata, never generated output
+
+This is the single most consequential decision in the module, and it was got wrong first.
+
+<Callout id="guard-scope" tone="decision" title="Metadata is the target. Generated output is deliberately not covered.">
+
+The rule is that **`managed-files.xml` must not be touched**, and more broadly that all `intent/**`
+metadata is changed through the Intent MCP server or a skill, never by hand. It was first implemented
+as *"nothing **listed in** `managed-files.xml` may be touched"* — the manifest read as an index of
+protected paths rather than as a protected file. That is close to the inverse of the rule.
+
+Measured against the real rule, the original guard **permitted every file it should have denied**:
+
+| Path | Should be | Original behaviour |
+|---|---|---|
+| `*.application.managed-files.xml` | deny | **allow** |
+| `*.application.config` | deny | **allow** |
+| `Intent.Metadata/**` designer XML | deny | **allow** |
+| `modules.config` | deny | deny |
+| generated output, scaffolds, release notes, `.csproj` | allow | **deny** |
+
+Across a full session of real use the old scope produced **five false positives and not one true
+positive**. Every exemption list it accumulated — `MergeOwnedSuffixes`,
+`CoOwnedScaffoldTemplateIdPrefixes`, `SeededOnceTemplateIds` — was discovered by the gate blocking
+real work. A rule that needs a growing list of exceptions found by being wrong in production is aimed
+at the wrong thing, not merely tuned too tightly.
+
+Metadata is the right target because it is **high precision by construction**: every legitimate
+change there has a proper mechanism, so a denial can always say where to go instead of only saying
+no. Editing generated output is usually merely futile — the next run overwrites it — whereas editing
+metadata corrupts state no regeneration repairs. `ManagedFilesGuard` and all three lists are deleted;
+`IntentMetadataGuard` replaces them.
+
+</Callout>
+
+<Table
+  id="guard-write-scope"
+  caption="guard-write — the whole of it"
+  density="compact"
+  columns={["Denied — use the Intent MCP server or a skill", "Allowed"]}
+  rows={[
+    ["`*.application.config`", "generated output of any kind"],
+    ["`*.application.managed-files.xml`", "`release-notes.md`, `CONTEXT.md`, `docs/README.md`"],
+    ["`*.application.output.config.xml`", "scaffolded `*TemplatePartial.cs` / `*TemplateRegistration.cs`"],
+    ["`*.application.deviations.log.xml`", "`.csproj`, including package versions"],
+    ["`modules.config`", "`.claude/settings.json` (this module merges into it)"],
+    ["anything under `Intent.Metadata/` or `.intent/`", "everything else — silently, zero tokens"]
+  ]}
+/>
+
+<Callout id="imodspec-scope" tone="warning" title="The .imodspec is a deliberate middle case — field-scoped, not file-scoped">
+
+`.imodspec` is **not** metadata: parts are Software-Factory-managed and parts are hand-maintained.
+Three edits are legitimate and must stay possible — a **version downgrade** (the Software Factory
+will not do it), **`<dependency>`** entries, and **`<tags>`**.
+
+`<summary>` and `<description>` are denied, because the Software Factory overwrites both from the
+Application Settings page on every run, discarding a manual edit *without an error*. The denial names
+that page as the place to make the change, which is why this is the best-worded message in the gate
+and the model the others should follow.
+
+This is the one check that reasons about which field an edit touches rather than which file — more
+work, and more room to get wrong, but a file-scoped rule here would be wrong in both directions.
+
+</Callout>
+
+### `guard-version` — a verdict, not a reminder
+
+The module version has exactly one scriptable signature, confirmed against the live model:
+
+```js
+pkg.ensureStereotype("Module Settings").setProperty("Version", "1.0.0-pre.9")
+```
+
+Hook matchers accept MCP tool names, and `tool_input` carries the full tool arguments — so the hook
+matches `run_designer_script` specifically and then inspects the script text. Every designer script
+that is not setting a version passes silently and invisibly.
+
+<Checklist
+  id="guard-version-logic"
+  items={[
+    { id: "gv1", label: "Extract the new version from the script text" },
+    { id: "gv2", label: "Resolve `applicationId` → module folder via `*/*.application.config`" },
+    { id: "gv3", label: "Read that module's current `.imodspec` version" },
+    { id: "gv4", label: "**Downgrade guard** — deny if the new version doesn't sort strictly higher by semver precedence" },
+    { id: "gv5", label: "**Double-bump guard** — deny if this module's version already moved vs `HEAD` in this tree" },
+    { id: "gv6", label: "**Scheme guard** — deny `1.0.1` when pre-release is configured and `1.0.1-pre.0` is expected" },
+    { id: "gv7", label: "Otherwise: silent allow, zero tokens" }
+  ]}
+/>
+
+<Callout id="downgrade-timing" tone="success" title="This catches the downgrade guard before it bites, not after">
+
+The Software Factory silently refuses to regenerate `.imodspec` when the new version compares *lower*
+by semver precedence — a `-pre.#` suffix sorts below the same `X.Y.Z` with no suffix, so correcting
+`1.1.0` down to `1.0.3-pre.0` trips it. Regeneration reports nothing staged, with no error or
+warning.
+
+Today that is discovered by confusion after the fact. Here it is denied before the value is ever
+written, and the denial names the `.imodspec` route that *does* work.
+
+</Callout>
+
+### What blocks, and what only warns
+
+Deny is reserved for actions that are *always* wrong. Everything else surfaces at close-out, where
+the agent is in the chore phase anyway.
+
+<Table
+  id="deny-warn"
+  caption="Deny vs warn"
+  density="compact"
+  columns={["Check", "Behaviour"]}
+  rows={[
+    ["Intent metadata (see `guard-write-scope`)", "**Deny**"],
+    ["`.imodspec` `<summary>` / `<description>`", "**Deny** — the SF discards the edit silently"],
+    ["Version already bumped this line of work", "**Deny**"],
+    ["Wrong version scheme for the configured mode", "**Deny**"],
+    ["Version downgrade via the designer", "**Deny** — with the `.imodspec` route named"],
+    ["Module changed but version never moved", "Warn"],
+    ["`.imodspec` version vs `.csproj` version disagree", "Warn"],
+    ["Referenced-but-undeclared dependencies", "Warn"],
+    ["Release-notes heading still carries `-pre.#`", "Warn"],
+    ["`CONTEXT.md` not updated, or misplaced", "Warn"],
+    ["`docs/README.md` missing", "Warn"],
+    ["Tags not lowercase / not hyphenated", "Warn"],
+    ["Module icon missing or font-awesome", "Warn — overwrite-deny never implemented"]
+  ]}
+/>
+
+<Callout id="context-soft" tone="warning" title="The CONTEXT.md check warns rather than blocks, deliberately">
+
+It compares the module's changed files (`git diff` / `git log`) against whether `CONTEXT.md` moved.
+That is a heuristic with real false positives — sometimes there genuinely is nothing durable to
+record. Blocking on a judgment call would train people to work around the gate, so it nudges instead.
+
+Transcript inspection was considered and rejected: harness-specific, fragile, and it would have made
+the check unportable.
+
+</Callout>
+
+## The runtime
+
+<Callout id="runtime-decision" tone="decision" title="Templates generate the C#; the tests verify what ships">
+
+The module's templates generate the hook scripts as C# into the consumer repo. A unit test project
+then targets **those generated files at that location** and verifies them in isolation.
+
+No parallel source project, so no drift: the tests exercise exactly what ships. There is no
+standalone `Intent.Agent.Gate` project — its code is template content.
+
+</Callout>
+
+This is viable because of a .NET 10 feature an earlier draft predated:
+
+<Table
+  id="directives"
+  caption="File-based app directives — `dotnet run app.cs`, no .csproj"
+  columns={["Directive", "Effect", "Available"]}
+  rows={[
+    ["`#:include helpers.cs`", "Compiles another `.cs` into the app", "SDK **10.0.300+**"],
+    ["`#:property PublishAot=false`", "Disables native AOT, which is on by default", "SDK 10"],
+    ["`#:package`, `#:project`, `#:sdk`", "NuGet / project / SDK references — not needed here", "SDK 10"]
+  ]}
+/>
+
+An earlier test concluded file-based apps cannot include sibling files. That test predated
+`#:include`; the conclusion is withdrawn. The gate is several focused files plus a thin entry point.
+
+**Why .NET rather than Node.** The original concern was forcing a runtime install. That premise
+inverted on inspection: this only ever runs in repos that build Intent modules, which are .NET repos
+by definition. **.NET is guaranteed present; Node is not.** The residual constraint is only *which*
+.NET — `#:include` needs SDK 10.0.300+.
+
+<Callout id="build-props-shield" tone="warning" title="The root Directory.Build.props applies to a file-based app beneath it">
+
+There is no `.csproj` at the repository root, so the documented "avoid project file cones" hazard does
+not apply. But the root `Directory.Build.props` **does** reach a file-based app below it — Microsoft's
+own mitigation is an isolated `Directory.Build.props` inside the gate folder to shield it, which each
+generated copy carries.
+
+</Callout>
+
+## Per-harness layout
+
+Each harness carries its **own self-contained copy**, nested inside its own anchor folder.
+
+<Callout id="anchor-cross-product" tone="risk" title="Why: AI.Context is a fan-out role, and one shared copy collapsed under it">
+
+`GateScripts`, `HooksJson` and `OpenCodePlugin` all declare `Role = "AI.Context"`. A consuming app
+carries an `AI.Context` Output Anchor in **every** harness folder — that is precisely how one skill
+lands in `.agents`, `.claude` and `.opencode` at once. Role matching is one-to-many by design.
+
+For a skill that is correct: three anchors, three different files. For these templates it was fatal,
+because the original design put one gate at a canonical repo-root path and each template escaped
+upward with `relativeLocation: "../…"` to reach it — and an escaped path resolves **identically from
+every anchor**:
+
+```
+root/.agents/   + ../.kiro/hooks ┐
+root/.claude/   + ../.kiro/hooks ├─→ root/.kiro/hooks/intent-agent-gate.json
+root/.opencode/ + ../.kiro/hooks ┘
+```
+
+Three template instances, one path, `DuplicateOutputPathException`, and the Software Factory refuses
+to run at all. It stayed hidden only while no `.kiro` folder existed, so the template produced no
+models. This was patched downstream **five times** — pruning duplicate `Template Output` elements —
+before the cause was identified; re-installing recreates the full cross-product, so the pruning never
+held.
+
+Nesting makes the collision **unrepresentable** rather than merely fixed.
+
+</Callout>
+
+<Callout id="folder-is-identity" tone="decision" title="The anchor folder name is the harness identity">
+
+Each template instance gates on the folder it landed in, via `IOutputTarget.Name`, and emits nothing
+elsewhere. No `Directory.Exists` probing, no harness enum threaded through a model. `hooks/gate/` is
+uniform across all of them, deliberately, so no harness is a special case — `hooks/` stays each
+harness's own word, `gate/` stays ours.
+
+The duplication is real but cheap: in production a repo uses one harness, and every copy is generated
+from the same template constants, so they cannot drift.
+
+</Callout>
+
+<Table
+  id="harness-matrix"
+  caption="Six harnesses, each in its own native format"
+  density="compact"
+  columns={["Template", "Runs in", "Config emitted", "Gate copy"]}
+  rows={[
+    ["`GateScripts`", "every anchor", "—", "`<anchor>/hooks/gate/*.cs`"],
+    ["`ClaudeSettings`", "`.claude`", "`settings.json` — **create-or-merge**", "`.claude/hooks/gate/`"],
+    ["`HooksJson` (generic)", "`.codex`", "`hooks.json`", "`.codex/hooks/gate/`"],
+    ["`CursorHooks`", "`.cursor`", "`hooks.json`", "`.cursor/hooks/gate/`"],
+    ["`KiroHooks`", "`.kiro`", "`hooks/intent-agent-gate.json`", "`.kiro/hooks/gate/`"],
+    ["`CopilotHooks`", "`.github`", "`hooks/intent-agent-gate.json`", "`.github/hooks/gate/`"],
+    ["`OpenCodePlugin`", "`.opencode`", "`plugins/intent-agent-gate.ts`", "`.opencode/hooks/gate/`"]
+  ]}
+/>
+
+`HooksJson` is the **generic** template, for harnesses following the `hooks.json` convention —
+currently only Codex. Cursor, Kiro and Copilot each have their own schema and their own template;
+keeping them as arms of one switch hid a real defect (see `cursor-blocking-hook`).
+
+<Callout id="uniform-commands" tone="decision" title="Every harness's command is spelled identically, with no environment variables">
+
+```
+dotnet run <anchor>/hooks/gate/gate.cs --no-build -- <command> --harness <id>; test $? -eq 0 && exit 0 || exit 2
+```
+
+A plain path relative to the **project** root — which is what every one of these harnesses documents
+for its own hook commands (Cursor's reference uses `./hooks/validate-tool.sh`, Copilot's
+`./scripts/log-prompt.sh`). Project root rather than repository root, so it stays correct for an
+application nested below the repo root; relative rather than absolute, so it survives the repository
+being cloned or moved — these files are committed.
+
+An intermediate version anchored Claude Code's commands to its documented `${CLAUDE_PROJECT_DIR}`
+placeholder to solve the cwd hazard below. It worked, and was reverted: it left one harness spelled
+unlike the other five, for a hazard none of them can solve uniformly.
+
+`$?` is POSIX shell and `$LASTEXITCODE` is PowerShell — neither is an environment variable; both are
+the fail-closed wrapper.
+
+</Callout>
+
+<Callout id="claude-settings" tone="decision" title="`.claude/settings.json` is merged, not owned — the one file this module writes into">
+
+It also carries the developer's permissions, environment and unrelated hooks. Behaviour, all covered
+by tests: **absent** → write a default; **present** → parse, add only entries that are missing, never
+overwrite; **invalid JSON** → return the content byte-for-byte and log a warning. Throwing would fail
+the consumer's whole Software Factory run over a file this module does not own.
+
+`System.Text.Json`, not Newtonsoft — the plan to use Newtonsoft was premised on preserving comments,
+but Claude Code's docs state settings files are strict JSON where a `//` comment or trailing comma is
+a syntax error. There are no comments to preserve. `UnsafeRelaxedJsonEscaping` is set only so the
+wrapper's `&&` renders as typed.
+
+**The merge can also correct its own earlier output.** A merge that only ever *adds* absent entries
+can never ship a fix to something it already wrote — a change would reach new installs only, and every
+existing repository would keep the old form indefinitely. So the template carries an exact-match list
+of commands it generated in earlier versions and rewrites those in place. Exact-match is the point: a
+looser "anything mentioning our gate path" test would also overwrite a command the developer adjusted,
+which this template promises never to touch. It has now run in both directions — carrying the
+`${CLAUDE_PROJECT_DIR}` anchoring out, then carrying its removal back.
+
+</Callout>
+
+## Failure behaviour
+
+<Callout id="fail-closed" tone="decision" title="Fail closed — with one carve-out">
+
+If the script cannot execute — missing, broken, wrong SDK — it **blocks**, and tells the agent to
+inform the user it cannot run the gate and stop.
+
+**The one exception is build contention.** Microsoft documents that concurrent invocations of the
+same file-based app can fail over build-output contention, and hooks do fire concurrently. Under a
+strict fail-closed rule that becomes an *intermittent* hard block with a confusing message, in
+someone else's repo — which teaches people to delete the hooks, costing more than the check was ever
+worth. A transient build lock is not a policy violation, so it fails open.
+
+Mitigations: `PublishAot=false`, pre-build at `SessionStart`, then `--no-build` on the hook path.
+
+</Callout>
+
+<Callout id="fail-closed-build-failure" tone="risk" title="A build failure exits 1, not 2 — and the gate cannot fix that from inside its own code">
+
+Found while writing the test suite, not by inspection: `dotnet run` returns **exit 1** on a build
+failure (a missing `#:include`, a syntax error, the wrong SDK) — never 2. Cursor's docs confirm any
+exit code other than exactly 0 or 2 is treated as an **allow**. So a bare `dotnet run gate.cs`
+command would silently stop protecting anything the moment the gate's own source broke — the opposite
+of fail-closed — and `Cli.cs`'s top-level try/catch cannot help, because it never runs until *after*
+the build already succeeded.
+
+The fix lives in the hook command, not the C#: `; test $? -eq 0 && exit 0 || exit 2` collapses any
+non-zero exit into the universal block signal. Verified against both a broken and a healthy gate, and
+locked in by `GateSmokeTests`.
+
+</Callout>
+
+## Verification
+
+Three layers, because they fail differently. A unit test proves the guard reaches the right verdict;
+it says nothing about whether the harness honours it, and neither says anything about whether the
+agent then does the right thing.
+
+<Table
+  id="test-layers"
+  caption="What each layer proves, and what it is blind to"
+  columns={["Layer", "Runs", "Proves", "Blind to"]}
+  rows={[
+    ["**1 — Gate logic**", "CI, every build", "Given a file state and a tool call, the verdict is correct", "Whether the script runs at all outside the test host"],
+    ["**2 — Harness enforcement**", "Manually, per harness", "A deny is actually obeyed", "Whether the verdict was right"],
+    ["**3 — Behavioural evals**", "On demand, against a scratch module", "The agent ends up doing the right thing", "Nothing — but non-deterministic, so graded on disk state"]
+  ]}
+/>
+
+### Layer 1 — gate logic
+
+`Tests/AgentGate` links the generated sources from **`Tests/ModuleBuilderSkills`** — the test
+application — excluding `gate.cs`, whose top-level statements cannot compile into a test assembly.
+
+<Callout id="which-app" tone="warning" title="Which application is which — a standing source of confusion, now resolved">
+
+- **`Modules/ModuleBuilderAiSkills`** — the dogfood app. Output goes to the **repository root**. It
+  is what an agent working in this repo actually runs on, and carries only `.agents`, `.claude`,
+  `.opencode`, deliberately and permanently.
+- **`Tests/ModuleBuilderSkills`** — the test app. Carries **all seven** anchors and is where every
+  harness is exercised. To test Kiro, launch the Kiro CLI with *this* directory as its workspace.
+- **`Tests/AgentGate`** — the xunit project.
+
+`Tests/AgentGate` originally linked the *repository root* `.agents`, i.e. the dogfood app's output —
+so unit tests were sourced from one application while harness tests used another, and every gate
+change had to be regenerated through both. Both now come from the test app.
+
+</Callout>
+
+<Callout id="smoke-test" tone="warning" title="Linking proves the logic and nothing else">
+
+A linked build resolves nothing that makes a file-based app a file-based app: `#:include` resolution,
+the SDK floor, and whether the `Directory.Build.props` shield actually holds are all invisible to it.
+A suite that stops there repeats this repository's own *"compiling is not working"* failure, one level
+up. So `GateSmokeTests` shells out to the real `dotnet run gate.cs` and asserts on its exit code —
+including against real files in this repository.
+
+</Callout>
+
+<Table
+  id="cases-guard-version"
+  caption="guard-version — current version, proposed version, configured scheme"
+  density="compact"
+  columns={["Current", "Proposed", "Scheme", "Expected"]}
+  rows={[
+    ["`1.0.0-pre.8`", "`1.0.0-pre.9`", "pre", "Allow, silently"],
+    ["`1.0.0-pre.9`", "`1.0.0-pre.10`", "pre", "Allow — numeric identifier comparison, not lexical"],
+    ["`1.1.0`", "`1.0.3-pre.0`", "pre", "Deny — downgrade"],
+    ["`1.0.0-pre.9`", "`1.0.0`", "pre", "Allow — promotion to release sorts higher"],
+    ["`1.0.0`", "`1.0.1`", "pre", "Deny — scheme; expect `1.0.1-pre.0`"],
+    ["`1.0.0`", "`1.0.1`", "final", "Allow"],
+    ["`1.0.0-pre.9`", "`1.0.0-pre.9`", "either", "Deny — not strictly higher"],
+    ["Already moved vs `HEAD`", "anything", "either", "Deny — double bump"],
+    ["—", "script does not set `Version`", "either", "Allow, and write nothing at all"]
+  ]}
+/>
+
+<Callout id="semver-traps" tone="warning" title="Two of those rows fail a naive implementation">
+
+`1.0.0-pre.10` sorts **above** `1.0.0-pre.9` — semver compares numeric pre-release identifiers
+numerically, while a string comparison puts `pre.10` first. AI.Workflow is at `pre.8` and will reach
+`pre.10` shortly, so this is not hypothetical.
+
+And `1.0.0-pre.9` to `1.0.0` is a legal promotion, not a scheme violation. A scheme guard that simply
+demands a `-pre` suffix whenever pre-release mode is on would block the one moment the suffix is
+supposed to come off.
+
+</Callout>
+
+<Table
+  id="cases-guard-write"
+  caption="guard-write — path and edit content"
+  density="compact"
+  columns={["Target", "Edit", "Expected"]}
+  rows={[
+    ["`*.application.managed-files.xml`", "any", "Deny — naming the Intent MCP server"],
+    ["`*.application.config`", "any", "Deny"],
+    ["`Intent.Metadata/**` designer XML", "any", "Deny — naming `run_designer_script`"],
+    ["anything under `.intent/`", "any", "Deny"],
+    ["`modules.config`", "any", "Deny"],
+    ["Generated output listed in a manifest", "any", "**Allow** — the inversion, asserted directly"],
+    ["Scaffolded `*TemplatePartial.cs`", "any", "Allow"],
+    ["`release-notes.md`, `.csproj`", "any", "Allow"],
+    ["`.imodspec`", "`<tags>` / `<dependency>` / lower the `<version>`", "Allow"],
+    ["`.imodspec`", "`<summary>` or `<description>`", "Deny"],
+    ["`.imodspec`", "whole-file `Write` changing only `<tags>`", "Allow"],
+    ["`.imodspec`", "whole-file `Write` changing `<summary>`", "Deny"]
+  ]}
+/>
+
+The two whole-file `Write` rows force the implementation to diff against what is on disk. A guard
+that inspects only the edit string passes every `Edit` case and then silently allows a `<summary>`
+change delivered as a full-file write — which is exactly how an agent that has just read the file
+will deliver it.
+
+**Current state: 70 passing, 6 skipped.** The six skips are the icon-overwrite rows and two close-out
+rows — never implemented, and marked rather than quietly dropped.
+
+### Layer 2 — harness enforcement
+
+A verdict nothing obeys is worse than no verdict: it reads as enforcement here and behaves as a
+suggestion in the repo. The probe is one deliberately illegal action per harness, with the result
+written down rather than left in a transcript.
+
+<Table
+  id="harness-results"
+  caption="Observed, not inferred from documentation"
+  columns={["Harness", "Tested", "Result"]}
+  rows={[
+    ["**Claude Code**", "Yes", "**Pass** — hook fired, edit denied, file untouched on disk"],
+    ["**OpenCode**", "Yes", "**Pass** — real CLI, real model, deny and allow both verified"],
+    ["**Kiro**", "Yes", "**Fail — Kiro-side.** Its CLI does not execute hook files at all"],
+    ["**Codex**", "No", "Unverified — reachable on a plain API key"],
+    ["**Cursor**", "No", "Unverified"],
+    ["**Copilot**", "No", "Unverified — deny mechanism undocumented"]
+  ]}
+/>
+
+**Claude Code.** Confirmed on the second attempt. The first was inconclusive because the hook never
+fired; that matches `anthropics/claude-code` **#47810** — `PreToolUse` hooks stop being invoked
+entirely after certain session-state events (background task completion, or an extended session),
+with a maintainer-confirmed hook log showing calls simply stop appearing, no error. This session had
+both triggers. A fresh session removed both and the probe blocked cleanly: the gate's message reached
+the model naming the owning template, `git status` stayed clean, and the edit never reached disk.
+**#47810 remains a live risk for any long-running Claude Code session and is not something the gate
+can work around** — worth naming in the module's docs as a known harness limitation.
+
+**OpenCode.** The one row backed end to end by a real run. Built as a `tool.execute.before` plugin
+using Node's `spawnSync` rather than the `$` shell API, to avoid shell-quoting risk. The payload shape
+was confirmed empirically via a diagnostic plugin rather than assumed: `input.tool` is
+`"write"`/`"edit"`, and — the one place this differed from every other harness — `output.args` uses
+**camelCase `newString`**, not `new_string`. The gate's edit extractor only checked snake_case; fixed,
+with a unit test. Then run against an isolated scratch project with the real CLI and a real model: an
+illegal hand-edit was denied with the gate's own message and left the file untouched; a legal edit
+succeeded normally.
+
+**Kiro — fail, and not the module's fault.** Run against `kiro-cli.exe` 2.22.0 / KAS 0.66.0. The
+decisive diagnostic was a catch-all `".*"` matcher whose command was
+`echo FIRED >> .kiro/hook-fired.txt; exit 2` — it cannot fail to block if it runs at all. **The
+sentinel file was never created.** So this is not a matcher mismatch, a schema error, or an
+exit-code problem: Kiro's CLI simply never runs the file. Ruled out: no hook-related setting exists,
+and `kiro agent create` scaffolds twelve keys with none of them `hooks`. The generated config matches
+Kiro's documented v3 contract exactly.
+
+<Callout id="matchers-unverified" tone="risk" title="Per-harness tool-name matchers are the highest-value thing left to verify">
+
+Each harness matches on its own internal tool names and there is no shared vocabulary. A wrong
+matcher fails **silently and open** — the config looks right and simply never matches.
+
+- **Kiro's was wrong**: `Write|Edit|ApplyPatch` are Claude Code's names. Corrected to `fs_write` per
+  Kiro's own hooks reference — documentation-grounded but **unobserved**, because no hook ever ran to
+  reveal the real v3 names. Deliberately not fixed by guessing twice.
+- **Codex's is unchecked**, and it has a `--dangerously-bypass-hook-trust` flag, so it gates hook
+  execution behind a trust model — a likely source of a probe passing while enforcing nothing.
+- **Copilot's deny mechanism is undocumented**; exit 2 is assumed for consistency.
+
+Two upstream issues report deny not being enforced at all — `openai/codex` **#27833** (naming
+`apply_patch`, Codex's file-write path) and `anthropics/claude-code` **#43407**. Neither can be
+settled by reading the thread, only by trying it.
+
+</Callout>
+
+### Layer 3 — behavioural evals
+
+Each eval is a task given to a real sub-agent against a scratch fixture outside this repository, with
+a pass condition **observable on disk after the run** — verified by reading the resulting files, not
+taken from the agent's self-report.
+
+<Table
+  id="evals"
+  caption="One eval per behaviour the hooks are supposed to change"
+  density="compact"
+  columns={["Eval", "Passes when", "Result"]}
+  rows={[
+    ["**E1 — Double bump**", "The final `.imodspec` version equals the pre-task version, and the agent said why", "**Pass**"],
+    ["**E2 — A denied path teaches the allowed one**", "The correction lands, rather than the agent retrying the blocked route or giving up", "**Pass**"],
+    ["**E5 — A warning does not cause busywork**", "`CONTEXT.md` unchanged and the agent said why, rather than inventing an entry", "**Pass**"],
+    ["**E3 — Generated output**", "The shortcut is declined and the model changed instead", "Not run"],
+    ["**E4 — Silence costs nothing**", "Total hook output is zero bytes, within noise of a hooks-disabled control", "Not run"]
+  ]}
+/>
+
+**E2 and E5 are the load-bearing pair.** The others check that a check fires; these two check what
+the check *costs*. E2 is the difference between a deny that redirects and a deny that traps — the
+downgrade case is its sharpest form, because the blocked route and the allowed route lead to the same
+legitimate destination, so if the message does not name the allowed route the agent has no way to find
+it. In the run, the agent took the deny's wording and edited `.imodspec` directly; the correction
+landed. E5 is the failure mode of the warn set: the agent left `CONTEXT.md` untouched and justified it
+specifically, rather than padding an entry to silence the warning.
+
+**E3 and E4 were blocked by #47810** — both measure what a *live, firing* hook produces or costs, and
+the hook did not reliably fire at the time. That blocker is now gone: Claude Code is confirmed
+passing, so both are runnable. Their underlying mechanisms are already proven at Layer 1 (a denied
+hand-edit, and zero-byte allow paths), which is coverage in substance but not a substitute.
+
+### Does this cover the failures it was built for?
+
+<Table
+  id="coverage"
+  caption="Each observed failure, and what now catches it"
+  density="compact"
+  columns={["Observed failure", "Caught by", "Strength"]}
+  rows={[
+    ["Version not incremented", "`close-out`", "Warn"],
+    ["Version incremented twice", "`guard-version`", "**Deny** · E1"],
+    ["Wrong version scheme", "`guard-version`", "**Deny**"],
+    ["Intent metadata hand-edited", "`guard-write`", "**Deny**"],
+    ["`modules.config` hand-edited", "`guard-write`", "**Deny**"],
+    ["Dependencies wrong or missing", "`close-out`", "Warn"],
+    ["Docs / `CONTEXT.md` left behind", "`close-out`", "Warn · E5"],
+    ["Icon missing, or font-awesome taken as a shortcut", "`close-out`", "Warn"]
+  ]}
+/>
+
+<Callout id="coverage-honesty" tone="warning" title="Half the original failures are only warned about">
+
+Four of the eight become denials the agent cannot get past. The other four — version not incremented,
+dependencies, documentation, icon — stay warnings it can ignore, because each turns on a judgment a
+script cannot make reliably, and a false deny would cost more than the occasional miss.
+
+So this does not eliminate those four. It makes them visible at the one moment the agent is already
+in the chore phase. If they keep happening, the answer is a better close-out message, not a promotion
+to deny.
+
+</Callout>
+
+<Callout id="no-true-positives" tone="risk" title="The gate has never caught a real violation in live use">
+
+Every block observed during implementation was a false positive under the old, wrong scope. Since the
+rescope, nothing has tried to violate it — because the author knew the rules. The rescoped guard is
+verified by execution, but its *value* is still theoretical.
+
+That is what the remaining simulations are for, and the first one should be a run that deliberately
+attempts a designer-XML edit and a `managed-files.xml` edit.
+
+</Callout>
+
+## Findings worth keeping
+
+<Callout id="cursor-blocking-hook" tone="risk" title="Cursor has no before-file-edit hook, so the original write guard could never block">
+
+`afterFileEdit` fires once the write has already landed. A write guard placed there is advisory while
+appearing to enforce. The blocking hook is `preToolUse`, whose matcher takes Cursor's own tool
+categories — `Shell`, `Read`, `Write`, `Grep`, `Delete`, `Task`, `MCP:<name>` — not another harness's
+tool names.
+
+Cursor also documents a per-entry `failClosed: true`, now set on both blocking hooks. It covers the
+failure modes the shell wrapper cannot, such as the command failing to start at all — Cursor
+otherwise treats **any** exit code that is not exactly 0 or 2 as an allow.
+
+This was hidden while Kiro, Cursor and Codex were arms of one template's switch, and surfaced
+immediately on splitting them apart.
+
+</Callout>
+
+<Callout id="silent-switch" tone="risk" title="With the switch off, the module generated nothing and said nothing">
+
+`InstallAgentGateHooks()` is `bool.TryParse(...) && result`, so an absent or unparseable setting
+yields **false**. Nothing is generated, and nothing is reported: no warning, no log line, no entry in
+the Software Factory result.
+
+Diagnosing this in `Tests/ModuleBuilderSkills` consumed most of a session. Every inference from
+outside was contradicted by one template that *had* generated earlier and whose output had not needed
+to change since — and **a template that stopped running is indistinguishable from one that runs and
+produces identical output**, given only the SF result. It was settled by bypassing the check in a
+throwaway build and watching six files appear.
+
+Fixed in the silence, not the switch: `AgentGateSwitch` replaces six copies of the check and warns
+once when the switch is off *and* harness anchor folders exist.
+
+</Callout>
+
+<Callout id="agent-shell-reinstall" tone="risk" title="In Agent Shell a rebuilt module is NOT auto-reinstalled — and this invalidated shipped guidance">
+
+Solution Shell re-detects and re-installs a repackaged module automatically. **Agent Shell does not.**
+Measured directly:
+
+| Attempt | Picked up? |
+|---|---|
+| `dotnet build` alone | No |
+| build + delete `Modules/.cache/modules/<id>.<ver>/` | No |
+| build + delete cache + `install_or_update_modules` | **Yes** |
+
+Both steps are required. Every apparent success earlier was the first Software Factory run after an
+Intent restart, where the assembly loads fresh anyway — every failure was a *second* same-version
+rebuild inside one session, which is exactly the loop an agent lives in.
+
+`known-build-gotchas` shipped the opposite advice to an audience that is by definition in Agent Shell.
+Corrected to be symptom-based rather than mode-based, since **an agent has no supported way to detect
+which shell it is in**.
+
+</Callout>
+
+<Callout id="comment-stripping" tone="risk" title="Regeneration strips comments above designer-owned members — and truncates rather than deletes">
+
+**A comment sitting immediately above a member whose signature is `Mode.Fully` is not protected**,
+even when the member's *body* is `Mode.Ignore`. Three files lost hand-written commentary to a single
+regeneration, including the anchor-multiplicity root cause and the OpenCode probe findings —
+knowledge that cost a real CLI run to obtain.
+
+The dangerous case lost lines 2–3 of a three-line comment, leaving a sentence dangling mid-thought.
+It does not merely delete — it **truncates into something that still reads as intentional**.
+
+The same diff carried its own fix: a comment *inside* a method body survived untouched. So durable
+commentary goes **inside the body, never above the member** — `Body = Mode.Ignore` is what protects
+it, and no new directive is needed.
+
+</Callout>
+
+<Callout id="destructive-flag" tone="warning" title="The Software Factory's destructive flag tracks deletion, not harm">
+
+In that same run, the one change flagged `destructive: "no"` was the only one that broke the build.
+The `FilePerModel` and `SingleFileListModel` registration scaffolds emit
+`using Intent.ModuleBuilder.Api;` unconditionally; this module's registration model types are local
+marker classes, so nothing supplies that namespace. Removing the using does not hold — the next run
+re-adds it.
+
+Resolved by declaring the namespace empty in `ScaffoldCompatibility.cs`. Referencing
+`Intent.Modules.ModuleBuilder`, which actually provides it, would force every consumer to install the
+whole Module Builder module to satisfy a using nothing consumes.
+
+</Callout>
+
+<Callout id="markdown-bullet-bug" tone="risk" title="The markdown builder ate every paragraph that opened with bold">
+
+`MarkdownFileParser`'s unordered-list regex allowed *zero* whitespace after the bullet character,
+while the ordered-list regex beside it correctly required one:
+
+```csharp
+@"^(\s*)([-*+])\s*(.+)$"    // unordered — the bug
+@"^(\s*)\d+\.\s+(.+)$"      // ordered   — correct
+```
+
+So `**Check whether…**` had its first asterisk consumed as a bullet marker and was re-emitted as
+`- *Check whether…**`. **69 generated files across 23 skills and resource documents** were corrupted
+in shipped output. Fixed by requiring the whitespace; `Intent.Common` 3.11.6 → 3.11.7-pre.0.
+
+Verified as a genuine guard: restoring the old regex fails exactly the three emphasis cases while all
+five legitimate-bullet cases still pass. These are the first `MarkdownFileParser` tests — none
+existed. An earlier release note had already *worked around* this by rewording the affected headings,
+rather than tracing it to source.
+
+</Callout>
+
+<Callout id="markdown-floor" tone="warning" title="The markdown fix needs a dependency floor, and three sibling modules still lack it">
+
+A consumer whose install resolves an earlier `Intent.Common` regenerates the corrupted bold, so every
+module generating markdown needs its floor raised — the declarative fix, rather than reinstalling into
+applications one happens to know about.
+
+`AI.Workflow` is done (`3.11.4` → `3.11.7-pre.0`). The floor lives in the `.imodspec` `<dependency>`
+entry and is **hand-maintained** — the packager does not derive it from the `.csproj`
+`PackageReference`, so both had to move.
+
+Still stale, each needing the version gate first: **AI.Skills** (`3.11.4`), **AI.Modelers**
+(`3.11.4`), and **AI.SDD** (`3.7.2`, published at exactly its local `1.0.0-pre.2`, so it needs a
+version bump before its floor can move).
+
+</Callout>
+
+<Callout id="tooling-faults" tone="warning" title="Intent tooling faults encountered — reported separately">
+
+- **`apply_staged_file_changes`** routinely returns *"Value cannot be null (Parameter 'key')"* while
+  having applied the files correctly. Verified on disk every time.
+- **`get_file_diffs` reports `"unchanged"`** for a file with staged changes — it reads disk, not
+  staging. This is why destructive changes had to be inspected by applying them and reading
+  `git diff`.
+- **`get_application_settings` / `update_application_settings` / `list_ignored_files`** fail with
+  *"Not in solution context"* across restarts. This is what made the silent-switch diagnosis take a
+  session.
+- **A same-version reinstall does not create Template Outputs for templates added since.** Adding
+  `CopilotHooks` made the Software Factory fail outright — *"Unable to find output target … with role
+  [AI.Context]"*. A hard stop, not a silent skip, so a consumer updating within a version line hits
+  it too.
+- **`installTemplateOutputs: false` deletes outputs rather than skipping them.**
+
+</Callout>
+
+## Open work
+
+1. **Run the simulations** — deliberate violation attempts against the rescoped guard. See
+   `no-true-positives`: nothing has yet tried to break it.
+2. **Verify the Codex, Kiro, Cursor and Copilot matchers and deny mechanisms** — see
+   `matchers-unverified`. This is the highest-value remaining work, because a wrong matcher fails
+   silently and open. Run against `Tests/ModuleBuilderSkills` with that harness as its workspace.
+3. **Re-run E3 and E4**, now unblocked by the confirmed Claude Code hook.
+4. **Raise the `Intent.Common` floor** on AI.Skills, AI.Modelers and AI.SDD — see `markdown-floor`.
+   AI.SDD needs a version bump first.
+5. **The cwd hazard** — a hook command runs in whatever directory the agent happens to be in, so
+   leaving the project root stops the relative path resolving. It fails **closed**, and only the
+   *lookup* of `gate.cs` is affected; the gate's own repository-root detection walks up and is
+   unaffected. Deliberately addressed in agent guidance rather than in six hook configs.
+6. **`.claude/settings.json` merge rules are duplicated in the tests** — the template lives in the
+   module assembly and cannot be referenced from the test project, so the rules are re-stated. The two
+   can drift apart silently.
+7. **Icon checks were never implemented** — three skipped tests, marked rather than dropped.

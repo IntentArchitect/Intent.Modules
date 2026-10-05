@@ -1,5 +1,5 @@
 ---
-contentHash: CA78B49531E49CFBEAE2CF73F2344C186BB4AF36056E42C3CDE7F33D3B72C9D0
+contentHash: EC23DDA55AC345B93C2258715D3CDC17D32F45B31F3E020A196CB49B38EC4A35
 ---
 # Orchestration Cheatsheet
 
@@ -46,7 +46,7 @@ ExecutionContext.EventDispatcher.Publish(
         .RequiresUsingNamespaces("My.Namespace"));
 ```
 
-- *ContainerRegistrationRequest.LifeTime constants**
+**ContainerRegistrationRequest.LifeTime constants**
 
 You declare the *lifetime*; the host template owns the mapping onto whatever registration method its
 container uses. That mapping is the host's business, not yours — which is exactly why you publish a
@@ -151,7 +151,7 @@ whichever startup shape it is generating.
 
 ### ⚠ Shape vs Wire — the most common wrong turn
 
-- *Shaping a generated type → FileBuilder mutation. Wiring into host infrastructure → publish a request.**
+**Shaping a generated type → FileBuilder mutation. Wiring into host infrastructure → publish a request.**
 
 Reaching for `CSharpFile` on the startup template to append a registration line looks more direct, but
 it moves the whole burden onto you: knowing which host shape you landed in, injecting the right
@@ -277,7 +277,7 @@ When calling `FindTemplateInstance<T>` or `FindTemplateInstances<T>` **from a di
 
 IA may load each module's assembly in an isolated `AssemblyLoadContext`. When it does, the concrete `MyTemplate` type in module B's context is a different `Type` object from the one registered by module A in its context — the lookup silently returns `null` with no error.
 
-- *Template ID is the primary lookup key** — always use the correct `TemplateId` constant. The interface type is the secondary filter that crosses ALC boundaries safely.
+**Template ID is the primary lookup key** — always use the correct `TemplateId` constant. The interface type is the secondary filter that crosses ALC boundaries safely.
 
 ```csharp
 // ❌ Wrong — returns null when called from a different module's factory extension
@@ -357,7 +357,8 @@ foreach (var template in templates)
 }
 ```
 
-- *Rules for the bridge**
+**Rules for the bridge**
+
 1. **Always `TryGetMetadata`, never `GetMetadata`.** `"model"` is a convention host templates opt into, not a framework guarantee — a node with no model, or one built by a different template version, simply won't have it. `GetMetadata` on an absent key throws.
 2. **Type the read.** `TryGetMetadata<T>` returns `false` on a type mismatch as well as on an absent key, so a wrong `T` degrades to "skip" rather than to a cast exception.
 3. **Every node level carries its own.** Classes, methods, properties and parameters are stamped independently — read the one on the node you are actually enriching.
@@ -380,8 +381,7 @@ your `.imodspec`. There are exactly two tiers, and the choice is worth making de
 | **1 — cold** | No | Role-string lookup + the generic `ICSharpFileBuilderTemplate`. Add attributes, usings, properties, statements; publish registration requests. |
 | **2 — typed** | **Yes** | Everything above, plus reading the target's typed model interfaces via `TryGetModel<T>` / `TryGetMetadata<T>("model")`. |
 
-- *Why the split.** A role string is just a string — resolving one costs nothing and couples you to
-
+**Why the split.** A role string is just a string — resolving one costs nothing and couples you to
 nothing. But the *model interfaces* a host module exposes are types defined **inside that module's
 assembly**. Referencing them means compiling against it, which means declaring it as a dependency:
 
@@ -392,8 +392,7 @@ assembly**. Referencing them means compiling against it, which means declaring i
 </dependencies>
 ```
 
-- *The tradeoff.** Tier 1 is free but blind — you can shape generated code without knowing what any of
-
+**The tradeoff.** Tier 1 is free but blind — you can shape generated code without knowing what any of
 it means. Tier 2 is what most genuinely useful integration needs, and it costs a version-coupled
 dependency: when the target module's model interfaces change, your module has to move with them.
 
@@ -479,7 +478,7 @@ csharpFile
     }, 1000);
 ```
 
-- *The Find Rule:** Template B must use a **strictly higher priority** than Template A when B calls `FindMethod`/`FindClass` on elements A created. If B's priority ≤ A's, A may not have run yet.
+**The Find Rule:** Template B must use a **strictly higher priority** than Template A when B calls `FindMethod`/`FindClass` on elements A created. If B's priority ≤ A's, A may not have run yet.
 
 ===
 

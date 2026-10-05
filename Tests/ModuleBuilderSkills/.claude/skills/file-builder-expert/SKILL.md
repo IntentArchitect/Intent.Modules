@@ -3,7 +3,7 @@ name: file-builder-expert
 description: "Author or fix a C# code-generation template using the Fluent CSharpFile builder API — constructor structure, callback priorities, type resolution, and DI parameter injection. USE ONLY WHEN writing, reviewing, or converting a *TemplatePartial.cs that emits C# via CSharpFile. DO NOT USE FOR templates that build Markdown/text output or for designer-model/script changes. REQUIRES the target template's model shape (single-file vs file-per-model) already decided."
 argument-hint: "[source file] [target template name]"
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_SkillMd_Agents
-contentHash: 9C61B8EBDB7DDA65E29CEDFF4AEE863B97CE999FD0B57F6AE5ADA216E0B70E80
+contentHash: FA4C07EB567F7096971DF49C1760485B87EE6794C796584A60854A528DBA928A
 ---
 # File Builder Expert
 
@@ -42,3 +42,4 @@ contentHash: 9C61B8EBDB7DDA65E29CEDFF4AEE863B97CE999FD0B57F6AE5ADA216E0B70E80
 4. Never use raw string interpolation for lambda arrows `=>` or object initializer braces `{}`.
 5. Never call obsolete `field.WithAssignment(string)` directly (use `WithAssignment(new CSharpStatement(...))`).
 6. **`AddTypeSource(templateId)` is not sufficient for single-file templates.** `AddTypeSource` enables `GetTypeName(model)` resolution for *file-per-model* templates — it looks up the template instance by model. For *single-file* templates (one output, no model) like `IIntegrationEventHandler`, there is no model to pass, so `GetTypeName` cannot resolve the type and the using is never injected. Use the pattern in `builder-patterns.md` § "Resolving Single-File Template Namespaces" instead.
+7. **An unconditional `AddUsing("Namespace")` goes dead silently.** It cannot notice when the code that justified it later stops spelling out a type from that namespace — two shipped bugs came from exactly this: a using added for `GetMethod`/`Invoke` reflection calls survived after the code was rewritten to reach them entirely through `var`, and a using added for a collection type survived after the type name was moved into a raw statement string, invisible to the builder. Resolve the type through `UseType("Namespace.Type")` and interpolate the result — even into a raw statement string — so the using tracks the reference and disappears when the reference does. Reserve `AddUsing` for a namespace your code needs independent of any spelled-out type (e.g. an extension-method namespace).

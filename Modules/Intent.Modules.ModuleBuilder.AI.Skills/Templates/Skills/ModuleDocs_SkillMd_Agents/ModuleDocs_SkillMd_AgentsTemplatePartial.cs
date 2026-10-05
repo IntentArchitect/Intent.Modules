@@ -39,7 +39,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleDocs_Ski
 
                     ## When to Use
                     Use this when a module maintainer wants documentation completed or updated to this format — it is optional, not an automatic step of every build.
-                    - **`release-notes.md`** — only complete/maintain an entry if the file already exists, or the maintainer explicitly asks for one to be created. Never introduce it unprompted.
+                    - **`release-notes.md`** — only complete/maintain an entry if the file already exists. The Software Factory is what creates this file — it does so once `Module Settings → Include Release Notes` is ticked and the Software Factory runs — never the agent by hand. If a maintainer asks for one to be created and it isn't there yet, point them at that setting and regenerate; don't write the file yourself.
                     - **`docs/README.md`** — feature/usage documentation; fill gaps in an existing one, or write one if asked
                     - **Module metadata** — the summary/description shown in the module registry (set on the **Application Settings page**), plus the `*.imodspec` fields the Software Factory does not own: `tags`, `authors`, `releaseNotes`, and `projectUrl` only if the maintainer supplies one
 

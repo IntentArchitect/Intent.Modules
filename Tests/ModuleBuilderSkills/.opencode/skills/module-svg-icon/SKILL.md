@@ -4,7 +4,7 @@ description: "Craft a house-style SVG icon for a module from a supplied descript
 argument-hint: "[description of what the icon should visually represent]"
 keywords: [icon, svg, branding, application.config, imodspec, package]
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon_SkillMd_Agents
-contentHash: 63CC43F1E8CBD1E47D757ADAAC67EAAEE1B298EBFAE0E1621597A980043DD39E
+contentHash: 3936C7209F886A7C380216F57038A89ECBD69C6702F1A91B16E095E1C1B6BE7A
 ---
 # Skill: module-svg-icon
 
@@ -28,8 +28,7 @@ discarded on the next run.
 
 `.application.config` is off-limits to hand-editing — it is large, mostly generated, and the values in it
 that you are meant to change have a UI. The module's description, for instance, is set on the
-
-- *Application Settings page**, not in this file.
+**Application Settings page**, not in this file.
 
 The package icon is the exception, and **not because no other mechanism exists** — it can be set through
 the MCP. The reason to go around that is the payload: the value is a base64 data URI that routinely runs
