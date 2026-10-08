@@ -195,6 +195,7 @@ public static class Conductor
             var workspace = await Workspace.CreateAsync(paths, harness, scenario, runDirectory);
             var startInfo = harness.CreateRun(new RunRequest(workspace, scenario.Prompt, options.ModelFor(harness.Id), scenario.UsesIntentStub));
             startInfo.Environment["INTENT_GATE_LOG"] = workspace.TelemetryPath;
+            scenario.AdjustEnvironment(startInfo.Environment);
             var process = await Processes.RunAsync(startInfo, stdin: null, options.Timeout);
 
             File.WriteAllText(Path.Combine(runDirectory, "transcript.jsonl"), process.Stdout);

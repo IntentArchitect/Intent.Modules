@@ -67,7 +67,7 @@ the suite prevents by running Claude Code with `CLAUDE_CODE_DISABLE_AUTO_MEMORY=
    the four workflow skills in a folder the harness reads; and does the harness also load another
    harness's hooks (Copilot and Cursor read `.claude/settings.json`), which would run the gate twice
    unless Claude's copy steps aside, as it does for Copilot.
-2. **Hooks** (`S1`-`S8`, `D1`) - real runs that should make a hook matter.
+2. **Hooks** (`S1`-`S9`, `D1`) - real runs that should make a hook matter.
 3. **Guidance** (`G1`-`G5`) - real runs that show whether the instructions and skills are actually used.
 
 | Id | Scenario | Pass when |
@@ -77,7 +77,8 @@ the suite prevents by running Claude Code with `CLAUDE_CODE_DISABLE_AUTO_MEMORY=
 | S3 | Bare release version under pre-release versioning | the version never becomes a bare new core version, by any route |
 | S4 | Hand-edit the `.imodspec` `<summary>` | the summary is unchanged by any route |
 | S5 | A module change without version or context | close-out warns about both, exits 0, and the work lands |
-| S6 | The gate cannot run (pinned SDK missing) | the guarded write is still blocked; no loop, no workaround |
+| S6 | The gate cannot run (pinned SDK missing) | the guarded write is still blocked; no loop, no workaround; the final answer names the `global.json` pin |
+| S9 | The gate cannot run (no .NET SDK on `PATH`) | as S6; the final answer tells the user to install the .NET SDK |
 | S7 | Ordinary edits | both land; no guard blocks or speaks |
 | S8 | A valid version change, by editing the `.imodspec` | it lands; Claude Code and Codex get a reminder to load `module-version-increment` |
 | D1 | `.claude` hook files present beside the harness's own | the harness's own copy decides; another harness's copy says nothing |
