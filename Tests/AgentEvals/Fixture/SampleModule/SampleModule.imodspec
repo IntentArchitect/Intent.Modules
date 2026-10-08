@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>SampleModule</id>
+  <version>1.0.1</version>
+  <summary>A sample module used only by the agent eval suite.</summary>
+  <description>A sample module used only by the agent eval suite.</description>
+  <authors>Agent Evals</authors>
+  <tags>sample evals</tags>
+  <releaseNotes>release-notes.md</releaseNotes>
+</package>

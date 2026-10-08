@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
@@ -54,53 +55,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.CursorHooks
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
-            // Two corrections over the earlier generic-switch version, both from Cursor's own hooks
-            // reference:
-            //
-            // 1. guard-write now runs on "preToolUse", NOT "afterFileEdit". Cursor has no
-            //    before-file-edit hook, and afterFileEdit fires once the write has already landed, so
-            //    it could never deny anything - the guard was advisory without saying so. preToolUse
-            //    runs before ANY tool and CAN block. Its matcher takes Cursor's own tool categories -
-            //    Shell, Read, Write, Grep, Delete, Task, and "MCP:<name>" - not another harness's
-            //    tool names.
-            //
-            // 2. "failClosed": true is set on every blocking hook. Cursor otherwise treats any exit
-            //    code that is not exactly 0 or 2 as ALLOW, so a crashed or missing gate would wave
-            //    the action through. This is belt-and-braces with the wrapper in GateCommands.Guard,
-            //    which already collapses non-zero exits to 2; the flag covers the cases the wrapper
-            //    cannot, such as the command failing to start at all.
-            //
-            // sessionStart and stop are fire-and-forget by design and cannot block, so neither
-            // carries failClosed.
-            return $$"""
-                {
-                  "version": 1,
-                  "hooks": {
-                    "sessionStart": [
-                      { "type": "command", "command": "{{GateCommands.Warm(HarnessFolder)}}" }
-                    ],
-                    "preToolUse": [
-                      {
-                        "type": "command",
-                        "command": "{{GateCommands.Guard(HarnessFolder, "guard-write")}}",
-                        "matcher": "Write|Delete",
-                        "failClosed": true
-                      }
-                    ],
-                    "beforeMCPExecution": [
-                      {
-                        "type": "command",
-                        "command": "{{GateCommands.Guard(HarnessFolder, "guard-version")}}",
-                        "matcher": ".*run_designer_script.*",
-                        "failClosed": true
-                      }
-                    ],
-                    "stop": [
-                      { "type": "command", "command": "{{GateCommands.Guard(HarnessFolder, "close-out")}}" }
-                    ]
-                  }
-                }
-                """;
+            // Merged, not owned: Cursor allows exactly one project hooks file, so any other tool's
+            // hooks live in this same file, and owning it outright deleted them on every run. See
+            // HarnessHookSets.MergeCursorHooks for what is registered and why.
+            return MergedHookFile.Transform(
+                Path.Combine(OutputTarget.Location, "hooks.json"), TemplateId, "Cursor", HarnessHookSets.MergeCursorHooks);
         }
     }
 }

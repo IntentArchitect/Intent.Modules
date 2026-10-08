@@ -102,13 +102,50 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleContex
           | Accepted patterns | How this module's templates resolve types across layers |
           | Setting/condition-driven wiring | A setting or condition changes which concrete class or mechanism gets generated, not just a parameter on the same shape — e.g. enabling a transactional outbox switches the generated consumer to a base class sharing the persistence layer's own transaction, instead of the plain consumer used otherwise |
           | Cross-module relationships | Which modules this one affects, what it broadcasts, what it expects others to handle |
+          | Dependency version contracts | Which version of a module this one depends on its code is written against, and how that module's interface changed between versions — e.g. a method taking one argument in 1.x takes two from 2.0, so the templates call the new form and the version floor is 2.0 |
           | Decisions taken during implementation | Options considered and **rejected**, and why |
+
+          ## Dependency Versions Change The Contract
+
+          A module is written against a particular version of each module it depends on. When one of those
+          modules changes an interface, type, role or behaviour this module relies on between versions, the
+          code alone does not say which version it was written for or what the older form looked like.
+
+          Record it whenever you move a dependency to a new version, adapt to a changed interface, or raise a
+          version floor because of one: the version the module now targets, what changed and in which
+          version, how this module adapted, and why the floor sits where it does.
+
+          When you read `CONTEXT.md` before a change, compare each recorded version against the one the
+          module references now. A dependency that has since moved further may have changed again, so check
+          its interface before relying on what is recorded.
+
+          A change in an Intent Architect module or SDK interface between versions is a contract change like
+          any other, not a defect, so it belongs here.
 
           ## What Stays Out
 
           - Transient task state, progress trackers, TODO lists — this file outlives the task.
           - Anything already recorded elsewhere: release notes, module documentation, generated code.
           - Anything trivially rediscoverable by reading the module source.
+          - Problems with Intent Architect itself — see below.
+
+          ## Intent Architect Problems Go To The User, Not Into CONTEXT.md
+
+          `CONTEXT.md` records decisions about **this module**. A problem with Intent Architect itself is not
+          one of them: the Software Factory, a designer, module installation or caching, the Intent MCP tools,
+          or any other part of the platform misbehaving, reporting something untrue, or needing a workaround.
+
+          Recorded in `CONTEXT.md`, such a problem becomes a permanent workaround that nobody reports, and the
+          next session reads a platform defect as a deliberate constraint of the module.
+
+          Instead, tell the user as soon as you find it, so they can bring it to the Intent Architect support
+          team's attention. Say what happened, how to reproduce it, and any workaround you used to keep going.
+
+          The one exception is a genuine **limitation of the Intent Architect API or SDK** — something it does
+          not offer by design, as opposed to something that malfunctions. For example: a registration base
+          class with no hook for what the module needs, or a module setting type that cannot express a
+          condition. Record it together with the module design decision it forced. If you cannot tell whether
+          something is a limitation or a defect, treat it as a defect and report it.
 
           ## Write At Decision Time
 
@@ -135,6 +172,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleContex
 
           ## Module Interactions
           - **[Other module]** — [how they relate; what is broadcast, consumed, or assumed]
+            - Written against [version]. [Version] → [version]: [what changed, and how this module adapted]
 
           ## Superseded
           - [Decision that no longer holds, and what replaced it]
@@ -147,7 +185,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleContex
           - [ ] Every module modified by this change had its `CONTEXT.md` read first
           - [ ] New decisions recorded with reasoning, including rejected alternatives
           - [ ] Superseded entries updated or removed — no stale claims left standing
+          - [ ] Any dependency interface change this module adapted to is recorded with the version it now targets
           - [ ] Any conflict between the change and existing context was surfaced, not silently resolved
+          - [ ] Any Intent Architect defect met along the way was reported to the user for the Intent support team, not recorded here — only a genuine API or SDK limitation is recorded, with the decision it forced
           """""");
     }
 

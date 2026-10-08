@@ -1,9 +1,9 @@
 namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
 {
     /// <summary>
-    /// One source file of the file-based gate app emitted into ".agents/hooks/" - either a C#
-    /// source file compiled in via "#:include", or the "Directory.Build.props" that shields the
-    /// app from the consuming repo's own root Directory.Build.props.
+    /// One file of the file-based gate app emitted into each harness's "hooks/gate/" folder - either
+    /// the self-contained "gate.cs", or the "Directory.Build.props" that shields the app from the
+    /// consuming repo's own root Directory.Build.props.
     /// </summary>
     public class GateSourceFileModel
     {
@@ -14,7 +14,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
             Content = content;
         }
 
-        /// <summary>File name without extension, e.g. "Cli", "Directory.Build".</summary>
+        /// <summary>File name without extension, e.g. "gate", "Directory.Build".</summary>
         public string Name { get; }
 
         /// <summary>File extension without the dot, e.g. "cs", "props".</summary>

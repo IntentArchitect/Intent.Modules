@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<managedFiles>
+  <file path="Templates/Sample/SampleTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFile" />
+</managedFiles>

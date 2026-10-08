@@ -61,19 +61,21 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.CopilotHooks
             // reference:
             //
             // 1. The command is carried in "bash" and/or "powershell" fields rather than a single
-            //    "command". Both are supplied, so the gate runs whichever shell Copilot picks - the
-            //    bash form uses the usual fail-closed wrapper, and the PowerShell form spells the same
-            //    thing with $LASTEXITCODE because "test $?" is not PowerShell.
+            //    "command", and Copilot picks the field for the platform. On Windows it runs the
+            //    "powershell" one in PowerShell 7 - observed by driving Copilot CLI 1.0.91 for real.
             // 2. There is no "matcher". preToolUse fires for EVERY tool, so the gate self-filters:
             //    guard-write allows silently when it cannot find a file path in the payload, which is
             //    the overwhelming common case and costs nothing.
             // 3. The end-of-turn event is "agentStop", not "stop" or "Stop".
             //
-            // UNVERIFIED: how Copilot signals a denial is not stated in its documentation, so exit 2
-            // is assumed here for consistency with every other harness. If Copilot instead treats a
-            // non-zero exit as advisory, this guard reports but does not block - which is exactly the
-            // silent-and-open failure the matcher work elsewhere guards against, and is the first
-            // thing to confirm when Copilot is actually driven.
+            // Copilot denies on exit 2 and ALSO on any other non-zero exit ("hook errored"), so it
+            // fails closed on its own. The guards are still wrapped: the wrapper turns a gate that
+            // could not run into exit 2, which carries dotnet's own error text to the agent rather
+            // than Copilot's bare "hook errored". close-out is never wrapped - see GateCommands.
+            //
+            // Copilot also runs the hooks in ".claude/settings.json" when that file is present, so
+            // in a repository with both, Claude Code's commands run here too - which is why those
+            // must also work under PowerShell (see GateCommands.GuardPosix).
             return $$"""
                 {
                   "version": 1,
@@ -82,37 +84,26 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.CopilotHooks
                       {
                         "type": "command",
                         "bash": "{{GateCommands.Warm(HarnessFolder)}}",
-                        "powershell": "{{PowerShellWarm()}}"
+                        "powershell": "{{GateCommands.Warm(HarnessFolder)}}"
                       }
                     ],
                     "preToolUse": [
                       {
                         "type": "command",
-                        "bash": "{{GateCommands.Guard(HarnessFolder, "guard-write")}}",
-                        "powershell": "{{PowerShellGuard("guard-write")}}"
+                        "bash": "{{GateCommands.GuardPosix(HarnessFolder, "guard-write")}}",
+                        "powershell": "{{GateCommands.GuardPowerShell(HarnessFolder, "guard-write")}}"
                       }
                     ],
                     "agentStop": [
                       {
                         "type": "command",
-                        "bash": "{{GateCommands.Guard(HarnessFolder, "close-out")}}",
-                        "powershell": "{{PowerShellGuard("close-out")}}"
+                        "bash": "{{GateCommands.CloseOut(HarnessFolder)}}",
+                        "powershell": "{{GateCommands.CloseOut(HarnessFolder)}}"
                       }
                     ]
                   }
                 }
                 """;
         }
-
-        private static string PowerShellWarm() =>
-            $"dotnet run {GateCommands.GatePath(HarnessFolder)} -- warm";
-
-        /// <summary>
-        /// The PowerShell spelling of the fail-closed wrapper: any non-zero exit becomes 2, the
-        /// universal block signal, so a broken or missing gate cannot wave an action through.
-        /// </summary>
-        private static string PowerShellGuard(string command) =>
-            $"dotnet run {GateCommands.GatePath(HarnessFolder)} --no-build -- {command} --harness {GateCommands.HarnessId(HarnessFolder)}; "
-            + "if ($LASTEXITCODE -ne 0) { exit 2 }";
     }
 }

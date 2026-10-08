@@ -3,7 +3,7 @@ applyTo: '**'
 description: "Phase-by-phase workflow for any task that builds or changes an Intent Architect module, and which workflow skill each phase calls for."
 keywords: [workflow, module building, phases, version, documentation, context]
 template-id: Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd
-contentHash: 085F928E5B4F7DFC55275C2B7E1B71E924A5224320A974D219C4F58761AD0388
+contentHash: 9A1B2273E5C2C5178205ACC29BC697D14977A6FCD9EA3CE0FB285657C7490E05
 ---
 # Module Building Workflow
 
@@ -178,7 +178,9 @@ version line that was never written up. → `module-docs-chore`
 
 4. **Context** — consolidate the durable knowledge from this change: decisions taken, invariants
 
-established, anything a future session would otherwise rediscover the hard way.
+established, anything a future session would otherwise rediscover the hard way. A problem with Intent
+Architect itself is not module knowledge: report it to the user for the Intent support team instead,
+and record only a genuine API or SDK limitation, together with the decision it forced.
 → `module-context-capture`
 
 Version comes first because the documentation refers to it. Dependencies come before documentation
@@ -194,6 +196,25 @@ because a fix made there is itself an observable change the documentation step t
 - [ ] Documentation reflects what shipped
 - [ ] `CONTEXT.md` updated with this change's durable knowledge
 - [ ] Build exits 0, and regenerated output was inspected
+
+===
+
+## If An Agent Gate Hook Itself Fails
+
+This repository runs an agent gate from your harness's hooks: `dotnet run <harness folder>/hooks/gate/gate.cs`,
+such as `.claude/hooks/gate/gate.cs`. When that hook cannot run at all, the error comes from `dotnet`, not
+from the gate. It is a machine setup problem, not a problem with your work. Do not retry the hook, work
+around it, or treat it as a finding to fix. Tell the user which of these applies:
+
+| Error from the hook | Cause | Fix for the user |
+| --- | --- | --- |
+| `dotnet: command not found`, or `dotnet` is not recognized | No .NET SDK on `PATH` | Install the .NET 10 SDK |
+| `Couldn't find a project to run` | The active SDK is older than .NET 10, often because a `global.json` pins one | Install the .NET 10 SDK, or update `global.json` |
+| `A compatible .NET SDK was not found` | A `global.json` pins an SDK that is not installed | Install that SDK, or update `global.json` |
+| `An error occurred trying to start process`, naming the gate's own build output | The gate has not been built yet | Run `dotnet run <harness folder>/hooks/gate/gate.cs -- warm` from the project root |
+| `gate.cs` itself cannot be found | Your working directory is not the project root | Change back to the project root |
+
+A failing close-out hook never needs action from you. It only reports, and the turn may end.
 
 ===
 
