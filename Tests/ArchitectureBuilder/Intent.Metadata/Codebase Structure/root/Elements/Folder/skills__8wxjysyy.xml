@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="673fe229-7e58-4742-a374-7e8cc61aac93" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-  <name>.agents</name>
-  <display>.agents</display>
+<class id="7ffec880-d85a-4492-a714-4d6e3ea65cd0" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>skills</name>
+  <display>skills</display>
+  <externalReference>3714483c-c0d4-43d6-a9ce-aabb065ada8a</externalReference>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>0951a812-04c3-46a4-b387-2cefcf664513</parentFolderId>
-  <packageId>0951a812-04c3-46a4-b387-2cefcf664513</packageId>
+  <parentFolderId>82940a15-4039-4206-a060-1044acc1391a</parentFolderId>
+  <packageId>0669533a-99cd-4a4b-b667-30e86bea8a27</packageId>
   <packageName>root</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="66fd9e66-42c7-4ef9-a778-b68e009272b9" name="Folder Options">
@@ -21,14 +22,15 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="10c514dd-97b0-4c4d-aaf0-3d5ede719bee" type="Output Anchor" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
-      <name>AI.Context</name>
-      <display>AI.Context</display>
+    <childElement id="55b3f578-db28-4b60-90b8-92a1b204e51e" type="Output Anchor" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>AI.Context.Skills</name>
+      <display>AI.Context.Skills</display>
+      <externalReference>d326b933-9f12-4c38-be22-3f8c872c182b</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>673fe229-7e58-4742-a374-7e8cc61aac93</parentFolderId>
-      <packageId>0951a812-04c3-46a4-b387-2cefcf664513</packageId>
+      <parentFolderId>7ffec880-d85a-4492-a714-4d6e3ea65cd0</parentFolderId>
+      <packageId>0669533a-99cd-4a4b-b667-30e86bea8a27</packageId>
       <packageName>root</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="a23c7901-31a5-4cbf-b8bf-1be128977e6d" name="Output Anchor Settings">
