@@ -40,6 +40,24 @@ Service Settings group whose naming conventions rename those elements as users c
   recreate a field.
 - `OnInstallMigration` and `Migration_03_09_03_Pre_00` seed only the Property, Entity and Operation
   fields. `Parameter Naming Convention` is not seeded and relies on its Default Value.
+- The duplicate-operation check is compiled TypeScript. Its source is
+  `DesignerMacros/src/services-operation-validation`, with shared logic in `common/`. Build it with
+  `tsc -p tsconfig.json` in the `operation/` and `operation-parameter/` folders. Each `dist/dist.js` is
+  pasted into the **Validate Function** of the Operation and Parameter element settings respectively.
+  In the pasted copy, comment out the `validate…(element);` line and uncomment `return validate…(lookup(id));`.
+  Fix the source first: a change made only in the designer is lost on the next recompile.
+- The duplicate-operation signature follows C# overload rules. It counts each parameter's type name,
+  generic type arguments (recursively) and collection flag, but never the return type. Nullability counts
+  only for a non-collection value type (an Enum, or a Type-Definition named in `isValueType`). That list
+  mirrors `CSharpType.NonNullableValueTypes` in Intent.Modules.Common.CSharp and must be kept in step with it.
+  Rejected: counting nullability on every type. `string`/`string?` and DTO/DTO? are not distinct C# overloads,
+  so the check would pass overloads that fail to compile. A nullable collection stays nullable-insensitive
+  because the type resolver applies nullability to the collection itself (`List<int>?`), not to its elements.
+- Three hand-pasted copies of the compiled `calculateSignature` / `calculateTypeSignature` / `isValueType`
+  block also exist. They are in the Operation Validate Function of Intent.Modelers.Domain and of
+  Intent.Common.Types, and in the Component Operation Validate Function of Intent.Modelers.UI. Their
+  `findPeerOperations` differs: UI looks up `Component Operation`. When the signature logic changes,
+  re-paste the block into all three and bump each module. Nothing enforces this, so the copies drift silently.
 
 ## Module Interactions
 - **Intent.Modelers.Services.CQRS** and **Intent.Metadata.WebApi**: their Command/Query

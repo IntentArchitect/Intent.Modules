@@ -2,6 +2,7 @@
 
 - Improvement: `Class` and `Data Contract` elements now carry the `Service Argument` trait, so they can be used as Service Operation parameter and return types.
 - Improvement: Minimum supported Intent Architect version raised to 5.0, as required by `Intent.Common` 3.11.8.
+- Fixed: The duplicate operation check on Class operations never reported anything. It now flags operations whose C# signatures clash, taking collections, value-type nullability and generic type arguments into account.
 
 ### Version 3.13.2
 

@@ -186,6 +186,12 @@
   </files>
   <customFiles>
     <customFile>
+      <path>Modules/Intent.Modules.Modelers.Domain/CONTEXT.md</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-08T13:42:14.942925Z</approvedAt>
+    </customFile>
+    <customFile>
       <path>Modules/Intent.Modules.Modelers.Domain/release-notes.md</path>
       <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
       <approvedByDisplayName>Joel Turner</approvedByDisplayName>

@@ -446,9 +446,34 @@ function validateDuplicateOperation(operation) {
 function calculateSignature(operation) {
     let result = `${operation.getName()}(`;
     let params = operation.getChildren("Parameter");
-    result += params.map((p) =&gt; p.typeReference.getType().getName()).join(', ');
+    result += params.map((p) =&gt; calculateTypeSignature(p.typeReference.getType(), p.typeReference.toModel())).join(', ');
     result += ")";
     return result;
+}
+// C# only overloads on nullability for value types, and a nullable collection is the collection being nullable.
+function calculateTypeSignature(type, typeReference) {
+    var _a, _b;
+    let result = (_a = type === null || type === void 0 ? void 0 : type.getName()) !== null &amp;&amp; _a !== void 0 ? _a : typeReference.typeId;
+    let genericTypeParameters = (_b = typeReference.genericTypeParameters) !== null &amp;&amp; _b !== void 0 ? _b : [];
+    if (genericTypeParameters.length &gt; 0) {
+        result += `&lt;${genericTypeParameters.map((x) =&gt; calculateTypeSignature(lookup(x.typeId), x)).join(', ')}&gt;`;
+    }
+    if (typeReference.isCollection) {
+        return `${result}[]`;
+    }
+    if (typeReference.isNullable &amp;&amp; isValueType(type)) {
+        result += "?";
+    }
+    return result;
+}
+function isValueType(type) {
+    if (type == null)
+        return false;
+    if (type.specialization == "Enum")
+        return true;
+    // Mirrors CSharpType.NonNullableValueTypes in Intent.Modules.Common.CSharp, using designer type names.
+    let valueTypeNames = ["bool", "byte", "sbyte", "char", "date", "dateonly", "datetime", "datetimeoffset", "decimal", "double", "float", "guid", "int", "uint", "long", "ulong", "short", "ushort", "timeonly", "timespan"];
+    return type.specialization == "Type-Definition" &amp;&amp; valueTypeNames.includes(type.getName().toLowerCase());
 }
 function findPeerOperations(operation) {
     return operation.getParent().getChildren("Component Operation").filter(x =&gt; x.id != operation.id);

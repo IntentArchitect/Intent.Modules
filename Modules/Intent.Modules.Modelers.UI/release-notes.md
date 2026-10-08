@@ -1,3 +1,7 @@
+### Version 1.1.6
+
+- Fixed: The duplicate Component Operation check ignored collections, value-type nullability and generic type arguments, so valid overloads such as `Load(ids: int[*])` and `Load(id: int)` were reported as duplicates.
+
 ### Version 1.1.5
 
 - Improvement: Improved context for AI modeling instructions for better results when AI agents are modeling UI.

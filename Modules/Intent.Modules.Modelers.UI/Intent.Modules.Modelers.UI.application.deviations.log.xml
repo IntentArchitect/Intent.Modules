@@ -22,4 +22,12 @@
       <fileHash>5AF63EF06322D8B991B8B16EBF1A9994C0ECEE8F0F61B0D0EE9A51916FC3FF76</fileHash>
     </file>
   </files>
+  <customFiles>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.UI/CONTEXT.md</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-08T13:42:14.9525868Z</approvedAt>
+    </customFile>
+  </customFiles>
 </deviationsLog>

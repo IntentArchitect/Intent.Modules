@@ -3,6 +3,7 @@
 - Improvement: Added a `Parameter Naming Convention` setting (default Camel Case) so operation parameter names follow Service Settings instead of always being camel-cased.
 - Improvement: Service Operation parameters and return types can now be any element with the `Service Argument` trait (e.g. Domain `Class`, `Data Contract` and `Value Object`).
 - Fixed: Service names now follow the `Entity Naming Convention` setting instead of `Operation Naming Convention` (e.g. Operation set to Camel Case renamed `OrderService` to `orderService`).
+- Fixed: The duplicate operation check ignored collections, value-type nullability and generic type arguments, so valid overloads such as `Create(ids: int[*])` and `Create(id: int)`, `Get(id: int?)` and `Get(id: int)`, or `Find(PagedResult<A>)` and `Find(PagedResult<B>)` were reported as duplicates.
 
 ### Version 4.0.16
 
