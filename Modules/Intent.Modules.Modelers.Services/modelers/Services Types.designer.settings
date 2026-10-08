@@ -1056,6 +1056,7 @@ return validateOperation(lookup(id));
               <type type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" />
               <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
               <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+              <type type="[Service Argument]" typeId="8b78644d-8b44-48c7-8c13-68255e2252c0" />
             </targetTypes>
             <allowIsNavigable>true</allowIsNavigable>
             <allowIsNullable>true</allowIsNullable>
@@ -1166,6 +1167,7 @@ return validateOperationParameter(lookup(id));
                   <type type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734" />
                   <type type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb" />
                   <type type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e" />
+                  <type type="[Service Argument]" typeId="8b78644d-8b44-48c7-8c13-68255e2252c0" />
                 </targetTypes>
                 <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
                 <allowIsNavigable>true</allowIsNavigable>

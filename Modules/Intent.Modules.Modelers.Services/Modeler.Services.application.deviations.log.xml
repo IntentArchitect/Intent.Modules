@@ -102,4 +102,12 @@
       <fileHash>091D8A3184ACBE5D9094116A6FDAB73BBD930B341E6F3973ABBC8236C1CE9FCF</fileHash>
     </file>
   </files>
+  <customFiles>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Services/CONTEXT.md</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-08T13:22:31.4178263Z</approvedAt>
+    </customFile>
+  </customFiles>
 </deviationsLog>

@@ -23,6 +23,14 @@ Service Settings group whose naming conventions rename those elements as users c
   `Operation Naming Convention`. "Entity" is a legacy title carried over from the Domain designer. It
   is kept, with only the hint reworded, because renaming the title would rename the generated
   `EntityNamingConvention()` C# accessor that downstream code may call.
+- **Operation parameter and return types target the `[Service Argument]` trait.** Other modules opt their
+  elements in by implementing the trait, so Services lists no foreign element types. Rejected: adding
+  each element type to the target types directly, because that would need Services to depend on every
+  module that owns one.
+- **Services keeps its `Intent.Common` dependency and client floor where they were.** It refers to the
+  trait by id only in designer settings, with no code reference. With an older `Intent.Common`, nothing
+  implements the trait and no extra types are offered, but nothing fails. Rejected: raising the dependency
+  to 3.11.8, because that would raise Services' minimum client to 5.0 for no functional gain.
 
 ## Invariants & Constraints
 - Renaming a Service Settings naming field's **title** requires updating every
@@ -37,3 +45,7 @@ Service Settings group whose naming conventions rename those elements as users c
 - **Intent.Modelers.Services.CQRS** and **Intent.Metadata.WebApi**: their Command/Query
   on-name-changed handlers read `Entity Naming Convention` by hardcoded field id
   (`625c6211-0dc7-4190-af49-6eadb82c7015`). They do not use `Naming Convention Scripts`.
+- **Intent.Common** owns the `[Service Argument]` trait (`8b78644d-8b44-48c7-8c13-68255e2252c0`,
+  `IServiceArgumentModel`). **Intent.Modelers.Domain** (`Class`, `Data Contract`) and
+  **Intent.Modelers.Domain.ValueObjects** (`Value Object`) implement it. The trait id is a cross-module
+  contract: never delete and recreate the trait.

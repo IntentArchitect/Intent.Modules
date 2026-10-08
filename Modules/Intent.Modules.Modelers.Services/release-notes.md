@@ -1,6 +1,7 @@
 ### Version 4.0.17
 
 - Improvement: Added a `Parameter Naming Convention` setting (default Camel Case) so operation parameter names follow Service Settings instead of always being camel-cased.
+- Improvement: Service Operation parameters and return types can now be any element with the `Service Argument` trait (e.g. Domain `Class`, `Data Contract` and `Value Object`).
 - Fixed: Service names now follow the `Entity Naming Convention` setting instead of `Operation Naming Convention` (e.g. Operation set to Camel Case renamed `OrderService` to `orderService`).
 
 ### Version 4.0.16

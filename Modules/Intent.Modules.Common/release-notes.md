@@ -1,3 +1,7 @@
+### Version 3.11.8
+
+- New: Added the `Service Argument` trait (`IServiceArgumentModel`) for elements that can be used as Service Operation parameter and return types.
+
 ### Version 3.11.7
 
 - Fixed: A paragraph opening with emphasis — `**Note** that ...` or `*pointer* is ...` — was re-emitted by `MarkdownFileParser` as a mangled list item (`- *Note** that ...`), because its unordered-list pattern allowed zero whitespace between the bullet character and the text, so a leading `*` was consumed as a bullet marker.

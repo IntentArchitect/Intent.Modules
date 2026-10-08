@@ -26,7 +26,7 @@
   <file path="ApiMetadataDesignerExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions" />
   <file path="ApiMetadataPackageExtensions.cs" deviationsHash="BF57DDA59FA2C56591E5C181F52CD376CFEE77D09BE010D0FAD39D86BCF4E8C7" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions" />
   <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
-  <file path="Intent.Modelers.Domain.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modelers.Domain.imodspec" deviationsHash="F7648748F6B5C6F2FE4213B02627DA22E1E1FDF99F1E4732219C2CDDC43E08A4" templateId="Intent.ModuleBuilder.IModSpecFile" />
   <file path="Intent.Modules.Modelers.Domain.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
   <file path="Migrations/Migration_03_12_02_Pre_01.cs" deviationsHash="5AEB22B40755AE1B1F458BE13F443F65EB4BE2F6440048EA4B65E8E31B54053F" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
   <file path="Migrations/OnInstallMigration.cs" deviationsHash="60B15F4438A329EF376A24573421236B612DF7AA4C8D71059A913DF6C1A1F6DD" templateId="Intent.ModuleBuilder.Templates.Migrations.OnInstallMigration" />

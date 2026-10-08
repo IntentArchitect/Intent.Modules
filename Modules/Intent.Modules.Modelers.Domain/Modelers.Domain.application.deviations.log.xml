@@ -142,6 +142,18 @@
       <fileHash>EA1FAE9139005DDB020BF608DA8E4A4468660B9CC229316F13A80DDE59CB3323</fileHash>
     </file>
     <file>
+      <correlationId>Intent.ModuleBuilder.IModSpecFile#8f0c5df1-1961-48ee-8298-3af07d1f37ab</correlationId>
+      <path>Intent.Modelers.Domain.imodspec</path>
+      <count>1</count>
+      <updatedByAccountName>joel.turner@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Joel Turner</updatedByDisplayName>
+      <updatedAt>2026-10-08T12:20:20.1032403Z</updatedAt>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-08T13:22:31.3862819Z</approvedAt>
+      <deviationsHash>F7648748F6B5C6F2FE4213B02627DA22E1E1FDF99F1E4732219C2CDDC43E08A4</deviationsHash>
+    </file>
+    <file>
       <correlationId>Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration#e3ff9ac0-b757-49fa-ac74-50491b42fac7</correlationId>
       <path>Migrations/Migration_03_12_02_Pre_01.cs</path>
       <count>3</count>
@@ -172,4 +184,12 @@
       <fileHash>19ECDCAA1980C750D8E93A3A5E07B991C1ACD204DEF73B80DE3C0FC080914041</fileHash>
     </file>
   </files>
+  <customFiles>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Domain/release-notes.md</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-08T13:22:31.405921Z</approvedAt>
+    </customFile>
+  </customFiles>
 </deviationsLog>

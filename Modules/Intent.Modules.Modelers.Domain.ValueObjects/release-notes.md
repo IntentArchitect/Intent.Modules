@@ -1,10 +1,15 @@
+### Version 3.6.4
+
+- Improvement: `Value Object` elements now carry the `Service Argument` trait, so they can be used as Service Operation parameter and return types.
+- Improvement: Minimum supported Intent Architect version raised to 5.0, as required by `Intent.Common` 3.11.8.
+
 ### Version 3.6.3
 
 - Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.
 
 ### Version 3.6.2
 
-- Improvement: Added stereotype descriptions in preperation for Intent Architect 4.5. 
+- Improvement: Added stereotype descriptions in preperation for Intent Architect 4.5.
 
 ### Version 3.6.1
 

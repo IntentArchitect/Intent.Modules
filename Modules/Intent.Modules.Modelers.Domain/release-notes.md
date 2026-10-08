@@ -1,3 +1,8 @@
+### Version 3.13.3
+
+- Improvement: `Class` and `Data Contract` elements now carry the `Service Argument` trait, so they can be used as Service Operation parameter and return types.
+- Improvement: Minimum supported Intent Architect version raised to 5.0, as required by `Intent.Common` 3.11.8.
+
 ### Version 3.13.2
 
 - Improvement: Added basic steering for how to lay out domain diagrams.
@@ -66,7 +71,7 @@
 
 ### Version 3.12.2
 
-- Improvement: Newly created entities now have a default name of *NewEntity* and not *NewClass*.
+- Improvement: Newly created entities now have a default name of _NewEntity_ and not _NewClass_.
 - Improvement: Added support for `Domain` and `Services` naming conventions for `Entities`, `Attributes` and `Operations`.
 - Improvement: Updated help topics.
 
@@ -106,7 +111,7 @@
 
 ### Version 3.8.0
 
-- Improvement: `Data Contract` elements no longer use the `Base Type` (since its a  Type Reference) for doing inheritance but now it has its own `Generalization` association.
+- Improvement: `Data Contract` elements no longer use the `Base Type` (since its a Type Reference) for doing inheritance but now it has its own `Generalization` association.
 
 ### Version 3.7.0
 
@@ -154,9 +159,9 @@
 
 ### Version 3.3.8
 
-- Update: `IsAggregateRoot()` will no longer consider `IsAbstract` models as Aggregate Roots. 
+- Update: `IsAggregateRoot()` will no longer consider `IsAbstract` models as Aggregate Roots.
 
 ### Version 3.3.6
 
- - Domain settings: Allows specifiying default naming conventions for Attributes (e.g. `camel-case` or `pascal-case`).
- - Validations to warn of duplicate Attributes and Classes names.
+- Domain settings: Allows specifiying default naming conventions for Attributes (e.g. `camel-case` or `pascal-case`).
+- Validations to warn of duplicate Attributes and Classes names.
