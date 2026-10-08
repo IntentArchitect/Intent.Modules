@@ -43,13 +43,17 @@ public static class Wiring
         new("codex", "Codex", ".codex",
             root => GroupedJson(root, ".codex/hooks.json"),
             ["PreToolUse"], ["Stop"],
-            root => Files(root, "AGENTS.override.md", "AGENTS.md"),
+            // Codex has no instructions folder: besides AGENTS.md, only config.toml's developer_instructions.
+            root => Files(root, "AGENTS.override.md", "AGENTS.md")
+                .Concat(Files(root, ".codex/config.toml").Where(f => File.ReadAllText(f).Contains("developer_instructions", StringComparison.Ordinal))),
             [".agents/skills"], SkillNameMustMatchFolder: false, AlsoReadsClaudeHooks: false),
         new("copilot", "Copilot CLI", ".github",
             root => FlatJson(root, ".github/hooks", requiredVersion: "1"),
             ["preToolUse", "PreToolUse"], ["agentStop", "sessionEnd", "Stop"],
+            // Copilot CLI also loads .claude/rules (observed with CLI 1.0.93; undocumented).
             root => Files(root, ".github/copilot-instructions.md", "AGENTS.md", "CLAUDE.md", ".claude/CLAUDE.md")
-                .Concat(Glob(root, ".github/instructions", "*.instructions.md")),
+                .Concat(Glob(root, ".github/instructions", "*.instructions.md"))
+                .Concat(Glob(root, ".claude/rules", "*.md").Where(AlwaysApplies)),
             [".github/skills", ".claude/skills", ".agents/skills"], SkillNameMustMatchFolder: false, AlsoReadsClaudeHooks: true),
         new("cursor", "Cursor", ".cursor",
             root => CursorJson(root),
@@ -101,9 +105,14 @@ public static class Wiring
             {
                 var claudeHooks = GroupedJson(root, ".claude/settings.json") ?? [];
                 var gateHooks = claudeHooks.Count(r => r.Command.Contains("gate.cs", StringComparison.Ordinal));
-                checks.Add(new Check("No duplicate hooks", gateHooks == 0,
+                // Claude's copy steps aside when Copilot runs it: Copilot's Claude-format payload has no
+                // transcript_path. Cursor's does, so under Cursor both copies still run (documented).
+                var claudeGate = Path.Combine(root, ".claude", "hooks", "gate", "gate.cs");
+                var stepsAside = spec.Id == "copilot" && File.Exists(claudeGate) && File.ReadAllText(claudeGate).Contains("StepsAsideFor", StringComparison.Ordinal);
+                checks.Add(new Check("No duplicate hooks", gateHooks == 0 || stepsAside,
                     gateHooks == 0 ? "no other harness's gate hooks are loaded too"
-                    : $"{spec.DisplayName} also loads .claude/settings.json hooks, so {gateHooks} gate hook(s) run a second time, as Claude Code"));
+                    : stepsAside ? $"{spec.DisplayName} also loads {gateHooks} gate hook(s) from .claude/settings.json; Claude's copy steps aside when {spec.DisplayName} runs it (verified by D1)"
+                    : $"{spec.DisplayName} also loads .claude/settings.json hooks, so {gateHooks} gate hook(s) run a second time, as Claude Code - a documented limitation"));
             }
 
             var instructionFiles = spec.InstructionFiles(root).Distinct().ToList();
@@ -137,7 +146,8 @@ public static class Wiring
     {
         var hit = registrations.FirstOrDefault(r =>
             events.Contains(r.Event, StringComparer.Ordinal)
-            && r.Command.Contains(command, StringComparison.Ordinal)
+            // "guard-tool" is one hook that dispatches to both guards by tool name (Copilot).
+            && (r.Command.Contains(command, StringComparison.Ordinal) || r.Command.Contains("guard-tool", StringComparison.Ordinal))
             && (matcherMustCover is null || r.Matcher.Length == 0 || Covers(r.Matcher, matcherMustCover)));
         return hit is not null
             ? new Check(dimension, true, $"{command} on {hit.Event}{(hit.Matcher.Length > 0 ? $" ({hit.Matcher})" : "")}")
@@ -299,14 +309,19 @@ public static class Wiring
         foreach (var text in files.Select(File.ReadAllText))
         {
             var gate = Regex.Match(text, @"[\w${}()./-]*/gate\.cs").Value;
-            foreach (Match ev in Regex.Matches(text, "\"(tool\\.execute\\.before|session\\.idle|session\\.stop|event)\""))
+            if (text.Contains("\"tool.execute.before\"", StringComparison.Ordinal))
             {
-                var body = text[ev.Index..];
-                foreach (Match call in Regex.Matches(body, "runGate\\(\"([a-z-]+)\""))
+                foreach (Match call in Regex.Matches(text, "runGuard\\(\"([a-z-]+)\""))
                 {
                     var matcher = call.Groups[1].Value == "guard-version" ? "run_designer_script" : "write|edit";
-                    list.Add(new Registration(ev.Groups[1].Value, matcher, $"{gate} {call.Groups[1].Value}"));
+                    list.Add(new Registration("tool.execute.before", matcher, $"{gate} {call.Groups[1].Value}"));
                 }
+            }
+
+            // Close-out runs from the generic "event" hook when the session goes idle.
+            if (Regex.IsMatch(text, "\"session\\.(idle|status)\"") && text.Contains("runCloseOut(", StringComparison.Ordinal))
+            {
+                list.Add(new Registration("session.idle", "", $"{gate} close-out"));
             }
         }
 

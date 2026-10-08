@@ -11,8 +11,9 @@
     "preToolUse": [
       {
         "type": "command",
-        "bash": "dotnet run .github/hooks/gate/gate.cs --no-build -- guard-write --harness github || exit 2",
-        "powershell": "dotnet run .github/hooks/gate/gate.cs --no-build -- guard-write --harness github; if ($LASTEXITCODE -ne 0) { exit 2 }"
+        "matcher": "create|edit|str_replace_editor|apply_patch|write|.*run_designer_script.*",
+        "bash": "dotnet run .github/hooks/gate/gate.cs --no-build -- guard-tool --harness github || exit 2",
+        "powershell": "dotnet run .github/hooks/gate/gate.cs --no-build -- guard-tool --harness github; if ($LASTEXITCODE -ne 0) { exit 2 }"
       }
     ],
     "agentStop": [

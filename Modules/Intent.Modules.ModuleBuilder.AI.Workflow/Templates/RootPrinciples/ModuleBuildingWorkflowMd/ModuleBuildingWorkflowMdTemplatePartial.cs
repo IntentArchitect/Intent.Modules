@@ -57,10 +57,22 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.RootPrinciples.Modu
 
                 """;
 
-            MarkdownFile = new MarkdownFile("module-building-workflow.instructions", relativeLocation: "")
+            // Each harness has its own always-on switch, and the one file carries all of them: applyTo
+            // for Copilot, alwaysApply for Cursor, inclusion for Kiro. Claude Code needs none - a rule
+            // without "paths" always loads. Cursor alone also needs a different extension: its rules
+            // system ignores a plain .md file in .cursor/rules.
+            var underCursor = false;
+            for (var target = OutputTarget; target != null; target = target.Parent)
+            {
+                underCursor |= target.Name == ".cursor";
+            }
+
+            MarkdownFile = new MarkdownFile("module-building-workflow.instructions", relativeLocation: "", extension: underCursor ? "mdc" : "md")
                 .FromMarkdown($$""""""
                     ---
                     applyTo: '**'
+                    alwaysApply: true
+                    inclusion: always
                     description: "Phase-by-phase workflow for any task that builds or changes an Intent Architect module, and which workflow skill each phase calls for."
                     keywords: [workflow, module building, phases, version, documentation, context]
                     template-id: {{TemplateId}}

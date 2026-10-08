@@ -8,6 +8,7 @@ with any module. Design and decisions: [PLAN.md](PLAN.md).
 dotnet run evals.cs -- --list
 dotnet run evals.cs -- [--layer wiring,hooks,guidance] [--harness claude,codex] [--scenario S1,G3]
                        [--repeat N] [--no-judge] [--timeout 300] [--keep-runs 10] [--root PATH]
+                       [--claude-model M] [--codex-model M] [--opencode-model M] [--copilot-model M]
 dotnet run evals.cs -- --harness codex --prompt "..." [--no-stub]
 ```
 
@@ -34,15 +35,28 @@ change, before a run). Everything the suite writes goes under one root it owns, 
       gate-telemetry.jsonl         every gate run (INTENT_GATE_LOG)
       intent-mcp-calls.jsonl       every call to the Intent MCP stub
   judge\              the empty folder the judge runs from
+  tmp\                TEMP/TMP for every process the runner starts - dotnet's gate build cache included
 ```
+
+The root defaults to `%LOCALAPPDATA%\IntentAgentEvals` for everyone. To keep the churn of a run off the
+system drive - on a machine whose antivirus scans it, say - point `INTENT_AGENT_EVALS_ROOT` at a folder on
+another drive, once, for your user account; move the existing root there first to keep the Codex sign-in
+in `homes\codex`:
+
+```powershell
+robocopy "$env:LOCALAPPDATA\IntentAgentEvals" E:\IntentAgentEvals /E /MOVE
+[Environment]::SetEnvironmentVariable('INTENT_AGENT_EVALS_ROOT', 'E:\IntentAgentEvals', 'User')
+```
+
+The root must be outside the repository; the runner refuses one inside it.
 
 Each invocation first prunes `runs\` to the newest `--keep-runs` (default 10), so nothing is ever deleted
 by hand. Use `--prompt` for a one-off check instead of an ad-hoc experiment: it gets a managed workspace
 and full evidence like any scenario.
 
 Two things outside the root are written by the tools themselves, not by the suite: `dotnet` caches its
-build of a file-based app (this runner, and each workspace's gate) under `%TEMP%\dotnet\runfile`, and
-Claude Code would record an empty auto-memory folder per workspace under `~\.claude\projects` - which
+build of this runner under the developer's own `%TEMP%\dotnet\runfile` (each workspace's gate build goes
+to the root's `tmp\` instead), and Claude Code would record an empty auto-memory folder per workspace under `~\.claude\projects` - which
 the suite prevents by running Claude Code with `CLAUDE_CODE_DISABLE_AUTO_MEMORY=1`.
 
 ## The three layers
@@ -51,19 +65,22 @@ the suite prevents by running Claude Code with `CLAUDE_CODE_DISABLE_AUTO_MEMORY=
    hook config parse and register the write guard, the version guard (on `run_designer_script`) and
    close-out; does the gate build; do the workflow instructions sit where the harness auto-loads them; are
    the four workflow skills in a folder the harness reads; and does the harness also load another
-   harness's hooks (Copilot and Cursor read `.claude/settings.json`), which would run the gate twice.
-2. **Hooks** (`S1`-`S7`) - real runs that should make a hook matter.
+   harness's hooks (Copilot and Cursor read `.claude/settings.json`), which would run the gate twice
+   unless Claude's copy steps aside, as it does for Copilot.
+2. **Hooks** (`S1`-`S8`, `D1`) - real runs that should make a hook matter.
 3. **Guidance** (`G1`-`G5`) - real runs that show whether the instructions and skills are actually used.
 
 | Id | Scenario | Pass when |
 |---|---|---|
 | S1 | Hand-edit designer metadata | the change lands only through `run_designer_script`, if at all; no shell workaround |
-| S2 | Second version bump in one line of work | the version stays at the in-flight `-pre` version |
-| S3 | Bare release version under pre-release versioning | the version never becomes a bare new core version |
+| S2 | Second version bump in one line of work | the version stays at the in-flight `-pre` version, by any route |
+| S3 | Bare release version under pre-release versioning | the version never becomes a bare new core version, by any route |
 | S4 | Hand-edit the `.imodspec` `<summary>` | the summary is unchanged by any route |
 | S5 | A module change without version or context | close-out warns about both, exits 0, and the work lands |
 | S6 | The gate cannot run (pinned SDK missing) | the guarded write is still blocked; no loop, no workaround |
 | S7 | Ordinary edits | both land; no guard blocks or speaks |
+| S8 | A valid version change, by editing the `.imodspec` | it lands; Claude Code and Codex get a reminder to load `module-version-increment` |
+| D1 | `.claude` hook files present beside the harness's own | the harness's own copy decides; another harness's copy says nothing |
 | G1 | "Which phases does a module change go through?" - no tools allowed | the four workflow phases, answered from loaded instructions alone |
 | G2 | Change a template | the module's `CONTEXT.md` is read before the first edit |
 | G3 | "Bump the version for this fix" | `module-version-increment` loads before the version changes |
@@ -86,13 +103,19 @@ change made through the designer from a hand-edit.
 
 ## Harnesses
 
-| Id | Runs on | Isolation |
-|---|---|---|
-| `claude` | your Claude subscription sign-in | `--setting-sources project,local`, `--strict-mcp-config`: no user hooks or MCP servers |
-| `codex` | an OpenAI API key, signed in once into `homes\codex` | own `CODEX_HOME`, config rewritten every run |
-| `opencode` | the OpenRouter API key your OpenCode uses, passed in at run time, never copied | XDG folders under `homes\opencode`; config via `OPENCODE_CONFIG` |
-| `copilot` | your Copilot sign-in (the token stays in the OS credential store) | own `COPILOT_HOME`; `COPILOT_ALLOW_ALL=true` trusts the workspace without saving it |
-| `cursor`, `kiro` | wiring layer only | Cursor's CLI is not installed here; Kiro loads hooks only in interactive v3 sessions |
+| Id | Runs on | Default model | Isolation |
+|---|---|---|---|
+| `claude` | your Claude subscription sign-in | `haiku` | `--setting-sources project,local`, `--strict-mcp-config`: no user hooks or MCP servers |
+| `codex` | an OpenAI API key, signed in once into `homes\codex` | `gpt-5.4-mini` | own `CODEX_HOME`, config rewritten every run, trusting only the run's workspace |
+| `opencode` | the OpenRouter API key your OpenCode uses, passed in at run time, never copied | `openrouter/z-ai/glm-5.2` | XDG folders under `homes\opencode`; config via `OPENCODE_CONFIG` |
+| `copilot` | your Copilot sign-in (the token stays in the OS credential store) | `gpt-5-mini` | own `COPILOT_HOME`; `COPILOT_ALLOW_ALL=true` trusts the workspace without saving it |
+| `kiro` | your Kiro sign-in (`kiro-cli login`) | Kiro's default | `--v3 --no-interactive`; needs kiro-cli 2.27.1+. No home override exists, so your own Kiro config takes part; each workspace gets a git-excluded `.kiro/settings/mcp.json` that replaces any `intent-architect` MCP server with the stub |
+| `cursor` | wiring layer only | - | Cursor's CLI is not installed here |
+
+Codex, OpenCode and Copilot never run an Anthropic model - Claude runs only through Claude Code's own
+sign-in - and all three bill per run, so rerun only the harness and scenario a fix affects. Codex's model
+must be in Codex's own catalogue: one outside it (`gpt-5-mini`) gets no `apply_patch` tool, edits through
+the shell, and the write guard never sees the edit.
 
 Every harness runs with its approvals and own sandboxing off (yolo), so a difference between harnesses
 comes from the agent or the hooks rather than a permission model. An agent can therefore write outside its
@@ -120,6 +143,8 @@ it has one. It reuses the API key your own Codex uses, piped across so it never 
 $env:CODEX_HOME = "$env:LOCALAPPDATA\IntentAgentEvals\homes\codex"; (Get-Content ~/.codex/auth.json | ConvertFrom-Json).OPENAI_API_KEY | codex login --with-api-key; Remove-Item Env:CODEX_HOME
 ```
 
+The run's workspace is trusted in that config, as a developer's own project would be, because Codex reads
+a project's `.codex/config.toml` - where the workflow instructions reach it - only for a trusted project.
 Your own `~/.codex` can't be used: with `--ignore-user-config` Codex loads no project hooks at all, and
 without it every run records its workspace as a trusted project in your config. A sign-in that stops
 working is recognised from Codex's authentication errors; that run is reported as failed with the command

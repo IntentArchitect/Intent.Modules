@@ -25,8 +25,8 @@
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-10-06T05:39:52.8326049Z</updatedAt>
-      <deviationsHash>01A80EA7968A5CC04391337A4B019E1A972E8D626A2FB0167EC5BAD07A417C98</deviationsHash>
+      <updatedAt>2026-10-08T14:37:16.0516916Z</updatedAt>
+      <deviationsHash>11FB3D648046EED57FA67370D175EE36333472D598FEBFDFC4C7BB1DB27079CA</deviationsHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel#02abd772-3fe4-4c04-ac45-40e14cfced00</correlationId>
@@ -56,13 +56,13 @@
       <deviationsHash>033B46FAAB046E29A914124AB841267641277F05E8B1F8067F6888351BA6E252</deviationsHash>
     </file>
     <file>
-      <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#16162d11-1340-41a5-8a55-6a458f2f575f</correlationId>
-      <path>Templates/Hooks/GateScripts/GateScriptsTemplateRegistration.cs</path>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#16162d11-1340-41a5-8a55-6a458f2f575f</correlationId>
+      <path>Templates/Hooks/GateScripts/GateScriptsTemplatePartial.cs</path>
       <count>1</count>
-      <updatedByAccountName>joel.turner@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Joel Turner</updatedByDisplayName>
-      <updatedAt>2026-10-08T11:01:15.9695195Z</updatedAt>
-      <deviationsHash>14431BCAE5B80C89EEE977D3A665C2089F377861A06BBA6AE5AEEE75E884D704</deviationsHash>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-10-08T14:37:16.0517387Z</updatedAt>
+      <deviationsHash>B417758A310A25DA967DEFA7E1F060AF786670871452387979297F5EBE53DD6B</deviationsHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#f08ee439-d1d7-4285-b2b6-ba18cba0e12a</correlationId>
@@ -90,15 +90,6 @@
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
       <updatedAt>2026-09-18T14:02:01.300896Z</updatedAt>
       <deviationsHash>799C8D92E77C7E631AD9A2506C88BA94E97408A83308E6D428928E6EE315533C</deviationsHash>
-    </file>
-    <file>
-      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#3a408a84-8e00-46cc-8833-22ad37e64091</correlationId>
-      <path>Templates/Hooks/OpenCodePlugin/OpenCodePluginTemplatePartial.cs</path>
-      <count>1</count>
-      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-09-18T12:15:14.8681664Z</updatedAt>
-      <deviationsHash>C9FF056EB64C3C76370B07598CC951C0E94B9F67F4542024643E0A1963755F15</deviationsHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#397ea30f-1ff0-4356-a10f-f47052036047</correlationId>

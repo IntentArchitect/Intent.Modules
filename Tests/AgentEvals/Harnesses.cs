@@ -54,6 +54,7 @@ public static class Harnesses
         new CodexHarness(paths),
         new OpenCodeHarness(paths),
         new CopilotHarness(paths),
+        new KiroHarness(paths),
     ];
 
     internal static async Task<string> VersionOf(string executable, string workingDirectory, params string[] args) =>
@@ -159,7 +160,14 @@ public sealed class CodexHarness(EvalPaths paths) : IHarness
 
     public string GatePath => ".codex/hooks/gate/gate.cs";
 
-    public IReadOnlyList<string> GeneratedFiles { get; } = [".codex/hooks.json", ".codex/hooks", ".agents"];
+    public IReadOnlyList<string> GeneratedFiles { get; } = [".codex/hooks.json", ".codex/config.toml", ".codex/hooks", ".agents"];
+
+    /// <summary>
+    /// The smallest model in Codex's own catalogue, on the API key. A model outside the catalogue
+    /// (gpt-5-mini) runs on fallback metadata without the apply_patch tool, so it edits through the shell
+    /// and the write guard never sees the edit - observed.
+    /// </summary>
+    public const string DefaultModel = "gpt-5.4-mini";
 
     public bool FailsClosedWhenGateCannotRun => true;
 
@@ -184,9 +192,18 @@ public sealed class CodexHarness(EvalPaths paths) : IHarness
         var config = """
             # Owned by the agent eval suite and rewritten before every run: no MCP servers, plugins, hooks
             # or model overrides beyond what the run names, so a run depends on nothing but the workspace
-            # and the command line. Trust entries Codex records here are cleared each run.
+            # and the command line. Only this run's workspace is trusted; entries Codex records are cleared each run.
 
             """;
+        // Trusted, as a developer's own project would be: Codex reads a project's .codex/config.toml -
+        // where the workflow instructions reach it - only for a trusted project.
+        config += $"""
+
+            [projects.{Toml(request.Workspace.Root)}]
+            trust_level = "trusted"
+
+            """;
+
         if (request.WithIntentStub)
         {
             var (command, stubArgs) = McpStub.LaunchCommand(request.Workspace.Root, request.Workspace.StubLogPath);
@@ -206,11 +223,7 @@ public sealed class CodexHarness(EvalPaths paths) : IHarness
             "exec", "--json", "--dangerously-bypass-hook-trust", "--ephemeral",
             "--dangerously-bypass-approvals-and-sandbox", "--skip-git-repo-check",
         };
-        if (request.Model is not null)
-        {
-            args.AddRange(["-m", request.Model]);
-        }
-
+        args.AddRange(["-m", request.Model ?? DefaultModel]);
         args.Add(request.Prompt);
         return WithHome(Processes.Command(Executable!, request.Workspace.Root, [.. args]));
     }

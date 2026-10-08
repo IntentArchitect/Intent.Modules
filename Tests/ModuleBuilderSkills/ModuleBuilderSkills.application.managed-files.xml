@@ -91,13 +91,22 @@
   <file path=".claude/skills/module-svg-icon/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon_SkillMd_Agents" />
   <file path=".claude/skills/module-version-increment/SKILL.md" templateId="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleVersionIncrement_SkillMd_Agents" />
   <file path=".claude/skills/module-versioning/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.ModuleVersioning_SkillMd_Agents" />
+  <file path=".codex/config.toml" templateId="Intent.ModuleBuilder.AI.Workflow.RootPrinciples.CodexInstructionsConfig" />
   <file path=".cursor/hooks.json" templateId="Intent.ModuleBuilder.AI.Workflow.Hooks.CursorHooks" />
+  <file path=".cursor/rules/module-building-workflow.instructions.mdc" templateId="Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd" />
   <file path=".github/hooks/intent-agent-gate.json" templateId="Intent.ModuleBuilder.AI.Workflow.Hooks.CopilotHooks" />
+  <file path=".github/instructions/module-building-workflow.instructions.md" templateId="Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd" />
   <file path=".kiro/hooks/intent-agent-gate.json" templateId="Intent.ModuleBuilder.AI.Workflow.Hooks.KiroHooks" />
+  <file path=".kiro/skills/module-context-capture/SKILL.md" templateId="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleContextCapture_SkillMd_Agents" />
+  <file path=".kiro/skills/module-dependency-audit/SKILL.md" templateId="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDependencyAudit_SkillMd_Agents" />
+  <file path=".kiro/skills/module-docs-chore/SKILL.md" templateId="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDocsChore_SkillMd_Agents" />
+  <file path=".kiro/skills/module-version-increment/SKILL.md" templateId="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleVersionIncrement_SkillMd_Agents" />
+  <file path=".kiro/steering/module-building-workflow.instructions.md" templateId="Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd" />
   <file path=".opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
   <file path=".opencode/instructions/exception-guidelines.instructions.md" templateId="Intent.ModuleBuilder.AI.Skills.RootPrinciples.ExceptionGuidelinesMd" />
   <file path=".opencode/instructions/known-build-gotchas.instructions.md" templateId="Intent.ModuleBuilder.AI.Skills.RootPrinciples.KnownBuildGotchasMd" />
   <file path=".opencode/instructions/module-building-workflow.instructions.md" templateId="Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd" />
+  <file path=".opencode/opencode.json" templateId="Intent.ModuleBuilder.AI.Workflow.RootPrinciples.OpenCodeInstructionsConfig" />
   <file path=".opencode/plugins/intent-agent-gate.ts" templateId="Intent.ModuleBuilder.AI.Workflow.Hooks.OpenCodePlugin" />
   <file path=".opencode/skills/add-association-type/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_SkillMd_Agents" />
   <file path=".opencode/skills/add-association-type/resources/association-type-workflow.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_ResourcesAssociationTypeWorkflowMd_Agents" />

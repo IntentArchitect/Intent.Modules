@@ -2,8 +2,12 @@ using System.Text.Json;
 
 namespace AgentEvals;
 
-/// <summary>One gate invocation, as the gate itself logged it (INTENT_GATE_LOG).</summary>
-public sealed record GateRun(string Command, int ExitCode, int DurationMs, string Stdin, string Stdout, string Stderr);
+/// <summary>
+/// One gate invocation, as the gate itself logged it (INTENT_GATE_LOG). <see cref="Harness"/> is the
+/// copy's own "--harness" value - which harness's hook file ran it, not necessarily which harness was
+/// running: Copilot CLI also runs the hooks in .claude/settings.json.
+/// </summary>
+public sealed record GateRun(string Command, int ExitCode, int DurationMs, string Stdin, string Stdout, string Stderr, string Harness = "");
 
 /// <summary>One call the agent made to the Intent MCP stub, as the stub logged it, with the files it wrote.</summary>
 public sealed record StubCall(string Tool, string Arguments, string Result, bool IsError, IReadOnlyList<StubWrite> Wrote)
@@ -117,12 +121,34 @@ public sealed record Evidence(
 
     public static IReadOnlyList<GateRun> ReadTelemetry(string path) =>
         ReadJsonLines(path, root => new GateRun(
-            root.GetProperty("command").GetString() ?? "",
+            GuardFor(root.GetProperty("command").GetString() ?? "", root.GetProperty("stdin").GetString() ?? ""),
             root.GetProperty("exitCode").GetInt32(),
             root.GetProperty("durationMs").GetInt32(),
             root.GetProperty("stdin").GetString() ?? "",
             root.GetProperty("stdout").GetString() ?? "",
-            root.GetProperty("stderr").GetString() ?? ""));
+            root.GetProperty("stderr").GetString() ?? "",
+            HarnessArgument(root)));
+
+    /// <summary>
+    /// "guard-tool" (Copilot's single pre-tool hook) dispatches by tool, so a run is counted as the
+    /// guard it dispatched to - checks then read the same for every harness.
+    /// </summary>
+    private static string GuardFor(string command, string stdin) =>
+        command != "guard-tool" ? command
+        : stdin.Contains("run_designer_script", StringComparison.OrdinalIgnoreCase) ? "guard-version"
+        : "guard-write";
+
+    private static string HarnessArgument(JsonElement root)
+    {
+        if (!root.TryGetProperty("args", out var args) || args.ValueKind != JsonValueKind.Array)
+        {
+            return "";
+        }
+
+        var values = args.EnumerateArray().Select(a => a.GetString() ?? "").ToList();
+        var index = values.IndexOf("--harness");
+        return index >= 0 && index + 1 < values.Count ? values[index + 1] : "";
+    }
 
     public static IReadOnlyList<StubCall> ReadStubLog(string path) =>
         ReadJsonLines(path, root => new StubCall(

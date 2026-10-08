@@ -46,6 +46,16 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks
         /// </remarks>
         public static string GatePath(string harnessFolder) => $"{harnessFolder}/hooks/gate/gate.cs";
 
+        /// <summary>
+        /// The anchor folders that carry a hook configuration, and so need a copy of the gate. Every
+        /// other AI.Context anchor - ".agents" above all - is read by no harness's hook loader, so a
+        /// gate there would never run.
+        /// </summary>
+        public static readonly string[] HookedHarnessFolders =
+        {
+            ".claude", ".codex", ".cursor", ".github", ".kiro", ".opencode",
+        };
+
         /// <summary>The harness id the gate expects - the anchor folder name without its leading dot.</summary>
         public static string HarnessId(string harnessFolder) => harnessFolder.TrimStart('.');
 
@@ -96,6 +106,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks
         /// "; exit $LASTEXITCODE" restores the real code in PowerShell, and in a POSIX shell the
         /// variable is empty, so "exit" keeps the gate's own status. It does not fail closed when
         /// dotnet itself cannot run; Cursor covers that with failClosed, and Kiro has no equivalent.
+        /// <para>
+        /// Kiro CLI v3 (2.28, headless) runs the same string in cmd.exe instead - observed - where ";"
+        /// separates nothing: the tail reaches the gate as arguments, which the gate drops
+        /// (Cli.WithoutShellTail), and cmd.exe passes the gate's exit code through unchanged.
+        /// </para>
         /// </remarks>
         public static string GuardPortable(string harnessFolder, string command) =>
             $"{Run(harnessFolder, command)}; exit $LASTEXITCODE";

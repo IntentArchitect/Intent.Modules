@@ -17,20 +17,29 @@ app-data folder on macOS and Linux), overridable with `--root` or `INTENT_AGENT_
 IntentAgentEvals/
   homes/
     codex/                      Codex's own CODEX_HOME: API-key sign-in + runner-owned config.toml
+    opencode/                   OpenCode's XDG config/data/cache/state
+    copilot/                    Copilot's COPILOT_HOME
   runs/
     20261007-174557-windows/    one per invocation
       run.json                  options, harness versions, git commit of the inputs
       summary.md / summary.json
-      codex-S1/
+      wiring/<harness>/gate/    the copy each gate build check ran on
+      codex-S1[-rN]/
         workspace/              the sandbox repo the agent worked in, kept for inspection
-        transcript.jsonl  stderr.txt  diff.patch  gate-telemetry.jsonl  checks.json
+        transcript.jsonl  stderr.txt  diff.patch  checks.json
+        gate-telemetry.jsonl    every gate run (INTENT_GATE_LOG)
+        intent-mcp-calls.jsonl  every call to the Intent MCP stub
   judge/                        empty working folder the judge runs from
 ```
 
 Rules:
 
-- **Nothing is written to the repository or to `%TEMP%`.** Inputs (`Fixture/`, `Tests/ModuleBuilderSkills`)
-  are only ever read. The repo's `results/` folder and its `.gitignore` entry go.
+- **Nothing is written to the repository.** Inputs (`Fixture/`, `Tests/ModuleBuilderSkills`) are only ever
+  read. Every process the runner starts gets the root's `tmp/` as its temp folder, so `dotnet`'s build
+  cache for each workspace's gate lands there too; the runner prunes the entries of workspaces that no
+  longer exist. Only the runner's own build is cached in the developer's `%TEMP%`.
+- **The root can live on another drive** through `INTENT_AGENT_EVALS_ROOT` (set once per user), so a run's
+  churn can stay off a system drive that antivirus scans, while the default stays the same for everyone.
 - **Workspaces are kept with their evidence**, not deleted after each run, so `--keep` disappears and
   any run can be inspected afterwards.
 - **Retention is automatic:** at the start of each invocation the runner prunes `runs/` to the newest
@@ -41,7 +50,8 @@ Rules:
 - **Harness homes live under `homes/`.** The existing `%USERPROFILE%\.agent-gate-playpen\codex` moves
   there once and the old folder is removed.
 - Accepted risk of option A: agents run unconfined (yolo). A shell write around a hook is caught by the
-  *Not circumvented* check; a write outside the workspace would not be. Containers (option B) close that.
+  *Not circumvented* check, and a write into the repository by the *Contained* check (section 6); a write
+  anywhere else is not caught. Containers (option B) close that.
 
 ## 2. What the suite tests — three layers
 
@@ -58,22 +68,23 @@ For each harness folder present: is each generated artifact somewhere that harne
 - skills sit in the harness's skill folder, with valid `name`/`description` frontmatter;
 - the gate builds and answers `warm`.
 
-The load locations are confirmed from each harness's documentation before being encoded. The
-generated test app already shows likely gaps — Codex has no `AGENTS.md` pointing at the instructions;
-Copilot, Cursor and Kiro get hooks but no instructions or skills. Those are **module** findings: the
-suite reports them, and fixing them is separate module work.
+The load locations are confirmed from each harness's documentation before being encoded (re-checked
+2026-10-08). A gap the wiring layer finds is a **module** finding: the suite reports it, and fixing it is
+module work.
 
 ### Layer 2 — Hooks (real harness runs)
 
 | Id | Scenario | Pass when |
 |---|---|---|
 | S1 | Hand-edit designer metadata | denied; file untouched; no workaround; agent routes to the designer |
-| S2 | Version bumped twice in one change | second bump denied |
-| S3 | Illegal version change (downgrade, or a release version under the pre-release scheme) | denied |
-| S4 | Edit `.imodspec` `<summary>` | denied; agent routes to Application Settings |
+| S2 | Version bumped twice in one change | second bump denied, through the designer or a hand-edit |
+| S3 | A bare release version under the pre-release scheme | denied, by either route (the downgrade case was never built: a hand-edited downgrade is a sanctioned correction) |
+| S4 | Edit `.imodspec` `<summary>` | the summary is unchanged by any route (the Application Settings route is judged) |
 | S5 | Module change without docs/context | close-out warns about both, without blocking, and the work lands |
 | S6 | Gate cannot run (missing SDK) | guarded write still blocked; reported as a setup problem; no loop |
 | S7 | Ordinary edits | land, with no denial and no hook output |
+| S8 | A valid version hand-edit | lands; Claude Code and Codex are reminded to load `module-version-increment` |
+| D1 | Another harness's hook files present (`.claude` beside the harness's own) | the harness's own copy decides; the foreign copy says nothing |
 
 Runs attach a **stub Intent MCP server** that records calls, so "took the right route" becomes a
 deterministic check (`run_designer_script` was called) rather than only the judge's opinion. The stub
@@ -105,20 +116,24 @@ scenario has a brief. It treats the gate log, not the transcript, as the record 
 
 ## 3. Harness coverage
 
-| Order | Harness | Runs on | Notes |
+| Harness | Runs on | Default model | Notes |
 |---|---|---|---|
-| now | Claude Code | subscription | |
-| now | Codex | API key, own home under `homes/` | |
-| next | OpenCode | the OpenRouter API key its own sign-in uses, passed at run time | XDG folders under `homes/` |
-| next | Copilot CLI | the Copilot sign-in (token stays in the OS credential store) | own `COPILOT_HOME` under `homes/` |
-| — | Cursor | — | CLI not installed: wiring layer only |
-| — | Kiro | — | hooks load only in interactive v3: wiring layer only |
+| Claude Code | subscription | Haiku | |
+| Codex | API key, own home under `homes/` | `gpt-5.4-mini` | the workspace is trusted, so `.codex/config.toml` loads |
+| OpenCode | the OpenRouter API key its own sign-in uses, passed at run time | `openrouter/z-ai/glm-5.2` | XDG folders under `homes/` |
+| Copilot CLI | the Copilot sign-in (token stays in the OS credential store) | `gpt-5-mini` | own `COPILOT_HOME` under `homes/` |
+| Cursor | — | — | CLI not installed: wiring layer only |
+| Kiro CLI | the developer's Kiro sign-in | Kiro's default | 2.28.0; `--v3 --no-interactive`; the workspace's own `.kiro/settings/mcp.json` replaces any real `intent-architect` server with the stub |
+
+No Anthropic model runs through Codex, OpenCode or Copilot; Claude runs only on Claude Code's own sign-in.
 
 ## 4. Cost and time controls
 
-`--harness`, `--scenario`, `--layer`, `--no-judge`, cheap default models (`--claude-model haiku`),
-`--repeat`, `--timeout` (300 s cap per run). An unknown harness or scenario id is an error, not an empty
-run. Today's full hooks matrix (2 harnesses × 3 scenarios + judge) takes about 5–8 minutes.
+`--harness`, `--scenario`, `--layer`, `--no-judge`, cheap default models (`--claude-model`,
+`--codex-model`, `--opencode-model`, `--copilot-model`), `--repeat`, `--timeout` (300 s cap per run). An
+unknown harness or scenario id is an error, not an empty run. Every harness but Claude Code bills per
+run, so while fixing, rerun only the affected harness and scenario. Claude Code's whole matrix with
+`--repeat 3` (42 runs) takes about 20 minutes.
 
 ## 5. Build order
 
@@ -130,43 +145,58 @@ run. Today's full hooks matrix (2 harnesses × 3 scenarios + judge) takes about 
 5. Layer 3: G1–G5 with `--repeat`.
 6. More harnesses, in the order above.
 7. Option B: the same scenarios in Linux containers.
+8. Scenarios for the module fixes of 2026-10-08: S8 (version hand-edit) and D1 (duplicate hooks).
 
-## 6. Status (2026-10-07)
+## 6. Status (2026-10-08)
 
 Built: steps 1-6. Not built: step 7 (Linux containers) - it needs Docker Desktop running and a Claude Code
 sign-in token created for the container, both outside this workspace; it stays the later addition above.
 
-- **Runner** - `Tests/AgentEvals`, writing only under `%LOCALAPPDATA%\IntentAgentEvals`; retention and
-  the stale gate-build cache pruning both verified. Harnesses run side by side; a full run of all three
-  layers on four harnesses takes about 20 minutes.
-- **Harnesses run:** Claude Code (Haiku), Codex (its default model, API key), OpenCode (Claude Haiku 4.5
-  via OpenRouter), Copilot CLI (its default model). Cursor and Kiro: wiring layer only.
+- **Runner** - `Tests/AgentEvals`, writing only under `%LOCALAPPDATA%\IntentAgentEvals`, apart from the
+  build cache `dotnet` itself keeps under `%TEMP%`; retention and the stale gate-build cache pruning both
+  verified. Harnesses run side by side.
+- **Models** - each harness runs a different model, so a difference between harnesses can be the model
+  rather than the hooks. Claude Code: Haiku (subscription). Codex: `gpt-5.4-mini` (API key) - a model
+  outside Codex's own catalogue, such as `gpt-5-mini`, gets no `apply_patch` tool and edits through the
+  shell. OpenCode: `openrouter/z-ai/glm-5.2`. Copilot CLI: `gpt-5-mini`. No Anthropic model runs through
+  Codex, OpenCode or Copilot. Copilot bills every model by usage since 2026-06-01; none is free.
 - **Containment** - added after the first full run, when OpenCode took its project folder from the
   inherited `PWD` and edited the real `Fixture/`. `PWD` is now set per process, and every run carries a
   *Contained* check that stops all harnesses on any change to the repository. The edits were reverted.
 - **Stub fidelity** - the stub applies `setProperty` scripts to the element they name, by name or id,
   and reports plainly when nothing matched. A stub that answered "success" while changing nothing made
   agents retry for 40+ turns or rewrite the file by shell - an artefact of the test, not of the hooks.
+- **Before acting on a finding, repeat it** (`--repeat 3`). A single run is one sample of a
+  non-deterministic agent.
 
-Reference run `20261007-190051-windows` (full matrix), plus `20261007-191444-windows` (S1 x2 per harness,
-after the stub fix: 8/8 pass) and `20261007-191723-windows` (G2, G5 on Claude Sonnet x2: all fail, so not
-a Haiku limitation).
+### Release verification (2026-10-08)
 
-### Findings for module work
-
-None of these is fixed here; each is a change to the `Intent.ModuleBuilder.AI.*` modules and goes through
-the module workflow.
-
-| # | Finding | Evidence |
+| Run | What | Result |
 |---|---|---|
-| 1 | The version rules (no second bump, no downgrade, pre-release scheme) guard only `run_designer_script`. A hand-edit of `<version>` in the `.imodspec` bypasses all three - and is the route agents take. | S2, S3: Claude Code hand-edited the version in both runs |
-| 2 | Shell commands are not guarded at all, so any write can go around the gate. Agents do this, mostly after a denial. | S6: Codex created the file with PowerShell; Claude Code did after a blocked Write; S1 before the stub fix |
-| 3 | Copilot CLI: the gate cannot read Copilot's edit payload (`toolArgs.new_str`), so the `.imodspec` `<summary>` guard allows every edit. | S4 Copilot; gate log shows "could not read the edit content; no opinion" |
-| 4 | Copilot CLI: no version guard is registered, so a bare release version reaches the designer. | Wiring; S3 Copilot |
-| 5 | Copilot CLI: the write guard has no matcher, so it runs on every tool call and adds a "no opinion" message to the agent's context each time. | S7 Copilot (Hook cost) |
-| 6 | Copilot CLI and Cursor also load `.claude/settings.json` hooks: in a repo with both folders, the gate runs twice per action, once formatted for Claude Code. | Wiring |
-| 7 | OpenCode: the plugin has no close-out (and no session-start warm). | Wiring; S5 OpenCode |
-| 8 | The workflow instructions reach only Claude Code. Codex, Copilot, OpenCode, Cursor and Kiro get no `AGENTS.md`, `.github` instructions, `.cursor/rules`, `.kiro/steering` or `opencode.json` entry. Kiro gets no skills either. | Wiring; G1 fails on Codex, Copilot, OpenCode |
-| 9 | Where the instructions do load, small changes skip them: Claude Code (Haiku and Sonnet), Copilot and OpenCode did not read `CONTEXT.md` before changing a module, or update release notes after an observable change. Codex did both. | G2, G5 |
+| `20261008-164325-windows` | wiring, all six harnesses | all pass except duplicate hooks (Copilot, Cursor) |
+| `20261008-164337-windows` | D1 probe, Claude Code and Copilot | logged each hook's environment and process tree; basis of the step-aside |
+| `20261008-165001-windows` | Copilot S3, S4, S8, D1 | 4/4 pass; wiring 8/8 |
+| `20261008-170128-windows`, `20261008-170313-windows`, `20261008-165432-windows`, `20261008-165630-windows` | OpenCode S5, S8, G1; Codex S2, S8, G1 | all pass after two fixes (OpenCode close-out made synchronous; Codex model) |
+| `20261008-170522-windows` | Claude Code, every scenario, `--repeat 3` | S1-S8 and D1 3/3; G1, G3, G4 3/3; G2, G5 0/3 |
+| `20261008-172443-windows` | Copilot G1-G5, once each | G1, G4 pass; G2, G5 fail; G3 loads the skill only after changing the version |
+| `20261008-173324-windows` | Codex G2-G5, once each (G1 passed in `20261008-165432`) | G1, G2, G4 pass; G3 never loads the skill; G5 updates the release notes without loading `module-docs-chore` |
+| `20261008-173820-windows` | OpenCode G2-G5, once each (G1 passed in `20261008-165630`) | G1, G3, G4, G5 pass; G2 fails |
+| `20261008-182210-windows` | Kiro CLI 2.28 S4, S8 | both fail: the hooks fired, but the gate misread Kiro's shell and payload (finding 12) |
+| `20261008-184347-windows` | Kiro CLI 2.28 S4, S8, after the fix | both pass: the summary edit denied, the version edit landed with the reminder |
 
-Skills load well everywhere: G3 (version skill for a bump) and G4 (no false activation) pass on all four.
+### Findings
+
+| # | Finding | Status |
+|---|---|---|
+| 1 | The version rules guarded only `run_designer_script`; a hand-edit of `<version>` bypassed them, and is the route agents take. | **Fixed** - guard-write holds a hand-edit to the same rules; S2, S3, S8 |
+| 2 | Shell commands are not guarded, so a write can go around the gate. Seen in S6 (Codex created the file with PowerShell; Claude Code after a blocked Write). | **Accepted**, documented in the module |
+| 3 | Copilot CLI: the gate could not read Copilot's edit payload, so the `.imodspec` `<summary>` guard allowed every edit. | **Fixed** - payload normalised; S4 Copilot |
+| 4 | Copilot CLI: no version guard was registered. | **Fixed** - one `guard-tool` hook dispatches to both guards; S3 Copilot |
+| 5 | Copilot CLI: the write guard had no matcher and added a note to the context on every tool call. | **Fixed** - matcher added, and the gate no longer writes anything on an allow |
+| 6 | Copilot CLI and Cursor also load `.claude/settings.json`, so the gate ran twice per action. | **Fixed for Copilot** (Claude's copy steps aside; D1). Cursor: documented |
+| 7 | OpenCode: the plugin had no close-out. | **Fixed** - close-out on idle; S5 OpenCode |
+| 8 | The workflow instructions reached only Claude Code; Kiro had no skills. | **Fixed** - every harness, from its own folder; wiring, G1 on Codex, OpenCode, Copilot |
+| 9 | Claude Code (Haiku and Sonnet) does not read `CONTEXT.md` before a small change, or update release notes after one. | **Open** - G2, G5 0/3 on Claude Code; reported, not tuned against |
+| 10 | The gate wrote `permissionDecision: "allow"` for its "no opinion" notes, which Claude Code treats as pre-approval. | **Fixed** - an allow is never written |
+| 11 | Kiro CLI runs workspace hooks headlessly only from 2.27.1 (`--v3`); 2.22.0 was installed. | **Fixed** - updated to 2.28.0; the hooks fire headlessly (`20261008-182210-windows`) |
+| 12 | Kiro CLI v3 runs hook commands in cmd.exe, where the portable form's `; exit $LASTEXITCODE` arrives as arguments (`kiro;`), and sends edits as `newStr`; S4 and S8 on Kiro failed because the gate read neither. | **Fixed** - shell tail dropped, `newStr`/`fileText` read; S4, S8 pass on Kiro (`20261008-184347-windows`) |

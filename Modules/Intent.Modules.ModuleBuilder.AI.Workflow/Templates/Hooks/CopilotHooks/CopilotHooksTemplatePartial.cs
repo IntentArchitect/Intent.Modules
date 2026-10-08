@@ -26,6 +26,10 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.CopilotHooks
 
         private const string HarnessFolder = ".github";
 
+        // Copilot's own edit tools ("create", "edit", plus the names it maps Claude-format matchers to)
+        // and any MCP tool whose name carries run_designer_script.
+        private const string WriteAndDesignerToolsMatcher = "create|edit|str_replace_editor|apply_patch|write|.*run_designer_script.*";
+
         /// <summary>
         /// GitHub Copilot CLI reads repository hooks from ".github/hooks/NAME.json", so ".github" is
         /// this harness's anchor folder. Every template is offered every AI.Context anchor, so landing
@@ -63,9 +67,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.CopilotHooks
             // 1. The command is carried in "bash" and/or "powershell" fields rather than a single
             //    "command", and Copilot picks the field for the platform. On Windows it runs the
             //    "powershell" one in PowerShell 7 - observed by driving Copilot CLI 1.0.91 for real.
-            // 2. There is no "matcher". preToolUse fires for EVERY tool, so the gate self-filters:
-            //    guard-write allows silently when it cannot find a file path in the payload, which is
-            //    the overwhelming common case and costs nothing.
+            // 2. ONE preToolUse entry runs the gate's "guard-tool" command, which dispatches on the
+            //    tool name: designer scripts go to the version guard, reads (which carry a path too)
+            //    are allowed silently, everything else goes to the write guard. Its "matcher" - a regex
+            //    Copilot anchors as ^(?:...)$ against toolName - limits it to Copilot's file-editing
+            //    tools and the designer script; a Copilot that ignores the matcher still gets the
+            //    right answer from the gate's own dispatch, at the cost of one process per tool call.
             // 3. The end-of-turn event is "agentStop", not "stop" or "Stop".
             //
             // Copilot denies on exit 2 and ALSO on any other non-zero exit ("hook errored"), so it
@@ -90,8 +97,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.CopilotHooks
                     "preToolUse": [
                       {
                         "type": "command",
-                        "bash": "{{GateCommands.GuardPosix(HarnessFolder, "guard-write")}}",
-                        "powershell": "{{GateCommands.GuardPowerShell(HarnessFolder, "guard-write")}}"
+                        "matcher": "{{WriteAndDesignerToolsMatcher}}",
+                        "bash": "{{GateCommands.GuardPosix(HarnessFolder, "guard-tool")}}",
+                        "powershell": "{{GateCommands.GuardPowerShell(HarnessFolder, "guard-tool")}}"
                       }
                     ],
                     "agentStop": [

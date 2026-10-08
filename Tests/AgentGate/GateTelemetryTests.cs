@@ -33,8 +33,13 @@ public class GateTelemetryTests
         Assert.Equal(2, result.ExitCode);
         Assert.Contains("Intent.Metadata", result.Stderr);
 
-        // Other tests may run Cli concurrently while the variable is set, so find this run's line.
-        var entry = File.ReadAllLines(log)
+        // Other tests may run Cli concurrently while the variable is set, so find this run's line - and
+        // read without blocking their appends, which hold the file open for writing (File.ReadAllLines
+        // asks for FileShare.Read and failed whenever one was mid-append).
+        using var reader = new StreamReader(new FileStream(log, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
+        // This run's line is complete - its run has returned - but another's may be half-written.
+        var entry = reader.ReadToEnd().Split('\n', StringSplitOptions.RemoveEmptyEntries)
+            .Where(line => line.Contains(JsonSerializer.Serialize(stdin)[1..^1], StringComparison.Ordinal))
             .Select(line => JsonDocument.Parse(line).RootElement)
             .Single(e => e.GetProperty("stdin").GetString() == stdin);
         Assert.Equal("guard-write", entry.GetProperty("command").GetString());

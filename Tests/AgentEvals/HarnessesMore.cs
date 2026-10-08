@@ -21,6 +21,13 @@ public sealed class OpenCodeHarness(EvalPaths paths) : IHarness
     private static string UserAuthFile =>
         Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".local", "share", "opencode", "auth.json");
 
+    /// <summary>
+    /// Z.ai's GLM 5.2 through OpenRouter: tool calling, and not an Anthropic model - Claude is only ever
+    /// run through Claude Code's own sign-in. All three segments are needed: provider, then OpenRouter's
+    /// own model id, which itself contains a slash.
+    /// </summary>
+    public const string DefaultModel = "openrouter/z-ai/glm-5.2";
+
     public string Id => "opencode";
 
     public string DisplayName => "OpenCode";
@@ -57,7 +64,7 @@ public sealed class OpenCodeHarness(EvalPaths paths) : IHarness
 
         var startInfo = Processes.Command(Executable!, request.Workspace.Root,
             "run", "--format", "json", "--auto", "--dir", request.Workspace.Root,
-            "-m", request.Model ?? "openrouter/anthropic/claude-haiku-4.5", request.Prompt);
+            "-m", request.Model ?? DefaultModel, request.Prompt);
         foreach (var (name, folder) in new[] { ("XDG_CONFIG_HOME", "config"), ("XDG_DATA_HOME", "data"), ("XDG_CACHE_HOME", "cache"), ("XDG_STATE_HOME", "state") })
         {
             startInfo.Environment[name] = Path.Combine(Home, folder);
@@ -105,6 +112,12 @@ public sealed class CopilotHarness(EvalPaths paths) : IHarness
 
     private static string UserConfig => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".copilot", "config.json");
 
+    /// <summary>
+    /// A small OpenAI model, never Copilot's own default (which may be an Anthropic one). Copilot bills by
+    /// usage on every plan since June 2026, so no model is free; this one keeps the cost lowest.
+    /// </summary>
+    public const string DefaultModel = "gpt-5-mini";
+
     public string Id => "copilot";
 
     public string DisplayName => "Copilot CLI";
@@ -129,11 +142,11 @@ public sealed class CopilotHarness(EvalPaths paths) : IHarness
         Directory.CreateDirectory(Home);
         File.WriteAllText(Path.Combine(Home, "config.json"), SignedInAccount()!);
 
-        List<string> args = ["-p", request.Prompt, "--yolo", "--output-format", "json", "--log-dir", Path.Combine(request.Workspace.RunDirectory, "copilot-logs")];
-        if (request.Model is not null)
-        {
-            args.AddRange(["--model", request.Model]);
-        }
+        List<string> args =
+        [
+            "-p", request.Prompt, "--yolo", "--output-format", "json", "--log-dir", Path.Combine(request.Workspace.RunDirectory, "copilot-logs"),
+            "--model", request.Model ?? DefaultModel,
+        ];
 
         if (request.WithIntentStub)
         {
@@ -180,4 +193,79 @@ public sealed class CopilotHarness(EvalPaths paths) : IHarness
             return null;
         }
     }
+}
+
+/// <summary>
+/// Kiro CLI, headless (`kiro-cli chat --v3 --no-interactive --trust-all-tools --output-format stream-json`).
+/// Workspace hooks load in v3 non-interactive runs from kiro-cli 2.27.1; earlier versions do not run them.
+/// </summary>
+/// <remarks>
+/// Kiro has no home override, so the developer's own Kiro config takes part - including any MCP servers
+/// in ~/.kiro/settings/mcp.json, such as the real Intent Architect server. Each workspace therefore gets
+/// a .kiro/settings/mcp.json defining "intent-architect" as the runner's stub, or as nothing at all:
+/// a workspace server overrides a user one of the same name (checked with "kiro-cli mcp list"). That
+/// file is listed in the workspace's .git/info/exclude, so it is not part of what the agent changed.
+/// Kiro signs in with the developer's own Kiro account; its sign-in is not copied anywhere.
+/// </remarks>
+public sealed class KiroHarness(EvalPaths paths) : IHarness
+{
+    public string Id => "kiro";
+
+    public string DisplayName => "Kiro CLI";
+
+    public string GatePath => ".kiro/hooks/gate/gate.cs";
+
+    public IReadOnlyList<string> GeneratedFiles { get; } = [".kiro"];
+
+    /// <summary>Kiro lets an action through when a hook cannot run at all - it has no fail-closed setting.</summary>
+    public bool FailsClosedWhenGateCannotRun => false;
+
+    public string? Executable { get; } = Processes.Find("kiro-cli");
+
+    public async Task<string?> NotReadyAsync()
+    {
+        if (Executable is null)
+        {
+            return "not installed";
+        }
+
+        var whoami = await Processes.RunAsync(Processes.Command(Executable, paths.Root, "whoami"), null, TimeSpan.FromSeconds(30));
+        return whoami.ExitCode == 0 ? null : "not signed in. Sign in once with: kiro-cli login";
+    }
+
+    public Task<string> VersionAsync() => Harnesses.VersionOf(Executable!, paths.Root, "--version");
+
+    public ProcessStartInfo CreateRun(RunRequest request)
+    {
+        var settings = Path.Combine(request.Workspace.Root, ".kiro", "settings");
+        Directory.CreateDirectory(settings);
+        object server = new { command = "cmd", args = new[] { "/c", "exit", "1" }, disabled = true };
+        if (request.WithIntentStub)
+        {
+            var (command, stubArgs) = McpStub.LaunchCommand(request.Workspace.Root, request.Workspace.StubLogPath);
+            server = new { command, args = stubArgs };
+        }
+
+        File.WriteAllText(Path.Combine(settings, "mcp.json"), JsonSerializer.Serialize(new
+        {
+            mcpServers = new Dictionary<string, object> { [McpStub.ServerName] = server },
+        }));
+        File.AppendAllText(Path.Combine(request.Workspace.Root, ".git", "info", "exclude"), "\n.kiro/settings/\n");
+
+        List<string> args = ["chat", "--v3", "--no-interactive", "--trust-all-tools", "--output-format", "stream-json"];
+        if (request.Model is not null)
+        {
+            args.AddRange(["--model", request.Model]);
+        }
+
+        args.Add(request.Prompt);
+        return Processes.Command(Executable!, request.Workspace.Root, [.. args]);
+    }
+
+    public string? SignInFailure(ProcessResult process) =>
+        (process.Stdout + process.Stderr).Contains("kiro-cli login", StringComparison.OrdinalIgnoreCase)
+            ? "Kiro CLI is not signed in, so the run tested nothing. Sign in with: kiro-cli login"
+            : null;
+
+    public Transcript ParseTranscript(string stdout) => TranscriptParsers.KiroStreamJson(stdout);
 }

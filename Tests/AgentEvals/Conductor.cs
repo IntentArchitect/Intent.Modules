@@ -18,7 +18,9 @@ public static class Conductor
           --no-stub                       with --prompt: do not attach the Intent MCP stub
           --repeat N                      run each scenario N times and report a pass rate (default 1)
           --claude-model M                Claude Code's model (default haiku)
-          --codex-model M                 Codex's model (default: Codex's own)
+          --codex-model M                 Codex's model (default gpt-5.4-mini - OpenAI, on the API key)
+          --opencode-model M              OpenCode's model (default openrouter/z-ai/glm-5.2)
+          --copilot-model M               Copilot CLI's model (default gpt-5-mini)
           --judge-model M                 the judge's model (default sonnet)
           --no-judge                      skip the judge
           --timeout S                     seconds before a run is stopped (default 300)
@@ -43,6 +45,7 @@ public static class Conductor
         }
 
         var paths = EvalPaths.Locate(options.Root);
+        paths.UseOwnTemp();
         var harnesses = Harnesses.Create(paths);
 
         if (Validate(options, harnesses) is { } invalid)

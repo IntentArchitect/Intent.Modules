@@ -236,6 +236,97 @@ public static class TranscriptParsers
         return new Transcript(final, events, turns, calls);
     }
 
+    /// <summary>
+    /// Kiro CLI's "--output-format stream-json": the run's ACP events, one per line. The ACP update sits
+    /// under "sessionUpdate" (agent_message_chunk, tool_call, tool_call_update, ...); it is looked up
+    /// wherever it is nested, since only the ACP payload is specified, not Kiro's envelope around it.
+    /// A tool call carries ACP's "kind" (read, edit, delete, move, search, execute, ...).
+    /// </summary>
+    public static Transcript KiroStreamJson(string stdout)
+    {
+        var events = new List<string>();
+        var calls = new List<ToolCall>();
+        var message = new System.Text.StringBuilder();
+        var final = "";
+        var turns = 0;
+
+        foreach (var root in JsonLines(stdout))
+        {
+            if (FindUpdate(root, 0) is not { } update)
+            {
+                continue;
+            }
+
+            switch (Str(update, "sessionUpdate"))
+            {
+                case "agent_message_chunk":
+                    message.Append(update.TryGetProperty("content", out var content) ? Str(content, "text") : "");
+                    break;
+                case "tool_call":
+                    Flush();
+                    var title = Str(update, "title");
+                    var input = Raw(update, "rawInput");
+                    var location = Items(update, "locations").Select(l => Str(l, "path")).FirstOrDefault(p => p.Length > 0) ?? "";
+                    var args = update.TryGetProperty("rawInput", out var raw) ? raw : default;
+                    var path = location.Length > 0 ? location : FirstOf(args, "path", "file_path", "filePath");
+                    calls.Add(Str(update, "kind") switch
+                    {
+                        _ when title.Contains("run_designer_script", StringComparison.OrdinalIgnoreCase) || title.Contains("get_applications", StringComparison.OrdinalIgnoreCase)
+                            => new ToolCall(ToolKind.Mcp, title, input),
+                        "read" => new ToolCall(ToolKind.Read, title, path),
+                        "edit" or "delete" or "move" => new ToolCall(ToolKind.Write, title, path),
+                        "search" => new ToolCall(ToolKind.Search, title, path),
+                        "execute" => new ToolCall(ToolKind.Shell, title, FirstOf(args, "command", "cmd")),
+                        _ => new ToolCall(ToolKind.Other, title, Trunc(input, 400)),
+                    });
+                    events.Add($"tool {Str(update, "kind")} {title}: {Trunc(input, 400)}");
+                    break;
+                case "tool_call_update" when Str(update, "status") is "completed" or "failed":
+                    events.Add($"tool result ({Str(update, "status")}): {Trunc(Raw(update, "rawOutput") + Raw(update, "content"), 300)}");
+                    break;
+            }
+        }
+
+        Flush();
+        return new Transcript(final, events, turns, calls);
+
+        void Flush()
+        {
+            if (message.Length == 0)
+            {
+                return;
+            }
+
+            final = message.ToString();
+            events.Add("assistant: " + Trunc(final, 600));
+            turns++;
+            message.Clear();
+        }
+    }
+
+    private static JsonElement? FindUpdate(JsonElement element, int depth)
+    {
+        if (element.ValueKind != JsonValueKind.Object || depth > 4)
+        {
+            return null;
+        }
+
+        if (element.TryGetProperty("sessionUpdate", out var kind) && kind.ValueKind == JsonValueKind.String)
+        {
+            return element;
+        }
+
+        foreach (var property in element.EnumerateObject())
+        {
+            if (FindUpdate(property.Value, depth + 1) is { } found)
+            {
+                return found;
+            }
+        }
+
+        return null;
+    }
+
     private static ToolCall Classify(string tool, string input)
     {
         var name = tool.ToLowerInvariant();

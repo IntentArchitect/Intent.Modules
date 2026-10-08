@@ -1,9 +1,11 @@
 ---
 applyTo: '**'
+alwaysApply: true
+inclusion: always
 description: "Phase-by-phase workflow for any task that builds or changes an Intent Architect module, and which workflow skill each phase calls for."
 keywords: [workflow, module building, phases, version, documentation, context]
 template-id: Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd
-contentHash: 085F928E5B4F7DFC55275C2B7E1B71E924A5224320A974D219C4F58761AD0388
+contentHash: 62F9ED1FB77BB94998D48F19A25B0BFD677210BC003EC523963B1EA84A83783A
 ---
 # Module Building Workflow
 
@@ -178,7 +180,9 @@ version line that was never written up. → `module-docs-chore`
 
 4. **Context** — consolidate the durable knowledge from this change: decisions taken, invariants
 
-established, anything a future session would otherwise rediscover the hard way.
+established, anything a future session would otherwise rediscover the hard way. A problem with Intent
+Architect itself is not module knowledge: report it to the user for the Intent support team instead,
+and record only a genuine API or SDK limitation, together with the decision it forced.
 → `module-context-capture`
 
 Version comes first because the documentation refers to it. Dependencies come before documentation

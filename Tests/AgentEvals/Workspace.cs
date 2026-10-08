@@ -25,6 +25,26 @@ public sealed record EvalPaths(string SuiteDirectory, string RepoRoot, string Ro
     /// <summary>The empty folder the judge runs from, so it can see no project.</summary>
     public string JudgeDirectory => Path.Combine(Root, "judge");
 
+    /// <summary>
+    /// The temp folder every process the runner starts is given - harnesses, gates, git, dotnet.
+    /// </summary>
+    public string Temp => Path.Combine(Root, "tmp");
+
+    /// <summary>
+    /// Points TEMP/TMP (TMPDIR elsewhere) at <see cref="Temp"/> for this process, so every child inherits
+    /// it. dotnet caches each workspace's gate build under the temp folder, and harnesses write their own
+    /// scratch there; keeping both under the root keeps all of a run's churn on the root's drive - which
+    /// matters when that drive is the one excluded from antivirus scanning and the system drive is not.
+    /// </summary>
+    public void UseOwnTemp()
+    {
+        Directory.CreateDirectory(Temp);
+        foreach (var name in OperatingSystem.IsWindows() ? new[] { "TEMP", "TMP" } : ["TMPDIR"])
+        {
+            Environment.SetEnvironmentVariable(name, Temp);
+        }
+    }
+
     public static EvalPaths Locate(string? rootOverride)
     {
         // File-based apps expose their own source folder; fall back to the working directory.
@@ -75,7 +95,8 @@ public sealed record EvalPaths(string SuiteDirectory, string RepoRoot, string Ro
 
     /// <summary>
     /// Removes dotnet's cached builds of gates whose workspace no longer exists. dotnet caches each
-    /// file-based app's build by path under %TEMP%/dotnet/runfile, so every workspace adds one entry. Only
+    /// file-based app's build by path under %TEMP%/dotnet/runfile - <see cref="Temp"/> once
+    /// <see cref="UseOwnTemp"/> has run - so every workspace adds one entry. Only
     /// entries whose recorded project lies under the eval root and is gone are touched; anything else in
     /// the cache belongs to someone else.
     /// </summary>
@@ -145,7 +166,7 @@ public sealed class Workspace
         Directory.CreateDirectory(root);
 
         CopyDirectory(paths.Fixture, root);
-        foreach (var relative in harness.GeneratedFiles)
+        foreach (var relative in harness.GeneratedFiles.Concat(scenario.AlsoGenerated).Distinct(StringComparer.OrdinalIgnoreCase))
         {
             var source = Path.Combine(paths.GeneratedOutput, relative);
             var target = Path.Combine(root, relative);

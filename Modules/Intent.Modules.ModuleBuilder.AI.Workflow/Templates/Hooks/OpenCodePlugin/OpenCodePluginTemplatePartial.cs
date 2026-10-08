@@ -58,17 +58,32 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.OpenCodePlugi
             // No "--scheme" is passed: the "Use Pre-release Versions" setting is baked into the gate's
             // own Cli.cs, so this command is spelled the same as every other harness's.
             //
+            // close-out runs when the session goes idle, OpenCode's end of a turn - the counterpart of
+            // Claude Code's Stop. OpenCode has no stop hook; "session.status" with status "idle" is the
+            // current event and "session.idle" the deprecated one, still published, so both are heard
+            // and a second notice within three seconds is dropped. It runs synchronously: "opencode run"
+            // exits as soon as the session is idle, and an asynchronous child was killed before it
+            // finished (observed). close-out never throws. Its warning goes to OpenCode's log and a
+            // toast - to the person, as Claude Code's systemMessage does; putting it into the session
+            // would start another turn.
+            //
+            // "patch" is OpenCode's apply_patch tool, offered to some models instead of write/edit; its
+            // patch text is found by the gate by content, as for Codex.
+            //
             // Kept inside the body deliberately: this member's signature is Mode.Fully, so a comment
             // above it is stripped on every regeneration. Body = Mode.Ignore is what protects it.
             return $$"""
                 import { spawnSync } from "child_process";
 
-                function runGate(command: string, extraArgs: string[], stdinPayload: unknown): void {
-                  const gatePath = `${process.cwd()}/.opencode/hooks/gate/gate.cs`;
+                const gatePath = () => `${process.cwd()}/.opencode/hooks/gate/gate.cs`;
+                const writeTools = new Set(["write", "edit", "patch", "multiedit"]);
+                let lastCloseOut = 0;
+
+                function runGuard(command: string, toolName: string, args: unknown): void {
                   const result = spawnSync(
                     "dotnet",
-                    ["run", gatePath, "--", command, "--harness", "opencode", ...extraArgs],
-                    { input: JSON.stringify(stdinPayload), encoding: "utf-8" },
+                    ["run", gatePath(), "--", command, "--harness", "opencode"],
+                    { input: JSON.stringify({ tool_name: toolName, tool_input: args }), encoding: "utf-8" },
                   );
 
                   if (result.status !== 0) {
@@ -77,20 +92,49 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.OpenCodePlugi
                   }
                 }
 
+                function runCloseOut(): string {
+                  const result = spawnSync("dotnet", ["run", gatePath(), "--", "close-out", "--harness", "opencode"], {
+                    stdio: ["ignore", "pipe", "ignore"],
+                    encoding: "utf-8",
+                  });
+                  return (result.stdout || "").trim();
+                }
+
                 type ToolExecuteInput = { tool: string };
                 type ToolExecuteOutput = { args: Record<string, unknown> };
+                type PluginInput = { client?: any };
 
-                export const IntentAgentGatePlugin = async () => {
+                export const IntentAgentGatePlugin = async ({ client }: PluginInput) => {
                   return {
                     "tool.execute.before": async (input: ToolExecuteInput, output: ToolExecuteOutput) => {
-                      if (input.tool === "write" || input.tool === "edit") {
-                        runGate("guard-write", [], { tool_input: output.args });
+                      if (writeTools.has(input.tool)) {
+                        runGuard("guard-write", input.tool, output.args);
                         return;
                       }
 
                       if (input.tool.includes("run_designer_script")) {
-                        runGate("guard-version", [], { tool_input: output.args });
+                        runGuard("guard-version", input.tool, output.args);
                       }
+                    },
+                    event: async ({ event }: { event: { type: string; properties?: any } }) => {
+                      const idle = event.type === "session.idle"
+                        || (event.type === "session.status" && event.properties?.status?.type === "idle");
+                      if (!idle || Date.now() - lastCloseOut < 3000) {
+                        return;
+                      }
+
+                      lastCloseOut = Date.now();
+                      const warning = runCloseOut();
+                      if (!warning) {
+                        return;
+                      }
+
+                      try {
+                        await client?.app?.log({ body: { service: "intent-agent-gate", level: "warn", message: warning } });
+                      } catch {}
+                      try {
+                        await client?.tui?.showToast({ body: { message: warning, variant: "warning" } });
+                      } catch {}
                     },
                   };
                 };

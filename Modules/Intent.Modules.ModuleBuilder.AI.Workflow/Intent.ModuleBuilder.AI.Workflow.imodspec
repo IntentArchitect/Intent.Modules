@@ -36,8 +36,16 @@
       <role>AI.Context</role>
       <location></location>
     </template>
+    <template id="Intent.ModuleBuilder.AI.Workflow.RootPrinciples.CodexInstructionsConfig" externalReference="3cc5da21-28df-42f8-b2d1-8adc9800ad1b">
+      <role>AI.Context</role>
+      <location></location>
+    </template>
     <template id="Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd" externalReference="bfa0e23c-5808-4563-aeae-c558bb292cf2">
       <role>AI.Context.Instructions</role>
+      <location></location>
+    </template>
+    <template id="Intent.ModuleBuilder.AI.Workflow.RootPrinciples.OpenCodeInstructionsConfig" externalReference="3c8d0e8c-a33d-490c-9019-9d8278098ee8">
+      <role>AI.Context</role>
       <location></location>
     </template>
     <template id="Intent.ModuleBuilder.AI.Workflow.Skills.ModuleContextCapture_SkillMd_Agents" externalReference="397ea30f-1ff0-4356-a10f-f47052036047">

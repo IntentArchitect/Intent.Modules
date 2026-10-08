@@ -37,7 +37,7 @@
       every gate-source change had to be regenerated through one application to run the tests and a
       different one to test the harnesses, which is a standing source of confusion.
     -->
-    <Compile Include="..\ModuleBuilderSkills\.agents\hooks\gate\gate.cs" LinkBase="GeneratedGateSources" />
+    <Compile Include="..\ModuleBuilderSkills\.claude\hooks\gate\gate.cs" LinkBase="GeneratedGateSources" />
     <!--
       The module's own hook-command and hook-config-merge sources, compiled here as they are rather
       than restated: the module assembly cannot be referenced from this project, and an earlier
