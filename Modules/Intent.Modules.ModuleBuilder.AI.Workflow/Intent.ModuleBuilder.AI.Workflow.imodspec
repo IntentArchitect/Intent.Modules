@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.AI.Workflow</id>
-  <version>1.0.0-pre.9</version>
+  <version>1.0.0-pre.10</version>
   <supportedClientVersions>[5.1.0-a,6.0.0)</supportedClientVersions>
   <summary>Bundles AI agent workflow skills and instructions for versioning, documenting, and capturing context on Intent Architect modules.</summary>
   <description>Bundles AI agent workflow skills and instructions for versioning, documenting, and capturing context on Intent Architect modules.</description>
@@ -90,7 +90,7 @@
           <defaultValue>false</defaultValue>
         </setting>
         <setting id="2ac65dde-288c-43dc-ba46-d0681bc3ac6c" title="Install Agent Gate Hooks" type="switch">
-          <hint>Install hook configs that call the intent-agent-gate CLI to enforce module-building rules deterministically.</hint>
+          <hint>Generate hooks that enforce the module-building rules. Needs the .NET 10 SDK.</hint>
           <defaultValue>false</defaultValue>
         </setting>
       </settings>

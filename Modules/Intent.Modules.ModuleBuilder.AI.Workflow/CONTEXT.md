@@ -92,6 +92,8 @@ Bundles conditional, process-shaped AI agent workflow skills for the module-buil
 
 - A conditional section interpolated into `ModuleBuildingWorkflowMd` must end with a blank line before the next `===` separator. A `===` line directly under a paragraph is a Markdown setext heading underline, so the section's last sentence silently renders as a top-level heading — caught in the first regeneration of the gate-failure section.
 
+- Every hook registration honours `Install Agent Gate Hooks` by overriding `Register` and returning before `base.Register` when `AgentGateSwitch.IsOn` is false. Returning an empty list from a `SingleFileListModel` registration's `GetModels` does not work: its `Register` registers the template whatever the list holds. The OpenCode plugin relied on that until 1.0.0-pre.10 and was generated with the switch off.
+
 - `AIWorkflowSettings` accessors (`UsePreReleaseVersions`, `MaintainModuleREADME`, `MaintainModuleIcon`) are generated from `Module Settings Field Configuration` children of the `AI Workflow Settings` element — never hand-edit `Settings/ModuleSettingsExtensions.cs`; add the field in the designer and regenerate.
 - `module-docs-chore`'s conditional sections (`readme*`, `icon*` variable pairs) all follow the same three-part shape: a table row, a full section, a checklist item, each toggled by the same boolean. A new conditional artifact should follow this exact shape rather than inventing a different one.
 
