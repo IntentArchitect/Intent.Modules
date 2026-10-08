@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="ff0c119f-d894-48ec-a8be-2ca41b83511c" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-  <name>.agents</name>
-  <display>.agents</display>
+<class id="ec6dae66-9231-4eeb-a737-e7eac46c9b1e" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>instructions</name>
+  <display>instructions</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>b0adc644-dd99-4c18-9db1-35de730fa4b2</parentFolderId>
-  <packageId>b0adc644-dd99-4c18-9db1-35de730fa4b2</packageId>
+  <parentFolderId>90f77a22-c6f5-4f39-b600-090b11f20e4d</parentFolderId>
+  <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
   <packageName>root</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="66fd9e66-42c7-4ef9-a778-b68e009272b9" name="Folder Options">
@@ -21,14 +21,14 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="db7b52de-fa22-4016-a177-9a3726ed5442" type="Output Anchor" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
-      <name>AI.Context</name>
-      <display>AI.Context</display>
+    <childElement id="d52b9bec-6d2c-4324-8965-a4f359a71fc0" type="Output Anchor" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>AI.Context.Instructions</name>
+      <display>AI.Context.Instructions</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>ff0c119f-d894-48ec-a8be-2ca41b83511c</parentFolderId>
-      <packageId>b0adc644-dd99-4c18-9db1-35de730fa4b2</packageId>
+      <parentFolderId>ec6dae66-9231-4eeb-a737-e7eac46c9b1e</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
       <packageName>root</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="a23c7901-31a5-4cbf-b8bf-1be128977e6d" name="Output Anchor Settings">
