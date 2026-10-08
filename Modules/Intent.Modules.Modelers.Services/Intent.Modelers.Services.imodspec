@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services</id>
-  <version>4.0.16</version>
+  <version>4.0.17-pre.0</version>
   <supportedClientVersions>[4.5.8-a, 6.0.0-a)</supportedClientVersions>
   <summary>Services modeler for describing an application's web services.</summary>
   <description>Services modeler for describing an application's web services.</description>
@@ -55,7 +55,7 @@
           </options>
         </setting>
         <setting id="625c6211-0dc7-4190-af49-6eadb82c7015" title="Entity Naming Convention" type="select">
-          <hint>Convention applied when creating and renaming entities.</hint>
+          <hint>Convention applied when creating and renaming Services, DTOs, Commands and Queries.</hint>
           <defaultValue>manual</defaultValue>
           <options>
             <option value="pascal-case" description="Pascal Case" />
@@ -70,6 +70,15 @@
             <option value="camel-case" description="Camel Case" />
             <option value="manual" description="Manual" />
             <option value="pascal-case" description="Pascal Case" />
+          </options>
+        </setting>
+        <setting id="588f15d0-c2ac-4c61-a5bf-b59f9f71ae7d" title="Parameter Naming Convention" type="select">
+          <hint>Convention applied when creating and renaming operation parameters.</hint>
+          <defaultValue>camel-case</defaultValue>
+          <options>
+            <option value="manual" description="Manual" />
+            <option value="pascal-case" description="Pascal Case" />
+            <option value="camel-case" description="Camel Case" />
           </options>
         </setting>
       </settings>

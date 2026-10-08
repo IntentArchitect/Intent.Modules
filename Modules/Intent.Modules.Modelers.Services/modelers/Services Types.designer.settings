@@ -874,13 +874,10 @@ return false;</isOptionVisibleFunction>
 </script>
         </macro>
         <macro trigger="on-name-changed">
-          <script>var namingConvention = application.getSettings("370723b8-0896-465f-acc7-099d8f36e052")?.getField("625c6211-0dc7-4190-af49-6eadb82c7015")?.value;
-
-if (namingConvention == "pascal-case") {
-    element.setName(toPascalCase(element.getName()))
-} else if (namingConvention == "camel-case") {
-    element.setName(toCamelCase(element.getName()))
-}</script>
+          <dependencies>
+            <dependency name="Naming Convention Scripts" id="71a1ef1f-33ad-45bd-a155-fbd2ee4afb6f" />
+          </dependencies>
+          <script>applyNamingConvention(element, "Entity Naming Convention");</script>
         </macro>
       </macros>
       <childElementSettings>
@@ -921,13 +918,10 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
           <mappingSettings />
           <macros>
             <macro trigger="on-name-changed">
-              <script>var namingConvention = application.getSettings("370723b8-0896-465f-acc7-099d8f36e052")?.getField("8df5e8ae-1a56-4507-87e9-4f73cd69ba50")?.value;
-
-if (namingConvention == "pascal-case") {
-    element.setName(toPascalCase(element.getName()))
-} else if (namingConvention == "camel-case") {
-    element.setName(toCamelCase(element.getName()))
-}</script>
+              <dependencies>
+                <dependency name="Naming Convention Scripts" id="71a1ef1f-33ad-45bd-a155-fbd2ee4afb6f" />
+              </dependencies>
+              <script>applyNamingConvention(element, "Property Naming Convention");</script>
             </macro>
           </macros>
         </childElementSetting>
@@ -966,13 +960,10 @@ if (namingConvention == "pascal-case") {
       <mappingSettings />
       <macros>
         <macro trigger="on-name-changed">
-          <script>var namingConvention = application.getSettings("370723b8-0896-465f-acc7-099d8f36e052")?.getField("9add7769-0034-4c7f-987e-bb592cfd335e")?.value;
-
-if (namingConvention == "pascal-case") {
-    element.setName(toPascalCase(element.getName()))
-} else if (namingConvention == "camel-case") {
-    element.setName(toCamelCase(element.getName()))
-}</script>
+          <dependencies>
+            <dependency name="Naming Convention Scripts" id="71a1ef1f-33ad-45bd-a155-fbd2ee4afb6f" />
+          </dependencies>
+          <script>applyNamingConvention(element, "Entity Naming Convention");</script>
         </macro>
       </macros>
       <childElementSettings>
@@ -1090,19 +1081,11 @@ return validateOperation(lookup(id));
           </contextMenuOptions>
           <mappingSettings />
           <macros>
-            <macro trigger="on-changed">
-              <script>element.getChildren("00208d20-469d-41cb-8501-768fd5eb796b").forEach(x =&gt; {
-    x.setName(toCamelCase(x.getName()));
-});</script>
-            </macro>
             <macro trigger="on-name-changed">
-              <script>var namingConvention = application.getSettings("370723b8-0896-465f-acc7-099d8f36e052")?.getField("9add7769-0034-4c7f-987e-bb592cfd335e")?.value;
-
-if (namingConvention == "pascal-case") {
-    element.setName(toPascalCase(element.getName()))
-} else if (namingConvention == "camel-case") {
-    element.setName(toCamelCase(element.getName()))
-}</script>
+              <dependencies>
+                <dependency name="Naming Convention Scripts" id="71a1ef1f-33ad-45bd-a155-fbd2ee4afb6f" />
+              </dependencies>
+              <script>applyNamingConvention(element, "Operation Naming Convention");</script>
             </macro>
           </macros>
           <childElementSettings>
@@ -1193,6 +1176,20 @@ return validateOperationParameter(lookup(id));
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
               <mappingSettings />
+              <macros>
+                <macro trigger="on-created">
+                  <dependencies>
+                    <dependency name="Naming Convention Scripts" id="71a1ef1f-33ad-45bd-a155-fbd2ee4afb6f" />
+                  </dependencies>
+                  <script>applyNamingConvention(element, "Parameter Naming Convention");</script>
+                </macro>
+                <macro trigger="on-name-changed">
+                  <dependencies>
+                    <dependency name="Naming Convention Scripts" id="71a1ef1f-33ad-45bd-a155-fbd2ee4afb6f" />
+                  </dependencies>
+                  <script>applyNamingConvention(element, "Parameter Naming Convention");</script>
+                </macro>
+              </macros>
             </childElementSetting>
           </childElementSettings>
           <rules>- Operations represent methods in the code for this service and must always have a unique signature (i.e. name and parameter types).
@@ -1389,6 +1386,27 @@ return result;
   <scripts>
     <script name="Common Mapping Scripts" id="5ea2c786-e098-4f10-b18a-bd662a2f0046">
       <filePath>common-mapping-scripts.js</filePath>
+    </script>
+    <script name="Naming Convention Scripts" id="71a1ef1f-33ad-45bd-a155-fbd2ee4afb6f">
+      <script>/**
+ * Renames the element according to the naming convention selected for it in
+ * Service Settings. "manual" (or an unset field) leaves the name untouched.
+ *
+ * namingConventionField: the field's title in Service Settings, e.g. "Operation Naming Convention".
+ */
+function applyNamingConvention(element, namingConventionField) {
+    const serviceSettingsId = "370723b8-0896-465f-acc7-099d8f36e052";
+    const namingConvention = application.getSettings(serviceSettingsId)?.getField(namingConventionField)?.value;
+
+    switch (namingConvention) {
+        case "pascal-case":
+            element.setName(toPascalCase(element.getName()));
+            break;
+        case "camel-case":
+            element.setName(toCamelCase(element.getName()));
+            break;
+    }
+}</script>
     </script>
   </scripts>
 </settings>

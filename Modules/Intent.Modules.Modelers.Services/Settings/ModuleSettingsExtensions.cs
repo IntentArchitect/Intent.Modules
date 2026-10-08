@@ -170,5 +170,49 @@ namespace Intent.Modules.Modelers.Services.Settings
             Manual,
             PascalCase,
         }
+        public ParameterNamingConventionOptions ParameterNamingConvention() => new ParameterNamingConventionOptions(_groupSettings.GetSetting("588f15d0-c2ac-4c61-a5bf-b59f9f71ae7d")?.Value);
+
+        public class ParameterNamingConventionOptions
+        {
+            public readonly string Value;
+
+            public ParameterNamingConventionOptions(string value)
+            {
+                Value = value;
+            }
+
+            public ParameterNamingConventionOptionsEnum AsEnum()
+            {
+                return Value switch
+                {
+                    "manual" => ParameterNamingConventionOptionsEnum.Manual,
+                    "pascal-case" => ParameterNamingConventionOptionsEnum.PascalCase,
+                    "camel-case" => ParameterNamingConventionOptionsEnum.CamelCase,
+                    _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
+                };
+            }
+
+            public bool IsManual()
+            {
+                return Value == "manual";
+            }
+
+            public bool IsPascalCase()
+            {
+                return Value == "pascal-case";
+            }
+
+            public bool IsCamelCase()
+            {
+                return Value == "camel-case";
+            }
+        }
+
+        public enum ParameterNamingConventionOptionsEnum
+        {
+            Manual,
+            PascalCase,
+            CamelCase,
+        }
     }
 }

@@ -111,7 +111,7 @@
           <properties>
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
             <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
-            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Convention applied when creating and renaming entities." isActive="true" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Convention applied when creating and renaming Services, DTOs, Commands and Queries." isActive="true" />
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="manual" isActive="true" />
             <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" value="" isActive="true" />
             <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" value="" isActive="true" />
@@ -229,6 +229,78 @@
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>9add7769-0034-4c7f-987e-bb592cfd335e</parentFolderId>
+          <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+          <packageName>Intent.Modelers.Services</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="588f15d0-c2ac-4c61-a5bf-b59f9f71ae7d" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+      <name>Parameter Naming Convention</name>
+      <display>Parameter Naming Convention</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>370723b8-0896-465f-acc7-099d8f36e052</parentFolderId>
+      <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+      <packageName>Intent.Modelers.Services</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Convention applied when creating and renaming operation parameters." isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="camel-case" isActive="true" />
+            <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" isActive="true" />
+            <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" isActive="true" />
+            <property name="29696a13-bf1d-4fbd-bdf3-adb802430cb4" display="Order Priority" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="5ee35d39-83f3-4522-91fc-b15390bbbed7" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Manual</name>
+          <display>Manual = manual</display>
+          <isAbstract>false</isAbstract>
+          <value>manual</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>588f15d0-c2ac-4c61-a5bf-b59f9f71ae7d</parentFolderId>
+          <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+          <packageName>Intent.Modelers.Services</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="71f30fd4-4411-4f02-9323-e85b7c14a382" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Pascal Case</name>
+          <display>Pascal Case = pascal-case</display>
+          <isAbstract>false</isAbstract>
+          <value>pascal-case</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>588f15d0-c2ac-4c61-a5bf-b59f9f71ae7d</parentFolderId>
+          <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+          <packageName>Intent.Modelers.Services</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="360cb34e-6721-4002-9288-97483ed32bad" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Camel Case</name>
+          <display>Camel Case = camel-case</display>
+          <isAbstract>false</isAbstract>
+          <value>camel-case</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>588f15d0-c2ac-4c61-a5bf-b59f9f71ae7d</parentFolderId>
           <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
           <packageName>Intent.Modelers.Services</packageName>
           <stereotypes />

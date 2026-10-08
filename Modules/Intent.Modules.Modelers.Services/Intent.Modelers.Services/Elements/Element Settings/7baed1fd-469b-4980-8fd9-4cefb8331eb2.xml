@@ -91,8 +91,8 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="var namingConvention = application.getSettings(&quot;370723b8-0896-465f-acc7-099d8f36e052&quot;)?.getField(&quot;8df5e8ae-1a56-4507-87e9-4f73cd69ba50&quot;)?.value;&#xD;&#xA;&#xD;&#xA;if (namingConvention == &quot;pascal-case&quot;) {&#xD;&#xA;    element.setName(toPascalCase(element.getName()))&#xD;&#xA;} else if (namingConvention == &quot;camel-case&quot;) {&#xD;&#xA;    element.setName(toCamelCase(element.getName()))&#xD;&#xA;}" isActive="true" />
-                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="applyNamingConvention(element, &quot;Property Naming Convention&quot;);" isActive="true" />
+                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" value="[&quot;71a1ef1f-33ad-45bd-a155-fbd2ee4afb6f&quot;]" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
