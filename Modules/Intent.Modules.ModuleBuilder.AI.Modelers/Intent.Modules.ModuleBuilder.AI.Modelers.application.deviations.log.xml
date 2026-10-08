@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files />
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#441ae093-b332-4906-8884-f604d9e98b2e</correlationId>
+      <path>Templates/Skills/IntentModelersIntegration_SkillMd_Agents/IntentModelersIntegration_SkillMd_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>joel.turner@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Joel Turner</updatedByDisplayName>
+      <updatedAt>2026-10-08T11:01:12.4312186Z</updatedAt>
+      <deviationsHash>03FF452D907378E3C87E7DE02DF9BCB0CBE16BA8478AE410BF3F87E7A504708B</deviationsHash>
+    </file>
+  </files>
   <customFiles>
     <customFile>
       <path>Modules/Intent.Modules.ModuleBuilder.AI.Modelers/.gitattributes</path>

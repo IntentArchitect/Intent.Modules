@@ -59,10 +59,10 @@
       <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#16162d11-1340-41a5-8a55-6a458f2f575f</correlationId>
       <path>Templates/Hooks/GateScripts/GateScriptsTemplateRegistration.cs</path>
       <count>1</count>
-      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-09-18T14:57:50.4618417Z</updatedAt>
-      <deviationsHash>1050DCD260C13BFEF6B9EC32DEA258047F969F50F4F177CB3C3113AB1CB65257</deviationsHash>
+      <updatedByAccountName>joel.turner@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Joel Turner</updatedByDisplayName>
+      <updatedAt>2026-10-08T11:01:15.9695195Z</updatedAt>
+      <deviationsHash>14431BCAE5B80C89EEE977D3A665C2089F377861A06BBA6AE5AEEE75E884D704</deviationsHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#f08ee439-d1d7-4285-b2b6-ba18cba0e12a</correlationId>
