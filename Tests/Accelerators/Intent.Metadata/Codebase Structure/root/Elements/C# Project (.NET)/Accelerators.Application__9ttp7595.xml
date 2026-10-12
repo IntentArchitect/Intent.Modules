@@ -148,8 +148,8 @@
           <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
           <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
           <properties>
-            <property name="277dec79-e6f2-4e4a-ab8e-1849990889a1" display="Severity" value="3 - High" isActive="true" />
             <property name="0acdff86-3981-4950-921c-f5642a3e2374" display="Classification" value="[&quot;f3748781-ede0-4991-90f1-758242ef8f91&quot;]" isActive="true" />
+            <property name="277dec79-e6f2-4e4a-ab8e-1849990889a1" display="Severity" value="3 - High" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -183,8 +183,8 @@
           <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
           <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
           <properties>
-            <property name="277dec79-e6f2-4e4a-ab8e-1849990889a1" display="Severity" value="3 - High" isActive="true" />
             <property name="0acdff86-3981-4950-921c-f5642a3e2374" display="Classification" value="[&quot;f3748781-ede0-4991-90f1-758242ef8f91&quot;]" isActive="true" />
+            <property name="277dec79-e6f2-4e4a-ab8e-1849990889a1" display="Severity" value="3 - High" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -248,15 +248,6 @@
             <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
           </properties>
         </stereotype>
-        <stereotype stereotypeDefinitionId="98cff892-b03e-4d9c-b1dc-031cb0c900ee" name="Output Classification">
-          <addedByDefault>false</addedByDefault>
-          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
-          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
-          <properties>
-            <property name="277dec79-e6f2-4e4a-ab8e-1849990889a1" display="Severity" value="2 - Medium" isActive="true" />
-            <property name="0acdff86-3981-4950-921c-f5642a3e2374" display="Classification" value="[&quot;c7099b32-9484-45e1-9fdb-06bae8bd9c07&quot;]" isActive="true" />
-          </properties>
-        </stereotype>
       </stereotypes>
       <metadata>
         <entry key="status" value="assigned" />
@@ -281,15 +272,6 @@
           <properties>
             <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
             <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
-          </properties>
-        </stereotype>
-        <stereotype stereotypeDefinitionId="98cff892-b03e-4d9c-b1dc-031cb0c900ee" name="Output Classification">
-          <addedByDefault>false</addedByDefault>
-          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
-          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
-          <properties>
-            <property name="277dec79-e6f2-4e4a-ab8e-1849990889a1" display="Severity" value="3 - High" isActive="true" />
-            <property name="0acdff86-3981-4950-921c-f5642a3e2374" display="Classification" value="[&quot;f3748781-ede0-4991-90f1-758242ef8f91&quot;,&quot;4c227891-790f-4bca-a175-8b9d009cbdc6&quot;]" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -388,15 +370,6 @@
             <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
           </properties>
         </stereotype>
-        <stereotype stereotypeDefinitionId="98cff892-b03e-4d9c-b1dc-031cb0c900ee" name="Output Classification">
-          <addedByDefault>false</addedByDefault>
-          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
-          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
-          <properties>
-            <property name="277dec79-e6f2-4e4a-ab8e-1849990889a1" display="Severity" value="2 - Medium" isActive="true" />
-            <property name="0acdff86-3981-4950-921c-f5642a3e2374" display="Classification" value="[&quot;c7099b32-9484-45e1-9fdb-06bae8bd9c07&quot;]" isActive="true" />
-          </properties>
-        </stereotype>
       </stereotypes>
       <metadata>
         <entry key="status" value="assigned" />
@@ -421,15 +394,6 @@
           <properties>
             <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
             <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
-          </properties>
-        </stereotype>
-        <stereotype stereotypeDefinitionId="98cff892-b03e-4d9c-b1dc-031cb0c900ee" name="Output Classification">
-          <addedByDefault>false</addedByDefault>
-          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
-          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
-          <properties>
-            <property name="277dec79-e6f2-4e4a-ab8e-1849990889a1" display="Severity" value="3 - High" isActive="true" />
-            <property name="0acdff86-3981-4950-921c-f5642a3e2374" display="Classification" value="[&quot;f3748781-ede0-4991-90f1-758242ef8f91&quot;,&quot;4c227891-790f-4bca-a175-8b9d009cbdc6&quot;]" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
