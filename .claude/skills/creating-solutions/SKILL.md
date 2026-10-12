@@ -2,6 +2,8 @@
 description: How to create a new, empty Intent Architect solution with create_solution — in an agent conversation, for a folder (e.g. a brownfield repository) that has no solution yet; from an external MCP client, from the home screen. Load before creating a solution. Applications are added separately with create_application.
 short-description: Create a solution for a folder that has none (then add applications).
 intent-updates: automatic
+requiredTools:
+  - create_solution
 ---
 
 # Creating Solutions

@@ -1,5 +1,6 @@
 ### Version 4.0.17
 
+- Improvement: The DTO warning for a field without a default value after one with a default value moved to `Intent.Application.Dtos`, which generates the constructor and static `Create` method it protects. Installing this version updates `Intent.Application.Dtos` to the version that carries it.
 - Improvement: Added a `Parameter Naming Convention` setting (default Camel Case) so operation parameter names follow Service Settings instead of always being camel-cased.
 - Improvement: Service Operation parameters and return types can now be any element with the `Service Argument` trait (e.g. Domain `Class`, `Data Contract` and `Value Object`).
 - Fixed: Service names now follow the `Entity Naming Convention` setting instead of `Operation Naming Convention` (e.g. Operation set to Camel Case renamed `OrderService` to `orderService`).

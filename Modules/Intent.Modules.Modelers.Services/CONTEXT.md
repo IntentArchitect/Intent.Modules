@@ -67,3 +67,10 @@ Service Settings group whose naming conventions rename those elements as users c
   `IServiceArgumentModel`). **Intent.Modelers.Domain** (`Class`, `Data Contract`) and
   **Intent.Modelers.Domain.ValueObjects** (`Value Object`) implement it. The trait id is a cross-module
   contract: never delete and recreate the trait.
+- **Intent.Application.Dtos** owns the DTO "default value order" warning (a field without a default value after one
+  with a default value). Until 4.0.16 this module's DTO Validate Function held it, reading Dtos' DTO Settings by
+  GUID. It moved because the DTO template is what drops out-of-order defaults, and the check fired in applications
+  without that module. Dtos adds it as a DTO Element Extension. This module's `<interoperability>` entry updates
+  Dtos to 4.6.2 (written against `4.6.2-pre.0`), and Dtos' dependency floor on this module is 4.0.17. Together they
+  stop an application running both copies (a duplicate warning) or neither. Don't re-add a Validate Function for
+  this to the DTO element settings.

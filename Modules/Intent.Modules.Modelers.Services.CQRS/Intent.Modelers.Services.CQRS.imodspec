@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services.CQRS</id>
-  <version>6.0.8</version>
+  <version>6.0.9-pre.0</version>
   <supportedClientVersions>[4.5.8-a, 6.0.0-a)</supportedClientVersions>
   <summary>Support for describing Commands and Queries in the Services designer.</summary>
   <description>Support for describing Commands and Queries in the Services designer.</description>
@@ -16,6 +16,19 @@
     <dependency id="Intent.Common.Types" version="3.4.0" />
     <dependency id="Intent.Modelers.Services" version="4.0.4" />
   </dependencies>
+  <interoperability>
+    <!-- Minimum Compatible Versions: these modules now own the Command and Query default value order validation -->
+    <detect id="Intent.Application.MediatR">
+      <install>
+        <package id="Intent.Application.MediatR" version="4.7.6-pre.0" />
+      </install>
+    </detect>
+    <detect id="Intent.Application.Wolverine">
+      <install>
+        <package id="Intent.Application.Wolverine" version="1.1.2-pre.0" />
+      </install>
+    </detect>
+  </interoperability>
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />

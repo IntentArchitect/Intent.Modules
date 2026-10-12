@@ -1,3 +1,7 @@
+### Version 6.0.9
+
+- Improvement: The Command and Query warning for a property without a default value after one with a default value moved to `Intent.Application.MediatR` and `Intent.Application.Wolverine`, which generate the constructors it protects. Installing this version updates those modules to the versions that carry it.
+
 ### Version 6.0.8
 
 - Improvement: Updates to AI guidance around Command and Query naming conventions.
