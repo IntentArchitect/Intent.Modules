@@ -100,6 +100,11 @@ public interface ICSharpClass : ICSharpDeclaration<ICSharpClass>, IBuildsCSharpM
     ICSharpClass Protected();
     ICSharpClass ProtectedInternal();
     ICSharpClass Public();
+    /// <summary>
+    /// Omits the access modifier so the type takes C#'s default accessibility:
+    /// <c>internal</c> for a top-level type, <c>private</c> for a nested one.
+    /// </summary>
+    ICSharpClass WithoutAccessModifier();
     ICSharpClass Partial();
     ICSharpClass Sealed();
     ICSharpClass Unsealed();

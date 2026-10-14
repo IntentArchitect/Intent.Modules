@@ -1,5 +1,5 @@
 ---
-description: Document a feature that already exists as a finished SDD spec in one run — scope, behaviour inventory, requirements, design, tasks, traceability and a verified verdict — orchestrating read-only sub-agents and the as-built mode of each phase skill. Use when the user asks to extract, document or back-fill a spec for existing code.
+description: Document a feature that already exists as a finished SDD spec in one run — scope, behaviour inventory, requirements, design, traceability and a verified verdict — orchestrating read-only sub-agents and the as-built mode of each phase skill. Use when the user asks to extract, document or back-fill a spec for existing code.
 short-description: Extract a verified spec from an existing feature, end to end.
 argument-hint: <feature or module>
 intent-updates: automatic
@@ -8,7 +8,6 @@ requiredTools:
   - write_spec
   - advance_spec_phase
   - record_spec_traceability
-  - complete_spec_task
   - record_spec_verdict
   - get_change_review
   - create_sub_agent
@@ -18,11 +17,11 @@ requiredTools:
 
 # SDD — Extract (orchestrator)
 
-You turn **a feature that already exists** into a spec that reaches `done` in a single run: requirements, design, tasks, traceability and a verdict, all describing the code as it is.
+You turn **a feature that already exists** into a **Capability**, a spec of how one area of the system behaves now, that reaches `done` in a single run: requirements, design, traceability and a verdict, all describing the code as it is. A Capability has no tasks: it goes from design straight to verification.
 
 **This is a user decision.** The user chose to document existing behaviour rather than design new work. Per `guidance-precedence`, that makes the **As-built mode (extraction)** section in each phase skill authorised. Follow it wherever it differs from that skill's interview or design rules. When you delegate, say "the user asked to extract an existing feature" so sub-agents can tell the instruction from your own inference.
 
-**You own every write and every gate.** `advance_spec_phase` can't be called from a sub-agent, so sub-agents only read and report. You call `write_spec`, the gates, `record_spec_traceability`, `complete_spec_task` and `record_spec_verdict` yourself.
+**You own every write and every gate.** `advance_spec_phase` can't be called from a sub-agent, so sub-agents only read and report. You call `write_spec`, the gates, `record_spec_traceability` and `record_spec_verdict` yourself.
 
 Seed a todo list with one item per step below and keep exactly one in progress.
 
@@ -56,28 +55,23 @@ Keep the merged inventory. It is the evidence every later step cites.
 
 `use_skill` **sdd-requirements** and **authoring-rich-documents**, then follow sdd-requirements in as-built mode.
 
-- Make the **first** write `write_spec(slug, "requirements", …, gates: "auto")`. Auto gates are part of the user's decision: they review the finished spec once, not each phase.
+- Make the **first** write `write_spec(slug, "requirements", …, gates: "auto", kind: "capability")`. Auto gates are part of the user's decision: they review the finished spec once, not each phase.
 - Then call `advance_spec_phase(slug, artifact: "requirements", toPhase: "design")`.
 
 ## 5. Design
 
-`use_skill` **sdd-design** and follow it in as-built mode. Call `write_spec(slug, "design", …)`, then `advance_spec_phase(…, toPhase: "tasks")`.
+`use_skill` **sdd-design** and follow it in as-built mode. Call `write_spec(slug, "design", …)`. Write no tasks.
 
-## 6. Tasks
+## 6. Traceability
 
-`use_skill` **sdd-tasks** and follow it in as-built mode. Call `write_spec(slug, "tasks", …)`, then `advance_spec_phase(…, toPhase: "implementation")`.
+`use_skill` **sdd-record-traceability** and follow it. For each requirement:
 
-## 7. Traceability
-
-`use_skill` **sdd-record-traceability** and follow it. For each task:
-
-1. Call `record_spec_traceability` with the task's files and elements from the inventory.
+1. Call `record_spec_traceability` with its files and elements from the design's realization table and the inventory.
 2. Fix every reported `failure` and re-record until it's clean.
-3. Call `complete_spec_task`.
 
-The last tick moves the spec to `verification` by itself.
+Then call `advance_spec_phase(slug, artifact: "design", toPhase: "verification")`: a Capability skips tasks and implementation.
 
-## 8. Verify and resolve suspected bugs
+## 7. Verify and resolve suspected bugs
 
 `use_skill` **sdd-verify** and follow it in as-built mode.
 
@@ -88,7 +82,7 @@ The last tick moves the spec to `verification` by itself.
   - **Reword the requirement to match the current behaviour** (recommended when the behaviour is harmless).
 - When every requirement passes, the clean verdict moves the spec to `done` by itself.
 
-## 9. Report
+## 8. Report
 
 Report briefly, and never paste an artifact. Include:
 

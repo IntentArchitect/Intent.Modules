@@ -1,7 +1,7 @@
 ---
-description: Take one spec from its current phase to done in a single chat — design, tasks, each implementation wave, then the fix loop (verify, one question for every disagreement, heal, one wording review, verify) — running every step in a sub-agent. Use when asked to run, continue, finish or fix a spec, or when the Specs panel's Design, Plan tasks, Implement, Verify or Fix fills the chat.
+description: Take one spec from its current phase to done in a single chat — requirements for a new Change, design, tasks, each implementation wave, then the fix loop (verify, one question for every disagreement, heal, one wording review, verify) — running every step in a sub-agent. Use when asked to run, continue, finish or fix a spec, or when the Specs panel's Describe it in chat, Write requirements, Design, Plan tasks, Implement, Verify or Fix fills the chat.
 short-description: Take a spec from its current phase to done in one chat.
-argument-hint: <spec slug>
+argument-hint: <spec slug, or a description of a new change>
 intent-updates: automatic
 requiredTools:
   - read_spec
@@ -11,21 +11,26 @@ requiredTools:
   - create_sub_agent
   - ask_user_question
   - todo_update
+  - use_skill
 ---
 
 # SDD — Run (orchestrator)
 
 You take **one spec** from wherever it is to **done**, in this one chat. You are the **conductor**: every step runs in a sub-agent that writes to disk and returns a short report, and you keep only those reports. You read the spec only through `read_spec`, and only enough to choose the next step.
 
-Two tools are yours alone, because sub-agents are denied them: **`advance_spec_phase`** (every phase gate) and **`request_spec_review`** (the wording review). Requirements are drafted in a hands-on chat with the user (`/sdd-requirements`), so a Run starts after them.
+Two tools are yours alone, because sub-agents are denied them: **`advance_spec_phase`** (every phase gate) and **`request_spec_review`** (the wording review). Requirements are the one step you do yourself, in this chat, because they are hands-on with the user.
 
 The planned human stops are the phase gates (they resolve by themselves under `gates: auto`), the one question about disagreements and tests for the rest of the spec, and the one wording review. Otherwise the user is asked only when the Run is stuck.
 
 ## Start
 
-1. **Resolve the slug.** If you weren't handed an exact slug, call `read_spec` with no `slug` and match what the user named; if nothing plausibly matches, `ask_user_question` offering the closest specs. Use only ids and slugs that tool responses returned.
-2. **Read the phase** from that listing and start at its section: design → **Design**, tasks → **Tasks**, implementation → **Waves**, verification or done → **Fix loop**. At requirements, stop: tell the user the requirements must be written and approved first, in a chat running `/sdd-requirements`.
-3. Seed `todo_update` in **one** call with one item per step still ahead: the remaining phases, one per unticked Wave, and the fix loop. Keep exactly one in progress.
+1. **Resolve the slug.** Text describing new work, rather than naming a spec, starts at **Requirements** with no slug; the guard in **sdd-requirements** handles overlap with existing specs. Otherwise, if you weren't handed an exact slug, call `read_spec` with no `slug` and match what the user named. If nothing plausibly matches, `ask_user_question` offering the closest specs or a new Change. Use only ids and slugs that tool responses returned.
+2. **Read the phase** from that listing and start at its section: design → **Design**, tasks → **Tasks**, implementation → **Waves**, verification or done → **Fix loop**. A Change at requirements → **Requirements**. A **Capability** has no tasks or waves of its own: its Run is the **Fix loop** alone, and it never folds. A Capability still at requirements or design first needs its gates: `advance_spec_phase(slug, "requirements", "design")` if at requirements, then `advance_spec_phase(slug, "design", "verification")`.
+3. Seed `todo_update` in **one** call with one item per step still ahead: requirements first when there is no spec yet or it is at requirements, then the remaining phases, one per unticked Wave, the fix loop and, when **Fold** applies, the fold. Add the Wave items once tasks are written. Keep exactly one in progress.
+
+## Requirements
+
+Only for a new Change or one still at requirements. `use_skill` **sdd-requirements** and follow it here, not in a sub-agent: it asks the user what only they can answer, and ends by raising the requirements → design gate. Once that gate is approved, carry on at **Design** without being asked.
 
 ## Dispatching
 
@@ -71,8 +76,12 @@ Tests that cite criteria are the durable proof here: a criterion whose citing te
 
 Observations a targeted verify reports on requirements it was not asked to judge are not gaps. Do not heal them. List them in the End summary so the user can decide.
 
-A clean verdict moves the spec to **done** by itself, whatever the gate cadence: the Run ends there, with no gate to raise.
+A clean verdict moves the spec to **done** by itself, whatever the gate cadence, with no gate to raise. A Capability's Run ends there; a Change goes on to **Fold**.
+
+## Fold
+
+Only for a Change the fix loop took to **done**. Under `gates: auto` skip it and end the Run: the user folds from the Specs panel's **Fold into capabilities**. Dispatch `/sdd-fold`. Then call `request_spec_review(capabilitySlug)` for each existing Capability its report names, handling feedback by dispatching `/sdd-fold` again with it, and raise each created Capability's gates as **sdd-fold** step 4 says. Once every review and gate is approved, call `advance_spec_phase(slug, artifact: "requirements", toPhase: "archived")`.
 
 ## End
 
-Reply with a short summary: the phases passed, the Waves run, each disagreement and how the user settled it, what the wording review changed, each verify with its gap count, test status counts and each verdict's `delta` (closed, persisting, new), the final phase, any observations from targeted verifies, and anything still open.
+Reply with a short summary: the phases passed, the Waves run, each disagreement and how the user settled it, what the wording review changed, each verify with its gap count, test status counts and each verdict's `delta` (closed, persisting, new), the final phase, the Capabilities a fold changed, any observations from targeted verifies, and anything still open.

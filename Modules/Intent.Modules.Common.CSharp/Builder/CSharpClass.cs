@@ -568,6 +568,16 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
         return this;
     }
 
+    /// <summary>
+    /// Omits the access modifier so the type takes C#'s default accessibility:
+    /// <c>internal</c> for a top-level type, <c>private</c> for a nested one.
+    /// </summary>
+    public CSharpClass WithoutAccessModifier()
+    {
+        AccessModifier = string.Empty;
+        return this;
+    }
+
     public CSharpClass Partial()
     {
         IsPartial = true;
@@ -1009,6 +1019,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICSharpClass
     ICSharpClass ICSharpClass.Public()
     {
         return _wrapper.Public();
+    }
+
+    ICSharpClass ICSharpClass.WithoutAccessModifier()
+    {
+        return _wrapper.WithoutAccessModifier();
     }
 
     ICSharpClass ICSharpClass.Partial()

@@ -19,7 +19,7 @@ requiredTools:
 
 Code that a spec traces has changed. Your job is to make sure the spec still describes it. **Every change to a spec's requirements goes through the user's review in `request_spec_review`.**
 
-**Skip this skill** when this conversation is running `sdd-implement`, `sdd-implement-wave`, `sdd-heal` or `sdd-extract` for the same spec, because those flows already own its traceability. Also skip it in `sdd-verify` and `sdd-trace-reconcile`: they review and link, and must not reword requirements. The one exception is a **Run**: when `sdd-run` loads this skill as a step of its fix loop, run it, whatever else that Run has done for the spec.
+**Skip this skill** when this conversation is running `sdd-implement`, `sdd-implement-wave`, `sdd-heal` or `sdd-extract` for the same spec (a heal this skill dispatched in step 5 doesn't count), because those flows already own its traceability. Also skip it in `sdd-verify` and `sdd-trace-reconcile`: they review and link, and must not reword requirements. The one exception is a **Run**: when `sdd-run` loads this skill as a step of its fix loop, run it, whatever else that Run has done for the spec.
 
 ## 1. Find what's affected
 
@@ -51,24 +51,31 @@ With more than about six requirements, dispatch one `discovery` sub-agent per sp
 **Still true** needs no change. For each requirement that is **now false**, **extended** or **removed**:
 
 1. Say in one line which criteria you are changing, e.g. "This changes ai-chat-surface R7.3 and adds R12.18."
-2. Patch `requirements` with `write_spec` using searchBlock/replaceBlock so the criteria describe the code. State current behaviour only. For new behaviour, first choose the spec: list them with `read_spec()` and put it in the one whose description covers it, whichever spec traces the code, asking the user when more than one fits. Then add a new `### Requirement N` numbered one past the highest ever used. For behaviour that is gone, delete the criterion and leave the ones after it numbered as they are: ids are spent, never renumbered or reused, because tests cite them (see **sdd-requirements**).
+2. Patch `requirements` with `write_spec` using searchBlock/replaceBlock so the criteria describe the code. State current behaviour only. For new behaviour, first choose the spec: list them with `read_spec()` and put it in the one whose description covers it, whichever spec traces the code, asking the user when more than one fits. Then add a new `### Requirement N` numbered one past the highest ever used. When existing behaviour is **extended**, add a new criterion id under the same requirement rather than lengthening the existing sentence. When a reworded criterion would go over the atomicity limit in **sdd-requirements** (~300 characters or more than 2 conditions), split it: the old id keeps the core behaviour and its traces, and the extra clauses get new ids. For behaviour that is gone, delete the criterion and leave the ones after it numbered as they are: ids are spent, never renumbered or reused, because tests cite them (see **sdd-requirements**).
 3. Call `request_spec_review(slug)` once for the spec, after every write. The user reviews each changed block in the diff against git HEAD and accepts, rejects or comments on it. Approval restamps the reworded requirements' links, so don't restamp them yourself.
 4. If the review comes back with feedback, act on each item. For a **rejected** block, restore its original wording and change the code back so that wording holds again. For a **comment**, revise the wording as asked. Then `write_spec` and `request_spec_review` again. Blocks the user already accepted stay accepted. In a Run, restore the rejected wording and hand each rejected block back to `sdd-run` as a gap instead of changing the code yourself: its heal step makes the code match the wording.
 
 5. **Re-check the tests of every reworded criterion, in this same turn.** `read_spec(slug, artifact: "tests", requirementId: <its requirement>)` lists the tests citing it (titles carrying `[spec:<slug> R7.3]`). When the user chose to change a test, update it first and run it. Then have one `discovery` sub-agent judge each reworded criterion against its citing tests as a sceptic: which of its clauses they assert (`full`, `partial` with what is missing, or `mismatch`). Report the result: a `mismatch` is a disagreement for the user, and the next verify records the new degree as a binding.
+
+6. **Re-confirm the binding of every test this turn edited.** Its edit leaves the criteria it cites `stale`. Have a `discovery` sceptic judge each such criterion against its citing tests, then record a `full` or `partial` degree with `record_spec_verdict(slug, bindings)` and **no `results`**, exactly as **sdd-heal** step 5 does. Leave a `mismatch` unrecorded and report it as a disagreement.
 
 `request_spec_review` refuses a spec another framework owns. For that spec, ask about each requirement with `ask_user_question` instead (update the spec, change the code back, or leave it), and apply the answers.
 
 ## 4. Follow the approved wording
 
 - **Design:** patch the affected realization-table rows, diagrams and `<FileRef>`s.
-- **Tasks:** for a new requirement, add a task to `tasks.md` with `(satisfies: RN)`.
+- **Tasks:** for a new requirement, add a task to `tasks.md` with `(satisfies: RN)`, unless the spec is a Capability, which has no tasks.
 - **Traceability:** where targets were added or deleted, re-record that task with its existing targets **plus** the new ones and **minus** the deleted ones, because a call with targets replaces the task's links (see **sdd-record-traceability**). Call `complete_spec_task` for any new task.
 
 This is bookkeeping that follows from wording the user approved. Do it without asking, and give it one line in the report.
 
 ## 5. Verify and hand off
 
-Once the review is approved, or straight away when no wording needed changing, dispatch `sdd-verify` with `create_sub_agent`, targeted at the requirements `movedSinceVerdict` lists for the spec (re-read it after step 4), so the spec is left verified. Don't record a verdict yourself: a review from the session that made the change isn't independent, and the fresh sub-agent is. Don't heal what it finds: report each gap.
+The goal is that every spec this work affected ends green. In a Run, skip this step and return your summary to `sdd-run`: it verifies in its own fresh sub-agent. Otherwise:
 
-Report which requirements changed and how, then the verify's outcome. In a Run, skip the verify and return the summary to `sdd-run`: it verifies in its own fresh sub-agent.
+1. **Verify.** Once the review is approved, or straight away when no wording needed changing, dispatch `sdd-verify` with `create_sub_agent`, targeted at the requirements `movedSinceVerdict` lists for the spec (re-read it after step 4). A targeted verify already runs the citing tests of the requirements it is given, so don't ask it to run the whole spec's. Don't record a verdict yourself: a review from the session that made the change isn't independent, and the fresh sub-agent is.
+2. **Ask once.** When it recorded gaps, or those requirements have untested criteria (`read_spec(slug, artifact: "tests")`), ask one `ask_user_question` covering every affected spec: each disagreement settled as **fix the code**, **change the test**, **reword the criterion** or **leave it**, plus **write them now** or **leave them** for the untested criteria. Gaps and observations on requirements this conversation didn't move are not yours: report them, don't offer to heal them.
+3. **Heal** what the user chose: dispatch `/sdd-heal` with `create_sub_agent`, handing it the answers and the requirements whose tests to write. When heal reworded criteria, call `request_spec_review(slug)` once for all of them; a **rejected** rewording is restored, so dispatch `/sdd-heal` once more with that disagreement answered **fix the code**.
+4. **Verify once more.** Re-read `movedSinceVerdict` first, since heal's edits often move requirements that share its files, and target those; when heal reported criteria as untestable, add "Heal reported these untestable; have the sceptic judge them: <id: reason; …>". When it still records gaps, repeat 2–4 once for those gaps alone, then stop.
+
+This is a lighter copy of `sdd-run`'s fix loop; keep the two in step. End by reporting which requirements changed and how, then one line: either **"Affected specs verified with no gaps, ready to commit."** or each gap still open.

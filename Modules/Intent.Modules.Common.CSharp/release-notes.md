@@ -1,4 +1,8 @@
-﻿### Version 3.10.11
+﻿### Version 3.10.12
+
+- Improvement: `CSharpClass` (including records), `CSharpInterface` and `CSharpEnum` now have a `WithoutAccessModifier()` method which emits the type with no access modifier (e.g. `class ABC` rather than `public class ABC`); types remain `public` by default.
+
+### Version 3.10.11
 
 - New Feature: `AddImplicitUsing` extension method (plus a `CSharpTemplateBase` convenience method) lets templates register a namespace as implicit for a project, so the Roslyn weaver treats matching `using` directives as redundant.
 - Fixed: The `AI.Context.Instructions` static content (C# AI coding-agent guidelines) was misplaced under `resources/AIInstructions` instead of `content/AIInstructions`, so a placeholder `readme.txt` was being output to consuming applications' `.agents/instructions` folder instead of the intended `csharp-guidelines.md` guidance.

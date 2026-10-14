@@ -130,4 +130,27 @@ public class CSharpFileTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task TypesWithoutAccessModifierTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddClass("DefaultClass")
+            .AddClass("ClassWithoutAccessModifier", @class =>
+            {
+                @class.WithoutAccessModifier().Sealed();
+                @class.AddNestedClass("NestedClassWithoutAccessModifier", nested => nested.WithoutAccessModifier());
+                @class.AddNestedInterface("INestedInterfaceWithoutAccessModifier", nested => nested.WithoutAccessModifier());
+                @class.AddNestedEnum("NestedEnumWithoutAccessModifier", nested => nested.WithoutAccessModifier().AddLiteral("Literal1"));
+            })
+            .AddClass("ClassWithoutAccessModifierViaInterface", @class => ((ICSharpClass)@class).WithoutAccessModifier())
+            .AddRecord("RecordWithoutAccessModifier", rec => rec.WithoutAccessModifier())
+            .AddInterface("IInterfaceWithoutAccessModifier", @interface => @interface.WithoutAccessModifier())
+            .AddInterface("IInterfaceWithoutAccessModifierViaInterface", @interface => ((ICSharpInterface)@interface).WithoutAccessModifier())
+            .AddEnum("EnumWithoutAccessModifier", e => e.WithoutAccessModifier().AddLiteral("Literal1"))
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }
