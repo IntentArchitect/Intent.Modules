@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="60fd85c8-5de8-45b6-9ba7-570cc701c3ab" version="3.1.0">
-  <name>Allows Custom File Classification</name>
+  <comment>Opts an element type in to the File Classification stereotype. Apply it to an Element Settings, Package Settings or extension in a designer you own. It is never applied in an application's own model.</comment>
+  <name>Allows File Classification</name>
   <targetMode>filter-function</targetMode>
   <targetTypes />
   <targetReferenceTypes />

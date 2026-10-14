@@ -1,3 +1,9 @@
+### Version 3.20.0
+
+- Improvement: The `Severity` property of `Template Settings` is renamed to `Review Importance`, which better describes how important it is to review changes to the files a template generates. Existing values are kept.
+- Improvement: The generated `.imodspec` writes a template's review importance as `<reviewImportance>` when the module's `supportedClientVersions` lower bound is `5.4.0-beta.6` or later, and as `<severity>` otherwise, so older Intent Architect versions keep reading it.
+- Improvement: `IModuleBuilderTemplate.GetReviewImportance()` replaces `GetSeverity()`, which is now obsolete. Templates that only implement `GetSeverity()` keep working.
+
 ### Version 3.19.1
 
 - Improvement: Bumped the pinned `Intent.Packager` dependency version referenced by scaffolded module projects.

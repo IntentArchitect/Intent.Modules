@@ -8,6 +8,7 @@ using Intent.Exceptions;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Types.Api;
+using Intent.Modules.Modelers.CodebaseStructure.Api;
 using Intent.RoslynWeaver.Attributes;
 using DynamicExpressionParser = System.Linq.Dynamic.Core.DynamicExpressionParser;
 using ParsingConfig = System.Linq.Dynamic.Core.ParsingConfig;
@@ -18,7 +19,7 @@ using ParsingConfig = System.Linq.Dynamic.Core.ParsingConfig;
 namespace Intent.Modelers.CodebaseStructure.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class TemplateOutputModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder, IOutputTargetTemplate
+    public class TemplateOutputModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IAllowsFileClassificationModel, IHasFolder, IOutputTargetTemplate
     {
         private static readonly ParsingConfig ParsingConfig = new();
         public const string SpecializationType = "Template Output";

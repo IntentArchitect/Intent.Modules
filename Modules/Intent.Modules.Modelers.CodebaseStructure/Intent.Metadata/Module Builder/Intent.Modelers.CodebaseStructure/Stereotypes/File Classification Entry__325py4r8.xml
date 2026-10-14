@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stereotypeDefinition id="14476d2c-c5fb-4aea-ad8c-55d1b00a8203" version="3.1.0">
-  <name>Custom File Classification Entry</name>
+  <comment>One row of a File Classification's `Entries` list: which files (Glob), how important it is to review changes to them (Review Importance), and what they are (Classification). Exists only as an `Entries` row; it is never applied to an element directly.</comment>
+  <name>File Classification Entry</name>
   <targetMode>filter-function</targetMode>
   <targetTypes />
   <targetReferenceTypes />
@@ -15,14 +16,14 @@
     .filter(line =&gt; line.length &gt; 0)
     .join(", ");
 
-const severity = (properties["Severity"].value || "").replace(/^\d+\s*-\s*/, "");
+const importance = (properties["Review Importance"].value || "").replace(/^\d+\s*-\s*/, "");
 
 const classifications = JSON.parse(properties["Classification"].value || "[]")
     .map(id =&gt; lookup(id)?.getName())
     .filter(name =&gt; !!name)
     .join(", ");
 
-const header = [severity, classifications].filter(part =&gt; !!part).join(" - ");
+const header = [importance, classifications].filter(part =&gt; !!part).join(" - ");
 
 return `[${header}] ${globs}`.trim();</displayFunction>
   <displayAsAnnotation>false</displayAsAnnotation>
@@ -35,15 +36,15 @@ return `[${header}] ${globs}`.trim();</displayFunction>
   <packageName>Intent.Modelers.CodebaseStructure</packageName>
   <properties>
     <property id="14dd36e5-eee3-4b8f-9868-99b965703d23">
-      <hint>Glob items evaluated against a file's path relative to the folder/project this is applied to. Negation using `!` supported.</hint>
+      <hint>Which files this row applies to, as .gitignore-style patterns, one per line, e.g. `**/*.cs` or `Payments/**/*`. Paths are relative to the element the stereotype is on: a folder or project's directory, each contained project's root for a solution folder, or the folder containing a Template Output. A line starting with `!` excludes, and within one row the last matching line wins. Leave empty to match every file.</hint>
       <name>Glob</name>
       <type>string</type>
       <controlType>textarea</controlType>
       <optionsSource>n/a</optionsSource>
     </property>
     <property id="1f903649-4ed0-4c2b-b288-34dedacdff05">
-      <hint>Severity level. Always stored as the lower-case option name, never a number.</hint>
-      <name>Severity</name>
+      <hint>How important it is for a reviewer to look at changes to the matched files: `3 - High` for changes that need careful review (e.g. security, payments, personal data), down to `0 - None` for files whose changes need no special attention. Set the full option text, e.g. `2 - Medium`.</hint>
+      <name>Review Importance</name>
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
@@ -55,7 +56,7 @@ return `[${header}] ${globs}`.trim();</displayFunction>
       </valueOptions>
     </property>
     <property id="c42e8c3a-962a-4e85-b890-e3234eb6534d">
-      <hint>Created `File Classification` element types can be chosen here.</hint>
+      <hint>One or more `File Classification` elements describing what the matched files are, e.g. "Data Access" or "PCI scope". These are the named categories under the root folder's `File Classifications` element (a different thing from this stereotype, despite the shared name). Create one there first if none fits.</hint>
       <name>Classification</name>
       <type>string</type>
       <controlType>multi-select</controlType>
