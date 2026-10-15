@@ -1,0 +1,80 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    public abstract class BaseClass
+    {
+        public virtual void AbstractOverride()
+        {
+        }
+
+        public void NewVirtual()
+        {
+        }
+
+        public void NewAbstract()
+        {
+        }
+
+        public static void StaticNew()
+        {
+        }
+
+        public virtual void OverridePartial()
+        {
+        }
+
+        public virtual void SealedOverride()
+        {
+        }
+
+        public virtual void OverrideThenSealed()
+        {
+        }
+
+        public virtual void SealedViaInterface()
+        {
+        }
+    }
+
+    public abstract partial class DerivedClass : BaseClass
+    {
+        public sealed override void SealedOverride()
+        {
+        }
+
+        public sealed override void OverrideThenSealed()
+        {
+        }
+
+        public sealed override void SealedViaInterface()
+        {
+        }
+
+        public abstract override void AbstractOverride();
+
+        public new virtual void NewVirtual()
+        {
+        }
+
+        public new abstract void NewAbstract();
+
+        public static new void StaticNew()
+        {
+        }
+
+        public static partial void StaticPartial();
+
+        public static partial void StaticPartial()
+        {
+            // Implementation
+        }
+
+        public override partial void OverridePartial();
+
+        public override partial void OverridePartial()
+        {
+            // Implementation
+        }
+    }
+}

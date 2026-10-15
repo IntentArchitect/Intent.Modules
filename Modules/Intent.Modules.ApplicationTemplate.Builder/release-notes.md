@@ -1,3 +1,7 @@
+### Version 3.8.2
+
+- Improvement: The `Relative Output Location` hint on `Application Template Defaults` now states that the value is relative to the folder containing the `.isln` (or its parent when that folder is named `intent`), rather than the root workspace location.
+
 ### Version 3.8.1
 
 - Improvement: The `Application Template Defaults` `Place solution and application in the same directory` setting has been renamed to `Metadata in Subfolder`, which controls whether the `.application.config` and other application metadata is in a subfolder relative to the `.isln`. It is persisted as the inverse of the existing `placeInSameDirectory` element in the `.iatspec` file.

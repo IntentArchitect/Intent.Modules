@@ -10,14 +10,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         {
         }
 
-        public TemplateRegistrationRequiredEvent(string modelId, string templateId, string templateType, string role, string location, string severity, string classification)
+        public TemplateRegistrationRequiredEvent(string modelId, string templateId, string templateType, string role, string location, string reviewImportance, string classification)
         {
             ModelId = modelId;
             TemplateId = templateId;
             TemplateType = templateType;
             Role = role;
             Location = location;
-            Severity = severity;
+            ReviewImportance = reviewImportance;
             Classification = classification;
         }
 
@@ -30,7 +30,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             TemplateType = template.TemplateType();
             Role = template.GetRole();
             Location = template.GetDefaultLocation();
-            Severity = template.GetSeverity();
+            ReviewImportance = template.GetReviewImportance();
             Classification = template.GetClassification();
         }
 
@@ -41,7 +41,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         public string TemplateType { get; set; }
         public string Role { get; }
         public string Location { get; }
-        public string Severity { get; }
+        public string ReviewImportance { get; }
+
+        [System.Obsolete("Use ReviewImportance.")]
+        public string Severity => ReviewImportance;
         public string Classification { get; }
     }
 }

@@ -22,6 +22,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
     public string Name { get; }
     public bool IsAsync { get; private set; }
     public bool IsAbstract { get; set; } = true;
+    public bool IsSealed => false;
     public bool IsStatic { get; set; }
     public void RemoveStatement(CSharpStatement statement) => Statements.Remove(statement);
     public bool HasExpressionBody { get; private set; }
@@ -384,6 +385,8 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
 
     public CSharpInterfaceMethod Abstract() => this;
 
+    public CSharpInterfaceMethod Sealed() => this;
+
     public override string GetText(string indentation)
     {
         var @static = IsStatic
@@ -490,6 +493,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, ICShar
     ICSharpInterfaceMethodDeclaration ICSharpMethod<ICSharpInterfaceMethodDeclaration>.WithReturnType(ICSharpType returnType) => _wrapper.WithReturnType(returnType);
     ICSharpInterfaceMethodDeclaration ICSharpMethod<ICSharpInterfaceMethodDeclaration>.WithReturnType(string returnType) => _wrapper.WithReturnType(returnType);
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Abstract() => _wrapper.Abstract();
+    ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.Sealed() => _wrapper.Sealed();
     string? ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.ExplicitImplementationFor => _wrapper.ExplicitImplementationFor;
     bool ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.IsAbstract => _wrapper.IsAbstract;
     ICSharpInterfaceMethodDeclaration ICSharpMethodDeclaration<ICSharpInterfaceMethodDeclaration>.IsExplicitImplementationFor(string? @interface) => _wrapper.IsExplicitImplementationFor(@interface);

@@ -13,6 +13,24 @@ C# module, so its public API is a contract with modules this repository cannot s
   accessibility enum/setter, which would duplicate the existing `Public()`/`Internal()`/... fluent set; and
   changing the default, which would rewrite every existing consumer's output. `ICSharpEnum` was deliberately
   not given the method because it exposes none of the access-modifier methods.
+- **`required` is omitted, not rejected, below C# 11** (3.10.12) — `CSharpProperty` / `CSharpField` render the
+  keyword only when `Helpers.SupportsRequiredMembers` says the target project's language version is 11+;
+  `IsRequired` still records what the template asked for. This matches how `WithInstantiation` already adapts
+  collection initialisers to the language version. The user chose omission over the alternatives: throwing a
+  `FriendlyException` (stops generation for projects that merely use a lower `LangVersion`) and always emitting
+  (generates code that does not compile). Trade-off accepted: below C# 11 the "must be set" guarantee is lost.
+- **Class method modifiers are flags that clear only what C# forbids alongside them** (3.10.12) —
+  `CSharpClassMethod` replaced its single `OverrideModifier` slot (where every call overwrote the last) with
+  `static` / `new` / `virtual` / `abstract` / `sealed` / `override` flags. Each setter keeps compatible flags and
+  clears conflicting ones, so conflicting calls stay last-call-wins — exactly the old output — and only
+  compatible pairs (`abstract override`, `new virtual`, `new abstract`, `static new`, `sealed override`) render
+  differently. A survey of this repository and Intent.Modules.NET found no template calling a compatible pair on
+  one method, so no existing output changed. Rejected: making every modifier additive (would turn existing
+  last-call-wins sequences such as `Virtual().Override()` into invalid C#). `Sealed()` also applies `override`,
+  because C# rejects `sealed` without it. `OverrideModifier` remains as a computed, rendering-order string.
+  `Sealed()` / `IsSealed` are declared on the shared `ICSharpMethodDeclaration<T>` beside `Override()`,
+  `Virtual()` and `Abstract()` (the user's call, for consistency), not on the class-only interface; so
+  `CSharpInterfaceMethod.Sealed()` is a no-op, matching its existing `Virtual()` / `Abstract()`.
 
 ## Invariants & Constraints
 - **Type declarations default to `public`.** `AccessModifier` starts as `"public "` on `CSharpClass`,
@@ -25,3 +43,14 @@ C# module, so its public API is a contract with modules this repository cannot s
 - **Adding a member to an `ICSharp*` interface is safe only while the builder's own classes and the internal
   `InterfaceWrappers` are the sole implementers.** That held across this repository and Intent.Modules.NET as
   of 3.10.12; re-check before extending the interfaces again.
+- **A `CSharpFile` with no template assumes the latest language features.** Language-version checks in the
+  builder must treat "no template / no output target" as supported, so builder-only use (including most of the
+  snapshot tests) keeps its existing output.
+- **Testing language-version behaviour means mocking `IOutputTarget.GetTargetPath()`.** It is an instance method
+  on the SDK interface (not an extension), and `GetProject()` builds the `CSharpProject` from its `[0]` entry;
+  left unmocked, NSubstitute returns an empty-metadata target. See `RequiredMemberTests`.
+- **Method modifier rendering order is fixed by the compiler, not style.** `CSharpClassMethod` renders access,
+  `static`, `new`, `virtual`/`abstract`, `sealed`, `override`, then `partial`, then `async`. `partial` must follow the
+  other member modifiers (`partial static` is CS0267, `partial override` is CS1585); `partial async` is accepted,
+  so it stays in that order to keep existing output stable. Verified by compiling the
+  `MethodModifierTests.ValidModifierCombinationsTest` snapshot.

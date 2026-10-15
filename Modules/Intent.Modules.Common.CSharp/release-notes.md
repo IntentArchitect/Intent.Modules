@@ -1,6 +1,8 @@
 ﻿### Version 3.10.12
 
 - Improvement: `CSharpClass` (including records), `CSharpInterface` and `CSharpEnum` now have a `WithoutAccessModifier()` method which emits the type with no access modifier (e.g. `class ABC` rather than `public class ABC`); types remain `public` by default.
+- Fixed: `Required()` on `CSharpProperty` and `CSharpField` emitted the `required` modifier even for projects whose C# language version is below 11 (e.g. the `net6.0` default of C# 10), producing code that would not compile; the modifier is now omitted for those projects.
+- Fixed: Class method modifiers replaced one another, so valid combinations such as `abstract override`, `new virtual` and `static new` could not be generated, `Abstract()` followed by another modifier left the method without a body, and `partial` with `static` or `override` rendered in an order that does not compile. Compatible modifiers now combine (conflicting ones still replace each other), and the new `Sealed()` method emits `sealed override`.
 
 ### Version 3.10.11
 

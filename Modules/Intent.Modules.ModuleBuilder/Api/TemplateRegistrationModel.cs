@@ -97,10 +97,13 @@ namespace Intent.ModuleBuilder.Api
             return this.GetTemplateSettings().GetDefaultLocation();
         }
 
-        public string GetSeverity()
+        public string GetReviewImportance()
         {
-            return this.GetTemplateSettings().Severity().Value;
+            return this.GetTemplateSettings().ReviewImportance().Value;
         }
+
+        [Obsolete("Use GetReviewImportance().")]
+        public string GetSeverity() => GetReviewImportance();
 
         public string GetClassification()
         {

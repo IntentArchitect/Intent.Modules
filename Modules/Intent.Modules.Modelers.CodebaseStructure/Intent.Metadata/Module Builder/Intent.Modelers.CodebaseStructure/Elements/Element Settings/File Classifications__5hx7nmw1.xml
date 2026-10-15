@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="81b0c54f-8f28-47f0-b0c1-6e8fe1212f50" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <comment>Holds the File Classification categories available under this root folder. There is at most one per root folder, and module install creates it when it first needs a category.</comment>
   <name>File Classifications</name>
   <display>File Classifications</display>
   <isAbstract>false</isAbstract>

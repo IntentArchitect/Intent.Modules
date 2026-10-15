@@ -81,6 +81,8 @@ internal class CSharpClassMethodWrapper(CSharpClassMethod wrapped) :
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.IsExplicitImplementationFor(string @interface) => wrapped.IsExplicitImplementationFor(@interface);
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.New() => wrapped.New();
     ICSharpClassMethodDeclaration ICSharpClassMethodDeclaration.Operator(bool isOperator) => wrapped.Operator(isOperator);
+    bool ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.IsSealed => wrapped.IsSealed;
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Sealed() => wrapped.Sealed();
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Override() => wrapped.Override();
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Internal() => wrapped.Internal();
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Private() => wrapped.Private();

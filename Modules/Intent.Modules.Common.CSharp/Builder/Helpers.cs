@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.Linq;
+using Intent.Modules.Common.CSharp.VisualStudio;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -39,5 +40,15 @@ internal static class Helpers
         }
 
         return $"@{expression}";
+    }
+
+    /// <summary>
+    /// Whether the project <paramref name="file"/> is generated into supports the <c>required</c> member
+    /// modifier, which needs C# 11. Assumed supported when there is no template to determine the project from.
+    /// </summary>
+    public static bool SupportsRequiredMembers(this ICSharpFile file)
+    {
+        var outputTarget = file?.Template?.OutputTarget;
+        return outputTarget == null || outputTarget.GetProject().GetLanguageVersion().Major >= 11;
     }
 }

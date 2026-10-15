@@ -19,9 +19,14 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
     public bool IsOperator { get; set; }
     public bool IsPartial { get; set; }
     internal string AccessModifier { get; private set; } = "public ";
-    protected string OverrideModifier { get; private set; } = string.Empty;
+    private bool _isNew;
+    private bool _isVirtual;
+    private bool _isOverride;
+    protected string OverrideModifier =>
+        $"{(IsStatic ? "static " : "")}{(_isNew ? "new " : "")}{(_isVirtual ? "virtual " : "")}{(IsAbstract ? "abstract " : "")}{(IsSealed ? "sealed " : "")}{(_isOverride ? "override " : "")}";
     public bool IsAbstract { get; private set; }
-    public bool IsStatic => OverrideModifier.Contains("static");
+    public bool IsStatic { get; private set; }
+    public bool IsSealed { get; private set; }
     public bool HasExpressionBody { get; private set; }
     public string? ReturnType => ReturnTypeInfo.ToString();
     public CSharpType ReturnTypeInfo { get; private set; }
@@ -316,42 +321,98 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
         return this;
     }
 
+    // Each modifier below combines with the ones C# allows alongside it and clears the ones it does not,
+    // so for conflicting modifiers the last call wins.
+
+    /// <summary>
+    /// Adds <c>override</c>. Combines with <see cref="Abstract"/> and <see cref="Sealed"/>; clears <c>static</c>,
+    /// <c>new</c> and <c>virtual</c>.
+    /// </summary>
     public CSharpClassMethod Override()
     {
-        OverrideModifier = "override ";
+        _isOverride = true;
+        IsStatic = false;
+        _isNew = false;
+        _isVirtual = false;
         return this;
     }
 
+    /// <summary>
+    /// Adds <c>new</c>. Combines with <see cref="Static"/>, <see cref="Virtual"/> and <see cref="Abstract"/>;
+    /// clears <c>override</c> and <c>sealed</c>.
+    /// </summary>
     public CSharpClassMethod New()
     {
-        OverrideModifier = "new ";
+        _isNew = true;
+        _isOverride = false;
+        IsSealed = false;
         return this;
     }
 
+    /// <summary>
+    /// Adds <c>virtual</c>. Combines with <see cref="New"/>; clears <c>static</c>, <c>abstract</c>, <c>override</c>
+    /// and <c>sealed</c>.
+    /// </summary>
     public CSharpClassMethod Virtual()
     {
-        OverrideModifier = "virtual ";
+        _isVirtual = true;
+        IsStatic = false;
+        IsAbstract = false;
+        _isOverride = false;
+        IsSealed = false;
         return this;
     }
 
+    /// <summary>
+    /// Adds <c>abstract</c>. Combines with <see cref="New"/> and <see cref="Override"/>; clears <c>static</c>,
+    /// <c>virtual</c> and <c>sealed</c>.
+    /// </summary>
     public CSharpClassMethod Abstract()
     {
-        OverrideModifier = "abstract ";
         IsAbstract = true;
+        IsStatic = false;
+        _isVirtual = false;
+        IsSealed = false;
         return this;
     }
 
+    /// <summary>
+    /// Adds <c>sealed override</c> — C# only allows <c>sealed</c> on an override, so this also applies
+    /// <see cref="Override"/>. Clears <c>static</c>, <c>new</c>, <c>virtual</c> and <c>abstract</c>.
+    /// </summary>
+    public CSharpClassMethod Sealed()
+    {
+        IsSealed = true;
+        _isOverride = true;
+        IsStatic = false;
+        _isNew = false;
+        _isVirtual = false;
+        IsAbstract = false;
+        return this;
+    }
+
+    /// <summary>
+    /// Adds <c>static</c>. Combines with <see cref="New"/>; clears <c>virtual</c>, <c>abstract</c>, <c>override</c>
+    /// and <c>sealed</c>.
+    /// </summary>
     public CSharpClassMethod Static()
     {
-        OverrideModifier = "static ";
+        IsStatic = true;
+        _isVirtual = false;
+        IsAbstract = false;
+        _isOverride = false;
+        IsSealed = false;
         return this;
     }
 
     public CSharpClassMethod WithoutMethodModifier()
     {
-        OverrideModifier = string.Empty;
+        IsStatic = false;
+        _isNew = false;
+        _isVirtual = false;
         IsAbstract = false;
-
+        _isOverride = false;
+        IsSealed = false;
         return this;
     }
 
@@ -454,11 +515,12 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
             declaration.Append(AccessModifier);
         }
 
+        declaration.Append(OverrideModifier);
+        // C# requires "partial" after the other member modifiers ("static partial", "override partial")
         if (IsPartial)
         {
             declaration.Append("partial ");
         }
-        declaration.Append(OverrideModifier);
         declaration.Append(IsAsync ? "async " : "");
         declaration.Append(ReturnType);
         declaration.Append(' ');
@@ -639,6 +701,8 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, ICSharpClassMe
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.New() => _wrapper.New();
 
     ICSharpClassMethodDeclaration ICSharpClassMethodDeclaration.Operator(bool isOperator) => _wrapper.Operator(isOperator);
+
+    ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Sealed() => _wrapper.Sealed();
 
     ICSharpClassMethodDeclaration ICSharpMethodDeclaration<ICSharpClassMethodDeclaration>.Override() => _wrapper.Override();
 

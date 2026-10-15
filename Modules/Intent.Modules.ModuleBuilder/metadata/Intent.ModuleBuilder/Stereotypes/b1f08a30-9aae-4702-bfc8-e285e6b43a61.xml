@@ -99,7 +99,8 @@
       <placeholder>(default)</placeholder>
     </property>
     <property id="2358e2a0-7a0b-41bd-94cd-dfe56dd49d9f">
-      <name>Severity</name>
+      <hint>How important it is to review changes to the files this template generates. Written to the .imodspec as &lt;reviewImportance&gt;.</hint>
+      <name>Review Importance</name>
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>

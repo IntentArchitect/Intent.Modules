@@ -191,14 +191,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 specificTemplate.SetElementValue("role", template.Role ?? string.Empty);
                 specificTemplate.SetElementValue("location", template.Location ?? string.Empty);
 
-                var severityToken = GetSeverityToken(template.Severity);
-                if (!string.IsNullOrWhiteSpace(severityToken))
+                // Clients older than ReviewImportanceMinClientVersion only understand <severity>.
+                var reviewImportanceElementName = SupportsReviewImportanceElement(doc) ? "reviewImportance" : "severity";
+                specificTemplate.Element(reviewImportanceElementName == "reviewImportance" ? "severity" : "reviewImportance")?.Remove();
+                var reviewImportanceToken = GetReviewImportanceToken(template.ReviewImportance);
+                if (!string.IsNullOrWhiteSpace(reviewImportanceToken))
                 {
-                    specificTemplate.SetElementValue("severity", severityToken);
+                    specificTemplate.SetElementValue(reviewImportanceElementName, reviewImportanceToken);
                 }
                 else
                 {
-                    specificTemplate.Element("severity")?.Remove();
+                    specificTemplate.Element(reviewImportanceElementName)?.Remove();
                 }
 
                 if (!string.IsNullOrWhiteSpace(template.Classification))
@@ -627,9 +630,26 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             return doc.ToStringUTF8();
         }
 
-        private static string GetSeverityToken(string severity)
+        /// <summary>
+        /// The first client version that reads a template's <c>&lt;reviewImportance&gt;</c>; older clients only read <c>&lt;severity&gt;</c>.
+        /// </summary>
+        private static readonly NuGetVersion ReviewImportanceMinClientVersion = NuGetVersion.Parse("5.4.0-beta.6");
+
+        /// <summary>
+        /// True only when the module's <c>supportedClientVersions</c> lower bound guarantees a client that reads
+        /// <c>&lt;reviewImportance&gt;</c>. An absent or unparseable range is treated as allowing older clients.
+        /// </summary>
+        private static bool SupportsReviewImportanceElement(XDocument doc)
         {
-            return severity switch
+            var supportedClientVersions = doc.Element("package")?.Element("supportedClientVersions")?.Value;
+            return VersionRange.TryParse(supportedClientVersions ?? string.Empty, out var range) &&
+                   range.HasLowerBound &&
+                   range.MinVersion >= ReviewImportanceMinClientVersion;
+        }
+
+        private static string GetReviewImportanceToken(string reviewImportance)
+        {
+            return reviewImportance switch
             {
                 "1 - Low" => "low",
                 "2 - Medium" => "medium",
