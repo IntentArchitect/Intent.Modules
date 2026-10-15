@@ -146,6 +146,60 @@
         <childElementSetting type="File Classification" typeId="86490efd-d823-44cf-bb67-283231ae95f3">
           <comment>A named category of files, e.g. "PCI scope", that File Classification stereotype entries reference in their Classification property. Not to be confused with the File Classification stereotype itself, which shares its name. The pill colour shown in Change Review comes from its File Classification Settings.</comment>
           <icon type="UrlImagePath" source="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImlhQ2xhc3NpZmljYXRpb25SYW1wIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzA5YzRmZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMDcwYzAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxwYXRoIGZpbGw9InVybCgjaWFDbGFzc2lmaWNhdGlvblJhbXApIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiCiAgICAgICAgZD0iTTUgOGgyOGwxNyAxNy0xNyAxN0g1YTUgNSAwIDAgMS01LTVWMTNhNSA1IDAgMCAxIDUtNVoKICAgICAgICAgICBNMTEgMjBhNSA1IDAgMSAwIDAgMTAgNSA1IDAgMCAwIDAtMTBaIi8+Cjwvc3ZnPgo=" />
+          <iconFunction>// Tints the tag with the pill colours shown in Change Review: Color in the light theme and
+// Color (Dark Mode) in the dark theme, each falling back to the other, and with neither set, to the
+// colour Change Review derives from the name.
+const settings = getStereotype("File Classification Settings");
+const read = (name) =&gt; (settings?.getProperty(name)?.getValue() ?? "").trim();
+// Only plain CSS colour syntax (#hex, names, rgb()/hsl()) so a value can't break out of the style rule.
+const valid = (value) =&gt; value !== "" &amp;&amp; /^[#a-zA-Z0-9(),.%\s-]+$/.test(value);
+
+// Mirrors DeriveColourFromName in the client's FileClassificationService: FNV-1a over the UTF-8 bytes of
+// the trimmed, lower-cased name picks the hue. Change both together.
+const deriveColourFromName = (name) =&gt; {
+    const encoded = encodeURIComponent(name.trim().toLowerCase());
+    let hash = 2166136261;
+    for (let i = 0; i &lt; encoded.length; i++) {
+        let byte = encoded.charCodeAt(i);
+        if (encoded[i] === "%") {
+            byte = parseInt(encoded.substr(i + 1, 2), 16);
+            i += 2;
+        }
+        hash = Math.imul(hash ^ byte, 16777619) &gt;&gt;&gt; 0;
+    }
+    return "hsl(" + (hash % 360) + ", 58%, 45%)";
+};
+
+const colour = valid(read("Color")) ? read("Color") : null;
+const darkModeColour = valid(read("Color (Dark Mode)")) ? read("Color (Dark Mode)") : null;
+const light = colour ?? darkModeColour ?? deriveColourFromName(getName() ?? "");
+const dark = darkModeColour ?? light;
+
+// The SVG is rendered inline, so its &lt;style&gt; and gradient id are page-wide: both must be unique to this
+// element. Like the default icon, the tag is a vertical gradient: a lighter tint of the colour at the top
+// down to a slightly deeper shade at the bottom.
+const key = "fileClassificationIcon_" + getId().replace(/[^a-zA-Z0-9]/g, "");
+const stops = (prefix, c) =&gt; prefix + '.' + key + '_top { stop-color: color-mix(in srgb, ' + c + ' 65%, white); } '
+    + prefix + '.' + key + '_bottom { stop-color: color-mix(in srgb, ' + c + ' 85%, black); } ';
+const svg = '&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"&gt;'
+    + '&lt;style&gt;' + stops('', light) + stops('[data-theme="dark"] ', dark) + '&lt;/style&gt;'
+    + '&lt;defs&gt;&lt;linearGradient id="' + key + '" x1="0" y1="0" x2="0" y2="1"&gt;'
+    + '&lt;stop offset="0" class="' + key + '_top"/&gt;&lt;stop offset="1" class="' + key + '_bottom"/&gt;'
+    + '&lt;/linearGradient&gt;&lt;/defs&gt;'
+    + '&lt;path fill="url(#' + key + ')" fill-rule="evenodd" '
+    + 'd="M5 8h28l17 17-17 17H5a5 5 0 0 1-5-5V13a5 5 0 0 1 5-5Z M11 20a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"/&gt;&lt;/svg&gt;';
+
+// The icon renderer base64-decodes every SVG data URI, and btoa isn't available to designer scripts.
+// The SVG is ASCII-only, so encode its char codes directly.
+const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+let base64 = "";
+for (let i = 0; i &lt; svg.length; i += 3) {
+    const n = (svg.charCodeAt(i) &lt;&lt; 16) | ((svg.charCodeAt(i + 1) | 0) &lt;&lt; 8) | (svg.charCodeAt(i + 2) | 0);
+    base64 += alphabet[(n &gt;&gt; 18) &amp; 63] + alphabet[(n &gt;&gt; 12) &amp; 63]
+        + (i + 1 &lt; svg.length ? alphabet[(n &gt;&gt; 6) &amp; 63] : "=")
+        + (i + 2 &lt; svg.length ? alphabet[n &amp; 63] : "=");
+}
+return "data:image/svg+xml;base64," + base64;</iconFunction>
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <nameMustBeUnique>true</nameMustBeUnique>

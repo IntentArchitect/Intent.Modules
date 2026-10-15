@@ -30,6 +30,20 @@ Leave `Relative Location` blank for no shift — this is the default and matches
 > [!WARNING]
 > If `Intent.Modules.SharedKernel.Consumer` is also installed, its solution-patching feature scans for the `.sln` file directly under `OutputRootDirectory` and will not find it once `Relative Location` is non-blank, silently skipping that step.
 
+### The *File Classification* stereotype
+
+Flags files for Change Review with a Review Importance and one or more classifications (the `File Classification` elements under the root's `File Classifications` element). Its rules are rows in the `Entries` property, each with a `Glob`, a `Review Importance` and `Classification`s. Where several rows match a file, the last matching row wins.
+
+It can be applied to:
+
+| Element | Covers | Globs are relative to |
+|---|---|---|
+| **Root Folder** (`root`) | Custom files anywhere in the application, e.g. `NuGet.Config` or `.editorconfig` at the top level | The application's output location |
+| **Folder**, and elements that opt in such as **C# Project** and **Solution Folder** from [Intent.VisualStudio.Projects](https://docs.intentarchitect.com/articles/modules-dotnet/intent-visualstudio-projects/intent-visualstudio-projects.html) | Custom files under that folder or project | The folder's or project's directory (each contained project's root for a solution folder) |
+| **Template Output** | Only the files that template generates | The folder containing the `Template Output` |
+
+For a custom file, the deepest element with a matching row wins, so a folder or project's own rows override the root's, and the root's rows apply wherever nothing deeper matches. A generated file is classified only by its `Template Output`.
+
 ## Related Modules
 
 ### [Intent.VisualStudio.Projects](https://docs.intentarchitect.com/articles/modules-dotnet/intent-visualstudio-projects/intent-visualstudio-projects.html)

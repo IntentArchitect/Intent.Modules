@@ -36,7 +36,7 @@ return `[${header}] ${globs}`.trim();</displayFunction>
   <packageName>Intent.Modelers.CodebaseStructure</packageName>
   <properties>
     <property id="14dd36e5-eee3-4b8f-9868-99b965703d23">
-      <hint>Which files this row applies to, as .gitignore-style patterns, one per line, e.g. `**/*.cs` or `Payments/**/*`. Paths are relative to the element the stereotype is on: a folder or project's directory, each contained project's root for a solution folder, or the folder containing a Template Output. A line starting with `!` excludes, and within one row the last matching line wins. Leave empty to match every file.</hint>
+      <hint>Which files this row applies to, as .gitignore-style patterns, one per line, e.g. `**/*.cs` or `Payments/**/*`. Paths are relative to the element the stereotype is on: the application's output location for the root folder, a folder or project's directory, each contained project's root for a solution folder, or the folder containing a Template Output. A line starting with `!` excludes, and within one row the last matching line wins. Leave empty to match every file.</hint>
       <name>Glob</name>
       <type>string</type>
       <controlType>textarea</controlType>
