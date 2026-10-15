@@ -22,6 +22,9 @@ public interface ICSharpField : ICSharpMember<ICSharpField>
     ICSharpField Public(string? value = null);
     ICSharpField ReadOnly(bool readOnly = true);
     ICSharpField ReadOnly(string value, bool readOnly = true);
+    /// <summary>
+    /// Adds the <c>required</c> modifier. It is omitted when the project's C# language version is below 11.
+    /// </summary>
     ICSharpField Required();
     ICSharpField Static();
     ICSharpField WithAssignment(ICSharpStatement value);

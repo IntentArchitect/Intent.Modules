@@ -1,6 +1,7 @@
 ﻿### Version 3.10.12
 
 - Improvement: `CSharpClass` (including records), `CSharpInterface` and `CSharpEnum` now have a `WithoutAccessModifier()` method which emits the type with no access modifier (e.g. `class ABC` rather than `public class ABC`); types remain `public` by default.
+- Fixed: `Required()` on `CSharpProperty` and `CSharpField` emitted the `required` modifier even for projects whose C# language version is below 11 (e.g. the `net6.0` default of C# 10), producing code that would not compile; the modifier is now omitted for those projects.
 
 ### Version 3.10.11
 
