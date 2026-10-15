@@ -31,6 +31,11 @@ Service Settings group whose naming conventions rename those elements as users c
   trait by id only in designer settings, with no code reference. With an older `Intent.Common`, nothing
   implements the trait and no extra types are offered, but nothing fails. Rejected: raising the dependency
   to 3.11.8, because that would raise Services' minimum client to 5.0 for no functional gain.
+- **Diagrams keep the name they are created with, like every other element.** `New Diagram` is a Run
+  Script Option that names the Diagram after its parent and opens it for renaming. The original Element
+  Creation Option is kept but hidden, so Diagram stays a creatable child type for scripts. This matches
+  Intent.Modelers.Domain: see its `CONTEXT.md` for the reasoning and invariants, and change all three
+  modules together.
 
 ## Invariants & Constraints
 - Renaming a Service Settings naming field's **title** requires updating every

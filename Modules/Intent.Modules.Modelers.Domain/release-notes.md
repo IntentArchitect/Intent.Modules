@@ -3,6 +3,7 @@
 - Improvement: `Class` and `Data Contract` elements now carry the `Service Argument` trait, so they can be used as Service Operation parameter and return types.
 - Improvement: Minimum supported Intent Architect version raised to 5.0, as required by `Intent.Common` 3.11.8.
 - Fixed: The duplicate operation check on Class operations never reported anything. It now flags operations whose C# signatures clash, taking collections, value-type nullability and generic type arguments into account.
+- Fixed: A Diagram created with a name (e.g. by a script or an AI agent) was renamed to its parent's name. Diagrams now keep the name they are created with, like other elements. The `New Diagram` context menu option still names the new Diagram after its parent and opens it for renaming, and now appears at the end of the context menu.
 
 ### Version 3.13.2
 

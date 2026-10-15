@@ -1,6 +1,7 @@
 ### Version 1.1.6
 
 - Fixed: The duplicate Component Operation check ignored collections, value-type nullability and generic type arguments, so valid overloads such as `Load(ids: int[*])` and `Load(id: int)` were reported as duplicates.
+- Fixed: A Diagram created with a name (e.g. by a script or an AI agent) was renamed to its parent's name. Diagrams now keep the name they are created with, like other elements. The `New Diagram` context menu option still names the new Diagram after its parent and opens it for renaming, and now appears at the end of the context menu.
 
 ### Version 1.1.5
 

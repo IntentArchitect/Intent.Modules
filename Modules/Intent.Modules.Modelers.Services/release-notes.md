@@ -5,6 +5,7 @@
 - Improvement: Service Operation parameters and return types can now be any element with the `Service Argument` trait (e.g. Domain `Class`, `Data Contract` and `Value Object`).
 - Fixed: Service names now follow the `Entity Naming Convention` setting instead of `Operation Naming Convention` (e.g. Operation set to Camel Case renamed `OrderService` to `orderService`).
 - Fixed: The duplicate operation check ignored collections, value-type nullability and generic type arguments, so valid overloads such as `Create(ids: int[*])` and `Create(id: int)`, `Get(id: int?)` and `Get(id: int)`, or `Find(PagedResult<A>)` and `Find(PagedResult<B>)` were reported as duplicates.
+- Fixed: A Diagram created with a name (e.g. by a script or an AI agent) was renamed to its parent's name. Diagrams now keep the name they are created with, like other elements. The `New Diagram` context menu option still names the new Diagram after its parent and opens it for renaming, and now appears at the end of the context menu.
 
 ### Version 4.0.16
 
