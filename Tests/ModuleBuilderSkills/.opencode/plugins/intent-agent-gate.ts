@@ -2,6 +2,7 @@ import { spawnSync } from "child_process";
 
 const gatePath = () => `${process.cwd()}/.opencode/hooks/gate/gate.cs`;
 const writeTools = new Set(["write", "edit", "patch", "multiedit"]);
+const intentFileTool = /(write_file|patch_file|delete_code_file)$/;
 let lastCloseOut = 0;
 
 function runGuard(command: string, toolName: string, args: unknown): void {
@@ -32,7 +33,7 @@ type PluginInput = { client?: any };
 export const IntentAgentGatePlugin = async ({ client }: PluginInput) => {
   return {
     "tool.execute.before": async (input: ToolExecuteInput, output: ToolExecuteOutput) => {
-      if (writeTools.has(input.tool)) {
+      if (writeTools.has(input.tool) || intentFileTool.test(input.tool)) {
         runGuard("guard-write", input.tool, output.args);
         return;
       }

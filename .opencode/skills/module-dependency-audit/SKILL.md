@@ -3,7 +3,7 @@ name: module-dependency-audit
 description: "Verify a module's .imodspec dependencies match what its code and templates actually reference, and supply the ones the Software Factory did not detect. USE ONLY WHEN closing out a module change — this is Phase 4 step 2 of the module-building workflow, run after the version is confirmed and before documentation. DO NOT USE FOR bumping the module's own version (see module-version-increment), or for editing modules.config, which is never hand-edited. REQUIRES the module's implementation complete and its build green."
 keywords: [dependencies, imodspec, install, close-out, verification, module]
 template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDependencyAudit_SkillMd_Agents
-contentHash: 57D216487F6BCBF377AA6B2ADDC1E52706F85B73EA6233C10F758AAD67A8DCA0
+contentHash: 2FAB67B9084308D1D3007CAEB5280869B0FF4BA466DD630AFF94DDF7D72C4D26
 ---
 # Skill: module-dependency-audit
 
@@ -18,68 +18,89 @@ is not evidence here, so no earlier phase catches it. This check is why the mani
 
 ## What The Software Factory Already Does
 
-`<dependencies>` is computed, not hand-written. The template assembles it from the modules the application
-has installed, the dependency events templates raise while generating, and a small fixed set every module
-needs. For the ordinary case it is right, and you should not be second-guessing it entry by entry.
+The Software Factory adds `<dependency>` entries to `.imodspec` from exactly these sources:
+
+| Source | Version it writes |
+|---|---|
+| Every module installed **metadata-only** in the module's own application — designers, template outputs and factory extensions all off | The installed version |
+| Dependencies raised by Module Builder's own templates while generating — a C# template adds `Intent.Common.CSharp`; a template whose model type or designer comes from another module adds that module | The version the template carries |
+| `Intent.Common` and `Intent.Common.Types`, always; `Intent.OutputManager.RoslynWeaver` when the module has a C# template | Hard-coded floors |
+
+The hard-coded floors are low: Module Builder writes `Intent.Common` 3.7.2 and `Intent.Common.CSharp`
+3.8.0. A module that uses a newer API needs a higher version than the floor, and nothing raises it for you.
+
+An entry is added when missing, and an existing entry's version is raised according to the
+`Dependency version overwrite behavior` application setting: *If newer* (the default) raises it only when
+the source carries a higher version, *Always* overwrites it with whatever the source carries (which can
+lower a version you raised by hand), *Never* fills only an empty version. **No entry is ever removed.**
 
 **It is a heuristic, and the source acknowledges as much.** It infers from what is *installed* rather than
 from what the code actually *references*, so the gap is systematic rather than random:
 
+- A `PackageReference` in the `.csproj` adds nothing. A module whose code uses the `Intent.Modules.Common.CSharp`
+  package still needs an `Intent.Common.CSharp` dependency at the version that API arrived in.
 - A type reached through a transitively-available assembly — present at compile time because something else
-
-pulled it in, never declared as this module's own dependency.
-
+  pulled it in, never declared as this module's own dependency.
 - A dependency that was real when a template was written and is now only referenced from a code path the
-
-generator no longer visits.
-
-- Custom modules generally, where the installed set and the referenced set drift apart fastest.
+  generator no longer visits — its entry stays, because nothing is removed.
 
 ## The Audit
 
 1. **Collect what the module actually references.** Its `.csproj` `PackageReference` entries, the
-
-`Intent.*` namespaces its templates and factory extensions import, and any designer metadata it reads.
-
+   `Intent.*` namespaces its templates and factory extensions import, and any designer metadata it reads.
 2. **Read the generated `<dependencies>`** in the module's `.imodspec`.
 3. **Compare, and care about one direction.** Something referenced but *not* declared is the defect — that
+   is the install-time failure. An entry that looks surplus is usually a legitimate transitive or
+   event-raised dependency; leave it unless you can show nothing needs it.
+4. **Check the versions, not just the ids.** For each `Intent.*` package the module's code uses, the
+   dependency's version must be at least the version that introduced the API it calls. A hard-coded floor
+   below that compiles and fails at install time, with a missing method or type.
+5. **Report what you checked**, not just that it passed. Name the references you compared against.
 
-is the install-time failure. An entry that looks surplus is usually a legitimate transitive or
-event-raised dependency; leave it unless you can show nothing needs it.
-
-4. **Report what you checked**, not just that it passed. Name the references you compared against.
+Then **re-run the audit after every Software Factory run on the module**, not only once at close-out. Each run
+can add or raise entries, and under *Always* it can lower one.
 
 ## Fixing What You Find
 
-**Fix it at the source first.** A dependency missing from the manifest is normally missing because the
-module reference itself is missing or metadata-only in a way that hides it. Correct the reference — install
-the module properly, add the `PackageReference` — and regenerate; the manifest then computes correctly and
-stays correct on the next run.
+There are two supported fixes. Pick one per dependency, and say which one you picked and why.
 
-**A hand-added `<dependency>` is legitimate when the source fix does not reach it.** Unlike most of the
-manifest, dependency entries are *added if absent and never pruned* — so an entry you add by hand survives
-regeneration indefinitely. This is a supported outcome, not a hack. Use it when a genuinely required
-dependency still does not appear after the reference is correct and the module has been regenerated.
+| Fix | How | Trade-off |
+|---|---|---|
+| **Metadata-only install** | Install the module into the module's own application with designers, template outputs and factory extensions off (`install_or_update_modules` with `installDesigners`, `installTemplateOutputs` and `enableFactoryExtensions` set to `false`), then regenerate | The entry is computed for you and stays in step with the installed version. It is pinned to whatever version is installed, and keeps being raised every time the install is updated — even when the module does not need the newer version. |
+| **Hand-added `<dependency>`** | Add `<dependency id="..." version="..." />` to `.imodspec` by hand, or raise an existing entry's `version` | You choose the minimum version the module actually requires. Entries are *added if absent and never pruned*, so it survives regeneration (under *If newer*, a version you raised stays unless a source carries a higher one), but nothing keeps it current: you raise it yourself when the module starts needing a newer version. |
 
-Match the id form exactly — the Intent module id, which is not the NuGet package id — and the version to
-what the module actually requires.
+Both are supported outcomes, not hacks. Prefer the metadata-only install when the module reads that
+module's designer metadata anyway; prefer a hand-added entry when it only needs a minimum version of a
+package such as `Intent.Common.CSharp`.
+
+Match the id form exactly — the Intent module id, which is not the NuGet package id (the
+`Intent.Modules.Common.CSharp` package is the `Intent.Common.CSharp` module) — and the version to what the
+module actually requires. When you raise a dependency's version, raise the matching `.csproj`
+`PackageReference` with it, so the code compiles against the version the manifest promises.
+
+## When The Install Or Uninstall Cannot Be Done
+
+If a fix needs a module installed or uninstalled and that is not possible here — the install fails, the
+module is not on any reachable feed, or no tool is available to do it — stop and report it to the
+developer: which dependency, which fix it needs, and what failed. Hand-add the `<dependency>` instead only
+when you can justify the id and version from what the code references. Never edit `modules.config` to
+make an install look done.
 
 ## Two Things This Skill Does Not Touch
 
 - **`modules.config`** — never hand-edited, for any reason. It records what is installed; a bad edit
-
-corrupts the application's module state. Change it by installing or updating through Intent Architect.
-
+  corrupts the application's module state. Change it by installing or updating through Intent Architect.
 - **`supportedClientVersions`** — scaffolded once and then advanced automatically as the client SDK moves
-
-forward. A range being rewritten to a newer one is the mechanism working, not drift. Look at it only if a
-Software Factory run actually complains about client-version compatibility.
+  forward. A range being rewritten to a newer one is the mechanism working, not drift. Look at it only if a
+  Software Factory run actually complains about client-version compatibility.
 
 ## Checklist
 
 - [ ] Referenced set collected from `.csproj`, template imports, and designer metadata reads
 - [ ] Generated `<dependencies>` compared against it; every referenced-but-undeclared entry resolved
-- [ ] Fixes made at the source and regenerated — hand-added entries only where that did not reach
+- [ ] Versions checked against the APIs used, not left at the hard-coded floors
+- [ ] Each fix is a metadata-only install or a hand-added entry, with the choice stated
+- [ ] Audit re-run after the last Software Factory run
 - [ ] Surplus-looking entries left alone unless shown to be unused
 - [ ] `modules.config` untouched; `supportedClientVersions` untouched
 - [ ] What was compared is stated in the close-out, not just that the check ran

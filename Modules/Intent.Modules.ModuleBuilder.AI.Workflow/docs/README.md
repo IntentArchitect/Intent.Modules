@@ -52,7 +52,7 @@ Generated **output** is deliberately not covered. Editing it is usually merely f
 
 `.imodspec` is a deliberate middle case:
 
-- `<summary>` and `<description>` are denied, because the Software Factory silently discards edits to them.
+- Changing, adding or removing `<summary>` or `<description>` is denied, because the Software Factory silently discards edits to them. An edit that merely carries either line unchanged, as context around a version change, is allowed.
 - `<tags>` and `<dependency>` entries stay hand-editable.
 - `<version>` is hand-editable, but held to the same rules as setting the version through the designer: a second bump in one line of work, a bare release version under `Use Pre-release Versions`, or an invalid version is denied, with a pointer to `module-version-increment`. A valid change is allowed, and Claude Code, Codex and Kiro are reminded to load that skill. A downgrade stays allowed, because the Software Factory will not write a lower version from the designer.
 
@@ -71,14 +71,16 @@ Copilot CLI and Cursor also run the hooks in `.claude/settings.json`. When Copil
 
 Set `INTENT_GATE_LOG` to a file path and the gate appends one JSON line per run: the command, its exit code and duration, what it read and wrote, the harness-related environment variables (values only for non-secret ones) and the chain of processes that started it. Each harness logs hooks differently, if at all, so this is the one view that is the same everywhere. Logging never changes a verdict.
 
+The write guard covers each harness's own edit tools and the Intent MCP server's `write_file`, `patch_file` and `delete_code_file`, matched by tool name whatever the server is called. A relative path from one of Intent's file tools is resolved against the Intent solution's folder, as Intent resolves it.
+
 #### When the gate cannot run
 
-A guard hook that cannot run — no SDK, an SDK that is too old, a gate that has not been built yet — **blocks** rather than letting the action through. Only Kiro lets it through, because it has no way to block on a failed hook. Close-out never blocks, so a broken gate cannot trap an agent in a loop of turns. The generated workflow instructions tell the agent what each of these errors means and which fix to ask the user for, so a setup problem is reported as one rather than retried or worked around.
+A guard hook that cannot run — no SDK, an SDK that is too old, a gate that has not been built yet — **blocks** rather than letting the action through. Only Kiro lets it through, because it has no way to block on a failed hook. Close-out never blocks, so a broken gate cannot trap an agent in a loop of turns. The generated workflow instructions tell the agent what each of these errors means and which fix to ask the user for, so a setup problem is reported as one rather than retried or worked around. The one cause the agent fixes itself is its own working directory: a hook command finds the gate by a path relative to the project root, so after a `cd` into a module folder it fails until the agent changes back. For Claude Code this is prevented: the merge into `.claude/settings.json` also sets `CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR` to `1` under `env` (unless you have set it yourself), which returns Claude Code's shell to the starting directory after every command.
 
 ## Known Limitations
 
-- **Shell commands are not guarded.** The gate sees file-edit tools and the Intent MCP server's `run_designer_script`, not what a shell command writes. An agent that edits metadata or a version through PowerShell or bash goes around it. This is accepted: the gate is a guard rail for an agent following the workflow, not a sandbox.
-- **Verified on Windows only.** Every harness run behind this module's evaluation was on Windows. The POSIX command forms follow each harness's documentation but have not been run on macOS or Linux.
+- **Shell commands are not guarded.** The gate sees file-edit tools and the Intent MCP server's `run_designer_script` and file tools, not what a shell command writes. An agent that edits metadata or a version through PowerShell or bash goes around it. This is accepted: the gate is a guard rail for an agent following the workflow, not a sandbox.
+- **Harness runs were on Windows; Linux is covered by the unit and smoke tests.** Every harness run behind this module's evaluation was on Windows. On Linux the gate's own test suite runs every command form in a POSIX shell, but no harness has been driven end to end there.
 - **Cursor runs the gate twice** when its third-party hooks are on, because it also loads `.claude/settings.json` and its payload cannot be told apart from Claude Code's. Both copies reach the same verdict, so the cost is latency, not correctness. Cursor's CLI was not run; its wiring is checked statically.
 - **Kiro's write guard is verified on Kiro CLI 2.28 only** (headless, v3). The Kiro IDE and interactive sessions follow the same hook file but were not run.
 - **No reminder on an allowed version edit for Copilot and OpenCode.** Neither offers a pre-tool hook a way to pass the agent a note when the action is allowed; an invalid version edit is still denied, with the reason.

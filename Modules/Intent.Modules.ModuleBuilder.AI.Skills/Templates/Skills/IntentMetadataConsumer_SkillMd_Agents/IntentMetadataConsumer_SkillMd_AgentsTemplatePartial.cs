@@ -45,10 +45,10 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMetadata
                     ## Musts
                     1. **Typed Accessors:** Use generated typed extension methods for stereotype access (e.g. `*StereotypeExtensions.cs`).
                     2. **Access Wrapper Properties:** Access properties through typed wrapper methods, never via raw property name strings.
-                    3. **Null Guards:** Guard optional accessors with null-conditional operators or `TryGet` patterns.
-                    4. **Enum Helpers:** Use `.AsEnum()` or the `.IsX()` boolean helpers (avoid raw string comparisons on `.Value`).
-                    5. **Guid Resolution:** If a typed extension doesn't exist, resolve by `DefinitionId` (GUID) rather than display name.
-                    6. **Primitive Checks:** Use `TypeCheckExtensions` (e.g., `IsStringType()`, `IsGuidType()`) for primitive metadata check.
+                    3. **Null Guards:** Guard optional accessors with null-conditional operators or `TryGet` patterns. `Get<Stereotype>()` returns `null` when the stereotype is not applied, and a **Number** property's accessor returns `int?` (a **Decimal** one `decimal?`), so null-check the value before using it.
+                    4. **Enum Helpers:** Use `.AsEnum()` or the `.IsX()` boolean helpers (avoid raw string comparisons on `.Value`). The options enum is nested inside the stereotype's wrapper class (`MySettings.ModeOptionsEnum`).
+                    5. **Guid Resolution:** If a typed extension doesn't exist yet, resolve by `DefinitionId` (GUID) rather than display name — then model the stereotype in the Module Builder designer and run the Software Factory so the typed extension is generated.
+                    6. **Primitive Checks:** Use `TypeCheckExtensions` (e.g., `IsStringType()`, `IsGuidType()`) for primitive metadata checks. It ships in `Intent.Modules.Common.Types` (namespace `Intent.Modules.Common`), so the module needs an `Intent.Common.Types` dependency.
 
                     ## Must Nots
                     1. Never call `model.GetStereotype("StereotypeName")` when a typed extension method exists.
@@ -57,6 +57,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentMetadata
                     4. Never compose multi-stereotype LINQ queries using only string-based `HasStereotype` predicates when typed helpers are available.
                     5. Never skip the null guard on an optional stereotype accessor.
                     6. Never introduce display-name string lookups as a fallback when a `DefinitionId`-based lookup is available.
+                    7. Never hand-write a `*StereotypeExtensions.cs` file. It carries the generator's `[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions", ...)]` attribute and belongs to the Software Factory: a hand-written copy is overwritten or drifts from the model. Model the stereotype and regenerate instead.
 
                     """""");
         }

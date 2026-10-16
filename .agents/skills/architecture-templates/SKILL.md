@@ -2,7 +2,7 @@
 name: architecture-templates
 description: "Build or extend an Architecture Template — the component/module picker shown when creating a new application — and its companion metadata application that pre-seeds new applications with designer content (packages, folders, Output Anchors). USE ONLY WHEN asked to create, extend, or fix an architecture template, or to seed default designer metadata for one. DO NOT USE FOR a 'Module Building' template (a different Template Type that scaffolds a module project, not an app) or day-to-day module development itself (see module-building-strategies). REQUIRES the Intent Application Template Builder designer, in a new Package."
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.ArchitectureTemplates_SkillMd_Agents
-contentHash: 58DC358DC27282EFB569E90F70C8C7DEFFEFCB21B046FDB7DF4A753868A741EC
+contentHash: 3F0386CFE1D5468587FC7B1F49253342FF4AB32402E50EE70B7EE8AA493A55AE
 ---
 # Architecture Templates
 
@@ -23,14 +23,14 @@ Carries two stereotypes:
 
 - **Component Group** — organizes related choices (e.g. "Persistence", "Security"). `Selection Mode`: `Allow Multiple` or `Allow Single Only`.
 - **Component** — one selectable capability. `Icon`, `Description`, `Include by Default`, `Is Required`, `Dependencies`/`Incompatibilities` (refs to other Components), `Required License` (None/Professional/Premium), `Documentation Url`, `Tags`.
-- **Component Module** — the actual module(s) a Component installs. The element's **name must be the exact module id** (e.g. `Intent.Modelers.Domain`) and its `Version` property must be a version that module actually publishes — get both from `search_available_modules`, never guess. Other properties: `Include By Default`, `Is Required`, `Include Assets` (`All`/`None`/`Select` — when `Select`, choose from `Application Settings`, `Designer Metadata`, `Designers`, `Factory Extensions`, `Template Outputs`).
+- **Component Module** — the actual module(s) a Component installs. The element's **name must be the exact module id** (e.g. `Intent.Modelers.Domain`) and its `Version` property must be a version that module actually publishes — get both from `run_solution_query` → `searchAvailableModules("<module id>", { includePrerelease: false })`, never guess. `false` is the default and lists published stable releases only, which is what a template should pin. Pass `{ includePrerelease: true }` only to see what is in flight, or when the user explicitly asks to target a prerelease. Other properties: `Include By Default`, `Is Required`, `Include Assets` (`All`/`None`/`Select` — when `Select`, choose from `Application Settings`, `Designer Metadata`, `Designers`, `Factory Extensions`, `Template Outputs`).
 
 ### Settings Configurations (user-facing options at app-creation time)
 
 - **Settings Configuration** — one "heading" of related fields; a template can have several. A configuration with no fields, or where every field is `Hidden`, doesn't show in the wizard at all.
 - **Field Configuration** — one input. `Name` is the wizard label; `Value` is the logical name other files reference it by (`${<value>}` — see template strings below). `Control Type`: Text Box / Number / Checkbox / Switch / Text Area / Select / Multi-Select / Hidden. `Is Required`, `Hint`, `Default Value`.
 - **Field Option** — the choices for a `Select`/`Multi-Select` field; `Name` is the display label, `Value` is what gets substituted.
-- **Driving a Module Setting from the wizard**: give a Field Configuration the exact `id` of the target Module Setting field as its `Value` (find that id by installing the module once, then searching its label in the app's `.application.config` file). Since Module Settings can still be changed after creation, it's common to make these `Hidden` with just a `Default Value`.
+- **Driving a Module Setting from the wizard**: give a Field Configuration the exact `id` of the target Module Setting field as its `Value`. Find that id by installing the module once in any application, then calling `run_solution_query` with that application's ID and `return getApplicationSettings({ search: "^<setting label>" });` — each returned setting carries its `id`. Never read the `.application.config` file for it. Since Module Settings can still be changed after creation, it's common to make these `Hidden` with just a `Default Value`.
 
 ### Generate and package
 
@@ -73,7 +73,7 @@ This is the same mechanism module-building already calls a template's **Role** �
 - **Matching walks the dotted segments, most-specific first.** A Role of `Domain.Entity` targets an anchor named exactly `Domain.Entity` if one exists; otherwise it falls back to `Domain`; and so on up the chain. This is why naming a new, more specific Role under an existing dotted prefix (e.g. `AI.Context.*`) is safe — it degrades gracefully to the shared parent anchor on architecture templates that haven't been updated with the more specific one.
 - **A Role can list several unrelated candidates, comma-separated**, tried in order — for bridging a genuinely different naming convention (e.g. an older architecture template that never adopted a given prefix). This is a different mechanism from the automatic dot-segment walk-up above; reach for it only when the fallback name isn't just a prefix truncation of the first.
 - **Anchors only control *initial* placement.** Once a Template Output is placed, moving it in Codebase Structure (or leaving it where a user moved it) survives module updates/reinstalls — the anchor is consulted once, not on every regeneration. To force re-placement you'd have to uninstall and reinstall the module.
-- Roles also serve a **second, unrelated purpose**: looking up a specific template *instance* in factory-extension code (`TemplateRoles.*` constants, `IAppStartupTemplate.RoleName`) is preferred over hardcoding a `TemplateId`. Same naming mechanism, different axis (a template instance's identity vs. a Codebase Structure placement point) — see `intent-module-orchestrator` for the lookup APIs.
+- Roles also serve a **second, unrelated purpose**: looking up a specific template *instance* in factory-extension code by its role string (e.g. `"Domain.Entity"`, `"Repository.Interface.Entity"`, or `IAppStartupTemplate.RoleName` from `Intent.Modules.Common.CSharp`) is preferred over hardcoding a `TemplateId`. Write role strings as literals; the role names are not published as a NuGet constants package, and a role name is matched exactly here (`"Domain.Entity.Primary"` is a different role from `"Domain.Entity"`). Same naming mechanism, different axis (a template instance's identity vs. a Codebase Structure placement point) — see `intent-module-orchestrator` for the lookup APIs.
 
 ## 4. Template string reference
 
@@ -104,7 +104,7 @@ File content also supports the template-string substitution above.
 
 ## Verification checklist
 
-- [ ] The Component Module's name is the module's exact id, and its Version is a real, published version — confirmed via `search_available_modules`, not guessed
+- [ ] The Component Module's name is the module's exact id, and its Version is a real, published version — confirmed via `run_solution_query` → `searchAvailableModules` with `{ includePrerelease: false }` (stable unless the user asked for a prerelease), not guessed
 - [ ] `Supported Client Versions` uses interval notation (`[a,b)` — inclusive lower, exclusive upper)
 - [ ] Any seeded metadata was exported from a dedicated `<Name>.Metadata` app — never a production application
 - [ ] `.installation.config` files live in `resources/` (Application Template) or `content/` (Module) — not the other folder

@@ -30,7 +30,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
                 .FromMarkdown($$""""""
                     ---
                     name: {{SkillName}}
-                    description: "Add a context-menu-driven element, association-creation, or mapping option to a foreign package, element, or association end via a packageExtension/elementExtension. USE ONLY WHEN extending an element/package/association end owned by another module, not one you own. DO NOT USE FOR defining a brand-new association type from scratch (see add-association-type) or building an architecture template's component picker (see architecture-templates). REQUIRES the foreign target's typeId and designer GUID already identified."
+                    description: "Add a context-menu-driven element, association-creation, or mapping option to a foreign package, element, or association end via a packageExtension/elementExtension, or attach AI context (AI Settings → Rules) to a foreign element type. USE ONLY WHEN extending an element/package/association end owned by another module, not one you own. DO NOT USE FOR defining a brand-new association type from scratch (see add-association-type) or building an architecture template's component picker (see architecture-templates). REQUIRES the foreign target's typeId and designer GUID already identified."
                     argument-hint: "[target element/package type name and what to add]"
                     template-id: {{TemplateId}}
                     ---
@@ -48,12 +48,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
                     Extend an existing element, package, or association end from a foreign module by adding new context menu options (e.g. child element/association creation or mapping options).
 
                     ## Musts
-                    1. Identify foreign target `typeId` via MCP `find_designer_elements` or generated C# `SpecializationTypeId` constants.
+                    1. Identify foreign target `typeId` with `run_designer_query` — `findElements({ ..., includeReferences: true })` or `searchElements(...)` — or generated C# `SpecializationTypeId` constants. The foreign type lives in a referenced, read-only package, and the `id` on that referenced match is the typeId. Do not call `getElementDetails` on it: it only works on elements the designer owns, and throws for a referenced one.
                     2. Link `Designer Settings` to foreign designer GUID (Domain: `6ab29b31-27af-4f56-a67c-986d82097d63`, Services: `81104ae6-2bc5-4bae-b05a-f987b0372d81`).
-                    3. For Element Extensions, apply `Type Reference Extension Settings` (`Mode = Inherit`) and `Extension Settings` stereotypes.
+                    3. For Element Extensions, apply the `Type Reference Extension Settings` stereotype (mandatory: the Software Factory reads it unguarded) with `Mode = Inherit` unless you deliberately override the type reference (`Required` / `Optional`). `Extension Settings` is optional (display/validate function overrides).
                     4. Add all context menu options under a `[context menu]` child element.
                     5. Set type reference of `Association Creation Option` to target end of association settings.
-                    6. Verify via `get_designer_validation_errors` and generated `.designer.settings` file.
+                    6. Verify via `run_designer_query` → `getDesignerValidationErrors()` and the generated `.designer.settings` file.
 
                     **Package settings are the companion step to linking `Designer Settings`.** Linking the extension to a
                     foreign designer says *what* you are extending; two properties on the owning package's `Module Settings`
@@ -70,10 +70,30 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
                     If the new element type should carry its own icon, that is optional craft rather than an obligation — see
                     `module-element-icons`.
 
+                    ## Attaching AI Rules
+
+                    To give an AI agent working in the consuming designer context about an element type — including one you
+                    do not own — apply the `AI Settings` stereotype and write the guidance in its `Rules` property. The
+                    Software Factory copies it into a `<rules>` element in the generated `.designer.settings`, but only from
+                    these element types:
+
+                    | Carries `Rules` into `.designer.settings` | Silently dropped (the stereotype applies, nothing is emitted) |
+                    |---|---|
+                    | `Element Extension`, `Element Settings`, `Association Settings`, `Association Extension`, `Designer Settings` | `Package Settings`, `Package Extension`, `Designer` |
+
+                    - Write each rule as short, plain prose: state what to do and when. It is read by an agent, not rendered.
+                    - Put a rule on the element type it is about (element-level) when the guidance belongs to that concept;
+                    put it on `Designer Settings` (designer-level) only when it cuts across every type in that designer.
+                    - The `Element Extension`'s type reference only resolves if the module that owns the foreign type is
+                    installed in your module's application. Install it first, or the extension has nothing to point at.
+                    - Verify by reading the `<rules>` element under your extension in the generated `.designer.settings`
+                    after running the Software Factory, not by trusting that the stereotype was applied.
+
                     ## Must Nots
                     1. Never guess or hardcode a type GUID from memory.
-                    2. Never skip `Mode = Inherit` on `Type Reference Extension Settings` for element extensions.
+                    2. Never remove the `Type Reference Extension Settings` stereotype from an element extension. Its `Mode` may be `Inherit`, `Required` or `Optional`, but the stereotype itself must be present.
                     3. Never edit `.designer.settings` directly (always change the Module Builder model).
+                    4. Never put AI rules on a `Package Settings` or `Package Extension` and expect them to ship; they are dropped.
 
                     """""");
         }

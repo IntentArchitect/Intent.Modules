@@ -23,9 +23,12 @@ public class CSharpCollectionExpression : CSharpStatement, IHasCSharpStatements
     public bool? Semicolon { get; set; }
     public string TypeName { get; set; }
 
+    // Each item's Parent is set, as CSharpInvocationStatement.AddArgument does for arguments, so an
+    // item can be removed, replaced, or have statements inserted beside it.
     public CSharpCollectionExpression AddItem(string statement, Action<CSharpStatement> configure = null)
     {
         var cSharpStatement = new CSharpStatement(statement);
+        cSharpStatement.Parent = this;
         Statements.Add(cSharpStatement);
         configure?.Invoke(cSharpStatement);
         return this;
@@ -33,6 +36,7 @@ public class CSharpCollectionExpression : CSharpStatement, IHasCSharpStatements
 
     public CSharpCollectionExpression AddItem<T>(T statement, Action<T> configure = null) where T : CSharpStatement
     {
+        statement.Parent = this;
         Statements.Add(statement);
         configure?.Invoke(statement);
         return this;

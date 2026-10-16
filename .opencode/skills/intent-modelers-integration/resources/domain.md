@@ -1,5 +1,5 @@
 ---
-contentHash: AFCDCD3DB80D3169106807E6902A4E6DDC277A3362F6BE7223E19AEA25D0A612
+contentHash: 89C4AE08FD54620B0DD4CA5CD43E7248CD3FF7A833EA56FF1260CED030F64FA5
 ---
 # Domain Designer (`Intent.Modules.Modelers.Domain`)
 
@@ -150,7 +150,7 @@ namespace MyModule.Templates.Entities
 {
   public class EntityTemplateRegistration : FilePerModelTemplateRegistration<ClassModel>
   {
-      public const string TemplateId = "MyModule.Entity";
+      public override string TemplateId => EntityTemplate.TemplateId;
 
       public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, ClassModel model)
       {
@@ -170,14 +170,16 @@ Factory-extension-style consumer, filtering to aggregate roots:
 ```csharp
 using System.Linq;
 using Intent.Engine;
-using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
+using Intent.Modules.Common.Plugins;
 
 namespace MyModule.FactoryExtensions
 {
   public class EntityRegistrationFactoryExtension : FactoryExtensionBase
   {
-      public override IApplication Execute(IApplication application)
+      public override string Id => "MyModule.EntityRegistrationFactoryExtension";
+
+      protected override void OnAfterTemplateRegistrations(IApplication application)
       {
           var aggregateRoots = application.MetadataManager
               .Domain(application)
@@ -189,8 +191,6 @@ namespace MyModule.FactoryExtensions
           {
               // e.g. register a repository, add a stereotype, etc.
           }
-
-          return base.Execute(application);
       }
   }
 }
@@ -212,12 +212,15 @@ things are stated once here instead of on every type:
 - **`Is<X>Model()` / `As<X>Model()`** — every element model `<X>Model` has `bool Is<X>Model(this ICanBeReferencedType)` and `<X>Model As<X>Model(this ICanBeReferencedType)` (returns `null` on a type mismatch) in a static `<X>ModelExtensions` class. They are omitted below unless that class holds more than these two. This is how you turn a raw reference into a typed model — `attribute.TypeReference.Element.AsClassModel()`. Prefer it to `new <X>Model(element)`: generated constructors throw on a specialization mismatch.
 - **`// + common association-end members`** = the `ITypeReference` surface (`Element` — the element this end points at — plus `IsNullable`, `IsCollection`, `GenericTypeParameters`, `Stereotypes`), and `string Id`, `Name`, `Comment`, `SpecializationType`, `SpecializationTypeId`, `bool IsNavigable`, `ITypeReference TypeReference` (the end itself), `IPackage Package`, `IElement InternalElement`, `IAssociationEnd InternalAssociationEnd`, `IAssociation InternalAssociation`, the owning association model as `Association`, `OtherEnd()`, `IsSourceEnd()`, `IsTargetEnd()` and `static Create(IAssociationEnd)`.
 
+A member that starts with `[Obsolete("…")]` still exists and compiles, but with warning CS0618.
+Do not write new code against it; use the replacement its message names.
+
 `FolderModel`, `EnumModel`, `EnumLiteralModel` and `TypeDefinitionModel` come from
 `Intent.Modules.Common.Types.Api`, not from this designer. They, and the SDK interfaces every model
 returns (`IElement`, `ITypeReference`, `IStereotype`, `IElementMapping`, `IElementToElementMapping`,
 `IDesigner`), are listed once in `integration-recipe.md` §6.
 
-### 9.1 Domain — `Intent.Modules.Modelers.Domain` (source at `3.13.2`)
+### 9.1 Domain — `Intent.Modules.Modelers.Domain` (source at `3.13.3`)
 
 ```csharp
 namespace Intent.Modelers.Domain.Api;
@@ -341,7 +344,7 @@ public static class ClassConstructorModelExtensions
 }
 
 // "Class" · 04e12b51-ed12-42a3-9667-a6aa81bb6d10
-public class ClassModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasFolder<IFolder>, IHasName, IElementWrapper
+public class ClassModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasFolder<IFolder>, IHasName, IElementWrapper, IServiceArgumentModel
 {
     // + common element members
     string UniqueKey { get; }
@@ -405,13 +408,13 @@ public class DataContractGeneralizationTargetEndModel : DataContractGeneralizati
 public class DataContractGeneralizationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper { /* common association-end members */ }
 
 // "Data Contract" · 4464fabe-c59e-4d90-81fc-c9245bdd1afd
-public class DataContractModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
+public class DataContractModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IServiceArgumentModel, IHasFolder
 {
     // + common element members
     FolderModel Folder { get; }
     IEnumerable<string> GenericTypes { get; }
-    ITypeReference TypeReference { get; }
-    ITypeReference BaseType { get; }
+    [Obsolete("Data Contracts no longer use TypeReference to depict inheritance, please use BaseDataContract instead")] ITypeReference TypeReference { get; }
+    [Obsolete("Data Contracts no longer use BaseType to depict inheritance, please use the BaseDataContract instead")] ITypeReference BaseType { get; }
     DataContractModel BaseDataContract { get; }
     IList<AttributeModel> Attributes { get; }
 }
@@ -537,6 +540,19 @@ public class ParameterModel : IMetadataModel, IHasStereotypes, IHasName, IElemen
     IEnumerable<string> GenericTypes { get; }
 }
 ```
+
+`ClassModel` and `DataContractModel` implement `IServiceArgumentModel` from Domain `3.13.3`. The
+trait lives in `Intent.Modules.Common` and was added in `Intent.Common` `3.11.8`. Before you code
+against it, raise your `.csproj` `PackageReference`s to `Intent.Modules.Common` `3.11.8` and
+`Intent.Modules.Modelers.Domain` `3.13.3`, and your `.imodspec` `<dependency>` floors to
+`Intent.Common` `3.11.8` and `Intent.Modelers.Domain` `3.13.3`, and raise the `Intent.SoftwareFactory.SDK`
+`PackageReference` to `3.14.0`, which `Intent.Modules.Common` 3.11.x depends on (Intent Architect
+5.0.0 or later). Under an older pin these
+classes do not implement it. This requires `Intent.Common` 3.11.8 and `Intent.Modelers.Domain`
+3.13.3 or later; check your feed (`run_solution_query` → `searchAvailableModules("Intent.Modelers.Domain",
+{ includePrerelease: true })`, and the same for `Intent.Common`). If it does not offer them yet, the
+trait does not exist for you: don't code against it, and test for the concrete model instead (for
+example `typeReference.Element.AsClassModel()`).
 
 ### Name collisions to alias
 

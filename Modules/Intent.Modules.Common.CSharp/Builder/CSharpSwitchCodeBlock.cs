@@ -19,7 +19,9 @@ public class CSharpSwitchCodeBlock : CSharpStatement, IHasCSharpStatements
 
     public CSharpSwitchCodeBlock AddStatement(string statement)
     {
-        Statements.Add(statement);
+        var cSharpStatement = new CSharpStatement(statement);
+        cSharpStatement.Parent = this;
+        Statements.Add(cSharpStatement);
         return this;
     }
     

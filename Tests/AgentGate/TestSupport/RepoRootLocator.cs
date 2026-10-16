@@ -1,3 +1,5 @@
+using System.Reflection;
+
 namespace AgentGate.Tests.TestSupport;
 
 /// <summary>
@@ -37,7 +39,12 @@ public static class RepoRootLocator
     /// in this repo runs on. Sourcing unit tests from one application and harness tests from another
     /// was a standing source of confusion, so both now come from the test app.
     /// </para>
+    /// <para>
+    /// The path comes from the project's AgentGateSource property, so the copy that is run is always
+    /// the copy that was compiled into these tests.
+    /// </para>
     /// </remarks>
     public static string FindGateEntryPoint() =>
-        Path.Combine(Find(), "Tests", "ModuleBuilderSkills", ".claude", "hooks", "gate", "gate.cs");
+        typeof(RepoRootLocator).Assembly.GetCustomAttributes<AssemblyMetadataAttribute>()
+            .Single(attribute => attribute.Key == "AgentGateSource").Value!;
 }

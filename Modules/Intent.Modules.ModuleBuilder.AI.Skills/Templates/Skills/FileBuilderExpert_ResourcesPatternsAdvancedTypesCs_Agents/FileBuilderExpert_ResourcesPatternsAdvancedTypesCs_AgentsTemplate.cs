@@ -21,16 +21,18 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
 //   - Never emit ": BaseClass" as raw text. Use WithBaseType / ImplementsInterface.
 //   - Attributes use AddArgument for BOTH positional and named args (e.g. "AllowMultiple = false").
 //   - Metadata: method is AddMetadata (not WithMetadata). Always guard reads with HasMetadata / TryGetMetadata.
+//   - A method's own generic parameter needs its own name — reusing the class's "T" is CS0693.
 
 // --- GENERICS ---
 
 // Capture the parameter via 'out var' so you can reuse it on constraints later:
 @class.AddGenericParameter("T", out var t);
+@class.AddGenericTypeConstraint(t, c => c.AddType("class"));  // where T : class
 
 @class.AddMethod("void", "Process", method => method
-    .AddGenericParameter(t)                                  // reuse the captured parameter
-    .AddGenericParameter("U", out var u)
-    .AddGenericTypeConstraint(u, c => c.AddType("class")));  // U : class
+    .AddGenericParameter("U", out var u)                      // the method's own parameter: a new name, not T
+    .AddGenericTypeConstraint(u, c => c.AddType("new()"))     // where U : new()
+    .AddParameter("T", "item"));                              // the class's T is in scope as a type
 
 // --- INHERITANCE & INTERFACES ---
 
@@ -100,11 +102,15 @@ file.AddAssemblyAttribute("GeneratedCode", attr => attr
             .AddInvocation("ConfigureServices", inv => inv
                 .AddArgument(new CSharpLambdaBlock("services")
                     .WithExpressionBody(new CSharpStatement("services")
-                        .AddInvocation("AddOptions")))));
+                        .AddInvocation("AddOptions")
+                        .WithoutSemicolon()))));            // expression body: no ';' inside the lambda
     });
 });
 
-// Record with a primary constructor:
+// Nested record with a primary constructor. AddNestedRecord needs Intent.Common.CSharp 3.9.6 or later —
+// on a lower floor, raise the .imodspec <dependency id="Intent.Common.CSharp"> and the .csproj package reference,
+// and raise Intent.Modules.Common / the Intent.Common dependency to 3.9.1 with them (3.9.6 depends on it; NU1605 otherwise),
+// plus the Intent.SoftwareFactory.SDK package reference to 3.10.0, which Common 3.9.1 depends on (Intent Architect 4.5.15+):
 @class.AddNestedRecord("State", nestedRecord =>
 {
     nestedRecord.AddPrimaryConstructor(ctor =>
@@ -123,20 +129,22 @@ file.AddEnum("Status", @enum =>
 
 // --- METADATA (cross-step state) ---
 // Use AddMetadata to tag any builder node with arbitrary data for later phases.
-// Always guard reads — never call GetMetadata without first checking HasMetadata or using TryGetMetadata.
+// Always guard reads. GetMetadata<T> throws on an absent key, returns null (no exception) when the
+// value is not a T, and only accepts reference types — GetMetadata<bool> does not compile.
 
 method.AddMetadata("telemetry-config", true);
 
-// Safe read with HasMetadata guard:
-if (method.HasMetadata("telemetry-config"))
-{
-    var flag = method.GetMetadata<bool>("telemetry-config");
-}
-
-// Preferred: TryGetMetadata avoids double-lookup:
+// Value types: TryGetMetadata is the only typed read (and the preferred one for any T):
 if (method.TryGetMetadata<bool>("telemetry-config", out var enabled) && enabled)
 {
     method.AddStatement("// metadata-driven statement");
+}
+
+// Reference types: GetMetadata behind a HasMetadata guard also works:
+method.AddMetadata("telemetry-options", new TelemetryOptions());
+if (method.HasMetadata("telemetry-options"))
+{
+    var options = method.GetMetadata<TelemetryOptions>("telemetry-options");  // null if it is another type
 }
 
 """""";

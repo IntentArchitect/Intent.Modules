@@ -3,7 +3,7 @@ name: module-docs
 description: "Complete or refresh a module's release-notes.md, docs/README.md, and .imodspec metadata to a canonical format, touching only what already exists or what the maintainer explicitly supplies. USE ONLY WHEN a maintainer explicitly asks for documentation to be completed or brought up to this format. DO NOT USE FOR the automatic same-turn doc update after an observable change (see module-docs-chore) — this is an opt-in pass, and it must never introduce release-notes.md or fabricate a projectUrl unprompted. REQUIRES the target module's .imodspec (and any existing release-notes.md/docs/README.md) already present to read from."
 keywords: [release-notes, readme, imodspec, documentation, module]
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleDocs_SkillMd_Agents
-contentHash: 40487058E9A99A003D15A64E50B3C9B7DCEC1F8AB7133B96DF18531012EC8474
+contentHash: 8E819364E6F133802A1F1BA5FE42768FADC56954367FDCDE7A37672A51262E96
 ---
 # Skill: module-docs
 
@@ -11,9 +11,13 @@ contentHash: 40487058E9A99A003D15A64E50B3C9B7DCEC1F8AB7133B96DF18531012EC8474
 
 Use this when a module maintainer wants documentation completed or updated to this format — it is optional, not an automatic step of every build.
 
-- **`release-notes.md`** — only complete/maintain an entry if the file already exists. The Software Factory is what creates this file — it does so once `Module Settings → Include Release Notes` is ticked and the Software Factory runs — never the agent by hand. If a maintainer asks for one to be created and it isn't there yet, point them at that setting and regenerate; don't write the file yourself.
+- **`release-notes.md`** — only complete/maintain an entry if the file already exists. The Software Factory is what creates this file — it does so once `Module Settings → Include Release Notes` is ticked and the Software Factory runs — never the agent by hand. If a maintainer asks for one to be created and it isn't there yet, point them at that setting and regenerate; don't write the file yourself. The Software Factory creates it only once: it starts with a `### Version 1.0.0` heading to correct, and a file deleted afterwards is not recreated — report that rather than recreating it.
 - **`docs/README.md`** — feature/usage documentation; fill gaps in an existing one, or write one if asked
-- **Module metadata** — the summary/description shown in the module registry (set on the **Application Settings page**), plus the `*.imodspec` fields the Software Factory does not own: `tags`, `authors`, `releaseNotes`, and `projectUrl` only if the maintainer supplies one
+- **Module metadata** — the summary/description shown in the module registry (set on the **Application Settings page**, or with `update_application_settings` and its `description` parameter), plus the `*.imodspec` fields the Software Factory does not own: `tags`, `authors`, `releaseNotes`, and `projectUrl` only if the maintainer supplies one
+
+In every artifact, **never announce that something is beta, preview or pre-release.** No "(beta)", "preview" or
+"pre-release" labels in release notes, READMEs, the summary/description, or tags. A `-pre.#` version
+suffix already marks a pre-release package; the documentation describes what the module does.
 
 ===
 
@@ -57,6 +61,7 @@ Before writing anything, read these files from the target module directory:
 - **No prose** outside bullets — no introductory text, no dates, no metadata
 - **Breaking changes:** `> ⚠️ **NOTE**` blockquote directly under the version heading, before bullets
 - **Style:** Neutral, professional, no marketing language, no exclamation marks
+- **No release-stage labels:** never mark an entry, feature or version as beta, preview or pre-release
 - **Formatting:** Backticks for class/method/stereotype/setting names; plain text elsewhere
 
 ### What to write
@@ -121,6 +126,7 @@ Before writing anything, read these files from the target module directory:
 - **Notes/warnings:** `> [!NOTE]` / `> [!WARNING]` syntax
 - **`Module Settings`:** H3 per setting group; describe effect on generated code, not just the setting name
 - **`Related Modules`:** always present as the last content section; H3 per module; explain the integration relationship
+- **Links to other modules** (`Related Modules`, "see also", install requirements): link the module's published page on `docs.intentarchitect.com`, never GitHub. If the target module's `.imodspec` has a `<projectUrl>` that points there, copy it verbatim. Otherwise derive `https://docs.intentarchitect.com/articles/{section}/{slug}/{slug}.html`, where `{slug}` is the module id lowercased with every `.` replaced by `-` (`Intent.Eventing.NServiceBus` → `intent-eventing-nservicebus`) and `{section}` is usually `modules-dotnet` (some designer modules are under `modules-common`). Fetch a derived link to confirm it resolves before using it; if it does not, name the module in plain text instead.
 - **Do not include:** Installation, Changelog, API Reference, Table of Contents, or troubleshooting sections
 
 ### Content mapping
@@ -143,11 +149,11 @@ silently — it reports no error and the value simply reverts. Set each field wh
 
 | Field | Where to set it |
 |---|---|
-| `<summary>` **and** `<description>` | The **Application Settings page** in Intent Architect — not the `.imodspec`, and not `.application.config` by hand |
+| `<summary>` **and** `<description>` | The **Application Settings page** in Intent Architect, or `update_application_settings` with its `description` parameter — not the `.imodspec`, and not `.application.config` by hand |
 | `<tags>` | Directly in `*.imodspec` — the template never writes it |
 | `<authors>` | Directly in `*.imodspec` — written once at creation, yours thereafter |
-| `<projectUrl>` | Directly in `*.imodspec`. Only if the maintainer supplies a URL — never guess or fabricate one; omit the field entirely when none is given. |
-| `<releaseNotes>` | Directly in `*.imodspec` — the filename `release-notes.md`, not the notes themselves |
+| `<projectUrl>` | Directly in `*.imodspec`, or `Module Settings → Project URL`, which the Software Factory copies in only while the element is absent. Only if the maintainer supplies a URL — never guess or fabricate one; omit the field entirely when none is given. |
+| `<releaseNotes>` | The filename `release-notes.md`, not the notes themselves. The Software Factory adds it when `Include Release Notes` is ticked and the element is absent; yours once present |
 
 Never edit files inside `.intent/` folders.
 
@@ -169,15 +175,18 @@ The rejected text is not worthless — it is a good `CONTEXT.md` entry that land
 
 ### Tag selection guide
 
+Tags are **lowercase** and **separated by spaces**. Where a single concept spans more than one word,
+join it with a hyphen so it stays one tag: `entity-framework` is one tag, `entity framework` is two.
+
 **Include:**
 
-- Technology name: `nservicebus`, `masstransit`, `entityframework`, `serilog`, etc.
+- Technology name: `nservicebus`, `masstransit`, `entity-framework`, `serilog`, etc.
 - Architectural pattern: `eventing`, `messaging`, `outbox`, `cqrs`, `ddd`, `persistence`
 - Layer: `infrastructure`, `application`
 - Stack: `csharp`, `dotnet`
-- Transport (if applicable): `rabbitmq`, `azureservicebus`, `amazonsqs`
+- Transport (if applicable): `rabbitmq`, `azure-service-bus`, `amazon-sqs`
 
-**Avoid:** generic words like `module`, `common`, `helper`, `base` unless the module is genuinely a base/utility module.
+**Avoid:** generic words like `module`, `common`, `helper`, `base` unless the module is genuinely a base/utility module, and release-stage words such as `beta`, `preview` or `prerelease`.
 
 ### Example
 
@@ -195,4 +204,6 @@ After completing all three artifacts:
 
 - [ ] `release-notes.md` — entry exists for current module version (stripped); uses only `New Feature:` / `Improvement:` / `Fixed:` prefixes; reverse chronological
 - [ ] `docs/README.md` — H1, opening paragraph, `What This Module Generates`, at least one feature section, `Module Settings` (if applicable), `Related Modules` all present; no placeholder text
-- [ ] Summary/description set via the **Application Settings page** (not `.imodspec`), specific and 5–15 words; `.imodspec` `<tags>` has 3–7 keywords; `<projectUrl>` is set only if the maintainer supplied one (never fabricated); `<releaseNotes>` matches `release-notes.md`
+- [ ] Summary/description set via the **Application Settings page** or `update_application_settings` (not `.imodspec`), specific and 5–15 words; `.imodspec` `<tags>` has 3–7 lowercase keywords, hyphenated within a compound term; `<projectUrl>` is set only if the maintainer supplied one (never fabricated); `<releaseNotes>` matches `release-notes.md`
+- [ ] Links to other modules point at `docs.intentarchitect.com` and were confirmed to resolve
+- [ ] Nothing is labelled beta, preview or pre-release anywhere

@@ -52,22 +52,29 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleSvgIcon_
                     trap `module-versioning` describes for `<version>`. Hand-editing `.imodspec` directly is silently
                     discarded on the next run.
 
-                    ## Why A Script, Not Direct File Edits
-                    `.application.config` is off-limits to hand-editing — it is large, mostly generated, and the values in it
-                    that you are meant to change have a UI. The module's description, for instance, is set on the
-                    **Application Settings page**, not in this file.
+                    ## A Deliberate, Approved Exception To The Off-Limits Rule
+                    `.application.config` is off-limits: agents must not read or modify it. It is large, mostly generated,
+                    and the values in it that you are meant to change have a UI or a tool. The module's description, for
+                    instance, is set on the **Application Settings page** or with `update_application_settings`, not in this
+                    file.
 
-                    The package icon is the exception, and **not because no other mechanism exists** — it can be set through
-                    the MCP. The reason to go around that is the payload: the value is a base64 data URI that routinely runs
-                    to tens of thousands of characters, and putting it through an agent's context is wasteful at best and a
-                    silent transcription corruption at worst. Use a tool that manipulates the icon element directly, so the
-                    encoded string never passes through you.
+                    This skill is the one approved exception, and it is deliberate. It is **not** that no other mechanism
+                    exists — `update_application_settings` takes `icon` and `iconType`. The reason to go around it is the
+                    payload: the value is a base64 data URI that routinely runs to tens of thousands of characters, and
+                    putting it through an agent's context, as that tool's argument requires, is wasteful at best and a silent
+                    transcription corruption at worst. A shell script that rewrites the icon element directly keeps the
+                    encoded string out of your context entirely.
 
-                    So this skill is a narrow, deliberate exception, scoped to **exactly** the root `<icon>` /
-                    `<iconType>` pair. Nowhere else in that file should be touched — in particular, leave the many
-                    other `<icon type="..." source="...">` entries elsewhere in the file alone; those configure
-                    per-designer-element icons and are unrelated to the module's own package icon. **To set an icon on a
-                    stereotype or a custom element type, use `module-element-icons`** — different mechanism, different file.
+                    The exception is scoped to **exactly** the root `<icon>` / `<iconType>` pair, edited by script, and to
+                    nothing else:
+
+                    - Do not open, read or print the file — the script locates and replaces the two elements itself.
+                    - Leave every other `<icon type="..." source="...">` entry in the file alone. Those are the icons of the
+                    application's designer references and module-settings groups, not the module's package icon.
+                    - Nothing about this exception extends to any other value in the file, or to any other `.application.config`.
+
+                    **To set an icon on a stereotype or a custom element type, use `module-element-icons`** — different
+                    mechanism, different file (those icons live in the designer model and the generated `.designer.settings`).
 
                     Concretely: **never read or reproduce the base64 value yourself.** A script computes it and writes it
                     directly; you only ever see the small SVG source you authored. This is the whole reason the mechanism is
@@ -113,16 +120,17 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleSvgIcon_
 
                     ## Step 4 — Verify Without Reading The Payload
 
-                    Confirm via `get_file_diffs` that exactly the icon-related line(s) changed in `.application.config`
-                    and `.imodspec`. Judge this structurally — which files appear in the diff, how many lines changed —
-                    rather than by reading the base64 content itself.
+                    Confirm via `get_file_diffs` on the `.imodspec` that only its `<iconUrl>` line changed. The
+                    `.application.config` is not Software Factory output, so check it from the shell with a line count
+                    only (e.g. `git diff --stat` on that file: one or two lines changed). Judge both structurally — which
+                    files changed, how many lines — rather than by reading the base64 content itself.
 
                     ## Verification Checklist
 
                     - [ ] Description taken exactly as supplied — this skill did not source or invent it
                     - [ ] SVG follows the default style guide, or deviates for a stated reason
                     - [ ] Draft SVG written to a real OS temp location, never a tracked project path
-                    - [ ] `.application.config` edited by script only — never `read_file`/`patch_file` on the base64 value
+                    - [ ] `.application.config` edited by script only, under this skill's approved exception — never opened, read, or `read_file`/`patch_file`d
                     - [ ] Only the root `<icon>`/`<iconType>` pair touched; other `<icon type="..." source="...">` entries left alone
                     - [ ] Exactly one match asserted before replacing either element
                     - [ ] Software Factory run; `.imodspec`'s `<iconUrl>` confirmed updated

@@ -47,7 +47,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
 
       var releaseNotesRow = maintainReleaseNotes
         ? """
-        | `release-notes.md` | One bullet under the current version — **whenever `Include Release Notes` is ticked**, creating the file if it is missing |
+        | `release-notes.md` | One bullet under the current version — **whenever `Include Release Notes` is ticked**, creating the file if it is still missing after a Software Factory run |
         """
         : """
         | `release-notes.md` | One bullet under the current version — **only if `Include Release Notes` is ticked and the file already exists** |
@@ -59,11 +59,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
 
       var releaseNotesMissingBullet = maintainReleaseNotes
         ? """
-        - **Ticked, file missing** — create it, and add this change's entry to it. The manifest is already advertising a `release-notes.md`, so supplying the file resolves that inconsistency rather than merely reporting it.
+        - **Ticked, file missing** — run the Software Factory first: it creates `release-notes.md` when the box is ticked and it has never generated the file, starting with a `### Version 1.0.0` heading to correct. It creates the file only once, so if the file is still missing (deleted after it was generated), create it by hand, and add this change's entry to it. The manifest is already advertising a `release-notes.md`, so supplying the file resolves that inconsistency rather than merely reporting it.
         """
         : """
-        - **Ticked, file missing** — say so. The manifest is advertising a `release-notes.md` that is not there,
-        which is a real inconsistency rather than something to silently paper over by creating the file.
+        - **Ticked, file missing** — run the Software Factory first: it creates `release-notes.md` when the box
+        is ticked and it has never generated the file. It creates the file only once, so if the file is still
+        missing, say so. The manifest is advertising a `release-notes.md` that is not there, which is a real
+        inconsistency rather than something to silently paper over by creating the file by hand.
         """;
 
       var releaseNotesChecklistItem = maintainReleaseNotes
@@ -72,7 +74,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
 
       var releaseNotesClosing = maintainReleaseNotes
         ? """
-        A module whose `Include Release Notes` is unticked still gets nothing. That checkbox — not this setting — decides whether a module keeps release notes at all. This setting only governs whether an absent file gets created for a module that has already asked for one.
+        A module whose `Include Release Notes` is unticked still gets nothing. That checkbox — not the `Maintain Release Notes` setting in this environment's AI Workflow Settings — decides whether a module keeps release notes at all. `Maintain Release Notes` only governs whether an absent file gets created by hand for a module that has already asked for one.
         """
         : """
         **If a module has no `release-notes.md`, do not create one.** Its absence is a deliberate choice
@@ -234,7 +236,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
           module keeps. They are the module's shopfront — the only thing a consumer reads while deciding
           whether to install it — so they should describe what the module actually does now.
 
-          **Change the summary and description on the Application Settings page**, not in `.imodspec` and not
+          **Change the summary and description on the Application Settings page** (or with
+          `update_application_settings` and its `description` parameter), not in `.imodspec` and not
           in `.application.config`. The Software Factory overwrites both `<summary>` and `<description>` from
           that one value on every run, so an edit made in the manifest is discarded without an error. It also
           means the two fields **cannot differ** — one line has to serve as both, which is why it stays short
@@ -245,6 +248,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
           Modules scaffolded from a template often keep placeholder metadata long after they have stopped being
           placeholders. When you notice generic filler in a summary or description, or an empty tag list,
           replace it. This is upkeep to do in passing, not an inspection to complete before moving on.
+
+          ### No Release-Stage Labels
+
+          Never announce that the module, or anything in it, is beta, preview or pre-release. No "(beta)",
+          "preview" or "pre-release" labels in release notes, the README, the summary/description, or tags. A
+          `-pre.#` version suffix already marks a pre-release package; the documentation describes what the
+          module does.
 
           ### Tag Format
 
@@ -287,9 +297,10 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleDocsCh
 
           ## Checklist
 
-          - [ ] Module summary and description describe current behaviour — changed on the **Application Settings page**, not in `.imodspec`
+          - [ ] Module summary and description describe current behaviour — changed on the **Application Settings page** or with `update_application_settings`, not in `.imodspec`
           - [ ] Tags describe current behaviour — edited directly in `*.imodspec`
           - [ ] Tags are lowercase, space-separated, hyphenated within a compound term
+          - [ ] Nothing is labelled beta, preview or pre-release in any artifact
           - [ ] Author matches what sibling modules use — copied or asked for, never invented
           {{releaseNotesChecklistItem}}
           - [ ] Entries are one line each, grouped by capability rather than listed per change

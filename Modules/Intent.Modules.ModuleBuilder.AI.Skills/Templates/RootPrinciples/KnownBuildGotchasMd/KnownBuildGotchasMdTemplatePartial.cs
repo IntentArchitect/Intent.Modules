@@ -29,7 +29,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.RootPrinciples.KnownB
           ---
           applyTo: '**/*.cs'
           description: "Intent Architect module build and template-authoring gotchas, and diagnosing a module change that never reaches generated output."
-          keywords: [intent architect, template authoring, nuget, build, gotchas, intent ignore, asset repositories]
+          keywords: [intent architect, template authoring, nuget, build, gotchas, intent ignore, csproj, nullable, asset repositories]
           ---
 
           ## Known Build Gotchas
@@ -52,50 +52,86 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.RootPrinciples.KnownB
 
           ===
 
-          ### NuGet Dependencies — Not Inside `OnBuild`
+          ### Constructor vs Build Callbacks — NuGet In The Constructor, Lookups In A Callback
 
-          Declare NuGet dependencies in the **template constructor**, **never** inside an `OnBuild`/`AfterBuild` callback — registration there does not work reliably. Conditional registration mid-constructor is fine.
+          A template's constructor and its `OnBuild` / `AfterBuild` callbacks run at different points of the Software Factory run, and two kinds of work depend on that timing.
+
+          - **NuGet dependencies must be added before they are collected.** Packages are collected from every template when NuGet dependencies are resolved, at `BeforeTemplateExecution` (Order 1000). The constructor and `OnBuild` both run before that, so either works: the constructor is the simplest place, and registering conditionally there (on a setting or the model) is fine; `OnBuild` suits a package that depends on what a lookup finds. `AfterBuild` callbacks run in that same phase but after collection, so a package added there is silently never installed.
+          - **Template lookups go in `OnBuild` / `AfterBuild`.** `GetTypeName`, `TryGetTypeName` and `FindTemplateInstance` resolve against other templates' instances. A constructor runs while templates are still being registered, so a lookup there succeeds or fails depending on registration order. The rule itself is `file-builder-expert` Musts #7.
+          - **"Will that other template generate its file?" is an opt-in check.** `ExecutionContext.TemplateExists(idOrRole)` is true for any registered instance, including stubs: some modules register a template only so its types still resolve, then set `CanRun = false` (in the registration, or in an `AfterBuild` at order 100) so it writes nothing. When you need the file to really exist, add the predicate `t => t.CanRunTemplate()`, and evaluate it in an `AfterBuild` ordered above 100 so those stubs have already switched off. Do not add it to type lookups — resolving a stub's type is the reason the stub exists.
 
           ```csharp
-          AddNugetDependency(NuGetPackages.SomePackage); // constructor body, never a build callback
+          public MyTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
+          {
+              AddNugetDependency("Some.Package", "1.2.3"); // constructor or OnBuild; AfterBuild is too late
+
+              CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath())
+                  .AddClass("MyService")
+                  .OnBuild(file =>
+                  {
+                      // lookups resolve here, once every template is registered
+                      if (TryGetTypeName("MyModule.AppSettings", out var settingsType))
+                      {
+                          file.Classes.First().AddProperty(settingsType, "Settings");
+                      }
+                  })
+                  .AfterBuild(file =>
+                  {
+                      // opt-in: a template with this role exists AND will generate its file
+                      if (ExecutionContext.TemplateExists("MyModule.Registrations", t => t.CanRunTemplate()))
+                      {
+                          file.Classes.First().AddMethod("void", "Register");
+                      }
+                  }, 200);
+          }
           ```
 
           ===
 
-          ### `SingleFileListModel` — Filename Instability
+          ### `SingleFileListModel` — Name The File When It Holds Several Types
 
-          When a template generates multiple classes via `foreach`, `CSharpFile` takes its filename from the **first class added** — so a non-deterministic order changes the filename between SF runs. The normal pattern is one class per template output (a dummy anchor class is not the answer). For genuinely exceptional multi-class files, hardcode it behind `// IntentIgnore`, which stops the Software Factory overwriting that line:
+          `CSharpFile` names its output after the first type declared in it (interfaces first, then classes, records and enums) unless you name it yourself.
+
+          - **One type per template** — the normal case — needs nothing. The type's name is the file name.
+          - **Several types in one file**, for example one class per model in a `SingleFileListModel` template: set the name with `.WithFileName(...)`. Otherwise the first type comes from the first model, in designer order, so adding, removing or renaming a model can rename the file. Sorting the models does not prevent that.
 
           ```csharp
-          // IntentIgnore
-          CSharpFile = new CSharpFile("DesiredFileName", folderPath)
+          // the constructor's first argument is the namespace, the second the relative location
+          CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath())
+              .WithFileName("MessageContracts");
+
+          foreach (var item in Model)
+          {
+              CSharpFile.AddClass(item.Name);
+          }
           ```
 
           ===
 
-          ### `FilterMessagesForThisMessageBroker` — Pass `ExecutionContext`, Not `this`
+          ### A Template's `Role` Picks Where Its Output Lands
 
-          The three-argument overload needs an `ISoftwareFactoryExecutionContext`. Passing the template instance compiles but silently returns wrong results.
+          A template's `Template Settings` in the Module Builder designer carry a `Role` and a `Default Location`, and they do different jobs.
 
-          ```csharp
-          FilterMessagesForThisMessageBroker(messages, selector, ExecutionContext); // never `this`
-          ```
+          - **`Role`** names the consuming application's `Output Anchor` to place the template under. On install, Intent Architect looks for an anchor with that name in the consumer's Codebase Structure and puts the template's `Template Output` there. With no matching anchor, the output lands in the designer's root folder, usually not where you want it.
+          - **`Default Location`** is only a sub-folder path under that anchor. Blank means directly under it.
+
+          So set `Role` to an anchor the consumer actually has, for example the `Domain` or `Application` anchor an architecture template creates, and use `Default Location` for any sub-folder. An output, once placed, stays put on a reinstall: moving it to a corrected default takes uninstalling and reinstalling the module. See [Configuring a Template's default output location](https://docs.intentarchitect.com/articles/module-building/templates-general/configuring-a-templates-default-output-location/configuring-a-templates-default-output-location.html).
 
           ===
 
-          ### `Constants` Class Name Conflict
+          ### The Module's `.csproj` — Set Project Properties In The Model
 
-          A module-defined `Constants` class conflicts with `Intent.Modules.Constants` from the SDK. Alias it:
+          A module's own `.csproj` is generated from its `C# Project (.NET)` element in the Visual Studio designer. Properties that element models (`TargetFramework`, `Nullable`, `LangVersion`, `ImplicitUsings` and others) are re-applied from the model on every Software Factory run, so a hand edit to one of them is reclaimed. To change nullable reference types, set `C# Project Options` → `Nullable` on that element and regenerate.
 
-          ```csharp
-          using NServiceBusConstants = Intent.Modules.Eventing.NServiceBus.Templates.Constants;
-          ```
+          Package versions behave differently. Under the default overwrite behaviour the Software Factory only ever raises a package version, never lowers it, so a version you raised by hand stays. A lower version you pinned is not reset on every run either; it is raised only when a template asks for a higher one.
 
           ===
 
           ### NuGet Package Downgrade Errors (NU1605)
 
           An SF run can leave SDK package versions that trigger `NU1605`. Correct them in the `.csproj`. The cause is NuGet versions drifting out of sync with the Intent module version — keep them aligned. Most affected: `Intent.Modules.Common`, `Intent.Modules.Common.CSharp`, `Intent.SoftwareFactory.SDK`.
+
+          The usual trigger is raising one package by hand. Module Builder writes `Intent.Modules.Common` 3.7.2, and a raised `Intent.Modules.Common.CSharp` (or a designer package such as `Intent.Modules.Modelers.Services`) depends on a higher `Intent.Modules.Common`, so restore fails with `error NU1605: Detected package downgrade: Intent.Modules.Common from 3.7.3 to 3.7.2`. Raise the `Intent.Modules.Common` package reference to at least the version the error names, and the `.imodspec` `Intent.Common` `<dependency>` to match. For `Intent.Modules.Common.CSharp`: 3.8.5 to 3.9.2 need `Intent.Modules.Common` 3.7.3, 3.9.6 needs 3.9.1, 3.10.12 needs 3.11.0. Each raise can pull another. `Intent.Modules.Common`, some `Intent.Modules.Common.CSharp` versions and some designer packages depend on a higher `Intent.SoftwareFactory.SDK`, which Module Builder writes at 3.7.0: `Intent.Modules.Common` 3.9.0 and 3.9.1 need SDK 3.10.0, 3.9.2 needs 3.12.0, 3.10.x needs 3.13.0 and 3.11.x needs 3.14.0. `Intent.Modules.Common` 3.11.x also needs `Intent.Persistence.SDK` 1.0.3, which matters once a Version Migration has added its 1.0.1-alpha.2 reference. Restore reports one downgrade at a time, so raise the reference it names, restore again, and repeat until it is clean. A higher SDK needs a newer Intent Architect: SDK 3.10.0 needs 4.5.15, 3.11.0 needs 4.5.18, 3.12.0 needs 4.5.21, 3.13.0 needs 4.6.0 and 3.14.0 needs 5.0.0. Never suppress `NU1605` with `<NoWarn>`: restore then keeps the lower `Intent.Modules.Common` underneath a package built against a higher one.
 
           ===
 

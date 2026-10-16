@@ -1,5 +1,5 @@
 ---
-contentHash: 9FF8533D73BC372F091C548C443818B849752296484EE928E20A65AEC09713EF
+contentHash: 877B0E57149F34A1BA4D0F096F7FF5A158AAF2D95CC82F08B21DE521D0C3D1CE
 ---
 # Eventing Designer (`Intent.Modules.Modelers.Eventing`)
 
@@ -62,7 +62,7 @@ using Intent.Modules.Modelers.Eventing; // NOT Intent.Modelers.Eventing.Api — 
 
 IReadOnlyCollection<MessageModel>      published   = metadataManager.GetPublishedMessageModels(application);
 IReadOnlyCollection<MessageModel>      subscribed  = metadataManager.GetSubscribedToMessageModels(application);
-IReadOnlyCollection<EventingDTOModel>  pubDtos     = metadataManager.GetPublishedDtoModels(application);
+IList<EventingDTOModel>                pubDtos     = metadataManager.GetPublishedDtoModels(application); // IList, unlike its five siblings
 IReadOnlyCollection<EventingDTOModel>  subDtos     = metadataManager.GetSubscribedToDtoModels(application);
 IReadOnlyCollection<EnumModel>         pubEnums    = metadataManager.GetPublishedEnumModels(application);
 IReadOnlyCollection<EnumModel>         subEnums    = metadataManager.GetSubscribedToEnumModels(application);
@@ -108,16 +108,11 @@ Code referencing these types must use the misspelled names exactly — `MessageP
 `Api/Extensions/` folder in this module at all (unlike Domain/Services):
 
 - `MessagePublishAssocationModelAssociationExtensions.cs`: `ApplicationModel.PublishedMessages()`,
-
-`MessageModel.PublishingApplications()`.
-
+  `MessageModel.PublishingApplications()`.
 - `MessageSubscribeAssocationModelAssociationExtensions.cs`: `ApplicationModel.SubscribedMessages()`,
-
-`MessageModel.ConsumingApplications()`.
-
+  `MessageModel.ConsumingApplications()`.
 - `GeneralizationModelAssociationExtensions.cs`: `EventingDTOModel.Generalizations()`,
-
-`.Specializations()`, `.GeneralizationEnds()`.
+  `.Specializations()`, `.GeneralizationEnds()`.
 
 ## 6. Stereotypes
 
@@ -138,9 +133,10 @@ using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modelers.Eventing.Api;
-using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.Registrations;
 using Intent.Modules.Modelers.Eventing; // for the published/subscribed accessors
 using Intent.RoslynWeaver.Attributes;
+using Intent.Templates;
 
 namespace MyModule.Templates.MyMessageTemplate
 {
@@ -175,22 +171,18 @@ covers messages this application actually publishes:
 ```csharp
 using Intent.Engine;
 using Intent.Modelers.Eventing.Api;
+using Intent.Modules.Common.Plugins;
 using Intent.Modules.Modelers.Eventing; // GetPublishedMessageModels lives here, not Api
 
-public class PublishedMessageFactoryExtension : IApplicationFactoryExtension
+public class PublishedMessageFactoryExtension : FactoryExtensionBase
 {
-  private readonly IMetadataManager _metadataManager;
+  public override string Id => "MyModule.PublishedMessageFactoryExtension";
 
-  public PublishedMessageFactoryExtension(IMetadataManager metadataManager)
+  protected override void OnBeforeTemplateExecution(IApplication application)
   {
-   _metadataManager = metadataManager;
-  }
-
-  public void BeforeTemplateExecution(IApplication application)
-  {
-      var publishedMessages = _metadataManager.GetPublishedMessageModels(application);
-      var publishedDtos = _metadataManager.GetPublishedDtoModels(application);
-      var publishedEnums = _metadataManager.GetPublishedEnumModels(application);
+      var publishedMessages = application.MetadataManager.GetPublishedMessageModels(application);
+      var publishedDtos = application.MetadataManager.GetPublishedDtoModels(application);
+      var publishedEnums = application.MetadataManager.GetPublishedEnumModels(application);
 
       foreach (var message in publishedMessages)
       {

@@ -44,7 +44,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
                     | Repositories | `Intent.Modules.Modelers.Domain.Repositories` | `Intent.Modelers.Domain.Repositories` | `Intent.Modelers.Domain.Repositories.Api` | `RepositoryModel` (`96ffceb2-...`, reuses Domain's own `OperationModel`), `PackageExtensionsModel`, `FolderExtensionsModel` |
                     | Value Objects | `Intent.Modules.Modelers.Domain.ValueObjects` | `Intent.Modelers.Domain.ValueObjects` | `Intent.Modelers.Domain.ValueObjects.Api` | `ValueObjectModel` (`5fe6bb0a-...`, reuses Domain's own `AttributeModel`), `DomainPackageExtensionModel`, `FolderExtensionModel`. **Also defines its own stereotype**: `ValueObjectModelStereotypeExtensions.SerializationSettings` (`4ced3df6-...`) |
                     | Domain Services | `Intent.Modelers.Domain.Services` ⚠️ **no `Modules.` segment** | `Intent.Modelers.Domain.Services` | `Intent.Modelers.Domain.Services.Api` | `DomainServiceModel` (`07f936ea-...`, reuses Domain's own `OperationModel`), `DomainPackageExtensionModel`, `FolderExtensionModel` |
-                    | Stored Procedures | `Intent.Modules.Modelers.Domain.StoredProcedures` | `Intent.Modules.Modelers.Domain.StoredProcedures` ⚠️ **keeps `Modules.` in BOTH module id and namespace, unlike all four siblings above** | `Intent.Modules.Modelers.Domain.StoredProcedures.Api` | `StoredProcedureModel` (`575edd35-...`, implements `IInvokableModel`), `StoredProcedureParameterModel`, `PackageExtensionModel`, `FolderElementExtensionModel`, plus association `StoredProcedureInvocationModel` (navigation directly under `Api/`, not `Api/Extensions/`) |
+                    | Stored Procedures | `Intent.Modules.Modelers.Domain.StoredProcedures` | `Intent.Modules.Modelers.Domain.StoredProcedures` ⚠️ **keeps `Modules.` in BOTH module id and namespace, unlike all four siblings above** | `Intent.Modules.Modelers.Domain.StoredProcedures.Api` | `StoredProcedureModel` (`575edd35-...`, implements `Intent.Modules.Common.IInvokableModel`, not the User Interface designer's same-named interface), `StoredProcedureParameterModel`, `PackageExtensionModel`, `FolderElementExtensionModel`, plus association `StoredProcedureInvocationModel` (navigation directly under `Api/`, not `Api/Extensions/`) |
 
                     This table is exactly why `SKILL.md`'s Must #6 / Must Not #5 exist: five sibling extension modules
                     of the *same* designer, and no two of them are guaranteed to follow the same `Modules.`-segment
@@ -353,7 +353,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
                     }
                     ```
 
-                    ### 2.5 Domain.ValueObjects — `Intent.Modules.Modelers.Domain.ValueObjects` (source at `3.6.3`)
+                    ### 2.5 Domain.ValueObjects — `Intent.Modules.Modelers.Domain.ValueObjects` (source at `3.6.4`)
 
                     ```csharp
                     namespace Intent.Modelers.Domain.ValueObjects.Api;
@@ -376,7 +376,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
                     }
 
                     // "Value Object" · 5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5
-                    public class ValueObjectModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasFolder
+                    public class ValueObjectModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IServiceArgumentModel, IHasFolder
                     {
                         // + common element members
                         FolderModel Folder { get; }
@@ -407,6 +407,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
 
                     - **`FolderExtensionModel`** is declared in Domain, Domain Events, Domain Services and Value Objects, and **`DomainPackageExtensionModel`** in Domain Events, Domain Services and Value Objects — the same simple name in different namespaces. Alias them if your template imports more than one of these modules.
                     - Stored Procedures names its equivalents differently (`FolderElementExtensionModel`, `PackageExtensionModel`), and so does Repositories (`FolderExtensionsModel`, `PackageExtensionsModel` — plural). Copy the name from the stub above; don't infer it from a sibling.
+                    - `ValueObjectModel` implements `IServiceArgumentModel` only from Value Objects `3.6.4`, which depends on `Intent.Common` `3.11.8` (the trait was added there). Coding against the trait needs `Intent.Modules.Common` `3.11.8` and `Intent.Modules.Modelers.Domain.ValueObjects` `3.6.4` in your `.csproj`, and the matching `Intent.Common` / `Intent.Modelers.Domain.ValueObjects` `<dependency>` floors in your `.imodspec`, plus the `Intent.SoftwareFactory.SDK` package reference at 3.14.0, which `Intent.Modules.Common` 3.11.x depends on (Intent Architect 5.0.0 or later). This requires both versions or later; check your feed (`run_solution_query` → `searchAvailableModules("Intent.Modelers.Domain.ValueObjects", { includePrerelease: true })`, and the same for `Intent.Common`). If it does not offer them yet, don't code against the trait: test for `ValueObjectModel` directly.
 
                     """""");
         }

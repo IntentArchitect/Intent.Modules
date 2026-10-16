@@ -6,6 +6,8 @@
 //   - else / catch / finally default BeforeSeparator = NewLine (no blank line — they cluster with the preceding block).
 //   - Braces and indentation are automatic. Never write { } manually.
 //   - CSharpMethodChainStatement is [Obsolete]. Use CSharpInvocationStatement instead.
+//   - An assignment writes no ';' of its own: put .WithSemicolon() on the RIGHT-HAND side.
+//   - Lambdas are CSharpLambdaBlock, never a "x => ..." string — not even as an argument.
 
 // --- IF / ELSE IF / ELSE ---
 
@@ -112,15 +114,30 @@ method.AddCatchBlock(@catch =>
     @catch.AddStatement("Retry();");
 });
 
+// A catch block another template may need to find: TAG it, and let the other template match on the tag.
+// Never match on ExceptionType — it holds whatever string the producer passed ("Exception e" is not rare).
+method.AddCatchBlock("Exception", "ex", @catch =>
+{
+    @catch.AddMetadata("my-module:unhandled-catch", true);
+    @catch.AddStatement("throw;");
+});
+
+// ...later, in another template's callback (higher priority, or AfterBuild):
+var unhandled = method.FindStatement<CSharpCatchBlock>(c => c.HasMetadata("my-module:unhandled-catch"));
+unhandled?.Statements.Last().InsertAbove(new CSharpStatement("logger.LogError(ex, \"Unhandled\");"));
+
 // --- ASSIGNMENTS ---
 
-// Convenience extension (preferred for variable declarations):
-method.AddAssignmentStatement("var result", new CSharpStatement("await service.GetAsync()"));
+// Convenience extension (preferred for variable declarations). The right-hand side carries the ';':
+method.AddAssignmentStatement("var result", new CSharpStatement("await service.GetAsync()").WithSemicolon());
 
-// Direct constructor (use when both sides are complex statements):
+// Direct constructor (use when both sides are complex statements).
+// CSharpVariableDeclaration writes "var " itself — pass only the name ("var result" renders "var var result").
+// Keep .WithSemicolon() on the right-hand side: on the assignment it returns the base CSharpStatement, and inside
+// a block (if / foreach / try / lambda) AddStatement then binds to the obsolete overload (CS0618).
 method.AddStatement(new CSharpAssignmentStatement(
-    new CSharpVariableDeclaration("var result"),
-    new CSharpStatement("await service.GetAsync()")).WithSemicolon());
+    new CSharpVariableDeclaration("total"),
+    new CSharpStatement("items.Count").WithSemicolon()));
 
 // --- INVOCATIONS & FLUENT CHAINS ---
 // Do NOT use CSharpMethodChainStatement — it is [Obsolete].
@@ -135,7 +152,8 @@ method.AddInvocationStatement("service.Execute", stmt => stmt
 method.AddInvocationStatement("builder.Configure", stmt => stmt
     .WithArgumentsOnNewLines()
     .AddArgument("\"ConnectionString\"")
-    .AddArgument("options => options.UseRetry()"));
+    .AddArgument(new CSharpLambdaBlock("options")
+        .WithExpressionBody(new CSharpStatement("options.UseRetry()"))));
 
 // Fluent chain — .OnNewLine() forces each call onto a new indented line:
 method.AddStatement(new CSharpStatement("service")

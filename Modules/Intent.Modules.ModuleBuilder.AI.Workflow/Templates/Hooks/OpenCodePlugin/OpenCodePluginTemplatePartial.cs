@@ -68,7 +68,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.OpenCodePlugi
             // would start another turn.
             //
             // "patch" is OpenCode's apply_patch tool, offered to some models instead of write/edit; its
-            // patch text is found by the gate by content, as for Codex.
+            // patch text is found by the gate by content, as for Codex. Intent's MCP file tools reach
+            // the plugin as "<server>_write_file" and so on, so they are matched by suffix.
             //
             // Kept inside the body deliberately: this member's signature is Mode.Fully, so a comment
             // above it is stripped on every regeneration. Body = Mode.Ignore is what protects it.
@@ -77,6 +78,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.OpenCodePlugi
 
                 const gatePath = () => `${process.cwd()}/.opencode/hooks/gate/gate.cs`;
                 const writeTools = new Set(["write", "edit", "patch", "multiedit"]);
+                const intentFileTool = /(write_file|patch_file|delete_code_file)$/;
                 let lastCloseOut = 0;
 
                 function runGuard(command: string, toolName: string, args: unknown): void {
@@ -107,7 +109,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.OpenCodePlugi
                 export const IntentAgentGatePlugin = async ({ client }: PluginInput) => {
                   return {
                     "tool.execute.before": async (input: ToolExecuteInput, output: ToolExecuteOutput) => {
-                      if (writeTools.has(input.tool)) {
+                      if (writeTools.has(input.tool) || intentFileTool.test(input.tool)) {
                         runGuard("guard-write", input.tool, output.args);
                         return;
                       }

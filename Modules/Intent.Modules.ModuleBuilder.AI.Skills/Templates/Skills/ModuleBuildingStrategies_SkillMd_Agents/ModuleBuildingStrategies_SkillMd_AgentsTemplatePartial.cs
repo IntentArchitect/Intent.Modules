@@ -30,7 +30,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleBuilding
                 .FromMarkdown($$""""""
                     ---
                     name: {{SkillName}}
-                    description: "The accumulated strategic playbook of judgment calls for designing an Intent Architect module — decomposition (root/bridging/common), template vs factory-extension choice, file cardinality, managed modes, setting-vs-stereotype, convention-vs-explicit, and two-phase verification. USE ONLY WHEN facing a design decision point while building or extending a module. DO NOT USE FOR the mechanical how-to of a specific construct — this is the judgment layer above those."
+                    description: "The accumulated strategic playbook of judgment calls for designing an Intent Architect module — decomposition (root/bridging/common), template vs factory-extension choice, file cardinality, managed modes, setting-vs-stereotype, convention-vs-explicit, pattern-first building from a specification, two-phase verification, and how a module carries AI guidance. USE ONLY WHEN facing a design decision point while building or extending a module, or planning large module work from a specification or PRD. DO NOT USE FOR the mechanical how-to of a specific construct — this is the judgment layer above those."
                     template-id: {{TemplateId}}
                     ---
 
@@ -51,10 +51,10 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleBuilding
                     Read order — cheapest and most authoritative first:
 
                     1. **`search_docs`** — IA features, designers, attributes, code-management, module concepts.
-                    2. **`search_available_modules` / `list_installed_modules`** — what's installed/available.
+                    2. **`run_solution_query`** — `searchAvailableModules(id, { includePrerelease: true })` for what's available, `listInstalledModules(appId)` for what's installed.
                     3. **The reference module's own source** — `imodspec` (dependencies, interoperability, version), template registrations (roles, base classes, file cardinality), `NugetPackages.cs` (packages + conditions), factory extensions (what they enrich, which broadcast requests they publish/handle).
                     4. **The reference app's actual generated output** — ground truth for what the ecosystem already produces; don't re-generate what's already provided.
-                    5. **`find_designer_elements` / `get_designer_element_details`** — element types, stereotypes, and settings that drive generation.
+                    5. **`run_designer_query`** — `getDesignerSchema` for element types, stereotypes and settings; `searchElements` and `getElementDetails` for the modelled elements that drive generation.
 
                     > This protocol is the durable replacement for static per-type "playbooks": it stays current automatically, costs no developer time, and scales to any module.
 
@@ -65,6 +65,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleBuilding
                     ### Resolve conflicts at the authoritative source
 
                     When two modules **disagree** about how a stereotype (or property) is used — one reads it correctly, another (often a legacy or copied module) reads the wrong property — do **not** arbitrate by copying whichever sibling "looks right." Trace back to the **authoritative source: the stereotype's *definition*** (where it is declared), and let that decide which usage is correct. That trace is also what exposes the real culprit — the discrepancy usually points at a bug in a *different* module than the one you were changing. (This is why blind sibling-mimicry is unreliable: the sibling may be the one that's wrong.)
+
+                    ### Patterns you'll find but must not copy
+
+                    Reading existing modules is the fastest way to learn the platform, but some of what published modules do is legacy that a new module must not repeat. When reconnaissance turns one of these up, note it and do the current thing instead.
+
+                    - **AI task providers.** Some published modules (Intent.Modules.NET's Wolverine and MediatR-family modules among them) register an AI task provider from a factory extension — `application.AITaskManager.RegisterTaskProvider(...)` — to flag generated handlers that still need writing. AI task providers are deprecated: never register one. Carry the guidance as described in §5.
 
                     ===
 
@@ -77,6 +83,18 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleBuilding
                     `PRD → vertical slice (a feature) → spanning set (distinct shapes within it) → increment (one SF cycle)`
 
                     Cut a slice so it is **independently valuable and independently testable** — it carries its own acceptance check. Build one slice to green, test it whole, then move to the next; apply the module-decomposition judgment below within each slice.
+
+                    ### Prove a code pattern before you template it
+
+                    A specification says what a module should generate; it does not prove that code works. For large work — a specification or PRD, several new templates, or a new module — a template only reproduces a code pattern that is already proven: hand-written code in a reference application that compiles, runs and is tested. Small work, a change to one template or a single new template, needs no reference code; when you cannot tell which size the work is, ask the developer.
+
+                    For large work:
+
+                    1. **List the code patterns the work needs**, and where each one's reference code is. A pattern with no hand-written code, no tests, a new library or library version, or a description in prose only is unproven.
+                    2. **If a pattern is unproven, stop and ask the developer** how to proceed: they supply reference code, you write a reference implementation for them to review before any template reproduces it, or the scope narrows to the proven patterns. Never work a pattern out inside a template; a template is the worst place to discover how the code should look.
+                    3. **Template one pattern at a time.** Reproduce the reference code in one template, verify it (§4), then widen it to the spanning set.
+
+                    **Checkpoints.** If the developer supplied a plan, it sets the review points; add none of your own. Without one, ask the developer before templating the first pattern whether you can carry on through the rest yourself or should stop for their review after each pattern.
 
                     ### The dependency boundary is the module boundary
 
@@ -146,11 +164,19 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleBuilding
 
                     ### Managed modes
 
-                        - **`Mode.Fully`** — Intent fully manages the file; Intent owns it end-to-end.
-                        - **`Mode.Merge`** — Intent and the developer **coexist** in that space. Intent generates initial code and opens it for the developer; on later changes, Intent re-detects the regions *it* authored and re-mutates only those, leaving developer code intact. Typical example: command/query handler **bodies**.
-                        - **`Mode.Ignore`** — **opts out of code automation entirely**; the developer owns and is responsible for that space. It is **not** a generation strategy for module-authored output.
+                        - **`Mode.Fully`** — Intent fully manages the space; Intent owns it end-to-end.
+                        - **`Mode.Merge`** — Intent and the developer **coexist** in that space. Intent compares each run's output with its previous output, so it knows which lines it wrote and keeps changing and removing those, leaving the developer's own lines intact. So an agent writing code there has to leave Intent's lines alone without being able to see which ones they are.
+                        - **`Body = Mode.Ignore`** (`CSharpIntentManagedAttribute.IgnoreBody()`) — the template keeps the signature; the body is written when the member first appears, as a starting point or a stub, and then belongs to the developer or the AI implementing it.
+                        - **`Mode.Ignore`** on a whole file or member — **opts out of code automation entirely**, signature included. It is **not** how a module hands a body to a developer or AI. Its one common use in module output is a small member scaffolded once for the developer to own outright, such as a factory extension's `Order` property.
 
-                    **Decision rule:** anticipate the developer will want to make changes in a space → **merge**. Otherwise → **fully**. **Ignore is off the table** for module output — choosing it means giving up automation.
+                    **Decision rule:** give every method body one owner.
+
+                        - **Code the template can generate from the model** → a **fully** managed body.
+                        - **Code a developer or AI writes** → **`Body = Mode.Ignore`**, with a stub (`file-builder-expert` Musts #11). This is the default for a new template's "implement here" body.
+                        - **Both in one body** → pull the generated part into its own fully managed member, such as a private method or a helper class, and call it from the ignored body. A model change still reaches the generated member; if it changes the member's signature, the build breaks rather than the body going quietly stale.
+                        - **Merge** → where the module's `CONTEXT.md` or the developer says generated and hand-written lines share the body (as handler templates in several existing modules do). The one case to choose it yourself is a body that collects generated lines from several templates or modules, such as a DI registration method, where nothing can be pulled out. `// IntentInitialGen` above a once-off statement in a Merge body lets the developer replace or delete it without the Software Factory restoring it.
+
+                    **Never change an existing template's body mode on your own.** Moving a Merge body to `Ignore` freezes every consumer's current body, and moving the other way starts rewriting code consumers own. It is a decision for the developer, recorded in the module's `CONTEXT.md`.
 
                     ===
 
@@ -196,6 +222,14 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleBuilding
 
                     > This is exactly why "SF shows 0 changes" on the reference app proves nothing on its own — the code was already present. The from-scratch run is the real proof.
 
+                    ### When the module cannot be installed
+
+                    Both phases need the module installed in an application. If the install fails, or the module cannot be found to install, stop verifying and report it with the error and what you tried — if the module-building workflow instructions are present, their "If A Phase Cannot Be Completed" section is the procedure. Neither phase counts as passed: finish what needs no install (build, documentation, dependency audit by reading the code) and mark the generated output as unverified. Never edit `modules.config` or anything under `.intent` to force the install through.
+
+                    ### Extensions on another modeler's element types
+
+                    When the module extends element types owned by a different modeler (an Element Extension on another designer's element, say), that modeler must be installed in the module's **own** Module Builder application — a metadata-only install is enough. Without it the extension has no type to point at, and the Software Factory cannot write it into the module's designer settings. Check this before Phase 1. Then, in each verification app, confirm the modeler is installed there too and that the extension actually appears on the target elements; an extension that is missing from the designer was not verified, however clean the generation looked.
+
                     ### The regeneration-baseline gate (Phase 1 precondition)
 
                     Phase 1's comparison is only valid if SF genuinely regenerates the template-owned regions. Before trusting any staged diff:
@@ -204,6 +238,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleBuilding
                     2. **100%-Intent-managed files** → **delete-to-regenerate** so SF produces them fresh and the diff is true template output.
                     3. **Merge-body files** → strip any hand-added `Ignore` (or merge-protected *stub*) that was only there to make the reference app run. Keep an ignore **only** where it deliberately mirrors real developer bespoke code.
                     4. **Never leave a hand-added `Ignore` on a template-owned region** — it silently opts that region out of regeneration, so the diff shows the hand-craft instead of the template's real output.
+
+                    A body the template itself emits with `Body = Mode.Ignore` is never rewritten over the reference app's hand-written code, so Phase 1 cannot check it. Check its first-run body, usually the stub, in the Phase 2 from-scratch run.
 
                     ### Coverage — the spanning set and per-type topology
 
@@ -223,6 +259,22 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleBuilding
                     ### App/solution creation tooling
 
                     The AI should **attempt to create the app/solution itself** via the MCP creation tools (`create_application` / `create_solution`). Only if those tools are missing or fail should it **ask the user** to perform the step.
+
+                    ===
+
+                    ## 5. How A Module Carries AI Guidance
+
+                    A module can ship guidance for the AI agents working in the applications that install it. There are two channels, split by what the agent is doing:
+
+                    - **Designer `AI Settings` → `Rules`** — for an agent *modelling* in a designer: what an element type is for, when to use it, which stereotype it needs. Set them on the designer, element, or association settings (or extension) you own; Intent Architect hands them to the agent with the designer's schema. Mechanics: `add-designer-extension`.
+                    - **A generated `SKILL.md`** — for an agent *writing code* against the module's output: how to fill in a generated handler, what a convention expects. A template in the module generates it into the consuming application, so it is versioned and updated with the module.
+
+                    A new module must **never register an AI task provider**. AI task providers are deprecated; guidance goes through the two channels above only.
+
+                    That leaves an **accepted gap**. A task provider could flag, after each Software Factory run, the specific files still needing hand-written code ("this handler still needs implementing"). Nothing replaces that proactive flag, and none is planned: rules and skills are read when an agent looks for guidance, not pushed when generation leaves work behind. Accept that, and word the guidance so an agent that reads it can find the work itself:
+
+                    - **Rules are conditional on generation.** Write "once the Software Factory has generated the handler for this command, write its body: …", not "implement the handler" — the rule is read while modelling, before any code exists.
+                    - **Skills say how to find pending work.** For example: "find the handlers still to write by their `throw new NotImplementedException(...)` stub, then …". That is what a generated stub carries until a developer writes the body (`file-builder-expert` Musts #11 shows how a template emits it). Do not point at `// IntentInitialGen`: it sits in the template's source only and never reaches the generated file.
 
                     """""");
         }

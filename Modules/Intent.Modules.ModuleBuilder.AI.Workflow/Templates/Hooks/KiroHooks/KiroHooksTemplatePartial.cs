@@ -68,7 +68,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.KiroHooks
             // further tools such as "str_replace" and "delete_file". The docs do not say whether a v3
             // matcher sees aliases, and a wrong matcher fails silently and OPEN, so every known name
             // is listed. Not ".*": guard-write would then also see read tools, which carry a path too,
-            // and deny an agent reading metadata.
+            // and deny an agent reading metadata. Intent's MCP file tools are added by their own names
+            // (GateCommands.IntentFileToolsMatcher); how Kiro names an MCP tool in a matcher is
+            // unverified too, so the pattern matches the tool name anywhere in it.
             //
             // The guards use the portable form because Kiro runs hooks in PowerShell on Windows, which
             // turned the gate's exit 2 into 1 and let a denied write through until
@@ -85,7 +87,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.KiroHooks
                     {
                       "name": "intent-agent-gate-guard-write",
                       "trigger": "PreToolUse",
-                      "matcher": "write|fs_write|fsWrite|str_replace|fs_append|delete_file",
+                      "matcher": "write|fs_write|fsWrite|str_replace|fs_append|delete_file|{{GateCommands.IntentFileToolsMatcher}}",
                       "action": { "type": "command", "command": "{{GateCommands.GuardPortable(HarnessFolder, "guard-write")}}" }
                     },
                     {

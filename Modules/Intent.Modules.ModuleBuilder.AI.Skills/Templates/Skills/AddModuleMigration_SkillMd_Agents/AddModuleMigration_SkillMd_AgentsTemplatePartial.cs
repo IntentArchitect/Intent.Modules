@@ -59,12 +59,15 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddModuleMigra
                     not a descriptive name like `FlattenSkillsFolders`. Confirmed against a real shipped module's Migrations
                     tree (`Intent.Modules.VisualStudio.Projects`): `On-Install`, `3.8.10-pre.2`, `3.9.2-pre.0`, `4.0.0-pre.0`,
                     … one entry per version that ever needed a migration. The generated class name derives directly from the
-                    element name (dots/hyphens become underscores — `1.0.1-pre.3` → `Migration_01_00_01_Pre_03`), and its
-                    `ModuleVersion` property is set to that same string — both `[IntentFully]`, never hand-edit them.
+                    element name (dots/hyphens become underscores, numbers are zero-padded — `1.0.1-pre.3` →
+                    `Migration_01_00_01_Pre_03`), and its `ModuleVersion` property is the element name verbatim. Both come
+                    from the element name alone, not from the module's version; `ModuleId` is the module's name. The
+                    properties are `[IntentFully]`, so never hand-edit them — rename the element instead.
 
-                    **Increment the module's version first, then create the Version Migration element.** The Software Factory
-                    captures whatever the module's current version is at generation time into the element's generated class -
-                    creating the migration before bumping the version bakes in the wrong version.
+                    **Increment the module's version first, then create the Version Migration element, named for that new
+                    version.** A migration runs for a consumer updating across the version in its name, so the name must be the
+                    unpublished version that ships the change. Name it after a version consumers already have and they never
+                    run it. Bumping first means you know the right name before you create the element.
 
                     ## What Gets Generated, What You Add
 
@@ -93,13 +96,49 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddModuleMigra
                     body survive later regenerations. `ModuleId`/`ModuleVersion` stay `[IntentFully]` generated; never hand-edit
                     them.
 
+                    The other two elements generate the same way, each with a single method to fill in. The class name is the
+                    element's name plus `Migration` (an element named `OnInstall` gives `OnInstallMigration`), and there is no
+                    `ModuleVersion`:
+
+                    ```csharp
+                    public class OnInstallMigration : IModuleOnInstallMigration
+                    {
+                        public OnInstallMigration()
+                        {
+                        }
+
+                        [IntentFully]
+                        public string ModuleId => "...";
+
+                        public void OnInstall() { }
+                    }
+
+                    public class OnUninstallMigration : IModuleOnUninstallMigration
+                    {
+                        public OnUninstallMigration()
+                        {
+                        }
+
+                        [IntentFully]
+                        public string ModuleId => "...";
+
+                        public void OnUninstall() { }
+                    }
+                    ```
+
                     ## Editing The Consumer's Own Metadata
 
                     To read or change the consuming application's own model, add an `Intent.Persistence.V2.IPersistenceLoader`
-                    constructor parameter (package `Intent.Persistence.SDK` - the Software Factory adds the reference
-                    automatically the first time you reference the type, but pins an old/alpha version that can trigger an
-                    `NU1605` downgrade error against `Intent.Modules.Common`'s transitive floor; bump the `.csproj` reference to
-                    a current stable version by hand if that happens - see the `known-build-gotchas` instructions):
+                    constructor parameter, from the `Intent.Persistence.SDK` package. Check the package reference before you
+                    write any code against it:
+
+                    - The `Version Migration` template always adds `Intent.Persistence.SDK` to the module's `.csproj`, pinned at
+                    `1.0.1-alpha.2`. That version has only the older `Intent.Persistence` namespace; the `Intent.Persistence.V2`
+                    API shown below needs `1.0.3`. Raise the `.csproj` reference to `1.0.3` by hand. If the module references
+                    `Intent.Modules.Common` 3.11.0 or later (which depends on `1.0.3`), leaving it at `1.0.1-alpha.2` is also an
+                    `NU1605` downgrade error - see the `known-build-gotchas` instructions.
+                    - The `On-Install Migration` and `On-Uninstall Migration` templates add no package. If the module has no
+                    Version Migration, add the `Intent.Persistence.SDK` `1.0.3` reference yourself.
 
                     ```csharp
                     private readonly IPersistenceLoader _persistenceLoader;
@@ -122,9 +161,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddModuleMigra
                     ```
 
                     This is a **direct, headless edit of the consumer's serialized metadata** - not a live designer session -
-                    so identify designer/element/type IDs by their raw GUIDs/names (from `get_designer_schema`, or a script's
-                    `el.specializationId`), not the `run_designer_script` macro API, which only operates on an open, in-memory
-                    model.
+                    so identify designer/element/type IDs by their raw GUIDs/names (look them up beforehand with
+                    `run_designer_query` - `getDesignerSchema()`, or an element handle's `el.getId()` / `el.specializationId`),
+                    not the `run_designer_script` macro API, which only operates on an open, in-memory model.
 
                     ## A Worked Case: Cleaning Up A Consumer's Stale Elements After A Module Restructure
 
@@ -148,15 +187,16 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddModuleMigra
 
                     ## Checklist
 
-                    - [ ] Module's version incremented **before** creating the Version Migration element, so the Software
-                    Factory captures the right version.
+                    - [ ] Module's version incremented **before** creating the Version Migration element, so the element can be
+                    named for the new, unpublished version (the name is what becomes `ModuleVersion`).
                     - [ ] `Module Migrations` container exists (created once, named exactly `Module Migrations`); the new
                     element is a `Version Migration` child named **exactly** the target semver string.
                     - [ ] Software Factory run to scaffold the class - the class shell is never hand-written.
                     - [ ] Constructor parameter (e.g. `IPersistenceLoader`) and `Up()`/`Down()` bodies hand-authored;
                     `ModuleId`/`ModuleVersion` left untouched (`[IntentFully]`).
-                    - [ ] If a new NuGet package reference was auto-added (e.g. `Intent.Persistence.SDK`), its version checked
-                    against transitive floors - bumped by hand if a `NU1605` downgrade would occur.
+                    - [ ] `Intent.Persistence.SDK` reference raised to `1.0.3` in the `.csproj` (the Version Migration template
+                    adds `1.0.1-alpha.2`, which lacks `Intent.Persistence.V2`), or added by hand for an On-Install/On-Uninstall
+                    migration.
                     - [ ] Cleanup/edit logic identifies its target directly by name/anchor, not by an "already
                     empty"/"already settled" assumption.
                     - [ ] Verified against a real consumer application still on the old version - not just a clean build.

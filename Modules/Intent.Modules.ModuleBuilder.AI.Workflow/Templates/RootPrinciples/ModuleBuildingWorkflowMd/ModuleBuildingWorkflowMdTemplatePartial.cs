@@ -40,17 +40,25 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.RootPrinciples.Modu
                 ## If An Agent Gate Hook Itself Fails
 
                 This repository runs an agent gate from your harness's hooks: `dotnet run <harness folder>/hooks/gate/gate.cs`,
-                such as `.claude/hooks/gate/gate.cs`. When that hook cannot run at all, the error comes from `dotnet`, not
-                from the gate. It is a machine setup problem, not a problem with your work. Do not retry the hook, work
-                around it, or treat it as a finding to fix. Tell the user which of these applies:
+                such as `.claude/hooks/gate/gate.cs`, a path relative to the project root. When that hook cannot run at all,
+                the error comes from `dotnet`, not from the gate. Do not retry the hook unchanged, work around it, or treat it
+                as a finding to fix.
+
+                First rule out the one cause you fix yourself: your working directory. Where your harness keeps the directory
+                of your last `cd` and runs hooks from it, the relative path no longer resolves after you change into a module
+                folder. If the error is
+                `Couldn't find a project to run`, or `Unable to proceed with project` ending in "OutputType 'Exe'", change
+                back to the project root and carry on - and run later commands from there, passing paths instead of
+                changing directory.
+
+                Anything else is a machine setup problem, not a problem with your work. Tell the user which of these applies:
 
                 | Error from the hook | Cause | Fix for the user |
                 | --- | --- | --- |
                 | `dotnet: command not found`, or `dotnet` is not recognized | No .NET SDK on `PATH` | Install the .NET 10 SDK |
-                | `Couldn't find a project to run` | The active SDK is older than .NET 10, often because a `global.json` pins one | Install the .NET 10 SDK, or update `global.json` |
+                | `Couldn't find a project to run`, from the project root | The active SDK is older than .NET 10, often because a `global.json` pins one | Install the .NET 10 SDK, or update `global.json` |
                 | `A compatible .NET SDK was not found` | A `global.json` pins an SDK that is not installed | Install that SDK, or update `global.json` |
                 | `An error occurred trying to start process`, naming the gate's own build output | The gate has not been built yet | Run `dotnet run <harness folder>/hooks/gate/gate.cs -- warm` from the project root |
-                | `gate.cs` itself cannot be found | Your working directory is not the project root | Change back to the project root |
 
                 A failing close-out hook never needs action from you. It only reports, and the turn may end.
 
@@ -110,6 +118,14 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.RootPrinciples.Modu
                     | `module-docs-chore`        | Phase 3 and Phase 4                                |
                     | `module-dependency-audit`  | Phase 4 (verify)                                   |
 
+                    ### Edits That Skip The Phases
+
+                    An edit that only changes comments or formatting in a module's own code needs none of the phases
+                    below: no `CONTEXT.md` read, no version increment, no documentation. This covers only text the
+                    templates do not emit. A comment a template writes into generated output, any wording in a
+                    template that produces documentation or skills, and whitespace or line breaks inside a string a
+                    template emits are generated output, and the phases apply.
+
                     ===
 
                     ## Phase 1 — Understand The Task And What It Touches
@@ -145,6 +161,28 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.RootPrinciples.Modu
                     If you cannot tell whether generated output is affected, treat it as affected. Capturing output that
                     turned out not to change costs minutes; shipping an unverified change does not.
 
+                    ### Size the work, and prove its code patterns before templating them
+
+                    **Small work** — a change to one template, or a single new template — goes straight on to Phase 3,
+                    with or without reference code.
+
+                    **Large work** — a specification or PRD, several new templates, or a new module — templates only code
+                    patterns that are already proven: hand-written code in a reference application that compiles, runs
+                    and is tested. A specification says what to generate; it does not prove the code. List the patterns
+                    the work needs and where each one's reference code is. When you cannot tell which size the work
+                    is, ask the developer.
+
+                    > **If a pattern has no reference code, stop and ask the developer how to proceed** — they supply it,
+                    > you write a reference implementation for them to review before any template reproduces it, or the
+                    > scope narrows to the proven patterns. Never work a pattern out inside a template.
+
+                    **Checkpoints.** If the developer supplied a plan, it sets the review points; add none of your own.
+                    Without one, ask the developer before templating the first pattern whether you can carry on through
+                    the rest yourself or should stop for their review after each pattern.
+
+                    If the `module-building-strategies` skill is available in your environment, its § "Prove a code
+                    pattern before you template it" covers the same rule in more depth.
+
                     ### Anticipate the modules in scope, and ensure each is at an unpublished version
 
                     Name every module you expect this task to change, then run the gate in `module-version-increment` — *Is
@@ -176,8 +214,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.RootPrinciples.Modu
 
                     → `module-version-increment`
 
-                    > **Exit condition:** the change is classified, output captured if applicable, and every module you
-                    > expect to change has been through the gate.
+                    > **Exit condition:** the change is classified, output captured if applicable, every module you
+                    > expect to change has been through the gate, and for large work every code pattern has reference
+                    > code or the developer has decided how to proceed.
 
                     ===
 
@@ -252,6 +291,20 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.RootPrinciples.Modu
                     Say so explicitly and stop, rather than proceeding on an assumption. A module task that skips a phase
                     silently produces work that looks finished and is not — and the cost lands on a consumer who cannot
                     see what was skipped.
+
+                    ### When the module cannot be installed
+
+                    Verifying generated output needs the changed module installed in an application. When that install
+                    fails, or the module cannot be found to install, stop verifying and report it, with the error and what
+                    you tried. Then finish what does not need an install:
+
+                    - Build the module, and fix anything that breaks it.
+                    - Write the documentation and the `CONTEXT.md` entries.
+                    - Run the dependency audit by reading the code and templates against the `.imodspec`.
+
+                    In every document you write or report you give, mark the generated output as unverified. Never edit
+                    `modules.config` or anything under `.intent` to force the install through: both are Intent Architect's
+                    own records, and a hand-edit corrupts them rather than installing anything.
                     """""");
         }
 

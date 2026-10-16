@@ -37,11 +37,14 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks
         /// being cloned or moved - which matters because these files are committed.
         /// </para>
         /// <para>
-        /// KNOWN HAZARD, deliberately not solved here: a hook command runs in whatever the agent's
-        /// current directory happens to be, so if the agent leaves the project root - running a build
-        /// from inside a module folder is enough - the path stops resolving and the gate can no longer
-        /// be found. This is an agent-behaviour problem and belongs in agent guidance (the generated
-        /// workflow instructions name it), not in every hook config.
+        /// KNOWN HAZARD, not solved in the command: Claude Code runs a hook in the shell's current
+        /// directory, so after the agent "cd"s into a module folder the path stops resolving and every
+        /// guarded write is blocked. Claude Code's main session is kept in place by the
+        /// CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR setting HarnessHookSets merges into
+        /// ".claude/settings.json" (the setting does not cover subagents); the generated workflow
+        /// instructions cover the rest. Cursor and Kiro
+        /// run project hooks from the project root, Codex from the session directory, Copilot from the
+        /// repository root unless "cwd" says otherwise, and the OpenCode plugin from its own process.
         /// </para>
         /// </remarks>
         public static string GatePath(string harnessFolder) => $"{harnessFolder}/hooks/gate/gate.cs";
@@ -55,6 +58,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks
         {
             ".claude", ".codex", ".cursor", ".github", ".kiro", ".opencode",
         };
+
+        /// <summary>
+        /// Intent Architect's own MCP file tools, which can write metadata as surely as a harness's
+        /// edit tool. Matched by the tool's own name, as ".*run_designer_script.*" is, so the matcher
+        /// holds whatever name the developer gave the Intent MCP server.
+        /// </summary>
+        public const string IntentFileToolsMatcher = ".*(write_file|patch_file|delete_code_file).*";
 
         /// <summary>The harness id the gate expects - the anchor folder name without its leading dot.</summary>
         public static string HarnessId(string harnessFolder) => harnessFolder.TrimStart('.');

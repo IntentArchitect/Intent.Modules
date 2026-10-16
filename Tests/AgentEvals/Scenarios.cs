@@ -637,10 +637,13 @@ public sealed class InstructionsReachAgent : Scenario
     }
 }
 
-/// <summary>G2 - Phase 1 of the workflow: a module's CONTEXT.md is read before the module is changed.</summary>
+/// <summary>
+/// G2 - Phase 1 of the workflow: a module's CONTEXT.md is read before the module is changed. The change
+/// affects generated output, because the workflow exempts an edit that only touches comments or formatting.
+/// </summary>
 public sealed class ContextReadFirst : Scenario
 {
-    private const string Comment = "// Generates the sample output file.";
+    private const string NewFileName = "sample.md";
 
     public override string Id => "G2";
 
@@ -648,7 +651,7 @@ public sealed class ContextReadFirst : Scenario
 
     public override Layer Layer => Layer.Guidance;
 
-    public override string Prompt => $"In SampleModule's template partial, replace the comment '{Sample.TodoComment}' with '{Comment}'.";
+    public override string Prompt => $"Change SampleModule's template so the file it generates is called '{NewFileName}' instead of 'sample.txt'.";
 
     public override IEnumerable<Check> Checks(Evidence evidence)
     {
@@ -658,7 +661,7 @@ public sealed class ContextReadFirst : Scenario
         yield return new Check("Context read", readAt >= 0, readAt >= 0 ? "CONTEXT.md was read" : "CONTEXT.md was never read");
         yield return new Check("Read before change", readAt >= 0 && (writeAt < 0 || readAt < writeAt),
             readAt < 0 ? "never read" : writeAt < 0 || readAt < writeAt ? "read before the first edit" : "read only after editing");
-        yield return new Check("Task completed", evidence.Read(Sample.Partial).Contains(Comment), "the comment change is on disk");
+        yield return new Check("Task completed", evidence.Read(Sample.Partial).Contains($"\"{NewFileName}\""), $"the template now generates {NewFileName}");
     }
 }
 
@@ -717,7 +720,11 @@ public sealed class NoFalseActivation : Scenario
     }
 }
 
-/// <summary>G5 - an observable change is documented in the same session: release notes follow the change.</summary>
+/// <summary>
+/// G5 - an observable change is documented in the same session: release notes follow the change. Judged on the
+/// outcome - the note names the change and labels nothing beta or pre-release, the `module-docs-chore` rule an
+/// agent most often breaks - not on whether that skill was loaded (user decision, 2026-10-16).
+/// </summary>
 public sealed class DocsFollowChange : Scenario
 {
     public override string Id => "G5";
@@ -728,15 +735,27 @@ public sealed class DocsFollowChange : Scenario
 
     public override string Prompt => "Change SampleModule's template so the file it generates is called 'retry-sample.txt' instead of 'sample.txt'.";
 
+    /// <summary>
+    /// Part of the baseline: the template comes from the published 1.0.0, so the rename is something consumers will see. In the
+    /// bare fixture it is new in the unreleased 1.0.1, whose "Adds the sample template" already covers the
+    /// rename under module-docs-chore's fold rule, and an agent rightly left the notes alone.
+    /// </summary>
+    public override void Arrange(string root) => Sample.Replace(root, Sample.ReleaseNotes,
+        "- New Feature: Adds the sample template.",
+        "- Fixed: The Retry Count setting now applies to the generated file.\n\n### Version 1.0.0\n\n- New Feature: Adds the sample template.");
+
     public override IEnumerable<Check> Checks(Evidence evidence)
     {
         var changed = evidence.Read(Sample.Partial).Contains("retry-sample.txt");
         var notes = evidence.Changed(Sample.ReleaseNotes);
-        var skill = evidence.SkillLoadedAt("module-docs-chore") >= 0;
+        var noteText = evidence.Read(Sample.ReleaseNotes);
+        var named = noteText.Contains("retry-sample.txt", StringComparison.OrdinalIgnoreCase);
+        var label = Regex.Match(noteText, @"\b(beta|preview|pre-?release)\b", RegexOptions.IgnoreCase);
 
         yield return new Check("Change made", changed, changed ? "the template now generates retry-sample.txt" : "the template change is missing");
         yield return new Check("Release notes updated", notes, notes ? "release-notes.md changed" : "release-notes.md was not updated");
-        yield return new Check("Docs skill loaded", skill, skill ? "module-docs-chore was loaded" : "module-docs-chore was never loaded");
+        yield return new Check("Note names the change", notes && named, named ? "the note mentions retry-sample.txt" : "no note mentions retry-sample.txt");
+        yield return new Check("No pre-release label", notes && !label.Success, label.Success ? $"the notes say '{label.Value}'" : "nothing is labelled beta or pre-release");
     }
 }
 
