@@ -135,6 +135,11 @@ workspace. Two things guard against that:
 A write outside both the workspace and the repository is still not caught; running each scenario in a
 Linux container would close that (PLAN.md, option B).
 
+On Windows, Codex runs a hook's `commandWindows` in PowerShell. Where `pwsh` is the `dotnet tool` shim
+(`~\.dotnet\tools\pwsh.exe`), it needs `dotnet` to start, so S9 (no SDK on `PATH`) crashes the shell itself:
+the hook's `exit 2` never runs, Codex treats the crash as non-blocking, and the edit goes through. That is a
+known, accepted gap (PLAN.md, finding 14). Windows PowerShell 5.1 does not have it.
+
 ### Codex sign-in
 
 Codex runs with `CODEX_HOME` in the eval root, which needs its own sign-in, once - `--list` shows whether

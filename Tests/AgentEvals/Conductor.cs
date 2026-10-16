@@ -195,6 +195,16 @@ public static class Conductor
             var workspace = await Workspace.CreateAsync(paths, harness, scenario, runDirectory);
             var startInfo = harness.CreateRun(new RunRequest(workspace, scenario.Prompt, options.ModelFor(harness.Id), scenario.UsesIntentStub));
             startInfo.Environment["INTENT_GATE_LOG"] = workspace.TelemetryPath;
+            if (harness.Id != "claude")
+            {
+                // Running the evals from inside a Claude Code session would otherwise hand its CLAUDECODE and
+                // CLAUDE_* variables to every other harness, and to the gate hooks those harnesses run.
+                foreach (var name in startInfo.Environment.Keys.Where(k => k.StartsWith("CLAUDE", StringComparison.OrdinalIgnoreCase)).ToList())
+                {
+                    startInfo.Environment.Remove(name);
+                }
+            }
+
             scenario.AdjustEnvironment(startInfo.Environment);
             var process = await Processes.RunAsync(startInfo, stdin: null, options.Timeout);
 
@@ -207,6 +217,11 @@ public static class Conductor
             }
 
             var transcript = harness.ParseTranscript(process.Stdout);
+            if (InfrastructureFailure(process, transcript) is { } infrastructure)
+            {
+                return (Failed(infrastructure, process.Duration.TotalSeconds), false);
+            }
+
             var changed = await workspace.ChangedFilesAsync();
             var diff = await workspace.DiffAsync();
             File.WriteAllText(Path.Combine(runDirectory, "diff.patch"), diff);
@@ -223,6 +238,31 @@ public static class Conductor
         {
             return (Failed(exception.Message), false);
         }
+    }
+
+    /// <summary>Errors from a model provider or the network, which the harness reports in its output.</summary>
+    private static readonly string[] InfrastructureMarkers =
+    [
+        "ModelThrottleError", "ModelRegistryUnavailableError", "ThrottlingException", "overloaded_error",
+        "ECONNRESET", "ENOTFOUND", "EAI_AGAIN", "ETIMEDOUT",
+    ];
+
+    /// <summary>
+    /// A run the model provider or the network cut short is an error, not a result: its checks would pass or
+    /// fail on an agent that never got to work (Kiro's throttled runs did both). A run that hit one of these
+    /// and still finished with a final answer stands.
+    /// </summary>
+    private static string? InfrastructureFailure(ProcessResult process, Transcript transcript)
+    {
+        if (transcript.FinalMessage.Length > 0)
+        {
+            return null;
+        }
+
+        var output = process.Stdout + process.Stderr;
+        return InfrastructureMarkers.FirstOrDefault(m => output.Contains(m, StringComparison.Ordinal)) is { } marker
+            ? $"infrastructure: the run stopped on {marker} before the agent finished; re-run it"
+            : null;
     }
 
     private static async Task ListAsync(EvalPaths paths, IReadOnlyList<IHarness> harnesses)

@@ -44,6 +44,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.RootPrinciples.Modu
                 the error comes from `dotnet`, not from the gate. Do not retry the hook unchanged, work around it, or treat it
                 as a finding to fix.
 
+                A blocked edit stays blocked, whether the hook denied it with a reason or failed with none - some harnesses
+                show only "hook exited with code 2". Never make that edit another way the gate does not see, such as a shell
+                command or a script that writes the file. Take only the route a denial names, and when there is none, stop
+                and tell the user what was blocked and why.
+
                 First rule out the one cause you fix yourself: your working directory. Where your harness keeps the directory
                 of your last `cd` and runs hooks from it, the relative path no longer resolves after you change into a module
                 folder. If the error is

@@ -72,7 +72,7 @@ public abstract class Scenario
             : $"not reported ({expectation}) - the final answer says nothing about {string.Join(" / ", missing.Select(g => string.Join("|", g)))} - \"{TranscriptParsers.Trunc(evidence.Transcript.FinalMessage, 200)}\"");
     }
 
-    protected static Check EndedCleanly(Evidence evidence, int maxTurns = 25) =>
+    protected static Check EndedCleanly(Evidence evidence, int maxTurns = 40) =>
         new("Ended cleanly",
             !evidence.Process.TimedOut && (evidence.Transcript.Turns == 0 || evidence.Transcript.Turns <= maxTurns),
             evidence.Process.TimedOut

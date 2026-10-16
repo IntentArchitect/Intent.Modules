@@ -112,7 +112,7 @@ public class GateSmokeTests
         using var project = new TempDirectory();
         CopyGate(project, ".claude", broken: true);
 
-        var result = Run("sh", ["-c", GateCommands.GuardPosix(".claude", "guard-write")], project.Path, "{}");
+        var result = Run(FindSh(), ["-c", GateCommands.GuardPosix(".claude", "guard-write")], project.Path, "{}");
 
         Assert.Equal(2, result.ExitCode);
     }
@@ -141,7 +141,7 @@ public class GateSmokeTests
         Assert.Equal(0, Run("dotnet", ["run", gate, "--", "warm"], project.Path).ExitCode);
         var command = GateCommands.GuardPortable(".kiro", "guard-write");
 
-        Assert.Equal(2, Run("sh", ["-c", command], project.Path, DenyStdin).ExitCode);
+        Assert.Equal(2, Run(FindSh(), ["-c", command], project.Path, DenyStdin).ExitCode);
         Assert.Equal(2, Run(powerShell, ["-NoProfile", "-Command", command], project.Path, DenyStdin).ExitCode);
     }
 
@@ -153,7 +153,7 @@ public class GateSmokeTests
         using var project = new TempDirectory();
         CopyGate(project, ".claude", broken: true);
 
-        var result = Run("sh", ["-c", GateCommands.CloseOut(".claude")], project.Path, "{}");
+        var result = Run(FindSh(), ["-c", GateCommands.CloseOut(".claude")], project.Path, "{}");
 
         Assert.NotEqual(2, result.ExitCode);
     }
@@ -191,6 +191,24 @@ public class GateSmokeTests
         project.CreateFile(Path.Combine(harnessFolder, "hooks", "gate", "Directory.Build.props"),
             File.ReadAllText(Path.Combine(sourceFolder, "Directory.Build.props")));
         return project.CreateFile(Path.Combine(harnessFolder, "hooks", "gate", "gate.cs"), content);
+    }
+
+    private static string FindSh()
+    {
+        try
+        {
+            if (Run("sh", ["-c", "exit 0"], Path.GetTempPath()).ExitCode == 0)
+            {
+                return "sh";
+            }
+        }
+        catch (System.ComponentModel.Win32Exception)
+        {
+            // Not on PATH: Git for Windows puts only Git\cmd there by default, not Git\usr\bin.
+        }
+
+        Assert.Skip("No sh is on PATH, so the POSIX command forms cannot be exercised here.");
+        return null!;
     }
 
     private static string FindPowerShell()

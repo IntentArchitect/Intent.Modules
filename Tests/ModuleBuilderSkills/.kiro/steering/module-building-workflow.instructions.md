@@ -5,7 +5,7 @@ inclusion: always
 description: "Phase-by-phase workflow for any task that builds or changes an Intent Architect module, and which workflow skill each phase calls for."
 keywords: [workflow, module building, phases, version, documentation, context]
 template-id: Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd
-contentHash: 5146DE0003C5659974C14D934E45748034A3F4A43D6242D0B6E6C982A5B19C20
+contentHash: C5F2B0E30A101F5DDB64AC90956C9E1C75FDEF45E654398C7E2279D61556E9E3
 ---
 # Module Building Workflow
 
@@ -213,6 +213,11 @@ This repository runs an agent gate from your harness's hooks: `dotnet run <harne
 such as `.claude/hooks/gate/gate.cs`, a path relative to the project root. When that hook cannot run at all,
 the error comes from `dotnet`, not from the gate. Do not retry the hook unchanged, work around it, or treat it
 as a finding to fix.
+
+A blocked edit stays blocked, whether the hook denied it with a reason or failed with none - some harnesses
+show only "hook exited with code 2". Never make that edit another way the gate does not see, such as a shell
+command or a script that writes the file. Take only the route a denial names, and when there is none, stop
+and tell the user what was blocked and why.
 
 First rule out the one cause you fix yourself: your working directory. Where your harness keeps the directory
 of your last `cd` and runs hooks from it, the relative path no longer resolves after you change into a module

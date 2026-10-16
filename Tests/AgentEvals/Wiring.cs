@@ -109,10 +109,11 @@ public static class Wiring
                 // transcript_path. Cursor's does, so under Cursor both copies still run (documented).
                 var claudeGate = Path.Combine(root, ".claude", "hooks", "gate", "gate.cs");
                 var stepsAside = spec.Id == "copilot" && File.Exists(claudeGate) && File.ReadAllText(claudeGate).Contains("StepsAsideFor", StringComparison.Ordinal);
-                checks.Add(new Check("No duplicate hooks", gateHooks == 0 || stepsAside,
+                // Cursor running Claude's copy too is a documented limitation: reported, not failed.
+                checks.Add(new Check("No duplicate hooks", gateHooks == 0 || stepsAside || spec.Id == "cursor",
                     gateHooks == 0 ? "no other harness's gate hooks are loaded too"
                     : stepsAside ? $"{spec.DisplayName} also loads {gateHooks} gate hook(s) from .claude/settings.json; Claude's copy steps aside when {spec.DisplayName} runs it (verified by D1)"
-                    : $"{spec.DisplayName} also loads .claude/settings.json hooks, so {gateHooks} gate hook(s) run a second time, as Claude Code - a documented limitation"));
+                    : $"{spec.DisplayName} also loads .claude/settings.json hooks, so {gateHooks} gate hook(s) run a second time, as Claude Code - a documented limitation (informational)"));
             }
 
             var instructionFiles = spec.InstructionFiles(root).Distinct().ToList();

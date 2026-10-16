@@ -117,7 +117,17 @@ public sealed record Evidence(
         return -1;
     }
 
-    private static string Normalize(string path) => path.Replace('\\', '/');
+    // Codex reports Windows paths with doubled backslashes (".\\.agents\\skills\\..."), which would become "//".
+    private static string Normalize(string path)
+    {
+        var normalized = path.Replace('\\', '/');
+        while (normalized.Contains("//", StringComparison.Ordinal))
+        {
+            normalized = normalized.Replace("//", "/", StringComparison.Ordinal);
+        }
+
+        return normalized;
+    }
 
     public static IReadOnlyList<GateRun> ReadTelemetry(string path) =>
         ReadJsonLines(path, root => new GateRun(
