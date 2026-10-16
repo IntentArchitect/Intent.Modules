@@ -12,7 +12,7 @@
   <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
   <file path="Intent.Modelers.Types.ServiceProxies.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
   <file path="Intent.Modules.Modelers.Types.ServiceProxies.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
-  <file path="ServicesPackageExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel" />
+  <file path="ServicePackageExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel" />
   <file path="modelers/Service Proxy Services Extension.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
   <file path="modelers/Service Proxy Types.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
 </managedFiles>

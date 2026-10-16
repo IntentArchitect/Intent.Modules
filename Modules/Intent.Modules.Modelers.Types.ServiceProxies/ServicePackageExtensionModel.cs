@@ -12,10 +12,10 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Types.ServiceProxies.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class ServicesPackageExtensionModel : ServicesPackageModel
+    public class ServicePackageExtensionModel : ServicesPackageModel
     {
         [IntentManaged(Mode.Ignore)]
-        public ServicesPackageExtensionModel(IPackage package) : base(package)
+        public ServicePackageExtensionModel(IPackage package) : base(package)
         {
         }
 
