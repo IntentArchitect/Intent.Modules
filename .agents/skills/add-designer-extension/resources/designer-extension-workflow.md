@@ -1,5 +1,5 @@
 ---
-contentHash: FA62358193DEC5C8E3A35AD7C1D0C33566D670A0C0B09CFC65FD7AD57271D62F
+contentHash: 4CAC1C8952D835B320221015FAA345ED509AC0749D9AC3DB827E174E0087ABB2
 ---
 # Add Designer Extension — Workflow & Details
 
@@ -19,19 +19,16 @@ contentHash: FA62358193DEC5C8E3A35AD7C1D0C33566D670A0C0B09CFC65FD7AD57271D62F
 
 You need the `typeId` of the element or package you are extending. Never guess.
 
-**Option A — MCP lookup:**
+**Option A — MCP lookup:** call `run_designer_query` with your module's application ID and its Module Builder
+designer ID (both from `get_applications`). The module that owns the foreign type must be installed in your
+module's application, so its types load as a read-only referenced package. Load `scripting-the-model` first.
 
-```json
-find_designer_elements(
-  applicationId = <target module's application ID>,
-  designerId    = <target module's Module Builder designer ID>,
-  query         = "<element name>",
-  fields        = ["name"],
-  specializations = ["Element Settings"]  // or "Package Settings"
-)
+```javascript
+return findElements({ name: "<element name>", specialization: ["Element Settings"], includeReferences: true }) // or "Package Settings"
+    .map(el => ({ name: el.getName(), id: el.getId(), fromReference: el.isReference() }));
 ```
 
-The result's `id` field is the typeId.
+The returned `id` is the typeId.
 
 **Option B — Generated C# constant:**
 Open `Api/<TypeName>Model.cs` in the target module and read `SpecializationTypeId`.
@@ -55,10 +52,13 @@ Create a `Package Extension` element under the `Designer Settings` node. Set its
 
 Create an `Element Extension` element under the `Designer Settings` node. Set its type reference to the foreign element type ID found in Step 1.
 
-Apply two stereotypes (required):
+Stereotypes:
 
-- `Type Reference Extension Settings` with `Mode = Inherit`
-- `Extension Settings`
+- `Type Reference Extension Settings` — required. The Software Factory reads it without a null check, so it
+  must be present. `Mode = Inherit` keeps the extended type's own type-reference rules; set `Required` or
+  `Optional` (with `Target Types`) only when you deliberately override them.
+- `Extension Settings` — optional; only for overriding the `Display Text Function` or `Validate Function`.
+- `AI Settings` — optional; its `Rules` reach the consuming designer (see the skill's "Attaching AI Rules").
 
 **For an Association Extension:**
 
@@ -85,7 +85,9 @@ Under the extension element (or under the association end extension), create a `
 **Mapping Option** — when the option opens a mapping dialog:
 
 - Set type reference to the `Mapping Settings` definition
-- Apply `Option Settings` with `Shortcut`
+- Apply `Option Settings`: `Shortcut`, `Menu Group`, `Order`, `Trigger On Double-Click`, `Icon` and
+  `Is Option Visible Function` are available. There is no `Default Name` or `Allow Multiple` — the option
+  opens a dialog, it creates nothing.
 
 ### Step 5 — Set Type Order (Optional)
 
@@ -105,9 +107,10 @@ apply_staged_file_changes(applicationId = <your module's app ID>)
 
 ### Step 7 — Verify
 
-1. Check `get_designer_validation_errors` — resolve any errors before continuing.
-2. Confirm the `.designer.settings` file shows the new `<packageExtension>` or `<elementExtension>` block with the correct `typeId`.
+1. Run `run_designer_query` with `return await getDesignerValidationErrors();` — resolve any errors before continuing.
+2. Confirm with `get_file_diffs` that the `.designer.settings` file shows the new `<packageExtension>` or `<elementExtension>` block with the correct `typeId` (and a `<rules>` element if you applied `AI Settings`).
 3. If the extension adds a new element type (not just a menu option to an existing one), verify `Api/<NewType>Model.cs` was generated with the correct `SpecializationTypeId`.
+4. A `Package Extension`, or an `Element Extension` that adds element creation options or mapping settings, also generates `Api/<ExtensionName>Model.cs`; check it compiles.
 
 ===
 
@@ -115,6 +118,7 @@ apply_staged_file_changes(applicationId = <your module's app ID>)
 
 - **Wrong typeId** — using the extension's own ID instead of the foreign type's ID in the type reference. The type reference on an `Element Extension` must point to the element you are *extending*, not to the element you are *creating*.
 - **Missing `Extend Designers`** — creating the extension elements without linking the `Designer Settings` node to the foreign designer. The extensions are invisible until this GUID is set.
-- **Skipping `Type Reference Extension Settings` stereotype** — without `Mode = Inherit` on an Element Extension, type reference behaviour is undefined and the designer may misbehave.
+- **Removing the `Type Reference Extension Settings` stereotype** — the Software Factory dereferences it for every Element Extension, so a missing stereotype fails generation. `Inherit` is the usual `Mode`; `Required` / `Optional` are legitimate when you mean to override the extended type's type reference.
+- **Expecting AI rules on a package to ship** — `AI Settings` → `Rules` on a `Package Settings` or `Package Extension` is silently dropped; put it on the element extension or on `Designer Settings`.
 - **Adding context menu to the extension directly instead of the `[context menu]` child** — the menu options must live inside a `[context menu]` element, not directly on the extension element.
 - **Editing `.designer.settings` directly** — this file is regenerated on every SF run. Always make changes in the Module Builder designer model.

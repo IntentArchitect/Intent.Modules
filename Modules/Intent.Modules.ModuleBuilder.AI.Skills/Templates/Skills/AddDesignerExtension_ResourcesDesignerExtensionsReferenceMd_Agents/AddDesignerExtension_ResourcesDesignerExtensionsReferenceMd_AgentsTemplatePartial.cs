@@ -28,12 +28,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
         .FromMarkdown(""""""
           ---
           applyTo: '**'
-          description: >
-          Reference for authoring Intent Architect Module Builder designer extensions:
-          the two-layer architecture, three extension entry points (packageExtension,
-          elementExtension, associationExtension), new element/association types,
-          context menu options, JavaScript function contracts, how to find type IDs,
-          and the MCP tool sequence for any extension task.
+          description: "Reference for authoring Intent Architect Module Builder designer extensions: the two-layer architecture, three extension entry points (packageExtension, elementExtension, associationExtension), new element/association types, context menu options, JavaScript function contracts, designer property names versus persisted XML names, how to find type IDs, and the MCP tool sequence for any extension task."
           keywords: [intent architect, module builder, designer extension, element extension, package extension, association, context menu, stereotype, mapping, type id]
           ---
 
@@ -117,7 +112,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
             - `Target Types` — array of type GUIDs the end can connect to
             - `Api Property Name` — C# property name on the generated model
             - `Display Text Function` — JavaScript
-            - `Name Accessibility` — `Hidden` / `Visible` / `ReadOnly`
+            - `Name Accessibility` — `Optional`, `Required`, `Disabled` or `Hidden` (any other value throws when the Software Factory parses it)
             - `Is Navigable/Nullable/Collection Default` — default multiplicity
             - `Allow Multiple` — whether multiple associations of this type are permitted
 
@@ -137,12 +132,19 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
           | **Association Creation Option** | A new association of the configured specialization type |
           | **Mapping Option** | Opens the mapping dialog for a configured Mapping Settings |
 
-          All three share these `Option Settings` properties:
-            - `Shortcut` — keyboard shortcut (e.g., `ctrl + shift + i`)
-            - `Default Name` — initial name for the created element
-            - `Allow Multiple` — whether more than one can be created
+          All three carry an `Option Settings` stereotype, and share these properties:
+            - `Shortcut` / `Shortcut (macOS)` — keyboard shortcut (e.g., `ctrl + shift + i`)
             - `Menu Group` — integer; options with the same group number are visually grouped with a separator between groups
             - `Is Option Visible Function` — JavaScript returning `true`/`false` to conditionally hide the option
+            - `Top Divider` / `Bottom Divider`
+
+          Only the two creation options add:
+            - `Default Name` — initial name for the created element
+            - `Allow Multiple` — whether more than one can be created
+            - `Type Order` — position among the created types
+
+          A `Mapping Option` has no `Default Name` or `Allow Multiple` (it creates nothing); instead it adds `Icon`,
+          `Order` and `Trigger On Double-Click`. Its type reference points at the `Mapping Settings` it opens.
 
           ===
 
@@ -158,7 +160,22 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
           | `getAssociations(typeId)` | function | Returns associations of the given type |
           | `theme` | object | `theme.isDark` boolean for dark/light theming |
 
-          **`displayFunction`** — Controls how an element renders its label. Returns an array of text segment objects:
+          **Designer property names are not the persisted names.** In the Module Builder designer you set a stereotype
+          property such as `Display Text Function`; the generated `.designer.settings` stores it under a camelCase XML
+          name. Use the designer name when editing the model (that is what `getDesignerSchema()` lists and what a script
+          sets) and the XML name only when reading the generated file to verify:
+
+          | Designer property (stereotype) | Persisted XML element |
+          |---|---|
+          | `Display Text Function` (`Settings` on an element type or association end) | `displayFunction` |
+          | `Display Text Function` (`Extension Settings` on an `Element Extension`) | `displayFunctionOverride` |
+          | `Validate Function` | `validateFunction` (`validateFunctionOverride` on an extension) |
+          | `Name Accessibility` | `nameAccessibilityMode` (lower-case: `optional`, `required`, `disabled`, `hidden`) |
+          | `Is Option Visible Function` | `isOptionVisibleFunction` |
+          | `Filter Function` (`Criteria Settings` on an `Element Mapping`) | `filterFunction` |
+          | `Rules` (`AI Settings`) | `rules` |
+
+          **Display Text Function** (`displayFunction`) — Controls how an element renders its label. Returns an array of text segment objects:
 
           ```javascript
           // Simple example
@@ -174,7 +191,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
           return result;
           ```
 
-          **`filterFunction`** — Controls visibility of mapping elements or menu options. Returns boolean:
+          **Filter Function / Is Option Visible Function** (`filterFunction` / `isOptionVisibleFunction`) — Controls visibility of mapping elements or menu options. Returns boolean:
 
           ```javascript
           // Only show if no existing association of this type
@@ -188,15 +205,16 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
 
           ## Mapping Settings
 
-          Used to configure how elements from one designer map to elements in another. The top-level `Mapping Settings` node carries:
-            - `defaultModeler` — target designer GUID
-            - `optionsSource` — usually `elements-of-type`
-            - `autoSyncTypeReferences` — whether mapped type references stay in sync
+          Used to configure how elements from one designer map to elements in another. An element type or `Element Extension` gets this through a `Mapping Projection Settings` child (persisted as a `<mappingSetting>` under `<mappingSettings>`). Its `Mapping Settings` stereotype carries, by designer name (persisted name in brackets):
+            - `Default Designer` (`defaultModeler`) — target designer
+            - `Option Source` (`optionsSource`) — `Elements of Type` (`elements-of-type`) or `Lookup Element` (`lookup-element`)
+            - `Auto-sync Type References` (`autoSyncTypeReferences`) — whether mapped type references stay in sync
 
-          Child `mapping` nodes describe how each source element type maps to a target type:
-            - `criteria` — filter by specialization type, whether it has children, a type reference, etc.
-            - `mapTo` with `childMappingMode` — `traverse` (walk into children) or `map-to-child` (project to a specific child type)
-            - `filterFunction` — optional JavaScript to further restrict mappable elements
+          Child `Element Mapping` elements (persisted as `<mapping>`) describe how each source element type maps to a target type:
+            - `Criteria Settings` (`criteria`) — `From Type`, `Has Type-Reference`, `Has Children`, `Is Collection`, and an optional `Filter Function` (`filterFunction`) to further restrict mappable elements
+            - `Output Settings` (`mapTo`) — `To Type` and `Child Mapping Mode`: `Traverse` (`traverse`, walk into children) or `Map to Type` (`map-to-child`, project to a specific child type)
+
+          The advanced mapping dialog that a `Mapping Option` opens is a different element, `Mapping Settings`, with its own source and target mapping ends.
 
           ===
 
@@ -204,9 +222,16 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
 
           The most critical prerequisite for any extension is knowing the `typeId` of the element/package/association you want to target. Three reliable sources:
 
-          1. **MCP `find_designer_elements`** — search by name in the target application's Module Builder designer; the result includes the element's `id`.
+          1. **`run_designer_query`** against your module's Module Builder designer — the module that owns the foreign type must be installed in your module's application, so its types load as a read-only referenced package (query shown below).
           2. **Generated C# API** — every element type produces a model class with a `SpecializationTypeId` constant (e.g., `CommandModel.SpecializationTypeId`).
-          3. **Target module's `.designer.settings`** — every `<specializationTypeId>` attribute.
+          3. **Target module's `.designer.settings`** — the `typeId` attribute on its `<elementSetting>` / `<packageSetting>` / `<associationSetting>` entries (e.g. `<elementSetting type="Command" typeId="…">`).
+
+          The query for option 1 returns plain data, not handles. The `id` of the referenced match (`fromReference: true`) is the typeId — no further call is needed. `getElementDetails` will not help here: it only reads elements the designer owns and throws for one in a referenced package, which is exactly where a foreign type lives. `searchElements(...)` works too: each match carries `id` and `isReference`.
+
+          ```javascript
+          return findElements({ name: "Command", specialization: ["Element Settings", "Package Settings"], includeReferences: true })
+              .map(el => ({ name: el.getName(), id: el.getId(), fromReference: el.isReference() }));
+          ```
 
           Never hardcode IDs from memory. Always read them from the live model or generated code.
 
@@ -223,26 +248,39 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
           | `*Model.cs` | Strongly-typed wrapper; exposes `SpecializationTypeId` constant, child accessors, stereotype accessors |
           | `*ModelAssociationExtensions.cs` | Extension methods for navigating association ends |
 
-          Element and association *extensions* (not definitions) do not generate a dedicated model class — they appear only in `.designer.settings`.
+          Extensions generate model classes too, but not always:
+
+          | Extension | Generated model class |
+          |---|---|
+          | `Package Extension` | Always — `<ExtensionName>Model`, deriving from the extended package's model |
+          | `Element Extension` | Only when it adds `Element Creation Option`s or `Mapping Projection Settings` — `<ExtensionName>Model` deriving from the extended element's model, with accessors for the new children and `Has…Mapping()` / `Get…Mapping()` extension methods |
+          | `Association Extension` | None — it appears only in `.designer.settings` |
+
+          Stereotypes you target at a foreign element type also generate `<Type>StereotypeExtensions` accessors, whether or not an extension element exists.
 
           ===
 
           ## MCP Tool Sequence for Any Extension Task
 
           ```
-          1. get_status(workingDirectory)              → confirm solution is open
-          2. get_full_instructions()                  → mandatory; governs all tool use
-          3. get_designers(applicationId)             → find Module Builder designer ID
-          4. get_designer_model_structure(...)        → overview of existing extensions
-          5. find_designer_elements(query, ...)       → locate target element by name/type
-          6. get_designer_element_details(element)    → full detail: stereotypes, members,
-                                                        codeFiles, type IDs
-          7. [make model changes via MCP tools]
-          8. run_software_factory(...)
-          9. get_staged_file_diffs(...)
-          10. apply_staged_file_changes(...)
-          11. [verify compilation]
+          1. get_applications()                       → application IDs, each with its designers (id + name);
+                                                        pick your module's Module Builder designer
+          2. run_designer_query(script)               → read the model; globals include
+               getDesignerModelStructure()              overview of existing extensions
+               findElements({...}) / searchElements()   locate the target element by name/type
+               getElementDetails(path)                  full detail of an element you own (throws for a
+                                                        referenced one; a foreign match's id is its typeId)
+               getDesignerSchema()                      exact element/stereotype/property names
+          3. run_designer_script(script)              → make the model changes
+          4. run_designer_query(getDesignerValidationErrors())
+                                                      → resolve every error before generating
+          5. run_software_factory(...)
+          6. get_file_diffs(filePaths)                → inspect what was generated
+          7. apply_staged_file_changes(...)
+          8. [verify compilation]
           ```
+
+          Load the `scripting-the-model` skill before the first `run_designer_query` / `run_designer_script` call; both tools refuse to run without it.
 
           **Never call Intent Architect MCP tools in parallel.** Each call must complete before the next begins.
 

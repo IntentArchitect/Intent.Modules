@@ -10,6 +10,6 @@
   <file path="Intent.Modules.Common.CSharp.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
   <file path="Migrations/Migration_03_06_00_Pre_08.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
   <file path="Settings/ModuleSettingsExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions" />
-  <file path="Templates/StaticContentTemplateRegistrations/AIInstructionsStaticContentTemplateRegistration.cs" templateId="Intent.ModuleBuilder.Templates.StaticContentTemplateRegistration" />
+  <file path="Templates/StaticContentTemplateRegistrations/AIInstructionsStaticContentTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" templateId="Intent.ModuleBuilder.Templates.StaticContentTemplateRegistration" />
   <file path="content/AIInstructions/readme.txt" templateId="Intent.ModuleBuilder.Templates.StaticContentOutputReadme" />
 </managedFiles>

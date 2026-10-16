@@ -143,14 +143,14 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
           using System.Collections.Generic;
           using Intent.Engine;
           using Intent.Modelers.Services.Api;
-          using Intent.Modules.Common.Templates;
+          using Intent.Modules.Common.Registrations;
           using Intent.Templates;
 
           namespace MyModule.Templates.MyServiceTemplate
           {
             public class MyServiceTemplateRegistration : FilePerModelTemplateRegistration<ServiceModel>
             {
-                public const string TemplateId = "MyModule.MyServiceTemplate";
+                public override string TemplateId => MyServiceTemplate.TemplateId;
 
                 public override IEnumerable<ServiceModel> GetModels(IApplication application)
                 {
@@ -159,7 +159,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
 
                 public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, ServiceModel model)
                 {
-                    return new MyServiceTemplate(TemplateId, outputTarget, model);
+                    return new MyServiceTemplate(outputTarget, model);
                 }
             }
           }
@@ -170,13 +170,15 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
           ```csharp
           using Intent.Engine;
           using Intent.Modelers.Services.Api;
-          using Intent.Modules.Common;
+          using Intent.Modules.Common.Plugins;
 
           namespace MyModule.FactoryExtensions
           {
-            public class ValidateServiceOperationsFactoryExtension : IFactoryExtension
+            public class ValidateServiceOperationsFactoryExtension : FactoryExtensionBase
             {
-                public void Execute(IApplication application, IExecutionContext executionContext)
+                public override string Id => "MyModule.ValidateServiceOperationsFactoryExtension";
+
+                protected override void OnAfterTemplateRegistrations(IApplication application)
                 {
                     var serviceModels = application.MetadataManager.Services(application).GetServiceModels();
 
@@ -211,12 +213,15 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
           - **`Is<X>Model()` / `As<X>Model()`** — every element model `<X>Model` has `bool Is<X>Model(this ICanBeReferencedType)` and `<X>Model As<X>Model(this ICanBeReferencedType)` (returns `null` on a type mismatch) in a static `<X>ModelExtensions` class. They are omitted below unless that class holds more than these two. This is how you turn a raw reference into a typed model — `attribute.TypeReference.Element.AsClassModel()`. Prefer it to `new <X>Model(element)`: generated constructors throw on a specialization mismatch.
           - **`// + common association-end members`** = the `ITypeReference` surface (`Element` — the element this end points at — plus `IsNullable`, `IsCollection`, `GenericTypeParameters`, `Stereotypes`), and `string Id`, `Name`, `Comment`, `SpecializationType`, `SpecializationTypeId`, `bool IsNavigable`, `ITypeReference TypeReference` (the end itself), `IPackage Package`, `IElement InternalElement`, `IAssociationEnd InternalAssociationEnd`, `IAssociation InternalAssociation`, the owning association model as `Association`, `OtherEnd()`, `IsSourceEnd()`, `IsTargetEnd()` and `static Create(IAssociationEnd)`.
 
+          A member that starts with `[Obsolete("…")]` still exists and compiles, but with warning CS0618.
+          Do not write new code against it; use the replacement its message names.
+
           `FolderModel`, `EnumModel`, `EnumLiteralModel` and `TypeDefinitionModel` come from
           `Intent.Modules.Common.Types.Api`, not from this designer. They, and the SDK interfaces every model
           returns (`IElement`, `ITypeReference`, `IStereotype`, `IElementMapping`, `IElementToElementMapping`,
           `IDesigner`), are listed once in `integration-recipe.md` §6.
 
-          ### 9.1 Services — `Intent.Modules.Modelers.Services` (source at `4.0.16`)
+          ### 9.1 Services — `Intent.Modules.Modelers.Services` (source at `4.0.17`)
 
           ```csharp
           namespace Intent.Modelers.Services.Api;
@@ -281,6 +286,15 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
                   bool IsPascalCase();
               }
               public enum OperationNamingConventionOptionsEnum { CamelCase, Manual, PascalCase }
+              ParameterNamingConventionOptions ParameterNamingConvention();
+              public class ParameterNamingConventionOptions
+              {
+                  ParameterNamingConventionOptionsEnum AsEnum();
+                  bool IsManual();
+                  bool IsPascalCase();
+                  bool IsCamelCase();
+              }
+              public enum ParameterNamingConventionOptionsEnum { Manual, PascalCase, CamelCase }
           }
 
           namespace Intent.Modelers.Services.Api;
@@ -472,6 +486,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
           ### Name collisions and gaps
 
           - **`OperationModel` / `ParameterModel` / `CommentModel` / `DiagramModel` / `GeneralizationModel`** also exist in `Intent.Modelers.Domain.Api`, as different element types with the same simple names. Alias one set when a template reads both designers.
+          - **New in `4.0.17`:** `ServiceSettings.ParameterNamingConvention()` (Service Settings → Parameter Naming Convention, default Camel Case), and Operation return types and parameter types may reference any element with the `Service Argument` trait, not only DTOs, enums and type definitions. In practice that means a Domain `Class`, `Data Contract` or `Value Object` (`IServiceArgumentModel`, added in `Intent.Common` `3.11.8`). A template that resolves `OperationModel.ReturnType.Element` or a `ParameterModel.TypeReference.Element` must expect those, for example via `AsClassModel()`. Under an earlier Services pin the setting is absent. Coding against `ParameterNamingConvention()` requires `Intent.Modelers.Services` 4.0.17 or later; check your feed (`run_solution_query` → `searchAvailableModules("Intent.Modelers.Services", { includePrerelease: true })`). If it does not offer 4.0.17 yet, the setting does not exist for you: don't call it.
 
           """""");
     }

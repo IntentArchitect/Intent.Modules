@@ -102,10 +102,10 @@ a person's action, so it is judged rather than checked against the stub.
 | Id | Scenario | Pass when |
 |---|---|---|
 | G1 | Instructions reach the agent: "which phases does a module change go through?" | answer names the four workflow phases |
-| G2 | Context read first: change a template | `CONTEXT.md` is read before the first write |
+| G2 | Context read first: change what a template generates (a comment-only edit is exempt) | `CONTEXT.md` is read before the first write |
 | G3 | Skill activation: "bump SampleModule for a fix" | `module-version-increment` is loaded before the version changes |
 | G4 | No false activation: an unrelated question | no workflow skill is loaded |
-| G5 | Docs follow the change: an observable change | `release-notes.md` is updated in the same session |
+| G5 | Docs follow the change: an observable change | `release-notes.md` is updated in the same session, names the change and labels nothing beta or pre-release (the outcome, not whether `module-docs-chore` was loaded) |
 
 Agents are non-deterministic, so guidance scenarios report a pass rate over `--repeat N` (default 1,
 3 for a release check).
@@ -198,7 +198,7 @@ sign-in token created for the container, both outside this workspace; it stays t
 | 6 | Copilot CLI and Cursor also load `.claude/settings.json`, so the gate ran twice per action. | **Fixed for Copilot** (Claude's copy steps aside; D1). Cursor: documented |
 | 7 | OpenCode: the plugin had no close-out. | **Fixed** - close-out on idle; S5 OpenCode |
 | 8 | The workflow instructions reached only Claude Code; Kiro had no skills. | **Fixed** - every harness, from its own folder; wiring, G1 on Codex, OpenCode, Copilot |
-| 9 | Claude Code (Haiku and Sonnet) does not read `CONTEXT.md` before a small change, or update release notes after one. | **Open** - G2, G5 0/3 on Claude Code; reported, not tuned against |
+| 9 | Claude Code (Haiku and Sonnet) does not read `CONTEXT.md` before a small change, or update release notes after one. | **Re-check** - G2, G5 0/3 on Claude Code; reported, not tuned against. 2026-10-16, Linux, Claude Code, one run each: G2 passes 8/8 since it became an output change (a comment-only edit is exempt); G5 passes 10/10 since the stub gained `run_solution_query`, so the version gate completes, and since it is judged on the outcome rather than on loading `module-docs-chore`. Confirm with `--repeat 3` and on the other harnesses |
 | 10 | The gate wrote `permissionDecision: "allow"` for its "no opinion" notes, which Claude Code treats as pre-approval. | **Fixed** - an allow is never written |
 | 11 | Kiro CLI runs workspace hooks headlessly only from 2.27.1 (`--v3`); 2.22.0 was installed. | **Fixed** - updated to 2.28.0; the hooks fire headlessly (`20261008-182210-windows`) |
 | 12 | Kiro CLI v3 runs hook commands in cmd.exe, where the portable form's `; exit $LASTEXITCODE` arrives as arguments (`kiro;`), and sends edits as `newStr`; S4 and S8 on Kiro failed because the gate read neither. | **Fixed** - shell tail dropped, `newStr`/`fileText` read; S4, S8 pass on Kiro (`20261008-184347-windows`) |

@@ -38,26 +38,41 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleVersioni
 
                     # Skill: module-versioning
 
-                    ## What The Software Factory Owns
+                    ## What The Software Factory Writes
 
-                    `.imodspec` is **not** a fully generated file. The template reads the existing file, rewrites a small
-                    set of named elements, and leaves everything else exactly as it found it. So "never hand-edit
-                    `.imodspec`" is wrong — most of that file is hand-authored by design.
+                    `.imodspec` is **not** a fully generated file. The template reads the existing file, writes a defined
+                    set of elements, and leaves everything else exactly as it found it. So "never hand-edit
+                    `.imodspec`" is wrong — part of that file is hand-authored by design. Know which part before you
+                    touch it.
 
-                    **The Software Factory owns these six. Everything else in the file is yours, permanently.**
+                    These elements are **written on every run.** A hand edit to one of these is overwritten on the next Software Factory run,
+                    without an error:
 
-                    | Element | Where to set it instead |
+                    | Element | What the Software Factory does | Where to change it instead |
+                    |---|---|---|
+                    | `<id>` | Set to the package name | The Module Builder package name |
+                    | `<version>` | Raised to the designer's value **only when that value is higher**; a lower value is skipped, never written | Module Builder designer → `Module Settings` → `Version` |
+                    | `<summary>` and `<description>` | Both set to the application's description, whenever one is set | The **Application Settings page**, or `update_application_settings` with its `description` parameter. Both receive the *same single string* — there is no long-form field to expand into. |
+                    | `<iconUrl>` | Set from the application's icon | `.application.config`'s root `<icon>`/`<iconType>`, by script — see `module-svg-icon` |
+                    | `<supportedClientVersions>` | If present, a fixed list of older bounds is advanced (`[4.1.0,` becomes `[5.1.0-a,`); any other range is left as it is | A rewritten range is the mechanism working. Hand-edit the range only when its floor needs to move — see `module-version-increment` |
+                    | `<templates>`, `<factoryExtensions>`, `<decorators>` | Entries synced with the modelled elements: added, updated, and removed when the element is deleted | The modelled templates, factory extensions and decorators |
+                    | `<metadata>` install entries | Synced with the packages included in the module | The package's `Module Settings` (`Include in Module`, `Reference in`) |
+                    | `<moduleSettings>`, `<moduleSettingsExtensions>` | Each group's children wiped and rebuilt | Modelled settings elements |
+                    | `<migrations>` | Deleted and rebuilt wholesale | Modelled Migration elements |
+
+                    These are **added, never removed.** The Software Factory adds them when they are missing, then leaves them:
+
+                    | Element | What the Software Factory does |
                     |---|---|
-                    | `<version>` | Module Builder designer → `Module Settings` → `Version` |
-                    | `<summary>` and `<description>` | The **Application Settings page** in Intent Architect. Both receive the *same single string* — there is no long-form field to expand into. |
-                    | `<iconUrl>` | `.application.config`'s root `<icon>`/`<iconType>`, by script — see `module-svg-icon` |
-                    | `<id>` | The Module Builder package name |
-                    | `<migrations>` | Modelled Migration elements — deleted and rebuilt wholesale each run |
-                    | `<moduleSettings>` bodies | Modelled settings elements — children wiped and rebuilt |
+                    | `<dependency>` entries | Added when missing. An existing entry's `version` is raised according to the `Dependency version overwrite behavior` application setting (default *If newer*). No entry is ever removed — see `module-dependency-audit`. |
+                    | `<releaseNotes>` | Added as `release-notes.md` when absent and `Module Settings` → `Include Release Notes` is ticked |
+                    | `<projectUrl>` | Added from `Module Settings` → `Project URL` when absent and that property has a value |
+                    | `<tags>` | An empty element added when absent — the value is never written |
 
-                    Hand-edit one of those six and the next Software Factory run silently discards it. Everything else —
-                    `<tags>`, `<authors>`, `<files>`, `<dependency>` entries, `<interoperability>`, `<designers>` — the
-                    template never writes a value for, so hand-editing is the *only* way to set them and the edit survives.
+                    These are **hand-maintained.** The template never writes a value for these, so hand-editing is the *only* way
+                    to set them, and the edit survives: `<tags>`, `<authors>` and `<files>` (scaffolded once when the file
+                    is first created), `<interoperability>`, `<designers>`, and `<projectUrl>` / `<releaseNotes>` once
+                    present.
 
                     ## How to Set It
                     1. On the module's package, in the Module Builder designer:
@@ -71,35 +86,40 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleVersioni
                        substitutes for this step: `<version>` is generated output, and only a Software Factory run
                        produces it — the model and the manifest are two different files, and only one of the two
                        write paths reaches the manifest.
-                    3. Confirm via `get_file_diffs` that only the version line changed.
+                    3. Confirm via `get_file_diffs` that the version line changed, and that anything else in the
+                       `.imodspec` diff is expected — other synced elements (see the table above) can move in the same run.
 
                     > **`<version>` is written only when the designer's value sorts strictly higher than the one on disk.**
-                    > A lower value is skipped in silence — nothing staged, no error, no warning. That asymmetry is the
+                    > A lower value is skipped in silence — no error, no warning. Only `<version>` is skipped: the rest of
+                    > the file is still written, so if nothing else changed, nothing is staged. That asymmetry is the
                     > downgrade guard `module-version-increment` describes, and it is the one case where editing the
                     > `<version>` line by hand is correct: drop it to a safe value, then set the version you actually want
                     > in the designer and regenerate forward.
 
                     ## Propagating the Change
-                    - **Architecture Templates** referencing this module — update the `Component Module`'s
-                    
-                      `Version` in `metadata.iatspec`, only once the new version is actually published (confirm via
-                      `search_available_modules`, never guess).
-                    
-                    - **Other modules depending on it** — update their `<dependency id="..." version="...">` entry. That is
-                      propagation of a version you already know about; confirming the dependency *list itself* is right is a
-                      separate close-out check — see `module-dependency-audit`.
+                    - **Architecture Templates** referencing this module — set the new version on the `Component Module`
+                      element in the Application Template Builder designer (its `Module Settings` stereotype → `Version`),
+                      then regenerate. `metadata.iatspec` is generated from that element, so a hand edit there is
+                      overwritten. Do this only once the new version is actually published — confirm with
+                      `run_solution_query` → `searchAvailableModules("<module id>", { includePrerelease: true })`, never guess.
+                    - **Other modules depending on it** — update their `<dependency id="..." version="...">` entry. If that
+                      entry comes from a metadata-only install, update the install instead and regenerate; the Software
+                      Factory raises the entry. That is propagation of a version you already know about; confirming the
+                      dependency *list itself* is right is a separate close-out check — see `module-dependency-audit`.
                     - **NuGet package alignment** — keep `.csproj` package versions in step with the module version
                     to avoid `NU1605` (see known-build-gotchas).
 
                     ## After Setting the Version
-                    Run `module-docs` to keep `release-notes.md` and other version-dependent documentation in sync —
-                    this skill sets the version, it doesn't own the documentation that mirrors it.
+                    Bring `release-notes.md` and other version-dependent documentation into step with the new version —
+                    this skill sets the version, it doesn't own the documentation that mirrors it. If the `module-docs-chore`
+                    skill is available in your environment, it covers this; `module-docs` is the opt-in pass for bringing
+                    documentation up to a canonical format, not the routine follow-up.
 
                     ## Verification Checklist
                     - [ ] Set via `Module Settings → Version` — not by hand-editing `.imodspec`'s `<version>` (except to clear a downgrade)
                     - [ ] Software Factory run; `.imodspec` confirmed to match, no stray diffs
                     - [ ] Dependents checked/updated if they pin this module's version
-                    - [ ] `module-docs` run afterward to keep documentation in sync
+                    - [ ] Release notes and other version-dependent documentation brought into step
                     """""");
         }
 

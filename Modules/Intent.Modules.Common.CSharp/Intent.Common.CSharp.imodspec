@@ -8,7 +8,7 @@
   <description>Common library support in order to help generate code for the C# language.</description>
   <authors>Intent Architect</authors>
   <releaseNotes>release-notes.md</releaseNotes>
-  <projectUrl>https://docs.intentarchitect.com/articles/modules-dotnet/intent-common-csharp/intent-common-csharp.html</projectUrl>
+  <projectUrl>https://docs.intentarchitect.com/articles/modules-common/intent-modules-common-csharp/intent-modules-common-csharp.html</projectUrl>
   <templates>
     <template id="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" externalReference="ae037d83-83df-4dd9-96e3-e8404f8bd63b">
       <role>AI.Context.Instructions</role>

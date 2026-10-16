@@ -28,16 +28,79 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                 .FromMarkdown(""""""
                     # Orchestration Cheatsheet
 
-                    Quick-reference snippets for the `intent-module-orchestrator` skill.  
-                    Source of truth: <https://github.com/IntentArchitect/Intent.Modules>
+                    Quick-reference snippets for the `intent-module-orchestrator` skill.
+                    Source of truth: the XML documentation shipped inside the `Intent.Modules.Common` and `Intent.Modules.Common.CSharp` NuGet packages your module already references.
 
-                    > **Strategy — broadcast over direct coupling.** Recurring cross-module integration is done by *broadcasting* a request that a responsible module *handles* — never by wiring modules together directly. DI registration (`ContainerRegistrationRequest`) and app settings (`AppSettingRegistrationRequest`) below are the documented examples. **Infrastructure-resource registration** (resources other modules consume — e.g. for health checks) follows the same broadcast pattern; confirm the exact request type via `search_docs` before use rather than assuming. See `module-building-strategies` §1.
+                    > **Strategy — broadcast over direct coupling.** Recurring cross-module integration is done by *broadcasting* a request that a responsible module *handles* — never by wiring modules together directly. DI registration (`ContainerRegistrationRequest`) and app settings (`AppSettingRegistrationRequest`) below are the documented examples. **Infrastructure-resource registration** (resources other modules consume, for example for health checks) follows the same broadcast pattern through `InfrastructureRegisteredEvent` — see §Launch Settings, host.json & Infrastructure. See `module-building-strategies` §1.
+
+                    Role strings in these snippets come from the *Common Role Values* table in `SKILL.md`. Names starting `MyEcosystem.` or `My` are placeholders for your own template ids, types and stereotypes.
+
+                    ===
+
+                    ## §When to Publish — the handler must already exist
+
+                    Request handlers subscribe in their own template constructors (a few in a factory extension's `OnBeforeTemplateRegistrations`). The event dispatcher delivers synchronously and keeps nothing for late subscribers, so a request published before its handler exists is **dropped with no error**. Publish only once every template has been registered.
+
+                    | Where you publish from | Safe? |
+                    |---|---|
+                    | A template constructor | **No** — the handling template may not have been constructed yet |
+                    | Factory extension `OnBeforeTemplateRegistrations` | **No** — no template exists yet |
+                    | Factory extension `OnAfterTemplateRegistrations`, or a template's `AfterTemplateRegistration()` override | **Yes**, for every request type |
+                    | Factory extension `OnBeforeTemplateExecution`, or a template's `BeforeTemplateExecution()` override | **Yes**, except `InfrastructureRegisteredEvent`: its health-check handler responds with an `OnBuild` callback, and every file has already been built by then, so the handler throws |
+
+                    The two sides use different hooks. A **template** overrides `AfterTemplateRegistration()` / `BeforeTemplateExecution()` — no `On` prefix, no parameter — and publishes through `ExecutionContext.EventDispatcher` (or `EmitOrPublish`, below). A **factory extension** overrides `protected void OnAfterTemplateRegistrations(IApplication application)` / `OnBeforeTemplateExecution(IApplication application)` and publishes through `application.EventDispatcher`.
+
+                    ```csharp
+                    // Template side — override the lifecycle hook (no "On" prefix, no parameter).
+                    public override void AfterTemplateRegistration()
+                    {
+                        base.AfterTemplateRegistration();
+
+                        ExecutionContext.EventDispatcher.Publish(
+                            ContainerRegistrationRequest
+                                .ToRegister(this)
+                                .ForConcern("Infrastructure"));
+                    }
+
+                    // Factory-extension side — protected override with the IApplication parameter.
+                    protected override void OnAfterTemplateRegistrations(IApplication application)
+                    {
+                        application.EventDispatcher.Publish(
+                            new AppSettingRegistrationRequest("MySection:Enabled", true));
+                    }
+                    ```
+
+                    ### Template-side form — `EmitOrPublish` / `OnEmitOrPublished` (Intent.Common 3.9.0+)
+
+                    Inside a template, prefer `EmitOrPublish(request)`. It first *emits* the request through the output-target graph, so a handler in the publisher's own project, or in a project that references it, gets it first — which keeps requests in the right host when a solution has several. Only when no such handler takes it does it fall back to a solution-wide `EventDispatcher.Publish`. A host template you own subscribes with `OnEmitOrPublished<T>(...)` in its constructor; that also subscribes to the plain dispatcher, so requests published the old way still reach it.
+
+                    ```csharp
+                    // Publisher (inside a template) — needs Intent.Common 3.9.0+
+                    public override void BeforeTemplateExecution()
+                    {
+                        EmitOrPublish(
+                            ContainerRegistrationRequest
+                                .ToRegister(this)
+                                .ForConcern("Infrastructure"));
+                    }
+
+                    // Handler (a host template you own) — subscribe in the constructor
+                    public MyHostTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
+                    {
+                        OnEmitOrPublished<ContainerRegistrationRequest>(request => _requests.Add(request));
+                    }
+                    ```
+
+                    > [!IMPORTANT]
+                    > `EmitOrPublish` and `OnEmitOrPublished` were added in `Intent.Common` **3.9.0**; Module Builder's default floor is 3.7.2. Before using them, raise both the `.imodspec` dependency (`<dependency id="Intent.Common" version="3.9.0" />`) and the `.csproj` package reference (`<PackageReference Include="Intent.Modules.Common" Version="3.9.0" />`), and raise the `Intent.SoftwareFactory.SDK` package reference to 3.10.0 with them: `Intent.Modules.Common` 3.9.0 depends on it, so restore fails with `NU1605` otherwise. SDK 3.10.0 needs Intent Architect 4.5.15 or later, which the Software Factory checks against the `.imodspec`'s `supportedClientVersions`. Against the 3.7.2 package the code does not compile; built against a newer package but installed with an older `Intent.Common`, it throws `MissingMethodException` at run time. To let other subscribers see an event after yours handles it, pass `stopPropagation: false` (3.9.0). The `OnEmitOrPublished<T>(Func<T, bool> handler)` overload lets your handler decline: return `false` and the event is not marked handled, so it keeps propagating and falls back to `Publish`. Such a handler is also subscribed for the plain `Publish` fallback, so after declining it runs a second time. It needs **3.11.4**, which needs the `Intent.SoftwareFactory.SDK` package reference raised to 3.14.0, and so Intent Architect 5.0.0 or later.
+
+                    Factory extensions have no `EmitOrPublish`; they keep using `application.EventDispatcher.Publish(...)`.
 
                     ===
 
                     ## §DI Registration — ContainerRegistrationRequest
 
-                    Publish from `OnBeforeTemplateExecution(...)`. Framework collects all requests and merges them into the startup DI file.
+                    These run inside a template (`this` is the template), from its `BeforeTemplateExecution()` override or any other safe point in §When to Publish. The host template collects all requests and merges them into its DI registration method.
 
                     ```csharp
                     // Minimal — adds: services.AddTransient<MyService>();
@@ -50,9 +113,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                         ContainerRegistrationRequest
                             .ToRegister(this)                           // IClassProvider: uses FullTypeName()
                             .ForInterface(interfaceTemplate)            // resolves via IClassProvider or string
-                            .ForConcern("Application")                  // targets Application startup file
+                            .ForConcern("Application")                  // routes to the Application DependencyInjection template
                             .WithPerServiceCallLifeTime()               // Transient | PerServiceCall | Singleton
-                            .HasDependency(this));                      // declares template ordering dependency
+                            .HasDependency(this));                      // adds the template dependency and its using
 
                     // Open-generic behaviour (e.g., MediatR pipeline behaviours)
                     ExecutionContext.EventDispatcher.Publish(
@@ -71,14 +134,14 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                             .RequiresUsingNamespaces("My.Namespace"));
                     ```
 
-                    **ContainerRegistrationRequest.LifeTime constants**
+                    #### `ContainerRegistrationRequest.LifeTime` constants
 
                     You declare the *lifetime*; the host template owns the mapping onto whatever registration method its
                     container uses. That mapping is the host's business, not yours — which is exactly why you publish a
                     request instead of writing the call yourself.
 
                     | Constant | Meaning | Typical host mapping |
-                    |===|===|===|
+                    |---|---|---|
                     | `LifeTime.Transient` | Created on every resolution | `AddTransient` |
                     | `LifeTime.PerServiceCall` | Scoped to one request/unit-of-work | `AddScoped` |
                     | `LifeTime.Singleton` | Single instance for application lifetime | `AddSingleton` |
@@ -87,7 +150,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
 
                     ## §AppSettings — AppSettingRegistrationRequest
 
-                    Publish from `OnBeforeTemplateExecution(...)`. Framework idempotently merges keys; existing values are left untouched.
+                    Publish from a safe point in §When to Publish (these snippets sit in a template's `BeforeTemplateExecution()`). The host `appsettings.json` template merges the keys; values already in the file are left untouched.
 
                     ```csharp
                     // Flat key — string value
@@ -128,15 +191,15 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                     ## §Host Wiring — ServiceConfigurationRequest & Siblings
 
                     `ContainerRegistrationRequest` registers a *type*. When you instead need the host to **call an
-                    extension method** during startup, publish one of these. Same rules as its siblings: publish from
-                    `OnBeforeTemplateExecution(...)`, and the host template merges, orders and de-duplicates.
+                    extension method** during startup, publish one of these. Same rules as its siblings: publish from a
+                    safe point in §When to Publish, and the host template merges, orders and de-duplicates.
 
                     ```csharp
                     // Produces: services.AddMyFeature();   (or builder.Services.AddMyFeature(); — the host decides)
                     ExecutionContext.EventDispatcher.Publish(
                         ServiceConfigurationRequest
                             .ToRegister("AddMyFeature")
-                            .ForConcern("Infrastructure")            // which startup file to target
+                            .ForConcern("Infrastructure")            // routes to the Infrastructure DependencyInjection template
                             .HasDependency(this)                     // import the namespace holding the method
                             .WithPriority(100));
 
@@ -162,9 +225,14 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
 
                     `ToRegister` takes the **extension method name only** — never a whole statement. Parameters are a
                     `params` list of `ParameterType` constants, and the host substitutes the correct variable name for
-                    whichever startup shape it is generating.
+                    whichever startup shape it is generating. A second `ConnectionStringRegistrationRequest` with the same
+                    name but a different connection string is treated as a misconfiguration and throws.
 
                     ### Which request for which job
+
+                    Every type in this table lives in `Intent.Modules.Common.CSharp` (namespaces `...DependencyInjection` and
+                    `...Configuration`) and is available at Module Builder's default `Intent.Common.CSharp` floor of 3.8.0,
+                    except where a later version is named.
 
                     | You want | Publish |
                     |---|---|
@@ -173,10 +241,15 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                     | A middleware `app.UseX()` call | `ApplicationBuilderRegistrationRequest` |
                     | A configuration key or section | `AppSettingRegistrationRequest` |
                     | A named connection string | `ConnectionStringRegistrationRequest` |
+                    | An environment variable in `launchSettings.json` | `EnvironmentVariableRegistrationRequest` |
+                    | A whole profile in `launchSettings.json` | `LaunchProfileRegistrationRequest` (its `CommandLineArgs`, `ExecutablePath` and `WorkingDirectory` need `Intent.Common.CSharp` 3.9.5, with `Intent.Common` 3.9.0 and SDK 3.10.0 raised alongside it) |
+                    | The `launchUrl` path of the default profiles | `DefaultLaunchUrlPathRequest`, via `this.PublishDefaultLaunchUrlPathRequest(...)` (or `OutputTarget.EmitDefaultLaunchUrlPathRequest(...)`, which needs the same 3.9.5 raise) |
+                    | A key in an Azure Functions `host.json` | `HostSettingRegistrationRequest` |
+                    | Tell other modules (health checks) about a database, cache or broker you set up | `InfrastructureRegisteredEvent` |
 
                     ### ⚠ Shape vs Wire — the most common wrong turn
 
-                    **Shaping a generated type → FileBuilder mutation. Wiring into host infrastructure → publish a request.**
+                    The rule: **shaping a generated type → FileBuilder mutation; wiring into host infrastructure → publish a request.**
 
                     Reaching for `CSharpFile` on the startup template to append a registration line looks more direct, but
                     it moves the whole burden onto you: knowing which host shape you landed in, injecting the right
@@ -187,6 +260,64 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
 
                     ===
 
+                    ## §Launch Settings, host.json & Infrastructure
+
+                    The `launchSettings.json` and `host.json` requests are handled by the project templates of the
+                    `Intent.VisualStudio.Projects` module; `InfrastructureRegisteredEvent` is consumed by
+                    `Intent.AspNetCore.HealthChecks`. When none of those is installed the request is simply not handled.
+
+                    ```csharp
+                    // launchSettings.json — an environment variable on every profile (or only the named ones)
+                    ExecutionContext.EventDispatcher.Publish(
+                        new EnvironmentVariableRegistrationRequest(
+                            key:                "MY_FEATURE_MODE",
+                            value:              "Local",
+                            targetProfiles:     null,
+                            forProjectWithRole: null));
+
+                    // launchSettings.json — a whole profile
+                    ExecutionContext.EventDispatcher.Publish(
+                        new LaunchProfileRegistrationRequest
+                        {
+                            Name           = "My Tool",
+                            CommandName    = "Project",
+                            LaunchBrowser  = false,
+                            ApplicationUrl = "http://localhost:5080",
+                            EnvironmentVariables = new Dictionary<string, string> { ["ASPNETCORE_ENVIRONMENT"] = "Development" }
+                        });
+
+                    // Azure Functions host.json — colon-separated key targets nested objects
+                    ExecutionContext.EventDispatcher.Publish(
+                        new HostSettingRegistrationRequest("extensions:serviceBus:prefetchCount", 100));
+
+                    // launchSettings.json launchUrl path for the default profiles — at most once per run
+                    this.PublishDefaultLaunchUrlPathRequest("swagger");
+                    ```
+
+                    `DefaultLaunchUrlPathRequest` has an internal constructor: publish it only through the extension
+                    method, from `BeforeTemplateExecution()`, and only once — a second publish throws.
+
+                    An **`InfrastructureRegisteredEvent`** names an infrastructure component plus string properties. Publish it
+                    from `OnAfterTemplateRegistrations` (or a template's `AfterTemplateRegistration()`), never later — see
+                    §When to Publish.
+
+                    ```csharp
+                    protected override void OnAfterTemplateRegistrations(IApplication application)
+                    {
+                        // Infrastructure for health checks — publish no later than this hook.
+                        application.EventDispatcher.Publish(
+                            new InfrastructureRegisteredEvent("SqlServer")
+                                .WithProperty("ConnectionStringName", "DefaultConnection"));
+                    }
+                    ```
+
+                    The health-check module recognises these component names: `"SqlServer"`, `"PostgreSql"`, `"MySql"`,
+                    `"CosmosDb"`, `"MongoDb"`, `"Oracle"` and `"Redis"` (properties `"ConnectionStringName"` and
+                    `"ConnectionStringSettingPath"`), and `"Kafka"` (properties `"KafkaSettingsPath"`, `"KafkaSettingsName"`
+                    and `"KafkaSchemaRegistryUrl"`). Any other name is ignored.
+
+                    ===
+
                     ## §Resolution — FindTemplateInstance & Safe Guards
 
                     ### Step 1 — Role-based single lookup
@@ -194,7 +325,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                     ```csharp
                     // Returns null when the template is not registered — ALWAYS guard before use
                     var diTemplate = application.FindTemplateInstance<ICSharpFileBuilderTemplate>(
-                        TemplateRoles.Application.DependencyInjection);
+                        "Application.DependencyInjection");
 
                     if (diTemplate == null) return;          // ← MUST: guard before accessing .CSharpFile
 
@@ -202,69 +333,77 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                     {
                         var method = file.Classes.First().FindMethod("AddApplication");
                         method?.AddInvocationStatement("services.AddAutoMapper",
-                        stmt => stmt.AddArgument("Assembly.GetExecutingAssembly()"));
+                            stmt => stmt.AddArgument("Assembly.GetExecutingAssembly()"));
                     }, 500);                                 // ← MUST: explicit priority (Extension band)
                     ```
 
                     ### Step 2 — Role-based multi-template loop with model guard
 
                     ```csharp
-                    // Source: Intent.Modules.AspNetCore.Controllers.JsonPatch (active)
+                    // "Domain.Entity" — the entity type; NOT "Domain.Entity.Primary" (see the trap in SKILL.md)
                     var templates = application.FindTemplateInstances<ICSharpFileBuilderTemplate>(
-                        TemplateRoles.Distribution.WebApi.Controller);
+                        "Domain.Entity");
 
                     foreach (var template in templates)
                     {
                         // MUST: narrow to templates whose model matches the expected type
-                        if (!template.TryGetModel<IControllerModel>(out var controllerModel))
+                        // (ClassModel comes from Intent.Modules.Modelers.Domain — a Tier 2 dependency)
+                        if (!template.TryGetModel<ClassModel>(out var classModel))
                             continue;
 
                         template.CSharpFile.OnBuild(file =>
                         {
                             var cls = file.Classes.First();
-                            // ... enrich based on controllerModel
-                        }, 100);                             // Enrichment band
+                            // ... enrich based on classModel
+                        }, 500);                             // Extension band: another module's template
                     }
                     ```
 
-                    ### Step 3 — Role + model-id lookup (TemplateDependency)
+                    ### Step 3 — Role + model-id lookup (fallback chain)
 
                     ```csharp
-                    // Preferred when the model element is known at resolution time
+                    // Preferred when the model element is known at resolution time.
+                    // Each role is tried in order; TryGetTemplate never throws.
                     if (!template.TryGetTemplate(
-                            TemplateRoles.Domain.Entity.Primary,
-                            dtoModel.Mapping.ElementId,
+                            "Domain.Entity",
+                            mappedElementId,
                             out ICSharpFileBuilderTemplate entityTemplate)
                         && !template.TryGetTemplate(
-                            TemplateRoles.Domain.ValueObject,
-                            dtoModel.Mapping.ElementId,
+                            "Domain.ValueObject",
+                            mappedElementId,
                             out entityTemplate)
                         && !template.TryGetTemplate(
-                            TemplateRoles.Domain.DataContract,
-                            dtoModel.Mapping.ElementId,
+                            "Domain.DataContract",
+                            mappedElementId,
                             out entityTemplate))
                     {
                         throw new InvalidOperationException(
-                            $"Could not resolve mapped type for '{dtoModel.Name}'.");
+                            $"Could not resolve the mapped type for element '{mappedElementId}'.");
                     }
 
                     var typeName = template.GetTypeName(entityTemplate);
                     ```
 
-                    ### Step 4 — TemplateId fallback chain (DoNotThrow)
+                    `template` is your own template; `mappedElementId` is the id of the designer element you need the type for
+                    (for example a mapping's target element).
+
+                    ### Step 4 — Template-id fallback chain (DoNotThrow)
 
                     ```csharp
-                    // Use TemplateDiscoveryOptions.DoNotThrow when probing multiple candidates silently
-                    private static readonly TemplateDiscoveryOptions DoNotThrow =
-                        new() { TrackDependency = false, ThrowIfNotFound = false };
-
+                    // TryGetTemplate already probes without throwing — chain the candidates.
                     bool resolved =
-                        template.TryGetTemplate<ICSharpTemplate>(TemplateIds.CosmosDBUnitOfWorkInterface, out var uow)
-                        || template.TryGetTemplate<ICSharpTemplate>(TemplateIds.DynamoDBUnitOfWorkInterface, out uow)
-                        || template.TryGetTemplate<ICSharpTemplate>(TemplateIds.MongoDbUnitOfWorkInterface, out uow);
+                        template.TryGetTemplate<ICSharpTemplate>("MyEcosystem.CosmosDb.UnitOfWorkInterface", out var uow)
+                        || template.TryGetTemplate<ICSharpTemplate>("MyEcosystem.DynamoDb.UnitOfWorkInterface", out uow)
+                        || template.TryGetTemplate<ICSharpTemplate>("MyEcosystem.MongoDb.UnitOfWorkInterface", out uow);
 
                     if (!resolved) return;
+
+                    // Methods that throw by default take TemplateDiscoveryOptions.DoNotThrow and return null instead.
+                    var uowTypeName = template.GetTypeName("MyEcosystem.CosmosDb.UnitOfWorkInterface", TemplateDiscoveryOptions.DoNotThrow);
+                    if (uowTypeName == null) return;
                     ```
+
+                    Use the shared `TemplateDiscoveryOptions.DoNotThrow` instance; there is no need to declare your own.
 
                     ### Step 5 — Optional presence: TryGetTypeName
 
@@ -290,11 +429,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
 
                     | Method | When the target is missing | Use for |
                     |---|---|---|
-                    | `GetTypeName(templateId, model)` | Throws / assumes presence | A target your module genuinely requires |
-                    | `TryGetTypeName(templateId, out var name)` | Returns `false` | An optional, best-effort integration |
+                    | `GetTypeName(templateIdOrRole, model)` | Throws / assumes presence | A target your module genuinely requires |
+                    | `TryGetTypeName(templateIdOrRole, out var name)` | Returns `false` | An optional, best-effort integration |
 
-                    Overloads mirror the `GetTypeName` family — by template id alone, or by template id plus a model /
-                    model id, and by a *list* of candidate template ids for a fallback chain.
+                    Overloads mirror the `GetTypeName` family — by template id or role alone, or plus a model / model id.
+                    The overloads that take a *list* of candidate ids (for a fallback chain) need `Intent.Common` 3.7.3 or
+                    later; at the 3.7.2 floor, chain single calls as in Step 4.
 
                     ### ⚠ Cross-Module Boundary Rule — Use Interface Types, Not Concrete Types
 
@@ -302,22 +442,22 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
 
                     IA may load each module's assembly in an isolated `AssemblyLoadContext`. When it does, the concrete `MyTemplate` type in module B's context is a different `Type` object from the one registered by module A in its context — the lookup silently returns `null` with no error.
 
-                    **Template ID is the primary lookup key** — always use the correct `TemplateId` constant. The interface type is the secondary filter that crosses ALC boundaries safely.
+                    The string you pass — **a role, or a template id when the target has no role** — is the lookup key; prefer the role. The interface type is the secondary filter that crosses ALC boundaries safely.
 
                     ```csharp
                     // ❌ Wrong — returns null when called from a different module's factory extension
-                    var t = application.FindTemplateInstance<WolverineConfigurationTemplate>(
-                    WolverineConfigurationTemplate.TemplateId);
+                    var t = application.FindTemplateInstance<MessagingConfigurationTemplate>(
+                        "MyEcosystem.Messaging.Configuration");
 
                     // ✅ Correct — interface types from shared packages cross ALC boundaries safely
                     var t = application.FindTemplateInstance<ICSharpFileBuilderTemplate>(
-                    WolverineConfigurationTemplate.TemplateId);
+                        "MyEcosystem.Messaging.Configuration");
                     ```
 
                     | Scenario | Interface to use |
                     |---|---|
                     | Template exposes a `CSharpFile` property | `ICSharpFileBuilderTemplate` (from `Intent.Modules.Common.CSharp`) |
-                    | Template has a typed model | `IIntentTemplate<TModel>` (from `Intent.Templates`) |
+                    | Template has a typed model | `IIntentTemplate<TModel>` (from `Intent.Modules.Common`, namespace `Intent.Modules.Common.Templates`) |
                     | Role lookup only, no CSharpFile needed | `ICSharpTemplate` (from `Intent.Modules.Common.CSharp`) |
 
                     ### Null-conditional shorthand (optional single-template enrichment)
@@ -325,7 +465,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                     ```csharp
                     // Safe when the template is genuinely optional
                     application
-                        .FindTemplateInstance<ICSharpFileBuilderTemplate>(TemplateRoles.Distribution.WebApi.Startup)
+                        .FindTemplateInstance<ICSharpFileBuilderTemplate>("Infrastructure.DependencyInjection")
                         ?.CSharpFile.AfterBuild(file => { /* enrich if present */ }, 500);
                     ```
 
@@ -341,6 +481,10 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                     generated node** as metadata under the well-known key `"model"`. Reading it back is the bridge from
                     generated C# to the designer model.
 
+                    `IHandlerModel`, `IOperationModel` and `IParameterModel` below stand for the host module's typed model
+                    interfaces (Tier 2), and `HasAuditable()` for the accessor Module Builder generates from your own
+                    "Auditable" stereotype.
+
                     ```csharp
                     // Role-string lookup — no module dependency needed for this part (see Two-Tier rule below).
                     var templates = application.FindTemplateInstances<ICSharpFileBuilderTemplate>(
@@ -350,7 +494,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                     {
                         // Narrow to templates whose own model is the shape you expect.
                         if (!template.TryGetModel<IHandlerModel>(out var handlerModel))
-                        continue;
+                            continue;
 
                         template.CSharpFile.OnBuild(file =>
                         {
@@ -363,7 +507,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                                 if (!method.TryGetMetadata<IOperationModel>("model", out var operation))
                                     continue;                                  // not model-derived — leave it alone
 
-                                if (!operation.HasStereotype("Auditable"))
+                                // Typed accessor generated from your own "Auditable" stereotype — never HasStereotype("Auditable").
+                                if (!operation.HasAuditable())
                                     continue;
 
                                 // Parameters carry their own designer model the same way.
@@ -382,7 +527,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                     }
                     ```
 
-                    **Rules for the bridge**
+                    #### Rules for the bridge
 
                     1. **Always `TryGetMetadata`, never `GetMetadata`.** `"model"` is a convention host templates opt into, not a framework guarantee — a node with no model, or one built by a different template version, simply won't have it. `GetMetadata` on an absent key throws.
                     2. **Type the read.** `TryGetMetadata<T>` returns `false` on a type mismatch as well as on an absent key, so a wrong `T` degrades to "skip" rather than to a cast exception.
@@ -406,18 +551,18 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                     | **1 — cold** | No | Role-string lookup + the generic `ICSharpFileBuilderTemplate`. Add attributes, usings, properties, statements; publish registration requests. |
                     | **2 — typed** | **Yes** | Everything above, plus reading the target's typed model interfaces via `TryGetModel<T>` / `TryGetMetadata<T>("model")`. |
 
-                    **Why the split.** A role string is just a string — resolving one costs nothing and couples you to
+                    Why the split: a role string is just a string — resolving one costs nothing and couples you to
                     nothing. But the *model interfaces* a host module exposes are types defined **inside that module's
                     assembly**. Referencing them means compiling against it, which means declaring it as a dependency:
 
                     ```xml
-                    <!-- In your .imodspec — required only for Tier 2 -->
+                    <!-- In your .imodspec — required only for Tier 2, with a matching PackageReference in the .csproj -->
                     <dependencies>
-                    <dependency id="MyEcosystem.Application.Handlers" version="1.2.0" />
+                      <dependency id="MyEcosystem.Application.Handlers" version="1.2.0" />
                     </dependencies>
                     ```
 
-                    **The tradeoff.** Tier 1 is free but blind — you can shape generated code without knowing what any of
+                    The tradeoff: Tier 1 is free but blind — you can shape generated code without knowing what any of
                     it means. Tier 2 is what most genuinely useful integration needs, and it costs a version-coupled
                     dependency: when the target module's model interfaces change, your module has to move with them.
 
@@ -439,18 +584,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                         [IntentManaged(Mode.Ignore)]
                         public override int Order => 0;
 
-                        // ── Publish registration events here (not in OnAfterTemplateRegistrations) ──
-                        protected override void OnBeforeTemplateExecution(IApplication application)
-                        {
-                            application.EventDispatcher.Publish(
-                                new AppSettingRegistrationRequest("MySection", new { Enabled = true }));
-                        }
-
-                        // ── Find templates, schedule build callbacks ──
+                        // ── Find templates, schedule build callbacks — every template now exists ──
                         protected override void OnAfterTemplateRegistrations(IApplication application)
                         {
                             var templates = application.FindTemplateInstances<ICSharpFileBuilderTemplate>(
-                                TemplateDependency.OnTemplate(TemplateRoles.Application.DependencyInjection));
+                                TemplateDependency.OnTemplate("Application.DependencyInjection"));
 
                             foreach (var template in templates)
                             {
@@ -462,6 +600,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                                     method.AddInvocationStatement("services.AddMyModule");
                                 }, 500);                     // Extension band — safely after owner's OnBuild
                             }
+                        }
+
+                        // ── Publish registration requests (OnAfterTemplateRegistrations works too) ──
+                        protected override void OnBeforeTemplateExecution(IApplication application)
+                        {
+                            application.EventDispatcher.Publish(
+                                new AppSettingRegistrationRequest("MySection", new { Enabled = true }));
                         }
                     }
                     ```
@@ -503,20 +648,20 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                         }, 1000);
                     ```
 
-                    **The Find Rule:** Template B must use a **strictly higher priority** than Template A when B calls `FindMethod`/`FindClass` on elements A created. If B's priority ≤ A's, A may not have run yet.
+                    The **Find Rule**: Template B must use a **strictly higher priority** than Template A when B calls `FindMethod`/`FindClass` on elements A created. If B's priority ≤ A's, A may not have run yet.
 
                     ===
 
                     ## §Resolution & Consumption — Stereotype-Driven AfterBuild
 
-                    Bridges the two skills: resolve the template (orchestrator), then consume the stereotype (metadata-explorer).
+                    Bridges the two skills: resolve the template (orchestrator), then consume the stereotype (`intent-metadata-consumer`). `GetMySettings()` is the accessor Module Builder generates in your module for a "My Settings" stereotype with a checkbox, a text, a number and a select property.
 
                     ```csharp
                     // Factory extension: enriches entity templates based on stereotype metadata
                     protected override void OnAfterTemplateRegistrations(IApplication application)
                     {
                         var templates = application.FindTemplateInstances<ICSharpFileBuilderTemplate>(
-                        TemplateDependency.OnTemplate(TemplateRoles.Domain.Entity.Primary));
+                            TemplateDependency.OnTemplate("Domain.Entity"));
 
                         foreach (var template in templates)
                         {
@@ -524,8 +669,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                             if (!template.TryGetModel<ClassModel>(out var classModel))
                                 continue;
 
-                            // MUST: use generated typed accessor — NOT GetStereotype("OData")
-                            if (!classModel.HasStereotype("OData"))
+                            // MUST: use the generated typed accessor — NOT HasStereotype("My Settings")
+                            var settings = classModel.GetMySettings();
+                            if (settings == null)
                                 continue;
 
                             template.CSharpFile.AfterBuild(file =>
@@ -533,28 +679,27 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                                 var cls = file.Classes.First();
 
                                 // Bool property → conditional attribute
-                                if (classModel.GetSomeSettings()?.IsTimestamped() == true)
-                                    cls.AddAttribute(UseType("MyModule.TimestampedAttribute"));
+                                if (settings.IsTimestamped())
+                                    cls.AddAttribute(template.UseType("MyModule.TimestampedAttribute"));
 
                                 // String property → attribute argument
-                                var tableName = classModel.GetSomeSettings()?.TableName();
+                                var tableName = settings.TableName();
                                 if (!string.IsNullOrEmpty(tableName))
                                     cls.AddAttribute("Table", a => a.AddArgument($"\"{tableName}\""));
 
-                                // Int? property → constraint argument with null-guard
-                                var maxLen = classModel.GetTextConstraints()?.MaxLength();
-                                if (maxLen is { } max && max > 0)
+                                // Number property → int? — null-guard before use
+                                if (settings.MaxLength() is { } max && max > 0)
                                 {
-                                    cls.FindProperty("Name")
+                                    cls.Properties.FirstOrDefault(p => p.Name == "Name")
                                         ?.AddAttribute("MaxLength", a => a.AddArgument($"{max}"));
                                 }
 
-                                // Enum property → deterministic switch
-                                switch (classModel.GetFileSettings()?.TemplatingMethod().AsEnum())
+                                // Select property → deterministic switch on the nested enum
+                                switch (settings.Mode().AsEnum())
                                 {
-                                    case TemplatingMethodOptionsEnum.CSharpFileBuilder:
-                                        cls.AddAttribute("CSharpFileBuilderManaged");
-                                    break;
+                                    case ClassModelStereotypeExtensions.MySettings.ModeOptionsEnum.Extended:
+                                        cls.AddAttribute("ExtendedMode");
+                                        break;
                                 }
                             }, 500);                         // Extension band
                         }
@@ -574,12 +719,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                     var startup = application.FindTemplateInstance<IAppStartupTemplate>(IAppStartupTemplate.RoleName);
                     if (startup == null) return;   // ← MUST guard before accessing .StartupFile
 
-                    // Register mutations inside an OnBuild/AfterBuild callback
+                    // Register mutations inside an OnBuild callback, with an explicit priority
                     startup.CSharpFile.OnBuild(_ =>
                     {
                         var sf = startup.StartupFile;
                         // ... DSL calls below ...
-                    });
+                    }, 100);
                     ```
 
                     ### Context variable reference
@@ -587,7 +732,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                     | Context property | Type in minimal hosting | Type in generic hosting |
                     |---|---|---|
                     | `context.Services` | `"builder.Services"` | `"services"` |
-                    | `context.Configuration` | `"builder.Configuration"` | `"configuration"` |
+                    | `context.Configuration` | `"builder.Configuration"` | `"Configuration"` (the `Startup` class property) |
                     | `context.App` | `"app"` | `"app"` |
                     | `context.Env` | `"app.Environment"` | `"env"` |
                     | `context.Endpoints` | `"app"` (in MapX calls) | `"endpoints"` |
@@ -612,8 +757,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                     If subsequent calls pass more lambda parameters than the first call, the additional parameter names are appended to the existing lambda signature in order.
 
                     ```csharp
-                    // Source: ExceptionFilterExtension.cs (active module)
-                    // Produces: services.AddControllers(opt => { opt.Filters.Add<MyFilter>(); })
+                    // Produces: services.AddControllers(opt => { opt.Filters.Add<MyExceptionFilter>(); })
                     startup.StartupFile.AddServiceConfigurationLambda(
                         methodName: "AddControllers",
                         parameters: ["opt"],
@@ -624,7 +768,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                             // context     — carries .Services, .Configuration, and .Parameters
                             // context.Parameters[0] — the lambda variable name: "opt"
                             lambda.AddStatement(
-                            $"{context.Parameters[0]}.Filters.Add<{template.GetExceptionFilterName()}>();");
+                                $"{context.Parameters[0]}.Filters.Add<{template.GetTypeName("MyModule.MyExceptionFilter")}>();");
 
                             // Attach metadata so other modules can locate this statement later
                             statement.AddMetadata("configure-services-controllers", "generic");
@@ -660,7 +804,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
 
                     ### 5. Lambda-bearing middleware call — AddAppConfigurationLambda
 
-                    `AddAppConfigurationLambda("UseEndpoints", ...)` is blocked by the SDK and throws. Use `AddUseEndpointsStatement(...)` for endpoint mapping.
+                    `AddAppConfigurationLambda("UseEndpoints", ...)` throws in the ASP.NET Core startup host (`Intent.AspNetCore`). Use `AddUseEndpointsStatement(...)` for endpoint mapping.
 
                     ```csharp
                     // Produces: app.UseRateLimiter(options => { options.GlobalLimiter = ...; })
@@ -686,9 +830,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                     {
                         if (statements.Statements.All(x => !x.ToString()!.Contains(".MapRazorPages")))
                         {
-                            statements
-                            .Single(x => x.ToString()!.Contains(".MapControllers("))
-                            .InsertBelow(new CSharpInvocationStatement($"{ctx.Endpoints}.MapRazorPages"));
+                            statements.Statements
+                                .Single(x => x.ToString()!.Contains(".MapControllers("))
+                                .InsertBelow(new CSharpInvocationStatement($"{ctx.Endpoints}.MapRazorPages"));
                         }
                     });
                     ```
@@ -698,7 +842,6 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                     Use when you need to read the existing statement list and perform conditional insertion.
 
                     ```csharp
-                    // Source: AspNetCoreIdentityUiFactoryExtension.cs (active module)
                     startup.StartupFile.ConfigureServices((block, ctx) =>
                     {
                         // Context gives you the correct variable name regardless of hosting model
@@ -735,17 +878,19 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.IntentModuleOr
                     | `ConfigureServices((stmts, ctx) => ...)` | ✓ | — | Positional / conditional service edits |
                     | `ConfigureApp((stmts, ctx) => ...)` | ✓ | — | Positional / conditional middleware edits |
                     | `ConfigureEndpoints((stmts, ctx) => ...)` | ✓ | — | Positional / conditional endpoint edits |
-                    | `ExposeProgramClass()` | ✓ | — | Make `partial class Program` public (top-level stmts) |
+                    | `ExposeProgramClass()` | ✓ | — | Make `partial class Program` public (top-level stmts) — needs `Intent.Common.CSharp` 3.8.10 |
 
                     > ⚠️ `AddAppConfigurationLambda("UseEndpoints", ...)` throws — use `AddUseEndpointsStatement` instead.
+
+                    The `IAppStartupFile` interface is in `Intent.Modules.Common.CSharp` (namespace `Intent.Modules.Common.CSharp.AppStartup`); the startup host modules (for example `Intent.AspNetCore`) implement it. Everything in the table except `ExposeProgramClass()` is available at the default `Intent.Common.CSharp` floor of 3.8.0. To use `ExposeProgramClass()`, raise the `Intent.Common.CSharp` `<dependency>` and the `Intent.Modules.Common.CSharp` package reference to 3.8.10, and `Intent.Modules.Common` / the `Intent.Common` `<dependency>` to 3.7.3 with them (3.8.10 depends on it; leaving Module Builder's 3.7.2 fails restore with `NU1605`).
 
                     ===
 
                     ## TemplateDependency Quick Ref
 
                     ```csharp
-                    TemplateDependency.OnTemplate(TemplateRoles.Domain.Entity.Primary)
-                    // ──► matches all templates whose role == Primary or TemplateId == Primary
+                    TemplateDependency.OnTemplate("Domain.Entity")
+                    // ──► matches every template whose TemplateId or one of whose roles equals the string exactly
 
                     TemplateDependency.OnTemplate(MyTemplate.TemplateId)
                     // ──► matches by exact TemplateId constant

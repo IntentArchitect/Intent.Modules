@@ -1,5 +1,5 @@
 ---
-contentHash: AE81027648E3DD08086744421565F668863C8D7BBAFA980CF61AA3D99BDAD055
+contentHash: BA5C90BE556B8E0843DF14B35D9A4BE4964D6F91254908C8E54549027A4B30D0
 ---
 # Add Association Type — Workflow & Details
 
@@ -9,16 +9,13 @@ contentHash: AE81027648E3DD08086744421565F668863C8D7BBAFA980CF61AA3D99BDAD055
 
 You need the `typeId` of every element type that either end of the association can connect to. Collect these before making any model changes.
 
-**MCP lookup per type:**
+**MCP lookup per type:** call `run_designer_query` with your module's application ID and its Module Builder
+designer ID (both from `get_applications`); load `scripting-the-model` first. A type owned by another module is
+only visible if that module is installed in your module's application (it loads as a read-only referenced package).
 
-```json
-find_designer_elements(
-    applicationId   = <target module's app ID>,
-    designerId      = <target module's Module Builder designer ID>,
-    query           = "<element name>",
-    fields          = ["name"],
-    specializations = ["Element Settings"]
-)
+```javascript
+return findElements({ name: "<element name>", specialization: ["Element Settings"], includeReferences: true })
+    .map(el => ({ name: el.getName(), id: el.getId(), fromReference: el.isReference() }));
 ```
 
 Or read `SpecializationTypeId` from the generated `Api/<TypeName>Model.cs` in the target module.
@@ -47,7 +44,7 @@ Select the `Association Source End Settings` child and apply the `Settings` ster
 | `Target Types` | Array of type GUIDs this end can originate from (e.g., Command, Query, Operation) |
 | `Api Property Name` | C# property name on the generated source-end model (e.g., `IntegrationEventsSources`) |
 | `Display Text Function` | JS returning display text — usually `return typeReference.display` or a custom label |
-| `Name Accessibility` | Usually `Hidden` (the name is not user-editable) |
+| `Name Accessibility` | Usually `Hidden` (the name is not user-editable). Only `Optional`, `Required`, `Disabled` or `Hidden` are valid |
 | `Name Must Be Unique` | `true` / `false` |
 | `Allow Multiple` | Whether multiple of this association type can originate from the same element |
 | `Is Navigable Default` | `false` for source end on publish-style associations |
@@ -88,7 +85,7 @@ If users should be able to open a mapping dialog from this association end:
 
 Create an `Association Visual Settings` child under the `Association Settings` element. Apply the `Setting` stereotype:
 
-- `Line Type` — `Curved`, `Elbow Connector`, `Straight`
+- `Line Type` — `Elbow Connector` or `Curved` (there is no other line type)
 - `Line Color` — JavaScript returning a CSS color string (can be theme-aware)
 - `Line Dash Array` — e.g., `"3,7"` for a dashed line
 - `Reverse Flow Direction` — `true` for subscribe/handler associations (arrow points toward the handler)
@@ -112,7 +109,7 @@ run_software_factory(applicationId = <your module's app ID>)
 
 Review the diff. You should see:
 
-- A new `<elementSettings>` block (or `<associationSettings>` block) in `modelers/*.designer.settings`
+- A new `<associationSetting>` entry inside the `<associationSettings>` block of `modelers/*.designer.settings` (an association type never lands in `<elementSettings>`)
 - A new `Api/<AssociationName>Model.cs` with source/target end models
 - A new `Api/<AssociationName>ModelAssociationExtensions.cs`
 - Updated `Api/ApiMetadataProviderExtensions.cs`
@@ -123,12 +120,12 @@ apply_staged_file_changes(applicationId = <your module's app ID>)
 
 ### Step 9 — Verify
 
-1. `get_designer_validation_errors` — resolve any errors.
+1. `run_designer_query` with `return await getDesignerValidationErrors();` — resolve any errors.
 2. Confirm the generated `*Model.cs` has `SpecializationTypeId` matching the element's GUID.
 3. Confirm `SourceEnd` and `TargetEnd` model properties exist with the correct `ApiPropertyName` values.
 4. Build the module project to confirm compilation.
 
----
+===
 
 ## Common Mistakes
 

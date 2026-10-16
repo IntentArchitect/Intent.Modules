@@ -137,8 +137,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleElementI
                     `iconUrl` is regenerated from it. That is `module-svg-icon`'s job — and it goes through a script not because
                     nothing else can set it, but because the base64 payload would otherwise pass through your context.
 
-                    The confusion is easy to hit because a designer's `.application.config` also contains many per-element icon
-                    entries. **Those are not the package icon**, and the package icon is not one of them.
+                    The confusion is easy to hit because the module's `.application.config` also holds other
+                    `<icon type="…" source="…">` entries — one per designer reference and per module-settings group. **Those
+                    are neither the package icon nor element icons.** Element-type and stereotype icons never live in
+                    `.application.config`: they are set in the Module Builder designer and generated into the module's
+                    `.designer.settings` (element types) and packaged stereotype definitions. Nothing in this skill reads or
+                    edits `.application.config`.
 
                     | If you want… | Use |
                     |---|---|

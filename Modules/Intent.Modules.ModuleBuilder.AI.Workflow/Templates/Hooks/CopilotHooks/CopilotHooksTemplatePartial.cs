@@ -27,8 +27,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.CopilotHooks
         private const string HarnessFolder = ".github";
 
         // Copilot's own edit tools ("create", "edit", plus the names it maps Claude-format matchers to)
-        // and any MCP tool whose name carries run_designer_script.
-        private const string WriteAndDesignerToolsMatcher = "create|edit|str_replace_editor|apply_patch|write|.*run_designer_script.*";
+        // any MCP tool whose name carries run_designer_script, and Intent's MCP file tools - named, not
+        // ".*", because the read-only list in the gate compares exact names and must stay the backstop.
+        private const string WriteAndDesignerToolsMatcher = "create|edit|str_replace_editor|apply_patch|write|.*run_designer_script.*|" + GateCommands.IntentFileToolsMatcher;
 
         /// <summary>
         /// GitHub Copilot CLI reads repository hooks from ".github/hooks/NAME.json", so ".github" is

@@ -11,10 +11,14 @@ namespace AgentEvals;
 /// Served over stdio by the runner's own executable (`mcp-stub`), so it needs no build of its own.
 /// </summary>
 /// <remarks>
-/// Tool names and argument names match the real server's, because the gate's guard-version hook keys
-/// on them: it matches the tool name "run_designer_script" and reads tool_input.applicationId and
-/// tool_input.script. A script that sets the module's Version is applied to the .imodspec, as the
+/// Tool names and argument names match the real server's, because the gate's hooks key on them:
+/// guard-version matches the tool name "run_designer_script" and reads tool_input.applicationId and
+/// tool_input.script; guard-write matches "write_file", "patch_file" and "delete_code_file" and reads
+/// tool_input.filePath, content, searchBlock and replaceBlock. The file tools really write, resolving a
+/// relative path against the workspace as Intent resolves it against the open solution's folder. A script that sets the module's Version is applied to the .imodspec, as the
 /// Software Factory would; any other script is recorded and reported as run, but changes nothing.
+/// run_solution_query answers only searchAvailableModules, from a fixed feed (see <see cref="Feed"/>), so the
+/// version gate's feed check can complete.
 /// </remarks>
 public static class McpStub
 {
@@ -102,6 +106,36 @@ public static class McpStub
                 ["script"] = new JsonObject { ["type"] = "string", ["description"] = "The designer script to run." },
             },
             required: ["applicationId", "script"]),
+        Tool("run_solution_query",
+            "Run a read-only JavaScript query against the solution and get its `return` value back as JSON. Globals: " +
+            "searchAvailableModules(searchString, { includePrerelease?, repositoryUrl? }).",
+            new JsonObject
+            {
+                ["applicationId"] = new JsonObject { ["type"] = new JsonArray("string", "null"), ["description"] = "Omit when the query only touches modules." },
+                ["script"] = new JsonObject { ["type"] = "string", ["description"] = "JavaScript to execute. Its `return` value is the answer." },
+            },
+            required: ["script"]),
+        Tool("write_file", "Write content to a file, creating it if it doesn't exist or overwriting if it does.",
+            new JsonObject
+            {
+                ["filePath"] = new JsonObject { ["type"] = "string", ["description"] = "Absolute path to the file to write." },
+                ["content"] = new JsonObject { ["type"] = "string", ["description"] = "The complete file content to write." },
+            },
+            required: ["filePath", "content"]),
+        Tool("patch_file", "Replace a specific block of text in a file. Pass the literal text to find as searchBlock and its replacement as replaceBlock.",
+            new JsonObject
+            {
+                ["filePath"] = new JsonObject { ["type"] = "string", ["description"] = "Absolute path to the file to patch." },
+                ["searchBlock"] = new JsonObject { ["type"] = "string", ["description"] = "Literal text to find." },
+                ["replaceBlock"] = new JsonObject { ["type"] = "string", ["description"] = "Literal replacement text." },
+            },
+            required: ["filePath", "searchBlock", "replaceBlock"]),
+        Tool("delete_code_file", "Delete a file.",
+            new JsonObject
+            {
+                ["filePath"] = new JsonObject { ["type"] = "string", ["description"] = "Absolute path to the file to delete." },
+            },
+            required: ["filePath"]),
     ];
 
     private static JsonObject Tool(string name, string description, JsonObject properties, string[]? required = null)
@@ -126,6 +160,8 @@ public static class McpStub
         {
             "get_applications" => (JsonSerializer.Serialize(applications.Select(a => new { id = a.Id, name = a.Name, location = a.Folder })), false),
             "run_designer_script" => RunScript(arguments, applications, wrote),
+            "run_solution_query" => RunQuery(arguments, workspace),
+            "write_file" or "patch_file" or "delete_code_file" => RunFileTool(name, arguments, workspace, wrote),
             _ => ($"Unknown tool: {name}", true),
         };
 
@@ -142,7 +178,7 @@ public static class McpStub
                 ["wrote"] = new JsonArray([.. wrote.Select(path => (JsonNode)new JsonObject
                 {
                     ["path"] = Path.GetRelativePath(workspace, path).Replace('\\', '/'),
-                    ["content"] = File.ReadAllText(path),
+                    ["content"] = File.Exists(path) ? File.ReadAllText(path) : null,
                 })]),
             }.ToJsonString() + Environment.NewLine);
         }
@@ -152,6 +188,40 @@ public static class McpStub
             ["content"] = new JsonArray(new JsonObject { ["type"] = "text", ["text"] = text }),
             ["isError"] = isError,
         };
+    }
+
+    /// <summary>
+    /// What the module feed offers: the fixture's SampleModule is published at 1.0.0, and its own 1.0.1 is a
+    /// local build - in flight, so the version gate leaves it alone. Shaped like the real searchAvailableModules result.
+    /// </summary>
+    private static readonly (string Id, string Version, string Repository)[] Feed =
+    [
+        ("SampleModule", "1.0.0", "https://intentarchitect.com/"),
+        ("SampleModule", "1.0.1", "local"),
+    ];
+
+    private static (string Text, bool IsError) RunQuery(JsonObject arguments, string workspace)
+    {
+        var script = arguments["script"]?.GetValue<string>() ?? "";
+        var search = Regex.Match(script, """searchAvailableModules\(\s*["'`]([^"'`]*)["'`]""");
+        if (!search.Success)
+        {
+            return ("This query is not supported here: only searchAvailableModules(searchString, { includePrerelease }) is.", true);
+        }
+
+        var term = search.Groups[1].Value;
+        var modules = Feed
+            .Where(m => m.Id.Contains(term, StringComparison.OrdinalIgnoreCase))
+            .Select(m => new
+            {
+                id = m.Id,
+                summary = "A sample module.",
+                authors = "Intent Architect",
+                version = m.Version,
+                isCompatible = true,
+                repository = m.Repository == "local" ? Path.Combine(workspace, "Intent.Modules") : m.Repository,
+            });
+        return (JsonSerializer.Serialize(new { executed = true, result = modules, output = Array.Empty<string>() }), false);
     }
 
     private static (string Text, bool IsError) RunScript(JsonObject arguments, IReadOnlyList<Application> applications, List<string> wrote)
@@ -221,6 +291,51 @@ public static class McpStub
         return updates.Count > 0 ? ($"Script ran. Updated {string.Join("; ", updates)}.", false)
             : properties.Count > 0 ? ("Script ran, but changed nothing: no element or property matched the script's setProperty call(s).", false)
             : ("Script ran successfully.", false);
+    }
+
+    private static (string Text, bool IsError) RunFileTool(string name, JsonObject arguments, string workspace, List<string> wrote)
+    {
+        var filePath = arguments["filePath"]?.GetValue<string>() ?? arguments["file_path"]?.GetValue<string>() ?? arguments["path"]?.GetValue<string>();
+        if (string.IsNullOrWhiteSpace(filePath))
+        {
+            return ("filePath is required.", true);
+        }
+
+        var full = Path.GetFullPath(Path.IsPathRooted(filePath) ? filePath : Path.Combine(workspace, filePath));
+        switch (name)
+        {
+            case "write_file":
+                Directory.CreateDirectory(Path.GetDirectoryName(full)!);
+                File.WriteAllText(full, arguments["content"]?.GetValue<string>() ?? "");
+                break;
+            case "patch_file":
+                if (!File.Exists(full))
+                {
+                    return ($"File not found: {filePath}", true);
+                }
+
+                var content = File.ReadAllText(full);
+                var search = arguments["searchBlock"]?.GetValue<string>() ?? "";
+                var index = search.Length == 0 ? -1 : content.IndexOf(search, StringComparison.Ordinal);
+                if (index < 0)
+                {
+                    return ("searchBlock was not found in the file.", true);
+                }
+
+                File.WriteAllText(full, content[..index] + (arguments["replaceBlock"]?.GetValue<string>() ?? "") + content[(index + search.Length)..]);
+                break;
+            default:
+                if (!File.Exists(full))
+                {
+                    return ($"File not found: {filePath}", true);
+                }
+
+                File.Delete(full);
+                break;
+        }
+
+        wrote.Add(full);
+        return ($"{name} succeeded for {filePath}.", false);
     }
 
     private sealed record Application(string Id, string Name, string Folder);

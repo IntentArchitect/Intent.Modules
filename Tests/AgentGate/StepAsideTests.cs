@@ -11,9 +11,11 @@ namespace AgentGate.Tests;
 /// Code itself: a copy wrongly stepping aside is a guard switched off.
 /// </summary>
 /// <remarks>
-/// Only the "claude" harness id is ever subject to this, and no other test uses it, so overriding the
-/// process-tree probe here cannot leak into tests running alongside.
+/// These tests override <see cref="HostEnvironment.NearestHarness"/>, which is process-wide, so they run in
+/// a collection that never runs alongside another test. Other tests do run the "claude" harness, and one
+/// without a "transcript_path" in its payload saw "copilot" here and stepped aside.
 /// </remarks>
+[Collection(nameof(NearestHarnessOverride))]
 public class StepAsideTests
 {
     [Fact]
@@ -81,3 +83,7 @@ public class StepAsideTests
         }
     }
 }
+
+/// <summary>Runs the tests that override <see cref="HostEnvironment.NearestHarness"/> on their own.</summary>
+[CollectionDefinition(nameof(NearestHarnessOverride), DisableParallelization = true)]
+public sealed class NearestHarnessOverride;

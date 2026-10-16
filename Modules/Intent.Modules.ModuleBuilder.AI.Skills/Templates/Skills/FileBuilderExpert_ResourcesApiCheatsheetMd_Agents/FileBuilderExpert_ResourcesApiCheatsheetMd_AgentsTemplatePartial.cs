@@ -46,7 +46,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
           - [Control Flow](#control-flow)
           - [Advanced Types](#advanced-types)
 
-          ---
+          ===
 
           ## File Setup
 
@@ -55,7 +55,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
           CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath(), this)
           ```
 
-          ---
+          ===
 
           ## Namespaces
 
@@ -68,11 +68,16 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
             CSharpFile.AddUsing(this.GetNamespace());
           }
 
-          var template = GetTemplate<IClassProvider>(templateDependency);
-          if (template != null)
+          // GetTemplate is a template lookup: call it in a build callback, never in the constructor (Must #7).
+          // It throws when nothing matches — pass DoNotThrow when the template is optional:
+          CSharpFile.OnBuild(file =>
           {
-            AddUsing(template.Namespace);
-          }
+            var template = GetTemplate<IClassProvider>(templateDependency, TemplateDiscoveryOptions.DoNotThrow);
+            if (template != null)
+            {
+              file.AddUsing(template.Namespace);
+            }
+          });
 
           foreach (var ns in requiredNamespaces)
           {
@@ -85,7 +90,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
 
           > **Builder inference rule**: `UseType(...)` works because the builder tracks the type reference and auto-introduces the namespace. Raw strings are opaque, including return/parameter type strings.
 
-          ---
+          ===
 
           ## Type Declarations
 
@@ -96,7 +101,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
           .AddEnum("MyEnum", @enum => { @enum.AddLiteral("Active"); })
           ```
 
-          ---
+          ===
 
           ## Members
 
@@ -115,23 +120,43 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
           // Interface method (async):
           @interface.AddMethod("Task", "Execute", method => method.Async());
 
+          // Optional CancellationToken parameter — emits "CancellationToken cancellationToken = default" and its using:
+          @class.AddMethod("Task", "RunAsync", method => method.Async().AddOptionalCancellationTokenParameter());
+
           // Property:
           @class.AddProperty("string", "Name");
-          @class.AddProperty("ILogger", "_logger", p => p.PrivateReadOnly());
+
+          // Field (PrivateReadOnly() exists on fields only, not on properties):
+          @class.AddField("ILogger", "_logger", f => f.PrivateReadOnly());
+
+          // Public members at the 3.8.0 floor: Constant(value) emits "public const";
+          // a public static value is a get-only static property:
+          @class.AddField("string", "Name", f => f.Constant("\"Customer\""));
+          @class.AddProperty("string[]", "Attributes", p => p.Static().WithoutSetter().WithInitialValue("[\"Id\", \"Name\"]"));
           ```
 
-          ---
+          At the 3.8.0 floor a field offers `Private`, `PrivateReadOnly`, `Protected`, `ProtectedReadOnly`, `Constant`, `PrivateConstant` and `Static`. `Public(...)` and `ReadOnly(...)`, the route to a `public static readonly` field, need `Intent.Common.CSharp` 3.9.8 or later; raise it as `known-build-gotchas`' NU1605 section describes, or use the property form above.
+
+          ===
 
           ## Model & Type Integration
 
           ```csharp
           // 1) Register type sources early so GetTypeName(...) can resolve model references.
-          AddTypeSource(TemplateRoles.Domain.Entity.Interface);
-          AddTypeSource(TemplateRoles.Domain.Enum);
+          //    Pass the target template's id or role as a string — these two are roles published by
+          //    Intent's Domain modules (see intent-module-orchestrator for a table of common role values):
+          AddTypeSource("Domain.Entity.Interface");
+          AddTypeSource("Domain.Enum");
 
           CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath(), this)
-              .AddClass(Model.Name, @class =>
+              // Declare the class in the constructor. AddClass's configure lambda is itself deferred to the
+              // build phase; an explicit OnBuild just makes it visible where the lookups run.
+              .AddClass(Model.Name)
+              // Map the model in a build callback, once every template is registered (Must #7):
+              .OnBuild(file =>
               {
+                  var @class = file.Classes.First();
+
                   // 2) Attribute -> Property mapping (model-driven):
                   foreach (var attribute in Model.Attributes)
                   {
@@ -139,12 +164,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                       @class.AddProperty(propertyType, attribute.Name.ToPascalCase(), prop =>
                       {
                           prop.RepresentsModel(attribute);
-          
+
                           // Static only when model semantics require it.
                           // prop.Static();
-          
+
                           // If the target member API exposes WithOptional(bool), map from model optionality.
-                          // For CSharpProperty in this repo, optionality is represented via resolved type/nullability
+                          // For CSharpProperty, optionality is represented via resolved type/nullability
                           // (and explicit modifiers such as Required()) rather than WithOptional(...).
                       });
                   }
@@ -161,11 +186,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                             method.AddParameter(GetTypeName(parameter), parameter.Name.ToParameterName(), p => p.WithDefaultValue(parameter.Value));
                           }
 
-                          // If operation behavior is async / returns Task, mark the method async.
-                          if (operation.IsAsync())
+                          // If the operation is async (your module's own rule — e.g. a stereotype or setting),
+                          // mark the method async and add "CancellationToken cancellationToken = default":
+                          if (IsAsync(operation))
                           {
                             method.Async();
-                            method.AddParameter(UseType("System.Threading.CancellationToken"), "cancellationToken", p => p.WithDefaultValue("default"));
+                            method.AddOptionalCancellationTokenParameter();
                           }
                       });
                   }
@@ -176,15 +202,24 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                   p => p.IntroduceReadonlyField()));
               });
 
-          // 5) TemplateId-based type resolution:
-          var dtoType = GetTypeName(MyDtoTemplate.TemplateId, Model)
-          ?? throw new InvalidOperationException("DTO template type could not be resolved.");
+          // 5) TemplateId-based type resolution — also in a build callback, never in the constructor.
+          //    GetTypeName(templateId, model) THROWS when no instance matches, so a "?? throw" after it never runs:
+          CSharpFile.OnBuild(file =>
+          {
+              var dtoType = GetTypeName(MyDtoTemplate.TemplateId, Model);
+
+              //    When the other template is optional, use TryGetTypeName and branch:
+              if (TryGetTypeName(MyDtoTemplate.TemplateId, Model, out var optionalDtoType))
+              {
+                  // use optionalDtoType
+              }
+          });
 
           // 6) Concrete type usage: never hardcode namespace + using separately when UseType can do both.
           var cancellationTokenType = UseType("System.Threading.CancellationToken");
           ```
 
-          ---
+          ===
 
           ## Advanced Expressions
 
@@ -199,8 +234,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                 .WithExpressionBody(new CSharpStatement("x.Name"))));
 
           // OBJECT INITIALIZERS: use CSharpObjectInitializerBlock with AddInitStatement, never raw { ... } strings.
+          // CSharpVariableDeclaration writes the "var " itself — pass only the name ("var dto" renders "var var dto").
           method.AddStatement(new CSharpAssignmentStatement(
-            new CSharpVariableDeclaration("var dto"),
+            new CSharpVariableDeclaration("dto"),
             new CSharpObjectInitializerBlock("new MyDto")
                 .AddInitStatement("Id", "entity.Id")
                 .AddInitStatement("Name", "entity.Name")
@@ -217,34 +253,36 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
           // CSharpMethodChainStatement is [Obsolete] and must not be used.
           ```
 
-          ---
+          ===
 
           ## Build Lifecycle Hooks
 
           ```csharp
           .OnBuild(file =>
           {
-            // Structural composition — runs during build, before AfterBuild.
-            // Priority defaults to 0 (lowest number = runs first).
+            // Structural composition. Phase 1: the OnBuild callbacks of EVERY template run first,
+            // ordered by priority (lower number runs first; the default is 0).
             file.Classes.First().AddMethod("void", "Generated");
           })
           .AfterBuild(file =>
           {
-            // Final reconciliation — runs after ALL OnBuild delegates across all templates.
-            // Use for cross-template wiring or late enrichment.
+            // Final reconciliation. Phase 2: starts only after every OnBuild of every template has run,
+            // whatever the priorities — this number only orders it against other AfterBuild callbacks.
             file.Classes.First().FindMethod("Generated")?.AddStatement("// reconciled");
-          }, 1000)  // explicit priority — use consistent bands: 0 / 100 / 500 / 1000
+          }, 1000)  // explicit priority — consistent bands within each phase: 0 / 100 / 500 / 1000
           ```
 
+          > Callbacks run only for templates whose `CanRunTemplate()` is true when the phase starts. A callback registered from inside another callback is queued into the running phase.
           > See `resources/patterns/lifecycle-hooks.cs` for priority bands, factory extension patterns, and FindMethod usage.
 
-          ---
+          ===
 
           ## Top-Level Statements
 
           ```csharp
-          // File-level top-level statements with local methods.
-          var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+          // File-level top-level statements with local methods (in the template constructor).
+          // The Software Factory builds the file itself — never call a build method by hand.
+          CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath(), this)
             .AddUsing("System")
             .AddTopLevelStatements(tls =>
             {
@@ -256,11 +294,10 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     localMethod.AddStatement("var variable = new object();");
                 });
             })
-            .AddClass("Class")
-            .CompleteBuild();
+            .AddClass("Class");
           ```
 
-          ---
+          ===
 
           ## Template Contract
 
@@ -276,7 +313,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
           public override string TransformText() => CSharpFile.ToString();
           ```
 
-          ---
+          ===
 
           ## Control Flow
 
@@ -311,20 +348,21 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
             .AddInvocation("StepTwo", s => s.OnNewLine())
             .AddInvocation("StepThree", s => s.OnNewLine()));
 
-          // ASSIGNMENT:
-          method.AddAssignmentStatement("var result", new CSharpStatement("await svc.GetAsync()"));
+          // ASSIGNMENT — the right-hand side carries the ";" (without WithSemicolon() none is written):
+          method.AddAssignmentStatement("var result", new CSharpStatement("await svc.GetAsync()").WithSemicolon());
           ```
 
-          ---
+          ===
 
           ## Advanced Types
 
           > Read `resources/patterns/advanced-types.cs` before generating generics, attributes, or nested types.
 
           ```csharp
-          // GENERICS:
+          // GENERICS — a method's own type parameter needs its own name (reusing the class's T is CS0693):
           @class.AddGenericParameter("T", out var t);
-          method.AddGenericParameter(t).AddGenericTypeConstraint(t, c => c.AddType("class"));
+          @class.AddGenericTypeConstraint(t, c => c.AddType("class"));
+          method.AddGenericParameter("TResult", out var tResult).AddGenericTypeConstraint(tResult, c => c.AddType("new()"));
 
           // INHERITANCE:
           @class.WithBaseType("Base");
@@ -342,16 +380,21 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
           @class.Static(); @class.Abstract(); @class.Partial();
           method.Virtual(); method.Override(); method.Abstract();
 
-          // METADATA — TWO uses (guard all reads; never GetMetadata without HasMetadata / TryGetMetadata):
+          // METADATA — TWO uses. Guard every read: GetMetadata<T> throws on an absent key, returns null
+          // (no exception) when the value is not a T, and only takes reference types (GetMetadata<bool>
+          // does not compile). TryGetMetadata<T> checks both and works for any T.
           // 1. YOUR OWN cross-step state — set in one callback, read back in a later one:
           node.AddMetadata("key", value);              // throws if that key is already present
           if (node.TryGetMetadata<bool>("key", out var v) && v) { /* use v */ }
 
-          // 2. THE DESIGNER MODEL the host template already attached — a node generated from a
-          //    modelled element is stamped with that element under the well-known key "model":
-          if (method.TryGetMetadata<IOperationModel>("model", out var op)) { /* op = designer element */ }
-          // Classes, methods, properties and parameters each carry their own. This is how you tell
-          // which designer element a generated member came from — never match on names.
+          // 2. WHICH DESIGNER ELEMENT a generated member came from — never match on names:
+          //    a) RepresentsModel(element) records it on the member, read back as RepresentedModel
+          //       (RepresentedModel needs Intent.Common.CSharp 3.8.5+ — raise the dependency from a 3.8.0 floor,
+          //       and Intent.Modules.Common / the Intent.Common dependency to 3.7.3 with it, or restore fails with NU1605):
+          if (method.RepresentedModel is OperationModel operation) { /* designer element */ }
+          //    b) The "model" metadata key is a CONVENTION, not a builder feature: it is there only if the
+          //       template that built the member called AddMetadata("model", element). Many do; check yours.
+          if (method.TryGetMetadata<OperationModel>("model", out var op)) { /* op = designer element */ }
           // See intent-module-orchestrator § "The Model Bridge".
           ```
 

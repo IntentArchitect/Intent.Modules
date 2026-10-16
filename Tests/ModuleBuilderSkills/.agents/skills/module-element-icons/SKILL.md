@@ -3,7 +3,7 @@ name: module-element-icons
 description: "Set the icon on a stereotype definition or on a custom element type in a designer you own. USE ONLY WHEN a stereotype or element type you define should show a distinct icon in the Intent Architect UI. DO NOT USE FOR a module's own package icon (see module-svg-icon) — different file, different mechanism, and the two are routinely confused. REQUIRES the stereotype definition or element type already modelled in the Module Builder designer."
 keywords: [icon, stereotype, element type, designer, module builder, ui]
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleElementIcons_SkillMd_Agents
-contentHash: 0B737F60EDB6925C931F6B04EC8144C8DC5CE770441B70B5702A63233D005466
+contentHash: 7CC084DA9B398D6646C506A71C3549B323DD6F4EB79F1E16DE1015F8C28DB5A1
 ---
 # Skill: module-element-icons
 
@@ -27,9 +27,8 @@ Two companions control *when* it shows:
 
 - **`displayIcon`** — whether the badge renders on elements carrying the stereotype at all.
 - **`displayIconFunction`** — a script for conditional display, when the badge should only appear for
-
-certain property values. Prefer plain `displayIcon` unless the condition is real; a function that always
-returns the same answer is just a slower checkbox.
+  certain property values. Prefer plain `displayIcon` unless the condition is real; a function that always
+  returns the same answer is just a slower checkbox.
 
 A stereotype badge competes for space with the element's own icon and its name. Reach for one when the
 stereotype changes how the element should be *read* at a glance — not merely to show it was applied.
@@ -108,8 +107,12 @@ lives in the module's `.application.config` as a root-level `icon`/`iconType` pa
 `iconUrl` is regenerated from it. That is `module-svg-icon`'s job — and it goes through a script not because
 nothing else can set it, but because the base64 payload would otherwise pass through your context.
 
-The confusion is easy to hit because a designer's `.application.config` also contains many per-element icon
-entries. **Those are not the package icon**, and the package icon is not one of them.
+The confusion is easy to hit because the module's `.application.config` also holds other
+`<icon type="…" source="…">` entries — one per designer reference and per module-settings group. **Those
+are neither the package icon nor element icons.** Element-type and stereotype icons never live in
+`.application.config`: they are set in the Module Builder designer and generated into the module's
+`.designer.settings` (element types) and packaged stereotype definitions. Nothing in this skill reads or
+edits `.application.config`.
 
 | If you want… | Use |
 |---|---|

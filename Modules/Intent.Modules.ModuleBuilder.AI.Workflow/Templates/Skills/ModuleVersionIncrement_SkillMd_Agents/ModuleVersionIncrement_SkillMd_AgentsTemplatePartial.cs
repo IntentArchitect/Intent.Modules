@@ -182,11 +182,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleVersio
 
                     ### Query Mechanisms
 
-                    1. **Primary — feed search.** Search the module's configured feeds with prereleases included — the flag
+                    1. **Primary — feed search.** Search the module's configured feeds with prereleases included:
+                    `run_solution_query` → `searchAvailableModules("<module id>", { includePrerelease: true })`. The flag
                     is **mandatory**, prereleases are hidden without it, so an unflagged search can misreport a published
                     prerelease as absent. Compare every result against your current version by semver precedence, not
                     exact-string equality — anything at or beyond it counts as published. Ignore any result whose
-                    repository address is the machine-local build-output path per the ladder above.
+                    `repository` is the machine-local build-output path per the ladder above.
                     2. **Fallback — ask the developer.** If the feed can't be reached, state the current version, the
                     version you believe it should become, and why, then ask how to proceed. Take the answer as given and do
                     not ask again for that module during this task.
@@ -225,12 +226,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Skills.ModuleVersio
                     If the query mechanisms there still report nothing at or beyond your version as published, you're
                     clear; if something now is, someone published ahead of you and you need to move further.
 
-                    > **The downgrade guard.** The Software Factory silently refuses to regenerate `.imodspec` if the
-                    > version you just set compares as *lower*, by semver precedence, than the `<version>` already on
-                    > disk — regeneration reports nothing staged, with no error or warning. A `-pre.#` suffix sorts
+                    > **The downgrade guard.** The Software Factory silently skips writing `<version>` in `.imodspec` if
+                    > the version you just set compares as *lower*, by semver precedence, than the `<version>` already on
+                    > disk — no error, no warning. Only `<version>` is skipped; the rest of the file is still regenerated,
+                    > so the run may stage other `.imodspec` changes, or nothing at all. A `-pre.#` suffix sorts
                     > *below* the same `X.Y.Z` with no suffix, so correcting `1.1.0` down to `1.0.3-pre.0` trips this
-                    > guard even though the intent is a fix. If a version change reports zero diff when you expected
-                    > one, suspect this before anything else — check the `.imodspec`'s current `<version>` and compare
+                    > guard even though the intent is a fix. If the `<version>` line does not change when you expected
+                    > it to, suspect this before anything else — check the `.imodspec`'s current `<version>` and compare
                     > precedence. Workaround: temporarily set only the `<version>` line down to a safe value (confirm
                     > via `git diff`/`git status` that the file is uncommitted first), then reapply your intended
                     > version and regenerate forward.

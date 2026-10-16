@@ -5,7 +5,7 @@ inclusion: always
 description: "Phase-by-phase workflow for any task that builds or changes an Intent Architect module, and which workflow skill each phase calls for."
 keywords: [workflow, module building, phases, version, documentation, context]
 template-id: Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd
-contentHash: 62F9ED1FB77BB94998D48F19A25B0BFD677210BC003EC523963B1EA84A83783A
+contentHash: 4D637AC4FE5D0FEF2410566719FEC3B248E7FF559FDE8985315568125D15A48A
 ---
 # Module Building Workflow
 
@@ -22,14 +22,11 @@ writing the code a consumer runs; you are writing the templates that produce it.
 shape everything below:
 
 - **Most files in a module's own folder are generated output**, produced from a designer model.
-
-Editing them by hand either gets overwritten on the next regeneration or leaves the model and the
-files disagreeing. Change the model, then regenerate.
-
+  Editing them by hand either gets overwritten on the next regeneration or leaves the model and the
+  files disagreeing. Change the model, then regenerate.
 - **A module is consumed by applications you cannot see.** Its version number is how those
-
-applications decide whether to take your change, and its documentation is the only explanation
-they get. Neither is optional paperwork.
+  applications decide whether to take your change, and its documentation is the only explanation
+  they get. Neither is optional paperwork.
 
 ## The Four Workflow Skills
 
@@ -41,6 +38,14 @@ Load the skill named for the phase you are in.
 | `module-version-increment` | Phase 2 (run the gate up front) and Phase 4 (confirm) |
 | `module-docs-chore`        | Phase 3 and Phase 4                                |
 | `module-dependency-audit`  | Phase 4 (verify)                                   |
+
+### Edits That Skip The Phases
+
+An edit that only changes comments or formatting in a module's own code needs none of the phases
+below: no `CONTEXT.md` read, no version increment, no documentation. This covers only text the
+templates do not emit. A comment a template writes into generated output, any wording in a
+template that produces documentation or skills, and whitespace or line breaks inside a string a
+template emits are generated output, and the phases apply.
 
 ===
 
@@ -77,6 +82,28 @@ the code. It tells you which constraints are deliberate rather than accidental.
 If you cannot tell whether generated output is affected, treat it as affected. Capturing output that
 turned out not to change costs minutes; shipping an unverified change does not.
 
+### Size the work, and prove its code patterns before templating them
+
+**Small work** — a change to one template, or a single new template — goes straight on to Phase 3,
+with or without reference code.
+
+**Large work** — a specification or PRD, several new templates, or a new module — templates only code
+patterns that are already proven: hand-written code in a reference application that compiles, runs
+and is tested. A specification says what to generate; it does not prove the code. List the patterns
+the work needs and where each one's reference code is. When you cannot tell which size the work
+is, ask the developer.
+
+> **If a pattern has no reference code, stop and ask the developer how to proceed** — they supply it,
+> you write a reference implementation for them to review before any template reproduces it, or the
+> scope narrows to the proven patterns. Never work a pattern out inside a template.
+
+**Checkpoints.** If the developer supplied a plan, it sets the review points; add none of your own.
+Without one, ask the developer before templating the first pattern whether you can carry on through
+the rest yourself or should stop for their review after each pattern.
+
+If the `module-building-strategies` skill is available in your environment, its § "Prove a code
+pattern before you template it" covers the same rule in more depth.
+
 ### Anticipate the modules in scope, and ensure each is at an unpublished version
 
 Name every module you expect this task to change, then run the gate in `module-version-increment` — *Is
@@ -87,17 +114,12 @@ this same line), leave it alone. Do not leave this until the end.
 Doing it first buys three things:
 
 - **The change becomes installable as soon as it exists.** A module still sitting at a published
-
-version is ignored in favour of the published copy, so leaving it there can leave you testing the old
-behaviour without realising it.
-
+  version is ignored in favour of the published copy, so leaving it there can leave you testing the old
+  behaviour without realising it.
 - **It cannot be forgotten, and it cannot be done twice.** Running the gate up front is what prevents a
-
-module being bumped a second time for a change an earlier bump already accounted for.
-
+  module being bumped a second time for a change an earlier bump already accounted for.
 - **It forces the scope question early.** Naming the modules you are about to touch surfaces the ones
-
-you had not thought of — usually the dependents.
+  you had not thought of — usually the dependents.
 
 If the task began from a written specification, plan, or design document, that document is where the
 anticipated modules and their versions belong. Otherwise record them wherever the task's working notes
@@ -106,18 +128,16 @@ live.
 Two things will not always go to plan, and neither is a failure:
 
 - **A module you did not anticipate needs changing.** Run the gate for it at the point you first change
-
-it, and treat the miss as a signal the scope was wider than it looked.
-
+  it, and treat the miss as a signal the scope was wider than it looked.
 - **The impact turns out larger than you assumed** — something planned as a minor change breaks
-
-existing output. Raise the component at close-out — this is the one mid-flight adjustment the gate
-permits, not a second increment.
+  existing output. Raise the component at close-out — this is the one mid-flight adjustment the gate
+  permits, not a second increment.
 
 → `module-version-increment`
 
-> **Exit condition:** the change is classified, output captured if applicable, and every module you
-> expect to change has been through the gate.
+> **Exit condition:** the change is classified, output captured if applicable, every module you
+> expect to change has been through the gate, and for large work every code pattern has reference
+> code or the developer has decided how to proceed.
 
 ===
 
@@ -137,22 +157,15 @@ Work through the change, and keep two things current as you go rather than at th
 #### Standing rules while implementing
 
 - **Compiling is not working.** A successful build proves the syntax is valid. It says nothing about
-
-whether the generated output is correct. Do not report a change as done on a green build.
-
+  whether the generated output is correct. Do not report a change as done on a green build.
 - **Inspect what regeneration actually produced.** Read the difference before accepting it. A
-
-regeneration reporting "no changes" only means something if the output could genuinely have been
-rewritten — output that is protected, excluded, or already sitting on disk in the expected shape
-will report clean whether or not your change works.
-
+  regeneration reporting "no changes" only means something if the output could genuinely have been
+  rewritten — output that is protected, excluded, or already sitting on disk in the expected shape
+  will report clean whether or not your change works.
 - **Never edit generated output to make a regeneration look correct.** That inverts the test: you are
-
-no longer checking that the template produces the right thing, only that the disk matches itself.
-
+  no longer checking that the template produces the right thing, only that the disk matches itself.
 - **A version number is not a debugging tool.** If a change is not being picked up, diagnose that.
-
-Renumbering to force it hides the real fault.
+  Renumbering to force it hides the real fault.
 
 > **Exit condition:** the change is implemented, the build exits 0, and regenerated output has been
 > inspected rather than assumed.
@@ -164,26 +177,19 @@ Renumbering to force it hides the real fault.
 In this order:
 
 1. **Version** — confirm every module you actually changed went through the gate in Phase 2, including
-
-any you did not anticipate, and that a still-in-flight version was correctly left alone rather than
-bumped again. Raise the component if the impact turned out larger than planned, and move any
-dependent modules that need to move. → `module-version-increment`
-
+   any you did not anticipate, and that a still-in-flight version was correctly left alone rather than
+   bumped again. Raise the component if the impact turned out larger than planned, and move any
+   dependent modules that need to move. → `module-version-increment`
 2. **Dependencies** — verify the module's `.imodspec` dependencies match what it actually references,
-
-and supply any the Software Factory did not detect. A missing one compiles cleanly and fails at
-install, so nothing earlier catches it. → `module-dependency-audit`
-
+   and supply any the Software Factory did not detect. A missing one compiles cleanly and fails at
+   install, so nothing earlier catches it. → `module-dependency-audit`
 3. **Documentation** — confirm what shipped is described, including anything from earlier in the same
-
-version line that was never written up. → `module-docs-chore`
-
+   version line that was never written up. → `module-docs-chore`
 4. **Context** — consolidate the durable knowledge from this change: decisions taken, invariants
-
-established, anything a future session would otherwise rediscover the hard way. A problem with Intent
-Architect itself is not module knowledge: report it to the user for the Intent support team instead,
-and record only a genuine API or SDK limitation, together with the decision it forced.
-→ `module-context-capture`
+   established, anything a future session would otherwise rediscover the hard way. A problem with Intent
+   Architect itself is not module knowledge: report it to the user for the Intent support team instead,
+   and record only a genuine API or SDK limitation, together with the decision it forced.
+   → `module-context-capture`
 
 Version comes first because the documentation refers to it. Dependencies come before documentation
 because a fix made there is itself an observable change the documentation step then has to describe.
@@ -206,3 +212,17 @@ because a fix made there is itself an observable change the documentation step t
 Say so explicitly and stop, rather than proceeding on an assumption. A module task that skips a phase
 silently produces work that looks finished and is not — and the cost lands on a consumer who cannot
 see what was skipped.
+
+### When the module cannot be installed
+
+Verifying generated output needs the changed module installed in an application. When that install
+fails, or the module cannot be found to install, stop verifying and report it, with the error and what
+you tried. Then finish what does not need an install:
+
+- Build the module, and fix anything that breaks it.
+- Write the documentation and the `CONTEXT.md` entries.
+- Run the dependency audit by reading the code and templates against the `.imodspec`.
+
+In every document you write or report you give, mark the generated output as unverified. Never edit
+`modules.config` or anything under `.intent` to force the install through: both are Intent Architect's
+own records, and a hand-edit corrupts them rather than installing anything.

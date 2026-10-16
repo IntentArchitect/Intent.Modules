@@ -566,7 +566,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                                 continue;
                             }
 
-                            var location = (string?)document.Root?.Attribute("location") ?? ".";
+                            // Intent writes "location" with Windows separators ("..\..\Module"). On
+                            // Linux and macOS a backslash is an ordinary file-name character, so
+                            // left as-is the output root named a folder that does not exist:
+                            // close-out attributed changes to the wrong application, and
+                            // guard-version found no ".imodspec" and allowed the call.
+                            var location = ((string?)document.Root?.Attribute("location") ?? ".").Replace('\\', '/');
                             var configDir = Path.GetDirectoryName(configPath)!;
                             var outputRoot = Path.GetFullPath(Path.Combine(configDir, location));
 
@@ -588,11 +593,16 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                 /// than an unbounded recursive search - an application whose output root is an
                 /// ancestor of many unrelated modules (e.g. this repo's own dogfood app, whose
                 /// output root is the repository root) must correctly report "not a module" rather
-                /// than picking up an arbitrary descendant's imodspec. A subfolder carrying its own
-                /// ".application.config" is a different application, so its imodspec is never
-                /// attributed to this one.
+                /// than picking up an arbitrary descendant's imodspec. A subfolder that belongs to a
+                /// different application - it carries its own ".application.config", or it is
+                /// another discovered application's output root - is never attributed to this one.
                 /// </summary>
-                public static string? FindImodspecUnder(string outputRoot)
+                /// <param name="otherApplications">
+                /// Every discovered application. Needed because an application's ".application.config"
+                /// need not sit in its output folder (a "location" of "../../Output/X" splits them), so
+                /// the config alone does not mark a subfolder as someone else's.
+                /// </param>
+                public static string? FindImodspecUnder(string outputRoot, IReadOnlyList<DiscoveredApplication> otherApplications)
                 {
                     if (!Directory.Exists(outputRoot))
                     {
@@ -605,6 +615,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                         return atRoot;
                     }
 
+                    var root = TrimSeparators(outputRoot);
+                    var otherRoots = otherApplications
+                        .Select(application => TrimSeparators(application.OutputRoot))
+                        .Where(other => !string.Equals(other, root, StringComparison.OrdinalIgnoreCase))
+                        .ToHashSet(StringComparer.OrdinalIgnoreCase);
+
                     foreach (var subDirectory in Directory.EnumerateDirectories(outputRoot))
                     {
                         var name = Path.GetFileName(subDirectory);
@@ -613,7 +629,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                             continue;
                         }
 
-                        if (Directory.EnumerateFiles(subDirectory, "*.application.config", SearchOption.TopDirectoryOnly).Any())
+                        if (otherRoots.Contains(TrimSeparators(subDirectory)) ||
+                            Directory.EnumerateFiles(subDirectory, "*.application.config", SearchOption.TopDirectoryOnly).Any())
                         {
                             continue;
                         }
@@ -628,6 +645,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                     return null;
                 }
 
+                private static string TrimSeparators(string path) =>
+                    path.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+
                 /// <summary>
                 /// Attributes each changed file (repo-root-relative, forward-slash) to the discovered
                 /// application whose output root contains it, by longest-prefix match - so a file
@@ -636,9 +656,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                 /// too.
                 /// </summary>
                 public static IReadOnlyDictionary<DiscoveredApplication, IReadOnlyList<string>> GroupChangedFilesByApplication(
-                    string repoRoot, IReadOnlyList<string> normalizedChangedFiles)
+                    string repoRoot, IReadOnlyList<DiscoveredApplication> applications, IReadOnlyList<string> normalizedChangedFiles)
                 {
-                    var applications = FindAll(repoRoot);
                     var grouped = new Dictionary<DiscoveredApplication, List<string>>();
 
                     foreach (var file in normalizedChangedFiles)
@@ -649,7 +668,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                         var bestLength = -1;
                         foreach (var application in applications)
                         {
-                            var root = application.OutputRoot.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+                            var root = TrimSeparators(application.OutputRoot);
                             var isUnderRoot = absolute.StartsWith(root + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)
                                 || string.Equals(absolute, root, StringComparison.OrdinalIgnoreCase);
 
@@ -684,14 +703,27 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                 /// all (not on PATH, or this is not a git repository) - never when git ran fine and
                 /// simply found nothing.
                 /// </summary>
-                private static IEnumerable<string> EnumerateApplicationConfigs(string repoRoot)
+                private static IEnumerable<string> EnumerateApplicationConfigs(string repoRoot) =>
+                    EnumerateRepoFiles(repoRoot, "*.application.config");
+
+                /// <summary>
+                /// The folders holding an Intent solution (".isln") - the Intent workspace that Intent's
+                /// own file tools resolve a relative path against.
+                /// </summary>
+                public static IReadOnlyList<string> FindSolutionFolders(string repoRoot) =>
+                    EnumerateRepoFiles(repoRoot, "*.isln")
+                        .Select(path => Path.GetDirectoryName(path)!)
+                        .Distinct(StringComparer.OrdinalIgnoreCase)
+                        .ToList();
+
+                private static IEnumerable<string> EnumerateRepoFiles(string repoRoot, string pattern)
                 {
-                    var tracked = GitProcess.Run(repoRoot, "ls-files", "--", "*.application.config");
-                    var untracked = GitProcess.Run(repoRoot, "ls-files", "--others", "--exclude-standard", "--", "*.application.config");
+                    var tracked = GitProcess.Run(repoRoot, "ls-files", "--", pattern);
+                    var untracked = GitProcess.Run(repoRoot, "ls-files", "--others", "--exclude-standard", "--", pattern);
 
                     if (tracked is null && untracked is null)
                     {
-                        return EnumerateViaFilesystem(repoRoot);
+                        return EnumerateViaFilesystem(repoRoot, pattern);
                     }
 
                     return GitProcess.SplitLines(tracked).Concat(GitProcess.SplitLines(untracked))
@@ -699,20 +731,20 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                         .Select(relative => Path.GetFullPath(Path.Combine(repoRoot, relative.Replace('/', Path.DirectorySeparatorChar))));
                 }
 
-                private static IEnumerable<string> EnumerateViaFilesystem(string repoRoot)
+                private static IEnumerable<string> EnumerateViaFilesystem(string repoRoot, string pattern)
                 {
                     var results = new List<string>();
-                    WalkDirectory(repoRoot, results);
+                    WalkDirectory(repoRoot, pattern, results);
                     return results;
                 }
 
-                private static void WalkDirectory(string directory, List<string> results)
+                private static void WalkDirectory(string directory, string pattern, List<string> results)
                 {
                     IEnumerable<string> files;
                     IEnumerable<string> subDirectories;
                     try
                     {
-                        files = Directory.EnumerateFiles(directory, "*.application.config", SearchOption.TopDirectoryOnly);
+                        files = Directory.EnumerateFiles(directory, pattern, SearchOption.TopDirectoryOnly);
                         subDirectories = Directory.EnumerateDirectories(directory).ToList();
                     }
                     catch (Exception)
@@ -730,7 +762,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                             continue;
                         }
 
-                        WalkDirectory(subDirectory, results);
+                        WalkDirectory(subDirectory, pattern, results);
                     }
                 }
             }
@@ -828,9 +860,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
             }
 
             /// <summary>
-            /// One file touched by an "apply_patch" edit, and the lines the patch adds to it.
+            /// One file touched by an "apply_patch" edit, and the lines the patch adds to and removes from it.
             /// </summary>
-            public sealed record PatchedFile(string Path, string AddedText);
+            public sealed record PatchedFile(string Path, string AddedText, string RemovedText, IReadOnlyList<PatchHunk> Hunks);
+
+            /// <summary>One hunk of a patch: the text it replaces and its replacement, context lines included.</summary>
+            public sealed record PatchHunk(string OldText, string NewText);
 
             /// <summary>
             /// Codex edits files through "apply_patch": its tool_input carries the patch TEXT, and the
@@ -860,6 +895,10 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                     var files = new List<PatchedFile>();
                     string? currentPath = null;
                     var added = new List<string>();
+                    var removed = new List<string>();
+                    var hunks = new List<PatchHunk>();
+                    var hunkOld = new List<string>();
+                    var hunkNew = new List<string>();
 
                     foreach (var rawLine in patch.Replace("\r\n", "\n").Split('\n'))
                     {
@@ -871,9 +910,29 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                             continue;
                         }
 
-                        if (currentPath is not null && rawLine.StartsWith('+'))
+                        if (currentPath is null)
+                        {
+                            continue;
+                        }
+
+                        if (rawLine.StartsWith("@@", StringComparison.Ordinal) || rawLine.StartsWith("*** ", StringComparison.Ordinal))
+                        {
+                            FlushHunk();
+                        }
+                        else if (rawLine.StartsWith('+'))
                         {
                             added.Add(rawLine[1..]);
+                            hunkNew.Add(rawLine[1..]);
+                        }
+                        else if (rawLine.StartsWith('-'))
+                        {
+                            removed.Add(rawLine[1..]);
+                            hunkOld.Add(rawLine[1..]);
+                        }
+                        else if (rawLine.StartsWith(' '))
+                        {
+                            hunkOld.Add(rawLine[1..]);
+                            hunkNew.Add(rawLine[1..]);
                         }
                     }
 
@@ -882,12 +941,26 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
 
                     void Flush()
                     {
+                        FlushHunk();
                         if (currentPath is not null)
                         {
-                            files.Add(new PatchedFile(currentPath, string.Join("\n", added)));
+                            files.Add(new PatchedFile(currentPath, string.Join("\n", added), string.Join("\n", removed), hunks.ToList()));
                         }
 
                         added.Clear();
+                        removed.Clear();
+                        hunks.Clear();
+                    }
+
+                    void FlushHunk()
+                    {
+                        if (hunkOld.Count > 0 || hunkNew.Count > 0)
+                        {
+                            hunks.Add(new PatchHunk(string.Join("\n", hunkOld), string.Join("\n", hunkNew)));
+                        }
+
+                        hunkOld.Clear();
+                        hunkNew.Clear();
                     }
                 }
 
@@ -1044,13 +1117,14 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                 public static ModuleVersionAuditResult Audit(string repoRoot, IReadOnlyList<string> changedFiles)
                 {
                     var normalizedChanged = changedFiles.Select(Normalize).ToList();
-                    var byApplication = ModuleDiscovery.GroupChangedFilesByApplication(repoRoot, normalizedChanged);
+                    var applications = ModuleDiscovery.FindAll(repoRoot);
+                    var byApplication = ModuleDiscovery.GroupChangedFilesByApplication(repoRoot, applications, normalizedChanged);
 
                     var violations = new List<ModuleVersionViolation>();
 
                     foreach (var (application, files) in byApplication)
                     {
-                        var imodspecPath = ModuleDiscovery.FindImodspecUnder(application.OutputRoot);
+                        var imodspecPath = ModuleDiscovery.FindImodspecUnder(application.OutputRoot, applications);
                         if (imodspecPath is null)
                         {
                             // Not a module in its own right (e.g. a plain consuming application, or
@@ -1108,12 +1182,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                 {
                     var normalizedChanged = changedFiles.Select(Normalize).ToHashSet(StringComparer.OrdinalIgnoreCase);
                     var findings = new List<CloseOutFinding>();
-                    var byApplication = ModuleDiscovery.GroupChangedFilesByApplication(repoRoot, changedFiles.Select(Normalize).ToList());
+                    var applications = ModuleDiscovery.FindAll(repoRoot);
+                    var byApplication = ModuleDiscovery.GroupChangedFilesByApplication(repoRoot, applications, changedFiles.Select(Normalize).ToList());
 
                     foreach (var application in byApplication.Keys)
                     {
                         var moduleDir = application.OutputRoot;
-                        var imodspecPath = ModuleDiscovery.FindImodspecUnder(moduleDir);
+                        var imodspecPath = ModuleDiscovery.FindImodspecUnder(moduleDir, applications);
                         if (imodspecPath is null)
                         {
                             // Not a module in its own right - nothing here to check.
@@ -1271,19 +1346,41 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
             /// observed as an object, and Copilot's reference describes it as a JSON-encoded string, so
             /// both are accepted. Without this the guard read no edit content from Copilot at all and
             /// let every ".imodspec" summary edit through.
+            /// <para>
+            /// A "tool_input" that is itself a JSON-encoded string is decoded too, whoever sends it.
+            /// Cursor's beforeMCPExecution payload is documented with "tool_input" as a string; read as
+            /// one, the path was null and every guarded MCP call was allowed.
+            /// </para>
             /// </remarks>
             public static class HookPayload
             {
                 public static string Normalize(string input)
                 {
-                    if (string.IsNullOrWhiteSpace(input) || !input.Contains("\"toolArgs\"", StringComparison.Ordinal))
+                    if (string.IsNullOrWhiteSpace(input) ||
+                        (!input.Contains("\"toolArgs\"", StringComparison.Ordinal) && !input.Contains("\"tool_input\"", StringComparison.Ordinal)))
                     {
                         return input;
                     }
 
                     try
                     {
-                        if (JsonNode.Parse(input) is not JsonObject root || root["tool_input"] is not null)
+                        if (JsonNode.Parse(input) is not JsonObject root)
+                        {
+                            return input;
+                        }
+
+                        if (root["tool_input"] is JsonValue encodedInput && encodedInput.TryGetValue<string>(out var encodedText))
+                        {
+                            if (JsonNode.Parse(encodedText) is not JsonObject decoded)
+                            {
+                                return input;
+                            }
+
+                            root["tool_input"] = decoded;
+                            return root.ToJsonString();
+                        }
+
+                        if (root["tool_input"] is not null || root["toolArgs"] is null)
                         {
                             return input;
                         }
@@ -1346,6 +1443,15 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
 
                 public static bool IsDesignerScriptTool(string? toolName) =>
                     toolName is not null && toolName.Contains("run_designer_script", StringComparison.OrdinalIgnoreCase);
+
+                /// <summary>
+                /// Intent Architect's own MCP file tools. Matched by the tool's own name, never the server
+                /// name a harness prefixes it with ("mcp__intent-architect__write_file", "intent-architect_write_file", ...).
+                /// </summary>
+                private static readonly string[] IntentFileTools = ["write_file", "patch_file", "delete_code_file"];
+
+                public static bool IsIntentFileTool(string? toolName) =>
+                    toolName is not null && Array.Exists(IntentFileTools, tool => toolName.EndsWith(tool, StringComparison.OrdinalIgnoreCase));
             }
 
             public sealed record DesignerScriptInvocation(string? ApplicationId, string? Script);
@@ -1415,11 +1521,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
 
             /// <summary>
             /// Extracts the edit payload from a Write/Edit-style tool_input: the whole new file
-            /// content (Write), or the new_string/old_string pair of a partial replacement (Edit).
+            /// content (Write), or the replacement and the text it replaces of a partial edit (Edit).
             /// Tolerant of neither being present - a tool this gate doesn't recognise just gets no
             /// opinion on the edit's content, only its path.
             /// </summary>
-            public sealed record EditPayload(string? WholeFileContent, string? EditSnippet);
+            public sealed record EditPayload(string? WholeFileContent, string? EditSnippet, string? ReplacedSnippet = null, bool ReplaceAll = false);
 
             public static class StdinEditExtractor
             {
@@ -1448,13 +1554,22 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                             ?? TryGetString(toolInput, "fileText");
                         // "new_string" (Claude Code / Codex convention), "newString" (OpenCode's own
                         // edit tool - confirmed by probing it directly), "new_str" (Copilot's edit
-                        // tool) and "newStr" (Kiro's str_replace, observed in a Kiro CLI v3 run) are
-                        // the same concept under four names.
+                        // tool), "newStr" (Kiro's str_replace, observed in a Kiro CLI v3 run) and
+                        // "replaceBlock" (Intent's own patch_file) are the same concept under five
+                        // names; the "old" forms and "searchBlock" are the text being replaced.
                         var newString = TryGetString(toolInput, "new_string")
                             ?? TryGetString(toolInput, "newString")
                             ?? TryGetString(toolInput, "new_str")
-                            ?? TryGetString(toolInput, "newStr");
-                        return new EditPayload(wholeFile, newString);
+                            ?? TryGetString(toolInput, "newStr")
+                            ?? TryGetString(toolInput, "replaceBlock");
+                        var oldString = TryGetString(toolInput, "old_string")
+                            ?? TryGetString(toolInput, "oldString")
+                            ?? TryGetString(toolInput, "old_str")
+                            ?? TryGetString(toolInput, "oldStr")
+                            ?? TryGetString(toolInput, "searchBlock");
+                        var replaceAll = (toolInput.TryGetProperty("replace_all", out var all) || toolInput.TryGetProperty("replaceAll", out all))
+                                         && all.ValueKind == JsonValueKind.True;
+                        return new EditPayload(wholeFile, newString, oldString, replaceAll);
                     }
                     catch (JsonException)
                     {
@@ -1479,36 +1594,130 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
             {
                 private static readonly string[] DeniedFields = ["summary", "description"];
 
-                /// <param name="currentDiskContent">
-                /// The file's current content, when known - present for a whole-file Write (so this
-                /// can diff old vs new element-by-element, the only way to catch a full-file rewrite
-                /// that changes "&lt;summary&gt;" alongside an innocent "&lt;tags&gt;" edit) and null for a
-                /// partial Edit, where only the changed snippet itself is available to inspect.
-                /// </param>
-                public static bool IsHandEditAllowed(string? currentDiskContent, string editedText)
+                /// <summary>
+                /// A whole-file write: allowed when "&lt;summary&gt;" and "&lt;description&gt;" are unchanged
+                /// element-by-element - the only way to catch a full rewrite that changes one of them
+                /// alongside an innocent "&lt;tags&gt;" edit.
+                /// </summary>
+                public static bool IsHandEditAllowed(string currentDiskContent, string newContent)
                 {
-                    if (currentDiskContent is not null)
-                    {
-                        foreach (var field in DeniedFields)
-                        {
-                            if (!string.Equals(ExtractElement(currentDiskContent, field), ExtractElement(editedText, field), StringComparison.Ordinal))
-                            {
-                                return false;
-                            }
-                        }
-
-                        return true;
-                    }
-
                     foreach (var field in DeniedFields)
                     {
-                        if (editedText.Contains($"<{field}>", StringComparison.OrdinalIgnoreCase))
+                        if (!string.Equals(ExtractElement(currentDiskContent, field), ExtractElement(newContent, field), StringComparison.Ordinal))
                         {
                             return false;
                         }
                     }
 
                     return true;
+                }
+
+                /// <summary>
+                /// The fallback for a partial edit that cannot be applied to the file on disk (see
+                /// TryApplyEdit): allowed unless the fragments change, add or remove "&lt;summary&gt;" or
+                /// "&lt;description&gt;". A field that merely appears in the replacement as unchanged context
+                /// is fine - denying that blocked ordinary version edits with a message about the
+                /// summary. The value is compared with the replaced text when the tool sends it, and
+                /// otherwise with the file on disk. When neither is available, or a field is cut off
+                /// mid-element, the edit is denied as before: there is nothing to compare against.
+                /// </summary>
+                public static bool IsSnippetEditAllowed(string? replacedSnippet, string newSnippet, string? currentDiskContent)
+                {
+                    foreach (var field in DeniedFields)
+                    {
+                        var inNew = ContainsOpeningTag(newSnippet, field);
+                        var inReplaced = replacedSnippet is not null && ContainsOpeningTag(replacedSnippet, field);
+                        if (!inNew && !inReplaced)
+                        {
+                            continue;
+                        }
+
+                        var newValue = inNew ? ExtractFragment(newSnippet, field) : null;
+                        if (inNew && newValue is null)
+                        {
+                            return false;
+                        }
+
+                        string? baseline;
+                        if (replacedSnippet is not null)
+                        {
+                            baseline = inReplaced ? ExtractFragment(replacedSnippet, field) : null;
+                            if (inReplaced && baseline is null)
+                            {
+                                return false;
+                            }
+                        }
+                        else if (currentDiskContent is not null)
+                        {
+                            baseline = ExtractFragment(currentDiskContent, field);
+                        }
+                        else
+                        {
+                            return false;
+                        }
+
+                        if (!string.Equals(newValue, baseline, StringComparison.Ordinal))
+                        {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                }
+
+                /// <summary>
+                /// Applies a partial edit to the file's text the way the editing tool will - the replaced
+                /// text swapped for its replacement - so the fields can be compared whole. A tag-less edit
+                /// ("Old words.&lt;/summary&gt;" to "New words.&lt;/summary&gt;") changes the summary without
+                /// carrying its opening tag, which the fragment comparison alone cannot see. False when the
+                /// replaced text is not found verbatim (a tool that matches loosely, such as Intent's
+                /// patch_file), leaving the fragment comparison as the fallback.
+                /// </summary>
+                public static bool TryApplyEdit(string currentContent, IReadOnlyList<(string OldText, string NewText)> replacements, bool replaceAll, out string edited)
+                {
+                    edited = currentContent.Replace("\r\n", "\n");
+                    var from = 0;
+                    foreach (var (oldText, newText) in replacements)
+                    {
+                        var search = oldText.Replace("\r\n", "\n");
+                        var replacement = newText.Replace("\r\n", "\n");
+                        if (search.Length == 0)
+                        {
+                            return false;
+                        }
+
+                        if (replaceAll)
+                        {
+                            if (!edited.Contains(search, StringComparison.Ordinal))
+                            {
+                                return false;
+                            }
+
+                            edited = edited.Replace(search, replacement, StringComparison.Ordinal);
+                            continue;
+                        }
+
+                        var index = edited.IndexOf(search, from, StringComparison.Ordinal);
+                        if (index < 0)
+                        {
+                            return false;
+                        }
+
+                        edited = edited[..index] + replacement + edited[(index + search.Length)..];
+                        from = index + replacement.Length;
+                    }
+
+                    return true;
+                }
+
+                private static bool ContainsOpeningTag(string text, string field) =>
+                    text.Contains($"<{field}>", StringComparison.OrdinalIgnoreCase);
+
+                /// <summary>The element's raw inner text in a fragment, or null when it is absent or unterminated.</summary>
+                private static string? ExtractFragment(string text, string field)
+                {
+                    var match = Regex.Match(text, $"<{field}>(.*?)</{field}>", RegexOptions.Singleline | RegexOptions.IgnoreCase);
+                    return match.Success ? match.Groups[1].Value : null;
                 }
 
                 private static string? ExtractElement(string xml, string elementName)
@@ -1532,15 +1741,15 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
             /// </summary>
             public static class ModuleResolver
             {
-                public static string? FindModuleFolderByApplicationId(string repoRoot, string applicationId)
+                /// <summary>The ".imodspec" of the module the application generates, or null when it is not a module.</summary>
+                public static string? FindImodspecByApplicationId(string repoRoot, string applicationId)
                 {
-                    var match = ModuleDiscovery.FindAll(repoRoot)
+                    var applications = ModuleDiscovery.FindAll(repoRoot);
+                    var match = applications
                         .FirstOrDefault(application => string.Equals(application.ApplicationId, applicationId, StringComparison.OrdinalIgnoreCase));
 
-                    return match?.OutputRoot;
+                    return match is null ? null : ModuleDiscovery.FindImodspecUnder(match.OutputRoot, applications);
                 }
-
-                public static string? FindImodspec(string moduleFolder) => ModuleDiscovery.FindImodspecUnder(moduleFolder);
 
                 public static string? ReadVersionFromImodspecFile(string imodspecPath)
                 {
@@ -2083,7 +2292,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                             var violation = IntentMetadataGuard.DescribeViolation(file.Path);
                             if (violation is null && file.Path.EndsWith(".imodspec", StringComparison.OrdinalIgnoreCase))
                             {
-                                if (!ImodspecFieldGuard.IsHandEditAllowed(null, file.AddedText))
+                                var patchPath = ResolvePath(repoRoot, file.Path);
+                                var onDisk = File.Exists(patchPath) ? TryReadAll(patchPath) : null;
+                                var fieldsUnchanged = onDisk is not null &&
+                                                      ImodspecFieldGuard.TryApplyEdit(onDisk, file.Hunks.Select(h => (h.OldText, h.NewText)).ToList(), false, out var patched)
+                                    ? ImodspecFieldGuard.IsHandEditAllowed(onDisk, patched)
+                                    : ImodspecFieldGuard.IsSnippetEditAllowed(file.RemovedText, file.AddedText, null);
+                                if (!fieldsUnchanged)
                                 {
                                     violation = ImodspecSummaryDenial;
                                 }
@@ -2136,9 +2351,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                             return Allow(stderr, "intent-agent-gate: could not read the edit content; no opinion.");
                         }
 
-                        var fullPath = ResolvePath(repoRoot, path);
+                        var fullPath = ResolveEditPath(repoRoot, path, HookPayload.ToolName(input));
                         string? currentDiskContent = null;
-                        if (edit.WholeFileContent is not null && File.Exists(fullPath))
+                        if (File.Exists(fullPath))
                         {
                             try
                             {
@@ -2146,11 +2361,27 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                             }
                             catch (IOException)
                             {
-                                // Fall through to the snippet-only comparison below.
+                                // Compared without the file below.
                             }
                         }
 
-                        if (!ImodspecFieldGuard.IsHandEditAllowed(currentDiskContent, editedText))
+                        bool fieldsUnchanged;
+                        if (edit.WholeFileContent is not null)
+                        {
+                            fieldsUnchanged = currentDiskContent is not null
+                                ? ImodspecFieldGuard.IsHandEditAllowed(currentDiskContent, edit.WholeFileContent)
+                                : ImodspecFieldGuard.IsSnippetEditAllowed(null, edit.WholeFileContent, null);
+                        }
+                        else if (currentDiskContent is not null && edit.ReplacedSnippet is not null &&
+                                 ImodspecFieldGuard.TryApplyEdit(currentDiskContent, [(edit.ReplacedSnippet, editedText)], edit.ReplaceAll, out var edited))
+                        {
+                            fieldsUnchanged = ImodspecFieldGuard.IsHandEditAllowed(currentDiskContent, edited);
+                        }
+                        else
+                        {
+                            fieldsUnchanged = ImodspecFieldGuard.IsSnippetEditAllowed(edit.ReplacedSnippet, editedText, currentDiskContent);
+                        }
+                        if (!fieldsUnchanged)
                         {
                             return Deny(harness, stdout, stderr, ImodspecSummaryDenial);
                         }
@@ -2171,6 +2402,44 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
 
                 private static string ResolvePath(string repoRoot, string path) =>
                     Path.IsPathRooted(path) ? path : Path.GetFullPath(Path.Combine(repoRoot, path));
+
+                private static string? TryReadAll(string path)
+                {
+                    try
+                    {
+                        return File.ReadAllText(path);
+                    }
+                    catch (IOException)
+                    {
+                        return null;
+                    }
+                }
+
+                /// <summary>
+                /// Like <see cref="ResolvePath"/>, except that Intent's own file tools resolve a relative
+                /// path against the Intent workspace - the folder holding the open ".isln" - rather than
+                /// the git root. Which solution is open is not in the payload, so the first solution folder
+                /// in which the file exists is taken; with none, the git root is the fallback.
+                /// </summary>
+                private static string ResolveEditPath(string repoRoot, string path, string? toolName)
+                {
+                    var fromRepoRoot = ResolvePath(repoRoot, path);
+                    if (Path.IsPathRooted(path) || File.Exists(fromRepoRoot) || !HookPayload.IsIntentFileTool(toolName))
+                    {
+                        return fromRepoRoot;
+                    }
+
+                    foreach (var solutionFolder in ModuleDiscovery.FindSolutionFolders(repoRoot))
+                    {
+                        var candidate = Path.GetFullPath(Path.Combine(solutionFolder, path));
+                        if (File.Exists(candidate))
+                        {
+                            return candidate;
+                        }
+                    }
+
+                    return fromRepoRoot;
+                }
 
                 /// <summary>
                 /// A hand-edit of an ".imodspec"'s "&lt;version&gt;": denied when it breaks the version
@@ -2229,8 +2498,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                         return Allow(stderr, "intent-agent-gate: could not resolve the target module; no opinion.");
                     }
 
-                    var moduleFolder = ModuleResolver.FindModuleFolderByApplicationId(repoRoot, invocation.ApplicationId);
-                    var imodspecPath = moduleFolder is null ? null : ModuleResolver.FindImodspec(moduleFolder);
+                    var imodspecPath = ModuleResolver.FindImodspecByApplicationId(repoRoot, invocation.ApplicationId);
                     if (imodspecPath is null)
                     {
                         return Allow(stderr, "intent-agent-gate: could not locate the module's .imodspec; no opinion.");
@@ -2275,7 +2543,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                         var moduleNames = string.Join(", ", versionResult.Violations.Select(v => v.ModuleName));
                         messages.Add(
                             $"Module(s) changed without their .imodspec version moving: {moduleNames}. " +
-                            "Consult the module-version-increment skill before finishing this change.");
+                            "Consult the module-version-increment skill before finishing this change, " +
+                            "unless the change only touches comments or formatting that no template emits.");
                     }
 
                     messages.AddRange(otherFindings.Select(f => $"[{f.ModuleName}] {f.Message}"));

@@ -116,6 +116,16 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks
                 var ours = inner.OfType<JsonObject>().FirstOrDefault(h => IsOurs(h, command, superseded));
                 if (ours is not null)
                 {
+                    var sharesGroup = inner.Count > 1;
+                    var matcherChanges = !string.Equals(entry["matcher"]?.GetValue<string>(), matcher, StringComparison.Ordinal);
+                    if (sharesGroup && matcherChanges)
+                    {
+                        // The matcher belongs to the whole group, so rewriting it would change when the
+                        // developer's own hooks in it run. Move ours into a group of its own instead.
+                        inner.Remove(ours);
+                        break;
+                    }
+
                     SetOrRemove(entry, "matcher", matcher);
                     CopyInto(ours, hook);
                     return;
