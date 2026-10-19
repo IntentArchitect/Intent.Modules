@@ -115,7 +115,7 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="7f7b7728-c171-48df-88f0-7525b5323da7" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="976e34c1-4022-4156-9915-40f796d21374" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.Application.MediatR.CommandInterface</name>
       <display>Intent.Application.MediatR.CommandInterface</display>
       <externalReference>Intent.Application.MediatR</externalReference>
@@ -188,7 +188,7 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="ed760bf8-0f09-42e0-b94e-f14f26c91438" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="8f02bb8f-a165-427b-b225-a7cf1e2ae9ef" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.Application.MediatR.QueryInterface</name>
       <display>Intent.Application.MediatR.QueryInterface</display>
       <externalReference>Intent.Application.MediatR</externalReference>

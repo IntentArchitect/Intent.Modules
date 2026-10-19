@@ -1,7 +1,10 @@
+### Version 5.5.8
+
+- Fixed: A Service Proxy `Operation` that isn't mapped to an endpoint (for example one added with **New Operation**) no longer stops parameter synchronisation with `Cannot read properties of null (reading 'getElement')`; it is now skipped with a warning.
+
 ### Version 5.5.7
 
 - Improvement: `Service Proxies` can now be created from a Services diagram's context menu and at the package root.
-- Fixed: A Service Proxy `Operation` that isn't mapped to an endpoint (for example one added with **New Operation**) no longer stops parameter synchronisation with `Cannot read properties of null (reading 'getElement')`; it is now skipped with a warning.
 
 ### Version 5.5.6
 
