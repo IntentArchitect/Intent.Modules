@@ -56,7 +56,12 @@ function GetParameters(
 
 function execute(proxyElement: IElementApi) {
     proxyElement.getChildren("Operation").forEach(operation => {
-        let targetService = operation.getMapping().getElement();
+        let mapping = operation.getMapping();
+        let targetService = mapping != null ? mapping.getElement() : null;
+        if (targetService == null) {
+            console.warn(`Could not process '${operation.getName()}' on '${proxyElement.getName()}': not mapped to an endpoint`);
+            return;
+        }
         let params = GetParameters(targetService);
         params.forEach((param, index) => {
             let existing = operation.getChildren("Parameter").find(x => x.getMetadata("endpoint-input-id") == param.id)
@@ -80,10 +85,11 @@ function execute(proxyElement: IElementApi) {
 }
 
 /**
- * Used by Intent.Modules\Modules\Intent.Modelers.ServiceProxies
+ * Used by Intent.Modules\Modules\Intent.Modelers.Types.ServiceProxies
+ * and Intent.Modules\Modules\Intent.Modelers.UI.ServiceProxies
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/service-proxies/manage-parameters/service-proxies-manage-parameters.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/service-proxies/manage-parameters/services-proxies-manage-parameters.ts
  */
 if (element.specialization == "Service Proxy") {
     execute(element);

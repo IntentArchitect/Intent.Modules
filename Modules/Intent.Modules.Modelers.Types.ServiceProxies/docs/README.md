@@ -13,3 +13,9 @@ Right-click one of these and select **New Service Proxy** (`ctrl + shift + p` in
 A mapping dialog then opens, where you pick the target service and the endpoints to proxy. Cancelling it before anything is mapped removes the new proxy again.
 
 Service Proxies can also be created in a dedicated **Service Proxies** package.
+
+## Parameter synchronisation
+
+When the designer loads, and whenever a Service Proxy changes, each Operation's parameters are regenerated from the endpoint it is mapped to.
+
+An Operation that isn't mapped to an endpoint, such as one added with **New Operation** on a proxy, has nothing to sync from. It is skipped, and a warning naming the Operation and its proxy is written to the Task Output. To fix it, delete the Operation, or reopen the proxy's mapping and select the endpoint it should call.
