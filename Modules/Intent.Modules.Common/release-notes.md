@@ -1,7 +1,10 @@
+### Version 3.11.9
+
+- Fixed: `MarkdownFileParser` split a list item that wrapped onto a second line, re-emitting the rest of its sentence as a separate paragraph after a blank line; continuation lines now stay with their item, indented to its content column (so a parsed item's `Content` can now span several lines). A list indented as a whole (for example four spaces in under a paragraph) is now emitted as a list instead of being left indented, where Markdown read it as a code block.
+
 ### Version 3.11.8
 
 - New: Added the `Service Argument` trait (`IServiceArgumentModel`) for elements that can be used as Service Operation parameter and return types.
-- Fixed: `MarkdownFileParser` split a list item that wrapped onto a second line, re-emitting the rest of its sentence as a separate paragraph after a blank line; continuation lines now stay with their item, indented to its content column (so a parsed item's `Content` can now span several lines). A list indented as a whole (for example four spaces in under a paragraph) is now emitted as a list instead of being left indented, where Markdown read it as a code block.
 
 ### Version 3.11.7
 

@@ -47,7 +47,7 @@ Bundles a fixed set of AI agent skills and instruction files for building Intent
   the truncation directly. The same defect was fixed for `module-docs`/`module-svg-icon` in 1.0.1 —
   it is a property of the parser, so it applies to every generated frontmatter block, not those
   skills specifically.
-- **Never begin a generated markdown line with `**bold**`.** (2026-10 note: no longer reproduced. The rendered `file-builder-expert` troubleshooting resource has 43 lines starting with `**Symptom:**` / `**Fix:**`, all intact, and 34 were already intact before Intent.Common 3.11.8. The trigger may have been narrower, or fixed earlier. Keep avoiding it in new text until someone identifies the exact trigger.) The emitted line comes out as
+- **Never begin a generated markdown line with `**bold**`.** (2026-10 note: no longer reproduced. The rendered `file-builder-expert` troubleshooting resource has 43 lines starting with `**Symptom:**` / `**Fix:**`, all intact, and 34 were already intact before the Intent.Common 3.11.9 parser fix. The trigger may have been narrower, or fixed earlier. Keep avoiding it in new text until someone identifies the exact trigger.) The emitted line comes out as
   `- *bold**` — the leading `**` is rewritten into a list marker plus a stray asterisk, and the
   emphasis is lost. This is why several shipped instruction files (`exception-guidelines`,
   `module-building-workflow`) carry stray `- **` line openings mid-paragraph. Put the bold inside
