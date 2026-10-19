@@ -382,13 +382,13 @@
       <correlationId>Intent.ModuleBuilder.Dart.Templates.DartFileStringInterpolationTemplate#c7b82253-6042-442f-9191-7b46a6839cfd</correlationId>
       <path>ModuleBuilders/Templates/Dart/DartCustomStringInter/DartCustomStringInterTemplate.cs</path>
       <count>3</count>
-      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2024-06-30T13:59:27.3827172Z</updatedAt>
-      <approvedByAccountName>jonathan.lydall@intentarchitect.com</approvedByAccountName>
-      <approvedByDisplayName>Jonathan Lydall</approvedByDisplayName>
-      <approvedAt>2024-07-29T10:23:55.6373391Z</approvedAt>
-      <deviationsHash>A5772CA28791362CF752D64B45FBFF75E732725DCC01AD413817B463BFE56AA6</deviationsHash>
+      <updatedByAccountName>jp.seini@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>JP Seini</updatedByDisplayName>
+      <updatedAt>2026-10-19T07:34:42.2902911Z</updatedAt>
+      <approvedByAccountName>jp.seini@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>JP Seini</approvedByDisplayName>
+      <approvedAt>2026-10-19T08:53:00.2410498Z</approvedAt>
+      <deviationsHash>440FECA8965F990A564154031531F1C8C8A73C3AD70ED5C7E8DF1C30FA8265D5</deviationsHash>
       <fileHash>F45EA833CA362C40FF5BE41512E3F2A04CC1BDA89B6EAEE9DAF9983A008183F9</fileHash>
     </file>
     <file>
@@ -473,13 +473,13 @@
       <correlationId>Intent.ModuleBuilder.Dart.Templates.DartFileStringInterpolationTemplate#79b4d772-eb7f-483c-aba9-f47fbef4842c</correlationId>
       <path>ModuleBuilders/Templates/Dart/DartFilePerModelStringInter/DartFilePerModelStringInterTemplate.cs</path>
       <count>3</count>
-      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2024-06-30T13:59:27.3827222Z</updatedAt>
-      <approvedByAccountName>jonathan.lydall@intentarchitect.com</approvedByAccountName>
-      <approvedByDisplayName>Jonathan Lydall</approvedByDisplayName>
-      <approvedAt>2024-07-29T10:23:55.6701323Z</approvedAt>
-      <deviationsHash>C7E36116A3CA600FFD4EB686E93BD1FCA31ABB6971E0571C26F46CDD2AF0BF74</deviationsHash>
+      <updatedByAccountName>jp.seini@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>JP Seini</updatedByDisplayName>
+      <updatedAt>2026-10-19T07:34:42.2903115Z</updatedAt>
+      <approvedByAccountName>jp.seini@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>JP Seini</approvedByDisplayName>
+      <approvedAt>2026-10-19T08:53:02.0879884Z</approvedAt>
+      <deviationsHash>E5D183130943FD03E89757DDBD580DA93364D143082DDBDB80E854D9B13F9401</deviationsHash>
       <fileHash>1EF4CB4C28B1BF9EE27D6417A0AE49245820F3E8F1BC64F4664F87040CBA5B9F</fileHash>
     </file>
     <file>
@@ -564,13 +564,13 @@
       <correlationId>Intent.ModuleBuilder.Dart.Templates.DartFileStringInterpolationTemplate#731e0d09-f0f9-4006-8c9a-11e0e904f7d7</correlationId>
       <path>ModuleBuilders/Templates/Dart/DartSingleFileStringInter/DartSingleFileStringInterTemplate.cs</path>
       <count>3</count>
-      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2024-06-30T13:59:27.3827265Z</updatedAt>
-      <approvedByAccountName>jonathan.lydall@intentarchitect.com</approvedByAccountName>
-      <approvedByDisplayName>Jonathan Lydall</approvedByDisplayName>
-      <approvedAt>2024-07-29T10:23:55.6995976Z</approvedAt>
-      <deviationsHash>E1A1C10F0321CDDE7A93C65CE961F9E388CF64D46BE173B89814442F2E771786</deviationsHash>
+      <updatedByAccountName>jp.seini@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>JP Seini</updatedByDisplayName>
+      <updatedAt>2026-10-19T07:34:42.2903312Z</updatedAt>
+      <approvedByAccountName>jp.seini@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>JP Seini</approvedByDisplayName>
+      <approvedAt>2026-10-19T08:53:03.7355473Z</approvedAt>
+      <deviationsHash>91B4671482AEFFAD45F84077F2139EF7B84962ABF5BAB4C1D98211939B570486</deviationsHash>
       <fileHash>48D003E29F717E9A4AC94C8C04BC2712E6CD6713F39F957951E6A203877D0C4A</fileHash>
     </file>
     <file>
@@ -1032,13 +1032,13 @@
       <correlationId>Intent.ModuleBuilder.Java.Templates.JavaFileStringInterpolationTemplate#1d6b5558-fe3b-46f3-ac76-907c425aa317</correlationId>
       <path>ModuleBuilders/Templates/Java/JavaCustomStringInter/JavaCustomStringInterTemplate.cs</path>
       <count>3</count>
-      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2024-06-30T13:59:27.3828055Z</updatedAt>
-      <approvedByAccountName>jonathan.lydall@intentarchitect.com</approvedByAccountName>
-      <approvedByDisplayName>Jonathan Lydall</approvedByDisplayName>
-      <approvedAt>2024-07-29T10:23:55.821609Z</approvedAt>
-      <deviationsHash>F71E87033CC3C6468F29471B6F8B4D0B96B24F311F20A5B605225328713223C1</deviationsHash>
+      <updatedByAccountName>jp.seini@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>JP Seini</updatedByDisplayName>
+      <updatedAt>2026-10-19T07:34:42.2906293Z</updatedAt>
+      <approvedByAccountName>jp.seini@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>JP Seini</approvedByDisplayName>
+      <approvedAt>2026-10-19T08:53:05.6813739Z</approvedAt>
+      <deviationsHash>EBC1DBC00A365AAECDCDADD94EC96D7D14DF6AB930DFC4BBBD5B003D2D524931</deviationsHash>
       <fileHash>5BE4453262DD901C7F58BD935F60EE11CAD59FD261D39FB1093DDE4CF2DF49ED</fileHash>
     </file>
     <file>
@@ -1149,13 +1149,13 @@
       <correlationId>Intent.ModuleBuilder.Java.Templates.JavaFileStringInterpolationTemplate#a3de02e2-72d4-4b8b-bad5-7f9ecd80f3d8</correlationId>
       <path>ModuleBuilders/Templates/Java/JavaFilePerModelStringInter/JavaFilePerModelStringInterTemplate.cs</path>
       <count>3</count>
-      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2024-06-30T13:59:27.3828135Z</updatedAt>
-      <approvedByAccountName>jonathan.lydall@intentarchitect.com</approvedByAccountName>
-      <approvedByDisplayName>Jonathan Lydall</approvedByDisplayName>
-      <approvedAt>2024-07-29T10:23:55.8487934Z</approvedAt>
-      <deviationsHash>D698C383AD4730E4297D4BA7EB1F5DB0F9F86FFB4332A10E94BA238691891155</deviationsHash>
+      <updatedByAccountName>jp.seini@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>JP Seini</updatedByDisplayName>
+      <updatedAt>2026-10-19T07:34:42.2906495Z</updatedAt>
+      <approvedByAccountName>jp.seini@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>JP Seini</approvedByDisplayName>
+      <approvedAt>2026-10-19T08:53:07.422324Z</approvedAt>
+      <deviationsHash>9C76730EB3F9FBF0999D89C5D71D409AC9074E13E7B2BF85DE2CFDE4694A433A</deviationsHash>
       <fileHash>39DB2C33A6B114765CB31A77E434C16987701D135A6CE6A147C8F70295152089</fileHash>
     </file>
     <file>
@@ -1253,13 +1253,13 @@
       <correlationId>Intent.ModuleBuilder.Java.Templates.JavaFileStringInterpolationTemplate#08d3e72e-db73-4bf9-a20c-57f2a03a939d</correlationId>
       <path>ModuleBuilders/Templates/Java/JavaSingleFileStringInter/JavaSingleFileStringInterTemplate.cs</path>
       <count>3</count>
-      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2024-06-30T13:59:27.3828178Z</updatedAt>
-      <approvedByAccountName>jonathan.lydall@intentarchitect.com</approvedByAccountName>
-      <approvedByDisplayName>Jonathan Lydall</approvedByDisplayName>
-      <approvedAt>2024-07-29T10:23:55.8742261Z</approvedAt>
-      <deviationsHash>CF0498EC34F1A7C913A221861D73469BADB882E11A93BCAA4CCE07DC60739B44</deviationsHash>
+      <updatedByAccountName>jp.seini@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>JP Seini</updatedByDisplayName>
+      <updatedAt>2026-10-19T07:34:42.29067Z</updatedAt>
+      <approvedByAccountName>jp.seini@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>JP Seini</approvedByDisplayName>
+      <approvedAt>2026-10-19T08:53:09.6063193Z</approvedAt>
+      <deviationsHash>116DA6F365C8DD3FEF955E610A5DFF54B16BDA00180B10108FD909B7EA821C70</deviationsHash>
       <fileHash>456337BB02BFAF902AFDBA0EB3307A7261F528A97ABFDD749AE8B0481EC4F969</fileHash>
     </file>
     <file>

@@ -47,7 +47,7 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="cb43d8fe-ca8c-40d2-b194-5a96a06acf61" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="5d6bb1bc-5c4a-4c61-9c6a-2f3923b6d435" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.Application.MediatR.CommandHandlerSkillTemplate</name>
       <display>Intent.Application.MediatR.CommandHandlerSkillTemplate</display>
       <externalReference>Intent.Application.MediatR</externalReference>
@@ -73,7 +73,7 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="d93e296f-535b-473d-ae32-c426b98ddc5c" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="5d619576-abcc-44d2-a365-665a483dc394" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.Application.MediatR.QueryHandlerSkillTemplate</name>
       <display>Intent.Application.MediatR.QueryHandlerSkillTemplate</display>
       <externalReference>Intent.Application.MediatR</externalReference>

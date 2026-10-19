@@ -4,7 +4,7 @@ using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: DefaultIntentManaged(Mode.Fully, Targets = Targets.Usings)]
-[assembly:IntentTemplate("Intent.ModuleBuilder.Dart.Templates.DartFileStringInterpolationTemplate",Version= "1.0")]
+[assembly:IntentTemplate("Intent.ModuleBuilder.Dart.Templates.DartFileStringInterpolationTemplate",Version = "1.0")]
 
 namespace ModuleBuilders.Templates.Dart.DartFilePerModelStringInter
 {
