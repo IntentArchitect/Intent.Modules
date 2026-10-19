@@ -10,7 +10,7 @@
   <packageId>525868ff-adc0-4ab6-a90e-352288da941f</packageId>
   <packageName>Intent.Modelers.CodebaseStructure</packageName>
   <traits>
-    <trait id="60fd85c8-5de8-45b6-9ba7-570cc701c3ab" name="Allows Custom File Classification" />
+    <trait id="60fd85c8-5de8-45b6-9ba7-570cc701c3ab" name="Allows File Classification" />
   </traits>
   <stereotypes>
     <stereotype stereotypeDefinitionId="0cda9040-7af2-4bb5-8f9d-919455abc878" name="Package Settings">
@@ -23,7 +23,7 @@
         <property name="c15cbaf3-f83d-4e3f-b489-7bf88a5143c4" display="Sorting" value="By type, then by name" isActive="true" />
       </properties>
     </stereotype>
-    <stereotype stereotypeDefinitionId="60fd85c8-5de8-45b6-9ba7-570cc701c3ab" name="Allows Custom File Classification">
+    <stereotype stereotypeDefinitionId="60fd85c8-5de8-45b6-9ba7-570cc701c3ab" name="Allows File Classification">
       <addedByDefault>false</addedByDefault>
       <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
       <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>

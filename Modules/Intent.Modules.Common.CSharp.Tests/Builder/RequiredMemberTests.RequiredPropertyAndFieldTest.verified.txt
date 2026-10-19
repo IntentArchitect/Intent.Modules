@@ -1,0 +1,11 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    public class ConcreteClass
+    {
+        private required string _requiredField;
+        public required string RequiredProperty { get; set; }
+        public required string RequiredInitProperty { get; init; }
+    }
+}

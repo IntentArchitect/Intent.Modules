@@ -41,6 +41,11 @@ public interface ICSharpInterface : ICSharpDeclaration<ICSharpInterface>, ICShar
     ICSharpInterface Protected();
     ICSharpInterface ProtectedInternal();
     ICSharpInterface Public();
+    /// <summary>
+    /// Omits the access modifier so the interface takes C#'s default accessibility:
+    /// <c>internal</c> for a top-level interface, <c>private</c> for a nested one.
+    /// </summary>
+    ICSharpInterface WithoutAccessModifier();
     ICSharpInterface Partial();
     bool IsPartial { get; set; }
 }

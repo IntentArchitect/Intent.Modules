@@ -172,4 +172,18 @@
       <fileHash>19ECDCAA1980C750D8E93A3A5E07B991C1ACD204DEF73B80DE3C0FC080914041</fileHash>
     </file>
   </files>
+  <customFiles>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Domain/CONTEXT.md</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-08T13:42:14.942925Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Domain/release-notes.md</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-08T13:22:31.405921Z</approvedAt>
+    </customFile>
+  </customFiles>
 </deviationsLog>

@@ -94,6 +94,8 @@ internal class CSharpInterfaceWrapper(CSharpInterface wrapped) :
 
     ICSharpInterface ICSharpInterface.Private() => wrapped.Private();
 
+    ICSharpInterface ICSharpInterface.WithoutAccessModifier() => wrapped.WithoutAccessModifier();
+
     ICSharpInterface ICSharpInterface.Partial() => wrapped.Partial();
 
     bool ICSharpInterface.IsPartial

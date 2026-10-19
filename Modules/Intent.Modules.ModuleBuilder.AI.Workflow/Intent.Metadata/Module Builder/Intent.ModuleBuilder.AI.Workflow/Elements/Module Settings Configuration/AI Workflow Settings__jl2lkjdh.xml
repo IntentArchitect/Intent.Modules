@@ -167,7 +167,7 @@
       <childElements />
     </childElement>
     <childElement id="2ac65dde-288c-43dc-ba46-d0681bc3ac6c" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
-      <comment>Governs whether any harness hook config (.claude/settings.json, .cursor/hooks.json, .codex/hooks.json, .kiro/hooks/*.json) is generated at all. Off by default: a consumer gets the index and nothing else.</comment>
+      <comment>Governs whether the agent gate is generated at all: a gate.cs and hook configuration for each harness folder present (Claude Code, Codex, GitHub Copilot CLI, Cursor, Kiro, OpenCode). Off by default: a consumer gets the instructions and skills and nothing else.</comment>
       <name>Install Agent Gate Hooks</name>
       <display>Install Agent Gate Hooks</display>
       <isAbstract>false</isAbstract>
@@ -184,7 +184,7 @@
           <properties>
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Switch" isActive="true" />
             <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="false" />
-            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Install hook configs that call the intent-agent-gate CLI to enforce module-building rules deterministically." isActive="true" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Generate hooks that enforce the module-building rules. Needs the .NET 10 SDK." isActive="true" />
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="false" isActive="true" />
             <property name="c3456e79-0607-41a5-9b85-e0712f4f4834" display="Is Active Function" isActive="true" />
             <property name="fa54329f-d4e5-48bc-8027-e17206e9fc89" display="Is Required Function" isActive="true" />

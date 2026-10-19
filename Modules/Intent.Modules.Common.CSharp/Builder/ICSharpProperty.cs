@@ -28,6 +28,9 @@ public interface ICSharpProperty : ICSharpMember<ICSharpProperty>, ICSharpRefere
     ICSharpProperty New();
     ICSharpProperty Virtual();
     ICSharpProperty Static();
+    /// <summary>
+    /// Adds the <c>required</c> modifier. It is omitted when the project's C# language version is below 11.
+    /// </summary>
     ICSharpProperty Required();
     ICSharpProperty PrivateSetter();
     ICSharpProperty ProtectedSetter();

@@ -321,6 +321,103 @@ public class GuardWriteTests
     {
     }
 
+    [Fact]
+    public void Denies_a_codex_apply_patch_that_touches_metadata_among_other_files()
+    {
+        // Codex names its targets inside the patch text, not in a file_path field. Before this was
+        // read, the gate found no path, said "no opinion" and let every Codex edit through - observed
+        // by driving Codex for real. One patch can touch several files; any protected one denies.
+        using var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+        var stdin = ApplyPatch("""
+            *** Begin Patch
+            *** Add File: src/ok.txt
+            +ok
+            *** Update File: Intent.Metadata/Module Builder/element.xml
+            @@
+            -<a/>
+            +<b/>
+            *** End Patch
+            """);
+
+        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-write", "--harness", "codex");
+
+        Assert.Equal(2, result.ExitCode);
+        Assert.Contains("Intent.Metadata", result.Stderr);
+    }
+
+    [Fact]
+    public void Denies_a_codex_apply_patch_that_moves_a_file_onto_metadata()
+    {
+        using var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+        var stdin = ApplyPatch("""
+            *** Begin Patch
+            *** Update File: src/a.txt
+            *** Move to: Sample/Sample.application.config
+            @@
+            -a
+            +b
+            *** End Patch
+            """);
+
+        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-write", "--harness", "codex");
+
+        Assert.Equal(2, result.ExitCode);
+    }
+
+    [Fact]
+    public void Allows_a_codex_apply_patch_that_touches_only_ordinary_files()
+    {
+        using var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+        var stdin = ApplyPatch("""
+            *** Begin Patch
+            *** Add File: src/ok.txt
+            +ok
+            *** Delete File: src/old.txt
+            *** End Patch
+            """);
+
+        var result = GateTestHarness.Run(repo.Path, stdin, gitChangeProvider: null, "guard-write", "--harness", "codex");
+
+        Assert.Equal(0, result.ExitCode);
+    }
+
+    [Fact]
+    public void Codex_apply_patch_applies_the_imodspec_field_rules_to_the_lines_it_adds()
+    {
+        using var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+
+        var summary = GateTestHarness.Run(repo.Path, ApplyPatch("""
+            *** Begin Patch
+            *** Update File: Sample/Sample.imodspec
+            @@
+            -  <summary>Old</summary>
+            +  <summary>New</summary>
+            *** End Patch
+            """), gitChangeProvider: null, "guard-write", "--harness", "codex");
+        var tags = GateTestHarness.Run(repo.Path, ApplyPatch("""
+            *** Begin Patch
+            *** Update File: Sample/Sample.imodspec
+            @@
+            -  <tags>old</tags>
+            +  <tags>new</tags>
+            *** End Patch
+            """), gitChangeProvider: null, "guard-write", "--harness", "codex");
+
+        Assert.Equal(2, summary.ExitCode);
+        Assert.Equal(0, tags.ExitCode);
+    }
+
+    /// <summary>The payload shape Codex actually sends for an edit, as captured from a real run.</summary>
+    private static string ApplyPatch(string patch) => JsonSerializer.Serialize(new Dictionary<string, object?>
+    {
+        ["tool_name"] = "apply_patch",
+        ["tool_input"] = new Dictionary<string, object?> { ["command"] = patch },
+    });
+
     private static string ToolInput(string filePath, string? newString = null, string? content = null)
     {
         var toolInput = new Dictionary<string, object?> { ["file_path"] = filePath };

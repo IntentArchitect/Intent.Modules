@@ -3,6 +3,12 @@
   <files />
   <customFiles>
     <customFile>
+      <path>DesignerMacros/src/services-operation-validation/common/operation-validation.ts</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-08T13:42:14.7929591Z</approvedAt>
+    </customFile>
+    <customFile>
       <path>Modules/.agents/agents/build-module-sdd.agent.md</path>
       <approvedByAccountName>dandre.jvv@intentarchitect.com</approvedByAccountName>
       <approvedByDisplayName>Dandre Jansen van Vuuren</approvedByDisplayName>

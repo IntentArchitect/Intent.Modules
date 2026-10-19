@@ -1,0 +1,45 @@
+﻿using System;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    interface IInterfaceWithoutAccessModifier
+    {
+    }
+
+    interface IInterfaceWithoutAccessModifierViaInterface
+    {
+    }
+
+    public class DefaultClass
+    {
+    }
+
+    sealed class ClassWithoutAccessModifier
+    {
+        enum NestedEnumWithoutAccessModifier
+        {
+            Literal1
+        }
+        class NestedClassWithoutAccessModifier
+        {
+        }
+        interface INestedInterfaceWithoutAccessModifier
+        {
+        }
+    }
+
+    class ClassWithoutAccessModifierViaInterface
+    {
+    }
+
+    record RecordWithoutAccessModifier
+    {
+    }
+
+    enum EnumWithoutAccessModifier
+    {
+        Literal1
+    }
+}

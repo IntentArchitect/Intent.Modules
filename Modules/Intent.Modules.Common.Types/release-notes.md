@@ -1,3 +1,7 @@
+### Version 4.1.4
+
+- Fixed: The duplicate operation check ignored collections, value-type nullability and generic type arguments, so valid overloads such as `Create(ids: int[*])` and `Create(id: int)` were reported as duplicates.
+
 ### Version 4.1.3
 
 - Improvement: Updated to use latest module builder and ensured that minimum client version matches that required for SDK.

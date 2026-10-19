@@ -28,7 +28,7 @@
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="61743c96-5b08-4925-8902-28db41244bf3">
-      <hint>Relative to the root workspace location. Substitutes `${application.name}` and `${solution.name}` with entered values.</hint>
+      <hint>Relative to the folder containing the `.isln` (or its parent when that folder is named `intent`). Substitutes `${application.name}` and `${solution.name}` with entered values.</hint>
       <name>Relative Output Location</name>
       <type>string</type>
       <controlType>text</controlType>

@@ -7,6 +7,7 @@ using Intent.Metadata.Models;
 using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
+using Intent.Registrations;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -27,6 +28,21 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.OpenCodePlugi
 
         public override string TemplateId => OpenCodePluginTemplate.TemplateId;
 
+        /// <summary>
+        /// Suppressed the same way as the other hook registrations. An empty list from GetModels does
+        /// not do it: SingleFileListModelTemplateRegistration.Register registers the template whatever
+        /// the list holds, so the plugin used to be generated with the switch off.
+        /// </summary>
+        protected override void Register(ITemplateInstanceRegistry registry, IApplication application)
+        {
+            if (!AgentGateSwitch.IsOn(application))
+            {
+                return;
+            }
+
+            base.Register(registry, application);
+        }
+
         [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, IList<object> model)
         {
@@ -36,17 +52,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.OpenCodePlugi
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IList<object> GetModels(IApplication application)
         {
-            // A single-element list is "generate the file"; empty is "generate nothing" - this
-            // template needs no real per-element data, just the conditional itself, so a list of one
-            // dummy object stands in for the whole file rather than iterating anything meaningful.
+            // The template needs no per-element data, so one dummy object stands in for the file. The
+            // switch is checked in Register, not here: an empty list still generates the file.
             //
             // Kept inside the body deliberately: this member's signature is Mode.Fully, so a comment
             // above it is stripped on every regeneration. Body = Mode.Ignore is what protects it.
-            if (!AgentGateSwitch.IsOn(application))
-            {
-                return [];
-            }
-
+            //
             // No disk probing for ".opencode" - the anchor decides. This template is instantiated
             // once per AI.Context anchor and CanRunTemplate declines anywhere but ".opencode".
             return [new object()];

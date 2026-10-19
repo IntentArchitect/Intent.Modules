@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="7d1f2c3b-0000-4000-8000-00000000c0de" type="Module Settings Field Configuration">
+  <name>Retry Count</name>
+  <defaultValue>3</defaultValue>
+</class>

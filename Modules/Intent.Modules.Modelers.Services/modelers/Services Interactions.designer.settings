@@ -116,11 +116,6 @@ return getMappings()[0] ? null : "gray";</lineColor>
         </targetEnd>
       </visualSettings>
       <macros>
-        <macro trigger="on-created">
-          <script>const invocationMappingId = "7ca5c18a-bdbe-434b-a68a-421899a077e7";
-const mapping = association.createAdvancedMapping(association.getOtherEnd().typeReference.typeId, association.typeReference.typeId, "a4c4c5cc-76df-48ed-9d4e-c35caf44b567");
-mapping.addMappedEnd(invocationMappingId, [association.getOtherEnd().typeReference.typeId], [association.typeReference.typeId]);</script>
-        </macro>
         <macro trigger="on-type-changed">
           <script>if (association.isTargetEnd() &amp;&amp; association.typeReference.getType()?.typeReference != null) {
     association.typeReference.setIsCollection(association.typeReference.getType().typeReference.getIsCollection());
@@ -134,7 +129,38 @@ mapping.addMappedEnd(invocationMappingId, [association.getOtherEnd().typeReferen
   <mappingSettings>
     <mappingSetting type="Invocation Mapping" typeId="a4c4c5cc-76df-48ed-9d4e-c35caf44b567">
       <title>Invocation Mapping</title>
-      <isRequiredFunction>return true;</isRequiredFunction>
+      <isRequiredFunction>// Intent Architect evaluates this in one place only: shortly after a user creates a Perform Invocation from a
+// context menu. It is never evaluated for scripts, AI agents or a later "Map Call Operation", so it is the only place
+// the invocation mapping is created, and it always returns false so that the client opens no dialog of its own.
+
+// Every designer function shares one sandbox whose globals are replaced on each evaluation. Creating the mapping
+// refreshes errors, which evaluates other designer functions and wipes `association` and `console`, so hold them in
+// locals before calling anything.
+const invocation = association;
+const log = typeof console !== "undefined" ? console : undefined;
+const invocationMappingSettingsId = "a4c4c5cc-76df-48ed-9d4e-c35caf44b567";
+const invocationMappingId = "7ca5c18a-bdbe-434b-a68a-421899a077e7";
+
+// This function's association context has no getOtherEnd(), so map the source root to the target root with empty
+// paths rather than by element id.
+function createInvocationMapping() {
+    const mapping = invocation.createAdvancedMapping(invocationMappingSettingsId);
+    mapping.addMappedEnd(invocationMappingId, [], []);
+}
+
+// Create the mapping so the dialog opens pre-filled. The dialog snapshots it synchronously, so take it straight back out
+// of the model: Done saves the dialog's result as the mapping, Cancel leaves the invocation unmapped rather than
+// half-mapped, and the client finds no half-mapped warning to open a second dialog for.
+try {
+    createInvocationMapping();
+} catch (e) {
+    log?.warn?.("Could not pre-fill the invocation mapping; opening the mapping dialog empty.", e);
+}
+const dialog = invocation.launchAdvancedMappingDialog(invocationMappingSettingsId);
+invocation.getAdvancedMapping(invocationMappingSettingsId)?.delete?.();
+dialog.catch(() =&gt; { /* Cancelled: leave the invocation unmapped. */ });
+
+return false;</isRequiredFunction>
       <sourceMappings>
         <importSettings id="2b74b9ec-75bb-4eb2-8b3c-5b4fd755f019" name="Invocation Source Mappables" />
       </sourceMappings>

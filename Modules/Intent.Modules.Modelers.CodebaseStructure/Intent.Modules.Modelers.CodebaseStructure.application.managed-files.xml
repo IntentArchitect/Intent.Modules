@@ -7,7 +7,7 @@
   <file path="Api/FileClassificationModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
   <file path="Api/FileClassificationsModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
   <file path="Api/FolderExtensionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" />
-  <file path="Api/IAllowsCustomFileClassificationModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiTraitModel" />
+  <file path="Api/IAllowsFileClassificationModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiTraitModel" />
   <file path="Api/OutputAnchorModel.cs" deviationsHash="684B1F515B1AB1036F7DF9EB9C507F4EC0057F5994BD71FE4F67045BE1AB3939" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
   <file path="Api/OutputAnchorModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
   <file path="Api/RootFolderModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageModel" />
@@ -18,7 +18,8 @@
   <file path="ApiMetadataPackageExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions" />
   <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
   <file path="Intent.Modelers.CodebaseStructure.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
-  <file path="Intent.Modules.Modelers.CodebaseStructure.csproj" deviationsHash="28B4E7C8D36CCB2AFBB519DBC1BD8095E9E4236B8AF5ED447F080E79270A8F89" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Intent.Modules.Modelers.CodebaseStructure.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Migrations/Migration_01_02_00_Pre_00.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
   <file path="modelers/Codebase Structure Types.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
   <file path="modelers/Codebase Structure.designer.config" templateId="Intent.ModuleBuilder.DesignerConfig" />
   <file path="release-notes.md" templateId="Intent.ModuleBuilder.Templates.ReleaseNotes" />

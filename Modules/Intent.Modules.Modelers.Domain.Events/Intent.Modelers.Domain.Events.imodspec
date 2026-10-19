@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Domain.Events</id>
-  <version>4.4.7</version>
+  <version>4.4.8-pre.0</version>
   <supportedClientVersions>[4.5.0-a, 6.0.0-a)</supportedClientVersions>
   <summary>Introduces Domain Event elements to the Domain designer.</summary>
   <description>Introduces Domain Event elements to the Domain designer.</description>
@@ -15,6 +15,7 @@
     <dependency id="Intent.Common" version="3.7.8" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
     <dependency id="Intent.Modelers.Domain" version="3.12.2" />
+    <dependency id="Intent.Modelers.Services" version="4.0.16" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

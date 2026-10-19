@@ -24,6 +24,15 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
         {
         }
 
+        /// <summary>
+        /// Only where a hook configuration will run it. ".agents" is an AI.Context anchor like the
+        /// rest, but no harness loads hooks from it, so the copy generated there was never executed.
+        /// </summary>
+        public override bool CanRunTemplate()
+        {
+            return base.CanRunTemplate() && Array.IndexOf(GateCommands.HookedHarnessFolders, OutputTarget.Name) >= 0;
+        }
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override ITemplateFileConfig GetTemplateFileConfig()
         {

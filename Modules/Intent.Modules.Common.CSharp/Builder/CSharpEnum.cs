@@ -69,6 +69,16 @@ public class CSharpEnum : CSharpDeclaration<CSharpEnum>, ICSharpEnum
         return this;
     }
 
+    /// <summary>
+    /// Omits the access modifier so the enum takes C#'s default accessibility:
+    /// <c>internal</c> for a top-level enum, <c>private</c> for a nested one.
+    /// </summary>
+    public CSharpEnum WithoutAccessModifier()
+    {
+        AccessModifier = string.Empty;
+        return this;
+    }
+
     public CSharpEnum AddLiteral(string literalName, string literalValue = null, Action<CSharpEnumLiteral> configure = null)
     {
         var literal = new CSharpEnumLiteral(literalName, literalValue);

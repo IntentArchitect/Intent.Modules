@@ -9,19 +9,19 @@
     {
       "name": "intent-agent-gate-guard-write",
       "trigger": "PreToolUse",
-      "matcher": "fs_write",
-      "action": { "type": "command", "command": "dotnet run .kiro/hooks/gate/gate.cs --no-build -- guard-write --harness kiro; test $? -eq 0 && exit 0 || exit 2" }
+      "matcher": "write|fs_write|fsWrite|str_replace|fs_append|delete_file",
+      "action": { "type": "command", "command": "dotnet run .kiro/hooks/gate/gate.cs --no-build -- guard-write --harness kiro; exit $LASTEXITCODE" }
     },
     {
       "name": "intent-agent-gate-guard-version",
       "trigger": "PreToolUse",
       "matcher": ".*run_designer_script.*",
-      "action": { "type": "command", "command": "dotnet run .kiro/hooks/gate/gate.cs --no-build -- guard-version --harness kiro; test $? -eq 0 && exit 0 || exit 2" }
+      "action": { "type": "command", "command": "dotnet run .kiro/hooks/gate/gate.cs --no-build -- guard-version --harness kiro; exit $LASTEXITCODE" }
     },
     {
       "name": "intent-agent-gate-close-out",
       "trigger": "Stop",
-      "action": { "type": "command", "command": "dotnet run .kiro/hooks/gate/gate.cs --no-build -- close-out --harness kiro; test $? -eq 0 && exit 0 || exit 2" }
+      "action": { "type": "command", "command": "dotnet run .kiro/hooks/gate/gate.cs --no-build -- close-out --harness kiro" }
     }
   ]
 }

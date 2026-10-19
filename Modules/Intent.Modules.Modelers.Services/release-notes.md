@@ -1,3 +1,13 @@
+### Version 4.0.17
+
+- Improvement: The DTO warning for a field without a default value after one with a default value moved to `Intent.Application.Dtos`, which generates the constructor and static `Create` method it protects. Installing this version updates `Intent.Application.Dtos` to the version that carries it.
+- Improvement: Added a `Parameter Naming Convention` setting (default Camel Case) so operation parameter names follow Service Settings instead of always being camel-cased.
+- Improvement: Service Operation parameters and return types can now be any element with the `Service Argument` trait (e.g. Domain `Class`, `Data Contract` and `Value Object`).
+- Fixed: Service names now follow the `Entity Naming Convention` setting instead of `Operation Naming Convention` (e.g. Operation set to Camel Case renamed `OrderService` to `orderService`).
+- Fixed: The duplicate operation check ignored collections, value-type nullability and generic type arguments, so valid overloads such as `Create(ids: int[*])` and `Create(id: int)`, `Get(id: int?)` and `Get(id: int)`, or `Find(PagedResult<A>)` and `Find(PagedResult<B>)` were reported as duplicates.
+- Fixed: A Diagram created with a name (e.g. by a script or an AI agent) was renamed to its parent's name. Diagrams now keep the name they are created with, like other elements. The `New Diagram` context menu option still names the new Diagram after its parent and opens it for renaming, and now appears at the end of the context menu.
+- Fixed: Cancelling the mapping dialog that opens when an invocation is created from a context menu (e.g. `Invoke Service`) left a half-mapped invocation with a warning. The dialog still opens pre-filled, and Cancel now leaves the invocation unmapped. Invocations created by scripts or AI agents get no mapping and no dialog, and cancelling a later `Map Call Operation` still keeps the existing mapping.
+
 ### Version 4.0.16
 
 - Improvement: Added the ability to have Diagrams on Diagrams

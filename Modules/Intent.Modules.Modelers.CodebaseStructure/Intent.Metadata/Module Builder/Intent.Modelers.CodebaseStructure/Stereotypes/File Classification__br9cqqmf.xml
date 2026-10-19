@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="1a5d919b-7ca2-4f2f-8a0d-0995aa6b02ac" version="3.1.0">
+  <comment>Flags files for Change Review with a Review Importance and classifications. On the root folder, a folder or a project it covers the custom files under it, and the deepest one wins. On a Template Output it covers the files that template generates. The rules live in `Entries`.</comment>
+  <name>File Classification</name>
+  <targetMode>filter-function</targetMode>
+  <targetTypes />
+  <targetReferenceTypes />
+  <targetFilterFunction>// Only applicable where the element's specialization (its Element/Package Settings) or an
+// extension of it (Element/Package Extension) has opted in via "Allows File Classification".
+// The Root Folder package is accepted by its type id as well, because Intent Architect does not
+// evaluate traits on packages (a package's hasTrait always returns false).
+return element.hasTrait("60fd85c8-5de8-45b6-9ba7-570cc701c3ab")
+    || element.specializationId === "07e7b690-a59d-4b72-8440-4308a121d32c"; // Root Folder</targetFilterFunction>
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MCA1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImlhQ3VzdG9tRmlsZUNsYXNzaWZpY2F0aW9uUmFtcCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMwOWM0ZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDA3MGMwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDUuODgyNCkgc2NhbGUoMS4xNzY0NzA2KSI+CiAgICA8cGF0aCBmaWxsPSJ1cmwoI2lhQ3VzdG9tRmlsZUNsYXNzaWZpY2F0aW9uUmFtcCkiIGZpbGwtcnVsZT0iZXZlbm9kZCIKICAgICAgICAgIGQ9Ik0zLjUgMGgxMC45bDUuMiA1LjJIMzlhMy41IDMuNSAwIDAgMSAzLjUgMy41VjI5YTMuNSAzLjUgMCAwIDEtMy41IDMuNUgzLjVBMy41IDMuNSAwIDAgMSAwIDI5VjMuNUEzLjUgMy41IDAgMCAxIDMuNSAwWgogICAgICAgICAgICAgTTE0LjQgMTIuNWgxMS4xbDYuNSA2LjUtNi41IDYuNUgxNC40YTMuNCAzLjQgMCAwIDEtMy40LTMuNHYtNi4yYTMuNCAzLjQgMCAwIDEgMy40LTMuNFoKICAgICAgICAgICAgIE0xNi4xIDE2LjNhMi43IDIuNyAwIDEgMCAwIDUuNCAyLjcgMi43IDAgMCAwIDAtNS40WiIvPgogIDwvZz4KPC9zdmc+Cg==" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>6537e6dd-d401-4065-a843-627fe0c89efb</parentFolderId>
+  <order>0</order>
+  <packageId>525868ff-adc0-4ab6-a90e-352288da941f</packageId>
+  <packageName>Intent.Modelers.CodebaseStructure</packageName>
+  <properties>
+    <property id="3e552682-b2c7-450a-acb6-be006206cf97">
+      <hint>Ordered rows, each assigning a Review Importance and classifications to the files its Glob matches. Where several rows match a file, the last matching row wins, so put a broad catch-all row (e.g. `**/*`) first and narrower exceptions after it. Add, remove and reorder rows; the property's own value is only a cache of the row labels, so never set it directly.</hint>
+      <name>Entries</name>
+      <type>string</type>
+      <controlType>item-list</controlType>
+      <optionsSource>n/a</optionsSource>
+      <itemTypeId>14476d2c-c5fb-4aea-ad8c-55d1b00a8203</itemTypeId>
+    </property>
+  </properties>
+</stereotypeDefinition>

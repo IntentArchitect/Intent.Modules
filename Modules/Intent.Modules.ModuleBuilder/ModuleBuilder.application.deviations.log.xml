@@ -625,11 +625,10 @@
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#502551f7-c2d7-4d65-ad9f-13bd1e9e96d5</correlationId>
       <path>Api/TemplateRegistrationModel.cs</path>
       <count>13</count>
-      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2026-08-25T16:04:25.6091857Z</updatedAt>
+      <updatedByAccountName>jonathan.lydall+mac@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall (macOS)</updatedByDisplayName>
+      <updatedAt>2026-10-14T21:04:01.689496Z</updatedAt>
       <deviationsHash>E425F8B9BFC11C68F809141E1B9104E50126959B2D556AB6F58398A8C7DA25DF</deviationsHash>
-      <fileHash>1CAB8D076FBF63642C56259BE3435AD727FD2D1B81F5DE779E69CD60AB4BB8C4</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0250c934-455b-4bb6-b5d9-077c6e1ce72c</correlationId>
@@ -892,9 +891,9 @@
       <correlationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#b8c74c43-2d73-483f-b938-f20a986f7acf</correlationId>
       <path>Templates/StaticContentTemplateRegistration/StaticContentTemplateRegistrationTemplatePartial.cs</path>
       <count>4</count>
-      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2026-08-30T18:38:45.9961341Z</updatedAt>
+      <updatedByAccountName>jonathan.lydall+mac@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Jonathan Lydall (macOS)</updatedByDisplayName>
+      <updatedAt>2026-10-14T21:04:01.689384Z</updatedAt>
       <deviationsHash>372F368B9C024F5FC8DCB5A34A93BF4FFBCA1604B611C785EFD6EF399BF2B5A7</deviationsHash>
     </file>
     <file>

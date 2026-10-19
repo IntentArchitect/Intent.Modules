@@ -1,25 +1,3 @@
 ### Version 1.0.0
 
-- New Feature: Bundles the module-building workflow skills — context capture, version increments, documentation upkeep and dependency audit — into the consuming repo's agent skills folder.
-- New Feature: Adds an agent gate that deterministically denies hand-edits to Intent Architect's own metadata - `*.application.config`, `*.application.managed-files.xml`, `modules.config`, and anything under `Intent.Metadata/` or `.intent/` - plus illegal module-version changes and `.imodspec` edits to `<summary>`/`<description>`. Generated output is deliberately not covered: editing it is often the intended workflow.
-- New Feature: The gate warns at close-out — without blocking — when a changed module's tags aren't lowercase, its `docs/README.md` is missing, its `CONTEXT.md` wasn't touched alongside the change, or its release-notes heading still carries a `-pre` suffix.
-- New Feature: The gate ships as a dependency-free .NET 10 file-based app, with a self-contained copy nested inside each harness's own folder, so no harness reaches into another's directory and there is no install step or tool manifest.
-- New Feature: Generates hook configuration for Claude Code, Codex, Cursor, Kiro and OpenCode, each in that harness's own native format and wired to the gate copy beside it.
-- New Feature: `.claude/settings.json` is merged rather than owned — missing entries are added, existing ones are never overwritten, and a file that does not parse is left untouched with a warning.
-- New Feature: Adds `Install Agent Gate Hooks`, `Use Pre-Release Versions`, `Maintain Module README`, `Maintain Module Icon`, `Maintain Module Context` and `Maintain Release Notes` settings.
-- Improvement: Every harness's hook command is spelled identically — a plain path relative to the project root, matching what each harness's own documentation uses, with no harness-specific variable in any of them.
-- Fixed: `.claude/settings.json` now updates a hook command this module generated in an earlier version, instead of only ever adding absent entries — without it, a change to the command reached new installs only. A command the developer has adjusted is still never touched.
-- Improvement: When `Install Agent Gate Hooks` is off but the application has AI harness folders, the Software Factory logs a warning once, rather than generating nothing and reporting nothing.
-- Fixed: Cursor's write guard runs on `preToolUse`, which can deny the write, instead of `afterFileEdit`, which fires once the write has already landed and so could never block anything.
-- Fixed: The gate no longer denies edits to generated output. It previously protected every file listed in `managed-files.xml`, which blocked authoring a scaffolded template, writing release notes and correcting a `.csproj` package version - all intended workflows.
-- New Feature: Generates GitHub Copilot CLI hook configuration at `.github/hooks/intent-agent-gate.json`, supplying both the `bash` and `powershell` command forms Copilot expects.
-- Fixed: Every generated hook command wraps `dotnet run` so a build failure in the gate's own source still blocks — `dotnet run` exits 1 on a broken build rather than 2, and Cursor treats any code other than exactly 0 or 2 as an allow.
-- Fixed: The gate's version and close-out checks now find modules that don't sit under a `Modules/` folder, or whose `.imodspec` isn't beside their `.application.config` — they follow each application's `location`, and fall back to scanning the folder when git isn't available.
-- Fixed: The gate now protects a folder that isn't a git repository yet — the write and version guards previously allowed everything there. Close-out stays silent in that case, since without git there is no record of what changed.
-- Fixed: `Use Pre-Release Versions` is now enforced by the gate under every harness — previously only OpenCode's hook passed the scheme through, so the others let a bare release version through.
-- Fixed: A harness folder the module does not recognise no longer throws out of hook-config generation and fails the consumer's whole Software Factory run.
-- Fixed: The `Intent.Common` dependency floor was 3.7.2 while the module compiles against 3.11.4 — a gap that would only surface once a consumer's install resolved the lower version.
-- Fixed: `module-version-increment`'s already-moved check is now a universal gate that both Phase 2 and Phase 4 route through, ending the phantom version bump on every follow-up instruction.
-- Fixed: `module-docs-chore` now names the Application Settings page as where a module's summary and description are edited — edits made in `.imodspec` are silently reverted by the Software Factory.
-- Improvement: `module-version-increment`'s major/minor/patch rubric judges impact on the user's experience rather than on the module's own source, and the workflow skills' descriptions follow the Capability / `USE ONLY WHEN` / `DO NOT USE FOR` / `REQUIRES` contract for more reliable harness routing.
-- Improvement: Added `docs/README.md`, covering the four-phase workflow, the module settings, and the agent gate.
+- New Feature: Guides AI agents through a four-phase module-building workflow with bundled skills, and an agent gate for Claude Code, Codex, GitHub Copilot CLI, Cursor, Kiro and OpenCode that blocks hand-edits to Intent Architect metadata and invalid version changes.

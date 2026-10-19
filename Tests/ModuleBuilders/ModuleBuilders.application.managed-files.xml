@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="7c157446-328d-42e6-9233-f62d633cb7ff">
-  <file path=".agents/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
+  <file path=".claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
   <file path="Intent.Modules.Tests.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
   <file path="ModuleBuilders/Api/NewAssociationTypeModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
   <file path="ModuleBuilders/Api/NewAssociationTypeModelAssociationExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />

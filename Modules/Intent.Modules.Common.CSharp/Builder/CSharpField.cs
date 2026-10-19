@@ -164,6 +164,9 @@ public class CSharpField : CSharpMember<CSharpField>, ICSharpField
         IsStatic = true;
         return this;
     }
+    /// <summary>
+    /// Adds the <c>required</c> modifier. It is omitted when the project's C# language version is below 11.
+    /// </summary>
     public CSharpField Required()
     {
         IsRequired = true;
@@ -238,7 +241,7 @@ public class CSharpField : CSharpMember<CSharpField>, ICSharpField
             sb.Append("const ");
         }
 
-        if (IsRequired)
+        if (IsRequired && File.SupportsRequiredMembers())
         {
             sb.Append("required ");
         }

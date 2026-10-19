@@ -1,4 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files />
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.IModSpecFile#7070aee5-17a6-4a60-a551-882a821766c9</correlationId>
+      <path>Intent.Modelers.Domain.ValueObjects.imodspec</path>
+      <count>1</count>
+      <updatedByAccountName>joel.turner@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Joel Turner</updatedByDisplayName>
+      <updatedAt>2026-10-08T12:20:21.0569898Z</updatedAt>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-08T13:22:31.341352Z</approvedAt>
+      <deviationsHash>769D41ECD88304591F1204CE6C435A9B9700E05773D6E891859B06D11021413B</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.VisualStudio.Projects.CSharpProject#2c4e1b36-3037-4892-9d61-630ebe12d423</correlationId>
+      <path>Intent.Modules.Modelers.Domain.ValueObjects.csproj</path>
+      <count>1</count>
+      <updatedByAccountName>joel.turner@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Joel Turner</updatedByDisplayName>
+      <updatedAt>2026-10-08T12:19:59.970369Z</updatedAt>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-08T13:22:31.3574654Z</approvedAt>
+      <deviationsHash>D83DEF513DF95B1CE3CDFFD5CAC0FE9FAB2F8939CFAE9D677B37A0A2478ABBDD</deviationsHash>
+    </file>
+  </files>
+  <customFiles>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Domain.ValueObjects/release-notes.md</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-08T13:22:31.3749046Z</approvedAt>
+    </customFile>
+  </customFiles>
 </deviationsLog>

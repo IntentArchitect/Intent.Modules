@@ -10,6 +10,9 @@
   <parentFolderId>db2f5755-5256-46d1-bb45-72bf2c7cde42</parentFolderId>
   <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
   <packageName>Intent.Modelers.Domain</packageName>
+  <traits>
+    <trait id="8b78644d-8b44-48c7-8c13-68255e2252c0" name="[Service Argument]" />
+  </traits>
   <stereotypes>
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
       <addedByDefault>false</addedByDefault>
@@ -56,6 +59,12 @@
       <properties>
         <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="### Class Modeling Rules&#xA;- NEVER add primary keys (e.g. Id) or foreign keys (e.g. BuyerId) to Class elements. These are added automatically by the designer.&#xA;- A Class implicitly represents basic data access (i.e. CRUD functions). You do not need to explicitly model these.&#xA;- Add appropriate attributes, associations and enums." isActive="true" />
       </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="8b78644d-8b44-48c7-8c13-68255e2252c0" name="[Service Argument]">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.Common</definitionPackageName>
+      <definitionPackageId>caccdda9-26f4-49bf-8b73-cadc2220de16</definitionPackageId>
+      <properties />
     </stereotype>
   </stereotypes>
   <metadata />

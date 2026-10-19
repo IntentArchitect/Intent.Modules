@@ -265,6 +265,16 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpInterf
         return this;
     }
 
+    /// <summary>
+    /// Omits the access modifier so the interface takes C#'s default accessibility:
+    /// <c>internal</c> for a top-level interface, <c>private</c> for a nested one.
+    /// </summary>
+    public CSharpInterface WithoutAccessModifier()
+    {
+        AccessModifier = string.Empty;
+        return this;
+    }
+
     public CSharpInterface Partial()
     {
         IsPartial = true;
@@ -461,6 +471,11 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>, ICSharpInterf
     ICSharpInterface ICSharpInterface.Public()
     {
         return _wrapper.Public();
+    }
+
+    ICSharpInterface ICSharpInterface.WithoutAccessModifier()
+    {
+        return _wrapper.WithoutAccessModifier();
     }
 
     ICSharpInterface ICSharpInterface.Partial()

@@ -1,3 +1,7 @@
+### Version 4.4.8
+
+- Fixed: Added the missing `Intent.Modelers.Services` module dependency, which this module's code requires but did not declare.
+
 ### Version 4.4.7
 
 - Fixed: User is now prompted to save the domain designer first when creating a domain event handler.

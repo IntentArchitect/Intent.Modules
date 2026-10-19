@@ -29,14 +29,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.ClaudeSetting
         }
 
         private const string SettingsFileName = "settings.json";
-        private const string HarnessFolder = ".claude";
-        private static readonly string GatePath = GateCommands.GatePath(HarnessFolder);
 
         /// <summary>
-        /// Claude Code is the one harness whose hook config lives in a file it does not own. Every
-        /// other harness gets a file this module writes outright; ".claude/settings.json" also
-        /// carries the developer's permissions, environment and unrelated hooks, so it is merged
-        /// rather than generated - existing keys are never overwritten, only absent ones added.
+        /// ".claude/settings.json" also carries the developer's permissions, environment and
+        /// unrelated hooks, so it is merged rather than generated - see <see cref="HookConfigMerge"/>
+        /// for the rules and <see cref="HarnessHookSets.MergeClaudeSettings"/> for what is registered.
         /// </summary>
         public override bool CanRunTemplate()
         {
@@ -52,147 +49,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.ClaudeSetting
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
-            var existingPath = Path.Combine(OutputTarget.Location, SettingsFileName);
-            if (!File.Exists(existingPath))
-            {
-                return Render(new JsonObject());
-            }
-
-            var existing = File.ReadAllText(existingPath);
-            JsonObject root;
-            try
-            {
-                root = JsonNode.Parse(existing) as JsonObject;
-            }
-            catch (JsonException exception)
-            {
-                // Returning the file's own content leaves it byte-for-byte untouched. Throwing here
-                // would fail the consumer's entire Software Factory run over a file this module does
-                // not own, and overwriting it would destroy settings the developer wrote by hand.
-                Logging.Log.Warning(
-                    $"{TemplateId}: '{existingPath}' is not valid JSON ({exception.Message}), so it was left " +
-                    "exactly as it is. The agent gate is not wired into Claude Code until the file parses - " +
-                    "Claude Code itself also reports a broken settings file at startup.");
-                return existing;
-            }
-
-            if (root is null)
-            {
-                Logging.Log.Warning(
-                    $"{TemplateId}: '{existingPath}' parses as JSON but is not an object, so it was left " +
-                    "exactly as it is and no hooks were added.");
-                return existing;
-            }
-
-            return Render(root);
-        }
-
-        private string Render(JsonObject root)
-        {
-            var hooks = EnsureObject(root, "hooks");
-
-            EnsureHook(hooks, "SessionStart", matcher: null, command: GateCommands.Warm(HarnessFolder),
-                superseded: GateCommands.SupersededWarm(HarnessFolder));
-            EnsureHook(hooks, "PreToolUse", matcher: "Write|Edit", command: GateCommand("guard-write"),
-                superseded: GateCommands.Superseded(HarnessFolder, "guard-write"));
-            EnsureHook(hooks, "PreToolUse", matcher: ".*run_designer_script.*", command: GateCommand("guard-version"),
-                superseded: GateCommands.Superseded(HarnessFolder, "guard-version"));
-            EnsureHook(hooks, "Stop", matcher: null, command: GateCommand("close-out"),
-                superseded: GateCommands.Superseded(HarnessFolder, "close-out"));
-
-            // UnsafeRelaxedJsonEscaping only because the default HTML-safe encoder renders the
-            // fail-closed wrapper's "&&" as an escape sequence. Both parse identically, but a
-            // developer opening their own settings file should see the command they would type.
-            return root.ToJsonString(new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-            });
-        }
-
-        private static string GateCommand(string command) => GateCommands.Guard(HarnessFolder, command);
-
-        private static JsonObject EnsureObject(JsonObject parent, string key)
-        {
-            if (parent[key] is JsonObject existing)
-            {
-                return existing;
-            }
-
-            var created = new JsonObject();
-            parent[key] = created;
-            return created;
-        }
-
-        /// <summary>
-        /// Adds the entry only when an equivalent one is absent, and upgrades one this module wrote
-        /// itself in an earlier version.
-        /// </summary>
-        /// <remarks>
-        /// Three cases, and the distinction between the last two is the whole point:
-        /// <list type="bullet">
-        /// <item>No entry for this matcher mentions our gate path - add ours.</item>
-        /// <item>An entry carries a command EXACTLY matching one we generated before (<paramref name="superseded"/>)
-        /// - rewrite it in place. Without this the merge could only ever add, so a correction to the
-        /// command itself would reach new installs only, and every existing one would keep the broken
-        /// form indefinitely.</item>
-        /// <item>An entry mentions our gate path but matches nothing we generated - the developer has
-        /// adjusted it. Leave it completely alone; do not rewrite it and do not append a near-duplicate
-        /// beside it on every regeneration.</item>
-        /// </list>
-        /// The superseded list is exact-match for exactly this reason: "any command mentioning our
-        /// gate path" would swallow the developer's version too.
-        /// </remarks>
-        private static void EnsureHook(JsonObject hooks, string eventName, string matcher, string command, string[] superseded)
-        {
-            if (hooks[eventName] is not JsonArray entries)
-            {
-                entries = new JsonArray();
-                hooks[eventName] = entries;
-            }
-
-            foreach (var entry in entries.OfType<JsonObject>())
-            {
-                var entryMatcher = entry["matcher"]?.GetValue<string>();
-                if (!string.Equals(entryMatcher, matcher, StringComparison.Ordinal))
-                {
-                    continue;
-                }
-
-                if (entry["hooks"] is not JsonArray inner)
-                {
-                    continue;
-                }
-
-                var ours = inner.OfType<JsonObject>().FirstOrDefault(h =>
-                    superseded.Contains(h["command"]?.GetValue<string>(), StringComparer.Ordinal));
-                if (ours is not null)
-                {
-                    ours["command"] = command;
-                    return;
-                }
-
-                var alreadyWired = inner.OfType<JsonObject>().Any(h =>
-                    h["command"]?.GetValue<string>()?.Contains(GatePath, StringComparison.Ordinal) == true);
-                if (alreadyWired)
-                {
-                    return;
-                }
-            }
-
-            var added = new JsonObject();
-            if (matcher is not null)
-            {
-                added["matcher"] = matcher;
-            }
-
-            added["hooks"] = new JsonArray(new JsonObject
-            {
-                ["type"] = "command",
-                ["command"] = command,
-            });
-
-            entries.Add(added);
+            return MergedHookFile.Transform(
+                Path.Combine(OutputTarget.Location, SettingsFileName), TemplateId, "Claude Code", HarnessHookSets.MergeClaudeSettings);
         }
     }
 }

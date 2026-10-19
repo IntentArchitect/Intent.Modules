@@ -14,7 +14,7 @@
   <file path="Api/TypeDefinitionModel.cs" deviationsHash="8E52DF1AC55887BD880851CB1E49925D05F16258823D70E49C7EA021F6E94FB2" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
   <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
   <file path="Intent.Common.Types.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
-  <file path="Intent.Modules.Common.Types.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Intent.Modules.Common.Types.csproj" deviationsHash="F1DB07D8497C60A4131B6F70C1F02C3ECFD8BF6D72EED0E3B21473DBF6D64EC0" templateId="Intent.VisualStudio.Projects.CSharpProject" />
   <file path="modelers/Common Types Extensions.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
   <file path="modelers/Common Types.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
   <file path="resources/documentation.json" templateId="Intent.ModuleBuilder.Templates.DocumentationTemplate" />

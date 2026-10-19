@@ -138,10 +138,10 @@
     </FileLog>
     <FileLog>
       <ProjectId>c15021d7-d580-4a7a-b775-641d224323eb</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#8a3de38f-7c40-4f91-a706-3f3baf62c16a</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#7d568b1f-b9fd-4338-a12f-29b4c26c6f0e</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>ServicesPackageExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ServicesPackageExtensionModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>ServicePackageExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ServicePackageExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>

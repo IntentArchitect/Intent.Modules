@@ -68,9 +68,9 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Default Location");
             }
 
-            public SeverityOptions Severity()
+            public ReviewImportanceOptions ReviewImportance()
             {
-                return new SeverityOptions(_stereotype.GetProperty<string>("Severity"));
+                return new ReviewImportanceOptions(_stereotype.GetProperty<string>("Review Importance"));
             }
 
             public string Classification()
@@ -78,27 +78,27 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Classification");
             }
 
-            public class SeverityOptions
+            public class ReviewImportanceOptions
             {
                 public readonly string Value;
 
-                public SeverityOptions(string value)
+                public ReviewImportanceOptions(string value)
                 {
                     Value = value;
                 }
 
-                public SeverityOptionsEnum AsEnum()
+                public ReviewImportanceOptionsEnum AsEnum()
                 {
                     switch (Value)
                     {
                         case "0 - None":
-                            return SeverityOptionsEnum._0None;
+                            return ReviewImportanceOptionsEnum._0None;
                         case "1 - Low":
-                            return SeverityOptionsEnum._1Low;
+                            return ReviewImportanceOptionsEnum._1Low;
                         case "2 - Medium":
-                            return SeverityOptionsEnum._2Medium;
+                            return ReviewImportanceOptionsEnum._2Medium;
                         case "3 - High":
-                            return SeverityOptionsEnum._3High;
+                            return ReviewImportanceOptionsEnum._3High;
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
@@ -122,7 +122,7 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
-            public enum SeverityOptionsEnum
+            public enum ReviewImportanceOptionsEnum
             {
                 _0None,
                 _1Low,

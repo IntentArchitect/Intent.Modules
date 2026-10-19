@@ -1,4 +1,8 @@
-﻿### Version 5.5.6
+### Version 5.5.7
+
+- Improvement: `Service Proxies` can now be created from a Services diagram's context menu and at the package root.
+
+### Version 5.5.6
 
 - Fixed: Creating a `Service Proxy` programmatically (for example from an AI agent) no longer stalls on a mapping dialog with nobody to answer it.
 

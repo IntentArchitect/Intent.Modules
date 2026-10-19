@@ -1,0 +1,53 @@
+﻿[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    public abstract class ConflictingModifiers
+    {
+        public virtual void StaticThenVirtual()
+        {
+        }
+
+        public static void VirtualThenStatic()
+        {
+        }
+
+        public virtual void AbstractThenVirtual()
+        {
+        }
+
+        public override void VirtualThenOverride()
+        {
+        }
+
+        public new void OverrideThenNew()
+        {
+        }
+
+        public override void NewThenOverride()
+        {
+        }
+
+        public static void OverrideThenStatic()
+        {
+        }
+
+        public void CombinedThenWithoutMethodModifier()
+        {
+        }
+
+        public virtual void SealedThenVirtual()
+        {
+        }
+
+        public new void SealedThenNew()
+        {
+        }
+
+        public abstract override void SealedThenAbstract();
+
+        public sealed override void AbstractThenSealed()
+        {
+        }
+    }
+}

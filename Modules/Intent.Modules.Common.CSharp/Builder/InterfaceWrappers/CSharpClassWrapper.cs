@@ -155,6 +155,8 @@ internal class CSharpClassWrapper(CSharpClass wrapped) :
 
     ICSharpClass ICSharpClass.Public() => wrapped.Public();
 
+    ICSharpClass ICSharpClass.WithoutAccessModifier() => wrapped.WithoutAccessModifier();
+
     ICSharpClass ICSharpClass.Partial() => wrapped.Partial();
 
     ICSharpClass ICSharpClass.Sealed() => wrapped.Sealed();

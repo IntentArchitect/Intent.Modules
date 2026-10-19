@@ -12,6 +12,7 @@
   <file path="Metadata/IInvokableModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiTraitModel" />
   <file path="Metadata/IProcessingActionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiTraitModel" />
   <file path="Metadata/IProcessingHandlerModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiTraitModel" />
+  <file path="Metadata/IServiceArgumentModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiTraitModel" />
   <file path="Migrations/Migration_03_11_00_Pre_01.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
   <file path="Migrations/OnInstallMigration.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnInstallMigration" />
   <file path="resources/documentation.json" templateId="Intent.ModuleBuilder.Templates.DocumentationTemplate" />

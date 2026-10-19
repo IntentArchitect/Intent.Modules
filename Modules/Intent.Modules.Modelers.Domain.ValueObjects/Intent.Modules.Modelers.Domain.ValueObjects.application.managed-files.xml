@@ -8,7 +8,7 @@
   <file path="Api/ValueObjectModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
   <file path="Api/ValueObjectModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
   <file path="ApiMetadataProviderExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" />
-  <file path="Intent.Modelers.Domain.ValueObjects.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
-  <file path="Intent.Modules.Modelers.Domain.ValueObjects.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Intent.Modelers.Domain.ValueObjects.imodspec" deviationsHash="769D41ECD88304591F1204CE6C435A9B9700E05773D6E891859B06D11021413B" templateId="Intent.ModuleBuilder.IModSpecFile" />
+  <file path="Intent.Modules.Modelers.Domain.ValueObjects.csproj" deviationsHash="D83DEF513DF95B1CE3CDFFD5CAC0FE9FAB2F8939CFAE9D677B37A0A2478ABBDD" templateId="Intent.VisualStudio.Projects.CSharpProject" />
   <file path="modelers/Domain Value Objects.designer.settings" templateId="Intent.ModuleBuilder.DesignerSettings" />
 </managedFiles>

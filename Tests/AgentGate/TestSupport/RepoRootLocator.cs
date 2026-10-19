@@ -28,8 +28,9 @@ public static class RepoRootLocator
     /// The gate copy these tests run, taken from the TEST application rather than the repository root.
     /// </summary>
     /// <remarks>
-    /// Each harness folder carries its own self-contained copy under "&lt;harness&gt;/hooks/gate", and
-    /// ".agents" is the neutral one - always generated, owned by no single harness.
+    /// Each harness folder carries its own self-contained copy under "&lt;harness&gt;/hooks/gate"; the
+    /// copies are identical, so the tests use Claude Code's. (".agents" no longer gets one - no harness
+    /// loads hooks from it.)
     /// <para>
     /// It comes from "Tests/ModuleBuilderSkills" because that is the application harness testing uses;
     /// the repository root's copy belongs to the dogfood app, which exists to be what an agent working
@@ -38,5 +39,5 @@ public static class RepoRootLocator
     /// </para>
     /// </remarks>
     public static string FindGateEntryPoint() =>
-        Path.Combine(Find(), "Tests", "ModuleBuilderSkills", ".agents", "hooks", "gate", "gate.cs");
+        Path.Combine(Find(), "Tests", "ModuleBuilderSkills", ".claude", "hooks", "gate", "gate.cs");
 }

@@ -125,6 +125,9 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpProperty
         IsStatic = true;
         return this;
     }
+    /// <summary>
+    /// Adds the <c>required</c> modifier. It is omitted when the project's C# language version is below 11.
+    /// </summary>
     public CSharpProperty Required()
     {
         IsRequired = true;
@@ -243,7 +246,7 @@ public class CSharpProperty : CSharpMember<CSharpProperty>, ICSharpProperty
             ? $"{ExplicitlyImplementing}."
             : string.Empty;
 
-        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{modifiers}{(IsStatic ? "static " : "")}{(IsRequired ? "required " : "")}{Type} {explicitlyImplementing}{Name}";
+        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{modifiers}{(IsStatic ? "static " : "")}{(IsRequired && File.SupportsRequiredMembers() ? "required " : "")}{Type} {explicitlyImplementing}{Name}";
         if (Getter.IsExpression && IsReadOnly)
         {
             return $@"{declaration} => {Getter.Implementation};";

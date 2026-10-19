@@ -11,6 +11,7 @@ public interface ICSharpMethodDeclaration<out TCSharpMethodDeclaration> : ICShar
     where TCSharpMethodDeclaration : ICSharpMethod<TCSharpMethodDeclaration>, ICSharpDeclaration<TCSharpMethodDeclaration>
 {
     bool IsAbstract { get; }
+    bool IsSealed { get; }
     string? ExplicitImplementationFor { get; }
     TCSharpMethodDeclaration IsExplicitImplementationFor(string? @interface);
     TCSharpMethodDeclaration Partial();
@@ -24,5 +25,9 @@ public interface ICSharpMethodDeclaration<out TCSharpMethodDeclaration> : ICShar
     TCSharpMethodDeclaration New();
     TCSharpMethodDeclaration Virtual();
     TCSharpMethodDeclaration Abstract();
+    /// <summary>
+    /// Adds <c>sealed override</c> on class methods (C# only allows <c>sealed</c> on an override). No effect on interface methods.
+    /// </summary>
+    TCSharpMethodDeclaration Sealed();
     TCSharpMethodDeclaration WithoutMethodModifier();
 }
