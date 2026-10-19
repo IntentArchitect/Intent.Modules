@@ -143,13 +143,17 @@ public sealed record EvalPaths(string SuiteDirectory, string RepoRoot, string Ro
 /// </summary>
 public sealed class Workspace
 {
-    private Workspace(string root, string runDirectory)
+    private Workspace(string root, string runDirectory, string publishedVersion)
     {
         Root = root;
         RunDirectory = runDirectory;
+        PublishedVersion = publishedVersion;
     }
 
     public string Root { get; }
+
+    /// <summary>The SampleModule version the Intent MCP stub's feed reports as published, from the scenario.</summary>
+    public string PublishedVersion { get; }
 
     /// <summary>Where this run's evidence goes - beside the workspace, never inside it.</summary>
     public string RunDirectory { get; }
@@ -206,7 +210,7 @@ public sealed class Workspace
             }
         }
 
-        return new Workspace(root, runDirectory);
+        return new Workspace(root, runDirectory, scenario.PublishedVersion);
     }
 
     public async Task<IReadOnlyList<string>> ChangedFilesAsync()

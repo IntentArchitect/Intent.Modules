@@ -106,6 +106,41 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks
             $"{Run(harnessFolder, command)}; if ($LASTEXITCODE -ne 0) {{ exit 2 }}";
 
         /// <summary>
+        /// What Copilot shows the agent when the gate could not run at all. No quotes, apostrophes or
+        /// dollar signs, so it sits unchanged inside both shells' single-quoted strings.
+        /// </summary>
+        private const string CouldNotRunReason =
+            "The agent gate hook could not run, so this edit is blocked. That is a setup problem on this machine, not a fault in your work. " +
+            "Run dotnet --version from the project root to see the error, then follow If An Agent Gate Hook Itself Fails in the " +
+            "module-building workflow instructions. Do not make the edit another way.";
+
+        /// <summary>
+        /// <see cref="GuardPosix"/> for Copilot: when the gate could not run - any non-zero exit other
+        /// than its own deny, 2 - it also writes a deny with <see cref="CouldNotRunReason"/>.
+        /// </summary>
+        /// <remarks>
+        /// Copilot takes the reason from stdout, which must hold nothing but the JSON. With anything
+        /// else there it shows the agent only "hook exited with code 2", and an agent with only that
+        /// cannot tell the user what to fix (evals S6, S9) - observed on Copilot CLI 1.0.98. So the
+        /// gate's stdout is captured and passed on only for its own answers, exit 0 or 2; on any other
+        /// exit it is dropped, because dotnet itself writes there when it cannot run - under a
+        /// global.json pin it lists the installed SDKs before failing.
+        /// </remarks>
+        public static string GuardCopilotPosix(string harnessFolder, string command) =>
+            $"o=$({Run(harnessFolder, command)}); s=$?; " +
+            "if [ $s -eq 0 ] || [ $s -eq 2 ]; then [ -z \"$o\" ] || printf '%s\\n' \"$o\"; exit $s; fi; " +
+            $"printf '%s\\n' '{{\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"{CouldNotRunReason}\"}}'; exit 2";
+
+        /// <summary>The PowerShell spelling of <see cref="GuardCopilotPosix"/>.</summary>
+        /// <remarks>
+        /// When dotnet is not on PATH, $LASTEXITCODE is never set, so it is neither 0 nor 2 and the
+        /// reason is written.
+        /// </remarks>
+        public static string GuardCopilotPowerShell(string harnessFolder, string command) =>
+            $"$o = {Run(harnessFolder, command)}; $s = $LASTEXITCODE; if ($s -eq 0 -or $s -eq 2) {{ $o; exit $s }}; " +
+            $"@{{ permissionDecision = 'deny'; permissionDecisionReason = '{CouldNotRunReason}' }} | ConvertTo-Json -Compress; exit 2";
+
+        /// <summary>
         /// A guard command for a harness that offers one command string and runs it in whatever shell
         /// the platform gives it - PowerShell on Windows, a POSIX shell elsewhere.
         /// </summary>

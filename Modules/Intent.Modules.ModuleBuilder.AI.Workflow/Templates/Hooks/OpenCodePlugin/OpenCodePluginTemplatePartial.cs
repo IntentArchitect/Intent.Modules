@@ -71,6 +71,10 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.OpenCodePlugi
             // patch text is found by the gate by content, as for Codex. Intent's MCP file tools reach
             // the plugin as "<server>_write_file" and so on, so they are matched by suffix.
             //
+            // When dotnet cannot be started at all, spawnSync sets "error" and no status, so the old
+            // message ("blocked this action (exit undefined)", observed) gave the agent nothing to
+            // report (eval S9): that case now says the gate could not run and why.
+            //
             // Kept inside the body deliberately: this member's signature is Mode.Fully, so a comment
             // above it is stripped on every regeneration. Body = Mode.Ignore is what protects it.
             return $$"""
@@ -88,8 +92,16 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.OpenCodePlugi
                     { input: JSON.stringify({ tool_name: toolName, tool_input: args }), encoding: "utf-8" },
                   );
 
+                  if (result.error) {
+                    const cause = (result.error as { code?: string }).code === "ENOENT" ? "dotnet is not on PATH" : result.error.message;
+                    throw new Error(
+                      `The agent gate hook could not run, so this edit is blocked: ${cause}. That is a setup problem on this machine, ` +
+                      "not a fault in your work. Follow If An Agent Gate Hook Itself Fails in the module-building workflow instructions, " +
+                      "and do not make the edit another way.");
+                  }
+
                   if (result.status !== 0) {
-                    const reason = (result.stderr || "").trim();
+                    const reason = (result.stderr || "").trim() || (result.stdout || "").trim();
                     throw new Error(reason || `intent-agent-gate blocked this action (exit ${result.status})`);
                   }
                 }

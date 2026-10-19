@@ -21,6 +21,13 @@ shape everything below:
   applications decide whether to take your change, and its documentation is the only explanation
   they get. Neither is optional paperwork.
 
+## Change Files With Your Edit Tools
+
+Create, change and delete files with your harness's file-editing tools, never with a shell command
+or a script that writes the file. This repository's hooks check the edits those tools make - which
+files may be hand-edited, and how a version may move - and a shell write skips every one of those
+checks.
+
 ## The Four Workflow Skills
 
 Load the skill named for the phase you are in.

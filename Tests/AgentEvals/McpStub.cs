@@ -17,18 +17,19 @@ namespace AgentEvals;
 /// tool_input.filePath, content, searchBlock and replaceBlock. The file tools really write, resolving a
 /// relative path against the workspace as Intent resolves it against the open solution's folder. A script that sets the module's Version is applied to the .imodspec, as the
 /// Software Factory would; any other script is recorded and reported as run, but changes nothing.
-/// run_solution_query answers only searchAvailableModules, from a fixed feed (see <see cref="Feed"/>), so the
-/// version gate's feed check can complete.
+/// run_solution_query answers only searchAvailableModules, from the scenario's feed (see <see cref="Feed"/>), so the
+/// version gate's feed check can complete. update_application_settings writes a new description into the
+/// .imodspec's summary and description, as the Software Factory would.
 /// </remarks>
 public static class McpStub
 {
     public const string ServerName = "intent-architect";
 
     /// <summary>The command and arguments a harness launches the stub with.</summary>
-    public static (string Command, string[] Args) LaunchCommand(string workspace, string logPath)
+    public static (string Command, string[] Args) LaunchCommand(Workspace workspace)
     {
         var self = Environment.ProcessPath ?? throw new InvalidOperationException("Cannot locate the runner's own executable.");
-        string[] stubArgs = ["mcp-stub", "--workspace", workspace, "--log", logPath];
+        string[] stubArgs = ["mcp-stub", "--workspace", workspace.Root, "--log", workspace.StubLogPath, "--published", workspace.PublishedVersion];
 
         // Run as "dotnet <dll>" rather than as an apphost: pass the assembly too.
         return Path.GetFileNameWithoutExtension(self).Equals("dotnet", StringComparison.OrdinalIgnoreCase)
@@ -41,6 +42,7 @@ public static class McpStub
         string? Value(string name) => Array.IndexOf(args, name) is var i and >= 0 && i + 1 < args.Length ? args[i + 1] : null;
         var workspace = Value("--workspace") ?? Directory.GetCurrentDirectory();
         var log = Value("--log");
+        var feed = Feed(workspace, Value("--published") ?? "1.0.0");
 
         var stdin = Console.In;
         var stdout = Console.Out;
@@ -72,7 +74,7 @@ public static class McpStub
                     ["serverInfo"] = new JsonObject { ["name"] = ServerName, ["version"] = "eval-stub" },
                 },
                 "tools/list" => new JsonObject { ["tools"] = Tools() },
-                "tools/call" => Call(request?["params"], workspace, log),
+                "tools/call" => Call(request?["params"], workspace, log, feed),
                 "ping" => new JsonObject(),
                 _ => null,
             };
@@ -115,6 +117,14 @@ public static class McpStub
                 ["script"] = new JsonObject { ["type"] = "string", ["description"] = "JavaScript to execute. Its `return` value is the answer." },
             },
             required: ["script"]),
+        Tool("update_application_settings", "Partially update an application's settings: basic fields and/or module-contributed settings.",
+            new JsonObject
+            {
+                ["applicationId"] = new JsonObject { ["type"] = "string", ["description"] = "Target application Id." },
+                ["description"] = new JsonObject { ["type"] = new JsonArray("string", "null"), ["description"] = "New description." },
+                ["name"] = new JsonObject { ["type"] = new JsonArray("string", "null"), ["description"] = "New application name." },
+            },
+            required: ["applicationId"]),
         Tool("write_file", "Write content to a file, creating it if it doesn't exist or overwriting if it does.",
             new JsonObject
             {
@@ -149,7 +159,7 @@ public static class McpStub
         return new JsonObject { ["name"] = name, ["description"] = description, ["inputSchema"] = schema };
     }
 
-    private static JsonObject Call(JsonNode? parameters, string workspace, string? log)
+    private static JsonObject Call(JsonNode? parameters, string workspace, string? log, IReadOnlyList<FeedEntry> feed)
     {
         var name = parameters?["name"]?.GetValue<string>() ?? "";
         var arguments = parameters?["arguments"] as JsonObject ?? new JsonObject();
@@ -160,7 +170,8 @@ public static class McpStub
         {
             "get_applications" => (JsonSerializer.Serialize(applications.Select(a => new { id = a.Id, name = a.Name, location = a.Folder })), false),
             "run_designer_script" => RunScript(arguments, applications, wrote),
-            "run_solution_query" => RunQuery(arguments, workspace),
+            "run_solution_query" => RunQuery(arguments, workspace, feed),
+            "update_application_settings" => UpdateSettings(arguments, applications, wrote),
             "write_file" or "patch_file" or "delete_code_file" => RunFileTool(name, arguments, workspace, wrote),
             _ => ($"Unknown tool: {name}", true),
         };
@@ -190,17 +201,28 @@ public static class McpStub
         };
     }
 
-    /// <summary>
-    /// What the module feed offers: the fixture's SampleModule is published at 1.0.0, and its own 1.0.1 is a
-    /// local build - in flight, so the version gate leaves it alone. Shaped like the real searchAvailableModules result.
-    /// </summary>
-    private static readonly (string Id, string Version, string Repository)[] Feed =
-    [
-        ("SampleModule", "1.0.0", "https://intentarchitect.com/"),
-        ("SampleModule", "1.0.1", "local"),
-    ];
+    private sealed record FeedEntry(string Id, string Version, string Repository);
 
-    private static (string Text, bool IsError) RunQuery(JsonObject arguments, string workspace)
+    /// <summary>
+    /// What the module feed offers: SampleModule published at the scenario's published version (1.0.0 unless the
+    /// scenario says otherwise), and a local build of whatever version is on disk when the session starts - in
+    /// flight, so the version gate leaves it alone. Shaped like the real searchAvailableModules result.
+    /// </summary>
+    private static IReadOnlyList<FeedEntry> Feed(string workspace, string published)
+    {
+        var feed = new List<FeedEntry> { new("SampleModule", published, "https://intentarchitect.com/") };
+        var onDisk = Directory.EnumerateFiles(workspace, "SampleModule.imodspec", SearchOption.AllDirectories).FirstOrDefault() is { } imodspec
+            ? Regex.Match(File.ReadAllText(imodspec), "<version>([^<]+)</version>").Groups[1].Value.Trim()
+            : "";
+        if (onDisk.Length > 0 && onDisk != published)
+        {
+            feed.Add(new("SampleModule", onDisk, "local"));
+        }
+
+        return feed;
+    }
+
+    private static (string Text, bool IsError) RunQuery(JsonObject arguments, string workspace, IReadOnlyList<FeedEntry> feed)
     {
         var script = arguments["script"]?.GetValue<string>() ?? "";
         var search = Regex.Match(script, """searchAvailableModules\(\s*["'`]([^"'`]*)["'`]""");
@@ -210,7 +232,7 @@ public static class McpStub
         }
 
         var term = search.Groups[1].Value;
-        var modules = Feed
+        var modules = feed
             .Where(m => m.Id.Contains(term, StringComparison.OrdinalIgnoreCase))
             .Select(m => new
             {
@@ -290,7 +312,36 @@ public static class McpStub
         // than reporting a success that leaves the agent guessing why nothing changed.
         return updates.Count > 0 ? ($"Script ran. Updated {string.Join("; ", updates)}.", false)
             : properties.Count > 0 ? ("Script ran, but changed nothing: no element or property matched the script's setProperty call(s).", false)
-            : ("Script ran successfully.", false);
+            : ("Script ran, but changed nothing and returned no value: it made no setProperty(\"name\", \"value\") call on a named element.", false);
+    }
+
+    /// <summary>
+    /// The Application Settings route for a module's summary: the Software Factory writes the description into the
+    /// .imodspec's &lt;summary&gt; and &lt;description&gt;, so the stub writes both, as a run after this call would.
+    /// </summary>
+    private static (string Text, bool IsError) UpdateSettings(JsonObject arguments, IReadOnlyList<Application> applications, List<string> wrote)
+    {
+        var applicationId = arguments["applicationId"]?.GetValue<string>();
+        var application = applications.FirstOrDefault(a => string.Equals(a.Id, applicationId, StringComparison.OrdinalIgnoreCase)
+            || string.Equals(a.Name, applicationId, StringComparison.OrdinalIgnoreCase));
+        if (application is null)
+        {
+            return ($"No application with id '{applicationId}'. Call get_applications for the ids.", true);
+        }
+
+        var description = arguments["description"]?.GetValue<string>();
+        if (description is null || Directory.GetFiles(application.Folder, "*.imodspec").FirstOrDefault() is not { } imodspec)
+        {
+            return ("Settings updated. Nothing in the module's files changed.", false);
+        }
+
+        var content = File.ReadAllText(imodspec);
+        var escaped = System.Security.SecurityElement.Escape(description);
+        content = Regex.Replace(content, "<summary>[^<]*</summary>", $"<summary>{escaped}</summary>");
+        content = Regex.Replace(content, "<description>[^<]*</description>", $"<description>{escaped}</description>");
+        File.WriteAllText(imodspec, content);
+        wrote.Add(imodspec);
+        return ($"Settings updated. {application.Name}'s description is now '{description}', and the Software Factory wrote it to the .imodspec's <summary> and <description>.", false);
     }
 
     private static (string Text, bool IsError) RunFileTool(string name, JsonObject arguments, string workspace, List<string> wrote)

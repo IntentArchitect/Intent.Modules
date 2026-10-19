@@ -36,6 +36,9 @@ public class VersionHandEditTests
         Assert.Equal(2, result.ExitCode);
         Assert.Contains("already moved this line of work", result.Stderr);
         Assert.Contains("module-version-increment", result.Stderr);
+        // The gate settles this one itself, so it says to leave the version - not to run the check and try again.
+        Assert.Contains("Leave it at '1.0.0-pre.9'", result.Stderr);
+        Assert.DoesNotContain("before changing the version", result.Stderr);
     }
 
     [Fact]

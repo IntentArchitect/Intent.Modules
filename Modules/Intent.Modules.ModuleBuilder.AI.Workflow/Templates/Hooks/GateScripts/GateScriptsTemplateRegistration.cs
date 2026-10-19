@@ -1798,6 +1798,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                 public const string SkillPointer =
                     "Load the module-version-increment skill and run its 'Is This Version Already In Flight?' check before changing the version.";
 
+                /// <summary>How a double-bump denial begins - the one violation that already says what to do, so it carries no <see cref="SkillPointer"/>.</summary>
+                public const string AlreadyMoved = "This module's version already moved this line of work";
+
                 /// <summary>
                 /// Why the move from <paramref name="current"/> to <paramref name="proposed"/> breaks a
                 /// rule, or null when it is allowed. <paramref name="head"/> is the version at HEAD, or
@@ -1835,9 +1838,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                         SemVer.TryParse(headText, out var head) &&
                         SemVer.ComparePrecedence(current, head) > 0)
                     {
-                        return $"This module's version already moved this line of work ('{headText}' -> '{currentText}'). " +
-                            "A version moves once per line of work - see module-version-increment. If more work landed since, " +
-                            "that is the same bump, not a second one.";
+                        // Settled by the gate itself, so it names the outcome rather than pointing back to
+                        // the skill's check: the "run its check before changing the version" pointer read
+                        // as an invitation to try another bump (eval S2, Copilot).
+                        return $"{AlreadyMoved} ('{headText}' -> '{currentText}'), and a version moves once per line of work. " +
+                            $"Leave it at '{currentText}': that version already covers this change, and any more work that " +
+                            "lands before it ships. Tell the user so - see module-version-increment.";
                     }
 
                     // Under pre-release versioning, dropping the "-pre.N" suffix is only legal as a
@@ -2250,7 +2256,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                 private const string ImodspecSummaryDenial =
                     "<summary> and <description> in .imodspec are overwritten by the Software Factory from " +
                     "Application Settings on every run - a hand-edit here is discarded silently, not just " +
-                    "denied. Change the summary/description on the Application Settings page instead. " +
+                    "denied. Both are written from the application's Description: change it on the Application Settings " +
+                    "page, or with the Intent MCP tool update_application_settings and its description parameter. " +
                     "<tags>, <dependency> entries and a version downgrade remain fine to hand-edit.";
 
                 private static int RunGuardWrite(string[] rest, TextReader stdin, TextWriter stdout, TextWriter stderr, string repoRoot, IGitChangeProvider gitChangeProvider)
@@ -2470,7 +2477,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                     var violation = VersionRules.Check(proposed, current, head, scheme, allowDowngrade: true);
                     if (violation is not null)
                     {
-                        return violation + " " + VersionRules.SkillPointer;
+                        return violation.StartsWith(VersionRules.AlreadyMoved, StringComparison.Ordinal)
+                            ? violation
+                            : violation + " " + VersionRules.SkillPointer;
                     }
 
                     note = $"intent-agent-gate: this edit changes the module version from '{current}' to '{proposed}'. " + VersionRules.SkillPointer;

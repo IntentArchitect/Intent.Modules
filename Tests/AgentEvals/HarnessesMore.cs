@@ -52,7 +52,7 @@ public sealed class OpenCodeHarness(EvalPaths paths) : IHarness
         var config = new Dictionary<string, object> { ["$schema"] = "https://opencode.ai/config.json" };
         if (request.WithIntentStub)
         {
-            var (command, stubArgs) = McpStub.LaunchCommand(request.Workspace.Root, request.Workspace.StubLogPath);
+            var (command, stubArgs) = McpStub.LaunchCommand(request.Workspace);
             config["mcp"] = new Dictionary<string, object>
             {
                 [McpStub.ServerName] = new { type = "local", command = new[] { command }.Concat(stubArgs).ToArray(), enabled = true },
@@ -150,7 +150,7 @@ public sealed class CopilotHarness(EvalPaths paths) : IHarness
 
         if (request.WithIntentStub)
         {
-            var (command, stubArgs) = McpStub.LaunchCommand(request.Workspace.Root, request.Workspace.StubLogPath);
+            var (command, stubArgs) = McpStub.LaunchCommand(request.Workspace);
             var config = Path.Combine(request.Workspace.RunDirectory, "copilot-mcp.json");
             File.WriteAllText(config, JsonSerializer.Serialize(new
             {
@@ -242,7 +242,7 @@ public sealed class KiroHarness(EvalPaths paths) : IHarness
         object server = new { command = "cmd", args = new[] { "/c", "exit", "1" }, disabled = true };
         if (request.WithIntentStub)
         {
-            var (command, stubArgs) = McpStub.LaunchCommand(request.Workspace.Root, request.Workspace.StubLogPath);
+            var (command, stubArgs) = McpStub.LaunchCommand(request.Workspace);
             server = new { command, args = stubArgs };
         }
 

@@ -77,9 +77,13 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.CopilotHooks
             // 3. The end-of-turn event is "agentStop", not "stop" or "Stop".
             //
             // Copilot denies on exit 2 and ALSO on any other non-zero exit ("hook errored"), so it
-            // fails closed on its own. The guards are still wrapped: the wrapper turns a gate that
-            // could not run into exit 2, which carries dotnet's own error text to the agent rather
-            // than Copilot's bare "hook errored". close-out is never wrapped - see GateCommands.
+            // fails closed on its own. The guards are still wrapped, in Copilot's own form: Copilot
+            // shows the agent only "hook exited with code 2" and none of dotnet's error text, so when
+            // the gate could not run the wrapper writes a deny whose reason says how to find the cause
+            // (GateCommands.GuardCopilotPosix). close-out is never wrapped - see GateCommands.
+            //
+            // The commands sit inside JSON strings, so each is escaped (Json): the wrapper's deny
+            // carries quotes.
             //
             // Copilot also runs the hooks in ".claude/settings.json" when that file is present, so
             // in a repository with both, Claude Code's commands run here too - which is why those
@@ -99,8 +103,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.CopilotHooks
                       {
                         "type": "command",
                         "matcher": "{{WriteAndDesignerToolsMatcher}}",
-                        "bash": "{{GateCommands.GuardPosix(HarnessFolder, "guard-tool")}}",
-                        "powershell": "{{GateCommands.GuardPowerShell(HarnessFolder, "guard-tool")}}"
+                        "bash": "{{Json(GateCommands.GuardCopilotPosix(HarnessFolder, "guard-tool"))}}",
+                        "powershell": "{{Json(GateCommands.GuardCopilotPowerShell(HarnessFolder, "guard-tool"))}}"
                       }
                     ],
                     "agentStop": [
@@ -114,5 +118,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.CopilotHooks
                 }
                 """;
         }
+
+        private static string Json(string value) => value.Replace("\\", "\\\\").Replace("\"", "\\\"");
     }
 }

@@ -5,7 +5,7 @@ inclusion: always
 description: "Phase-by-phase workflow for any task that builds or changes an Intent Architect module, and which workflow skill each phase calls for."
 keywords: [workflow, module building, phases, version, documentation, context]
 template-id: Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd
-contentHash: 4D637AC4FE5D0FEF2410566719FEC3B248E7FF559FDE8985315568125D15A48A
+contentHash: CD2F2CC46964CF43E3768885DC9029BFEEF68EE4BB393D31BF54EFE87296C93E
 ---
 # Module Building Workflow
 
@@ -27,6 +27,13 @@ shape everything below:
 - **A module is consumed by applications you cannot see.** Its version number is how those
   applications decide whether to take your change, and its documentation is the only explanation
   they get. Neither is optional paperwork.
+
+## Change Files With Your Edit Tools
+
+Create, change and delete files with your harness's file-editing tools, never with a shell command
+or a script that writes the file. This repository's hooks check the edits those tools make - which
+files may be hand-edited, and how a version may move - and a shell write skips every one of those
+checks.
 
 ## The Four Workflow Skills
 
