@@ -85,6 +85,10 @@ The `URI template` format can be used to specify a `route parameter` in the `Htt
 
 For example, when a `route` is specified as `api/product/{id}`, a property/parameter named `id` is required.
 
+Placeholders are matched to properties/parameters by name, ignoring case, so `{CacheKey}` and `{cacheKey}` both bind `CacheKey`. Constraints, optional markers, default values and catch-all prefixes are recognised too: `{id:int}`, `{id?}`, `{id=5}`, `{*path}` and `{**path}`.
+
+A property/parameter whose `Parameter Settings` `Source` is `From Route` is appended to the `Route` (as `/{camelCaseName}`) when the route has no placeholder for it. Renaming one updates its placeholder, keeping any constraint, optional marker or catch-all prefix.
+
 ![Http Route Parameters](images/http-route-parameter.png)
 
 ### Versioning an Endpoint

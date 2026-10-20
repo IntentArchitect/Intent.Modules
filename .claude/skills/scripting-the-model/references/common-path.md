@@ -9,7 +9,7 @@ Everything a greenfield build usually needs, in the order you do it. The other r
 return { schema: await getDesignerSchema(), stereos: await getStereotypeDefinitions() };
 ```
 
-The compact schema gives package names, containment (`elementTypes`; `!` = must set a type), association rules, stereotype names and mapping-type names; `getStereotypeDefinitions()` gives allowed property values. Add `getReferenceTypes()` when unsure a type exists (e.g. `PagedResult<T>`); use `{ full: true }` only for the whole settings payload.
+The compact schema gives package names, containment (`elementTypes`; `!` = must set a type), association ends, stereotype names and mapping-type names; `getStereotypeDefinitions()` gives allowed property values. Add `getReferenceTypes()` when unsure a type exists (e.g. `PagedResult<T>`); use `{ full: true }` only for the whole settings payload. The designer's binding rules come from the `get_designer_rules` tool, called in the same response.
 
 No package yet? `lookupPackage(name) ?? await createPackage(name, packageType)` (see `packages.md`).
 

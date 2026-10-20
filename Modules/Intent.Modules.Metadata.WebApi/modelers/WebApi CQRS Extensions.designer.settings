@@ -175,12 +175,8 @@ class RestRoute {
         this.hashedRoute = originalRoute
             .replace(/\{([^}]*)\}/g, function (match, g1) {
             if (routeParameterExclusions.indexOf(g1) &lt; 0) {
-                if (g1.includes(`:`)) {
-                    localRouteParams.push(g1.split(":")[0]);
-                }
-                else {
-                    localRouteParams.push(g1);
-                }
+                // {id:int}, {id?}, {id=5}, {*path} and {**path} bind the parameters named id and path
+                localRouteParams.push(g1.replace(/^\*{1,2}/, "").split(/[:?=]/)[0]);
             }
             return (counter++).toString();
         })
@@ -570,12 +566,8 @@ class RestRoute {
         this.hashedRoute = originalRoute
             .replace(/\{([^}]*)\}/g, function (match, g1) {
             if (routeParameterExclusions.indexOf(g1) &lt; 0) {
-                if (g1.includes(`:`)) {
-                    localRouteParams.push(g1.split(":")[0]);
-                }
-                else {
-                    localRouteParams.push(g1);
-                }
+                // {id:int}, {id?}, {id=5}, {*path} and {**path} bind the parameters named id and path
+                localRouteParams.push(g1.replace(/^\*{1,2}/, "").split(/[:?=]/)[0]);
             }
             return (counter++).toString();
         })
@@ -845,30 +837,51 @@ function updateRouteParameters(element) {
         return;
     }
 
+    const children = element.getChildren(["DTO-Field", "Parameter"]);
+
     // UPDATE RENAMED ROUTE PARAMETERS:
-    let changedRouteParams = element.getChildren(["DTO-Field", "Parameter"])
-        .filter(x =&gt; x.getPreviousName &amp;&amp; x.getName() != x.getPreviousName())
-        .filter(x =&gt; route.indexOf(`{${toCamelCase(x.getPreviousName())}}` != -1
-            || route.indexOf(`{${toCamelCase(x.getPreviousName())}:` != -1)))
+    let changedRouteParams = children
+        // a change of case only still binds the same route parameter, so the route is left as the user wrote it:
+        .filter(x =&gt; x.getPreviousName &amp;&amp; x.getPreviousName() &amp;&amp; x.getName().toLowerCase() != x.getPreviousName().toLowerCase())
+        .filter(x =&gt; routeHasParameter(route, x.getPreviousName()))
         // handle the case where you ctrl + enter / copy + paste a new element and takes over the route paramenter in the route:
-        .filter(x =&gt; !element.getChildren(["DTO-Field", "Parameter"]).some(c =&gt; c.id != x.id &amp;&amp; c.getName() == x.getPreviousName()));
+        .filter(x =&gt; !children.some(c =&gt; c.id != x.id &amp;&amp; isSameRouteParameterName(c.getName(), x.getPreviousName())));
 
     changedRouteParams.forEach(x =&gt; {
-        route = route.replace(`{${toCamelCase(x.getPreviousName())}}`, `{${toCamelCase(x.getName())}}`);
-        route = route.replace(`{${toCamelCase(x.getPreviousName())}:`, `{${toCamelCase(x.getName())}:`);
+        route = renameRouteParameter(route, x.getPreviousName(), x.getName());
     });
 
     // ADD MISSING ROUTE PARAMETERS:
-    const missingFromRoute = element.getChildren(["DTO-Field", "Parameter"])
+    const missingFromRoute = children
         .filter(x =&gt; x.getStereotype(parameterSettingsStereotypeId)?.getProperty("Source")?.getValue() == "From Route")
-        .filter(x =&gt; route.indexOf(`{${toCamelCase(x.getName())}}`) == -1
-            &amp;&amp; route.indexOf(`{${toCamelCase(x.getName())}:`) == -1)
+        .filter(x =&gt; !routeHasParameter(route, x.getName()));
 
     missingFromRoute.forEach(x =&gt; {
         route = removeSuffix(route, "/") + `/{${toCamelCase(x.getName())}}`
     });
 
     element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
+}
+
+// The parameter names in a route, in any form ASP.NET Core accepts: {id}, {id:int}, {id?}, {id=5}, {*path}, {**path}.
+function getRouteParameterNames(route) {
+    return [...route.matchAll(/\{\*{0,2}([^{}:?=*]+)[^}]*\}/g)].map(x =&gt; x[1].trim());
+}
+
+// ASP.NET Core matches route parameter names case-insensitively, and routes are written with the camelCase name.
+function isSameRouteParameterName(routeParameterName, name) {
+    const routeParameter = routeParameterName.toLowerCase();
+    return routeParameter == name.toLowerCase() || routeParameter == toCamelCase(name).toLowerCase();
+}
+
+function routeHasParameter(route, name) {
+    return getRouteParameterNames(route).some(x =&gt; isSameRouteParameterName(x, name));
+}
+
+// Renames the parameter, keeping any catch-all prefix, constraint, optional marker or default value.
+function renameRouteParameter(route, previousName, newName) {
+    return route.replace(/\{(\*{0,2})([^{}:?=*]+)([^}]*)\}/g, (match, prefix, name, suffix) =&gt;
+        isSameRouteParameterName(name.trim(), previousName) ? `{${prefix}${toCamelCase(newName)}${suffix}}` : match);
 }
 </script>
     </script>

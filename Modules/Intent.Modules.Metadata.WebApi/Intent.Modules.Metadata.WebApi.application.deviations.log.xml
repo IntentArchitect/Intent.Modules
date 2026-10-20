@@ -52,4 +52,18 @@
       <fileHash>39DD86569BC98E4B3EDE964C05B67CFF2575B627D2E8D20F20260FEC6F8B8D80</fileHash>
     </file>
   </files>
+  <customFiles>
+    <customFile>
+      <path>Modules/Intent.Modules.Metadata.WebApi/CONTEXT.md</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-20T10:31:40.2257575Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Metadata.WebApi/docs/README.md</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-20T10:31:41.0295264Z</approvedAt>
+    </customFile>
+  </customFiles>
 </deviationsLog>

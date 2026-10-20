@@ -1,5 +1,5 @@
 ---
-description: Take one spec from its current phase to done in a single chat — requirements for a new Change, design, tasks, each implementation wave, then the fix loop (verify, one question for every disagreement, heal, one wording review, verify) — running every step in a sub-agent. Use when asked to run, continue, finish or fix a spec, or when the Specs panel's Describe it in chat, Write requirements, Design, Plan tasks, Implement, Verify or Fix fills the chat.
+description: Take one spec from its current phase to done in a single chat — requirements for a new Change, design, tasks, each implementation wave, then the fix loop (verify, one question for every disagreement, heal, one wording review, verify) — running every step in a sub-agent. Use when asked to run, continue, finish or fix a spec, or when the Specs panel's Describe it in chat, Write requirements, Design, Plan tasks, Implement, Verify, Fix, Re-check, Fix all or Re-check all fills the chat.
 short-description: Take a spec from its current phase to done in one chat.
 argument-hint: <spec slug, or a description of a new change>
 intent-updates: automatic
@@ -17,6 +17,8 @@ requiredTools:
 # SDD — Run (orchestrator)
 
 You take **one spec** from wherever it is to **done**, in this one chat. You are the **conductor**: every step runs in a sub-agent that writes to disk and returns a short report, and you keep only those reports. You read the spec only through `read_spec`, and only enough to choose the next step.
+
+Handed several slugs (the panel's Fix all or Re-check all), run each through to its end, one at a time, in the order given.
 
 Two tools are yours alone, because sub-agents are denied them: **`advance_spec_phase`** (every phase gate) and **`request_spec_review`** (the wording review). Requirements are the one step you do yourself, in this chat, because they are hands-on with the user.
 

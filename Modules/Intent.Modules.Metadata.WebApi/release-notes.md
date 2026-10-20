@@ -1,3 +1,7 @@
+### Version 4.7.22
+
+- Fixed: A route parameter written in a different case from its parameter (e.g. `{CacheKey}`), or as optional, defaulted or catch-all (`{id?}`, `{id=5}`, `{*path}`), no longer has a duplicate segment appended to the Route on every change, or fails route validation.
+
 ### Version 4.7.21
 
 - Improvement: Changed unbound parameters to rather give a validation exception

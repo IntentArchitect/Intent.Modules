@@ -177,12 +177,8 @@ class RestRoute {
         this.hashedRoute = originalRoute
             .replace(/\{([^}]*)\}/g, function (match, g1) {
             if (routeParameterExclusions.indexOf(g1) &lt; 0) {
-                if (g1.includes(`:`)) {
-                    localRouteParams.push(g1.split(":")[0]);
-                }
-                else {
-                    localRouteParams.push(g1);
-                }
+                // {id:int}, {id?}, {id=5}, {*path} and {**path} bind the parameters named id and path
+                localRouteParams.push(g1.replace(/^\*{1,2}/, "").split(/[:?=]/)[0]);
             }
             return (counter++).toString();
         })

@@ -3,6 +3,18 @@
   <files />
   <customFiles>
     <customFile>
+      <path>.claude/skills/scripting-the-model/references/common-path.md</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-20T10:31:29.0702346Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>.claude/skills/sdd-run/SKILL.md</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-20T10:31:31.9895015Z</approvedAt>
+    </customFile>
+    <customFile>
       <path>DesignerMacros/src/service-proxies/manage-parameters/services-proxies-manage-parameters.ts</path>
       <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
       <approvedByDisplayName>Joel Turner</approvedByDisplayName>
@@ -13,6 +25,12 @@
       <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
       <approvedByDisplayName>Joel Turner</approvedByDisplayName>
       <approvedAt>2026-10-08T13:42:14.7929591Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>DesignerMacros/src/services-rest-route-validation/_common/common-rest-route-validation.ts</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-20T10:31:34.9333915Z</approvedAt>
     </customFile>
     <customFile>
       <path>Modules/.agents/agents/build-module-sdd.agent.md</path>
