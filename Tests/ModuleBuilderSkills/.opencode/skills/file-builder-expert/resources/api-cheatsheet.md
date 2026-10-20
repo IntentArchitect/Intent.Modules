@@ -1,5 +1,5 @@
 ---
-contentHash: 33E4D73103F4D778C72FE918C308B746A07775B8633B00485E2FC25AEBBC2845
+contentHash: BE1F2CA9C151D3C3431F4A177B123FF9CE6A3FC3246CA4ABE69FA135C307EA35
 ---
 # File Builder API Cheatsheet
 
@@ -111,7 +111,7 @@ Prefer `UseType("Namespace.Type")` when the namespace should only be introduced 
 @class.AddProperty("string[]", "Attributes", p => p.Static().WithoutSetter().WithInitialValue("[\"Id\", \"Name\"]"));
 ```
 
-At the 3.8.0 floor a field offers `Private`, `PrivateReadOnly`, `Protected`, `ProtectedReadOnly`, `Constant`, `PrivateConstant` and `Static`. `Public(...)` and `ReadOnly(...)`, the route to a `public static readonly` field, need `Intent.Common.CSharp` 3.9.8 or later; raise it as `known-build-gotchas`' NU1605 section describes, or use the property form above.
+At the 3.8.0 floor a field offers `Private`, `PrivateReadOnly`, `Protected`, `ProtectedReadOnly`, `Constant`, `PrivateConstant` and `Static`. `Public(...)` and `ReadOnly(...)`, the route to a `public static readonly` field, need `Intent.Common.CSharp` 3.9.8 or later: raise the `Intent.Common.CSharp` `<dependency>` (`.imodspec`) and the `Intent.Modules.Common.CSharp` package reference (`.csproj`) to 3.9.8, with `Intent.Modules.Common` / the `Intent.Common` `<dependency>` as `known-build-gotchas`' NU1605 section describes, or use the property form above.
 
 ===
 
@@ -365,8 +365,9 @@ if (node.TryGetMetadata<bool>("key", out var v) && v) { /* use v */ }
 
 // 2. WHICH DESIGNER ELEMENT a generated member came from — never match on names:
 //    a) RepresentsModel(element) records it on the member, read back as RepresentedModel
-//       (RepresentedModel needs Intent.Common.CSharp 3.8.5+ — raise the dependency from a 3.8.0 floor,
-//       and Intent.Modules.Common / the Intent.Common dependency to 3.7.3 with it, or restore fails with NU1605):
+//       (RepresentedModel needs Intent.Common.CSharp 3.8.5+ — raise the Intent.Common.CSharp dependency (.imodspec)
+//       and the Intent.Modules.Common.CSharp package reference (.csproj) to 3.8.5, and Intent.Modules.Common /
+//       the Intent.Common dependency to 3.7.3 with them, or restore fails with NU1605; see known-build-gotchas):
 if (method.RepresentedModel is OperationModel operation) { /* designer element */ }
 //    b) The "model" metadata key is a CONVENTION, not a builder feature: it is there only if the
 //       template that built the member called AddMetadata("model", element). Many do; check yours.

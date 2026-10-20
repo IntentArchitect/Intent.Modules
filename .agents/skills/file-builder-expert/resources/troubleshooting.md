@@ -1,5 +1,5 @@
 ---
-contentHash: 54583258085E07304A587CB4D2A57D033E48E89FB3565E1AB4AC5E8926C1D265
+contentHash: 2287D24F367E439BDC949883A5A8D299F5A89417E6E2873DB3472489041AEC83
 ---
 # File Builder Troubleshooting
 
@@ -170,7 +170,7 @@ Inside a block (`if`, `foreach`, `try`, a lambda), do not call `.WithSemicolon()
 
 **Symptom:** `InvalidOperationException: Cannot remove statement from unknown parent` (or `Cannot insert statement for unknown parent`) from `Remove()`, `Replace(...)`, `InsertAbove(...)` or `InsertBelow(...)` — or `AddInvocation(...)` on a collection item that changes nothing.  
 **Cause:** Before `Intent.Common.CSharp` 3.10.12, items added with `CSharpCollectionExpression.AddItem(...)` and statements added with `CSharpSwitchCodeBlock.AddStatement(string)` have no `Parent`.  
-**Fix:** Raise the module's `Intent.Common.CSharp` dependency to 3.10.12 (`.imodspec` `<dependency>` and `.csproj` package reference) with `Intent.Modules.Common` 3.11.0 and `Intent.SoftwareFactory.SDK` 3.14.0 (Intent Architect 5.0.0 or later), or restore fails with `NU1605`. That needs 3.10.12 or later on your feed: if `run_solution_query` → `searchAvailableModules("Intent.Common.CSharp", { includePrerelease: true })` does not list it, use the alternative. The alternative works on any version: keep a reference to the collection / case block and edit its `Statements` list directly. If `FindStatement` returns `null` for an item of `options.X = [ ... ]`, that is a separate limit: search does not enter an assignment's right-hand side — find the assignment first, then search its `Rhs`. See `builder-patterns.md` § "Editing Collection Items and Switch-Case Statements".
+**Fix:** Raise the `Intent.Common.CSharp` `<dependency>` (`.imodspec`) and the `Intent.Modules.Common.CSharp` package reference (`.csproj`) to 3.10.12, with `Intent.Modules.Common` / the `Intent.Common` `<dependency>` at 3.11.0 and the `Intent.SoftwareFactory.SDK` package reference at 3.14.0 (Intent Architect 5.0.0 or later), or restore fails with `NU1605` (see `known-build-gotchas`). That needs 3.10.12 or later on your feed: if `run_solution_query` → `searchAvailableModules("Intent.Common.CSharp", { includePrerelease: true })` does not list it, use the alternative. The alternative works on any version: keep a reference to the collection / case block and edit its `Statements` list directly. If `FindStatement` returns `null` for an item of `options.X = [ ... ]`, that is a separate limit: search does not enter an assignment's right-hand side — find the assignment first, then search its `Rhs`. See `builder-patterns.md` § "Editing Collection Items and Switch-Case Statements".
 
 ===
 
@@ -211,5 +211,8 @@ The output is not exposed through any tool, environment variable or config file.
 - The file also carries Intent Architect's own log lines, so prefix yours with something distinctive
   (`[AI-DEBUG]`) and search for it.
 
-Rebuild the module and reinstall it (or run the Software Factory on the target application), read the
-value, then remove the temporary log lines — they are for diagnosis, not shipped output.
+Rebuild the module with `dotnet build --no-incremental` and confirm the reinstall picked it up (the
+`known-build-gotchas` instructions, "Template Changes Not Taking Effect"); without that, the previously
+packaged module runs and your line never appears. Then run the Software Factory on the target
+application, read the value, and remove the temporary log lines — they are for diagnosis, not shipped
+output.

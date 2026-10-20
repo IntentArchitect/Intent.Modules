@@ -135,7 +135,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
           @class.AddProperty("string[]", "Attributes", p => p.Static().WithoutSetter().WithInitialValue("[\"Id\", \"Name\"]"));
           ```
 
-          At the 3.8.0 floor a field offers `Private`, `PrivateReadOnly`, `Protected`, `ProtectedReadOnly`, `Constant`, `PrivateConstant` and `Static`. `Public(...)` and `ReadOnly(...)`, the route to a `public static readonly` field, need `Intent.Common.CSharp` 3.9.8 or later; raise it as `known-build-gotchas`' NU1605 section describes, or use the property form above.
+          At the 3.8.0 floor a field offers `Private`, `PrivateReadOnly`, `Protected`, `ProtectedReadOnly`, `Constant`, `PrivateConstant` and `Static`. `Public(...)` and `ReadOnly(...)`, the route to a `public static readonly` field, need `Intent.Common.CSharp` 3.9.8 or later: raise the `Intent.Common.CSharp` `<dependency>` (`.imodspec`) and the `Intent.Modules.Common.CSharp` package reference (`.csproj`) to 3.9.8, with `Intent.Modules.Common` / the `Intent.Common` `<dependency>` as `known-build-gotchas`' NU1605 section describes, or use the property form above.
 
           ===
 
@@ -389,8 +389,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
 
           // 2. WHICH DESIGNER ELEMENT a generated member came from — never match on names:
           //    a) RepresentsModel(element) records it on the member, read back as RepresentedModel
-          //       (RepresentedModel needs Intent.Common.CSharp 3.8.5+ — raise the dependency from a 3.8.0 floor,
-          //       and Intent.Modules.Common / the Intent.Common dependency to 3.7.3 with it, or restore fails with NU1605):
+          //       (RepresentedModel needs Intent.Common.CSharp 3.8.5+ — raise the Intent.Common.CSharp dependency (.imodspec)
+          //       and the Intent.Modules.Common.CSharp package reference (.csproj) to 3.8.5, and Intent.Modules.Common /
+          //       the Intent.Common dependency to 3.7.3 with them, or restore fails with NU1605; see known-build-gotchas):
           if (method.RepresentedModel is OperationModel operation) { /* designer element */ }
           //    b) The "model" metadata key is a CONVENTION, not a builder feature: it is there only if the
           //       template that built the member called AddMetadata("model", element). Many do; check yours.

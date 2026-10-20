@@ -29,14 +29,10 @@ public abstract class RoutingScenario : Scenario
     public override IEnumerable<Check> Checks(Evidence evidence)
     {
         var loaded = evidence.SkillsLoaded(Skills);
-        var answer = evidence.Transcript.FinalMessage.ToLowerInvariant();
-        var missing = AnswerMarkers.Where(group => !group.Any(answer.Contains)).ToList();
 
         yield return new Check("Guidance found", loaded.Count > 0,
             loaded.Count > 0 ? $"loaded {string.Join(", ", loaded)}" : $"loaded none of {string.Join(", ", Skills)}");
-        yield return new Check("Answer", missing.Count == 0,
-            missing.Count == 0 ? $"the answer says {Expectation}"
-            : $"the answer does not say {Expectation}: nothing about {string.Join(" / ", missing.Select(g => string.Join("|", g)))}");
+        yield return Reported(evidence, Expectation, AnswerMarkers);
         yield return new Check("Nothing changed", evidence.ChangedFiles.Count == 0,
             evidence.ChangedFiles.Count == 0 ? "no file changed" : $"changed {string.Join(", ", evidence.ChangedFiles)}");
     }
@@ -78,7 +74,13 @@ public sealed class AssociationTypeRoute : RoutingScenario
     protected override string Expectation => "it is an Association Settings element configured at its target end";
 }
 
-/// <summary>R3 - a bespoke stereotype icon is a UrlImagePath data URI, computed by a script.</summary>
+/// <summary>
+/// R3 - a bespoke stereotype icon is a UrlImagePath data URI, set in the Module Builder designer (by a
+/// designer script, or by hand). The package icon's procedure also uses UrlImagePath and a data URI, so only
+/// the second marker group leans towards the stereotype route, and loosely: an answer can name the designer
+/// and still edit .application.config. Checking for that by keyword failed correct answers that mention the
+/// package icon only to contrast it, so the judge, not a hard check, scores which route the answer took.
+/// </summary>
 public sealed class ElementIconRoute : RoutingScenario
 {
     public override string Id => "R3";
@@ -91,9 +93,19 @@ public sealed class ElementIconRoute : RoutingScenario
 
     protected override string[] Skills => ["module-element-icons", "module-svg-icon"];
 
-    protected override string[][] AnswerMarkers => [["urlimagepath", "data:image/svg"]];
+    protected override string[][] AnswerMarkers =>
+        [["urlimagepath", "data:image/svg"], ["run_designer_script", "includedscriptpaths", "designer script", "module builder designer"]];
 
-    protected override string Expectation => "the icon is a UrlImagePath data URI";
+
+    protected override string Expectation => "the icon is a UrlImagePath data URI set in the Module Builder designer";
+
+    public override string JudgeBrief =>
+        "The user asked how to give a stereotype defined in their module its own custom SVG icon, and asked for no file changes. " +
+        "Good behaviour: the agent answers with the stereotype route - the stereotype definition's icon, in the Module Builder " +
+        "designer, set to type UrlImagePath with a data:image/svg+xml;base64 source, the base64 computed by a script and applied " +
+        "with run_designer_script (includedScriptPaths) rather than read or pasted by the agent. Bad behaviour: the package-icon " +
+        "route instead - editing the root <icon>/<iconType> of the module's .application.config - which changes the module's own " +
+        "icon, not the stereotype's. Mentioning the package icon only to contrast it is fine.";
 }
 
 /// <summary>R4 - module code is debugged by logging through Logging.Log and reading the Software Factory log.</summary>
@@ -114,12 +126,15 @@ public sealed class ModuleDebuggingRoute : RoutingScenario
     protected override string Expectation => "to log through Logging.Log and read the software-factory log";
 }
 
-/// <summary>R5 - control: a skill this change leaves alone. A drop here is noise, not the change.</summary>
+/// <summary>
+/// R5 - a neighbour: a skill whose content this change leaves alone, though file-builder-expert's description
+/// now names it as an exclusion. A drop here means that description now pulls metadata questions away.
+/// </summary>
 public sealed class MetadataConsumerRoute : RoutingScenario
 {
     public override string Id => "R5";
 
-    public override string Title => "Metadata guidance for a stereotype option (control)";
+    public override string Title => "Metadata guidance for a stereotype option (neighbour)";
 
     public override string Prompt =>
         "In a SampleModule template I need to branch on the 'Mode' option of a 'My Settings' stereotype applied to a class. " +

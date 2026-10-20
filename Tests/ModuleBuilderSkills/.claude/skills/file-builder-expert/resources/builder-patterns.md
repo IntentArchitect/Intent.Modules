@@ -1,5 +1,5 @@
 ---
-contentHash: 75E55E7DBA643EAA8CBD1F6EF336C9FBEBD77051155A1CBF59892BC8BE8ABE92
+contentHash: C2F1AAABAA9B80100B872B8BE178DADEFBD24B5E97028816D9DC13902B567DB7
 ---
 # C# File Builder Cheat Sheet & Patterns
 
@@ -134,7 +134,7 @@ CSharpFile.OnBuild(file =>
 
 ## Editing Collection Items and Switch-Case Statements
 
-`Remove()`, `Replace(...)`, `InsertAbove(...)`, `InsertBelow(...)` and `AddInvocation(...)` all work through the statement's `Parent`. Two kinds of statement only get a `Parent` from **`Intent.Common.CSharp` 3.10.12**: items added with `CSharpCollectionExpression.AddItem(...)`, and statements added with `CSharpSwitchCodeBlock.AddStatement(string)` (a `case` body). Before 3.10.12, `Remove` and the inserts throw `InvalidOperationException` ("Cannot remove statement from unknown parent"), and `AddInvocation` returns a new statement but leaves the item unchanged — silently. Requires 3.10.12 or later; check your feed: if `run_solution_query` → `searchAvailableModules("Intent.Common.CSharp", { includePrerelease: true })` does not list 3.10.12 or later, these edits do not work for you yet — keep a reference to the collection or case block and edit its `Statements` list directly instead. Otherwise, to use the edits, raise `Intent.Common.CSharp` to 3.10.12 (`.imodspec` `<dependency>` and `.csproj` package reference) with `Intent.Modules.Common` / the `Intent.Common` `<dependency>` at 3.11.0 and `Intent.SoftwareFactory.SDK` at 3.14.0 (Intent Architect 5.0.0 or later), or restore fails with `NU1605` (see the `known-build-gotchas` instructions).
+`Remove()`, `Replace(...)`, `InsertAbove(...)`, `InsertBelow(...)` and `AddInvocation(...)` all work through the statement's `Parent`. Two kinds of statement only get a `Parent` from **`Intent.Common.CSharp` 3.10.12**: items added with `CSharpCollectionExpression.AddItem(...)`, and statements added with `CSharpSwitchCodeBlock.AddStatement(string)` (a `case` body). Before 3.10.12, `Remove` and the inserts throw `InvalidOperationException` ("Cannot remove statement from unknown parent"), and `AddInvocation` returns a new statement but leaves the item unchanged — silently. Requires 3.10.12 or later; check your feed: if `run_solution_query` → `searchAvailableModules("Intent.Common.CSharp", { includePrerelease: true })` does not list 3.10.12 or later, these edits do not work for you yet — keep a reference to the collection or case block and edit its `Statements` list directly instead. Otherwise, to use the edits, raise the `Intent.Common.CSharp` `<dependency>` (`.imodspec`) and the `Intent.Modules.Common.CSharp` package reference (`.csproj`) to 3.10.12, with `Intent.Modules.Common` / the `Intent.Common` `<dependency>` at 3.11.0 and the `Intent.SoftwareFactory.SDK` package reference at 3.14.0 (Intent Architect 5.0.0 or later), or restore fails with `NU1605` (see the `known-build-gotchas` instructions).
 
 Two search limits apply on every version:
 

@@ -90,6 +90,10 @@ Bundles a fixed set of AI agent skills and instruction files for building Intent
 - **15 skills trimmed to 10 in 1.1.0 (user decision, 2026-10-20).** The goal is fewer skill triggers first and fewer tokens second, without losing effectiveness. Every skill's description is listed in every agent session, and overlapping descriptions make routing harder. Merged: `add-association-type` into `add-designer-extension` (it already used that skill's reference through a `../` path and repeated its package-settings table and designer ids); `module-element-icons` into `module-svg-icon` (it told agents to follow the svg skill's house style verbatim, and about 40 lines across the two only explained where one ended and the other began); `intent-mapping-architect` into `file-builder-expert` as a resource plus a short Musts section (mappings are only generated inside a C# template, where that skill is already loaded); `module-debugging` into `file-builder-expert`'s troubleshooting resource § 15, with a one-line pointer from `known-build-gotchas` so Markdown-template authors still find it. Its designer-script half was dropped, because Intent's own `scripting-the-model` skill already covers `console.log`. Kept separate: `intent-metadata-consumer` (it also serves factory extensions and Markdown templates, which `file-builder-expert`'s description excludes, and AI.Modelers names it), `intent-module-orchestrator` (a separate decision, cross-module wiring, with an 878-line cheatsheet that would swamp `file-builder-expert`'s Musts), and `module-versioning` / `module-docs` (AI.Workflow's `module-docs-chore` relies on `module-docs` being opt-in only). **Rule for any future merge: the surviving skill keeps a name other modules already reference** (`module-docs`, `module-svg-icon`, `file-builder-expert`, `intent-metadata-consumer`, `module-building-strategies`), so no other module has to change.
 - **Interaction strategies are deprecated (user decision, 2026-10-20).** An AI agent writes business logic better than a deterministic `IInteractionStrategy` can, so the guidance must not propagate it: `intent-domain-interactions-expert` was deleted outright, not folded, and `module-building-strategies` lists interaction strategies under "Patterns you'll find but must not copy". The mapping content was kept, with its interaction framing removed: mappings still drive structural generation. The warning against taking an `Intent.Application.DomainInteractions` dependency for `GetUpdateEntityMapping()` stays, because it protects against exactly that dependency.
 - **Routing evals R1–R5 measure this module's skills (2026-10-20).** `Tests/AgentEvals/RoutingScenarios.cs` asks a how-to question each skill should answer and checks both the skill load and a marker the answer must contain. A route accepts any of several skills, so the same scenario scores before and after a merge. Wording matters: a prompt that said "answer from whatever guidance you have" let the agent answer from the skill descriptions alone, without loading anything. On Claude (Haiku), the baseline before the trim was 15/15 and after it 14/15; the one miss grepped the merged skill file instead of loading it, and its answer was still right. Run them before and after any change to which skills exist.
+  A marker has to be something only the right answer says: R3's first marker (`UrlImagePath`, a data URI) is in
+  the package-icon procedure too, so it could not catch the confusion the icon merge risks. A keyword check for
+  that route then failed correct answers that mention the package icon only to rule it out, so R3 carries a
+  judge brief that scores which route the answer took instead. After the review fixes: 15/15, three runs.
 
 ## Invariants & Constraints
 
@@ -118,8 +122,18 @@ Bundles a fixed set of AI agent skills and instruction files for building Intent
   compiled: the scratch sample projects referenced only Common and Common.CSharp, so the SDK resolved
   transitively and could not conflict. Restore-probe a raise with a csproj shaped like Module Builder's, with a
   direct SDK reference. `known-build-gotchas`' NU1605 section holds the chain once; each skill names its own
-  versions. Since 1.1.0 (user decision, 2026-10-20) a skill names them in one line — "raise X to a with Y b
-  and SDK c (Intent Architect d), or restore fails with `NU1605`" — and leaves the why to `known-build-gotchas`.
+  versions. Since 1.1.0 (user decision, 2026-10-20) a skill names them in one line — "raise the
+  `Intent.Common.CSharp` `<dependency>` (`.imodspec`) and the `Intent.Modules.Common.CSharp` package reference
+  (`.csproj`) to a, with `Intent.Modules.Common` / the `Intent.Common` `<dependency>` at b and the
+  `Intent.SoftwareFactory.SDK` package reference at c (Intent Architect d), or restore fails with `NU1605` (see
+  `known-build-gotchas`)" — and leaves
+  the why to `known-build-gotchas`. Naming both files is not optional: a raise made only in the `.csproj` builds
+  green while the `.imodspec` under-declares the floor, and the dependency audit that would catch it ships in
+  AI.Workflow, which is not always installed. Name each by its id in that file: the packages are
+  `Intent.Modules.Common` and `Intent.Modules.Common.CSharp`, the `.imodspec` ids `Intent.Common` and
+  `Intent.Common.CSharp` (no NuGet package has those names), and the SDK has no `.imodspec` dependency at all
+  (its floor is `supportedClientVersions`). Two drafts of the one-liner got this wrong — one gave the SDK an
+  `.imodspec` dependency, the next told the agent to add an `Intent.Common.CSharp` package that does not exist.
   The full restatement used to repeat in about 14 files.
 
 ## Module Interactions
