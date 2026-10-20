@@ -2,7 +2,7 @@
 
 > ⚠️ **NOTE**
 >
-> Five skills are removed and their content merged into others: `add-association-type` into `add-designer-extension`, `module-element-icons` into `module-svg-icon`, `intent-mapping-architect` and `module-debugging` into `file-builder-expert`, and `intent-domain-interactions-expert` is dropped because interaction strategies are deprecated. If any of these five folders are still under your `skills/` folders after updating, delete them so agents stop loading the old guidance.
+> Five skills are removed and their content merged into others: `add-association-type` into `add-designer-extension`, `module-element-icons` into `module-svg-icon`, `intent-mapping-architect` and `module-debugging` into `file-builder-expert`, and `intent-domain-interactions-expert` is dropped because interaction strategies are deprecated. The Software Factory run after updating deletes their files.
 
 - Improvement: The bundle ships 10 skills instead of 15, so agents choose from fewer, broader skills. `file-builder-expert` now covers designer mappings (with a mapping cheatsheet) and logging a runtime value from module code, `add-designer-extension` covers defining a new association type, and `module-svg-icon` covers stereotype and element-type icons as well as the module's package icon.
 - Improvement: `module-building-strategies` lists interaction strategies (`IInteractionStrategy`) as a pattern new modules must not copy: generate the handler's structure and leave its body to the developer or AI.
