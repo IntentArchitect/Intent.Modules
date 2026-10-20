@@ -68,8 +68,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleSvgIcon_
 
                     - Change only the root `<icon>`/`<iconType>` pair, by script. Leave every `<icon type="..." source="...">`
                     entry (designer references, settings groups) and every other value alone.
-                    - Never open, read or print the file, and never read or reproduce the base64 value: the script computes
-                    and writes it. The `.imodspec`'s `<iconUrl>` holds the same value, so read that file only with the line
+                    - Never open, read or print the file, even in part, and never read or reproduce the base64 value: the
+                    script computes and writes it. The root `<icon>` line starts with the payload, so `cat`, `head`, `cut`,
+                    `Select-String`, a diff or any command that prints a line of the file leaks it. You never need to look:
+                    the Step 4 script checks the file's shape itself. If you want to check it first, print counts only, such
+                    as `grep -c '<icon>' <file>`. The `.imodspec`'s `<iconUrl>` holds the same value, so read that file only with the line
                     filtered out (`grep -v iconUrl`).
                     - Everything else, such as release notes or recorded decisions, is edited with your edit tools as usual.
 
@@ -163,20 +166,39 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleSvgIcon_
                     called this skill; with no one to approve, leave the icon unapplied and report where the renders are.
 
                     ## Step 4 — Apply By Script
-                    The module must be at an unpublished version (`module-version-increment` decides, if available); a
-                    further iteration within that version needs no further increment. In one PowerShell or Bash script:
+                    The module must be at an unpublished version. If `module-version-increment` is available, its gate
+                    decides; load it rather than judging from release notes or history, which never show what is
+                    published. Without it, apply the icon and tell the developer which version it is in, so they can
+                    confirm that version is unpublished. A further iteration within that version needs no further
+                    increment. Run this PowerShell script with the
+                    two paths filled in, without reading the config first. It base64-encodes the approved SVG, asserts
+                    exactly one attribute-less root `<icon>` and at most one `<iconType>` (adding it if absent), sets them,
+                    keeps the file's encoding, and prints only the value's length. A Bash script must do the same.
 
-                    1. Base64 the approved `.svg` file's bytes and build `data:image/svg+xml;base64,<value>`.
-                    2. In `.application.config`, assert exactly one attribute-less root `<icon>` and exactly one
-                    `<iconType>` (add `<iconType>` beside `<icon>` if it is absent). Abort on any other count.
-                    3. Set `<icon>` to the data URI and `<iconType>` to `UrlImagePath`.
+                    ```powershell
+                    $config = '<module folder>/<Module>.application.config'
+                    $svg    = '<approved icon>.svg'
+                    $uri   = 'data:image/svg+xml;base64,' + [Convert]::ToBase64String([IO.File]::ReadAllBytes($svg))
+                    $bytes = [IO.File]::ReadAllBytes($config)
+                    $bom   = $bytes.Length -ge 3 -and $bytes[0] -eq 0xEF -and $bytes[1] -eq 0xBB -and $bytes[2] -eq 0xBF
+                    $text  = [IO.File]::ReadAllText($config)
+                    $icon  = [regex]::Matches($text, '<icon>[^<]*</icon>')
+                    $type  = [regex]::Matches($text, '<iconType>[^<]*</iconType>')
+                    if ($icon.Count -ne 1 -or $type.Count -gt 1) { throw "Expected one root <icon> and at most one <iconType>, found $($icon.Count) and $($type.Count)" }
+                    $text = $text.Replace($icon[0].Value, "<icon>$uri</icon>")
+                    if ($type.Count -eq 1) { $text = $text.Replace($type[0].Value, '<iconType>UrlImagePath</iconType>') }
+                    else { $text = $text.Replace("<icon>$uri</icon>", "<icon>$uri</icon>`n  <iconType>UrlImagePath</iconType>") }
+                    [IO.File]::WriteAllText($config, $text, (New-Object System.Text.UTF8Encoding $bom))
+                    "Set the root <icon> ($($uri.Length) characters) and <iconType>."
+                    ```
 
                     ## Step 5 — Regenerate
                     Run the Software Factory. In Staging mode, pass `autoApply: false` and apply only the module's
                     `.imodspec` with `apply_staged_file_changes`. When Intent writes the output straight to disk instead,
                     nothing can be applied selectively. Either way, tell the developer about any change beyond the icon.
-                    Confirm with `get_file_diffs` that only the `.imodspec`'s `<iconUrl>` changed, and with
-                    `git diff --stat` that `.application.config` changed by one or two lines, never by reading the base64.
+                    Never diff or read the `.imodspec` or `.application.config` to check the result: `get_file_diffs`,
+                    `git diff` and reading either file all print the new value. Confirm by counts only, with
+                    `git diff --stat` on the two files (one or two lines each), and let Step 6's hashes prove the value.
 
                     ## Step 6 — Verify By Hash
                     Build with `dotnet build --no-incremental` and note the `.imod` path it reports. In one script, print
