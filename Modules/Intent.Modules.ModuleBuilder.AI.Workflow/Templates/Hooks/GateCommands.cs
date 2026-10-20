@@ -164,7 +164,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks
         /// Close-out, never wrapped. A Stop hook that exits 2 tells Claude Code and Codex the agent
         /// must keep going, so a fail-closed wrapper turned a gate that could not run into an endless
         /// loop of turns. close-out never denies; when it cannot run, the end of the turn must still
-        /// be allowed. No shell syntax, so it runs unchanged in every shell.
+        /// be allowed. Claude Code runs it on UserPromptSubmit, where exit 2 would discard the user's
+        /// prompt, so the same holds there. No shell syntax, so it runs unchanged in every shell.
         /// </summary>
         public static string CloseOut(string harnessFolder) => Run(harnessFolder, "close-out");
 

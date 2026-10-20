@@ -207,6 +207,132 @@ public class CloseOutTests
         Assert.Empty(result.Stdout);
     }
 
+    [Fact]
+    public void Claude_reports_a_finding_once_per_session()
+    {
+        using var repo = RepoWithUntouchedContext();
+        var gitProvider = new FakeGitChangeProvider()
+            .WithChangedFiles(ImodspecRelativePath, "Modules/Sample.Module/SomeFile.cs");
+        var sessionId = Guid.NewGuid().ToString();
+        var otherSessionId = Guid.NewGuid().ToString();
+
+        try
+        {
+            var first = GateTestHarness.Run(repo.Path, ClaudePayload(sessionId), gitProvider, "close-out", "--harness", "claude");
+            var second = GateTestHarness.Run(repo.Path, ClaudePayload(sessionId), gitProvider, "close-out", "--harness", "claude");
+            var otherSession = GateTestHarness.Run(repo.Path, ClaudePayload(otherSessionId), gitProvider, "close-out", "--harness", "claude");
+
+            Assert.Contains("CONTEXT.md was not touched", first.Stdout);
+            Assert.Equal(0, second.ExitCode);
+            Assert.Empty(second.Stdout);
+            Assert.Contains("CONTEXT.md was not touched", otherSession.Stdout);
+        }
+        finally
+        {
+            File.Delete(Intent.Agent.Gate.CloseOutMemory.PathFor(sessionId));
+            File.Delete(Intent.Agent.Gate.CloseOutMemory.PathFor(otherSessionId));
+        }
+    }
+
+    [Fact]
+    public void Claude_reports_only_the_new_finding_later_in_a_session()
+    {
+        using var repo = RepoWithUntouchedContext();
+        var gitProvider = new FakeGitChangeProvider()
+            .WithChangedFiles(ImodspecRelativePath, "Modules/Sample.Module/SomeFile.cs");
+        var sessionId = Guid.NewGuid().ToString();
+
+        try
+        {
+            GateTestHarness.Run(repo.Path, ClaudePayload(sessionId), gitProvider, "close-out", "--harness", "claude");
+            File.Delete(Path.Combine(repo.Path, "Modules/Sample.Module/docs/README.md"));
+            var result = GateTestHarness.Run(repo.Path, ClaudePayload(sessionId), gitProvider, "close-out", "--harness", "claude");
+
+            Assert.Contains("No docs/README.md", result.Stdout);
+            Assert.DoesNotContain("CONTEXT.md was not touched", result.Stdout);
+        }
+        finally
+        {
+            File.Delete(Intent.Agent.Gate.CloseOutMemory.PathFor(sessionId));
+        }
+    }
+
+    [Theory]
+    [InlineData("claude", "")]
+    [InlineData("claude", "not json")]
+    [InlineData("codex", "{\"session_id\":\"shared-by-codex\"}")]
+    public void Reports_every_time_without_a_Claude_Code_session(string harness, string stdin)
+    {
+        using var repo = RepoWithUntouchedContext();
+        var gitProvider = new FakeGitChangeProvider()
+            .WithChangedFiles(ImodspecRelativePath, "Modules/Sample.Module/SomeFile.cs");
+
+        var first = GateTestHarness.Run(repo.Path, stdin, gitProvider, "close-out", "--harness", harness);
+        var second = GateTestHarness.Run(repo.Path, stdin, gitProvider, "close-out", "--harness", harness);
+
+        Assert.Contains("CONTEXT.md was not touched", first.Stdout);
+        Assert.Contains("CONTEXT.md was not touched", second.Stdout);
+    }
+
+    private static TempDirectory RepoWithUntouchedContext()
+    {
+        var repo = new TempDirectory();
+        repo.MarkAsRepoRoot();
+        repo.CreateFile(ImodspecRelativePath, WellFormedImodspec());
+        repo.CreateFile(ApplicationConfigRelativePath, WellFormedApplicationConfig());
+        repo.CreateFile("Modules/Sample.Module/docs/README.md", "# Sample.Module\n");
+        repo.CreateFile("Modules/Sample.Module/CONTEXT.md", "# Context\n");
+        return repo;
+    }
+
+    [Fact]
+    public void Claude_puts_findings_in_front_of_the_agent_on_prompt_submit()
+    {
+        using var repo = RepoWithUntouchedContext();
+        var gitProvider = new FakeGitChangeProvider()
+            .WithChangedFiles(ImodspecRelativePath, "Modules/Sample.Module/SomeFile.cs");
+        var sessionId = Guid.NewGuid().ToString();
+
+        try
+        {
+            var result = GateTestHarness.Run(repo.Path, ClaudePayload(sessionId), gitProvider, "close-out", "--harness", "claude");
+
+            Assert.Equal(0, result.ExitCode);
+            var output = System.Text.Json.Nodes.JsonNode.Parse(result.Stdout)!["hookSpecificOutput"]!;
+            Assert.Equal("UserPromptSubmit", output["hookEventName"]!.GetValue<string>());
+            Assert.Contains("CONTEXT.md was not touched", output["additionalContext"]!.GetValue<string>());
+            Assert.DoesNotContain("systemMessage", result.Stdout);
+        }
+        finally
+        {
+            File.Delete(Intent.Agent.Gate.CloseOutMemory.PathFor(sessionId));
+        }
+    }
+
+    [Fact]
+    public void Claude_on_the_old_stop_wiring_still_reports_to_the_person()
+    {
+        using var repo = RepoWithUntouchedContext();
+        var gitProvider = new FakeGitChangeProvider()
+            .WithChangedFiles(ImodspecRelativePath, "Modules/Sample.Module/SomeFile.cs");
+        var sessionId = Guid.NewGuid().ToString();
+
+        try
+        {
+            var result = GateTestHarness.Run(repo.Path, ClaudePayload(sessionId, "Stop"), gitProvider, "close-out", "--harness", "claude");
+
+            Assert.Contains("systemMessage", result.Stdout);
+            Assert.DoesNotContain("additionalContext", result.Stdout);
+        }
+        finally
+        {
+            File.Delete(Intent.Agent.Gate.CloseOutMemory.PathFor(sessionId));
+        }
+    }
+
+    private static string ClaudePayload(string sessionId, string eventName = "UserPromptSubmit") =>
+        $$"""{"session_id":"{{sessionId}}","transcript_path":"t.jsonl","hook_event_name":"{{eventName}}","prompt":"carry on"}""";
+
     private static string WellFormedImodspec(string version = "1.0.0", string tags = "sample eval fixture") => $"""
         <?xml version="1.0" encoding="utf-8"?>
         <package>

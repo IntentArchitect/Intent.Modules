@@ -40,6 +40,8 @@ Generated only when `Install Agent Gate Hooks` is on, and only into the harness 
 
 The gate is a single, dependency-free .NET 10 file-based app (`dotnet run gate.cs` — no install step, no dotnet-tool manifest). It protects Intent Architect's own **metadata**, denies an illegal module version change before it is written, and warns — without blocking — when a module's version, tags, `docs/README.md`, `CONTEXT.md`, or release-notes heading fall behind a change.
 
+That warning comes from the close-out check. In Claude Code it runs when you submit a prompt and goes to the agent, not to you, without starting another turn. Each warning is passed on once per session; a warning that is new, or names another module, is passed on when it first applies. The other harnesses run it at the end of each turn, every time.
+
 | Denied — use the Intent MCP server or a skill | Allowed |
 | --- | --- |
 | `*.application.config` | generated output of any kind |
@@ -84,7 +86,7 @@ A guard hook that cannot run — no SDK, an SDK that is too old, a gate that has
 - **Cursor runs the gate twice** when its third-party hooks are on, because it also loads `.claude/settings.json` and its payload cannot be told apart from Claude Code's. Both copies reach the same verdict, so the cost is latency, not correctness. Cursor's CLI was not run; its wiring is checked statically.
 - **Kiro's write guard is verified on Kiro CLI 2.28 only** (headless, v3). The Kiro IDE and interactive sessions follow the same hook file but were not run.
 - **No reminder on an allowed version edit for Copilot and OpenCode.** Neither offers a pre-tool hook a way to pass the agent a note when the action is allowed; an invalid version edit is still denied, with the reason.
-- **OpenCode's close-out warning goes to the person, not the agent** — OpenCode's log and a toast — like Claude Code's. Putting it into the session would start another turn.
+- **OpenCode's close-out warning goes to the person, not the agent** — OpenCode's log and a toast. Putting it into the session would start another turn.
 - **Copilot loads the workflow twice** in a repository with both `.github/instructions` and `.claude/rules`, because it reads both folders.
 - **The harness folders must be modelled.** Instructions and skills only reach a harness whose folders are output anchors in the consuming application's Codebase Structure. An application created from a template without them gets nothing for that harness.
 

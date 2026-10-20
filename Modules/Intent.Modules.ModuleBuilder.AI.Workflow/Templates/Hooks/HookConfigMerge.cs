@@ -150,6 +150,50 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks
         }
 
         /// <summary>
+        /// Removes our hook from <paramref name="eventName"/>, found by its command exactly, current or
+        /// superseded, for a hook this module has moved to another event. A group left empty goes with
+        /// it, and so does the event. A hook the developer has adjusted is not ours and stays.
+        /// </summary>
+        public static void RemoveGroupedHook(JsonObject hooks, string eventName, string command, string[] superseded)
+        {
+            if (hooks[eventName] is not JsonArray entries)
+            {
+                return;
+            }
+
+            var removedGroup = false;
+            foreach (var entry in entries.OfType<JsonObject>().ToList())
+            {
+                if (entry["hooks"] is not JsonArray inner)
+                {
+                    continue;
+                }
+
+                var ours = inner.OfType<JsonObject>().Where(h => IsOurs(h, command, superseded)).ToList();
+                if (ours.Count == 0)
+                {
+                    continue;
+                }
+
+                foreach (var hook in ours)
+                {
+                    inner.Remove(hook);
+                }
+
+                if (inner.Count == 0)
+                {
+                    entries.Remove(entry);
+                    removedGroup = true;
+                }
+            }
+
+            if (removedGroup && entries.Count == 0)
+            {
+                hooks.Remove(eventName);
+            }
+        }
+
+        /// <summary>
         /// Cursor shape: <c>event -> [ { type, command, matcher?, failClosed? } ]</c>, the same three
         /// cases as <see cref="EnsureGroupedHook"/>.
         /// </summary>

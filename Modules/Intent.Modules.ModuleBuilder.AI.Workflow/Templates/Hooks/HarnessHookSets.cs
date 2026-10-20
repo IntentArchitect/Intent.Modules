@@ -38,8 +38,14 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks
                 Command(GateCommands.GuardPosix(folder, "guard-write")), GateCommands.Superseded(folder, "guard-write"));
             HookConfigMerge.EnsureGroupedHook(hooks, "PreToolUse", ".*run_designer_script.*", gatePath, "guard-version",
                 Command(GateCommands.GuardPosix(folder, "guard-version")), GateCommands.Superseded(folder, "guard-version"));
-            HookConfigMerge.EnsureGroupedHook(hooks, "Stop", null, gatePath, "close-out",
+            // close-out runs when the next prompt is submitted, not on Stop: Claude Code shows a Stop
+            // hook's systemMessage to the person only, while UserPromptSubmit's additionalContext goes
+            // to the agent without starting another turn. Up to 1.0.0-pre.11 it ran on Stop, so that
+            // entry is removed.
+            HookConfigMerge.EnsureGroupedHook(hooks, "UserPromptSubmit", null, gatePath, "close-out",
                 Command(GateCommands.CloseOut(folder)), GateCommands.Superseded(folder, "close-out"));
+            HookConfigMerge.RemoveGroupedHook(hooks, "Stop",
+                GateCommands.CloseOut(folder), GateCommands.Superseded(folder, "close-out"));
 
             // Claude Code runs a hook in the shell's CURRENT directory, which moves with every "cd" the
             // agent runs. After "cd SomeModule" the relative gate path stops resolving and every guarded

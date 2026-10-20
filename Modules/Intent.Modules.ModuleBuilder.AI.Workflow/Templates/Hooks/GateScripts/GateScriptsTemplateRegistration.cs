@@ -384,6 +384,19 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                     _ => Serialize(new { systemMessage = reason }),
                 };
 
+                /// <summary>
+                /// Claude Code's UserPromptSubmit note: added to the agent's context alongside the
+                /// prompt, not shown to the person, and starting no extra turn.
+                /// </summary>
+                public static string FormatPromptContext(string context) => Serialize(new
+                {
+                    hookSpecificOutput = new
+                    {
+                        hookEventName = "UserPromptSubmit",
+                        additionalContext = context,
+                    },
+                });
+
                 private static string Serialize(object payload) => JsonSerializer.Serialize(payload);
             }
             """;
@@ -1164,6 +1177,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
             """;
 
         private const string CloseOutAuditorContent = """
+            using System.Security.Cryptography;
+            using System.Text;
+            using System.Text.Json;
             using System.Xml.Linq;
 
             namespace Intent.Agent.Gate;
@@ -1326,6 +1342,96 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                 }
 
                 private static string Normalize(string path) => path.Replace('\\', '/');
+            }
+
+            /// <summary>
+            /// The close-out findings already reported in each Claude Code session, so a finding is
+            /// shown once rather than after every turn. One file per session id under the system temp
+            /// folder, holding a hash per reported message; files untouched for a week are removed.
+            /// </summary>
+            /// <remarks>
+            /// Any failure here reports everything, as close-out did before: a repeated warning costs
+            /// little, a lost one costs a skipped close-out step.
+            /// </remarks>
+            public static class CloseOutMemory
+            {
+                private static readonly TimeSpan Retention = TimeSpan.FromDays(7);
+
+                public static string DirectoryPath => Path.Combine(Path.GetTempPath(), "intent-agent-gate", "close-out");
+
+                /// <summary>A string field of the hook payload, or null when it has none.</summary>
+                public static string? ReadString(string payload, string name)
+                {
+                    try
+                    {
+                        using var document = JsonDocument.Parse(payload);
+                        return document.RootElement.ValueKind == JsonValueKind.Object &&
+                               document.RootElement.TryGetProperty(name, out var value) &&
+                               value.ValueKind == JsonValueKind.String &&
+                               !string.IsNullOrWhiteSpace(value.GetString())
+                            ? value.GetString()
+                            : null;
+                    }
+                    catch (JsonException)
+                    {
+                        return null;
+                    }
+                }
+
+                public static string PathFor(string sessionId) =>
+                    Path.Combine(DirectoryPath, new string(sessionId.Select(c => char.IsAsciiLetterOrDigit(c) || c is '-' or '_' ? c : '_').ToArray()) + ".txt");
+
+                /// <summary>
+                /// The messages not yet reported in this session, which are recorded as reported.
+                /// </summary>
+                public static IReadOnlyList<string> TakeUnreported(string sessionId, IReadOnlyList<string> messages)
+                {
+                    try
+                    {
+                        var path = PathFor(sessionId);
+                        var reported = File.Exists(path) ? File.ReadAllLines(path).ToHashSet(StringComparer.Ordinal) : new HashSet<string>(StringComparer.Ordinal);
+                        var unreported = messages.Where(message => !reported.Contains(Hash(message))).ToList();
+
+                        Directory.CreateDirectory(DirectoryPath);
+                        PruneExpired(path);
+                        if (unreported.Count > 0)
+                        {
+                            File.AppendAllLines(path, unreported.Select(Hash));
+                        }
+                        else
+                        {
+                            File.SetLastWriteTimeUtc(path, DateTime.UtcNow);
+                        }
+
+                        return unreported;
+                    }
+                    catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+                    {
+                        return messages;
+                    }
+                }
+
+                private static void PruneExpired(string currentPath)
+                {
+                    foreach (var file in Directory.EnumerateFiles(DirectoryPath, "*.txt"))
+                    {
+                        try
+                        {
+                            if (!string.Equals(file, currentPath, StringComparison.OrdinalIgnoreCase) &&
+                                DateTime.UtcNow - File.GetLastWriteTimeUtc(file) > Retention)
+                            {
+                                File.Delete(file);
+                            }
+                        }
+                        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+                        {
+                            // Another session's hook may hold it; it is pruned on a later run.
+                        }
+                    }
+                }
+
+                private static string Hash(string message) =>
+                    Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(message)));
             }
             """;
 
@@ -2182,7 +2288,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                             "guard-write" => RunGuardWrite(rest, stdin, stdout, stderr, repoRoot, gitChangeProvider ?? new ProcessGitChangeProvider()),
                             "guard-version" => RunGuardVersion(rest, stdin, stdout, stderr, repoRoot, gitChangeProvider ?? new ProcessGitChangeProvider()),
                             "guard-tool" => RunGuardTool(rest, stdin, stdout, stderr, repoRoot, gitChangeProvider ?? new ProcessGitChangeProvider()),
-                            "close-out" => RunCloseOut(rest, stdout, repoRoot, gitChangeProvider ?? new ProcessGitChangeProvider()),
+                            "close-out" => RunCloseOut(rest, stdin, stdout, stderr, repoRoot, gitChangeProvider ?? new ProcessGitChangeProvider()),
                             _ => Unknown(command, stderr),
                         };
                     }
@@ -2230,9 +2336,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                 /// </remarks>
                 private static string? StepsAsideFor(string command, string[] rest, ref TextReader stdin)
                 {
-                    var harnessIndex = Array.IndexOf(rest, "--harness");
-                    var harness = harnessIndex >= 0 && harnessIndex + 1 < rest.Length ? rest[harnessIndex + 1] : null;
-                    if (harness != "claude" || command is not ("guard-write" or "guard-version" or "close-out"))
+                    if (HarnessArgument(rest) != "claude" || command is not ("guard-write" or "guard-version" or "close-out"))
                     {
                         return null;
                     }
@@ -2530,7 +2634,17 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
                     return violation is null ? Allow(stderr) : Deny(harness, stdout, stderr, violation);
                 }
 
-                private static int RunCloseOut(string[] rest, TextWriter stdout, string repoRoot, IGitChangeProvider gitChangeProvider)
+                /// <summary>
+                /// The "--harness" value exactly as given. <see cref="ParseArgs"/> folds Claude Code and
+                /// Codex into one output shape, so this is how the two are told apart.
+                /// </summary>
+                private static string? HarnessArgument(string[] rest)
+                {
+                    var harnessIndex = Array.IndexOf(rest, "--harness");
+                    return harnessIndex >= 0 && harnessIndex + 1 < rest.Length ? rest[harnessIndex + 1] : null;
+                }
+
+                private static int RunCloseOut(string[] rest, TextReader stdin, TextWriter stdout, TextWriter stderr, string repoRoot, IGitChangeProvider gitChangeProvider)
                 {
                     var (harness, _) = ParseArgs(rest);
 
@@ -2558,9 +2672,40 @@ namespace Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks.GateScripts
 
                     messages.AddRange(otherFindings.Select(f => $"[{f.ModuleName}] {f.Message}"));
 
-                    stdout.WriteLine(HarnessProtocol.FormatWarning(harness, string.Join(" ", messages)));
+                    if (HarnessArgument(rest) != "claude")
+                    {
+                        stdout.WriteLine(HarnessProtocol.FormatWarning(harness, string.Join(" ", messages)));
+                        return 0;
+                    }
+
+                    // Claude Code runs close-out on every prompt the user submits (on every Stop up to
+                    // 1.0.0-pre.11), so within one session each finding is reported once rather than on
+                    // every turn. stdin is read only here, after the findings exist; Claude Code always
+                    // closes it, which the other harnesses are not known to do.
+                    var payload = stdin.ReadToEnd();
+                    if (CloseOutMemory.ReadString(payload, "session_id") is { } sessionId)
+                    {
+                        var unreported = CloseOutMemory.TakeUnreported(sessionId, messages);
+                        if (unreported.Count == 0)
+                        {
+                            stderr.WriteLine($"intent-agent-gate: close-out findings already reported in this session ({messages.Count}).");
+                            return 0;
+                        }
+
+                        messages = unreported.ToList();
+                    }
+
+                    // On UserPromptSubmit the findings go to the agent, which they are written for. A
+                    // settings file still on the old Stop wiring shows them to the person instead.
+                    stdout.WriteLine(CloseOutMemory.ReadString(payload, "hook_event_name") == "UserPromptSubmit"
+                        ? HarnessProtocol.FormatPromptContext(CloseOutPreamble + string.Join(" ", messages))
+                        : HarnessProtocol.FormatWarning(harness, string.Join(" ", messages)));
                     return 0;
                 }
+
+                private const string CloseOutPreamble =
+                    "Close-out check on this repository's uncommitted module changes, which may be from earlier work in this " +
+                    "session: act on these when you close out that work, and do not let them displace what the user has just asked. ";
 
                 /// <summary>
                 /// Allows silently. A diagnostic note goes to stderr, which every harness keeps out of

@@ -33,7 +33,8 @@ public class HookConfigMergeTests
         var hooks = result["hooks"]!.AsObject();
         Assert.True(hooks.ContainsKey("SessionStart"));
         Assert.True(hooks.ContainsKey("PreToolUse"));
-        Assert.True(hooks.ContainsKey("Stop"));
+        Assert.True(hooks.ContainsKey("UserPromptSubmit"));
+        Assert.False(hooks.ContainsKey("Stop"));
     }
 
     [Fact]
@@ -189,17 +190,51 @@ public class HookConfigMergeTests
         Assert.Equal(once.ToJsonString(), twice.ToJsonString());
     }
 
-    [Fact]
-    public void Close_out_loses_its_fail_closed_wrapper_on_upgrade()
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Close_out_moves_from_stop_to_user_prompt_submit_on_upgrade(bool wrapped)
     {
-        // A Stop hook exiting 2 makes Claude Code keep going, so the wrapped close-out turned a gate
-        // that could not run into an endless loop of turns. Existing installs must be carried off it.
-        var old = GateCommands.Superseded(".claude", "close-out")[0];
+        // Claude Code shows a Stop hook's systemMessage to the person only, so close-out moved to
+        // UserPromptSubmit, whose additionalContext reaches the agent. The wrapped form is the one
+        // that trapped agents in a loop of turns; both must be carried off Stop.
+        var old = wrapped ? GateCommands.Superseded(".claude", "close-out")[0] : GateCommands.CloseOut(".claude");
         var result = MergeClaude(Grouped("Stop", null, old));
 
+        Assert.False(result["hooks"]!.AsObject().ContainsKey("Stop"));
+        var prompt = result["hooks"]!["UserPromptSubmit"]!.AsArray();
+        Assert.Single(prompt);
+        Assert.Equal(GateCommands.CloseOut(".claude"), CommandOf(prompt[0]!));
+    }
+
+    [Fact]
+    public void Moving_close_out_keeps_the_developers_own_stop_hooks()
+    {
+        var result = MergeClaude($$"""
+            {
+              "hooks": {
+                "Stop": [
+                  { "hooks": [ { "type": "command", "command": "echo shared" }, { "type": "command", "command": "{{GateCommands.CloseOut(".claude")}}" } ] },
+                  { "hooks": [ { "type": "command", "command": "echo mine" } ] }
+                ]
+              }
+            }
+            """);
+
         var stop = result["hooks"]!["Stop"]!.AsArray();
-        Assert.Single(stop);
-        Assert.Equal(GateCommands.CloseOut(".claude"), CommandOf(stop[0]!));
+        Assert.Equal(2, stop.Count);
+        Assert.Equal("echo shared", CommandOf(stop[0]!));
+        Assert.Single(stop[0]!["hooks"]!.AsArray());
+        Assert.Equal("echo mine", CommandOf(stop[1]!));
+    }
+
+    [Fact]
+    public void Moving_close_out_leaves_a_developers_adjusted_stop_command_alone()
+    {
+        var adjusted = GateCommands.CloseOut(".claude") + " 2>/dev/null";
+        var result = MergeClaude(Grouped("Stop", null, adjusted));
+
+        Assert.Equal(adjusted, CommandOf(result["hooks"]!["Stop"]![0]!));
     }
 
     [Fact]
@@ -318,7 +353,7 @@ public class HookConfigMergeTests
     [Fact]
     public void No_close_out_command_is_ever_wrapped_to_fail_closed()
     {
-        Assert.Equal(GateCommands.CloseOut(".claude"), CommandOf(MergeClaude(null)["hooks"]!["Stop"]![0]!));
+        Assert.Equal(GateCommands.CloseOut(".claude"), CommandOf(MergeClaude(null)["hooks"]!["UserPromptSubmit"]![0]!));
         Assert.Equal(GateCommands.CloseOut(".codex"), CommandOf(MergeCodex(null)["hooks"]!["Stop"]![0]!));
         Assert.Equal(GateCommands.CloseOut(".cursor"), MergeCursor(null)["hooks"]!["stop"]![0]!["command"]!.GetValue<string>());
         Assert.DoesNotContain("exit", GateCommands.CloseOut(".claude"));
