@@ -1,21 +1,29 @@
 ---
 name: module-svg-icon
-description: "Design or craft a house-style SVG icon for a module, render it at the sizes Intent Architect shows it, get the developer's approval on the rendered image, and apply it as the module's package icon. USE ONLY WHEN asked to create, design, set, or refresh a module's own package icon. DO NOT USE FOR an icon on a stereotype or a custom element type (see module-element-icons). REQUIRES a description of what the icon should represent, or the developer's request that you design one."
-argument-hint: "[what the icon should represent, or leave blank to have it designed]"
-keywords: [icon, svg, branding, design, application.config, imodspec, package]
+description: "Design or craft a house-style SVG icon for a module and apply it: as the module's package icon, after rendering it at the sizes Intent Architect shows it and getting the developer's approval on the image, or as a built-in or bespoke icon on a stereotype definition or custom element type the module defines. USE ONLY WHEN asked to create, design, set or refresh a module's own package icon, or to give a stereotype or element type its own icon. DO NOT USE FOR icons in a generated application's own UI or web assets. REQUIRES a description of what the icon should represent, or the developer's request that you design one; for a stereotype or element type, that element already modelled in the Module Builder designer."
+argument-hint: "[what gets the icon] [what it should represent, or leave blank to have it designed]"
+keywords: [icon, svg, branding, design, application.config, imodspec, package, stereotype, element type, designer]
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon_SkillMd_Agents
-contentHash: 1DB7AEEF7EFB88D342EEFDE4D0D12257C0F8EC341EE21F5D3CBAD95AF785828E
+contentHash: D94B2885948C85C05C32047DCBF0B591D8D22A95B16BDC5A39741378E314E139
 ---
 # Skill: module-svg-icon
 
+Three things in a module can carry an icon, and each is stored and set somewhere different:
+
+| What gets the icon | Where it lives | How it is set |
+|---|---|---|
+| The **module itself**, shown beside it in module lists | The module's `.application.config`: a root-level, attribute-less `<icon>` with a sibling `<iconType>` | Steps 1–6 below, applied by script |
+| A **stereotype** you define | Fields on the stereotype definition: an `icon` (a type + source pair), plus `displayIcon` and `displayIconFunction` | The Module Builder designer — see *Stereotype And Element-Type Icons* |
+| A **custom element type** you define (`Element Settings` / `Core Type`) | The `Settings` stereotype applied to it: `Icon`, `Expanded Icon`, `Icon Function` | The Module Builder designer — see *Stereotype And Element-Type Icons* |
+
 ## When to Use
 
-To create or refresh a module's package icon, the one shown beside it in module lists. A supplied
-description, from the developer or a workflow that sourced it, is used as given; when asked to design
-the icon, follow Step 1's design steps. Either way, apply it only once the developer has approved the
-rendered image (Step 3). For a stereotype or element-type icon, use `module-element-icons`.
+To create or refresh a module's package icon, or to give a stereotype or element type its own icon. A
+supplied description, from the developer or a workflow that sourced it, is used as given; when asked to
+design the icon, follow Step 1's design steps. Apply a package icon only once the developer has approved
+the rendered image (Step 3).
 
-## Where The Icon Lives
+## Where The Package Icon Lives
 
 Not in the model: neither `Module Settings` nor the package has an `Icon` field. It is the root-level,
 attribute-less `<icon>data:image/svg+xml;base64,...</icon>` in the module's `.application.config`, with a
@@ -25,10 +33,10 @@ from it, so a hand edit to `<iconUrl>` is discarded, the same trap `module-versi
 
 ## The One Approved Exception
 
-`.application.config` is off-limits, and this skill is the one exception to that, and to any rule to
-change files only with edit tools (where hooks check edits, they deny this file anyway). The reason is the
-payload, not a missing mechanism: `update_application_settings` does take `icon`, but the base64 value
-runs to tens of thousands of characters, and putting it through your context is wasteful and risks
+`.application.config` is off-limits, and the package icon is the one exception to that, and to any rule
+to change files only with edit tools (where hooks check edits, they deny this file anyway). The reason is
+the payload, not a missing mechanism: `update_application_settings` does take `icon`, but the base64
+value runs to tens of thousands of characters, and putting it through your context is wasteful and risks
 silent corruption. So:
 
 - Change only the root `<icon>`/`<iconType>` pair, by script. Leave every `<icon type="..." source="...">`
@@ -38,8 +46,11 @@ silent corruption. So:
   filtered out (`grep -v iconUrl`).
 - Everything else, such as release notes or recorded decisions, is edited with your edit tools as usual.
 
+Stereotype and element-type icons never live in `.application.config`, so the exception does not cover them.
+
 ## Step 1 — Craft The SVG
 
+Skip this step when a built-in icon fits a stereotype or element type (see *Setting A Built-In Icon*).
 Write drafts to an OS temp folder by shell command, never a project path, and keep the approved one
 until Step 6.
 
@@ -69,6 +80,10 @@ Deviate only for a stated reason.
 | Glyph | One simple white (`fill="#fff"`) line-art or solid shape, centered, a handful of paths at most |
 | Accent | Optional: one small detail in a darker shade of the gradient's hue. No other hues, shadows or photographic detail |
 | Text | Avoid; a 1–2 letter monogram only if nothing else reads |
+
+An element or stereotype icon renders smaller than a package icon and sits in a dense tree, so the
+legibility rules bind harder there, not less. A bespoke one that ignores the house style is more jarring
+than a generic built-in one.
 
 ### Legibility at 16px
 
@@ -154,12 +169,85 @@ All four must match. An error inside that script can echo its arguments, payload
 give a helper a verb-noun name, because a short one such as `H` is a built-in alias (`Get-History`), and
 its error prints the whole data URI. Then delete the drafts, renders and browser profile.
 
+## Stereotype And Element-Type Icons
+
+These icons are set in the Module Builder designer and generated into the module's `.designer.settings`
+and packaged stereotype definitions. They never live in `.application.config`, so nothing in this section
+reads or edits that file.
+
+### Stereotype Icons
+
+A stereotype's icon is **structural** — part of the stereotype definition, not a property you apply to it.
+It is a type/source pair: a `FontAwesome` type takes an icon name as its source (`cogs`, `database`); a
+`UrlImagePath` type takes a data URI.
+
+Two companions control *when* it shows:
+
+- **`displayIcon`** — whether the badge renders on elements carrying the stereotype at all.
+- **`displayIconFunction`** — a script for conditional display, when the badge should only appear for
+  certain property values. Prefer plain `displayIcon` unless the condition is real; a function that always
+  returns the same answer is just a slower checkbox.
+
+A stereotype badge competes for space with the element's own icon and its name. Reach for one when the
+stereotype changes how the element should be *read* at a glance — not merely to show it was applied.
+
+### Element Type Icons
+
+For an element type you define — an `Element Settings` or `Core Type` node — the icon is a property on the
+`Settings` stereotype that node carries:
+
+| Property | Purpose |
+|---|---|
+| `Icon` | The element's icon in the model tree and on diagrams |
+| `Expanded Icon` | Optional alternate shown when the node is expanded. Leave unset unless expanding genuinely changes what the node represents. |
+| `Icon Function` | A script returning an icon per element, for types whose icon depends on their own state. **Returning null falls back to the default icon** — that is the designed escape, not a failure. |
+
+`Icon` and `Icon Function` are alternatives. Set the static `Icon` unless the icon genuinely varies per
+element; a function is re-evaluated as the model changes and is harder to reason about.
+
+### Setting A Built-In Icon
+
+For anything the shipped icon set already covers, use the designer's icon picker — or, for a stereotype,
+a FontAwesome name. Both store a short reference, and there is nothing to hand-author:
+
+| Target | Stored as |
+|---|---|
+| Stereotype | `<icon type="FontAwesome" source="cogs" />` on the definition |
+| Element type | The `Icon` property, as JSON: `{"type":0,"source":"./img/icons/…"}` |
+
+### Setting A Bespoke SVG Icon
+
+When the built-in set does not carry the concept, craft the SVG (Step 1) and render it (Step 2). The icon
+becomes a base64 data URI in exactly the same slot — the `source` stops being a path and becomes the
+encoded image:
+
+| Target | Stored as |
+|---|---|
+| Stereotype | `<icon type="UrlImagePath" source="data:image/svg+xml;base64,…" />` |
+| Element type | `Icon` property JSON with `"source":"data:image/svg+xml;base64,…"` |
+
+The value is a designer property, so it is set with `run_designer_script` — not by editing designer
+metadata files. Never read or reproduce the base64 yourself: have a shell script compute it and write a
+small script file that assigns it, then pass that file to `run_designer_script` via `includedScriptPaths`
+so it is prepended to your own script. You author the logic; the generated file carries the string. To
+reuse one icon on several elements, set each from the same source SVG rather than copying an encoded
+value between them: copying is where silent truncation happens.
+
+Then run the Software Factory. It propagates the value into the module's generated `.designer.settings`,
+which is what consuming applications actually read — the designer model is the source, that file is the
+output.
+
 ## Checklist
 
+- [ ] Icon set on the right thing: the package icon, a stereotype definition, or an element type's `Settings` stereotype
 - [ ] Supplied description used as given, or the icon designed through Step 1
+- [ ] A built-in icon used for a stereotype or element type wherever one fits; a bespoke SVG only where the concept is not covered
 - [ ] House style and legibility rules measured and met, or a deviation stated
-- [ ] Rendered at 16–128px on light and dark, with a pixel zoom and a module-list mock-up
-- [ ] The developer approved the rendered image before anything was applied
-- [ ] Only the root `<icon>`/`<iconType>` changed, by script, counts asserted, file and base64 never read
-- [ ] Only the `.imodspec` applied from the Software Factory run
-- [ ] All four hashes match; temp files removed
+- [ ] Base64 never read, echoed or copied by hand — computed by script every time
+- [ ] Package icon: rendered at 16–128px on light and dark, with a pixel zoom and a module-list mock-up
+- [ ] Package icon: the developer approved the rendered image before anything was applied
+- [ ] Package icon: only the root `<icon>`/`<iconType>` changed, by script, counts asserted, file never read
+- [ ] Package icon: only the `.imodspec` applied from the Software Factory run
+- [ ] Package icon: all four hashes match; temp files removed
+- [ ] Element icon: `Icon` used rather than `Icon Function`, and `Expanded Icon` left unset, unless the icon genuinely varies
+- [ ] Stereotype or element icon: set through `run_designer_script`, the Software Factory run, and the icon confirmed to render in the designer

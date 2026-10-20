@@ -164,6 +164,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.RootPrinciples.KnownB
           5. **Force a rewrite** — perturb the output and regenerate. Back with your change: the pipeline is live. Back unchanged: the change is not reaching the generator. **Never delete ignored or protected output** — Intent will not recreate it. (Unrelated to a Software Factory *destructive change*, which is a hazard to resolve, not a probe.)
           6. **Stop and report what you ruled out.** **Do not renumber to force it** — see *"A version number is not a debugging tool"* in the module-building workflow instructions. A bump only takes effect once the application's install moves to it; if an authorised bump changes nothing, the fault is the template's logic.
 
+          To see what a template or factory extension actually does at run time, log the value: the `file-builder-expert` skill's troubleshooting resource, section 15, says how and where the output lands.
+
           ===
 
           ### Module Not Discoverable For Install (Asset Repositories)

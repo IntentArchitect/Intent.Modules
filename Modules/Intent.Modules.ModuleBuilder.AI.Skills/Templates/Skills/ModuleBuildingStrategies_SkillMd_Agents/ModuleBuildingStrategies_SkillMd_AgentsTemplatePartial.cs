@@ -71,6 +71,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.ModuleBuilding
                     Reading existing modules is the fastest way to learn the platform, but some of what published modules do is legacy that a new module must not repeat. When reconnaissance turns one of these up, note it and do the current thing instead.
 
                     - **AI task providers.** Some published modules (Intent.Modules.NET's Wolverine and MediatR-family modules among them) register an AI task provider from a factory extension — `application.AITaskManager.RegisterTaskProvider(...)` — to flag generated handlers that still need writing. AI task providers are deprecated: never register one. Carry the guidance as described in §5.
+                    - **Interaction strategies.** Intent.Modules.NET's handler modules implement `IInteractionStrategy` and register it with `InteractionStrategyProvider` to turn a modelled interaction (create, query, update or call an entity) into a generated handler body. That approach is deprecated: an AI agent writes business logic better than a deterministic strategy can, so a new module must not add interaction strategies. Generate the handler's structure, emit its body as an `IgnoreBody()` stub (§2 "Managed modes"), and carry the guidance the agent needs as described in §5.
 
                     ===
 

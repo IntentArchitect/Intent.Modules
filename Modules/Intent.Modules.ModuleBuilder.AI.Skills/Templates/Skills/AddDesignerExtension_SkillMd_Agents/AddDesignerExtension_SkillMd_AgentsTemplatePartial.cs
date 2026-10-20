@@ -30,7 +30,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
                 .FromMarkdown($$""""""
                     ---
                     name: {{SkillName}}
-                    description: "Add a context-menu-driven element, association-creation, or mapping option to a foreign package, element, or association end via a packageExtension/elementExtension, or attach AI context (AI Settings → Rules) to a foreign element type. USE ONLY WHEN extending an element/package/association end owned by another module, not one you own. DO NOT USE FOR defining a brand-new association type from scratch (see add-association-type) or building an architecture template's component picker (see architecture-templates). REQUIRES the foreign target's typeId and designer GUID already identified."
+                    description: "Extend a designer from the Module Builder: add a context-menu element, association-creation or mapping option to a foreign package, element or association end (packageExtension/elementExtension), define a brand-new Association Settings type drawable between two element types, or attach AI context (AI Settings → Rules) to an element type. USE ONLY WHEN a designer must gain a new option on an existing element, a new kind of association, or AI rules. DO NOT USE FOR building an architecture template's component picker (see architecture-templates) or setting an element or stereotype icon (see module-svg-icon). REQUIRES the typeIds of the element types involved and the target designer's id already identified."
                     argument-hint: "[target element/package type name and what to add]"
                     template-id: {{TemplateId}}
                     ---
@@ -41,11 +41,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
                     > **Read more if you want to know about** designer extensions, package/element extensions, mapping options, or context menu items:
                     > *   [Conceptual Reference](./resources/designer-extensions-reference.md)
                     > *   [Workflow & Common Mistakes](./resources/designer-extension-workflow.md)
+                    > *   [New Association Type: Workflow & Common Mistakes](./resources/association-type-workflow.md)
                     > *(To conserve tokens, avoid reading these files for simple or minor updates.)*
 
                     ## Purpose
 
-                    Extend an existing element, package, or association end from a foreign module by adding new context menu options (e.g. child element/association creation or mapping options).
+                    Extend an existing element, package, or association end from a foreign module by adding new context menu options (e.g. child element/association creation or mapping options), or define a new kind of association users can draw between two element types.
 
                     ## Musts
                     1. Identify foreign target `typeId` with `run_designer_query` — `findElements({ ..., includeReferences: true })` or `searchElements(...)` — or generated C# `SpecializationTypeId` constants. The foreign type lives in a referenced, read-only package, and the `id` on that referenced match is the typeId. Do not call `getElementDetails` on it: it only works on elements the designer owns, and throws for a referenced one.
@@ -68,7 +69,23 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.AddDesignerExt
                     stereotype definitions and is not included — this gets ahead of that warning rather than waiting for it.
 
                     If the new element type should carry its own icon, that is optional craft rather than an obligation — see
-                    `module-element-icons`.
+                    `module-svg-icon`.
+
+                    ## A New Association Type
+
+                    When no existing association type connects the two element types, define one. The full steps are in
+                    [association-type-workflow.md](./resources/association-type-workflow.md).
+
+                    1. Collect the `typeId` of every element type either end can connect to (Must #1) before creating anything.
+                    2. Create an `Association Settings` element under the `Designer Settings` linked to the target designer (Must #2).
+                    3. Apply the `Settings` stereotype to both the source and the target end, and set each end's target types, navigability and C# API property name.
+                    4. Apply a trait (`[Processing Action]` / `[Processing Handler]`) to the target end when mappings need to find it.
+                    5. Wire an `Association Creation Option` into the source element's or package's extension `[context menu]` (Must #5); without it nobody can draw the association.
+                    6. Run the Software Factory and confirm the generated C# models compile.
+
+                    Never swap the source and target ends (source = the origin element, target = the destination), never set
+                    `Is Navigable Default = true` on the source end of a directed association, and never put a `Mapping Option`
+                    on the source end: it belongs on the target end.
 
                     ## Attaching AI Rules
 

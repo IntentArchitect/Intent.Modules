@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.AI.Skills</id>
-  <version>1.0.4-pre.1</version>
+  <version>1.1.0-pre.0</version>
   <supportedClientVersions>[5.1.0-a,6.0.0-a)</supportedClientVersions>
   <summary>Bundles AI agent skills and instructions for building Intent Architect modules.</summary>
   <description>Bundles AI agent skills and instructions for building Intent Architect modules.</description>
@@ -16,11 +16,7 @@
       <role>AI.Context.Instructions</role>
       <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_ResourcesAssociationTypeWorkflowMd_Agents" externalReference="eeac4f36-9eb0-43da-a6e7-7c24c9bcfb11">
-      <role>AI.Context.Skills</role>
-      <location></location>
-    </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.AddAssociationType_SkillMd_Agents" externalReference="8881b920-757a-47c1-a8a5-2204013c3566">
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.AddDesignerExtension_ResourcesAssociationTypeWorkflowMd_Agents" externalReference="eeac4f36-9eb0-43da-a6e7-7c24c9bcfb11">
       <role>AI.Context.Skills</role>
       <location></location>
     </template>
@@ -52,6 +48,10 @@
       <role>AI.Context.Skills</role>
       <location></location>
     </template>
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesMappingCheatsheetMd_Agents" externalReference="265d0086-28ae-457a-ba8b-5e9db2f8a312">
+      <role>AI.Context.Skills</role>
+      <location></location>
+    </template>
     <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_Agents" externalReference="e6ab4e90-eb45-46a0-98ab-b445dead54bb">
       <role>AI.Context.Skills</role>
       <location></location>
@@ -69,22 +69,6 @@
       <location></location>
     </template>
     <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_SkillMd_Agents" externalReference="6674d4fb-1caf-40f8-9f5d-9597b7b03369">
-      <role>AI.Context.Skills</role>
-      <location></location>
-    </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentDomainInteractionsExpert_ResourcesInteractionsCheatsheetMd_Agents" externalReference="9b09be68-e766-4344-ba06-7c035a4fc292">
-      <role>AI.Context.Skills</role>
-      <location></location>
-    </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentDomainInteractionsExpert_SkillMd_Agents" externalReference="c03952af-f3b9-43a9-9b8a-0f8a06948579">
-      <role>AI.Context.Skills</role>
-      <location></location>
-    </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentMappingArchitect_ResourcesMappingCheatsheetMd_Agents" externalReference="265d0086-28ae-457a-ba8b-5e9db2f8a312">
-      <role>AI.Context.Skills</role>
-      <location></location>
-    </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.IntentMappingArchitect_SkillMd_Agents" externalReference="049cd7d7-79ff-4298-8631-e360c6acd187">
       <role>AI.Context.Skills</role>
       <location></location>
     </template>
@@ -108,15 +92,7 @@
       <role>AI.Context.Skills</role>
       <location></location>
     </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.ModuleDebugging_SkillMd_Agents" externalReference="0e48d622-5e89-436a-874d-9db4668b34bb">
-      <role>AI.Context.Skills</role>
-      <location></location>
-    </template>
     <template id="Intent.ModuleBuilder.AI.Skills.Skills.ModuleDocs_SkillMd_Agents" externalReference="01a3710a-8195-4ff1-a316-ac2d1f1b0ebe">
-      <role>AI.Context.Skills</role>
-      <location></location>
-    </template>
-    <template id="Intent.ModuleBuilder.AI.Skills.Skills.ModuleElementIcons_SkillMd_Agents" externalReference="aef13285-de34-4ed7-935a-d4d3bf554ed8">
       <role>AI.Context.Skills</role>
       <location></location>
     </template>

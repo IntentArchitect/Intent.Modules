@@ -195,7 +195,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
 
                     **Symptom:** `InvalidOperationException: Cannot remove statement from unknown parent` (or `Cannot insert statement for unknown parent`) from `Remove()`, `Replace(...)`, `InsertAbove(...)` or `InsertBelow(...)` — or `AddInvocation(...)` on a collection item that changes nothing.  
                     **Cause:** Before `Intent.Common.CSharp` 3.10.12, items added with `CSharpCollectionExpression.AddItem(...)` and statements added with `CSharpSwitchCodeBlock.AddStatement(string)` have no `Parent`.  
-                    **Fix:** Raise the module's `Intent.Common.CSharp` dependency to 3.10.12 (`.imodspec` `<dependency>` and `.csproj` package reference), together with `Intent.Modules.Common` and the `Intent.Common` `<dependency>` at 3.11.0 or later, and the `Intent.SoftwareFactory.SDK` package reference to 3.14.0, which `Intent.Modules.Common` 3.11.x depends on (SDK 3.14.0 needs Intent Architect 5.0.0 or later). 3.10.12 depends on that `Intent.Modules.Common`, so leaving Module Builder's 3.7.2 fails restore with `NU1605`. That needs 3.10.12 or later on your feed: if `run_solution_query` → `searchAvailableModules("Intent.Common.CSharp", { includePrerelease: true })` does not list it, use the alternative. The alternative works on any version: keep a reference to the collection / case block and edit its `Statements` list directly. If `FindStatement` returns `null` for an item of `options.X = [ ... ]`, that is a separate limit: search does not enter an assignment's right-hand side — find the assignment first, then search its `Rhs`. See `builder-patterns.md` § "Editing Collection Items and Switch-Case Statements".
+                    **Fix:** Raise the module's `Intent.Common.CSharp` dependency to 3.10.12 (`.imodspec` `<dependency>` and `.csproj` package reference) with `Intent.Modules.Common` 3.11.0 and `Intent.SoftwareFactory.SDK` 3.14.0 (Intent Architect 5.0.0 or later), or restore fails with `NU1605`. That needs 3.10.12 or later on your feed: if `run_solution_query` → `searchAvailableModules("Intent.Common.CSharp", { includePrerelease: true })` does not list it, use the alternative. The alternative works on any version: keep a reference to the collection / case block and edit its `Statements` list directly. If `FindStatement` returns `null` for an item of `options.X = [ ... ]`, that is a separate limit: search does not enter an assignment's right-hand side — find the assignment first, then search its `Rhs`. See `builder-patterns.md` § "Editing Collection Items and Switch-Case Statements".
 
                     ===
 
@@ -204,6 +204,40 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     **Symptom:** An `OnBuild` / `AfterBuild` callback — your own, or one a factory extension registered on another template — has no effect, and no error is raised.  
                     **Cause:** Build callbacks only run for templates whose `CanRunTemplate()` is true when each phase starts. A template that is switched off (its `CanRunTemplate()` returns `false`, or something set `CanRun = false`) runs none of them.  
                     **Fix:** Check the target template's `CanRunTemplate()` before relying on its callbacks. To act only when the other template's file will really be written, check `ExecutionContext.TemplateExists("TemplateIdOrRole", t => t.CanRunTemplate())` inside a callback of your own template — see `builder-patterns.md` § "Checking Whether Another Template Exists" for the stub-template caveat.
+
+                    ===
+
+                    ## 15. Seeing a runtime value
+
+                    When a template, factory extension or registration misbehaves and you need the actual value of something
+                    at generation time, log it. There is no debugger to attach: module code runs inside Intent Architect's
+                    own Software Factory process. (A designer script is different: `run_designer_script` returns its
+                    `console.log` output directly.)
+
+                    ```csharp
+                    using Intent.Utils;
+
+                    Logging.Log.Debug($"[AI-DEBUG] Customer.Name={model.Name}, Attributes={model.Attributes.Count}");
+                    ```
+
+                    `Logging.Log` is an `Intent.Engine.ITracing` with four levels only — `Debug`, `Info`, `Warning` and
+                    `Failure` (which also takes an exception). There is no `Error`, `Trace` or `Fatal`, and no templated
+                    `{Placeholder}` overload, so build the whole string yourself.
+
+                    The output is not exposed through any tool, environment variable or config file. It lands in
+                    `<OS temp directory>/IntentArchitect/logs/software-factory/sf-{contextId}-{pid}-{date}.log`:
+
+                    - Resolve the temp directory on the machine running Intent Architect (`$env:TEMP` on Windows, `$TMPDIR`
+                      falling back to `/tmp` on macOS and Linux); never hardcode it.
+                    - The file is day-rolling and per process, so there is no fixed name. After the run, pick the most
+                      recently modified `.log` file in that folder.
+                    - Code that runs as a module task rather than during a Software Factory run logs to the sibling
+                      `logs/module-tasks/` folder instead.
+                    - The file also carries Intent Architect's own log lines, so prefix yours with something distinctive
+                      (`[AI-DEBUG]`) and search for it.
+
+                    Rebuild the module and reinstall it (or run the Software Factory on the target application), read the
+                    value, then remove the temporary log lines — they are for diagnosis, not shipped output.
 
                     """""");
         }

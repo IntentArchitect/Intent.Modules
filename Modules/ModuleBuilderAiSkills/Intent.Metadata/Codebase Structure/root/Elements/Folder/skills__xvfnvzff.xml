@@ -1069,5 +1069,37 @@
       </metadata>
       <childElements />
     </childElement>
+    <childElement id="0f1a2478-beb9-4865-8e33-f133b48d6b75" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Skills.Skills.AddDesignerExtension_ResourcesAssociationTypeWorkflowMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Skills.Skills.AddDesignerExtension_ResourcesAssociationTypeWorkflowMd_Agents</display>
+      <externalReference>Intent.ModuleBuilder.AI.Skills</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>068e770d-03f6-49f1-bb12-e9f99683ae60</parentFolderId>
+      <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
+      <packageName>root</packageName>
+      <stereotypes />
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+    <childElement id="9b4743c2-ca38-4eba-b9ee-abe320d1f6ef" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesMappingCheatsheetMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesMappingCheatsheetMd_Agents</display>
+      <externalReference>Intent.ModuleBuilder.AI.Skills</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>068e770d-03f6-49f1-bb12-e9f99683ae60</parentFolderId>
+      <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
+      <packageName>root</packageName>
+      <stereotypes />
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
   </childElements>
 </class>

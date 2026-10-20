@@ -1,5 +1,12 @@
-### Version 1.0.4
+### Version 1.1.0
 
+> ⚠️ **NOTE**
+>
+> Five skills are removed and their content merged into others: `add-association-type` into `add-designer-extension`, `module-element-icons` into `module-svg-icon`, `intent-mapping-architect` and `module-debugging` into `file-builder-expert`, and `intent-domain-interactions-expert` is dropped because interaction strategies are deprecated. If any of these five folders are still under your `skills/` folders after updating, delete them so agents stop loading the old guidance.
+
+- Improvement: The bundle ships 10 skills instead of 15, so agents choose from fewer, broader skills. `file-builder-expert` now covers designer mappings (with a mapping cheatsheet) and logging a runtime value from module code, `add-designer-extension` covers defining a new association type, and `module-svg-icon` covers stereotype and element-type icons as well as the module's package icon.
+- Improvement: `module-building-strategies` lists interaction strategies (`IInteractionStrategy`) as a pattern new modules must not copy: generate the handler's structure and leave its body to the developer or AI.
+- Improvement: Version-raise guidance names the exact versions each API needs in one line and points to `known-build-gotchas` for the `NU1605` chain, instead of repeating the chain in every skill.
 - Fixed: Code samples across the skills now compile against Module Builder's default dependency floors (`Intent.Common` 3.7.2, `Intent.Common.CSharp` 3.8.0) or name the version to raise to, and invented or wrong APIs and guidance are corrected — among them `IHasMapping` and `MappingNode`, the interaction phases and match predicates, the OnBuild/AfterBuild phases, single-instance type resolution, `SingleFileListModel` file names, and which exception type renders Markdown.
 - Fixed: The skills no longer rely on code third-party module authors cannot use: `TemplateRoles` constants are replaced by literal role strings, with a role table in `intent-module-orchestrator` that calls out the `Domain.Entity.Primary` trap, Intent.Modules.NET internals are no longer presented as SDK, and every tool name matches Intent Architect's current MCP tools.
 - Improvement: New guidance on attaching AI Rules to another designer's element types, carrying AI guidance without AI task providers (now deprecated), checking whether another template exists, editing collection items and switch cases, publishing requests safely with `EmitOrPublish`, and registering interaction strategies and mapping resolvers.

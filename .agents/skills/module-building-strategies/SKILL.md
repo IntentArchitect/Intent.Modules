@@ -2,7 +2,7 @@
 name: module-building-strategies
 description: "The accumulated strategic playbook of judgment calls for designing an Intent Architect module — decomposition (root/bridging/common), template vs factory-extension choice, file cardinality, managed modes, setting-vs-stereotype, convention-vs-explicit, pattern-first building from a specification, two-phase verification, and how a module carries AI guidance. USE ONLY WHEN facing a design decision point while building or extending a module, or planning large module work from a specification or PRD. DO NOT USE FOR the mechanical how-to of a specific construct — this is the judgment layer above those."
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleBuildingStrategies_SkillMd_Agents
-contentHash: E43A31E095DE8D660927374178E49BA3B5F0871CC570DFD90D8463EE76368B8E
+contentHash: C59072C02329C0B1F4B142C9FB407CEB3AAEE6FA385D9ABC977AA7DB9D061E05
 ---
 # Module Building Strategies
 
@@ -41,6 +41,7 @@ When two modules **disagree** about how a stereotype (or property) is used — o
 Reading existing modules is the fastest way to learn the platform, but some of what published modules do is legacy that a new module must not repeat. When reconnaissance turns one of these up, note it and do the current thing instead.
 
 - **AI task providers.** Some published modules (Intent.Modules.NET's Wolverine and MediatR-family modules among them) register an AI task provider from a factory extension — `application.AITaskManager.RegisterTaskProvider(...)` — to flag generated handlers that still need writing. AI task providers are deprecated: never register one. Carry the guidance as described in §5.
+- **Interaction strategies.** Intent.Modules.NET's handler modules implement `IInteractionStrategy` and register it with `InteractionStrategyProvider` to turn a modelled interaction (create, query, update or call an entity) into a generated handler body. That approach is deprecated: an AI agent writes business logic better than a deterministic strategy can, so a new module must not add interaction strategies. Generate the handler's structure, emit its body as an `IgnoreBody()` stub (§2 "Managed modes"), and carry the guidance the agent needs as described in §5.
 
 ===
 

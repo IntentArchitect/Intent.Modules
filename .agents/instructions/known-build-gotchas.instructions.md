@@ -2,7 +2,7 @@
 applyTo: '**/*.cs'
 description: "Intent Architect module build and template-authoring gotchas, and diagnosing a module change that never reaches generated output."
 keywords: [intent architect, template authoring, nuget, build, gotchas, intent ignore, csproj, nullable, asset repositories]
-contentHash: 39C40101CACCFEC696DCDB69E7764636D35091C75A61C25A4F6C12FAC1230BFA
+contentHash: BB1A53BD1E086676541C73799950948A9CEA8D48ADCDA4CCE39A861C00281389
 ---
 ## Known Build Gotchas
 
@@ -135,6 +135,8 @@ A clean regeneration proves nothing on its own — output that could not be rewr
 4. **Force a re-install** of the same version.
 5. **Force a rewrite** — perturb the output and regenerate. Back with your change: the pipeline is live. Back unchanged: the change is not reaching the generator. **Never delete ignored or protected output** — Intent will not recreate it. (Unrelated to a Software Factory *destructive change*, which is a hazard to resolve, not a probe.)
 6. **Stop and report what you ruled out.** **Do not renumber to force it** — see *"A version number is not a debugging tool"* in the module-building workflow instructions. A bump only takes effect once the application's install moves to it; if an authorised bump changes nothing, the fault is the template's logic.
+
+To see what a template or factory extension actually does at run time, log the value: the `file-builder-expert` skill's troubleshooting resource, section 15, says how and where the output lands.
 
 ===
 

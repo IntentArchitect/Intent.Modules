@@ -268,6 +268,11 @@ public static class Scenarios
         new DocsFollowChange(),
         new IconDesignHeldForApproval(),
         new IconApplyApproved(),
+        new MappingResolverRoute(),
+        new AssociationTypeRoute(),
+        new ElementIconRoute(),
+        new ModuleDebuggingRoute(),
+        new MetadataConsumerRoute(),
     ];
 }
 
