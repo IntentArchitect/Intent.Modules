@@ -92,9 +92,11 @@ deterministic check (`run_designer_script` was called) rather than only the judg
 applies simple `setProperty` scripts (the module's Version, or a property of the metadata element the
 script names) and logs what it wrote, so checks count only changes made by some other route.
 
-*Adjusted while building:* close-out's warning reaches Claude Code and Codex as a `systemMessage`,
-shown to the user rather than the model, so S5 cannot check that the agent acts on it - only that it
-fires, says the right thing and blocks nothing. S4's sanctioned route is the Application Settings page,
+*Adjusted while building:* close-out's warning reaches Codex as a `systemMessage`, shown to the user
+rather than the model, so S5 cannot check that the agent acts on it - only that it fires, says the right
+thing and blocks nothing. Claude Code's close-out runs on `UserPromptSubmit` since AI.Workflow
+1.0.0-pre.12 and reaches the agent, but in a one-prompt run only for work already in progress, so S5 starts
+with an earlier uncommitted template change for it to report. S4's sanctioned route is the Application Settings page,
 a person's action, so it is judged rather than checked against the stub.
 
 ### Layer 3 — Guidance actually used (real harness runs)
@@ -106,6 +108,13 @@ a person's action, so it is judged rather than checked against the stub.
 | G3 | Skill activation: "bump SampleModule for a fix" | `module-version-increment` is loaded before the version changes |
 | G4 | No false activation: an unrelated question | no workflow skill is loaded |
 | G5 | Docs follow the change: an observable change | `release-notes.md` is updated in the same session, names the change and labels nothing beta or pre-release (the outcome, not whether `module-docs-chore` was loaded) |
+
+| I1 | Icon design (`module-svg-icon`), headless so no one can approve | the skill loads; concepts are rendered with a headless browser, with a pixel zoom, and the agent opens the render; nothing is applied; no drafts in the workspace; no base64 payload in the transcript; the answer says where the renders are |
+| I2 | Apply an icon the developer approved | the root `<icon>` is the SVG's data URI, set by a shell script with nothing else in the config changed; the stub's Software Factory regenerates `<iconUrl>` and only the `.imodspec` is applied, not the unrelated change it also stages; no base64 payload in the transcript |
+
+The icon scenarios read the payload check from the harness's raw output, where tool results are whole.
+The stub's `run_software_factory` regenerates only `<iconUrl>`, and `get_file_diffs` returns real diff
+lines, as Intent's does, so a diff of an icon change carries the whole payload.
 
 Agents are non-deterministic, so guidance scenarios report a pass rate over `--repeat N` (default 1,
 3 for a release check).
@@ -227,3 +236,6 @@ sign-in token created for the container, both outside this workspace; it stays t
 | 28 | Kiro's monthly request quota (`ServiceQuotaExceededException`) ended runs in seconds with no answer; S4 scored the empty run as a pass. | **Fixed** - the quota error is an infrastructure marker, so such a run is an error. Kiro S4 and G5 still need a run once the quota resets |
 | 29 | S1 on Codex and Kiro, S4 and G5 on Kiro, timed out after the change had landed correctly: the agents went on through the workflow's close-out for a metadata change (version gate, release notes, README, web searches). Kiro took 6 minutes before its first edit and still timed out at 600s; Codex S1 passed at 171s on a re-run. | **Open** - no loop (five gate runs, three designer scripts); Kiro is slow. Consider a longer `--timeout` for Kiro rather than tuning the workflow |
 | 30 | Kiro S6: the pinned SDK stops the gate, Kiro lets the write through (no fail-closed option, documented in `GateCommands.GuardPortable`), and the agent never names the cause. Kiro S7 added one of the two requested edits after questioning the release-note bullet; Kiro G5 timed out before editing. | **Accepted** (S6, a Kiro gap) / **Open** (S7, G5: agent behaviour, one run each) |
+| 31 | Wiring for Claude Code still expected close-out on `Stop`, and S5 found nothing to report, after close-out moved to `UserPromptSubmit` (AI.Workflow 1.0.0-pre.12). | **Fixed** - Claude Code's close-out event is `UserPromptSubmit`; S5 starts with an earlier uncommitted template change. Wiring 7/7 and S5 12/12 on Claude Code (`20261020-173113`) |
+| 32 | `module-svg-icon` I2 (Claude Code, Sonnet): the base64 payload entered the agent's context twice. It read the `.imodspec` whole, `<iconUrl>` included. Its PowerShell hash helper was named `H`, the `Get-History` alias, whose error echoed the data URI. | **Fixed** - the skill says to read the `.imodspec` with `<iconUrl>` filtered out and to give PowerShell helpers verb-noun names. I1 and I2 pass (`20261020-173113`) |
+| 33 | `module-svg-icon` I1: in 34-38s the agent skipped the module-list mock-up (and the pixel zoom in the first run). In the second run it claimed 16px legibility after saying it had not looked at the zooms (judge 1/2). | **Open** - agent behaviour, one run each. *Pixel zoom* and *Looked at the render* are now hard checks; the mock-up and the measurements are left to the judge |

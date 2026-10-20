@@ -22,7 +22,7 @@ public static class Wiring
         string Folder,
         Func<string, List<Registration>?> Hooks,
         string[] PreToolEvents,
-        string[] StopEvents,
+        string[] CloseOutEvents,
         Func<string, IEnumerable<string>> InstructionFiles,
         string[] SkillFolders,
         bool SkillNameMustMatchFolder,
@@ -37,7 +37,8 @@ public static class Wiring
     [
         new("claude", "Claude Code", ".claude",
             root => GroupedJson(root, ".claude/settings.json"),
-            ["PreToolUse"], ["Stop"],
+            // Close-out moved to UserPromptSubmit in AI.Workflow 1.0.0-pre.12, so its findings reach the agent rather than the user.
+            ["PreToolUse"], ["UserPromptSubmit"],
             root => Files(root, "CLAUDE.md", ".claude/CLAUDE.md").Concat(Glob(root, ".claude/rules", "*.md").Where(AlwaysApplies)),
             [".claude/skills"], SkillNameMustMatchFolder: false, AlsoReadsClaudeHooks: false),
         new("codex", "Codex", ".codex",
@@ -98,7 +99,7 @@ public static class Wiring
 
             checks.Add(Wired(registrations, spec.PreToolEvents, "guard-write", null, "Write guard"));
             checks.Add(Wired(registrations, spec.PreToolEvents, "guard-version", "run_designer_script", "Version guard"));
-            checks.Add(Wired(registrations, spec.StopEvents, "close-out", null, "Close-out"));
+            checks.Add(Wired(registrations, spec.CloseOutEvents, "close-out", null, "Close-out"));
             checks.Add(await GateBuildsAsync(root, spec, registrations, gateBuilds, Path.Combine(runDirectory, "wiring", spec.Id)));
 
             if (spec.AlsoReadsClaudeHooks)

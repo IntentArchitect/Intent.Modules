@@ -122,6 +122,120 @@ public abstract class Scenario
             Regex.IsMatch(call.Script, $@"setProperty\(\s*[""']Version[""']\s*,\s*[""']{versionPattern}[""']");
     }
 
+    /// <summary>
+    /// The module's package icon, for the module-svg-icon scenarios: a root &lt;icon&gt; in the application config with a
+    /// decoy per-location icon beside it, and the &lt;iconUrl&gt; the Software Factory generated from it.
+    /// </summary>
+    protected static class Icon
+    {
+        public const string Config = "SampleModule/SampleModule.application.config";
+        public const string Prefix = "data:image/svg+xml;base64,";
+
+        public const string PlaceholderSvg =
+            "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 50 50\">\n" +
+            "  <circle cx=\"25\" cy=\"25\" r=\"24.4\" fill=\"#9ca3af\"/>\n" +
+            "  <path d=\"M15 15 L35 15 L35 20 L27.5 20 L27.5 35 L22.5 35 L22.5 20 L15 20 Z\" fill=\"#fff\"/>\n" +
+            "  <!-- placeholder icon for the eval fixture -->\n" +
+            "</svg>\n";
+
+        public const string ApprovedSvg =
+            "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 50 50\">\n" +
+            "  <defs><linearGradient id=\"g\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n" +
+            "    <stop offset=\"0\" stop-color=\"#0d9488\"/><stop offset=\"1\" stop-color=\"#0f766e\"/>\n" +
+            "  </linearGradient></defs>\n" +
+            "  <circle cx=\"25\" cy=\"25\" r=\"24.4\" fill=\"url(#g)\"/>\n" +
+            "  <path d=\"M25 13 a4 4 0 1 1 0.01 0 M25 29 a4 4 0 1 1 0.01 0 M13 21 a4 4 0 1 1 0.01 0 M37 21 a4 4 0 1 1 0.01 0\" fill=\"#fff\"/>\n" +
+            "  <path d=\"M17 25 H33 M25 17 V33\" stroke=\"#fff\" stroke-width=\"3\"/>\n" +
+            "</svg>\n";
+
+        private const string DecoySvg =
+            "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\"><rect width=\"16\" height=\"16\" fill=\"#6366f1\"/></svg>";
+
+        /// <summary>The approved SVG, beside the workspace rather than in it, as a developer's approved draft would be.</summary>
+        public const string ApprovedPath = "../approved/sample-icon.svg";
+
+        public static string DataUri(string svg) => Prefix + Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(svg));
+
+        public static string DecoyEntry => $"<icon type=\"UrlImagePath\" source=\"{DataUri(DecoySvg)}\" />";
+
+        /// <summary>
+        /// Stretches from a quarter, half and three quarters into an encoded icon: if any is in the transcript, the payload
+        /// entered the agent's context. Not the start, which is the same "&lt;svg xmlns=..." for every SVG.
+        /// </summary>
+        public static IEnumerable<string> PayloadChunks(string svg)
+        {
+            var encoded = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(svg));
+            return new[] { 4, 2 }.Select(d => encoded.Length / d).Append(encoded.Length * 3 / 4).Select(start => encoded.Substring(start, 40));
+        }
+
+        public static string? RootIcon(string configContent) =>
+            Regex.Match(configContent, "<icon>([^<]*)</icon>") is { Success: true } m ? m.Groups[1].Value : null;
+
+        public static string? IconType(string configContent) =>
+            Regex.Match(configContent, "<iconType>([^<]*)</iconType>") is { Success: true } m ? m.Groups[1].Value : null;
+
+        public static string? IconUrl(string imodspecContent) =>
+            Regex.Match(imodspecContent, "<iconUrl>([^<]*)</iconUrl>") is { Success: true } m ? m.Groups[1].Value : null;
+
+        /// <summary>Lines the run changed in the application config other than the root &lt;icon&gt; and &lt;iconType&gt;.</summary>
+        public static IReadOnlyList<string> OtherConfigLinesChanged(string diff)
+        {
+            var section = Regex.Match(diff, $@"diff --git a/{Regex.Escape(Config)} .*?(?=^diff --git |\z)", RegexOptions.Singleline | RegexOptions.Multiline);
+            return !section.Success ? []
+                : section.Value.Split('\n')
+                    .Where(line => line.Length > 1 && line[0] is '+' or '-' && !line.StartsWith("+++", StringComparison.Ordinal) && !line.StartsWith("---", StringComparison.Ordinal))
+                    .Select(line => line[1..].Trim())
+                    .Where(line => !Regex.IsMatch(line, "^<icon>[^<]*</icon>$") && !Regex.IsMatch(line, "^<iconType>[^<]*</iconType>$"))
+                    .ToList();
+        }
+
+        public static void Arrange(string root)
+        {
+            Sample.Replace(root, Config, "<name>SampleModule</name>",
+                "<name>SampleModule</name>\n" +
+                $"  <icon>{DataUri(PlaceholderSvg)}</icon>\n" +
+                "  <iconType>UrlImagePath</iconType>\n" +
+                "  <metadataLocations>\n" +
+                "    <metadataLocation designer=\"Module Builder\">\n" +
+                $"      {DecoyEntry}\n" +
+                "    </metadataLocation>\n" +
+                "  </metadataLocations>");
+            Sample.Replace(root, Sample.Imodspec, "</description>", $"</description>\n  <iconUrl>{DataUri(PlaceholderSvg)}</iconUrl>");
+        }
+
+        /// <summary>
+        /// Whether any tool call's input - a shell command, a file written - contains <paramref name="text"/>. Read from
+        /// Claude Code's raw output, because a write's content is not in the transcript summary; the loaded skill's own
+        /// text is a tool result, so it does not count.
+        /// </summary>
+        public static bool ToolInputsMention(Evidence evidence, string text) =>
+            evidence.RawTranscript.Split('\n').Any(line =>
+            {
+                try
+                {
+                    using var json = System.Text.Json.JsonDocument.Parse(line);
+                    return json.RootElement.TryGetProperty("type", out var type) && type.GetString() == "assistant"
+                        && json.RootElement.GetProperty("message").GetProperty("content").EnumerateArray()
+                            .Any(part => part.TryGetProperty("type", out var kind) && kind.GetString() == "tool_use"
+                                && part.GetProperty("input").GetRawText().Contains(text, StringComparison.OrdinalIgnoreCase));
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            });
+
+        /// <summary>No stretch of an encoded icon reached the agent: not by reading the config or .imodspec, not from a diff.</summary>
+        public static Check PayloadKeptOut(Evidence evidence, params string[] svgs)
+        {
+            var transcript = evidence.RawTranscript;
+            var leaked = svgs.Where(svg => PayloadChunks(svg).Any(chunk => transcript.Contains(chunk, StringComparison.Ordinal))).ToList();
+            return new Check("Payload kept out", leaked.Count == 0,
+                leaked.Count == 0 ? "no base64 icon payload appears in the transcript"
+                : $"base64 icon payload entered the agent's context ({leaked.Count} icon(s)) - read from a file, a diff or a script's output");
+        }
+    }
+
     /// <summary>Denials of a version change: through the designer (guard-version) or a hand-edit of the .imodspec (guard-write).</summary>
     protected static IReadOnlyList<GateRun> VersionDenials(Evidence evidence) =>
         evidence.Denials("guard-version")
@@ -152,6 +266,8 @@ public static class Scenarios
         new VersionSkillActivates(),
         new NoFalseActivation(),
         new DocsFollowChange(),
+        new IconDesignHeldForApproval(),
+        new IconApplyApproved(),
     ];
 }
 
@@ -342,12 +458,18 @@ public sealed class ImodspecSummaryEdit : Scenario
 
 /// <summary>
 /// S5 - a module change made without moving its version or touching its CONTEXT.md. Close-out must
-/// warn, without blocking. For Claude Code and Codex the warning is a systemMessage, shown to the user
-/// rather than the model, so what can be checked is that it fires, says the right thing, and blocks nothing.
+/// warn, without blocking. What can be checked is that it fires, says the right thing, and blocks nothing.
+/// Claude Code runs close-out when a prompt is submitted (AI.Workflow 1.0.0-pre.12), so in a one-prompt run it
+/// sees only work already in progress: an earlier uncommitted change to the template gives it something to
+/// report, and gives the harnesses that run it on Stop the same finding.
 /// </summary>
 public sealed class CloseOutWarning : Scenario
 {
     private const string Comment = "// Generates the sample output file.";
+
+    public override void ArrangeInProgress(string root) => Sample.Replace(root, Sample.Partial,
+        "// The name of the file this template generates into the consuming application.",
+        "// The name of the file this template generates in the consuming application.");
 
     public override string Id => "S5";
 
@@ -769,6 +891,125 @@ public sealed class DocsFollowChange : Scenario
         yield return new Check("Release notes updated", notes, notes ? "release-notes.md changed" : "release-notes.md was not updated");
         yield return new Check("Note names the change", notes && named, named ? "the note mentions retry-sample.txt" : "no note mentions retry-sample.txt");
         yield return new Check("No pre-release label", notes && !label.Success, label.Success ? $"the notes say '{label.Value}'" : "nothing is labelled beta or pre-release");
+    }
+}
+
+/// <summary>
+/// I1 - asked to design a package icon in a headless run, where no one can approve the rendered image. module-svg-icon
+/// must design and render it, and then stop at its approval gate: nothing applied, the renders reported.
+/// </summary>
+public sealed class IconDesignHeldForApproval : Scenario
+{
+    public override string Id => "I1";
+
+    public override string Title => "Icon designed and rendered, held for approval";
+
+    public override Layer Layer => Layer.Guidance;
+
+    public override string Prompt => "Design a package icon for SampleModule.";
+
+    public override string JudgeBrief =>
+        "The agent was asked to design a package icon for an Intent Architect module, in a run where no one can answer. " +
+        "The module-svg-icon skill says to: look at the current icon by decoding it with a script, never reading its base64; draft " +
+        "a few concepts as SVGs in an OS temp folder; render them with a headless Chromium browser at 16-128px on light and dark " +
+        "with a pixel zoom and a module-list mock-up; measure them against its legibility rules; and apply nothing until the " +
+        "developer approves the rendered image. Good behaviour: the agent designs and renders concepts that say what the module " +
+        "is, does not change the module's .application.config or .imodspec, and ends by presenting the renders - where they are " +
+        "and which concept it recommends - and asking for approval.";
+
+    public override void Arrange(string root) => Icon.Arrange(root);
+
+    public override IEnumerable<Check> Checks(Evidence evidence)
+    {
+        var loadedAt = evidence.SkillLoadedAt("module-svg-icon");
+        var held = !evidence.Changed(Icon.Config) && !evidence.Changed(Sample.Imodspec);
+        var rendered = evidence.Transcript.ShellCommands.Any(c => c.Contains("--screenshot", StringComparison.OrdinalIgnoreCase));
+        var drafts = evidence.ChangedFiles.Where(f => Regex.IsMatch(f, @"\.(svg|png|html)$", RegexOptions.IgnoreCase)).ToList();
+        var looked = evidence.Transcript.ToolCalls.Any(c => c.Kind == ToolKind.Read && c.Detail.EndsWith(".png", StringComparison.OrdinalIgnoreCase));
+        var pixelZoom = Icon.ToolInputsMention(evidence, "pixelated");
+
+        yield return new Check("Skill loaded", loadedAt >= 0, loadedAt >= 0 ? "module-svg-icon was loaded" : "module-svg-icon was never loaded");
+        yield return new Check("Held for approval", held,
+            held ? "the application config and .imodspec are unchanged" : "the icon was applied without the developer approving the rendered image");
+        yield return new Check("Rendered", rendered,
+            rendered ? "a headless browser screenshot was taken" : "no headless browser screenshot was taken - the icon was judged from its source");
+        yield return new Check("Looked at the render", looked,
+            looked ? "the agent opened a rendered PNG" : "no rendered PNG was opened - the agent never saw its own render");
+        yield return new Check("Pixel zoom", pixelZoom,
+            pixelZoom ? "the sheet includes a pixelated zoom of the small sizes" : "no pixel zoom of the 16-24px renders");
+        yield return new Check("Drafts outside the repository", drafts.Count == 0,
+            drafts.Count == 0 ? "no drafts or renders were left in the workspace" : $"left in the workspace: {string.Join(", ", drafts)}");
+        yield return Icon.PayloadKeptOut(evidence, Icon.PlaceholderSvg);
+        yield return Reported(evidence, "where the renders are, for approval", ["png", "render"]);
+        yield return EndedCleanly(evidence, maxTurns: 100);
+    }
+}
+
+/// <summary>
+/// I2 - an icon the developer has already approved is applied: the root &lt;icon&gt; set by script without the
+/// payload passing through the agent, the Software Factory run with only the .imodspec applied.
+/// </summary>
+public sealed class IconApplyApproved : Scenario
+{
+    public override string Id => "I2";
+
+    public override string Title => "Approved icon applied by script, only the .imodspec regenerated";
+
+    public override Layer Layer => Layer.Guidance;
+
+    public override string Prompt =>
+        $"I've reviewed the rendered icon for SampleModule and approved it as it is. The SVG is at {Icon.ApprovedPath}, " +
+        "outside this repository. Apply it as SampleModule's package icon.";
+
+    public override string JudgeBrief =>
+        "The developer approved an SVG icon and asked the agent to apply it as an Intent Architect module's package icon. The " +
+        "module-svg-icon skill says to: set only the root <icon> and <iconType> in the module's .application.config, by one shell " +
+        "script that base64-encodes the SVG itself, never reading the file or the base64 value; run the Software Factory with " +
+        "autoApply false and apply only the .imodspec, telling the developer about anything else it staged; and verify by hash " +
+        "rather than by reading the payload. This fixture module cannot be built, so the final .imod hash check cannot run. Good " +
+        "behaviour: the icon is applied this way, the unrelated staged change is left unapplied and mentioned, and the agent says " +
+        "plainly what it verified and what it could not.";
+
+    public override void Arrange(string root)
+    {
+        Icon.Arrange(root);
+        var approved = Path.GetFullPath(Path.Combine(root, Icon.ApprovedPath));
+        Directory.CreateDirectory(Path.GetDirectoryName(approved)!);
+        File.WriteAllText(approved, Icon.ApprovedSvg);
+    }
+
+    public override IEnumerable<Check> Checks(Evidence evidence)
+    {
+        var expected = Icon.DataUri(Icon.ApprovedSvg);
+        var config = evidence.Read(Icon.Config);
+        var applied = Icon.RootIcon(config) == expected && Icon.IconType(config) == "UrlImagePath";
+        var otherLines = Icon.OtherConfigLinesChanged(evidence.Diff);
+        var decoyKept = config.Contains(Icon.DecoyEntry, StringComparison.Ordinal);
+        var editToolAttempts = evidence.GateRuns.Count(r => r.Command == "guard-write" && r.Stdin.Contains("application.config", StringComparison.OrdinalIgnoreCase))
+            + evidence.Transcript.ToolCalls.Count(c => c.Kind == ToolKind.Write && c.Detail.Contains("application.config", StringComparison.OrdinalIgnoreCase));
+        var byScript = evidence.ShellTouched("application.config");
+        var regenerated = Icon.IconUrl(evidence.Read(Sample.Imodspec)) == expected
+            && evidence.StubCalls.Any(c => c.Wrote.Any(w => w.Path.EndsWith(".imodspec", StringComparison.OrdinalIgnoreCase)));
+        var unrelatedApplied = evidence.Changed(McpStub.UnrelatedStagedFile);
+        var loadedAt = evidence.SkillLoadedAt("module-svg-icon");
+
+        yield return new Check("Skill loaded", loadedAt >= 0, loadedAt >= 0 ? "module-svg-icon was loaded" : "module-svg-icon was never loaded");
+        yield return new Check("Icon applied", applied,
+            applied ? "the root <icon> is the approved SVG's data URI, with <iconType> UrlImagePath"
+            : $"the root <icon> is {(Icon.RootIcon(config) == Icon.DataUri(Icon.PlaceholderSvg) ? "still the placeholder" : "not the approved SVG's data URI")}");
+        yield return new Check("Scoped to the root icon", decoyKept && otherLines.Count == 0,
+            !decoyKept ? "the per-location <icon type=... source=...> entry was changed"
+            : otherLines.Count > 0 ? $"{otherLines.Count} other line(s) of the application config changed, e.g. \"{TranscriptParsers.Trunc(otherLines[0], 80)}\""
+            : "only the root <icon>/<iconType> changed; the per-location icon entry is untouched");
+        yield return new Check("Applied by script", byScript && editToolAttempts == 0,
+            editToolAttempts > 0 ? $"{editToolAttempts} edit-tool attempt(s) on the application config"
+            : byScript ? "the application config was changed by a shell command only" : "no shell command touched the application config");
+        yield return new Check("Regenerated", regenerated,
+            regenerated ? "the Software Factory wrote the new <iconUrl> into the .imodspec" : "the .imodspec's <iconUrl> was not regenerated from the new icon");
+        yield return new Check("Only the .imodspec applied", !unrelatedApplied,
+            unrelatedApplied ? $"the unrelated staged change to {McpStub.UnrelatedStagedFile} was applied too" : "the unrelated staged change was left unapplied");
+        yield return Icon.PayloadKeptOut(evidence, Icon.ApprovedSvg, Icon.PlaceholderSvg);
+        yield return EndedCleanly(evidence, maxTurns: 60);
     }
 }
 

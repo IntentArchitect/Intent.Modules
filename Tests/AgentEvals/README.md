@@ -68,7 +68,7 @@ the suite prevents by running Claude Code with `CLAUDE_CODE_DISABLE_AUTO_MEMORY=
    harness's hooks (Copilot and Cursor read `.claude/settings.json`), which would run the gate twice
    unless Claude's copy steps aside, as it does for Copilot.
 2. **Hooks** (`S1`-`S9`, `D1`) - real runs that should make a hook matter.
-3. **Guidance** (`G1`-`G5`) - real runs that show whether the instructions and skills are actually used.
+3. **Guidance** (`G1`-`G5`, `I1`-`I2`) - real runs that show whether the instructions and skills are actually used.
 
 | Id | Scenario | Pass when |
 |---|---|---|
@@ -87,6 +87,8 @@ the suite prevents by running Claude Code with `CLAUDE_CODE_DISABLE_AUTO_MEMORY=
 | G3 | "Bump the version for this fix" | `module-version-increment` loads before the version changes |
 | G4 | An unrelated question | no workflow skill loads; nothing changes |
 | G5 | An observable template change | `release-notes.md` is updated; `module-docs-chore` loads |
+| I1 | "Design a package icon" - headless, so no one can approve | `module-svg-icon` loads; drafts are rendered, zoomed and looked at; nothing is applied; no base64 payload reaches the agent |
+| I2 | Apply an icon the developer approved | the root `<icon>` is set by script and nothing else in the config changes; only the `.imodspec` is applied from the Software Factory run; no base64 payload reaches the agent |
 
 A run **passes** when every hard check passes. Where a scenario has a brief, Claude Code (subscription,
 no tools, empty folder, no MCP servers) also scores *Steered* and *Communicated* 0-2; judge scores grade
@@ -95,11 +97,14 @@ quality but never decide a pass. With `--repeat N` the report shows a pass rate 
 ### The Intent MCP stub
 
 Most denials point the agent to the Intent MCP server, so runs attach a stub of it, served by the runner
-itself (`mcp-stub`). It offers `get_applications`, `run_designer_script`, `run_solution_query` and `update_application_settings` under the real names, so the
+itself (`mcp-stub`). It offers `get_applications`, `run_designer_script`, `run_solution_query`, `update_application_settings`,
+`run_software_factory`, `get_file_diffs` and `apply_staged_file_changes` under the real names, so the
 gate's `guard-version` hook fires on it exactly as on the real server. A script that sets the module's
 `Version` updates the `.imodspec`; any other `setProperty("name", "value")` is applied to the metadata
 element the script names - a stub that reported success while changing nothing would provoke the very
-workaround the evals look for. Every call, and every file it wrote, is logged, so a check can tell a
+workaround the evals look for. `run_software_factory` regenerates only the `.imodspec`'s `<iconUrl>` from the
+config's root `<icon>`, and also stages an unrelated change, for I2 to tell "applied only the `.imodspec`" from
+"applied everything". Every call, and every file it wrote, is logged, so a check can tell a
 change made through the designer from a hand-edit.
 
 ## Harnesses

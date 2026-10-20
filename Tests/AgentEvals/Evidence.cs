@@ -59,6 +59,19 @@ public sealed record Evidence(
         return File.Exists(path) ? File.ReadAllText(path) : "";
     }
 
+    /// <summary>
+    /// The harness's whole output, tool results included - what entered the agent's context, where
+    /// <see cref="Transcript"/> keeps only bounded excerpts. JSON-escaped slashes are unescaped.
+    /// </summary>
+    public string RawTranscript
+    {
+        get
+        {
+            var path = Path.Combine(Path.GetDirectoryName(WorkspaceRoot)!, "transcript.jsonl");
+            return File.Exists(path) ? File.ReadAllText(path).Replace("\\/", "/", StringComparison.Ordinal) : "";
+        }
+    }
+
     public bool ShellTouched(string fragment) =>
         Transcript.ShellCommands.Any(command => command.Contains(fragment, StringComparison.OrdinalIgnoreCase));
 

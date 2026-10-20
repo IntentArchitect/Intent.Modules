@@ -9,6 +9,7 @@
 - Improvement: `module-building-strategies` and `file-builder-expert` now make `Body = Mode.Ignore` the default for a new template's "implement here" body, a stub the developer or AI writes, and keep code the template can generate in its own fully managed member. Merge is for bodies the module's `CONTEXT.md` or the developer says are shared, and `// IntentInitialGen` only applies there. An existing template's body mode is never changed without the developer.
 - Improvement: `module-building-strategies` says to prove each code pattern in hand-written, tested reference code before templating it for large work, to stop and ask when a pattern has none, and when to stop for review. Generated skills find pending work by the `NotImplementedException` stub rather than `// IntentInitialGen`, which never reaches the generated file.
 - Improvement: Depends on `Intent.Common` 3.11.9, whose Markdown parser no longer splits a bullet that wraps onto a second line.
+- Improvement: `module-svg-icon` can now design a module's icon when asked, not only craft one from a supplied description. It renders drafts at 16–128px on light and dark backgrounds beside the neighbouring modules' icons, measures them against legibility rules for gaps, detail size, glyph fill, margins and contrast, and applies an icon only after you approve the rendered image. It applies only the `.imodspec` from the Software Factory run and checks by hash that the approved SVG reached the `.application.config`, the `.imodspec` and the built `.imod`.
 
 ### Version 1.0.3
 
