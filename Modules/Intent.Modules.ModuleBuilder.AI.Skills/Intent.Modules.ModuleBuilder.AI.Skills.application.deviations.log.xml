@@ -41,15 +41,6 @@
       <deviationsHash>1707F60C35A6DB44C42AEE01218C521728B362B230B1841EB75C0427485C42E1</deviationsHash>
     </file>
     <file>
-      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#6674d4fb-1caf-40f8-9f5d-9597b7b03369</correlationId>
-      <path>Templates/Skills/FileBuilderExpert_SkillMd_Agents/FileBuilderExpert_SkillMd_AgentsTemplatePartial.cs</path>
-      <count>1</count>
-      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-10-20T08:45:36.5830481Z</updatedAt>
-      <deviationsHash>09917E800149FA49339C9FC2CB41736ACA42DF6293F4FEBDA4A5D95647F867CA</deviationsHash>
-    </file>
-    <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#fdd04c46-e556-4d52-a179-0a62bf695ba7</correlationId>
       <path>Templates/Skills/IntentMetadataConsumer_SkillMd_Agents/IntentMetadataConsumer_SkillMd_AgentsTemplatePartial.cs</path>
       <count>1</count>

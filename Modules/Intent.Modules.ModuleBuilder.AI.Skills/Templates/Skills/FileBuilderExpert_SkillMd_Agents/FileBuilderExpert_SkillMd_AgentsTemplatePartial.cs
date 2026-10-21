@@ -38,8 +38,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     # File Builder Expert
 
                     > [!TIP]
-                    > **Read more if you want to know about** builder APIs, patterns, designer mappings, or troubleshooting and logging:
-                    > *   [API Cheatsheet](./resources/api-cheatsheet.md) | [Patterns](./resources/builder-patterns.md) | [Mapping Cheatsheet](./resources/mapping-cheatsheet.md) | [Troubleshooting](./resources/troubleshooting.md)
+                    > **Read more if you want to know about** builder APIs, patterns, designer mappings, troubleshooting, or debugging by logging:
+                    > *   [API Cheatsheet](./resources/api-cheatsheet.md) | [Patterns](./resources/builder-patterns.md) | [Mapping Cheatsheet](./resources/mapping-cheatsheet.md) | [Troubleshooting](./resources/troubleshooting.md) | [Debugging](./resources/debugging.md)
                     > *(To conserve tokens, avoid reading these for minor updates.)*
 
                     ## Musts
@@ -98,7 +98,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     module with `dotnet build --no-incremental` and confirm the reinstall picked it up, then run the Software Factory
                     and search the newest file in `<OS temp>/IntentArchitect/logs/software-factory/` for your prefix. Without the
                     rebuild the old module runs and no line appears. Remove the lines once you have the value. File naming and the
-                    module-tasks log are in [troubleshooting.md](./resources/troubleshooting.md) § 15.
+                    module-tasks log are in [debugging.md](./resources/debugging.md).
 
                     """""");
         }

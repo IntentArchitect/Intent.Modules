@@ -12,6 +12,7 @@
   <file path=".agents/skills/file-builder-expert/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_SkillMd_Agents" />
   <file path=".agents/skills/file-builder-expert/resources/api-cheatsheet.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesApiCheatsheetMd_Agents" />
   <file path=".agents/skills/file-builder-expert/resources/builder-patterns.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesBuilderPatternsMd_Agents" />
+  <file path=".agents/skills/file-builder-expert/resources/debugging.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesDebuggingMd_Agents" />
   <file path=".agents/skills/file-builder-expert/resources/mapping-cheatsheet.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesMappingCheatsheetMd_Agents" />
   <file path=".agents/skills/file-builder-expert/resources/patterns/advanced-types.cs" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_Agents" />
   <file path=".agents/skills/file-builder-expert/resources/patterns/control-flow.cs" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesPatternsControlFlowCs_Agents" />
@@ -51,6 +52,7 @@
   <file path=".claude/skills/file-builder-expert/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_SkillMd_Agents" />
   <file path=".claude/skills/file-builder-expert/resources/api-cheatsheet.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesApiCheatsheetMd_Agents" />
   <file path=".claude/skills/file-builder-expert/resources/builder-patterns.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesBuilderPatternsMd_Agents" />
+  <file path=".claude/skills/file-builder-expert/resources/debugging.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesDebuggingMd_Agents" />
   <file path=".claude/skills/file-builder-expert/resources/mapping-cheatsheet.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesMappingCheatsheetMd_Agents" />
   <file path=".claude/skills/file-builder-expert/resources/patterns/advanced-types.cs" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_Agents" />
   <file path=".claude/skills/file-builder-expert/resources/patterns/control-flow.cs" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesPatternsControlFlowCs_Agents" />
@@ -91,6 +93,7 @@
   <file path=".opencode/skills/file-builder-expert/SKILL.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_SkillMd_Agents" />
   <file path=".opencode/skills/file-builder-expert/resources/api-cheatsheet.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesApiCheatsheetMd_Agents" />
   <file path=".opencode/skills/file-builder-expert/resources/builder-patterns.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesBuilderPatternsMd_Agents" />
+  <file path=".opencode/skills/file-builder-expert/resources/debugging.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesDebuggingMd_Agents" />
   <file path=".opencode/skills/file-builder-expert/resources/mapping-cheatsheet.md" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesMappingCheatsheetMd_Agents" />
   <file path=".opencode/skills/file-builder-expert/resources/patterns/advanced-types.cs" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesPatternsAdvancedTypesCs_Agents" />
   <file path=".opencode/skills/file-builder-expert/resources/patterns/control-flow.cs" templateId="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesPatternsControlFlowCs_Agents" />

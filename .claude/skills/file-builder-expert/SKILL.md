@@ -3,13 +3,13 @@ name: file-builder-expert
 description: "Author, fix or debug a C# code-generation template using the Fluent CSharpFile builder API — constructor structure, callback priorities, type resolution, DI parameter injection, statements generated from a designer-modelled mapping (CSharpClassMappingManager, custom mapping resolvers), and logging a runtime value from module code. USE ONLY WHEN writing, reviewing, converting or debugging a *TemplatePartial.cs that emits C# via CSharpFile, or a factory extension that changes one. DO NOT USE FOR reading stereotypes or properties off a model (see intent-metadata-consumer), cross-module DI and startup wiring (see intent-module-orchestrator), or designer-model and script changes. REQUIRES the target template's model shape (single-file vs file-per-model) already decided."
 argument-hint: "[source file] [target template name]"
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_SkillMd_Agents
-contentHash: 2E85A01A2A9663EC8EA3CE95D45D90CE41F1F567BC3986F67368890832791247
+contentHash: 7386A5F8D2A7B12F742BA17C900FD4CBB0E5F3010DA80CACB92FA07695096CB1
 ---
 # File Builder Expert
 
 > [!TIP]
-> **Read more if you want to know about** builder APIs, patterns, designer mappings, or troubleshooting and logging:
-> *   [API Cheatsheet](./resources/api-cheatsheet.md) | [Patterns](./resources/builder-patterns.md) | [Mapping Cheatsheet](./resources/mapping-cheatsheet.md) | [Troubleshooting](./resources/troubleshooting.md)
+> **Read more if you want to know about** builder APIs, patterns, designer mappings, troubleshooting, or debugging by logging:
+> *   [API Cheatsheet](./resources/api-cheatsheet.md) | [Patterns](./resources/builder-patterns.md) | [Mapping Cheatsheet](./resources/mapping-cheatsheet.md) | [Troubleshooting](./resources/troubleshooting.md) | [Debugging](./resources/debugging.md)
 > *(To conserve tokens, avoid reading these for minor updates.)*
 
 ## Musts
@@ -73,4 +73,4 @@ There is no debugger for module code: it runs inside the Software Factory. Log t
 module with `dotnet build --no-incremental` and confirm the reinstall picked it up, then run the Software Factory
 and search the newest file in `<OS temp>/IntentArchitect/logs/software-factory/` for your prefix. Without the
 rebuild the old module runs and no line appears. Remove the lines once you have the value. File naming and the
-module-tasks log are in [troubleshooting.md](./resources/troubleshooting.md) § 15.
+module-tasks log are in [debugging.md](./resources/debugging.md).

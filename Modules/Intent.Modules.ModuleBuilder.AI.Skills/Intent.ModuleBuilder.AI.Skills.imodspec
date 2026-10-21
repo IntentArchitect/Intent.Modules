@@ -48,6 +48,10 @@
       <role>AI.Context.Skills</role>
       <location></location>
     </template>
+    <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesDebuggingMd_Agents" externalReference="da997c44-ca61-4573-bc08-0c33335f656f">
+      <role>AI.Context.Skills</role>
+      <location></location>
+    </template>
     <template id="Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesMappingCheatsheetMd_Agents" externalReference="265d0086-28ae-457a-ba8b-5e9db2f8a312">
       <role>AI.Context.Skills</role>
       <location></location>

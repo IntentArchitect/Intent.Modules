@@ -954,5 +954,21 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="976bf5c8-9b7b-4986-a7f8-9e629202dffc" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesDebuggingMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_ResourcesDebuggingMd_Agents</display>
+      <externalReference>Intent.ModuleBuilder.AI.Skills</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>7202381d-3c39-4288-bc7b-95bd6e433475</parentFolderId>
+      <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
+      <packageName>root</packageName>
+      <stereotypes />
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
   </childElements>
 </class>
