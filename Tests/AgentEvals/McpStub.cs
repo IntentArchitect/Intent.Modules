@@ -114,12 +114,6 @@ public static class McpStub
                 ["applicationId"] = new JsonObject { ["type"] = "string", ["description"] = "The application's id." },
                 ["designerId"] = new JsonObject { ["type"] = "string", ["description"] = "Optional designer id or name." },
                 ["script"] = new JsonObject { ["type"] = "string", ["description"] = "The designer script to run." },
-                ["includedScriptPaths"] = new JsonObject
-                {
-                    ["type"] = "array",
-                    ["items"] = new JsonObject { ["type"] = "string" },
-                    ["description"] = "Optional script files to prepend before `script`: absolute, or relative to the .application.config.",
-                },
             },
             required: ["applicationId", "script"]),
         Tool("run_solution_query",
@@ -308,31 +302,6 @@ public static class McpStub
             return ($"Script ran. {application.Name}'s version is now {version.Groups[1].Value}.", false);
         }
 
-        // A bespoke icon: the included script files are prepended to the script, as the designer does, and a
-        // data URI in the result becomes the icon of the element the script names - the stereotype's
-        // <icon type="UrlImagePath" source="..."/>. The included files are read here, not by the agent.
-        var includedPaths = (arguments["includedScriptPaths"] as JsonArray ?? [])
-            .Select(p => p?.GetValue<string>() ?? "")
-            .Select(p => Path.GetFullPath(Path.IsPathRooted(p) ? p : Path.Combine(application.Folder, p)))
-            .ToList();
-        if (includedPaths.FirstOrDefault(p => !File.Exists(p)) is { } missing)
-        {
-            return ($"Included script not found: {missing}", true);
-        }
-
-        var dataUri = Regex.Match(string.Join("\n", includedPaths.Select(File.ReadAllText).Append(script)), "data:image/svg\\+xml;base64,[A-Za-z0-9+/=]+");
-        if (dataUri.Success && ScriptElement(application, script) is { } iconTarget)
-        {
-            var content = File.ReadAllText(iconTarget.File);
-            var icon = $"<icon type=\"UrlImagePath\" source=\"{dataUri.Value}\" />";
-            var updated = Regex.IsMatch(content, "<icon [^>]*/>")
-                ? Regex.Replace(content, "<icon [^>]*/>", icon)
-                : content.Replace($"<name>{iconTarget.Name}</name>", $"<name>{iconTarget.Name}</name>\n  {icon}");
-            File.WriteAllText(iconTarget.File, updated);
-            wrote.Add(iconTarget.File);
-            return ($"Script ran. Set {iconTarget.Name}'s icon.", false);
-        }
-
         // Anything else: apply each setProperty("name", "value") to the element the script names, as the
         // designer would - a stub that reports success while changing nothing provokes the very workaround
         // the evals look for. Elements are the XML files under Intent.Metadata, matched by the name or id the
@@ -346,7 +315,9 @@ public static class McpStub
             foreach (var file in Directory.EnumerateFiles(metadata, "*.xml", SearchOption.AllDirectories))
             {
                 var content = File.ReadAllText(file);
-                if (NamedInScript(content, script) is not { } elementName)
+                var elementName = Regex.Match(content, "<name>([^<]+)</name>").Groups[1].Value;
+                var elementId = Regex.Match(content, "\\bid=\"([^\"]+)\"").Groups[1].Value;
+                if (!new[] { elementName, elementId }.Any(key => key.Length > 0 && (script.Contains($"\"{key}\"") || script.Contains($"'{key}'"))))
                 {
                     continue;
                 }
@@ -378,26 +349,6 @@ public static class McpStub
         return updates.Count > 0 ? ($"Script ran. Updated {string.Join("; ", updates)}.", false)
             : properties.Count > 0 ? ("Script ran, but changed nothing: no element or property matched the script's setProperty call(s).", false)
             : ("Script ran, but changed nothing and returned no value: it made no setProperty(\"name\", \"value\") call on a named element.", false);
-    }
-
-    /// <summary>The element's name when the script quotes its name or id, else null.</summary>
-    private static string? NamedInScript(string elementXml, string script)
-    {
-        var name = Regex.Match(elementXml, "<name>([^<]+)</name>").Groups[1].Value;
-        var id = Regex.Match(elementXml, "\\bid=\"([^\"]+)\"").Groups[1].Value;
-        return new[] { name, id }.Any(key => key.Length > 0 && (script.Contains($"\"{key}\"") || script.Contains($"'{key}'"))) ? name : null;
-    }
-
-    /// <summary>The first designer element (an XML file under Intent.Metadata) the script names, or null.</summary>
-    private static (string File, string Name)? ScriptElement(Application application, string script)
-    {
-        var metadata = Path.Combine(application.Folder, "Intent.Metadata");
-        return !Directory.Exists(metadata) ? null
-            : Directory.EnumerateFiles(metadata, "*.xml", SearchOption.AllDirectories)
-                .Select(file => (File: file, Name: NamedInScript(File.ReadAllText(file), script)))
-                .Where(match => match.Name is not null)
-                .Select(match => ((string File, string Name)?)(match.File, match.Name!))
-                .FirstOrDefault();
     }
 
     /// <summary>

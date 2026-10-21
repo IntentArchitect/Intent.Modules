@@ -67,7 +67,8 @@ public sealed class ForeignContextMenuRoute : RoutingScenario
 
     protected override string[] Skills => ["add-designer-extension"];
 
-    protected override string[][] AnswerMarkers => [["type reference extension settings"], ["element creation option"]];
+    // The SKILL.md names the option's [context menu] parent; "Element Creation Option" is only in its workflow resource.
+    protected override string[][] AnswerMarkers => [["type reference extension settings"], ["element creation option", "[context menu]"]];
 
     protected override string Expectation => "an Element Extension with Type Reference Extension Settings and an Element Creation Option";
 }
@@ -100,12 +101,13 @@ public sealed class IncludeInModuleRoute : RoutingScenario
 
     public override string Title => "Stereotype ships nowhere";
 
+    // A plan, not a bug hunt: the fixture has no such package, and an agent asked to find the fault searches for it.
     public override string Prompt =>
-        "I added a new package to SampleModule's Module Builder designer with a 'Cacheable' stereotype definition that targets " +
-        "Domain classes. The module builds and installs, but the stereotype can't be applied in a consuming app's Domain designer. " +
-        "What did I miss?" + AnswerOnly;
+        "I'm about to add a new package to SampleModule's Module Builder designer to hold a 'Cacheable' stereotype definition " +
+        "for Domain classes. It isn't in the repo yet. Apart from defining the stereotype itself, what do I have to set on that " +
+        "package so the stereotype actually ships to consuming apps' Domain designer?" + AnswerOnly;
 
-    protected override string[] Skills => ["add-designer-extension", "add-association-type", "module-building-strategies"];
+    protected override string[] Skills => ["add-designer-extension", "add-association-type", "module-building-strategies", "module-versioning"];
 
     protected override string[][] AnswerMarkers => [["include in module"]];
 
@@ -132,43 +134,30 @@ public sealed class IconFunctionRoute : RoutingScenario
     protected override string Expectation => "an Icon Function that returns null for the default icon";
 }
 
-/// <summary>
-/// C7 - the &lt;icon type=...&gt; entries in .application.config are not where a stereotype's icon goes. Markers cannot
-/// capture a "no", so the judge scores the route.
-/// </summary>
-public sealed class ConfigIconIsNotStereotypeIconRoute : RoutingScenario
+/// <summary>C7 - a stereotype's badge that depends on a property is its definition's displayIconFunction.</summary>
+public sealed class StereotypeBadgeFunctionRoute : RoutingScenario
 {
     public override string Id => "C7";
 
-    public override string Title => "The application config's icon entries are not stereotype icons";
+    public override string Title => "Stereotype badge only when a property is set";
 
     public override string Prompt =>
-        "SampleModule.application.config has `<icon type=\"UrlImagePath\" source=\"data:image/svg+xml;base64,…\" />` entries in it. " +
-        "Is that where I set the icon for the 'Cacheable' stereotype SampleModule defines? Answer briefly; don't change any files.";
+        "SampleModule's 'Cacheable' stereotype should show its icon badge only on Domain classes where its 'Enabled' property is " +
+        "ticked, and no badge otherwise. Where do I configure that?" + AnswerOnly;
 
     protected override string[] Skills => ["module-element-icons", "module-svg-icon"];
 
-    protected override string[][] AnswerMarkers => [];
+    protected override string[][] AnswerMarkers => [["displayiconfunction", "display icon function"]];
 
-    protected override string Expectation => "judged";
-
-    public override string JudgeBrief =>
-        "The user asked whether the <icon type=\"UrlImagePath\" ...> entries in their module's .application.config are where a " +
-        "stereotype's icon is set, and asked for no file changes. Good behaviour, all three must hold: (1) the answer says those " +
-        "entries are not where a stereotype's icon goes; (2) it names the stereotype definition in the Module Builder designer as " +
-        "the place; (3) it does not tell the user to add or edit an <icon> entry in .application.config. Anything else is bad.";
-
-    public override void Arrange(string root) => Icon.Arrange(root);
-
-    public override IEnumerable<Check> Checks(Evidence evidence) =>
-        base.Checks(evidence).Append(Icon.PayloadKeptOut(evidence, Icon.PlaceholderSvg));
+    protected override string Expectation => "the stereotype definition's displayIconFunction";
 }
 
 /// <summary>
-/// C8 - a bespoke stereotype icon is applied through run_designer_script with the data URI in an included script file,
-/// so the payload never passes through the agent, and neither the application config nor the metadata is hand-edited.
+/// C8 - the plan for a bespoke stereotype icon: a script computes the base64 into a file passed to run_designer_script
+/// through includedScriptPaths, so the payload never passes through the agent. A plan, because applying it needs the
+/// designer API, which the MCP stub cannot execute.
 /// </summary>
-public sealed class StereotypeIconApplied : Scenario
+public sealed class StereotypeIconPlanRoute : RoutingScenario
 {
     private const string Stereotype = "SampleModule/Intent.Metadata/Module Builder/SampleModule/Elements/Cacheable.xml";
 
@@ -176,17 +165,20 @@ public sealed class StereotypeIconApplied : Scenario
 
     public override string Id => "C8";
 
-    public override string Title => "Bespoke stereotype icon applied without the payload passing through the agent";
-
-    public override Layer Layer => Layer.Guidance;
+    public override string Title => "Plan for a bespoke stereotype icon without the payload passing through the agent";
 
     public override string Prompt =>
-        $"SampleModule defines a 'Cacheable' stereotype. Give it the custom SVG icon at {ApprovedPath} (outside this repository) " +
-        "as its icon in the designer.";
+        $"The approved SVG for SampleModule's 'Cacheable' stereotype is at {ApprovedPath}, outside this repository. Before anything " +
+        "is changed: how exactly will the icon get onto the stereotype? Outline the steps and the tool calls; don't change any files.";
+
+    protected override string[] Skills => ["module-element-icons", "module-svg-icon"];
+
+    protected override string[][] AnswerMarkers => [["includedscriptpaths"], ["base64"]];
+
+    protected override string Expectation => "a script writes the base64 into a file passed through includedScriptPaths";
 
     public override void Arrange(string root)
     {
-        Icon.Arrange(root);
         File.WriteAllText(Path.Combine(root, Stereotype),
             "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
             "<class id=\"5b0c1e2d-0000-4000-8000-0000cac4ab1e\" type=\"Stereotype Definition\">\n" +
@@ -197,43 +189,8 @@ public sealed class StereotypeIconApplied : Scenario
         File.WriteAllText(approved, Icon.ApprovedSvg);
     }
 
-    public override IEnumerable<Check> Checks(Evidence evidence)
-    {
-        var loaded = evidence.SkillsLoaded(["module-element-icons", "module-svg-icon"]);
-        var applied = evidence.Read(Stereotype).Contains($"source=\"{Icon.DataUri(Icon.ApprovedSvg)}\"", StringComparison.Ordinal);
-        var included = evidence.DesignerScripts.Count(IncludesScriptFiles);
-        var handEdited = evidence.ChangedOutsideDesigner(Sample.Metadata);
-        var images = evidence.ChangedFiles.Where(f => f.EndsWith(".svg", StringComparison.OrdinalIgnoreCase) || f.EndsWith(".png", StringComparison.OrdinalIgnoreCase)).ToList();
-
-        yield return new Check("Skill loaded", loaded.Count > 0,
-            loaded.Count > 0 ? $"loaded {string.Join(", ", loaded)}" : "loaded neither module-element-icons nor module-svg-icon");
-        yield return new Check("Icon applied", applied,
-            applied ? "the Cacheable stereotype's icon is the approved SVG's data URI" : "the Cacheable stereotype has no icon from the approved SVG");
-        yield return new Check("Through an included script", included > 0,
-            included > 0 ? $"{included} run_designer_script call(s) passed includedScriptPaths" : "no run_designer_script call passed includedScriptPaths");
-        yield return Icon.PayloadKeptOut(evidence, Icon.ApprovedSvg);
-        yield return new Check("Config untouched", !evidence.Changed(Icon.Config),
-            evidence.Changed(Icon.Config) ? "the application config changed - that is the package icon, not the stereotype's" : "the application config is unchanged");
-        yield return new Check("Metadata by designer only", handEdited.Count == 0,
-            handEdited.Count == 0 ? "designer metadata changed only through the designer" : $"hand-edited {string.Join(", ", handEdited)}");
-        yield return new Check("No image left behind", images.Count == 0,
-            images.Count == 0 ? "no .svg or .png left in the workspace" : $"left {string.Join(", ", images)}");
-        yield return EndedCleanly(evidence);
-    }
-
-    private static bool IncludesScriptFiles(StubCall call)
-    {
-        try
-        {
-            using var arguments = System.Text.Json.JsonDocument.Parse(call.Arguments);
-            return arguments.RootElement.TryGetProperty("includedScriptPaths", out var paths)
-                && paths.ValueKind == System.Text.Json.JsonValueKind.Array && paths.GetArrayLength() > 0;
-        }
-        catch (System.Text.Json.JsonException)
-        {
-            return false;
-        }
-    }
+    public override IEnumerable<Check> Checks(Evidence evidence) =>
+        base.Checks(evidence).Append(Icon.PayloadKeptOut(evidence, Icon.ApprovedSvg));
 }
 
 // Cluster C - mapping
@@ -289,9 +246,11 @@ public sealed class ResolverPriorityRoute : RoutingScenario
 
     protected override string[] Skills => ["intent-mapping-architect", "file-builder-expert"];
 
-    protected override string[][] AnswerMarkers => [["-100", "-10", "negative"]];
+    // Intent's own resolvers go down to -10, so "well below", e.g. -100. "-10" and "negative" alone are the deleted
+    // interactions skill's strategy priority, which a removed-skill run quoted.
+    protected override string[][] AnswerMarkers => [["-100", "below -10", "lower than -10"]];
 
-    protected override string Expectation => "register with a lower, negative priority";
+    protected override string Expectation => "register well below Intent's own -10, e.g. -100";
 }
 
 // Cluster D - debugging
@@ -342,9 +301,13 @@ public sealed class IgnoredBodyRoute : RoutingScenario
 
     public override string Title => "An \"implement here\" body";
 
+    // Asks for the CSharpFile builder calls, which is what the skill's description routes on. Naming only the mode is
+    // what the always-on known-build-gotchas teaches, so the typed attribute is the marker.
     public override string Prompt =>
-        "A new SampleModule template generates a `Handle` method whose body the developer writes by hand. The signature should " +
-        "keep following the model, and the body must survive later Software Factory runs. How should the template emit that method?" + AnswerOnly;
+        "I'm writing a new C# template for SampleModule (not in the repo yet). Its TemplatePartial builds a handler class with the " +
+        "CSharpFile builder and adds a `Handle` method from the model. The developer writes that method's body by hand: the " +
+        "signature should keep following the model, and the body must survive later Software Factory runs. Show me the builder " +
+        "calls on the method that set this up." + AnswerOnly;
 
     protected override string[] Skills => ["file-builder-expert", "module-building-strategies"];
 
@@ -373,23 +336,27 @@ public sealed class AiTaskProviderNotCopiedRoute : RoutingScenario
 
 // Cluster F - build gotchas and version raises, carried by instructions
 
-/// <summary>C16 - Common.CSharp 3.10.12 needs Common 3.11.0, which needs SoftwareFactory.SDK 3.14.0.</summary>
+/// <summary>
+/// C16 - Intent.Modules.Common 3.10.x needs Intent.SoftwareFactory.SDK 3.13.0, which needs Intent Architect 4.6.0: links
+/// only known-build-gotchas carries (the 3.11.0 -> 3.14.0 one is also in a constant skill).
+/// </summary>
 public sealed class Nu1605ChainRoute : InstructionRoute
 {
     public override string Id => "C16";
 
-    public override string Title => "The NU1605 chain for 3.10.12";
+    public override string Title => "The NU1605 chain: Common 3.10.x needs SDK 3.13.0 and Intent Architect 4.6.0";
 
     public override string Prompt =>
-        "To use collection-item `Remove()` in SampleModule/Templates/Sample/SampleTemplatePartial.cs I raised " +
-        "`Intent.Modules.Common.CSharp` to 3.10.12. Restore now fails with `NU1605: Detected package downgrade: " +
-        "Intent.Modules.Common from 3.11.0 to 3.7.2`. I'll raise that one. What else will I need to change before it builds?" + AnswerOnly;
+        "In SampleModule I'm raising the `Intent.Modules.Common` package reference from Module Builder's 3.7.2 to a 3.10.x " +
+        "release, because a designer package I need depends on it (the template using it is " +
+        "SampleModule/Templates/Sample/SampleTemplatePartial.cs). Before I restore: which other package reference will restore " +
+        "make me raise next, to what version, and what is the oldest Intent Architect version that can then run the module?" + AnswerOnly;
 
-    protected override string[] Skills => ["known-build-gotchas", "file-builder-expert"];
+    protected override string[] Skills => ["known-build-gotchas"];
 
-    protected override string[][] AnswerMarkers => [["3.14.0"], ["softwarefactory.sdk"]];
+    protected override string[][] AnswerMarkers => [["3.13.0"], ["4.6.0"]];
 
-    protected override string Expectation => "Intent.SoftwareFactory.SDK raised to 3.14.0";
+    protected override string Expectation => "the SDK raised to 3.13.0, which needs Intent Architect 4.6.0";
 }
 
 /// <summary>C17 - a NuGet dependency added in AfterBuild is never collected; add it in the constructor or OnBuild.</summary>
@@ -451,7 +418,10 @@ public sealed class FriendlyExceptionSdkRoute : InstructionRoute
 
 // Cluster G - reworded-only skills, one routing case and top trap each
 
-/// <summary>C20 - TemplateRoles.Domain.Entity.Primary's value is "Domain.Entity".</summary>
+/// <summary>
+/// C20 - TemplateRoles.Domain.Entity.Primary's value is "Domain.Entity". An answer that warns against "Domain.Entity" or
+/// lists both strings also carries the marker, so the comparison reads the judge's Steered score as well.
+/// </summary>
 public sealed class EntityRoleLiteralRoute : RoutingScenario
 {
     public override string Id => "C20";
@@ -467,6 +437,12 @@ public sealed class EntityRoleLiteralRoute : RoutingScenario
     protected override string[][] AnswerMarkers => [["\"domain.entity\"", "`domain.entity`"]];
 
     protected override string Expectation => "the literal \"Domain.Entity\"";
+
+    public override string JudgeBrief =>
+        "The user asked which literal string replaces the constant TemplateRoles.Domain.Entity.Primary in a template lookup, and " +
+        "asked for no file changes. Good behaviour, both must hold: (1) the one literal the answer tells the user to pass is exactly " +
+        "\"Domain.Entity\"; (2) it does not recommend \"Domain.Entity.Primary\" - naming it only as the wrong choice is fine. " +
+        "Anything else is bad.";
 }
 
 /// <summary>C21 - a registration request published from the constructor is dropped; publish it after registration.</summary>
@@ -505,22 +481,23 @@ public sealed class ComponentModuleVersionRoute : RoutingScenario
     protected override string Expectation => "the Component Module element in the Application Template Builder designer";
 }
 
-/// <summary>C23 - another module is linked by its docs.intentarchitect.com page, with the slug derived from its id.</summary>
-public sealed class ModuleDocsLinkRoute : RoutingScenario
+/// <summary>C23 - a module README has the canonical sections, among them What This Module Generates and Related Modules.</summary>
+public sealed class ModuleReadmeSectionsRoute : RoutingScenario
 {
     public override string Id => "C23";
 
-    public override string Title => "Linking another module in docs";
+    public override string Title => "A module README's canonical sections";
 
     public override string Prompt =>
-        "In SampleModule's docs/README.md, the Related Modules section should link to Intent.Eventing.NServiceBus. " +
-        "What URL should the link use? Just tell me; don't change any files.";
+        "SampleModule's docs/README.md is only a title and one line. Bring it up to our standard layout for a module README: " +
+        "which H2 sections should it have, in which order, and which common README sections should it leave out? " +
+        "Just list them; don't change any files.";
 
     protected override string[] Skills => ["module-docs"];
 
-    protected override string[][] AnswerMarkers => [["docs.intentarchitect.com/articles/modules-dotnet/intent-eventing-nservicebus"]];
+    protected override string[][] AnswerMarkers => [["what this module generates"], ["related modules"]];
 
-    protected override string Expectation => "the docs.intentarchitect.com page with the derived slug";
+    protected override string Expectation => "the canonical sections, What This Module Generates and Related Modules among them";
 }
 
 /// <summary>C24 - consumers' metadata is fixed on update by a Version Migration using IPersistenceLoader.</summary>
