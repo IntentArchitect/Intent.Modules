@@ -81,7 +81,8 @@ public sealed class AssociationTypeRoute : RoutingScenario
 
     protected override string[] Skills => ["add-association-type", "add-designer-extension"];
 
-    protected override string[][] AnswerMarkers => [["association settings"], ["target end", "target-end"]];
+    // "Destination end" is the designer's own name for the target end (Association Destination End Settings).
+    protected override string[][] AnswerMarkers => [["association settings"], ["target end", "target-end", "destination end"]];
 
     protected override string Expectation => "it is an Association Settings element configured at its target end";
 }

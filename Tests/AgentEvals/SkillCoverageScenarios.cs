@@ -89,7 +89,7 @@ public sealed class AiRulesOnPackageExtensionRoute : RoutingScenario
 
     protected override string[][] AnswerMarkers =>
         [["element extension", "designer settings", "element settings"],
-         ["dropped", "not emitted", "isn't emitted", "not carried", "isn't carried", "not copied", "isn't copied", "silently", "only from"]];
+         ["dropped", "not emitted", "isn't emitted", "emits nothing", "not carried", "isn't carried", "not copied", "isn't copied", "only copies", "silently", "only from"]];
 
     protected override string Expectation => "Rules on a Package Extension are dropped; they ship from element types";
 }
