@@ -44,6 +44,7 @@ public static class Report
         md.AppendLine();
         md.AppendLine($"- OS: {RuntimeInformation.OSDescription}");
         md.AppendLine($"- Inputs: commit {info.Commit}{(info.Dirty ? " with uncommitted changes" : "")}");
+        md.AppendLine($"- Generated output: {info.GeneratedOutput}");
         foreach (var (harness, version) in info.HarnessVersions)
         {
             md.AppendLine($"- {harness}: {version}");
@@ -144,6 +145,7 @@ public sealed record RunInfo(
     DateTime StartedAt,
     string Commit,
     bool Dirty,
+    string GeneratedOutput,
     IReadOnlyList<string> Arguments,
     Dictionary<string, string> HarnessVersions,
     Dictionary<string, string> Skipped);

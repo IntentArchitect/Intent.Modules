@@ -7,7 +7,7 @@ with any module. Design and decisions: [PLAN.md](PLAN.md).
 ```text
 dotnet run evals.cs -- --list
 dotnet run evals.cs -- [--layer wiring,hooks,guidance] [--harness claude,codex] [--scenario S1,G3]
-                       [--repeat N] [--no-judge] [--timeout 300] [--keep-runs 10] [--root PATH]
+                       [--repeat N] [--no-judge] [--timeout 300] [--keep-runs 10] [--root PATH] [--generated PATH]
                        [--claude-model M] [--codex-model M] [--opencode-model M] [--copilot-model M]
 dotnet run evals.cs -- --harness codex --prompt "..." [--no-stub]
 ```
@@ -19,7 +19,9 @@ An unknown harness, scenario, layer or option is an error, never an empty run.
 
 Inputs are read from the repository and never written: `Fixture/` (a small fake module) and
 `Tests/ModuleBuilderSkills` (what the modules generate today - regenerate that application after a module
-change, before a run). Everything the suite writes goes under one root it owns, outside the repository:
+change, before a run). `--generated PATH` evaluates another application's generated output instead - for
+example a baseline generated from published module versions, kept under the root's `baselines\` - and the
+report names the folder it used. Everything the suite writes goes under one root it owns, outside the repository:
 
 ```text
 %LOCALAPPDATA%\IntentAgentEvals\          (--root or INTENT_AGENT_EVALS_ROOT to move it)

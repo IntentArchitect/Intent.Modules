@@ -5,16 +5,21 @@ namespace AgentEvals;
 /// test application's generated output - live in the repository and are only ever read. Everything the
 /// suite writes goes under one root it owns, outside the repository.
 /// </summary>
-public sealed record EvalPaths(string SuiteDirectory, string RepoRoot, string Root)
+public sealed record EvalPaths(string SuiteDirectory, string RepoRoot, string Root, string? GeneratedOverride = null)
 {
     /// <summary>The fake module every workspace starts from.</summary>
     public string Fixture => Path.Combine(SuiteDirectory, "Fixture");
 
     /// <summary>
-    /// The test application's generated output: the hook files, gate, instructions and skills the
-    /// modules produce today. Regenerate that application before a run to evaluate a module change.
+    /// The generated output every workspace gets: the hook files, gate, instructions and skills. By default
+    /// the test application's, which the modules produce today - regenerate that application before a run to
+    /// evaluate a module change. <c>--generated</c> points it at another application's output instead, such
+    /// as a baseline generated from published module versions and kept outside the repository.
     /// </summary>
-    public string GeneratedOutput => Path.Combine(RepoRoot, "Tests", "ModuleBuilderSkills");
+    public string GeneratedOutput => GeneratedOverride ?? Path.Combine(RepoRoot, "Tests", "ModuleBuilderSkills");
+
+    /// <summary>Whether <see cref="GeneratedOutput"/> is in the repository, so git can say if it has changed.</summary>
+    public bool GeneratedOutputInRepo => IsUnder(GeneratedOutput, RepoRoot);
 
     /// <summary>Harness sign-ins and runner-owned harness configuration, kept between runs.</summary>
     public string Homes => Path.Combine(Root, "homes");
@@ -45,7 +50,7 @@ public sealed record EvalPaths(string SuiteDirectory, string RepoRoot, string Ro
         }
     }
 
-    public static EvalPaths Locate(string? rootOverride)
+    public static EvalPaths Locate(string? rootOverride, string? generatedOverride = null)
     {
         // File-based apps expose their own source folder; fall back to the working directory.
         var start = AppContext.GetData("EntryPointFileDirectoryPath") as string ?? Directory.GetCurrentDirectory();
@@ -72,7 +77,13 @@ public sealed record EvalPaths(string SuiteDirectory, string RepoRoot, string Ro
             throw new InvalidOperationException($"The eval root '{root}' is inside the repository '{current.FullName}'. Choose a root outside it.");
         }
 
-        return new EvalPaths(suite, current.FullName, root);
+        var generated = generatedOverride is null ? null : Path.GetFullPath(generatedOverride);
+        if (generated is not null && !Directory.Exists(generated))
+        {
+            throw new InvalidOperationException($"The generated output '{generated}' does not exist.");
+        }
+
+        return new EvalPaths(suite, current.FullName, root, generated);
     }
 
     /// <summary>Keeps the newest <paramref name="keep"/> run folders and deletes the rest.</summary>
@@ -186,7 +197,7 @@ public sealed class Workspace
             else
             {
                 throw new InvalidOperationException(
-                    $"'{relative}' is missing from {paths.GeneratedOutput}. Regenerate the test application before running the evals.");
+                    $"'{relative}' is missing from {paths.GeneratedOutput}. Regenerate that application before running the evals.");
             }
         }
 

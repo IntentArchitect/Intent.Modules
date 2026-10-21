@@ -25,6 +25,7 @@ public static class Conductor
           --no-judge                      skip the judge
           --timeout S                     seconds before a run is stopped (default 300)
           --root PATH                     the eval root (default %LOCALAPPDATA%\IntentAgentEvals, or INTENT_AGENT_EVALS_ROOT)
+          --generated PATH                the generated output to evaluate (default Tests\ModuleBuilderSkills)
           --keep-runs N                   run folders to keep, newest first (default 10)
           --list                          show harnesses, scenarios and the eval root, then stop
         """;
@@ -44,7 +45,7 @@ public static class Conductor
             return 2;
         }
 
-        var paths = EvalPaths.Locate(options.Root);
+        var paths = EvalPaths.Locate(options.Root, options.Generated);
         paths.UseOwnTemp();
         var harnesses = Harnesses.Create(paths);
 
@@ -75,7 +76,7 @@ public static class Conductor
         var runDirectory = Path.Combine(paths.Runs, $"{startedAt:yyyyMMdd-HHmmss}-{(OperatingSystem.IsWindows() ? "windows" : OperatingSystem.IsMacOS() ? "macos" : "linux")}");
         Directory.CreateDirectory(runDirectory);
         var (commit, dirty) = await InputsCommitAsync(paths);
-        var info = new RunInfo(startedAt, commit, dirty, args, [], []);
+        var info = new RunInfo(startedAt, commit, dirty, paths.GeneratedOutput, args, [], []);
         var results = new List<RunResult>();
         Console.WriteLine($"Run folder: {runDirectory}");
 
@@ -321,8 +322,10 @@ public static class Conductor
     private static async Task<(string Commit, bool Dirty)> InputsCommitAsync(EvalPaths paths)
     {
         var head = await Processes.RunAsync(Processes.Command("git", paths.RepoRoot, "rev-parse", "--short", "HEAD"), null, TimeSpan.FromSeconds(30));
+        // Generated output outside the repository (--generated) is not git's to judge; the report names it.
+        string[] inputs = paths.GeneratedOutputInRepo ? [paths.Fixture, paths.GeneratedOutput, paths.SuiteDirectory] : [paths.Fixture, paths.SuiteDirectory];
         var status = await Processes.RunAsync(
-            Processes.Command("git", paths.RepoRoot, "status", "--porcelain", "--", paths.Fixture, paths.GeneratedOutput, paths.SuiteDirectory),
+            Processes.Command("git", paths.RepoRoot, ["status", "--porcelain", "--", .. inputs]),
             null, TimeSpan.FromSeconds(30));
         return (head.Stdout.Trim(), status.Stdout.Trim().Length > 0);
     }
@@ -339,11 +342,12 @@ public static class Conductor
         bool Judge,
         TimeSpan Timeout,
         string? Root,
+        string? Generated,
         int KeepRuns,
         bool List)
     {
         private static readonly string[] ValueOptions =
-            ["--harness", "--scenario", "--layer", "--prompt", "--repeat", "--claude-model", "--codex-model", "--opencode-model", "--copilot-model", "--judge-model", "--timeout", "--root", "--keep-runs"];
+            ["--harness", "--scenario", "--layer", "--prompt", "--repeat", "--claude-model", "--codex-model", "--opencode-model", "--copilot-model", "--judge-model", "--timeout", "--root", "--generated", "--keep-runs"];
 
         private static readonly string[] Flags = ["--no-judge", "--no-stub", "--list"];
 
@@ -392,6 +396,7 @@ public static class Conductor
                 !args.Contains("--no-judge"),
                 TimeSpan.FromSeconds(Int("--timeout", 300)),
                 Value("--root"),
+                Value("--generated"),
                 Int("--keep-runs", 10),
                 args.Contains("--list"));
         }
