@@ -34,14 +34,16 @@ public abstract class RoutingScenario : Scenario
 
     public override IEnumerable<Check> Checks(Evidence evidence)
     {
-        var loaded = evidence.SkillsLoaded(Skills)
-            .Concat(Skills.Where(name => evidence.FileReadAt($"{name}.instructions.md") >= 0))
-            .Distinct()
-            .ToList();
+        // Found = the guidance's own text reached the agent by any route, a grep of the skills folder included.
+        // Loaded = it was loaded as a skill: routing, reported beside it but never failing the run.
+        var found = Skills.Where(name => evidence.SkillContentReached(name) || evidence.FileReadAt($"{name}.instructions.md") >= 0).ToList();
+        var loaded = evidence.SkillsLoaded(Skills);
 
-        yield return new Check("Guidance found", loaded.Count > 0 || !GuidanceLeavesATrace,
-            (loaded.Count > 0 ? $"loaded {string.Join(", ", loaded)}" : $"loaded none of {string.Join(", ", Skills)}")
+        yield return new Check("Guidance found", found.Count > 0 || !GuidanceLeavesATrace,
+            (found.Count > 0 ? $"reached {string.Join(", ", found)}" : $"reached none of {string.Join(", ", Skills)}")
             + (GuidanceLeavesATrace ? "" : " (informational: an instruction may be loaded up front)"));
+        yield return new Check("Loaded as a skill", loaded.Count > 0,
+            loaded.Count > 0 ? $"loaded {string.Join(", ", loaded)}" : "found by search or file read, or not at all", Informational: true);
         yield return Reported(evidence, Expectation, AnswerMarkers);
         yield return new Check("Nothing changed", evidence.ChangedFiles.Count == 0,
             evidence.ChangedFiles.Count == 0 ? "no file changed" : $"changed {string.Join(", ", evidence.ChangedFiles)}");

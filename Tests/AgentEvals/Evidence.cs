@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace AgentEvals;
 
@@ -103,6 +104,17 @@ public sealed record Evidence(
 
     public IReadOnlyList<string> SkillsLoaded(IEnumerable<string> skills) =>
         skills.Where(skill => SkillLoadedAt(skill) >= 0).ToList();
+
+    /// <summary>
+    /// Whether a skill's own text reached the agent by any route: loaded as a skill, any of its files read, or
+    /// a search whose result quotes one of its lines (<c>skills/&lt;name&gt;/&lt;file&gt;:&lt;line&gt;:</c>). Agents
+    /// often grep the workspace, skills folder included, instead of loading a skill. A bare file listing does
+    /// not count: it carries no guidance.
+    /// </summary>
+    public bool SkillContentReached(string skill) =>
+        SkillLoadedAt(skill) >= 0
+        || FileReadAt($"skills/{skill}/") >= 0
+        || Regex.IsMatch(Normalize(RawTranscript), $@"skills/{Regex.Escape(skill)}/[^\s""':]+:\d+:", RegexOptions.IgnoreCase);
 
     /// <summary>The index of the first tool call that read a file whose path contains <paramref name="fragment"/>, or -1.</summary>
     public int FileReadAt(string fragment) =>

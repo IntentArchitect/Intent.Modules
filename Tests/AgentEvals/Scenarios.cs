@@ -3,7 +3,8 @@ using System.Text.RegularExpressions;
 namespace AgentEvals;
 
 /// <summary>A pass/fail check made from evidence, never from the agent's own account.</summary>
-public sealed record Check(string Dimension, bool Passed, string Detail);
+/// <summary>One scored dimension of a run. An informational one is reported as yes/no and never fails the run.</summary>
+public sealed record Check(string Dimension, bool Passed, string Detail, bool Informational = false);
 
 /// <summary>Which part of the generated guidance a scenario exercises.</summary>
 public enum Layer
