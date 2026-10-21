@@ -3,7 +3,7 @@ name: file-builder-expert
 description: "Author, fix or debug a C# code-generation template using the Fluent CSharpFile builder API — constructor structure, callback priorities, type resolution, DI parameter injection, statements generated from a designer-modelled mapping (CSharpClassMappingManager, custom mapping resolvers), and logging a runtime value from module code. USE ONLY WHEN writing, reviewing, converting or debugging a *TemplatePartial.cs that emits C# via CSharpFile, or a factory extension that changes one. DO NOT USE FOR reading stereotypes or properties off a model (see intent-metadata-consumer), cross-module DI and startup wiring (see intent-module-orchestrator), or designer-model and script changes. REQUIRES the target template's model shape (single-file vs file-per-model) already decided."
 argument-hint: "[source file] [target template name]"
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_SkillMd_Agents
-contentHash: AE4029618C7729E639D6ABE2BB2448787321C04E6B00AF45FCF399A28263C145
+contentHash: 2E85A01A2A9663EC8EA3CE95D45D90CE41F1F567BC3986F67368890832791247
 ---
 # File Builder Expert
 
@@ -68,8 +68,9 @@ When a template generates statements from a mapping modelled in the designer (de
 ## Seeing A Runtime Value
 
 There is no debugger for module code: it runs inside the Software Factory. Log the value with
-`Logging.Log.Debug($"[AI-DEBUG] ...")` (`Intent.Utils`), rebuild the module with `dotnet build --no-incremental`
-and confirm the reinstall picked it up, then run the Software Factory and search the newest file in
-`<OS temp>/IntentArchitect/logs/software-factory/` for your prefix. Without the rebuild the old module runs
-and no line appears. Remove the lines once you have the value. Levels, file naming and the module-tasks log are in
-[troubleshooting.md](./resources/troubleshooting.md) § 15.
+`Logging.Log.Debug($"[AI-DEBUG] ...")` (`Intent.Utils`). The only levels are `Debug`, `Info`, `Warning` and
+`Failure`: there is no `Error`, and no `{Placeholder}` overload, so build the whole string yourself. Rebuild the
+module with `dotnet build --no-incremental` and confirm the reinstall picked it up, then run the Software Factory
+and search the newest file in `<OS temp>/IntentArchitect/logs/software-factory/` for your prefix. Without the
+rebuild the old module runs and no line appears. Remove the lines once you have the value. File naming and the
+module-tasks log are in [troubleshooting.md](./resources/troubleshooting.md) § 15.

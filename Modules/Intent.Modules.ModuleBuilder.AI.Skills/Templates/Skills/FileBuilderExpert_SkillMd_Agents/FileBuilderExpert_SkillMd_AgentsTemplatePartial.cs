@@ -93,11 +93,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Skills.Templates.Skills.FileBuilderExp
                     ## Seeing A Runtime Value
 
                     There is no debugger for module code: it runs inside the Software Factory. Log the value with
-                    `Logging.Log.Debug($"[AI-DEBUG] ...")` (`Intent.Utils`), rebuild the module with `dotnet build --no-incremental`
-                    and confirm the reinstall picked it up, then run the Software Factory and search the newest file in
-                    `<OS temp>/IntentArchitect/logs/software-factory/` for your prefix. Without the rebuild the old module runs
-                    and no line appears. Remove the lines once you have the value. Levels, file naming and the module-tasks log are in
-                    [troubleshooting.md](./resources/troubleshooting.md) § 15.
+                    `Logging.Log.Debug($"[AI-DEBUG] ...")` (`Intent.Utils`). The only levels are `Debug`, `Info`, `Warning` and
+                    `Failure`: there is no `Error`, and no `{Placeholder}` overload, so build the whole string yourself. Rebuild the
+                    module with `dotnet build --no-incremental` and confirm the reinstall picked it up, then run the Software Factory
+                    and search the newest file in `<OS temp>/IntentArchitect/logs/software-factory/` for your prefix. Without the
+                    rebuild the old module runs and no line appears. Remove the lines once you have the value. File naming and the
+                    module-tasks log are in [troubleshooting.md](./resources/troubleshooting.md) § 15.
 
                     """""");
         }

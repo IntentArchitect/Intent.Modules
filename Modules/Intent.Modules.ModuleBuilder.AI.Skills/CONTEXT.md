@@ -95,6 +95,15 @@ Bundles a fixed set of AI agent skills and instruction files for building Intent
   the package-icon procedure too, so it could not catch the confusion the icon merge risks. A keyword check for
   that route then failed correct answers that mention the package icon only to rule it out, so R3 carries a
   judge brief that scores which route the answer took instead. After the review fixes: 15/15, three runs.
+- **A rule folded into a resource is out of reach for a weaker model (2026-10-21).** The 15-vs-10 comparison
+  (cases C1–C25 in `Tests/AgentEvals/SkillCoverageScenarios.cs`, written by an independent agent from the old
+  skills only) found one regression: `module-debugging` said in its body that `Logging.Log` has no `Error`
+  level; after the merge that sentence lived only in `file-builder-expert`'s troubleshooting § 15. Haiku loaded
+  the skill, never opened the resource, and copied the skill's `Logging.Log.Debug` example (0/6, from 6/6);
+  Sonnet opened it (6/6). Fixed by stating the levels in the skill itself. **Rule for any future merge: a fact an
+  agent needs to get the common case right stays in `SKILL.md`; a resource holds detail, never the only copy of
+  a must.** Agents also often grep the skills folder instead of loading a skill, so the evals count a skill as
+  found when its text reached the agent by any route.
 
 ## Invariants & Constraints
 
