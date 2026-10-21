@@ -9,6 +9,7 @@
 #:include Evidence.cs
 #:include Scenarios.cs
 #:include RoutingScenarios.cs
+#:include SkillCoverageScenarios.cs
 #:include Wiring.cs
 #:include Judge.cs
 #:include Report.cs

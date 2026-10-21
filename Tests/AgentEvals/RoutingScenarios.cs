@@ -16,8 +16,14 @@ public abstract class RoutingScenario : Scenario
 
     public override bool UsesIntentStub => false;
 
-    /// <summary>Skills that carry the answer. Loading any one of them counts.</summary>
+    /// <summary>Skills or instructions that carry the answer. Loading any one of them counts.</summary>
     protected abstract string[] Skills { get; }
+
+    /// <summary>
+    /// Whether finding the guidance is a hard check. Not when an instruction carries the answer: a harness that
+    /// loads it up front leaves no tool call to see, so the check is then only informational.
+    /// </summary>
+    protected virtual bool GuidanceLeavesATrace => true;
 
     /// <summary>What the answer must say: every group needs at least one of its words, matched lower-case.</summary>
     protected abstract string[][] AnswerMarkers { get; }
@@ -28,10 +34,14 @@ public abstract class RoutingScenario : Scenario
 
     public override IEnumerable<Check> Checks(Evidence evidence)
     {
-        var loaded = evidence.SkillsLoaded(Skills);
+        var loaded = evidence.SkillsLoaded(Skills)
+            .Concat(Skills.Where(name => evidence.FileReadAt($"{name}.instructions.md") >= 0))
+            .Distinct()
+            .ToList();
 
-        yield return new Check("Guidance found", loaded.Count > 0,
-            loaded.Count > 0 ? $"loaded {string.Join(", ", loaded)}" : $"loaded none of {string.Join(", ", Skills)}");
+        yield return new Check("Guidance found", loaded.Count > 0 || !GuidanceLeavesATrace,
+            (loaded.Count > 0 ? $"loaded {string.Join(", ", loaded)}" : $"loaded none of {string.Join(", ", Skills)}")
+            + (GuidanceLeavesATrace ? "" : " (informational: an instruction may be loaded up front)"));
         yield return Reported(evidence, Expectation, AnswerMarkers);
         yield return new Check("Nothing changed", evidence.ChangedFiles.Count == 0,
             evidence.ChangedFiles.Count == 0 ? "no file changed" : $"changed {string.Join(", ", evidence.ChangedFiles)}");
