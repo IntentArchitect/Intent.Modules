@@ -1,9 +1,9 @@
 ---
 name: file-builder-expert
-description: "Author, fix or debug a C# code-generation template using the Fluent CSharpFile builder API — constructor structure, callback priorities, type resolution, DI parameter injection, statements generated from a designer-modelled mapping (CSharpClassMappingManager, custom mapping resolvers), and logging a runtime value from module code. USE ONLY WHEN writing, reviewing, converting or debugging a *TemplatePartial.cs that emits C# via CSharpFile, or a factory extension that changes one. DO NOT USE FOR reading stereotypes or properties off a model (see intent-metadata-consumer), cross-module DI and startup wiring (see intent-module-orchestrator), or designer-model and script changes. REQUIRES the target template's model shape (single-file vs file-per-model) already decided."
+description: "Author, fix or debug a C# code-generation template using the Fluent CSharpFile builder API — constructor structure, callback priorities, type resolution, DI parameter injection, statements generated from a designer-modelled mapping (CSharpClassMappingManager, custom mapping resolvers), and logging a runtime value from module code. USE ONLY WHEN writing, reviewing, converting or debugging a *TemplatePartial.cs that emits C# via CSharpFile, or a factory extension that changes one, or when logging a runtime value to debug any module code, module tasks included. DO NOT USE FOR reading stereotypes or properties off a model (see intent-metadata-consumer), cross-module DI and startup wiring (see intent-module-orchestrator), or designer-model and script changes. REQUIRES, for authoring a template, the target template's model shape (single-file vs file-per-model) already decided."
 argument-hint: "[source file] [target template name]"
 template-id: Intent.ModuleBuilder.AI.Skills.Skills.FileBuilderExpert_SkillMd_Agents
-contentHash: 7386A5F8D2A7B12F742BA17C900FD4CBB0E5F3010DA80CACB92FA07695096CB1
+contentHash: 8B2A414FAA95AAA393E51673FA87F82FDA32EB31C452D025C83FA6ECF2A8C182
 ---
 # File Builder Expert
 

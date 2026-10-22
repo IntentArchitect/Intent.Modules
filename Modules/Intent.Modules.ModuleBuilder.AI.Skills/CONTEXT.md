@@ -104,6 +104,13 @@ Bundles a fixed set of AI agent skills and instruction files for building Intent
   agent needs to get the common case right stays in `SKILL.md`; a resource holds detail, never the only copy of
   a must.** Agents also often grep the skills folder instead of loading a skill, so the evals count a skill as
   found when its text reached the agent by any route.
+- **A merged skill's description must name the merged-in trigger (user decision, 2026-10-22).** The same comparison
+  showed agents opening `file-builder-expert` half as often as `module-debugging` for "where do my module-task logs
+  go" (6 vs 12 of 26 runs): its USE ONLY WHEN named only template and factory-extension files, and its REQUIRES a
+  decided template shape. The description now also covers logging a runtime value to debug any module code, module
+  tasks included, and scopes REQUIRES to template authoring. Moving the guidance into its own resource
+  (`debugging.md`) did not fix this on its own: a resource helps once a skill is open, and only the description
+  decides whether it is opened.
 
 ## Invariants & Constraints
 
