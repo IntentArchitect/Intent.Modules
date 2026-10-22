@@ -111,6 +111,13 @@ Bundles a fixed set of AI agent skills and instruction files for building Intent
   tasks included, and scopes REQUIRES to template authoring. Moving the guidance into its own resource
   (`debugging.md`) did not fix this on its own: a resource helps once a skill is open, and only the description
   decides whether it is opened.
+- **The 1.1.0 trim was measured, not assumed (2026-10-21/22).** 30 cases (C1–C25 in
+  `Tests/AgentEvals/SkillCoverageScenarios.cs`, R1–R5), each proven first on the old set (passes at least 2 of 3
+  on Haiku, fails with its skill removed), ran on Claude Haiku and Sonnet, Codex and OpenCode against both sets'
+  generated output (`--generated`). Result: 10 skills 355/390, 15 skills 349/390, no regression after the C12
+  fix; an independent check agreed. To compare a future change to which skills exist, regenerate both versions'
+  output and run the same cases against each: the cases name both the old and the new carrier skill, so one case
+  scores either set.
 
 ## Invariants & Constraints
 

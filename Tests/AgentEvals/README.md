@@ -92,10 +92,25 @@ the suite prevents by running Claude Code with `CLAUDE_CODE_DISABLE_AUTO_MEMORY=
 | I1 | "Design a package icon" - headless, so no one can approve | `module-svg-icon` loads; drafts are rendered, zoomed and looked at; nothing is applied; no base64 payload reaches the agent |
 | I2 | Apply an icon the developer approved | the root `<icon>` is set by script and nothing else in the config changes; only the `.imodspec` is applied from the Software Factory run; no base64 payload reaches the agent |
 | R1-R5 | A how-to question for one AI.Skills skill (mapping resolver, association type, stereotype icon, logging a runtime value, and a neighbouring skill whose content is unchanged) | one of the skills that carries the answer loads, and the answer says the rule it teaches; nothing changes |
+| C1-C25 | Coverage of every AI.Skills skill and instruction: the rules an agent most likely gets wrong without them, deepest where skills were merged (`SkillCoverageScenarios.cs`) | the guidance's text reached the agent, and the answer says the rule; nothing changes. C16-C19 come from always-on instructions, so finding them is informational |
+
+A skill counts as **found** when its text reached the agent by any route: loaded as a skill, any of its files
+read, a search result quoting its lines, or an OpenCode subagent's report naming its files. Agents often grep
+the skills folder instead of loading a skill. Whether it was loaded as a skill is reported beside it as an
+informational yes/no, which never fails a run.
 
 A run **passes** when every hard check passes. Where a scenario has a brief, Claude Code (subscription,
 no tools, empty folder, no MCP servers) also scores *Steered* and *Communicated* 0-2; judge scores grade
 quality but never decide a pass. With `--repeat N` the report shows a pass rate per scenario.
+
+### Comparing two skill sets
+
+To show a change to which skills exist gives the same results, run the C and R cases against both versions'
+generated output with `--generated` (keep the old one under the root's `baselines\`, generated from the
+published module versions). Each case lists the skill that carries its answer in both sets, old name and the
+skill it was folded into, so one case scores either set. Prove a case on the old set first: it should pass at
+least 2 of 3 runs, and fail once its skill is deleted from a copy of that output. The 1.1.0 trim was compared
+this way; its result and method are in the AI.Skills module's `CONTEXT.md`.
 
 ### The Intent MCP stub
 
