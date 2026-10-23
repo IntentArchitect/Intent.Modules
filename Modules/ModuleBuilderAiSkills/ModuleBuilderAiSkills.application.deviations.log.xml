@@ -27,6 +27,12 @@
       <approvedAt>2026-10-08T13:42:14.7929591Z</approvedAt>
     </customFile>
     <customFile>
+      <path>DesignerMacros/src/services-rest-route-validation/query/query-rest-route-validation.ts</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-23T12:41:49.4295278Z</approvedAt>
+    </customFile>
+    <customFile>
       <path>DesignerMacros/src/services-rest-route-validation/_common/common-rest-route-validation.ts</path>
       <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
       <approvedByDisplayName>Joel Turner</approvedByDisplayName>
