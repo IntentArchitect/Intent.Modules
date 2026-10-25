@@ -14,11 +14,11 @@ Never invent the solution **name** — confirm it with the user, suggesting the 
 
 ## In an agent conversation
 
-Use it when the working folder has **no** Intent solution — the model tools refuse with "no Intent model to read or change here". Pass only `solutionName` (and optionally `description`); the location options are ignored.
+Use it when the working folder has **no** Intent solution — the model tools refuse with "no Intent model to read or change here" — or to add a **separate** solution in another folder of the repository. Pass `solutionName`, optionally `description` and `location`; the other location options are ignored.
 
-- It writes `<repository root>/intent/<solutionName>.isln` (the conversation's folder when it is not in a git repository), adds the `.gitignore` entries, and does not run `git init`.
-- It refuses when the folder already has a solution, when `<repository root>/intent` already holds one, when the name is not a plain file name, or when a folder window is open on a subfolder of the repository.
-- Nothing is opened: the next model tool call already resolves the new solution. A window open on that folder adopts it in place.
+- It writes `<location>/intent/<solutionName>.isln`, where `location` is a folder inside the repository (relative paths start at the working folder). Omit it for the repository root (the conversation's folder when it is not in a git repository). It adds the `.gitignore` entries and does not run `git init`.
+- It refuses when `<location>/intent/<solutionName>.isln` already exists, when `location` is outside the repository, when the name is not a plain file name, or when a folder window is open on a subfolder of `location`.
+- Nothing is opened. A subfolder solution is not adopted by a window open on the repository root, so always pass `solutionPath` (the new solution's file path) to `create_application`.
 
 ## From an external MCP client (no conversation)
 
