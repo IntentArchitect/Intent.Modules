@@ -3,7 +3,7 @@
   "compilerOptions": {
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "outFile": "../../../../Modules/Intent.Modules.Modelers.Services.DomainInteractions/resources/crud-api.js",
+    "outFile": "../../../../../Intent.Modules.NET/Modules/Intent.Modules.Application.DomainInteractions/resources/crud-api.js",
     "removeComments": false,
     "sourceMap": false,
     "target": "ES2019",

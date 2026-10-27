@@ -1,0 +1,177 @@
+# Move CRUD accelerators out of Modelers.Services.DomainInteractions
+
+## Context
+
+`Intent.Modelers.Services.DomainInteractions` (this repo, v2.4.8) should only hold **intention** concerns: the Create, Update, Delete and Query Entity Action associations, their mapping settings, and Processing Action. It also ships every CRUD accelerator that *generates* those intentions on a domain entity. Those move to **`Intent.Application.DomainInteractions`** in Intent.Modules.NET, v1.2.10. That module already depends on the designer module, every .NET CRUD module (MediatR.CRUD, CQRS.CRUD, ServiceImplementations.Conventions.CRUD) depends on it, and its v1.0.1 release note says it took the dependency precisely "to enable Domain suggestions for creating CRUD services".
+
+**One example.** Today a user right-clicks a Services folder and picks **Create CRUD CQRS Operations** (alt+c), or uses the **Create CRUD CQRS Services in Services designer** suggestion on a Domain `Customer` class. After this change both behave the same, but the menu items, suggestions and the *Crud Api* script library come from `Intent.Application.DomainInteractions`. With only the designer module installed, neither appears.
+
+## Decisions (settled)
+
+| Decision | Choice |
+|---|---|
+| New home | `Intent.Application.DomainInteractions` (Modules.NET) |
+| Basic-mode (legacy inline) CRUD scripts | Move them as well as the advanced ones |
+| Sync with Entity suggestions, Create new result DTO, Convert to advanced mapping | **Stay** in the designer module |
+| `Default Mapping Mode` module setting | **Stays** in the designer module. Modelers.Services, Services.CQRS and Common.CSharp read it, and the moved scripts keep reading it by setting id |
+
+<Callout id="java-node" tone="warning" title="Java and NodeJS lose the accelerators">
+
+`Intent.Java.Services.CRUD` and `Intent.NodeJS.Services.CRUD` depend on the designer module, at 1.0.3 and 1.0.4. Once a user on those stacks updates the designer module past 2.5.0, the CRUD accelerators disappear for them. This was accepted when Modules.NET was chosen as the home.
+
+</Callout>
+
+## What moves vs what stays
+
+```mermaid
+flowchart LR
+  classDef moved fill:#8a6d1f,stroke:#fbbf24,color:#ffffff
+  classDef stays fill:#3f4b5b,stroke:#94a3b8,color:#ffffff
+  classDef dep fill:#1f7a4d,stroke:#34d399,color:#ffffff
+  subgraph DI["Modelers.Services.DomainInteractions (Intent.Modules)"]
+    A[Entity Action associations]:::stays
+    B[Mapping settings]:::stays
+    C[Sync / Result DTO / Convert]:::stays
+    D[Default Mapping Mode]:::stays
+  end
+  subgraph ADI["Application.DomainInteractions (Modules.NET)"]
+    E[Crud Api script]:::moved
+    F[Repository Operation Api script]:::moved
+    G[CRUD menu options]:::moved
+    H[CRUD suggestions]:::moved
+  end
+  ADI -->|depends on 2.5.0| DI
+  CRUD[MediatR / CQRS / ServiceImpl CRUD]:::dep --> ADI
+```
+
+*Amber: moves to Modules.NET. Grey: stays. Green: unchanged dependents.*
+
+## Model changes
+
+<ModelChanges id="moves" caption="Module Builder changes in both applications" changes={[
+  { element: "Crud Api (Script)", designer: "Module Builder — Application.DomainInteractions", change: "added", note: "File path `crud-api.js`, moved from the designer module's `resources/`" },
+  { element: "Repository Operation Api (Script)", designer: "Module Builder — Application.DomainInteractions", change: "added", note: "File path `repository-operation-api.js`" },
+  { element: "Services CRUD (Designer Settings → Services)", designer: "Module Builder — Application.DomainInteractions", change: "added", note: "Holds the Package/Folder/Diagram extensions, Services suggestions and the two scripts" },
+  { element: "Domain CRUD (Designer Settings → Domain)", designer: "Module Builder — Application.DomainInteractions", change: "added", note: "Holds the 4 Domain-designer suggestions" },
+  { element: "Package Extension: Services Package", designer: "Module Builder — Application.DomainInteractions", change: "added", note: "Create CRUD Traditional Service and Create CRUD CQRS Operations, basic and advanced, under both contextMenuOptions and scriptOptions" },
+  { element: "Element Extensions: Folder, Diagram", designer: "Module Builder — Application.DomainInteractions", change: "added", note: "Same four options on Folder; the two advanced ones on Diagram" },
+  { element: "Suggestions (Services)", designer: "Module Builder — Application.DomainInteractions", change: "added", note: "Create CQRS Operation and Create Service Operation, each for a Repository operation and a Class operation (4 in total)" },
+  { element: "Suggestions (Domain)", designer: "Module Builder — Application.DomainInteractions", change: "added", note: "Create CRUD CQRS/Traditional on a Class; Create CQRS request / Traditional Service on a Repository Operation. `scriptDependencies` repointed to the new script ids" },
+  { element: "CRUD documentation topics (3)", designer: "Module Builder — Application.DomainInteractions", change: "added", note: "Create CRUD CQRS Operations Accelerator, Create CRUD Traditional Service Accelerator, Mapping CQRS Operations and Services to Repository Operations" },
+  { element: "All of the above", designer: "Module Builder — Modelers.Services.DomainInteractions", change: "removed", note: "Removed from the existing extensions/suggestion settings. `Domain Extensions` settings becomes empty and is deleted if nothing else uses it" },
+  { element: "Default Mapping Mode (setting)", designer: "Module Builder — Modelers.Services.DomainInteractions", change: "modified", fields: [{ label: "Hint", before: "Determines which mapping Services designer CRUD scripts will execute", after: "Determines which mapping mode CRUD accelerators (e.g. Intent.Application.DomainInteractions) use" }] },
+]} />
+
+**Copy each element verbatim**, apart from the script ids it references. Keep every element's script text, `isOptionVisibleFunction`/filter, shortcut, icon, order, group and type targets exactly. Read the source with `run_designer_query`, then recreate it with `run_designer_script`. Copy the Domain suggestions' `navigateToDesigner` scripts as they are, swapping in the new Crud Api and Repository Operation Api script ids that the target app returns.
+
+The Application.DomainInteractions Module Builder currently holds only a Factory Extension. It needs metadata package references for **Services**, **Domain** and **Domain.Repositories** so the extensions and suggestions can target those element types.
+
+## Code and file changes
+
+| Repo | Path | Change |
+|---|---|---|
+| Intent.Modules | `Modules/Intent.Modules.Modelers.Services.DomainInteractions/resources/crud-api.js`, `repository-operation-api.js` | Removed (moved) |
+| Modules.NET | `Modules/Intent.Modules.Application.DomainInteractions/resources/crud-api.js`, `repository-operation-api.js` | Added |
+| Intent.Modules | `DesignerMacros/src/crud/crud-api/tsconfig-save-to-module.json`, `DesignerMacros/src/services-cqrs-crud/repository-operation-api/tsconfig.json` | `outFile` repointed to `../…/Intent.Modules.NET/Modules/Intent.Modules.Application.DomainInteractions/resources/…`, following the existing `Dtos.Pagination` pattern (`services-add-paginate/*/tsconfig-save-to-module.json`) |
+| Intent.Modules | DomainInteractions `.imodspec` | New interop `detect` for `Intent.Application.DomainInteractions` that installs 1.3.0 (see below). The designer settings regenerate from the model |
+| Modules.NET | Application.DomainInteractions `.imodspec` | Dependency on `Intent.Modelers.Services.DomainInteractions` raised from 2.4.3 to the new version. `metadata/install` entries for the two new designer settings, generated |
+
+The TypeScript sources stay in `DesignerMacros/src`. They are shared with WebApi, Modelers.Services and ProxyInteractions bundles, so only the output path changes.
+
+<Callout id="upgrade-order" tone="decision" title="Keeping both modules in step on upgrade">
+
+Two failure modes:
+
+- **New Application.DomainInteractions with the old designer module:** every menu item appears twice. Fixed by raising its dependency on the designer module to 2.5.0.
+- **New designer module with the old Application.DomainInteractions:** the CRUD accelerators vanish. Fixed by the designer module's new interoperability `detect`: when `Intent.Application.DomainInteractions` is installed, it installs 1.3.0. This repeats the module's existing `detect` for `Intent.Application.MediatR.CRUD`.
+
+</Callout>
+
+<Callout id="cross-repo-path" tone="warning" title="Cross-repo tsconfig path">
+
+The `outFile` only resolves when Intent.Modules and Intent.Modules.NET are siblings, for example `D:\Dev\`. From a worktree it does not. That matches the existing Pagination precedent and is accepted. In this task, compile with an explicit `--outFile` to the Modules.NET worktree.
+
+</Callout>
+
+## How the work is split across the repos
+
+There is one Intent Architect workspace, holding both repos' solutions, and two Claude sessions.
+
+| Who | Does what | Why there |
+|---|---|---|
+| **This session** (rooted in the Intent.Modules worktree) | All Module Builder work in **both** repos, the `.js` move and the Intent.Modules close-out | The element copy needs both models live: read the source with `run_designer_query`, write the target with `run_designer_script` |
+| **A Modules.NET session** (rooted in the Modules.NET worktree) | The Modules.NET file-level close-out and commit | Modules.NET has its own `.claude` gate hook, which only checks edits made from a session rooted there |
+
+<Callout id="release-together" tone="warning" title="The two PRs ship in the same release">
+
+Application.DomainInteractions 1.3.0 depends on designer module 2.5.0. The designer module's new interop `detect` installs Application.DomainInteractions 1.3.0. Each one points at the other's new version, so neither PR can be released on its own.
+
+</Callout>
+
+## Steps
+
+### Part A — this session
+
+1. **Workspace setup.**
+    - Create the Modules.NET worktree: `git -C D:\Dev\Intent.Modules.NET worktree add -b workitem/crud-suggestions D:\.worktrees\Intent.Modules.NET\workitem\crud-suggestions development`.
+    - **You** then add that worktree's `Modules\Intent.Modules.NET.isln` to the open Intent Architect workspace.
+    - Confirm `get_applications` lists the Application.DomainInteractions application before continuing.
+    - Read both modules' `CONTEXT.md`. Application.DomainInteractions has none yet.
+2. **Version gate** (`module-version-increment`), done through the Module Builder model:
+    - Designer module 2.4.8 → **2.5.0-pre.0**. Removing functionality is a minor change.
+    - Application.DomainInteractions 1.2.10 → **1.3.0-pre.0**.
+    - Leave either alone if it is already in flight.
+3. **Build the new home first.** In the Application.DomainInteractions Module Builder:
+    - Add the metadata references.
+    - Add the two Designer Settings and the two Scripts.
+    - Add the Package and Element Extensions, the Services and Domain Suggestions, and the documentation topics, all copied from the source elements (see Model changes).
+    - Repoint the two `DesignerMacros` tsconfigs' `outFile`. Produce `resources/crud-api.js` and `repository-operation-api.js` in Modules.NET by compiling with an explicit `--outFile` to the worktree, rather than copying the files.
+    - Run `git diff --no-index` against the designer module's current files and confirm they match.
+4. **Regenerate and build the new home, with the designer module still intact.** Run the Software Factory and `dotnet build --no-incremental` for Application.DomainInteractions. In the test app every CRUD menu option now appears **twice**. This is the expected interim state, and it proves the new copies are wired up.
+5. **Strip the designer module.**
+    - Delete the moved elements, both scripts and both `.js` files.
+    - Delete the `docs/images/` screenshots used only by the moved README sections: `cqrs-repository.png`, `traditional-repository.png`, `repository-suggestion.png`, `add-repository.png`.
+    - Keep the Entity Action associations, mapping settings, Processing Action, Sync, Result DTO Helper, Convert to advanced mapping and all three settings.
+    - Update the `Default Mapping Mode` hint, add the interop `detect`, then regenerate and build.
+6. **Inspect both `.designer.settings` diffs.** The CRUD option, suggestion and script blocks should have left the designer module and arrived in Application.DomainInteractions with the same script bodies.
+7. **Intent.Modules close-out** (`module-dependency-audit`, `module-docs-chore`, `module-context-capture`):
+    - Add a release note that the CRUD accelerators moved.
+    - Remove the repository-operation accelerator section from the README, and change the intro so it no longer reads "designer support for our CRUD Modules".
+    - Drop `crud` from the `.imodspec` `<tags>`.
+    - Record in `CONTEXT.md`: *"intention only — CRUD generation lives in Intent.Application.DomainInteractions"*.
+    - Make one commit.
+8. **Hand-off.** Leave the Modules.NET worktree uncommitted and tell you to start a session in it with the prompt below.
+
+### Part B — Modules.NET session
+
+Prompt to start it with: *"Close out the Intent.Application.DomainInteractions side of `D:\.worktrees\Intent.Modules\workitem\crud-suggestions\intent\.plans\2026-10-23-move-crud-accelerators-to-application-domaininteractions.mdx`, Part B."*
+
+9. **Version check.** Confirm 1.3.0-pre.0 and the dependency on designer module 2.5.0-pre.0.
+10. **Dependency audit.** Confirm the new metadata references (Services, Domain, Domain.Repositories) have matching `.imodspec` dependencies.
+11. **Docs:**
+    - Add a release note.
+    - Add a README section on the accelerators, taking the content and images moved from the designer module.
+    - Add a new `CONTEXT.md` recording why this module owns the accelerators, and that it must be released with designer module 2.5.0.
+    - Point the `MediatR.CRUD` and `ServiceImplementations.CRUD` READMEs at it. These are docs-only edits with no version bump.
+12. **Commit** on `workitem/crud-suggestions`.
+
+## Verification
+
+- Both module builds exit 0, and both designer-settings diffs are inspected as in step 6.
+- The recompiled `crud-api.js` and `repository-operation-api.js` match the moved files, so no logic was lost in the move.
+- Install both prerelease modules into `Tests/Accelerators`, which already has DomainInteractions 2.4.8, together with `Intent.Application.DomainInteractions`. Then check by hand:
+  - **Create CRUD CQRS Operations** and **Create CRUD Traditional Service** appear **once** on a Services package, a folder and a diagram, and each creates its commands and queries with Entity Action mappings.
+  - The Domain Class suggestions navigate to the Services designer and run.
+  - The repository-operation suggestions work.
+  - **Sync … with Entity** still appears and comes from the designer module.
+- Uninstall Application.DomainInteractions from the test app and confirm the CRUD options disappear while the Entity Action menus remain.
+
+If a local Modules.NET `.imod` can't be found to install (no asset-repository entry for the worktree output), report the path rather than configuring it, and mark the generated output as unverified.
+
+## Open questions resolved
+
+- **Q:** Where should the CRUD accelerators go? **A:** `Intent.Application.DomainInteractions` (Modules.NET).
+- **Q:** Should Sync with Entity, Create new result DTO and Convert to advanced mapping move? **A:** No, all three stay.
+- **Q:** What about the legacy basic-mode CRUD scripts? **A:** Move them along with the advanced ones.
+- **Q:** How should the work be split across the repos? **A:** Hybrid. This session does all the model work in both repos with both solutions open, plus the Intent.Modules close-out. A session rooted in Modules.NET does the Modules.NET close-out.
+- **Q:** Where does the Modules.NET worktree go? **A:** Create the default, `D:\.worktrees\Intent.Modules.NET\workitem\crud-suggestions`, on branch `workitem/crud-suggestions` off `development`.
