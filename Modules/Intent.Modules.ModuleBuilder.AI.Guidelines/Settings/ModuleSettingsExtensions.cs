@@ -13,7 +13,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Settings
     {
         public static AIGuidelinesSettings GetAIGuidelinesSettings(this IApplicationSettingsProvider settings)
         {
-            return new AIGuidelinesSettings(settings.GetGroup("3467f2ef-cc10-476d-bc26-4948976b4083"));
+            return new AIGuidelinesSettings(settings.GetGroup("a7267a53-6d79-4838-8fbc-82f3b6ef960a"));
         }
     }
 
@@ -39,16 +39,16 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Settings
             return _groupSettings.GetSetting(settingId);
         }
 
-        public bool UsePreReleaseVersions() => bool.TryParse(_groupSettings.GetSetting("8b2a8402-0d7b-4273-96ae-4d857fcc16fb")?.Value.ToPascalCase(), out var result) && result;
+        public bool UsePreReleaseVersions() => bool.TryParse(_groupSettings.GetSetting("0e96cf15-32bf-4e34-a082-a79f84c5668e")?.Value.ToPascalCase(), out var result) && result;
 
-        public bool MaintainModuleREADME() => bool.TryParse(_groupSettings.GetSetting("a1bd5e9f-5d24-49fe-91cd-8e823ed42535")?.Value.ToPascalCase(), out var result) && result;
+        public bool MaintainModuleREADME() => bool.TryParse(_groupSettings.GetSetting("b6cf3b08-dc4d-49b3-a11e-4b41c10ecb97")?.Value.ToPascalCase(), out var result) && result;
 
-        public bool MaintainModuleIcon() => bool.TryParse(_groupSettings.GetSetting("a4bdd803-c925-4711-aa99-f0fb218e4c7d")?.Value.ToPascalCase(), out var result) && result;
+        public bool MaintainModuleIcon() => bool.TryParse(_groupSettings.GetSetting("f832145b-74f3-48bf-878e-16b6f0203781")?.Value.ToPascalCase(), out var result) && result;
 
-        public bool MaintainModuleContext() => bool.TryParse(_groupSettings.GetSetting("e7cf062a-7f1d-464d-aa9c-4795a1a99bbb")?.Value.ToPascalCase(), out var result) && result;
+        public bool MaintainModuleContext() => bool.TryParse(_groupSettings.GetSetting("f82fe4f9-a5fb-444e-8248-fdcdef66c920")?.Value.ToPascalCase(), out var result) && result;
 
-        public bool MaintainReleaseNotes() => bool.TryParse(_groupSettings.GetSetting("6c9e2127-cc91-4719-bb0d-e5c162318686")?.Value.ToPascalCase(), out var result) && result;
+        public bool MaintainReleaseNotes() => bool.TryParse(_groupSettings.GetSetting("af5fa90e-3199-4f3e-80af-a374527fe48d")?.Value.ToPascalCase(), out var result) && result;
 
-        public bool InstallAgentGateHooks() => bool.TryParse(_groupSettings.GetSetting("2ac65dde-288c-43dc-ba46-d0681bc3ac6c")?.Value.ToPascalCase(), out var result) && result;
+        public bool InstallAgentGateHooks() => bool.TryParse(_groupSettings.GetSetting("c4066c25-1ee9-4b0c-a3ed-f84148ea0512")?.Value.ToPascalCase(), out var result) && result;
     }
 }

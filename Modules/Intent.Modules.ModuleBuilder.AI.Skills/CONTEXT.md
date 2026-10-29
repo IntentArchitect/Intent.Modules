@@ -141,6 +141,9 @@ Obsolete from `1.2.0`: it generates nothing, and exists only to move installed a
   was renamed to AI.Guidelines before its first stable release, since it no longer carries only workflow
   skills, and its own version restarted at `1.0.0-pre.0`. AI.Workflow's published prereleases are unlisted, not
   made obsolete. Everything this file says about AI.Workflow above now applies to AI.Guidelines.
+- **`1.2.0-pre.1` raises that dependency to AI.Guidelines `1.0.0-pre.1` (2026-10-29).** AI.Guidelines `1.0.0-pre.0`
+  shared AI.Workflow's settings ids, so updating this module in an app that still had AI.Workflow put both in
+  one app and broke every later module operation there. `pre.1` has its own ids; see AI.Guidelines' `CONTEXT.md`.
 
 ## Invariants & Constraints
 

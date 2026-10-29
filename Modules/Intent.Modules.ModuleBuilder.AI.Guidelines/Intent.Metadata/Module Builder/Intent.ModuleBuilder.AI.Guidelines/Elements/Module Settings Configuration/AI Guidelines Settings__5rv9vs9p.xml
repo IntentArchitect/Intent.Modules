@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="3467f2ef-cc10-476d-bc26-4948976b4083" type="Module Settings Configuration" typeId="37e678f8-370a-4b05-ae44-69bb3d2b39b6">
+<class id="a7267a53-6d79-4838-8fbc-82f3b6ef960a" type="Module Settings Configuration" typeId="37e678f8-370a-4b05-ae44-69bb3d2b39b6">
   <name>AI Guidelines Settings</name>
   <display>AI Guidelines Settings</display>
   <isAbstract>false</isAbstract>
@@ -21,14 +21,14 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="8b2a8402-0d7b-4273-96ae-4d857fcc16fb" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+    <childElement id="0e96cf15-32bf-4e34-a082-a79f84c5668e" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
       <comment>Switches the generated module-version-increment skill between standard semantic versions (off) and prerelease versions (on). Off by default.</comment>
       <name>Use Pre-release Versions</name>
       <display>Use Pre-release Versions</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>3467f2ef-cc10-476d-bc26-4948976b4083</parentFolderId>
+      <parentFolderId>a7267a53-6d79-4838-8fbc-82f3b6ef960a</parentFolderId>
       <packageId>e202e068-b156-4cf2-b78b-c6504466d05e</packageId>
       <packageName>Intent.ModuleBuilder.AI.Guidelines</packageName>
       <stereotypes>
@@ -50,14 +50,14 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="a1bd5e9f-5d24-49fe-91cd-8e823ed42535" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+    <childElement id="b6cf3b08-dc4d-49b3-a11e-4b41c10ecb97" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
       <comment>When on, the generated module-docs-chore skill treats docs/README.md as an artifact to create and maintain. Release notes are only ever maintained when already present, regardless of this setting.</comment>
       <name>Maintain Module README</name>
       <display>Maintain Module README</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>3467f2ef-cc10-476d-bc26-4948976b4083</parentFolderId>
+      <parentFolderId>a7267a53-6d79-4838-8fbc-82f3b6ef960a</parentFolderId>
       <packageId>e202e068-b156-4cf2-b78b-c6504466d05e</packageId>
       <packageName>Intent.ModuleBuilder.AI.Guidelines</packageName>
       <stereotypes>
@@ -79,14 +79,14 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="a4bdd803-c925-4711-aa99-f0fb218e4c7d" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+    <childElement id="f832145b-74f3-48bf-878e-16b6f0203781" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
       <comment>When on, the generated module-docs-chore skill creates a module's SVG icon when the module has none, sourcing the description to use from the module's own .imodspec summary/tags or CONTEXT.md purpose section, and applying it with the module-svg-icon skill if that skill is available in the environment. An existing icon is never overwritten automatically, regardless of this setting.</comment>
       <name>Maintain Module Icon</name>
       <display>Maintain Module Icon</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>3467f2ef-cc10-476d-bc26-4948976b4083</parentFolderId>
+      <parentFolderId>a7267a53-6d79-4838-8fbc-82f3b6ef960a</parentFolderId>
       <packageId>e202e068-b156-4cf2-b78b-c6504466d05e</packageId>
       <packageName>Intent.ModuleBuilder.AI.Guidelines</packageName>
       <stereotypes>
@@ -108,14 +108,14 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="e7cf062a-7f1d-464d-aa9c-4795a1a99bbb" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+    <childElement id="f82fe4f9-a5fb-444e-8248-fdcdef66c920" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
       <comment>When on, the generated module-context-capture skill also creates a CONTEXT.md for a module that does not have one yet, once real design decisions start accumulating. Off by default: only an existing CONTEXT.md is read and maintained.</comment>
       <name>Maintain Module Context</name>
       <display>Maintain Module Context</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>3467f2ef-cc10-476d-bc26-4948976b4083</parentFolderId>
+      <parentFolderId>a7267a53-6d79-4838-8fbc-82f3b6ef960a</parentFolderId>
       <packageId>e202e068-b156-4cf2-b78b-c6504466d05e</packageId>
       <packageName>Intent.ModuleBuilder.AI.Guidelines</packageName>
       <stereotypes>
@@ -137,14 +137,14 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="6c9e2127-cc91-4719-bb0d-e5c162318686" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+    <childElement id="af5fa90e-3199-4f3e-80af-a374527fe48d" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
       <comment>When on, the generated module-docs-chore skill creates a module's release-notes.md when that module's own Module Settings has Include Release Notes ticked but the file is missing. Off by default: a ticked-but-missing file is reported rather than created. The per-module Include Release Notes checkbox still decides whether a module keeps release notes at all; this setting only governs whether a missing file gets created for a module that already asked for one.</comment>
       <name>Maintain Release Notes</name>
       <display>Maintain Release Notes</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>3467f2ef-cc10-476d-bc26-4948976b4083</parentFolderId>
+      <parentFolderId>a7267a53-6d79-4838-8fbc-82f3b6ef960a</parentFolderId>
       <packageId>e202e068-b156-4cf2-b78b-c6504466d05e</packageId>
       <packageName>Intent.ModuleBuilder.AI.Guidelines</packageName>
       <stereotypes>
@@ -166,14 +166,14 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="2ac65dde-288c-43dc-ba46-d0681bc3ac6c" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+    <childElement id="c4066c25-1ee9-4b0c-a3ed-f84148ea0512" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
       <comment>Governs whether the agent gate is generated at all: a gate.cs and hook configuration for each harness folder present (Claude Code, Codex, GitHub Copilot CLI, Cursor, Kiro, OpenCode). Off by default: a consumer gets the instructions and skills and nothing else.</comment>
       <name>Install Agent Gate Hooks</name>
       <display>Install Agent Gate Hooks</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>3467f2ef-cc10-476d-bc26-4948976b4083</parentFolderId>
+      <parentFolderId>a7267a53-6d79-4838-8fbc-82f3b6ef960a</parentFolderId>
       <packageId>e202e068-b156-4cf2-b78b-c6504466d05e</packageId>
       <packageName>Intent.ModuleBuilder.AI.Guidelines</packageName>
       <stereotypes>
