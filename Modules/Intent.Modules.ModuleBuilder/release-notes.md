@@ -1,3 +1,7 @@
+### Version 3.21.0
+
+- Feature: Added `Hide Label` to an association's `Visual Settings`, so an association type can leave out the label that Intent Architect otherwise lets users set and draws halfway along the line.
+
 ### Version 3.20.0
 
 - Improvement: The `Severity` property of `Template Settings` is renamed to `Review Importance`, which better describes how important it is to review changes to the files a template generates. Existing values are kept.

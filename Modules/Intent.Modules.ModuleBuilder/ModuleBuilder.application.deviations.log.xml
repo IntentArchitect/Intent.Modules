@@ -125,11 +125,10 @@
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#153a4063-82a1-4515-87f1-44c189004fad</correlationId>
       <path>Api/AssociationVisualSettingsModel.cs</path>
       <count>13</count>
-      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2025-06-25T12:47:45.8742779Z</updatedAt>
+      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
+      <updatedAt>2026-10-29T20:48:49.9088295Z</updatedAt>
       <deviationsHash>26330BF9D3FD9F7D32DDE422F744E860460B7B7B1EAB0887A81CF8E2CADF44DD</deviationsHash>
-      <fileHash>D3726A74A4281BE6F6E9EF6573A1A183AB1488F500249329C55CC92A1689AFEC</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#d45e383d-90ba-4b64-aca7-34ca100cea21</correlationId>
