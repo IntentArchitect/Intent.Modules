@@ -2,8 +2,8 @@
 name: module-dependency-audit
 description: "Verify a module's .imodspec dependencies match what its code and templates actually reference, and supply the ones the Software Factory did not detect. USE ONLY WHEN closing out a module change — this is Phase 4 step 2 of the module-building workflow, run after the version is confirmed and before documentation. DO NOT USE FOR bumping the module's own version (see module-version-increment), or for editing modules.config, which is never hand-edited. REQUIRES the module's implementation complete and its build green."
 keywords: [dependencies, imodspec, install, close-out, verification, module]
-template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDependencyAudit_SkillMd_Agents
-contentHash: 2FAB67B9084308D1D3007CAEB5280869B0FF4BA466DD630AFF94DDF7D72C4D26
+template-id: Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleDependencyAudit_SkillMd_Agents
+contentHash: 6E174CC7EBABB8FAADDF72CC7F9C22974CA42C61F6DDA89E67F3B46A457B31ED
 ---
 # Skill: module-dependency-audit
 

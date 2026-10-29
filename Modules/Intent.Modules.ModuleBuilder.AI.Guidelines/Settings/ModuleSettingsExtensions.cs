@@ -1,0 +1,54 @@
+using System;
+using Intent.Configuration;
+using Intent.Engine;
+using Intent.Modules.Common.Templates;
+using Intent.RoslynWeaver.Attributes;
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions", Version = "1.0")]
+
+namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Settings
+{
+    public static class ModuleSettingsExtensions
+    {
+        public static AIGuidelinesSettings GetAIGuidelinesSettings(this IApplicationSettingsProvider settings)
+        {
+            return new AIGuidelinesSettings(settings.GetGroup("3467f2ef-cc10-476d-bc26-4948976b4083"));
+        }
+    }
+
+    public class AIGuidelinesSettings : IGroupSettings
+    {
+        private readonly IGroupSettings _groupSettings;
+
+        public AIGuidelinesSettings(IGroupSettings groupSettings)
+        {
+            _groupSettings = groupSettings;
+        }
+
+        public string Id => _groupSettings.Id;
+
+        public string Title
+        {
+            get => _groupSettings.Title;
+            set => _groupSettings.Title = value;
+        }
+
+        public ISetting GetSetting(string settingId)
+        {
+            return _groupSettings.GetSetting(settingId);
+        }
+
+        public bool UsePreReleaseVersions() => bool.TryParse(_groupSettings.GetSetting("8b2a8402-0d7b-4273-96ae-4d857fcc16fb")?.Value.ToPascalCase(), out var result) && result;
+
+        public bool MaintainModuleREADME() => bool.TryParse(_groupSettings.GetSetting("a1bd5e9f-5d24-49fe-91cd-8e823ed42535")?.Value.ToPascalCase(), out var result) && result;
+
+        public bool MaintainModuleIcon() => bool.TryParse(_groupSettings.GetSetting("a4bdd803-c925-4711-aa99-f0fb218e4c7d")?.Value.ToPascalCase(), out var result) && result;
+
+        public bool MaintainModuleContext() => bool.TryParse(_groupSettings.GetSetting("e7cf062a-7f1d-464d-aa9c-4795a1a99bbb")?.Value.ToPascalCase(), out var result) && result;
+
+        public bool MaintainReleaseNotes() => bool.TryParse(_groupSettings.GetSetting("6c9e2127-cc91-4719-bb0d-e5c162318686")?.Value.ToPascalCase(), out var result) && result;
+
+        public bool InstallAgentGateHooks() => bool.TryParse(_groupSettings.GetSetting("2ac65dde-288c-43dc-ba46-d0681bc3ac6c")?.Value.ToPascalCase(), out var result) && result;
+    }
+}

@@ -1,5 +1,5 @@
 ---
-contentHash: D94EABEA7CA7458BD17A186F153CD5446DCD36BF2EF6D67131528567DBE8F2D7
+contentHash: C9F5E62E20ADCFA0AE6D28C08D2BBF1A4DCE62ACACDC4BB7CED1620D1C0508EA
 ---
 # Orchestration Cheatsheet
 
@@ -512,7 +512,7 @@ foreach (var template in templates)
 > **Setting vs reading.** Metadata has two distinct uses, and the second is easy to miss:
 > your own cross-step state (`node.AddMetadata("my-key", value)` in one callback, read back in a
 > later one), **and** reading the designer model the host template already attached. `"model"` is
-> the second kind. See `file-builder-expert` for the metadata API itself.
+> the second kind. The `file-builder-expert` skill, if available, covers the metadata API itself.
 
 ===
 
@@ -629,7 +629,7 @@ The **Find Rule**: Template B must use a **strictly higher priority** than Templ
 
 ## §Resolution & Consumption — Stereotype-Driven AfterBuild
 
-Bridges the two skills: resolve the template (orchestrator), then consume the stereotype (`intent-metadata-consumer`). `GetMySettings()` is the accessor Module Builder generates in your module for a "My Settings" stereotype with a checkbox, a text, a number and a select property.
+Bridges the two skills: resolve the template (orchestrator), then consume the stereotype (the `intent-metadata-consumer` skill, if available). `GetMySettings()` is the accessor Module Builder generates in your module for a "My Settings" stereotype with a checkbox, a text, a number and a select property.
 
 ```csharp
 // Factory extension: enriches entity templates based on stereotype metadata

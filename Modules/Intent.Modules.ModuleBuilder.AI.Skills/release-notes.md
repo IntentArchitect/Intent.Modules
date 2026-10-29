@@ -1,9 +1,21 @@
+### Version 1.2.0
+
+> ⚠️ **NOTE**
+>
+> Obsolete. This module can safely be uninstalled. Its remaining skills (`intent-module-orchestrator`, `module-building-strategies` and `module-svg-icon`) and the `exception-guidelines` and `known-build-gotchas` instructions moved to `Intent.ModuleBuilder.AI.Guidelines`, which is installed with this version. The other seven are built into Intent Architect from 5.4.0. This version requires Intent Architect 5.4.0 or later.
+
 ### Version 1.1.0
+
+> ⚠️ **NOTE**
+>
+> Seven skills are removed because they ship built into Intent Architect from 5.4.0: `add-designer-extension`, `add-module-migration`, `architecture-templates`, `file-builder-expert`, `intent-metadata-consumer`, `module-docs` and `module-versioning`. The Software Factory run after updating deletes their files. The bundle now ships `intent-module-orchestrator`, `module-building-strategies` and `module-svg-icon`, plus the `exception-guidelines` and `known-build-gotchas` instructions.
 
 > ⚠️ **NOTE**
 >
 > Five skills are removed and their content merged into others: `add-association-type` into `add-designer-extension`, `module-element-icons` into `module-svg-icon`, `intent-mapping-architect` and `module-debugging` into `file-builder-expert`, and `intent-domain-interactions-expert` is dropped because interaction strategies are deprecated. The Software Factory run after updating deletes their files.
 
+- Improvement: Supports Intent Architect 5.1.0 up to, but not including, 5.4.0. From 5.4.0, seven of these skills ship built into Intent Architect and this module is no longer offered, so uninstall it once you upgrade.
+- Improvement: Where the remaining skills and instructions point at a removed skill, they now say "if available", so the wording holds whether or not that skill is installed.
 - Improvement: The bundle ships 10 skills instead of 15, so agents choose from fewer, broader skills. `file-builder-expert` now covers designer mappings (with a mapping cheatsheet) and debugging any module code, module tasks included, by logging a runtime value (with a debugging resource, and named in its description so a logging question finds it), `add-designer-extension` covers defining a new association type, and `module-svg-icon` covers stereotype and element-type icons as well as the module's package icon.
 - Improvement: `module-building-strategies` lists interaction strategies (`IInteractionStrategy`) as a pattern new modules must not copy: generate the handler's structure and leave its body to the developer or AI.
 - Improvement: Version-raise guidance names the exact versions each API needs in one line and points to `known-build-gotchas` for the `NU1605` chain, instead of repeating the chain in every skill.

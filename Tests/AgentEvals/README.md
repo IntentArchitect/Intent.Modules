@@ -70,7 +70,7 @@ the suite prevents by running Claude Code with `CLAUDE_CODE_DISABLE_AUTO_MEMORY=
    harness's hooks (Copilot and Cursor read `.claude/settings.json`), which would run the gate twice
    unless Claude's copy steps aside, as it does for Copilot.
 2. **Hooks** (`S1`-`S9`, `D1`) - real runs that should make a hook matter.
-3. **Guidance** (`G1`-`G5`, `I1`-`I2`, `R1`-`R5`) - real runs that show whether the instructions and skills are actually used.
+3. **Guidance** (`G1`-`G5`, `I1`-`I2`, `R3`, `C5`-`C21`) - real runs that show whether the instructions and skills are actually used.
 
 | Id | Scenario | Pass when |
 |---|---|---|
@@ -91,8 +91,13 @@ the suite prevents by running Claude Code with `CLAUDE_CODE_DISABLE_AUTO_MEMORY=
 | G5 | An observable template change | `release-notes.md` is updated; `module-docs-chore` loads |
 | I1 | "Design a package icon" - headless, so no one can approve | `module-svg-icon` loads; drafts are rendered, zoomed and looked at; nothing is applied; no base64 payload reaches the agent |
 | I2 | Apply an icon the developer approved | the root `<icon>` is set by script and nothing else in the config changes; only the `.imodspec` is applied from the Software Factory run; no base64 payload reaches the agent |
-| R1-R5 | A how-to question for one AI.Skills skill (mapping resolver, association type, stereotype icon, logging a runtime value, and a neighbouring skill whose content is unchanged) | one of the skills that carries the answer loads, and the answer says the rule it teaches; nothing changes |
-| C1-C25 | Coverage of every AI.Skills skill and instruction: the rules an agent most likely gets wrong without them, deepest where skills were merged (`SkillCoverageScenarios.cs`) | the guidance's text reached the agent, and the answer says the rule; nothing changes. C16-C19 come from always-on instructions, so finding them is informational |
+| R3 | A how-to question for one AI.Guidelines skill (a stereotype icon) | one of the skills that carries the answer loads, and the answer says the rule it teaches; nothing changes |
+| C5-C8, C14-C21 | Coverage of the AI.Guidelines skills and instructions that came from AI.Skills: the rules an agent most likely gets wrong without them (`SkillCoverageScenarios.cs`) | the guidance's text reached the agent, and the answer says the rule; nothing changes. C16-C19 come from always-on instructions, so finding them is informational |
+
+R1, R2, R4, R5, C1-C4, C9-C13 and C22-C25 covered the seven skills Intent Architect 5.4 ships built in
+(`add-designer-extension`, `add-module-migration`, `architecture-templates`, `file-builder-expert`,
+`intent-metadata-consumer`, `module-docs`, `module-versioning`). Those are no longer tested from here, and
+their ids stay retired.
 
 A skill counts as **found** when its text reached the agent by any route: loaded as a skill, any of its files
 read, a search result quoting its lines, or an OpenCode subagent's report naming its files. Agents often grep

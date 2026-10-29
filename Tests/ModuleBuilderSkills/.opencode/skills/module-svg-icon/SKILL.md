@@ -3,8 +3,8 @@ name: module-svg-icon
 description: "Design or craft a house-style SVG icon for a module and apply it: as the module's package icon, after rendering it at the sizes Intent Architect shows it and getting the developer's approval on the image, or as a built-in or bespoke icon on a stereotype definition or custom element type the module defines. USE ONLY WHEN asked to create, design, set or refresh a module's own package icon, or to give a stereotype or element type its own icon. DO NOT USE FOR icons in a generated application's own UI or web assets. REQUIRES a description of what the icon should represent, or the developer's request that you design one; for a stereotype or element type, that element already modelled in the Module Builder designer."
 argument-hint: "[what gets the icon] [what it should represent, or leave blank to have it designed]"
 keywords: [icon, svg, branding, design, application.config, imodspec, package, stereotype, element type, designer]
-template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleSvgIcon_SkillMd_Agents
-contentHash: 61BDC7B83AEB3101FB5A944B337140428316DCF432F712DA59CA75A5B11D1481
+template-id: Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleSvgIcon_SkillMd_Agents
+contentHash: A2AAFB8CBBD2F89B534AF6ECA691002787ABB41A744990CAB799564545707BB2
 ---
 # Skill: module-svg-icon
 
@@ -28,8 +28,8 @@ the rendered image (Step 3).
 Not in the model: neither `Module Settings` nor the package has an `Icon` field. It is the root-level,
 attribute-less `<icon>data:image/svg+xml;base64,...</icon>` in the module's `.application.config`, with a
 sibling `<iconType>UrlImagePath</iconType>`. The Software Factory generates `.imodspec`'s `<iconUrl>`
-from it, so a hand edit to `<iconUrl>` is discarded, the same trap `module-versioning` describes for
-`<version>`.
+from it, so a hand edit to `<iconUrl>` is discarded, the same trap as `<version>`, which the `module-versioning` skill (if
+available) describes.
 
 ## The One Approved Exception
 

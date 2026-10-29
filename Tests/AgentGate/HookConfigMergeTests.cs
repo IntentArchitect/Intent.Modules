@@ -1,6 +1,6 @@
 using System.Text.Json.Nodes;
 using AgentGate.Tests.TestSupport;
-using Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks;
+using Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks;
 using Xunit;
 
 namespace AgentGate.Tests;

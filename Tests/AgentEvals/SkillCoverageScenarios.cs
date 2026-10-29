@@ -1,13 +1,17 @@
 namespace AgentEvals;
 
 // ---------------------------------------------------------------------------------------------
-// Layer 3 - guidance actually used: coverage of the AI.Skills set, for comparing two versions of it
+// Layer 3 - guidance actually used: coverage of the AI.Guidelines skill set, for comparing two versions of it
 // ---------------------------------------------------------------------------------------------
 //
-// C1-C25 were written by an independent case writer from the 1.0.4-pre.1 skills only, to show whether a
-// revised skill set gives the same results (C:\Dev\.ai-reports\2026-10-21-skill-trim-eval-cases.md). Each
+// C1-C25 were written by an independent case writer from the 1.0.4-pre.1 AI.Skills skills only, to show whether
+// a revised skill set gives the same results (C:\Dev\.ai-reports\2026-10-21-skill-trim-eval-cases.md). Each
 // lists the skills that carry its answer in both sets - old name first, then the skill it was folded into - so
 // one case scores either set. Run them against each set's generated output with --generated.
+//
+// C1-C4, C9-C13 and C22-C25 covered skills that Intent Architect 5.4 ships built in, so they are no longer
+// tested from here; their ids stay retired. C5 and C14 now count only module-building-strategies, the one
+// skill still shipped from here that carries their answer.
 
 /// <summary>A how-to question whose answer an always-on instruction carries, so finding it is informational.</summary>
 public abstract class InstructionRoute : RoutingScenario
@@ -15,84 +19,7 @@ public abstract class InstructionRoute : RoutingScenario
     protected override bool GuidanceLeavesATrace => false;
 }
 
-// Cluster A - association types and designer extensions
-
-/// <summary>C1 - an association type is drawn through an Association Creation Option on the source's Element Extension.</summary>
-public sealed class AssociationCreationOptionRoute : RoutingScenario
-{
-    public override string Id => "C1";
-
-    public override string Title => "Association type: nothing to draw it with";
-
-    public override string Prompt =>
-        "I've modelled a new association type in SampleModule's Module Builder designer for drawing from a Command to an " +
-        "integration event in the Services designer. Its Designer Settings node already extends the Services designer and the " +
-        "Software Factory ran without errors, but when users right-click a Command there is no option to draw it. What is missing?" + AnswerOnly;
-
-    protected override string[] Skills => ["add-association-type", "add-designer-extension"];
-
-    protected override string[][] AnswerMarkers => [["association creation option"], ["element extension"], ["target end", "destination end"]];
-
-    protected override string Expectation => "an Association Creation Option on the source's Element Extension, typed to the target end";
-}
-
-/// <summary>C2 - the mapping dialog and the Processing Action trait go on the association's target end.</summary>
-public sealed class AssociationMappingRoute : RoutingScenario
-{
-    public override string Id => "C2";
-
-    public override string Title => "Association type: mapping dialog and traits";
-
-    public override string Prompt =>
-        "Users of SampleModule's new 'Publish Integration Event' association should be able to open a mapping dialog from it, " +
-        "and the module's mapping settings need to tell which end of it is mappable. How do I configure the association?" + AnswerOnly;
-
-    protected override string[] Skills => ["add-association-type", "add-designer-extension"];
-
-    protected override string[][] AnswerMarkers => [["target end", "destination end"], ["processing action"]];
-
-    protected override string Expectation => "the mapping option and the [Processing Action] trait on the target end";
-}
-
-/// <summary>C3 - a context-menu option on a foreign element needs Type Reference Extension Settings and an Element Creation Option.</summary>
-public sealed class ForeignContextMenuRoute : RoutingScenario
-{
-    public override string Id => "C3";
-
-    public override string Title => "Context-menu option on a foreign element";
-
-    public override string Prompt =>
-        "SampleModule should add a 'New Audit Rule' option to the context menu of the Domain designer's Class element. Class " +
-        "belongs to Intent.Modelers.Domain, not to SampleModule. What do I model in the Module Builder designer?" + AnswerOnly;
-
-    protected override string[] Skills => ["add-designer-extension"];
-
-    // The SKILL.md names the option's [context menu] parent; "Element Creation Option" is only in its workflow resource.
-    protected override string[][] AnswerMarkers => [["type reference extension settings"], ["element creation option", "[context menu]"]];
-
-    protected override string Expectation => "an Element Extension with Type Reference Extension Settings and an Element Creation Option";
-}
-
-/// <summary>C4 - AI Settings Rules ship only from element types; on a Package Extension they are dropped.</summary>
-public sealed class AiRulesOnPackageExtensionRoute : RoutingScenario
-{
-    public override string Id => "C4";
-
-    public override string Title => "AI rules on a Package Extension are dropped";
-
-    public override string Prompt =>
-        "SampleModule ships guidance for AI agents modelling in the Services designer: I applied AI Settings to its Package " +
-        "Extension for the Services package and wrote the guidance in Rules. After regenerating, agents in consuming apps never " +
-        "get it. Why, and where should it go instead?" + AnswerOnly;
-
-    protected override string[] Skills => ["add-designer-extension"];
-
-    protected override string[][] AnswerMarkers =>
-        [["element extension", "designer settings", "element settings"],
-         ["dropped", "not emitted", "isn't emitted", "emits nothing", "not carried", "isn't carried", "not copied", "isn't copied", "only copies", "silently", "only from"]];
-
-    protected override string Expectation => "Rules on a Package Extension are dropped; they ship from element types";
-}
+// Cluster A - designer extensions
 
 /// <summary>C5 - a package's stereotypes ship only when the package is set to Include in Module.</summary>
 public sealed class IncludeInModuleRoute : RoutingScenario
@@ -107,7 +34,7 @@ public sealed class IncludeInModuleRoute : RoutingScenario
         "for Domain classes. It isn't in the repo yet. Apart from defining the stereotype itself, what do I have to set on that " +
         "package so the stereotype actually ships to consuming apps' Domain designer?" + AnswerOnly;
 
-    protected override string[] Skills => ["add-designer-extension", "add-association-type", "module-building-strategies", "module-versioning"];
+    protected override string[] Skills => ["module-building-strategies"];
 
     protected override string[][] AnswerMarkers => [["include in module"]];
 
@@ -193,106 +120,7 @@ public sealed class StereotypeIconPlanRoute : RoutingScenario
         base.Checks(evidence).Append(Icon.PayloadKeptOut(evidence, Icon.ApprovedSvg));
 }
 
-// Cluster C - mapping
-
-/// <summary>C9 - a resolver that returns null breaks the next one; it hands on with next?.Invoke.</summary>
-public sealed class ResolverReturnsNullRoute : RoutingScenario
-{
-    public override string Id => "C9";
-
-    public override string Title => "Resolver returning null breaks the next one";
-
-    public override string Prompt =>
-        "After I added SampleModule's custom mapping resolver, another installed module's resolver started throwing a " +
-        "NullReferenceException where it calls `next(mappingModel)`. Mine returns `null` for mapping types it doesn't handle. " +
-        "What's wrong, and how should mine look?" + AnswerOnly;
-
-    protected override string[] Skills => ["intent-mapping-architect", "file-builder-expert"];
-
-    protected override string[][] AnswerMarkers => [["next?.invoke"]];
-
-    protected override string Expectation => "hand unhandled nodes on through next?.Invoke";
-}
-
-/// <summary>C10 - the two-argument resolver needs Intent.Modules.Common.CSharp 3.9.2 and Intent.Modules.Common 3.7.3.</summary>
-public sealed class ResolverVersionsRoute : RoutingScenario
-{
-    public override string Id => "C10";
-
-    public override string Title => "Versions for the two-argument resolver";
-
-    public override string Prompt =>
-        "SampleModule still has Module Builder's default package versions. I've written a mapping resolver that implements " +
-        "`ResolveMappings(MappingModel mappingModel, MappingTypeResolverDelegate next)` and registered it with " +
-        "`AddMappingResolver(resolver, priority: -100)`. The build fails with CS0246. What do I need to change?" + AnswerOnly;
-
-    protected override string[] Skills => ["intent-mapping-architect", "file-builder-expert"];
-
-    protected override string[][] AnswerMarkers => [["3.9.2"], ["3.7.3"]];
-
-    protected override string Expectation => "raise Common.CSharp to 3.9.2 and Common to 3.7.3";
-}
-
-/// <summary>C11 - a lower (negative) priority makes a resolver run first.</summary>
-public sealed class ResolverPriorityRoute : RoutingScenario
-{
-    public override string Id => "C11";
-
-    public override string Title => "Making a resolver run first";
-
-    public override string Prompt =>
-        "Another installed module's mapping resolver already claims the 'Update Entity Mapping' nodes that SampleModule's " +
-        "resolver should handle, so mine never gets a chance. How do I make mine run first?" + AnswerOnly;
-
-    protected override string[] Skills => ["intent-mapping-architect", "file-builder-expert"];
-
-    // Intent's own resolvers go down to -10, so "well below", e.g. -100. "-10" and "negative" alone are the deleted
-    // interactions skill's strategy priority, which a removed-skill run quoted.
-    protected override string[][] AnswerMarkers => [["-100", "below -10", "lower than -10"]];
-
-    protected override string Expectation => "register well below Intent's own -10, e.g. -100";
-}
-
-// Cluster D - debugging
-
-/// <summary>C12 - Logging.Log has Debug/Info/Warning/Failure, no Error, and no message placeholders.</summary>
-public sealed class LoggingLevelsRoute : RoutingScenario
-{
-    public override string Id => "C12";
-
-    public override string Title => "Logging levels";
-
-    public override string Prompt =>
-        "I added `Logging.Log.Error(\"Retry count is {Count}\", model.RetryCount)` to SampleModule's template to trace a value, " +
-        "and it doesn't compile. How should I log it?" + AnswerOnly;
-
-    protected override string[] Skills => ["module-debugging", "file-builder-expert"];
-
-    protected override string[][] AnswerMarkers =>
-        [["failure"], ["$\"", "interpolat", "concatenat", "string.format", "build the string", "string yourself"]];
-
-    protected override string Expectation => "Logging.Log.Failure with the message built first";
-}
-
-/// <summary>C13 - module-task logs go to the module-tasks folder, not the software-factory one.</summary>
-public sealed class ModuleTaskLogsRoute : RoutingScenario
-{
-    public override string Id => "C13";
-
-    public override string Title => "Where module-task logs go";
-
-    public override string Prompt =>
-        "`Logging.Log.Debug` lines I added to SampleModule code that runs as a module task, not during a Software Factory run, " +
-        "never show up in the Software Factory log files. Where do they go?" + AnswerOnly;
-
-    protected override string[] Skills => ["module-debugging", "file-builder-expert"];
-
-    protected override string[][] AnswerMarkers => [["module-tasks"]];
-
-    protected override string Expectation => "the module-tasks log folder";
-}
-
-// Cluster E - file-builder-expert and strategies
+// Cluster E - strategies
 
 /// <summary>C14 - a hand-written body is emitted with the typed CSharpIntentManagedAttribute and a NotImplementedException stub.</summary>
 public sealed class IgnoredBodyRoute : RoutingScenario
@@ -309,7 +137,7 @@ public sealed class IgnoredBodyRoute : RoutingScenario
         "signature should keep following the model, and the body must survive later Software Factory runs. Show me the builder " +
         "calls on the method that set this up." + AnswerOnly;
 
-    protected override string[] Skills => ["file-builder-expert", "module-building-strategies"];
+    protected override string[] Skills => ["module-building-strategies"];
 
     protected override string[][] AnswerMarkers => [["csharpintentmanagedattribute"], ["notimplementedexception"]];
 
@@ -461,77 +289,4 @@ public sealed class RegistrationTooEarlyRoute : RoutingScenario
     protected override string[][] AnswerMarkers => [["aftertemplateregistration", "beforetemplateexecution"]];
 
     protected override string Expectation => "publish after template registration";
-}
-
-/// <summary>C22 - an architecture template's module version is its Component Module element's, not the .iatspec's.</summary>
-public sealed class ComponentModuleVersionRoute : RoutingScenario
-{
-    public override string Id => "C22";
-
-    public override string Title => "Propagating a version to an architecture template";
-
-    public override string Prompt =>
-        "SampleModule 1.1.0 is now published. Our architecture template pins SampleModule 1.0.0. I edited the version in its " +
-        "metadata.iatspec, but the next Software Factory run put 1.0.0 back. Where should I change it?" + AnswerOnly;
-
-    protected override string[] Skills => ["module-versioning", "architecture-templates"];
-
-    protected override string[][] AnswerMarkers => [["component module"]];
-
-    protected override string Expectation => "the Component Module element in the Application Template Builder designer";
-}
-
-/// <summary>C23 - a module README has the canonical sections, among them What This Module Generates and Related Modules.</summary>
-public sealed class ModuleReadmeSectionsRoute : RoutingScenario
-{
-    public override string Id => "C23";
-
-    public override string Title => "A module README's canonical sections";
-
-    public override string Prompt =>
-        "SampleModule's docs/README.md is only a title and one line. Bring it up to our standard layout for a module README: " +
-        "which H2 sections should it have, in which order, and which common README sections should it leave out? " +
-        "Just list them; don't change any files.";
-
-    protected override string[] Skills => ["module-docs"];
-
-    protected override string[][] AnswerMarkers => [["what this module generates"], ["related modules"]];
-
-    protected override string Expectation => "the canonical sections, What This Module Generates and Related Modules among them";
-}
-
-/// <summary>C24 - consumers' metadata is fixed on update by a Version Migration using IPersistenceLoader.</summary>
-public sealed class VersionMigrationRoute : RoutingScenario
-{
-    public override string Id => "C24";
-
-    public override string Title => "Fixing consumers' metadata on update";
-
-    public override string Prompt =>
-        "SampleModule's next version renames its 'Retry Policy' stereotype. Applications that installed 1.0.1 still have the old " +
-        "stereotype in their own metadata and need it fixed when they update. How do I set that up?" + AnswerOnly;
-
-    protected override string[] Skills => ["add-module-migration"];
-
-    protected override string[][] AnswerMarkers => [["version migration"], ["ipersistenceloader"]];
-
-    protected override string Expectation => "a Version Migration through IPersistenceLoader";
-}
-
-/// <summary>C25 - an architecture template seeds designer content through an .installation.config in resources/.</summary>
-public sealed class SeedMetadataRoute : RoutingScenario
-{
-    public override string Id => "C25";
-
-    public override string Title => "Seeding designer content for new apps";
-
-    public override string Prompt =>
-        "New applications created from our architecture template should start with a 'Domain' package already present in the " +
-        "Domain designer. Where does that seed content go, and how do I produce it?" + AnswerOnly;
-
-    protected override string[] Skills => ["architecture-templates"];
-
-    protected override string[][] AnswerMarkers => [["installation.config"], ["resources/", "resources folder", "`resources`"]];
-
-    protected override string Expectation => "an .installation.config under the template's resources/";
 }

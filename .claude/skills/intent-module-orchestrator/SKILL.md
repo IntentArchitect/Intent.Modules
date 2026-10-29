@@ -2,8 +2,8 @@
 name: intent-module-orchestrator
 description: "Wire a module's cross-module integration logic — DI/config registration requests, startup DSL calls, priority-banded callbacks, and template Role/TemplateId lookups across module boundaries. USE ONLY WHEN one module's template needs to enrich, depend on, or register infrastructure (DI, appsettings, startup) owned by another module's generated output. DO NOT USE FOR authoring a single template's own C# builder statements (see file-builder-expert) or reading designer metadata off a model (see intent-metadata-consumer). REQUIRES the target module/template's Role or TemplateId already identified."
 argument-hint: "[event type | factory extension scenario] [target template role or id]"
-template-id: Intent.ModuleBuilder.AI.Skills.Skills.IntentModuleOrchestrator_SkillMd_Agents
-contentHash: EE53CA9CB58EFF6D9049FCB4FD4D412395EDE46FF12E1A6C13B4F344A5B542CA
+template-id: Intent.ModuleBuilder.AI.Guidelines.Skills.IntentModuleOrchestrator_SkillMd_Agents
+contentHash: 30EB7C4D750FA3EE8AF2418B4678AE8B7B5AA4531BE38B33E3D07388D42FEC0F
 ---
 # Intent Module Orchestrator
 

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Bundles a fixed set of AI agent skills and instruction files for building Intent Architect modules into the consuming repo's `.agents/` folder. Every bundled file is generated from this module's own source and always overwritten on install/update — there is no per-repo customization, no designer model dependency for consumers, and no settings gating which skills are included.
+Obsolete from `1.2.0`: it generates nothing, and exists only to move installed applications onto `Intent.ModuleBuilder.AI.Guidelines`, which was named `Intent.ModuleBuilder.AI.Workflow` until 2026-10-29 (see the last Architectural Decision). Up to `1.1.x` it bundled a fixed set of AI agent skills and instruction files for building Intent Architect modules into the consuming repo's `.agents/` folder. Every bundled file is generated from this module's own source and always overwritten on install/update — there is no per-repo customization, no designer model dependency for consumers, and no settings gating which skills are included.
 
 ## Architectural Decisions
 
@@ -118,6 +118,29 @@ Bundles a fixed set of AI agent skills and instruction files for building Intent
   fix; an independent check agreed. To compare a future change to which skills exist, regenerate both versions'
   output and run the same cases against each: the cases name both the old and the new carrier skill, so one case
   scores either set.
+- **`1.1.x` is the last line with templates, capped at `[5.1.0-a,5.4.0-a)` (user decision, 2026-10-27).** From Intent Architect
+  5.4.0, `add-designer-extension`, `add-module-migration`, `architecture-templates`, `file-builder-expert`,
+  `intent-metadata-consumer`, `module-docs` and `module-versioning` ship built into Intent, written to the same
+  `skills/<name>/` folders this module writes to. `1.1.0` no longer generates those seven (user decision,
+  2026-10-27), so clients below 5.4 lose them on update; the cap stops 5.4 clients installing the module fresh,
+  and the few clients already using it are contacted directly to uninstall it on upgrade. The remaining skills
+  and instructions name a removed skill with "if available", and no longer cite `file-builder-expert` Musts by
+  number, since this module no longer controls that numbering. `<supportedClientVersions>` is hand-authored in
+  the `.imodspec`, which the Software Factory merges and does not rewrite.
+- **`1.2.x` is obsolete: no templates, a dependency on `Intent.ModuleBuilder.AI.Workflow`, `[5.4.0-a,6.0.0-a)`
+  (user decision, 2026-10-27).** This reverses the earlier same-day rejection of an obsolete version. Its six
+  remaining templates moved to AI.Workflow unchanged (same element names, folders and settings, so the same
+  output paths; only the TemplateIds and namespaces changed), and updating to `1.2.x` installs AI.Workflow
+  through the dependency, the ServiceDispatch → DomainInteractions pattern. It says it is obsolete through its
+  summary and release notes only: no warning or error at run time. Accepted, because about three clients are
+  affected and are contacted directly: a 5.4 client still on the uncapped `1.1.0-pre.0` that updates AI.Workflow
+  before AI.Skills has two modules writing the same six paths. Still to verify on 5.4 before release: whether
+  updating from `1.1.0-pre.0` makes the Software Factory delete Intent's built-in copies of the seven skills,
+  which sit at the paths that version generated.
+- **The dependency is on `Intent.ModuleBuilder.AI.Guidelines` `1.0.0-pre.0` (user decision, 2026-10-29).** AI.Workflow
+  was renamed to AI.Guidelines before its first stable release, since it no longer carries only workflow
+  skills, and its own version restarted at `1.0.0-pre.0`. AI.Workflow's published prereleases are unlisted, not
+  made obsolete. Everything this file says about AI.Workflow above now applies to AI.Guidelines.
 
 ## Invariants & Constraints
 
@@ -162,7 +185,7 @@ Bundles a fixed set of AI agent skills and instruction files for building Intent
 
 ## Module Interactions
 
-- **Intent.ModuleBuilder.AI.Workflow** — a separate module bundling conditional, process-shaped workflow skills (version increment timing, doc-chore cadence, context capture). No package dependency is declared between the two modules, and that stays deliberate — each bundle must remain independently installable. The one exception: AI.Workflow's `module-docs-chore` names `module-svg-icon` by name, but only as a **soft, conditional** pointer ("if the skill is available in your environment, use it") gated behind its own `MaintainModuleIcon` setting — never assumed present. Do not upgrade this to a declared dependency without a deliberate decision to do so; keep any further cross-references to this same soft-pointer shape.
+- **Intent.ModuleBuilder.AI.Guidelines** (named AI.Workflow until 2026-10-29) — a separate module bundling conditional, process-shaped workflow skills (version increment timing, doc-chore cadence, context capture). No package dependency is declared between the two modules, and that stays deliberate — each bundle must remain independently installable. The one exception: AI.Workflow's `module-docs-chore` names `module-svg-icon` by name, but only as a **soft, conditional** pointer ("if the skill is available in your environment, use it") gated behind its own `MaintainModuleIcon` setting — never assumed present. Do not upgrade this to a declared dependency without a deliberate decision to do so; keep any further cross-references to this same soft-pointer shape.
 
 ## Superseded
 

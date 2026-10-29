@@ -1,11 +1,14 @@
 namespace AgentEvals;
 
 // ---------------------------------------------------------------------------------------------
-// Layer 3 - guidance actually used: Intent.ModuleBuilder.AI.Skills routing
+// Layer 3 - guidance actually used: Intent.ModuleBuilder.AI.Guidelines routing
 // ---------------------------------------------------------------------------------------------
+//
+// R1, R2, R4 and R5 covered skills that Intent Architect 5.4 ships built in, so they are no longer
+// tested from here; their ids stay retired so old reports still read the same.
 
 /// <summary>
-/// A how-to question that only one of the AI.Skills skills answers well. It checks that the agent
+/// A how-to question that only one of the AI.Guidelines skills answers well. It checks that the agent
 /// finds that guidance and that its answer carries the rule the guidance teaches. A route is any
 /// one of <see cref="Skills"/>, so the same scenario can be scored before and after a skill is
 /// folded into another one.
@@ -50,43 +53,6 @@ public abstract class RoutingScenario : Scenario
     }
 }
 
-/// <summary>R1 - a custom mapping resolver hands the nodes it does not handle on with next?.Invoke.</summary>
-public sealed class MappingResolverRoute : RoutingScenario
-{
-    public override string Id => "R1";
-
-    public override string Title => "Mapping guidance for a custom resolver";
-
-    public override string Prompt =>
-        "SampleModule needs a C# template that turns a designer-modelled mapping (a command mapped onto an entity) into " +
-        "assignment statements, with a custom resolver for one mapping type. Sketch how that resolver should be written." + AnswerOnly;
-
-    protected override string[] Skills => ["intent-mapping-architect", "file-builder-expert"];
-
-    protected override string[][] AnswerMarkers => [["next?.invoke"]];
-
-    protected override string Expectation => "unhandled nodes go on through next?.Invoke";
-}
-
-/// <summary>R2 - a new kind of association is an Association Settings element with a source and a target end.</summary>
-public sealed class AssociationTypeRoute : RoutingScenario
-{
-    public override string Id => "R2";
-
-    public override string Title => "Designer guidance for a new association type";
-
-    public override string Prompt =>
-        "SampleModule needs a new kind of association that users can draw between two element types in the Domain designer. " +
-        "What do I set up in the Module Builder designer?" + AnswerOnly;
-
-    protected override string[] Skills => ["add-association-type", "add-designer-extension"];
-
-    // "Destination end" is the designer's own name for the target end (Association Destination End Settings).
-    protected override string[][] AnswerMarkers => [["association settings"], ["target end", "target-end", "destination end"]];
-
-    protected override string Expectation => "it is an Association Settings element configured at its target end";
-}
-
 /// <summary>
 /// R3 - a bespoke stereotype icon is a UrlImagePath data URI, set in the Module Builder designer (by a
 /// designer script, or by hand). The package icon's procedure also uses UrlImagePath and a data URI, so only
@@ -119,43 +85,4 @@ public sealed class ElementIconRoute : RoutingScenario
         "with run_designer_script (includedScriptPaths) rather than read or pasted by the agent. Bad behaviour: the package-icon " +
         "route instead - editing the root <icon>/<iconType> of the module's .application.config - which changes the module's own " +
         "icon, not the stereotype's. Mentioning the package icon only to contrast it is fine.";
-}
-
-/// <summary>R4 - module code is debugged by logging through Logging.Log and reading the Software Factory log.</summary>
-public sealed class ModuleDebuggingRoute : RoutingScenario
-{
-    public override string Id => "R4";
-
-    public override string Title => "Debugging guidance for a template";
-
-    public override string Prompt =>
-        "SampleModule's template generates the wrong output, and I can't tell what value a model property has while the " +
-        "Software Factory runs it. How do I see that value?" + AnswerOnly;
-
-    protected override string[] Skills => ["module-debugging", "file-builder-expert"];
-
-    protected override string[][] AnswerMarkers => [["logging.log"], ["software-factory"]];
-
-    protected override string Expectation => "to log through Logging.Log and read the software-factory log";
-}
-
-/// <summary>
-/// R5 - a neighbour: a skill whose content this change leaves alone, though file-builder-expert's description
-/// now names it as an exclusion. A drop here means that description now pulls metadata questions away.
-/// </summary>
-public sealed class MetadataConsumerRoute : RoutingScenario
-{
-    public override string Id => "R5";
-
-    public override string Title => "Metadata guidance for a stereotype option (neighbour)";
-
-    public override string Prompt =>
-        "In a SampleModule template I need to branch on the 'Mode' option of a 'My Settings' stereotype applied to a class. " +
-        "How should the template read that value?" + AnswerOnly;
-
-    protected override string[] Skills => ["intent-metadata-consumer"];
-
-    protected override string[][] AnswerMarkers => [["asenum", "optionsenum"]];
-
-    protected override string Expectation => "to read the option through its typed enum helper";
 }
