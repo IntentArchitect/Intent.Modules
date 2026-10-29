@@ -1,8 +1,28 @@
 # Intent.ModuleBuilder.AI.Guidelines
 
-This module does not generate application code. It drops a set of AI agent skills and standing instruction files for building Intent Architect modules into the repo it is installed in, so that an AI working in that repo follows the same lifecycle when building or changing an Intent Architect module: what to read before starting, when to move a version, and what has to be true before a change is finished. It also carries the module-building craft skills and instructions that used to ship in `Intent.ModuleBuilder.AI.Skills`; the rest of that craft is built into Intent Architect from 5.4.0, which this module requires.
+This module does not generate application code. It drops a set of AI agent skills and standing instruction files for building Intent Architect modules into the repo it is installed in, so that an AI working in that repo follows the same lifecycle when building or changing an Intent Architect module: what to read before starting, when to move a version, and what has to be true before a change is finished.
 
-Unlike the skills module, some of this module's content is settings-driven: the same skill renders differently depending on how the consuming application is configured.
+Some of this module's content is settings-driven: the same skill renders differently depending on how the consuming application is configured.
+
+## How This Module Relates To Intent Architect's Built-In Skills
+
+From 5.4.0, which this module requires, Intent Architect ships its own module-building skills out of the box: `file-builder-expert`, `intent-metadata-consumer`, `add-designer-extension`, `add-module-migration`, `architecture-templates`, `module-docs` and `module-versioning`. Each one covers a single task — how to write a template, read a stereotype, extend a designer, set a version. They are the building blocks.
+
+This module builds on them. It does not repeat how to do those tasks; it is a framework for doing them consistently across large-scale module work:
+
+- **A workflow** — four phases every module task moves through, and which skill to load in each.
+- **Process skills** — when to move a version, what to document, what to record in `CONTEXT.md`, and which dependencies to check before a change is finished.
+- **Judgment for bigger work** — `module-building-strategies` for design decisions, and proving code patterns in reference code before templating them from a specification.
+- **Guard rails** — the optional agent gate, which blocks hand-edits to Intent metadata and invalid version changes.
+
+This module's skills and instructions point the agent to a built-in skill where the task calls for one, such as `file-builder-expert` for template code or `intent-metadata-consumer` for reading a stereotype. Without the built-in skills the workflow still runs, but the agent has less to draw on for the task itself.
+
+| | Intent Architect's built-in skills | This module |
+| --- | --- | --- |
+| Answers | How do I do this task? | What has to happen, in what order, before this work is done? |
+| Scope | One task at a time | A whole module change, or a whole module |
+| Ships with | Intent Architect 5.4.0 and later | This module, installed per application |
+| Configurable | No | Yes — see Module Settings |
 
 ## What This Module Generates
 
