@@ -3,7 +3,7 @@
   "compilerOptions": {
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "outFile": "../../../../../Intent.Modules.NET/Modules/Intent.Modules.Application.DomainInteractions/resources/repository-operation-api.js",
+    "outFile": "./_dist.js",
     "removeComments": false,
     "sourceMap": false,
     "target": "ES2020",

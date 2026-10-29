@@ -155,6 +155,15 @@ Prompt to start it with: *"Close out the Intent.Application.DomainInteractions s
     - Point the `MediatR.CRUD` and `ServiceImplementations.CRUD` READMEs at it. These are docs-only edits with no version bump.
 12. **Commit** on `workitem/crud-suggestions`.
 
+<Callout id="part-b-notes" tone="warning" title="Found during Part A and its review — Part B must handle">
+
+- **README heading is load-bearing.** The moved documentation topic *Mapping CQRS Operations and Services to Repository Operations* now links to `intent-application-domaininteractions.html#modeling-a-repository-operation-call`. Title the new README section **Modeling a Repository Operation Call** so that anchor exists. Its four screenshots are already in `docs/images/`.
+- **Test-app pins.** 186 `Tests/**/modules.config` files in Intent.Modules.NET pin `Intent.Application.DomainInteractions` at 1.2.10, and Modules.NET CI's pre-build validation fails on a mismatch with the `.imodspec` version. Update them through Intent Architect (solution-level *Manage Modules*), never by hand. Those test apps also need `Intent.Modelers.Services.DomainInteractions` 2.5.0-pre.0, which comes from Intent.Modules, so it must be on a feed they can reach first.
+- **Where the `.js` files came from.** `crud-api.js` was copied as committed, because Intent.Modules CI never recompiled it. `repository-operation-api.js` was compiled from current sources, because Intent.Modules CI used to recompile it on every build and that output is what 2.4.x shipped. Modules.NET has no DesignerMacros build, so neither file is recompiled in CI any more. Record this in the new `CONTEXT.md`.
+- **Deviations log.** A Software Factory run started from the Intent.Modules solution once dropped the approved `.csproj` deviation from `Intent.Modules.Application.DomainInteractions.application.deviations.log.xml`; it was restored with git. Check it is still unchanged before committing.
+
+</Callout>
+
 ## Verification
 
 - Both module builds exit 0, and both designer-settings diffs are inspected as in step 6.

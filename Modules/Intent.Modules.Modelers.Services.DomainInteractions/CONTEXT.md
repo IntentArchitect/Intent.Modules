@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Intention only. This module owns the Services-designer vocabulary for service-to-domain interactions: the Create, Update, Delete and Query Entity Action associations, their mapping settings, and Processing Action. CRUD generation lives in `Intent.Application.DomainInteractions` (Intent.Modules.NET).
+Intention, plus tools that maintain existing intentions. This module owns the Services-designer vocabulary for service-to-domain interactions: the Create, Update, Delete and Query Entity Action associations, their mapping settings, and Processing Action, along with the tools that operate on an Entity Action mapping that already exists (Sync with Entity, Create new result DTO, Convert to advanced mapping system). Anything that starts from a domain element and generates services from it belongs in `Intent.Application.DomainInteractions` (Intent.Modules.NET); use that test when deciding where a new accelerator goes.
 
 ## Architectural Decisions
 
@@ -11,9 +11,9 @@ Intention only. This module owns the Services-designer vocabulary for service-to
 
 ## Invariants & Constraints
 
-- **`Default Mapping Mode` stays here, and other modules read it by id**: setting group `0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad`, field `14bc1e98-930b-494c-97a9-5da4e1f3a5fa`. The moved accelerators' visibility functions read it, as do Modelers.Services, Modelers.Services.CQRS and Common.CSharp. Renaming, moving or re-identifying it breaks them silently.
-- **The `Crud Api` / `Repository Operation Api` TypeScript sources stay in `DesignerMacros/src`**, because other bundles share them. Only the `outFile` points at `../Intent.Modules.NET/Modules/Intent.Modules.Application.DomainInteractions/resources/`, which resolves only when the two repos are siblings.
-- **The moved `.js` files were copied byte-for-byte, not recompiled.** At the move, the shared TS sources already carried unreleased fixes (commit `0304849817` recursion guard, plus DTO-name disambiguation and an `isMapped()` fix in the repository-operation bundle) that were never compiled into these files. The next recompile ships them, and that needs its own release note.
+- **`Default Mapping Mode` stays here, and other modules read it by id**: setting group `0ecca7c5-96f7-449a-96b9-f65ba0a4e3ad`, field `14bc1e98-930b-494c-97a9-5da4e1f3a5fa`. The moved accelerators' visibility functions read it, as do the designer settings of Modelers.Services and Modelers.Services.CQRS. Renaming, moving or re-identifying it breaks them silently.
+- **The `Crud Api` / `Repository Operation Api` TypeScript sources stay in `DesignerMacros/src`**, because other bundles share them. Each bundle's `tsconfig.json` writes a local `_dist.js`, and only its `tsconfig-save-to-module.json` writes into `../Intent.Modules.NET/Modules/Intent.Modules.Application.DomainInteractions/resources/` (resolves only when the two repos are siblings). CI's `compile-all.ps1` compiles every `tsconfig.json`, so a `tsconfig.json` must never point outside this repo.
+- **Neither moved `.js` is recompiled by CI any more.** Intent.Modules.NET has no DesignerMacros build, so a TS fix to either bundle ships only once someone compiles `tsconfig-save-to-module.json` and commits the output there. At the move, `crud-api.js` was copied as committed (CI never recompiled it), and `repository-operation-api.js` was compiled from current sources, because CI used to recompile it on every build and that compiled output (with the recursion guard) is what 2.4.x shipped. `crud-api.js` therefore still lags its TS sources (it lacks the commit `0304849817` recursion guard); the next compile of it is a behaviour change that needs its own release note.
 
 ## Module Interactions
 
