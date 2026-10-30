@@ -24,6 +24,15 @@ public class ElementVisualSettingsAnchorTests
     }
 
     [Fact]
+    public void Deprecated_anchor_points_are_still_written_alongside_segments()
+    {
+        var xml = Serialize(NewModel(anchorSegments: "return [[{x: 0, y: 0}, {x: 0, y: 0}]];", anchorSpread: "Off", anchorPoints: "return [{x: 0, y: 0}];").ToPersistable());
+
+        xml.ShouldContain("<anchorPointsFunction>return [{x: 0, y: 0}];</anchorPointsFunction>");
+        xml.ShouldContain("<anchorSegmentsFunction>");
+    }
+
+    [Fact]
     public void Off_spread_and_empty_segments_emit_nothing()
     {
         var xml = Serialize(NewModel(anchorSegments: null, anchorSpread: "Off").ToPersistable());
@@ -49,7 +58,7 @@ public class ElementVisualSettingsAnchorTests
         return writer.ToString();
     }
 
-    private static ElementVisualSettingsModel NewModel(string anchorSegments, string anchorSpread)
+    private static ElementVisualSettingsModel NewModel(string anchorSegments, string anchorSpread, string anchorPoints = null)
     {
         // Substitutes are built before any Returns() call, because NSubstitute can't nest them.
         var referenced = Substitute.For<ICanBeReferencedType>();
@@ -58,7 +67,7 @@ public class ElementVisualSettingsAnchorTests
         var stereotypes = new List<IStereotype>
         {
             Stereotype(ElementVisualSettingsModelStereotypeExtensions.Settings.DefinitionId,
-                ("Anchor Segments", anchorSegments), ("Anchor Spread", anchorSpread)),
+                ("Anchor Segments", anchorSegments), ("Anchor Spread", anchorSpread), ("Anchor Points", anchorPoints)),
             Stereotype(ElementVisualSettingsModelStereotypeExtensions.PositionSettings.DefinitionId)
         };
 

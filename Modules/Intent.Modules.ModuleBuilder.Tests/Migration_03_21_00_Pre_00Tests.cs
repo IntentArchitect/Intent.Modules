@@ -20,27 +20,40 @@ public class Migration_03_21_00_Pre_00Tests(ITestOutputHelper output)
     private readonly ITestOutputHelper _output = output;
 
     /// <summary>
-    /// The migration reads these from consumers' metadata, so a typo silently leaves Anchor Points behind.
+    /// The migration reads and writes these in consumers' metadata, so a typo silently leaves Anchor Points behind.
     /// They must equal this module's own Module Builder ids.
     /// </summary>
     [Fact]
     public void Ids_match_the_module_metadata()
     {
         Ids.SettingsDefinitionId.ShouldBe("96a4fa17-6283-4626-835e-a8f013d98b19");
-        Ids.AnchorPointsId.ShouldBe("838dcc53-b73e-4381-a3d2-db0afaf230b2");
+        Ids.OriginalAnchorPointsId.ShouldBe("838dcc53-b73e-4381-a3d2-db0afaf230b2");
+        Ids.AnchorPointsId.ShouldBe("a2f67b96-fbe6-48ce-ac40-0283412d5798");
         Ids.AnchorSegmentsId.ShouldBe("c5c75dd7-f419-4a03-8b78-e395ede92ddd");
     }
 
     [Fact]
-    public void Anchor_points_become_segments_and_the_old_value_is_cleared()
+    public void Anchor_points_are_copied_into_segments_and_re_keyed_onto_the_current_property()
     {
-        var element = NewVisualSettings(("Anchor Points", Ids.AnchorPointsId, "return [{x: 0, y: 0}, {x: 10, y: 5}];"));
+        const string points = "return [{x: 0, y: 0}, {x: 10, y: 5}];";
+        var element = NewVisualSettings(("Anchor Points", Ids.OriginalAnchorPointsId, points));
 
         Migration_03_21_00_Pre_00.TryConvertAnchorPoints(element).ShouldBeTrue();
 
-        Value(element, Ids.AnchorPointsId).ShouldBeNull();
+        Value(element, Ids.OriginalAnchorPointsId).ShouldBeNull();
+        Value(element, Ids.AnchorPointsId).ShouldBe(points);
         Value(element, Ids.AnchorSegmentsId).ShouldBe(
-            "const points = (() => { return [{x: 0, y: 0}, {x: 10, y: 5}]; })(); return points.map(p => [p, p]);");
+            "const points = (() => {\nreturn [{x: 0, y: 0}, {x: 10, y: 5}];\n})(); return points?.map(p => [p, p]);");
+    }
+
+    [Fact]
+    public void A_trailing_line_comment_does_not_swallow_the_closing_brackets()
+    {
+        var element = NewVisualSettings(("Anchor Points", Ids.OriginalAnchorPointsId, "return [{x: 0, y: 0}]; // top centre"));
+
+        Migration_03_21_00_Pre_00.TryConvertAnchorPoints(element).ShouldBeTrue();
+
+        Value(element, Ids.AnchorSegmentsId).ShouldEndWith("\n})(); return points?.map(p => [p, p]);");
     }
 
     [Theory]
@@ -51,7 +64,7 @@ public class Migration_03_21_00_Pre_00Tests(ITestOutputHelper output)
     [InlineData("function f() { return []; } return f();")]
     public void Every_accepted_body_start_is_converted(string body)
     {
-        var element = NewVisualSettings(("Anchor Points", Ids.AnchorPointsId, body));
+        var element = NewVisualSettings(("Anchor Points", Ids.OriginalAnchorPointsId, body));
 
         Migration_03_21_00_Pre_00.TryConvertAnchorPoints(element).ShouldBeTrue();
 
@@ -59,34 +72,44 @@ public class Migration_03_21_00_Pre_00Tests(ITestOutputHelper output)
     }
 
     [Fact]
-    public void A_body_that_never_returned_an_array_is_left_alone()
+    public void A_body_that_never_returned_an_array_is_kept_but_not_copied_into_segments()
     {
-        var element = NewVisualSettings(("Anchor Points", Ids.AnchorPointsId, "[{x: 0, y: 0}]"));
+        var element = NewVisualSettings(("Anchor Points", Ids.OriginalAnchorPointsId, "[{x: 0, y: 0}]"));
 
-        Migration_03_21_00_Pre_00.TryConvertAnchorPoints(element).ShouldBeFalse();
+        Migration_03_21_00_Pre_00.TryConvertAnchorPoints(element).ShouldBeTrue();
 
         Value(element, Ids.AnchorPointsId).ShouldBe("[{x: 0, y: 0}]");
         Value(element, Ids.AnchorSegmentsId).ShouldBeNull();
     }
 
     [Fact]
-    public void Existing_anchor_segments_are_kept_and_the_old_value_is_cleared()
+    public void Existing_anchor_segments_are_kept()
     {
         var element = NewVisualSettings(
-            ("Anchor Points", Ids.AnchorPointsId, "return [];"),
+            ("Anchor Points", Ids.OriginalAnchorPointsId, "return [];"),
             ("Anchor Segments", Ids.AnchorSegmentsId, "return [[{x: 1, y: 1}, {x: 2, y: 1}]];"));
 
         Migration_03_21_00_Pre_00.TryConvertAnchorPoints(element).ShouldBeTrue();
 
-        Value(element, Ids.AnchorPointsId).ShouldBeNull();
+        Value(element, Ids.AnchorPointsId).ShouldBe("return [];");
         Value(element, Ids.AnchorSegmentsId).ShouldBe("return [[{x: 1, y: 1}, {x: 2, y: 1}]];");
     }
 
     [Fact]
-    public void Nothing_changes_without_an_anchor_points_value()
+    public void An_empty_original_property_is_dropped_without_adding_anything()
     {
-        Migration_03_21_00_Pre_00.TryConvertAnchorPoints(NewVisualSettings(("Anchor Points", Ids.AnchorPointsId, null))).ShouldBeFalse();
+        var element = NewVisualSettings(("Anchor Points", Ids.OriginalAnchorPointsId, null));
+
+        Migration_03_21_00_Pre_00.TryConvertAnchorPoints(element).ShouldBeTrue();
+
+        element.Stereotypes.Single().Properties.ShouldBeEmpty();
+    }
+
+    [Fact]
+    public void Nothing_changes_without_the_original_property()
+    {
         Migration_03_21_00_Pre_00.TryConvertAnchorPoints(NewVisualSettings()).ShouldBeFalse();
+        Migration_03_21_00_Pre_00.TryConvertAnchorPoints(NewVisualSettings(("Anchor Points", Ids.AnchorPointsId, "return [];"))).ShouldBeFalse();
         Migration_03_21_00_Pre_00.TryConvertAnchorPoints(new ElementPersistable()).ShouldBeFalse();
     }
 
@@ -129,9 +152,9 @@ public class Migration_03_21_00_Pre_00Tests(ITestOutputHelper output)
         var after = writer.ToString();
         _output.WriteLine(after);
         after.ShouldContain("display=\"Anchor Segments\"");
-        after.ShouldContain("const points = (() =&gt; { return [{x: getDimensions().x, y: getDimensions().y}]; })(); return points.map(p =&gt; [p, p]);");
-        after.ShouldNotContain("return [{x: getDimensions().x, y: getDimensions().y}];\" isActive");
-        element.Stereotypes.Single().Properties.Single(x => x.Id == Ids.AnchorPointsId).Value.ShouldBeNull();
+        after.ShouldContain("const points = (() =&gt; {&#xA;return [{x: getDimensions().x, y: getDimensions().y}];&#xA;})(); return points?.map(p =&gt; [p, p]);");
+        after.ShouldNotContain("838dcc53-b73e-4381-a3d2-db0afaf230b2");
+        after.ShouldContain($"name=\"{Ids.AnchorPointsId}\" display=\"Anchor Points\" value=\"return [{{x: getDimensions().x, y: getDimensions().y}}];\" isActive=\"true\"");
         element.Stereotypes.Single().Properties.Single(x => x.Id == "43c4e468-1139-42b3-a064-fb49f679b72b").Value.ShouldBe("true");
     }
 

@@ -46,5 +46,14 @@
         <option>Even</option>
       </valueOptions>
     </property>
+    <property id="a2f67b96-fbe6-48ce-ac40-0283412d5798">
+      <hint>Deprecated: use Anchor Segments, where a point is [p, p]. Shown only while it has a value, and still written for Intent Architect clients that predate Anchor Segments.</hint>
+      <name>Anchor Points</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <apiTypeDefinition>element-visual-api</apiTypeDefinition>
+      <isActiveFunction>return !!properties["Anchor Points"].value;</isActiveFunction>
+    </property>
   </properties>
 </stereotypeDefinition>

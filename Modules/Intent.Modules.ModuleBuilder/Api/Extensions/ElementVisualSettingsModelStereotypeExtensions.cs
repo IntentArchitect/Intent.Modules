@@ -121,6 +121,11 @@ namespace Intent.ModuleBuilder.Api
                 return new AnchorSpreadOptions(_stereotype.GetProperty<string>("Anchor Spread"));
             }
 
+            public string AnchorPoints()
+            {
+                return _stereotype.GetProperty<string>("Anchor Points");
+            }
+
             public class AnchorSpreadOptions
             {
                 public readonly string Value;
