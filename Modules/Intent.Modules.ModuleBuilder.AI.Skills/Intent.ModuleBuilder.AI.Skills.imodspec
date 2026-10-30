@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.AI.Skills</id>
-  <version>1.2.0-pre.1</version>
+  <version>1.2.0</version>
   <supportedClientVersions>[5.4.0-a,6.0.0-a)</supportedClientVersions>
   <summary>Obsolete. This module can safely be uninstalled. Its skills are now built into Intent Architect or provided by Intent.ModuleBuilder.AI.Guidelines.</summary>
   <description>Obsolete. This module can safely be uninstalled. Its skills are now built into Intent Architect or provided by Intent.ModuleBuilder.AI.Guidelines.</description>
@@ -12,9 +12,9 @@
   <factoryExtensions></factoryExtensions>
   <moduleSettings></moduleSettings>
   <dependencies>
-    <dependency id="Intent.Common" version="3.11.9-pre.0" />
+    <dependency id="Intent.Common" version="3.11.9" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
-    <dependency id="Intent.ModuleBuilder.AI.Guidelines" version="1.0.0-pre.1" />
+    <dependency id="Intent.ModuleBuilder.AI.Guidelines" version="1.0.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

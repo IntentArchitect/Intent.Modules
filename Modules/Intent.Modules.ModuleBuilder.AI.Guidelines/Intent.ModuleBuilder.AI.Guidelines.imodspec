@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.AI.Guidelines</id>
-  <version>1.0.0-pre.1</version>
+  <version>1.0.0</version>
   <supportedClientVersions>[5.4.0-a,6.0.0-a)</supportedClientVersions>
   <summary>Bundles AI agent skills, instructions and hooks for building Intent Architect modules: versioning, documentation, context capture, and module-building guidance.</summary>
   <description>Bundles AI agent skills, instructions and hooks for building Intent Architect modules: versioning, documentation, context capture, and module-building guidance.</description>
@@ -121,7 +121,7 @@
     </group>
   </moduleSettings>
   <dependencies>
-    <dependency id="Intent.Common" version="3.11.9-pre.0" />
+    <dependency id="Intent.Common" version="3.11.9" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
   </dependencies>
   <files>
