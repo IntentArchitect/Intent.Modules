@@ -19,21 +19,32 @@
   <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
-    <property id="838dcc53-b73e-4381-a3d2-db0afaf230b2">
-      <hint>Limits where associations can connect. Returns an array of points (i.e. {x,y}[]).</hint>
-      <name>Anchor Points</name>
-      <type>string</type>
-      <controlType>function</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder>(optional)</placeholder>
-      <apiTypeDefinition>element-visual-api</apiTypeDefinition>
-    </property>
     <property id="43c4e468-1139-42b3-a064-fb49f679b72b">
       <name>Auto-Resize Default</name>
       <type>string</type>
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
       <defaultValue>true</defaultValue>
+    </property>
+    <property id="c5c75dd7-f419-4a03-8b78-e395ede92ddd">
+      <hint>Stretches of the outline lines attach to. Returns [[from, to], ...] where each point is {x,y}; [p, p] is a single point. Replaces Anchor Points when set.</hint>
+      <name>Anchor Segments</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <apiTypeDefinition>element-visual-api</apiTypeDefinition>
+    </property>
+    <property id="9281a029-6f7c-4ba0-a347-4609a3911993">
+      <hint>How lines sharing an anchor segment are positioned along it. Even spreads them evenly. Applies to curved lines only.</hint>
+      <name>Anchor Spread</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <defaultValue>Off</defaultValue>
+      <valueOptions>
+        <option>Off</option>
+        <option>Even</option>
+      </valueOptions>
     </property>
   </properties>
 </stereotypeDefinition>

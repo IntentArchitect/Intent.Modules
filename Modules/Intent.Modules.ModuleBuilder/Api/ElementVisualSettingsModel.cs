@@ -96,7 +96,8 @@ namespace Intent.ModuleBuilder.Api
             {
                 SpecializationType = this.TypeReference.Element.Name,
                 SpecializationTypeId = this.TypeReference.Element.Id,
-                AnchorPointsFunction = this.GetSettings()?.AnchorPoints(),
+                AnchorSegmentsFunction = this.GetSettings()?.AnchorSegments(),
+                AnchorSpread = this.GetSettings()?.AnchorSpread().IsEven() == true ? "even" : null,
                 AutoResizeEnabledByDefault = this.GetSettings()?.AutoResizeDefault() ?? true,
                 Position = new PositionSettings()
                 {

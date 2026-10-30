@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder</id>
   <version>3.21.0-pre.0</version>
@@ -330,5 +330,7 @@
     </group>
   </moduleSettings>
   <moduleSettingsExtensions />
-  <migrations />
+  <migrations>
+    <migration version="3.21.0-pre.0" />
+  </migrations>
 </package>

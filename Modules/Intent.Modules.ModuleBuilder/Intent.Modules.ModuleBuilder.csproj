@@ -24,6 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="Intent.Modules.ModuleBuilder.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Api\Modeler\**" />
     <Compile Remove="Intent.Metadata\**" />
     <EmbeddedResource Remove="Api\Modeler\**" />

@@ -264,11 +264,10 @@
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#5eea5fba-15df-4971-8541-6f19bad4297d</correlationId>
       <path>Api/ElementVisualSettingsModel.cs</path>
       <count>16</count>
-      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2025-06-13T15:27:02.6190994Z</updatedAt>
-      <deviationsHash>9C3AF7291276DA17FCC7533E4113396AE8499BA41E4A5D2BA5B6ED95144011F9</deviationsHash>
-      <fileHash>4DF340B115F2D1E322B8BB23B9F95DA20E37CED89A5E64A4456DF9491BA5CE42</fileHash>
+      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
+      <updatedAt>2026-10-30T07:07:18.0019397Z</updatedAt>
+      <deviationsHash>79098AA58396D0AB75ABDE469DCA73A45D85010165E50DE514101F2D64538B1B</deviationsHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#7d008e84-bb28-4b10-ba28-7439202fca76</correlationId>

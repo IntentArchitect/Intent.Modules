@@ -1,6 +1,8 @@
 ### Version 3.21.0
 
 - Feature: Added `Hide Label` to an association's `Visual Settings`, so an association type can leave out the label that Intent Architect otherwise lets users set and draws halfway along the line.
+- Feature: Added `Anchor Segments` and `Anchor Spread` to an `Element Visual Settings`' `Settings`. `Anchor Segments` returns `[[from, to], ...]`, the stretches of the outline lines attach to, where `[p, p]` is a single point. `Anchor Spread` set to `Even` spreads lines that share a segment evenly along it, and `Off` emits nothing. Both need an Intent Architect client that supports them.
+- Improvement: `Anchor Points` is removed from `Settings`, because a point is a segment `[p, p]`. A migration copies an existing `Anchor Points` value into `Anchor Segments` and clears the old one, and skips a body that never returned an array. Built modules that already contain `anchorPointsFunction` still load.
 
 ### Version 3.20.0
 

@@ -106,14 +106,57 @@ namespace Intent.ModuleBuilder.Api
 
             public string Name => _stereotype.Name;
 
-            public string AnchorPoints()
-            {
-                return _stereotype.GetProperty<string>("Anchor Points");
-            }
-
             public bool AutoResizeDefault()
             {
                 return _stereotype.GetProperty<bool>("Auto-Resize Default");
+            }
+
+            public string AnchorSegments()
+            {
+                return _stereotype.GetProperty<string>("Anchor Segments");
+            }
+
+            public AnchorSpreadOptions AnchorSpread()
+            {
+                return new AnchorSpreadOptions(_stereotype.GetProperty<string>("Anchor Spread"));
+            }
+
+            public class AnchorSpreadOptions
+            {
+                public readonly string Value;
+
+                public AnchorSpreadOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public AnchorSpreadOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Off":
+                            return AnchorSpreadOptionsEnum.Off;
+                        case "Even":
+                            return AnchorSpreadOptionsEnum.Even;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsOff()
+                {
+                    return Value == "Off";
+                }
+                public bool IsEven()
+                {
+                    return Value == "Even";
+                }
+            }
+
+            public enum AnchorSpreadOptionsEnum
+            {
+                Off,
+                Even
             }
 
         }
