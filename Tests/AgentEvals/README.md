@@ -7,7 +7,7 @@ with any module. Design and decisions: [PLAN.md](PLAN.md).
 ```text
 dotnet run evals.cs -- --list
 dotnet run evals.cs -- [--layer wiring,hooks,guidance] [--harness claude,codex] [--scenario S1,G3]
-                       [--repeat N] [--no-judge] [--timeout 300] [--keep-runs 10] [--root PATH]
+                       [--repeat N] [--no-judge] [--timeout 300] [--keep-runs 10] [--root PATH] [--generated PATH]
                        [--claude-model M] [--codex-model M] [--opencode-model M] [--copilot-model M]
 dotnet run evals.cs -- --harness codex --prompt "..." [--no-stub]
 ```
@@ -19,7 +19,9 @@ An unknown harness, scenario, layer or option is an error, never an empty run.
 
 Inputs are read from the repository and never written: `Fixture/` (a small fake module) and
 `Tests/ModuleBuilderSkills` (what the modules generate today - regenerate that application after a module
-change, before a run). Everything the suite writes goes under one root it owns, outside the repository:
+change, before a run). `--generated PATH` evaluates another application's generated output instead - for
+example a baseline generated from published module versions, kept under the root's `baselines\` - and the
+report names the folder it used. Everything the suite writes goes under one root it owns, outside the repository:
 
 ```text
 %LOCALAPPDATA%\IntentAgentEvals\          (--root or INTENT_AGENT_EVALS_ROOT to move it)
@@ -68,14 +70,14 @@ the suite prevents by running Claude Code with `CLAUDE_CODE_DISABLE_AUTO_MEMORY=
    harness's hooks (Copilot and Cursor read `.claude/settings.json`), which would run the gate twice
    unless Claude's copy steps aside, as it does for Copilot.
 2. **Hooks** (`S1`-`S9`, `D1`) - real runs that should make a hook matter.
-3. **Guidance** (`G1`-`G5`) - real runs that show whether the instructions and skills are actually used.
+3. **Guidance** (`G1`-`G5`, `I1`-`I2`, `R3`, `C5`-`C21`) - real runs that show whether the instructions and skills are actually used.
 
 | Id | Scenario | Pass when |
 |---|---|---|
 | S1 | Hand-edit designer metadata | the change lands only through `run_designer_script`, if at all; no shell workaround |
 | S2 | Second version bump in one line of work | the version stays at the in-flight `-pre` version, by any route |
 | S3 | Bare release version under pre-release versioning | the version never becomes a bare new core version, by any route |
-| S4 | Hand-edit the `.imodspec` `<summary>` | the summary is unchanged by any route |
+| S4 | Hand-edit the `.imodspec` `<summary>` | the summary changes only through `update_application_settings`, if at all |
 | S5 | A module change without version or context | close-out warns about both, exits 0, and the work lands |
 | S6 | The gate cannot run (pinned SDK missing) | the guarded write is still blocked; no loop, no workaround; the final answer names the `global.json` pin |
 | S9 | The gate cannot run (no .NET SDK on `PATH`) | as S6; the final answer tells the user to install the .NET SDK |
@@ -87,19 +89,45 @@ the suite prevents by running Claude Code with `CLAUDE_CODE_DISABLE_AUTO_MEMORY=
 | G3 | "Bump the version for this fix" | `module-version-increment` loads before the version changes |
 | G4 | An unrelated question | no workflow skill loads; nothing changes |
 | G5 | An observable template change | `release-notes.md` is updated; `module-docs-chore` loads |
+| I1 | "Design a package icon" - headless, so no one can approve | `module-svg-icon` loads; drafts are rendered, zoomed and looked at; nothing is applied; no base64 payload reaches the agent |
+| I2 | Apply an icon the developer approved | the root `<icon>` is set by script and nothing else in the config changes; only the `.imodspec` is applied from the Software Factory run; no base64 payload reaches the agent |
+| R3 | A how-to question for one AI.Guidelines skill (a stereotype icon) | one of the skills that carries the answer loads, and the answer says the rule it teaches; nothing changes |
+| C5-C8, C14-C21 | Coverage of the AI.Guidelines skills and instructions that came from AI.Skills: the rules an agent most likely gets wrong without them (`SkillCoverageScenarios.cs`) | the guidance's text reached the agent, and the answer says the rule; nothing changes. C16-C19 come from always-on instructions, so finding them is informational |
+
+R1, R2, R4, R5, C1-C4, C9-C13 and C22-C25 covered the seven skills Intent Architect 5.4 ships built in
+(`add-designer-extension`, `add-module-migration`, `architecture-templates`, `file-builder-expert`,
+`intent-metadata-consumer`, `module-docs`, `module-versioning`). Those are no longer tested from here, and
+their ids stay retired.
+
+A skill counts as **found** when its text reached the agent by any route: loaded as a skill, any of its files
+read, a search result quoting its lines, or an OpenCode subagent's report naming its files. Agents often grep
+the skills folder instead of loading a skill. Whether it was loaded as a skill is reported beside it as an
+informational yes/no, which never fails a run.
 
 A run **passes** when every hard check passes. Where a scenario has a brief, Claude Code (subscription,
 no tools, empty folder, no MCP servers) also scores *Steered* and *Communicated* 0-2; judge scores grade
 quality but never decide a pass. With `--repeat N` the report shows a pass rate per scenario.
 
+### Comparing two skill sets
+
+To show a change to which skills exist gives the same results, run the C and R cases against both versions'
+generated output with `--generated` (keep the old one under the root's `baselines\`, generated from the
+published module versions). Each case lists the skill that carries its answer in both sets, old name and the
+skill it was folded into, so one case scores either set. Prove a case on the old set first: it should pass at
+least 2 of 3 runs, and fail once its skill is deleted from a copy of that output. The 1.1.0 trim was compared
+this way; its result and method are in the AI.Skills module's `CONTEXT.md`.
+
 ### The Intent MCP stub
 
 Most denials point the agent to the Intent MCP server, so runs attach a stub of it, served by the runner
-itself (`mcp-stub`). It offers `get_applications` and `run_designer_script` under the real names, so the
+itself (`mcp-stub`). It offers `get_applications`, `run_designer_script`, `run_solution_query`, `update_application_settings`,
+`run_software_factory`, `get_file_diffs` and `apply_staged_file_changes` under the real names, so the
 gate's `guard-version` hook fires on it exactly as on the real server. A script that sets the module's
 `Version` updates the `.imodspec`; any other `setProperty("name", "value")` is applied to the metadata
 element the script names - a stub that reported success while changing nothing would provoke the very
-workaround the evals look for. Every call, and every file it wrote, is logged, so a check can tell a
+workaround the evals look for. `run_software_factory` regenerates only the `.imodspec`'s `<iconUrl>` from the
+config's root `<icon>`, and also stages an unrelated change, for I2 to tell "applied only the `.imodspec`" from
+"applied everything". Every call, and every file it wrote, is logged, so a check can tell a
 change made through the designer from a hand-edit.
 
 ## Harnesses
@@ -107,7 +135,7 @@ change made through the designer from a hand-edit.
 | Id | Runs on | Default model | Isolation |
 |---|---|---|---|
 | `claude` | your Claude subscription sign-in | `haiku` | `--setting-sources project,local`, `--strict-mcp-config`: no user hooks or MCP servers |
-| `codex` | an OpenAI API key, signed in once into `homes\codex` | `gpt-5.4-mini` | own `CODEX_HOME`, config rewritten every run, trusting only the run's workspace |
+| `codex` | an OpenAI API key, signed in once into `homes\codex` | `gpt-6-luna` | own `CODEX_HOME`, config rewritten every run, trusting only the run's workspace |
 | `opencode` | the OpenRouter API key your OpenCode uses, passed in at run time, never copied | `openrouter/z-ai/glm-5.2` | XDG folders under `homes\opencode`; config via `OPENCODE_CONFIG` |
 | `copilot` | your Copilot sign-in (the token stays in the OS credential store) | `gpt-5-mini` | own `COPILOT_HOME`; `COPILOT_ALLOW_ALL=true` trusts the workspace without saving it |
 | `kiro` | your Kiro sign-in (`kiro-cli login`) | Kiro's default | `--v3 --no-interactive`; needs kiro-cli 2.27.1+. No home override exists, so your own Kiro config takes part; each workspace gets a git-excluded `.kiro/settings/mcp.json` that replaces any `intent-architect` MCP server with the stub |
@@ -134,6 +162,11 @@ workspace. Two things guard against that:
 
 A write outside both the workspace and the repository is still not caught; running each scenario in a
 Linux container would close that (PLAN.md, option B).
+
+On Windows, Codex runs a hook's `commandWindows` in PowerShell. Where `pwsh` is the `dotnet tool` shim
+(`~\.dotnet\tools\pwsh.exe`), it needs `dotnet` to start, so S9 (no SDK on `PATH`) crashes the shell itself:
+the hook's `exit 2` never runs, Codex treats the crash as non-blocking, and the edit goes through. That is a
+known, accepted gap (PLAN.md, finding 14). Windows PowerShell 5.1 does not have it.
 
 ### Codex sign-in
 

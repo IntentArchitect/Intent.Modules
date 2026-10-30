@@ -2,8 +2,8 @@
 name: module-docs-chore
 description: "Update a module's release-notes, README, .imodspec metadata, and icon to reflect a change a consumer can observe, in the same turn as that change. USE ONLY WHEN a module change alters anything observable — a new/removed template, setting, stereotype, config default, or behavioural fix. DO NOT USE FOR internal refactors with no observable effect, or for bumping the module's version number itself (see module-version-increment). REQUIRES the observable change already implemented or decided."
 keywords: [documentation, release-notes, readme, imodspec, icon, chore, upkeep]
-template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDocsChore_SkillMd_Agents
-contentHash: DA250B9841D1ABD756E3AC008BBE997951F965E6F19C940B8EF4B4798BC91680
+template-id: Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleDocsChore_SkillMd_Agents
+contentHash: 27229D851348EC1B7DF59BC7C4B9F1FE77BF56ACDFBC7D56FBCC3EBD116D6AB5
 ---
 # Skill: module-docs-chore
 
@@ -28,7 +28,7 @@ generated output needs nothing.
 | Artifact | What goes in |
 |---|---|
 | Module metadata — summary, description, tags | Kept accurate as a matter of course. These are what a consumer sees before installing anything. |
-| `release-notes.md` | One bullet under the current version — **whenever `Include Release Notes` is ticked**, creating the file if it is missing |
+| `release-notes.md` | One bullet under the current version — **whenever `Include Release Notes` is ticked**, creating the file if it is still missing after a Software Factory run |
 | `docs/README.md` | The section the change affects — a settings table, a generated-output example, a feature description. **Create it if the module does not have one.** |
 | Module icon | Created only if the module has none yet — see "The Icon" below. An existing icon is never overwritten. |
 
@@ -39,11 +39,9 @@ Builder designer, `Module Settings` carries an **`Include Release Notes`** check
 maintainer's stated intent, and it is what puts `<releaseNotes>` into the manifest — so read it first:
 
 - **Unticked** — the module has opted out. Leave release notes alone entirely; do not start a file, and
-
-do not add an entry to one that happens to exist.
-
+  do not add an entry to one that happens to exist.
 - **Ticked, file present** — maintain it, as below.
-- **Ticked, file missing** — create it, and add this change's entry to it. The manifest is already advertising a `release-notes.md`, so supplying the file resolves that inconsistency rather than merely reporting it.
+- **Ticked, file missing** — run the Software Factory first: it creates `release-notes.md` when the box is ticked and it has never generated the file, starting with a `### Version 1.0.0` heading to correct. It creates the file only once, so if the file is still missing (deleted after it was generated), create it by hand, and add this change's entry to it. The manifest is already advertising a `release-notes.md`, so supplying the file resolves that inconsistency rather than merely reporting it.
 
 If a module has a `release-notes.md`, add an entry for the change: a single bullet under the current
 version, prefixed to say whether it is a new feature, an improvement, or a fix. A fix entry is more
@@ -60,21 +58,16 @@ Release notes are read by someone deciding whether a release affects them — no
 built. Write for that reader.
 
 - **One line per entry.** If a bullet needs a second sentence to explain itself, that detail belongs in
-
-the module's documentation, not here.
-
+  the module's documentation, not here.
 - **Group related changes into one entry.** Work that added four templates, two settings and an
-
-instruction file is *one* entry describing the capability — not seven describing its parts.
-
+  instruction file is *one* entry describing the capability — not seven describing its parts.
 - **Split only when a consumer would act on each differently.** Two independent changes affecting
-
-different people are two entries. Two halves of one change are one entry.
+  different people are two entries. Two halves of one change are one entry.
 
 Fewer, higher-altitude entries scan better and age better. A reader months later wants to know what
 changed about the module, not which files were touched to do it.
 
-A module whose `Include Release Notes` is unticked still gets nothing. That checkbox — not this setting — decides whether a module keeps release notes at all. This setting only governs whether an absent file gets created for a module that has already asked for one.
+A module whose `Include Release Notes` is unticked still gets nothing. That checkbox — not the `Maintain Release Notes` setting in this environment's AI Workflow Settings — decides whether a module keeps release notes at all. `Maintain Release Notes` only governs whether an absent file gets created by hand for a module that has already asked for one.
 
 ## Module Metadata Is Always Kept Current
 
@@ -82,7 +75,8 @@ The module's own summary, description, and tags are maintained regardless of whi
 module keeps. They are the module's shopfront — the only thing a consumer reads while deciding
 whether to install it — so they should describe what the module actually does now.
 
-**Change the summary and description on the Application Settings page**, not in `.imodspec` and not
+**Change the summary and description on the Application Settings page** (or with
+`update_application_settings` and its `description` parameter), not in `.imodspec` and not
 in `.application.config`. The Software Factory overwrites both `<summary>` and `<description>` from
 that one value on every run, so an edit made in the manifest is discarded without an error. It also
 means the two fields **cannot differ** — one line has to serve as both, which is why it stays short
@@ -93,6 +87,13 @@ and says what the module *is*. Mechanism and rationale belong in `CONTEXT.md`.
 Modules scaffolded from a template often keep placeholder metadata long after they have stopped being
 placeholders. When you notice generic filler in a summary or description, or an empty tag list,
 replace it. This is upkeep to do in passing, not an inspection to complete before moving on.
+
+### No Release-Stage Labels
+
+Never announce that the module, or anything in it, is beta, preview or pre-release. No "(beta)",
+"preview" or "pre-release" labels in release notes, the README, the summary/description, or tags. A
+`-pre.#` version suffix already marks a pre-release package; the documentation describes what the
+module does.
 
 ### Tag Format
 
@@ -143,9 +144,7 @@ corrects.
 Source the description to craft from; do not invent one:
 
 - The module's own `.imodspec` `<summary>` and `<tags>` — the same material already kept current
-
-elsewhere in this chore.
-
+  elsewhere in this chore.
 - Its `CONTEXT.md` "Purpose" section, if one exists.
 
 If the `module-svg-icon` skill is available in your environment, use it with that description to
@@ -161,9 +160,10 @@ entries account for everything in it, not that there is an entry per change.
 
 ## Checklist
 
-- [ ] Module summary and description describe current behaviour — changed on the **Application Settings page**, not in `.imodspec`
+- [ ] Module summary and description describe current behaviour — changed on the **Application Settings page** or with `update_application_settings`, not in `.imodspec`
 - [ ] Tags describe current behaviour — edited directly in `*.imodspec`
 - [ ] Tags are lowercase, space-separated, hyphenated within a compound term
+- [ ] Nothing is labelled beta, preview or pre-release in any artifact
 - [ ] Author matches what sibling modules use — copied or asked for, never invented
 - [ ] `Include Release Notes` checked first; `release-notes.md` updated when ticked, and created if ticked but missing
 - [ ] Entries are one line each, grouped by capability rather than listed per change

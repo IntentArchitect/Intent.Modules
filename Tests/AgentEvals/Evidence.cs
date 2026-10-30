@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace AgentEvals;
 
@@ -59,6 +60,19 @@ public sealed record Evidence(
         return File.Exists(path) ? File.ReadAllText(path) : "";
     }
 
+    /// <summary>
+    /// The harness's whole output, tool results included - what entered the agent's context, where
+    /// <see cref="Transcript"/> keeps only bounded excerpts. JSON-escaped slashes are unescaped.
+    /// </summary>
+    public string RawTranscript
+    {
+        get
+        {
+            var path = Path.Combine(Path.GetDirectoryName(WorkspaceRoot)!, "transcript.jsonl");
+            return File.Exists(path) ? File.ReadAllText(path).Replace("\\/", "/", StringComparison.Ordinal) : "";
+        }
+    }
+
     public bool ShellTouched(string fragment) =>
         Transcript.ShellCommands.Any(command => command.Contains(fragment, StringComparison.OrdinalIgnoreCase));
 
@@ -91,6 +105,60 @@ public sealed record Evidence(
     public IReadOnlyList<string> SkillsLoaded(IEnumerable<string> skills) =>
         skills.Where(skill => SkillLoadedAt(skill) >= 0).ToList();
 
+    /// <summary>
+    /// Whether a skill's own text reached the agent by any route: loaded as a skill, any of its files read, a
+    /// search whose result quotes one of its lines, or a subagent whose report names one of its files. Agents
+    /// often grep the workspace, skills folder included, instead of loading a skill. A bare file listing does
+    /// not count: it carries no guidance.
+    /// </summary>
+    public bool SkillContentReached(string skill) =>
+        SkillLoadedAt(skill) >= 0
+        || FileReadAt($"skills/{skill}/") >= 0
+        || SearchQuoted(skill)
+        || SubagentReported(skill);
+
+    /// <summary>
+    /// A search result quoting the skill's lines: <c>path:line:</c> (ripgrep, Claude Code's Grep), or the path with
+    /// <c>Line N:</c> on the next line (OpenCode's grep). Read from the raw output, where a path separator is
+    /// <c>/</c> or a JSON-escaped <c>\\</c> and a newline is a JSON-escaped <c>\n</c>.
+    /// </summary>
+    private bool SearchQuoted(string skill) =>
+        Regex.IsMatch(RawTranscript, $@"skills[\\/]+{Regex.Escape(skill)}[\\/]+[^\s""':]+:(?:\d+:|\\n\s*Line \d+:)", RegexOptions.IgnoreCase);
+
+    /// <summary>
+    /// An OpenCode <c>task</c> subagent whose report names one of the skill's files: the subagent read it, and its
+    /// report carries the guidance into the agent's context. Only the report counts, not the prompt the agent
+    /// wrote, which may only guess at a path.
+    /// </summary>
+    private bool SubagentReported(string skill)
+    {
+        foreach (var line in RawTranscript.Split('\n'))
+        {
+            if (!line.Contains("\"tool\":\"task\"", StringComparison.Ordinal))
+            {
+                continue;
+            }
+
+            try
+            {
+                using var json = JsonDocument.Parse(line);
+                if (json.RootElement.TryGetProperty("part", out var part)
+                    && part.TryGetProperty("state", out var state)
+                    && state.TryGetProperty("output", out var output)
+                    && output.ValueKind == JsonValueKind.String
+                    && Normalize(output.GetString() ?? "").Contains($"{skill}/", StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+            catch (JsonException)
+            {
+            }
+        }
+
+        return false;
+    }
+
     /// <summary>The index of the first tool call that read a file whose path contains <paramref name="fragment"/>, or -1.</summary>
     public int FileReadAt(string fragment) =>
         IndexOf(call => call.Kind is ToolKind.Read or ToolKind.Shell && Normalize(call.Detail).Contains(fragment, StringComparison.OrdinalIgnoreCase));
@@ -117,7 +185,17 @@ public sealed record Evidence(
         return -1;
     }
 
-    private static string Normalize(string path) => path.Replace('\\', '/');
+    // Codex reports Windows paths with doubled backslashes (".\\.agents\\skills\\..."), which would become "//".
+    private static string Normalize(string path)
+    {
+        var normalized = path.Replace('\\', '/');
+        while (normalized.Contains("//", StringComparison.Ordinal))
+        {
+            normalized = normalized.Replace("//", "/", StringComparison.Ordinal);
+        }
+
+        return normalized;
+    }
 
     public static IReadOnlyList<GateRun> ReadTelemetry(string path) =>
         ReadJsonLines(path, root => new GateRun(

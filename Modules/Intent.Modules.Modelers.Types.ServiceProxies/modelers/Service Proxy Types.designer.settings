@@ -283,8 +283,18 @@ if (typeReference) {
     }
 }
 return result;</displayFunction>
+          <validateFunction>const mapped = getMapping()?.getElement();
+if (!mapped) {
+    return "";
+}
+const others = getParent().getChildren("Operation")
+    .filter(x =&gt; x.id != id &amp;&amp; x.getMapping()?.getElement()?.id == mapped.id);
+if (others.length == 0) {
+    return "";
+}
+return `Operation '${getName()}' is mapped to '${mapped.getName()}', which is already mapped by ${others.map(x =&gt; `'${x.getName()}'`).join(", ")} in this Service Proxy. Remove the duplicate operation.`;</validateFunction>
           <allowRename>true</allowRename>
-          <nameMustBeUnique>true</nameMustBeUnique>
+          <nameMustBeUnique>false</nameMustBeUnique>
           <allowAbstract>false</allowAbstract>
           <allowStatic>false</allowStatic>
           <allowGenericTypes>false</allowGenericTypes>

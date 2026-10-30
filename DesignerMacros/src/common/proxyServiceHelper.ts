@@ -66,15 +66,16 @@ class ProxyServiceHelper {
                 service = ProxyServiceHelper._createService(operation.getParent(), folder);
             }
 
-            // look up if there is an existing operation with the same name
-            const existing = service.getChildren().find(x => x.getName() == operationName);
+            // look up the existing operation that invokes this proxy operation, falling back to one with the same name
+            const target = ProxyServiceHelper.findExisting(service.getChildren(), operation, counter => `${operationName}${counter}`);
+            const existing = target.existing;
 
             // and return the existing one if the sync is disable (which is is by default)
             if(existing && !syncElement){
                 return existing;
             }
 
-            let operationElement = existing ?? createElement("Operation", operationName, service.id);
+            let operationElement = existing ?? createElement("Operation", target.name, service.id);
 
             let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
             let route = metadata.httpRoute ? metadata.httpRoute : `${toKebabCase(operationName)}`;
@@ -125,14 +126,15 @@ class ProxyServiceHelper {
                 break;
         }
 
-        const actionName = `${operationName}${actionTypeName}`;
+        // look up the existing action that invokes this proxy operation, falling back to one with the same name
+        const target = ProxyServiceHelper.findExisting(folder.getChildren(), operation, counter => `${operationName}${counter}${actionTypeName}`);
+        const existing = target.existing;
 
         // if sync is set to true, then don't return right away
-        const existing = folder.getChildren().find(x => x.getName() == actionName);
         if (existing && !syncElement) {
             return existing;
         }
-        const actionElement = existing ?? createElement(actionTypeName, actionName, folder.id);
+        const actionElement = existing ?? createElement(actionTypeName, target.name, folder.id);
 
         // let verb = metadata.httpVerb ? metadata.httpVerb : "POST";
         // let route = metadata.httpRoute ? metadata.httpRoute : `api/${toKebabCase(folder.getName())}/${toKebabCase(actionName)}`;
@@ -163,6 +165,41 @@ class ProxyServiceHelper {
         }
 
         return actionElement;
+    }
+
+    // Proxy operations may share a name, so the element created for one is found by its Perform Invocation, not its name.
+    // An element with the name we would use that invokes no proxy operation (made by hand, or before the association
+    // existed) is still reused. When the name belongs to an element invoking a different proxy operation, the first free
+    // numbered name is used instead (e.g. GetById2).
+    private static findExisting(
+        candidates: MacroApi.Context.IElementApi[],
+        operation: MacroApi.Context.IElementApi,
+        nameFor: (counter: string) => string): { existing?: MacroApi.Context.IElementApi, name: string } {
+            const invoker = ProxyServiceHelper.findInvoker(candidates, operation);
+            if (invoker) {
+                return { existing: invoker, name: invoker.getName() };
+            }
+
+            for (let counter = 1; ; counter++) {
+                const name = nameFor(counter == 1 ? "" : `${counter}`);
+                const sameName = candidates.find(x => x.getName() == name);
+                if (!sameName) {
+                    return { existing: null, name: name };
+                }
+                if (!ProxyServiceHelper.invokesProxyOperation(sameName)) {
+                    return { existing: sameName, name: name };
+                }
+            }
+    }
+
+    private static findInvoker(candidates: MacroApi.Context.IElementApi[], operation: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
+        return candidates.find(x => x.getAssociations("Perform Invocation")
+            .some(a => a.isTargetEnd() && a.typeReference?.getTypeId() == operation.id));
+    }
+
+    private static invokesProxyOperation(element: MacroApi.Context.IElementApi): boolean {
+        return element.getAssociations("Perform Invocation")
+            .some(a => a.isTargetEnd() && a.typeReference?.getType()?.getParent()?.specialization == "Service Proxy");
     }
 
     private static getProxyOperationMetadata(operation: MacroApi.Context.IElementApi): IProxyOperationMetadata {

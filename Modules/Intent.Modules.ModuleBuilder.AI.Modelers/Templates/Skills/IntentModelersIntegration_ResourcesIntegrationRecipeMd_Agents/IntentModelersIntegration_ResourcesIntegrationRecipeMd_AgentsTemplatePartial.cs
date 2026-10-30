@@ -29,7 +29,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
                     # Integration Recipe — Wiring A Module Against A Modelers Designer
 
                     The full three-file wiring, with every snippet lifted verbatim from `Intent.Modules.Metadata.RDBMS`
-                    — the cleanest consumer in this repo, where all three files agree at the same version (`3.11.1`)
+                    — the cleanest published consumer, where all three files agree at the same version (`3.11.1`)
                     against the `Domain` designer. Substitute `Domain` for whichever designer you're integrating with
                     (`Services`, `Eventing`, `User Interface`) and use that designer's own resource file for its real
                     current version and identity — do not copy the `3.11.1` number itself, it is illustrative only.
@@ -42,6 +42,22 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
 
                     The NuGet `PackageId` always carries the `Intent.Modules.` prefix — this is what your project
                     compiles against, and what gives you `using Intent.Modelers.Domain.Api;`.
+
+                    Take the version from your feed (`run_solution_query` → `searchAvailableModules("Intent.Modelers.Domain")`).
+                    The "source at" version in each resource file's API heading is the source those members were read
+                    from, and can be newer than your feed offers; a member that is missing at the version you can get
+                    does not exist for you.
+
+                    A designer package depends on `Intent.Modules.Common`. When that is higher than your own
+                    `Intent.Modules.Common` reference (Module Builder writes 3.7.2), restore fails with
+                    `error NU1605: Detected package downgrade` — for example `Intent.Modules.Modelers.Services` 4.0.16
+                    needs `Intent.Modules.Common` 3.8.0. Raise your `Intent.Modules.Common` reference and the `.imodspec`
+                    `Intent.Common` `<dependency>` to at least the version the error names.
+                    Some designer packages also depend on a higher `Intent.SoftwareFactory.SDK` than Module Builder's 3.7.0:
+                    `Intent.Modules.Modelers.UI` 1.1.5 and `Intent.Modules.Modelers.UI.Core` 1.0.4 need 3.11.0 (Intent
+                    Architect 4.5.18 or later), and `Intent.Modules.Modelers.Types.ServiceProxies` 5.5.6 needs 3.8.0-pre.2,
+                    met by raising it to 3.9.0 (Intent Architect 4.5.0). Raise the SDK reference to the version the error
+                    names, then restore again: restore reports one downgrade at a time.
 
                     ## 2. `.imodspec` — install-time
 
@@ -90,8 +106,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
                     ```
 
                     The API namespace (`Intent.Modelers.Domain.Api`) is one level deeper than the module id
-                    (`Intent.Modelers.Domain`) — it always adds a trailing `.Api` segment. Never assume the namespace
+                    (`Intent.Modelers.Domain`) — it adds a trailing `.Api` segment. Never assume the namespace
                     equals the module id with `.Api` appended to the *NuGet* package id; it's appended to the module id.
+                    That holds for the four base designers and for most extension modules, `Domain.StoredProcedures`
+                    included (its module id keeps `Modules.`, so its namespace does too). `Services.EventInteractions`
+                    breaks it: its namespace has no `.Api` segment at all. Take an extension module's namespace from its
+                    row in the `*-extensions.md` §1 table.
 
                     ## 5. Publishing your own stereotypes onto a foreign designer
 
@@ -115,7 +135,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
                     here. Together with §9 "Model API reference" in each designer file (and §2 of its `*-extensions.md`), it covers everything a template
                     touches — **there is no need to reflect over `Intent.SoftwareFactory.SDK.dll`, `Intent.Modules.Common.dll`
                     or a designer assembly to discover members.** Taken from `Intent.SoftwareFactory.SDK` `3.15.0`,
-                    `Intent.Modules.Common` `3.11.4` and `Intent.Modules.Common.Types` `4.1.3`; every member is public.
+                    `Intent.Modules.Common` `3.11.4` (plus `IServiceArgumentModel`, added in `3.11.8`) and
+                    `Intent.Modules.Common.Types` `4.1.3`; every member is public.
 
                     ```csharp
                     namespace Intent.Metadata.Models;   // Intent.SoftwareFactory.SDK
@@ -308,8 +329,15 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
                     // extensions such as CreateEntityActions(this IProcessingHandlerModel) hang off them.
                     public interface IProcessingHandlerModel : IElementWrapper, IMetadataModel { }
                     public interface IProcessingActionModel : IElementWrapper, IMetadataModel { }
-                    public interface IInvokableModel : IElementWrapper, IMetadataModel { }
+                    public interface IInvokableModel : IElementWrapper, IMetadataModel { }     // not the UI designer's same-named interface, see user-interface.md
                     public interface IAllowCommentModel : IElementWrapper, IMetadataModel { }
+                    // Intent.Modules.Common 3.11.8+ only: raise the Intent.Modules.Common PackageReference and the
+                    // Intent.Common <dependency> to 3.11.8 to use it, and the Intent.SoftwareFactory.SDK PackageReference to
+                    // 3.14.0, which Common 3.11.x depends on (Intent Architect 5.0.0+). Domain Class / Data Contract (Domain 3.13.3+)
+                    // and Value Object (Value Objects 3.6.4+) implement it. Check your feed offers those versions
+                    // (run_solution_query → searchAvailableModules(id, { includePrerelease: true })); if not, it does
+                    // not exist for you yet, so test for the concrete model type instead.
+                    public interface IServiceArgumentModel : IElementWrapper, IMetadataModel { }
 
                     public static class StereotypeExtensions   // untyped fallback — prefer a designer's generated Get<Stereotype>()
                     {

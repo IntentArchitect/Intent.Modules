@@ -4,7 +4,7 @@
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.WebApi
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-rest-route-validation/command/query-rest-route-validation.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-rest-route-validation/query/query-rest-route-validation.ts
  */
 
 // @ts-ignore

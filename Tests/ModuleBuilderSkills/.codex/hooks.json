@@ -12,7 +12,7 @@
     ],
     "PreToolUse": [
       {
-        "matcher": "apply_patch|Edit|Write",
+        "matcher": "apply_patch|Edit|Write|.*(write_file|patch_file|delete_code_file).*",
         "hooks": [
           {
             "type": "command",

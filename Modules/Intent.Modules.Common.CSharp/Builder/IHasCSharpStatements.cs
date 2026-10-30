@@ -396,6 +396,13 @@ public static class HasCSharpStatementsExtensions
     {
         (expression as CSharpInvocationStatement)?.WithoutSemicolon();
         var statement = new CSharpInvocationStatement(expression, invocation);
+        // A collection item has a Parent only since 3.10.12, so replacing one could not happen before.
+        // An invocation's default ";" does not belong inside a collection literal; configure may still add it.
+        if (expression.Parent is CSharpCollectionExpression)
+        {
+            statement.WithoutSemicolon();
+        }
+
         configure?.Invoke(statement);
         if (expression.Parent is not null)
         {

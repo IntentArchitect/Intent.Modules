@@ -18,13 +18,14 @@ public static class Conductor
           --no-stub                       with --prompt: do not attach the Intent MCP stub
           --repeat N                      run each scenario N times and report a pass rate (default 1)
           --claude-model M                Claude Code's model (default haiku)
-          --codex-model M                 Codex's model (default gpt-5.4-mini - OpenAI, on the API key)
+          --codex-model M                 Codex's model (default gpt-6-luna - OpenAI, on the API key)
           --opencode-model M              OpenCode's model (default openrouter/z-ai/glm-5.2)
           --copilot-model M               Copilot CLI's model (default gpt-5-mini)
           --judge-model M                 the judge's model (default sonnet)
           --no-judge                      skip the judge
           --timeout S                     seconds before a run is stopped (default 300)
           --root PATH                     the eval root (default %LOCALAPPDATA%\IntentAgentEvals, or INTENT_AGENT_EVALS_ROOT)
+          --generated PATH                the generated output to evaluate (default Tests\ModuleBuilderSkills)
           --keep-runs N                   run folders to keep, newest first (default 10)
           --list                          show harnesses, scenarios and the eval root, then stop
         """;
@@ -44,7 +45,7 @@ public static class Conductor
             return 2;
         }
 
-        var paths = EvalPaths.Locate(options.Root);
+        var paths = EvalPaths.Locate(options.Root, options.Generated);
         paths.UseOwnTemp();
         var harnesses = Harnesses.Create(paths);
 
@@ -75,7 +76,7 @@ public static class Conductor
         var runDirectory = Path.Combine(paths.Runs, $"{startedAt:yyyyMMdd-HHmmss}-{(OperatingSystem.IsWindows() ? "windows" : OperatingSystem.IsMacOS() ? "macos" : "linux")}");
         Directory.CreateDirectory(runDirectory);
         var (commit, dirty) = await InputsCommitAsync(paths);
-        var info = new RunInfo(startedAt, commit, dirty, args, [], []);
+        var info = new RunInfo(startedAt, commit, dirty, paths.GeneratedOutput, args, [], []);
         var results = new List<RunResult>();
         Console.WriteLine($"Run folder: {runDirectory}");
 
@@ -195,6 +196,16 @@ public static class Conductor
             var workspace = await Workspace.CreateAsync(paths, harness, scenario, runDirectory);
             var startInfo = harness.CreateRun(new RunRequest(workspace, scenario.Prompt, options.ModelFor(harness.Id), scenario.UsesIntentStub));
             startInfo.Environment["INTENT_GATE_LOG"] = workspace.TelemetryPath;
+            if (harness.Id != "claude")
+            {
+                // Running the evals from inside a Claude Code session would otherwise hand its CLAUDECODE and
+                // CLAUDE_* variables to every other harness, and to the gate hooks those harnesses run.
+                foreach (var name in startInfo.Environment.Keys.Where(k => k.StartsWith("CLAUDE", StringComparison.OrdinalIgnoreCase)).ToList())
+                {
+                    startInfo.Environment.Remove(name);
+                }
+            }
+
             scenario.AdjustEnvironment(startInfo.Environment);
             var process = await Processes.RunAsync(startInfo, stdin: null, options.Timeout);
 
@@ -207,6 +218,11 @@ public static class Conductor
             }
 
             var transcript = harness.ParseTranscript(process.Stdout);
+            if (InfrastructureFailure(process, transcript) is { } infrastructure)
+            {
+                return (Failed(infrastructure, process.Duration.TotalSeconds), false);
+            }
+
             var changed = await workspace.ChangedFilesAsync();
             var diff = await workspace.DiffAsync();
             File.WriteAllText(Path.Combine(runDirectory, "diff.patch"), diff);
@@ -223,6 +239,33 @@ public static class Conductor
         {
             return (Failed(exception.Message), false);
         }
+    }
+
+    /// <summary>Errors from a model provider or the network, which the harness reports in its output.</summary>
+    private static readonly string[] InfrastructureMarkers =
+    [
+        "ModelThrottleError", "ModelRegistryUnavailableError", "ThrottlingException", "overloaded_error",
+        // Kiro's monthly request quota: the run ends in seconds with no answer, and S4 scored that as a pass.
+        "ServiceQuotaExceededException",
+        "ECONNRESET", "ENOTFOUND", "EAI_AGAIN", "ETIMEDOUT",
+    ];
+
+    /// <summary>
+    /// A run the model provider or the network cut short is an error, not a result: its checks would pass or
+    /// fail on an agent that never got to work (Kiro's throttled runs did both). A run that hit one of these
+    /// and still finished with a final answer stands.
+    /// </summary>
+    private static string? InfrastructureFailure(ProcessResult process, Transcript transcript)
+    {
+        if (transcript.FinalMessage.Length > 0)
+        {
+            return null;
+        }
+
+        var output = process.Stdout + process.Stderr;
+        return InfrastructureMarkers.FirstOrDefault(m => output.Contains(m, StringComparison.Ordinal)) is { } marker
+            ? $"infrastructure: the run stopped on {marker} before the agent finished; re-run it"
+            : null;
     }
 
     private static async Task ListAsync(EvalPaths paths, IReadOnlyList<IHarness> harnesses)
@@ -279,8 +322,10 @@ public static class Conductor
     private static async Task<(string Commit, bool Dirty)> InputsCommitAsync(EvalPaths paths)
     {
         var head = await Processes.RunAsync(Processes.Command("git", paths.RepoRoot, "rev-parse", "--short", "HEAD"), null, TimeSpan.FromSeconds(30));
+        // Generated output outside the repository (--generated) is not git's to judge; the report names it.
+        string[] inputs = paths.GeneratedOutputInRepo ? [paths.Fixture, paths.GeneratedOutput, paths.SuiteDirectory] : [paths.Fixture, paths.SuiteDirectory];
         var status = await Processes.RunAsync(
-            Processes.Command("git", paths.RepoRoot, "status", "--porcelain", "--", paths.Fixture, paths.GeneratedOutput, paths.SuiteDirectory),
+            Processes.Command("git", paths.RepoRoot, ["status", "--porcelain", "--", .. inputs]),
             null, TimeSpan.FromSeconds(30));
         return (head.Stdout.Trim(), status.Stdout.Trim().Length > 0);
     }
@@ -297,11 +342,12 @@ public static class Conductor
         bool Judge,
         TimeSpan Timeout,
         string? Root,
+        string? Generated,
         int KeepRuns,
         bool List)
     {
         private static readonly string[] ValueOptions =
-            ["--harness", "--scenario", "--layer", "--prompt", "--repeat", "--claude-model", "--codex-model", "--opencode-model", "--copilot-model", "--judge-model", "--timeout", "--root", "--keep-runs"];
+            ["--harness", "--scenario", "--layer", "--prompt", "--repeat", "--claude-model", "--codex-model", "--opencode-model", "--copilot-model", "--judge-model", "--timeout", "--root", "--generated", "--keep-runs"];
 
         private static readonly string[] Flags = ["--no-judge", "--no-stub", "--list"];
 
@@ -350,6 +396,7 @@ public static class Conductor
                 !args.Contains("--no-judge"),
                 TimeSpan.FromSeconds(Int("--timeout", 300)),
                 Value("--root"),
+                Value("--generated"),
                 Int("--keep-runs", 10),
                 args.Contains("--list"));
         }

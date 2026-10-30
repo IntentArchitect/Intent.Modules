@@ -1,5 +1,5 @@
 ---
-contentHash: 940869A97CBA1D8EBD1B04ECD156794C83F25A5BAF0013F673E06FB017889D33
+contentHash: 6DAA98ADAA4413FAFDE2EA8852EC9276219D704B14D8C305786AC163852209FD
 ---
 # Services Designer — Extension Modules
 
@@ -17,14 +17,16 @@ from a sibling (`SKILL.md` Must #6).
 |---|---|---|---|---|
 | CQRS | `Intent.Modules.Modelers.Services.CQRS` | `Intent.Modelers.Services.CQRS` | `Intent.Modelers.Services.CQRS.Api` — **its own namespace, isolated from the base `Services.Api`** | `CommandModel` (`ccf14eb6-...`), `QueryModel` (`e71b0662-...`), `FolderExtensionModel` |
 | DomainInteractions | `Intent.Modules.Modelers.Services.DomainInteractions` | `Intent.Modelers.Services.DomainInteractions` | `Intent.Modelers.Services.DomainInteractions.Api` | `CreateEntityActionModel`, `QueryEntityActionModel`, `UpdateEntityActionModel`, `DeleteEntityActionModel`, `CallServiceOperationModel`, `ProcessingActionModel`, plus `ElementToElementMappingExtensions` — **this is where mapping actually lives** for this designer |
-| EventInteractions | `Intent.Modules.Modelers.Services.EventInteractions` | `Intent.Modelers.Services.EventInteractions` | `Intent.Modelers.Services.EventInteractions.Api` | `IntegrationEventHandlerModel`, `PublishIntegrationEventModel`, `SendCommandModel`, `SendIntegrationCommandModel`, `SubscribeIntegrationCommandModel`, `SubscribeIntegrationEventModel`, `CallServiceOperationModel` |
+| EventInteractions | `Intent.Modules.Modelers.Services.EventInteractions` | `Intent.Modelers.Services.EventInteractions` | `Intent.Modelers.Services.EventInteractions` — ⚠️ **no `.Api` suffix**, although the files sit in an `Api/` folder | `IntegrationEventHandlerModel`, `PublishIntegrationEventModel`, `SendCommandModel`, `SendIntegrationCommandModel`, `SubscribeIntegrationCommandModel`, `SubscribeIntegrationEventModel`, `CallServiceOperationModel` |
 | ProxyInteractions | `Intent.Modules.Modelers.Services.ProxyInteractions` | `Intent.Modelers.Services.ProxyInteractions` | — **ships no `Api/` folder at all** | Nothing — validation-only factory extension (validates Service Proxy references), adds no element types |
 | GraphQL | `Intent.Modules.Modelers.Services.GraphQL` | `Intent.Modelers.Services.GraphQL` | `Intent.Modelers.Services.GraphQL.Api` | `DTOExtensionModel`, `GraphQLEventMessageModel`, `GraphQLMutationModel`, `GraphQLMutationTypeModel`, `GraphQLParameterModel`, `GraphQLQueryTypeModel`, `GraphQLSchemaFieldModel`, `GraphQLServicesPackageModel`, `GraphQLSubscriptionModel`, `GraphQLSubscriptionTypeModel` |
 
 **CQRS namespace — confirmed, not a trap today.** `CommandModel`/`QueryModel` are declared in their
 own `Intent.Modelers.Services.CQRS.Api` namespace, matching their own module id — they do **not**
 leak into the parent `Services.Api` namespace. Do not assume this holds for every extension module
-of every designer, though — check each one (Must #6 in `SKILL.md`).
+of every designer, though — check each one (Must #6 in `SKILL.md`). `.EventInteractions` is the
+counter-example in this file: its types are declared in `Intent.Modelers.Services.EventInteractions`,
+with no `.Api` segment, so `using Intent.Modelers.Services.EventInteractions.Api;` does not compile.
 
 **Version drift — real, and worth checking before copying a number from here.** At the time this
 was written, `.DomainInteractions`' `.csproj` `PackageReference` for the base `Services` module
@@ -41,7 +43,7 @@ not part of the version shown. The stubs follow the conventions defined in
 `services.md` §9 — `// + common element members`, the omitted `Is<X>Model()` / `As<X>Model()`
 casts, and `// + common association-end members` mean exactly what they mean there.
 
-### 2.1 Services.CQRS — `Intent.Modules.Modelers.Services.CQRS` (source at `6.0.8`)
+### 2.1 Services.CQRS — `Intent.Modules.Modelers.Services.CQRS` (source at `6.0.9`)
 
 ```csharp
 namespace Intent.Modelers.Services.CQRS.Api;
@@ -77,8 +79,8 @@ public static class CommandModelExtensions
     static IElementMapping GetMapToDomainDataMapping(this CommandModel type);
     static bool HasMapToDomainOperationMapping(this CommandModel type);
     static IElementMapping GetMapToDomainOperationMapping(this CommandModel type);
-    static bool HasMapToDomainMapping(this CommandModel type);
-    static IElementMapping GetMapToDomainMapping(this CommandModel type);
+    [Obsolete("Use HasMapToDomainDataMapping")] static bool HasMapToDomainMapping(this CommandModel type);
+    [Obsolete("Use GetMapToDomainDataMapping")] static IElementMapping GetMapToDomainMapping(this CommandModel type);
 }
 
 public class FolderExtensionModel : FolderModel

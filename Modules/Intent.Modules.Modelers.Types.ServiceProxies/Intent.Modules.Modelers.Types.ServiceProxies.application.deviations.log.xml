@@ -32,4 +32,24 @@
       <fileHash>0FD4356BFB356FDA071F4BA55BBE735AE09217F31A3EE5083CCC52049F2ABC6D</fileHash>
     </file>
   </files>
+  <customFiles>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Types.ServiceProxies/CONTEXT.md</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-19T12:22:09.8578216Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Types.ServiceProxies/docs/README.md</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-19T12:22:09.9838847Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.Types.ServiceProxies/release-notes.md</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-19T12:22:10.0120604Z</approvedAt>
+    </customFile>
+  </customFiles>
 </deviationsLog>

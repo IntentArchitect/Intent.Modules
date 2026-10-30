@@ -9,7 +9,7 @@
     {
       "name": "intent-agent-gate-guard-write",
       "trigger": "PreToolUse",
-      "matcher": "write|fs_write|fsWrite|str_replace|fs_append|delete_file",
+      "matcher": "write|fs_write|fsWrite|str_replace|fs_append|delete_file|.*(write_file|patch_file|delete_code_file).*",
       "action": { "type": "command", "command": "dotnet run .kiro/hooks/gate/gate.cs --no-build -- guard-write --harness kiro; exit $LASTEXITCODE" }
     },
     {

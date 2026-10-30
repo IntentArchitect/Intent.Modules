@@ -2,8 +2,8 @@
 name: module-version-increment
 description: "Increment a module's version (choosing the right component) before implementing a change that touches it, then confirm and propagate to dependents at close-out. USE ONLY WHEN the modules a task will change are known — as soon as that's decided, and again at close-out. DO NOT USE FOR writing the change's documentation (see module-docs-chore) or recording design rationale (see module-context-capture). REQUIRES the set of modules the task will touch already identified."
 keywords: [version, increment, release, bump, dependents, publish]
-template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleVersionIncrement_SkillMd_Agents
-contentHash: 10AF017629A154A234EF3B825C5133F093475C7B392AC553885E14F4192EFB9C
+template-id: Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleVersionIncrement_SkillMd_Agents
+contentHash: 084CF07CD5E5D2548CBAE915DE8CCCD843BFC38609A3F497F4DE33C63CBAB6DA
 ---
 # Skill: module-version-increment
 
@@ -35,9 +35,7 @@ Act only in these cases:
 
 - **A module was changed that you did not anticipate** — increment it now.
 - **The impact turned out larger than assumed** — a change planned as minor breaks existing output.
-
-Raise the component. Correcting a version that has not been published is not a second increment.
-
+  Raise the component. Correcting a version that has not been published is not a second increment.
 - **A dependent needs to move** — see *Move The Dependents Too* below.
 
 ## Deciding The Increment
@@ -120,17 +118,15 @@ registers it there whether or not it was ever shared. Anything else is a distrib
 
 ### Query Mechanisms
 
-1. **Primary — feed search.** Search the module's configured feeds with prereleases included — the flag
-
-is **mandatory**, prereleases are hidden without it, so an unflagged search can misreport a published
-prerelease as absent. Compare every result against your current version by semver precedence, not
-exact-string equality — anything at or beyond it counts as published. Ignore any result whose
-repository address is the machine-local build-output path per the ladder above.
-
+1. **Primary — feed search.** Search the module's configured feeds with prereleases included:
+   `run_solution_query` → `searchAvailableModules("<module id>", { includePrerelease: true })`. The flag
+   is **mandatory**, prereleases are hidden without it, so an unflagged search can misreport a published
+   prerelease as absent. Compare every result against your current version by semver precedence, not
+   exact-string equality — anything at or beyond it counts as published. Ignore any result whose
+   `repository` is the machine-local build-output path per the ladder above.
 2. **Fallback — ask the developer.** If the feed can't be reached, state the current version, the
-
-version you believe it should become, and why, then ask how to proceed. Take the answer as given and do
-not ask again for that module during this task.
+   version you believe it should become, and why, then ask how to proceed. Take the answer as given and do
+   not ask again for that module during this task.
 
 Once you have moved it, record that you did — that record is step 1 for whoever comes next.
 
@@ -149,21 +145,16 @@ higher one**: bring the others up to it rather than pulling it down.
 An increment is incomplete if the modules that depend on the change stay behind.
 
 - **Every module whose template or extension code changed needs its own increment** — even when the
-
-change is "only" narrowing an existing query. To a consumer, a same-version code change is
-indistinguishable from no change at all.
-
+  change is "only" narrowing an existing query. To a consumer, a same-version code change is
+  indistinguishable from no change at all.
 - **Shared contracts move together.** When several modules cooperate through a shared string contract
-
-— a template role name, a well-known key — changing that contract requires a synchronised increment
-on **every** module that reads *or* writes it, not just the one that motivated the change. A
-consumer left behind silently stops matching, which is worse than the behaviour before the change.
-
+  — a template role name, a well-known key — changing that contract requires a synchronised increment
+  on **every** module that reads *or* writes it, not just the one that motivated the change. A
+  consumer left behind silently stops matching, which is worse than the behaviour before the change.
 - **Modules that pin this one** need their dependency entry updated.
 - **Consumers that depend on the change's *effect*** are best handled declaratively, by declaring a
-
-minimum-version floor in the module's own metadata, rather than by reinstalling into each
-application you happen to know about — that only ever fixes the ones you thought of.
+  minimum-version floor in the module's own metadata, rather than by reinstalling into each
+  application you happen to know about — that only ever fixes the ones you thought of.
 
 ## Confirm It Is Actually Ahead
 
@@ -171,12 +162,13 @@ Run the gate above — *Is This Version Already In Flight?* — one more time im
 If the query mechanisms there still report nothing at or beyond your version as published, you're
 clear; if something now is, someone published ahead of you and you need to move further.
 
-> **The downgrade guard.** The Software Factory silently refuses to regenerate `.imodspec` if the
-> version you just set compares as *lower*, by semver precedence, than the `<version>` already on
-> disk — regeneration reports nothing staged, with no error or warning. A `-pre.#` suffix sorts
+> **The downgrade guard.** The Software Factory silently skips writing `<version>` in `.imodspec` if
+> the version you just set compares as *lower*, by semver precedence, than the `<version>` already on
+> disk — no error, no warning. Only `<version>` is skipped; the rest of the file is still regenerated,
+> so the run may stage other `.imodspec` changes, or nothing at all. A `-pre.#` suffix sorts
 > *below* the same `X.Y.Z` with no suffix, so correcting `1.1.0` down to `1.0.3-pre.0` trips this
-> guard even though the intent is a fix. If a version change reports zero diff when you expected
-> one, suspect this before anything else — check the `.imodspec`'s current `<version>` and compare
+> guard even though the intent is a fix. If the `<version>` line does not change when you expected
+> it to, suspect this before anything else — check the `.imodspec`'s current `<version>` and compare
 > precedence. Workaround: temporarily set only the `<version>` line down to a safe value (confirm
 > via `git diff`/`git status` that the file is uncommitted first), then reapply your intended
 > version and regenerate forward.
@@ -195,9 +187,7 @@ While you are here, confirm the module's supported client version range still ho
 is the **higher** of two floors:
 
 1. **The SDK floor** — the minimum client version required by the SDK packages the module references.
-
-A regeneration failure states this one outright.
-
+   A regeneration failure states this one outright.
 2. **The dependency floor** — the highest lower bound across the modules this one depends on.
 
 Take the maximum of the two. Re-check after anything that moves an SDK or dependency version, and

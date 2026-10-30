@@ -1,3 +1,7 @@
+### Version 1.0.4
+
+- Fixed: A Service Proxy `Operation` that isn't mapped to an endpoint no longer stops parameter synchronisation in the User Interface designer with `Cannot read properties of null (reading 'getElement')`; it is now skipped with a warning.
+
 ### Version 1.0.3
 
 - Fixed: Creating a `Service Proxy` programmatically (for example from an AI agent) no longer stalls on a mapping dialog with nobody to answer it.

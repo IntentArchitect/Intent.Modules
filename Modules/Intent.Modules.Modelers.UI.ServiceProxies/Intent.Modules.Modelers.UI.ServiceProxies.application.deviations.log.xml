@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
   <files />
+  <customFiles>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.UI.ServiceProxies/CONTEXT.md</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-19T12:22:10.0346029Z</approvedAt>
+    </customFile>
+    <customFile>
+      <path>Modules/Intent.Modules.Modelers.UI.ServiceProxies/docs/README.md</path>
+      <approvedByAccountName>joel.turner@intentarchitect.com</approvedByAccountName>
+      <approvedByDisplayName>Joel Turner</approvedByDisplayName>
+      <approvedAt>2026-10-19T12:22:10.1624887Z</approvedAt>
+    </customFile>
+  </customFiles>
 </deviationsLog>

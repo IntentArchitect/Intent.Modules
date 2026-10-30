@@ -340,54 +340,5 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="f8314506-8cc0-4cd8-b3d0-bd62e4e762fd" type="Package Event Settings" typeId="48bcdd5f-690c-425b-8f5e-99097a7188dc">
-      <name>NewPackageEventSettings</name>
-      <display>[events]</display>
-      <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-by-name</sort-children>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>df96d537-7bb5-4c49-811f-973fa6e95beb</parentFolderId>
-      <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
-      <packageName>Intent.Modelers.Eventing</packageName>
-      <stereotypes />
-      <metadata />
-      <childElements>
-        <childElement id="994fdf2f-7345-4975-b64d-0f4e5ce69a8f" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
-          <name>On Loaded</name>
-          <display>On Loaded: Inline Script</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="d34f56f2-4bd0-429b-9196-c23b0d35b4d7">
-            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.ModuleBuilder</typePackageName>
-            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>f8314506-8cc0-4cd8-b3d0-bd62e4e762fd</parentFolderId>
-          <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
-          <packageName>Intent.Modelers.Eventing</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="/**&#xD;&#xA; * Used by:&#xD;&#xA; * Intent.Modules\Modules\Modelers.Eventing by the &quot;On Loaded&quot; event for Packages.&#xD;&#xA; *&#xD;&#xA; * Source code here:&#xD;&#xA; * https://github.com/IntentSoftware/Intent.Modules/blob/master/DesignerMacros/src/eventing-designer-on-load/eventing-designer-on-load.ts&#xD;&#xA; */&#xD;&#xA;const eventingApplicationElementType = &quot;Application&quot;;&#xD;&#xA;const metadataKeyName = &quot;initialized-version&quot;;&#xD;&#xA;const currentVersion = 1;&#xD;&#xA;for (const package of getPackages()) {&#xD;&#xA;    if (package.hasMetadata(metadataKeyName) &amp;&amp;&#xD;&#xA;        Number(package.getMetadata(metadataKeyName)) == currentVersion) {&#xD;&#xA;        continue;&#xD;&#xA;    }&#xD;&#xA;    package.removeMetadata(metadataKeyName);&#xD;&#xA;    const appElement = lookupTypesOf(eventingApplicationElementType)&#xD;&#xA;        .filter(x =&gt; x.getPackage().id === package.id)[0];&#xD;&#xA;    if (appElement == null) {&#xD;&#xA;        package.addMetadata(metadataKeyName, currentVersion.toString());&#xD;&#xA;        package.expand();&#xD;&#xA;        continue;&#xD;&#xA;    }&#xD;&#xA;    appElement.loadDiagram();&#xD;&#xA;    const diagram = getCurrentDiagram();&#xD;&#xA;    if (diagram.getVisual(appElement.id) != null) {&#xD;&#xA;        package.addMetadata(metadataKeyName, currentVersion.toString());&#xD;&#xA;        package.expand();&#xD;&#xA;        continue;&#xD;&#xA;    }&#xD;&#xA;    diagram.addElement(appElement.id, { x: 400, y: 320 }, { width: 200, height: 60 });&#xD;&#xA;    package.addMetadata(metadataKeyName, currentVersion.toString());&#xD;&#xA;    package.expand();&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
-                <property name="7df9c3b9-91a0-4cb7-bc3a-15d72f160054" display="Dependencies" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-      </childElements>
-    </childElement>
   </childElements>
 </class>

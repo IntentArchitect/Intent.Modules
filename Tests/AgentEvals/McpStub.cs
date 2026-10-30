@@ -11,20 +11,33 @@ namespace AgentEvals;
 /// Served over stdio by the runner's own executable (`mcp-stub`), so it needs no build of its own.
 /// </summary>
 /// <remarks>
-/// Tool names and argument names match the real server's, because the gate's guard-version hook keys
-/// on them: it matches the tool name "run_designer_script" and reads tool_input.applicationId and
-/// tool_input.script. A script that sets the module's Version is applied to the .imodspec, as the
+/// Tool names and argument names match the real server's, because the gate's hooks key on them:
+/// guard-version matches the tool name "run_designer_script" and reads tool_input.applicationId and
+/// tool_input.script; guard-write matches "write_file", "patch_file" and "delete_code_file" and reads
+/// tool_input.filePath, content, searchBlock and replaceBlock. The file tools really write, resolving a
+/// relative path against the workspace as Intent resolves it against the open solution's folder. A script that sets the module's Version is applied to the .imodspec, as the
 /// Software Factory would; any other script is recorded and reported as run, but changes nothing.
+/// run_solution_query answers only searchAvailableModules, from the scenario's feed (see <see cref="Feed"/>), so the
+/// version gate's feed check can complete. update_application_settings writes a new description into the
+/// .imodspec's summary and description, as the Software Factory would.
+/// <para>
+/// run_software_factory regenerates the one thing the stub models: the .imodspec's &lt;iconUrl&gt; from the
+/// application config's root &lt;icon&gt;. It also stages an unrelated change to an instruction file, as real runs
+/// did when the module-svg-icon skill was written, so a check can tell "applied only the .imodspec" from "applied
+/// everything". With autoApply left on, it writes every change, as the real tool does for a non-destructive run;
+/// with it off, the changes wait for apply_staged_file_changes. get_file_diffs returns the real diff lines, so an
+/// icon change's diff carries the whole base64 payload, exactly as Intent's does.
+/// </para>
 /// </remarks>
 public static class McpStub
 {
     public const string ServerName = "intent-architect";
 
     /// <summary>The command and arguments a harness launches the stub with.</summary>
-    public static (string Command, string[] Args) LaunchCommand(string workspace, string logPath)
+    public static (string Command, string[] Args) LaunchCommand(Workspace workspace)
     {
         var self = Environment.ProcessPath ?? throw new InvalidOperationException("Cannot locate the runner's own executable.");
-        string[] stubArgs = ["mcp-stub", "--workspace", workspace, "--log", logPath];
+        string[] stubArgs = ["mcp-stub", "--workspace", workspace.Root, "--log", workspace.StubLogPath, "--published", workspace.PublishedVersion];
 
         // Run as "dotnet <dll>" rather than as an apphost: pass the assembly too.
         return Path.GetFileNameWithoutExtension(self).Equals("dotnet", StringComparison.OrdinalIgnoreCase)
@@ -37,6 +50,7 @@ public static class McpStub
         string? Value(string name) => Array.IndexOf(args, name) is var i and >= 0 && i + 1 < args.Length ? args[i + 1] : null;
         var workspace = Value("--workspace") ?? Directory.GetCurrentDirectory();
         var log = Value("--log");
+        var feed = Feed(workspace, Value("--published") ?? "1.0.0");
 
         var stdin = Console.In;
         var stdout = Console.Out;
@@ -68,7 +82,7 @@ public static class McpStub
                     ["serverInfo"] = new JsonObject { ["name"] = ServerName, ["version"] = "eval-stub" },
                 },
                 "tools/list" => new JsonObject { ["tools"] = Tools() },
-                "tools/call" => Call(request?["params"], workspace, log),
+                "tools/call" => Call(request?["params"], workspace, log, feed),
                 "ping" => new JsonObject(),
                 _ => null,
             };
@@ -102,6 +116,69 @@ public static class McpStub
                 ["script"] = new JsonObject { ["type"] = "string", ["description"] = "The designer script to run." },
             },
             required: ["applicationId", "script"]),
+        Tool("run_solution_query",
+            "Run a read-only JavaScript query against the solution and get its `return` value back as JSON. Globals: " +
+            "searchAvailableModules(searchString, { includePrerelease?, repositoryUrl? }).",
+            new JsonObject
+            {
+                ["applicationId"] = new JsonObject { ["type"] = new JsonArray("string", "null"), ["description"] = "Omit when the query only touches modules." },
+                ["script"] = new JsonObject { ["type"] = "string", ["description"] = "JavaScript to execute. Its `return` value is the answer." },
+            },
+            required: ["script"]),
+        Tool("update_application_settings", "Partially update an application's settings: basic fields and/or module-contributed settings.",
+            new JsonObject
+            {
+                ["applicationId"] = new JsonObject { ["type"] = "string", ["description"] = "Target application Id." },
+                ["description"] = new JsonObject { ["type"] = new JsonArray("string", "null"), ["description"] = "New description." },
+                ["name"] = new JsonObject { ["type"] = new JsonArray("string", "null"), ["description"] = "New application name." },
+            },
+            required: ["applicationId"]),
+        Tool("run_software_factory",
+            "Run the Software Factory for an application after model changes. In Staging mode it applies the changes to disk itself " +
+            "unless any is destructive; pass autoApply false to leave them staged for review.",
+            new JsonObject
+            {
+                ["applicationId"] = new JsonObject { ["type"] = "string", ["description"] = "Target application Id." },
+                ["autoApply"] = new JsonObject { ["type"] = "boolean", ["description"] = "Optional, default true. Pass false to leave the changes staged." },
+            },
+            required: ["applicationId"]),
+        Tool("get_file_diffs",
+            "Show what the Software Factory changed for one or more files, as a unified diff against the pre-run baseline.",
+            new JsonObject
+            {
+                ["filePaths"] = new JsonObject { ["type"] = "array", ["items"] = new JsonObject { ["type"] = "string" }, ["description"] = "Absolute paths, or paths relative to the application's output folder." },
+                ["applicationId"] = new JsonObject { ["type"] = new JsonArray("string", "null"), ["description"] = "Restrict the diff to this application." },
+            },
+            required: ["filePaths"]),
+        Tool("apply_staged_file_changes",
+            "Apply the given pending Software Factory staged file changes to disk. Applies ONLY the listed files.",
+            new JsonObject
+            {
+                ["applicationId"] = new JsonObject { ["type"] = "string", ["description"] = "Target application Id." },
+                ["relativePaths"] = new JsonObject { ["type"] = "array", ["items"] = new JsonObject { ["type"] = "string" }, ["description"] = "The exact relative file paths to apply." },
+            },
+            required: ["applicationId", "relativePaths"]),
+        Tool("write_file", "Write content to a file, creating it if it doesn't exist or overwriting if it does.",
+            new JsonObject
+            {
+                ["filePath"] = new JsonObject { ["type"] = "string", ["description"] = "Absolute path to the file to write." },
+                ["content"] = new JsonObject { ["type"] = "string", ["description"] = "The complete file content to write." },
+            },
+            required: ["filePath", "content"]),
+        Tool("patch_file", "Replace a specific block of text in a file. Pass the literal text to find as searchBlock and its replacement as replaceBlock.",
+            new JsonObject
+            {
+                ["filePath"] = new JsonObject { ["type"] = "string", ["description"] = "Absolute path to the file to patch." },
+                ["searchBlock"] = new JsonObject { ["type"] = "string", ["description"] = "Literal text to find." },
+                ["replaceBlock"] = new JsonObject { ["type"] = "string", ["description"] = "Literal replacement text." },
+            },
+            required: ["filePath", "searchBlock", "replaceBlock"]),
+        Tool("delete_code_file", "Delete a file.",
+            new JsonObject
+            {
+                ["filePath"] = new JsonObject { ["type"] = "string", ["description"] = "Absolute path to the file to delete." },
+            },
+            required: ["filePath"]),
     ];
 
     private static JsonObject Tool(string name, string description, JsonObject properties, string[]? required = null)
@@ -115,7 +192,7 @@ public static class McpStub
         return new JsonObject { ["name"] = name, ["description"] = description, ["inputSchema"] = schema };
     }
 
-    private static JsonObject Call(JsonNode? parameters, string workspace, string? log)
+    private static JsonObject Call(JsonNode? parameters, string workspace, string? log, IReadOnlyList<FeedEntry> feed)
     {
         var name = parameters?["name"]?.GetValue<string>() ?? "";
         var arguments = parameters?["arguments"] as JsonObject ?? new JsonObject();
@@ -126,6 +203,12 @@ public static class McpStub
         {
             "get_applications" => (JsonSerializer.Serialize(applications.Select(a => new { id = a.Id, name = a.Name, location = a.Folder })), false),
             "run_designer_script" => RunScript(arguments, applications, wrote),
+            "run_solution_query" => RunQuery(arguments, workspace, feed),
+            "update_application_settings" => UpdateSettings(arguments, applications, wrote),
+            "run_software_factory" => RunSoftwareFactory(arguments, applications, workspace, wrote),
+            "get_file_diffs" => GetFileDiffs(arguments, applications, workspace),
+            "apply_staged_file_changes" => ApplyStaged(arguments, applications, wrote),
+            "write_file" or "patch_file" or "delete_code_file" => RunFileTool(name, arguments, workspace, wrote),
             _ => ($"Unknown tool: {name}", true),
         };
 
@@ -142,7 +225,7 @@ public static class McpStub
                 ["wrote"] = new JsonArray([.. wrote.Select(path => (JsonNode)new JsonObject
                 {
                     ["path"] = Path.GetRelativePath(workspace, path).Replace('\\', '/'),
-                    ["content"] = File.ReadAllText(path),
+                    ["content"] = File.Exists(path) ? File.ReadAllText(path) : null,
                 })]),
             }.ToJsonString() + Environment.NewLine);
         }
@@ -152,6 +235,51 @@ public static class McpStub
             ["content"] = new JsonArray(new JsonObject { ["type"] = "text", ["text"] = text }),
             ["isError"] = isError,
         };
+    }
+
+    private sealed record FeedEntry(string Id, string Version, string Repository);
+
+    /// <summary>
+    /// What the module feed offers: SampleModule published at the scenario's published version (1.0.0 unless the
+    /// scenario says otherwise), and a local build of whatever version is on disk when the session starts - in
+    /// flight, so the version gate leaves it alone. Shaped like the real searchAvailableModules result.
+    /// </summary>
+    private static IReadOnlyList<FeedEntry> Feed(string workspace, string published)
+    {
+        var feed = new List<FeedEntry> { new("SampleModule", published, "https://intentarchitect.com/") };
+        var onDisk = Directory.EnumerateFiles(workspace, "SampleModule.imodspec", SearchOption.AllDirectories).FirstOrDefault() is { } imodspec
+            ? Regex.Match(File.ReadAllText(imodspec), "<version>([^<]+)</version>").Groups[1].Value.Trim()
+            : "";
+        if (onDisk.Length > 0 && onDisk != published)
+        {
+            feed.Add(new("SampleModule", onDisk, "local"));
+        }
+
+        return feed;
+    }
+
+    private static (string Text, bool IsError) RunQuery(JsonObject arguments, string workspace, IReadOnlyList<FeedEntry> feed)
+    {
+        var script = arguments["script"]?.GetValue<string>() ?? "";
+        var search = Regex.Match(script, """searchAvailableModules\(\s*["'`]([^"'`]*)["'`]""");
+        if (!search.Success)
+        {
+            return ("This query is not supported here: only searchAvailableModules(searchString, { includePrerelease }) is.", true);
+        }
+
+        var term = search.Groups[1].Value;
+        var modules = feed
+            .Where(m => m.Id.Contains(term, StringComparison.OrdinalIgnoreCase))
+            .Select(m => new
+            {
+                id = m.Id,
+                summary = "A sample module.",
+                authors = "Intent Architect",
+                version = m.Version,
+                isCompatible = true,
+                repository = m.Repository == "local" ? Path.Combine(workspace, "Intent.Modules") : m.Repository,
+            });
+        return (JsonSerializer.Serialize(new { executed = true, result = modules, output = Array.Empty<string>() }), false);
     }
 
     private static (string Text, bool IsError) RunScript(JsonObject arguments, IReadOnlyList<Application> applications, List<string> wrote)
@@ -220,7 +348,248 @@ public static class McpStub
         // than reporting a success that leaves the agent guessing why nothing changed.
         return updates.Count > 0 ? ($"Script ran. Updated {string.Join("; ", updates)}.", false)
             : properties.Count > 0 ? ("Script ran, but changed nothing: no element or property matched the script's setProperty call(s).", false)
-            : ("Script ran successfully.", false);
+            : ("Script ran, but changed nothing and returned no value: it made no setProperty(\"name\", \"value\") call on a named element.", false);
+    }
+
+    /// <summary>
+    /// The Application Settings route for a module's summary: the Software Factory writes the description into the
+    /// .imodspec's &lt;summary&gt; and &lt;description&gt;, so the stub writes both, as a run after this call would.
+    /// </summary>
+    private static (string Text, bool IsError) UpdateSettings(JsonObject arguments, IReadOnlyList<Application> applications, List<string> wrote)
+    {
+        var applicationId = arguments["applicationId"]?.GetValue<string>();
+        var application = applications.FirstOrDefault(a => string.Equals(a.Id, applicationId, StringComparison.OrdinalIgnoreCase)
+            || string.Equals(a.Name, applicationId, StringComparison.OrdinalIgnoreCase));
+        if (application is null)
+        {
+            return ($"No application with id '{applicationId}'. Call get_applications for the ids.", true);
+        }
+
+        var description = arguments["description"]?.GetValue<string>();
+        if (description is null || Directory.GetFiles(application.Folder, "*.imodspec").FirstOrDefault() is not { } imodspec)
+        {
+            return ("Settings updated. Nothing in the module's files changed.", false);
+        }
+
+        var content = File.ReadAllText(imodspec);
+        var escaped = System.Security.SecurityElement.Escape(description);
+        content = Regex.Replace(content, "<summary>[^<]*</summary>", $"<summary>{escaped}</summary>");
+        content = Regex.Replace(content, "<description>[^<]*</description>", $"<description>{escaped}</description>");
+        File.WriteAllText(imodspec, content);
+        wrote.Add(imodspec);
+        return ($"Settings updated. {application.Name}'s description is now '{description}', and the Software Factory wrote it to the .imodspec's <summary> and <description>.", false);
+    }
+
+    /// <summary>The run's staged changes, by full path: what each file would become once applied.</summary>
+    private static readonly Dictionary<string, string> Staged = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>The unrelated change every run stages, as real runs did beside the icon.</summary>
+    public const string UnrelatedStagedFile = ".claude/rules/csharp-guidelines.md";
+
+    private const string UnrelatedStagedLine = "<!-- Regenerated by the Software Factory. -->";
+
+    private static (string Text, bool IsError) RunSoftwareFactory(JsonObject arguments, IReadOnlyList<Application> applications, string workspace, List<string> wrote)
+    {
+        if (FindApplication(arguments, applications) is not { } application)
+        {
+            return ($"No application with id '{arguments["applicationId"]}'. Call get_applications for the ids.", true);
+        }
+
+        var changes = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        var config = Directory.GetFiles(application.Folder, "*.application.config").FirstOrDefault();
+        var imodspec = Directory.GetFiles(application.Folder, "*.imodspec").FirstOrDefault();
+        if (config is not null && imodspec is not null
+            && Regex.Match(File.ReadAllText(config), "<icon>([^<]*)</icon>") is { Success: true } icon)
+        {
+            var current = File.ReadAllText(imodspec);
+            var regenerated = Regex.Replace(current, "<iconUrl>[^<]*</iconUrl>", $"<iconUrl>{icon.Groups[1].Value}</iconUrl>");
+            if (regenerated != current)
+            {
+                changes[imodspec] = regenerated;
+            }
+        }
+
+        var unrelated = Path.GetFullPath(Path.Combine(workspace, UnrelatedStagedFile));
+        if (File.Exists(unrelated) && File.ReadAllText(unrelated) is var guidelines && !guidelines.Contains(UnrelatedStagedLine))
+        {
+            changes[unrelated] = guidelines.TrimEnd() + Environment.NewLine + Environment.NewLine + UnrelatedStagedLine + Environment.NewLine;
+        }
+
+        if (changes.Count == 0)
+        {
+            return ("""{"success":true,"feedback":"Mode: Staging — nothing staged. Software Factory completed.","message":{"numberOfChanges":0,"changes":{}}}""", false);
+        }
+
+        var summary = new JsonArray([.. changes.Select(c =>
+        {
+            var (added, removed) = CountChanges(File.ReadAllText(c.Key), c.Value);
+            return (JsonNode)$"{Relative(application, c.Key)} +{added} -{removed}";
+        })]);
+        // A harness may pass the flag as a string; anything but false keeps the tool's default.
+        var apply = !string.Equals(arguments["autoApply"]?.ToString(), "false", StringComparison.OrdinalIgnoreCase);
+        foreach (var (path, content) in changes)
+        {
+            if (apply)
+            {
+                File.WriteAllText(path, content);
+                wrote.Add(path);
+                Staged.Remove(path);
+            }
+            else
+            {
+                Staged[path] = content;
+            }
+        }
+
+        return (new JsonObject
+        {
+            ["success"] = true,
+            ["feedback"] = apply
+                ? $"Mode: Staging — applied {changes.Count} change(s) to disk. Software Factory completed."
+                : $"Mode: Staging — the {changes.Count} change(s) are staged, not yet on disk. Call apply_staged_file_changes to write them.",
+            ["message"] = new JsonObject
+            {
+                ["outputBasePath"] = application.Folder.Replace('\\', '/'),
+                ["numberOfChanges"] = changes.Count,
+                ["changes"] = new JsonObject { ["overwrite"] = summary },
+            },
+        }.ToJsonString(), false);
+    }
+
+    private static (string Text, bool IsError) GetFileDiffs(JsonObject arguments, IReadOnlyList<Application> applications, string workspace)
+    {
+        var application = FindApplication(arguments, applications);
+        var files = new JsonArray();
+        foreach (var requested in (arguments["filePaths"] as JsonArray ?? []).Select(p => p?.GetValue<string>() ?? ""))
+        {
+            var full = Path.GetFullPath(Path.IsPathRooted(requested) ? requested : Path.Combine(application?.Folder ?? workspace, requested));
+            var staged = Staged.TryGetValue(full, out var content);
+            files.Add(new JsonObject
+            {
+                ["filePath"] = full.Replace('\\', '/'),
+                ["status"] = staged ? "modified" : File.Exists(full) ? "unchanged" : "not_found",
+                ["diff"] = staged ? UnifiedDiff(File.ReadAllText(full), content!) : "",
+            });
+        }
+
+        return (new JsonObject { ["success"] = true, ["message"] = new JsonObject { ["files"] = files } }.ToJsonString(), false);
+    }
+
+    private static (string Text, bool IsError) ApplyStaged(JsonObject arguments, IReadOnlyList<Application> applications, List<string> wrote)
+    {
+        if (FindApplication(arguments, applications) is not { } application)
+        {
+            return ($"No application with id '{arguments["applicationId"]}'. Call get_applications for the ids.", true);
+        }
+
+        var requested = (arguments["relativePaths"] as JsonArray ?? []).Select(p => p?.GetValue<string>() ?? "").ToList();
+        var resolved = requested.Select(p => Path.GetFullPath(Path.IsPathRooted(p) ? p : Path.Combine(application.Folder, p))).ToList();
+        var unknown = requested.Where((_, i) => !Staged.ContainsKey(resolved[i])).ToList();
+        if (requested.Count == 0 || unknown.Count > 0)
+        {
+            return ($"Nothing staged for: {string.Join(", ", unknown.DefaultIfEmpty("(no paths given)"))}. Staged: {string.Join(", ", Staged.Keys.Select(k => Relative(application, k)).DefaultIfEmpty("nothing"))}.", true);
+        }
+
+        foreach (var path in resolved)
+        {
+            File.WriteAllText(path, Staged[path]);
+            Staged.Remove(path);
+            wrote.Add(path);
+        }
+
+        return ($"Applied {resolved.Count} file(s) to disk.", false);
+    }
+
+    private static Application? FindApplication(JsonObject arguments, IReadOnlyList<Application> applications)
+    {
+        var applicationId = arguments["applicationId"]?.GetValue<string>();
+        return applications.FirstOrDefault(a => string.Equals(a.Id, applicationId, StringComparison.OrdinalIgnoreCase)
+            || string.Equals(a.Name, applicationId, StringComparison.OrdinalIgnoreCase));
+    }
+
+    private static string Relative(Application application, string path) => Path.GetRelativePath(application.Folder, path).Replace('\\', '/');
+
+    /// <summary>The changed region between two versions of a file: lines removed and added, counted.</summary>
+    private static (int Added, int Removed) CountChanges(string before, string after)
+    {
+        var (_, removed, added) = ChangedRegion(before, after);
+        return (added.Length, removed.Length);
+    }
+
+    /// <summary>One hunk covering the changed region, with a line of context either side: enough for the stub's single-region changes.</summary>
+    private static string UnifiedDiff(string before, string after)
+    {
+        var (start, removed, added) = ChangedRegion(before, after);
+        var old = before.Split('\n');
+        var context = start > 0 ? new[] { " " + old[start - 1].TrimEnd('\r') } : [];
+        return $"@@ -{start + 1},{removed.Length} +{start + 1},{added.Length} @@\n" +
+               string.Join("\n", context.Concat(removed.Select(l => "-" + l)).Concat(added.Select(l => "+" + l)));
+    }
+
+    private static (int Start, string[] Removed, string[] Added) ChangedRegion(string before, string after)
+    {
+        var a = before.Split('\n').Select(l => l.TrimEnd('\r')).ToArray();
+        var b = after.Split('\n').Select(l => l.TrimEnd('\r')).ToArray();
+        var start = 0;
+        while (start < a.Length && start < b.Length && a[start] == b[start])
+        {
+            start++;
+        }
+
+        var endA = a.Length;
+        var endB = b.Length;
+        while (endA > start && endB > start && a[endA - 1] == b[endB - 1])
+        {
+            endA--;
+            endB--;
+        }
+
+        return (start, a[start..endA], b[start..endB]);
+    }
+
+    private static (string Text, bool IsError) RunFileTool(string name, JsonObject arguments, string workspace, List<string> wrote)
+    {
+        var filePath = arguments["filePath"]?.GetValue<string>() ?? arguments["file_path"]?.GetValue<string>() ?? arguments["path"]?.GetValue<string>();
+        if (string.IsNullOrWhiteSpace(filePath))
+        {
+            return ("filePath is required.", true);
+        }
+
+        var full = Path.GetFullPath(Path.IsPathRooted(filePath) ? filePath : Path.Combine(workspace, filePath));
+        switch (name)
+        {
+            case "write_file":
+                Directory.CreateDirectory(Path.GetDirectoryName(full)!);
+                File.WriteAllText(full, arguments["content"]?.GetValue<string>() ?? "");
+                break;
+            case "patch_file":
+                if (!File.Exists(full))
+                {
+                    return ($"File not found: {filePath}", true);
+                }
+
+                var content = File.ReadAllText(full);
+                var search = arguments["searchBlock"]?.GetValue<string>() ?? "";
+                var index = search.Length == 0 ? -1 : content.IndexOf(search, StringComparison.Ordinal);
+                if (index < 0)
+                {
+                    return ("searchBlock was not found in the file.", true);
+                }
+
+                File.WriteAllText(full, content[..index] + (arguments["replaceBlock"]?.GetValue<string>() ?? "") + content[(index + search.Length)..]);
+                break;
+            default:
+                if (!File.Exists(full))
+                {
+                    return ($"File not found: {filePath}", true);
+                }
+
+                File.Delete(full);
+                break;
+        }
+
+        wrote.Add(full);
+        return ($"{name} succeeded for {filePath}.", false);
     }
 
     private sealed record Application(string Id, string Name, string Folder);

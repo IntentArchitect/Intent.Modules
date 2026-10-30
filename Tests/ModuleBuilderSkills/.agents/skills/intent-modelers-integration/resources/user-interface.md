@@ -1,5 +1,5 @@
 ---
-contentHash: 4520A76882114C94634C727B250BA14553BD5A7BAFDF56FD365D1D256529EC14
+contentHash: 0FC8D21806487991BB2072D4D7F3A3BA9513AC204CB6311F98B1CAECFC3A5505
 ---
 # User Interface Designer (`Intent.Modules.Modelers.UI`)
 
@@ -125,6 +125,16 @@ All six live in `Intent.Modules.Modelers.UI.Api` (⚠️ different from the conc
 "give me all pages", use `ui.GetComponentModels().Where(c => c.HasPage())` against the concrete
 `ComponentModel` — don't try to obtain an `IPageModel`, nothing produces one.
 
+⚠️ **Two unrelated `IInvokableModel` interfaces share the name.** The one in this table is
+`Intent.Modules.Modelers.UI.Api.IInvokableModel` ("directly callable"), implemented only by the UI types
+listed above. `Intent.Modules.Common.IInvokableModel` ("invoked from a processing handler", in
+`Intent.Modules.Common` from `3.8.0`) is a different type, implemented by CQRS `CommandModel` /
+`QueryModel`, Stored Procedures' `StoredProcedureModel` and Service Proxies' `OperationModel`
+(`Intent.Modelers.Types.ServiceProxies.Api`, module `Intent.Modelers.Types.ServiceProxies`). Neither converts to the other, so a
+`CommandModel` is never a UI `IInvokableModel`. With `using Intent.Modules.Common;` and
+`using Intent.Modules.Modelers.UI.Api;` in one file, a bare `IInvokableModel` fails with CS0104
+(ambiguous reference). Fully qualify it or alias one of them.
+
 ## 5. Associations
 
 | Association | `SpecializationType` | `SpecializationTypeId` | Target-end trait | Notes |
@@ -161,15 +171,27 @@ Registration binds the concrete, enumerable root type — `ComponentModel` — s
 surface:
 
 ```csharp
+using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modelers.UI.Api;
-using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.Registrations;
+using Intent.Templates;
 
 namespace MyModule.Templates
 {
   public class ComponentPartialTemplateRegistration : FilePerModelTemplateRegistration<ComponentModel>
   {
-      public const string TemplateId = "MyModule.ComponentPartial";
+      public override string TemplateId => ComponentPartialTemplate.TemplateId;
+
+      public override IEnumerable<ComponentModel> GetModels(IApplication application)
+      {
+          return application.MetadataManager.UserInterface(application).GetComponentModels();
+      }
+
+      public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, ComponentModel model)
+      {
+          return new ComponentPartialTemplate(outputTarget, model);
+      }
   }
 }
 ```
@@ -181,7 +203,8 @@ Inside the template, bind to `IComponentModel` for logic that must work uniforml
 public string RenderChild(IComponentModel widget)
 {
   // Works for ComponentModel, DisplayComponentModel, FormModel, ButtonModel, TableModel, ...
-  return widget.Name;
+  // IComponentModel is an empty marker trait: reach the name through the wrapped element.
+  return widget.InternalElement.Name;
 }
 ```
 
@@ -191,12 +214,15 @@ Factory-extension-style access, pulling pages/dialogs/layouts out of the designe
 using System.Linq;
 using Intent.Engine;
 using Intent.Modelers.UI.Api;
+using Intent.Modules.Common.Plugins;
 
 namespace MyModule.FactoryExtensions
 {
   public class UIDesignerScanner : FactoryExtensionBase
   {
-      public override void Execute(IApplication application)
+      public override string Id => "MyModule.UIDesignerScanner";
+
+      protected override void OnAfterTemplateRegistrations(IApplication application)
       {
           var ui = application.MetadataManager.UserInterface(application);
 
@@ -230,7 +256,7 @@ things are stated once here instead of on every type:
 returns (`IElement`, `ITypeReference`, `IStereotype`, `IElementMapping`, `IElementToElementMapping`,
 `IDesigner`), are listed once in `integration-recipe.md` §6.
 
-### 9.1 UI — `Intent.Modules.Modelers.UI` (source at `1.1.5`)
+### 9.1 UI — `Intent.Modules.Modelers.UI` (source at `1.1.6`)
 
 ```csharp
 namespace Intent.Modelers.UI.Api;

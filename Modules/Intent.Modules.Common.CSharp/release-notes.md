@@ -1,4 +1,8 @@
-﻿### Version 3.10.12
+﻿### Version 3.10.13
+
+- Fixed: Items added to a `CSharpCollectionExpression` and statements added to a switch case had no `Parent`, so `Remove`, `Replace`, `InsertAbove`, `InsertBelow` and `AddInvocation` on them threw or silently did nothing. An item replaced through `AddInvocation` is emitted without a semicolon.
+
+### Version 3.10.12
 
 - Improvement: `CSharpClass` (including records), `CSharpInterface` and `CSharpEnum` now have a `WithoutAccessModifier()` method which emits the type with no access modifier (e.g. `class ABC` rather than `public class ABC`); types remain `public` by default.
 - Fixed: `Required()` on `CSharpProperty` and `CSharpField` emitted the `required` modifier even for projects whose C# language version is below 11 (e.g. the `net6.0` default of C# 10), producing code that would not compile; the modifier is now omitted for those projects.

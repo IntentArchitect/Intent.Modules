@@ -273,6 +273,9 @@ public static class TranscriptParsers
                     {
                         _ when title.Contains("run_designer_script", StringComparison.OrdinalIgnoreCase) || title.Contains("get_applications", StringComparison.OrdinalIgnoreCase)
                             => new ToolCall(ToolKind.Mcp, title, input),
+                        // Kiro's skill tool: "Load skill: module-version-increment".
+                        _ when title.StartsWith("Load skill", StringComparison.OrdinalIgnoreCase)
+                            => new ToolCall(ToolKind.Skill, title, FirstOf(args, "name", "skill", "skill_name") is { Length: > 0 } skill ? skill : title[(title.IndexOf(':') + 1)..].Trim()),
                         "read" => new ToolCall(ToolKind.Read, title, path),
                         "edit" or "delete" or "move" => new ToolCall(ToolKind.Write, title, path),
                         "search" => new ToolCall(ToolKind.Search, title, path),

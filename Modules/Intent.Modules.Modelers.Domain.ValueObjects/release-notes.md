@@ -1,3 +1,7 @@
+### Version 3.6.5
+
+- Improvement: `Value Object` elements now have a `New Association` context menu option (`ctrl + shift + c`) for composite associations to other Value Objects; associating a Value Object to an entity is now a validation error.
+
 ### Version 3.6.4
 
 - Improvement: `Value Object` elements now carry the `Service Argument` trait, so they can be used as Service Operation parameter and return types.

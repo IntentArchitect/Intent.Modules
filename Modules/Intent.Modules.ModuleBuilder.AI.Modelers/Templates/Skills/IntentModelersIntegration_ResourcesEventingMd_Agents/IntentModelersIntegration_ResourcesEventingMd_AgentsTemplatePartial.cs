@@ -87,7 +87,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
 
           IReadOnlyCollection<MessageModel>      published   = metadataManager.GetPublishedMessageModels(application);
           IReadOnlyCollection<MessageModel>      subscribed  = metadataManager.GetSubscribedToMessageModels(application);
-          IReadOnlyCollection<EventingDTOModel>  pubDtos     = metadataManager.GetPublishedDtoModels(application);
+          IList<EventingDTOModel>                pubDtos     = metadataManager.GetPublishedDtoModels(application); // IList, unlike its five siblings
           IReadOnlyCollection<EventingDTOModel>  subDtos     = metadataManager.GetSubscribedToDtoModels(application);
           IReadOnlyCollection<EnumModel>         pubEnums    = metadataManager.GetPublishedEnumModels(application);
           IReadOnlyCollection<EnumModel>         subEnums    = metadataManager.GetSubscribedToEnumModels(application);
@@ -157,9 +157,10 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
           using Intent.Engine;
           using Intent.Metadata.Models;
           using Intent.Modelers.Eventing.Api;
-          using Intent.Modules.Common.Templates;
+          using Intent.Modules.Common.Registrations;
           using Intent.Modules.Modelers.Eventing; // for the published/subscribed accessors
           using Intent.RoslynWeaver.Attributes;
+          using Intent.Templates;
 
           namespace MyModule.Templates.MyMessageTemplate
           {
@@ -194,22 +195,18 @@ namespace Intent.Modules.ModuleBuilder.AI.Modelers.Templates.Skills.IntentModele
           ```csharp
           using Intent.Engine;
           using Intent.Modelers.Eventing.Api;
+          using Intent.Modules.Common.Plugins;
           using Intent.Modules.Modelers.Eventing; // GetPublishedMessageModels lives here, not Api
 
-          public class PublishedMessageFactoryExtension : IApplicationFactoryExtension
+          public class PublishedMessageFactoryExtension : FactoryExtensionBase
           {
-            private readonly IMetadataManager _metadataManager;
+            public override string Id => "MyModule.PublishedMessageFactoryExtension";
 
-            public PublishedMessageFactoryExtension(IMetadataManager metadataManager)
+            protected override void OnBeforeTemplateExecution(IApplication application)
             {
-             _metadataManager = metadataManager;
-            }
-
-            public void BeforeTemplateExecution(IApplication application)
-            {
-                var publishedMessages = _metadataManager.GetPublishedMessageModels(application);
-                var publishedDtos = _metadataManager.GetPublishedDtoModels(application);
-                var publishedEnums = _metadataManager.GetPublishedEnumModels(application);
+                var publishedMessages = application.MetadataManager.GetPublishedMessageModels(application);
+                var publishedDtos = application.MetadataManager.GetPublishedDtoModels(application);
+                var publishedEnums = application.MetadataManager.GetPublishedEnumModels(application);
 
                 foreach (var message in publishedMessages)
                 {

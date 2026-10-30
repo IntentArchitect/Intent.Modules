@@ -101,7 +101,7 @@ public sealed class ClaudeCodeHarness(EvalPaths paths) : IHarness
 
         if (request.WithIntentStub)
         {
-            var (command, stubArgs) = McpStub.LaunchCommand(request.Workspace.Root, request.Workspace.StubLogPath);
+            var (command, stubArgs) = McpStub.LaunchCommand(request.Workspace);
             var config = Path.Combine(request.Workspace.RunDirectory, "claude-mcp.json");
             File.WriteAllText(config, JsonSerializer.Serialize(new
             {
@@ -163,11 +163,12 @@ public sealed class CodexHarness(EvalPaths paths) : IHarness
     public IReadOnlyList<string> GeneratedFiles { get; } = [".codex/hooks.json", ".codex/config.toml", ".codex/hooks", ".agents"];
 
     /// <summary>
-    /// The smallest model in Codex's own catalogue, on the API key. A model outside the catalogue
-    /// (gpt-5-mini) runs on fallback metadata without the apply_patch tool, so it edits through the shell
-    /// and the write guard never sees the edit - observed.
+    /// The smallest model in Codex's own catalogue ("codex debug models"), on the API key. A model outside
+    /// the catalogue (gpt-5-mini; gpt-5.4-mini from codex-cli 0.163) runs on fallback metadata without the
+    /// apply_patch tool, so it edits through the shell and the write guard never sees the edit - observed,
+    /// and now caught by <see cref="SignInFailure"/>.
     /// </summary>
-    public const string DefaultModel = "gpt-5.4-mini";
+    public const string DefaultModel = "gpt-6-luna";
 
     public bool FailsClosedWhenGateCannotRun => true;
 
@@ -206,7 +207,7 @@ public sealed class CodexHarness(EvalPaths paths) : IHarness
 
         if (request.WithIntentStub)
         {
-            var (command, stubArgs) = McpStub.LaunchCommand(request.Workspace.Root, request.Workspace.StubLogPath);
+            var (command, stubArgs) = McpStub.LaunchCommand(request.Workspace);
             config += $"""
 
                 [mcp_servers.{McpStub.ServerName}]
@@ -239,12 +240,24 @@ public sealed class CodexHarness(EvalPaths paths) : IHarness
     /// </remarks>
     public string? SignInFailure(ProcessResult process)
     {
+        // A model outside the catalogue still answers, on fallback metadata and without apply_patch, so every
+        // edit goes through the shell and no hook sees it: scored as results, every Codex run looked like a
+        // hook failure. Observed when codex-cli 0.163 dropped gpt-5.4-mini. Stops Codex's remaining runs too.
+        if (ModelNotInCatalogue.Match(process.Stdout + process.Stderr) is { Success: true } missing)
+        {
+            return $"Codex's model '{missing.Groups[1].Value}' is not in its catalogue, so it has no apply_patch tool and " +
+                "edits through the shell, where no hook sees it - the run tested nothing. Pick one from 'codex debug models' " +
+                "and pass it with --codex-model, or update CodexHarness.DefaultModel.";
+        }
+
         var failed = (process.Stdout + "\n" + process.Stderr)
             .Split('\n')
             .Where(line => line.Contains("\"type\":\"error\"") || line.Contains("\"type\":\"turn.failed\"") || !line.TrimStart().StartsWith('{'))
             .Any(line => SignInError.IsMatch(line));
         return failed ? $"Codex could not authenticate, so the run tested nothing. Sign the eval root in again with: {SignInCommand}" : null;
     }
+
+    private static readonly Regex ModelNotInCatalogue = new("Model metadata for `([^`]+)` not found");
 
     private static readonly Regex SignInError = new(
         @"401 Unauthorized|auth error|refresh token|(sign|log) ?in again|not logged in",

@@ -11,7 +11,7 @@ To create an HTTP Endpoint for an external party to invoke, an existing `Service
 3. Items exposed as HTTP endpoints are indicated with a visual icon. You can view and configure HTTP-related properties by accessing the endpoint's properties. These property values are automatically set based on the item's heuristics but can be manually adjusted if necessary:
 
     - **Verb**: HTTP method to define the action performed by the endpoint.
-    - **Route**: The route on which the endpoint is exposed.
+    - **Route**: The route on which the endpoint is exposed. On an `Operation` it is relative to its `Service`'s route, and can be left empty to expose the `Operation` on the `Service`'s route itself. Two endpoints with the same verb and route are reported as duplicates.
     - **Return Type Mediatype**: Specifies the nature and format of the data being returned from the endpoint.
     - **Success Response Code**: The HTTP response code returned on successful invocation of the endpoint.
 
@@ -84,6 +84,10 @@ The `URI template` format can be used to specify a `route parameter` in the `Htt
 - As a parameter on an `Operation`
 
 For example, when a `route` is specified as `api/product/{id}`, a property/parameter named `id` is required.
+
+Placeholders are matched to properties/parameters by name, ignoring case, so `{CacheKey}` and `{cacheKey}` both bind `CacheKey`. Constraints, optional markers, default values and catch-all prefixes are recognised too: `{id:int}`, `{id?}`, `{id=5}`, `{*path}` and `{**path}`.
+
+A property/parameter whose `Parameter Settings` `Source` is `From Route` is appended to the `Route` (as `/{camelCaseName}`) when the route has no placeholder for it. Renaming one updates its placeholder, keeping any constraint, optional marker or catch-all prefix.
 
 ![Http Route Parameters](images/http-route-parameter.png)
 

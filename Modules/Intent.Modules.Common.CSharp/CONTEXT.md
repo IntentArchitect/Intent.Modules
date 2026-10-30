@@ -32,6 +32,24 @@ C# module, so its public API is a contract with modules this repository cannot s
   `Virtual()` and `Abstract()` (the user's call, for consistency), not on the class-only interface; so
   `CSharpInterfaceMethod.Sealed()` is a no-op, matching its existing `Virtual()` / `Abstract()`.
 
+- **Collection items and switch-case statements get a `Parent`, as invocation arguments always had** (3.10.12).
+  Without one, `Remove`/`Replace`/`InsertAbove`/`InsertBelow` threw "unknown parent", and `AddInvocation` on an
+  item silently built a statement nobody rendered. Rejected: setting a parent on a lambda's expression body as
+  well - a parented collection there takes its semicolon decision from the lambda, which is a code block, and
+  renders a stray `;`.
+- **`AddInvocation` drops the default `;` only when it replaces a collection item.** Giving items a parent made
+  `AddInvocation` on an item replace it, and an invocation carries `;` by default - `[a.B();]`. The fix is
+  confined to that path, which could not run before, so no existing output changes; the caller's `configure`
+  can still add one. Rejected, for blast radius: dropping a trailing `;` from every item when a collection
+  renders (changes output for any caller that added an invocation as an item), and dropping it whenever the
+  parent is not a code block (`CSharpSwitchCodeBlock` is not one either, and its statements need theirs).
+- **Statement search does NOT look inside `CSharpAssignmentStatement.Rhs`, deliberately.** It was changed to and
+  then reverted the same day: Intent.Modules.NET builds ~60 assignments with rich right-hand sides and calls
+  `FindStatement` ~190 times, and searching the Rhs would change which statement an existing predicate finds
+  first. Reach an assigned collection's items in two steps instead - find the assignment, then search its
+  `Rhs` - which works now that items know their parent. Adding the Rhs to `Statements` was rejected too:
+  `GetText` renders the `Rhs` field, so edits made through the list would not render.
+
 ## Invariants & Constraints
 - **Type declarations default to `public`.** `AccessModifier` starts as `"public "` on `CSharpClass`,
   `CSharpInterface` and `CSharpEnum`; templates across the module ecosystem rely on that without calling

@@ -122,7 +122,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Metadata.Dom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.AI.Skills", "Intent.Modules.ModuleBuilder.AI.Skills\Intent.Modules.ModuleBuilder.AI.Skills.csproj", "{87793E2E-623D-4E9F-95D5-9D6151E9DEFC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.AI.Workflow", "Intent.Modules.ModuleBuilder.AI.Workflow\Intent.Modules.ModuleBuilder.AI.Workflow.csproj", "{C53814B8-B679-4436-861B-51F11013B3E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.AI.Guidelines", "Intent.Modules.ModuleBuilder.AI.Guidelines\Intent.Modules.ModuleBuilder.AI.Guidelines.csproj", "{C53814B8-B679-4436-861B-51F11013B3E3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.AI.Modelers", "Intent.Modules.ModuleBuilder.AI.Modelers\Intent.Modules.ModuleBuilder.AI.Modelers.csproj", "{627F0F2A-B35F-4FDC-A132-3E266CD42E2F}"
 EndProject

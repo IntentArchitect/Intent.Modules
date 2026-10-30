@@ -1,6 +1,6 @@
 using System.Text.Json.Nodes;
 using AgentGate.Tests.TestSupport;
-using Intent.Modules.ModuleBuilder.AI.Workflow.Templates.Hooks;
+using Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks;
 using Xunit;
 
 namespace AgentGate.Tests;
@@ -20,6 +20,9 @@ public class HookConfigMergeTests
 {
     private const string ClaudeGate = ".claude/hooks/gate/gate.cs";
 
+    /// <summary>guard-write covers Intent's MCP file tools as well as Claude Code's own edit tools.</summary>
+    private const string ClaudeWriteMatcher = HarnessHookSets.ClaudeWriteMatcher;
+
     // --- .claude/settings.json ---
 
     [Fact]
@@ -30,7 +33,8 @@ public class HookConfigMergeTests
         var hooks = result["hooks"]!.AsObject();
         Assert.True(hooks.ContainsKey("SessionStart"));
         Assert.True(hooks.ContainsKey("PreToolUse"));
-        Assert.True(hooks.ContainsKey("Stop"));
+        Assert.True(hooks.ContainsKey("UserPromptSubmit"));
+        Assert.False(hooks.ContainsKey("Stop"));
     }
 
     [Fact]
@@ -59,7 +63,7 @@ public class HookConfigMergeTests
 
         var preToolUse = result["hooks"]!["PreToolUse"]!.AsArray();
         Assert.Contains(preToolUse, e => e!["matcher"]!.GetValue<string>() == "Bash");
-        Assert.Contains(preToolUse, e => e!["matcher"]!.GetValue<string>() == "Write|Edit");
+        Assert.Contains(preToolUse, e => e!["matcher"]!.GetValue<string>() == ClaudeWriteMatcher);
     }
 
     [Fact]
@@ -97,7 +101,7 @@ public class HookConfigMergeTests
         var result = MergeClaude(Grouped("PreToolUse", "Write|Edit", "dotnet run .agents/hooks/gate.cs -- guard-write"));
 
         var entries = result["hooks"]!["PreToolUse"]!.AsArray()
-            .Where(e => e!["matcher"]!.GetValue<string>() == "Write|Edit")
+            .Where(e => CommandOf(e!).Contains("guard-write"))
             .ToList();
 
         Assert.Equal(2, entries.Count);
@@ -115,24 +119,150 @@ public class HookConfigMergeTests
         var result = MergeClaude(Grouped("PreToolUse", "Write|Edit", old));
 
         var entries = result["hooks"]!["PreToolUse"]!.AsArray()
-            .Where(e => e!["matcher"]!.GetValue<string>() == "Write|Edit")
+            .Where(e => CommandOf(e!).Contains("guard-write"))
             .ToList();
 
         Assert.Single(entries);
+        Assert.Equal(ClaudeWriteMatcher, entries[0]!["matcher"]!.GetValue<string>());
         Assert.Equal(GateCommands.GuardPosix(".claude", "guard-write"), CommandOf(entries[0]!));
     }
 
     [Fact]
-    public void Close_out_loses_its_fail_closed_wrapper_on_upgrade()
+    public void Widens_an_existing_write_guard_to_cover_intent_file_tools_without_duplicating_it()
     {
-        // A Stop hook exiting 2 makes Claude Code keep going, so the wrapped close-out turned a gate
-        // that could not run into an endless loop of turns. Existing installs must be carried off it.
-        var old = GateCommands.Superseded(".claude", "close-out")[0];
+        // Every install up to 1.0.0-pre.10 has the CURRENT command under "Write|Edit". Found by its
+        // command, the entry takes the wider matcher in place - no second guard-write beside it.
+        var result = MergeClaude(Grouped("PreToolUse", "Write|Edit", GateCommands.GuardPosix(".claude", "guard-write")));
+
+        var entries = result["hooks"]!["PreToolUse"]!.AsArray()
+            .Where(e => CommandOf(e!).Contains("guard-write"))
+            .ToList();
+
+        Assert.Single(entries);
+        Assert.Equal(ClaudeWriteMatcher, entries[0]!["matcher"]!.GetValue<string>());
+    }
+
+    [Theory]
+    [InlineData("mcp__intent-architect__write_file", true)]
+    [InlineData("mcp__ia__patch_file", true)]
+    [InlineData("mcp__intent-architect__delete_code_file", true)]
+    [InlineData("Write", true)]
+    [InlineData("Edit", true)]
+    [InlineData("mcp__intent-architect__read_file", false)]
+    [InlineData("mcp__intent-architect__run_designer_script", false)]
+    [InlineData("TodoWrite", false)]
+    [InlineData("NotebookEdit", false)]
+    [InlineData("MultiEdit", false)]
+    public void The_write_matcher_selects_intent_file_tools_whatever_the_server_is_called(string toolName, bool matched)
+    {
+        // Claude Code tests a matcher that holds any regex character as an UNANCHORED JavaScript regex
+        // (RegExp.prototype.test), so this must hold for a search, not a whole-string match.
+        Assert.Equal(matched, System.Text.RegularExpressions.Regex.IsMatch(toolName, ClaudeWriteMatcher));
+    }
+
+    [Fact]
+    public void Moves_our_hook_out_of_a_group_it_shares_with_the_developers_own_hook()
+    {
+        // Rewriting the shared group's matcher would change when the developer's hook runs.
+        var existing = new JsonObject
+        {
+            ["hooks"] = new JsonObject
+            {
+                ["PreToolUse"] = new JsonArray(new JsonObject
+                {
+                    ["matcher"] = "Write|Edit",
+                    ["hooks"] = new JsonArray(
+                        new JsonObject { ["type"] = "command", ["command"] = GateCommands.GuardPosix(".claude", "guard-write") },
+                        new JsonObject { ["type"] = "command", ["command"] = "./scripts/check-header.sh" }),
+                }),
+            },
+        }.ToJsonString();
+
+        var once = MergeClaude(existing);
+        var twice = MergeClaude(once.ToJsonString());
+        var preToolUse = twice["hooks"]!["PreToolUse"]!.AsArray();
+
+        var developers = Assert.Single(preToolUse, e => e!["hooks"]!.AsArray().Any(h => h!["command"]!.GetValue<string>() == "./scripts/check-header.sh"));
+        Assert.Equal("Write|Edit", developers!["matcher"]!.GetValue<string>());
+        Assert.Single(developers["hooks"]!.AsArray());
+        var ours = Assert.Single(preToolUse, e => CommandOf(e!).Contains("guard-write"));
+        Assert.Equal(ClaudeWriteMatcher, ours!["matcher"]!.GetValue<string>());
+        Assert.Equal(once.ToJsonString(), twice.ToJsonString());
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Close_out_moves_from_stop_to_user_prompt_submit_on_upgrade(bool wrapped)
+    {
+        // Claude Code shows a Stop hook's systemMessage to the person only, so close-out moved to
+        // UserPromptSubmit, whose additionalContext reaches the agent. The wrapped form is the one
+        // that trapped agents in a loop of turns; both must be carried off Stop.
+        var old = wrapped ? GateCommands.Superseded(".claude", "close-out")[0] : GateCommands.CloseOut(".claude");
         var result = MergeClaude(Grouped("Stop", null, old));
 
+        Assert.False(result["hooks"]!.AsObject().ContainsKey("Stop"));
+        var prompt = result["hooks"]!["UserPromptSubmit"]!.AsArray();
+        Assert.Single(prompt);
+        Assert.Equal(GateCommands.CloseOut(".claude"), CommandOf(prompt[0]!));
+    }
+
+    [Fact]
+    public void Moving_close_out_keeps_the_developers_own_stop_hooks()
+    {
+        var result = MergeClaude($$"""
+            {
+              "hooks": {
+                "Stop": [
+                  { "hooks": [ { "type": "command", "command": "echo shared" }, { "type": "command", "command": "{{GateCommands.CloseOut(".claude")}}" } ] },
+                  { "hooks": [ { "type": "command", "command": "echo mine" } ] }
+                ]
+              }
+            }
+            """);
+
         var stop = result["hooks"]!["Stop"]!.AsArray();
-        Assert.Single(stop);
-        Assert.Equal(GateCommands.CloseOut(".claude"), CommandOf(stop[0]!));
+        Assert.Equal(2, stop.Count);
+        Assert.Equal("echo shared", CommandOf(stop[0]!));
+        Assert.Single(stop[0]!["hooks"]!.AsArray());
+        Assert.Equal("echo mine", CommandOf(stop[1]!));
+    }
+
+    [Fact]
+    public void Moving_close_out_leaves_a_developers_adjusted_stop_command_alone()
+    {
+        var adjusted = GateCommands.CloseOut(".claude") + " 2>/dev/null";
+        var result = MergeClaude(Grouped("Stop", null, adjusted));
+
+        Assert.Equal(adjusted, CommandOf(result["hooks"]!["Stop"]![0]!));
+    }
+
+    [Fact]
+    public void Keeps_claude_code_in_the_project_directory_between_commands()
+    {
+        // Claude Code runs hooks in the shell's current directory; after the agent "cd"s into a module
+        // folder the relative gate path no longer resolves and every guarded write is blocked.
+        var result = MergeClaude(existing: null);
+
+        Assert.Equal("1", result["env"]![HarnessHookSets.MaintainProjectWorkingDirectory]!.GetValue<string>());
+    }
+
+    [Fact]
+    public void Leaves_the_developers_own_environment_settings_alone()
+    {
+        var result = MergeClaude($$"""
+            { "env": { "FOO": "bar", "{{HarnessHookSets.MaintainProjectWorkingDirectory}}": "0" } }
+            """);
+
+        Assert.Equal("bar", result["env"]!["FOO"]!.GetValue<string>());
+        Assert.Equal("0", result["env"]![HarnessHookSets.MaintainProjectWorkingDirectory]!.GetValue<string>());
+    }
+
+    [Fact]
+    public void Only_claude_code_gets_the_working_directory_setting()
+    {
+        Assert.Null(MergeCodex(existing: null)["env"]);
+        Assert.Null(MergeCursor(existing: null)["env"]);
     }
 
     // --- .codex/hooks.json ---
@@ -160,7 +290,7 @@ public class HookConfigMergeTests
             .ToList();
 
         Assert.Single(writeGuards);
-        Assert.Equal("apply_patch|Edit|Write", writeGuards[0]!["matcher"]!.GetValue<string>());
+        Assert.Equal($"apply_patch|Edit|Write|{GateCommands.IntentFileToolsMatcher}", writeGuards[0]!["matcher"]!.GetValue<string>());
         Assert.Equal(GateCommands.GuardPosix(".codex", "guard-write"), CommandOf(writeGuards[0]!));
     }
 
@@ -205,12 +335,25 @@ public class HookConfigMergeTests
         Assert.True(guard["failClosed"]!.GetValue<bool>());
     }
 
+    [Fact]
+    public void Cursor_guards_intent_file_tools_before_mcp_execution_failing_closed()
+    {
+        // Cursor routes MCP calls through beforeMCPExecution, not preToolUse's Write category.
+        var mcp = MergeCursor(null)["hooks"]!["beforeMCPExecution"]!.AsArray();
+
+        var guard = Assert.Single(mcp, h => h!["command"]!.GetValue<string>().Contains("guard-write"));
+        Assert.Equal(GateCommands.GuardPortable(".cursor", "guard-write"), guard!["command"]!.GetValue<string>());
+        Assert.Equal(GateCommands.IntentFileToolsMatcher, guard["matcher"]!.GetValue<string>());
+        Assert.True(guard["failClosed"]!.GetValue<bool>());
+        Assert.Single(mcp, h => h!["command"]!.GetValue<string>().Contains("guard-version"));
+    }
+
     // --- every harness ---
 
     [Fact]
     public void No_close_out_command_is_ever_wrapped_to_fail_closed()
     {
-        Assert.Equal(GateCommands.CloseOut(".claude"), CommandOf(MergeClaude(null)["hooks"]!["Stop"]![0]!));
+        Assert.Equal(GateCommands.CloseOut(".claude"), CommandOf(MergeClaude(null)["hooks"]!["UserPromptSubmit"]![0]!));
         Assert.Equal(GateCommands.CloseOut(".codex"), CommandOf(MergeCodex(null)["hooks"]!["Stop"]![0]!));
         Assert.Equal(GateCommands.CloseOut(".cursor"), MergeCursor(null)["hooks"]!["stop"]![0]!["command"]!.GetValue<string>());
         Assert.DoesNotContain("exit", GateCommands.CloseOut(".claude"));

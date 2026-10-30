@@ -11,9 +11,9 @@
     "preToolUse": [
       {
         "type": "command",
-        "matcher": "create|edit|str_replace_editor|apply_patch|write|.*run_designer_script.*",
-        "bash": "dotnet run .github/hooks/gate/gate.cs --no-build -- guard-tool --harness github || exit 2",
-        "powershell": "dotnet run .github/hooks/gate/gate.cs --no-build -- guard-tool --harness github; if ($LASTEXITCODE -ne 0) { exit 2 }"
+        "matcher": "create|edit|str_replace_editor|apply_patch|write|.*run_designer_script.*|.*(write_file|patch_file|delete_code_file).*",
+        "bash": "o=$(dotnet run .github/hooks/gate/gate.cs --no-build -- guard-tool --harness github); s=$?; if [ $s -eq 0 ] || [ $s -eq 2 ]; then [ -z \"$o\" ] || printf '%s\\n' \"$o\"; exit $s; fi; printf '%s\\n' '{\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"The agent gate hook could not run, so this edit is blocked. That is a setup problem on this machine, not a fault in your work. Run dotnet --version from the project root to see the error, then follow If An Agent Gate Hook Itself Fails in the module-building workflow instructions. Do not make the edit another way.\"}'; exit 2",
+        "powershell": "$o = dotnet run .github/hooks/gate/gate.cs --no-build -- guard-tool --harness github; $s = $LASTEXITCODE; if ($s -eq 0 -or $s -eq 2) { $o; exit $s }; @{ permissionDecision = 'deny'; permissionDecisionReason = 'The agent gate hook could not run, so this edit is blocked. That is a setup problem on this machine, not a fault in your work. Run dotnet --version from the project root to see the error, then follow If An Agent Gate Hook Itself Fails in the module-building workflow instructions. Do not make the edit another way.' } | ConvertTo-Json -Compress; exit 2"
       }
     ],
     "agentStop": [

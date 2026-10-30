@@ -1,3 +1,8 @@
+### Version 4.7.22
+
+- Fixed: A route parameter written in a different case from its parameter (e.g. `{CacheKey}`), or as optional, defaulted or catch-all (`{id?}`, `{id=5}`, `{*path}`), no longer has a duplicate segment appended to the Route on every change, or fails route validation.
+- Fixed: An `Operation`, `Command` or `Query` with an empty Route no longer silently switches off duplicate-route and route parameter validation for every HTTP endpoint in the designer, and an `Operation` with no Route is now checked against its `Service`'s route.
+
 ### Version 4.7.21
 
 - Improvement: Changed unbound parameters to rather give a validation exception

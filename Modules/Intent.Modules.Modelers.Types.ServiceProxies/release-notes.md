@@ -1,3 +1,8 @@
+### Version 5.5.8
+
+- Improvement: Operations in a Service Proxy can now share a name; mapping two Operations in the same proxy to the same endpoint is reported as a validation error instead.
+- Fixed: A Service Proxy `Operation` that isn't mapped to an endpoint (for example one added with **New Operation**) no longer stops parameter synchronisation with `Cannot read properties of null (reading 'getElement')`; it is now skipped with a warning.
+
 ### Version 5.5.7
 
 - Improvement: `Service Proxies` can now be created from a Services diagram's context menu and at the package root.

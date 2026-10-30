@@ -73,6 +73,29 @@
   - **The SVG renders inline, so its `<style>` and ids are page-wide.** The CSS classes and the gradient id
     embed the element id, so that each classification's colours stay scoped to its own icon.
 
+- **The `Classify Files` designer script backs Change Review's classify action, and is headless.** Review
+  Changes owns the UI and calls `classifyFiles({ contractVersion: 2, files, classification: { name }, scope,
+  reviewImportance })` on it; the script shows no form. Rejected: the earlier `dialogService.openForm`
+  version, which put the form inside the designer.
+  - **It throws on failure instead of returning `{ ok: false, error }`.** The caller discards return
+    values, so a returned error is invisible; a thrown one reaches the task console. Success returns
+    `{ ok: true, writtenOn }`.
+  - **Globs are written bare, with no leading `/`**, because the backend's `GlobMatcher` matches the whole
+    path relative to the owning element with no anchoring. `file` writes `<relativePath>`; `folder-extension`
+    writes `<folder>/*<.ext>`, or `*<.ext>` at the site root. A file with no extension falls back to its exact
+    path, since an empty extension would otherwise produce `<folder>/*` and classify the whole folder.
+  - **The Script element keeps its generated id**, which the caller hard-codes, because the designer API
+    cannot set a Script's id. Do not recreate the element, or the two drift apart. Do not hand-edit the
+    `.designer.settings` to a pre-chosen id either.
+  - **Versioning.** The script's `CONTRACT_VERSION` moves with the caller whenever the arguments change. The
+    script shipped under 1.3.0 rather than 1.2.0, which was already final (a new capability, so minor). A
+    caller should require at least `1.3.0-pre.2`, the first build with the glob and throw-on-failure fixes.
+  - **Placement.** A new classification goes in the `File Classifications` folder of the governing
+    element's package, else in any such folder, else in a folder it creates. Re-classifying a glob the element
+    already has updates that row rather than adding a second.
+  - **Written from typings only.** `lookupById` inside a macro, `getPackage()` on an element, and `addItem()`
+    keeping the `Entries` label cache correct are unverified in a live designer.
+
 ## Gotchas
 
 - **`Api/IAllowsCustomFileClassificationModel.cs` is a hand-written compatibility shim. Do not delete it.** It is the
