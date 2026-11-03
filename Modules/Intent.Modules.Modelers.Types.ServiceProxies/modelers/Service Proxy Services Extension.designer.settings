@@ -220,8 +220,8 @@ function execute(proxyElement) {
     proxyElement.getChildren("Operation").forEach(operation =&gt; {
         let mapping = operation.getMapping();
         let targetService = mapping != null ? mapping.getElement() : null;
+        // An Operation without a mapping is valid, so there is nothing to sync yet
         if (targetService == null) {
-            console.warn(`Could not process '${operation.getName()}' on '${proxyElement.getName()}': not mapped to an endpoint`);
             return;
         }
         let params = GetParameters(targetService);
@@ -346,8 +346,8 @@ function execute(proxyElement) {
     proxyElement.getChildren("Operation").forEach(operation =&gt; {
         let mapping = operation.getMapping();
         let targetService = mapping != null ? mapping.getElement() : null;
+        // An Operation without a mapping is valid, so there is nothing to sync yet
         if (targetService == null) {
-            console.warn(`Could not process '${operation.getName()}' on '${proxyElement.getName()}': not mapped to an endpoint`);
             return;
         }
         let params = GetParameters(targetService);

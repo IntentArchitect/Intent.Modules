@@ -59,5 +59,6 @@
   </applications>
   <folders>
     <folder path="." />
+    <folder path="../../Intent" />
   </folders>
 </solution>

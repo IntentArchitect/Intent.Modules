@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="bcafdaf4-f57a-4cec-ae2c-55c2f9fe8719" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
   <name>[visual]</name>
-  <display>[visual]: void</display>
+  <display>[visual]: Association</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="b92d4a8b-1d1c-4cb9-a2c2-e366c5d5662a">
+    <typeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Domain</typePackageName>
+    <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</parentFolderId>
+  <parentFolderId>176e94c0-e0ab-43dd-806c-30fb38edbc6d</parentFolderId>
   <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
   <packageName>Intent.Modelers.Domain</packageName>
   <stereotypes>
