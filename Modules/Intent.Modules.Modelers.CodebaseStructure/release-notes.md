@@ -1,3 +1,7 @@
+### Version 1.3.0
+
+- New: Added a `Classify Files` designer script, which Change Review runs to classify files without showing a form. It matches the classification by name (ignoring case), creating it in a `File Classifications` folder when unknown, and writes a `File Classification` entry for the file, or for its folder and extension (a file with no extension uses its exact path), on the element that governs it. It reports failures as errors, and needs a Change Review that calls it.
+
 ### Version 1.2.0
 
 - Improvement: `Custom File Classification` is renamed to `File Classification`, its entry stereotype to `File Classification Entry`, and its `Severity` property to `Review Importance`, which better describes how important it is to review changes to a file. Existing data keeps working.

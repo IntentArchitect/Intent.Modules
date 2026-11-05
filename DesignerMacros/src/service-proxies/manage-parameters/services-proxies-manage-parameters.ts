@@ -8,8 +8,7 @@ interface IHttpEndpointInputModel {
 }
 
 function GetParameters(
-    targetService: IElementApi): IHttpEndpointInputModel[]
-{
+    targetService: IElementApi): IHttpEndpointInputModel[] {
     let httpSettings = targetService.getStereotype("Http Settings")
     if (!httpSettings) {
         console.warn(`Could not process '${targetService.getName()}': Http Settings not found`)
@@ -21,13 +20,11 @@ function GetParameters(
 
     let result: IHttpEndpointInputModel[] = [];
 
-    targetService.getChildren("Parameter").concat(targetService.getChildren("DTO-Field")).forEach(childElement => 
-    {
+    targetService.getChildren("Parameter").concat(targetService.getChildren("DTO-Field")).forEach(childElement => {
         var parameterSettings = childElement.getStereotype("d01df110-1208-4af8-a913-92a49d219552"); // "Paremeter Settings"
         var routeContainsParameter = httpSettings.getProperty("Route").getValue().toString().toLowerCase().indexOf(`{${childElement.getName().toLowerCase()}}`) != -1;
 
-        if (isForCqrs && !parameterSettings && !routeContainsParameter && verbAllowsBody)
-        {
+        if (isForCqrs && !parameterSettings && !routeContainsParameter && verbAllowsBody) {
             requiresBody = true;
             return;
         }
@@ -40,8 +37,7 @@ function GetParameters(
         })
     });
 
-    if (isForCqrs && requiresBody)
-    {
+    if (isForCqrs && requiresBody) {
         result.push({
             id: targetService.id,
             name: targetService.specialization.toLowerCase(),
@@ -58,8 +54,8 @@ function execute(proxyElement: IElementApi) {
     proxyElement.getChildren("Operation").forEach(operation => {
         let mapping = operation.getMapping();
         let targetService = mapping != null ? mapping.getElement() : null;
+        // An Operation without a mapping is valid, so there is nothing to sync yet
         if (targetService == null) {
-            console.warn(`Could not process '${operation.getName()}' on '${proxyElement.getName()}': not mapped to an endpoint`);
             return;
         }
         let params = GetParameters(targetService);

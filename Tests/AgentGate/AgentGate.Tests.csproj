@@ -52,7 +52,7 @@
       hand-maintained port of the merge rules was a seam a template change could slip through
       unnoticed. These files have no Intent dependency for exactly this reason.
     -->
-    <Compile Include="..\..\Modules\Intent.Modules.ModuleBuilder.AI.Workflow\Templates\Hooks\GateCommands.cs;..\..\Modules\Intent.Modules.ModuleBuilder.AI.Workflow\Templates\Hooks\HookConfigMerge.cs;..\..\Modules\Intent.Modules.ModuleBuilder.AI.Workflow\Templates\Hooks\HarnessHookSets.cs" LinkBase="ModuleSources" />
+    <Compile Include="..\..\Modules\Intent.Modules.ModuleBuilder.AI.Guidelines\Templates\Hooks\GateCommands.cs;..\..\Modules\Intent.Modules.ModuleBuilder.AI.Guidelines\Templates\Hooks\HookConfigMerge.cs;..\..\Modules\Intent.Modules.ModuleBuilder.AI.Guidelines\Templates\Hooks\HarnessHookSets.cs" LinkBase="ModuleSources" />
   </ItemGroup>
 
   <ItemGroup>

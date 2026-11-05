@@ -2,8 +2,8 @@
 name: module-version-increment
 description: "Increment a module's version (choosing the right component) before implementing a change that touches it, then confirm and propagate to dependents at close-out. USE ONLY WHEN the modules a task will change are known — as soon as that's decided, and again at close-out. DO NOT USE FOR writing the change's documentation (see module-docs-chore) or recording design rationale (see module-context-capture). REQUIRES the set of modules the task will touch already identified."
 keywords: [version, increment, release, bump, dependents, publish]
-template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleVersionIncrement_SkillMd_Agents
-contentHash: 1F339A4C268AE28303F395EA3CDB7959F7F660FF2B0AA82BA07E4B4D35362B3E
+template-id: Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleVersionIncrement_SkillMd_Agents
+contentHash: 084CF07CD5E5D2548CBAE915DE8CCCD843BFC38609A3F497F4DE33C63CBAB6DA
 ---
 # Skill: module-version-increment
 

@@ -2,7 +2,7 @@
 applyTo: '**/*.cs'
 description: "Intent Architect module build and template-authoring gotchas, and diagnosing a module change that never reaches generated output."
 keywords: [intent architect, template authoring, nuget, build, gotchas, intent ignore, csproj, nullable, asset repositories]
-contentHash: 39C40101CACCFEC696DCDB69E7764636D35091C75A61C25A4F6C12FAC1230BFA
+contentHash: DF7EBC5955B5E8F0B7ECA220FF754CF27FAEF5D68A91AF3AEAB331738B9AD4A4
 ---
 ## Known Build Gotchas
 
@@ -17,7 +17,7 @@ The member that catches people is `TemplateId`:
 
 ```csharp
 [IntentManaged(Mode.Fully)]
-public const string TemplateId = "Intent.ModuleBuilder.AI.Workflow.Skills.ModuleContextCapture_SkillMd_Agents";
+public const string TemplateId = "Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleContextCapture_SkillMd_Agents";
 ```
 
 It is **derived, not authored** — `{PackageName}.{FolderPath}.{ElementName}`, from the File Template element's own name and where it sits in the designer's folder tree. To change it, rename or move that element in the **Module Builder designer**, then regenerate. Editing the constant achieves nothing durable: the next run restores it, and until then every `Role` or template-id lookup resolving against the real id silently stops matching — which shows up as a template that mysteriously no longer participates, not as an error.
@@ -29,7 +29,7 @@ It is **derived, not authored** — `{PackageName}.{FolderPath}.{ElementName}`, 
 A template's constructor and its `OnBuild` / `AfterBuild` callbacks run at different points of the Software Factory run, and two kinds of work depend on that timing.
 
 - **NuGet dependencies must be added before they are collected.** Packages are collected from every template when NuGet dependencies are resolved, at `BeforeTemplateExecution` (Order 1000). The constructor and `OnBuild` both run before that, so either works: the constructor is the simplest place, and registering conditionally there (on a setting or the model) is fine; `OnBuild` suits a package that depends on what a lookup finds. `AfterBuild` callbacks run in that same phase but after collection, so a package added there is silently never installed.
-- **Template lookups go in `OnBuild` / `AfterBuild`.** `GetTypeName`, `TryGetTypeName` and `FindTemplateInstance` resolve against other templates' instances. A constructor runs while templates are still being registered, so a lookup there succeeds or fails depending on registration order. The rule itself is `file-builder-expert` Musts #7.
+- **Template lookups go in `OnBuild` / `AfterBuild`.** `GetTypeName`, `TryGetTypeName` and `FindTemplateInstance` resolve against other templates' instances. A constructor runs while templates are still being registered, so a lookup there succeeds or fails depending on registration order. The `file-builder-expert` skill, if available, states the rule among its Musts.
 - **"Will that other template generate its file?" is an opt-in check.** `ExecutionContext.TemplateExists(idOrRole)` is true for any registered instance, including stubs: some modules register a template only so its types still resolve, then set `CanRun = false` (in the registration, or in an `AfterBuild` at order 100) so it writes nothing. When you need the file to really exist, add the predicate `t => t.CanRunTemplate()`, and evaluate it in an `AfterBuild` ordered above 100 so those stubs have already switched off. Do not add it to type lookups — resolving a stub's type is the reason the stub exists.
 
 ```csharp
@@ -135,6 +135,8 @@ A clean regeneration proves nothing on its own — output that could not be rewr
 4. **Force a re-install** of the same version.
 5. **Force a rewrite** — perturb the output and regenerate. Back with your change: the pipeline is live. Back unchanged: the change is not reaching the generator. **Never delete ignored or protected output** — Intent will not recreate it. (Unrelated to a Software Factory *destructive change*, which is a hazard to resolve, not a probe.)
 6. **Stop and report what you ruled out.** **Do not renumber to force it** — see *"A version number is not a debugging tool"* in the module-building workflow instructions. A bump only takes effect once the application's install moves to it; if an authorised bump changes nothing, the fault is the template's logic.
+
+To see what a template or factory extension actually does at run time, log the value: the `file-builder-expert` skill, if available, has a debugging resource (`resources/debugging.md`) that says how and where the output lands.
 
 ===
 

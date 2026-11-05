@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Bundles a fixed set of AI agent skills and instruction files for building Intent Architect modules into the consuming repo's `.agents/` folder. Every bundled file is generated from this module's own source and always overwritten on install/update — there is no per-repo customization, no designer model dependency for consumers, and no settings gating which skills are included.
+Obsolete from `1.2.0`: it generates nothing, and exists only to move installed applications onto `Intent.ModuleBuilder.AI.Guidelines`, which was named `Intent.ModuleBuilder.AI.Workflow` until 2026-10-29 (see the last Architectural Decision). Up to `1.1.x` it bundled a fixed set of AI agent skills and instruction files for building Intent Architect modules into the consuming repo's `.agents/` folder. Every bundled file is generated from this module's own source and always overwritten on install/update — there is no per-repo customization, no designer model dependency for consumers, and no settings gating which skills are included.
 
 ## Architectural Decisions
 
@@ -35,7 +35,7 @@ Bundles a fixed set of AI agent skills and instruction files for building Intent
 
 - **`.imodspec` is merged, not regenerated — and the skills used to say the opposite.** `IModSpecTemplate` reads the existing file and rewrites six things (`<id>`, `<summary>`, `<description>`, `<iconUrl>`, `<migrations>`, `<moduleSettings>` bodies); everything else it never writes, so `<tags>`, `<authors>`, `<files>`, `<dependency>` entries and friends are hand-authored by design and survive regeneration. `module-versioning` previously said "never hand-edit `.imodspec`" in four places while `module-docs` said "edit it directly" — both wrong, in opposite directions. Corrected in 1.1.0-pre.0 by inverting the rule: state what the Software Factory owns and where each owned value is actually set, rather than what may not be touched.
 - **`<summary>` and `<description>` receive the same single string**, sourced from the Application Settings page. They cannot differ, so there is no long-form field to expand into. `module-docs` used to permit "expand to max 2 sentences", which was not just wrong but unachievable — and it is what licensed an overwrought module description in a real session. The corrected guidance says one line has to serve both, and points implementation rationale at `CONTEXT.md` where it belongs.
-- **Package settings are trigger rules folded into their trigger skills, not a skill of their own.** `Include in Module` (when a stereotype is introduced) and `Reference in Designer` (when a designer element is introduced) live inline in `add-designer-extension`, `add-association-type` and `module-building-strategies`. A separate skill would have to be *remembered and loaded* exactly when the agent is busy doing the thing that creates the obligation. The general principle: **an obligation goes inline at its trigger point; a craft gets its own skill.** `module-element-icons` stays separate on the other side of that line — optional, and with a real technique to teach.
+- **Package settings are trigger rules folded into their trigger skills, not a skill of their own.** `Include in Module` (when a stereotype is introduced) and `Reference in Designer` (when a designer element is introduced) live inline in `add-designer-extension` (which absorbed `add-association-type` in 1.1.0) and `module-building-strategies`. A separate skill would have to be *remembered and loaded* exactly when the agent is busy doing the thing that creates the obligation. The general principle: **an obligation goes inline at its trigger point; a craft gets its own skill.** Element and stereotype icons sit on the craft side of that line, and since 1.1.0 they share `module-svg-icon` with the package icon rather than having a skill of their own.
 - **The package icon goes through a script because of payload size, not because no other mechanism exists.** Corrected during 1.1.0-pre.0 after this was written up the wrong way round: the icon *can* be set through the MCP, but its value is a base64 data URI running to tens of thousands of characters, so routing it through an agent's context is wasteful and risks a silent transcription corruption. The rule is "use a tool that manipulates the icon element directly", not "hand-edit `.application.config` because there is nowhere else to set it". The distinction matters because the wrong version reads as a licence to hand-edit that file more generally.
 
 - **A generated frontmatter `description` must be a single-line quoted string.** A value spanning
@@ -83,10 +83,67 @@ Bundles a fixed set of AI agent skills and instruction files for building Intent
   - **Measured legibility rules** at 16px, where 1px is 3.125 units (gaps of about 1px, no detail under about 4px, glyph 55–60% of the badge, about 6 units of edge margin, white at 3:1 or better against the stops it sits over). Each one was broken by a draft that looked fine as source: a 0.5px gap blurred two shapes together, a 2.8px bolt became a dot. The skill's teal example uses computed WCAG ratios (white on `#2dd4bf` 1.86:1, on `#0d9488` 3.74:1). The handover's corrected gradient still starts at `#14b8a6`, which is 2.49:1, so the rule is about the stops the glyph actually sits over, not the whole gradient.
   - **Render and review in headless Chromium** at 16–128px on light and dark, with a nearest-neighbour pixel zoom and a module-list mock-up, because most problems showed only there, and Intent Architect renders with Chromium. Tested on Windows with Edge on 2026-10-20: the command as written works, and the media query hides a detail at 16 and 24px and shows it at 32 and 64px. The pixel zoom is a canvas drawn at 16px and shown with `image-rendering: pixelated` in the same sheet, tested the same way, which replaced ImageMagick and `System.Drawing` (one not installed by default, the other Windows-only). Dropped from the handover: "a non-ASCII output path fails silently", which did not reproduce from PowerShell or Git Bash.
   - **Checked by the agent evals `I1` and `I2`** (`Tests/AgentEvals`, Claude Code with Sonnet, 2026-10-20). The first run found two leaks of the base64 payload into the agent's context. Reading the `.imodspec` whole printed its `<iconUrl>`, so the skill now says to filter that line out. A PowerShell hash helper named `H` ran `Get-History`, whose error echoed the whole data URI. I had dropped that trap from the handover as a one-off quirk an hour earlier; the eval showed an agent reproducing it unprompted, so it is back in Step 6, with the reason it matters here.
+  - **I2 on Claude Code's default model (Haiku) found three more weak spots (1.1.0, 2026-10-20).** (1) Step 5 told the agent to confirm with `get_file_diffs` that only `<iconUrl>` changed, and that diff prints the new value, so the skill leaked the payload by instruction; it now confirms by `git diff --stat` counts and leaves the value to Step 6's hashes. (2) The agent peeked at `.application.config` with `cut -c1-100` to "see its structure", despite "never open, read or print the file": the root `<icon>` line starts with the payload, so even a truncated line leaks it. The skill now names the leaking commands, offers counts (`grep -c`) as the only safe look, and carries a ready-made, tested apply script, because an agent with nothing to write has nothing to look up. (3) With "`module-version-increment` decides, if available", the agent judged the version published from the release notes and stopped to ask about a bump the user never raised; the skill now says to load that skill's gate, never judge from release notes, and without it apply and name the version for the developer to check. After the fix: I2 3/3 on Haiku, and I1, I2 and R3 still pass on Haiku and Sonnet.
   - **Size-dependent detail through an SVG media query**, which falls back to full detail where unsupported.
   - **An approval gate on the rendered image.** That session applied an icon chosen from a list of described concepts and had to redo it after it was applied. The gate also holds when another workflow calls the skill: with no one to approve, the icon stays unapplied and the renders are reported. This changes `module-docs-chore`'s icon step in practice, which is accepted: an icon is the module's face, and applying one unseen is the failure the gate exists for.
   - **Apply only the `.imodspec` from the Software Factory run, then verify by hash** across the approved SVG, `.application.config`, `.imodspec` and the built `.imod`, because each run there also staged unrelated files, and a hash proves the icon reached each file without anyone reading the payload.
   - **The edit-tools rule.** `AI.Workflow`'s instructions say to change files with edit tools, never a shell script, and its gate denies edit-tool writes to `.application.config` anyway. The skill names itself the exception to that rule too, scoped exactly like the off-limits exception, rather than rerouting through `update_application_settings`, which reintroduces the payload problem.
+- **15 skills trimmed to 10 in 1.1.0 (user decision, 2026-10-20).** The goal is fewer skill triggers first and fewer tokens second, without losing effectiveness. Every skill's description is listed in every agent session, and overlapping descriptions make routing harder. Merged: `add-association-type` into `add-designer-extension` (it already used that skill's reference through a `../` path and repeated its package-settings table and designer ids); `module-element-icons` into `module-svg-icon` (it told agents to follow the svg skill's house style verbatim, and about 40 lines across the two only explained where one ended and the other began); `intent-mapping-architect` into `file-builder-expert` as a resource plus a short Musts section (mappings are only generated inside a C# template, where that skill is already loaded); `module-debugging` into `file-builder-expert` as its own resource, `resources/debugging.md` (user decision, 2026-10-21; it first went into the troubleshooting resource as § 15, which now only points to it, because a debugging question is not a template failure mode and was hard to find there), with a one-line pointer from `known-build-gotchas` so Markdown-template authors still find it. Its designer-script half was dropped, because Intent's own `scripting-the-model` skill already covers `console.log`. Kept separate: `intent-metadata-consumer` (it also serves factory extensions and Markdown templates, which `file-builder-expert`'s description excludes, and AI.Modelers names it), `intent-module-orchestrator` (a separate decision, cross-module wiring, with an 878-line cheatsheet that would swamp `file-builder-expert`'s Musts), and `module-versioning` / `module-docs` (AI.Workflow's `module-docs-chore` relies on `module-docs` being opt-in only). **Rule for any future merge: the surviving skill keeps a name other modules already reference** (`module-docs`, `module-svg-icon`, `file-builder-expert`, `intent-metadata-consumer`, `module-building-strategies`), so no other module has to change.
+- **Interaction strategies are deprecated (user decision, 2026-10-20).** An AI agent writes business logic better than a deterministic `IInteractionStrategy` can, so the guidance must not propagate it: `intent-domain-interactions-expert` was deleted outright, not folded, and `module-building-strategies` lists interaction strategies under "Patterns you'll find but must not copy". The mapping content was kept, with its interaction framing removed: mappings still drive structural generation. The warning against taking an `Intent.Application.DomainInteractions` dependency for `GetUpdateEntityMapping()` stays, because it protects against exactly that dependency.
+- **Routing evals R1–R5 measure this module's skills (2026-10-20).** `Tests/AgentEvals/RoutingScenarios.cs` asks a how-to question each skill should answer and checks both the skill load and a marker the answer must contain. A route accepts any of several skills, so the same scenario scores before and after a merge. Wording matters: a prompt that said "answer from whatever guidance you have" let the agent answer from the skill descriptions alone, without loading anything. On Claude (Haiku), the baseline before the trim was 15/15 and after it 14/15; the one miss grepped the merged skill file instead of loading it, and its answer was still right. Run them before and after any change to which skills exist.
+  A marker has to be something only the right answer says: R3's first marker (`UrlImagePath`, a data URI) is in
+  the package-icon procedure too, so it could not catch the confusion the icon merge risks. A keyword check for
+  that route then failed correct answers that mention the package icon only to rule it out, so R3 carries a
+  judge brief that scores which route the answer took instead. After the review fixes: 15/15, three runs.
+- **A rule folded into a resource is out of reach for a weaker model (2026-10-21).** The 15-vs-10 comparison
+  (cases C1–C25 in `Tests/AgentEvals/SkillCoverageScenarios.cs`, written by an independent agent from the old
+  skills only) found one regression: `module-debugging` said in its body that `Logging.Log` has no `Error`
+  level; after the merge that sentence lived only in `file-builder-expert`'s troubleshooting § 15. Haiku loaded
+  the skill, never opened the resource, and copied the skill's `Logging.Log.Debug` example (0/6, from 6/6);
+  Sonnet opened it (6/6). Fixed by stating the levels in the skill itself. **Rule for any future merge: a fact an
+  agent needs to get the common case right stays in `SKILL.md`; a resource holds detail, never the only copy of
+  a must.** Agents also often grep the skills folder instead of loading a skill, so the evals count a skill as
+  found when its text reached the agent by any route.
+- **A merged skill's description must name the merged-in trigger (user decision, 2026-10-22).** The same comparison
+  showed agents opening `file-builder-expert` half as often as `module-debugging` for "where do my module-task logs
+  go" (6 vs 12 of 26 runs): its USE ONLY WHEN named only template and factory-extension files, and its REQUIRES a
+  decided template shape. The description now also covers logging a runtime value to debug any module code, module
+  tasks included, and scopes REQUIRES to template authoring. Moving the guidance into its own resource
+  (`debugging.md`) did not fix this on its own: a resource helps once a skill is open, and only the description
+  decides whether it is opened.
+- **The 1.1.0 trim was measured, not assumed (2026-10-21/22).** 30 cases (C1–C25 in
+  `Tests/AgentEvals/SkillCoverageScenarios.cs`, R1–R5), each proven first on the old set (passes at least 2 of 3
+  on Haiku, fails with its skill removed), ran on Claude Haiku and Sonnet, Codex and OpenCode against both sets'
+  generated output (`--generated`). Result: 10 skills 355/390, 15 skills 349/390, no regression after the C12
+  fix; an independent check agreed. To compare a future change to which skills exist, regenerate both versions'
+  output and run the same cases against each: the cases name both the old and the new carrier skill, so one case
+  scores either set.
+- **`1.1.x` is the last line with templates, capped at `[5.1.0-a,5.4.0-a)` (user decision, 2026-10-27).** From Intent Architect
+  5.4.0, `add-designer-extension`, `add-module-migration`, `architecture-templates`, `file-builder-expert`,
+  `intent-metadata-consumer`, `module-docs` and `module-versioning` ship built into Intent, written to the same
+  `skills/<name>/` folders this module writes to. `1.1.0` no longer generates those seven (user decision,
+  2026-10-27), so clients below 5.4 lose them on update; the cap stops 5.4 clients installing the module fresh,
+  and the few clients already using it are contacted directly to uninstall it on upgrade. The remaining skills
+  and instructions name a removed skill with "if available", and no longer cite `file-builder-expert` Musts by
+  number, since this module no longer controls that numbering. `<supportedClientVersions>` is hand-authored in
+  the `.imodspec`, which the Software Factory merges and does not rewrite.
+- **`1.2.x` is obsolete: no templates, a dependency on `Intent.ModuleBuilder.AI.Workflow`, `[5.4.0-a,6.0.0-a)`
+  (user decision, 2026-10-27).** This reverses the earlier same-day rejection of an obsolete version. Its six
+  remaining templates moved to AI.Workflow unchanged (same element names, folders and settings, so the same
+  output paths; only the TemplateIds and namespaces changed), and updating to `1.2.x` installs AI.Workflow
+  through the dependency, the ServiceDispatch → DomainInteractions pattern. It says it is obsolete through its
+  summary and release notes only: no warning or error at run time. Accepted, because about three clients are
+  affected and are contacted directly: a 5.4 client still on the uncapped `1.1.0-pre.0` that updates AI.Workflow
+  before AI.Skills has two modules writing the same six paths. Still to verify on 5.4 before release: whether
+  updating from `1.1.0-pre.0` makes the Software Factory delete Intent's built-in copies of the seven skills,
+  which sit at the paths that version generated.
+- **The dependency is on `Intent.ModuleBuilder.AI.Guidelines` `1.0.0-pre.0` (user decision, 2026-10-29).** AI.Workflow
+  was renamed to AI.Guidelines before its first stable release, since it no longer carries only workflow
+  skills, and its own version restarted at `1.0.0-pre.0`. AI.Workflow's published prereleases are unlisted, not
+  made obsolete. Everything this file says about AI.Workflow above now applies to AI.Guidelines.
+- **`1.2.0-pre.1` raises that dependency to AI.Guidelines `1.0.0-pre.1` (2026-10-29).** AI.Guidelines `1.0.0-pre.0`
+  shared AI.Workflow's settings ids, so updating this module in an app that still had AI.Workflow put both in
+  one app and broke every later module operation there. `pre.1` has its own ids; see AI.Guidelines' `CONTEXT.md`.
 
 ## Invariants & Constraints
 
@@ -115,11 +172,23 @@ Bundles a fixed set of AI agent skills and instruction files for building Intent
   compiled: the scratch sample projects referenced only Common and Common.CSharp, so the SDK resolved
   transitively and could not conflict. Restore-probe a raise with a csproj shaped like Module Builder's, with a
   direct SDK reference. `known-build-gotchas`' NU1605 section holds the chain once; each skill names its own
-  versions.
+  versions. Since 1.1.0 (user decision, 2026-10-20) a skill names them in one line — "raise the
+  `Intent.Common.CSharp` `<dependency>` (`.imodspec`) and the `Intent.Modules.Common.CSharp` package reference
+  (`.csproj`) to a, with `Intent.Modules.Common` / the `Intent.Common` `<dependency>` at b and the
+  `Intent.SoftwareFactory.SDK` package reference at c (Intent Architect d), or restore fails with `NU1605` (see
+  `known-build-gotchas`)" — and leaves
+  the why to `known-build-gotchas`. Naming both files is not optional: a raise made only in the `.csproj` builds
+  green while the `.imodspec` under-declares the floor, and the dependency audit that would catch it ships in
+  AI.Workflow, which is not always installed. Name each by its id in that file: the packages are
+  `Intent.Modules.Common` and `Intent.Modules.Common.CSharp`, the `.imodspec` ids `Intent.Common` and
+  `Intent.Common.CSharp` (no NuGet package has those names), and the SDK has no `.imodspec` dependency at all
+  (its floor is `supportedClientVersions`). Two drafts of the one-liner got this wrong — one gave the SDK an
+  `.imodspec` dependency, the next told the agent to add an `Intent.Common.CSharp` package that does not exist.
+  The full restatement used to repeat in about 14 files.
 
 ## Module Interactions
 
-- **Intent.ModuleBuilder.AI.Workflow** — a separate module bundling conditional, process-shaped workflow skills (version increment timing, doc-chore cadence, context capture). No package dependency is declared between the two modules, and that stays deliberate — each bundle must remain independently installable. The one exception: AI.Workflow's `module-docs-chore` names `module-svg-icon` by name, but only as a **soft, conditional** pointer ("if the skill is available in your environment, use it") gated behind its own `MaintainModuleIcon` setting — never assumed present. Do not upgrade this to a declared dependency without a deliberate decision to do so; keep any further cross-references to this same soft-pointer shape.
+- **Intent.ModuleBuilder.AI.Guidelines** (named AI.Workflow until 2026-10-29) — a separate module bundling conditional, process-shaped workflow skills (version increment timing, doc-chore cadence, context capture). No package dependency is declared between the two modules, and that stays deliberate — each bundle must remain independently installable. The one exception: AI.Workflow's `module-docs-chore` names `module-svg-icon` by name, but only as a **soft, conditional** pointer ("if the skill is available in your environment, use it") gated behind its own `MaintainModuleIcon` setting — never assumed present. Do not upgrade this to a declared dependency without a deliberate decision to do so; keep any further cross-references to this same soft-pointer shape.
 
 ## Superseded
 

@@ -1,0 +1,47 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dotnet run .claude/hooks/gate/gate.cs -- warm"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "^(Write|Edit)$|.*(write_file|patch_file|delete_code_file).*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dotnet run .claude/hooks/gate/gate.cs --no-build -- guard-write --harness claude || exit 2"
+          }
+        ]
+      },
+      {
+        "matcher": ".*run_designer_script.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dotnet run .claude/hooks/gate/gate.cs --no-build -- guard-version --harness claude || exit 2"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dotnet run .claude/hooks/gate/gate.cs --no-build -- close-out --harness claude"
+          }
+        ]
+      }
+    ]
+  },
+  "env": {
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1"
+  }
+}

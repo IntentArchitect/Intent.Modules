@@ -6,7 +6,7 @@ This module does not generate application code. It drops one AI agent skill into
 
 An agent told to "generate a validator for every entity in the Domain designer" has to grep the repo to discover facts that are wrong by default if guessed: the NuGet package is `Intent.Modules.Modelers.Domain`, but the `.imodspec` dependency id is `Intent.Modelers.Domain` — different strings for the same thing; the namespace is `Intent.Modelers.Domain.Api`, with no `Intent.Modules.Modelers.Domain.Api` NuGet package despite appearances; the dependency must be declared in three separate files at matching versions; and the entry point is `_metadataManager.Domain(application).GetClassModels()`. After installing this skill, that is a lookup in a table rather than an archaeology expedition.
 
-The existing `intent-metadata-consumer` skill (bundled by `Intent.ModuleBuilder.AI.Skills`) starts one step later — it assumes you already hold a model instance (e.g. a `ClassModel`) and teaches you how to read stereotypes off it. This skill stops exactly where that one starts: once you hold the model instance, hand off to `intent-metadata-consumer`.
+The `intent-metadata-consumer` skill (built into Intent Architect from 5.4.0) starts one step later — it assumes you already hold a model instance (e.g. a `ClassModel`) and teaches you how to read stereotypes off it. This skill stops exactly where that one starts: once you hold the model instance, hand off to `intent-metadata-consumer`.
 
 ## What This Module Generates
 
@@ -23,4 +23,4 @@ The content is bundled once, in this module's own source, and always overwritten
 
 ## Related Modules
 
-- **Intent.ModuleBuilder.AI.Skills** — bundles the complementary `intent-metadata-consumer` skill, which this module's `SKILL.md` names by description, and vice versa. There is deliberately no package dependency between the two bundles — each must remain independently installable.
+- **Intent.ModuleBuilder.AI.Skills** — obsolete. It used to bundle the complementary `intent-metadata-consumer` skill, which this module's `SKILL.md` names by description, and vice versa; that skill is built into Intent Architect from 5.4.0.

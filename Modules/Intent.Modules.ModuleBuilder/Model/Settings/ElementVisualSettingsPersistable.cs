@@ -29,6 +29,14 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("anchorPointsFunction")]
         public string AnchorPointsFunction { get; set; }
 
+        [XmlElement("anchorSegmentsFunction")]
+        public string AnchorSegmentsFunction { get; set; }
+        public bool ShouldSerializeAnchorSegmentsFunction() => !string.IsNullOrWhiteSpace(AnchorSegmentsFunction);
+
+        [XmlElement("anchorSpread")]
+        public string AnchorSpread { get; set; }
+        public bool ShouldSerializeAnchorSpread() => !string.IsNullOrEmpty(AnchorSpread);
+
         [XmlArray("display")]
         [XmlArrayItem("drawPath", typeof(PathDrawSettings))]
         [XmlArrayItem("drawText", typeof(TextDrawSettings))]

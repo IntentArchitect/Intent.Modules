@@ -2,18 +2,15 @@
 
 function validateRestRoutes(element: MacroApi.Context.IElementApi): String {
 
-    let routeToValidate = RestRoute.create(element);
+    // Read the settings once per evaluation; every route built below excludes the same parameters.
+    let routeParameterExclusions = __getRouteParameterExclusions();
+
+    let routeToValidate = RestRoute.create(element, routeParameterExclusions);
     if (!routeToValidate) {
         return "";
     }
 
-    let routesToCompareAgainst = lookupTypesOf("Command", false)
-        .concat(lookupTypesOf("Query", false))
-        .concat(lookupTypesOf("Operation", false))
-        .map(x => RestRoute.create(x))
-        .filter(x => x != null) as RestRoute[];
-
-    let message: string = __findOneDuplicate(routeToValidate, routesToCompareAgainst);
+    let message: string = __findOneDuplicate(routeToValidate, routeParameterExclusions);
     if (message && message != "") {
         return message;
     }
@@ -26,13 +23,30 @@ function validateRestRoutes(element: MacroApi.Context.IElementApi): String {
     return "";
 }
 
-function __findOneDuplicate(routeToValidate: RestRoute, routesToCompareAgainst: RestRoute[]): string {
-    for (let possibleDuplicate of routesToCompareAgainst) {
+function __findOneDuplicate(routeToValidate: RestRoute, routeParameterExclusions: string[]): string {
+    let elementsToCompareAgainst = lookupTypesOf("Command", false)
+        .concat(lookupTypesOf("Query", false))
+        .concat(lookupTypesOf("Operation", false));
+
+    for (let element of elementsToCompareAgainst) {
         // Make sure we're not checking the same route with itself.
-        if (routeToValidate.underlyingElement.id == possibleDuplicate.underlyingElement.id) {
+        if (routeToValidate.underlyingElement.id == element.id) {
             continue;
         }
-        if (possibleDuplicate.isDuplicate(routeToValidate)) {
+
+        let possibleDuplicate: RestRoute | null;
+        try {
+            // Only a route with the same verb can be a duplicate, so don't build the others.
+            if (RestRoute.getVerb(element) !== routeToValidate.verb) {
+                continue;
+            }
+            possibleDuplicate = RestRoute.create(element, routeParameterExclusions);
+        } catch {
+            // An element whose route can't be built reports that from its own evaluation. Skip it here, so it can't stop every other element's check.
+            continue;
+        }
+
+        if (possibleDuplicate?.isDuplicate(routeToValidate)) {
             return `Duplicate rest route ${routeToValidate.underlyingElement.getName()}(${routeToValidate.underlyingElement.specialization}) with ${possibleDuplicate.underlyingElement.getName()}(${possibleDuplicate.underlyingElement.specialization}) - ${possibleDuplicate.originalRoute}`;
         }
     }
@@ -76,7 +90,7 @@ function __findMissingParameters(routeToValidate: RestRoute): string {
         if(elementParam.hasStereotype("Parameter Settings")) {
             var paramSettings = elementParam.getStereotype("Parameter Settings");
             var source = paramSettings.getProperty("Source");
-            if(source && source.getValue() == "From Route" 
+            if(source && source.getValue() == "From Route"
                 && !routeToValidate.routeParams.some(r => r.toLowerCase() == elementParam.getName().toLowerCase())) {
                     missingRouteParameters.push(elementParam.getName());
             }
@@ -110,14 +124,14 @@ function __findMissingParameters(routeToValidate: RestRoute): string {
 }
 
 // this method is used to define any route parameters which should be excluded from the validation checks
-function __getRouteParameterExclusions() {
-    let routeExclusions = [];
+function __getRouteParameterExclusions(): string[] {
+    let routeExclusions: string[] = [];
 
     // get the multi-tenancy route parameter configured
     let multiTenancyRouteStrategy = application.getSettings("41ae5a02-3eb2-42a6-ade2-322b3c1f1115")?.getField("e15fe0fb-be28-4cc5-8b85-37a07b7ca160")?.value;
     let multiTenancyRoute = application.getSettings("41ae5a02-3eb2-42a6-ade2-322b3c1f1115")?.getField("c8ff4af6-68b6-4e31-a291-43ada6a0008a")?.value;
 
-    if(multiTenancyRouteStrategy && multiTenancyRouteStrategy != "" && multiTenancyRouteStrategy === "route" 
+    if(multiTenancyRouteStrategy && multiTenancyRouteStrategy != "" && multiTenancyRouteStrategy === "route"
         && multiTenancyRoute && multiTenancyRoute != "") {
         routeExclusions.push(multiTenancyRoute);
     }
@@ -173,25 +187,26 @@ class RestVersionSet {
 }
 
 class RestRoute {
+    private static readonly httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+
     public hashedRoute: string;
     public routeParams: string[];
     private versionSet: RestVersionSet;
-    
-    constructor(public verb: string, public originalRoute: string, public underlyingElement: MacroApi.Context.IElementApi) {
+
+    constructor(public verb: string, public originalRoute: string, public underlyingElement: MacroApi.Context.IElementApi, routeParameterExclusions: string[]) {
         this.routeParams = [];
         this.versionSet = RestVersionSet.create(underlyingElement);
-        
+
         let counter = 0;
         let localRouteParams = this.routeParams;
         let actionName = underlyingElement.getName();
-        let routeParameterExclusions = __getRouteParameterExclusions();
         this.hashedRoute = originalRoute
-            .replace(/\{([^}]*)\}/g, function (match, g1) { 
+            .replace(/\{([^}]*)\}/g, function (match, g1) {
                 if (routeParameterExclusions.indexOf(g1) < 0) {
                     // {id:int}, {id?}, {id=5}, {*path} and {**path} bind the parameters named id and path
                     localRouteParams.push(g1.replace(/^\*{1,2}/, "").split(/[:?=]/)[0]);
                 }
-                return (counter++).toString(); 
+                return (counter++).toString();
             })
             .replace(/(\[action\])/g, actionName);
     }
@@ -202,54 +217,62 @@ class RestRoute {
             this.versionSet.matches(possibleDuplicateRoute.versionSet);
     }
 
-    public static create(element: MacroApi.Context.IElementApi): RestRoute | null {
+    // Reads only the verb, so a caller can rule an element out before building its route.
+    public static getVerb(element: MacroApi.Context.IElementApi): string | null {
+        return element.getStereotype(RestRoute.httpSettingsId)?.getProperty("Verb")?.value;
+    }
+
+    public static create(element: MacroApi.Context.IElementApi, routeParameterExclusions: string[]): RestRoute | null {
         if (!element) { return null; }
 
-        const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-        let httpSettings = element.getStereotype(httpSettingsId);
+        let httpSettings = element.getStereotype(RestRoute.httpSettingsId);
         if (!httpSettings) { return null; }
 
         let absoluteRouteToCheck = getAbsoluteRoute(element, httpSettings);
         if (!absoluteRouteToCheck) { return null; }
-        let verbToCheck = httpSettings.getProperty("Verb").value;
+        let verbToCheck = httpSettings.getProperty("Verb")?.value;
 
         return new RestRoute(
-            verbToCheck, 
-            absoluteRouteToCheck, 
-            element);
+            verbToCheck,
+            absoluteRouteToCheck,
+            element,
+            routeParameterExclusions);
 
         function getAbsoluteRoute(element: MacroApi.Context.IElementApi, httpSettings: MacroApi.Context.IStereotypeApi): string | null {
             if (element.specialization == "Operation") {
                 const serviceHttpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
-                
+
                 let serviceElement = element.getParent();
                 if (!serviceElement) { return null; }
-                
-                let operationPath = httpSettings.getProperty("Route").value;
-                let servicePath = serviceElement.getStereotype(serviceHttpServiceSettingsId)?.getProperty("Route").value;
+
+                let operationPath = httpSettings.getProperty("Route")?.value;
+                let servicePath = serviceElement.getStereotype(serviceHttpServiceSettingsId)?.getProperty("Route")?.value;
                 if (servicePath && servicePath != "") {
                     if (servicePath.toLocaleLowerCase().includes('[controller]')) {
                         servicePath = servicePath.replace(/\[controller\]/gi, `[${serviceElement.getName()}]`);
-                    } 
+                    }
 
                     return normalizeRoutePath(`${servicePath}/${normalizeRoutePath(operationPath)}`);
-                } 
+                }
 
                 //We don't know how the service name will be transformed so we add [{ServiceName}] to represent the transform
                 return normalizeRoutePath(`[${serviceElement.getName()}]/${normalizeRoutePath(operationPath)}`)
             }
 
-            return normalizeRoutePath(httpSettings.getProperty("Route").value);
+            return normalizeRoutePath(httpSettings.getProperty("Route")?.value);
         }
 
-        function normalizeRoutePath(returnPath: string): string {
-            if (returnPath.endsWith("/")) {
-                returnPath = returnPath.slice(0, -1);
+        // An empty Route is valid: an Operation without one answers on its Service's route, as an ASP.NET Core action
+        // without a template answers on its controller's. A Command or Query without one has no route to check.
+        function normalizeRoutePath(returnPath: string | null | undefined): string {
+            let path = returnPath ?? "";
+            if (path.endsWith("/")) {
+                path = path.slice(0, -1);
             }
-            if (returnPath.startsWith("/")) {
-                returnPath = returnPath.slice(1);
+            if (path.startsWith("/")) {
+                path = path.slice(1);
             }
-            return returnPath;
+            return path;
         }
     }
 }

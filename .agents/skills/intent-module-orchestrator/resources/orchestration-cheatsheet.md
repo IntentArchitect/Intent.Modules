@@ -1,5 +1,5 @@
 ---
-contentHash: 6DB212552A10F71739CC2A5098792EE33221EB51661CCADDC34E22CE133FB57F
+contentHash: C9F5E62E20ADCFA0AE6D28C08D2BBF1A4DCE62ACACDC4BB7CED1620D1C0508EA
 ---
 # Orchestration Cheatsheet
 
@@ -67,7 +67,7 @@ public MyHostTemplate(IOutputTarget outputTarget, object model = null) : base(Te
 ```
 
 > [!IMPORTANT]
-> `EmitOrPublish` and `OnEmitOrPublished` were added in `Intent.Common` **3.9.0**; Module Builder's default floor is 3.7.2. Before using them, raise both the `.imodspec` dependency (`<dependency id="Intent.Common" version="3.9.0" />`) and the `.csproj` package reference (`<PackageReference Include="Intent.Modules.Common" Version="3.9.0" />`), and raise the `Intent.SoftwareFactory.SDK` package reference to 3.10.0 with them: `Intent.Modules.Common` 3.9.0 depends on it, so restore fails with `NU1605` otherwise. SDK 3.10.0 needs Intent Architect 4.5.15 or later, which the Software Factory checks against the `.imodspec`'s `supportedClientVersions`. Against the 3.7.2 package the code does not compile; built against a newer package but installed with an older `Intent.Common`, it throws `MissingMethodException` at run time. To let other subscribers see an event after yours handles it, pass `stopPropagation: false` (3.9.0). The `OnEmitOrPublished<T>(Func<T, bool> handler)` overload lets your handler decline: return `false` and the event is not marked handled, so it keeps propagating and falls back to `Publish`. Such a handler is also subscribed for the plain `Publish` fallback, so after declining it runs a second time. It needs **3.11.4**, which needs the `Intent.SoftwareFactory.SDK` package reference raised to 3.14.0, and so Intent Architect 5.0.0 or later.
+> `EmitOrPublish` and `OnEmitOrPublished` were added in `Intent.Common` **3.9.0**; Module Builder's default floor is 3.7.2. Before using them, raise the `Intent.Common` `<dependency>` and the `Intent.Modules.Common` package reference to 3.9.0 with `Intent.SoftwareFactory.SDK` 3.10.0 (Intent Architect 4.5.15 or later), or restore fails with `NU1605` (see `known-build-gotchas`). Against the 3.7.2 package the code does not compile; built against a newer package but installed with an older `Intent.Common`, it throws `MissingMethodException` at run time. To let other subscribers see an event after yours handles it, pass `stopPropagation: false` (3.9.0). The `OnEmitOrPublished<T>(Func<T, bool> handler)` overload lets your handler decline: return `false` and the event is not marked handled, so it keeps propagating and falls back to `Publish`. Such a handler is also subscribed for the plain `Publish` fallback, so after declining it runs a second time. It needs `Intent.Modules.Common` / the `Intent.Common` `<dependency>` at **3.11.4**, with the `Intent.SoftwareFactory.SDK` package reference at 3.14.0 (Intent Architect 5.0.0 or later).
 
 Factory extensions have no `EmitOrPublish`; they keep using `application.EventDispatcher.Publish(...)`.
 
@@ -217,7 +217,7 @@ except where a later version is named.
 | A configuration key or section | `AppSettingRegistrationRequest` |
 | A named connection string | `ConnectionStringRegistrationRequest` |
 | An environment variable in `launchSettings.json` | `EnvironmentVariableRegistrationRequest` |
-| A whole profile in `launchSettings.json` | `LaunchProfileRegistrationRequest` (its `CommandLineArgs`, `ExecutablePath` and `WorkingDirectory` need `Intent.Common.CSharp` 3.9.5, with `Intent.Common` 3.9.0 and SDK 3.10.0 raised alongside it) |
+| A whole profile in `launchSettings.json` | `LaunchProfileRegistrationRequest` (its `CommandLineArgs`, `ExecutablePath` and `WorkingDirectory` need the `Intent.Common.CSharp` `<dependency>` (`.imodspec`) and the `Intent.Modules.Common.CSharp` package reference (`.csproj`) at 3.9.5, with `Intent.Modules.Common` / the `Intent.Common` `<dependency>` at 3.9.0 and the `Intent.SoftwareFactory.SDK` package reference at 3.10.0 (Intent Architect 4.5.15 or later), or restore fails with `NU1605` — see `known-build-gotchas`) |
 | The `launchUrl` path of the default profiles | `DefaultLaunchUrlPathRequest`, via `this.PublishDefaultLaunchUrlPathRequest(...)` (or `OutputTarget.EmitDefaultLaunchUrlPathRequest(...)`, which needs the same 3.9.5 raise) |
 | A key in an Azure Functions `host.json` | `HostSettingRegistrationRequest` |
 | Tell other modules (health checks) about a database, cache or broker you set up | `InfrastructureRegisteredEvent` |
@@ -512,7 +512,7 @@ foreach (var template in templates)
 > **Setting vs reading.** Metadata has two distinct uses, and the second is easy to miss:
 > your own cross-step state (`node.AddMetadata("my-key", value)` in one callback, read back in a
 > later one), **and** reading the designer model the host template already attached. `"model"` is
-> the second kind. See `file-builder-expert` for the metadata API itself.
+> the second kind. The `file-builder-expert` skill, if available, covers the metadata API itself.
 
 ===
 
@@ -629,7 +629,7 @@ The **Find Rule**: Template B must use a **strictly higher priority** than Templ
 
 ## §Resolution & Consumption — Stereotype-Driven AfterBuild
 
-Bridges the two skills: resolve the template (orchestrator), then consume the stereotype (`intent-metadata-consumer`). `GetMySettings()` is the accessor Module Builder generates in your module for a "My Settings" stereotype with a checkbox, a text, a number and a select property.
+Bridges the two skills: resolve the template (orchestrator), then consume the stereotype (the `intent-metadata-consumer` skill, if available). `GetMySettings()` is the accessor Module Builder generates in your module for a "My Settings" stereotype with a checkbox, a text, a number and a select property.
 
 ```csharp
 // Factory extension: enriches entity templates based on stereotype metadata
@@ -857,7 +857,7 @@ startup.StartupFile.ConfigureApp((block, ctx) =>
 
 > ⚠️ `AddAppConfigurationLambda("UseEndpoints", ...)` throws — use `AddUseEndpointsStatement` instead.
 
-The `IAppStartupFile` interface is in `Intent.Modules.Common.CSharp` (namespace `Intent.Modules.Common.CSharp.AppStartup`); the startup host modules (for example `Intent.AspNetCore`) implement it. Everything in the table except `ExposeProgramClass()` is available at the default `Intent.Common.CSharp` floor of 3.8.0. To use `ExposeProgramClass()`, raise the `Intent.Common.CSharp` `<dependency>` and the `Intent.Modules.Common.CSharp` package reference to 3.8.10, and `Intent.Modules.Common` / the `Intent.Common` `<dependency>` to 3.7.3 with them (3.8.10 depends on it; leaving Module Builder's 3.7.2 fails restore with `NU1605`).
+The `IAppStartupFile` interface is in `Intent.Modules.Common.CSharp` (namespace `Intent.Modules.Common.CSharp.AppStartup`); the startup host modules (for example `Intent.AspNetCore`) implement it. Everything in the table except `ExposeProgramClass()` is available at the default `Intent.Common.CSharp` floor of 3.8.0. To use `ExposeProgramClass()`, raise the `Intent.Common.CSharp` `<dependency>` and the `Intent.Modules.Common.CSharp` package reference to 3.8.10, and `Intent.Modules.Common` / the `Intent.Common` `<dependency>` to 3.7.3 with them (3.8.10 depends on it; leaving Module Builder's 3.7.2 fails restore with `NU1605` — see `known-build-gotchas`).
 
 ===
 

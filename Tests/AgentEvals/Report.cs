@@ -19,13 +19,19 @@ public sealed record RunResult(
     string Layer = "Wiring",
     int Attempt = 1)
 {
-    /// <summary>Hard checks count 2 when passed and 0 when failed; judge scores count as given.</summary>
-    public int Points => Checks.Sum(c => c.Passed ? 2 : 0) + JudgeScores.Sum(s => s.Score);
+    /// <summary>Hard checks count 2 when passed and 0 when failed; judge scores count as given; informational checks not at all.</summary>
+    public int Points => HardChecks.Sum(c => c.Passed ? 2 : 0) + JudgeScores.Sum(s => s.Score);
 
-    public int MaxPoints => (Checks.Count + JudgeScores.Count) * 2;
+    public int MaxPoints => (HardChecks.Count() + JudgeScores.Count) * 2;
 
     /// <summary>Every hard check passed. Judge scores grade quality; they never decide a pass.</summary>
-    public bool Passed => Error is null && Checks.Count > 0 && Checks.All(c => c.Passed);
+    public bool Passed => Error is null && HardChecks.Any() && HardChecks.All(c => c.Passed);
+
+    private IEnumerable<Check> HardChecks => Checks.Where(c => !c.Informational);
+
+    /// <summary>How a check reads in the report: pass/FAIL, or yes/no for an informational one.</summary>
+    public static string Mark(Check check) =>
+        check.Informational ? (check.Passed ? "yes" : "no") : check.Passed ? "pass" : "**FAIL**";
 
     public string Rating => Error is not null ? "error" : MaxPoints == 0 ? "-" : $"{Points}/{MaxPoints}";
 }
@@ -44,6 +50,7 @@ public static class Report
         md.AppendLine();
         md.AppendLine($"- OS: {RuntimeInformation.OSDescription}");
         md.AppendLine($"- Inputs: commit {info.Commit}{(info.Dirty ? " with uncommitted changes" : "")}");
+        md.AppendLine($"- Generated output: {info.GeneratedOutput}");
         foreach (var (harness, version) in info.HarnessVersions)
         {
             md.AppendLine($"- {harness}: {version}");
@@ -66,7 +73,7 @@ public static class Report
             foreach (var result in wiring)
             {
                 md.AppendLine($"| {result.Harness} | " + string.Join(" | ", dimensions.Select(d =>
-                    result.Checks.FirstOrDefault(c => c.Dimension == d) is { } c ? (c.Passed ? "pass" : "**FAIL**") : "-")) + " |");
+                    result.Checks.FirstOrDefault(c => c.Dimension == d) is { } c ? RunResult.Mark(c) : "-")) + " |");
             }
 
             md.AppendLine();
@@ -114,7 +121,7 @@ public static class Report
             md.AppendLine("|---|---|---|");
             foreach (var check in result.Checks)
             {
-                md.AppendLine($"| {check.Dimension} | {(check.Passed ? "pass" : "**FAIL**")} | {Escape(check.Detail)} |");
+                md.AppendLine($"| {check.Dimension} | {RunResult.Mark(check)} | {Escape(check.Detail)} |");
             }
 
             foreach (var score in result.JudgeScores)
@@ -144,6 +151,7 @@ public sealed record RunInfo(
     DateTime StartedAt,
     string Commit,
     bool Dirty,
+    string GeneratedOutput,
     IReadOnlyList<string> Arguments,
     Dictionary<string, string> HarnessVersions,
     Dictionary<string, string> Skipped);

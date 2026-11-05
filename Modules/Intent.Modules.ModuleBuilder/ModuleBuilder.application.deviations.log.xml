@@ -125,11 +125,10 @@
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#153a4063-82a1-4515-87f1-44c189004fad</correlationId>
       <path>Api/AssociationVisualSettingsModel.cs</path>
       <count>13</count>
-      <updatedByAccountName>jonathan.lydall@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Jonathan Lydall</updatedByDisplayName>
-      <updatedAt>2025-06-25T12:47:45.8742779Z</updatedAt>
+      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
+      <updatedAt>2026-10-29T20:48:49.9088295Z</updatedAt>
       <deviationsHash>26330BF9D3FD9F7D32DDE422F744E860460B7B7B1EAB0887A81CF8E2CADF44DD</deviationsHash>
-      <fileHash>D3726A74A4281BE6F6E9EF6573A1A183AB1488F500249329C55CC92A1689AFEC</fileHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#d45e383d-90ba-4b64-aca7-34ca100cea21</correlationId>
@@ -265,11 +264,10 @@
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#5eea5fba-15df-4971-8541-6f19bad4297d</correlationId>
       <path>Api/ElementVisualSettingsModel.cs</path>
       <count>16</count>
-      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
-      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2025-06-13T15:27:02.6190994Z</updatedAt>
-      <deviationsHash>9C3AF7291276DA17FCC7533E4113396AE8499BA41E4A5D2BA5B6ED95144011F9</deviationsHash>
-      <fileHash>4DF340B115F2D1E322B8BB23B9F95DA20E37CED89A5E64A4456DF9491BA5CE42</fileHash>
+      <updatedByAccountName>gareth.baars@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Gareth Baars</updatedByDisplayName>
+      <updatedAt>2026-10-30T09:13:00.198873Z</updatedAt>
+      <deviationsHash>79098AA58396D0AB75ABDE469DCA73A45D85010165E50DE514101F2D64538B1B</deviationsHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#7d008e84-bb28-4b10-ba28-7439202fca76</correlationId>

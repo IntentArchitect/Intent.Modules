@@ -1,8 +1,8 @@
 ---
 name: module-building-strategies
 description: "The accumulated strategic playbook of judgment calls for designing an Intent Architect module — decomposition (root/bridging/common), template vs factory-extension choice, file cardinality, managed modes, setting-vs-stereotype, convention-vs-explicit, pattern-first building from a specification, two-phase verification, and how a module carries AI guidance. USE ONLY WHEN facing a design decision point while building or extending a module, or planning large module work from a specification or PRD. DO NOT USE FOR the mechanical how-to of a specific construct — this is the judgment layer above those."
-template-id: Intent.ModuleBuilder.AI.Skills.Skills.ModuleBuildingStrategies_SkillMd_Agents
-contentHash: E43A31E095DE8D660927374178E49BA3B5F0871CC570DFD90D8463EE76368B8E
+template-id: Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleBuildingStrategies_SkillMd_Agents
+contentHash: 09CB7B8F9A6BC8BC383334BC527E03732C9503E1CF9B19A57B9E393E092777E9
 ---
 # Module Building Strategies
 
@@ -41,6 +41,7 @@ When two modules **disagree** about how a stereotype (or property) is used — o
 Reading existing modules is the fastest way to learn the platform, but some of what published modules do is legacy that a new module must not repeat. When reconnaissance turns one of these up, note it and do the current thing instead.
 
 - **AI task providers.** Some published modules (Intent.Modules.NET's Wolverine and MediatR-family modules among them) register an AI task provider from a factory extension — `application.AITaskManager.RegisterTaskProvider(...)` — to flag generated handlers that still need writing. AI task providers are deprecated: never register one. Carry the guidance as described in §5.
+- **Interaction strategies.** Intent.Modules.NET's handler modules implement `IInteractionStrategy` and register it with `InteractionStrategyProvider` to turn a modelled interaction (create, query, update or call an entity) into a generated handler body. That approach is deprecated: an AI agent writes business logic better than a deterministic strategy can, so a new module must not add interaction strategies. Generate the handler's structure, emit its body as an `IgnoreBody()` stub (§2 "Managed modes"), and carry the guidance the agent needs as described in §5.
 
 ===
 
@@ -142,7 +143,7 @@ The choice is purely: how many files, and does one file need to see many models 
 **Decision rule:** give every method body one owner.
 
 - **Code the template can generate from the model** → a **fully** managed body.
-- **Code a developer or AI writes** → **`Body = Mode.Ignore`**, with a stub (`file-builder-expert` Musts #11). This is the default for a new template's "implement here" body.
+- **Code a developer or AI writes** → **`Body = Mode.Ignore`**, with a stub (the `file-builder-expert` skill, if available, covers how a template emits one). This is the default for a new template's "implement here" body.
 - **Both in one body** → pull the generated part into its own fully managed member, such as a private method or a helper class, and call it from the ignored body. A model change still reaches the generated member; if it changes the member's signature, the build breaks rather than the body going quietly stale.
 - **Merge** → where the module's `CONTEXT.md` or the developer says generated and hand-written lines share the body (as handler templates in several existing modules do). The one case to choose it yourself is a body that collects generated lines from several templates or modules, such as a DI registration method, where nothing can be pulled out. `// IntentInitialGen` above a once-off statement in a Merge body lets the developer replace or delete it without the Software Factory restoring it.
 
@@ -165,7 +166,7 @@ The common shape is **global default (setting) + per-element override (stereotyp
 > **Choosing a stereotype has a packaging consequence.** A stereotype only reaches consumers if its
 > owning package is marked `Include in Module` in that package's `Module Settings`. Tick it as you define
 > the stereotype — otherwise the package emits no `<install>` entry, the stereotype ships nowhere, and the
-> only signal is a Software Factory warning you have to notice. See `add-designer-extension` for the
+> only signal is a Software Factory warning you have to notice. The `add-designer-extension` skill, if available, covers the
 > companion `Reference in Designer` rule when the package also carries designer elements.
 
 ### Convention vs explicit — the three lenses
@@ -236,7 +237,7 @@ The AI should **attempt to create the app/solution itself** via the MCP creation
 
 A module can ship guidance for the AI agents working in the applications that install it. There are two channels, split by what the agent is doing:
 
-- **Designer `AI Settings` → `Rules`** — for an agent *modelling* in a designer: what an element type is for, when to use it, which stereotype it needs. Set them on the designer, element, or association settings (or extension) you own; Intent Architect hands them to the agent with the designer's schema. Mechanics: `add-designer-extension`.
+- **Designer `AI Settings` → `Rules`** — for an agent *modelling* in a designer: what an element type is for, when to use it, which stereotype it needs. Set them on the designer, element, or association settings (or extension) you own; Intent Architect hands them to the agent with the designer's schema. Mechanics: the `add-designer-extension` skill, if available.
 - **A generated `SKILL.md`** — for an agent *writing code* against the module's output: how to fill in a generated handler, what a convention expects. A template in the module generates it into the consuming application, so it is versioned and updated with the module.
 
 A new module must **never register an AI task provider**. AI task providers are deprecated; guidance goes through the two channels above only.
@@ -244,4 +245,4 @@ A new module must **never register an AI task provider**. AI task providers are 
 That leaves an **accepted gap**. A task provider could flag, after each Software Factory run, the specific files still needing hand-written code ("this handler still needs implementing"). Nothing replaces that proactive flag, and none is planned: rules and skills are read when an agent looks for guidance, not pushed when generation leaves work behind. Accept that, and word the guidance so an agent that reads it can find the work itself:
 
 - **Rules are conditional on generation.** Write "once the Software Factory has generated the handler for this command, write its body: …", not "implement the handler" — the rule is read while modelling, before any code exists.
-- **Skills say how to find pending work.** For example: "find the handlers still to write by their `throw new NotImplementedException(...)` stub, then …". That is what a generated stub carries until a developer writes the body (`file-builder-expert` Musts #11 shows how a template emits it). Do not point at `// IntentInitialGen`: it sits in the template's source only and never reaches the generated file.
+- **Skills say how to find pending work.** For example: "find the handlers still to write by their `throw new NotImplementedException(...)` stub, then …". That is what a generated stub carries until a developer writes the body (the `file-builder-expert` skill, if available, shows how a template emits it). Do not point at `// IntentInitialGen`: it sits in the template's source only and never reaches the generated file.

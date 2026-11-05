@@ -34,6 +34,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public bool FlowDirectionReversed { get; set; }
         public bool ShouldSerializeFlowDirectionReversed() => FlowDirectionReversed;
 
+        [XmlElement("hideLabel")]
+        public bool HideLabel { get; set; }
+        public bool ShouldSerializeHideLabel() => HideLabel;
+
         [XmlElement("sourceEnd")]
         public AssociationEndVisualSettings SourceEnd { get; set; }
 

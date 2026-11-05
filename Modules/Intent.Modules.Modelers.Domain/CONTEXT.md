@@ -16,6 +16,15 @@ A domain designer based on UML class diagrams for expressing entity relationship
   That fixed scripts, but guessed intent from the name, and no other element works that way. Trade-off:
   Run Script Options render after Element Creation Options, so `New Diagram` moved to the end of the
   context menu.
+- **Association and Generalization visuals live on the Domain `Diagram`'s Diagram Settings, not on the
+  association types.** A diagram takes an association's visual from its own Diagram Settings first and falls
+  back to one on the Association Settings, which every diagram in every designer can use. With the visual on
+  the type, Services diagrams (which show Domain classes from referenced packages) drew these lines, and
+  expanding a class there pulled them in. On the Domain `Diagram` only Domain diagrams can draw them; Domain
+  Events, Repositories, Value Objects and Domain Services extend this same `Diagram`, so their visuals are
+  unaffected. Rejected: keeping the type-level visual and excluding it per designer. A diagram has no way to
+  opt out of a type-level visual. `Comment Association` and `Data Contract Generalization` still carry
+  type-level visuals; only the entity lines were in scope.
 
 ## Invariants & Constraints
 - A Validate Function must `return` its message: `return validateOperation(lookup(id));`. A bare
@@ -30,3 +39,7 @@ A domain designer based on UML class diagrams for expressing entity relationship
   of the Package and Folder, so removing it stops scripts (and AI agents) from creating Diagrams there.
 - Code that creates a Diagram must name it and, if needed, call `loadDiagram()` itself. Nothing does
   either on creation any more.
+- A diagram that should draw `Association` or `Generalization` lines must have its own Association Visual
+  Settings for them: a new diagram type in the Domain designer, or one in another designer (the way Services
+  Domain Interactions declares `Domain Event Origin Association` on its diagram). Without them the lines are
+  not drawable there, and any already saved on such a diagram load as lost visuals.

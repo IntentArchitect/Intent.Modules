@@ -1,3 +1,7 @@
+### Version 1.1.8
+
+- Fixed: Service Proxies now allow duplicate named operations.
+
 ### Version 1.1.7
 
 - Fixed: Removed duplicate Designer Settings which would cause issues in some scenarios.

@@ -326,5 +326,102 @@ if (element.getParent().specialization == "Visual Studio Solution") {
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
-  <scripts />
+  <scripts>
+    <script name="Classify Files" id="8c45bdfb-bcc0-4ce0-b349-9c86483254b8">
+      <script>// Codebase Structure designer script — id 8c45bdfb-bcc0-4ce0-b349-9c86483254b8 (the product hard-codes it). Headless: no form.
+// Review Changes appends the call:
+//   classifyFiles({ contractVersion: 2, files: [{ elementId, site, relativePath }],
+//                   classification: { name }, scope: "file" | "folder-extension", reviewImportance: "none" });
+// "file" writes &lt;relativePath&gt;; "folder-extension" writes &lt;folder&gt;/*&lt;.ext&gt; (just *&lt;.ext&gt; at the site root).
+// A file with no extension (Dockerfile, LICENSE) has no extension to match, so it falls back to "file" and writes its exact path.
+// An existing classification is matched by name, ignoring case; an unknown name creates it. A new one goes in the
+// File Classifications folder of the governing element's package (any such folder if that package has none, else a new one).
+// Re-classifying a glob the element already has updates that row rather than adding a second.
+// Returns { ok: true, writtenOn: [elementId] }. On failure it THROWS, because the caller drops return values and a
+// thrown error is what reaches the task console. Bump CONTRACT_VERSION with the module version when the args change.
+
+const CONTRACT_VERSION = 2;
+const CLASSIFICATION_ELEMENT = "File Classification";
+const CLASSIFICATIONS_FOLDER = "File Classifications";
+const STEREOTYPE = "File Classification";
+const IMPORTANCE = { none: "0 - None", low: "1 - Low", medium: "2 - Medium", high: "3 - High" };
+
+function safe(fn) {
+    try { return fn(); } catch (e) { return undefined; }
+}
+
+function fileNameOf(path) {
+    return path.substring(path.lastIndexOf("/") + 1);
+}
+
+function extensionOf(path) {
+    const name = fileNameOf(path);
+    const dot = name.lastIndexOf(".");
+    return dot &lt; 0 ? null : name.substring(dot);
+}
+
+function folderOf(relativePath) {
+    const slash = relativePath.lastIndexOf("/");
+    return slash &lt; 0 ? "" : relativePath.substring(0, slash);
+}
+
+function findTarget(id) {
+    return lookupById(id) || getPackages().find(p =&gt; p.id === id);
+}
+
+// The backend's GlobMatcher matches the whole path relative to the element, with no leading-"/" anchoring.
+function globFor(scope, relativePath) {
+    const ext = extensionOf(relativePath);
+    if (scope === "file" || !ext) return relativePath;
+    const folder = folderOf(relativePath);
+    return (folder ? folder + "/" : "") + "*" + ext;
+}
+
+function ensureClassification(name, anchor) {
+    const wanted = name.trim().toLowerCase();
+    const existing = findElements({ specialization: CLASSIFICATION_ELEMENT }).find(e =&gt; e.getName().trim().toLowerCase() === wanted);
+    if (existing) return existing;
+    const pkg = safe(() =&gt; anchor.getPackage()) || getPackages()[0];
+    const folders = findElements({ specialization: CLASSIFICATIONS_FOLDER });
+    let folder = folders.find(f =&gt; safe(() =&gt; f.getPackage().id) === pkg.id) || folders[0];
+    if (!folder) {
+        folder = createElementUnder(pkg, CLASSIFICATIONS_FOLDER, CLASSIFICATIONS_FOLDER);
+    }
+    return createElementUnder(folder, CLASSIFICATION_ELEMENT, name.trim());
+}
+
+function writeEntry(target, glob, classification, importance) {
+    const stereotype = target.getStereotype(STEREOTYPE) || target.addStereotype(STEREOTYPE);
+    const entries = stereotype.getProperty("Entries");
+    const row = entries.getItems().find(r =&gt; r.getProperty("Glob").getValue() === glob) || entries.addItem();
+    row.setProperty("Glob", glob);
+    row.setProperty("Classification", [classification.id]);
+    row.setProperty("Review Importance", importance);
+}
+
+function classifyFiles(args) {
+    try {
+        if (!args || args.contractVersion !== CONTRACT_VERSION) throw new Error("Unsupported classify contract version " + (args &amp;&amp; args.contractVersion));
+        if (!args.files || !args.files.length) throw new Error("No files to classify");
+
+        const anchor = findTarget(args.files[0].elementId);
+        if (!anchor) throw new Error("The file's governing element was not found");
+        const classification = ensureClassification(args.classification.name, anchor);
+
+        const importance = IMPORTANCE[args.reviewImportance] || IMPORTANCE.none;
+        const writtenOn = [];
+        for (const file of args.files) {
+            const target = findTarget(file.elementId);
+            if (!target) throw new Error("Element not found for " + file.relativePath);
+            writeEntry(target, globFor(args.scope, file.relativePath), classification, importance);
+            writtenOn.push(file.elementId);
+        }
+        return { ok: true, writtenOn };
+    } catch (e) {
+        throw new Error("classifyFiles failed: " + (e &amp;&amp; e.message ? e.message : String(e)));
+    }
+}
+</script>
+    </script>
+  </scripts>
 </settings>

@@ -73,6 +73,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Reverse Flow Direction");
             }
 
+            public bool HideLabel()
+            {
+                return _stereotype.GetProperty<bool>("Hide Label");
+            }
+
             public class LineTypeOptions
             {
                 public readonly string Value;

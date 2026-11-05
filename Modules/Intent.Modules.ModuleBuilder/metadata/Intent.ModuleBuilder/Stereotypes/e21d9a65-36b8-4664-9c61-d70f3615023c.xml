@@ -64,5 +64,13 @@
       <optionsSource>n/a</optionsSource>
       <defaultValue>false</defaultValue>
     </property>
+    <property id="c8942d71-4073-4e7d-aec4-65d5ac91d6ed">
+      <hint>Leaves out the label Intent Architect otherwise lets users set and draws halfway along the line.</hint>
+      <name>Hide Label</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <defaultValue>false</defaultValue>
+    </property>
   </properties>
 </stereotypeDefinition>

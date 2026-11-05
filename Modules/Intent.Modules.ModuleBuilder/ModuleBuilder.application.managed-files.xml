@@ -32,7 +32,7 @@
   <file path="Api/ElementExtensionModel.cs" deviationsHash="370F612CA78C66917AF11EAE1F4C54D1B4508C1813BA9C29FCEB327EB8203CDC" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
   <file path="Api/ElementMappingModel.cs" deviationsHash="905041191A0014EEFABEC0ED20A256BDC9CF1D2D0CCD16DC524987E0DFDEC7CB" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
   <file path="Api/ElementSettingsModel.cs" deviationsHash="6706775CF1896BACC7D616213FCD77C4E532E741E9D7128648DB325212F4EA31" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
-  <file path="Api/ElementVisualSettingsModel.cs" deviationsHash="9C3AF7291276DA17FCC7533E4113396AE8499BA41E4A5D2BA5B6ED95144011F9" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/ElementVisualSettingsModel.cs" deviationsHash="79098AA58396D0AB75ABDE469DCA73A45D85010165E50DE514101F2D64538B1B" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
   <file path="Api/Extensions/AcceptedTraitsModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
   <file path="Api/Extensions/AssociationCreationOptionModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
   <file path="Api/Extensions/AssociationDestinationEndSettingsModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
@@ -132,6 +132,7 @@
   <file path="FactoryExtensions/CheckSdkClientVersionRequirement.cs" templateId="Intent.ModuleBuilder.Templates.FactoryExtension" />
   <file path="Intent.ModuleBuilder.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
   <file path="Intent.Modules.ModuleBuilder.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
+  <file path="Migrations/Migration_03_21_00_Pre_00.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
   <file path="Settings/ModuleSettingsExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions" />
   <file path="Tasks/IModSpecChecker.cs" templateId="Intent.ModuleBuilder.Templates.ModuleTask" />
   <file path="Tasks/ReleaseNoteUpdater.cs" templateId="Intent.ModuleBuilder.Templates.ModuleTask" />

@@ -7,7 +7,7 @@ with any module. Design and decisions: [PLAN.md](PLAN.md).
 ```text
 dotnet run evals.cs -- --list
 dotnet run evals.cs -- [--layer wiring,hooks,guidance] [--harness claude,codex] [--scenario S1,G3]
-                       [--repeat N] [--no-judge] [--timeout 300] [--keep-runs 10] [--root PATH]
+                       [--repeat N] [--no-judge] [--timeout 300] [--keep-runs 10] [--root PATH] [--generated PATH]
                        [--claude-model M] [--codex-model M] [--opencode-model M] [--copilot-model M]
 dotnet run evals.cs -- --harness codex --prompt "..." [--no-stub]
 ```
@@ -19,7 +19,9 @@ An unknown harness, scenario, layer or option is an error, never an empty run.
 
 Inputs are read from the repository and never written: `Fixture/` (a small fake module) and
 `Tests/ModuleBuilderSkills` (what the modules generate today - regenerate that application after a module
-change, before a run). Everything the suite writes goes under one root it owns, outside the repository:
+change, before a run). `--generated PATH` evaluates another application's generated output instead - for
+example a baseline generated from published module versions, kept under the root's `baselines\` - and the
+report names the folder it used. Everything the suite writes goes under one root it owns, outside the repository:
 
 ```text
 %LOCALAPPDATA%\IntentAgentEvals\          (--root or INTENT_AGENT_EVALS_ROOT to move it)
@@ -68,7 +70,7 @@ the suite prevents by running Claude Code with `CLAUDE_CODE_DISABLE_AUTO_MEMORY=
    harness's hooks (Copilot and Cursor read `.claude/settings.json`), which would run the gate twice
    unless Claude's copy steps aside, as it does for Copilot.
 2. **Hooks** (`S1`-`S9`, `D1`) - real runs that should make a hook matter.
-3. **Guidance** (`G1`-`G5`, `I1`-`I2`) - real runs that show whether the instructions and skills are actually used.
+3. **Guidance** (`G1`-`G5`, `I1`-`I2`, `R3`, `C5`-`C21`) - real runs that show whether the instructions and skills are actually used.
 
 | Id | Scenario | Pass when |
 |---|---|---|
@@ -89,10 +91,31 @@ the suite prevents by running Claude Code with `CLAUDE_CODE_DISABLE_AUTO_MEMORY=
 | G5 | An observable template change | `release-notes.md` is updated; `module-docs-chore` loads |
 | I1 | "Design a package icon" - headless, so no one can approve | `module-svg-icon` loads; drafts are rendered, zoomed and looked at; nothing is applied; no base64 payload reaches the agent |
 | I2 | Apply an icon the developer approved | the root `<icon>` is set by script and nothing else in the config changes; only the `.imodspec` is applied from the Software Factory run; no base64 payload reaches the agent |
+| R3 | A how-to question for one AI.Guidelines skill (a stereotype icon) | one of the skills that carries the answer loads, and the answer says the rule it teaches; nothing changes |
+| C5-C8, C14-C21 | Coverage of the AI.Guidelines skills and instructions that came from AI.Skills: the rules an agent most likely gets wrong without them (`SkillCoverageScenarios.cs`) | the guidance's text reached the agent, and the answer says the rule; nothing changes. C16-C19 come from always-on instructions, so finding them is informational |
+
+R1, R2, R4, R5, C1-C4, C9-C13 and C22-C25 covered the seven skills Intent Architect 5.4 ships built in
+(`add-designer-extension`, `add-module-migration`, `architecture-templates`, `file-builder-expert`,
+`intent-metadata-consumer`, `module-docs`, `module-versioning`). Those are no longer tested from here, and
+their ids stay retired.
+
+A skill counts as **found** when its text reached the agent by any route: loaded as a skill, any of its files
+read, a search result quoting its lines, or an OpenCode subagent's report naming its files. Agents often grep
+the skills folder instead of loading a skill. Whether it was loaded as a skill is reported beside it as an
+informational yes/no, which never fails a run.
 
 A run **passes** when every hard check passes. Where a scenario has a brief, Claude Code (subscription,
 no tools, empty folder, no MCP servers) also scores *Steered* and *Communicated* 0-2; judge scores grade
 quality but never decide a pass. With `--repeat N` the report shows a pass rate per scenario.
+
+### Comparing two skill sets
+
+To show a change to which skills exist gives the same results, run the C and R cases against both versions'
+generated output with `--generated` (keep the old one under the root's `baselines\`, generated from the
+published module versions). Each case lists the skill that carries its answer in both sets, old name and the
+skill it was folded into, so one case scores either set. Prove a case on the old set first: it should pass at
+least 2 of 3 runs, and fail once its skill is deleted from a copy of that output. The 1.1.0 trim was compared
+this way; its result and method are in the AI.Skills module's `CONTEXT.md`.
 
 ### The Intent MCP stub
 

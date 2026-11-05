@@ -91,6 +91,7 @@ namespace Intent.ModuleBuilder.Api
                 LineWidth = this.GetSetting().LineWidth(),
                 LineDashArray = this.GetSetting().LineDashArray(),
                 FlowDirectionReversed = this.GetSetting().ReverseFlowDirection(),
+                HideLabel = this.GetSetting().HideLabel(),
                 SourceEnd = SourceVisual != null ? new AssociationEndVisualSettings()
                 {
                     PrimaryLabel = SourceVisual.GetLabelSettings().PrimaryLabel(),

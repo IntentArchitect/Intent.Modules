@@ -4,8 +4,8 @@ alwaysApply: true
 inclusion: always
 description: "Phase-by-phase workflow for any task that builds or changes an Intent Architect module, and which workflow skill each phase calls for."
 keywords: [workflow, module building, phases, version, documentation, context]
-template-id: Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd
-contentHash: F682264ECE713431A716C05261C55B27D835A4BD02375E966444805294F7238B
+template-id: Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.ModuleBuildingWorkflowMd
+contentHash: 727C13D50C7919EF25617A9DF7A41256FDCA5CCC306481A10C4FB710F8EAC6BE
 ---
 # Module Building Workflow
 

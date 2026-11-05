@@ -14,8 +14,14 @@ A mapping dialog then opens, where you pick the target service and the endpoints
 
 Service Proxies can also be created in a dedicated **Service Proxies** package.
 
+## Operation names
+
+Operations in a proxy can share a name, for example two `GetById` queries from different folders of the target service. Generated .NET clients name their methods after the endpoint each Operation is mapped to, not after the Operation.
+
+Each Operation in a proxy must be mapped to a different endpoint. Two Operations mapped to the same one are reported as a validation error on both; delete one of them.
+
 ## Parameter synchronisation
 
 When the designer loads, and whenever a Service Proxy changes, each Operation's parameters are regenerated from the endpoint it is mapped to.
 
-An Operation that isn't mapped to an endpoint, such as one added with **New Operation** on a proxy, has nothing to sync from. It is skipped, and a warning naming the Operation and its proxy is written to the Task Output. To fix it, delete the Operation, or reopen the proxy's mapping and select the endpoint it should call.
+An Operation doesn't have to be mapped to an endpoint. One that isn't, such as one added with **New Operation** on a proxy, has nothing to sync from, so its parameters are left as they are and nothing is reported.

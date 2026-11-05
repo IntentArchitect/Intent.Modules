@@ -24,9 +24,10 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="1ea37a25-2142-4d7b-84e2-bbdbf2f2fee0" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.AI.SDD.RootPrinciples.SddWaveEvidenceMd</name>
-      <display>Intent.ModuleBuilder.AI.SDD.RootPrinciples.SddWaveEvidenceMd</display>
+    <childElement id="2a3b4887-244c-48c0-baab-d9a94cabc0d2" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.ExceptionGuidelinesMd</name>
+      <display>Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.ExceptionGuidelinesMd</display>
+      <externalReference>Intent.ModuleBuilder.AI.Guidelines</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
@@ -49,9 +50,10 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="ce1831b0-f9a9-4800-8ce9-daab1db5c14a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.AI.Skills.RootPrinciples.ExceptionGuidelinesMd</name>
-      <display>Intent.ModuleBuilder.AI.Skills.RootPrinciples.ExceptionGuidelinesMd</display>
+    <childElement id="bc358adc-99a5-4ff9-a8dc-85a7cc09111f" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.KnownBuildGotchasMd</name>
+      <display>Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.KnownBuildGotchasMd</display>
+      <externalReference>Intent.ModuleBuilder.AI.Guidelines</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
@@ -74,34 +76,10 @@
       </metadata>
       <childElements />
     </childElement>
-    <childElement id="9626b2b3-adeb-4005-a6e5-3605eb45e4c2" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.AI.Skills.RootPrinciples.KnownBuildGotchasMd</name>
-      <display>Intent.ModuleBuilder.AI.Skills.RootPrinciples.KnownBuildGotchasMd</display>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>c9d54085-cbd0-4f4d-b0ef-77d8d33611db</parentFolderId>
-      <packageId>ac762d24-69c3-4f33-93f8-45686062a10b</packageId>
-      <packageName>root</packageName>
-      <stereotypes>
-        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
-          <addedByDefault>true</addedByDefault>
-          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
-          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
-          <properties>
-            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
-            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
-          </properties>
-        </stereotype>
-      </stereotypes>
-      <metadata>
-        <entry key="status" value="assigned" />
-      </metadata>
-      <childElements />
-    </childElement>
-    <childElement id="c9956b3a-041a-4dff-8144-b63dab6b95c4" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd</name>
-      <display>Intent.ModuleBuilder.AI.Workflow.RootPrinciples.ModuleBuildingWorkflowMd</display>
+    <childElement id="fd9d8426-f11d-421f-9691-2c4414d91062" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.ModuleBuildingWorkflowMd</name>
+      <display>Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.ModuleBuildingWorkflowMd</display>
+      <externalReference>Intent.ModuleBuilder.AI.Guidelines</externalReference>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>

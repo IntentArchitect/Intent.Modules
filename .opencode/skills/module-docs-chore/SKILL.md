@@ -2,8 +2,8 @@
 name: module-docs-chore
 description: "Update a module's release-notes, README, .imodspec metadata, and icon to reflect a change a consumer can observe, in the same turn as that change. USE ONLY WHEN a module change alters anything observable — a new/removed template, setting, stereotype, config default, or behavioural fix. DO NOT USE FOR internal refactors with no observable effect, or for bumping the module's version number itself (see module-version-increment). REQUIRES the observable change already implemented or decided."
 keywords: [documentation, release-notes, readme, imodspec, icon, chore, upkeep]
-template-id: Intent.ModuleBuilder.AI.Workflow.Skills.ModuleDocsChore_SkillMd_Agents
-contentHash: F2A00F06615D50EC2D1E6C9488A7A60DC83F4017D8B85B503D3D513F0FDFDCF0
+template-id: Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleDocsChore_SkillMd_Agents
+contentHash: 27229D851348EC1B7DF59BC7C4B9F1FE77BF56ACDFBC7D56FBCC3EBD116D6AB5
 ---
 # Skill: module-docs-chore
 
