@@ -332,7 +332,7 @@ public static class HttpEndpointModelFactory
             return HttpInputSource.FromQuery;
         }
 
-        if (httpSettings.Verb is HttpVerb.Post or HttpVerb.Put &&
+        if (httpSettings.Verb is HttpVerb.Post or HttpVerb.Put or HttpVerb.Query &&
             !(childElement.TypeReference.Element.IsTypeDefinitionModel() || childElement.TypeReference.Element.IsEnumModel()))
         {
             return HttpInputSource.FromBody;
@@ -356,7 +356,7 @@ public static class HttpEndpointModelFactory
         HttpSettings httpSettings)
     {
         var isForCqrs = element.SpecializationTypeId is Constants.ElementTypeIds.Query or Constants.ElementTypeIds.Command;
-        var verbAllowsBody = httpSettings.Verb is HttpVerb.Put or HttpVerb.Patch or HttpVerb.Post;
+        var verbAllowsBody = httpSettings.Verb is HttpVerb.Put or HttpVerb.Patch or HttpVerb.Post or HttpVerb.Query;
         var requiresBody = false;
 
         foreach (var childElement in element.ChildElements)

@@ -746,7 +746,7 @@ if (namingConvention == "pascal-case") {
     return;
 }
 const route = element.getParent().getStereotype("Http Settings").getProperty("Route").getValue();
-return ["GET", "PUT", "PATCH", "DELETE"].some(x =&gt; element.getParent().getStereotype("Http Settings").getProperty("Verb").getValue() == x)
+return ["GET", "PUT", "PATCH", "DELETE", "QUERY"].some(x =&gt; element.getParent().getStereotype("Http Settings").getProperty("Verb").getValue() == x)
     &amp;&amp; ["Command", "Query", "Operation"].some(x =&gt; element.getParent().specialization == x)
     &amp;&amp; element.getName().endsWith("Id")
     &amp;&amp; !element.hasStereotype("Parameter Settings")
@@ -766,7 +766,7 @@ element.getStereotype(parameterSettingsStereotypeId).getProperty("Source").setVa
     return;
 }
 const route = element.getParent().getStereotype("Http Settings").getProperty("Route").getValue();
-return ["GET", "PUT", "PATCH", "DELETE"].some(x =&gt; element.getParent().getStereotype("Http Settings").getProperty("Verb").getValue() == x)
+return ["GET", "PUT", "PATCH", "DELETE", "QUERY"].some(x =&gt; element.getParent().getStereotype("Http Settings").getProperty("Verb").getValue() == x)
     &amp;&amp; ["Command", "Query", "Operation"].some(x =&gt; element.getParent().specialization == x)
     &amp;&amp; element.getName().endsWith("Id")
     &amp;&amp; !element.hasStereotype("Parameter Settings")

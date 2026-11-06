@@ -1,3 +1,8 @@
+### Version 4.8.0
+
+- New feature: `QUERY` is now an available HTTP verb in **Http Settings**. A `QUERY` endpoint takes its criteria in the request body, like `POST`, and is safe and idempotent, like `GET`.
+- Improvement: An `Operation` with the `QUERY` verb is validated to have a return type, as for `GET`.
+
 ### Version 4.7.22
 
 - Fixed: A route parameter written in a different case from its parameter (e.g. `{CacheKey}`), or as optional, defaulted or catch-all (`{id?}`, `{id=5}`, `{*path}`), no longer has a duplicate segment appended to the Route on every change, or fails route validation.

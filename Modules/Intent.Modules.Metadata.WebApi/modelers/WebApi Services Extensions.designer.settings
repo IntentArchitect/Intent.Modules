@@ -265,8 +265,9 @@ RestRoute.httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
  */
 function validateRestRoutesOperation(element) {
     var _a;
-    if (element.typeReference.typeId == null &amp;&amp; ((_a = element.getStereotype("Http Settings")) === null || _a === void 0 ? void 0 : _a.getProperty("Verb").value) === "GET") {
-        return "Return Type required for HTTP GET Verb";
+    const verb = (_a = element.getStereotype("Http Settings")) === null || _a === void 0 ? void 0 : _a.getProperty("Verb").value;
+    if (element.typeReference.typeId == null &amp;&amp; (verb === "GET" || verb === "QUERY")) {
+        return `Return Type required for HTTP ${verb} Verb`;
     }
     return validateRestRoutes(element);
 }

@@ -44,6 +44,7 @@ return route?.includes('//')
         <option>PUT</option>
         <option>PATCH</option>
         <option>DELETE</option>
+        <option>QUERY</option>
       </valueOptions>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>

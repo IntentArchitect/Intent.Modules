@@ -277,6 +277,8 @@ namespace Intent.Metadata.WebApi.Api
                             return VerbOptionsEnum.PATCH;
                         case "DELETE":
                             return VerbOptionsEnum.DELETE;
+                        case "QUERY":
+                            return VerbOptionsEnum.QUERY;
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
@@ -302,6 +304,10 @@ namespace Intent.Metadata.WebApi.Api
                 {
                     return Value == "DELETE";
                 }
+                public bool IsQUERY()
+                {
+                    return Value == "QUERY";
+                }
             }
 
             public enum VerbOptionsEnum
@@ -310,7 +316,8 @@ namespace Intent.Metadata.WebApi.Api
                 POST,
                 PUT,
                 PATCH,
-                DELETE
+                DELETE,
+                QUERY
             }
             public class ReturnTypeMediatypeOptions
             {

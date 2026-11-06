@@ -23,7 +23,7 @@
     if (route.toLowerCase().indexOf(`{${element.getName().toLowerCase()}}`) !== -1) {
         return "[From Route]";
     }
-    if ((verb == "POST" || verb == "PUT") &amp;&amp; 
+    if ((verb == "POST" || verb == "PUT" || verb == "QUERY") &amp;&amp; 
         element.typeReference.getType().specialization !== "Type-Definition") {
         return "[From Body]";
     }
@@ -67,7 +67,7 @@ function isFromBody(childElement) {
     }
 
     if (source === "Default") {
-        return ((verb == "POST" || verb == "PUT") &amp;&amp; childElement.typeReference.getType().specialization !== "Type-Definition");
+        return ((verb == "POST" || verb == "PUT" || verb == "QUERY") &amp;&amp; childElement.typeReference.getType().specialization !== "Type-Definition");
     }
 
     return false;
