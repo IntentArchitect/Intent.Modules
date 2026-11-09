@@ -2,6 +2,7 @@
 
 - New feature: `QUERY` is now an available HTTP verb in **Http Settings**. A `QUERY` endpoint takes its criteria in the request body, like `POST`, and is safe and idempotent, like `GET`.
 - Improvement: An `Operation` with the `QUERY` verb is validated to have a return type, as for `GET`.
+- Improvement: Installing or updating this module also updates any installed Controllers, FastEndpoints, Swashbuckle, Scalar, HTTP client, Dapr service invocation and integration testing modules to their first versions that support `QUERY`, so updating this module is enough to start using `QUERY`.
 
 ### Version 4.7.22
 
