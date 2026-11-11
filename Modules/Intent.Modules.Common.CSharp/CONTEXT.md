@@ -50,6 +50,14 @@ C# module, so its public API is a contract with modules this repository cannot s
   `Rhs` - which works now that items know their parent. Adding the Rhs to `Statements` was rejected too:
   `GetText` renders the `Rhs` field, so edits made through the list would not render.
 
+- **A `C#` stereotype `Namespace` replaces the whole `GetNamespace` result, `additionalFolders` included**
+  (3.10.14) — `ModelHasFolderTemplateExtensions.GetNamespace<TModel>` returns the trimmed value verbatim when the
+  model carries a `C#` stereotype with a non-blank `Namespace`. A type reference to such an element resolves to
+  that namespace alone in the type resolver, so the declaring template must emit exactly it, or declaration and
+  references disagree. Rejected: appending `additionalFolders` (an earlier draft did) — the sub-folders the caller
+  passes describe the default location, which the override deliberately discards. Blank values fall back to the
+  OutputTarget namespace plus parent folders and `additionalFolders`, as before. Covered by `GetNamespaceTests`.
+
 ## Invariants & Constraints
 - **Type declarations default to `public`.** `AccessModifier` starts as `"public "` on `CSharpClass`,
   `CSharpInterface` and `CSharpEnum`; templates across the module ecosystem rely on that without calling

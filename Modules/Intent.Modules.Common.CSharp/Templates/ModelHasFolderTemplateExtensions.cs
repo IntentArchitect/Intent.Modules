@@ -1,4 +1,5 @@
 using System;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using System.Linq;
@@ -13,10 +14,20 @@ namespace Intent.Modules.Common.CSharp.Templates
     {
         /// <summary>
         /// Creates a fully qualified namespace based on the OutputTarget location and the parent
-        /// folders of this template's model as described in the designer.
+        /// folders of this template's model as described in the designer. If the model has a "C#" stereotype
+        /// with a non-blank "Namespace" property, that value is used instead of the OutputTarget location and
+        /// parent folders (and <paramref name="additionalFolders"/> are ignored), consistent with how references
+        /// to such an element resolve in the type resolver.
         /// </summary>
         public static string GetNamespace<TModel>(this IIntentTemplate<TModel> template, params string[] additionalFolders)
         {
+            if (template.Model is IHasStereotypes hasStereotypes &&
+                hasStereotypes.GetStereotypeProperty<string>("C#", "Namespace") is { } stereotypeNamespace &&
+                !string.IsNullOrWhiteSpace(stereotypeNamespace))
+            {
+                return stereotypeNamespace.Trim();
+            }
+
             var parentFolders = template.Model is IHasFolder hasFolder
                 ? hasFolder.GetParentFolders()
                 : [];
