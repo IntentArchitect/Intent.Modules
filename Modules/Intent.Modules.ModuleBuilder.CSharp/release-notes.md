@@ -1,3 +1,8 @@
+### Version 3.8.1
+
+- Improvement: Added .NET 11 as a NuGet package minimum target framework, so Fetch Latest can record `net11.0` package versions.
+- Fixed: Fetch Latest no longer moves a package's `net10.0` version to 11.x when the 11.x release only declares `net10.0` (for example `Microsoft.EntityFrameworkCore.Tools` 11.0.0); that release becomes the `net11.0` version instead.
+
 ### Version 3.8.0
 
 - Feature: C# and Razor templates now carry their `Severity`/`Classification` `Template Settings` through into the generated `.imodspec`.
