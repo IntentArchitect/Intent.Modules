@@ -1,6 +1,7 @@
 ﻿### Version 3.10.14
 
 - Improvement: `GetNamespace` now honours a `C#` stereotype's `Namespace` property on the template's model: when it is non-blank it is used as the template's namespace in place of the OutputTarget location and parent folders (and any `additionalFolders` are ignored), so the declared namespace matches the one references to that element resolve to.
+- Improvement: .NET 11 (`net11.0`) projects now use C# language version `15.0` by default, and the `latest` / `preview` language versions now mean `14.0` / `15.0`.
 
 ### Version 3.10.13
 
