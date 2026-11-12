@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<deviationsLog>
+  <files>
+    <file>
+      <correlationId>Intent.ModuleBuilder.Templates.FactoryExtension#0fd0b03c-e636-4a6c-89d5-f59aa2b46a82</correlationId>
+      <path>FactoryExtensions/DriftChecks.cs</path>
+      <count>15</count>
+      <updatedByAccountName>joel.turner@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Joel Turner</updatedByDisplayName>
+      <updatedAt>2026-11-11T10:02:49.763956Z</updatedAt>
+      <deviationsHash>C5C6D1BD5448437CF456E0FE1BD3152FCE02BF1A572031211481EC158FCBBD83</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#afd47995-b5e0-4b99-967d-07c731e5a164</correlationId>
+      <path>Templates/DriftReportRule/DriftReportRuleTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>joel.turner@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Joel Turner</updatedByDisplayName>
+      <updatedAt>2026-11-11T10:02:49.7640679Z</updatedAt>
+      <deviationsHash>A45F3898A39EC67D20F50AC3603AEDB33BD57A30B61593C6F854C86601CAF03D</deviationsHash>
+    </file>
+  </files>
+</deviationsLog>

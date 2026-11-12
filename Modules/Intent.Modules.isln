@@ -7,7 +7,7 @@
   <iconType>UrlImagePath</iconType>
   <metadataRelativePath>Intent.Metadata</metadataRelativePath>
   <modulesCacheRelativePath>.intent/modules</modulesCacheRelativePath>
-  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.ModuleBuilder" version="4.2.14" />
+  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.ModuleBuilder" version="4.2.22-pre.0" />
   <applications>
     <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" solutionFolder="Module Builder" relativePath="Intent.Modules.ModuleBuilder/ModuleBuilder.application.config" />
     <application id="89b15292-077f-46aa-8f8b-76072be30ccc" solutionFolder="Module Builder" relativePath="Intent.Modules.ModuleBuilder.CSharp/ModuleBuilder.CSharp.application.config" />
@@ -56,6 +56,7 @@
     <application id="56c42b2b-0973-424b-ae40-2b32c7aa840c" name="ModuleBuilderAiSkills" solutionFolder="AI Skills" relativePath="ModuleBuilderAiSkills/ModuleBuilderAiSkills.application.config" />
     <application id="355da3b4-406d-43fb-9d84-cc49aad1fec8" name="Intent.Modules.ModuleBuilder.AI.Guidelines" solutionFolder="Module Builder" relativePath="Intent.Modules.ModuleBuilder.AI.Guidelines/Intent.Modules.ModuleBuilder.AI.Guidelines.application.config" />
     <application id="eea3aaaf-e684-4faa-80ea-fd7d74f68d47" name="ModuleBuilder.AI.Modelers" solutionFolder="Module Builder" relativePath="Intent.Modules.ModuleBuilder.AI.Modelers/Intent.Modules.ModuleBuilder.AI.Modelers.application.config" />
+    <application id="4a7b588b-e9d1-4c76-a009-ded6b9e46921" name="Intent.Modules.Common.DriftReporting" solutionFolder="Common" relativePath="Intent.Modules.Common.DriftReporting/Intent.Modules.Common.DriftReporting.application.config" />
   </applications>
   <folders>
     <folder path="." />

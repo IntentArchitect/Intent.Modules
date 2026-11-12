@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Version>1.0.0-pre.0</Version>
+    <Authors>Intent Architect</Authors>
+    <Product>Intent - Drift Reporting</Product>
+    <Description>The contract drift reporter modules build on: subclass DriftReporterBase, add findings to named Areas, and the Intent.Common.DriftReporting module logs them and writes one drift report per application.</Description>
+    <PackageProjectUrl>https://intentarchitect.com</PackageProjectUrl>
+    <PackageTags>Intent Architect Software Factory Modules Drift</PackageTags>
+    <!-- Reporter modules reference this as a NuGet package; the installed Intent.Common.DriftReporting module supplies the one runtime copy. -->
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Intent.Modules.Common.DriftReporting.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- No higher than the reporter modules use (Intent.Modules.Common.Drift is on 3.11.1), or they hit NU1605. -->
+    <PackageReference Include="Intent.Modules.Common" Version="3.11.1" />
+    <PackageReference Include="Intent.Packager" Version="3.6.2-pre.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="3.0.0" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.14.0-pre.0" />
+  </ItemGroup>
+
+</Project>

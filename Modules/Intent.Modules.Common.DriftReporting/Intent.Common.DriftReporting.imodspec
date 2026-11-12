@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Intent.Common.DriftReporting</id>
+  <version>1.0.0-pre.0</version>
+  <supportedClientVersions>[5.1.0-a,6.0.0)</supportedClientVersions>
+  <summary>One consolidated drift report per application: reporter modules register drift checks, and this module runs them, logs their findings and writes the report.</summary>
+  <description>One consolidated drift report per application: reporter modules register drift checks, and this module runs them, logs their findings and writes the report.</description>
+  <authors>Intent Architect</authors>
+  <iconUrl>data:image/png;base64,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</iconUrl>
+  <templates>
+    <template id="Intent.Common.DriftReporting.DriftReportRule" externalReference="afd47995-b5e0-4b99-967d-07c731e5a164">
+      <role>AI.Context.Instructions</role>
+      <location></location>
+    </template>
+  </templates>
+  <decorators></decorators>
+  <factoryExtensions>
+    <factoryExtension id="Intent.Common.DriftReporting.DriftChecks" externalReference="0fd0b03c-e636-4a6c-89d5-f59aa2b46a82" />
+  </factoryExtensions>
+  <moduleSettings></moduleSettings>
+  <dependencies>
+    <dependency id="Intent.Common" version="3.11.1" />
+    <dependency id="Intent.Common.Types" version="3.4.0" />
+  </dependencies>
+  <files>
+    <file src="$outDir$/$id$.dll" />
+    <file src="$outDir$/$id$.pdb" />
+  </files>
+  <tags>drift-detection guardrails brownfield ai</tags>
+  <releaseNotes>release-notes.md</releaseNotes>
+  <moduleSettingsExtensions />
+  <metadata />
+  <migrations />
+</package>
