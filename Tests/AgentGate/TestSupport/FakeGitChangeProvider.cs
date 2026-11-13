@@ -25,6 +25,9 @@ public sealed class FakeGitChangeProvider : IGitChangeProvider
 
     public IReadOnlyList<string> GetChangedFiles(string repoRoot) => _changedFiles;
 
+    /// <summary>No conflicts: the conflict tests build a real one, since git itself decides what is unmerged.</summary>
+    public bool IsUnmerged(string repoRoot, string relativePath) => false;
+
     public string? TryReadFileAtHead(string repoRoot, string relativePath) =>
         _fileContentsAtHead.TryGetValue(relativePath, out var content) ? content : null;
 }

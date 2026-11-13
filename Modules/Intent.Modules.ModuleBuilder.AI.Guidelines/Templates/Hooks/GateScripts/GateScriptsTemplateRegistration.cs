@@ -403,6 +403,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks.GateScripts
 
         private const string GitSupportContent = """
             using System.Diagnostics;
+            using System.IO.Enumeration;
             using System.Text.Json;
             using System.Xml.Linq;
 
@@ -457,6 +458,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks.GateScripts
                 /// line of work).
                 /// </summary>
                 string? TryReadFileAtHead(string repoRoot, string relativePath);
+
+                /// <summary>
+                /// Whether git lists <paramref name="relativePath"/> as unmerged - a merge, rebase or
+                /// cherry-pick stopped on a conflict in it that has not been resolved and staged yet.
+                /// </summary>
+                bool IsUnmerged(string repoRoot, string relativePath);
             }
 
             /// <summary>
@@ -466,19 +473,22 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks.GateScripts
             {
                 public IReadOnlyList<string> GetChangedFiles(string repoRoot)
                 {
-                    // "git diff" alone misses brand-new (untracked) files entirely - a module
-                    // created from scratch in this line of work would otherwise be invisible to
-                    // the audit below. Union tracked changes against HEAD with untracked files.
-                    var changed = GitProcess.Run(repoRoot, "diff", "--name-only", "HEAD");
-                    var untracked = GitProcess.Run(repoRoot, "ls-files", "--others", "--exclude-standard");
-
-                    return GitProcess.SplitLines(changed).Concat(GitProcess.SplitLines(untracked))
-                        .Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+                    // Changes against HEAD and brand-new (untracked) files alike - a module created
+                    // from scratch in this line of work would otherwise be invisible to the audit.
+                    return GitProcess.Status(repoRoot)?.Select(entry => entry.Path)
+                        .Distinct(StringComparer.OrdinalIgnoreCase).ToList() ?? [];
                 }
 
                 public string? TryReadFileAtHead(string repoRoot, string relativePath)
                 {
                     return GitProcess.Run(repoRoot, "show", $"HEAD:{relativePath}");
+                }
+
+                public bool IsUnmerged(string repoRoot, string relativePath)
+                {
+                    // Literal pathspecs, so a "[" or "*" in a designer element's file name is not a glob.
+                    var stages = GitProcess.Run(repoRoot, "--literal-pathspecs", "ls-files", "--unmerged", "--", relativePath);
+                    return GitProcess.SplitLines(stages).Any();
                 }
             }
 
@@ -535,6 +545,24 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks.GateScripts
                         // fallback.
                         return null;
                     }
+                }
+
+                /// <summary>
+                /// Every path that differs from HEAD, untracked files included, or null when git could
+                /// not be asked. One "git status" lists untracked files several times faster than
+                /// "git ls-files --others" in a large repository, and faster without a pathspec than
+                /// with one - the difference between a close-out that ends in a second and one that
+                /// outruns a harness's hook timeout.
+                /// </summary>
+                public static IReadOnlyList<(bool Untracked, string Path)>? Status(string repoRoot)
+                {
+                    // -z: NUL-separated and never quoted, so unusual file names come back verbatim.
+                    // --no-renames: a rename is its two paths, as "git diff --name-only" lists them.
+                    var output = Run(repoRoot, "status", "--porcelain", "-z", "-uall", "--no-renames");
+                    return output?.Split('\0')
+                        .Where(entry => entry.Length > 3)
+                        .Select(entry => (entry.StartsWith("??", StringComparison.Ordinal), entry[3..]))
+                        .ToList();
                 }
 
                 public static IEnumerable<string> SplitLines(string? output) =>
@@ -732,14 +760,20 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks.GateScripts
                 private static IEnumerable<string> EnumerateRepoFiles(string repoRoot, string pattern)
                 {
                     var tracked = GitProcess.Run(repoRoot, "ls-files", "--", pattern);
-                    var untracked = GitProcess.Run(repoRoot, "ls-files", "--others", "--exclude-standard", "--", pattern);
+                    var status = GitProcess.Status(repoRoot);
 
-                    if (tracked is null && untracked is null)
+                    if (tracked is null && status is null)
                     {
                         return EnumerateViaFilesystem(repoRoot, pattern);
                     }
 
-                    return GitProcess.SplitLines(tracked).Concat(GitProcess.SplitLines(untracked))
+                    // Untracked files come from the whole-repo status, matched by file name the way the
+                    // filesystem fallback matches them: a pathspec makes git's untracked scan slower.
+                    var untracked = (status ?? [])
+                        .Where(entry => entry.Untracked && FileSystemName.MatchesSimpleExpression(pattern, Path.GetFileName(entry.Path)))
+                        .Select(entry => entry.Path);
+
+                    return GitProcess.SplitLines(tracked).Concat(untracked)
                         .Distinct(StringComparer.OrdinalIgnoreCase)
                         .Select(relative => Path.GetFullPath(Path.Combine(repoRoot, relative.Replace('/', Path.DirectorySeparatorChar))));
                 }
@@ -1023,7 +1057,29 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks.GateScripts
             """;
 
         private const string IntentMetadataGuardContent = """
+            using System.Text.RegularExpressions;
+
             namespace Intent.Agent.Gate;
+
+            /// <summary>
+            /// Resolving a merge or rebase conflict in a file the guard otherwise protects. Choosing
+            /// between two versions git already has is not a model change, and the designer cannot open
+            /// a file with conflict markers in it, so while git lists the path as unmerged the guard
+            /// lets the edit through - unless the text it writes still holds conflict markers. Only the
+            /// written text is checked, not the whole file, so an edit can resolve one conflict block at a
+            /// time.
+            /// </summary>
+            public static class MergeConflict
+            {
+                private static readonly Regex Marker = new("^(<{7}|={7}|>{7}|\\|{7})(\\s|$)", RegexOptions.Multiline | RegexOptions.Compiled);
+
+                public const string MarkersLeftDenial =
+                    "This file has an unresolved merge or rebase conflict, and this edit writes conflict markers " +
+                    "(<<<<<<<, =======, >>>>>>>) back into it. Replace each conflict block with its resolution, and change " +
+                    "nothing beyond the conflict itself.";
+
+                public static bool HasMarkers(string text) => Marker.IsMatch(text);
+            }
 
             /// <summary>
             /// Intent Architect's own METADATA: the designer model, an application's configuration, and
@@ -1127,10 +1183,9 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks.GateScripts
             /// </summary>
             public static class ModuleVersionAuditor
             {
-                public static ModuleVersionAuditResult Audit(string repoRoot, IReadOnlyList<string> changedFiles)
+                public static ModuleVersionAuditResult Audit(string repoRoot, IReadOnlyList<DiscoveredApplication> applications, IReadOnlyList<string> changedFiles)
                 {
                     var normalizedChanged = changedFiles.Select(Normalize).ToList();
-                    var applications = ModuleDiscovery.FindAll(repoRoot);
                     var byApplication = ModuleDiscovery.GroupChangedFilesByApplication(repoRoot, applications, normalizedChanged);
 
                     var violations = new List<ModuleVersionViolation>();
@@ -1194,11 +1249,10 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks.GateScripts
             /// </summary>
             public static class CloseOutAuditor
             {
-                public static IReadOnlyList<CloseOutFinding> Audit(string repoRoot, IReadOnlyList<string> changedFiles)
+                public static IReadOnlyList<CloseOutFinding> Audit(string repoRoot, IReadOnlyList<DiscoveredApplication> applications, IReadOnlyList<string> changedFiles)
                 {
                     var normalizedChanged = changedFiles.Select(Normalize).ToHashSet(StringComparer.OrdinalIgnoreCase);
                     var findings = new List<CloseOutFinding>();
-                    var applications = ModuleDiscovery.FindAll(repoRoot);
                     var byApplication = ModuleDiscovery.GroupChangedFilesByApplication(repoRoot, applications, changedFiles.Select(Normalize).ToList());
 
                     foreach (var application in byApplication.Keys)
@@ -1703,13 +1757,20 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks.GateScripts
                 /// <summary>
                 /// A whole-file write: allowed when "&lt;summary&gt;" and "&lt;description&gt;" are unchanged
                 /// element-by-element - the only way to catch a full rewrite that changes one of them
-                /// alongside an innocent "&lt;tags&gt;" edit.
+                /// alongside an innocent "&lt;tags&gt;" edit. When either side is not well-formed XML - a
+                /// file with conflict markers in it, say - both are compared as text instead: reading
+                /// an unparseable side as "no summary" denied every edit to a conflicted file.
                 /// </summary>
                 public static bool IsHandEditAllowed(string currentDiskContent, string newContent)
                 {
+                    var current = TryParse(currentDiskContent);
+                    var next = TryParse(newContent);
+                    var bothXml = current is not null && next is not null;
                     foreach (var field in DeniedFields)
                     {
-                        if (!string.Equals(ExtractElement(currentDiskContent, field), ExtractElement(newContent, field), StringComparison.Ordinal))
+                        var before = bothXml ? (string?)current!.Root?.Element(field) : ExtractFragment(currentDiskContent, field);
+                        var after = bothXml ? (string?)next!.Root?.Element(field) : ExtractFragment(newContent, field);
+                        if (!string.Equals(before, after, StringComparison.Ordinal))
                         {
                             return false;
                         }
@@ -1826,11 +1887,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks.GateScripts
                     return match.Success ? match.Groups[1].Value : null;
                 }
 
-                private static string? ExtractElement(string xml, string elementName)
+                private static XDocument? TryParse(string xml)
                 {
                     try
                     {
-                        return (string?)XDocument.Parse(xml).Root?.Element(elementName);
+                        return XDocument.Parse(xml);
                     }
                     catch (Exception)
                     {
@@ -2401,7 +2462,17 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks.GateScripts
                         foreach (var file in patchedFiles)
                         {
                             var violation = IntentMetadataGuard.DescribeViolation(file.Path);
-                            if (violation is null && file.Path.EndsWith(".imodspec", StringComparison.OrdinalIgnoreCase))
+                            if ((violation is not null || IsImodspec(file.Path)) && IsUnmerged(repoRoot, ResolvePath(repoRoot, file.Path), gitChangeProvider))
+                            {
+                                if (MergeConflict.HasMarkers(file.AddedText))
+                                {
+                                    return Deny(harness, stdout, stderr, MergeConflict.MarkersLeftDenial);
+                                }
+
+                                continue;
+                            }
+
+                            if (violation is null && IsImodspec(file.Path))
                             {
                                 var patchPath = ResolvePath(repoRoot, file.Path);
                                 var onDisk = File.Exists(patchPath) ? TryReadAll(patchPath) : null;
@@ -2443,6 +2514,20 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks.GateScripts
                     // release notes, correcting a csproj package version - and blocking it produced
                     // false positives and nothing else in real use.
                     var metadataViolation = IntentMetadataGuard.DescribeViolation(path);
+
+                    // A merge or rebase stopped on a conflict in a protected file: resolving it picks
+                    // between versions git already has, so it is allowed while git lists the path as
+                    // unmerged. git is asked only for protected paths, so ordinary edits pay nothing.
+                    if ((metadataViolation is not null || IsImodspec(path)) &&
+                        IsUnmerged(repoRoot, ResolveEditPath(repoRoot, path, HookPayload.ToolName(input)), gitChangeProvider))
+                    {
+                        var conflictEdit = StdinEditExtractor.Extract(input);
+                        var written = conflictEdit.WholeFileContent ?? conflictEdit.EditSnippet;
+                        return written is not null && MergeConflict.HasMarkers(written)
+                            ? Deny(harness, stdout, stderr, MergeConflict.MarkersLeftDenial)
+                            : Allow(stderr);
+                    }
+
                     if (metadataViolation is not null)
                     {
                         return Deny(harness, stdout, stderr, metadataViolation);
@@ -2453,7 +2538,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks.GateScripts
                     // Software Factory overwrites both from Application Settings on every run and
                     // discards a manual edit silently. The version is held to the same rules as setting
                     // it through the designer.
-                    if (path.EndsWith(".imodspec", StringComparison.OrdinalIgnoreCase))
+                    if (IsImodspec(path))
                     {
                         var edit = StdinEditExtractor.Extract(input);
                         var editedText = edit.WholeFileContent ?? edit.EditSnippet;
@@ -2532,6 +2617,11 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks.GateScripts
                 /// the git root. Which solution is open is not in the payload, so the first solution folder
                 /// in which the file exists is taken; with none, the git root is the fallback.
                 /// </summary>
+                private static bool IsImodspec(string path) => path.EndsWith(".imodspec", StringComparison.OrdinalIgnoreCase);
+
+                private static bool IsUnmerged(string repoRoot, string fullPath, IGitChangeProvider gitChangeProvider) =>
+                    gitChangeProvider.IsUnmerged(repoRoot, Path.GetRelativePath(repoRoot, fullPath).Replace('\\', '/'));
+
                 private static string ResolveEditPath(string repoRoot, string path, string? toolName)
                 {
                     var fromRepoRoot = ResolvePath(repoRoot, path);
@@ -2651,8 +2741,10 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks.GateScripts
                     // Outside a git repository git reports nothing, so this finds no changes and
                     // stays silent - there is no other record of what this session changed.
                     var changedFiles = gitChangeProvider.GetChangedFiles(repoRoot);
-                    var versionResult = ModuleVersionAuditor.Audit(repoRoot, changedFiles);
-                    var otherFindings = CloseOutAuditor.Audit(repoRoot, changedFiles);
+                    // Discovered once and shared: each discovery asks git for every untracked file.
+                    var applications = ModuleDiscovery.FindAll(repoRoot);
+                    var versionResult = ModuleVersionAuditor.Audit(repoRoot, applications, changedFiles);
+                    var otherFindings = CloseOutAuditor.Audit(repoRoot, applications, changedFiles);
 
                     if (versionResult.Passed && otherFindings.Count == 0)
                     {
