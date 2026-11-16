@@ -71,5 +71,37 @@ namespace Intent.Modules.Common.CSharp.Tests.VisualStudio
                 result.ShouldBe(expected);
             }
         }
+
+        public class DescribeGetLanguageVersion
+        {
+            [Theory]
+            [InlineData(new[] { "net9.0" }, "default", 13, 0)]
+            [InlineData(new[] { "net10.0" }, "default", 14, 0)]
+            [InlineData(new[] { "net11.0" }, "default", 15, 0)]
+            [InlineData(new[] { "net11.0" }, null, 15, 0)]
+            [InlineData(new[] { "net10.0", "net11.0" }, "default", 14, 0)]
+            // "net11" is .NET Framework 1.1, not .NET 11
+            [InlineData(new[] { "net11" }, "default", 7, 3)]
+            [InlineData(new[] { "net11.0" }, "latest", 14, 0)]
+            [InlineData(new[] { "net11.0" }, "preview", 15, 0)]
+            [InlineData(new[] { "net11.0" }, "12.0", 12, 0)]
+            public void ItShouldReturnTheCorrectResult(string[] targetFrameworks, string languageVersion, int expectedMajor, int expectedMinor)
+            {
+                // Arrange
+                var outputTarget = Substitute.For<IOutputTarget>();
+                outputTarget.Metadata.Returns(new Dictionary<string, object>
+                {
+                    ["Language Version"] = languageVersion,
+                    ["Target Frameworks"] = targetFrameworks
+                });
+                var sut = new CSharpProject(outputTarget);
+
+                // Act
+                var result = sut.GetLanguageVersion();
+
+                // Assert
+                result.ShouldBe(MajorMinorVersion.Create(expectedMajor, expectedMinor));
+            }
+        }
     }
 }
