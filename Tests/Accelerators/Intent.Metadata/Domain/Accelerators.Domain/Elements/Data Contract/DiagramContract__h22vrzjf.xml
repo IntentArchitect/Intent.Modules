@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="4c8703da-f361-4caf-8dcd-8c79251b2105" type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd">
+  <name>DiagramContract</name>
+  <display>DiagramContract</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>25962dc6-e77c-4beb-8d43-09d441f5c548</parentFolderId>
+  <packageId>25962dc6-e77c-4beb-8d43-09d441f5c548</packageId>
+  <packageName>Accelerators.Domain</packageName>
+  <traits>
+    <trait id="8b78644d-8b44-48c7-8c13-68255e2252c0" name="[Service Argument]" />
+  </traits>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="caa4d664-16bf-475e-b559-7a5f9f07546d" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>ValueOne</name>
+      <display>ValueOne: string</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="77a5b4e8-3a57-43ff-ad9f-dd6e987a5361">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>4c8703da-f361-4caf-8dcd-8c79251b2105</parentFolderId>
+      <packageId>25962dc6-e77c-4beb-8d43-09d441f5c548</packageId>
+      <packageName>Accelerators.Domain</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="bdc560b8-5b5e-46b0-865c-2e09d1ae9a27" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>ValueTwo</name>
+      <display>ValueTwo: int</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="8216175f-5fca-4f95-88a8-a2d30b6ca772">
+        <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>4c8703da-f361-4caf-8dcd-8c79251b2105</parentFolderId>
+      <packageId>25962dc6-e77c-4beb-8d43-09d441f5c548</packageId>
+      <packageName>Accelerators.Domain</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="2cf369bc-9d06-4a2c-90c6-8ad2136ed03f" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <name>ValueThree</name>
+      <display>ValueThree: string</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="e52584f4-c359-4e61-afa1-b7c8f9fac4a3">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>4c8703da-f361-4caf-8dcd-8c79251b2105</parentFolderId>
+      <packageId>25962dc6-e77c-4beb-8d43-09d441f5c548</packageId>
+      <packageName>Accelerators.Domain</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

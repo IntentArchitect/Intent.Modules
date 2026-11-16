@@ -25,6 +25,13 @@ A domain designer based on UML class diagrams for expressing entity relationship
   unaffected. Rejected: keeping the type-level visual and excluding it per designer. A diagram has no way to
   opt out of a type-level visual. `Comment Association` and `Data Contract Generalization` still carry
   type-level visuals; only the entity lines were in scope.
+- **`Data Contract` has its own Element Visual Settings, a copy of the `Class` one with a different fill.**
+  It has the same rounded rectangle, title, stereotype icons and Attribute rows, so it reads as a sibling of
+  an entity. Its fill (`#efe9f7` light, `#3b3550` dark) is fixed, unlike the entity's aggregate-root logic,
+  which doesn't apply to a non-persisted type. It also differs from the Comment, Value Object, Domain Service
+  and Domain Event fills. The visual is element-level, like `Class`'s, so a Data Contract can also be drawn on
+  any other diagram that accepts it (e.g. a Services diagram, since it is a `Service Argument`). `Data
+  Contract` is also listed in the Domain `Diagram`'s `Add to Diagram` picker.
 
 ## Invariants & Constraints
 - A Validate Function must `return` its message: `return validateOperation(lookup(id));`. A bare
@@ -35,6 +42,8 @@ A domain designer based on UML class diagrams for expressing entity relationship
   Intent.Modelers.Services' `CONTEXT.md` for the signature rules and the other copies.
 - The `New Diagram` Run Script Option script is copied, identically, into Intent.Modelers.Services and
   Intent.Modelers.UI, once per Package and Folder context menu. Change every copy together.
+- The `Data Contract` visual is a hand-made copy of the `Class` visual, without the Constructor and Operation
+  rows. When the `Class` shape, title or Attribute row layout changes, change the `Data Contract` one too.
 - Never delete a hidden `New Diagram` Element Creation Option. It is what makes Diagram an accepted child
   of the Package and Folder, so removing it stops scripts (and AI agents) from creating Diagrams there.
 - Code that creates a Diagram must name it and, if needed, call `loadDiagram()` itself. Nothing does
