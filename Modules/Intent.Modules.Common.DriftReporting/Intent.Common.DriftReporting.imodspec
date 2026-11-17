@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.DriftReporting</id>
-  <version>1.0.0-pre.0</version>
+  <version>1.0.0</version>
   <supportedClientVersions>[5.1.0-a,6.0.0)</supportedClientVersions>
   <summary>One consolidated drift report per application: reporter modules register drift checks, and this module runs them, logs their findings and writes the report.</summary>
   <description>One consolidated drift report per application: reporter modules register drift checks, and this module runs them, logs their findings and writes the report.</description>

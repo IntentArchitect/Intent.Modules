@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>1.0.0-pre.0</Version>
+    <Version>1.0.0</Version>
     <Authors>Intent Architect</Authors>
     <Product>Intent - Drift Reporting</Product>
     <Description>The contract drift reporter modules build on: subclass DriftReporterBase, add findings to named Areas, and the Intent.Common.DriftReporting module logs them and writes one drift report per application.</Description>
