@@ -13,9 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="10.0.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="10.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="11.0.0" />
   </ItemGroup>
   </Project>
