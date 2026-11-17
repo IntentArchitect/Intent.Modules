@@ -13,8 +13,8 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
 {
     internal class CSharpProject : ICSharpProject, IHasStereotypes
     {
-        private static readonly MajorMinorVersion LatestLanguageVersion = MajorMinorVersion.Create(13, 0);
-        private static readonly MajorMinorVersion PreviewLanguageVersion = MajorMinorVersion.Create(14, 0);
+        private static readonly MajorMinorVersion LatestLanguageVersion = MajorMinorVersion.Create(14, 0);
+        private static readonly MajorMinorVersion PreviewLanguageVersion = MajorMinorVersion.Create(15, 0);
         private readonly Lazy<bool> _isNullableAwareContext;
         private readonly IOutputTarget _outputTarget;
 
@@ -221,6 +221,8 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
                         return MajorMinorVersion.Create(13, 0);
                     case 10:
                         return MajorMinorVersion.Create(14, 0);
+                    case 11:
+                        return MajorMinorVersion.Create(15, 0);
                     default:
                         // See https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/configure-language-version#defaults
                         Logging.Log.Warning(

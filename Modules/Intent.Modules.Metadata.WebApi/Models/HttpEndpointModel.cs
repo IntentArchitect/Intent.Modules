@@ -22,7 +22,7 @@ internal class HttpEndpointModel : IHttpEndpointModel
         IElement internalElement,
         IReadOnlyCollection<IHttpEndpointInputModel> inputs)
     {
-        if (verb is not (HttpVerb.Patch or HttpVerb.Post or HttpVerb.Put) &&
+        if (verb is not (HttpVerb.Patch or HttpVerb.Post or HttpVerb.Put or HttpVerb.Query) &&
             inputs.Any(x => x.Source == HttpInputSource.FromBody))
         {
             throw new ElementException(internalElement, $"Cannot set an HTTP endpoint's source to \"body\" when it has a verb of {verb.ToString().ToUpperInvariant()}");

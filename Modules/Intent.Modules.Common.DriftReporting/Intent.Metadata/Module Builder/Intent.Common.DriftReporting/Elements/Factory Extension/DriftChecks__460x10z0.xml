@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="0fd0b03c-e636-4a6c-89d5-f59aa2b46a82" type="Factory Extension" typeId="7d008e84-bb28-4b10-ba28-7439202fca76">
+  <comment>Runs every drift reporter registered in this run, after template execution and in their Order, then logs their findings (an error card per Error finding, a warning line per Warning, a closing line per Area) and, outside the CLI, stages one consolidated DriftReport.mdx under .cache/drift/&lt;application&gt;.</comment>
+  <name>DriftChecks</name>
+  <display>DriftChecks</display>
+  <parentFolderId>517a6c08-321b-40bc-92ef-ad60f6b239f1</parentFolderId>
+  <packageId>517a6c08-321b-40bc-92ef-ad60f6b239f1</packageId>
+  <packageName>Intent.Common.DriftReporting</packageName>
+</class>

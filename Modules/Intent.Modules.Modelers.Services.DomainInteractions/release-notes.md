@@ -1,3 +1,7 @@
+### Version 2.5.0
+
+- Improvement: The CRUD accelerators (`Create CRUD CQRS Operations`, `Create CRUD Traditional Service`, the Domain-designer CRUD suggestions and the repository-operation suggestions) moved to `Intent.Application.DomainInteractions` 1.3.0, which this module now installs alongside it when present.
+
 ### Version 2.4.8
 
 - Improvement: Added AI guidance to `Create Entity Action`/`Update Entity Action`: by default wire only the minimum needed for validation and `// IntentIgnore` + hand-write the rest; only do full field mapping if explicitly requested, and avoid `mapExpression` for strings.

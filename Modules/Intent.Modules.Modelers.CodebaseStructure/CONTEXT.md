@@ -74,7 +74,7 @@
     embed the element id, so that each classification's colours stay scoped to its own icon.
 
 - **The `Classify Files` designer script backs Change Review's classify action, and is headless.** Review
-  Changes owns the UI and calls `classifyFiles({ contractVersion: 2, files, classification: { name }, scope,
+  Changes owns the UI and calls `classifyFiles({ contractVersion: 3, files, classification: { name }, scope,
   reviewImportance })` on it; the script shows no form. Rejected: the earlier `dialogService.openForm`
   version, which put the form inside the designer.
   - **It throws on failure instead of returning `{ ok: false, error }`.** The caller discards return
@@ -82,14 +82,21 @@
     `{ ok: true, writtenOn }`.
   - **Globs are written bare, with no leading `/`**, because the backend's `GlobMatcher` matches the whole
     path relative to the owning element with no anchoring. `file` writes `<relativePath>`; `folder-extension`
-    writes `<folder>/*<.ext>`, or `*<.ext>` at the site root. A file with no extension falls back to its exact
-    path, since an empty extension would otherwise produce `<folder>/*` and classify the whole folder.
+    writes `<folder>/*<.ext>`; `folder` writes `<folder>/*`; `folder-recursive` writes `<folder>/**/*`. At the
+    site root each drops the `<folder>/` prefix. A file with no extension falls back to its exact path under
+    `folder-extension`, since an empty extension would otherwise produce `<folder>/*` and classify the whole folder.
+  - **`relativePath` may be a folder (1.4.0).** A path ending in `/` is a folder, and `""` is the site root.
+    Only `folder` and `folder-recursive` accept one; `file` and `folder-extension` throw. Change Review writes
+    folder entries on the deepest Folder, project or Root Folder, never on a Template Output, so generated
+    files keep their Template Output's classification. Within one element the last matching entry wins, so a
+    new `<folder>/**/*` overrides narrower entries already on that element.
   - **The Script element keeps its generated id**, which the caller hard-codes, because the designer API
     cannot set a Script's id. Do not recreate the element, or the two drift apart. Do not hand-edit the
     `.designer.settings` to a pre-chosen id either.
-  - **Versioning.** The script's `CONTRACT_VERSION` moves with the caller whenever the arguments change. The
-    script shipped under 1.3.0 rather than 1.2.0, which was already final (a new capability, so minor). A
-    caller should require at least `1.3.0-pre.2`, the first build with the glob and throw-on-failure fixes.
+  - **Versioning.** `CONTRACT_VERSIONS` lists every argument shape the script accepts; add one with the caller
+    whenever the arguments change. 1.3.0 (final) shipped contract 2; 1.4.0-pre.0 added contract 3's folder
+    scopes and still accepts 2, whose scopes write the same globs, so clients released against 1.3.0 keep
+    working. A caller sending contract 3 requires at least `1.4.0-pre.0`.
   - **Placement.** A new classification goes in the `File Classifications` folder of the governing
     element's package, else in any such folder, else in a folder it creates. Re-classifying a glob the element
     already has updates that row rather than adding a second.

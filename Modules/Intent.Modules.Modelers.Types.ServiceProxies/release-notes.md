@@ -1,3 +1,7 @@
+### Version 5.5.9
+
+- Improvement: A Service Proxy `Operation` that isn't mapped to an endpoint no longer logs a `not mapped to an endpoint` warning during parameter synchronisation.
+
 ### Version 5.5.8
 
 - Improvement: Operations in a Service Proxy can now share a name; mapping two Operations in the same proxy to the same endpoint is reported as a validation error instead.

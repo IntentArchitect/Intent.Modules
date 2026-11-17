@@ -33,7 +33,8 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.RootPrinciples.Mo
 
             // When the gate's hook cannot run at all, the agent only ever sees dotnet's own error text,
             // which says nothing about the gate. Agents met it and kept retrying, or reported it as a
-            // flaw in their own work; this maps each error to the fix the user has to make.
+            // flaw in their own work; this maps each error to the fix the user has to make. It also says
+            // how to resolve a conflict in a file the gate protects, which agents otherwise did in the shell.
             var gateFailureSection = !installAgentGateHooks ? "" : """
                 ===
 
@@ -66,6 +67,18 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.RootPrinciples.Mo
                 | `An error occurred trying to start process`, naming the gate's own build output | The gate has not been built yet | Run `dotnet run <harness folder>/hooks/gate/gate.cs -- warm` from the project root |
 
                 A failing close-out hook never needs action from you. It only reports, and the turn may end.
+
+                ===
+
+                ## Resolving A Merge Or Rebase Conflict
+
+                Resolve a conflict in Intent metadata, an `.imodspec` or a `modules.config` with your file-editing tools, like
+                any other file. While git lists the file as unmerged, the gate allows the edit and denies only one that writes
+                conflict markers back. Change nothing beyond the conflict itself. Once you stage the file, the usual rules
+                apply again.
+
+                Taking one side whole with `git checkout --ours` or `--theirs` is fine too. Writing merged text with a shell
+                command is not.
 
 
                 """;

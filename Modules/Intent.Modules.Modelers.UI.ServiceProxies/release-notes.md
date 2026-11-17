@@ -1,3 +1,7 @@
+### Version 1.0.5
+
+- Improvement: A Service Proxy `Operation` that isn't mapped to an endpoint no longer logs a `not mapped to an endpoint` warning during parameter synchronisation in the User Interface designer.
+
 ### Version 1.0.4
 
 - Fixed: A Service Proxy `Operation` that isn't mapped to an endpoint no longer stops parameter synchronisation in the User Interface designer with `Cannot read properties of null (reading 'getElement')`; it is now skipped with a warning.

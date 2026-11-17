@@ -17,7 +17,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
 {
     internal class NuGetApi
     {
-        private static readonly IReadOnlyList<NuGetFramework> Frameworks;
+        internal static readonly IReadOnlyList<NuGetFramework> Frameworks;
         private static readonly IReadOnlyList<NuGetFramework> FallBackFrameworks = [NuGetFramework.Parse("Any,Version=v0.0")];
 
         static NuGetApi()
@@ -97,12 +97,20 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
             return versionsForFrameworks;
         }
 
-        private static List<NugetVersionInfo> GetLatestVersionPerFramework(IReadOnlyList<IPackageSearchMetadata>? searchMetadata, IReadOnlyList<NuGetFramework> frameworks, bool forceOne = false)
+        internal static List<NugetVersionInfo> GetLatestVersionPerFramework(IReadOnlyList<IPackageSearchMetadata>? searchMetadata, IReadOnlyList<NuGetFramework> frameworks, bool forceOne = false)
         {
             var result = new List<NugetVersionInfo>();
+            var releaseTrainAhead = GetReleaseTrainAheadOfDeclaredFrameworks(searchMetadata, frameworks);
             foreach (var framework in frameworks)
             {
+                if (releaseTrainAhead?.Info.FrameworkVersion == framework)
+                {
+                    result.Add(releaseTrainAhead.Value.Info);
+                    continue;
+                }
+
                 var latestPackage = searchMetadata?
+                    .Where(p => releaseTrainAhead?.Versions.Contains(p.Identity.Version) != true)
                     .Where(p => p.DependencySets.Any(d => d.TargetFramework == framework))
                     .OrderByDescending(p => p.Identity.Version)
                     .FirstOrDefault();
@@ -151,6 +159,61 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Tasks
             //Latest Framework first
             result.Reverse();
             return result;
+        }
+
+        /// <summary>
+        /// A package that follows the .NET release train can ship the major for a new .NET release before it
+        /// declares that release's framework: Microsoft.EntityFrameworkCore.Tools 11.0.0 declares only net10.0.
+        /// Matched by dependency group alone, 11.0.0 would become the net10.0 version and net11.0 would get none.
+        /// So the newest framework, when it is above every one the package declares, takes the newest version of its
+        /// own major whose nearest group is the package's newest declared one, and those versions are kept off the
+        /// older frameworks. Only the newest framework: a package that stopped declaring new frameworks years ago
+        /// (ErikEJ.EntityFrameworkCore.SqlServer.DateOnlyTimeOnly 7.0.10 declares only net6.0) is not a train running
+        /// ahead, and its existing entries must stay as they are.
+        /// </summary>
+        private static (NugetVersionInfo Info, HashSet<NuGetVersion> Versions)? GetReleaseTrainAheadOfDeclaredFrameworks(
+            IReadOnlyList<IPackageSearchMetadata>? searchMetadata,
+            IReadOnlyList<NuGetFramework> frameworks)
+        {
+            var newestDeclared = searchMetadata?
+                .SelectMany(p => p.DependencySets.Select(d => d.TargetFramework))
+                .Where(IsDotNetRelease)
+                .MaxBy(f => f.Version);
+            var newestFramework = frameworks.Where(IsDotNetRelease).MaxBy(f => f.Version);
+            if (searchMetadata == null || newestDeclared == null || newestFramework == null || newestFramework.Version <= newestDeclared.Version)
+            {
+                return null;
+            }
+
+            // Only a package whose own major matches the newest framework it declares follows the train.
+            var followsReleaseTrain = searchMetadata.Any(p =>
+                p.Identity.Version.Major == newestDeclared.Version.Major &&
+                p.DependencySets.Any(d => d.TargetFramework == newestDeclared));
+            if (!followsReleaseTrain)
+            {
+                return null;
+            }
+
+            var reducer = new FrameworkReducer();
+            var candidates = searchMetadata
+                .Where(p => p.Identity.Version.Major == newestFramework.Version.Major &&
+                            reducer.GetNearest(newestFramework, p.DependencySets.Select(d => d.TargetFramework)) == newestDeclared)
+                .ToList();
+            var latestPackage = candidates.MaxBy(p => p.Identity.Version);
+            if (latestPackage == null)
+            {
+                return null;
+            }
+
+            var dependencies = latestPackage.DependencySets.First(d => d.TargetFramework == newestDeclared);
+            return (
+                new NugetVersionInfo(newestFramework, latestPackage.Identity.Version, dependencies.Packages.Select(p => new NugetDependencyInfo(p.Id, p.VersionRange)).ToList()),
+                candidates.Select(p => p.Identity.Version).ToHashSet());
+        }
+
+        private static bool IsDotNetRelease(NuGetFramework framework)
+        {
+            return framework.Framework == FrameworkConstants.FrameworkIdentifiers.NetCoreApp && framework.Version.Major >= 5;
         }
 
 

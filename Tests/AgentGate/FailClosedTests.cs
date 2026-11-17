@@ -16,6 +16,8 @@ public class FailClosedTests
         public IReadOnlyList<string> GetChangedFiles(string repoRoot) => throw new InvalidOperationException("simulated crash");
 
         public string? TryReadFileAtHead(string repoRoot, string relativePath) => throw new InvalidOperationException("simulated crash");
+
+        public bool IsUnmerged(string repoRoot, string relativePath) => throw new InvalidOperationException("simulated crash");
     }
 
     [Fact]

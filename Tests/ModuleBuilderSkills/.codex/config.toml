@@ -239,6 +239,18 @@ A failing close-out hook never needs action from you. It only reports, and the t
 
 ===
 
+## Resolving A Merge Or Rebase Conflict
+
+Resolve a conflict in Intent metadata, an `.imodspec` or a `modules.config` with your file-editing tools, like
+any other file. While git lists the file as unmerged, the gate allows the edit and denies only one that writes
+conflict markers back. Change nothing beyond the conflict itself. Once you stage the file, the usual rules
+apply again.
+
+Taking one side whole with `git checkout --ours` or `--theirs` is fine too. Writing merged text with a shell
+command is not.
+
+===
+
 ## If A Phase Cannot Be Completed
 
 Say so explicitly and stop, rather than proceeding on an assumption. A module task that skips a phase

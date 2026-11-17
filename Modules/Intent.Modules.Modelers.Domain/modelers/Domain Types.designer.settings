@@ -1188,6 +1188,70 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
         </createAssociation>
       </contextMenuOptions>
       <mappingSettings />
+      <visualSettings type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd">
+        <size width="${w}" height="${h}" />
+        <position x="${x}" y="${y}" />
+        <display>
+          <drawPath>
+            <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
+            <lineColor>if (element.isReference()){
+    return theme.isDark 
+    ? '#FFB312'
+    : "#00A2E8";
+    //: '#AD561B';
+}
+//'#679856' - External Green
+return null;</lineColor>
+            <fillColor>return theme.isDark ? '#3b3550' : '#efe9f7';</fillColor>
+          </drawPath>
+          <drawText>
+            <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+padding: 0px 8px;`</style>
+            <size width="${w}" height="18" />
+            <position x="${x}" y="${y + 8}" />
+          </drawText>
+        </display>
+        <stereotypesVisualSettings>
+          <size width="${w}" height="18" />
+          <position x="${x}" y="${y}" />
+        </stereotypesVisualSettings>
+        <defaultSize width="${x}" height="${y}" />
+        <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+        <childElementVisualSettings>
+          <childElementVisualSetting type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+            <size width="`${parent.w}`" height="18" />
+            <position x="`${parent.x}`" y="`${parent.y + ($index * 18) + 36}`" />
+            <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
+            <display>
+              <drawPath>
+                <condition>return $firstOfType;</condition>
+                <path>`M${x},${y - 6} h${w}`</path>
+              </drawPath>
+              <drawText>
+                <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px 2px 0px;`</style>
+                <size width="${w - 20}" height="${h}" />
+                <position x="${x + 20}" y="${y}" />
+              </drawText>
+              <drawSvgResource>
+                <path>attribute.svg</path>
+                <size width="14" height="14" />
+                <position x="${x+3}" y="${y+3}" />
+              </drawSvgResource>
+            </display>
+            <stereotypesVisualSettings>
+              <size width="${w}" height="18" />
+              <position x="${x}" y="${y}" />
+            </stereotypesVisualSettings>
+            <defaultSize width="`${parent.w}`" height="18" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
+            <childElementVisualSettings />
+          </childElementVisualSetting>
+        </childElementVisualSettings>
+      </visualSettings>
       <childElementExtensions>
         <childElementExtension type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
           <mappingSettings />
@@ -1241,6 +1305,7 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
                 hasFilter: true,
                 selectableTypes: [
                     { specializationId: "Class", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
+                    { specializationId: "Data Contract", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
                     { specializationId: "Value Object", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
                     { specializationId: "Enum", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
                     { specializationId: "Domain Service", autoExpand: true, isSelectable: (x) =&gt; !getCurrentDiagram().isVisual(x.id) },
@@ -1309,7 +1374,51 @@ vertical-align: center`</style>
             <childElementVisualSettings />
           </visualSettings>
         </elementVisualSettings>
-        <associationVisualSettings />
+        <associationVisualSettings>
+          <visualSettings type="Generalization" typeId="5de35973-3ac7-4e65-b48c-385605aec561">
+            <lineType>Elbow-Connector</lineType>
+            <sourceEnd />
+            <targetEnd>
+              <pointIndicator>
+                <fillColor>return `#ffffff`;</fillColor>
+                <path>return `l 7 10 l -14 0 Z`</path>
+              </pointIndicator>
+            </targetEnd>
+          </visualSettings>
+          <visualSettings type="Association" typeId="eaf9ed4e-0b61-4ac1-ba88-09f912c12087">
+            <lineType>Elbow-Connector</lineType>
+            <lineDashArray>if (!getOtherEnd().typeReference.getIsNullable() &amp;&amp; !getOtherEnd().typeReference.getIsCollection()) {
+    return null;
+}
+
+const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+if (getOtherEnd().typeReference.getType()?.getPackage().hasStereotype(documentStoreId)) {
+    return "5,5";
+}
+console.warn('unable to determine')
+return null;</lineDashArray>
+            <sourceEnd>
+              <primaryLabel>`${name &amp;&amp; typeReference.isNavigable ? name : ""}`</primaryLabel>
+              <secondaryLabel>${typeReference.isCollection ? "*" : typeReference.isNullable ? "0..1" : "1"}</secondaryLabel>
+              <pointIndicator>
+                <fillColor>!typeReference.isNullable &amp;&amp; !typeReference.isCollection ? '#000000' : '#ffffff'</fillColor>
+                <path>return `l 5.0 7.5 l -5.0 7.5 l -5.0 -7.5 Z`</path>
+              </pointIndicator>
+              <navigableIndicator>
+                <fillColor>return `#000000`</fillColor>
+                <path>return `m 0 15 l 5 10 l -5 -2.5 l -5 2.5 Z`</path>
+              </navigableIndicator>
+            </sourceEnd>
+            <targetEnd>
+              <primaryLabel>${name &amp;&amp; typeReference.isNavigable ? name : ""}</primaryLabel>
+              <secondaryLabel>return `${typeReference.isCollection ? "*" : typeReference.isNullable ? "0..1" : "1"}`</secondaryLabel>
+              <navigableIndicator>
+                <fillColor>return `#000000`</fillColor>
+                <path>return `l 5 10 l -5 -2.5 l -5 2.5 Z`</path>
+              </navigableIndicator>
+            </targetEnd>
+          </visualSettings>
+        </associationVisualSettings>
       </diagramSettings>
       <rules>Diagram Guidelines:
 - Layout elements in a "snowflake" pattern, placing the element with the most connections in the middle and those with the least on the outside.
@@ -1559,39 +1668,6 @@ association.getOtherEnd().typeReference.setIsCollection(false);</script>
           </runScript>
         </contextMenuOptions>
       </targetEnd>
-      <visualSettings>
-        <lineType>Elbow-Connector</lineType>
-        <lineDashArray>if (!getOtherEnd().typeReference.getIsNullable() &amp;&amp; !getOtherEnd().typeReference.getIsCollection()) {
-    return null;
-}
-
-const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
-if (getOtherEnd().typeReference.getType()?.getPackage().hasStereotype(documentStoreId)) {
-    return "5,5";
-}
-console.warn('unable to determine')
-return null;</lineDashArray>
-        <sourceEnd>
-          <primaryLabel>`${name &amp;&amp; typeReference.isNavigable ? name : ""}`</primaryLabel>
-          <secondaryLabel>${typeReference.isCollection ? "*" : typeReference.isNullable ? "0..1" : "1"}</secondaryLabel>
-          <pointIndicator>
-            <fillColor>!typeReference.isNullable &amp;&amp; !typeReference.isCollection ? '#000000' : '#ffffff'</fillColor>
-            <path>return `l 5.0 7.5 l -5.0 7.5 l -5.0 -7.5 Z`</path>
-          </pointIndicator>
-          <navigableIndicator>
-            <fillColor>return `#000000`</fillColor>
-            <path>return `m 0 15 l 5 10 l -5 -2.5 l -5 2.5 Z`</path>
-          </navigableIndicator>
-        </sourceEnd>
-        <targetEnd>
-          <primaryLabel>${name &amp;&amp; typeReference.isNavigable ? name : ""}</primaryLabel>
-          <secondaryLabel>return `${typeReference.isCollection ? "*" : typeReference.isNullable ? "0..1" : "1"}`</secondaryLabel>
-          <navigableIndicator>
-            <fillColor>return `#000000`</fillColor>
-            <path>return `l 5 10 l -5 -2.5 l -5 2.5 Z`</path>
-          </navigableIndicator>
-        </targetEnd>
-      </visualSettings>
       <rules>### Association Rules
 - Associations are directional. The `ownerEnd` is the end where the association is created from, and the `targetEnd` is the end where it points to.
 - The name of the relationship is managed by default. Only set the name if multiple relationships to the same entity or value object exist to differentiate them (e.g. BillingAddress and ShippingAddress).
@@ -1751,16 +1827,6 @@ return result;
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
       </targetEnd>
-      <visualSettings>
-        <lineType>Elbow-Connector</lineType>
-        <sourceEnd />
-        <targetEnd>
-          <pointIndicator>
-            <fillColor>return `#ffffff`;</fillColor>
-            <path>return `l 7 10 l -14 0 Z`</path>
-          </pointIndicator>
-        </targetEnd>
-      </visualSettings>
     </associationSetting>
   </associationSettings>
   <associationExtensions />

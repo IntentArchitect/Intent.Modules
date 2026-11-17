@@ -1,3 +1,7 @@
+### Version 1.4.0
+
+- Improvement: The `Classify Files` designer script can now classify all files in a folder, or a folder and its subfolders, as well as one file or a folder's files with one extension. It accepts a folder as well as a file, and needs a Change Review that offers these scopes. Change Reviews that only classify files keep working.
+
 ### Version 1.3.0
 
 - New: Added a `Classify Files` designer script, which Change Review runs to classify files without showing a form. It matches the classification by name (ignoring case), creating it in a `File Classifications` folder when unknown, and writes a `File Classification` entry for the file, or for its folder and extension (a file with no extension uses its exact path), on the element that governs it. It reports failures as errors, and needs a Change Review that calls it.

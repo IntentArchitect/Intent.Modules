@@ -50,6 +50,14 @@ C# module, so its public API is a contract with modules this repository cannot s
   `Rhs` - which works now that items know their parent. Adding the Rhs to `Statements` was rejected too:
   `GetText` renders the `Rhs` field, so edits made through the list would not render.
 
+- **A `C#` stereotype `Namespace` replaces the whole `GetNamespace` result, `additionalFolders` included**
+  (3.11.0) — `ModelHasFolderTemplateExtensions.GetNamespace<TModel>` returns the trimmed value verbatim when the
+  model carries a `C#` stereotype with a non-blank `Namespace`. A type reference to such an element resolves to
+  that namespace alone in the type resolver, so the declaring template must emit exactly it, or declaration and
+  references disagree. Rejected: appending `additionalFolders` (an earlier draft did) — the sub-folders the caller
+  passes describe the default location, which the override deliberately discards. Blank values fall back to the
+  OutputTarget namespace plus parent folders and `additionalFolders`, as before. Covered by `GetNamespaceTests`.
+
 ## Invariants & Constraints
 - **Type declarations default to `public`.** `AccessModifier` starts as `"public "` on `CSharpClass`,
   `CSharpInterface` and `CSharpEnum`; templates across the module ecosystem rely on that without calling
@@ -61,6 +69,10 @@ C# module, so its public API is a contract with modules this repository cannot s
 - **Adding a member to an `ICSharp*` interface is safe only while the builder's own classes and the internal
   `InterfaceWrappers` are the sole implementers.** That held across this repository and Intent.Modules.NET as
   of 3.10.12; re-check before extending the interfaces again.
+- **Each new .NET major needs a `GetDefaultLanguageVersion` case and a `latest` / `preview` move** (3.11.0:
+  `net11.0` → C# 15, `latest` 14, `preview` 15). An unknown `netN.0` falls back to `preview` with a warning, so
+  a missed release degrades rather than throws. Match the `netN.0` form: the bare `net11` case is .NET
+  Framework 1.1 (C# 7.3), not .NET 11. `CSharpProjectTests.DescribeGetLanguageVersion` pins both.
 - **A `CSharpFile` with no template assumes the latest language features.** Language-version checks in the
   builder must treat "no template / no output target" as supported, so builder-only use (including most of the
   snapshot tests) keeps its existing output.

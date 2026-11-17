@@ -1,3 +1,8 @@
+### Version 3.13.4
+
+- Improvement: Entity associations and generalization now only show in the Domain Designer, not the Services Designer.
+- Improvement: `Data Contract` elements can now be added to diagrams, by dragging them on or through `Add to Diagram`, and show their attributes and any inheritance line.
+
 ### Version 3.13.3
 
 - Improvement: `Class` and `Data Contract` elements now carry the `Service Argument` trait, so they can be used as Service Operation parameter and return types.

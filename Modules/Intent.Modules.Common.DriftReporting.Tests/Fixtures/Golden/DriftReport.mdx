@@ -1,0 +1,53 @@
+# Drift report: eShop.Backend
+
+✖ **Failed**: 2 errors, 2 warnings
+
+| Area | Errors | Warnings |
+| --- | --- | --- |
+| [Domain Design](#domain-design) | 1 | 1 |
+| [Architecture](#architecture) | 1 | 1 |
+| [Services](#services) | 0 | 0 |
+| **Total** | **2** | **2** |
+
+---
+
+## Domain Design
+
+### Model / Code drift (2)
+
+| Severity | Subject | Against | Finding |
+| --- | --- | --- | --- |
+| ✖ Error | <ModelRef application="eShop.Backend" elementId="attr-unit-price" /> | <FileRef path="D:/Repos/Acme/src/main/java/com/eshop/backend/domain/Product.java" line={24} label="Product.java:24" /> | Modelled as `decimal`, but the field `unitPrice` is a `String`. |
+| ⚠ Warning | <ModelRef application="eShop.Backend" elementId="class-order" /> | <FileRef path="D:/Repos/Acme/src/main/java/com/eshop/backend/domain/OrderRepository.java" line={7} label="OrderRepository.java:7" />, `src/main/java/com/eshop/backend/domain` | The repository extends JpaRepository&lt;Order, Long&gt; and maps &#123;id&#125;; `JpaRepository<Order, Long>` and `a\|b` are code, a\|b isn't. |
+
+### Code / Code drift
+
+✓ Clean
+
+---
+
+## Architecture
+
+### Model / Code drift
+
+✓ Clean
+
+### Code / Code drift (1)
+
+| Severity | Subject | Against | Finding |
+| --- | --- | --- | --- |
+| ✖ Error | <FileRef path="D:/Repos/Acme/src/main/java/com/eshop/backend/application/ProductService.java" line={9} label="ProductService.java:9" /> | <ModelRef application="eShop.Backend" elementId="layer-application" />, <ModelRef application="eShop.Backend" elementId="layer-infrastructure" /> | Imports `infrastructure.DevDataSeeder`, and Application has no May Depend On arrow to Infrastructure. |
+
+### Code drift (1)
+
+| Severity | Subject | Finding |
+| --- | --- | --- |
+| ⚠ Warning | <FileRef path="D:/Repos/Acme/src/main/java/com/eshop/backend/api/CaseInsensitiveQueryFilter.java" label="CaseInsensitiveQueryFilter.java" /> | A type in `api` is not a `*Controller`, so no convention covers it: an unmatched \` backtick stays literal. |
+
+---
+
+## Services
+
+### Model / Code drift
+
+✓ Clean

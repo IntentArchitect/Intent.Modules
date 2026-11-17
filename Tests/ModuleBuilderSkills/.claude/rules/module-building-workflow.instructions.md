@@ -5,7 +5,7 @@ inclusion: always
 description: "Phase-by-phase workflow for any task that builds or changes an Intent Architect module, and which workflow skill each phase calls for."
 keywords: [workflow, module building, phases, version, documentation, context]
 template-id: Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.ModuleBuildingWorkflowMd
-contentHash: 727C13D50C7919EF25617A9DF7A41256FDCA5CCC306481A10C4FB710F8EAC6BE
+contentHash: 8DE8E4E36D1B34ABDD7751AD7F061E2C375D98D926E4180BEFFF2047CB0CF3BB
 ---
 # Module Building Workflow
 
@@ -243,6 +243,18 @@ Anything else is a machine setup problem, not a problem with your work. Tell the
 | `An error occurred trying to start process`, naming the gate's own build output | The gate has not been built yet | Run `dotnet run <harness folder>/hooks/gate/gate.cs -- warm` from the project root |
 
 A failing close-out hook never needs action from you. It only reports, and the turn may end.
+
+===
+
+## Resolving A Merge Or Rebase Conflict
+
+Resolve a conflict in Intent metadata, an `.imodspec` or a `modules.config` with your file-editing tools, like
+any other file. While git lists the file as unmerged, the gate allows the edit and denies only one that writes
+conflict markers back. Change nothing beyond the conflict itself. Once you stage the file, the usual rules
+apply again.
+
+Taking one side whole with `git checkout --ours` or `--theirs` is fine too. Writing merged text with a shell
+command is not.
 
 ===
 

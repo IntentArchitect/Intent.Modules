@@ -24,4 +24,4 @@ Each Operation in a proxy must be mapped to a different endpoint. Two Operations
 
 When the designer loads, and whenever a Service Proxy changes, each Operation's parameters are regenerated from the endpoint it is mapped to.
 
-An Operation that isn't mapped to an endpoint, such as one added with **New Operation** on a proxy, has nothing to sync from. It is skipped, and a warning naming the Operation and its proxy is written to the Task Output. To fix it, delete the Operation, or reopen the proxy's mapping and select the endpoint it should call.
+An Operation doesn't have to be mapped to an endpoint. One that isn't, such as one added with **New Operation** on a proxy, has nothing to sync from, so its parameters are left as they are and nothing is reported.

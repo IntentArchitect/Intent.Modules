@@ -330,17 +330,22 @@ if (element.getParent().specialization == "Visual Studio Solution") {
     <script name="Classify Files" id="8c45bdfb-bcc0-4ce0-b349-9c86483254b8">
       <script>// Codebase Structure designer script — id 8c45bdfb-bcc0-4ce0-b349-9c86483254b8 (the product hard-codes it). Headless: no form.
 // Review Changes appends the call:
-//   classifyFiles({ contractVersion: 2, files: [{ elementId, site, relativePath }],
-//                   classification: { name }, scope: "file" | "folder-extension", reviewImportance: "none" });
-// "file" writes &lt;relativePath&gt;; "folder-extension" writes &lt;folder&gt;/*&lt;.ext&gt; (just *&lt;.ext&gt; at the site root).
-// A file with no extension (Dockerfile, LICENSE) has no extension to match, so it falls back to "file" and writes its exact path.
+//   classifyFiles({ contractVersion: 3, files: [{ elementId, site, relativePath }],
+//                   classification: { name }, scope: "file" | "folder-extension" | "folder" | "folder-recursive",
+//                   reviewImportance: "none" });
+// relativePath is a file, or a folder ending in "/" ("" is the site root). &lt;folder&gt; is the file's folder, or the folder itself.
+// "file" writes &lt;relativePath&gt;; "folder-extension" writes &lt;folder&gt;/*&lt;.ext&gt;; "folder" writes &lt;folder&gt;/*;
+// "folder-recursive" writes &lt;folder&gt;/**/*. At the site root each drops the "&lt;folder&gt;/" prefix.
+// A file with no extension (Dockerfile, LICENSE) has no extension to match, so "folder-extension" falls back to its exact path.
+// "file" and "folder-extension" need a file, so a folder path with either throws.
+// Contract 2 (the 1.3.0 callers) is still accepted: its scopes, "file" and "folder-extension", write the same globs.
 // An existing classification is matched by name, ignoring case; an unknown name creates it. A new one goes in the
 // File Classifications folder of the governing element's package (any such folder if that package has none, else a new one).
 // Re-classifying a glob the element already has updates that row rather than adding a second.
 // Returns { ok: true, writtenOn: [elementId] }. On failure it THROWS, because the caller drops return values and a
-// thrown error is what reaches the task console. Bump CONTRACT_VERSION with the module version when the args change.
+// thrown error is what reaches the task console. Add a version to CONTRACT_VERSIONS with the module version when the args change.
 
-const CONTRACT_VERSION = 2;
+const CONTRACT_VERSIONS = [2, 3];
 const CLASSIFICATION_ELEMENT = "File Classification";
 const CLASSIFICATIONS_FOLDER = "File Classifications";
 const STEREOTYPE = "File Classification";
@@ -371,10 +376,23 @@ function findTarget(id) {
 
 // The backend's GlobMatcher matches the whole path relative to the element, with no leading-"/" anchoring.
 function globFor(scope, relativePath) {
-    const ext = extensionOf(relativePath);
-    if (scope === "file" || !ext) return relativePath;
-    const folder = folderOf(relativePath);
-    return (folder ? folder + "/" : "") + "*" + ext;
+    const isFolder = relativePath === "" || relativePath.endsWith("/");
+    const folder = isFolder ? relativePath.replace(/\/+$/, "") : folderOf(relativePath);
+    const prefix = folder ? folder + "/" : "";
+    switch (scope) {
+        case "file":
+        case "folder-extension": {
+            if (isFolder) throw new Error("The \"" + scope + "\" scope needs a file, not the folder \"" + (relativePath || "/") + "\"");
+            const ext = extensionOf(relativePath);
+            return scope === "file" || !ext ? relativePath : prefix + "*" + ext;
+        }
+        case "folder":
+            return prefix + "*";
+        case "folder-recursive":
+            return prefix + "**/*";
+        default:
+            throw new Error("Unknown scope " + scope);
+    }
 }
 
 function ensureClassification(name, anchor) {
@@ -401,7 +419,7 @@ function writeEntry(target, glob, classification, importance) {
 
 function classifyFiles(args) {
     try {
-        if (!args || args.contractVersion !== CONTRACT_VERSION) throw new Error("Unsupported classify contract version " + (args &amp;&amp; args.contractVersion));
+        if (!args || CONTRACT_VERSIONS.indexOf(args.contractVersion) &lt; 0) throw new Error("Unsupported classify contract version " + (args &amp;&amp; args.contractVersion));
         if (!args.files || !args.files.length) throw new Error("No files to classify");
 
         const anchor = findTarget(args.files[0].elementId);

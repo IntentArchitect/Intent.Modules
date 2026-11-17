@@ -7,4 +7,5 @@ public enum HttpVerb
     Put,
     Patch,
     Delete,
+    Query,
 }

@@ -92,6 +92,7 @@
   <file path="Accelerators.Domain/Common/Exceptions/NotFoundException.cs" templateId="Intent.Entities.NotFoundException" />
   <file path="Accelerators.Domain/Common/Interfaces/IUnitOfWork.cs" templateId="Intent.Entities.Repositories.Api.UnitOfWorkInterface" />
   <file path="Accelerators.Domain/Common/UpdateHelper.cs" templateId="Intent.Entities.UpdateHelper" />
+  <file path="Accelerators.Domain/Contracts/DiagramContract.cs" templateId="Intent.Entities.DataContract" />
   <file path="Accelerators.Domain/DTO Field Sync/Money.cs" templateId="Intent.ValueObjects.ValueObject" />
   <file path="Accelerators.Domain/DTO Field Sync/TestEnum.cs" templateId="Intent.Entities.DomainEnum" />
   <file path="Accelerators.Domain/Entities/DTO Field Sync/Block1Level1.cs" templateId="Intent.Entities.DomainEntity" />
