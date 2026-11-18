@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Eventing</id>
-  <version>6.0.6</version>
+  <version>6.1.0-pre.0</version>
   <supportedClientVersions>[4.5.0-a, 6.0.0-a)</supportedClientVersions>
   <summary>Eventing modeller for describing event messages and defining publishers and subscribers.</summary>
   <description>Eventing modeller for describing event messages and defining publishers and subscribers.</description>
@@ -13,6 +13,14 @@
   <decorators></decorators>
   <tags>eventing message publish subscribe pubsub designer</tags>
   <factoryExtensions></factoryExtensions>
+  <interoperability>
+    <!-- Guardrails 1.0.0 defined the Integration Command / Event Subscription associations these designer settings now own -->
+    <detect id="Intent.Services.Guardrails.Contracts">
+      <install>
+        <package id="Intent.Services.Guardrails.Contracts" version="1.1.1-pre.0" />
+      </install>
+    </detect>
+  </interoperability>
   <dependencies>
     <dependency id="Intent.Common" version="3.7.2" />
     <dependency id="Intent.Common.Types" version="3.4.0" />

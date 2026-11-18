@@ -10,6 +10,10 @@
   <file path="Api/GeneralizationModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
   <file path="Api/GeneralizationModelAssociationExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
   <file path="Api/IntegrationCommandModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
+  <file path="Api/IntegrationCommandSubscriptionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/IntegrationCommandSubscriptionModelAssociationExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
+  <file path="Api/IntegrationEventSubscriptionModel.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" />
+  <file path="Api/IntegrationEventSubscriptionModelAssociationExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" />
   <file path="Api/MessageModel.cs" deviationsHash="563B25438E6AFABA48F0BB217E69719B00044CF689B1A8C83671216E14F93AA4" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
   <file path="Api/PropertyModel.cs" deviationsHash="A78F83D5D06839DFFC116C83AAEBB0E8772DCBDF6B8EFB44A36980C93785A13F" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModel" />
   <file path="ApiMetadataPackageExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions" />

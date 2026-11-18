@@ -53,7 +53,7 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="### Ownership (CRITICAL - opposite of quick-create default)&#xA;- Owned by the RECEIVING application, not the sender - it defines the accepted contract.&#xA;- Opposite of the &quot;Publish Integration Command&quot; quick-create, which creates it in the sender's app. Ask if ownership is unclear - expensive to reverse.&#xA;- Sender adds a Package Reference and wires via existing &quot;Publish Integration Command&quot; - never creates its own copy." isActive="true" />
+        <property name="17477a69-d9a5-4251-9329-0963e8121b5f" display="Rules" value="### Ownership (CRITICAL - opposite of quick-create default)&#xA;- Owned by the RECEIVING application, not the sender - it defines the accepted contract.&#xA;- Opposite of the &quot;Publish Integration Command&quot; quick-create, which creates it in the sender's app. Ask if ownership is unclear - expensive to reverse.&#xA;- Sender adds a Package Reference and wires via existing &quot;Publish Integration Command&quot; - never creates its own copy.&#xA;- Exception: when an application's code keeps its own copy of a command that another application sends, model the copy in that application's own Eventing Package and link it to the sent command with Link To Sent Integration Command (an Integration Command Subscription)." isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
@@ -108,6 +108,47 @@
                 <property name="fdea9028-8611-4eb0-b1a5-4d54d267af41" display="Menu Group" isActive="true" />
                 <property name="aeaeff9b-f55b-4888-92e9-5317b5c14016" display="Top Divider" value="false" isActive="true" />
                 <property name="543cc5f5-0b0c-40cc-9df7-3ce45b555dd0" display="Bottom Divider" value="false" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="0191e88f-c737-4aec-a56e-689e0d5778ff" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Link To Sent Integration Command</name>
+          <display>Link To Sent Integration Command: Integration Command Subscription Target End</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="c53a9f9d-dd23-4e86-8392-a638a835b63f">
+            <typeId>855b4897-bf70-4b03-87f4-ada35969c410</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Eventing</typePackageName>
+            <typePackageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>2815cb06-ba1b-47f5-844b-2bfe1fb711bb</parentFolderId>
+          <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
+          <packageName>Intent.Modelers.Eventing</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" isActive="true" />
+                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="false" isActive="true" />
+                <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
+                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property name="da4fd235-9d62-4c1d-afb7-17c856a14715" display="Menu Group" isActive="true" />
+                <property name="5ca38df4-1f60-4be6-a1f7-18935a05681a" display="Top Divider" value="false" isActive="true" />
+                <property name="cd37f0a2-3a8f-49f5-8b23-6a4544257935" display="Bottom Divider" value="false" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

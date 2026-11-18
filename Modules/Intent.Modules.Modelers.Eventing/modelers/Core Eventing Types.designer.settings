@@ -292,6 +292,7 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
       <allowSetValue>false</allowSetValue>
       <typeOrder>
         <type order="0" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" />
+        <type order="1" type="Integration Command Subscription Target End" typeId="855b4897-bf70-4b03-87f4-ada35969c410" />
       </typeOrder>
       <contextMenuOptions>
         <createElement type="element">
@@ -303,6 +304,14 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
           <defaultName>NewProperty</defaultName>
           <allowMultiple>true</allowMultiple>
         </createElement>
+        <createAssociation type="association">
+          <text>Link To Sent Integration Command</text>
+          <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+          <specializationType>Integration Command Subscription Target End</specializationType>
+          <specializationTypeId>855b4897-bf70-4b03-87f4-ada35969c410</specializationTypeId>
+          <defaultName>NewIntegrationCommandSubscriptionTargetEnd</defaultName>
+          <allowMultiple>false</allowMultiple>
+        </createAssociation>
       </contextMenuOptions>
       <mappingSettings />
       <visualSettings type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625">
@@ -357,7 +366,8 @@ white-space: inherit;`</style>
       <rules>### Ownership (CRITICAL - opposite of quick-create default)
 - Owned by the RECEIVING application, not the sender - it defines the accepted contract.
 - Opposite of the "Publish Integration Command" quick-create, which creates it in the sender's app. Ask if ownership is unclear - expensive to reverse.
-- Sender adds a Package Reference and wires via existing "Publish Integration Command" - never creates its own copy.</rules>
+- Sender adds a Package Reference and wires via existing "Publish Integration Command" - never creates its own copy.
+- Exception: when an application's code keeps its own copy of a command that another application sends, model the copy in that application's own Eventing Package and link it to the sent command with Link To Sent Integration Command (an Integration Command Subscription).</rules>
     </elementSetting>
     <elementSetting type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e">
       <icon type="UrlImagePath" source="data:image/png;base64,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" />
@@ -376,6 +386,7 @@ white-space: inherit;`</style>
       <allowSetValue>false</allowSetValue>
       <typeOrder>
         <type order="0" type="Property" typeId="bde29850-5fb9-4f47-9941-b9e182fd9bdc" />
+        <type order="1" type="Integration Event Subscription Target End" typeId="cb3c248d-989c-4bc1-9f89-a772ee5f4746" />
       </typeOrder>
       <contextMenuOptions>
         <createElement type="element">
@@ -387,6 +398,14 @@ white-space: inherit;`</style>
           <defaultName>NewProperty</defaultName>
           <allowMultiple>true</allowMultiple>
         </createElement>
+        <createAssociation type="association">
+          <text>Link To Published Integration Event</text>
+          <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+          <specializationType>Integration Event Subscription Target End</specializationType>
+          <specializationTypeId>cb3c248d-989c-4bc1-9f89-a772ee5f4746</specializationTypeId>
+          <defaultName>NewIntegrationEventSubscriptionTargetEnd</defaultName>
+          <allowMultiple>false</allowMultiple>
+        </createAssociation>
       </contextMenuOptions>
       <mappingSettings />
       <visualSettings type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e">
@@ -473,7 +492,8 @@ white-space: inherit;`</style>
         </childElementSetting>
       </childElementSettings>
       <rules>### Ownership
-- Owned by the publisher application. Subscribers add a Package Reference, never a copy.</rules>
+- Owned by the publisher application. Subscribers add a Package Reference, never a copy.
+- Exception: when a subscriber's code keeps its own copy of the message, model the copy in the subscriber's own Eventing Package and link it to the published message with Link To Published Integration Event (an Integration Event Subscription).</rules>
     </elementSetting>
   </elementSettings>
   <elementExtensions>
@@ -561,6 +581,148 @@ white-space: inherit;`</style>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
       </targetEnd>
+    </associationSetting>
+    <associationSetting type="Integration Command Subscription" typeId="9073c828-0127-448e-be24-f2ebfc4d3238">
+      <sourceEnd type="Integration Command Subscription Source End" typeId="ed77d7e5-6000-4653-a278-992c7627a459">
+        <displayFunction>return `subscribed by : ${typeReference.getType().getParent().getName()}.${typeReference.display}`</displayFunction>
+        <nameAccessibilityMode>hidden</nameAccessibilityMode>
+        <allowSorting>true</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" />
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>false</allowIsCollection>
+          <isNavigableDefault>false</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </sourceEnd>
+      <targetEnd type="Integration Command Subscription Target End" typeId="855b4897-bf70-4b03-87f4-ada35969c410">
+        <displayFunction>return [
+    {
+        text: "[subscribes to] ",
+        cssClass: "keyword"
+    },
+].concat(typeReference.getDisplayTextComponents())</displayFunction>
+        <nameAccessibilityMode>hidden</nameAccessibilityMode>
+        <nameMustBeUnique>false</nameMustBeUnique>
+        <allowSorting>true</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type type="Integration Command" typeId="7f01ca8e-0e3c-4735-ae23-a45169f71625" />
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>false</allowIsCollection>
+          <isNavigableDefault>true</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </targetEnd>
+      <visualSettings type="Integration Command Subscription" typeId="9073c828-0127-448e-be24-f2ebfc4d3238">
+        <lineType>Curved</lineType>
+        <lineColor>if (typeReference.getType()?.isReference() &amp;&amp; typeReference.getType().getPackage()?.applicationId != getPackage()?.applicationId) {
+    return theme.isDark ? "#FFD479" : "#977c00"; // Remote Reference (Soft Yellow)
+}
+return null;</lineColor>
+        <lineDashArray>return "3,7";</lineDashArray>
+        <sourceEnd>
+          <pointIndicator>
+            <lineWidth>return 3;</lineWidth>
+            <path>return `a 4,4 0 1,0 4,4 
+        a 4,4 0 1,0 -4,4`;</path>
+          </pointIndicator>
+        </sourceEnd>
+        <targetEnd>
+          <pointIndicator>
+            <path>return `l 4 8 l -8 0 l 4 -8 Z`</path>
+          </pointIndicator>
+        </targetEnd>
+      </visualSettings>
+      <macros />
+      <rules>- Use this association only when an application's code keeps its own copy of an integration command that another application sends, such as a brownfield receiver whose code declares the command itself. This is the one exception to the rule that an Integration Command is modelled once and referenced elsewhere.
+- Model the copy as an Integration Command in this application's own Eventing Package, named and shaped as in the code, then right-click it and choose Link To Sent Integration Command to link it to the sender's Integration Command.
+- Always draw it from the copy to the sent command, one link per copy. Only an Integration Command links to an Integration Command; use Integration Event Subscription for events.
+- The copy's Eventing Package must reference the sender's Eventing Package, or the sent command can't be targeted. If that package reference is missing, add it to the copy's package before linking.
+- If the sent command isn't modelled anywhere in the solution, model the copy without a link and report it.
+- The link documents the flow between applications; nothing is generated from it. This application's handlers subscribe to the copy, the type the code handles.</rules>
+    </associationSetting>
+    <associationSetting type="Integration Event Subscription" typeId="75e953ed-9a87-47d5-9d45-cdca4232be54">
+      <sourceEnd type="Integration Event Subscription Source End" typeId="0d828a77-f460-4d03-a6fd-63d69ede80b1">
+        <displayFunction>return `subscribed by : ${typeReference.getType().getParent().getName()}.${typeReference.display}`</displayFunction>
+        <nameAccessibilityMode>hidden</nameAccessibilityMode>
+        <allowSorting>true</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" />
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>false</allowIsCollection>
+          <isNavigableDefault>false</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </sourceEnd>
+      <targetEnd type="Integration Event Subscription Target End" typeId="cb3c248d-989c-4bc1-9f89-a772ee5f4746">
+        <displayFunction>return [
+    {
+        text: "[subscribes to] ",
+        cssClass: "keyword"
+    },
+].concat(typeReference.getDisplayTextComponents())</displayFunction>
+        <nameAccessibilityMode>hidden</nameAccessibilityMode>
+        <nameMustBeUnique>false</nameMustBeUnique>
+        <allowSorting>true</allowSorting>
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e" />
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>false</allowIsCollection>
+          <isNavigableDefault>true</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </targetEnd>
+      <visualSettings type="Integration Event Subscription" typeId="75e953ed-9a87-47d5-9d45-cdca4232be54">
+        <lineType>Curved</lineType>
+        <lineColor>if (typeReference.getType()?.isReference() &amp;&amp; typeReference.getType().getPackage()?.applicationId != getPackage()?.applicationId) {
+    return theme.isDark ? "#FFD479" : "#977c00"; // Remote Reference (Soft Yellow)
+}
+return null;</lineColor>
+        <lineDashArray>return "3,7";</lineDashArray>
+        <sourceEnd>
+          <pointIndicator>
+            <lineWidth>return 3;</lineWidth>
+            <path>return `a 4,4 0 1,0 4,4 
+        a 4,4 0 1,0 -4,4`;</path>
+          </pointIndicator>
+        </sourceEnd>
+        <targetEnd>
+          <pointIndicator>
+            <path>return `l 4 8 l -8 0 l 4 -8 Z`</path>
+          </pointIndicator>
+        </targetEnd>
+      </visualSettings>
+      <macros />
+      <rules>- Use this association only when an application's code keeps its own copy of an integration event that another application publishes, such as a brownfield subscriber whose code declares the message itself. This is the one exception to the rule that a subscriber never copies a message.
+- Model the copy as a Message in this application's own Eventing Package, named and shaped as in the code, then right-click it and choose Link To Published Integration Event to link it to the publisher's Message.
+- Always draw it from the copy to the published message, one link per copy. Only a Message links to a Message; use Integration Command Subscription for commands.
+- The copy's Eventing Package must reference the publisher's Eventing Package, or the published message can't be targeted. If that package reference is missing, add it to the copy's package before linking.
+- If the published message isn't modelled anywhere in the solution, model the copy without a link and report it.
+- The link documents the flow between applications; nothing is generated from it. This application's Integration Event Handlers subscribe to the copy, the type the code handles.</rules>
     </associationSetting>
   </associationSettings>
   <associationExtensions />
