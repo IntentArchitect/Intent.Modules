@@ -1,3 +1,7 @@
+### Version 6.1.0
+
+- New Feature: Link an application's own copy of another application's integration event or command to the message it copies, with **Link To Published Integration Event** / **Link To Sent Integration Command**. These associations move here from Intent.Services.Guardrails.Contracts with their ids unchanged, so existing links keep working; installing this version updates Intent.Services.Guardrails.Contracts to 1.1.1 where it is installed.
+
 ### Version 6.0.6
 
 - Fixed: Removed the obsolete Eventing Package on-load script, which marked every Services designer package as changed when it loaded.
