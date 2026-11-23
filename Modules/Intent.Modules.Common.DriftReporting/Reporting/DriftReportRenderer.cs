@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.DriftReporting.Api;
 
 namespace Intent.Modules.Common.DriftReporting.Reporting
@@ -107,7 +108,8 @@ namespace Intent.Modules.Common.DriftReporting.Reporting
             switch (anchor.Kind)
             {
                 case DriftAnchorKind.Element:
-                    return $"<ModelRef application=\"{Attribute(application)}\" elementId=\"{Attribute(anchor.ModelElement.Id)}\" />";
+                    // A chip shows only its element's own name, so a member is preceded by its owners' chips: Order.Total.
+                    return string.Join(".", Owned(anchor.ModelElement).Select(x => $"<ModelRef application=\"{Attribute(application)}\" elementId=\"{Attribute(x.Id)}\" />"));
                 case DriftAnchorKind.File:
                     var path = FullPath(anchor.FilePath, outputRoot);
                     var name = path[(path.LastIndexOf('/') + 1)..];
@@ -118,6 +120,24 @@ namespace Intent.Modules.Common.DriftReporting.Reporting
                     return string.IsNullOrWhiteSpace(anchor.Value) ? "—" : Text(anchor.Value);
             }
         }
+
+        /// <summary>
+        /// An element with the elements that own it, outermost first, up to its folder or package: an attribute's class, a
+        /// parameter's operation and service. A link's end is owned by the element at its other end.
+        /// </summary>
+        public static IReadOnlyList<IElement> Owned(IElement element)
+        {
+            var path = new List<IElement> { element };
+            for (var owner = Owner(element); owner != null && owner.SpecializationType != "Folder" && !path.Contains(owner); owner = Owner(owner))
+            {
+                path.Insert(0, owner);
+            }
+
+            return path;
+        }
+
+        private static IElement Owner(IElement element) =>
+            element is IAssociationEnd end ? end.OtherEnd()?.TypeReference?.Element as IElement : element.ParentElement;
 
         /// <summary>
         /// Plain text as MDX on one line, safe in a table cell. A backtick span renders as inline code, where only a pipe is

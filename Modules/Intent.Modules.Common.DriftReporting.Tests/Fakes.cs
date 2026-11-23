@@ -85,11 +85,13 @@ namespace Intent.Modules.Common.DriftReporting.Tests
             return application;
         }
 
-        public static IElement Element(string id, string name)
+        public static IElement Element(string id, string name, IElement parent = null, string type = "Class")
         {
             var element = Substitute.For<IElement>();
             element.Id.Returns(id);
             element.Name.Returns(name);
+            element.SpecializationType.Returns(type);
+            element.ParentElement.Returns(parent);
             return element;
         }
     }

@@ -226,7 +226,7 @@ namespace Intent.Modules.Common.DriftReporting.FactoryExtensions
             switch (anchor.Kind)
             {
                 case DriftAnchorKind.Element:
-                    return anchor.ModelElement.Name;
+                    return string.Join(".", DriftReportRenderer.Owned(anchor.ModelElement).Select(x => x.Name));
                 case DriftAnchorKind.File:
                     var path = DriftReportRenderer.FullPath(anchor.FilePath, outputRoot);
                     var root = string.IsNullOrEmpty(outputRoot) ? null : DriftReportRenderer.Root(outputRoot);

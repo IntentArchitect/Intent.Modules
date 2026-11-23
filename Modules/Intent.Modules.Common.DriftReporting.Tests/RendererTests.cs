@@ -16,7 +16,7 @@ namespace Intent.Modules.Common.DriftReporting.Tests
             var domain = collector.Area("Domain Design", new[] { DriftCategory.ModelCode, DriftCategory.CodeCode });
             domain.Log(new DriftFinding(DriftCategory.ModelCode, DriftSeverity.Error,
                 "Modelled as `decimal`, but the field `unitPrice` is a `String`.",
-                DriftAnchor.Element(Fakes.Element("attr-unit-price", "UnitPrice")),
+                DriftAnchor.Element(Fakes.Element("attr-unit-price", "UnitPrice", Fakes.Element("class-product", "Product", Fakes.Element("folder-catalog", "Catalog", type: "Folder")), "Attribute")),
                 DriftAnchor.File("src/main/java/com/eshop/backend/domain/Product.java", 24)));
             domain.Log(new DriftFinding(DriftCategory.ModelCode, DriftSeverity.Warning,
                 "The repository extends JpaRepository<Order, Long> and maps {id}; `JpaRepository<Order, Long>` and `a|b` are code, a|b isn't.",
