@@ -1,6 +1,7 @@
 ### Version 1.0.1
 
 - Improvement: A finding about a member names it with what owns it, `Order.Total`, each part a link to its element, in the report and in the log.
+- Fixed: The drift report AI instruction, which every application in a solution writes to the same file, named the report path of whichever application ran last, so each application's Software Factory run changed it. It now names `.cache/drift/<Application Name>/DriftReport.mdx`.
 
 ### Version 1.0.0
 

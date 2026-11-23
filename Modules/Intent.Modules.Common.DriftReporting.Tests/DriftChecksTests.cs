@@ -188,6 +188,12 @@ namespace Intent.Modules.Common.DriftReporting.Tests
         }
 
         [Fact]
+        public void The_guidance_path_names_no_application_so_every_application_writes_the_same_guidance()
+        {
+            DriftReports.GuidancePath(Fakes.Application(SolutionRoot, _root)).ShouldBe("intent/.cache/drift/<Application Name>/DriftReport.mdx");
+        }
+
+        [Fact]
         public void A_CI_run_is_read_from_the_CLIs_parameter_and_a_host_without_parameters_never_is_one()
         {
             DriftChecks.CiParameter.ShouldBe("ensure-no-outstanding-changes");

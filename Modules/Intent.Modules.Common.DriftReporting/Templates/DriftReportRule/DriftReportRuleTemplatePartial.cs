@@ -24,10 +24,11 @@ namespace Intent.Modules.Common.DriftReporting.Templates.DriftReportRule
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public DriftReportRuleTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
-            // The report's path names the application, so the text is built once the run's configuration is known.
+            // The report's path names the solution's folder, so the text is built once the run's configuration is known. It
+            // names no application: every application of the solution writes this same file.
             WithContentHashing = true;
             MarkdownFile = new MarkdownFile("drift-report", relativeLocation: "")
-                .AfterBuild(file => file.FromMarkdown(Text(DriftReports.RelativePath(ExecutionContext))));
+                .AfterBuild(file => file.FromMarkdown(Text(DriftReports.GuidancePath(ExecutionContext))));
         }
 
         [IntentManaged(Mode.Fully)]
@@ -53,7 +54,7 @@ Modules installed in this application check it for drift on every Software Facto
 
 - A run with drift **errors** fails with one error: how many errors and warnings each Area has, e.g. `Drift in Domain: 2 errors, 1 warning`, and where the report is.
 - A run with only drift **warnings** ends with one warning in the same form, and doesn't fail. The results an agent gets may leave warnings out.
-- **The report has every finding in full, warnings included:** `<<ReportPath>>`, in the `.cache` folder beside the solution's `.isln` file, which git ignores. A run with findings lists the report in its changes as a new file; a run with none writes no report. A run with errors applies none of its changes, so apply the report with `apply_staged_file_changes` and its path to read it from disk.
+- **The report has every finding in full, warnings included:** `<<ReportPath>>`, where `<Application Name>` is the name of the application the run was for, in the `.cache` folder beside the solution's `.isln` file, which git ignores. The run's drift error or warning gives the report's exact path. A run with findings lists the report in its changes as a new file; a run with none writes no report. A run with errors applies none of its changes, so apply the report with `apply_staged_file_changes` and its path to read it from disk.
 - A CI/CD run (`--param ensure-no-outstanding-changes=true`) never writes the report: its one error lists every finding instead.
 
 ## Reading the report
