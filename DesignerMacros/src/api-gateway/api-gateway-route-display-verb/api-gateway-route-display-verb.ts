@@ -5,6 +5,7 @@ function formatMethodAndRoute(element: MacroApi.Context.IElementApi): string {
     
     if (result === "None") return "";
     if (result === "Aggregate") return "";
+    if (result === "NotHttp") return "";
     
     return `${verb}`;
 }

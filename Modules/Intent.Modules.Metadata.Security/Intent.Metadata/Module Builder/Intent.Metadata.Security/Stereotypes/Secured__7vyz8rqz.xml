@@ -12,6 +12,7 @@
     <type id="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">Command</type>
     <type id="e71b0662-e29d-4db2-868b-8a12464b25d0">Query</type>
     <type id="df45eaf6-9202-4c25-8dd5-677e9ba1e906">Services Package</type>
+    <type id="b09d7684-5dde-4d4b-9cb5-0707bfd8578f">Api Gateway Route</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>manually</applyMode>

@@ -19,6 +19,16 @@ function applyRouteAssociationOnChangedBehavior(): void {
     const { verb, route, result } = getMethodAndRoute(source);
     const HttpSettings = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
 
+    if (result === "NotHttp") {
+        // Nothing to forward to: clear what a previous HTTP target set, as On Deleted does. The Downstream End's
+        // validation tells the user why.
+        if (source.hasStereotype(HttpSettings)) {
+            source.removeStereotype(HttpSettings);
+        }
+        source.getChildren("Body Field")[0]?.delete();
+        return;
+    }
+
     let httpSettings = source.getStereotype(HttpSettings);
 
     if (!httpSettings) {

@@ -5,6 +5,7 @@ function formatMethodAndRoute(element: MacroApi.Context.IElementApi): string {
     
     if (result === "None") return "[Disconnected]";
     if (result === "Aggregate") return "[Aggregate]";
+    if (result === "NotHttp") return "[Not an HTTP endpoint]";
     
     return `${route}`;
 }
