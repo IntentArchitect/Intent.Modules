@@ -21,6 +21,260 @@
   </stereotypes>
   <metadata />
   <childElements>
+    <childElement id="ba477662-ade8-4f09-9ac0-47d62363a653" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleSvgIcon_ScriptsSetModuleIconCs_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleSvgIcon_ScriptsSetModuleIconCs_Agents</display>
+      <externalReference>Intent.ModuleBuilder.AI.Guidelines</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>941b96cb-11e8-418f-b5a0-7b07135044c0</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+    <childElement id="a23192bc-161d-4948-b46a-c2da39a720ee" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesDomainExtensionsMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesDomainExtensionsMd_Agents</display>
+      <externalReference>Intent.ModuleBuilder.AI.Modelers</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>941b96cb-11e8-418f-b5a0-7b07135044c0</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+    <childElement id="c04aa8a3-ff6e-44e5-b880-687ae3af7c6a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesDomainMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesDomainMd_Agents</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>941b96cb-11e8-418f-b5a0-7b07135044c0</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+    <childElement id="b8a8bab4-22fd-4667-a8ef-6f8be8b58108" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesEventingMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesEventingMd_Agents</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>941b96cb-11e8-418f-b5a0-7b07135044c0</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+    <childElement id="1381e5b8-3726-4040-a3dc-dadb7c26ece7" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesIntegrationRecipeMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesIntegrationRecipeMd_Agents</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>941b96cb-11e8-418f-b5a0-7b07135044c0</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+    <childElement id="8d324438-930d-4ee0-ab46-b895c50cd3e1" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesServicesExtensionsMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesServicesExtensionsMd_Agents</display>
+      <externalReference>Intent.ModuleBuilder.AI.Modelers</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>941b96cb-11e8-418f-b5a0-7b07135044c0</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+    <childElement id="f6bfe040-894c-4f63-8af9-88500ba452e3" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesServicesMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesServicesMd_Agents</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>941b96cb-11e8-418f-b5a0-7b07135044c0</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+    <childElement id="594b525b-d0bc-4e6c-b537-a287029ec0d9" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesUserInterfaceExtensionsMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesUserInterfaceExtensionsMd_Agents</display>
+      <externalReference>Intent.ModuleBuilder.AI.Modelers</externalReference>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>941b96cb-11e8-418f-b5a0-7b07135044c0</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+    <childElement id="33470b0a-71ff-4cb9-8c9a-dce907547c3a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesUserInterfaceMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesUserInterfaceMd_Agents</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>941b96cb-11e8-418f-b5a0-7b07135044c0</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
+    <childElement id="33982928-98b3-4024-bc71-125c1dd5ce0d" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_SkillMd_Agents</name>
+      <display>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_SkillMd_Agents</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>941b96cb-11e8-418f-b5a0-7b07135044c0</parentFolderId>
+      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
+      <packageName>root</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="967ae6f6-cc06-4b67-a391-44ed1aac1959" name="Template Output Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.Modelers.CodebaseStructure</definitionPackageName>
+          <definitionPackageId>525868ff-adc0-4ab6-a90e-352288da941f</definitionPackageId>
+          <properties>
+            <property name="2ae1addc-b4dc-4cc8-94e1-56ef8a5420aa" display="Is Enabled" value="true" isActive="true" />
+            <property name="2d8e6d2c-785c-4708-9104-bd3e9781a86a" display="Registration Filter" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
+      <childElements />
+    </childElement>
     <childElement id="d17ef5f0-d708-4f32-85ef-89eca569ef37" type="Output Anchor" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
       <name>AI.Context.Skills</name>
       <display>AI.Context.Skills</display>
@@ -41,54 +295,6 @@
         </stereotype>
       </stereotypes>
       <metadata />
-      <childElements />
-    </childElement>
-    <childElement id="a23192bc-161d-4948-b46a-c2da39a720ee" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesDomainExtensionsMd_Agents</name>
-      <display>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesDomainExtensionsMd_Agents</display>
-      <externalReference>Intent.ModuleBuilder.AI.Modelers</externalReference>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>941b96cb-11e8-418f-b5a0-7b07135044c0</parentFolderId>
-      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
-      <packageName>root</packageName>
-      <stereotypes />
-      <metadata>
-        <entry key="status" value="assigned" />
-      </metadata>
-      <childElements />
-    </childElement>
-    <childElement id="8d324438-930d-4ee0-ab46-b895c50cd3e1" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesServicesExtensionsMd_Agents</name>
-      <display>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesServicesExtensionsMd_Agents</display>
-      <externalReference>Intent.ModuleBuilder.AI.Modelers</externalReference>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>941b96cb-11e8-418f-b5a0-7b07135044c0</parentFolderId>
-      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
-      <packageName>root</packageName>
-      <stereotypes />
-      <metadata>
-        <entry key="status" value="assigned" />
-      </metadata>
-      <childElements />
-    </childElement>
-    <childElement id="594b525b-d0bc-4e6c-b537-a287029ec0d9" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesUserInterfaceExtensionsMd_Agents</name>
-      <display>Intent.ModuleBuilder.AI.Modelers.Skills.IntentModelersIntegration_ResourcesUserInterfaceExtensionsMd_Agents</display>
-      <externalReference>Intent.ModuleBuilder.AI.Modelers</externalReference>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>941b96cb-11e8-418f-b5a0-7b07135044c0</parentFolderId>
-      <packageId>9cd015c8-8969-47be-be3f-0d7df6c15c86</packageId>
-      <packageName>root</packageName>
-      <stereotypes />
-      <metadata>
-        <entry key="status" value="assigned" />
-      </metadata>
       <childElements />
     </childElement>
   </childElements>

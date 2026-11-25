@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.AI.Guidelines</id>
-  <version>1.0.1</version>
+  <version>1.0.2-pre.0</version>
   <supportedClientVersions>[5.4.0-a,6.0.0-a)</supportedClientVersions>
   <summary>Bundles AI agent skills, instructions and hooks for building Intent Architect modules: versioning, documentation, context capture, and module-building guidance.</summary>
   <description>Bundles AI agent skills, instructions and hooks for building Intent Architect modules: versioning, documentation, context capture, and module-building guidance.</description>
@@ -80,6 +80,10 @@
       <role>AI.Context.Skills</role>
       <location></location>
     </template>
+    <template id="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleSvgIcon_ScriptsSetModuleIconCs_Agents" externalReference="75e6de9f-6d53-4e07-8de2-d52fcd9ba10f">
+      <role>AI.Context.Skills</role>
+      <location></location>
+    </template>
     <template id="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleSvgIcon_SkillMd_Agents" externalReference="bdb446a7-0a50-4b87-b6a1-c7871ab57639">
       <role>AI.Context.Skills</role>
       <location></location>
@@ -109,19 +113,19 @@
           <hint>Create a CONTEXT.md for a module that has none.</hint>
           <defaultValue>false</defaultValue>
         </setting>
-        <setting id="af5fa90e-3199-4f3e-80af-a374527fe48d" title="Maintain Release Notes" type="switch">
-          <hint>Create a module's release-notes.md when it asked for one but has none.</hint>
-          <defaultValue>false</defaultValue>
-        </setting>
         <setting id="c4066c25-1ee9-4b0c-a3ed-f84148ea0512" title="Install Agent Gate Hooks" type="switch">
           <hint>Generate hooks that enforce the module-building rules. Needs the .NET 10 SDK.</hint>
+          <defaultValue>false</defaultValue>
+        </setting>
+        <setting id="362b9d34-4e53-4cf4-93f6-5717b6292a2b" title="Maintain Release Notes" type="switch">
+          <hint>Turn on Include Release Notes where it is off, and keep release notes for every module change.</hint>
           <defaultValue>false</defaultValue>
         </setting>
       </settings>
     </group>
   </moduleSettings>
   <dependencies>
-    <dependency id="Intent.Common" version="3.11.9" />
+    <dependency id="Intent.Common" version="3.11.10-pre.0" />
     <dependency id="Intent.Common.Types" version="3.4.0" />
   </dependencies>
   <files>

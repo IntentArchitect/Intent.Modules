@@ -79,6 +79,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Skills.ModuleVers
                     in either direction has a cost: too low and consumers never receive the change, too high and they
                     expect a compatibility break that did not happen.
 
+                    This skill decides **whether** a version moves and **how far**. Setting it is the built-in
+                    `module-versioning` skill's job: where the version is set, what the Software Factory writes to the
+                    `.imodspec` (including the downgrade guard and the supported client range), and how to update
+                    architecture templates, dependency entries and NuGet versions. Load `module-versioning` once this
+                    skill has settled the version.
+
                     ## Increment Before You Implement, Not After
 
                     The version moves **up front**, as soon as you know which modules a task will touch — not once the
@@ -198,12 +204,6 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Skills.ModuleVers
                     > intent about compatibility; it is not a troubleshooting lever. If a change is not being picked up,
                     > diagnose that instead.
 
-                    ## Keep The Version Consistent Everywhere
-
-                    A module's version appears in more than one place — its package manifest, its project file, and its
-                    designer settings. All of them must agree. Where they differ, the **designer value wins when it is the
-                    higher one**: bring the others up to it rather than pulling it down.
-
                     ## Move The Dependents Too
 
                     An increment is incomplete if the modules that depend on the change stay behind.
@@ -215,7 +215,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Skills.ModuleVers
                     — a template role name, a well-known key — changing that contract requires a synchronised increment
                     on **every** module that reads *or* writes it, not just the one that motivated the change. A
                     consumer left behind silently stops matching, which is worse than the behaviour before the change.
-                    - **Modules that pin this one** need their dependency entry updated.
+                    - **Modules that pin this one** need their dependency entry updated; `module-versioning` says how.
                     - **Consumers that depend on the change's *effect*** are best handled declaratively, by declaring a
                     minimum-version floor in the module's own metadata, rather than by reinstalling into each
                     application you happen to know about — that only ever fixes the ones you thought of.
@@ -225,43 +225,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Skills.ModuleVers
                     Run the gate above — *Is This Version Already In Flight?* — one more time immediately before releasing.
                     If the query mechanisms there still report nothing at or beyond your version as published, you're
                     clear; if something now is, someone published ahead of you and you need to move further.
-
-                    > **The downgrade guard.** The Software Factory silently skips writing `<version>` in `.imodspec` if
-                    > the version you just set compares as *lower*, by semver precedence, than the `<version>` already on
-                    > disk — no error, no warning. Only `<version>` is skipped; the rest of the file is still regenerated,
-                    > so the run may stage other `.imodspec` changes, or nothing at all. A `-pre.#` suffix sorts
-                    > *below* the same `X.Y.Z` with no suffix, so correcting `1.1.0` down to `1.0.3-pre.0` trips this
-                    > guard even though the intent is a fix. If the `<version>` line does not change when you expected
-                    > it to, suspect this before anything else — check the `.imodspec`'s current `<version>` and compare
-                    > precedence. Workaround: temporarily set only the `<version>` line down to a safe value (confirm
-                    > via `git diff`/`git status` that the file is uncommitted first), then reapply your intended
-                    > version and regenerate forward.
                     {{preReleaseSection}}
-                    ## Supported Client Version Range
-
-                    While you are here, confirm the module's supported client version range still holds. Its lower bound
-                    is the **higher** of two floors:
-
-                    1. **The SDK floor** — the minimum client version required by the SDK packages the module references.
-                    A regeneration failure states this one outright.
-                    2. **The dependency floor** — the highest lower bound across the modules this one depends on.
-
-                    Take the maximum of the two. Re-check after anything that moves an SDK or dependency version, and
-                    after a package rename — a renamed package whose manifest falls out of step can silently revert the
-                    range to its scaffold default.
-
-                    ## Checklist
-
-                    - [ ] Every module the task was expected to change was incremented before implementation started
-                    - [ ] Before bumping, ran the gate — confirmed nothing at or beyond the current version was actually published, not just locally compiled
-                    - [ ] Impact assessed for each, with the reasoning stated
-                    - [ ] Any module changed but not anticipated has since been incremented
-                    - [ ] Impact re-checked at close-out, and the component raised if the change grew — never a second bump for the same line of work
-                    - [ ] Version consistent across manifest, project file, and designer settings
-                    - [ ] Every module whose code changed for this work moved, shared-contract participants included
-                    - [ ] Dependents' pinned versions and minimum-version floors updated
-                    - [ ] New version confirmed ahead of what is published via the gate (feed search with prereleases included, allowing for the local-compile trap)
-                    - [ ] Supported client version range still correct
                     """""");
         }
 

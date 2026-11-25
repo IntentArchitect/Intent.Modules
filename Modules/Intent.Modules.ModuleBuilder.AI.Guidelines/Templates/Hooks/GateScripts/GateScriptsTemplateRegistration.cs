@@ -1306,7 +1306,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks.GateScripts
                     if (badTags.Count > 0)
                     {
                         findings.Add(new CloseOutFinding(moduleName,
-                            $"Tags '{string.Join(", ", badTags)}' are not lowercase - see module-docs-chore's tag format guidance."));
+                            $"Tags '{string.Join(", ", badTags)}' are not lowercase - see the tag format in the module-docs skill."));
                     }
                 }
 
@@ -1379,7 +1379,7 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Hooks.GateScripts
                     {
                         findings.Add(new CloseOutFinding(moduleName,
                             $"release-notes.md heading reads 'Version {version}' - the -pre suffix belongs stripped in the " +
-                            $"heading ('Version {plainVersion}'); see module-docs-chore."));
+                            $"heading ('Version {plainVersion}'); see the module-docs skill."));
                     }
                 }
 

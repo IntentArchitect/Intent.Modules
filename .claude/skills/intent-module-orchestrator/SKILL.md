@@ -3,14 +3,17 @@ name: intent-module-orchestrator
 description: "Wire a module's cross-module integration logic — DI/config registration requests, startup DSL calls, priority-banded callbacks, and template Role/TemplateId lookups across module boundaries. USE ONLY WHEN one module's template needs to enrich, depend on, or register infrastructure (DI, appsettings, startup) owned by another module's generated output. DO NOT USE FOR authoring a single template's own C# builder statements (see file-builder-expert) or reading designer metadata off a model (see intent-metadata-consumer). REQUIRES the target module/template's Role or TemplateId already identified."
 argument-hint: "[event type | factory extension scenario] [target template role or id]"
 template-id: Intent.ModuleBuilder.AI.Guidelines.Skills.IntentModuleOrchestrator_SkillMd_Agents
-contentHash: 30EB7C4D750FA3EE8AF2418B4678AE8B7B5AA4531BE38B33E3D07388D42FEC0F
+contentHash: CDDF3E0BF2FDFF4073A0E5AE96CA376CEB644824DC90D051486EEBFA5105FC66
 ---
 # Intent Module Orchestrator
 
 > [!TIP]
-> **Read more if you want to know about** when to publish requests, `EmitOrPublish`, priority bands, Startup DSL, DI/Config/launch-settings requests, or cross-template lookups:
+> **Read more if you want to know about** when to publish requests, `EmitOrPublish`, Startup DSL, DI/Config/launch-settings requests, or the cross-module interface-type rule:
 > *   [Orchestration Cheatsheet](./resources/orchestration-cheatsheet.md)
 > *(To conserve tokens, avoid reading this file for simple or minor updates.)*
+>
+> Template lookups, the `"model"` metadata bridge and build-callback priorities are not specific to
+> crossing modules: the built-in `file-builder-expert` skill covers them.
 
 ## Musts
 
