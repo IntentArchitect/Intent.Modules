@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace Intent.Modules.Common.FileBuilders.MarkdownFileBuilder;
 
@@ -50,23 +49,11 @@ public class MarkdownSection : IMarkdownSection
 
     public IMarkdownSection WithListItems(string markdownList)
     {
-        foreach (var line in markdownList.ReplaceLineEndings("\n").Split('\n'))
-        {
-            var unordered = Regex.Match(line, @"^(\s*)([-*+])\s*(.+)$");
-            if (unordered.Success)
-            {
-                var indent = unordered.Groups[1].Value.Length / 2;
-                _blocks.Add(new MarkdownListItem(unordered.Groups[3].Value, isOrdered: false, indentLevel: indent));
-                continue;
-            }
-
-            var ordered = Regex.Match(line, @"^(\s*)\d+\.\s+(.+)$");
-            if (ordered.Success)
-            {
-                var indent = ordered.Groups[1].Value.Length / 2;
-                _blocks.Add(new MarkdownListItem(ordered.Groups[2].Value, isOrdered: true, indentLevel: indent));
-            }
-        }
+        // Parsed by the same code as FromMarkdown, so a wrapped item keeps its continuation lines and
+        // an emphasis-led line ("**Note** ...") or a rule ("---") is not mistaken for a bullet.
+        var parsed = new MarkdownSection(Title, HeadingLevel);
+        MarkdownFileParser.ParseSectionContent(markdownList ?? string.Empty, parsed);
+        _blocks.AddRange(parsed.Blocks);
         return this;
     }
 

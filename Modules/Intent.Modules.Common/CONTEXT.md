@@ -1,32 +1,21 @@
 # Context: Intent.Common
 
 ## Purpose
-The base library every module builds on: template and registration base classes, the file builders
-(including `MarkdownFileBuilder`), metadata helpers and the cross-module event plumbing. It is consumed as
-a code library by every module, so its behaviour is a contract with modules this repository cannot see.
+
+The base library every module builds on: template and registration base classes, the file builders (including `MarkdownFileBuilder`), metadata helpers and the cross-module event plumbing. It is consumed as a code library by every module, so its behaviour is a contract with modules this repository cannot see.
 
 ## Architectural Decisions
-- **`MarkdownFileParser` keeps a wrapped list item together** (3.11.8). A non-blank line straight after a
-  list item continues it, as in Markdown's own "lazy continuation" rule, unless it starts a block of its own
-  (heading, fence, list item, `|`, `>`, a thematic break, an HTML block, or an item-like marker such as `1a.`
-  or `2)` that the parser does not model). The parser stores each continuation line already indented to
-  the item's content column, keeping trailing spaces (a hard break). Rejected after an adversarial review:
-  re-indenting in `MarkdownFile.ToString`, which also changed the output of multi-line items built through
-  the API (flattening code inside them). Rendering is unchanged; only parsing is. Before, the rest of the sentence became a text block written after a blank
-  line, splitting the bullet; every skill the ModuleBuilder.AI modules ship carried such splits, and their
-  templates had been told to keep each bullet on one physical line. Rejected: fixing it in the templates -
-  the parser is where the meaning was lost, and every other markdown template has the same exposure.
-- **List levels are measured from the first item of each run of list items.** A list indented as a whole
-  (four spaces in under a paragraph) used to be written back four spaces in, where Markdown reads it as a
-  code block. A run restarts at a list item that follows an UNINDENTED block (or starts a section); after
-  an indented paragraph or fence - one inside the previous item - the run keeps its base, so a nested list
-  there stays nested.
-- **Checked against every markdown template in Intent.Modules.NET (36) and this repository's AI modules**
-  by rendering each through the old and the new parser: Intent.Modules.NET's output is byte-identical; the
-  AI modules' only differences are the intended ones.
+
+- **`MarkdownFileParser` keeps a wrapped list item together** (3.11.8). A non-blank line straight after a list item continues it, as in Markdown's own "lazy continuation" rule, unless it starts a block of its own (heading, fence, list item, `|`, `>`, a thematic break, an HTML block, or an item-like marker such as `1a.` or `2)` that the parser does not model). The parser stores each continuation line already indented to the item's content column, keeping trailing spaces (a hard break). Rejected after an adversarial review: re-indenting in `MarkdownFile.ToString`, which also changed the output of multi-line items built through the API (flattening code inside them). Rendering is unchanged; only parsing is. Before, the rest of the sentence became a text block written after a blank line, splitting the bullet; every skill the ModuleBuilder.AI modules ship carried such splits, and their templates had been told to keep each bullet on one physical line. Rejected: fixing it in the templates - the parser is where the meaning was lost, and every other markdown template has the same exposure.
+- **List levels are measured from the first item of each run of list items.** A list indented as a whole (four spaces in under a paragraph) used to be written back four spaces in, where Markdown reads it as a code block. A run restarts at a list item that follows an UNINDENTED block (or starts a section); after an indented paragraph or fence - one inside the previous item - the run keeps its base, so a nested list there stays nested.
+- **Front matter keeps a multi-line value as raw lines under its key** (3.11.10). After a `key:` line, every following line that is indented, blank, or a `-` sequence item belongs to that key and is written back verbatim. That covers block lists, nested maps and `|` / `>` block scalars without a YAML library. Rejected: taking a YAML parser dependency - `Intent.Common` is loaded by every module, and only `paths`-style lists needed reading. Rejected: re-serialising parsed values - it would rewrite quoting and layout the author chose, and change `contentHash` for output that was already correct. Only the API path (`SetList`) formats a list itself; it quotes an item only when YAML would not read it as a string.
+- **Lists get their own verbs, `SetList` / `GetList`, not an overload of `Set`** (3.11.10). Templates normally write front matter as YAML inside the `FromMarkdown` raw string, and in 3.11.10 neither repository has a single call to the front-matter API. So the parser fix is what most authors need, and the API is for computed lists, or for an extension that adds to another template's list. Four shapes were compiled against those call sites (spike in `D:\Workspace\frontmatter-api-spike`). Rejected: `Set(key, IEnumerable<string>)` - it makes `Set(key, null)` ambiguous (CS0121), which breaks existing callers' source in a patch release. Rejected: an extra `SetList(key, params string[])` - every consumer module targets net8.0 (C# 12), so `SetList("paths", ["a", "b"])` is already as short, and a second overload is a second way to do the same thing. Rejected: `AddToList` - no caller needs it, it is unclear what it should do when the key holds a scalar, and with `SetList` and `GetList` it is one line: `fm.SetList(k, [.. fm.GetList(k) ?? [], item])`. `SetList` rewrites an existing list in its own style (two-space `-`, quoting only where needed). It keeps the key's position.
+- **`WithListItems` shares the section parser** (3.11.10) through `MarkdownFileParser.ParseSectionContent`, which parses a fragment as content under a heading, but treats a heading line as text. Before this it had its own line loop and regex, which lost continuation lines and mangled `**Note**` / `---`. The fixes `FromMarkdown` got in 3.11.7 and 3.11.9 had never reached it. Rejected: patching its regex again - two parsers drift, which is how it fell behind. A whitespace-only line counts as blank everywhere in the parser: it never continues a list item, and `FlushText` trims it from both edges of a text block. A raw string's last line usually holds only the indent before its closing quotes, and until this was fixed it rendered as a blank line followed by a line of spaces (seen in Mapperly's `AISkillsExtension`). Corpus check: of 2,821 inputs, 29 renders changed and only in blank or whitespace-only lines; the other 13 changes came from inputs edited between the two renders.
+- **Checked against every markdown template in Intent.Modules.NET (36) and this repository's AI modules** by rendering each through the old and the new parser: Intent.Modules.NET's output is byte-identical; the AI modules' only differences are the intended ones.
 
 ## Invariants & Constraints
-- A parsed list item's `Content` may hold several lines separated by `\n`, continuation lines already indented.
-  `MarkdownFile.ToString` writes `Content` verbatim, as before, so items built through the API render as
-  they always did.
+
+- A parsed list item's `Content` may hold several lines separated by `\n`, continuation lines already indented. `MarkdownFile.ToString` writes `Content` verbatim, as before, so items built through the API render as they always did.
 - Two adjacent lists separated only by a blank line are still written without it (unchanged behaviour).
+- A one-line front-matter entry renders as `key: value` byte for byte, an empty value keeping its trailing space. Changing that changes `contentHash`, and so causes churn in every consumer's AI files. Only an entry with continuation lines renders as `key:` with no trailing space.
+- Any change to `MarkdownFileParser` or `MarkdownFile.ToString` is checked by rendering a corpus through the old and the new build and diffing the results byte for byte. For 3.11.10 the corpus was every `.md` in this repository and in Intent.Modules.NET (2,815 files), plus every `WithListItems` input in Intent.Modules.NET. Each section body was byte-identical. Every change was to multi-line front matter the old parser had broken, or to the Mapperly `WithListItems` input that had lost its continuation lines.

@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Version>3.11.9</Version>
+    <Version>3.11.10-pre.0</Version>
     <Authors>Intent Architect</Authors>
     <Product>Intent - Modules Common</Product>
     <Description>Base classes and helpers for building your own modules for Intent Architect.</Description>
