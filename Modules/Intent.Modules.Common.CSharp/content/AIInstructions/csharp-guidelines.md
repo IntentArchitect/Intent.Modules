@@ -2,6 +2,9 @@
 description: Guidelines for writing and maintaining C# code in Intent Architect managed .NET applications.
 appliesTo:
   - "**/*.cs"
+paths:
+  - "**/*.cs"
+applyTo: '**/*.cs'
 ---
 
 ## C# using directives
