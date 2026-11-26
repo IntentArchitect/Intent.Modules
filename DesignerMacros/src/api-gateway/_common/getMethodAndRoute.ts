@@ -29,8 +29,13 @@ function getMethodAndRoute(apiGatewayRoute: MacroApi.Context.IElementApi): IMeth
     }
 
     const httpSettings = endpoints[0].getStereotype("Http Settings");
-    const httpMethod = httpSettings.getProperty("Verb").getValue() as string;
-    let httpRoute = httpSettings.getProperty("Route").getValue() as string;
+    if (!httpSettings) {
+        // The target is not exposed over HTTP, so there is no verb or route to forward to. The Route Association's
+        // Downstream End validation reports it; callers show this result instead of throwing.
+        return { verb: "", route: "", result: "NotHttp" };
+    }
+    const httpMethod = httpSettings.getProperty("Verb")?.getValue() as string || "";
+    let httpRoute = httpSettings.getProperty("Route")?.getValue() as string || "";
 
     if (endpoints[0].getParent()?.hasStereotype("Http Service Settings")) {
         let serviceRoute = endpoints[0].getParent().getStereotype("Http Service Settings")?.getProperty("Route")?.getValue() || "";

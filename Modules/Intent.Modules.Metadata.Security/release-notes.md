@@ -1,3 +1,7 @@
+### Version 1.1.7
+
+- Improvement: `Secured` and `Unsecured` can be applied to API Gateway Routes (from `Intent.Metadata.ApiGateway`), so a gateway can open or secure a single route.
+
 ### Version 1.1.6
 
 - Improvement: Enhanced Descriptions so AI guidance is not on the UI.

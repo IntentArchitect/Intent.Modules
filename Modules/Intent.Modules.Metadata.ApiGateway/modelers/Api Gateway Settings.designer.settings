@@ -16,6 +16,14 @@
           <defaultName>ApiGatewayRoute</defaultName>
           <allowMultiple>true</allowMultiple>
         </createElement>
+        <runScript type="run-script">
+          <text>Manage Gateway Routes...</text>
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmlld0JveD0iMCAwIDUwIDUwIj4NCiAgICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMjkuMy4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMi4xLjAgQnVpbGQgMTUxKSAgLS0+DQogICAgPGRlZnM+DQogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50IiB4MT0iMjQuOTUwMDEiIHkxPSI0NS45MTMwNCIgeDI9IjI0Ljk1MDAxIiB5Mj0iNC4wMzYxNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPg0KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjODU2MmFiIi8+DQogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNhOTg4YmYiLz4NCiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4NCiAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQxIiB4MT0iMjUiIHkxPSI0NS45MTMwNCIgeDI9IjI1IiB5Mj0iNC4wMzYxNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPg0KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjODU2MmFiIi8+DQogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNhOTg4YmYiLz4NCiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4NCiAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQyLTc3NyIgeDE9IjE5LjU2MDc1IiB5MT0iNDQuOTM0NzgiIHgyPSIxOS41NjA3NSIgeTI9IjQuNzI4MjYiPg0KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjODU2MmFiIi8+DQogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNhOTg4YmYiLz4NCiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4NCiAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQzLTg4OCIgeDE9IjI3LjY0NTI2IiB5MT0iNDQuOTM0NzgiIHgyPSIyNy42NDUyNiIgeTI9IjQuNzI4MjYiPg0KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjODU2MmFiIi8+DQogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNhOTg4YmYiLz4NCiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4NCiAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQ0LTk5OSIgeDE9IjMyLjgyNTY4IiB5MT0iNDQuOTM0NzgiIHgyPSIzMi44MjU2OCIgeTI9IjQuNzI4MjYiPg0KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjODU2MmFiIi8+DQogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNhOTg4YmYiLz4NCiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4NCiAgICA8L2RlZnM+DQogICAgPHBhdGggZD0iTTQ1LjE3OTk5LDIxLjM5MDAxYy0uNDYwMDItLjA5MDAzLS43ODk5OC0uMTYwMDMtMS4wMjk5Ny0uMTc5OTktLjA2LS4wMTAwMS0uMTEwMDUtLjAxMDAxLS4xNTAwMi0uMDEwMDFsLjA5OTk4LS4xMDAwNGMtLjIyOTk4LTEuMTU5OTctLjU0OTk5LTIuMjY5OTYtLjk1OTk2LTMuMzI5OTYtLjA0OTk5LS4xMi0uMTAwMDQtLjI1LS4xNTAwMi0uMzctLjEzLS4yOTAwNC0uMjYwMDEtLjU4MDAyLS4zOTAwMS0uODYwMDUtLjEzOTk1LS4yODk5OC0uMjg5OTgtLjU3MDAxLS40Mjk5OS0uODM5OTctLjEyLS4yMjAwMy0uMjM5OTktLjQyOTk5LS4zNy0uNjQwMDEtLjE1OTk3LS4yNjAwMS0uMzIwMDEtLjUxMDAxLS41LS43NjAwMWwuMDEwMDEtLjAxOTk2LDEuNzg5OTgtMi42ODAwNS00LjY5OTk1LTQuNjk5OTVjLTEuMzguODg5OTUtMi4yNzAwMiwxLjQ3OTk4LTIuNjgwMDUsMS43ODk5OC0uMDA5OTUsMC0uMDA5OTUuMDEwMDEtLjAxOTk2LjAxMDAxLTEuNTgwMDItMS4wMjAwMi0zLjM0MDAzLTEuODU5OTktNS4yMzk5OS0yLjQxMDAzLS4wMTAwMSwwLS4wMjAwMi0uMDA5OTUtLjAzMDAzLS4wMDk5NS0uNS0uMTUwMDItMS4wMTAwMS0uMjcwMDItMS41Mjk5Ny0uMzh2LS4wMzAwM2wtLjYwMDA0LTMuMjcwMDJoLTYuNzAwMDFjLS4yOTk5OSwxLjgwMDA1LS41OTk5OCwyLjgwMDA1LS41OTk5OCwzLjMwMDA1LS4zMS4wNi0uNjIuMTMtLjkyOTk5LjIwOTk2LS45MTk5OC4yMzk5OS0xLjgxLjU0MDA0LTIuNjY5OTguOTAwMDItMS4xMy40Njk5Ny0yLjIwMDAxLDEuMDM5OTgtMy4yMDAwMSwxLjY5bC0yLjcwMDAxLTEuNzk5OTktNC43MDAwMSw0LjY5OTk1Yy45MDAwMiwxLjQwMDAyLDEuNSwyLjIwMDAxLDEuNzk5OTksMi43MDAwMS0uMTIuMTc5OTktLjIyOTk4LjM1OTk5LS4zMzk5Ny41NDk5OS0xLjE0MDAxLDEuODctMi4wMTAwMSwzLjk4MDA0LTIuNDYwMDIsNi4yNWwtMy4yOTk5OS42MDAwNHY2LjU5OTk4YzEuNzk5OTkuMjk5OTksMi43OTk5OS42MDAwNCwzLjI5OTk5LjYwMDA0aC4wNzAwMWMuMzIwMDEsMS41OTk5OC44NDAwMywzLjEzLDEuNTMwMDMsNC41Ni4wOTk5OC4xOTk5NS4xOTk5NS4zOTk5Ni4zMS41OTk5OC4wNi4xMy4xMy4yNjAwMS4yMDk5Ni4zOTAwMS4yMzk5OS40Mjk5OS41Ljg0OTk4Ljc4MDAzLDEuMjVsLS4wMTAwMS4wMTk5Ni0xLjg5MDAxLDIuNzgwMDMsNC43MDAwMSw0LjcwMDAxYzEuNDc5OTgtLjk4OTk5LDIuMzctMS41ODAwMiwyLjc4MDAzLTEuODkwMDEuMDA5OTUsMCwuMDA5OTUtLjAxMDAxLjAxOTk2LS4wMTAwMS45ODk5OS42NDAwMSwyLjA0MDA0LDEuMjEwMDIsMy4xNTAwMiwxLjY3OTk5LjMzMDAyLjE0MDAxLjY1OTk3LjI3MDAyLjk4OTk5LjM5MDAxLjg0MDAzLjI5OTk5LDEuNjkuNTQ5OTksMi41Ni43Mjk5OGwuNTk5OTgsMy4zMDAwNWg2LjcwMDAxYy4yOTAwNC0xLjc3MDAyLjU5MDAzLTIuNzYwMDEuNjAwMDQtMy4yNzAwMnYtLjAzMDAzYzIuNS0uNSw0Ljc5OTk5LTEuNSw2Ljc5OTk5LTIuNzk5OTlsLjAxOTk2LjAxMDAxLDIuNzgwMDMsMS44OTAwMSw0LjcwMDAxLTQuNzAwMDFjLS45ODk5OS0xLjQ3OTk4LTEuNTgwMDItMi4zNy0xLjg5MDAxLTIuNzgwMDMsMC0uMDA5OTUtLjAxMDAxLS4wMDk5NS0uMDEwMDEtLjAxOTk2LDEuMjk5OTktMiwyLjI5OTk5LTQuMjk5OTksMi43OTk5OS02LjcwMDAxbDMuMzAwMDUtLjU5OTk4di02LjYwMDA0Yy0uOTUwMDEtLjE0OTk2LTEuNjgwMDUtLjI5OTk5LTIuMjIwMDMtLjQwOTk3Wk00MS43MDAwMSwyOC41MjAwMmMtLjQyOTk5LDIuMTA5OTktMS4yNzAwMiw0LjA3OTk2LTIuNDE5OTgsNS44MjAwMS0xLjI2MDAxLDEuOTI5OTktMi45MTAwMywzLjU3OTk2LTQuODQwMDMsNC44Mzk5Ny0xLjc2MDAxLDEuMTY5OTgtMy43NjAwMSwyLjAxMDAxLTUuOTA5OTcsMi40NC0xLjA5MDAzLjIyOTk4LTIuMjIwMDMuMzQwMDMtMy4zOC4zNDAwMy0xLjE5LDAtMi4zNTAwNC0uMTItMy40NzAwMy0uMzYwMDUtLjAyOTk3LS4wMDk5NS0uMDYtLjAwOTk1LS4wODk5Ny0uMDE5OTYtMS41ODAwMi0uMzMwMDItMy4wODAwMi0uODkwMDEtNC40NjAwMi0xLjY0MDAxLS40NC0uMjM5OTktLjg1OTk5LS40ODk5OS0xLjI3MDAyLS43NjAwMS0xLjkyOTk5LTEuMjYwMDEtMy41Nzk5Ni0yLjkwOTk3LTQuODM5OTctNC44Mzk5Ny0uMjMwMDQtLjM2MDA1LS40NjAwMi0uNzIwMDMtLjY3MDA0LTEuMTAwMDQtLjA2OTk1LS4xMi0uMTMtLjIyOTk4LS4xNzk5OS0uMzM5OTctLjA5OTk4LS4xNzAwNC0uMTc5OTktLjM1MDA0LS4yNjk5Ni0uNTIwMDItLjYwMDA0LTEuMjM5OTktMS4wNTAwNS0yLjU2LTEuMzIwMDEtMy45NTAwMS0uMjMwMDQtMS4wODk5Ny0uMzQwMDMtMi4yMTk5Ny0uMzQwMDMtMy4zOCwwLTMuMjA5OTYuODkwMDEtNi4yMDk5NiwyLjQ0LTguNzY5OTYsMS44NTAwNC0zLjAyMDAyLDQuNjAwMDQtNS40MjAwNCw3Ljg5MDAxLTYuODIwMDEuNzM5OTktLjMxLDEuNTEwMDEtLjU3MDAxLDIuMzEtLjc4MDAzLjI3MDAyLS4wNzAwMS41Mzk5OC0uMTMuNzk5OTktLjE3OTk5LDEuMTItLjIzOTk5LDIuMjgwMDMtLjM1OTk5LDMuNDcwMDMtLjM1OTk5LDEuMDE5OTYsMCwyLjAwOTk1LjA3OTk2LDIuOTc5OTguMjY5OTYuMDQ5OTksMCwuMDk5OTguMDEwMDEuMTUwMDIuMDIwMDIuMDc5OTYuMDIwMDIuMTY5OTguMDMwMDMuMjUuMDQ5OTksMi4xNDk5Ni40Mjk5OSw0LjE0OTk2LDEuMjcwMDIsNS45MDk5NywyLjQ0LDEuNDE5OTguOTI5OTksMi42OSwyLjA3MDAxLDMuNzYwMDEsMy4zOC4wMjk5Ny4wMjAwMi4wMzk5OC4wNDAwNC4wNi4wNzAwMS4zNDk5OC4zNDk5OC42NDAwMS43NS44OCwxLjE5LjAxMDAxLjAxMDAxLjAxOTk2LjAyMDAyLjAxOTk2LjAzMDAzLjA0MDA0LjA0OTk5LjA4MDAyLjEwOTk5LjEyMDA2LjE2OTk4LjE0OTk2LjIxOTk3LjI4OTk4LjQ0LjQyOTk5LjY3OTk5LjEwOTk5LjE3OTk5LjIwOTk2LjM1OTk5LjMyMDAxLjU0OTk5LjEyLjIzOTk5LjI1LjQ3OTk4LjM3LjcyOTk4LjEwOTk5LjI0MDA1LjIxOTk3LjQ5MDA1LjMzOTk3Ljc1LjA0MDA0LjEwMDA0LjA4MDAyLjIxMDAyLjEzLjMyMDAxLjM4Ljk1MDAxLjY2OTk4LDEuOTUwMDEuODcsMi45ODAwNC4yMTAwMiwxLjA0OTk5LjMyMDAxLDIuMTQ5OTYuMzIwMDEsMy4yNzk5NywwLDEuMTktLjEyLDIuMzUwMDQtLjM1OTk5LDMuNDcwMDNaIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudCkiLz4NCiAgICA8cGF0aCBkPSJNMjUsOS43OTk5OWMtOC40MDAwMiwwLTE1LjIwMDAxLDYuNzk5OTktMTUuMjAwMDEsMTUuMjAwMDFzNi43OTk5OSwxNS4yMDAwMSwxNS4yMDAwMSwxNS4yMDAwMSwxNS4yMDAwMS02Ljc5OTk5LDE1LjIwMDAxLTE1LjIwMDAxLTYuNzk5OTktMTUuMjAwMDEtMTUuMjAwMDEtMTUuMjAwMDFaTTI1LDM2Ljc5OTk5Yy02LjUsMC0xMS43OTk5OS01LjI5OTk5LTExLjc5OTk5LTExLjc5OTk5czUuMjk5OTktMTEuNzk5OTksMTEuNzk5OTktMTEuNzk5OTksMTEuNzk5OTksNS4yOTk5OSwxMS43OTk5OSwxMS43OTk5OS01LjI5OTk5LDExLjc5OTk5LTExLjc5OTk5LDExLjc5OTk5WiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQxKSIvPg0KICAgIDxwYXRoIGQ9Ik0yMS4xODc5OSwyNy4wNzEyOWgtMy4yNTE5NWwtLjcyNjU2LDEuNzg4MDljLS4wNDY4OC4xMTMyOC0uMTEyNzkuMjA5OTYtLjE5NzI3LjI5MDA0cy0uMTgxMTUuMTM5NjUtLjI4OTA2LjE3Njc2Yy0uMTA4NC4wMzgwOS0uMjIyMTcuMDU1NjYtLjM0MjI5LjA1MjczLS4xMjAxMi0uMDAxOTUtLjIzNjMzLS4wMjYzNy0uMzQ5MTItLjA3NDIyLS4xMTI3OS0uMDQ2ODgtLjIwNzAzLS4xMTIzLS4yODIyMy0uMTk3MjdzLS4xMzAzNy0uMTc5NjktLjE2NTUzLS4yODMyYy0uMDM1NjQtLjEwMzUyLS4wNTA3OC0uMjEyODktLjA0NTktLjMyOTEuMDA0MzktLjExNTIzLjAzMjcxLS4yMjk0OS4wODQ0Ny0uMzQyNzdsMy4xNjY5OS03LjI4OTA2Yy4wNzUyLS4xNjUwNC4xODIxMy0uMjk0NDMuMzIwOC0uMzg4NjdzLjI5OTgtLjE0MTYuNDgzNC0uMTQxNmMuMTY5NDMsMCwuMzI0MjIuMDQ1OS40NjUzMy4xMzc3LjE0MTExLjA5MjI5LjI0NzA3LjIyMDcuMzE3MzguMzg1MjVsMy4xMjUsNy4yOTYzOWMuMDQ2ODguMTEzMjguMDczNzMuMjI3NTQuMDgxMDUuMzQyNzcuMDA2ODQuMTE2MjEtLjAwNTg2LjIyNDYxLS4wMzkwNi4zMjUyLS4wMzI3MS4xMDE1Ni0uMDg1NDUuMTk1MzEtLjE1ODY5LjI3OTMtLjA3Mjc1LjA4NDk2LS4xNjU1My4xNTMzMi0uMjc4MzIuMjA1MDgtLjExMjc5LjA1MjczLS4yMjcwNS4wNzgxMi0uMzQyMjkuMDc4MTJzLS4yMjU1OS0uMDE4NTUtLjMzMTU0LS4wNTY2NGMtLjEwNTQ3LS4wMzcxMS0uMjAyMTUtLjA5NjY4LS4yODkwNi0uMTc2NzZzLS4xNTYyNS0uMTc2NzYtLjIwODAxLS4yOTAwNGwtLjc0NzU2LTEuNzg4MDlaTTE4LjY1NTc2LDI1LjMxNzM4aDEuNzk4MzRsLS45MDk2Ny0yLjE4NDU3LS44ODg2NywyLjE4NDU3WiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQyLTc3NykiLz4NCiAgICA8cGF0aCBkPSJNMjYuMzk5NDEsMjUuNzk3ODV2Mi43MjI2NmMwLC4xMjIwNy0uMDIzNDQuMjM1MzUtLjA3MDMxLjMzODg3cy0uMTA5MzguMTk0MzQtLjE4NjUyLjI3MjQ2LS4xNzA0MS4xMzg2Ny0uMjc4MzIuMTgzNTljLS4xMDg0LjA0NDkyLS4yMjExOS4wNjczOC0uMzM4ODcuMDY3MzgtLjEyMjA3LDAtLjIzNjMzLS4wMjI0Ni0uMzQxOC0uMDY3MzgtLjEwNTk2LS4wNDQ5Mi0uMTk4NzMtLjEwNTQ3LS4yNzg4MS0uMTgzNTlzLS4xNDIwOS0uMTY4OTUtLjE4NzAxLS4yNzI0NmMtLjA0NDQzLS4xMDM1Mi0uMDY2ODktLjIxNjgtLjA2Njg5LS4zMzg4N3YtNy4zMjQ3MWMwLS4xMjI1Ni4wMjI0Ni0uMjM1ODQuMDY2ODktLjMzOTg0LjA0NDkyLS4xMDM1Mi4xMDY5My0uMTk0MzQuMTg3MDEtLjI3MTk3cy4xNzI4NS0uMTM5MTYuMjc4ODEtLjE4MzU5Yy4xMDU0Ny0uMDQ0OTIuMjE5NzMtLjA2NzM4LjM0MTgtLjA2NzM4aDIuMzQ4NjNjLjM4MDg2LDAsLjc0MDIzLjA3MTc4LDEuMDc2MTcuMjE1ODIuMzM1OTQuMTQzNTUuNjI4OTEuMzM5MzYuODgwODYuNTg2NDMuMjUxOTUuMjQ3NTYuNDQ5MjIuNTM3Ni41OTM3NS44Njk2My4xNDI1OC4zMzI1Mi4yMTQ4NC42ODk0NS4yMTQ4NCwxLjA3MTI5cy0uMDcyMjcuNzM3My0uMjE0ODQsMS4wNjczOGMtLjE0NDUzLjMzMDA4LS4zNDE4LjYxODE2LS41OTM3NS44NjMyOHMtLjU0NDkyLjQzNzUtLjg4MDg2LjU3OTEtLjY5NTMxLjIxMTkxLTEuMDc2MTcuMjExOTFoLTEuNDc0NjFaTTI2LjM5OTQxLDIyLjA2NTQzdjEuOTc5NDloMS40ODI0MmMuMTMwODYsMCwuMjU3ODEtLjAyODMyLjM4MDg2LS4wODQ5Ni4xMjEwOS0uMDU2NjQuMjI4NTItLjEzMTg0LjMyMDMxLS4yMjY1Ni4wOTE4LS4wOTM3NS4xNjYwMi0uMjAyMTUuMjIyNjYtLjMyNTIuMDU2NjQtLjEyMjA3LjA4Mzk4LS4yNDk1MS4wODM5OC0uMzgxMzVzLS4wMjczNC0uMjU2ODQtLjA4Mzk4LS4zNzVjLS4wNTY2NC0uMTE3NjgtLjEzMDg2LS4yMjAyMS0uMjIyNjYtLjMwNzYyLS4wOTE4LS4wODY5MS0uMTk5MjItLjE1NTI3LS4zMjAzMS0uMjA0NTktLjEyMzA1LS4wNDk4LS4yNS0uMDc0MjItLjM4MDg2LS4wNzQyMmgtMS40ODI0MloiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50My04ODgpIi8+DQogICAgPHBhdGggZD0iTTMzLjcwMDIsMjguNTIwNTFjMCwuMTIyMDctLjAyMzQ0LjIzNTM1LS4wNzAzMS4zMzg4N3MtLjEwOTM4LjE5NDM0LS4xODY1Mi4yNzI0NmMtLjA3ODEyLjA3ODEyLS4xNzA5LjEzODY3LS4yNzkzLjE4MzU5cy0uMjIwNy4wNjczOC0uMzM3ODkuMDY3MzhjLS4xMjMwNSwwLS4yMzYzMy0uMDIyNDYtLjM0Mjc3LS4wNjczOC0uMTA1NDctLjA0NDkyLS4xOTgyNC0uMTA1NDctLjI3ODMyLS4xODM1OXMtLjE0MjU4LS4xNjg5NS0uMTg2NTItLjI3MjQ2Yy0uMDQ0OTItLjEwMzUyLS4wNjczOC0uMjE2OC0uMDY3MzgtLjMzODg3di03LjMyNDcxYzAtLjEyMjU2LjAyMjQ2LS4yMzU4NC4wNjczOC0uMzM5ODQuMDQzOTUtLjEwMzUyLjEwNjQ1LS4xOTQzNC4xODY1Mi0uMjcxOTdzLjE3Mjg1LS4xMzkxNi4yNzgzMi0uMTgzNTljLjEwNjQ1LS4wNDQ5Mi4yMTk3My0uMDY3MzguMzQyNzctLjA2NzM4LjExNzE5LDAsLjIyOTQ5LjAyMjQ2LjMzNzg5LjA2NzM4LjEwODQuMDQ0NDMuMjAxMTcuMTA1OTYuMjc5My4xODM1OS4wNzcxNS4wNzc2NC4xMzk2NS4xNjg0Ni4xODY1Mi4yNzE5Ny4wNDY4OC4xMDQuMDcwMzEuMjE3MjkuMDcwMzEuMzM5ODR2Ny4zMjQ3MVoiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50NC05OTkpIi8+DQo8L3N2Zz4=" />
+          <dependencies>
+            <dependency name="Manage Gateway Routes Script" id="ac12a45b-466e-47fa-b818-d5020ca93ec3" />
+          </dependencies>
+          <script>await manageGatewayRoutes(element);</script>
+        </runScript>
       </contextMenuOptions>
       <creationOptions>
         <option type="element">
@@ -27,7 +35,16 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
-      <scriptOptions />
+      <scriptOptions>
+        <option type="run-script">
+          <text>Manage Gateway Routes...</text>
+          <icon type="UrlImagePath" source="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmlld0JveD0iMCAwIDUwIDUwIj4NCiAgICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMjkuMy4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMi4xLjAgQnVpbGQgMTUxKSAgLS0+DQogICAgPGRlZnM+DQogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50IiB4MT0iMjQuOTUwMDEiIHkxPSI0NS45MTMwNCIgeDI9IjI0Ljk1MDAxIiB5Mj0iNC4wMzYxNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPg0KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjODU2MmFiIi8+DQogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNhOTg4YmYiLz4NCiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4NCiAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQxIiB4MT0iMjUiIHkxPSI0NS45MTMwNCIgeDI9IjI1IiB5Mj0iNC4wMzYxNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPg0KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjODU2MmFiIi8+DQogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNhOTg4YmYiLz4NCiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4NCiAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQyLTc3NyIgeDE9IjE5LjU2MDc1IiB5MT0iNDQuOTM0NzgiIHgyPSIxOS41NjA3NSIgeTI9IjQuNzI4MjYiPg0KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjODU2MmFiIi8+DQogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNhOTg4YmYiLz4NCiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4NCiAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQzLTg4OCIgeDE9IjI3LjY0NTI2IiB5MT0iNDQuOTM0NzgiIHgyPSIyNy42NDUyNiIgeTI9IjQuNzI4MjYiPg0KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjODU2MmFiIi8+DQogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNhOTg4YmYiLz4NCiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4NCiAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQ0LTk5OSIgeDE9IjMyLjgyNTY4IiB5MT0iNDQuOTM0NzgiIHgyPSIzMi44MjU2OCIgeTI9IjQuNzI4MjYiPg0KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjODU2MmFiIi8+DQogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNhOTg4YmYiLz4NCiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4NCiAgICA8L2RlZnM+DQogICAgPHBhdGggZD0iTTQ1LjE3OTk5LDIxLjM5MDAxYy0uNDYwMDItLjA5MDAzLS43ODk5OC0uMTYwMDMtMS4wMjk5Ny0uMTc5OTktLjA2LS4wMTAwMS0uMTEwMDUtLjAxMDAxLS4xNTAwMi0uMDEwMDFsLjA5OTk4LS4xMDAwNGMtLjIyOTk4LTEuMTU5OTctLjU0OTk5LTIuMjY5OTYtLjk1OTk2LTMuMzI5OTYtLjA0OTk5LS4xMi0uMTAwMDQtLjI1LS4xNTAwMi0uMzctLjEzLS4yOTAwNC0uMjYwMDEtLjU4MDAyLS4zOTAwMS0uODYwMDUtLjEzOTk1LS4yODk5OC0uMjg5OTgtLjU3MDAxLS40Mjk5OS0uODM5OTctLjEyLS4yMjAwMy0uMjM5OTktLjQyOTk5LS4zNy0uNjQwMDEtLjE1OTk3LS4yNjAwMS0uMzIwMDEtLjUxMDAxLS41LS43NjAwMWwuMDEwMDEtLjAxOTk2LDEuNzg5OTgtMi42ODAwNS00LjY5OTk1LTQuNjk5OTVjLTEuMzguODg5OTUtMi4yNzAwMiwxLjQ3OTk4LTIuNjgwMDUsMS43ODk5OC0uMDA5OTUsMC0uMDA5OTUuMDEwMDEtLjAxOTk2LjAxMDAxLTEuNTgwMDItMS4wMjAwMi0zLjM0MDAzLTEuODU5OTktNS4yMzk5OS0yLjQxMDAzLS4wMTAwMSwwLS4wMjAwMi0uMDA5OTUtLjAzMDAzLS4wMDk5NS0uNS0uMTUwMDItMS4wMTAwMS0uMjcwMDItMS41Mjk5Ny0uMzh2LS4wMzAwM2wtLjYwMDA0LTMuMjcwMDJoLTYuNzAwMDFjLS4yOTk5OSwxLjgwMDA1LS41OTk5OCwyLjgwMDA1LS41OTk5OCwzLjMwMDA1LS4zMS4wNi0uNjIuMTMtLjkyOTk5LjIwOTk2LS45MTk5OC4yMzk5OS0xLjgxLjU0MDA0LTIuNjY5OTguOTAwMDItMS4xMy40Njk5Ny0yLjIwMDAxLDEuMDM5OTgtMy4yMDAwMSwxLjY5bC0yLjcwMDAxLTEuNzk5OTktNC43MDAwMSw0LjY5OTk1Yy45MDAwMiwxLjQwMDAyLDEuNSwyLjIwMDAxLDEuNzk5OTksMi43MDAwMS0uMTIuMTc5OTktLjIyOTk4LjM1OTk5LS4zMzk5Ny41NDk5OS0xLjE0MDAxLDEuODctMi4wMTAwMSwzLjk4MDA0LTIuNDYwMDIsNi4yNWwtMy4yOTk5OS42MDAwNHY2LjU5OTk4YzEuNzk5OTkuMjk5OTksMi43OTk5OS42MDAwNCwzLjI5OTk5LjYwMDA0aC4wNzAwMWMuMzIwMDEsMS41OTk5OC44NDAwMywzLjEzLDEuNTMwMDMsNC41Ni4wOTk5OC4xOTk5NS4xOTk5NS4zOTk5Ni4zMS41OTk5OC4wNi4xMy4xMy4yNjAwMS4yMDk5Ni4zOTAwMS4yMzk5OS40Mjk5OS41Ljg0OTk4Ljc4MDAzLDEuMjVsLS4wMTAwMS4wMTk5Ni0xLjg5MDAxLDIuNzgwMDMsNC43MDAwMSw0LjcwMDAxYzEuNDc5OTgtLjk4OTk5LDIuMzctMS41ODAwMiwyLjc4MDAzLTEuODkwMDEuMDA5OTUsMCwuMDA5OTUtLjAxMDAxLjAxOTk2LS4wMTAwMS45ODk5OS42NDAwMSwyLjA0MDA0LDEuMjEwMDIsMy4xNTAwMiwxLjY3OTk5LjMzMDAyLjE0MDAxLjY1OTk3LjI3MDAyLjk4OTk5LjM5MDAxLjg0MDAzLjI5OTk5LDEuNjkuNTQ5OTksMi41Ni43Mjk5OGwuNTk5OTgsMy4zMDAwNWg2LjcwMDAxYy4yOTAwNC0xLjc3MDAyLjU5MDAzLTIuNzYwMDEuNjAwMDQtMy4yNzAwMnYtLjAzMDAzYzIuNS0uNSw0Ljc5OTk5LTEuNSw2Ljc5OTk5LTIuNzk5OTlsLjAxOTk2LjAxMDAxLDIuNzgwMDMsMS44OTAwMSw0LjcwMDAxLTQuNzAwMDFjLS45ODk5OS0xLjQ3OTk4LTEuNTgwMDItMi4zNy0xLjg5MDAxLTIuNzgwMDMsMC0uMDA5OTUtLjAxMDAxLS4wMDk5NS0uMDEwMDEtLjAxOTk2LDEuMjk5OTktMiwyLjI5OTk5LTQuMjk5OTksMi43OTk5OS02LjcwMDAxbDMuMzAwMDUtLjU5OTk4di02LjYwMDA0Yy0uOTUwMDEtLjE0OTk2LTEuNjgwMDUtLjI5OTk5LTIuMjIwMDMtLjQwOTk3Wk00MS43MDAwMSwyOC41MjAwMmMtLjQyOTk5LDIuMTA5OTktMS4yNzAwMiw0LjA3OTk2LTIuNDE5OTgsNS44MjAwMS0xLjI2MDAxLDEuOTI5OTktMi45MTAwMywzLjU3OTk2LTQuODQwMDMsNC44Mzk5Ny0xLjc2MDAxLDEuMTY5OTgtMy43NjAwMSwyLjAxMDAxLTUuOTA5OTcsMi40NC0xLjA5MDAzLjIyOTk4LTIuMjIwMDMuMzQwMDMtMy4zOC4zNDAwMy0xLjE5LDAtMi4zNTAwNC0uMTItMy40NzAwMy0uMzYwMDUtLjAyOTk3LS4wMDk5NS0uMDYtLjAwOTk1LS4wODk5Ny0uMDE5OTYtMS41ODAwMi0uMzMwMDItMy4wODAwMi0uODkwMDEtNC40NjAwMi0xLjY0MDAxLS40NC0uMjM5OTktLjg1OTk5LS40ODk5OS0xLjI3MDAyLS43NjAwMS0xLjkyOTk5LTEuMjYwMDEtMy41Nzk5Ni0yLjkwOTk3LTQuODM5OTctNC44Mzk5Ny0uMjMwMDQtLjM2MDA1LS40NjAwMi0uNzIwMDMtLjY3MDA0LTEuMTAwMDQtLjA2OTk1LS4xMi0uMTMtLjIyOTk4LS4xNzk5OS0uMzM5OTctLjA5OTk4LS4xNzAwNC0uMTc5OTktLjM1MDA0LS4yNjk5Ni0uNTIwMDItLjYwMDA0LTEuMjM5OTktMS4wNTAwNS0yLjU2LTEuMzIwMDEtMy45NTAwMS0uMjMwMDQtMS4wODk5Ny0uMzQwMDMtMi4yMTk5Ny0uMzQwMDMtMy4zOCwwLTMuMjA5OTYuODkwMDEtNi4yMDk5NiwyLjQ0LTguNzY5OTYsMS44NTAwNC0zLjAyMDAyLDQuNjAwMDQtNS40MjAwNCw3Ljg5MDAxLTYuODIwMDEuNzM5OTktLjMxLDEuNTEwMDEtLjU3MDAxLDIuMzEtLjc4MDAzLjI3MDAyLS4wNzAwMS41Mzk5OC0uMTMuNzk5OTktLjE3OTk5LDEuMTItLjIzOTk5LDIuMjgwMDMtLjM1OTk5LDMuNDcwMDMtLjM1OTk5LDEuMDE5OTYsMCwyLjAwOTk1LjA3OTk2LDIuOTc5OTguMjY5OTYuMDQ5OTksMCwuMDk5OTguMDEwMDEuMTUwMDIuMDIwMDIuMDc5OTYuMDIwMDIuMTY5OTguMDMwMDMuMjUuMDQ5OTksMi4xNDk5Ni40Mjk5OSw0LjE0OTk2LDEuMjcwMDIsNS45MDk5NywyLjQ0LDEuNDE5OTguOTI5OTksMi42OSwyLjA3MDAxLDMuNzYwMDEsMy4zOC4wMjk5Ny4wMjAwMi4wMzk5OC4wNDAwNC4wNi4wNzAwMS4zNDk5OC4zNDk5OC42NDAwMS43NS44OCwxLjE5LjAxMDAxLjAxMDAxLjAxOTk2LjAyMDAyLjAxOTk2LjAzMDAzLjA0MDA0LjA0OTk5LjA4MDAyLjEwOTk5LjEyMDA2LjE2OTk4LjE0OTk2LjIxOTk3LjI4OTk4LjQ0LjQyOTk5LjY3OTk5LjEwOTk5LjE3OTk5LjIwOTk2LjM1OTk5LjMyMDAxLjU0OTk5LjEyLjIzOTk5LjI1LjQ3OTk4LjM3LjcyOTk4LjEwOTk5LjI0MDA1LjIxOTk3LjQ5MDA1LjMzOTk3Ljc1LjA0MDA0LjEwMDA0LjA4MDAyLjIxMDAyLjEzLjMyMDAxLjM4Ljk1MDAxLjY2OTk4LDEuOTUwMDEuODcsMi45ODAwNC4yMTAwMiwxLjA0OTk5LjMyMDAxLDIuMTQ5OTYuMzIwMDEsMy4yNzk5NywwLDEuMTktLjEyLDIuMzUwMDQtLjM1OTk5LDMuNDcwMDNaIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudCkiLz4NCiAgICA8cGF0aCBkPSJNMjUsOS43OTk5OWMtOC40MDAwMiwwLTE1LjIwMDAxLDYuNzk5OTktMTUuMjAwMDEsMTUuMjAwMDFzNi43OTk5OSwxNS4yMDAwMSwxNS4yMDAwMSwxNS4yMDAwMSwxNS4yMDAwMS02Ljc5OTk5LDE1LjIwMDAxLTE1LjIwMDAxLTYuNzk5OTktMTUuMjAwMDEtMTUuMjAwMDEtMTUuMjAwMDFaTTI1LDM2Ljc5OTk5Yy02LjUsMC0xMS43OTk5OS01LjI5OTk5LTExLjc5OTk5LTExLjc5OTk5czUuMjk5OTktMTEuNzk5OTksMTEuNzk5OTktMTEuNzk5OTksMTEuNzk5OTksNS4yOTk5OSwxMS43OTk5OSwxMS43OTk5OS01LjI5OTk5LDExLjc5OTk5LTExLjc5OTk5LDExLjc5OTk5WiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQxKSIvPg0KICAgIDxwYXRoIGQ9Ik0yMS4xODc5OSwyNy4wNzEyOWgtMy4yNTE5NWwtLjcyNjU2LDEuNzg4MDljLS4wNDY4OC4xMTMyOC0uMTEyNzkuMjA5OTYtLjE5NzI3LjI5MDA0cy0uMTgxMTUuMTM5NjUtLjI4OTA2LjE3Njc2Yy0uMTA4NC4wMzgwOS0uMjIyMTcuMDU1NjYtLjM0MjI5LjA1MjczLS4xMjAxMi0uMDAxOTUtLjIzNjMzLS4wMjYzNy0uMzQ5MTItLjA3NDIyLS4xMTI3OS0uMDQ2ODgtLjIwNzAzLS4xMTIzLS4yODIyMy0uMTk3MjdzLS4xMzAzNy0uMTc5NjktLjE2NTUzLS4yODMyYy0uMDM1NjQtLjEwMzUyLS4wNTA3OC0uMjEyODktLjA0NTktLjMyOTEuMDA0MzktLjExNTIzLjAzMjcxLS4yMjk0OS4wODQ0Ny0uMzQyNzdsMy4xNjY5OS03LjI4OTA2Yy4wNzUyLS4xNjUwNC4xODIxMy0uMjk0NDMuMzIwOC0uMzg4NjdzLjI5OTgtLjE0MTYuNDgzNC0uMTQxNmMuMTY5NDMsMCwuMzI0MjIuMDQ1OS40NjUzMy4xMzc3LjE0MTExLjA5MjI5LjI0NzA3LjIyMDcuMzE3MzguMzg1MjVsMy4xMjUsNy4yOTYzOWMuMDQ2ODguMTEzMjguMDczNzMuMjI3NTQuMDgxMDUuMzQyNzcuMDA2ODQuMTE2MjEtLjAwNTg2LjIyNDYxLS4wMzkwNi4zMjUyLS4wMzI3MS4xMDE1Ni0uMDg1NDUuMTk1MzEtLjE1ODY5LjI3OTMtLjA3Mjc1LjA4NDk2LS4xNjU1My4xNTMzMi0uMjc4MzIuMjA1MDgtLjExMjc5LjA1MjczLS4yMjcwNS4wNzgxMi0uMzQyMjkuMDc4MTJzLS4yMjU1OS0uMDE4NTUtLjMzMTU0LS4wNTY2NGMtLjEwNTQ3LS4wMzcxMS0uMjAyMTUtLjA5NjY4LS4yODkwNi0uMTc2NzZzLS4xNTYyNS0uMTc2NzYtLjIwODAxLS4yOTAwNGwtLjc0NzU2LTEuNzg4MDlaTTE4LjY1NTc2LDI1LjMxNzM4aDEuNzk4MzRsLS45MDk2Ny0yLjE4NDU3LS44ODg2NywyLjE4NDU3WiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQyLTc3NykiLz4NCiAgICA8cGF0aCBkPSJNMjYuMzk5NDEsMjUuNzk3ODV2Mi43MjI2NmMwLC4xMjIwNy0uMDIzNDQuMjM1MzUtLjA3MDMxLjMzODg3cy0uMTA5MzguMTk0MzQtLjE4NjUyLjI3MjQ2LS4xNzA0MS4xMzg2Ny0uMjc4MzIuMTgzNTljLS4xMDg0LjA0NDkyLS4yMjExOS4wNjczOC0uMzM4ODcuMDY3MzgtLjEyMjA3LDAtLjIzNjMzLS4wMjI0Ni0uMzQxOC0uMDY3MzgtLjEwNTk2LS4wNDQ5Mi0uMTk4NzMtLjEwNTQ3LS4yNzg4MS0uMTgzNTlzLS4xNDIwOS0uMTY4OTUtLjE4NzAxLS4yNzI0NmMtLjA0NDQzLS4xMDM1Mi0uMDY2ODktLjIxNjgtLjA2Njg5LS4zMzg4N3YtNy4zMjQ3MWMwLS4xMjI1Ni4wMjI0Ni0uMjM1ODQuMDY2ODktLjMzOTg0LjA0NDkyLS4xMDM1Mi4xMDY5My0uMTk0MzQuMTg3MDEtLjI3MTk3cy4xNzI4NS0uMTM5MTYuMjc4ODEtLjE4MzU5Yy4xMDU0Ny0uMDQ0OTIuMjE5NzMtLjA2NzM4LjM0MTgtLjA2NzM4aDIuMzQ4NjNjLjM4MDg2LDAsLjc0MDIzLjA3MTc4LDEuMDc2MTcuMjE1ODIuMzM1OTQuMTQzNTUuNjI4OTEuMzM5MzYuODgwODYuNTg2NDMuMjUxOTUuMjQ3NTYuNDQ5MjIuNTM3Ni41OTM3NS44Njk2My4xNDI1OC4zMzI1Mi4yMTQ4NC42ODk0NS4yMTQ4NCwxLjA3MTI5cy0uMDcyMjcuNzM3My0uMjE0ODQsMS4wNjczOGMtLjE0NDUzLjMzMDA4LS4zNDE4LjYxODE2LS41OTM3NS44NjMyOHMtLjU0NDkyLjQzNzUtLjg4MDg2LjU3OTEtLjY5NTMxLjIxMTkxLTEuMDc2MTcuMjExOTFoLTEuNDc0NjFaTTI2LjM5OTQxLDIyLjA2NTQzdjEuOTc5NDloMS40ODI0MmMuMTMwODYsMCwuMjU3ODEtLjAyODMyLjM4MDg2LS4wODQ5Ni4xMjEwOS0uMDU2NjQuMjI4NTItLjEzMTg0LjMyMDMxLS4yMjY1Ni4wOTE4LS4wOTM3NS4xNjYwMi0uMjAyMTUuMjIyNjYtLjMyNTIuMDU2NjQtLjEyMjA3LjA4Mzk4LS4yNDk1MS4wODM5OC0uMzgxMzVzLS4wMjczNC0uMjU2ODQtLjA4Mzk4LS4zNzVjLS4wNTY2NC0uMTE3NjgtLjEzMDg2LS4yMjAyMS0uMjIyNjYtLjMwNzYyLS4wOTE4LS4wODY5MS0uMTk5MjItLjE1NTI3LS4zMjAzMS0uMjA0NTktLjEyMzA1LS4wNDk4LS4yNS0uMDc0MjItLjM4MDg2LS4wNzQyMmgtMS40ODI0MloiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50My04ODgpIi8+DQogICAgPHBhdGggZD0iTTMzLjcwMDIsMjguNTIwNTFjMCwuMTIyMDctLjAyMzQ0LjIzNTM1LS4wNzAzMS4zMzg4N3MtLjEwOTM4LjE5NDM0LS4xODY1Mi4yNzI0NmMtLjA3ODEyLjA3ODEyLS4xNzA5LjEzODY3LS4yNzkzLjE4MzU5cy0uMjIwNy4wNjczOC0uMzM3ODkuMDY3MzhjLS4xMjMwNSwwLS4yMzYzMy0uMDIyNDYtLjM0Mjc3LS4wNjczOC0uMTA1NDctLjA0NDkyLS4xOTgyNC0uMTA1NDctLjI3ODMyLS4xODM1OXMtLjE0MjU4LS4xNjg5NS0uMTg2NTItLjI3MjQ2Yy0uMDQ0OTItLjEwMzUyLS4wNjczOC0uMjE2OC0uMDY3MzgtLjMzODg3di03LjMyNDcxYzAtLjEyMjU2LjAyMjQ2LS4yMzU4NC4wNjczOC0uMzM5ODQuMDQzOTUtLjEwMzUyLjEwNjQ1LS4xOTQzNC4xODY1Mi0uMjcxOTdzLjE3Mjg1LS4xMzkxNi4yNzgzMi0uMTgzNTljLjEwNjQ1LS4wNDQ5Mi4yMTk3My0uMDY3MzguMzQyNzctLjA2NzM4LjExNzE5LDAsLjIyOTQ5LjAyMjQ2LjMzNzg5LjA2NzM4LjEwODQuMDQ0NDMuMjAxMTcuMTA1OTYuMjc5My4xODM1OS4wNzcxNS4wNzc2NC4xMzk2NS4xNjg0Ni4xODY1Mi4yNzE5Ny4wNDY4OC4xMDQuMDcwMzEuMjE3MjkuMDcwMzEuMzM5ODR2Ny4zMjQ3MVoiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50NC05OTkpIi8+DQo8L3N2Zz4=" />
+          <dependencies>
+            <dependency name="Manage Gateway Routes Script" id="ac12a45b-466e-47fa-b818-d5020ca93ec3" />
+          </dependencies>
+          <script>await manageGatewayRoutes(element);</script>
+        </option>
+      </scriptOptions>
       <typeOrder>
         <type type="Api Gateway Route" typeId="b09d7684-5dde-4d4b-9cb5-0707bfd8578f" />
       </typeOrder>
@@ -71,7 +88,7 @@
           <drawText>
             <text>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function getMethodAndRoute(apiGatewayRoute) {
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f, _g;
     if (apiGatewayRoute.specialization !== "Api Gateway Route") {
         throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
     }
@@ -90,10 +107,15 @@ function getMethodAndRoute(apiGatewayRoute) {
         return { verb: "", route: "", result: "Aggregate" };
     }
     const httpSettings = endpoints[0].getStereotype("Http Settings");
-    const httpMethod = httpSettings.getProperty("Verb").getValue();
-    let httpRoute = httpSettings.getProperty("Route").getValue();
-    if ((_c = endpoints[0].getParent()) === null || _c === void 0 ? void 0 : _c.hasStereotype("Http Service Settings")) {
-        let serviceRoute = ((_e = (_d = endpoints[0].getParent().getStereotype("Http Service Settings")) === null || _d === void 0 ? void 0 : _d.getProperty("Route")) === null || _e === void 0 ? void 0 : _e.getValue()) || "";
+    if (!httpSettings) {
+        // The target is not exposed over HTTP, so there is no verb or route to forward to. The Route Association's
+        // Downstream End validation reports it; callers show this result instead of throwing.
+        return { verb: "", route: "", result: "NotHttp" };
+    }
+    const httpMethod = ((_c = httpSettings.getProperty("Verb")) === null || _c === void 0 ? void 0 : _c.getValue()) || "";
+    let httpRoute = ((_d = httpSettings.getProperty("Route")) === null || _d === void 0 ? void 0 : _d.getValue()) || "";
+    if ((_e = endpoints[0].getParent()) === null || _e === void 0 ? void 0 : _e.hasStereotype("Http Service Settings")) {
+        let serviceRoute = ((_g = (_f = endpoints[0].getParent().getStereotype("Http Service Settings")) === null || _f === void 0 ? void 0 : _f.getProperty("Route")) === null || _g === void 0 ? void 0 : _g.getValue()) || "";
         const haveSlash = httpRoute &amp;&amp; httpRoute.length &gt; 0 ? "/" : "";
         httpRoute = `${serviceRoute}${haveSlash}${httpRoute}`;
     }
@@ -111,6 +133,8 @@ function formatMethodAndRoute(element) {
         return "[Disconnected]";
     if (result === "Aggregate")
         return "[Aggregate]";
+    if (result === "NotHttp")
+        return "[Not an HTTP endpoint]";
     return `${route}`;
 }
 // Uncomment the following:
@@ -123,7 +147,7 @@ return formatMethodAndRoute(element);
           <drawText>
             <text>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function getMethodAndRoute(apiGatewayRoute) {
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f, _g;
     if (apiGatewayRoute.specialization !== "Api Gateway Route") {
         throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
     }
@@ -142,10 +166,15 @@ function getMethodAndRoute(apiGatewayRoute) {
         return { verb: "", route: "", result: "Aggregate" };
     }
     const httpSettings = endpoints[0].getStereotype("Http Settings");
-    const httpMethod = httpSettings.getProperty("Verb").getValue();
-    let httpRoute = httpSettings.getProperty("Route").getValue();
-    if ((_c = endpoints[0].getParent()) === null || _c === void 0 ? void 0 : _c.hasStereotype("Http Service Settings")) {
-        let serviceRoute = ((_e = (_d = endpoints[0].getParent().getStereotype("Http Service Settings")) === null || _d === void 0 ? void 0 : _d.getProperty("Route")) === null || _e === void 0 ? void 0 : _e.getValue()) || "";
+    if (!httpSettings) {
+        // The target is not exposed over HTTP, so there is no verb or route to forward to. The Route Association's
+        // Downstream End validation reports it; callers show this result instead of throwing.
+        return { verb: "", route: "", result: "NotHttp" };
+    }
+    const httpMethod = ((_c = httpSettings.getProperty("Verb")) === null || _c === void 0 ? void 0 : _c.getValue()) || "";
+    let httpRoute = ((_d = httpSettings.getProperty("Route")) === null || _d === void 0 ? void 0 : _d.getValue()) || "";
+    if ((_e = endpoints[0].getParent()) === null || _e === void 0 ? void 0 : _e.hasStereotype("Http Service Settings")) {
+        let serviceRoute = ((_g = (_f = endpoints[0].getParent().getStereotype("Http Service Settings")) === null || _f === void 0 ? void 0 : _f.getProperty("Route")) === null || _g === void 0 ? void 0 : _g.getValue()) || "";
         const haveSlash = httpRoute &amp;&amp; httpRoute.length &gt; 0 ? "/" : "";
         httpRoute = `${serviceRoute}${haveSlash}${httpRoute}`;
     }
@@ -162,6 +191,8 @@ function formatMethodAndRoute(element) {
     if (result === "None")
         return "";
     if (result === "Aggregate")
+        return "";
+    if (result === "NotHttp")
         return "";
     return `${verb}`;
 }
@@ -403,6 +434,10 @@ applyOnChangedApiGatewayRouteBehavior();
         <nameAccessibilityMode>hidden</nameAccessibilityMode>
         <defaultNameFunction>return "[call]";</defaultNameFunction>
         <nameMustBeUnique>false</nameMustBeUnique>
+        <validateFunction>const target = typeReference?.getType();
+if (target &amp;&amp; !target.hasStereotype("Http Settings")) {
+    return `${target.getName()} has no Http Settings, so the gateway has no HTTP verb or route to call. Expose it as an HTTP endpoint, or route to an endpoint that is.`;
+}</validateFunction>
         <allowSorting>false</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
@@ -439,7 +474,7 @@ applyOnChangedApiGatewayRouteBehavior();
         <macro trigger="on-changed">
           <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function getMethodAndRoute(apiGatewayRoute) {
-    var _a, _b, _c, _d, _e;
+    var _a, _b, _c, _d, _e, _f, _g;
     if (apiGatewayRoute.specialization !== "Api Gateway Route") {
         throw Error(`Element "${apiGatewayRoute.id}, ${apiGatewayRoute.getName()}" is not of type Api Gateway Route`);
     }
@@ -458,10 +493,15 @@ function getMethodAndRoute(apiGatewayRoute) {
         return { verb: "", route: "", result: "Aggregate" };
     }
     const httpSettings = endpoints[0].getStereotype("Http Settings");
-    const httpMethod = httpSettings.getProperty("Verb").getValue();
-    let httpRoute = httpSettings.getProperty("Route").getValue();
-    if ((_c = endpoints[0].getParent()) === null || _c === void 0 ? void 0 : _c.hasStereotype("Http Service Settings")) {
-        let serviceRoute = ((_e = (_d = endpoints[0].getParent().getStereotype("Http Service Settings")) === null || _d === void 0 ? void 0 : _d.getProperty("Route")) === null || _e === void 0 ? void 0 : _e.getValue()) || "";
+    if (!httpSettings) {
+        // The target is not exposed over HTTP, so there is no verb or route to forward to. The Route Association's
+        // Downstream End validation reports it; callers show this result instead of throwing.
+        return { verb: "", route: "", result: "NotHttp" };
+    }
+    const httpMethod = ((_c = httpSettings.getProperty("Verb")) === null || _c === void 0 ? void 0 : _c.getValue()) || "";
+    let httpRoute = ((_d = httpSettings.getProperty("Route")) === null || _d === void 0 ? void 0 : _d.getValue()) || "";
+    if ((_e = endpoints[0].getParent()) === null || _e === void 0 ? void 0 : _e.hasStereotype("Http Service Settings")) {
+        let serviceRoute = ((_g = (_f = endpoints[0].getParent().getStereotype("Http Service Settings")) === null || _f === void 0 ? void 0 : _f.getProperty("Route")) === null || _g === void 0 ? void 0 : _g.getValue()) || "";
         const haveSlash = httpRoute &amp;&amp; httpRoute.length &gt; 0 ? "/" : "";
         httpRoute = `${serviceRoute}${haveSlash}${httpRoute}`;
     }
@@ -532,6 +572,7 @@ function syncDownstreamContract(apiGatewayRoute, downstreamService) {
 /// &lt;reference path="../_common/updateApiGatewayRouteName.ts" /&gt;
 /// &lt;reference path="../_common/syncDownstreamContract.ts" /&gt;
 function applyRouteAssociationOnChangedBehavior() {
+    var _a;
     let source = association.getOtherEnd().typeReference.getType();
     let target = association.typeReference.getType();
     if (!source) {
@@ -543,6 +584,15 @@ function applyRouteAssociationOnChangedBehavior() {
     }
     const { verb, route, result } = getMethodAndRoute(source);
     const HttpSettings = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    if (result === "NotHttp") {
+        // Nothing to forward to: clear what a previous HTTP target set, as On Deleted does. The Downstream End's
+        // validation tells the user why.
+        if (source.hasStereotype(HttpSettings)) {
+            source.removeStereotype(HttpSettings);
+        }
+        (_a = source.getChildren("Body Field")[0]) === null || _a === void 0 ? void 0 : _a.delete();
+        return;
+    }
     let httpSettings = source.getStereotype(HttpSettings);
     if (!httpSettings) {
         httpSettings = source.addStereotype(HttpSettings);
@@ -596,5 +646,9 @@ applyRouteAssociationOnDeletedBehavior();
   <mappingSettings />
   <mappableElementPackages />
   <mappableElementPackageExtensions />
-  <scripts />
+  <scripts>
+    <script name="Manage Gateway Routes Script" id="ac12a45b-466e-47fa-b818-d5020ca93ec3">
+      <filePath>manage-gateway-routes.js</filePath>
+    </script>
+  </scripts>
 </settings>

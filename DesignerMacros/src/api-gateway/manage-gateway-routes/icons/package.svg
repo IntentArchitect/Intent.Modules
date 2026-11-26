@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+  <defs>
+    <linearGradient id="gw-pkg-top" x1="25" y1="5" x2="25" y2="27" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#a8ecf2"/><stop offset="1" stop-color="#6fd0e0"/></linearGradient>
+    <linearGradient id="gw-pkg-left" x1="5" y1="16" x2="25" y2="46" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5cc7d6"/><stop offset="1" stop-color="#3b8fc4"/></linearGradient>
+    <linearGradient id="gw-pkg-right" x1="45" y1="16" x2="25" y2="46" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4a8ccb"/><stop offset="1" stop-color="#2f5d9e"/></linearGradient>
+  </defs>
+  <path d="M25 5 45 15.5 25 26 5 15.5Z" fill="url(#gw-pkg-top)"/>
+  <path d="M5 15.5 25 26v20L5 35.5Z" fill="url(#gw-pkg-left)"/>
+  <path d="M25 26 45 15.5v20L25 46Z" fill="url(#gw-pkg-right)"/>
+  <path d="M15 10.25 35 20.75v6.5l-4 2.1v-6.5L11 12.35Z" fill="#ffffff" fill-opacity=".55"/>
+</svg>

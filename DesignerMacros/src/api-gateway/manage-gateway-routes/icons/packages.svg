@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+  <defs>
+    <linearGradient id="gw-pkgs-top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a8ecf2"/><stop offset="1" stop-color="#6fd0e0"/></linearGradient>
+    <linearGradient id="gw-pkgs-left" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5cc7d6"/><stop offset="1" stop-color="#3b8fc4"/></linearGradient>
+    <linearGradient id="gw-pkgs-right" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a8ccb"/><stop offset="1" stop-color="#2f5d9e"/></linearGradient>
+    <g id="gw-pkgs-cube" stroke="#e8fbfd" stroke-opacity=".7" stroke-width=".9" stroke-linejoin="round">
+      <path d="M12 0 24 6.3 12 12.6 0 6.3Z" fill="url(#gw-pkgs-top)"/>
+      <path d="M0 6.3 12 12.6v12L0 18.3Z" fill="url(#gw-pkgs-left)"/>
+      <path d="M12 12.6 24 6.3v12L12 24.6Z" fill="url(#gw-pkgs-right)"/>
+    </g>
+  </defs>
+  <use href="#gw-pkgs-cube" x="1" y="24"/>
+  <use href="#gw-pkgs-cube" x="25" y="24"/>
+  <use href="#gw-pkgs-cube" x="13" y="11.4"/>
+</svg>

@@ -1,0 +1,15 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+      "target": "ES2019",
+      "removeComments": false,
+      "outFile": "../../../../Modules/Intent.Modules.Metadata.ApiGateway/resources/manage-gateway-routes.js",
+      "sourceMap": false,
+      "types": []
+    },
+    "include": [
+      "**/*"
+    ],
+    "exclude": [
+    ]
+  }
