@@ -65,6 +65,15 @@
       <deviationsHash>B417758A310A25DA967DEFA7E1F060AF786670871452387979297F5EBE53DD6B</deviationsHash>
     </file>
     <file>
+      <correlationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#16162d11-1340-41a5-8a55-6a458f2f575f</correlationId>
+      <path>Templates/Hooks/GateScripts/GateScriptsTemplateRegistration.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-11-25T09:52:52.7895327Z</updatedAt>
+      <deviationsHash>739C0A0178AEE78B7FD9B469DE0D0B68EC07F81735DDDDBD3D21D3CF8A582757</deviationsHash>
+    </file>
+    <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#f08ee439-d1d7-4285-b2b6-ba18cba0e12a</correlationId>
       <path>Templates/Hooks/HooksJson/HooksJsonTemplatePartial.cs</path>
       <count>1</count>
@@ -169,8 +178,17 @@
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-10-29T09:50:42.9753319Z</updatedAt>
+      <updatedAt>2026-11-25T13:24:19.1996413Z</updatedAt>
       <deviationsHash>04FCEFB419FFF6C13A314052B6449795B672A3B57325711E9C3517AFE3214794</deviationsHash>
+    </file>
+    <file>
+      <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#75e6de9f-6d53-4e07-8de2-d52fcd9ba10f</correlationId>
+      <path>Templates/Skills/ModuleSvgIcon_ScriptsSetModuleIconCs_Agents/ModuleSvgIcon_ScriptsSetModuleIconCs_AgentsTemplatePartial.cs</path>
+      <count>1</count>
+      <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
+      <updatedAt>2026-11-25T15:43:12.7456809Z</updatedAt>
+      <deviationsHash>D9686A92E0F18EA7E5AFF464E8EF3AC254E9C024A6F980C37534A7C1DAA3275A</deviationsHash>
     </file>
     <file>
       <correlationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#bdb446a7-0a50-4b87-b6a1-c7871ab57639</correlationId>
@@ -178,7 +196,7 @@
       <count>1</count>
       <updatedByAccountName>dandre.jvv@intentarchitect.com</updatedByAccountName>
       <updatedByDisplayName>Dandre Jansen van Vuuren</updatedByDisplayName>
-      <updatedAt>2026-10-27T15:01:04.1255059Z</updatedAt>
+      <updatedAt>2026-11-25T15:43:12.7458177Z</updatedAt>
       <deviationsHash>2B2C72DBAD4E743EC1C4A2618B478179C9E5CAC3D2227C8F56A5956B92D80752</deviationsHash>
     </file>
     <file>

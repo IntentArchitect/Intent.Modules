@@ -38,9 +38,12 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.Skills.IntentModu
                     # Intent Module Orchestrator
 
                     > [!TIP]
-                    > **Read more if you want to know about** when to publish requests, `EmitOrPublish`, priority bands, Startup DSL, DI/Config/launch-settings requests, or cross-template lookups:
+                    > **Read more if you want to know about** when to publish requests, `EmitOrPublish`, Startup DSL, DI/Config/launch-settings requests, or the cross-module interface-type rule:
                     > *   [Orchestration Cheatsheet](./resources/orchestration-cheatsheet.md)
                     > *(To conserve tokens, avoid reading this file for simple or minor updates.)*
+                    >
+                    > Template lookups, the `"model"` metadata bridge and build-callback priorities are not specific to
+                    > crossing modules: the built-in `file-builder-expert` skill covers them.
 
                     ## Musts
                     1. **Safe Resolution:** Look templates up by a **literal role string** from the *Common Role Values* table below (or by the target's template id string when it has no role). Guard templates (use `?.` or check null) before accessing `CSharpFile`. For an **optional** integration — enrich only if another module happens to be installed — resolve its type with `TryGetTypeName(templateIdOrRole, out var typeName)` and skip silently when it returns `false`. `GetTypeName(...)` is the non-optional form and presumes the target is present.

@@ -24,8 +24,21 @@ namespace Intent.Modules.ModuleBuilder.AI.Guidelines.Templates.RootPrinciples.Ex
         public ExceptionGuidelinesMdTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             WithContentHashing = true;
+
+            // Each harness reads its own scoping key: `applyTo` (Copilot, a comma-separated string, in the
+            // literal below), `paths` (Claude Code) and `appliesTo` (Intent Architect), both block lists.
+            var scope = new[] { "**/*.cs" };
             MarkdownFile = new MarkdownFile("exception-guidelines.instructions", relativeLocation: "")
+              .WithFrontMatter(fm => fm
+                  .SetList("appliesTo", scope)
+                  .SetList("paths", scope))
               .FromMarkdown("""""""
+          ---
+          applyTo: '**/*.cs'
+          description: "Which exception to throw from Intent Architect module code - FriendlyException, ElementException or InvalidOperationException - by who can fix the problem and whether the code runs inside a build callback."
+          keywords: [exceptions, FriendlyException, ElementException, InvalidOperationException, OnBuild, AfterBuild, error messages]
+          ---
+
           ## Intent Module Exception Guidelines
 
           When throwing exceptions from module code (templates, factory extensions, registration classes),

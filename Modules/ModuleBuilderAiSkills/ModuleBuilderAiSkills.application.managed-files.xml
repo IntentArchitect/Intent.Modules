@@ -10,6 +10,7 @@
   <file path=".agents/skills/module-dependency-audit/SKILL.md" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleDependencyAudit_SkillMd_Agents" />
   <file path=".agents/skills/module-docs-chore/SKILL.md" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleDocsChore_SkillMd_Agents" />
   <file path=".agents/skills/module-svg-icon/SKILL.md" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleSvgIcon_SkillMd_Agents" />
+  <file path=".agents/skills/module-svg-icon/scripts/set-module-icon.cs" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleSvgIcon_ScriptsSetModuleIconCs_Agents" />
   <file path=".agents/skills/module-version-increment/SKILL.md" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleVersionIncrement_SkillMd_Agents" />
   <file path=".claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
   <file path=".claude/rules/exception-guidelines.instructions.md" templateId="Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.ExceptionGuidelinesMd" />
@@ -23,6 +24,7 @@
   <file path=".claude/skills/module-dependency-audit/SKILL.md" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleDependencyAudit_SkillMd_Agents" />
   <file path=".claude/skills/module-docs-chore/SKILL.md" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleDocsChore_SkillMd_Agents" />
   <file path=".claude/skills/module-svg-icon/SKILL.md" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleSvgIcon_SkillMd_Agents" />
+  <file path=".claude/skills/module-svg-icon/scripts/set-module-icon.cs" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleSvgIcon_ScriptsSetModuleIconCs_Agents" />
   <file path=".claude/skills/module-version-increment/SKILL.md" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleVersionIncrement_SkillMd_Agents" />
   <file path=".opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
   <file path=".opencode/instructions/exception-guidelines.instructions.md" templateId="Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.ExceptionGuidelinesMd" />
@@ -37,5 +39,6 @@
   <file path=".opencode/skills/module-dependency-audit/SKILL.md" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleDependencyAudit_SkillMd_Agents" />
   <file path=".opencode/skills/module-docs-chore/SKILL.md" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleDocsChore_SkillMd_Agents" />
   <file path=".opencode/skills/module-svg-icon/SKILL.md" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleSvgIcon_SkillMd_Agents" />
+  <file path=".opencode/skills/module-svg-icon/scripts/set-module-icon.cs" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleSvgIcon_ScriptsSetModuleIconCs_Agents" />
   <file path=".opencode/skills/module-version-increment/SKILL.md" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleVersionIncrement_SkillMd_Agents" />
 </managedFiles>

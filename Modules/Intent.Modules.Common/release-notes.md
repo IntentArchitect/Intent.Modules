@@ -1,3 +1,9 @@
+### Version 3.11.10
+
+- Fixed: `MarkdownFile.FromMarkdown` dropped front-matter values that span several lines. A block list such as `paths:` followed by `- "**/*.razor"` was written back as an empty `paths:`, an indented `key: value` under a nested map such as `metadata:` was lifted out to a top-level key, and the lines of a multi-line `description` were lost or turned into stray keys. Those lines now stay with their key, verbatim. One-line values render exactly as before.
+- New: `IMarkdownFrontMatter.SetList(key, values)` writes a YAML block list, quoting an item only when YAML needs it (for example `"**/*.razor"`), and `IMarkdownFrontMatter.GetList(key)` reads a block or inline (`[a, b]`) list.
+- Fixed: `IMarkdownSection.WithListItems` dropped every line of a wrapped list item after the first, turned a line opening with emphasis (`**Note** ...`) into a mangled bullet (`- *Note** ...`), and turned a `---` rule into `- --`. It now parses its text exactly as `FromMarkdown` parses a section: continuation lines stay with their item, and a line that is not part of an item is kept as its own block. A whitespace-only line, such as a raw string's closing indent, now ends the item and is dropped rather than rendered as a line of spaces.
+
 ### Version 3.11.9
 
 - Fixed: `MarkdownFileParser` split a list item that wrapped onto a second line, re-emitting the rest of its sentence as a separate paragraph after a blank line; continuation lines now stay with their item, indented to its content column (so a parsed item's `Content` can now span several lines). A list indented as a whole (for example four spaces in under a paragraph) is now emitted as a list instead of being left indented, where Markdown read it as a code block.

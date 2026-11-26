@@ -57,6 +57,11 @@ C# module, so its public API is a contract with modules this repository cannot s
   references disagree. Rejected: appending `additionalFolders` (an earlier draft did) — the sub-folders the caller
   passes describe the default location, which the override deliberately discards. Blank values fall back to the
   OutputTarget namespace plus parent folders and `additionalFolders`, as before. Covered by `GetNamespaceTests`.
+- **`content/AIInstructions/csharp-guidelines.md` carries every harness's scoping key (developer decision,
+  2026-11-25).** It is static content copied as-is, so its front matter is hand-written: `appliesTo` (Intent
+  Architect) and `paths` (Claude Code) as YAML block lists, and `applyTo` (GitHub Copilot) as one comma-separated
+  string. Change the scope in all three together. The same rule holds for the Module Builder AI modules' scoped
+  rules, which set the list keys with `IMarkdownFrontMatter.SetList`.
 
 ## Invariants & Constraints
 - **Type declarations default to `public`.** `AccessModifier` starts as `"public "` on `CSharpClass`,

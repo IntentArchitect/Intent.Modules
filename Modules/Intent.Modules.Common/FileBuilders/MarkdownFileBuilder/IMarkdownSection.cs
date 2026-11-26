@@ -18,6 +18,9 @@ public interface IMarkdownSection
     /// <summary>
     /// Parses a raw markdown list string and appends each item. Supports both
     /// unordered (<c>- </c>, <c>* </c>, <c>+ </c>) and ordered (<c>1. </c>) items.
+    /// It is parsed as <see cref="IMarkdownFile.FromMarkdown"/> parses a section: a wrapped item keeps
+    /// its continuation lines, nesting is measured from the first item, and a line that is not part
+    /// of an item (a paragraph, a rule, a fence) is appended as its own block rather than dropped.
     /// </summary>
     IMarkdownSection WithListItems(string markdownList);
 

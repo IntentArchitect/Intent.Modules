@@ -1,5 +1,12 @@
 ---
-contentHash: 49ACAB46CCA86B16260336FF94B8E1F8A659B07560F77AEFC416B93CE58A18F2
+applyTo: '**/*.cs'
+description: "Which exception to throw from Intent Architect module code - FriendlyException, ElementException or InvalidOperationException - by who can fix the problem and whether the code runs inside a build callback."
+keywords: [exceptions, FriendlyException, ElementException, InvalidOperationException, OnBuild, AfterBuild, error messages]
+appliesTo:
+  - "**/*.cs"
+paths:
+  - "**/*.cs"
+contentHash: E18703F3DAD65032DC6FC3136AB9E1E75535B9029FBD05C0417D8C9D5D904F4A
 ---
 ## Intent Module Exception Guidelines
 

@@ -1,5 +1,5 @@
 ---
-contentHash: C9F5E62E20ADCFA0AE6D28C08D2BBF1A4DCE62ACACDC4BB7CED1620D1C0508EA
+contentHash: A16520E0A89F7805818DBE1239FAF17A4FF34FC806772FDBA1578BBB6C3F71F1
 ---
 # Orchestration Cheatsheet
 
@@ -293,123 +293,17 @@ and `"KafkaSchemaRegistryUrl"`). Any other name is ignored.
 
 ===
 
-## §Resolution — FindTemplateInstance & Safe Guards
+## §Finding Another Module's Templates
 
-### Step 1 — Role-based single lookup
+Looking templates up, reading the designer element a host template stamped on a generated node, and
+choosing build-callback priorities are covered by the built-in `file-builder-expert` skill: lookups
+(`FindTemplateInstance(s)`, `TryGetTemplate`, `GetTypeName` / `TryGetTypeName`,
+`TemplateDiscoveryOptions.DoNotThrow`) in `resources/builder-patterns.md`, the model bridge
+(`TryGetMetadata<T>("model")`) in `resources/api-cheatsheet.md`, and priorities in
+`resources/patterns/lifecycle-hooks.cs`. Load it for those. The snippets here use priority `500` for
+a callback on another module's template.
 
-```csharp
-// Returns null when the template is not registered — ALWAYS guard before use
-var diTemplate = application.FindTemplateInstance<ICSharpFileBuilderTemplate>(
-    "Application.DependencyInjection");
-
-if (diTemplate == null) return;          // ← MUST: guard before accessing .CSharpFile
-
-diTemplate.CSharpFile.AfterBuild(file =>
-{
-    var method = file.Classes.First().FindMethod("AddApplication");
-    method?.AddInvocationStatement("services.AddAutoMapper",
-        stmt => stmt.AddArgument("Assembly.GetExecutingAssembly()"));
-}, 500);                                 // ← MUST: explicit priority (Extension band)
-```
-
-### Step 2 — Role-based multi-template loop with model guard
-
-```csharp
-// "Domain.Entity" — the entity type; NOT "Domain.Entity.Primary" (see the trap in SKILL.md)
-var templates = application.FindTemplateInstances<ICSharpFileBuilderTemplate>(
-    "Domain.Entity");
-
-foreach (var template in templates)
-{
-    // MUST: narrow to templates whose model matches the expected type
-    // (ClassModel comes from Intent.Modules.Modelers.Domain — a Tier 2 dependency)
-    if (!template.TryGetModel<ClassModel>(out var classModel))
-        continue;
-
-    template.CSharpFile.OnBuild(file =>
-    {
-        var cls = file.Classes.First();
-        // ... enrich based on classModel
-    }, 500);                             // Extension band: another module's template
-}
-```
-
-### Step 3 — Role + model-id lookup (fallback chain)
-
-```csharp
-// Preferred when the model element is known at resolution time.
-// Each role is tried in order; TryGetTemplate never throws.
-if (!template.TryGetTemplate(
-        "Domain.Entity",
-        mappedElementId,
-        out ICSharpFileBuilderTemplate entityTemplate)
-    && !template.TryGetTemplate(
-        "Domain.ValueObject",
-        mappedElementId,
-        out entityTemplate)
-    && !template.TryGetTemplate(
-        "Domain.DataContract",
-        mappedElementId,
-        out entityTemplate))
-{
-    throw new InvalidOperationException(
-        $"Could not resolve the mapped type for element '{mappedElementId}'.");
-}
-
-var typeName = template.GetTypeName(entityTemplate);
-```
-
-`template` is your own template; `mappedElementId` is the id of the designer element you need the type for
-(for example a mapping's target element).
-
-### Step 4 — Template-id fallback chain (DoNotThrow)
-
-```csharp
-// TryGetTemplate already probes without throwing — chain the candidates.
-bool resolved =
-    template.TryGetTemplate<ICSharpTemplate>("MyEcosystem.CosmosDb.UnitOfWorkInterface", out var uow)
-    || template.TryGetTemplate<ICSharpTemplate>("MyEcosystem.DynamoDb.UnitOfWorkInterface", out uow)
-    || template.TryGetTemplate<ICSharpTemplate>("MyEcosystem.MongoDb.UnitOfWorkInterface", out uow);
-
-if (!resolved) return;
-
-// Methods that throw by default take TemplateDiscoveryOptions.DoNotThrow and return null instead.
-var uowTypeName = template.GetTypeName("MyEcosystem.CosmosDb.UnitOfWorkInterface", TemplateDiscoveryOptions.DoNotThrow);
-if (uowTypeName == null) return;
-```
-
-Use the shared `TemplateDiscoveryOptions.DoNotThrow` instance; there is no need to declare your own.
-
-### Step 5 — Optional presence: TryGetTypeName
-
-Use this when you want to integrate with another module **only if it happens to be installed**, with
-no hard dependency and no failure when it is absent. `TryGetTypeName` resolves the type name and
-registers the `using` when the target is present, and simply returns `false` when it is not — so the
-whole enrichment degrades gracefully to a no-op.
-
-```csharp
-// Enrich only if the validation module is installed; otherwise skip silently.
-if (template.TryGetTypeName("MyEcosystem.Application.ValidatorProviderInterface", out var validatorProvider))
-{
-    var ctor = cls.Constructors.First();
-
-    // Idempotency guard — this callback re-runs on every Software Factory execution.
-    if (ctor.Parameters.All(p => p.Type != validatorProvider))
-    {
-        ctor.AddParameter(validatorProvider, "validatorProvider",
-            p => p.IntroduceReadonlyField((_, stmt) => stmt.ThrowArgumentNullException()));
-    }
-}
-```
-
-| Method | When the target is missing | Use for |
-|---|---|---|
-| `GetTypeName(templateIdOrRole, model)` | Throws / assumes presence | A target your module genuinely requires |
-| `TryGetTypeName(templateIdOrRole, out var name)` | Returns `false` | An optional, best-effort integration |
-
-Overloads mirror the `GetTypeName` family — by template id or role alone, or plus a model / model id.
-The overloads that take a *list* of candidate ids (for a fallback chain) need `Intent.Common` 3.7.3 or
-later; at the 3.7.2 floor, chain single calls as in Step 4.
+One rule applies only across module boundaries, and `file-builder-expert` does not state it:
 
 ### ⚠ Cross-Module Boundary Rule — Use Interface Types, Not Concrete Types
 
@@ -434,85 +328,6 @@ var t = application.FindTemplateInstance<ICSharpFileBuilderTemplate>(
 | Template exposes a `CSharpFile` property | `ICSharpFileBuilderTemplate` (from `Intent.Modules.Common.CSharp`) |
 | Template has a typed model | `IIntentTemplate<TModel>` (from `Intent.Modules.Common`, namespace `Intent.Modules.Common.Templates`) |
 | Role lookup only, no CSharpFile needed | `ICSharpTemplate` (from `Intent.Modules.Common.CSharp`) |
-
-### Null-conditional shorthand (optional single-template enrichment)
-
-```csharp
-// Safe when the template is genuinely optional
-application
-    .FindTemplateInstance<ICSharpFileBuilderTemplate>("Infrastructure.DependencyInjection")
-    ?.CSharpFile.AfterBuild(file => { /* enrich if present */ }, 500);
-```
-
-===
-
-## §The Model Bridge — reading the designer model off a generated node
-
-Once you have a template, you can reach its own model with `TryGetModel<T>`. But enrichment usually
-needs to go one level finer: *which designer operation is **this** generated method?* Do not answer
-that by matching names.
-
-Host templates that generate a member per modelled element **stamp the originating element onto the
-generated node** as metadata under the well-known key `"model"`. Reading it back is the bridge from
-generated C# to the designer model.
-
-`IHandlerModel`, `IOperationModel` and `IParameterModel` below stand for the host module's typed model
-interfaces (Tier 2), and `HasAuditable()` for the accessor Module Builder generates from your own
-"Auditable" stereotype.
-
-```csharp
-// Role-string lookup — no module dependency needed for this part (see Two-Tier rule below).
-var templates = application.FindTemplateInstances<ICSharpFileBuilderTemplate>(
-    "MyEcosystem.Application.CommandHandler");
-
-foreach (var template in templates)
-{
-    // Narrow to templates whose own model is the shape you expect.
-    if (!template.TryGetModel<IHandlerModel>(out var handlerModel))
-        continue;
-
-    template.CSharpFile.OnBuild(file =>
-    {
-        var cls = file.Classes.First();
-
-        foreach (var method in cls.Methods)
-        {
-            // ── THE BRIDGE ──
-            // The host template stamped the designer operation onto this method.
-            if (!method.TryGetMetadata<IOperationModel>("model", out var operation))
-                continue;                                  // not model-derived — leave it alone
-
-            // Typed accessor generated from your own "Auditable" stereotype — never HasStereotype("Auditable").
-            if (!operation.HasAuditable())
-                continue;
-
-            // Parameters carry their own designer model the same way.
-            var commandParam = method.Parameters.FirstOrDefault(p =>
-                p.TryGetMetadata<IParameterModel>("model", out var pm) &&
-                pm.TypeReference.Element?.SpecializationType == "Command");
-
-            // MUST be idempotent — OnBuild re-runs on every Software Factory execution,
-            // so an unguarded AddAttribute appends a duplicate every time.
-            if (method.Attributes.All(a => !a.Name.Contains("Audit")))
-            {
-                method.AddAttribute("Audit", attr => attr.AddArgument($"\"{operation.Name}\""));
-            }
-        }
-    }, 500);   // second arg = build priority band (Extension)
-}
-```
-
-#### Rules for the bridge
-
-1. **Always `TryGetMetadata`, never `GetMetadata`.** `"model"` is a convention host templates opt into, not a framework guarantee — a node with no model, or one built by a different template version, simply won't have it. `GetMetadata` on an absent key throws.
-2. **Type the read.** `TryGetMetadata<T>` returns `false` on a type mismatch as well as on an absent key, so a wrong `T` degrades to "skip" rather than to a cast exception.
-3. **Every node level carries its own.** Classes, methods, properties and parameters are stamped independently — read the one on the node you are actually enriching.
-4. **Guard every mutation for idempotency.** These callbacks re-run on every execution.
-
-> **Setting vs reading.** Metadata has two distinct uses, and the second is easy to miss:
-> your own cross-step state (`node.AddMetadata("my-key", value)` in one callback, read back in a
-> later one), **and** reading the designer model the host template already attached. `"model"` is
-> the second kind. The `file-builder-expert` skill, if available, covers the metadata API itself.
 
 ===
 
@@ -585,45 +400,6 @@ public class MyModuleFactoryExtension : FactoryExtensionBase
     }
 }
 ```
-
-===
-
-## §Priority Bands Reference
-
-```csharp
-csharpFile
-    .OnBuild(file =>
-    {
-        // Band 0 — Core: owning template builds primary class structure.
-        // Never search for elements from other templates here.
-        file.Classes.First().AddMethod("void", "Execute");
-    }, 0)
-    .OnBuild(file =>
-    {
-        // Band 100 — Enrichment: same-module additions (e.g., add an attribute).
-        file.Classes.First().FindMethod("Execute")
-        ?.AddAttribute("LogExecutionTime");
-    }, 100)
-    .AfterBuild(file =>
-    {
-        // Band 500 — Extension: factory extensions from other modules.
-        // All Band 0/100 OnBuild callbacks have finished.
-        file.Classes.First().AddAttribute("GeneratedByExtension");
-    }, 500)
-    .AfterBuild(file =>
-    {
-        // Band 1000 — Final: cross-template wiring.
-        // Safe to FindMethod/FindClass on elements created by other templates.
-        var cls = file.Classes.First();
-        if (cls.HasMetadata("requires-disposal"))
-        {
-            cls.ImplementsInterface("IDisposable");
-            cls.AddMethod("void", "Dispose", m => m.AddStatement("// cleanup"));
-        }
-    }, 1000);
-```
-
-The **Find Rule**: Template B must use a **strictly higher priority** than Template A when B calls `FindMethod`/`FindClass` on elements A created. If B's priority ≤ A's, A may not have run yet.
 
 ===
 

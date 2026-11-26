@@ -2,7 +2,11 @@
 applyTo: '**/*.cs'
 description: "Intent Architect module build and template-authoring gotchas, and diagnosing a module change that never reaches generated output."
 keywords: [intent architect, template authoring, nuget, build, gotchas, intent ignore, csproj, nullable, asset repositories]
-contentHash: DF7EBC5955B5E8F0B7ECA220FF754CF27FAEF5D68A91AF3AEAB331738B9AD4A4
+appliesTo:
+  - "**/*.cs"
+paths:
+  - "**/*.cs"
+contentHash: B5D1B4B826E850E0D04311C038675C1ED21E781D0E865E2DD3D8BB7039F61706
 ---
 ## Known Build Gotchas
 

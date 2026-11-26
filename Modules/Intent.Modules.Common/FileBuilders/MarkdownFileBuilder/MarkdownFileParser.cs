@@ -32,11 +32,24 @@ internal static partial class MarkdownFileParser
     public static void Parse(string markdown, MarkdownFrontMatter frontMatter, List<IMarkdownSection> sections)
     {
         var lines = markdown.ReplaceLineEndings("\n").Split('\n');
-        var i = 0;
+        var i = ParseFrontMatter(lines, 0, frontMatter);
+        ParseBlocks(lines, i, sections, currentSection: null);
+    }
 
-        i = ParseFrontMatter(lines, i, frontMatter);
+    /// <summary>
+    /// Parses a fragment of section content - lists, paragraphs, fences - into <paramref name="section"/>,
+    /// exactly as <see cref="Parse"/> parses the content under a heading. A heading line in the fragment
+    /// is kept as text rather than starting a section.
+    /// </summary>
+    public static void ParseSectionContent(string markdown, MarkdownSection section)
+    {
+        var lines = markdown.ReplaceLineEndings("\n").Split('\n');
+        ParseBlocks(lines, 0, sections: null, currentSection: section);
+    }
 
-        MarkdownSection currentSection = null;
+    // With sections null, headings are not recognised and every block goes to currentSection.
+    private static void ParseBlocks(string[] lines, int i, List<IMarkdownSection> sections, MarkdownSection currentSection)
+    {
         var pendingTextLines = new List<string>();
         // The indentation of the first item in the current run of list items. Levels are measured
         // from it, so a list indented as a whole (e.g. four spaces under a paragraph) is still a top
@@ -53,9 +66,11 @@ internal static partial class MarkdownFileParser
         void FlushText()
         {
             if (pendingTextLines.Count == 0) return;
-            while (pendingTextLines.Count > 0 && string.IsNullOrEmpty(pendingTextLines[0]))
+            // Whitespace-only lines are blank lines too: a raw string's last line often holds only the
+            // indent left over from its closing quotes, and kept it became a text block of spaces.
+            while (pendingTextLines.Count > 0 && string.IsNullOrWhiteSpace(pendingTextLines[0]))
                 pendingTextLines.RemoveAt(0);
-            while (pendingTextLines.Count > 0 && string.IsNullOrEmpty(pendingTextLines[^1]))
+            while (pendingTextLines.Count > 0 && string.IsNullOrWhiteSpace(pendingTextLines[^1]))
                 pendingTextLines.RemoveAt(pendingTextLines.Count - 1);
             if (pendingTextLines.Count > 0 && currentSection != null)
             {
@@ -102,7 +117,7 @@ internal static partial class MarkdownFileParser
             }
 
             var headingMatch = HeadingRegex().Match(line);
-            if (headingMatch.Success)
+            if (headingMatch.Success && sections != null)
             {
                 FlushText();
                 var level = headingMatch.Groups[1].Value.Length;
@@ -149,6 +164,7 @@ internal static partial class MarkdownFileParser
             if (pendingTextLines.Count == 0 &&
                 line.Trim().Length > 0 &&
                 !BlockStartRegex().IsMatch(line) &&
+                !headingMatch.Success &&
                 currentSection.Blocks.Count > 0 &&
                 currentSection.Blocks[^1] is MarkdownListItem continued)
             {
@@ -183,18 +199,48 @@ internal static partial class MarkdownFileParser
             return i;
 
         i++;
+        string key = null;
+        string value = null;
+        var continuation = new List<string>();
+
+        void FlushEntry()
+        {
+            if (key == null) return;
+            // Blank lines belong to a value only between its lines (inside a "|" block, say).
+            while (continuation.Count > 0 && continuation[^1].Trim().Length == 0)
+                continuation.RemoveAt(continuation.Count - 1);
+            frontMatter.SetParsed(key, value, new List<string>(continuation));
+            key = null;
+            continuation.Clear();
+        }
+
         while (i < lines.Length && lines[i].TrimEnd() != "---")
         {
-            var colonIndex = lines[i].IndexOf(':');
+            var line = lines[i];
+            // A value YAML spreads over the following lines - a block list ("  - a", or "- a" at the
+            // key's own indent), a nested map, a "|" / ">" block scalar - keeps those lines verbatim.
+            // They used to be dropped, or an indented "k: v" was lifted out as a key of its own.
+            if (key != null && (line.Length == 0 || char.IsWhiteSpace(line[0]) || FrontMatterSequenceItemRegex().IsMatch(line)))
+            {
+                continuation.Add(line);
+                i++;
+                continue;
+            }
+
+            var colonIndex = line.IndexOf(':');
             if (colonIndex > 0)
             {
-                var key = lines[i][..colonIndex].Trim();
-                var value = lines[i][(colonIndex + 1)..].Trim();
-                frontMatter.Set(key, value);
+                FlushEntry();
+                key = line[..colonIndex].Trim();
+                value = line[(colonIndex + 1)..].Trim();
             }
             i++;
         }
 
+        FlushEntry();
         return i < lines.Length ? i + 1 : i;
     }
+
+    [GeneratedRegex(@"^-(\s|$)")]
+    private static partial Regex FrontMatterSequenceItemRegex();
 }
