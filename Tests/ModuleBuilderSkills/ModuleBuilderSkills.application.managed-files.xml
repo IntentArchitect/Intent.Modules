@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="fcb00a56-0c79-4c8f-b1ed-558727e509fe">
-  <file path=".agents/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
   <file path=".agents/instructions/exception-guidelines.instructions.md" templateId="Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.ExceptionGuidelinesMd" />
   <file path=".agents/instructions/known-build-gotchas.instructions.md" templateId="Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.KnownBuildGotchasMd" />
   <file path=".agents/instructions/module-building-workflow.instructions.md" templateId="Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.ModuleBuildingWorkflowMd" />
@@ -22,7 +21,6 @@
   <file path=".agents/skills/module-svg-icon/SKILL.md" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleSvgIcon_SkillMd_Agents" />
   <file path=".agents/skills/module-svg-icon/scripts/set-module-icon.cs" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleSvgIcon_ScriptsSetModuleIconCs_Agents" />
   <file path=".agents/skills/module-version-increment/SKILL.md" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleVersionIncrement_SkillMd_Agents" />
-  <file path=".claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
   <file path=".claude/rules/exception-guidelines.instructions.md" templateId="Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.ExceptionGuidelinesMd" />
   <file path=".claude/rules/known-build-gotchas.instructions.md" templateId="Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.KnownBuildGotchasMd" />
   <file path=".claude/rules/module-building-workflow.instructions.md" templateId="Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.ModuleBuildingWorkflowMd" />
@@ -100,7 +98,6 @@
   <file path=".kiro/skills/module-svg-icon/scripts/set-module-icon.cs" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleSvgIcon_ScriptsSetModuleIconCs_Agents" />
   <file path=".kiro/skills/module-version-increment/SKILL.md" templateId="Intent.ModuleBuilder.AI.Guidelines.Skills.ModuleVersionIncrement_SkillMd_Agents" />
   <file path=".kiro/steering/module-building-workflow.instructions.md" templateId="Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.ModuleBuildingWorkflowMd" />
-  <file path=".opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
   <file path=".opencode/instructions/exception-guidelines.instructions.md" templateId="Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.ExceptionGuidelinesMd" />
   <file path=".opencode/instructions/known-build-gotchas.instructions.md" templateId="Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.KnownBuildGotchasMd" />
   <file path=".opencode/instructions/module-building-workflow.instructions.md" templateId="Intent.ModuleBuilder.AI.Guidelines.RootPrinciples.ModuleBuildingWorkflowMd" />

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="3517d53b-f6f7-4d96-8315-efcc6d5622ec">
-  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
-  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
   <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
   <file path="Api/EnumLiteralModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />
   <file path="FactoryExtensions/CSharpStyleSettingsLoaderExtension.cs" templateId="Intent.ModuleBuilder.Templates.FactoryExtension" />
@@ -9,7 +7,7 @@
   <file path="Intent.Common.CSharp.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
   <file path="Intent.Modules.Common.CSharp.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
   <file path="Migrations/Migration_03_06_00_Pre_08.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
+  <file path="Migrations/Migration_03_11_01_Pre_01.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
+  <file path="Migrations/Migration_03_11_01_Pre_02.cs" templateId="Intent.ModuleBuilder.Templates.Migrations.OnVersionMigration" />
   <file path="Settings/ModuleSettingsExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions" />
-  <file path="Templates/StaticContentTemplateRegistrations/AIInstructionsStaticContentTemplateRegistration.cs" deviationsHash="95F024BBB9B93CC06F17BC55CA2B849AF9EDD9596525892D00915BACFA8C917B" templateId="Intent.ModuleBuilder.Templates.StaticContentTemplateRegistration" />
-  <file path="content/AIInstructions/readme.txt" templateId="Intent.ModuleBuilder.Templates.StaticContentOutputReadme" />
 </managedFiles>

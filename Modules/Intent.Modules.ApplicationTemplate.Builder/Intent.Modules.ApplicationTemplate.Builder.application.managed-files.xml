@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <managedFiles version="1" applicationId="d80e91fc-ff6c-4960-b18c-7fb30c4e81e3">
-  <file path="../.claude/rules/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
-  <file path="../.opencode/instructions/csharp-guidelines.md" templateId="Intent.Modules.Common.CSharp.Templates.StaticContentTemplateRegistrations.AIInstructionsStaticContentTemplateRegistration" />
   <file path="../Intent.Modules.sln" templateId="Intent.VisualStudio.Projects.VisualStudioSolution" />
   <file path="Api/ApplicationTemplateModel.cs" deviationsHash="15E9989E79061ED9F032D144E41E7503861F0B5DBD095B939D0F4B35A4A2CBE3" templateId="Intent.ModuleBuilder.Templates.Api.ApiPackageModel" />
   <file path="Api/ApplicationTemplateModelStereotypeExtensions.cs" templateId="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" />

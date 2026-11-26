@@ -57,11 +57,26 @@ C# module, so its public API is a contract with modules this repository cannot s
   references disagree. Rejected: appending `additionalFolders` (an earlier draft did) — the sub-folders the caller
   passes describe the default location, which the override deliberately discards. Blank values fall back to the
   OutputTarget namespace plus parent folders and `additionalFolders`, as before. Covered by `GetNamespaceTests`.
-- **`content/AIInstructions/csharp-guidelines.md` carries every harness's scoping key (developer decision,
-  2026-11-25).** It is static content copied as-is, so its front matter is hand-written: `appliesTo` (Intent
-  Architect) and `paths` (Claude Code) as YAML block lists, and `applyTo` (GitHub Copilot) as one comma-separated
-  string. Change the scope in all three together. The same rule holds for the Module Builder AI modules' scoped
-  rules, which set the list keys with `IMarkdownFrontMatter.SetList`.
+- **The module ships no AI instruction (developer decision, 2026-11-26, 3.11.1).** The `csharp-guidelines`
+  static content (the `AIInstructionsTemplate` Static Content Template, role `AI.Context.Instructions`) was removed.
+  It only told agents not to add `using` directives that implicit or global usings already cover. Current models
+  manage that unprompted, and the instruction was loaded into context in every session. Don't reintroduce a
+  general C# instruction here. Guidance worth carrying belongs in a skill that is loaded on demand, or in the module
+  whose output it is about.
+- **Removing a template needs a migration to remove its Template Outputs: `Migration_03_11_01_Pre_01`.** Intent
+  Architect left the removed template's `Template Output` elements in the Codebase Structure designer, both on a
+  same-version reinstall and on a real 3.11.0 → 3.11.1 update. They are harmless to the Software Factory, but they
+  pile up in every application. The migration deletes Template Outputs named after the removed template id. It is at
+  3.11.1-pre.1, not pre.0, because the test applications had already installed pre.0 and a migration runs only when
+  an application upgrades past its version. Tested in a scratch copy of `TestMediator.NoEventing`: all four outputs,
+  one per harness, were removed and nothing else changed.
+- **`Migration_03_11_01_Pre_02` repeats the removal over both output designers.** Template Outputs live in
+  whichever output designer the application uses: the Codebase Structure designer, or the Folder Structure designer
+  (`Intent.Modules.OutputTargets.Folders`, its own Template Output type). Pre_01 only looked in the first, and the
+  rollout found one application (`Intent.Modules.NET/Tests/Infrastructure.Terraform`) whose output sat in a Folder
+  Structure designer. Pre_01 had already been installed everywhere, so it could not be changed: pre.2 added a new
+  migration covering both designers. Re-cleaning the Codebase Structure designer is a no-op. Any future migration that
+  removes Template Outputs must cover both designers from the start.
 
 ## Invariants & Constraints
 - **Type declarations default to `public`.** `AccessModifier` starts as `"public "` on `CSharpClass`,
@@ -84,6 +99,11 @@ C# module, so its public API is a contract with modules this repository cannot s
 - **Testing language-version behaviour means mocking `IOutputTarget.GetTargetPath()`.** It is an instance method
   on the SDK interface (not an extension), and `GetProject()` builds the `CSharpProject` from its `[0]` entry;
   left unmocked, NSubstitute returns an empty-metadata target. See `RequiredMemberTests`.
+- **A migration looks a designer up with `app.GetDesigners().SingleOrDefault(d => d.Id == id)`, never
+  `TryGetDesigner`.** Despite its name, `ApplicationPersistable.TryGetDesigner` throws when the application has no
+  such designer, and a migration that throws fails the upgrade while the new version is still recorded, so it never
+  runs again for that application. Pre_01 shipped with `TryGetDesigner` and failed on Folder Structure applications;
+  it was corrected while still unpublished.
 - **Method modifier rendering order is fixed by the compiler, not style.** `CSharpClassMethod` renders access,
   `static`, `new`, `virtual`/`abstract`, `sealed`, `override`, then `partial`, then `async`. `partial` must follow the
   other member modifiers (`partial static` is CS0267, `partial override` is CS1585); `partial async` is accepted,

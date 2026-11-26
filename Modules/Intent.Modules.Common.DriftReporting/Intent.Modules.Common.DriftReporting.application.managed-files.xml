@@ -4,7 +4,7 @@
   <file path="FactoryExtensions/DriftChecks.cs" deviationsHash="0825091E636AD2C182586D4705C81688D5E95BADFDC9D19D9886E2C42FD2259D" templateId="Intent.ModuleBuilder.Templates.FactoryExtension" />
   <file path="Intent.Common.DriftReporting.imodspec" templateId="Intent.ModuleBuilder.IModSpecFile" />
   <file path="Intent.Modules.Common.DriftReporting.csproj" templateId="Intent.VisualStudio.Projects.CSharpProject" />
-  <file path="Templates/DriftReportRule/DriftReportRuleTemplatePartial.cs" deviationsHash="A45F3898A39EC67D20F50AC3603AEDB33BD57A30B61593C6F854C86601CAF03D" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
+  <file path="Templates/DriftReportRule/DriftReportRuleTemplatePartial.cs" deviationsHash="B0F5B2E4AD25B72C343F46933932B03F3AE92E0D19CA92115983EB762334850F" templateId="Intent.ModuleBuilder.ProjectItemTemplate.Partial" />
   <file path="Templates/DriftReportRule/DriftReportRuleTemplateRegistration.cs" templateId="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel" />
   <file path="release-notes.md" templateId="Intent.ModuleBuilder.Templates.ReleaseNotes" />
 </managedFiles>

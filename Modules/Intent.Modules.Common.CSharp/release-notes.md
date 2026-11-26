@@ -1,6 +1,6 @@
 ﻿### Version 3.11.1
 
-- Improvement: The `csharp-guidelines` AI instruction now scopes itself to `**/*.cs` for Claude Code (`paths`) and GitHub Copilot (`applyTo`) as well as Intent Architect (`appliesTo`), so those agents load it only when working on C# files.
+- Improvement: Removed the `csharp-guidelines` AI instruction. It only told coding agents not to add `using` directives that implicit or global usings already cover, which current agents handle without being told, and it took up context in every session. On the next Software Factory run, applications no longer get `.agents/instructions/csharp-guidelines.md` or its copy in each agent harness's rules folder. Upgrading also removes the template's leftover `Template Output` elements from the `Codebase Structure` and `Folder Structure` designers.
 
 ### Version 3.11.0
 

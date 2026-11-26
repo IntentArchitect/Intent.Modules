@@ -5,6 +5,7 @@
     <file relativePath="../Metadata.Security/Intent.Modules.Metadata.Security/Intent.Metadata.Security.imodspec" state="ignored" />
     <file relativePath="../Metadata.Security/Intent.Modules.Metadata.Security/Intent.Modules.Metadata.Security.csproj" state="ignored" />
     <file relativePath="../Metadata.Security/Intent.Modules.Metadata.Security/release-notes.md" state="ignored;once-off-generated" />
+    <file relativePath="Api/ApiGatewayRouteModelStereotypeExtensions.cs" state="ignored" />
     <file relativePath="Api/DomainPackageExtensionModel.cs" state="ignored" />
     <file relativePath="Intent.Metadata.Security.imodspec" state="ignored" />
     <file relativePath="Intent.Modules.Metadata.Security.csproj" state="ignored" />
