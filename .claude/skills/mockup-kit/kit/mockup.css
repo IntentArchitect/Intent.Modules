@@ -1,0 +1,187 @@
+/* Mockup kit helpers. Everything is prefixed mk- so it can never be mistaken for an app class.
+   Copied into intent/.mockups/<app>/kit/ by the mockup-kit skill. Never edit the copy; re-copy it.
+   Colours: --mk-pin (pins and their numbers in the notes) and --mk-highlight (mk-new outlines, the notes panel)
+   default to green and electric blue; snapshot.json's "pins" and "highlight" set them
+   for an app (written into its styles.css), a mockup's own <style> for one screen. */
+
+/* Registered so a value that is no colour (a typo in snapshot.json) falls back to the default rather than hiding the pins. */
+@property --mk-pin {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #16a34a;
+}
+@property --mk-highlight {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #0091ff;
+}
+
+/* A region the mockup deliberately leaves out (e.g. a designer canvas when the requirement is about a panel). */
+.mk-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 80px;
+    margin: 8px;
+    border: 2px dashed rgba(128, 128, 128, 0.35);
+    border-radius: 6px;
+    color: rgba(128, 128, 128, 0.8);
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Numbered annotation pin: <span class="mk-pin" data-req="R1.2" title="R1.2 - Shows unread count" style="top: 120px; left: 300px">1</span> */
+.mk-pin {
+    position: absolute;
+    z-index: 10000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--mk-pin, #16a34a);
+    color: #fff;
+    font: bold 11px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+    box-shadow: 0 0 0 2px #fff, 0 1px 4px rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
+    cursor: help;
+}
+
+/* In Intent's <Mockup> block a pin that cites a requirement goes to it. */
+.mk-embedded .mk-pin[data-req],
+.mk-embedded .mk-pin[title^="R"],
+.mk-embedded .mk-pin[data-mk-title^="R"] {
+    cursor: pointer;
+}
+
+/* Sits in the flow beside what it marks, so a parent with overflow: hidden can't clip it. */
+.mk-pin.mk-pin--inline {
+    position: relative;
+    flex: 0 0 auto;
+    vertical-align: middle;
+    margin: 0 4px;
+}
+
+/* The pins explained, numbered to match, so a screenshot carries its own notes. Put it in a side panel (mk-notes-panel). */
+.mk-notes {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    list-style: none;
+    margin: 0;
+    padding: 10px 12px;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.mk-notes li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 10px;
+}
+
+.mk-notes li::before {
+    content: attr(data-pin);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--mk-pin, #16a34a);
+    color: #fff;
+    font: bold 11px/20px system-ui, -apple-system, "Segoe UI", sans-serif;
+    text-align: center;
+}
+
+.mk-notes b {
+    display: block;
+}
+
+/* Marks something new or changed by the requirement, without changing its layout. */
+.mk-new {
+    outline: 2px dashed var(--mk-highlight, #0091ff);
+    outline-offset: 2px;
+}
+
+/* A right-hand panel holding the .mk-notes, over the screen's edge. */
+.mk-notes-panel {
+    position: fixed;
+    top: 48px;
+    right: 12px;
+    max-height: calc(100% - 96px);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    border: 2px solid var(--mk-highlight, #0091ff);
+    border-radius: 6px;
+    background: #fff;
+    color: #333;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+html[data-mk-theme="dark"] .mk-notes-panel {
+    background: #252526;
+    color: #ddd;
+}
+
+/* Comment mode in Intent's <Mockup> block: what a click would comment on, and a numbered marker where each comment sits. */
+.mk-commenting,
+.mk-commenting * {
+    cursor: crosshair !important;
+}
+
+/* A Ctrl/Cmd or middle-button drag panning the block: after comment mode, so it wins over its crosshair. */
+.mk-panning,
+.mk-panning * {
+    cursor: grabbing !important;
+}
+
+.mk-comment-hover {
+    outline: 2px solid #2f81f7 !important;
+    outline-offset: 1px;
+}
+
+#mk-comment-markers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    z-index: 10001;
+}
+
+.mk-comment-marker {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    border-radius: 11px 11px 11px 0;
+    background: #2f81f7;
+    color: #fff;
+    font: bold 11px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+    box-shadow: 0 0 0 2px #fff, 0 1px 4px rgba(0, 0, 0, 0.4);
+    transform: translateY(-100%);
+    pointer-events: none;
+}
+
+.mk-comment-marker--sent {
+    background: #8b949e;
+}
+
+/* ?pins=off, or the block's pin toggle: a clean screen. */
+.mk-pins-off .mk-pin,
+.mk-pins-off .mk-notes-panel {
+    display: none !important;
+}
+
+.mk-pins-off .mk-new {
+    outline: none;
+}
