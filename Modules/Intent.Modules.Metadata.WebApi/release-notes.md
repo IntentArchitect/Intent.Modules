@@ -1,3 +1,7 @@
+### Version 4.8.1
+
+- Improvement: An `Operation` with the `GET` or `QUERY` verb no longer needs a return type; without one the endpoint answers `204 No Content`.
+
 ### Version 4.8.0
 
 - New feature: `QUERY` is now an available HTTP verb in **Http Settings**. A `QUERY` endpoint takes its criteria in the request body, like `POST`, and is safe and idempotent, like `GET`.
