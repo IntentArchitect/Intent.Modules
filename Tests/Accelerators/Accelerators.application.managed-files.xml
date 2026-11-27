@@ -13,6 +13,7 @@
   <file path="Accelerators.Api/Configuration/ApplicationSecurityConfiguration.cs" templateId="Intent.Application.Identity.ApplicationSecurityConfiguration" />
   <file path="Accelerators.Api/Configuration/ProblemDetailsConfiguration.cs" templateId="Intent.AspNetCore.ProblemDetailsConfiguration" />
   <file path="Accelerators.Api/Configuration/SwashbuckleConfiguration.cs" templateId="Intent.AspNetCore.Swashbuckle.SwashbuckleConfiguration" />
+  <file path="Accelerators.Api/Controllers/Block2Level1sController.cs" templateId="Intent.AspNetCore.Controllers.Controller" />
   <file path="Accelerators.Api/Filters/ExceptionFilter.cs" templateId="Intent.AspNetCore.Controllers.ExceptionFilter" />
   <file path="Accelerators.Api/Filters/HideRouteParametersFromBodyOperationFilter.cs" templateId="Intent.AspNetCore.Swashbuckle.HideRouteParametersFromBodyOperationFilter" />
   <file path="Accelerators.Api/Filters/TypeSchemaFilter.cs" templateId="Intent.AspNetCore.Swashbuckle.TypeSchemaFilter" />
@@ -80,7 +81,7 @@
   <file path="Accelerators.Application/CreateBlock2Level1Block2Level2sDto.cs" templateId="Intent.Application.Dtos.DtoModel" />
   <file path="Accelerators.Application/CreateBlock2Level1Block2Level2sDtoValidator.cs" templateId="Intent.Application.FluentValidation.Dtos.DTOValidator" />
   <file path="Accelerators.Application/DependencyInjection.cs" templateId="Intent.Application.DependencyInjection.DependencyInjection" />
-  <file path="Accelerators.Application/Implementation/Block2Level1sService.cs" templateId="Intent.Application.ServiceImplementations.ServiceImplementation" />
+  <file path="Accelerators.Application/Implementation/Block2Level1sService.cs" deviationsHash="355E5DE294326455E38067246EF5FCC88D75E8ACB3664C416F16580D3ABE514D" templateId="Intent.Application.ServiceImplementations.ServiceImplementation" />
   <file path="Accelerators.Application/Interfaces/IBlock2Level1sService.cs" templateId="Intent.Application.Contracts.ServiceContract" />
   <file path="Accelerators.Application/Mappings/Block1Level1s/Block1Level1DtoProfile.cs" templateId="Intent.Application.Dtos.AutoMapper.DtoMappingProfile" />
   <file path="Accelerators.Application/Mappings/Block2Level1s/Block2Level1DtoProfile.cs" templateId="Intent.Application.Dtos.AutoMapper.DtoMappingProfile" />

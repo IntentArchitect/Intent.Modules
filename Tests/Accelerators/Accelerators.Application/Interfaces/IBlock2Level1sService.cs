@@ -13,5 +13,9 @@ namespace Accelerators.Application.Interfaces
         Task<Block2Level1Dto> FindBlock2Level1ById(Guid id, CancellationToken cancellationToken = default);
         Task<List<Block2Level1Dto>> FindBlock2Level1s(CancellationToken cancellationToken = default);
         Task DeleteBlock2Level1(Guid id, CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Regression anchor: a GET with no return type. It must model without a validation error, and the endpoint answers 204 No Content.
+        /// </summary>
+        Task Ping(CancellationToken cancellationToken = default);
     }
 }

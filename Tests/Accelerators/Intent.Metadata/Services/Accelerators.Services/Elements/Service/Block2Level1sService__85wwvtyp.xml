@@ -274,5 +274,43 @@
         </childElement>
       </childElements>
     </childElement>
+    <childElement id="9636f21b-5751-4141-9b6a-727b8ce24bae" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+      <comment>Regression anchor: a GET with no return type. It must model without a validation error, and the endpoint answers 204 No Content.</comment>
+      <name>Ping</name>
+      <display>Ping(): void</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="f39d5963-2354-4183-a062-b7b9b3a19584">
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>51c78176-2df1-4711-b7d5-ae86bf996bd7</parentFolderId>
+      <packageId>57a732ed-f120-47cc-b17c-37b78297edcc</packageId>
+      <packageName>Accelerators.Services</packageName>
+      <traits>
+        <trait id="0a932465-ea1f-42e7-b1eb-9f90aa8961fd" name="[Invokable]" />
+        <trait id="2b6729eb-e2ae-4b5f-86fe-4f611d1f912e" name="[Processing Handler]" />
+      </traits>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6" name="Http Settings">
+          <addedByDefault>false</addedByDefault>
+          <definitionPackageName>Intent.Metadata.WebApi</definitionPackageName>
+          <definitionPackageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</definitionPackageId>
+          <properties>
+            <property name="801c3e61-4431-4d81-93fa-7e57d33cb3fa" display="Verb" value="GET" isActive="true" />
+            <property name="5dd3e07d-76eb-45d4-9956-4325fb068acc" display="Route" value="ping" isActive="true" />
+            <property name="4490e212-1e99-43ce-b3dd-048ed2a6bae8" display="Return Type Mediatype" value="Default" isActive="true" />
+            <property name="e3870725-34b3-4684-85f2-ec4a667207fb" display="Success Response Code" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
   </childElements>
 </class>

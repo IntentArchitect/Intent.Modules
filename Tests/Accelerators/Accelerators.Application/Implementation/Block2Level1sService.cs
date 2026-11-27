@@ -108,6 +108,16 @@ namespace Accelerators.Application.Implementation
             _block2Level1Repository.Remove(block2Level1);
         }
 
+        /// <summary>
+        /// Regression anchor: a GET with no return type. It must model without a validation error, and the endpoint answers 204 No Content.
+        /// </summary>
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        public async Task Ping(CancellationToken cancellationToken = default)
+        {
+            // Nothing to do: the endpoint only confirms the service is reachable, so it has no return type.
+            await Task.CompletedTask;
+        }
+
         [IntentManaged(Mode.Fully)]
         private static Block2Level2 CreateOrUpdateBlock2Level2(
             Block2Level2? entity,

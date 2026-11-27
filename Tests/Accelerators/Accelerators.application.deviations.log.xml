@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <deviationsLog>
-  <files />
+  <files>
+    <file>
+      <correlationId>Intent.Application.ServiceImplementations.ServiceImplementation#51c78176-2df1-4711-b7d5-ae86bf996bd7</correlationId>
+      <path>Accelerators.Application/Implementation/Block2Level1sService.cs</path>
+      <count>1</count>
+      <updatedByAccountName>jp.seini@intentarchitect.com</updatedByAccountName>
+      <updatedByDisplayName>JP Seini</updatedByDisplayName>
+      <updatedAt>2026-11-27T12:15:43.3771472Z</updatedAt>
+      <deviationsHash>355E5DE294326455E38067246EF5FCC88D75E8ACB3664C416F16580D3ABE514D</deviationsHash>
+    </file>
+  </files>
 </deviationsLog>
